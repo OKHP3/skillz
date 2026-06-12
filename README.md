@@ -8,6 +8,18 @@ A personal repository of [Agent Skills](https://agentskills.io) (SKILL.md format
 
 Read `AGENTS.md` first. It's a compressed index of every skill in this repo, what triggers it, and where it lives. Point any agent working in this repo at `AGENTS.md` before it does anything else.
 
+## Core documents
+
+| File | Purpose |
+|---|---|
+| `AGENTS.md` | Always-on agent routing index. Read first. |
+| `SKILLS.md` | Human-facing skill catalog and maturity tracker. |
+| `PUBLIC_SURFACES.md` | Public information architecture for OverKill Hill, Glee-fully, and AskJamie touchpoints. |
+| `PUBLISHING.md` | Validation, release, registry, and promotion checklist. |
+| `SECURITY.md` | Skill supply-chain and employer-data safety posture. |
+| `CHANGELOG.md` | Change log until the first release tag and beyond. |
+| `skillz.manifest.json` | Lightweight machine-readable manifest for the skill library. |
+
 ## Families
 
 | Family | Status | What it covers |
@@ -44,6 +56,16 @@ skill-name/
 ├── SKILL.md          (required: frontmatter + instructions)
 └── references/       (loaded on demand, not always in context)
 ```
+
+## Public surface model
+
+The canonical public landing page should live under OverKill Hill:
+
+```text
+overkillhill.com/projects/skillz/
+```
+
+Glee-fully and AskJamie should use lightweight contextual touchpoints that route back to the OverKill Hill project page. See `PUBLIC_SURFACES.md`.
 
 ## License
 
