@@ -1,0 +1,22 @@
+# Rendered diagram test outputs (never commit working renders)
+*.png
+*.svg
+*.pdf
+!assets/**/*.png
+!assets/**/*.svg
+
+# Node (mermaid-cli via npx)
+node_modules/
+.npm-cache/
+
+# Python (if any skill scripts use it)
+__pycache__/
+*.pyc
+.venv/
+
+# Editor / OS
+.DS_Store
+.vscode/
+
+# Env / secrets
+.env
