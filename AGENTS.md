@@ -23,8 +23,21 @@ Check this file before deciding whether a task needs a skill. Skills loaded on d
 | `glee-fully/*` | Tasks matching one of the 42 Glee-fully GPT domains (home/personal productivity, creative tools, etc.) | Awaiting clustering pass on the 42 GPTs to determine sub-family boundaries |
 | `askjamie/*` | Career history, professional Q&A, resume-style requests about Jamie's background | Design not started |
 
+## Repository support docs
+
+| File | When to read |
+|---|---|
+| `SKILLS.md` | A human-facing list of skills, maturity levels, and promotion priorities is needed. |
+| `PUBLIC_SURFACES.md` | The task concerns public pages, advertising, promotion, brand routing, or where `skillz` should be explained. |
+| `PUBLISHING.md` | The task concerns release readiness, registry submission, public promotion, or validation gates. |
+| `SECURITY.md` | The task could expose private, employer, proprietary, or unsafe execution behavior. |
+| `CHANGELOG.md` | The task changes repo structure, skill maturity, or release-relevant documentation. |
+| `skillz.manifest.json` | Machine-readable repo metadata, family status, or external indexing is needed. |
+
 ## Cross-cutting rules
 
 - BFS (employer) context is excluded from every skill in this repo by default. `okhp3-linkedin-post` runs an explicit scrub gate; other skills should not introduce employer references at all.
 - Every Mermaid skill defers naming, registry, and validation gates to `okhp3-mermaid-core`. Domain skills (bpmn/architecture/data) are vocabulary and pattern libraries, not standalone entry points.
 - `okhp3-linkedin-voice` is a filter, not a generator. It runs on existing text (from `okhp3-linkedin-post` or hand-written drafts).
+- Public-surface decisions route through `PUBLIC_SURFACES.md`: OverKill Hill is canonical; Glee-fully and AskJamie are contextual side doors.
+- Publishing decisions route through `PUBLISHING.md`; do not promote a skill just because a folder exists.
