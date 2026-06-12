@@ -1,0 +1,71 @@
+{
+  "name": "okhp3-skillz",
+  "displayName": "skillz: Agent Skills by OverKill Hill",
+  "owner": "OKHP3",
+  "repository": "https://github.com/OKHP3/skillz",
+  "license": "MIT",
+  "version": "0.0.0-unreleased",
+  "description": "Agent Skills in SKILL.md format for delegating recurring OKHP3 workflows to Claude, OpenClaw, Codex, and compatible agents.",
+  "canonicalPublicSurface": "https://overkillhill.com/projects/skillz/",
+  "strategySurface": "https://app.notion.com/p/37d812e0ced4812ab899dd0cfc9e99c0",
+  "defaultIndex": "AGENTS.md",
+  "humanCatalog": "SKILLS.md",
+  "publishingGuide": "PUBLISHING.md",
+  "securityPolicy": "SECURITY.md",
+  "families": [
+    {
+      "name": "mermaid",
+      "status": "skeleton",
+      "skills": [
+        "okhp3-mermaid-core",
+        "okhp3-mermaid-bpmn",
+        "okhp3-mermaid-architecture",
+        "okhp3-mermaid-data",
+        "okhp3-mermaid-publish"
+      ]
+    },
+    {
+      "name": "linkedin",
+      "status": "skeleton",
+      "skills": [
+        "okhp3-linkedin-voice",
+        "okhp3-linkedin-angles",
+        "okhp3-linkedin-post"
+      ]
+    },
+    {
+      "name": "process-capture",
+      "status": "skeleton",
+      "skills": [
+        "okhp3-process-capture"
+      ]
+    },
+    {
+      "name": "glee-fully",
+      "status": "placeholder",
+      "skills": []
+    },
+    {
+      "name": "askjamie",
+      "status": "placeholder",
+      "skills": []
+    }
+  ],
+  "maturityLevels": {
+    "0": "placeholder",
+    "1": "skeleton",
+    "2": "draftable",
+    "3": "usable",
+    "4": "validated",
+    "5": "published"
+  },
+  "publicSurfaceModel": {
+    "canonical": "OverKill Hill /projects/skillz/",
+    "sourceOfTruth": "GitHub repository",
+    "decisionLedger": "Notion skillz page family",
+    "contextualTouchpoints": [
+      "Glee-fully Toolbox",
+      "AskJamie Lens System"
+    ]
+  }
+}
