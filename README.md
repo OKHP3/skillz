@@ -49,6 +49,7 @@ Read `AGENTS.md` first. It's a compressed index of every skill in this repo, wha
 | `mermaid/` | Built (skeletons) | Mermaid diagram authoring. Core + BPMN + architecture + data + publish + update + repair |
 | `linkedin/` | Built (skeletons) | LinkedIn content pipeline. Voice → angle mining → drafting |
 | `process-capture/` | Built (skeleton) | Meta-skill. Captures recurring tasks and turns them into new skill drafts or backlog entries |
+| `notion/` | Built (draftable) | Chat-to-Notion capture router. Routes AI threads into Chat Threads plus Extracts, dedupes, and reconciles against GitHub |
 | `refolddec/` | Built (skeleton) | ReFolDec transformation skills. Fold, unfold, refold across representation types |
 | `glee-fully/` | Placeholder | Conversion target for the Glee-fully custom GPT catalog. Awaiting clustering pass before sub-families are scaffolded |
 | `askjamie/` | Placeholder | AskJamie conversational resume / helpdesk tool. Design not yet started |
