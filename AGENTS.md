@@ -11,10 +11,13 @@ Check this file before deciding whether a task needs a skill. Skills loaded on d
 | `okhp3-mermaid-architecture` | System/solution architecture, C4, infrastructure, service topology diagrams. Load after core | `mermaid/okhp3-mermaid-architecture/SKILL.md` |
 | `okhp3-mermaid-data` | ERD, class diagrams, schema documentation. Load after core | `mermaid/okhp3-mermaid-data/SKILL.md` |
 | `okhp3-mermaid-publish` | Rendering, exporting, or publishing a finished diagram (local PNG/SVG or Mermaid Chart MCP) | `mermaid/okhp3-mermaid-publish/SKILL.md` |
+| `okhp3-mermaid-update` | User provides an existing .mmd file or diagram block and wants changes applied — new nodes, revised labels, restructured flow — without touching style or classDef config. Load after core | `mermaid/okhp3-mermaid-update/SKILL.md` |
+| `okhp3-mermaid-repair` | A .mmd file or fenced block fails to parse — mmdc errors, Mermaid Live shows red, or rendered output is malformed. Minimum fix only | `mermaid/okhp3-mermaid-repair/SKILL.md` |
 | `okhp3-linkedin-voice` | Drafting, editing, or auditing ANY LinkedIn-bound text. Apply last, after content exists | `linkedin/okhp3-linkedin-voice/SKILL.md` |
 | `okhp3-linkedin-angles` | "Mine this for a post", "what's postable here", end-of-session content triage on a finished artifact | `linkedin/okhp3-linkedin-angles/SKILL.md` |
 | `okhp3-linkedin-post` | Drafting a LinkedIn post from a chosen angle (output of angles, or a topic the user already picked) | `linkedin/okhp3-linkedin-post/SKILL.md` |
 | `okhp3-process-capture` | User describes doing something for the 2nd/3rd time, says "make this a skill", "I keep doing X", or asks to capture a workflow just demonstrated | `process-capture/okhp3-process-capture/SKILL.md` |
+| `okhp3-refolddec-core` | Task is explicitly about transforming an artifact from one representation type to another — folding an idea into a diagram or SKILL.md, unfolding a skill into its steps, refolding a diagram into documentation, or tracking semantic loss across a transformation | `refolddec/okhp3-refolddec-core/SKILL.md` |
 
 ## Planned (not yet built)
 
@@ -28,6 +31,7 @@ Check this file before deciding whether a task needs a skill. Skills loaded on d
 | File | When to read |
 |---|---|
 | `SKILLS.md` | A human-facing list of skills, maturity levels, and promotion priorities is needed. |
+| `docs/STACK-POSITION.md` | The task concerns the stack architecture, ReFolDec theory, or where skillz fits in the OKHP³ Visual Language Stack. |
 | `PUBLIC_SURFACES.md` | The task concerns public pages, advertising, promotion, brand routing, or where `skillz` should be explained. |
 | `PUBLISHING.md` | The task concerns release readiness, registry submission, public promotion, or validation gates. |
 | `SECURITY.md` | The task could expose private, employer, proprietary, or unsafe execution behavior. |
@@ -38,6 +42,8 @@ Check this file before deciding whether a task needs a skill. Skills loaded on d
 
 - BFS (employer) context is excluded from every skill in this repo by default. `okhp3-linkedin-post` runs an explicit scrub gate; other skills should not introduce employer references at all.
 - Every Mermaid skill defers naming, registry, and validation gates to `okhp3-mermaid-core`. Domain skills (bpmn/architecture/data) are vocabulary and pattern libraries, not standalone entry points.
+- `okhp3-mermaid-update` changes content while preserving style. `okhp3-mermaid-repair` fixes syntax while preserving everything. They do not overlap.
 - `okhp3-linkedin-voice` is a filter, not a generator. It runs on existing text (from `okhp3-linkedin-post` or hand-written drafts).
+- `okhp3-refolddec-core` is a transformation-aware skill. Load the appropriate domain skill alongside it when the transformation target is a diagram or SKILL.md skeleton.
 - Public-surface decisions route through `PUBLIC_SURFACES.md`: OverKill Hill is canonical; Glee-fully and AskJamie are contextual side doors.
 - Publishing decisions route through `PUBLISHING.md`; do not promote a skill just because a folder exists.
