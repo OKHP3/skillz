@@ -25,12 +25,19 @@ For agent routing, read `AGENTS.md` first. `AGENTS.md` is the always-on pointer 
 | `okhp3-mermaid-data` | Mermaid | 1 | ERD, class diagrams, schema documentation, data model explanation. | `mermaid/okhp3-mermaid-data/SKILL.md` |
 | `okhp3-mermaid-publish` | Mermaid | 1 | Rendering, exporting, or publishing a finished diagram. | `mermaid/okhp3-mermaid-publish/SKILL.md` |
 | `okhp3-mermaid-update` | Mermaid | 1 | Apply changes to an existing .mmd file while preserving style, classDef config, and init block. | `mermaid/okhp3-mermaid-update/SKILL.md` |
-| `okhp3-mermaid-repair` | Mermaid | 1 | Fix a broken Mermaid diagram using minimum intervention. Syntax only — no content changes. | `mermaid/okhp3-mermaid-repair/SKILL.md` |
+| `okhp3-mermaid-repair` | Mermaid | 1 | Fix a broken Mermaid diagram using minimum intervention. Syntax only. No content changes. | `mermaid/okhp3-mermaid-repair/SKILL.md` |
 | `okhp3-linkedin-voice` | LinkedIn | 1 | Drafting, editing, or auditing LinkedIn-bound text. Runs last. | `linkedin/okhp3-linkedin-voice/SKILL.md` |
 | `okhp3-linkedin-angles` | LinkedIn | 1 | Mine a finished artifact, repo, PRD, thread, or writeup for postable angles. | `linkedin/okhp3-linkedin-angles/SKILL.md` |
 | `okhp3-linkedin-post` | LinkedIn | 1 | Draft a LinkedIn post from a chosen angle or topic. | `linkedin/okhp3-linkedin-post/SKILL.md` |
 | `okhp3-process-capture` | Process Capture | 1 | Convert recurring work into a new skill skeleton or backlog entry. | `process-capture/okhp3-process-capture/SKILL.md` |
-| `okhp3-refolddec-core` | ReFolDec | 1 | Transform an artifact from one representation type to another — fold, unfold, refold, or track semantic loss across a transformation. | `refolddec/okhp3-refolddec-core/SKILL.md` |
+| `okhp3-notion-capture-router` | Notion Capture | 2 | Capture AI conversations into Notion, dedupe Chat Threads and Extracts, route through Domains, and reconcile against OKHP3 GitHub. | `notion/okhp3-notion-capture-router/SKILL.md` |
+| `okhp3-refolddec-core` | ReFolDec | 1 | Transform an artifact from one representation type to another: fold, unfold, refold, or track semantic loss across a transformation. | `refolddec/okhp3-refolddec-core/SKILL.md` |
+
+## Active families
+
+| Family | Status | Intended scope |
+|---|---|---|
+| `notion/` | Built (draftable) | Chat-to-Notion capture, dedupe, extraction, routing, archive gate, and GitHub reconciliation. |
 
 ## Planned families
 
@@ -53,11 +60,11 @@ Priority order:
 6. `okhp3-mermaid-architecture`
 7. `okhp3-mermaid-data`
 
-Reason: `core + bpmn + publish` produces the strongest differentiated claim: BPMN-aware Mermaid generation with validation and publishing discipline. `update + repair` complete the lifecycle — generation is incomplete without a maintenance path.
+Reason: `core + bpmn + publish` produces the strongest differentiated claim: BPMN-aware Mermaid generation with validation and publishing discipline. `update + repair` complete the lifecycle: generation is incomplete without a maintenance path.
 
 The first LinkedIn skill to promote should be `okhp3-linkedin-angles`, because artifact-mining is more differentiated than generic voice polishing or post drafting.
 
-`okhp3-refolddec-core` promotes when at least one full fold → publish → refold cycle has been run end-to-end and the instructions can be followed without explanation.
+`okhp3-refolddec-core` promotes when at least one full fold / publish / refold cycle has been run end-to-end and the instructions can be followed without explanation.
 
 ## Catalog maintenance rules
 
