@@ -9,16 +9,30 @@
 - **Status**: Active — initial families scaffolded, mermaid + linkedin approaching usable maturity
 
 ## Purpose
-Canonical repository for OKHP3 Agent Skills — reusable `SKILL.md` delegation contracts for Claude, OpenClaw, and Codex. Three active families: BPMN-aware Mermaid diagram authoring, a LinkedIn voice-to-post pipeline, and a process-capture meta-skill that converts recurring manual work into new skill skeletons. `glee-fully/` and `askjamie/` families are scaffolded but empty pending design work.
+`skillz` is the executable agent-skill substrate for the OKHP³ Visual Language Stack. It packages reusable methods into durable, portable, agent-readable execution contracts in SKILL.md format.
+
+The conceptual evolution: mega-prompt → reusable prompt kit → repo-scoped instruction file → SKILL.md → portable agent execution contract → composable skill family.
+
+Active families: BPMN-aware Mermaid diagram authoring (7 skills), a LinkedIn voice-to-post pipeline (3 skills), a process-capture meta-skill, and a ReFolDec transformation family. `glee-fully/` and `askjamie/` are scaffolded but empty pending design work.
 
 A SKILL.md is a delegation contract, not a prompt. Write it once; the recurring task stops needing a human in the loop.
+
+## Stack Position
+`skillz` is the execution layer of the OKHP³ Visual Language Stack:
+
+- **ReFolDec** — transformation theory. Names the fold/unfold/refold operations. `skillz` packages them as executable contracts.
+- **Mermaid Theme Builder** — visual-governance layer. Defines palette tokens, semantic class bundles, renderer profiles. `okhp3-mermaid-core` pulls its classDef recipes from here.
+- **BPMN for Mermaid** — process-notation layer. Vocabulary catalog for BPMN 2.0 semantics in Mermaid syntax. `okhp3-mermaid-bpmn` draws its element patterns from here.
+
+See `docs/STACK-POSITION.md` for the full map.
 
 ## Skill Families
 | Family | Path | Skills | Status |
 |---|---|---|---|
-| Mermaid | `mermaid/` | 5: core, bpmn, architecture, data, publish | Built (skeletons) |
+| Mermaid | `mermaid/` | 7: core, bpmn, architecture, data, publish, update, repair | Built (skeletons) |
 | LinkedIn | `linkedin/` | 3: voice, angles, post | Built (skeletons) |
 | Process Capture | `process-capture/` | 1: okhp3-process-capture | Built (skeleton) |
+| ReFolDec | `refolddec/` | 1: okhp3-refolddec-core | Built (skeleton) |
 | Glee-fully | `glee-fully/` | 0 | Placeholder — ~42 GPTs need clustering pass first |
 | AskJamie | `askjamie/` | 0 | Placeholder — design not started |
 
@@ -41,17 +55,16 @@ A SKILL.md is a delegation contract, not a prompt. Write it once; the recurring 
 
 **BFS exclusion.** Every skill excludes employer references by default. `okhp3-linkedin-post` runs an explicit scrub checklist as its final gate. Hard. Non-negotiable.
 
-**Open backlog items (as of 2026-06-12):**
+**Open backlog items (as of 2026-06-20):**
 - Verify all active skills have spec-compliant SKILL.md frontmatter
 - Add GitHub topic tags (listed above)
-- Add root `SKILLS.md` (human-facing skill catalog)
-- Add root `PUBLIC_SURFACES.md` and `PUBLISHING.md`
 - Tag first release after Mermaid Core + BPMN + Publish reach usable maturity
+- Promote `okhp3-refolddec-core` and mermaid update/repair skills from skeleton to draftable
 
 ## Related Repos
-- [mermaid-theme-builder](https://github.com/OKHP3/mermaid-theme-builder) — `okhp3-mermaid-core` pulls its 4 palettes (Ocean Depth, Forest Sage, Slate Ember, Violet Mist) as classDef recipes
-- [mermaid-diagram-bpmn](https://github.com/OKHP3/mermaid-diagram-bpmn) — `okhp3-mermaid-bpmn`'s vocabulary catalog is a candidate reference if BPMN becomes native Mermaid
-- [OverKill-Hill](https://github.com/OKHP3/OverKill-Hill) — parent brand platform
+- [mermaid-theme-builder](https://github.com/OKHP3/mermaid-theme-builder) — visual-governance layer. `okhp3-mermaid-core` pulls its 4 palettes (Ocean Depth, Forest Sage, Slate Ember, Violet Mist) as classDef recipes
+- [mermaid-diagram-bpmn](https://github.com/OKHP3/mermaid-diagram-bpmn) — process-notation layer. `okhp3-mermaid-bpmn`'s vocabulary catalog; candidate reference if BPMN becomes native Mermaid
+- [OverKill-Hill](https://github.com/OKHP3/OverKill-Hill) — parent brand platform; canonical public landing for skillz at overkillhill.com/projects/skillz/
 - [Glee-fullyTools](https://github.com/OKHP3/Glee-fullyTools) — future `glee-fully/` family source
 - [AskJamie](https://github.com/OKHP3/AskJamie) — future `askjamie/` family source
 
@@ -64,4 +77,4 @@ A SKILL.md is a delegation contract, not a prompt. Write it once; the recurring 
 - Mermaid.ai links never appear in article or post body — route through overkillhill.com
 
 ---
-*Generated: 2026-06-12 | Source: Notion Anchor + Repo inspection*
+*Updated: 2026-06-20 | Source: Notion Anchor + Repo inspection*

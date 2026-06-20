@@ -5,11 +5,19 @@
   "repository": "https://github.com/OKHP3/skillz",
   "license": "MIT",
   "version": "0.0.0-unreleased",
-  "description": "Agent Skills in SKILL.md format for delegating recurring OKHP3 workflows to Claude, OpenClaw, Codex, and compatible agents.",
+  "description": "Agent Skills in SKILL.md format for delegating recurring OKHP3 workflows to Claude, OpenClaw, Codex, and compatible agents. Executable substrate for the OKHP3 Visual Language Stack.",
+  "stackPosition": "execution-substrate",
+  "stackRelated": {
+    "transformationTheory": "https://github.com/OKHP3/skillz/tree/main/refolddec",
+    "visualGovernance": "https://github.com/OKHP3/mermaid-theme-builder",
+    "processNotation": "https://github.com/OKHP3/mermaid-diagram-bpmn",
+    "brandPlatform": "https://github.com/OKHP3/OverKill-Hill"
+  },
   "canonicalPublicSurface": "https://overkillhill.com/projects/skillz/",
   "strategySurface": "https://app.notion.com/p/37d812e0ced4812ab899dd0cfc9e99c0",
   "defaultIndex": "AGENTS.md",
   "humanCatalog": "SKILLS.md",
+  "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "PUBLISHING.md",
   "securityPolicy": "SECURITY.md",
   "families": [
@@ -21,7 +29,9 @@
         "okhp3-mermaid-bpmn",
         "okhp3-mermaid-architecture",
         "okhp3-mermaid-data",
-        "okhp3-mermaid-publish"
+        "okhp3-mermaid-publish",
+        "okhp3-mermaid-update",
+        "okhp3-mermaid-repair"
       ]
     },
     {
@@ -38,6 +48,13 @@
       "status": "skeleton",
       "skills": [
         "okhp3-process-capture"
+      ]
+    },
+    {
+      "name": "refolddec",
+      "status": "skeleton",
+      "skills": [
+        "okhp3-refolddec-core"
       ]
     },
     {
