@@ -191,7 +191,7 @@ If any gate fails, set or recommend `Extracted`, not `Archived`.
 
 ## Output format
 
-Use `assets/capture-report-template.md` as the default report structure.
+Use `assets/report-template.md` as the default report structure.
 
 If the user asked for the actual Notion write, end with:
 
@@ -218,5 +218,5 @@ Load these only when needed:
 - `references/routing-anchors.md`: anchor role contract and private URL handling.
 - `references/output-contract.md`: exact field mapping and capture report rules.
 - `references/platform-variants.md`: ChatGPT, Claude, Perplexity, Copilot, Gemini, and PDF handling.
-- `references/validation-checklist.md`: final self-check before writing or reporting.
+- `references/final-check.md`: final self-check before writing or reporting.
 - `assets/trigger-eval-queries.json`: trigger and non-trigger examples for description testing.
