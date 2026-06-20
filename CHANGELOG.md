@@ -21,6 +21,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
   - `okhp3-linkedin-post`
 - Added process-capture meta-skill skeleton:
   - `okhp3-process-capture`
+- Added Notion capture router family:
+  - `okhp3-notion-capture-router`
 - Added placeholder family areas for:
   - `glee-fully/`
   - `askjamie/`
@@ -33,6 +35,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 ### Changed
 
 - Clarified that GitHub is the installable source of truth, Notion is the strategy and decision ledger, and OverKill Hill is the canonical public landing surface.
+- Updated root catalog, index, and README to include the Notion capture router.
 
 ### Next
 
