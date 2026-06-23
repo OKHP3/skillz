@@ -58,6 +58,7 @@ Skills loaded on demand are invoked correctly roughly half the time without a po
 | `okhp3-process-capture` | User describes doing something for the 2nd/3rd time, says "make this a skill", "I keep doing X", or asks to capture a workflow just demonstrated | `process-capture/okhp3-process-capture/SKILL.md` |
 | `okhp3-notion-capture-router` | ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF exports, or pasted AI conversations need to be captured into Notion, deduped, routed through Domains, split into Chat Threads plus Extracts, or reconciled against OKHP3 GitHub | `notion/okhp3-notion-capture-router/SKILL.md` |
 | `okhp3-refolddec-core` | Task is explicitly about transforming an artifact from one representation type to another — folding an idea into a diagram or SKILL.md, unfolding a skill into its steps, refolding a diagram into documentation, or tracking semantic loss across a transformation | `refolddec/okhp3-refolddec-core/SKILL.md` |
+| `xquik-x-data` | Public X post, profile, follower, search, trend, monitor, webhook, export, SDK, or MCP workflows need a read-only Xquik route | `community/xquik-x-data/SKILL.md` |
 
 ## Planned (not yet built)
 
@@ -75,6 +76,7 @@ Skills loaded on demand are invoked correctly roughly half the time without a po
 | Process Capture | `process-capture/` | 1: okhp3-process-capture | Built (skeleton) |
 | Notion | `notion/` | 1: okhp3-notion-capture-router | Built (skeleton) |
 | ReFolDec | `refolddec/` | 1: okhp3-refolddec-core | Built (skeleton) |
+| Community | `community/` | 1: xquik-x-data | Built (usable) |
 | Glee-fully | `glee-fully/` | 0 | Placeholder — ~42 GPTs need clustering pass first |
 | AskJamie | `askjamie/` | 0 | Placeholder — design not started |
 

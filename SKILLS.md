@@ -32,12 +32,14 @@ For agent routing, read `AGENTS.md` first. `AGENTS.md` is the always-on pointer 
 | `okhp3-process-capture` | Process Capture | 1 | Convert recurring work into a new skill skeleton or backlog entry. | `process-capture/okhp3-process-capture/SKILL.md` |
 | `okhp3-notion-capture-router` | Notion Capture | 2 | Capture AI conversations into Notion, dedupe Chat Threads and Extracts, route through Domains, and reconcile against OKHP3 GitHub. | `notion/okhp3-notion-capture-router/SKILL.md` |
 | `okhp3-refolddec-core` | ReFolDec | 1 | Transform an artifact from one representation type to another: fold, unfold, refold, or track semantic loss across a transformation. | `refolddec/okhp3-refolddec-core/SKILL.md` |
+| `xquik-x-data` | Community | 1 | Plan read-only public X data workflows with Xquik REST, MCP, SDKs, webhooks, monitors, and exports. | `community/xquik-x-data/SKILL.md` |
 
 ## Active families
 
 | Family | Status | Intended scope |
 |---|---|---|
 | `notion/` | Built (draftable) | Chat-to-Notion capture, dedupe, extraction, routing, archive gate, and GitHub reconciliation. |
+| `community/` | Built (usable) | Community-contributed public data and automation helper skills. |
 
 ## Planned families
 
