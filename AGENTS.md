@@ -17,6 +17,7 @@ Check this file before deciding whether a task needs a skill. Skills loaded on d
 | `okhp3-linkedin-angles` | "Mine this for a post", "what's postable here", end-of-session content triage on a finished artifact | `linkedin/okhp3-linkedin-angles/SKILL.md` |
 | `okhp3-linkedin-post` | Drafting a LinkedIn post from a chosen angle (output of angles, or a topic the user already picked) | `linkedin/okhp3-linkedin-post/SKILL.md` |
 | `okhp3-process-capture` | User describes doing something for the 2nd/3rd time, says "make this a skill", "I keep doing X", or asks to capture a workflow just demonstrated | `process-capture/okhp3-process-capture/SKILL.md` |
+| `okhp3-notion-capture-router` | ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF exports, or pasted AI conversations need to be captured into Notion, deduped, routed through Domains, split into Chat Threads plus Extracts, or reconciled against OKHP3 GitHub | `notion/okhp3-notion-capture-router/SKILL.md` |
 | `okhp3-refolddec-core` | Task is explicitly about transforming an artifact from one representation type to another — folding an idea into a diagram or SKILL.md, unfolding a skill into its steps, refolding a diagram into documentation, or tracking semantic loss across a transformation | `refolddec/okhp3-refolddec-core/SKILL.md` |
 
 ## Planned (not yet built)
@@ -34,16 +35,17 @@ Check this file before deciding whether a task needs a skill. Skills loaded on d
 | `docs/STACK-POSITION.md` | The task concerns the stack architecture, ReFolDec theory, or where skillz fits in the OKHP³ Visual Language Stack. |
 | `PUBLIC_SURFACES.md` | The task concerns public pages, advertising, promotion, brand routing, or where `skillz` should be explained. |
 | `PUBLISHING.md` | The task concerns release readiness, registry submission, public promotion, or validation gates. |
-| `SECURITY.md` | The task could expose private, employer, proprietary, or unsafe execution behavior. |
+| `SECURITY.md` | The task could expose private, employer, proprietary, or risky execution behavior. |
 | `CHANGELOG.md` | The task changes repo structure, skill maturity, or release-relevant documentation. |
 | `skillz.manifest.json` | Machine-readable repo metadata, family status, or external indexing is needed. |
 
 ## Cross-cutting rules
 
-- BFS (employer) context is excluded from every skill in this repo by default. `okhp3-linkedin-post` runs an explicit scrub gate; other skills should not introduce employer references at all.
+- Employer context is excluded from every skill in this repo by default. Public-facing skills should not introduce employer references.
 - Every Mermaid skill defers naming, registry, and validation gates to `okhp3-mermaid-core`. Domain skills (bpmn/architecture/data) are vocabulary and pattern libraries, not standalone entry points.
 - `okhp3-mermaid-update` changes content while preserving style. `okhp3-mermaid-repair` fixes syntax while preserving everything. They do not overlap.
 - `okhp3-linkedin-voice` is a filter, not a generator. It runs on existing text (from `okhp3-linkedin-post` or hand-written drafts).
 - `okhp3-refolddec-core` is a transformation-aware skill. Load the appropriate domain skill alongside it when the transformation target is a diagram or SKILL.md skeleton.
+- `okhp3-notion-capture-router` is the ingestion router for AI thread migration. It is not a generic Notion note-taker.
 - Public-surface decisions route through `PUBLIC_SURFACES.md`: OverKill Hill is canonical; Glee-fully and AskJamie are contextual side doors.
 - Publishing decisions route through `PUBLISHING.md`; do not promote a skill just because a folder exists.
