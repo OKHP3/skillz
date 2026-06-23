@@ -18,8 +18,8 @@ Generates renderer-aware `%%{init}%%` directives with `themeVariables` for 7 bui
 # Clone or copy the skill into your project
 cp -r skills/okhp3-mermaid-theme-builder ~/.claude/skills/
 
-# Or reference directly in CLAUDE.md
-echo "## Skills\n- skills/okhp3-mermaid-theme-builder/SKILL.md" >> CLAUDE.md
+# Or reference directly in AGENTS.md
+echo "## Skills\n- skills/okhp3-mermaid-theme-builder/SKILL.md" >> AGENTS.md
 ```
 
 ### GitHub Copilot (VS Code)
