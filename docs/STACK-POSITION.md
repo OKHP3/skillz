@@ -13,7 +13,7 @@ The progression that produced this repo:
 ```
 mega-prompt
 → reusable prompt kit
-→ repo-scoped instruction file (CLAUDE.md, AGENTS.md)
+→ repo-scoped instruction file (AGENTS.md)
 → SKILL.md
 → portable agent execution contract
 → composable skill family
