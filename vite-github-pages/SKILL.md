@@ -1,30 +1,32 @@
 ---
-name: vite-github-pages
+name: github-pages-vite-spa
 description: >
-  Configures a Vite + React (or Vue/Svelte) SPA for deployment to GitHub Pages as
-  a static site. Handles the three most common failure points: missing base path in
-  vite.config.ts, BrowserRouter vs HashRouter for SPA routing, and the gh-pages
-  npm package setup. Use when a user is deploying a Vite app to GitHub Pages and
-  getting a blank page, 404 errors on route refresh, or broken asset paths.
+  Deploy a React or Vue SPA built with Vite to GitHub Pages using the gh-pages
+  npm package. Covers the three most common failure modes: missing base path in
+  vite.config (blank page), BrowserRouter instead of HashRouter (404 on reload),
+  and missing gh-pages branch (deploy command fails). Use when setting up or
+  fixing GitHub Pages deployment for a Vite single-page application.
 license: MIT
 metadata:
-  author: Jamie Hill (OKHP3 / OverKill Hill P³)
-  version: "1.0"
-  origin: Kieran's LifeTrkr (https://github.com/OKHP3/kierans-lifetrkr)
-  published-via: OKHP3/skillz
+  author: okhp3
+  version: "1.0.0"
+  origin: kierans-lifetrkr
+  published-to: okhp3/skillz
+compatibility: Vite 4+, React 18+ or Vue 3+, npm. GitHub repository with Pages enabled.
 ---
 
-# vite-github-pages
+# GitHub Pages Vite SPA Skill
 
-Deploy a Vite SPA to GitHub Pages correctly. Three changes required. All three are
-necessary. Missing any one of them produces a different failure mode.
+Three configuration changes are required to deploy a Vite SPA to GitHub Pages.
+All three must be present. Missing any one produces a silently broken deploy.
 
 ## The three required changes
 
-### 1. Set `base` in vite.config.ts (prevents blank page)
+### 1. Base path in vite.config.ts
 
-GitHub Pages serves your app at `https://username.github.io/repo-name/`.
-Vite defaults to `/`, which means all asset paths are wrong.
+GitHub Pages serves your app from `https://username.github.io/repo-name/`, not
+from root (`/`). Without the base path, all asset URLs resolve to `https://username.github.io/`
+and the page loads blank with 404s in the console.
 
 ```typescript
 // vite.config.ts
@@ -33,39 +35,41 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/repo-name/',  // ← REQUIRED. Replace with your actual repo name.
+  base: '/your-repo-name/',    // REQUIRED — must match your GitHub repo name exactly
 })
 ```
 
-Without this: the page loads but all JS/CSS files 404, producing a blank white page.
+If you use a custom domain (via CNAME): set `base: '/'` instead.
 
-### 2. Use HashRouter (prevents 404 on refresh)
+### 2. HashRouter (not BrowserRouter)
 
-GitHub Pages is a static file server. When a user refreshes at `/habits`, the server
-looks for a file called `habits/index.html` — which doesn't exist.
-
-`HashRouter` sidesteps this by putting the route in the URL fragment (`/#/habits`).
-The fragment is never sent to the server, so GitHub Pages always serves `index.html`.
+GitHub Pages is static hosting. When a user navigates to `https://username.github.io/repo-name/habits`,
+GitHub serves a 404 — there is no `/habits` file. The HashRouter solves this by putting
+the route in the URL hash: `https://username.github.io/repo-name/#/habits`.
 
 ```typescript
-// App.tsx — React Router example
+// App.tsx
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
+// CORRECT
 export default function App() {
   return (
-    <HashRouter>  {/* ← Use this. NOT BrowserRouter. */}
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/habits" element={<Habits />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </HashRouter>
   );
 }
+
+// WRONG — produces 404 on page reload or direct link
+// import { BrowserRouter } from 'react-router-dom';
 ```
 
-Without this: direct links and page refreshes return GitHub's 404 page.
+### 3. Deploy script using gh-pages
 
-### 3. Install gh-pages and add the deploy script
+Install the package and add the deploy script:
 
 ```bash
 npm install --save-dev gh-pages
@@ -83,56 +87,56 @@ npm install --save-dev gh-pages
 }
 ```
 
-To deploy:
-```bash
-npm run deploy
+Run `npm run deploy` to build and push the `dist/` folder to the `gh-pages` branch.
+GitHub Pages automatically serves from that branch.
+
+## Full setup checklist
+
+- [ ] `base: '/repo-name/'` in vite.config.ts
+- [ ] `HashRouter` in App.tsx (not BrowserRouter)
+- [ ] `gh-pages` installed as devDependency
+- [ ] `"deploy": "npm run build && gh-pages -d dist"` in package.json scripts
+- [ ] GitHub repo Settings → Pages → Source set to `gh-pages` branch
+- [ ] First deploy run: `npm run deploy`
+
+## Verify it worked
+
+After `npm run deploy`:
+1. Go to the repo → Actions tab — should see a Pages deployment running
+2. Go to Settings → Pages — should show the live URL
+3. Visit `https://username.github.io/repo-name/#/` — should load your app
+4. Reload the page — should NOT 404
+
+## Environment variables in GitHub Pages deployments
+
+Vite's `VITE_` prefix env vars are embedded at build time, not runtime.
+They must be available when `npm run build` runs.
+
+In Replit: add them to Replit Secrets, they are available during build.
+In GitHub Actions: add them as repository secrets and inject into the build step.
+
+```yaml
+# .github/workflows/deploy.yml example
+- name: Build
+  env:
+    VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+  run: npm run build
 ```
 
-This builds to `dist/` and pushes that folder to the `gh-pages` branch.
-GitHub Pages serves from the `gh-pages` branch automatically.
+## Common failure modes
 
-Without this: you'd need to manually push built files, which is error-prone.
-
-## Enable GitHub Pages in repository settings
-
-1. GitHub → Settings → Pages
-2. Source: Deploy from a branch
-3. Branch: `gh-pages`, folder: `/ (root)`
-4. Save
-
-GitHub Pages will be available at `https://username.github.io/repo-name/#/`
-(note the `#/` from HashRouter).
-
-## Complete working example
-
-```
-my-app/
-├── src/
-│   └── App.tsx              ← HashRouter
-├── vite.config.ts           ← base: '/my-app/'
-├── package.json             ← deploy script with gh-pages
-└── .gitignore               ← dist/ is in .gitignore (gh-pages manages it)
-```
-
-`.gitignore` should include `dist/` — the `gh-pages` package handles pushing the
-built output to the `gh-pages` branch independently.
-
-## Debugging checklist
-
-| Symptom | Likely cause | Fix |
+| Symptom | Cause | Fix |
 |---|---|---|
-| Blank white page | Missing `base` in vite.config.ts | Add `base: '/repo-name/'` |
-| 404 on page refresh | Using BrowserRouter | Switch to HashRouter |
-| Assets 404 but page loads | Wrong `base` value | Check repo name matches exactly |
-| Deploy command fails | `gh-pages` not installed | `npm install --save-dev gh-pages` |
-| Old version showing | Browser cache | Hard refresh (Ctrl+Shift+R) |
-| Changes not live | Pushed to main, not gh-pages | Run `npm run deploy` |
+| Blank page, 404s in console | Missing `base` in vite.config | Add `base: '/repo-name/'` |
+| 404 on page reload | BrowserRouter instead of HashRouter | Switch to HashRouter |
+| `npm run deploy` fails | gh-pages not installed | `npm install --save-dev gh-pages` |
+| Old version showing | Browser cache | Hard refresh (Cmd/Ctrl + Shift + R) |
+| Correct on localhost, broken on Pages | Different `base` than repo name | Verify repo name matches base exactly |
 
-## Custom domain (optional)
+## Custom domain setup
 
-To use a custom domain (e.g., `app.yourdomain.com`):
-1. Create a `CNAME` file in the `public/` folder containing your domain
-2. Configure DNS at your registrar
-3. GitHub → Settings → Pages → Custom domain
-
-When using a custom domain, change `base` in vite.config.ts to `/` (root).
+1. Add a `CNAME` file to `public/` containing your domain: `myapp.com`
+2. Change vite.config: `base: '/'`
+3. Configure DNS: CNAME `www` → `username.github.io`, A records for apex
+4. GitHub Settings → Pages → Custom domain → enter domain → Save
+5. Wait for DNS propagation (up to 48h) + GitHub TLS certificate (~15 min)

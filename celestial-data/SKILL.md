@@ -1,190 +1,221 @@
 ---
-name: celestial-data
+name: celestial-engine
 description: >
-  Provides moon phase, astrological season, and planetary retrograde status using
-  pure client-side JavaScript calculations — no external API, no network calls, works
-  offline. Use when building apps that need lunar phase data, current zodiac/sun sign
-  season, Mercury retrograde detection, or upcoming full moon / new moon dates. Also
-  useful when a user asks about the current moon phase, astrological period, or
-  planetary status without wanting to set up a third-party API.
+  Calculate moon phase, astrological season, and Mercury retrograde status
+  for any date using pure client-side Julian date math — no API, no network,
+  no dependencies. Use when an app needs lunar phase display, seasonal
+  awareness, astrological season labels, or Mercury retrograde detection.
+  Returns structured data: moon phase name, emoji, illumination percentage,
+  days until next phase, current zodiac season, element, and retrograde status.
 license: MIT
 metadata:
-  author: Jamie Hill (OKHP3 / OverKill Hill P³)
-  version: "1.0"
-  origin: Kieran's LifeTrkr (https://github.com/OKHP3/kierans-lifetrkr)
-  published-via: OKHP3/skillz
+  author: okhp3
+  version: "1.0.0"
+  origin: kierans-lifetrkr
+  published-to: okhp3/skillz
+compatibility: Any JavaScript or TypeScript environment. No network access required.
 ---
 
-# celestial-data
+# Celestial Engine Skill
 
-Calculate moon phase, astrological season, and planetary retrograde status entirely
-client-side using Julian date mathematics. No API key. No network dependency. Works
-offline. Accurate to within 1–2 hours for practical display purposes.
+A self-contained celestial calculation library. All computations run locally using
+the Julian Day Number system. Accurate to within hours for moon phases — sufficient
+for display and UX purposes.
 
 ## When to use this skill
 
-- Building an app that shows the current moon phase
-- Displaying the current astrological/sun sign season
-- Showing Mercury retrograde status with start/end dates
-- Generating upcoming full moon or new moon dates for a calendar
-- Any context where a user wants celestial data without a paid API
+Activate when the task involves any of:
+- Displaying the current moon phase or a moon phase emoji
+- Showing the current astrological season or zodiac sign
+- Detecting or displaying Mercury retrograde status
+- Finding upcoming new moon or full moon dates
+- Adding seasonal or lunar awareness to a personal app, journal, or calendar
 
-## Core implementation
-
-Copy `celestial.ts` from `references/celestial.ts` into your project's `src/lib/` folder.
-It exports four functions and uses no external dependencies.
+## Core functions
 
 ### getMoonPhase(date?)
 
-Returns the current moon phase.
+Returns the moon phase for a given date (defaults to today).
 
 ```typescript
-import { getMoonPhase } from './lib/celestial';
-
-const phase = getMoonPhase(); // defaults to today
-// Returns: { name, emoji, illumination, daysUntilNext }
-
-console.log(phase.name);         // "Waxing Gibbous"
-console.log(phase.emoji);        // "🌔"
-console.log(phase.illumination); // 0.72 (72% lit)
-console.log(phase.daysUntilNext); // 3 (days until Full Moon)
+type MoonPhase = {
+  name: MoonPhaseName;    // 'New Moon' | 'Waxing Crescent' | ... | 'Waning Crescent'
+  emoji: string;          // '🌑' | '🌒' | '🌓' | '🌔' | '🌕' | '🌖' | '🌗' | '🌘'
+  illumination: number;   // 0.0 to 1.0 (fraction of visible surface lit)
+  daysUntilNext: number;  // days until next named phase transition
+};
 ```
-
-The 8 possible phase names:
-New Moon · Waxing Crescent · First Quarter · Waxing Gibbous ·
-Full Moon · Waning Gibbous · Last Quarter · Waning Crescent
 
 ### getAstroSeason(date?)
 
-Returns the current astrological / sun sign season.
+Returns the current astrological season.
 
 ```typescript
-import { getAstroSeason } from './lib/celestial';
-
-const season = getAstroSeason();
-// Returns: { sign, emoji, element, dates }
-
-console.log(season.sign);    // "Cancer"
-console.log(season.emoji);   // "♋"
-console.log(season.element); // "Water"
-console.log(season.dates);   // "Jun 21 – Jul 22"
+type AstroSeason = {
+  sign: ZodiacSign;         // 'Aries' | 'Taurus' | ... | 'Pisces'
+  emoji: string;            // '♈' | '♉' | ... | '♓'
+  element: 'Fire' | 'Earth' | 'Air' | 'Water';
+  dates: string;            // display string e.g. "Jun 21 – Jul 22"
+};
 ```
 
 ### getMercuryStatus(date?)
 
-Returns Mercury retrograde status and the end date if currently retrograde.
-Retrograde dates are hardcoded through 2028 (published dates, no calculation needed).
+Returns Mercury retrograde status.
 
 ```typescript
-import { getMercuryStatus } from './lib/celestial';
-
-const mercury = getMercuryStatus();
-// Returns: { retrograde: boolean, endDate: string | null }
-
-if (mercury.retrograde) {
-  console.log(`Retrograde until ${mercury.endDate}`); // "2026-04-07"
-}
+type MercuryStatus = {
+  retrograde: boolean;
+  endDate: string | null;   // ISO date string or null if not retrograde
+};
 ```
 
 ### getNextLunarEvents(count?)
 
-Returns the next N new moons and full moons as dated events. Default count: 3 of each.
+Returns upcoming New Moon and Full Moon dates.
 
 ```typescript
-import { getNextLunarEvents } from './lib/celestial';
-
-const events = getNextLunarEvents(3);
-// Returns: Array of { type: 'New Moon' | 'Full Moon', date: Date, emoji: string }
-
-events.forEach(e => {
-  console.log(`${e.emoji} ${e.type}: ${e.date.toLocaleDateString()}`);
-});
-// 🌑 New Moon: 6/25/2026
-// 🌕 Full Moon: 7/10/2026
-// ...
+// Returns array of { type: 'New Moon' | 'Full Moon', date: Date, emoji: string }
+getNextLunarEvents(count = 3)
 ```
 
-## Integration patterns
+## Complete Implementation (TypeScript)
 
-### Display moon phase in a React component
+Copy this directly into `src/lib/celestial.ts`:
 
-```tsx
-import { getMoonPhase, getAstroSeason } from '../lib/celestial';
+```typescript
+// ── Julian Date conversion ──────────────────────────────────────────────────
+function toJulianDate(date: Date): number {
+  const y = date.getFullYear();
+  const m = date.getMonth() + 1;
+  const d = date.getDate();
+  return 367 * y
+    - Math.floor(7 * (y + Math.floor((m + 9) / 12)) / 4)
+    + Math.floor(275 * m / 9)
+    + d + 1721013.5;
+}
 
-export function CelestialBadge() {
-  const moon = getMoonPhase();
-  const season = getAstroSeason();
+// ── Moon Phase ──────────────────────────────────────────────────────────────
+const KNOWN_NEW_MOON = 2451550.1;   // Jan 6, 2000 new moon (Julian date)
+const SYNODIC_MONTH  = 29.53058867; // average lunar cycle in days
 
-  return (
-    <div className="flex gap-2 text-sm">
-      <span>{moon.emoji} {moon.name}</span>
-      <span>·</span>
-      <span>{season.emoji} {season.sign} season</span>
-    </div>
+const MOON_PHASES = [
+  { name: 'New Moon',        emoji: '🌑', min: 0,      max: 0.0625 },
+  { name: 'Waxing Crescent', emoji: '🌒', min: 0.0625, max: 0.25   },
+  { name: 'First Quarter',   emoji: '🌓', min: 0.25,   max: 0.375  },
+  { name: 'Waxing Gibbous',  emoji: '🌔', min: 0.375,  max: 0.5    },
+  { name: 'Full Moon',       emoji: '🌕', min: 0.5,    max: 0.625  },
+  { name: 'Waning Gibbous',  emoji: '🌖', min: 0.625,  max: 0.75   },
+  { name: 'Last Quarter',    emoji: '🌗', min: 0.75,   max: 0.875  },
+  { name: 'Waning Crescent', emoji: '🌘', min: 0.875,  max: 1.0    },
+] as const;
+
+export function getMoonPhase(date: Date = new Date()) {
+  const jd = toJulianDate(date);
+  const raw = ((jd - KNOWN_NEW_MOON) % SYNODIC_MONTH) / SYNODIC_MONTH;
+  const phase = ((raw % 1) + 1) % 1;
+  const current = MOON_PHASES.find(p => phase >= p.min && phase < p.max) ?? MOON_PHASES[0];
+  const illumination = phase <= 0.5 ? phase * 2 : (1 - phase) * 2;
+  const daysUntilNext = Math.ceil((current.max - phase) * SYNODIC_MONTH);
+  return { name: current.name, emoji: current.emoji, illumination, daysUntilNext };
+}
+
+export function getNextLunarEvents(count = 3) {
+  const events: { type: 'New Moon' | 'Full Moon'; date: Date; emoji: string }[] = [];
+  let d = new Date();
+  while (events.length < count * 2) {
+    d = new Date(d.getTime() + 86400000);
+    const phase = getMoonPhase(d);
+    if (phase.daysUntilNext <= 1) {
+      if (phase.name === 'New Moon')  events.push({ type: 'New Moon',  date: new Date(d), emoji: '🌑' });
+      if (phase.name === 'Full Moon') events.push({ type: 'Full Moon', date: new Date(d), emoji: '🌕' });
+    }
+    if (events.length >= count * 2) break;
+  }
+  return events.slice(0, count * 2);
+}
+
+// ── Astrological Season ─────────────────────────────────────────────────────
+const ASTRO_SEASONS = [
+  { sign: 'Capricorn',   emoji: '♑', element: 'Earth' as const, dates: 'Dec 22 – Jan 19', startMD: 1222, endMD: 119  },
+  { sign: 'Aquarius',    emoji: '♒', element: 'Air'   as const, dates: 'Jan 20 – Feb 18', startMD: 120,  endMD: 218  },
+  { sign: 'Pisces',      emoji: '♓', element: 'Water' as const, dates: 'Feb 19 – Mar 20', startMD: 219,  endMD: 320  },
+  { sign: 'Aries',       emoji: '♈', element: 'Fire'  as const, dates: 'Mar 21 – Apr 19', startMD: 321,  endMD: 419  },
+  { sign: 'Taurus',      emoji: '♉', element: 'Earth' as const, dates: 'Apr 20 – May 20', startMD: 420,  endMD: 520  },
+  { sign: 'Gemini',      emoji: '♊', element: 'Air'   as const, dates: 'May 21 – Jun 20', startMD: 521,  endMD: 620  },
+  { sign: 'Cancer',      emoji: '♋', element: 'Water' as const, dates: 'Jun 21 – Jul 22', startMD: 621,  endMD: 722  },
+  { sign: 'Leo',         emoji: '♌', element: 'Fire'  as const, dates: 'Jul 23 – Aug 22', startMD: 723,  endMD: 822  },
+  { sign: 'Virgo',       emoji: '♍', element: 'Earth' as const, dates: 'Aug 23 – Sep 22', startMD: 823,  endMD: 922  },
+  { sign: 'Libra',       emoji: '♎', element: 'Air'   as const, dates: 'Sep 23 – Oct 22', startMD: 923,  endMD: 1022 },
+  { sign: 'Scorpio',     emoji: '♏', element: 'Water' as const, dates: 'Oct 23 – Nov 21', startMD: 1023, endMD: 1121 },
+  { sign: 'Sagittarius', emoji: '♐', element: 'Fire'  as const, dates: 'Nov 22 – Dec 21', startMD: 1122, endMD: 1221 },
+];
+
+export function getAstroSeason(date: Date = new Date()) {
+  const md = (date.getMonth() + 1) * 100 + date.getDate();
+  const found = ASTRO_SEASONS.find(s =>
+    s.startMD > s.endMD ? md >= s.startMD || md <= s.endMD : md >= s.startMD && md <= s.endMD
   );
+  return found ?? ASTRO_SEASONS[0];
+}
+
+// ── Mercury Retrograde ──────────────────────────────────────────────────────
+// Hardcoded through 2028. Update this array as needed.
+const MERCURY_RETROGRADE = [
+  { start: '2026-03-15', end: '2026-04-07' },
+  { start: '2026-07-17', end: '2026-08-11' },
+  { start: '2026-11-11', end: '2026-12-01' },
+  { start: '2027-03-03', end: '2027-03-25' },
+  { start: '2027-07-03', end: '2027-07-28' },
+  { start: '2027-10-27', end: '2027-11-16' },
+  { start: '2028-02-15', end: '2028-03-09' },
+  { start: '2028-06-16', end: '2028-07-11' },
+  { start: '2028-10-09', end: '2028-10-30' },
+];
+
+export function getMercuryStatus(date: Date = new Date()) {
+  const iso = date.toISOString().split('T')[0];
+  const period = MERCURY_RETROGRADE.find(r => iso >= r.start && iso <= r.end);
+  return { retrograde: !!period, endDate: period?.end ?? null };
 }
 ```
 
-### Add moon dots to a calendar grid
+## Usage Examples
 
 ```typescript
-// For each date cell in a calendar:
-const phase = getMoonPhase(cellDate);
-const isLunarEvent = phase.daysUntilNext <= 1 &&
-  (phase.name === 'Full Moon' || phase.name === 'New Moon');
-```
+import { getMoonPhase, getAstroSeason, getMercuryStatus, getNextLunarEvents } from './celestial';
 
-### Show Mercury retrograde banner conditionally
+// Today's moon
+const moon = getMoonPhase();
+console.log(`${moon.emoji} ${moon.name} — ${Math.round(moon.illumination * 100)}% illuminated`);
+// → 🌕 Full Moon — 97% illuminated
 
-```tsx
+// Current astrological season
+const season = getAstroSeason();
+console.log(`${season.emoji} ${season.sign} season (${season.element})`);
+// → ♋ Cancer season (Water)
+
+// Mercury retrograde
 const mercury = getMercuryStatus();
-{mercury.retrograde && (
-  <Banner>
-    ☿ Mercury retrograde — ends {mercury.endDate}
-  </Banner>
-)}
+if (mercury.retrograde) {
+  console.log(`☿ Mercury retrograde until ${mercury.endDate}`);
+}
+
+// Upcoming lunar events
+const events = getNextLunarEvents(2);
+events.forEach(e => console.log(`${e.emoji} ${e.type}: ${e.date.toDateString()}`));
 ```
 
-## How the math works (summary)
+## Notes on accuracy
 
-Moon phase uses Julian Date calculation anchored to a known New Moon
-(January 6, 2000 = Julian Date 2451550.1) and the synodic month (29.53058867 days).
-The phase fraction (0.0–1.0) maps to one of 8 named phases.
+- Moon phase accuracy: ±12 hours of exact phase
+- Astrological season boundaries: ±1 day (solar longitude not calculated exactly)
+- Mercury retrograde: sourced from published ephemeris — update the hardcoded array annually
+- All calculations are local, instant, and work offline
 
-Astrological season uses hardcoded month/day ranges for each of the 12 signs.
-No ephemeris needed — sun sign dates are stable within ±1 day per year.
+## Extending to other languages
 
-Mercury retrograde dates are hardcoded from published ephemeris data through 2028.
-No calculation needed — these are fixed calendar dates.
-
-## Accuracy
-
-Sufficient for display purposes. Not suitable for precise astronomical work.
-Moon phase accurate to within ~1–2 hours. Astrological season accurate to ±1 day.
-Mercury retrograde dates are exact (published, not calculated).
-
-## Files
-
-- `references/celestial.ts` — Full TypeScript implementation, copy into your project
-
-## Edge cases
-
-- Dates in early January may return Capricorn correctly (spans Dec–Jan year boundary)
-- `getMoonPhase` with no argument uses `new Date()` — always call fresh for real-time display
-- `getNextLunarEvents` may return events within the same day if called near a phase boundary
-
-## Mercury retrograde dates (hardcoded through 2028)
-
-| Start | End |
-|---|---|
-| 2026-03-15 | 2026-04-07 |
-| 2026-07-17 | 2026-08-11 |
-| 2026-11-11 | 2026-12-01 |
-| 2027-03-03 | 2027-03-25 |
-| 2027-07-03 | 2027-07-28 |
-| 2027-10-27 | 2027-11-16 |
-| 2028-02-15 | 2028-03-09 |
-| 2028-06-16 | 2028-07-11 |
-| 2028-10-09 | 2028-10-30 |
-
-Update this list by consulting any standard astronomical ephemeris.
+The Julian date algorithm is universal. Port by:
+1. Implementing `toJulianDate(date)` using the formula above
+2. Computing `phase = ((jd - 2451550.1) % 29.53058867) / 29.53058867`
+3. Looking up the phase in the MOON_PHASES table
