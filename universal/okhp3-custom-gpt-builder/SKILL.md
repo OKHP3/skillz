@@ -1,5 +1,5 @@
 ---
-name: custom-gpt-builder
+name: okhp3-custom-gpt-builder
 description: >-
   Build, audit, and improve OpenAI Custom GPTs with production-grade methodology.
   Use this skill when the user asks to create, configure, test, evaluate, audit,

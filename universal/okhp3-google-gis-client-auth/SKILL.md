@@ -1,5 +1,5 @@
 ---
-name: gis-token-model
+name: okhp3-google-gis-client-auth
 description: >
   Implement client-only Google OAuth for React SPAs using the Google Identity
   Services (GIS) implicit token model — no server, no Client Secret, no redirect

@@ -80,13 +80,15 @@ Recommended sections:
 
 ## Skill family cards
 
-| Family | Public angle |
-|---|---|
-| Mermaid | BPMN-aware Mermaid diagramming and publishing |
-| LinkedIn | Turn finished work into postable angles |
-| Process Capture | Convert recurring work into new agent skills |
-| Glee-fully | Future conversion path for personalizable tools |
-| AskJamie | Future lens-oriented professional support skills |
+| Family | Public angle | Status |
+|---|---|---|
+| Mermaid | BPMN-aware Mermaid diagramming and publishing | Skeleton (Level 1) |
+| LinkedIn | Turn finished work into postable angles | Skeleton (Level 1) |
+| Process Capture | Convert recurring work into new agent skills | Skeleton (Level 1) |
+| Notion Capture | Route AI conversations into Notion with dedup and GitHub reconciliation | Draftable (Level 2) |
+| ReFolDec | Transform artifacts across representation types — fold, unfold, refold, track semantic loss | Skeleton (Level 1) |
+| Glee-fully | Future conversion path for personalizable tools | Placeholder (Level 0) |
+| AskJamie | Future lens-oriented professional support skills | Placeholder (Level 0) |
 
 ## Glee-fully Toolbox touchpoint
 
