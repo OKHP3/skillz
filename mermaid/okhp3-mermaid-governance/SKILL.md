@@ -7,7 +7,7 @@ description: Governance profile management for Mermaid diagram projects. Use whe
 
 Cross-diagram standard management for Mermaid diagram projects. A governance profile is not a theme — a theme controls colors, a governance profile controls behavior. It declares the complete visual and behavioral contract for a diagram project and checks that diagrams produced over time honor it.
 
-Full concept and design rationale: `docs/governance-profile-concept.md` at repo root.
+Full concept, design rationale, and competitive position: `mermaid/README.md`.
 
 ---
 
@@ -204,7 +204,7 @@ See `docs/SECURITY.md`.
 
 - `references/profile-template.md` — GOVERNANCE.md template (fill in during Declare mode)
 - `references/conformance-checklist.md` — Detailed checklist for Check and Audit modes
-- `docs/governance-profile-concept.md` (repo root) — Concept rationale and design history
+- `mermaid/README.md` — Concept rationale, design position, guiding principles, and competitive position for the full Mermaid family
 - `okhp3-mermaid-core/references/audience-profiles.md` — Audience tier definitions and density limits
 - `okhp3-mermaid-core/references/naming-conventions.md` — File naming and DIAGRAMS.md registry schema
 - `okhp3-mermaid-theme-builder/references/renderer-profiles.md` — Full renderer constraint matrix
