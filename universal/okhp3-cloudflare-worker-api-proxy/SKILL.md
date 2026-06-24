@@ -1,5 +1,5 @@
 ---
-name: cloudflare-worker-api-proxy
+name: okhp3-cloudflare-worker-api-proxy
 description: >
   Create a Cloudflare Worker that proxies API calls from a static frontend to
   a keyed API, keeping the API key server-side. Use when a client-only app
