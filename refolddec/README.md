@@ -61,7 +61,7 @@ PathScrib-R and Flowpilot Scribbler (earlier process-capture agent lineage) exec
 |---|---|---|
 | `okhp3-refolddec-core` | Skeleton (Level 1) | Core transformation logic: fold, unfold, refold, semantic loss tracking |
 
-Deeper sub-skills (fold-to-diagram, unfold-to-primitives, refold-to-skill, cross-representation compare) are in `BACKLOG.md` pending pattern confirmation.
+Deeper sub-skills (fold-to-diagram, unfold-to-primitives, refold-to-skill, cross-representation compare) are in `docs/BACKLOG.md` pending pattern confirmation.
 
 ---
 
