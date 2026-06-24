@@ -17,7 +17,7 @@ Two modes of operation:
 
   FULL INDEX (--full)
     Scans root-level family folders for the distribution surface.
-    Writes SKILLS.md (created if not present).
+    Writes README.md (created if not present).
     Writes .catalog-meta.json at repo root on every successful run.
     Use in distribution repos (skillz). No-op in application repos.
     $ python3 scripts/gen-skills-readme.py --full
@@ -25,11 +25,11 @@ Two modes of operation:
 No external dependencies. Python 3.9+ only.
 
 What changed in v1.2.0 vs v1.1.0:
-  - --full flag: scans root family folders → SKILLS.md (distribution surface)
+  - --full flag: scans root family folders → README.md (distribution surface)
   - --output: override the output file path (both modes)
   - surface field added to .catalog-meta.json ("project-skills" or "distribution")
   - repo field added to .catalog-meta.json schema (was written, now documented)
-  - Full index mode: SKILLS.md auto-created if not present (softer than catalog mode)
+  - Full index mode: README.md auto-created if not present (softer than catalog mode)
   - Full index mode: .catalog-meta.json written to repo root, not .agents/skills/
 
 Usage:
@@ -406,7 +406,7 @@ def main() -> int:
     p.add_argument(
         "--full", action="store_true",
         help=(
-            "Full index mode: scan root-level family folders → SKILLS.md. "
+            "Full index mode: scan root-level family folders → README.md. "
             "Use in distribution repos (skillz). "
             "Default mode scans .agents/skills/ → .agents/skills/README.md."
         ),
@@ -419,7 +419,7 @@ def main() -> int:
         "--output", default=None,
         help=(
             "Override output file path. "
-            "Default: .agents/skills/README.md (catalog) or SKILLS.md (--full)."
+            "Default: .agents/skills/README.md (catalog) or README.md (--full)."
         ),
     )
     p.add_argument(
@@ -439,7 +439,7 @@ def main() -> int:
     # ── Resolve paths ────────────────────────────────────────────────────────
     if args.full:
         scan_root  = Path(".")
-        output     = Path(args.output) if args.output else Path("SKILLS.md")
+        output     = Path(args.output) if args.output else Path("README.md")
         meta_dir   = Path(".")
         surface    = "distribution"
         forced_lib = True

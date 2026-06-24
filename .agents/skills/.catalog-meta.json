@@ -1,8 +1,8 @@
 {
-  "last_indexed": "2026-06-24T02:21:31Z",
-  "skill_count": 50,
-  "mode": "library",
-  "surface": "distribution",
+  "last_indexed": "2026-06-24T02:21:30Z",
+  "skill_count": 3,
+  "mode": "project",
+  "surface": "project-skills",
   "indexed_by": "okhp3-skill-cataloger v1.2.0",
   "repo": "workspace",
   "homepage": "https://overkillhill.com",
