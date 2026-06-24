@@ -43,19 +43,21 @@ It publishes four palettes (Ocean Depth, Forest Sage, Slate Ember, Violet Mist) 
 
 ---
 
-## Governance Profile as a Skill Concept
+## Governance Profile as a Skill
 
-A governance profile is not yet a standalone skill. The pattern has been observed and validated but the recurring delegated task has not stabilized into a confirmed skill-shape.
+The governance profile concept has been promoted to a full skill: `okhp3-mermaid-governance` at `mermaid/okhp3-mermaid-governance/SKILL.md`.
 
-Current status: documented concept in `docs/`, candidate for promotion to a skill once the following pattern recurs:
+The skill operates in three modes:
 
-> "Apply this profile to a new diagram" / "Check whether this diagram conforms to the profile" / "Update this diagram and preserve its governance profile"
+- **Declare** — sets up a GOVERNANCE.md for a diagram project (palette, renderer targets, semantic class library, output contract)
+- **Check** — conformance-checks a single diagram against a declared profile (8-item checklist, per-element pass/partial/fail)
+- **Audit** — cross-diagram coherence check across a set of diagrams with a prioritized remediation list
 
-The update and repair operations are already partially encoded in:
-- `mermaid/okhp3-mermaid-update/SKILL.md`
-- `mermaid/okhp3-mermaid-repair/SKILL.md`
+The update and repair operations referenced in earlier versions of this document remain in:
+- `mermaid/okhp3-mermaid-update/SKILL.md` — style-preserving content changes
+- `mermaid/okhp3-mermaid-repair/SKILL.md` — minimum syntax repair
 
-A full `okhp3-mermaid-governance` skill would add profile selection, conformance checking, and cross-diagram audit to those operations.
+Both skills already preserve governance profile elements (init block, classDef, class assignments). The governance skill defines what those elements should contain and checks that they remain correct over time.
 
 ---
 
