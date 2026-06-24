@@ -84,12 +84,12 @@ Skills loaded on demand are invoked correctly roughly half the time without a po
 
 | File | When to read |
 |---|---|
-| `SKILLS.md` | A human-facing list of skills, maturity levels, and promotion priorities is needed. |
 | `docs/STACK-POSITION.md` | The task concerns the stack architecture, ReFolDec theory, or where skillz fits in the OKHP³ Visual Language Stack. |
-| `PUBLIC_SURFACES.md` | The task concerns public pages, advertising, promotion, brand routing, or where `skillz` should be explained. |
-| `PUBLISHING.md` | The task concerns release readiness, registry submission, public promotion, or validation gates. |
-| `SECURITY.md` | The task could expose private, employer, proprietary, or unsafe execution behavior. |
-| `CHANGELOG.md` | The task changes repo structure, skill maturity, or release-relevant documentation. |
+| `docs/PUBLIC_SURFACES.md` | The task concerns public pages, advertising, promotion, brand routing, or where `skillz` should be explained. |
+| `docs/PUBLISHING.md` | The task concerns release readiness, registry submission, public promotion, or validation gates. |
+| `docs/SECURITY.md` | The task could expose private, employer, proprietary, or unsafe execution behavior. |
+| `docs/CHANGELOG.md` | The task changes repo structure, skill maturity, or release-relevant documentation. |
+| `docs/BACKLOG.md` | The task concerns skill maturity levels, promotion priorities, or planned families. |
 | `skillz.manifest.json` | Machine-readable repo metadata, family status, or external indexing is needed. |
 
 ---
@@ -102,8 +102,8 @@ Skills loaded on demand are invoked correctly roughly half the time without a po
 - `okhp3-linkedin-voice` is a filter, not a generator. It runs on existing text (from `okhp3-linkedin-post` or hand-written drafts).
 - `okhp3-refolddec-core` is a transformation-aware skill. Load the appropriate domain skill alongside it when the transformation target is a diagram or SKILL.md skeleton.
 - `okhp3-notion-capture-router` is the ingestion router for AI thread migration. It is not a generic Notion note-taker.
-- Public-surface decisions route through `PUBLIC_SURFACES.md`: OverKill Hill is canonical; Glee-fully and AskJamie are contextual side doors.
-- Publishing decisions route through `PUBLISHING.md`; do not promote a skill just because a folder exists.
+- Public-surface decisions route through `docs/PUBLIC_SURFACES.md`: OverKill Hill is canonical; Glee-fully and AskJamie are contextual side doors.
+- Publishing decisions route through `docs/PUBLISHING.md`; do not promote a skill just because a folder exists.
 
 ---
 
