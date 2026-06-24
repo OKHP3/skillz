@@ -1,8 +1,8 @@
 # Mermaid family
 
-Seven skills. One foundation, four domains, one publish layer, one update skill, one repair skill.
+Eight skills. One foundation, four domains, one publish layer, one update skill, one repair skill, one governance layer.
 
-`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention.
+`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.
 
 See repo-root `AGENTS.md` for trigger conditions.
 
@@ -26,7 +26,7 @@ All skills in this family follow the shared output rules in `okhp3-mermaid-core/
 
 ## Mermaid Theme Builder
 
-`okhp3-mermaid-core` pulls its four palettes (Ocean Depth, Forest Sage, Slate Ember, Violet Mist) from [Mermaid Theme Builder](https://github.com/OKHP3/mermaid-theme-builder) as `classDef` recipes. That repo is the visual-governance layer for this family. See `docs/governance-profile-concept.md` for the governance profile pattern.
+`okhp3-mermaid-core` pulls its four palettes (Ocean Depth, Forest Sage, Slate Ember, Violet Mist) from [Mermaid Theme Builder](https://github.com/OKHP3/mermaid-theme-builder) as `classDef` recipes. That repo is the visual-governance layer for this family. See `docs/governance-profile-concept.md` for the concept rationale. The skill is `okhp3-mermaid-governance`.
 
 ## Skill map
 
@@ -39,3 +39,4 @@ All skills in this family follow the shared output rules in `okhp3-mermaid-core/
 | `okhp3-mermaid-publish` | Render, MCP publish, output formats | core |
 | `okhp3-mermaid-update` | Style-preserving content changes to existing diagrams | core |
 | `okhp3-mermaid-repair` | Minimum syntax repair on broken diagrams | core |
+| `okhp3-mermaid-governance` | Declare a project diagram standard (GOVERNANCE.md), check conformance, audit cross-diagram coherence | core |
