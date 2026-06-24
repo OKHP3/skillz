@@ -10,7 +10,7 @@ description: >
   skills list. Also activates on "what skills does this project have",
   "is the skills catalog current", or "run the skill cataloger".
   Use the full index mode when asked to catalog the distribution surface, index all
-  available skills, rebuild SKILLS.md, run a full catalog, run a full index, index
+  available skills, rebuild README.md, run a full catalog, run a full index, index
   all skills in this repo, or show all skills available for distribution.
 license: MIT
 metadata:
@@ -36,7 +36,7 @@ file that serves as a living table of contents for the skill ecosystem.
 | Mode | Slash command | Scans | Writes | Use when |
 |---|---|---|---|---|
 | **Catalog** (default) | `/catalog-skills` | `.agents/skills/` | `.agents/skills/README.md` | Inventorying skills active in this project |
-| **Full index** (`--full`) | `/index-skills` | Root family folders | `SKILLS.md` | Indexing the distribution surface of a skills library |
+| **Full index** (`--full`) | `/index-skills` | Root family folders | `README.md` | Indexing the distribution surface of a skills library |
 
 In an application repo, only catalog mode is meaningful.
 In a distribution repo (skillz), both modes are useful.
@@ -75,8 +75,8 @@ full index
 index all skills
 index all available skills
 catalog the distribution surface
-rebuild SKILLS.md
-update SKILLS.md
+rebuild README.md
+update README.md
 show all skills available for distribution
 ```
 
@@ -88,7 +88,7 @@ and any other agent client that implements the Agent Skills standard.
 Two slash commands ship with this skill:
 
 - **`/catalog-skills`** — catalog mode (`.agents/skills/` → `README.md`)
-- **`/index-skills`** — full index mode (root family folders → `SKILLS.md`)
+- **`/index-skills`** — full index mode (root family folders → `README.md`)
 
 **Installation (one-time per project):**
 
@@ -127,7 +127,7 @@ Activate when the user or context requires any of:
 
 **Full index mode:**
 - Indexing or cataloging the distribution surface of a skills library
-- Regenerating or updating `SKILLS.md` in a distribution repo (skillz)
+- Regenerating or updating `README.md` in a distribution repo (skillz)
 - Checking what skills are available for installation by others
 - Auditing the full family/skill structure at root level
 
@@ -165,14 +165,14 @@ python3 ${SCRIPT} --skills-dir .agents/skills
 Mode is auto-detected by default. Pass `--mode project` or `--mode library`
 only when you need to override. See `references/MODES.md` for guidance.
 
-**Full index mode** (scans root family folders → `SKILLS.md`):
+**Full index mode** (scans root family folders → `README.md`):
 
 ```bash
 python3 ${SCRIPT} --full
 ```
 
 Full index mode always uses library mode (family/skill/SKILL.md layout).
-`SKILLS.md` is created automatically if it doesn't exist.
+`README.md` is created automatically if it doesn't exist.
 
 If the script exits with fatal errors (name mismatches, missing descriptions,
 duplicate names): show the full output and stop. Resolve errors before
@@ -208,7 +208,7 @@ With an HTML comment for tooling:
 # Catalog mode: auto-detect, catalog .agents/skills/, update README
 python3 ${SCRIPT} --skills-dir .agents/skills
 
-# Full index mode: scan root family folders, write SKILLS.md
+# Full index mode: scan root family folders, write README.md
 python3 ${SCRIPT} --full
 
 # Preview what would change without writing any files
@@ -245,8 +245,8 @@ python3 ${SCRIPT} --full --quiet
   `<!-- SKILLS_CATALOG_END -->` markers, the script exits with an error. Create
   the README with those markers before the first catalog run.
 
-- **Full index mode: SKILLS.md is auto-created.** Unlike catalog mode, `--full`
-  creates `SKILLS.md` if it doesn't exist. The markers are part of the generated
+- **Full index mode: README.md is auto-created.** Unlike catalog mode, `--full`
+  creates `README.md` if it doesn't exist. The markers are part of the generated
   content. No pre-existing file or markers needed.
 
 - **This skill catalogs itself in catalog mode.** `okhp3-skill-cataloger`

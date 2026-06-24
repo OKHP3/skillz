@@ -34,7 +34,6 @@ Read `AGENTS.md` first. It's a compressed index of every skill in this repo, wha
 | File | Purpose |
 |---|---|
 | `AGENTS.md` | Always-on agent routing index. Read first. |
-| `SKILLS.md` | Human-facing skill catalog and maturity tracker. |
 | `docs/STACK-POSITION.md` | Stack position, conceptual evolution, and layer map. |
 | `PUBLIC_SURFACES.md` | Public information architecture for OverKill Hill, Glee-fully, and AskJamie touchpoints. |
 | `PUBLISHING.md` | Validation, release, registry, and promotion checklist. |
@@ -53,6 +52,12 @@ Read `AGENTS.md` first. It's a compressed index of every skill in this repo, wha
 | `refolddec/` | Built (skeleton) | ReFolDec transformation skills. Fold, unfold, refold across representation types |
 | `glee-fully/` | Placeholder | Conversion target for the Glee-fully custom GPT catalog. Awaiting clustering pass before sub-families are scaffolded |
 | `askjamie/` | Placeholder | AskJamie conversational resume / helpdesk tool. Design not yet started |
+
+## *"Skillz"* Inventory
+
+<!-- SKILLS_CATALOG_START -->
+
+<!-- SKILLS_CATALOG_END -->
 
 ## Install
 
