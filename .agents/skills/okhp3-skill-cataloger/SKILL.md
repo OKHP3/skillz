@@ -11,11 +11,13 @@ description: >
   "is the skills catalog current", or "run the skill cataloger".
   Use the full index mode when asked to catalog the distribution surface, index all
   available skills, rebuild README.md, run a full catalog, run a full index, index
-  all skills in this repo, or show all skills available for distribution.
+  all skills in this repo, or show all skills available for distribution. Also
+  generates a FAMILY.md inside each family directory with an auto-sourced summary
+  and skill inventory; use --no-family-md to skip.
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.2.0"
+  version: "1.3.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -231,6 +233,9 @@ python3 ${SCRIPT} --full --output my-index.md
 # Quiet — suppress output unless there are changes or errors
 python3 ${SCRIPT} --skills-dir .agents/skills --quiet
 python3 ${SCRIPT} --full --quiet
+
+# Skip FAMILY.md generation during full index mode
+python3 ${SCRIPT} --full --no-family-md
 ```
 
 ---
@@ -268,6 +273,18 @@ python3 ${SCRIPT} --full --quiet
 
 - **`--full` always uses library mode.** There is no project-mode full index.
   The distribution surface is always organized into family/skill folders.
+
+- **`--full` writes FAMILY.md in each discovered family directory.** On first
+  run, the summary is auto-sourced from the family's `README.md` (first
+  substantive paragraph) or aggregated from child skill descriptions when no
+  README.md exists. On subsequent runs, any content you have edited between
+  `<!-- FAMILY_SUMMARY_START -->` and `<!-- FAMILY_SUMMARY_END -->` is preserved.
+  The inventory table is always regenerated. Use `--no-family-md` to skip.
+
+- **Placeholder families with no skills get no FAMILY.md.** Only directories
+  that contain at least one `SKILL.md` at depth 2 are treated as active families.
+  A placeholder directory with only a README.md will not receive FAMILY.md until
+  it contains at least one skill.
 
 ---
 
