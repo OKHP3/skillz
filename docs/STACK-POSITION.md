@@ -92,7 +92,7 @@ The OKHP³ Visual Language Stack includes a governance-profile pattern developed
 
 What is public:
 
-- The governance profile concept (see `docs/governance-profile-concept.md`)
+- The governance profile concept (see `mermaid/README.md` — Governance Model section)
 - The skill contracts that implement it
 - The palette system published via Mermaid Theme Builder
 

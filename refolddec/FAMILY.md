@@ -1,4 +1,11 @@
-# refolddec/
+---
+family: refolddec
+skill_count: 1
+generated_by: okhp3-skill-cataloger v1.4.0
+generated_at: 2026-06-24T04:12:36Z
+---
+
+# refolddec
 
 Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding across representation types.
 
@@ -61,7 +68,7 @@ PathScrib-R and Flowpilot Scribbler (earlier process-capture agent lineage) exec
 |---|---|---|
 | `okhp3-refolddec-core` | Skeleton (Level 1) | Core transformation logic: fold, unfold, refold, semantic loss tracking |
 
-Deeper sub-skills (fold-to-diagram, unfold-to-primitives, refold-to-skill, cross-representation compare) are in `BACKLOG.md` pending pattern confirmation.
+Deeper sub-skills (fold-to-diagram, unfold-to-primitives, refold-to-skill, cross-representation compare) are in `docs/BACKLOG.md` pending pattern confirmation.
 
 ---
 
@@ -70,3 +77,17 @@ Deeper sub-skills (fold-to-diagram, unfold-to-primitives, refold-to-skill, cross
 This family is new. `okhp3-refolddec-core` is a Level 1 skeleton.
 
 Promote individual operations to their own skills once the pattern for each has been observed and confirmed in recurring use — not before.
+
+<!-- FAMILY_SUMMARY_START -->
+Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding across representation types.
+<!-- FAMILY_SUMMARY_END -->
+
+## Skills (1)
+
+<!-- FAMILY_INVENTORY_START -->
+*1 skill &nbsp;·&nbsp; inventory last updated: **June 24, 2026 at 04:12 UTC***
+
+| Skill | Description | Version |
+|---|---|---|
+| [okhp3-refolddec-core](okhp3-refolddec-core/SKILL.md) | Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifac... | — |
+<!-- FAMILY_INVENTORY_END -->

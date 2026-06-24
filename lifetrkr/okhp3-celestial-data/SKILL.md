@@ -1,5 +1,5 @@
 ---
-name: celestial-engine
+name: okhp3-celestial-data
 description: >
   Calculate moon phase, astrological season, and Mercury retrograde status
   for any date using pure client-side Julian date math — no API, no network,
