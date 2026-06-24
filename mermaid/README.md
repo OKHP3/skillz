@@ -8,7 +8,7 @@ See repo-root `AGENTS.md` for trigger conditions.
 
 ## Why this exists
 
-Reviewed against the four most prominent community Mermaid skills (mgranberry, WH-2099, softaworks, Agents365). None cover BPMN, swim lanes, audience adaptation, multi-diagram coherence, MCP publish integration, style-preserving updates, or syntax repair. Full teardown in `docs/mermaid/okhp3-mermaid-skill-prd.md`; this family fills those gaps.
+Reviewed against the four most prominent community Mermaid skills (mgranberry, WH-2099, softaworks, Agents365). None cover BPMN, swim lanes, audience adaptation, multi-diagram coherence, MCP publish integration, style-preserving updates, or syntax repair. Full teardown in `okhp3-mermaid-skill-prd.md`; this family fills those gaps.
 
 ## Diagram output contract
 
