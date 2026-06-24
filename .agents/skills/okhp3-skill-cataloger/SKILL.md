@@ -13,11 +13,16 @@ description: >
   available skills, rebuild README.md, run a full catalog, run a full index, index
   all skills in this repo, or show all skills available for distribution. Also
   generates a FAMILY.md inside each family directory with an auto-sourced summary
-  and skill inventory; use --no-family-md to skip.
+  and skill inventory; use --no-family-md to skip. Also generates a FAMILY.md
+  inside each family directory with an auto-sourced summary and skill inventory;
+  use --no-family-md to skip. On first FAMILY.md creation, absorbs and deletes
+  any existing README.md in that family directory (use --no-absorb-readme to
+  skip). Also auto-updates the Families table in root README.md when
+  FAMILIES_TABLE_START/END markers are present.
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.3.0"
+  version: "1.4.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com

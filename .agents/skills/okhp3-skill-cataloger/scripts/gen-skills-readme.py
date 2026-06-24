@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gen-skills-readme.py — okhp3-skill-cataloger v1.3.0
+gen-skills-readme.py — okhp3-skill-cataloger v1.4.0
 OverKill Hill P³ · https://overkillhill.com · https://github.com/OKHP3
 =======================================================
 Bundled with the okhp3-skill-cataloger Agent Skill.
@@ -17,31 +17,43 @@ Two modes of operation:
 
   FULL INDEX (--full)
     Scans root-level family folders for the distribution surface.
-    Writes README.md (created if not present).
+    Writes README.md catalog section (created if not present).
     Writes FAMILY.md inside each discovered family directory.
+    Writes the Families table in README.md (requires markers in place).
     Writes .catalog-meta.json at repo root on every successful run.
     Use in distribution repos (skillz). No-op in application repos.
     $ python3 scripts/gen-skills-readme.py --full
     $ python3 scripts/gen-skills-readme.py --full --no-family-md
+    $ python3 scripts/gen-skills-readme.py --full --no-absorb-readme
 
 No external dependencies. Python 3.9+ only.
 
+What changed in v1.4.0 vs v1.3.0:
+  - FAMILY.md now has a free-form bio section between the title and
+    FAMILY_SUMMARY_START. On first creation, this is populated from the
+    family's README.md (the heading is stripped). Preserved on re-runs.
+  - On first FAMILY.md creation, if a README.md exists in the family
+    directory, it is absorbed into the bio section and then deleted.
+    Use --no-absorb-readme to skip the deletion.
+  - New FAMILIES_TABLE_START/END markers: --full injects an auto-generated
+    Families table into root README.md (all family dirs, including 0-skill
+    placeholders). Add the markers to README.md to enable this.
+  - New: discover_all_families(), build_families_table(), inject_families_table()
+  - FAMILIES_TABLE_START, FAMILIES_TABLE_END constants added.
+
 What changed in v1.3.0 vs v1.2.0:
   - --full now also writes FAMILY.md inside each discovered family directory
-  - FAMILY.md contains: YAML frontmatter, auto-sourced summary (preserved on re-runs
-    if user edits), and an always-regenerated inventory table of child skills
-  - Summary sourced from first substantive paragraph of family README.md; falls back
-    to aggregated child-skill descriptions when README.md is absent
+  - FAMILY.md contains: YAML frontmatter, auto-sourced summary (preserved on
+    re-runs if user edits), and an always-regenerated inventory table
+  - Summary sourced from first substantive paragraph of family README.md; falls
+    back to aggregated child-skill descriptions when README.md is absent
   - --no-family-md flag: skip FAMILY.md generation during --full (opt-out)
-  - FAMILY_SUMMARY_START/END and FAMILY_INVENTORY_START/END marker constants added
 
 What changed in v1.2.0 vs v1.1.0:
   - --full flag: scans root family folders → README.md (distribution surface)
   - --output: override the output file path (both modes)
-  - surface field added to .catalog-meta.json ("project-skills" or "distribution")
-  - repo field added to .catalog-meta.json schema (was written, now documented)
-  - Full index mode: README.md auto-created if not present (softer than catalog mode)
-  - Full index mode: .catalog-meta.json written to repo root, not .agents/skills/
+  - surface field added to .catalog-meta.json
+  - Full index mode: README.md auto-created if not present
 
 Usage:
     python3 scripts/gen-skills-readme.py
@@ -54,6 +66,7 @@ Usage:
     python3 scripts/gen-skills-readme.py --full
     python3 scripts/gen-skills-readme.py --full --dry-run
     python3 scripts/gen-skills-readme.py --full --no-family-md
+    python3 scripts/gen-skills-readme.py --full --no-absorb-readme
     python3 scripts/gen-skills-readme.py --full --output my-catalog.md
 """
 
@@ -64,7 +77,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-CATALOGER_VERSION = "1.3.0"
+CATALOGER_VERSION = "1.4.0"
 OKHP3_HOMEPAGE    = "https://overkillhill.com"
 OKHP3_GITHUB      = "https://github.com/OKHP3"
 
@@ -78,11 +91,15 @@ FAMILY_SUMMARY_END     = "<!-- FAMILY_SUMMARY_END -->"
 FAMILY_INVENTORY_START = "<!-- FAMILY_INVENTORY_START -->"
 FAMILY_INVENTORY_END   = "<!-- FAMILY_INVENTORY_END -->"
 
+FAMILIES_TABLE_START = "<!-- FAMILIES_TABLE_START -->"
+FAMILIES_TABLE_END   = "<!-- FAMILIES_TABLE_END -->"
+
 # Directories excluded from root scan in --full mode
 FULL_SKIP = frozenset({
     ".git", ".github", ".agents", ".claude", ".vscode",
     "node_modules", "__pycache__", ".venv", "venv",
     "dist", "build", "coverage", ".nyc_output", "attached_assets",
+    "docs",
 })
 
 
@@ -300,9 +317,22 @@ def extract_family_summary(family_dir: Path, skills: list[dict]) -> str:
     ]
     if not descs:
         return f"A family of {n} {sw}."
-    # Use first description as the lead sentence
     lead = descs[0].rstrip(".")
     return f"A family of {n} {sw}. {lead}."
+
+
+def _extract_readme_bio(readme_path: Path) -> str:
+    """
+    Read a family README.md and return its content stripped of the leading
+    heading line, ready to embed as the bio section of FAMILY.md.
+    """
+    try:
+        text = readme_path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return ""
+    # Strip the first heading line (# Title / # Title/)
+    text = re.sub(r"^#[^\n]*\n", "", text, count=1)
+    return text.strip()
 
 
 def _build_family_inventory(skills: list[dict], now_disp: str) -> str:
@@ -327,29 +357,75 @@ def write_family_md(
     skills: list[dict],
     quiet: bool = False,
     dry_run: bool = False,
+    absorb_readme: bool = True,
 ) -> bool:
     """
     Write or update FAMILY.md in family_dir.
 
-    - YAML frontmatter and inventory table are always regenerated.
-    - Summary between FAMILY_SUMMARY_START/END markers is preserved if the
-      user has edited it; otherwise auto-sourced from README.md or skills.
-    - Returns True if the file was created or changed.
+    Structure:
+      ---frontmatter---
+      # family_name
+
+      [bio section — free-form, absorbed from README.md on first creation,
+       preserved on all subsequent runs]
+
+      <!-- FAMILY_SUMMARY_START -->
+      [auto-sourced summary, preserved if user edits]
+      <!-- FAMILY_SUMMARY_END -->
+
+      ## Skills (N)
+
+      <!-- FAMILY_INVENTORY_START -->
+      [always regenerated]
+      <!-- FAMILY_INVENTORY_END -->
+
+    On first creation:
+      - Bio is populated from README.md (heading stripped), if present.
+      - README.md is deleted after successful write (unless absorb_readme=False).
+
+    On subsequent runs:
+      - Bio is preserved exactly as-is.
+      - Summary between markers is preserved if user has edited it.
+      - Inventory is always regenerated.
+      - README.md is never touched again.
+
+    Returns True if the file was created or changed.
     """
-    family_md = family_dir / "FAMILY.md"
+    family_md  = family_dir / "FAMILY.md"
+    readme_path = family_dir / "README.md"
+    existed    = family_md.exists()
+
     now      = datetime.now(timezone.utc)
     now_iso  = now.strftime("%Y-%m-%dT%H:%M:%SZ")
     now_disp = now.strftime("%B %-d, %Y at %H:%M UTC")
     n        = len(skills)
-    existed  = family_md.exists()
 
-    # Determine summary — preserve user edits if markers already exist
+    bio     = ""
     summary = extract_family_summary(family_dir, skills)
+
+    absorb_this_run = False
+
     if existed:
         try:
             existing_text = family_md.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError):
             existing_text = ""
+
+        # Preserve bio: everything between the title line and FAMILY_SUMMARY_START
+        title_m = re.search(r"^# .+\n", existing_text, re.MULTILINE)
+        if title_m:
+            after_title = existing_text[title_m.end():]
+            if FAMILY_SUMMARY_START in after_title:
+                bio = after_title[:after_title.find(FAMILY_SUMMARY_START)].strip()
+            else:
+                bio = after_title.strip()
+
+        # If bio is still empty and a README.md is present, absorb it now
+        if not bio and readme_path.exists() and absorb_readme:
+            bio = _extract_readme_bio(readme_path)
+            absorb_this_run = True
+
+        # Preserve summary if user has edited it
         if FAMILY_SUMMARY_START in existing_text and FAMILY_SUMMARY_END in existing_text:
             s_idx = existing_text.find(FAMILY_SUMMARY_START) + len(FAMILY_SUMMARY_START)
             e_idx = existing_text.find(FAMILY_SUMMARY_END)
@@ -357,9 +433,16 @@ def write_family_md(
             if preserved:
                 summary = preserved
 
+    else:
+        # First creation: absorb README.md as bio
+        if readme_path.exists() and absorb_readme:
+            bio = _extract_readme_bio(readme_path)
+            absorb_this_run = True
+
     inventory_block = _build_family_inventory(skills, now_disp)
     name = family_dir.name
 
+    bio_section = f"\n{bio}\n\n" if bio else "\n"
     new_content = (
         f"---\n"
         f"family: {name}\n"
@@ -369,7 +452,7 @@ def write_family_md(
         f"---\n"
         f"\n"
         f"# {name}\n"
-        f"\n"
+        f"{bio_section}"
         f"{FAMILY_SUMMARY_START}\n"
         f"{summary}\n"
         f"{FAMILY_SUMMARY_END}\n"
@@ -381,13 +464,14 @@ def write_family_md(
         f"{FAMILY_INVENTORY_END}\n"
     )
 
-    # Check if already current (only meaningful if file exists and no dry-run)
+    # Check if already current (ignoring timestamp line)
     if existed and not dry_run:
         try:
             old = family_md.read_text(encoding="utf-8")
-            # Compare ignoring the generated_at timestamp line (changes every run)
+
             def _strip_ts(s: str) -> str:
                 return re.sub(r"generated_at: .*", "generated_at: __TS__", s)
+
             if _strip_ts(new_content) == _strip_ts(old):
                 if not quiet:
                     print(f"  — Unchanged: {family_md}")
@@ -398,13 +482,127 @@ def write_family_md(
     if dry_run:
         verb = "update" if existed else "create"
         print(f"  [DRY RUN] Would {verb}: {family_md}")
+        if not existed and readme_path.exists() and absorb_readme:
+            print(f"  [DRY RUN] Would absorb and delete: {readme_path}")
         return True
 
     family_md.write_text(new_content, encoding="utf-8")
     verb = "Updated" if existed else "Created"
     if not quiet:
         print(f"  ✓ {verb}: {family_md}")
+
+    # Absorb: delete README.md after successful write if we absorbed it this run
+    if absorb_this_run and readme_path.exists():
+        readme_path.unlink()
+        if not quiet:
+            print(f"  ✓ Absorbed and removed: {readme_path}")
+
     return True
+
+
+# ── Families table (root README.md) ──────────────────────────────────────────
+
+def discover_all_families(root: Path, skills: list[dict]) -> list[dict]:
+    """
+    Return a list of family summary dicts for ALL eligible root-level
+    directories, including those with zero skills (placeholders).
+    Ordered alphabetically.
+    """
+    skills_by_family: dict[str, list[dict]] = {}
+    for s in skills:
+        skills_by_family.setdefault(s["category"], []).append(s)
+
+    families = []
+    for d in sorted(root.iterdir()):
+        if not d.is_dir():
+            continue
+        if d.name in FULL_SKIP or d.name.startswith("."):
+            continue
+
+        family_skills = skills_by_family.get(d.name, [])
+        n = len(family_skills)
+
+        # Prefer summary from FAMILY.md summary block; fall back to extract
+        summary = ""
+        fmd = d / "FAMILY.md"
+        if fmd.exists():
+            try:
+                fmd_text = fmd.read_text(encoding="utf-8")
+                if FAMILY_SUMMARY_START in fmd_text and FAMILY_SUMMARY_END in fmd_text:
+                    s_idx = fmd_text.find(FAMILY_SUMMARY_START) + len(FAMILY_SUMMARY_START)
+                    e_idx = fmd_text.find(FAMILY_SUMMARY_END)
+                    summary = fmd_text[s_idx:e_idx].strip()
+            except (OSError, UnicodeDecodeError):
+                pass
+        if not summary:
+            summary = extract_family_summary(d, family_skills)
+        if len(summary) > 90:
+            summary = summary[:87] + "..."
+
+        # Link target
+        if fmd.exists():
+            link = f"{d.name}/FAMILY.md"
+        elif (d / "README.md").exists():
+            link = f"{d.name}/README.md"
+        else:
+            link = f"{d.name}/"
+
+        families.append({
+            "name":           d.name,
+            "skill_count":    n,
+            "summary":        summary,
+            "link":           link,
+            "is_placeholder": n == 0,
+        })
+
+    return families
+
+
+def build_families_table(families: list[dict], now_disp: str) -> str:
+    """Build the auto-generated families table block."""
+    now_iso   = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    n_active  = sum(1 for f in families if not f["is_placeholder"])
+    n_total   = len(families)
+
+    lines = [
+        FAMILIES_TABLE_START,
+        f"<!-- Generated: {now_iso} | Families: {n_total} ({n_active} active) -->",
+        "",
+        f"*{n_total} families &nbsp;·&nbsp; {n_active} active"
+        f" &nbsp;·&nbsp; updated: **{now_disp}***",
+        "",
+        "| Family | Skills | What it covers |",
+        "|---|---|---|",
+    ]
+
+    for f in families:
+        name_cell  = f"[`{f['name']}/`]({f['link']})"
+        count_cell = str(f["skill_count"]) if not f["is_placeholder"] else "— placeholder"
+        lines.append(f"| {name_cell} | {count_cell} | {f['summary']} |")
+
+    lines.append(FAMILIES_TABLE_END)
+    return "\n".join(lines)
+
+
+def inject_families_table(readme: Path, block: str) -> tuple[bool, str]:
+    """
+    Inject the families table block into README.md between FAMILIES_TABLE markers.
+    Returns (changed, new_content). If markers are absent, returns (False, original).
+    """
+    if not readme.exists():
+        return False, ""
+    try:
+        content = readme.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return False, ""
+
+    if FAMILIES_TABLE_START not in content or FAMILIES_TABLE_END not in content:
+        return False, content
+
+    s = content.find(FAMILIES_TABLE_START)
+    e = content.find(FAMILIES_TABLE_END) + len(FAMILIES_TABLE_END)
+    new = content[:s] + block + content[e:]
+    return new != content, new
 
 
 # ── Validation ────────────────────────────────────────────────────────────────
@@ -599,6 +797,15 @@ def main() -> int:
         help="Skip FAMILY.md generation during --full mode.",
     )
     p.add_argument(
+        "--no-absorb-readme", action="store_true",
+        help=(
+            "Skip absorbing and deleting family README.md files during --full. "
+            "By default, when FAMILY.md is created for the first time, any "
+            "README.md in the same directory is absorbed as the bio section "
+            "and then deleted."
+        ),
+    )
+    p.add_argument(
         "--skills-dir", default=".agents/skills",
         help="Path to skills root directory for catalog mode (default: .agents/skills)",
     )
@@ -705,6 +912,7 @@ def main() -> int:
                 for s in skills:
                     families_map.setdefault(s["category"], []).append(s)
                 family_names = sorted(families_map)
+                absorb = not args.no_absorb_readme
                 print(f"[DRY RUN] Would write FAMILY.md for "
                       f"{len(family_names)} family/families:")
                 for fname in family_names:
@@ -712,6 +920,8 @@ def main() -> int:
                     existed = (fdir / "FAMILY.md").exists()
                     verb = "update" if existed else "create"
                     print(f"  [DRY RUN] Would {verb}: {fdir / 'FAMILY.md'}")
+                    if not existed and (fdir / "README.md").exists() and absorb:
+                        print(f"  [DRY RUN] Would absorb and delete: {fdir / 'README.md'}")
         else:
             try:
                 changed, _ = inject_strict(output, block)
@@ -760,7 +970,23 @@ def main() -> int:
                 families_map[family_name],
                 quiet=args.quiet,
                 dry_run=False,
+                absorb_readme=not args.no_absorb_readme,
             )
+
+    # ── Write Families table into root README.md ──────────────────────────────
+    if args.full:
+        families_list = discover_all_families(scan_root, skills)
+        now_disp = datetime.now(timezone.utc).strftime("%B %-d, %Y at %H:%M UTC")
+        fam_block = build_families_table(families_list, now_disp)
+        fam_changed, fam_content = inject_families_table(output, fam_block)
+        if fam_changed:
+            output.write_text(fam_content, encoding="utf-8")
+            if not args.quiet:
+                print(f"✓ Updated Families table: {output}")
+        elif FAMILIES_TABLE_START not in (output.read_text(encoding="utf-8") if output.exists() else ""):
+            if not args.quiet:
+                print(f"  ℹ Families table: add {FAMILIES_TABLE_START} / "
+                      f"{FAMILIES_TABLE_END} markers to {output} to enable.")
 
     # ── Write catalog meta ────────────────────────────────────────────────────
     write_catalog_meta(meta_dir, len(skills), effective_mode, args.repo_name, surface)
