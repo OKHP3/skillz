@@ -1,0 +1,47 @@
+{
+  "expectations": [
+    {
+      "text": "Response identifies all three data sources (Hebcal, AlAdhan, algorithm)",
+      "passed": true,
+      "evidence": "Response explicitly covers: Hebcal API (Jewish), AlAdhan API (Islamic), and Computus algorithm (Christian) -- all three named correctly"
+    },
+    {
+      "text": "Response provides or references the ObservanceEvent unified interface",
+      "passed": true,
+      "evidence": "Full ObservanceEvent TypeScript interface provided with all fields: id, title, rawName, emoji, tradition, denomination, startDate, endDate, isMultiDay, hebrewName, hijriDate, source"
+    },
+    {
+      "text": "Response shows the parallel fetch pattern using Promise.allSettled",
+      "passed": false,
+      "evidence": "Response uses Promise.all for parallel Islamic month fetching, not Promise.allSettled. The ARE skill specifies Promise.allSettled for graceful partial failure handling. This is a meaningful gap -- Promise.all fails fast on any single month rejection, while Promise.allSettled continues and returns partial results."
+    },
+    {
+      "text": "Response mentions that all three sources are free and require no API key",
+      "passed": true,
+      "evidence": "Hebcal described as 'requires no API key'; AlAdhan described with free endpoint; Computus is client-side algorithm -- all free, no auth required"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": ["Promise.all vs Promise.allSettled: the with-skill executor used Promise.all instead of Promise.allSettled. This is a real bug -- if one AlAdhan month request fails, Promise.all will throw and discard all 11 other successful months."],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "Response shows the parallel fetch pattern using Promise.allSettled",
+        "reason": "The skill should more prominently highlight Promise.allSettled as a REQUIRED pattern, not just mentioned once. The executor read the skill but still used Promise.all. Suggest adding a WARNING box around the Promise.allSettled requirement."
+      }
+    ],
+    "overall": "3/4 with-skill is a real miss -- the Promise.allSettled pattern needs to be more prominent in the skill body to prevent this failure mode."
+  }
+}

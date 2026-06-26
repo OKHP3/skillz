@@ -1,0 +1,29 @@
+{
+  "expectations": [
+    {
+      "text": "Response provides color tokens for all three traditions",
+      "passed": true,
+      "evidence": "Specific Tailwind classes provided: Judaism=blue-400/border-blue-800/bg-blue-950, Christianity=violet-400/border-violet-800/bg-violet-950, Islam=emerald-400/border-emerald-800/bg-emerald-950"
+    },
+    {
+      "text": "Response describes the three-panel layout structure",
+      "passed": true,
+      "evidence": "Three-Panel Layout described with full TSX code snippet: TraditionBadge, displayReference, staticText in blockquote, translationName in footer"
+    },
+    {
+      "text": "Response mentions displaying the bridging note below the panels",
+      "passed": true,
+      "evidence": "'Display the bridgingNote below the panels under a section titled \"What Connects These?\"'"
+    },
+    {
+      "text": "Response mentions using staticText for instant rendering with optional live API fetch",
+      "passed": true,
+      "evidence": "'Use the 20 pre-seeded themes found in COMPARE_THEMES... contain staticText for immediate display' and 'If the user requires a live version of the verse, use the fetchPassage function'"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": { "uncertainties": [], "needs_review": [], "workarounds": [] }
+}

@@ -1,0 +1,33 @@
+{
+  "expectations": [
+    {
+      "text": "Response provides the correct bible-api.com endpoint with translation=web parameter",
+      "passed": true,
+      "evidence": "'https://bible-api.com/john+3:16?translation=web' -- uses + for space encoding (alternative to %20, both work in practice), translation=web is correct"
+    },
+    {
+      "text": "Response identifies WEB as including deuterocanonicals",
+      "passed": false,
+      "evidence": "Without-skill states WEB 'typically lacks the Deuterocanon/Apocrypha in its standard form' -- this is INCORRECT. The WEB hosted on bible-api.com does include the Catholic deuterocanonicals. This is the most consequential factual error in this eval."
+    },
+    {
+      "text": "Response notes WEB is best for Catholic and Orthodox denominations",
+      "passed": false,
+      "evidence": "Response focuses on Protestant, Messianic, and global missions use cases. Does not identify Catholic or Orthodox as primary targets for WEB. Directly contradicts the ARE guidance."
+    },
+    {
+      "text": "Response shows json.text extraction with whitespace normalization",
+      "passed": false,
+      "evidence": "Response shows 'console.log(data)' (prints entire object), not data.text extraction. No normalization shown."
+    }
+  ],
+  "summary": { "passed": 1, "failed": 3, "total": 4, "pass_rate": 0.25 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": ["CRITICAL factual error: without-skill says WEB 'typically lacks deuterocanon' -- this is wrong and would cause a developer to select a DIFFERENT translation for Catholic users, missing the deuterocanonicals available through the WEB on bible-api.com."],
+    "workarounds": []
+  }
+}

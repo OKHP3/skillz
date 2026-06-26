@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "Response provides all three traditions (Judaism, Christianity, Islam)",
+      "passed": true,
+      "evidence": "Table shows all three traditions: Psalm 103:12 (Judaism), Matthew 6:14-15 (Christianity), Az-Zumar 39:53 (Islam)"
+    },
+    {
+      "text": "Response includes a neutral bridging note that does not assert one tradition supersedes another",
+      "passed": true,
+      "evidence": "Bridging note: 'No other divine attribute appears more consistently... all locate forgiveness at the center of what God is.' -- neutral structural observation, no hierarchy asserted"
+    },
+    {
+      "text": "Response references or uses the pre-seeded forgiveness theme data",
+      "passed": true,
+      "evidence": "Response explicitly states 'this theme (ID: forgiveness) is one of the 20 pre-seeded comparisons' and uses the exact pre-seeded passages: Psalm 103:12, Matthew 6:14-15, Az-Zumar 39:53"
+    },
+    {
+      "text": "Response does not use words like 'original', 'fulfills', or 'supersedes'",
+      "passed": true,
+      "evidence": "None of the prohibited words appear in the response; bridging note uses structural observation language ('distance metaphor', 'conditional symmetry', 'sweeping assurance')"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [],
+    "workarounds": []
+  }
+}

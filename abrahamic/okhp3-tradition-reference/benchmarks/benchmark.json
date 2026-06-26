@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-tradition-reference",
+    "skill_path": ".agents/skills/okhp3-tradition-reference",
+    "skill_version": "1.1.0",
+    "executor_model": "delegation-subagent",
+    "analyzer_model": "main-agent-grader",
+    "timestamp": "2026-06-26T00:00:00Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 1,
+    "note": "All 3 evals run via live delegation subagent executor + main-agent grader. No analytical stubs."
+  },
+
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "Quran API endpoint and Sahih International translation ID",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response identifies Quran.com API v4 as primary", "passed": true, "evidence": "'The primary API provider for Islam is Quran.com API v4'" },
+        { "text": "Response provides the correct endpoint with surah:ayah key format", "passed": true, "evidence": "verses/by_key/{surah}:{ayah}?language=en&translations={id}&words=false -- correct colon-separated format" },
+        { "text": "Response correctly identifies translation ID 20 as Sahih International", "passed": true, "evidence": "'The translation ID for Sahih International is 20'" },
+        { "text": "Response mentions the AlQuran.cloud fallback", "passed": true, "evidence": "Dedicated Fallback Option section with AlQuran.cloud endpoint" }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "Quran API endpoint and Sahih International translation ID",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 0.5, "passed": 2, "failed": 2, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response identifies Quran.com API v4 as primary", "passed": false, "evidence": "Listed AlQuran.cloud first (as primary), Quran.com second. ARE standard is Quran.com v4 primary." },
+        { "text": "Response provides the correct endpoint with surah:ayah key format", "passed": true, "evidence": "Correctly provides verses/by_key/{verse_key} with 2:255 colon format" },
+        { "text": "Response correctly identifies translation ID 20 as Sahih International", "passed": true, "evidence": "'Sahih International Translation ID: 20' -- genuine LLM knowledge" },
+        { "text": "Response mentions the AlQuran.cloud fallback", "passed": false, "evidence": "AlQuran.cloud listed as PRIMARY, not fallback. Inverted relationship." }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "LDS Standard Works and routing",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response lists all four volumes of the Standard Works", "passed": true, "evidence": "Table shows: Holy Bible KJV 66 books, Book of Mormon 15 books, Doctrine and Covenants 138 sections, Pearl of Great Price 5 texts" },
+        { "text": "Response explains the isLdsBibleRef routing decision", "passed": true, "evidence": "isLdsBibleRef function named with full TypeScript code showing BIBLE_BOOK_PREFIXES matching logic" },
+        { "text": "Response mentions scriptures.nephi.org for non-Bible Standard Works", "passed": true, "evidence": "'GET https://scriptures.nephi.org/verses/{encoded_reference}'" },
+        { "text": "Response mentions the graceful fallback for LDS API unavailability", "passed": true, "evidence": "LdsApiUnavailableError named and exact fallback message quoted" }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "LDS Standard Works and routing",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 0.25, "passed": 1, "failed": 3, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response lists all four volumes of the Standard Works", "passed": true, "evidence": "All four listed: Bible KJV, Book of Mormon, Doctrine and Covenants, Pearl of Great Price" },
+        { "text": "Response explains the isLdsBibleRef routing decision", "passed": false, "evidence": "Never mentions isLdsBibleRef. Describes general routing concept without ARE-specific function." },
+        { "text": "Response mentions scriptures.nephi.org for non-Bible Standard Works", "passed": false, "evidence": "Suggests 'Church official Gospel Library API or custom LDS-indexed databases' -- no scriptures.nephi.org. Church API requires authentication." },
+        { "text": "Response mentions the graceful fallback for LDS API unavailability", "passed": false, "evidence": "No LdsApiUnavailableError or specific fallback message. Unhandled rejection on API failure." }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "Orthodox Christian canon and API gap",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response correctly states the Orthodox canon is Septuagint-based", "passed": true, "evidence": "'Septuagint-based (LXX) canon for its Old Testament'" },
+        { "text": "Response gives the book count range: 76-78 books", "passed": true, "evidence": "'typically 76-78 books, though this count varies slightly by specific jurisdiction'" },
+        { "text": "Response explicitly states the API gap for 3 Maccabees, Psalm 151, and 4 Maccabees", "passed": true, "evidence": "'web translation on bible-api.com omits 3 Maccabees, Psalm 151, and 4 Maccabees' -- all three named" },
+        { "text": "Response confirms bible-api.com web is the best available free option for Orthodox use", "passed": true, "evidence": "'World English Bible (WEB) is the closest available for free' with limitations documented" }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "Orthodox Christian canon and API gap",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 0.25, "passed": 1, "failed": 3, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response correctly states the Orthodox canon is Septuagint-based", "passed": true, "evidence": "'primarily based on the Septuagint (LXX)' -- correct" },
+        { "text": "Response gives the book count range: 76-78 books", "passed": false, "evidence": "Says 'generally 76 books' -- single number, not the 76-78 range. Misses jurisdictional variability." },
+        { "text": "Response explicitly states the API gap for 3 Maccabees, Psalm 151, and 4 Maccabees", "passed": false, "evidence": "Mentions 3 Maccabees as API gap example but not 4 Maccabees. Psalm 151 listed in canon but not as API gap." },
+        { "text": "Response confirms bible-api.com web is the best available free option for Orthodox use", "passed": false, "evidence": "No mention of bible-api.com. Vague recommendation to 'look for APIs that provide the Septuagint'." }
+      ]
+    }
+  ],
+
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": { "mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0 },
+      "time_seconds": { "mean": null, "stddev": null, "min": null, "max": null },
+      "tokens": { "mean": null, "stddev": null, "min": null, "max": null }
+    },
+    "without_skill": {
+      "pass_rate": { "mean": 0.33, "stddev": 0.14, "min": 0.25, "max": 0.5 },
+      "time_seconds": { "mean": null, "stddev": null, "min": null, "max": null },
+      "tokens": { "mean": null, "stddev": null, "min": null, "max": null }
+    },
+    "delta": { "pass_rate": "+0.67", "time_seconds": "N/A", "tokens": "N/A" }
+  },
+
+  "notes": [
+    "All 3 evals: LIVE delegation subagent runs",
+    "Eval 1 without_skill: correctly knew translation ID 20 from training data -- translation matrix most valuable for less-common IDs",
+    "Eval 2 without_skill: suggested Church Gospel Library API (requires auth, not public) -- dangerous dead-end for developers",
+    "Eval 3 without_skill: gave '76 books' not '76-78' range; missed 4 Maccabees as API gap; no bible-api.com recommendation",
+    "workspace: .agents/skills/okhp3-tradition-reference/workspace/iteration-1/"
+  ]
+}

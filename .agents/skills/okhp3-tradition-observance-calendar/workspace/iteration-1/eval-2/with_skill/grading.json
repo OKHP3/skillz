@@ -1,0 +1,29 @@
+{
+  "expectations": [
+    {
+      "text": "Response gives the correct Western Easter 2027 date: March 28",
+      "passed": true,
+      "evidence": "Response states: 'Western Easter 2027: March 28, 2027' with Gregorian Computus algorithm"
+    },
+    {
+      "text": "Response gives the correct Orthodox Easter 2027 date: May 2",
+      "passed": true,
+      "evidence": "Response states: 'Orthodox Easter 2027: May 2, 2027' with Julian Computus + Gregorian offset algorithm"
+    },
+    {
+      "text": "Response provides or references the Computus algorithm functions",
+      "passed": true,
+      "evidence": "Both computeWesternEaster and computeOrthodoxEaster TypeScript functions provided with full implementations including all intermediate variables (a, b, c, d, e, f, g, h, i, k, l, m)"
+    },
+    {
+      "text": "Response mentions the 13-day offset for Julian-to-Gregorian conversion",
+      "passed": true,
+      "evidence": "'Julian Computus with Gregorian offset (+13 days for the 20th/21st century)' and code shows: 'g + 13' in the Date constructor"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": { "uncertainties": [], "needs_review": [], "workarounds": [] }
+}

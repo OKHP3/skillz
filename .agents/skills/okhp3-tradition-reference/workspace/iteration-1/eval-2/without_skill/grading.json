@@ -1,0 +1,33 @@
+{
+  "expectations": [
+    {
+      "text": "Response lists all four volumes of the Standard Works",
+      "passed": true,
+      "evidence": "All four listed: Holy Bible (KJV), Book of Mormon, Doctrine and Covenants, Pearl of Great Price"
+    },
+    {
+      "text": "Response explains the isLdsBibleRef routing decision",
+      "passed": false,
+      "evidence": "Never mentions isLdsBibleRef. Describes general routing logic ('expands the scope to include the entire Standard Works') but without any ARE-specific function name or implementation."
+    },
+    {
+      "text": "Response mentions scriptures.nephi.org for non-Bible Standard Works",
+      "passed": false,
+      "evidence": "Suggests 'Church's official Gospel Library API or custom LDS-indexed databases' -- no mention of scriptures.nephi.org. A developer following this response would spend time searching for an API that isn't scriptures.nephi.org."
+    },
+    {
+      "text": "Response mentions the graceful fallback for LDS API unavailability",
+      "passed": false,
+      "evidence": "No mention of LdsApiUnavailableError or any specific error handling for API unavailability. Without this, a developer would produce an unhandled rejection when scriptures.nephi.org is down."
+    }
+  ],
+  "summary": { "passed": 1, "failed": 3, "total": 4, "pass_rate": 0.25 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": ["Without-skill suggests 'Church's official Gospel Library API' -- this API requires authentication and is not publicly available for third-party use. A developer following this guidance would hit a dead end."],
+    "workarounds": []
+  }
+}

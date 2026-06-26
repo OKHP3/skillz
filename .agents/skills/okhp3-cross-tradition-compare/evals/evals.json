@@ -1,0 +1,41 @@
+{
+  "skill_name": "okhp3-cross-tradition-compare",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm building an interfaith education site. Show me how Judaism, Christianity, and Islam each approach the theme of forgiveness -- give me the scripture references, a short passage from each, and a neutral note connecting them.",
+      "expected_output": "Agent uses the pre-seeded forgiveness theme (ID: forgiveness). Output includes Psalm 103:12 (Judaism), Matthew 6:14-15 (Christianity), Az-Zumar 39:53 (Islam), with the bridging note about God's forgiveness as a central attribute. Tone is neutral and academic.",
+      "files": [],
+      "expectations": [
+        "Response provides all three traditions (Judaism, Christianity, Islam)",
+        "Response includes a neutral bridging note that does not assert one tradition supersedes another",
+        "Response references or uses the pre-seeded forgiveness theme data",
+        "Response does not use words like 'original', 'fulfills', or 'supersedes'"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "What's the proportional representation rule for the cross-tradition compare feature? I want to generate new theme entries beyond the 20 that are already seeded.",
+      "expected_output": "Agent explains the proportional representation rule: Christianity gets the most examples (~63% US), Judaism and Islam get equal representation. Every tradition must appear in every comparison. Explains this applies only to generating new entries, not visual weighting.",
+      "files": [],
+      "expectations": [
+        "Response explains the proportional representation rule correctly",
+        "Response cites US population shares from Pew Research Center",
+        "Response clarifies that visual dignity is equal regardless of population share",
+        "Response explains that all three traditions must always appear in every comparison"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I need to build a UI component that shows a cross-tradition comparison. What colors should I use for each tradition panel, and how should I display the passages?",
+      "expected_output": "Agent gives the specific Tailwind/hex color tokens: Judaism (blue), Christianity (violet), Islam (emerald). Explains the panel structure: tradition badge, display reference, translation name, passage text, attribution. Mentions showing bridgingNote under 'What Connects These?' heading.",
+      "files": [],
+      "expectations": [
+        "Response provides color tokens for all three traditions",
+        "Response describes the three-panel layout structure",
+        "Response mentions displaying the bridging note below the panels",
+        "Response mentions using staticText for instant rendering with optional live API fetch"
+      ]
+    }
+  ]
+}

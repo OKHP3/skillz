@@ -1,0 +1,47 @@
+{
+  "expectations": [
+    {
+      "text": "Response includes or references the getMoonPhase function",
+      "passed": true,
+      "evidence": "Without-skill agent happened to use getMoonPhase as its function name (a reasonable choice); however implementation uses date-based reference not the ARE Julian Date Number algorithm"
+    },
+    {
+      "text": "Response mentions the return fields: emoji, illumination, daysUntilNext",
+      "passed": false,
+      "evidence": "Return interface uses 'daysToNextPhase' (not 'daysUntilNext') and 'illumination: number // 0 to 100' (integer) instead of 0.0-1.0 float -- ARE-incompatible types and field names"
+    },
+    {
+      "text": "Response does not require a network call or external API",
+      "passed": true,
+      "evidence": "Response explicitly states: 'Offline-first: No fetch calls or external libraries needed; it relies entirely on the system clock'"
+    },
+    {
+      "text": "Response includes or references the Julian Date algorithm",
+      "passed": false,
+      "evidence": "Without-skill uses a date subtraction approach from a known new moon (Date.getTime() - knownNewMoon) / msPerDay, not the Julian Date Number (JDN) formula used by the skill. The approach is mathematically equivalent but not the ARE implementation."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 2,
+    "total": 4,
+    "pass_rate": 0.5
+  },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": ["Without-skill response would produce a valid but ARE-incompatible widget -- daysToNextPhase vs daysUntilNext would cause a type error if integrated into the host project"],
+    "workarounds": []
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "Response mentions the return fields: emoji, illumination, daysUntilNext",
+        "reason": "The field name mismatch (daysToNextPhase vs daysUntilNext) caught a real compatibility issue -- this expectation is well-calibrated"
+      }
+    ],
+    "overall": "Good discrimination: with-skill produces ARE-compatible code, without-skill produces valid but incompatible types."
+  }
+}

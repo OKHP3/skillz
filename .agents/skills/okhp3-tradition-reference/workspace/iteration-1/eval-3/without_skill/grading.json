@@ -1,0 +1,33 @@
+{
+  "expectations": [
+    {
+      "text": "Response correctly states the Orthodox canon is Septuagint-based",
+      "passed": true,
+      "evidence": "'primarily based on the Septuagint (LXX), which is the ancient Greek translation' -- correct"
+    },
+    {
+      "text": "Response gives the book count range: 76-78 books",
+      "passed": false,
+      "evidence": "Response gives a single number: 'generally 76 books' (49 OT + 27 NT). The ARE specifies a range of 76-78 to acknowledge jurisdictional variation. Citing only 76 misses the variability documented in the skill."
+    },
+    {
+      "text": "Response explicitly states the API gap for 3 Maccabees, Psalm 151, and 4 Maccabees",
+      "passed": false,
+      "evidence": "Response mentions '3 Maccabees' and 'Psalm 151' as books in the canon list, and '3 Maccabees or 1 Esdras' as API gap examples. But does NOT name '4 Maccabees' as an API gap. 4 Maccabees is missing from the gap analysis."
+    },
+    {
+      "text": "Response confirms bible-api.com web is the best available free option for Orthodox use",
+      "passed": false,
+      "evidence": "Response does not mention bible-api.com at all. Recommends 'look for APIs that explicitly provide the Septuagint (LXX)' -- a vague suggestion that leaves the developer without a concrete recommended API."
+    }
+  ],
+  "summary": { "passed": 1, "failed": 3, "total": 4, "pass_rate": 0.25 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": ["Without-skill's '49 OT books' claim disagrees with the ARE's Orthodox book breakdown (which gives the range differently). The 49 figure may be counting differently (49 OT sections + 27 NT = 76 total) but misses the 76-78 variability."],
+    "workarounds": []
+  }
+}
