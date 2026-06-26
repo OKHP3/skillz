@@ -1,7 +1,0 @@
-{
-  "total_tool_calls": 3,
-  "total_steps": 2,
-  "files_created": [".agents/skills/okhp3-celestial-data-workspace/iteration-1/eval-3/without_skill/outputs/response.md", ".agents/skills/okhp3-celestial-data-workspace/iteration-1/eval-3/without_skill/outputs/metrics.json"],
-  "errors_encountered": 0,
-  "output_chars": 2043
-}
