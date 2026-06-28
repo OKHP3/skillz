@@ -16,10 +16,10 @@
   "canonicalPublicSurface": "https://overkillhill.com/projects/skillz/",
   "strategySurface": "https://app.notion.com/p/37d812e0ced4812ab899dd0cfc9e99c0",
   "defaultIndex": "AGENTS.md",
-  "humanCatalog": "SKILLS.md",
+  "humanCatalog": "README.md",
   "stackDocs": "docs/STACK-POSITION.md",
-  "publishingGuide": "PUBLISHING.md",
-  "securityPolicy": "SECURITY.md",
+  "publishingGuide": "docs/PUBLISHING.md",
+  "securityPolicy": "docs/SECURITY.md",
   "families": [
     {
       "name": "mermaid",

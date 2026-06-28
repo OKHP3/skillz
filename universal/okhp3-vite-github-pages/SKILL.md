@@ -1,5 +1,5 @@
 ---
-name: github-pages-vite-spa
+name: okhp3-vite-github-pages
 description: >
   Deploy a React or Vue SPA built with Vite to GitHub Pages using the gh-pages
   npm package. Covers the three most common failure modes: missing base path in

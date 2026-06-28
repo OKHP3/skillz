@@ -1,5 +1,5 @@
 ---
-name: daily-oracle
+name: okhp3-daily-oracle
 description: >
   Generates a personalized daily reading by combining a tarot card, a daily horoscope,
   and an AI-synthesized message — all cached in localStorage so it generates once per

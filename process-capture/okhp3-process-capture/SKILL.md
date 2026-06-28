@@ -12,7 +12,7 @@ The intake mechanism. Turns "I just did this for the third time" into a structur
 1. **Extract the pattern.** From the current conversation (or a description the user gives), identify: what was the task, what tools/skills were used, what was the input, what was the output, were there corrections or judgment calls along the way that would need to be encoded as instructions.
 
 2. **Assess readiness.** Has this pattern stabilized enough to write down, or is this still "developing taste" (per the original delegation-contract framing — genuinely novel judgment calls each time means it's not a skill yet)?
-   - **Not ready** -> write a `BACKLOG.md` entry (date, task, times observed, candidate family, status: captured). Stop here.
+   - **Not ready** -> write a `docs/BACKLOG.md` entry (date, task, times observed, candidate family, status: captured). Stop here.
    - **Ready** -> continue to step 3.
 
 3. **Determine target family.** Does this fit an existing family (`mermaid/`, `linkedin/`, or this repo's own `process-capture/`), or does it need a new top-level family? If new, note this explicitly — adding a new family directory is a bigger decision than adding a skill within one, and the user should confirm.

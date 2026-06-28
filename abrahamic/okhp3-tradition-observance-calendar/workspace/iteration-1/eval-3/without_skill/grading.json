@@ -1,0 +1,33 @@
+{
+  "expectations": [
+    {
+      "text": "Response provides or references the getHolidayDescription function",
+      "passed": false,
+      "evidence": "No function name provided. Response explains the concept and API but doesn't define any ARE-compatible function."
+    },
+    {
+      "text": "Response shows the Wikipedia REST API endpoint pattern",
+      "passed": true,
+      "evidence": "'https://en.wikipedia.org/api/rest_v1/page/summary/Rosh_Hashanah' -- correctly identifies the Wikipedia REST API summary endpoint"
+    },
+    {
+      "text": "Response mentions the WIKIPEDIA_ARTICLE_MAP lookup",
+      "passed": false,
+      "evidence": "No mention of any WIKIPEDIA_ARTICLE_MAP or lookup structure. Without the map, a developer would need to manually manage article title normalization (e.g., 'Rosh Hashana' vs 'Rosh_Hashanah')."
+    },
+    {
+      "text": "Response specifies the exact attribution text: 'Description via Wikipedia (CC BY-SA 3.0)'",
+      "passed": false,
+      "evidence": "Without-skill says 'From Wikipedia, the free encyclopedia' (Wikipedia's own attribution phrase) not 'Description via Wikipedia (CC BY-SA 3.0)' (the ARE-standard string). Different text -- would need to be updated to match the ARE standard."
+    }
+  ],
+  "summary": { "passed": 1, "failed": 3, "total": 4, "pass_rate": 0.25 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": ["Attribution string mismatch: 'From Wikipedia, the free encyclopedia' vs 'Description via Wikipedia (CC BY-SA 3.0)'. The ARE string is more specific and includes the license -- important for legal compliance."],
+    "workarounds": []
+  }
+}
