@@ -151,7 +151,7 @@ Skills loaded on demand are invoked correctly roughly half the time without a po
 
 ## Local Paths
 
-- **Windows**: `C:\Users\jamie\OKH-Local\Projects\skillz`
+- **Windows**: `C:\Users\jamie\OKH-Local\04_GitHub_Mirrors\skillz`
 - **Mac**: `/Volumes/OKH-Local/04_GitHub_Mirrors/skillz`
 
 ---
