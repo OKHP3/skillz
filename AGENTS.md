@@ -91,6 +91,7 @@ Skills loaded on demand are invoked correctly roughly half the time without a po
 | `docs/SECURITY.md` | The task could expose private, employer, proprietary, or unsafe execution behavior. |
 | `docs/CHANGELOG.md` | The task changes repo structure, skill maturity, or release-relevant documentation. |
 | `docs/BACKLOG.md` | The task concerns skill maturity levels, promotion priorities, or planned families. |
+| `docs/TECHNOLOGY-INVENTORY.md` | The task concerns runtimes, dependencies, version posture, or technology-update automation. |
 | `skillz.manifest.json` | Machine-readable repo metadata, family status, or external indexing is needed. |
 
 ---

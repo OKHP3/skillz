@@ -8,6 +8,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added technology inventory, explicit Mermaid CLI and PyYAML dependency declarations, Dependabot configuration, and scheduled version-inventory pull-request automation.
 - Added root `AGENTS.md` routing index for active and planned skills.
 - Added Mermaid family skeletons:
   - `okhp3-mermaid-core`

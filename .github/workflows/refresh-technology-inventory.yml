@@ -1,0 +1,38 @@
+name: Refresh technology inventory
+
+on:
+  schedule:
+    - cron: "17 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: .github/python-version
+
+      - name: Refresh latest-version inventory
+        run: python .github/scripts/refresh_technology_inventory.py
+
+      - name: Create update pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/technology-inventory
+          delete-branch: true
+          commit-message: "chore: refresh technology inventory"
+          title: "chore: refresh technology inventory"
+          body: |
+            Automated update of the technology inventory and CI runtime pins.
+
+            Review the runtime changes and let normal pull-request checks validate them before merging.

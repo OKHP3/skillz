@@ -1,0 +1,9 @@
+{
+  "name": "@okhp3/mermaid-publish-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "11.16.0"
+  }
+}
