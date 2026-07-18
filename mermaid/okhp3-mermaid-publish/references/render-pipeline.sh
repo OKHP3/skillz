@@ -39,9 +39,24 @@ if ! command -v npx >/dev/null 2>&1; then
   exit 2
 fi
 
-echo "Rendering $INPUT -> $OUTPUT (first run may take ~30s to fetch mermaid-cli)..."
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACKAGE_FILE="$SCRIPT_DIR/../package.json"
 
-if npx --yes @mermaid-js/mermaid-cli -i "$INPUT" -o "$OUTPUT"; then
+if [[ ! -f "$PACKAGE_FILE" ]]; then
+  echo "ERROR: Mermaid CLI package manifest not found at $PACKAGE_FILE" >&2
+  exit 1
+fi
+
+CLI_VERSION="$(node -p 'require(process.argv[1]).devDependencies["@mermaid-js/mermaid-cli"]' "$PACKAGE_FILE")"
+
+if [[ -z "$CLI_VERSION" || "$CLI_VERSION" == "undefined" ]]; then
+  echo "ERROR: @mermaid-js/mermaid-cli version is not declared in $PACKAGE_FILE" >&2
+  exit 1
+fi
+
+echo "Rendering $INPUT -> $OUTPUT with Mermaid CLI $CLI_VERSION (first run may take ~30s)..."
+
+if npx --yes "@mermaid-js/mermaid-cli@$CLI_VERSION" -i "$INPUT" -o "$OUTPUT"; then
   echo "OK: $OUTPUT written. Input preserved at $INPUT."
   echo "Next: view $OUTPUT and check against the audience profile (Gate 3)."
   exit 0

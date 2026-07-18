@@ -1,0 +1,29 @@
+{
+  "expectations": [
+    {
+      "text": "Response includes or references the getAstroSeason function",
+      "passed": true,
+      "evidence": "'The specific function for this requirement is getAstroSeason(date?)' -- correct function name, full TypeScript implementation provided"
+    },
+    {
+      "text": "Response shows the return shape with sign, emoji, element, dates",
+      "passed": true,
+      "evidence": "AstroSeason type explicitly shown: { sign: ZodiacSign, emoji: string, element: 'Fire'|'Earth'|'Air'|'Water', dates: string }"
+    },
+    {
+      "text": "Response confirms zero dependencies and client-side execution",
+      "passed": true,
+      "evidence": "'Zero Dependencies: The logic uses standard JavaScript Date objects and simple arithmetic. Client-Side: No API endpoints or network requests are required.'"
+    },
+    {
+      "text": "Response includes the ASTRO_SEASONS lookup table or a reference to it",
+      "passed": true,
+      "evidence": "Full ASTRO_SEASONS array provided with all 12 signs, emoji, elements, date strings, and startMD/endMD integer keys"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": { "uncertainties": [], "needs_review": [], "workarounds": [] }
+}

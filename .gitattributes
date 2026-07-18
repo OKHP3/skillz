@@ -1,0 +1,6 @@
+# Shell and automation files must remain executable and parse consistently on
+# Windows, macOS, Linux, and GitHub-hosted Linux runners.
+*.sh text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf

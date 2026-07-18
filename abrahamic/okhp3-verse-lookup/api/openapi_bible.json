@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API.Bible Passages",
+    "version": "1.0.0",
+    "description": "Retrieve passages from a specific Bible edition via the API.Bible service."
+  },
+  "servers": [
+    { "url": "https://api.scripture.api.bible" }
+  ],
+  "paths": {
+    "/v1/bibles/{bibleId}/passages": {
+      "get": {
+        "operationId": "get_bible_passage",
+        "parameters": [
+          {
+            "name": "bibleId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for a specific Bible translation (e.g., KJV or NABRE)."
+          },
+          {
+            "name": "reference",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Book, chapter, and verse (e.g., John 3:16)."
+          },
+          {
+            "name": "content-type",
+            "in": "query",
+            "schema": { "type": "string", "default": "json" }
+          }
+        ],
+        "security": [ { "ApiKeyHeader": [] } ],
+        "responses": {
+          "200": { "description": "A passage in JSON format." }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyHeader": {
+        "type": "apiKey",
+        "name": "api-key",
+        "in": "header",
+        "description": "Your API.Bible key. Replace with your actual key in the GPT builder."
+      }
+    }
+  }
+}

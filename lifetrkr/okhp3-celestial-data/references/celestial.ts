@@ -89,7 +89,16 @@ export function getAstroSeason(date: Date = new Date()): AstroSeason {
   return found ?? ASTRO_SEASONS[0]
 }
 
-// ─── Mercury Retrograde (hardcoded 2026–2028) ─────────────────────────────────
+// ─── Mercury Retrograde (hardcoded 2026-2031) ─────────────────────────────────
+// Sources:
+//   2026-2028 -- published ephemeris (original data set).
+//   2029      -- Cafe Astrology and cross-referenced sources (4 periods this year).
+//   2030      -- Astro-Seek Swiss Ephemeris planetary motion calendar; Dec period
+//                also confirmed by Cafe Astrology (station Rx Dec 6, sD Dec 25).
+//   2031      -- Astro-Seek Swiss Ephemeris (horoscopes.astro-seek.com/mercury-
+//                retrograde-astrology-calendar-2031; 6 station events confirmed).
+// Update this array annually. Note: 2029-12-22 entry straddles the year boundary
+//   (sD Jan 11, 2030) -- ISO string comparison handles this correctly.
 
 export const MERCURY_RETROGRADE = [
   { start: '2026-03-15', end: '2026-04-07' },
@@ -101,6 +110,16 @@ export const MERCURY_RETROGRADE = [
   { start: '2028-02-15', end: '2028-03-09' },
   { start: '2028-06-16', end: '2028-07-11' },
   { start: '2028-10-09', end: '2028-10-30' },
+  { start: '2029-01-07', end: '2029-01-27' }, // 2029 has 4 periods
+  { start: '2029-05-01', end: '2029-05-25' },
+  { start: '2029-09-02', end: '2029-09-25' },
+  { start: '2029-12-22', end: '2030-01-11' }, // straddles year; sD Jan 11 2030
+  { start: '2030-04-13', end: '2030-05-06' },
+  { start: '2030-08-16', end: '2030-09-08' },
+  { start: '2030-12-06', end: '2030-12-25' },
+  { start: '2031-03-26', end: '2031-04-18' },
+  { start: '2031-07-29', end: '2031-08-22' },
+  { start: '2031-11-19', end: '2031-12-09' },
 ]
 
 export function getMercuryStatus(

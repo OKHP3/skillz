@@ -1,0 +1,41 @@
+{
+  "skill_name": "okhp3-tradition-observance-calendar",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to add a religious observance calendar to my app that shows Jewish, Christian, and Islamic holidays for 2026. What APIs do I use and how do I normalize everything into a single event list?",
+      "expected_output": "Agent explains the three sources (Hebcal for Judaism, AlAdhan for Islam, Computus algorithm for Christianity), provides the ObservanceEvent interface, and shows the Promise.allSettled pattern for parallel fetching. Includes sorting by startDate.",
+      "files": [],
+      "expectations": [
+        "Response identifies all three data sources (Hebcal, AlAdhan, algorithm)",
+        "Response provides or references the ObservanceEvent unified interface",
+        "Response shows the parallel fetch pattern using Promise.allSettled",
+        "Response mentions that all three sources are free and require no API key"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "What is Western Easter in 2027? Also give me the Orthodox Easter date for 2027. I need to verify my Computus algorithm is correct.",
+      "expected_output": "Western Easter 2027: March 28. Orthodox Easter 2027: May 2. Agent should provide or reference the computeWesternEaster and computeOrthodoxEaster TypeScript functions, and note the 13-day Julian-to-Gregorian offset for the Orthodox calculation.",
+      "files": [],
+      "expectations": [
+        "Response gives the correct Western Easter 2027 date: March 28",
+        "Response gives the correct Orthodox Easter 2027 date: May 2",
+        "Response provides or references the Computus algorithm functions",
+        "Response mentions the 13-day offset for Julian-to-Gregorian conversion"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My user clicked on Rosh Hashanah in the calendar. I need to show them a description from Wikipedia. How do I fetch it and what attribution do I need to display?",
+      "expected_output": "Agent provides the getHolidayDescription() function using the Wikipedia REST API (en.wikipedia.org/api/rest_v1/page/summary). Shows the WIKIPEDIA_ARTICLE_MAP lookup for 'Rosh Hashanah'. Specifies the required attribution: 'Description via Wikipedia (CC BY-SA 3.0)' with a link.",
+      "files": [],
+      "expectations": [
+        "Response provides or references the getHolidayDescription function",
+        "Response shows the Wikipedia REST API endpoint pattern",
+        "Response mentions the WIKIPEDIA_ARTICLE_MAP lookup",
+        "Response specifies the exact attribution text: 'Description via Wikipedia (CC BY-SA 3.0)'"
+      ]
+    }
+  ]
+}

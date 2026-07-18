@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "Response includes or references the getMoonPhase function",
+      "passed": true,
+      "evidence": "Response opens with 'The getMoonPhase function is the core API for this requirement' and provides the full TypeScript implementation"
+    },
+    {
+      "text": "Response mentions the return fields: emoji, illumination, daysUntilNext",
+      "passed": true,
+      "evidence": "Return value explicitly includes { name, emoji, illumination, daysUntilNext } with exact field names matching the skill"
+    },
+    {
+      "text": "Response does not require a network call or external API",
+      "passed": true,
+      "evidence": "Response states: 'Offline: The logic is entirely mathematical and self-contained. It requires no network access once the code is loaded.'"
+    },
+    {
+      "text": "Response includes or references the Julian Date algorithm",
+      "passed": true,
+      "evidence": "toJulianDate helper function is provided with the complete implementation using 367*y formula from the skill"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {
+    "uncertainties": [],
+    "needs_review": [],
+    "workarounds": []
+  }
+}

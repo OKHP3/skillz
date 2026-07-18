@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-tradition-observance-calendar",
+    "skill_path": ".agents/skills/okhp3-tradition-observance-calendar",
+    "skill_version": "1.1.0",
+    "executor_model": "delegation-subagent",
+    "analyzer_model": "main-agent-grader",
+    "timestamp": "2026-06-26T00:00:00Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 1,
+    "note": "All 3 evals run via live delegation subagent executor + main-agent grader. No analytical stubs."
+  },
+
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "Multi-tradition holiday calendar for 2026",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 0.75, "passed": 3, "failed": 1, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response identifies all three data sources (Hebcal, AlAdhan, algorithm)", "passed": true, "evidence": "Hebcal, AlAdhan, and Computus algorithm all named" },
+        { "text": "Response provides or references the ObservanceEvent unified interface", "passed": true, "evidence": "Full ObservanceEvent TypeScript interface provided with all fields" },
+        { "text": "Response shows the parallel fetch pattern using Promise.allSettled", "passed": false, "evidence": "Executor used Promise.all not Promise.allSettled despite skill containing WARNING. Fixed: WARNING box added to skill body." },
+        { "text": "Response mentions that all three sources are free and require no API key", "passed": true, "evidence": "Hebcal: no API key. AlAdhan: free endpoint. Computus: client-side algorithm." }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "Multi-tradition holiday calendar for 2026",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 0.0, "passed": 0, "failed": 4, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response identifies all three data sources (Hebcal, AlAdhan, algorithm)", "passed": false, "evidence": "Recommended Calendarific API (PAID, requires API key) for Christian holidays instead of free Computus algorithm" },
+        { "text": "Response provides or references the ObservanceEvent unified interface", "passed": false, "evidence": "Used 'ReligiousEvent' interface (not ObservanceEvent) with different field types" },
+        { "text": "Response shows the parallel fetch pattern using Promise.allSettled", "passed": false, "evidence": "Used Promise.all" },
+        { "text": "Response mentions that all three sources are free and require no API key", "passed": false, "evidence": "Calendarific shown with api_key=YOUR_API_KEY -- requires paid subscription" }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "Western and Orthodox Easter 2027",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response gives the correct Western Easter 2027 date: March 28", "passed": true, "evidence": "'March 28, 2027' confirmed" },
+        { "text": "Response gives the correct Orthodox Easter 2027 date: May 2", "passed": true, "evidence": "'May 2, 2027' confirmed" },
+        { "text": "Response provides or references the Computus algorithm functions", "passed": true, "evidence": "Both computeWesternEaster and computeOrthodoxEaster provided with full implementations" },
+        { "text": "Response mentions the 13-day offset for Julian-to-Gregorian conversion", "passed": true, "evidence": "'Julian Computus with Gregorian offset (+13 days for the 20th/21st century)'" }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "Western and Orthodox Easter 2027",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 0.5, "passed": 2, "failed": 2, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response gives the correct Western Easter 2027 date: March 28", "passed": true, "evidence": "'March 28, 2027' -- correct from LLM training data" },
+        { "text": "Response gives the correct Orthodox Easter 2027 date: May 2", "passed": true, "evidence": "'May 2, 2027' -- correct from LLM training data" },
+        { "text": "Response provides or references the Computus algorithm functions", "passed": false, "evidence": "No function names or TypeScript implementations -- plain prose explanation" },
+        { "text": "Response mentions the 13-day offset for Julian-to-Gregorian conversion", "passed": false, "evidence": "Mentions Julian calendar but not the specific 13-day offset mechanism" }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "Wikipedia holiday description with attribution",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response provides or references the getHolidayDescription function", "passed": true, "evidence": "async function getHolidayDescription(rawName: string) provided with full implementation" },
+        { "text": "Response shows the Wikipedia REST API endpoint pattern", "passed": true, "evidence": "'GET https://en.wikipedia.org/api/rest_v1/page/summary/{article_title}'" },
+        { "text": "Response mentions the WIKIPEDIA_ARTICLE_MAP lookup", "passed": true, "evidence": "WIKIPEDIA_ARTICLE_MAP shown with 'Rosh Hashanah'/'Rosh Hashana' entries handling both spellings" },
+        { "text": "Response specifies the exact attribution text: 'Description via Wikipedia (CC BY-SA 3.0)'", "passed": true, "evidence": "'Attribution Text: Description via Wikipedia (CC BY-SA 3.0)' -- exact match" }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "Wikipedia holiday description with attribution",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": { "pass_rate": 0.25, "passed": 1, "failed": 3, "total": 4, "time_seconds": null, "tokens": null, "tool_calls": null, "errors": 0 },
+      "expectations": [
+        { "text": "Response provides or references the getHolidayDescription function", "passed": false, "evidence": "No function name. Conceptual description only." },
+        { "text": "Response shows the Wikipedia REST API endpoint pattern", "passed": true, "evidence": "'https://en.wikipedia.org/api/rest_v1/page/summary/Rosh_Hashanah' -- correct" },
+        { "text": "Response mentions the WIKIPEDIA_ARTICLE_MAP lookup", "passed": false, "evidence": "No WIKIPEDIA_ARTICLE_MAP or equivalent lookup structure mentioned" },
+        { "text": "Response specifies the exact attribution text: 'Description via Wikipedia (CC BY-SA 3.0)'", "passed": false, "evidence": "Says 'From Wikipedia, the free encyclopedia' -- different format, missing explicit CC BY-SA 3.0 license" }
+      ]
+    }
+  ],
+
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": { "mean": 0.92, "stddev": 0.14, "min": 0.75, "max": 1.0 },
+      "time_seconds": { "mean": null, "stddev": null, "min": null, "max": null },
+      "tokens": { "mean": null, "stddev": null, "min": null, "max": null }
+    },
+    "without_skill": {
+      "pass_rate": { "mean": 0.25, "stddev": 0.22, "min": 0.0, "max": 0.5 },
+      "time_seconds": { "mean": null, "stddev": null, "min": null, "max": null },
+      "tokens": { "mean": null, "stddev": null, "min": null, "max": null }
+    },
+    "delta": { "pass_rate": "+0.67", "time_seconds": "N/A", "tokens": "N/A" }
+  },
+
+  "notes": [
+    "All 3 evals: LIVE delegation subagent runs",
+    "Eval 1 with_skill 0.75: Promise.allSettled gap found -- executor used Promise.all. WARNING box added to skill.",
+    "Eval 1 without_skill 0.0: recommended Calendarific (PAID) -- highest-consequence failure in all 15 without-skill evals",
+    "Eval 2 without_skill 0.5: Easter dates correct from training data but no Computus function code",
+    "workspace: .agents/skills/okhp3-tradition-observance-calendar/workspace/iteration-1/"
+  ]
+}

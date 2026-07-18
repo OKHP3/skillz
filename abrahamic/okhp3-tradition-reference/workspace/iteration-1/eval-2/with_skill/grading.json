@@ -1,0 +1,29 @@
+{
+  "expectations": [
+    {
+      "text": "Response lists all four volumes of the Standard Works",
+      "passed": true,
+      "evidence": "Table shows all four: Holy Bible (KJV) 66 books, Book of Mormon 15 books, Doctrine and Covenants 138 sections, Pearl of Great Price 5 texts"
+    },
+    {
+      "text": "Response explains the isLdsBibleRef routing decision",
+      "passed": true,
+      "evidence": "'isLdsBibleRef(reference) checks the input against BIBLE_BOOK_PREFIXES' with full TypeScript code snippet showing the prefix-matching logic"
+    },
+    {
+      "text": "Response mentions scriptures.nephi.org for non-Bible Standard Works",
+      "passed": true,
+      "evidence": "'GET https://scriptures.nephi.org/verses/{encoded_reference}' -- correct endpoint with URL-encoding note"
+    },
+    {
+      "text": "Response mentions the graceful fallback for LDS API unavailability",
+      "passed": true,
+      "evidence": "LdsApiUnavailableError class named and the exact fallback message quoted"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": { "uncertainties": [], "needs_review": [], "workarounds": [] }
+}

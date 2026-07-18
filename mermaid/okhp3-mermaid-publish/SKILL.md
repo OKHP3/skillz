@@ -12,7 +12,7 @@ The output layer. Runs after core's Gate 1-3 validation.
 Use `references/render-pipeline.sh <path.mmd> [output.png]`. The script:
 
 - Checks for Node.js/npx and gives a clear, actionable error if missing — it does NOT fail silently or produce a confusing mmdc stack trace as the only signal
-- Runs `npx --yes @mermaid-js/mermaid-cli` (downloads mmdc ephemerally on first use, ~30s)
+- Runs the exact Mermaid CLI version declared in `package.json` (downloads mmdc ephemerally on first use, ~30s). Dependabot proposes version updates for review.
 - Never deletes the input `.mmd` or the output render. This directly addresses a defect found in mgranberry's community skill, which instructs deletion of "temporary" output after user approval — the rendered file is the deliverable, not scratch space
 
 If the script reports mmdc syntax errors, return to `okhp3-mermaid-core` Gate 1 — do not attempt to patch syntax here, this skill only renders.

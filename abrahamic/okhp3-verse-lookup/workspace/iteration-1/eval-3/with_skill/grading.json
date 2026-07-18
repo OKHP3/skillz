@@ -1,0 +1,29 @@
+{
+  "expectations": [
+    {
+      "text": "Response correctly identifies D&C 76:22 as a non-Bible LDS reference",
+      "passed": true,
+      "evidence": "'isLdsBibleRef returns true only for the 66 books of the Protestant Bible. Since D&C (Doctrine and Covenants) is not a Bible book, the function returns false.'"
+    },
+    {
+      "text": "Response explains isLdsBibleRef returns false for this reference",
+      "passed": true,
+      "evidence": "Explicitly stated: 'the function returns false' for D&C 76:22 because D&C is not in BIBLE_BOOK_PREFIXES"
+    },
+    {
+      "text": "Response identifies scriptures.nephi.org as the routing target",
+      "passed": true,
+      "evidence": "'routes the request to scriptures.nephi.org... path becomes /verses/D%26C%2076%3A22' -- correct URL encoding shown"
+    },
+    {
+      "text": "Response mentions LdsApiUnavailableError and the static fallback message",
+      "passed": true,
+      "evidence": "'throws an LdsApiUnavailableError' and quotes the exact fallback message directing to churchofjesuschrist.org/study/scriptures"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 },
+  "execution_metrics": {},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": { "uncertainties": [], "needs_review": [], "workarounds": [] }
+}
