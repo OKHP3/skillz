@@ -35,7 +35,11 @@ export interface Family {
 
 export interface Catalog {
   generatedAt: string;
+  sourceRepository: string;
+  sourceRef: string;
+  sourceCommit: string | null;
   skillCount: number;
+  familyCount: number;
   families: Family[];
   skills: Skill[];
 }

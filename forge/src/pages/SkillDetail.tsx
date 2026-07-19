@@ -3,7 +3,7 @@ import { useState } from 'react';
 import catalogData from '../data/catalog.json';
 import type { Catalog } from '../types/catalog';
 import { getRelatedSkills } from '../utils/search';
-import { copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
+import { copyInstallUrl as copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
 import { issueUrl, skillGitHubUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
 

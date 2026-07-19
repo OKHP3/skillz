@@ -23,6 +23,14 @@ Tokens in `forge/src/index.css`. Palette: `--color-bg: #11100e` (near-black), `-
 
 `/` `/explore` `/skills/:family/:skillName` `/stacks` `/stacks/:stackId` `/faq` `/contribute` `/activity`
 
+## HashRouter (required for GitHub Pages)
+
+The app uses `HashRouter` (not `BrowserRouter`). All share URLs must be `https://okhp3.github.io/skillz/#/...`. The `buildShareUrl(hashPath)` helper in `clipboard.ts` generates these correctly. Never use `window.location.origin + pathname` for share URLs — this generates broken links on GitHub Pages.
+
+## Analytics
+
+GA4 Measurement ID: `G-VJ1BKXS27H`. Initialized in `index.html` with `send_page_view: false`. Route-aware tracking via `AnalyticsTracker` in `App.tsx`. Never send raw search text — only `query_length_bucket` and `result_count_bucket` aggregates. All helpers in `src/utils/analytics.ts`.
+
 ## Why: adding React locally to forge/
 
 React and react-dom must be in `forge/package.json` directly — if installed globally via installLanguagePackages(), pnpm hoisting creates multiple React copies and BrowserRouter throws invalid hook call. Always install into forge/ explicitly.
