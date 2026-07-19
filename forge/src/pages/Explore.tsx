@@ -3,7 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import catalogData from '../data/catalog.json';
 import type { Catalog, FilterState, SearchResult, Maturity } from '../types/catalog';
 import { searchSkills, buildSearchIndex } from '../utils/search';
-import { copyInstallCommand, shareSkill, useFavorites } from '../utils/clipboard';
+import { copyInstallUrl as copyInstallCommand, shareSkill, useFavorites } from '../utils/clipboard';
 import Nav from '../components/layout/Nav';
 
 const catalog = catalogData as Catalog;

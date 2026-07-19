@@ -1,33 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+/* OverKill Hill P³™ canonical typography */
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Background / surfaces */
-  --color-bg: #11100e; /* near-black */
-  --color-bg-secondary: #1a1815;
-  --color-surface: #f7f3e8; /* warm bone-white */
-  --color-surface-hover: #ffffff;
-  --color-border-dark: #3a352a; /* thin industrial rules on dark */
-  --color-border-light: #d8d0c0; /* rules on light */
+  /* OverKill Hill P³™ palette */
+  --color-espresso: #2a2320;   /* primary dark background */
+  --color-teal: #1c3a34;       /* structural surfaces */
+  --color-olive: #676a2c;      /* secondary accent */
+  --color-ochre: #a06e28;      /* warm accent */
+  --color-rust: #5b3a27;       /* deep warm */
+  --color-orange: #c46a2c;     /* primary action */
+  --color-amber: #e6a03c;      /* highlight / hover */
+  --color-paper: #f6f2ee;      /* inspection panels / light surface */
 
-  /* Forge palette */
-  --color-copper: #c8702a;
-  --color-copper-light: #e08840;
-  --color-copper-dark: #a0501a;
-  --color-ember: #b84030;
-  
+  /* Semantic tokens */
+  --color-bg: var(--color-espresso);
+  --color-bg-secondary: #1f1b18;
+  --color-bg-teal: var(--color-teal);
+  --color-surface: var(--color-paper);
+  --color-surface-hover: #ffffff;
+  --color-border-dark: #3d3530;
+  --color-border-light: #d8cfc5;
+
+  /* Action / accent */
+  --color-copper: var(--color-orange);
+  --color-copper-light: var(--color-amber);
+  --color-copper-dark: var(--color-ochre);
+  --color-ember: #a83828;
+
   /* Text on dark */
-  --color-text-dark: #e8e0d0;
+  --color-text-dark: #ede7de;
   --color-text-muted-dark: #8a7e6e;
-  
+
   /* Text on light */
-  --color-text-light: #1c1916;
+  --color-text-light: #1e1916;
   --color-text-muted-light: #5a5248;
 
-  /* Steel blue accent */
-  --color-steel: #5a7898;
-  --color-steel-light: #7090b0;
+  /* Structural accent */
+  --color-steel: #4e7a8c;
+  --color-steel-light: #6a96aa;
 
-  /* Status / maturity */
+  /* Maturity — not color-only (badge also shows text) */
   --color-maturity-placeholder: #a09a90;
   --color-maturity-skeleton: #b09565;
   --color-maturity-draftable: #7a8a60;
@@ -35,9 +47,10 @@
   --color-maturity-validated: #457a9c;
   --color-maturity-published: #7a5ba0;
 
-  /* Typography */
-  --font-serif: 'Playfair Display', 'Georgia', serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* OverKill Hill P³™ typography */
+  --font-display: 'Alfa Slab One', 'Georgia', serif; /* major headings */
+  --font-serif: var(--font-display);                 /* alias for legacy refs */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Type scale */
@@ -66,10 +79,10 @@
   --sidebar-width: 280px;
   --nav-height: 72px;
 
-  /* Radius */
+  /* Radius — controlled, not rounded */
   --radius-sm: 2px;
-  --radius: 0px; /* Industrial -> sharp corners */
-  --radius-lg: 0px;
+  --radius: 2px;
+  --radius-lg: 4px;
 
   /* Transitions */
   --transition: 200ms ease;
@@ -99,8 +112,14 @@ body {
   outline-offset: 2px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 400; /* Alfa Slab One is single-weight */
+  line-height: 1.15;
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-sans);
   font-weight: 600;
   line-height: 1.2;
 }
@@ -151,20 +170,52 @@ input, select, textarea {
   padding: 0 var(--space-4);
 }
 .nav-wordmark {
-  font-family: var(--font-serif);
-  font-size: var(--text-h3);
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
   color: var(--color-text-dark);
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  text-decoration: none;
+  letter-spacing: 0.01em;
 }
-.nav-wordmark::before {
-  content: '';
+.nav-parent {
+  color: var(--color-text-muted-dark);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.nav-sep {
+  color: var(--color-border-dark);
+  font-weight: 300;
+  margin: 0 1px;
+}
+.nav-product {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--color-text-dark);
+  letter-spacing: 0.01em;
+}
+.nav-divider {
   display: block;
-  width: 12px;
-  height: 12px;
-  background: var(--color-copper);
+  width: 1px;
+  height: 16px;
+  background: var(--color-border-dark);
+}
+.nav-link-brand {
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-xs);
+  opacity: 0.7;
+}
+.nav-link-brand:hover {
+  opacity: 1;
+  color: var(--color-amber);
+}
+.nav-link-external {
+  color: var(--color-text-muted-dark);
 }
 .nav-links {
   display: flex;
@@ -253,7 +304,7 @@ input, select, textarea {
   border-color: var(--color-copper);
 }
 .btn-outline:hover {
-  background: rgba(200, 112, 42, 0.1);
+  background: rgba(196, 106, 44, 0.12);
 }
 .btn-ghost {
   background: transparent;
@@ -400,7 +451,7 @@ input, select, textarea {
 }
 .filter-btn[aria-pressed="true"] {
   color: var(--color-copper);
-  background: rgba(200, 112, 42, 0.1);
+  background: rgba(196, 106, 44, 0.12);
   font-weight: 500;
 }
 
@@ -599,7 +650,8 @@ input, select, textarea {
   padding: var(--space-4) 0;
   color: var(--color-text-dark);
   font-size: var(--text-h3);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
+  font-weight: 600;
   text-align: left;
 }
 .faq-item dd {
@@ -679,4 +731,187 @@ input, select, textarea {
 }
 .breadcrumb a {
   color: var(--color-copper);
+}
+
+/* Utilities */
+.btn-sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-sm);
+}
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-code);
+  background: var(--color-bg-secondary);
+  color: var(--color-steel-light);
+  padding: 1px var(--space-2);
+}
+.meta-pending {
+  color: var(--color-text-muted-dark);
+  font-style: italic;
+  font-size: var(--text-sm);
+}
+.tag-link {
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background: var(--color-bg-secondary);
+  color: var(--color-steel-light);
+  padding: 2px var(--space-2);
+  margin: 2px;
+  text-decoration: none;
+}
+.tag-link:hover {
+  color: var(--color-amber);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Compare page */
+[data-page="compare"] .page-header {
+  padding: var(--space-8) 0 var(--space-6);
+}
+.compare-controls {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  margin-bottom: var(--space-8);
+  position: relative;
+}
+.compare-add {
+  position: relative;
+  flex: 1;
+  max-width: 480px;
+}
+.compare-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dark);
+  list-style: none;
+  margin-top: 2px;
+}
+.compare-suggestion-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-text-dark);
+  font-size: var(--text-sm);
+  text-align: left;
+  gap: var(--space-4);
+}
+.compare-suggestion-btn:hover {
+  background: rgba(196, 106, 44, 0.12);
+}
+.suggest-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-dark);
+}
+.suggest-family {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-dark);
+}
+.compare-empty {
+  padding: var(--space-12) 0;
+  color: var(--color-text-muted-dark);
+}
+.compare-hint {
+  padding: var(--space-6) 0;
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-sm);
+}
+.compare-table-wrap {
+  overflow-x: auto;
+  margin-bottom: var(--space-16);
+}
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.compare-table th,
+.compare-table td {
+  border: 1px solid var(--color-border-dark);
+  padding: var(--space-3) var(--space-4);
+  vertical-align: top;
+  text-align: left;
+}
+.compare-table thead th {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted-dark);
+  font-weight: 500;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.compare-row-label {
+  width: 140px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+.compare-cell {
+  background: var(--color-surface);
+  color: var(--color-text-light);
+  min-width: 220px;
+}
+.compare-skill-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.compare-skill-name {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-light);
+  font-weight: 500;
+  word-break: break-all;
+}
+.compare-remove {
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-xs);
+  flex-shrink: 0;
+}
+.compare-remove:hover {
+  color: var(--color-ember);
+}
+.compare-list {
+  list-style: disc;
+  padding-left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--color-text-light);
+}
+.compare-companions {
+  display: flex;
+  flex-wrap: wrap;
+}
+.compare-github-link {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-steel-light);
+  text-decoration: none;
+}
+.compare-github-link:hover {
+  color: var(--color-amber);
 }

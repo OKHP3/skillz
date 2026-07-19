@@ -2,19 +2,25 @@
 /**
  * build-catalog.js
  * Walks the repo root, finds all SKILL.md files at depth <= 3,
- * parses YAML frontmatter + body sections, and outputs forge/src/data/catalog.json
+ * parses YAML frontmatter + body sections, and outputs forge/src/data/catalog.json.
+ *
+ * Excluded from catalog:
+ *   .agents/skills/  — project-local support skills (per AGENTS.md)
+ *   All other paths in SKIP_DIRS
  */
 
-import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
 import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..', '..');
 const OUTPUT = join(__dirname, '..', 'src', 'data', 'catalog.json');
 
-const GITHUB_BASE = 'https://github.com/OKHP3/skillz';
-const RAW_BASE = 'https://raw.githubusercontent.com/OKHP3/skillz/main';
+const GITHUB_REPO = 'OKHP3/skillz';
+const GITHUB_BASE = `https://github.com/${GITHUB_REPO}`;
+const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main`;
 
 const SKIP_DIRS = new Set([
   '.git', '.github', '.agents', '.claude', '.vscode', 'node_modules',
@@ -22,7 +28,23 @@ const SKIP_DIRS = new Set([
   '.nyc_output', 'attached_assets', 'docs', 'forge', '.local',
 ]);
 
-// ─── YAML frontmatter parser ─────────────────────────────────────────────────
+// ─── Provenance ───────────────────────────────────────────────────────────────
+
+function getGitCommit() {
+  try {
+    return execSync('git rev-parse --short HEAD', { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'] })
+      .toString().trim();
+  } catch { return null; }
+}
+
+function getGitRef() {
+  try {
+    return execSync('git rev-parse --abbrev-ref HEAD', { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'] })
+      .toString().trim();
+  } catch { return 'main'; }
+}
+
+// ─── YAML frontmatter parser ──────────────────────────────────────────────────
 
 function parseYamlFrontmatter(text) {
   const match = text.match(/^---\n([\s\S]*?)\n---/);
@@ -57,13 +79,11 @@ function parseYamlFrontmatter(text) {
       continue;
     }
 
-    // Remove surrounding quotes
     if ((val.startsWith('"') && val.endsWith('"')) ||
         (val.startsWith("'") && val.endsWith("'"))) {
       val = val.slice(1, -1);
     }
 
-    // Nested metadata.* — store under metadata sub-object
     const nestedMatch = line.match(/^\s+([a-zA-Z_-]+):\s*(.*)$/);
     if (nestedMatch) {
       if (!result.metadata) result.metadata = {};
@@ -144,7 +164,6 @@ function deriveMaturity(meta, body) {
   if (status.includes('skeleton') || status.includes('level 1')) return 'skeleton';
   if (status.includes('placeholder')) return 'placeholder';
 
-  // Heuristic from body length and section count
   const h2count = (body.match(/^## /gm) || []).length;
   const bodyLen = body.length;
   if (h2count >= 5 && bodyLen > 3000) return 'draftable';
@@ -182,6 +201,9 @@ function findSkillFiles(dir, depth = 0) {
 // ─── Build catalog ────────────────────────────────────────────────────────────
 
 function buildCatalog() {
+  const sourceCommit = getGitCommit();
+  const sourceRef = getGitRef();
+
   const skillFiles = findSkillFiles(REPO_ROOT);
   console.log(`Found ${skillFiles.length} SKILL.md files`);
 
@@ -193,7 +215,6 @@ function buildCatalog() {
     if (parts.length < 2) continue;
 
     const family = parts[0];
-    const skillDir = parts.length >= 3 ? parts[1] : parts[0];
     const skillName = parts.length >= 3 ? parts[1] : parts[0];
 
     let text;
@@ -220,14 +241,13 @@ function buildCatalog() {
 
     const githubUrl = `${GITHUB_BASE}/blob/main/${relPath}`;
     const rawUrl = `${RAW_BASE}/${relPath}`;
-    const repoPath = relPath;
 
     skills.push({
       name,
       displayName: name.replace(/^okhp3-/, '').replace(/-/g, ' '),
       family,
-      skillDir,
-      path: repoPath,
+      skillDir: skillName,
+      path: relPath,
       description,
       version,
       license,
@@ -246,14 +266,12 @@ function buildCatalog() {
       rawUrl,
       githubUrl,
       lastModified: null,
-      commitSha: null,
+      commitSha: sourceCommit,
     });
   }
 
-  // Sort: by family then name
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
 
-  // Build family summary
   const familyMap = {};
   for (const s of skills) {
     if (!familyMap[s.family]) familyMap[s.family] = { name: s.family, skillCount: 0, skills: [] };
@@ -261,16 +279,29 @@ function buildCatalog() {
     familyMap[s.family].skills.push(s.name);
   }
 
+  const familyList = Object.values(familyMap);
+
   const catalog = {
     generatedAt: new Date().toISOString(),
+    sourceRepository: `https://github.com/${GITHUB_REPO}`,
+    sourceRef,
+    sourceCommit,
     skillCount: skills.length,
-    families: Object.values(familyMap),
+    familyCount: familyList.length,
+    families: familyList,
     skills,
   };
 
   writeFileSync(OUTPUT, JSON.stringify(catalog, null, 2), 'utf-8');
   console.log(`✓ Written: ${OUTPUT}`);
-  console.log(`  ${skills.length} skills across ${Object.keys(familyMap).length} families`);
+  console.log(`  ${skills.length} skills across ${familyList.length} families`);
+  console.log(`  Source: ${sourceRef}@${sourceCommit ?? 'unknown'}`);
+
+  // CI verification: fail if catalog is empty
+  if (skills.length === 0) {
+    console.error('ERROR: Catalog is empty — build would deploy a broken site');
+    process.exit(1);
+  }
 }
 
 buildCatalog();
