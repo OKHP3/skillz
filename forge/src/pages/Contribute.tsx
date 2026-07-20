@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { bugReportUrl, newSkillUrl, improveSkillUrl, prUrl, discussionsUrl, repoUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
 
@@ -62,6 +63,11 @@ const ACTIONS = [
 ];
 
 export default function Contribute() {
+  useEffect(() => {
+    document.title = 'Contribute | Skillz Forge';
+    return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
+  }, []);
+
   return (
     <div data-page="contribute">
       <Nav />

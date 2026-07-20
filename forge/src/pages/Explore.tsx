@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import catalogData from '../data/catalog.json';
 import type { Catalog, FilterState, SearchResult, Maturity } from '../types/catalog';
 import { searchSkills, buildSearchIndex } from '../utils/search';
@@ -22,6 +22,12 @@ export default function Explore() {
   const [copied, setCopied] = useState<string | null>(null);
   const { isFavorite, toggleFavorite } = useFavorites();
   const [, forceUpdate] = useState(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = 'Explore Agent Skills | Skillz Forge';
+    return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
+  }, []);
 
   useEffect(() => {
     buildSearchIndex(catalog.skills);
@@ -52,6 +58,10 @@ export default function Explore() {
 
   async function handleShare(skill: (typeof catalog.skills)[0]) {
     await shareSkill(skill);
+  }
+
+  function handleCompare(skill: (typeof catalog.skills)[0]) {
+    navigate(`/compare?skills=${encodeURIComponent(skill.name)}`);
   }
 
   function handleFavorite(skillName: string) {
@@ -229,6 +239,7 @@ export default function Explore() {
                       {copied === skill.name ? 'Copied!' : 'Copy install'}
                     </button>
                     <button className="btn-ghost" style={{ fontSize: '0.875rem' }} onClick={() => handleShare(skill)} data-action="share">Share</button>
+                    <button className="btn-ghost" style={{ fontSize: '0.875rem' }} onClick={() => handleCompare(skill)} data-action="compare">Compare</button>
                     <button
                       className="btn-ghost"
                       style={{ fontSize: '0.875rem', color: isFavorite(skill.name) ? 'var(--color-copper)' : undefined }}

@@ -1,5 +1,5 @@
-import { useParams, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import catalogData from '../data/catalog.json';
 import type { Catalog } from '../types/catalog';
 import { getRelatedSkills } from '../utils/search';
@@ -24,6 +24,12 @@ export default function SkillDetail() {
   const [copied, setCopied] = useState<'install' | 'url' | null>(null);
   const { isFavorite, toggleFavorite } = useFavorites();
   const [, forceUpdate] = useState(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (skill) document.title = `${skill.name} | Skillz Forge`;
+    return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
+  }, [skill?.name]);
 
   if (!skill) {
     return (
@@ -100,6 +106,7 @@ export default function SkillDetail() {
               Open on GitHub
             </a>
             <button className="btn-ghost" onClick={handleShare}>Share</button>
+            <button className="btn-ghost" onClick={() => navigate(`/compare?skills=${encodeURIComponent(skill!.name)}`)}>Compare</button>
             <button
               className="btn-ghost"
               onClick={handleFavorite}
