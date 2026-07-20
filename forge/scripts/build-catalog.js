@@ -38,9 +38,12 @@ function getGitCommit() {
 }
 
 function getGitRef() {
+  // GitHub Actions sets GITHUB_REF_NAME (e.g. "main"); use it to avoid detached-HEAD "HEAD" value
+  if (process.env.GITHUB_REF_NAME) return process.env.GITHUB_REF_NAME;
   try {
-    return execSync('git rev-parse --abbrev-ref HEAD', { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'] })
+    const ref = execSync('git rev-parse --abbrev-ref HEAD', { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'] })
       .toString().trim();
+    return ref === 'HEAD' ? 'main' : ref;
   } catch { return 'main'; }
 }
 

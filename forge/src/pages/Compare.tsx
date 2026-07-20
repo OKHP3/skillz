@@ -44,18 +44,20 @@ export default function Compare() {
   const [addQuery, setAddQuery] = useState('');
   const [copied, setCopied] = useState(false);
 
-  const skillNames = (searchParams.get('skills') || '').split(',').filter(Boolean);
+  const MAX = 4;
+
+  const skillNames = (searchParams.get('skills') || '').split(',').filter(Boolean).slice(0, MAX);
   const skills = skillNames
     .map(n => catalog.skills.find(s => s.name === n))
     .filter((s): s is Skill => Boolean(s));
 
-  const MAX = 4;
+  useEffect(() => {
+    document.title = 'Compare Skills | Skillz Forge';
+    return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
+  }, []);
 
   useEffect(() => {
-    if (skills.length > 0) {
-      trackCompareOpen(skills.length);
-      document.title = `Compare Skills | Skillz Forge`;
-    }
+    if (skills.length > 0) trackCompareOpen(skills.length);
   }, [skills.length]);
 
   function addSkill(name: string) {
