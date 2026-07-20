@@ -1,13 +1,72 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-color-scheme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Skillz Forge — Find the skill for the work in front of you</title>
-    <meta name="description" content="Search the open catalog of reusable agent capabilities. Filter by what matters to your task, then open, stack, install, and ship." />
-    <meta property="og:title" content="Skillz Forge" />
-    <meta property="og:description" content="Find the skill for the work in front of you. Open catalog of reusable Agent Skills for Claude, Copilot, Cursor, Gemini, and more." />
+
+    <!-- Favicon -->
+    <link rel="icon" href="%BASE_URL%assets/skillz-forge-icon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="%BASE_URL%assets/apple-touch-icon.png" />
+
+    <!-- Identity -->
+    <title>Skillz Forge | OverKill Hill P³™</title>
+    <meta name="description" content="Find, inspect, compose, install, and improve reusable Agent Skills from the OverKill Hill P³™ forge." />
+    <meta name="author" content="OverKill Hill P³™" />
+    <meta name="creator" content="OverKill Hill P³™" />
+    <meta name="publisher" content="OverKill Hill P³™" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://okhp3.github.io/skillz/" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#2a2320" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://okhp3.github.io/skillz/" />
+    <meta property="og:title" content="Skillz Forge | OverKill Hill P³™" />
+    <meta property="og:description" content="Find, inspect, compose, install, and improve reusable Agent Skills from the OverKill Hill P³™ forge." />
+    <meta property="og:image" content="%BASE_URL%assets/skillz-forge-social-preview.png" />
+    <meta property="og:site_name" content="OverKill Hill P³™" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Skillz Forge | OverKill Hill P³™" />
+    <meta name="twitter:description" content="Find, inspect, compose, install, and improve reusable Agent Skills from the OverKill Hill P³™ forge." />
+    <meta name="twitter:image" content="%BASE_URL%assets/skillz-forge-social-preview.png" />
+
+    <!-- Fonts: OverKill Hill canonical typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- Google Analytics 4 — G-VJ1BKXS27H -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VJ1BKXS27H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      // SPA: disable automatic page_view — React router sends them
+      gtag('config', 'G-VJ1BKXS27H', { send_page_view: false });
+    </script>
+
+    <!-- JSON-LD: truthful entity only -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Skillz Forge",
+      "description": "Find, inspect, compose, install, and improve reusable Agent Skills from the OverKill Hill P³™ forge.",
+      "url": "https://okhp3.github.io/skillz/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "OverKill Hill P³™",
+        "url": "https://overkillhill.com/"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="app"></div>

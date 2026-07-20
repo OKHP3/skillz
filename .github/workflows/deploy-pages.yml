@@ -49,7 +49,27 @@ jobs:
         working-directory: forge
         run: pnpm install --frozen-lockfile
 
-      - name: Build Skillz Forge
+      - name: Generate skill catalog
+        working-directory: forge
+        run: node scripts/build-catalog.js
+
+      - name: Verify catalog provenance
+        working-directory: forge
+        run: |
+          node -e "
+            const c = require('./src/data/catalog.json');
+            let ok = true;
+            if (!c.skillCount || c.skillCount === 0) { console.error('FAIL: Empty catalog'); ok = false; }
+            if (!c.sourceRepository) { console.error('FAIL: Missing sourceRepository'); ok = false; }
+            if (!c.familyCount || c.familyCount === 0) { console.error('FAIL: Missing or zero familyCount'); ok = false; }
+            if (!c.sourceCommit) { console.error('FAIL: Missing sourceCommit'); ok = false; }
+            if (!c.sourceRef || c.sourceRef === 'HEAD') { console.error('FAIL: sourceRef is HEAD or missing (detached HEAD in CI)'); ok = false; }
+            if (!ok) process.exit(1);
+            console.log('Catalog OK:', c.skillCount, 'skills,', c.familyCount, 'families');
+            console.log('Source:', c.sourceRepository, '@', c.sourceRef, c.sourceCommit);
+          "
+
+      - name: Type-check and build
         working-directory: forge
         run: pnpm run build
 
