@@ -98,7 +98,7 @@ FAMILIES_TABLE_END   = "<!-- FAMILIES_TABLE_END -->"
 FULL_SKIP = frozenset({
     ".git", ".github", ".agents", ".claude", ".vscode",
     "node_modules", "__pycache__", ".venv", "venv",
-    "dist", "build", "coverage", ".nyc_output", "attached_assets",
+    "dist", "build", "coverage", ".nyc_output", "attached_assets", "forge",
     "docs",
 })
 
@@ -397,7 +397,8 @@ def write_family_md(
 
     now      = datetime.now(timezone.utc)
     now_iso  = now.strftime("%Y-%m-%dT%H:%M:%SZ")
-    now_disp = now.strftime("%B %-d, %Y at %H:%M UTC")
+    day      = now.strftime("%d").lstrip("0")
+    now_disp = f"{now.strftime('%B')} {day}, {now.strftime('%Y at %H:%M UTC')}"
     n        = len(skills)
 
     bio     = ""
@@ -676,7 +677,8 @@ def _library_sections(skills: list[dict]) -> str:
 def build_block(skills: list[dict], mode: str, full: bool = False) -> str:
     now      = datetime.now(timezone.utc)
     now_iso  = now.strftime("%Y-%m-%d %H:%M UTC")
-    now_disp = now.strftime("%B %-d, %Y at %H:%M UTC")
+    day      = now.strftime("%d").lstrip("0")
+    now_disp = f"{now.strftime('%B')} {day}, {now.strftime('%Y at %H:%M UTC')}"
     n        = len(skills)
     sw       = "skill" if n == 1 else "skills"
     cats     = len({s["category"] for s in skills})
@@ -976,7 +978,9 @@ def main() -> int:
     # ── Write Families table into root README.md ──────────────────────────────
     if args.full:
         families_list = discover_all_families(scan_root, skills)
-        now_disp = datetime.now(timezone.utc).strftime("%B %-d, %Y at %H:%M UTC")
+        now = datetime.now(timezone.utc)
+        day = now.strftime("%d").lstrip("0")
+        now_disp = f"{now.strftime('%B')} {day}, {now.strftime('%Y at %H:%M UTC')}"
         fam_block = build_families_table(families_list, now_disp)
         fam_changed, fam_content = inject_families_table(output, fam_block)
         if fam_changed:
