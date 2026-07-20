@@ -1,0 +1,26 @@
+{
+  "name": "Skillz Forge by OverKill Hill",
+  "short_name": "Skillz Forge",
+  "description": "Discover, inspect, compose, install, and share portable agent skills from OverKill Hill.",
+  "lang": "en-US",
+  "start_url": "/skillz/#/",
+  "scope": "/skillz/",
+  "display": "standalone",
+  "background_color": "#2a2320",
+  "theme_color": "#2a2320",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/skillz/assets/skillz-forge-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/skillz/assets/skillz-forge-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
