@@ -44,6 +44,8 @@ routing-anchors.private.md
 
 Use `references/routing-anchors.md` for the public role contract and expected anchor types.
 
+For repository context, `references/notion-export-skillz-strategy.md` contains a redacted, public-safe export of the private strategy page. It intentionally does not contain private Notion URLs, IDs, or anchor mappings.
+
 ## Core workflow
 
 ### 1. Load the anchor map
@@ -216,6 +218,7 @@ If write access is unavailable, produce the exact rows that should be created an
 Load these only when needed:
 
 - `references/routing-anchors.md`: anchor role contract and private URL handling.
+- `references/notion-export-skillz-strategy.md`: redacted public-safe export of the repository strategy context.
 - `references/output-contract.md`: exact field mapping and capture report rules.
 - `references/platform-variants.md`: ChatGPT, Claude, Perplexity, Copilot, Gemini, and PDF handling.
 - `references/final-check.md`: final self-check before writing or reporting.
