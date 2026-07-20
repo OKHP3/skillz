@@ -13,6 +13,10 @@ export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    document.title = 'Skillz Forge | OverKill Hill P³™';
+  }, []);
+
+  useEffect(() => {
     buildSearchIndex(catalog.skills);
   }, []);
 

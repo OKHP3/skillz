@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FAQ_GROUPS } from '../data/faq';
 import Nav from '../components/layout/Nav';
 
 export default function FAQ() {
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    document.title = 'FAQ | Skillz Forge';
+    return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
+  }, []);
 
   function toggleItem(id: string) {
     setOpen(prev => {

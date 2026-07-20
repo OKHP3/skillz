@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { STACKS } from '../data/stacks';
 import { shareStack, copyToClipboard } from '../utils/clipboard';
 import catalogData from '../data/catalog.json';
@@ -15,6 +15,10 @@ function getSkillsForStack(skillNames: string[]) {
 }
 
 export default function Stacks() {
+  useEffect(() => {
+    document.title = 'Stacks | Skillz Forge';
+    return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
+  }, []);
   const [copied, setCopied] = useState<string | null>(null);
 
   async function handleCopyAll(stackId: string, skillNames: string[]) {
