@@ -50,6 +50,22 @@ For detailed reference on any section, consult the corresponding file in `refere
 
 A Custom GPT is a **configured product surface** around a model: prompt + persona + rules + files + tools + UX wrapper + sharing model. Not a new model. Not fine-tuning. Not automatically an autonomous agent. It is a packaged, reusable ChatGPT configuration for a specific job.
 
+## FoundRy composition
+
+Use the companion skills below to keep Custom GPT work evidence-led and portable:
+
+| Situation | Load first or next |
+|---|---|
+| New idea, incomplete concept, scattered material, or uncertain GPT value | `okhp3-custom-gpt-readiness` before this skill |
+| Confirmed build brief and readiness verdict | This skill for design, instruction authoring, knowledge strategy, testing, and platform configuration |
+| Existing GPT needs a portable Agent Skill path | `okhp3-custom-gpt-skill-conversion-planner` |
+| Converted Skill Foundry brief is approved | `okhp3-skill-foundry` |
+| A governed child repository is required | `okhp3-foundry-repo-creator` |
+
+Do not use this builder to bypass readiness work. Its Step 0 Build Brief is the
+execution handoff from `okhp3-custom-gpt-readiness`, not a substitute for a
+source-material, privacy, and value assessment.
+
 ## Build Pipeline
 
 ### Step 0: Write a Build Brief (Required Before Anything Else)

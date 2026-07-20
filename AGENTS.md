@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 56 distribution skills in 9 active families, 2 placeholder family directories, and 6 project-local support skills under `.agents/skills/`
+- **Current inventory:** 58 distribution skills in 9 active families, 2 placeholder family directories, and 6 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -150,6 +150,8 @@ These are general-purpose or imported skills. Prefer the narrower OKHP3 family s
 |---|---|
 | `okhp3-cloudflare-worker-api-proxy` | Keep an API key server-side while proxying calls from a static frontend through a Cloudflare Worker. |
 | `okhp3-custom-gpt-builder` | Create, audit, test, improve, compare, document, or package a Custom GPT or related reusable AI workflow. Verify current platform facts before stating them as definitive. |
+| `okhp3-custom-gpt-readiness` | Assess a new or incomplete Custom GPT concept, inventory the available evidence, identify specific gaps, and create the build handoff for `okhp3-custom-gpt-builder`. |
+| `okhp3-custom-gpt-skill-conversion-planner` | Assess an existing Custom GPT for Agent Skill conversion, map its assets and semantic coverage, and create the handoff for `okhp3-skill-foundry`. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |

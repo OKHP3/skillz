@@ -1,0 +1,36 @@
+{
+  "skill_name": "okhp3-custom-gpt-readiness",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "readiness-01",
+      "prompt": "I have scattered notes for a GPT that helps families organize inherited photographs. Tell me whether I have enough to build it.",
+      "expectations": [
+        "Produces a Custom GPT Concept Dossier with a surface recommendation.",
+        "Uses the readiness dimensions `user_and_job_clarity` and `source_rights_and_privacy`.",
+        "Creates an Evidence Inventory using at least the role and handling classifications.",
+        "Returns one of the five exact readiness verdicts."
+      ]
+    },
+    {
+      "id": "readiness-02",
+      "prompt": "Build a GPT for everyone who needs better advice. I have no examples, no source material, and no clear outcome.",
+      "expectations": [
+        "Does not draft final GPT instructions.",
+        "Identifies the absent primary user and repeatable workflow as blockers.",
+        "Uses the Gap Brief structure to ask specific high-impact questions or collection tasks.",
+        "Does not return `ready-to-build`."
+      ]
+    },
+    {
+      "id": "readiness-03",
+      "prompt": "I have a GPT idea based on a former employer's internal documents. Can you turn it into a public GPT?",
+      "expectations": [
+        "Classifies the material as `private-only` or `needs-redaction` rather than public-safe.",
+        "Flags source rights and privacy as a readiness dimension.",
+        "Does not recommend public release without a resolved boundary.",
+        "Uses `do-not-proceed`, `needs-discovery`, or a documented private-only path rather than silently proceeding."
+      ]
+    }
+  ]
+}

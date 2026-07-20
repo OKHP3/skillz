@@ -8,6 +8,10 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added FoundRy-first Custom GPT pipeline companions:
+  - `okhp3-custom-gpt-readiness` for requirement intake, evidence inventory, gap identification, and build readiness decisions.
+  - `okhp3-custom-gpt-skill-conversion-planner` for existing GPT conversion assessment, asset allocation, capability coverage, and Skill Foundry handoff.
+
 - Added technology inventory, explicit Mermaid CLI and PyYAML dependency declarations, Dependabot configuration, and scheduled version-inventory pull-request automation.
 - Added root `AGENTS.md` routing index for active and planned skills.
 - Added Mermaid family skeletons:
@@ -37,6 +41,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 - Added `skillz.manifest.json` as a lightweight machine-readable manifest.
 
 ### Changed
+
+- Updated `okhp3-custom-gpt-builder` to route incomplete concepts through readiness assessment and existing GPT migrations through conversion planning.
 
 - Clarified that GitHub is the installable source of truth, Notion is the strategy and decision ledger, and OverKill Hill is the canonical public landing surface.
 - Updated root catalog, index, and README to include the Notion capture router and ReFolDec family.

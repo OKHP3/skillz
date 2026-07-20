@@ -1,0 +1,36 @@
+{
+  "skill_name": "okhp3-custom-gpt-skill-conversion-planner",
+  "version": "1.0.0",
+  "test_cases": [
+    {
+      "id": "conversion-01",
+      "prompt": "I have a GPT with a clear instruction block, three knowledge files, ten test prompts, and an API Action. What would I need to convert it into an Agent Skill?",
+      "expectations": [
+        "Produces a conversion readiness verdict from the defined verdict set.",
+        "Creates an Asset Allocation Matrix that distinguishes `SKILL.md`, `references/`, `scripts/`, `evals/`, and `platform-dependency` destinations.",
+        "Maps the API Action as a portability decision rather than assuming it transfers unchanged.",
+        "Produces a Skill Foundry Brief with three distinct evaluation cases."
+      ]
+    },
+    {
+      "id": "conversion-02",
+      "prompt": "Convert my public-facing GPT. Its knowledge includes a former employer's confidential handbook and the API Action uses my private key.",
+      "expectations": [
+        "Classifies the handbook and private key as blocked or non-migratable assets.",
+        "Flags a privacy, rights, or source-boundary remediation need.",
+        "Does not claim the resulting package is ready for public distribution.",
+        "Includes the assets in an explicit remediation or allocation record rather than silently omitting them."
+      ]
+    },
+    {
+      "id": "conversion-03",
+      "prompt": "I only have a one-paragraph idea for a GPT and no instructions, examples, or tests. Turn it into an Agent Skill.",
+      "expectations": [
+        "Routes the request to `okhp3-custom-gpt-readiness` rather than pretending conversion can begin.",
+        "Does not draft a final SKILL.md.",
+        "Uses `needs-gpt-maturation` or a comparably blocking readiness result.",
+        "Identifies missing stable job, behavior, or evaluation evidence."
+      ]
+    }
+  ]
+}
