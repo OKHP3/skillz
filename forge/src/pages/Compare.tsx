@@ -8,6 +8,12 @@ import { trackCompareOpen } from '../utils/analytics';
 
 const catalog = catalogData as unknown as Catalog;
 
+function renderList(value: unknown) {
+  const items = value as string[];
+  if (!items?.length) return <span className="meta-pending">Metadata pending</span>;
+  return <ul className="compare-list">{items.slice(0, 6).map((item, i) => <li key={i}>{item}</li>)}</ul>;
+}
+
 const COMPARE_FIELDS: Array<{ key: keyof Skill; label: string; render?: (v: unknown, s: Skill) => React.ReactNode }> = [
   { key: 'description', label: 'Purpose' },
   { key: 'family', label: 'Family', render: (v) => <code className="mono-tag">{String(v)}</code> },
@@ -27,6 +33,11 @@ const COMPARE_FIELDS: Array<{ key: keyof Skill; label: string; render?: (v: unkn
     if (!items?.length) return <span className="meta-pending">Metadata pending</span>;
     return <ul className="compare-list">{items.slice(0, 3).map((t, i) => <li key={i}>{t}</li>)}</ul>;
   }},
+  { key: 'inputs', label: 'Inputs', render: renderList },
+  { key: 'outputs', label: 'Outputs', render: renderList },
+  { key: 'tools', label: 'Tools', render: renderList },
+  { key: 'runtimes', label: 'Runtimes', render: renderList },
+  { key: 'boundaries', label: 'Boundaries', render: renderList },
   { key: 'companions', label: 'Companion skills', render: (v) => {
     const items = v as string[];
     if (!items?.length) return <span className="meta-pending">—</span>;

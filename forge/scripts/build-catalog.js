@@ -50,13 +50,29 @@ function getGitRef() {
 // ─── YAML frontmatter parser ──────────────────────────────────────────────────
 
 function parseYamlFrontmatter(text) {
-  const match = text.match(/^---\n([\s\S]*?)\n---/);
+  const normalizedText = text.replace(/\r\n/g, '\n');
+  const match = normalizedText.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return {};
   const yaml = match[1];
   const result = {};
+  const listKeys = new Set(['tags', 'tools', 'inputs', 'outputs', 'runtimes', 'boundaries', 'topics']);
   let currentKey = null;
   let inMultiline = false;
   let multilineLines = [];
+  let inList = false;
+  let listItems = [];
+
+  function finishMultiline() {
+    if (inMultiline && currentKey) result[currentKey] = multilineLines.join(' ').trim();
+    inMultiline = false;
+    multilineLines = [];
+  }
+
+  function finishList() {
+    if (inList && currentKey) result[currentKey] = listItems;
+    inList = false;
+    listItems = [];
+  }
 
   for (const line of yaml.split('\n')) {
     if (inMultiline) {
@@ -64,9 +80,22 @@ function parseYamlFrontmatter(text) {
         multilineLines.push(line.trim());
         continue;
       } else {
-        result[currentKey] = multilineLines.join(' ').trim();
-        inMultiline = false;
-        multilineLines = [];
+        finishMultiline();
+      }
+    }
+
+    if (inList) {
+      const itemMatch = line.match(/^\s*-\s+(.*)$/);
+      if (itemMatch) {
+        let item = itemMatch[1].trim();
+        if ((item.startsWith('"') && item.endsWith('"')) ||
+            (item.startsWith("'") && item.endsWith("'"))) {
+          item = item.slice(1, -1);
+        }
+        listItems.push(item);
+        continue;
+      } else {
+        finishList();
       }
     }
 
@@ -75,10 +104,22 @@ function parseYamlFrontmatter(text) {
     const key = kvMatch[1];
     let val = kvMatch[2].trim();
 
-    if (val === '>') {
+    if (key === 'metadata' && val === '') {
+      result.metadata = result.metadata || {};
+      continue;
+    }
+
+    if (val.startsWith('>') || val.startsWith('|')) {
       currentKey = key;
       inMultiline = true;
       multilineLines = [];
+      continue;
+    }
+
+    if (val === '' && listKeys.has(key)) {
+      currentKey = key;
+      inList = true;
+      listItems = [];
       continue;
     }
 
@@ -101,9 +142,8 @@ function parseYamlFrontmatter(text) {
 
     result[key] = val;
   }
-  if (inMultiline && currentKey) {
-    result[currentKey] = multilineLines.join(' ').trim();
-  }
+  finishMultiline();
+  finishList();
   return result;
 }
 
@@ -155,6 +195,18 @@ function extractExamples(body) {
     'Examples', 'Example', 'Sample invocations', 'Sample', 'Worked example',
   ]);
   return extractListItems(section).slice(0, 5);
+}
+
+function normalizeList(value) {
+  if (Array.isArray(value)) return value.filter(Boolean).map(String);
+  if (typeof value === 'string' && value.trim()) return [value.trim()];
+  return [];
+}
+
+function extractCapability(body, frontmatter, key, headings) {
+  const declared = normalizeList(frontmatter[key]);
+  if (declared.length) return declared;
+  return extractListItems(extractSection(body, headings));
 }
 
 // ─── Maturity derivation ──────────────────────────────────────────────────────
@@ -223,9 +275,10 @@ function buildCatalog() {
     let text;
     try { text = readFileSync(filePath, 'utf-8'); } catch { continue; }
 
-    const fm = parseYamlFrontmatter(text);
-    const bodyStart = text.indexOf('\n---\n', 4);
-    const body = bodyStart >= 0 ? text.slice(bodyStart + 5).trim() : text;
+    const normalizedText = text.replace(/\r\n/g, '\n');
+    const fm = parseYamlFrontmatter(normalizedText);
+    const bodyStart = normalizedText.indexOf('\n---\n', 4);
+    const body = bodyStart >= 0 ? normalizedText.slice(bodyStart + 5).trim() : normalizedText;
 
     const name = fm.name || skillName;
     const description = fm.description || '';
@@ -241,6 +294,11 @@ function buildCatalog() {
     const avoid = extractAvoid(body);
     const companions = extractCompanions(body).filter(c => c !== name);
     const examples = extractExamples(body);
+    const inputs = extractCapability(body, fm, 'inputs', ['Inputs', 'Input', 'What it needs']);
+    const outputs = extractCapability(body, fm, 'outputs', ['Outputs', 'Output', 'What it produces']);
+    const tools = extractCapability(body, fm, 'tools', ['Tools', 'Tooling']);
+    const runtimes = extractCapability(body, fm, 'runtimes', ['Runtimes', 'Runtime', 'Compatibility']);
+    const boundaries = extractCapability(body, fm, 'boundaries', ['Boundaries', 'Scope', 'Out of scope']);
 
     const githubUrl = `${GITHUB_BASE}/blob/main/${relPath}`;
     const rawUrl = `${RAW_BASE}/${relPath}`;
@@ -266,6 +324,11 @@ function buildCatalog() {
       avoid,
       companions,
       examples,
+      inputs,
+      outputs,
+      tools,
+      runtimes,
+      boundaries,
       rawUrl,
       githubUrl,
       lastModified: null,

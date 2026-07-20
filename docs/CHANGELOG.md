@@ -38,6 +38,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Generalized `okhp3-notion-capture-router` from a personal-workspace capture workflow into a platform-neutral Notion export and API/connector usage contract for pages, databases, and data sources.
 - Clarified that GitHub is the installable source of truth, Notion is the strategy and decision ledger, and OverKill Hill is the canonical public landing surface.
 - Updated root catalog, index, and README to include the Notion capture router and ReFolDec family.
 - Merged `CLAUDE.md` into `AGENTS.md`; deleted `CLAUDE.md`.

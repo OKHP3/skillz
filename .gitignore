@@ -4,6 +4,7 @@
 *.pdf
 !assets/**/*.png
 !assets/**/*.svg
+!forge/public/assets/*.png
 
 # Node (mermaid-cli via npx)
 node_modules/

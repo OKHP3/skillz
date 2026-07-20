@@ -21,6 +21,11 @@ export interface Skill {
   avoid: string[];
   companions: string[];
   examples: string[];
+  inputs: string[];
+  outputs: string[];
+  tools: string[];
+  runtimes: string[];
+  boundaries: string[];
   rawUrl: string;
   githubUrl: string;
   lastModified: string | null;
