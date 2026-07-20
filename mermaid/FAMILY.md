@@ -2,7 +2,7 @@
 family: mermaid
 skill_count: 9
 generated_by: okhp3-skill-cataloger v1.4.0
-generated_at: 2026-06-24T04:12:36Z
+generated_at: 2026-07-20T20:37:20Z
 ---
 
 # mermaid
@@ -155,7 +155,7 @@ Nine skills. One foundation, four domain skills, one publish layer, one update s
 ## Skills (9)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **June 24, 2026 at 04:12 UTC***
+*9 skills &nbsp;·&nbsp; inventory last updated: **July 20, 2026 at 20:37 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
