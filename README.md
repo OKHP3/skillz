@@ -1,6 +1,6 @@
 # OKHP3/skillz
 
-![Skillz Forge](forge/public/assets/skillz-forge-social-preview.png)
+![Skillz Forge](forge/public/assets/skillz-forge-social-preview.jpg)
 
 **Agent Skills by OverKill Hill P³™.** Gotta have the skillz to pay the bills.
 
@@ -272,7 +272,7 @@ The branded image kit lives under [`forge/public/assets/`](forge/public/assets/)
 
 | Asset | Intended use |
 |---|---|
-| [`skillz-forge-social-preview.png`](forge/public/assets/skillz-forge-social-preview.png) | GitHub repository social preview and Open Graph image, 1200×630. |
+| [`skillz-forge-social-preview.jpg`](forge/public/assets/skillz-forge-social-preview.jpg) | GitHub repository social preview, Open Graph, and X card, 1200×630, 142 KB. |`n| [`skillz-forge-social-preview.png`](forge/public/assets/skillz-forge-social-preview.png) | Lossless 1200×630 fallback for local composition and future crops. |
 | [`skillz-forge-social-art.png`](forge/public/assets/skillz-forge-social-art.png) | Wide source artwork for future crops or branded page compositions, 1536×1024. |
 | [`skillz-forge-icon-512.png`](forge/public/assets/skillz-forge-icon-512.png) | PWA install icon, 512×512. |
 | [`skillz-forge-icon-192.png`](forge/public/assets/skillz-forge-icon-192.png) | PWA install icon, 192×192. |
