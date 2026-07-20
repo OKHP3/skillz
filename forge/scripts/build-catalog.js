@@ -2,19 +2,25 @@
 /**
  * build-catalog.js
  * Walks the repo root, finds all SKILL.md files at depth <= 3,
- * parses YAML frontmatter + body sections, and outputs forge/src/data/catalog.json
+ * parses YAML frontmatter + body sections, and outputs forge/src/data/catalog.json.
+ *
+ * Excluded from catalog:
+ *   .agents/skills/  — project-local support skills (per AGENTS.md)
+ *   All other paths in SKIP_DIRS
  */
 
-import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
 import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..', '..');
 const OUTPUT = join(__dirname, '..', 'src', 'data', 'catalog.json');
 
-const GITHUB_BASE = 'https://github.com/OKHP3/skillz';
-const RAW_BASE = 'https://raw.githubusercontent.com/OKHP3/skillz/main';
+const GITHUB_REPO = 'OKHP3/skillz';
+const GITHUB_BASE = `https://github.com/${GITHUB_REPO}`;
+const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main`;
 
 const SKIP_DIRS = new Set([
   '.git', '.github', '.agents', '.claude', '.vscode', 'node_modules',
@@ -22,16 +28,51 @@ const SKIP_DIRS = new Set([
   '.nyc_output', 'attached_assets', 'docs', 'forge', '.local',
 ]);
 
-// ─── YAML frontmatter parser ─────────────────────────────────────────────────
+// ─── Provenance ───────────────────────────────────────────────────────────────
+
+function getGitCommit() {
+  try {
+    return execSync('git rev-parse --short HEAD', { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'] })
+      .toString().trim();
+  } catch { return null; }
+}
+
+function getGitRef() {
+  // GitHub Actions sets GITHUB_REF_NAME (e.g. "main"); use it to avoid detached-HEAD "HEAD" value
+  if (process.env.GITHUB_REF_NAME) return process.env.GITHUB_REF_NAME;
+  try {
+    const ref = execSync('git rev-parse --abbrev-ref HEAD', { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'] })
+      .toString().trim();
+    return ref === 'HEAD' ? 'main' : ref;
+  } catch { return 'main'; }
+}
+
+// ─── YAML frontmatter parser ──────────────────────────────────────────────────
 
 function parseYamlFrontmatter(text) {
-  const match = text.match(/^---\n([\s\S]*?)\n---/);
+  const normalizedText = text.replace(/\r\n/g, '\n');
+  const match = normalizedText.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return {};
   const yaml = match[1];
   const result = {};
+  const listKeys = new Set(['tags', 'tools', 'inputs', 'outputs', 'runtimes', 'boundaries', 'topics']);
   let currentKey = null;
   let inMultiline = false;
   let multilineLines = [];
+  let inList = false;
+  let listItems = [];
+
+  function finishMultiline() {
+    if (inMultiline && currentKey) result[currentKey] = multilineLines.join(' ').trim();
+    inMultiline = false;
+    multilineLines = [];
+  }
+
+  function finishList() {
+    if (inList && currentKey) result[currentKey] = listItems;
+    inList = false;
+    listItems = [];
+  }
 
   for (const line of yaml.split('\n')) {
     if (inMultiline) {
@@ -39,9 +80,22 @@ function parseYamlFrontmatter(text) {
         multilineLines.push(line.trim());
         continue;
       } else {
-        result[currentKey] = multilineLines.join(' ').trim();
-        inMultiline = false;
-        multilineLines = [];
+        finishMultiline();
+      }
+    }
+
+    if (inList) {
+      const itemMatch = line.match(/^\s*-\s+(.*)$/);
+      if (itemMatch) {
+        let item = itemMatch[1].trim();
+        if ((item.startsWith('"') && item.endsWith('"')) ||
+            (item.startsWith("'") && item.endsWith("'"))) {
+          item = item.slice(1, -1);
+        }
+        listItems.push(item);
+        continue;
+      } else {
+        finishList();
       }
     }
 
@@ -50,20 +104,30 @@ function parseYamlFrontmatter(text) {
     const key = kvMatch[1];
     let val = kvMatch[2].trim();
 
-    if (val === '>') {
+    if (key === 'metadata' && val === '') {
+      result.metadata = result.metadata || {};
+      continue;
+    }
+
+    if (val.startsWith('>') || val.startsWith('|')) {
       currentKey = key;
       inMultiline = true;
       multilineLines = [];
       continue;
     }
 
-    // Remove surrounding quotes
+    if (val === '' && listKeys.has(key)) {
+      currentKey = key;
+      inList = true;
+      listItems = [];
+      continue;
+    }
+
     if ((val.startsWith('"') && val.endsWith('"')) ||
         (val.startsWith("'") && val.endsWith("'"))) {
       val = val.slice(1, -1);
     }
 
-    // Nested metadata.* — store under metadata sub-object
     const nestedMatch = line.match(/^\s+([a-zA-Z_-]+):\s*(.*)$/);
     if (nestedMatch) {
       if (!result.metadata) result.metadata = {};
@@ -78,9 +142,8 @@ function parseYamlFrontmatter(text) {
 
     result[key] = val;
   }
-  if (inMultiline && currentKey) {
-    result[currentKey] = multilineLines.join(' ').trim();
-  }
+  finishMultiline();
+  finishList();
   return result;
 }
 
@@ -134,6 +197,18 @@ function extractExamples(body) {
   return extractListItems(section).slice(0, 5);
 }
 
+function normalizeList(value) {
+  if (Array.isArray(value)) return value.filter(Boolean).map(String);
+  if (typeof value === 'string' && value.trim()) return [value.trim()];
+  return [];
+}
+
+function extractCapability(body, frontmatter, key, headings) {
+  const declared = normalizeList(frontmatter[key]);
+  if (declared.length) return declared;
+  return extractListItems(extractSection(body, headings));
+}
+
 // ─── Maturity derivation ──────────────────────────────────────────────────────
 
 function deriveMaturity(meta, body) {
@@ -144,7 +219,6 @@ function deriveMaturity(meta, body) {
   if (status.includes('skeleton') || status.includes('level 1')) return 'skeleton';
   if (status.includes('placeholder')) return 'placeholder';
 
-  // Heuristic from body length and section count
   const h2count = (body.match(/^## /gm) || []).length;
   const bodyLen = body.length;
   if (h2count >= 5 && bodyLen > 3000) return 'draftable';
@@ -182,6 +256,9 @@ function findSkillFiles(dir, depth = 0) {
 // ─── Build catalog ────────────────────────────────────────────────────────────
 
 function buildCatalog() {
+  const sourceCommit = getGitCommit();
+  const sourceRef = getGitRef();
+
   const skillFiles = findSkillFiles(REPO_ROOT);
   console.log(`Found ${skillFiles.length} SKILL.md files`);
 
@@ -193,15 +270,15 @@ function buildCatalog() {
     if (parts.length < 2) continue;
 
     const family = parts[0];
-    const skillDir = parts.length >= 3 ? parts[1] : parts[0];
     const skillName = parts.length >= 3 ? parts[1] : parts[0];
 
     let text;
     try { text = readFileSync(filePath, 'utf-8'); } catch { continue; }
 
-    const fm = parseYamlFrontmatter(text);
-    const bodyStart = text.indexOf('\n---\n', 4);
-    const body = bodyStart >= 0 ? text.slice(bodyStart + 5).trim() : text;
+    const normalizedText = text.replace(/\r\n/g, '\n');
+    const fm = parseYamlFrontmatter(normalizedText);
+    const bodyStart = normalizedText.indexOf('\n---\n', 4);
+    const body = bodyStart >= 0 ? normalizedText.slice(bodyStart + 5).trim() : normalizedText;
 
     const name = fm.name || skillName;
     const description = fm.description || '';
@@ -217,17 +294,21 @@ function buildCatalog() {
     const avoid = extractAvoid(body);
     const companions = extractCompanions(body).filter(c => c !== name);
     const examples = extractExamples(body);
+    const inputs = extractCapability(body, fm, 'inputs', ['Inputs', 'Input', 'What it needs']);
+    const outputs = extractCapability(body, fm, 'outputs', ['Outputs', 'Output', 'What it produces']);
+    const tools = extractCapability(body, fm, 'tools', ['Tools', 'Tooling']);
+    const runtimes = extractCapability(body, fm, 'runtimes', ['Runtimes', 'Runtime', 'Compatibility']);
+    const boundaries = extractCapability(body, fm, 'boundaries', ['Boundaries', 'Scope', 'Out of scope']);
 
     const githubUrl = `${GITHUB_BASE}/blob/main/${relPath}`;
     const rawUrl = `${RAW_BASE}/${relPath}`;
-    const repoPath = relPath;
 
     skills.push({
       name,
       displayName: name.replace(/^okhp3-/, '').replace(/-/g, ' '),
       family,
-      skillDir,
-      path: repoPath,
+      skillDir: skillName,
+      path: relPath,
       description,
       version,
       license,
@@ -243,17 +324,20 @@ function buildCatalog() {
       avoid,
       companions,
       examples,
+      inputs,
+      outputs,
+      tools,
+      runtimes,
+      boundaries,
       rawUrl,
       githubUrl,
       lastModified: null,
-      commitSha: null,
+      commitSha: sourceCommit,
     });
   }
 
-  // Sort: by family then name
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
 
-  // Build family summary
   const familyMap = {};
   for (const s of skills) {
     if (!familyMap[s.family]) familyMap[s.family] = { name: s.family, skillCount: 0, skills: [] };
@@ -261,16 +345,29 @@ function buildCatalog() {
     familyMap[s.family].skills.push(s.name);
   }
 
+  const familyList = Object.values(familyMap);
+
   const catalog = {
     generatedAt: new Date().toISOString(),
+    sourceRepository: `https://github.com/${GITHUB_REPO}`,
+    sourceRef,
+    sourceCommit,
     skillCount: skills.length,
-    families: Object.values(familyMap),
+    familyCount: familyList.length,
+    families: familyList,
     skills,
   };
 
   writeFileSync(OUTPUT, JSON.stringify(catalog, null, 2), 'utf-8');
   console.log(`✓ Written: ${OUTPUT}`);
-  console.log(`  ${skills.length} skills across ${Object.keys(familyMap).length} families`);
+  console.log(`  ${skills.length} skills across ${familyList.length} families`);
+  console.log(`  Source: ${sourceRef}@${sourceCommit ?? 'unknown'}`);
+
+  // CI verification: fail if catalog is empty
+  if (skills.length === 0) {
+    console.error('ERROR: Catalog is empty — build would deploy a broken site');
+    process.exit(1);
+  }
 }
 
 buildCatalog();

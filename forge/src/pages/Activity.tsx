@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import catalogData from '../data/catalog.json';
 import type { Catalog } from '../types/catalog';
 import { repoUrl, prUrl, issueUrl } from '../utils/github';
@@ -7,6 +8,11 @@ import Nav from '../components/layout/Nav';
 const catalog = catalogData as Catalog;
 
 export default function Activity() {
+  useEffect(() => {
+    document.title = 'Activity | Skillz Forge';
+    return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
+  }, []);
+
   const recentSkills = [...catalog.skills]
     .filter(s => s.maturity !== 'placeholder')
     .slice(0, 10);
@@ -33,7 +39,10 @@ export default function Activity() {
 
         <div className="activity-panels">
           <section className="activity-panel">
-            <h2>Recent skills in catalog</h2>
+            <h2>Catalog snapshot</h2>
+            <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-4)' }}>
+              This is a static sample from the generated catalog — not a live activity feed. For real commit history, open GitHub.
+            </p>
             <ul className="activity-list">
               {recentSkills.map(skill => (
                 <li key={skill.name}>

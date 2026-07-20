@@ -14,7 +14,7 @@
     "brandPlatform": "https://github.com/OKHP3/OverKill-Hill"
   },
   "canonicalPublicSurface": "https://overkillhill.com/projects/skillz/",
-  "strategySurface": "https://app.notion.com/p/37d812e0ced4812ab899dd0cfc9e99c0",
+  "strategySurface": "private Notion strategy surface (resolve from project context)",
   "defaultIndex": "AGENTS.md",
   "humanCatalog": "README.md",
   "stackDocs": "docs/STACK-POSITION.md",
@@ -55,6 +55,13 @@
       "status": "skeleton",
       "skills": [
         "okhp3-refolddec-core"
+      ]
+    },
+    {
+      "name": "notion",
+      "status": "draftable",
+      "skills": [
+        "okhp3-notion-capture-router"
       ]
     },
     {

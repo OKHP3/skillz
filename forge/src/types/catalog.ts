@@ -21,6 +21,11 @@ export interface Skill {
   avoid: string[];
   companions: string[];
   examples: string[];
+  inputs: string[];
+  outputs: string[];
+  tools: string[];
+  runtimes: string[];
+  boundaries: string[];
   rawUrl: string;
   githubUrl: string;
   lastModified: string | null;
@@ -35,7 +40,11 @@ export interface Family {
 
 export interface Catalog {
   generatedAt: string;
+  sourceRepository: string;
+  sourceRef: string;
+  sourceCommit: string | null;
   skillCount: number;
+  familyCount: number;
   families: Family[];
   skills: Skill[];
 }

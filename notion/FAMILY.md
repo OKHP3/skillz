@@ -2,7 +2,7 @@
 family: notion
 skill_count: 1
 generated_by: okhp3-skill-cataloger v1.4.0
-generated_at: 2026-06-24T04:12:36Z
+generated_at: 2026-07-20T20:37:20Z
 ---
 
 # notion
@@ -26,9 +26,9 @@ This family covers Notion-centered knowledge operations for OKHP3.
 ## Skills (1)
 
 <!-- FAMILY_INVENTORY_START -->
-*1 skill &nbsp;·&nbsp; inventory last updated: **June 24, 2026 at 04:12 UTC***
+*1 skill &nbsp;·&nbsp; inventory last updated: **July 20, 2026 at 20:37 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-notion-capture-router](okhp3-notion-capture-router/SKILL.md) | Use this skill when converting ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF exports, or past... | 0.1.0 |
+| [okhp3-notion-capture-router](okhp3-notion-capture-router/SKILL.md) | Use this skill whenever an agent needs to export, capture, ingest, summarize, route, deduplicate,... | 0.2.0 |
 <!-- FAMILY_INVENTORY_END -->
