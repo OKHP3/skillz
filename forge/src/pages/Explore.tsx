@@ -196,10 +196,10 @@ export default function Explore() {
           </div>
 
           {results.length === 0 ? (
-            <div className="detail-article" style={{ textAlign: 'center', margin: 'var(--space-12) auto' }} role="status">
-              <h2 style={{ marginTop: 0 }}>No skills found</h2>
-              <p>No skills matched "{filters.query || 'your filters'}".</p>
-              <p>Try different search terms or browse by family.</p>
+            <div style={{ padding: 'var(--space-16) var(--space-4)', textAlign: 'center', color: 'var(--color-text-dark)' }} role="status">
+              <h2 style={{ marginBottom: 'var(--space-4)', fontSize: 'var(--text-h2)' }}>No skills found</h2>
+              <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-2)' }}>No skills matched "{filters.query || 'your filters'}".</p>
+              <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-8)' }}>Try different search terms or browse by family.</p>
               <button className="btn" onClick={() => setFilters({ query: '', family: '', maturity: '', sort: 'relevance' })}>
                 Clear all filters
               </button>
@@ -210,10 +210,17 @@ export default function Explore() {
                 <li key={skill.name} className="skill-card">
                   <div className="skill-card-header">
                     <div>
-                      <Link to={`/skills/${skill.family}/${skill.name}`} className="skill-card-title">
-                        {skill.name}
-                      </Link>
-                      <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '4px' }}>
+                      {skill.displayName && skill.displayName !== skill.name ? (
+                        <Link to={`/skills/${skill.family}/${skill.name}`} className="skill-card-title" style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-body)', fontWeight: 600, letterSpacing: 0, color: 'var(--color-text-dark)' }}>
+                          {skill.displayName}
+                        </Link>
+                      ) : (
+                        <Link to={`/skills/${skill.family}/${skill.name}`} className="skill-card-title">
+                          {skill.name}
+                        </Link>
+                      )}
+                      <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginTop: '2px' }}>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-dark)', opacity: 0.7 }}>{skill.name}</span>
                         <span className="skill-card-family">{skill.family}</span>
                         <span data-maturity={skill.maturity}>{skill.maturity}</span>
                       </div>
@@ -223,8 +230,8 @@ export default function Explore() {
                   <p className="skill-card-desc">{skill.description}</p>
                   
                   {skill.triggers.length > 0 && (
-                    <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-light)', background: 'var(--color-bg)', padding: 'var(--space-2) var(--space-4)', borderRadius: 'var(--radius)', borderLeft: '2px solid var(--color-copper)' }}>
-                      <strong>Triggers when:</strong> {skill.triggers[0]}
+                    <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)', background: 'var(--color-bg)', padding: 'var(--space-2) var(--space-4)', borderLeft: '2px solid var(--color-copper)' }}>
+                      <strong style={{ color: 'var(--color-text-dark)' }}>Triggers when:</strong> {skill.triggers[0]}
                     </div>
                   )}
 

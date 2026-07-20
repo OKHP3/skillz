@@ -35,12 +35,12 @@ export default function SkillDetail() {
     return (
       <div data-page="skill-detail">
         <Nav />
-        <main className="container" style={{ padding: 'var(--space-12) 0' }}>
-          <div className="detail-article" style={{ textAlign: 'center', margin: '0 auto' }}>
-            <h1 style={{ marginTop: 0 }}>Skill not found</h1>
-            <p>No skill named <code>{skillName}</code> in the <code>{family}</code> family.</p>
-            <Link to="/explore" className="btn" style={{ marginTop: 'var(--space-6)' }}>Browse all skills</Link>
-          </div>
+        <main className="container" style={{ padding: 'var(--space-24) var(--space-4)', textAlign: 'center' }}>
+          <h1 style={{ fontSize: 'var(--text-h2)', marginBottom: 'var(--space-4)' }}>Skill not found</h1>
+          <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-8)' }}>
+            No skill named <code style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-amber)' }}>{skillName}</code> in the <code style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-steel-light)' }}>{family}</code> family.
+          </p>
+          <Link to="/explore" className="btn">Browse all skills</Link>
         </main>
       </div>
     );
@@ -81,7 +81,14 @@ export default function SkillDetail() {
 
         <article className="detail-article" style={{ margin: '0 auto' }}>
           <header style={{ marginBottom: 'var(--space-8)' }}>
-            <h1 style={{ fontSize: 'var(--text-display)', marginBottom: 'var(--space-4)' }}>{skill.name}</h1>
+            {skill.displayName && skill.displayName !== skill.name ? (
+              <h1 style={{ fontSize: 'var(--text-h1)', marginBottom: 'var(--space-2)' }}>{skill.displayName}</h1>
+            ) : (
+              <h1 style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-h2)', fontWeight: 700, marginBottom: 'var(--space-2)', letterSpacing: '-0.01em' }}>{skill.name}</h1>
+            )}
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-light)', marginBottom: 'var(--space-4)' }}>
+              {skill.name}
+            </p>
             <div className="detail-meta">
               <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-steel)' }}>{skill.family}</span>
               <span data-maturity={skill.maturity} title={MATURITY_DESCRIPTIONS[skill.maturity]}>
@@ -150,7 +157,7 @@ export default function SkillDetail() {
             </div>
           )}
 
-          <div style={{ background: 'rgba(0,0,0,0.03)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-steel)', marginTop: 'var(--space-8)' }}>
+          <div style={{ background: 'rgba(28, 58, 52, 0.12)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-steel)', marginTop: 'var(--space-8)' }}>
             <h2 style={{ marginTop: 0, border: 'none', padding: 0 }}>Maturity: <span style={{ textTransform: 'capitalize' }}>{skill.maturity}</span></h2>
             <p style={{ marginBottom: 'var(--space-2)' }}>{MATURITY_DESCRIPTIONS[skill.maturity]}</p>
             <Link to="/faq#maturity-label" style={{ fontSize: 'var(--text-sm)', fontWeight: 500 }}>What maturity labels mean &rarr;</Link>
