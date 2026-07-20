@@ -1,6 +1,9 @@
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { Suspense, lazy, useEffect, useRef } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { trackPageview } from './utils/analytics';
+
+// Module-level: persists across StrictMode remounts (unlike useRef which resets on remount)
+let _lastTrackedPath: string | null = null;
 
 const Home = lazy(() => import('./pages/Home'));
 const Explore = lazy(() => import('./pages/Explore'));
@@ -24,16 +27,18 @@ function Loading() {
   );
 }
 
-/** Route-aware GA4 pageview tracking — deduped to prevent StrictMode double-fire */
+/** Route-aware GA4 pageview tracking. Module-level _lastTrackedPath prevents StrictMode
+ *  double-fire (useRef resets on remount; module var does not). setTimeout(0) ensures
+ *  document.title has been set by the destination page's useEffect before tracking fires. */
 function AnalyticsTracker() {
   const location = useLocation();
-  const lastPath = useRef<string | null>(null);
 
   useEffect(() => {
     const path = location.pathname;
-    if (lastPath.current === path) return;
-    lastPath.current = path;
-    trackPageview(path, document.title);
+    if (_lastTrackedPath === path) return;
+    _lastTrackedPath = path;
+    const t = setTimeout(() => trackPageview(path, document.title), 0);
+    return () => clearTimeout(t);
   }, [location.pathname]);
 
   return null;
