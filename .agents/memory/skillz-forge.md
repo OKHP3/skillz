@@ -17,7 +17,13 @@ Skillz Forge is a Phase 1 MVP SPA at `forge/` — the public discovery, search, 
 
 ## Design system
 
-Tokens in `forge/src/index.css`. Palette: `--color-bg: #11100e` (near-black), `--color-bone: #f7f3e8`, `--color-copper: #c8702a`, `--color-ember: #b84030`, `--color-steel: #5a7898`. Typography: Playfair Display (serif, display headings) + Inter (sans, UI).
+Tokens in `forge/src/index.css`. Canonical OKHP3 palette: espresso `#2a2320` (bg), teal `#1c3a34` (structural), ochre/copper `#c46a2c` (action), amber `#e6a03c` (hover), paper `#f6f2ee` (inspection panels only). Typography: Alfa Slab One (display H1/H2), DM Sans (body/UI), JetBrains Mono (slugs/paths/code).
+
+**Card surface rule (critical):** Skill cards, family cards, stack cards, and contribute cards must use `--color-bg-secondary` (dark), NOT `--color-surface` (cream). Cream (`--color-surface`/paper) is reserved ONLY for skill detail inspection panels (single skill dossier). Using cream for list cards produces Anthropic-style white-panel look.
+
+**Skill card title rule:** Skill names (slugs) render in mono font at body size. If a `displayName` exists and differs from the slug, show displayName in DM Sans as the primary label with the slug in mono below. Never use Alfa Slab One for slug identifiers.
+
+**Color context rule:** Use `--color-text-dark` / `--color-text-muted-dark` on dark surfaces. Use `--color-text-light` / `--color-text-muted-light` only inside cream/paper panels (detail-article).
 
 ## Routes
 
