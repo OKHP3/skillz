@@ -98,7 +98,7 @@ FAMILIES_TABLE_END   = "<!-- FAMILIES_TABLE_END -->"
 FULL_SKIP = frozenset({
     ".git", ".github", ".agents", ".claude", ".vscode",
     "node_modules", "__pycache__", ".venv", "venv",
-    "dist", "build", "coverage", ".nyc_output", "attached_assets",
+    "dist", "build", "coverage", ".nyc_output", "attached_assets", "forge",
     "docs",
 })
 
