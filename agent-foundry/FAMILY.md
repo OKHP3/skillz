@@ -1,8 +1,8 @@
 ---
 family: agent-foundry
 skill_count: 3
-generated_by: okhp3-skill-cataloger v1.4.0
-generated_at: 2026-07-21T17:25:45Z
+generated_by: okhp3-skill-cataloger v1.5.0
+generated_at: 2026-07-21T22:35:47Z
 ---
 
 # agent-foundry
@@ -26,11 +26,11 @@ The agent-foundry family covers the creation, readiness assessment, and portabil
 ## Skills (3)
 
 <!-- FAMILY_INVENTORY_START -->
-*3 skills &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 17:25 UTC***
+*3 skills &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 22:35 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-custom-gpt-builder](okhp3-custom-gpt-builder/SKILL.md) | >- | 1.1.0 |
-| [okhp3-custom-gpt-readiness](okhp3-custom-gpt-readiness/SKILL.md) | >- | 1.0.0 |
-| [okhp3-custom-gpt-skill-conversion-planner](okhp3-custom-gpt-skill-conversion-planner/SKILL.md) | >- | 1.0.0 |
+| [okhp3-custom-gpt-builder](okhp3-custom-gpt-builder/SKILL.md) | >- | 1.3.0 |
+| [okhp3-custom-gpt-readiness](okhp3-custom-gpt-readiness/SKILL.md) | >- | 1.2.0 |
+| [okhp3-custom-gpt-skill-conversion-planner](okhp3-custom-gpt-skill-conversion-planner/SKILL.md) | >- | 1.2.0 |
 <!-- FAMILY_INVENTORY_END -->

@@ -1,8 +1,8 @@
 ---
 family: linkedin
 skill_count: 3
-generated_by: okhp3-skill-cataloger v1.4.0
-generated_at: 2026-07-21T17:25:45Z
+generated_by: okhp3-skill-cataloger v1.5.0
+generated_at: 2026-07-21T22:35:47Z
 ---
 
 # linkedin
@@ -24,11 +24,11 @@ Three skills, one pipeline: voice -> angles -> post.
 ## Skills (3)
 
 <!-- FAMILY_INVENTORY_START -->
-*3 skills &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 17:25 UTC***
+*3 skills &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 22:35 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-linkedin-angles](okhp3-linkedin-angles/SKILL.md) | Mine a finished artifact (PRD, SKILL.md, technical writeup, governance doc, Mermaid diagram, publ... | — |
-| [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a LinkedIn post from a chosen angle. Use when the user has picked a candidate from okhp3-li... | — |
-| [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the OKHP3 brand voice to any LinkedIn-bound text. Use as the FINAL pass on any LinkedIn pos... | — |
+| [okhp3-linkedin-angles](okhp3-linkedin-angles/SKILL.md) | Mine a finished artifact (PRD, SKILL.md, technical writeup, governance doc, Mermaid diagram, publ... | 1.1.0 |
+| [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a LinkedIn post from a chosen angle. Use when the user has picked a candidate from okhp3-li... | 1.1.0 |
+| [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the OKHP3 brand voice to any LinkedIn-bound text. Use as the FINAL pass on any LinkedIn pos... | 1.1.0 |
 <!-- FAMILY_INVENTORY_END -->

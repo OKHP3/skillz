@@ -11,7 +11,7 @@ Skillz Forge is a Phase 1 MVP SPA at `forge/` — the public discovery, search, 
 
 - **Catalog generation**: `forge/scripts/build-catalog.js` — walks repo root, finds all SKILL.md files at depth ≤ 3, parses YAML frontmatter + body, outputs `forge/src/data/catalog.json`. Run with `node forge/scripts/build-catalog.js` from repo root.
 - **Framework**: React 19 + Vite 8, TypeScript, React Router v7. No component library — fully custom CSS from design tokens.
-- **Search**: Fuse.js client-side index over 56 skills. Search runs entirely in-browser.
+- **Search**: Fuse.js client-side index over the current catalog (67 skills across 11 families as of 2026-07-21; re-run `node forge/scripts/build-catalog.js` after any skill add/remove — do not hardcode this number, check `forge/src/data/catalog.json`'s `skillCount`). Search runs entirely in-browser.
 - **Port**: Runs on port 5000 (workflow: `cd forge && pnpm dev`).
 - **Build**: `cd forge && pnpm build` — production build to `forge/dist/`.
 

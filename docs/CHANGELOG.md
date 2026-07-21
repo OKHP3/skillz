@@ -8,7 +8,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
-- Added the planned `context-extraction/` family scaffold for source profiling, evidence extraction, provenance-preserving normalization, refinement, and quality checks.
+- Added the `context-extraction/` distribution family with nine skills for cross-platform AI-thread extraction, platform-specific capture, provenance-preserving handoffs, and ChatGPT project migration.
 - Added `okhp3-custom-gpt-readiness` and `okhp3-custom-gpt-skill-conversion-planner` with structured dossiers, gap analysis, semantic-loss tracking, and Foundry handoffs for the Custom GPT lifecycle.
 - Added technology inventory, explicit Mermaid CLI and PyYAML dependency declarations, Dependabot configuration, and scheduled version-inventory pull-request automation.
 - Added root `AGENTS.md` routing index for active and planned skills.
@@ -40,6 +40,9 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Reindexed the full distribution surface at 67 skills across 11 active families, refreshed all generated `README.md` and `FAMILY.md` catalogs, and refreshed the 18-entry project-local support catalog.
+- Updated the Skillz Forge generated catalog, build pipeline, and curated AI conversation capture stack so new and improved repository skills are represented automatically. The catalog builder now preserves nested frontmatter metadata such as versions, categories, and maturity signals.
+- Updated the Skillz Forge and OverKill Hill Replit handoffs, public-surface family cards, agent routing guide, and machine-readable manifest to reflect the current inventory and distinguish public distribution skills from project-local support tooling.
 - Hardened the `agent-foundry`, `linkedin`, `mermaid`, `notion`, and `universal` skills against the current Agent Skills format: standardized discovery metadata, clarified scope and output contracts, replaced Mermaid scaffold references with operational guidance, tightened connector and publication safety, and removed brittle quota/platform guarantees.
 - Created the `agent-foundry/` family and migrated the Custom GPT readiness, builder, and Agent Skill conversion-planning packages from `universal/`; updated the catalogs, routing guide, Forge catalog, and Pages workflow path.
 - Generalized `okhp3-notion-capture-router` from a personal-workspace capture workflow into a platform-neutral Notion export and API/connector usage contract for pages, databases, and data sources.

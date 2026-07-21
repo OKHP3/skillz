@@ -64,8 +64,10 @@ skillz: Agent Skills by OverKill Hill
 Recommended positioning:
 
 ```text
-Reusable SKILL.md delegation contracts for Claude, OpenClaw, Codex, and compatible AI agents.
+67 reusable SKILL.md delegation contracts across 11 active families for Claude, OpenClaw, Codex, and compatible AI agents.
 ```
+
+Current inventory snapshot, indexed July 21, 2026: 67 public distribution skills across 11 active families. The repository also contains two placeholder family directories and 18 project-local support skills. The placeholders and local support skills are not public distribution entries.
 
 Recommended sections:
 
@@ -82,11 +84,17 @@ Recommended sections:
 
 | Family | Public angle | Status |
 |---|---|---|
-| Mermaid | BPMN-aware Mermaid diagramming and publishing | Skeleton (Level 1) |
-| LinkedIn | Turn finished work into postable angles | Skeleton (Level 1) |
-| Process Capture | Convert recurring work into new agent skills | Skeleton (Level 1) |
-| Notion Capture | Route AI conversations into Notion with dedup and GitHub reconciliation | Draftable (Level 2) |
-| ReFolDec | Transform artifacts across representation types — fold, unfold, refold, track semantic loss | Skeleton (Level 1) |
+| Abrahamic | Scripture lookup, observance calendars, tradition reference, and cross-tradition comparison | Draftable (Level 2) |
+| Agent Foundry | Custom GPT construction, readiness, and conversion planning | Draftable (Level 2) |
+| Community | General-purpose UI, MCP, authoring, social, and engineering guidance | Mixed, mostly Draftable (Levels 1-2) |
+| Context Extraction | Cross-platform AI-thread extraction, provenance preservation, and ChatGPT project migration | Draftable (Level 2) |
+| LifeTrkr | Offline celestial data and daily oracle workflows | Draftable (Level 2) |
+| LinkedIn | Turn finished work into postable angles and voice-consistent posts | Mixed, mostly Skeleton (Levels 1-2) |
+| Mermaid | Governed diagram authoring, theming, publishing, updating, and repair | Mixed, mostly Draftable (Levels 1-2) |
+| Notion Capture | Route AI conversations into Notion with deduplication and GitHub reconciliation | Draftable (Level 2) |
+| Process Capture | Document, validate, govern, and package recurring organizational processes | Mixed, mostly Draftable (Levels 1-2) |
+| ReFolDec | Transform artifacts across representation types, including fold, unfold, refold, and semantic-loss tracking | Draftable (Level 2) |
+| Universal | Cross-project builders, cataloging, API proxy, OAuth, and deployment skills | Mixed, mostly Draftable (Levels 1-2) |
 | Glee-fully | Future conversion path for personalizable tools | Placeholder (Level 0) |
 | AskJamie | Future lens-oriented professional support skills | Placeholder (Level 0) |
 

@@ -20,41 +20,94 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
+  "distributionSkillCount": 67,
+  "activeFamilyCount": 11,
+  "placeholderFamilyCount": 2,
+  "projectLocalSupportSkillCount": 18,
   "families": [
     {
-      "name": "mermaid",
-      "status": "skeleton",
+      "name": "abrahamic",
+      "status": "draftable",
       "skills": [
-        "okhp3-mermaid-core",
-        "okhp3-mermaid-bpmn",
-        "okhp3-mermaid-architecture",
-        "okhp3-mermaid-data",
-        "okhp3-mermaid-publish",
-        "okhp3-mermaid-update",
-        "okhp3-mermaid-repair"
+        "okhp3-cross-tradition-compare",
+        "okhp3-tradition-observance-calendar",
+        "okhp3-tradition-reference",
+        "okhp3-verse-lookup"
+      ]
+    },
+    {
+      "name": "agent-foundry",
+      "status": "draftable",
+      "skills": [
+        "okhp3-custom-gpt-builder",
+        "okhp3-custom-gpt-readiness",
+        "okhp3-custom-gpt-skill-conversion-planner"
+      ]
+    },
+    {
+      "name": "community",
+      "status": "draftable",
+      "skills": [
+        "ai-social-media-content",
+        "architecture-decision-records",
+        "brand-guidelines",
+        "find-skills",
+        "frontend-design",
+        "mcp-builder",
+        "mermaid-diagrams",
+        "skill-creator",
+        "theme-factory",
+        "vercel-react-best-practices",
+        "vercel-react-native-skills",
+        "web-artifacts-builder",
+        "web-design-guidelines"
+      ]
+    },
+    {
+      "name": "context-extraction",
+      "status": "draftable",
+      "skills": [
+        "okhp3-chatgpt-project-migration",
+        "okhp3-thread-context-extraction",
+        "okhp3-thread-context-extraction-chatgpt",
+        "okhp3-thread-context-extraction-claude",
+        "okhp3-thread-context-extraction-copilot-m365",
+        "okhp3-thread-context-extraction-gemini",
+        "okhp3-thread-context-extraction-grok",
+        "okhp3-thread-context-extraction-mistral-vibe",
+        "okhp3-thread-context-extraction-perplexity"
+      ]
+    },
+    {
+      "name": "lifetrkr",
+      "status": "draftable",
+      "skills": [
+        "okhp3-celestial-data",
+        "okhp3-daily-oracle"
       ]
     },
     {
       "name": "linkedin",
-      "status": "skeleton",
+      "status": "draftable",
       "skills": [
-        "okhp3-linkedin-voice",
         "okhp3-linkedin-angles",
-        "okhp3-linkedin-post"
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-voice"
       ]
     },
     {
-      "name": "process-capture",
-      "status": "skeleton",
+      "name": "mermaid",
+      "status": "draftable",
       "skills": [
-        "okhp3-process-capture"
-      ]
-    },
-    {
-      "name": "refolddec",
-      "status": "skeleton",
-      "skills": [
-        "okhp3-refolddec-core"
+        "okhp3-mermaid-architecture",
+        "okhp3-mermaid-bpmn",
+        "okhp3-mermaid-core",
+        "okhp3-mermaid-data",
+        "okhp3-mermaid-governance",
+        "okhp3-mermaid-publish",
+        "okhp3-mermaid-repair",
+        "okhp3-mermaid-theme-builder",
+        "okhp3-mermaid-update"
       ]
     },
     {
@@ -62,6 +115,47 @@
       "status": "draftable",
       "skills": [
         "okhp3-notion-capture-router"
+      ]
+    },
+    {
+      "name": "process-capture",
+      "status": "draftable",
+      "skills": [
+        "okhp3-as-is-process-capture",
+        "okhp3-decision-model-authoring",
+        "okhp3-elicitation-and-interview-facilitation",
+        "okhp3-future-state-and-change-strategy",
+        "okhp3-process-capture",
+        "okhp3-process-gap-and-exception-analysis",
+        "okhp3-process-intake-and-scope",
+        "okhp3-process-measures-and-controls-definition",
+        "okhp3-process-narrative-authoring",
+        "okhp3-process-validation-and-quality-scoring",
+        "okhp3-publication-and-handoff-packaging",
+        "okhp3-raci-and-governance-matrix-generation",
+        "okhp3-sipoc-generation",
+        "okhp3-sop-and-work-instruction-generation",
+        "okhp3-stakeholder-and-role-mapping",
+        "okhp3-visual-process-modeling"
+      ]
+    },
+    {
+      "name": "refolddec",
+      "status": "draftable",
+      "skills": [
+        "okhp3-refolddec-core"
+      ]
+    },
+    {
+      "name": "universal",
+      "status": "draftable",
+      "skills": [
+        "okhp3-cloudflare-worker-api-proxy",
+        "okhp3-foundry-repo-creator",
+        "okhp3-google-gis-client-auth",
+        "okhp3-skill-cataloger",
+        "okhp3-skill-foundry",
+        "okhp3-vite-github-pages"
       ]
     },
     {

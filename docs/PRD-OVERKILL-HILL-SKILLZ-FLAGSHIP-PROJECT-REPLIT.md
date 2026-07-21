@@ -240,13 +240,14 @@ Describe only the currently verified application behavior:
 - Copy a raw installation URL.
 - Save favorites locally.
 - Explore curated stacks.
+- Compare two to four skills side by side.
+- Read a static catalog activity snapshot with its last-indexed date and catalog size.
 - Read the FAQ.
 - Open native GitHub contribution paths.
 
 Future capabilities must be labeled as planned or in development:
 
 - Structured tool and runtime filters.
-- Skill comparison.
 - Live GitHub activity.
 - Authenticated comments.
 - Pull-request collaboration inside the application.
@@ -314,6 +315,18 @@ Present the project surfaces in the same spirit as the other flagship pages:
 - Curated stack model
 - GitHub contribution surface
 
+### Current catalog snapshot
+
+Use the following repository-backed facts in the public page copy, as indexed July 21, 2026:
+
+- 67 public distribution skills.
+- 11 active families.
+- 2 placeholder family directories that are not counted as available skills.
+- 9 context-extraction skills for cross-platform AI-thread handoffs, platform-specific capture, and ChatGPT project migration.
+- 18 project-local support skills under `.agents/skills/`; these are repository tooling and are not public distribution entries.
+
+Treat the GitHub repository and generated catalog as the source of truth. Do not manually enumerate the full catalog in the OverKill Hill project page, and do not advertise the 18 project-local support skills as public installable entries.
+
 ### 12. Honest scope
 
 Include a clear Is and Is Not section.
@@ -364,6 +377,8 @@ Shipped:
 - Family and maturity browsing.
 - Skill detail pages.
 - Curated stacks.
+- Compare mode.
+- Static catalog activity snapshot.
 - FAQ.
 - GitHub deep links.
 
@@ -378,7 +393,6 @@ Hardening:
 
 Planned:
 
-- Compare mode.
 - Custom local stack composition.
 - Live GitHub activity.
 - Issue and pull-request context panels.

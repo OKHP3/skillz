@@ -99,6 +99,20 @@ function parseYamlFrontmatter(text) {
       }
     }
 
+    // Frontmatter metadata is a nested mapping. Handle indented keys before
+    // matching top-level keys so version, status, category, and related fields
+    // survive regeneration of the public catalog.
+    const nestedMatch = line.match(/^\s+([a-zA-Z_-]+):\s*(.*)$/);
+    if (nestedMatch && result.metadata) {
+      let nval = nestedMatch[2].trim();
+      if ((nval.startsWith('"') && nval.endsWith('"')) ||
+          (nval.startsWith("'") && nval.endsWith("'"))) {
+        nval = nval.slice(1, -1);
+      }
+      result.metadata[nestedMatch[1]] = nval;
+      continue;
+    }
+
     const kvMatch = line.match(/^([a-zA-Z_-]+):\s*(.*)$/);
     if (!kvMatch) continue;
     const key = kvMatch[1];
@@ -126,18 +140,6 @@ function parseYamlFrontmatter(text) {
     if ((val.startsWith('"') && val.endsWith('"')) ||
         (val.startsWith("'") && val.endsWith("'"))) {
       val = val.slice(1, -1);
-    }
-
-    const nestedMatch = line.match(/^\s+([a-zA-Z_-]+):\s*(.*)$/);
-    if (nestedMatch) {
-      if (!result.metadata) result.metadata = {};
-      let nval = nestedMatch[2].trim();
-      if ((nval.startsWith('"') && nval.endsWith('"')) ||
-          (nval.startsWith("'") && nval.endsWith("'"))) {
-        nval = nval.slice(1, -1);
-      }
-      result.metadata[nestedMatch[1]] = nval;
-      continue;
     }
 
     result[key] = val;

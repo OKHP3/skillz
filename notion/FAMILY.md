@@ -1,8 +1,8 @@
 ---
 family: notion
 skill_count: 1
-generated_by: okhp3-skill-cataloger v1.4.0
-generated_at: 2026-07-21T17:25:45Z
+generated_by: okhp3-skill-cataloger v1.5.0
+generated_at: 2026-07-21T22:35:47Z
 ---
 
 # notion
@@ -26,9 +26,9 @@ This family covers Notion-centered knowledge operations for OKHP3.
 ## Skills (1)
 
 <!-- FAMILY_INVENTORY_START -->
-*1 skill &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 17:25 UTC***
+*1 skill &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 22:35 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-notion-capture-router](okhp3-notion-capture-router/SKILL.md) | Use this skill whenever an agent needs to export, capture, ingest, summarize, route, deduplicate,... | 0.2.0 |
+| [okhp3-notion-capture-router](okhp3-notion-capture-router/SKILL.md) | Use this skill whenever an agent needs to export, capture, ingest, summarize, route, deduplicate,... | 0.3.0 |
 <!-- FAMILY_INVENTORY_END -->
