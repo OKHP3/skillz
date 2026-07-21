@@ -37,7 +37,7 @@ function extractYamlField(frontmatter, key) {
 const skillContent = readFileSync(skillMdPath, "utf8");
 const frontmatter = parseSkillFrontmatter(skillContent);
 
-// ── Frontmatter structure — standard Agent Skills format ──────────────────
+// Frontmatter structure follows the portable Agent Skills format.
 
 test("SKILL.md contains a frontmatter block", () => {
   assert.ok(frontmatter !== null, "Expected --- frontmatter --- block at top of SKILL.md");
@@ -53,55 +53,38 @@ test("frontmatter name is correct", () => {
   assert.equal(name, "okhp3-mermaid-theme-builder");
 });
 
-test("frontmatter contains metadata version field", () => {
-  assert.ok(frontmatter.match(/^  version:/m), "Missing metadata 'version:' in frontmatter");
-});
-
-test("frontmatter contains metadata author field", () => {
-  assert.ok(frontmatter.match(/^  author:/m), "Missing metadata 'author:' in frontmatter");
-});
-
 test("frontmatter contains license field", () => {
   assert.ok(frontmatter.match(/^license:/m), "Missing 'license' in frontmatter");
 });
 
-test("frontmatter contains metadata homepage field", () => {
-  assert.ok(frontmatter.match(/^  homepage:/m), "Missing metadata 'homepage:' in frontmatter");
+test("frontmatter contains portable metadata block", () => {
+  assert.ok(
+    frontmatter.includes("metadata:") && frontmatter.includes("version: \"0.5.1\""),
+    "Frontmatter must contain portable metadata with the current version"
+  );
 });
 
-test("frontmatter contains metadata repository field", () => {
-  assert.ok(frontmatter.match(/^  repository:/m), "Missing metadata 'repository:' in frontmatter");
+test("frontmatter does not contain unsupported top-level fields", () => {
+  const allowed = new Set(["name", "description", "license", "compatibility", "metadata", "allowed-tools"]);
+  for (const line of frontmatter.split("\n")) {
+    const match = line.match(/^([A-Za-z0-9_-]+):/);
+    if (match) assert.ok(allowed.has(match[1]), `Unsupported top-level field: ${match[1]}`);
+  }
 });
 
-test("frontmatter contains metadata category field", () => {
-  assert.ok(frontmatter.match(/^  category:/m), "Missing metadata 'category:' in frontmatter");
-});
-
-test("frontmatter contains metadata tags field", () => {
-  assert.ok(frontmatter.match(/^  tags:/m), "Missing metadata 'tags:' in frontmatter");
-});
-
-test("frontmatter records bundled tooling", () => {
-  assert.ok(frontmatter.match(/^  bundled_tools:/m), "Missing metadata 'bundled_tools:' in frontmatter");
-});
-
-test("frontmatter uses the standard metadata block", () => {
-  assert.ok(frontmatter.includes("metadata:"), "Missing standard metadata block");
-});
-
-// ── Version alignment ──────────────────────────────────────────────────────
+// Version alignment
 
 test("skill version is not stale 0.3.0", () => {
   assert.ok(
     !skillContent.includes('"0.3.0"') && !skillContent.includes("'0.3.0'") && !skillContent.includes("version: 0.3.0"),
-    "Stale version '0.3.0' found in SKILL.md — update to current version"
+    "Stale version '0.3.0' found in SKILL.md - update to current version"
   );
 });
 
-test("skill version is 0.6.0", () => {
+test("skill version is 0.5.1", () => {
   assert.ok(
-    skillContent.includes('"0.6.0"') || skillContent.includes("version: 0.6.0"),
-    "Expected version '0.6.0' in SKILL.md metadata"
+    skillContent.includes('"0.5.1"') || skillContent.includes("version: 0.5.1"),
+    "Expected version '0.5.1' in SKILL.md frontmatter"
   );
 });
 
@@ -262,7 +245,7 @@ test("assets/theme-variable-map.json exists", () => {
 test("assets/fixtures/er-basic.mmd exists", () => {
   assert.ok(
     existsSync(join(skillRoot, "assets/fixtures/er-basic.mmd")),
-    "assets/fixtures/er-basic.mmd not found — required fixture file"
+    "assets/fixtures/er-basic.mmd not found - required fixture file"
   );
 });
 

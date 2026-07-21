@@ -1,7 +1,7 @@
 /**
  * normalize-mermaid.mjs
  * Strip Markdown code fences and prose wrappers from Mermaid code.
- * No external dependencies — runs with: node scripts/normalize-mermaid.mjs
+ * No external dependencies - runs with: node scripts/normalize-mermaid.mjs
  */
 
 const FENCE_RE = /^```(?:mermaid)?\s*\n([\s\S]*?)```\s*$/;

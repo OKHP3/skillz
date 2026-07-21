@@ -1,15 +1,15 @@
 {
   "skill_name": "okhp3-custom-gpt-skill-conversion-planner",
-  "skill_version": "1.0.0",
+  "skill_version": "1.2.0",
   "evals": [
     {
       "id": "portable-method",
-      "prompt": "This GPT reviews ADRs using a rubric in its instructions, a public glossary PDF, and three conversation starters. Plan its conversion to an Agent Skill.",
+      "prompt": "This GPT reviews ADRs using a rubric in its instructions, a public glossary PDF, three conversation starters, and a six-stage prompt chain. Plan its conversion to an Agent Skill.",
       "expectations": [
-        "Maps the rubric to a portable procedure or reference rather than copying UI language.",
+        "Maps the rubric and any useful chain stages to portable procedures with inputs, exit criteria, and recovery rather than copying UI language.",
         "Maps the public glossary to a reference asset and preserves source traceability.",
         "Defines a trigger, scope boundary, output contract, and safety rule for the new skill.",
-        "Creates a Foundry handoff with exactly three eval cases and four expectations per case."
+        "Creates a Foundry handoff with exactly three eval cases and four expectations per case, including a semantic-preservation check."
       ]
     },
     {

@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-daily-oracle",
+    "skill_path": ".agents/skills/okhp3-daily-oracle",
+    "skill_version": "1.3.0",
+    "executor_model": "main-agent-graded",
+    "analyzer_model": "main-agent-grader",
+    "timestamp": "2026-06-26T00:00:00Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 1,
+    "note": "Historical iteration-1 simulation; metadata version updated for the 1.3.0 skill structure. No new live benchmark outcome is claimed."
+  },
+
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "cache-key-daily-stability",
+      "configuration": "with_skill",
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4 },
+      "assertions": [
+        { "text": "Cache key includes userId + YYYY-MM-DD", "passed": true, "evidence": "Key `${APP_PREFIX}:${userId}:oracle:${today}` — both components present" },
+        { "text": "localStorage.getItem and setItem used", "passed": true, "evidence": "Both calls explicit in implementation" },
+        { "text": "Date via toISOString().split('T')[0]", "passed": true, "evidence": "Exact expression used with YYYY-MM-DD comment" },
+        { "text": "Per-user isolation explained via userId", "passed": true, "evidence": "Alice/Bob example with explicit collision prevention" }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "cache-key-daily-stability",
+      "configuration": "without_skill",
+      "result": { "pass_rate": 0.25, "passed": 1, "failed": 3, "total": 4 },
+      "assertions": [
+        { "text": "Cache key includes userId + YYYY-MM-DD", "passed": false, "evidence": "Key is `oracle_${date}` — no userId, date uses toLocaleDateString() (locale-dependent, not YYYY-MM-DD)" },
+        { "text": "localStorage.getItem and setItem used", "passed": true, "evidence": "Both calls present — general knowledge" },
+        { "text": "Date via toISOString().split('T')[0]", "passed": false, "evidence": "Uses toLocaleDateString() — breaks in non-US locales" },
+        { "text": "Per-user isolation explained via userId", "passed": false, "evidence": "Mentioned only as afterthought comment, not in primary implementation" }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "tarot-api-fallback",
+      "configuration": "with_skill",
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4 },
+      "assertions": [
+        { "text": "Deterministic fallback (not random)", "passed": true, "evidence": "Day-of-year selection — same card on refresh during outage" },
+        { "text": "12-card Major Arcana pool", "passed": true, "evidence": "FALLBACK_CARDS array shown with exactly 12 named Major Arcana" },
+        { "text": "Day-of-year via Date.now() / 86400000", "passed": true, "evidence": "Exact formula provided with full expression" },
+        { "text": "doy % FALLBACK.length modulo selection", "passed": true, "evidence": "FALLBACK_CARDS[doy % FALLBACK_CARDS.length]" }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "tarot-api-fallback",
+      "configuration": "without_skill",
+      "result": { "pass_rate": 0.0, "passed": 0, "failed": 4, "total": 4 },
+      "assertions": [
+        { "text": "Deterministic fallback (not random)", "passed": false, "evidence": "Uses Math.random() — different card on every refresh during outage" },
+        { "text": "12-card Major Arcana pool", "passed": false, "evidence": "3-card pool, randomly selected" },
+        { "text": "Day-of-year via Date.now() / 86400000", "passed": false, "evidence": "No day-of-year concept — absent entirely" },
+        { "text": "doy % FALLBACK.length modulo selection", "passed": false, "evidence": "No modulo — random selection" }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "anthropic-direct-browser",
+      "configuration": "with_skill",
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4 },
+      "assertions": [
+        { "text": "anthropic-dangerous-direct-browser-access header", "passed": true, "evidence": "Exact header name in code" },
+        { "text": "import.meta.env.VITE_ANTHROPIC_API_KEY env var", "passed": true, "evidence": "Exact Vite pattern with _API_KEY suffix" },
+        { "text": "Bundle exposure warning", "passed": true, "evidence": "DevTools Sources mentioned explicitly" },
+        { "text": "Personal/single-user only caveat", "passed": true, "evidence": "'This is acceptable only when: The app is for personal or single-user use'" }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "anthropic-direct-browser",
+      "configuration": "without_skill",
+      "result": { "pass_rate": 0.5, "passed": 2, "failed": 2, "total": 4 },
+      "assertions": [
+        { "text": "anthropic-dangerous-direct-browser-access header", "passed": false, "evidence": "Header absent — without it, Anthropic API rejects browser requests with CORS error" },
+        { "text": "import.meta.env.VITE_ANTHROPIC_API_KEY env var", "passed": false, "evidence": "Uses VITE_ANTHROPIC_KEY — missing _API_KEY suffix" },
+        { "text": "Bundle exposure warning", "passed": true, "evidence": "Warning present — general security knowledge" },
+        { "text": "Personal/single-user only caveat", "passed": true, "evidence": "'Only use this for personal/demo projects'" }
+      ]
+    }
+  ],
+
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": { "mean": 1.0,  "stddev": 0.0,  "min": 1.0,  "max": 1.0 }
+    },
+    "without_skill": {
+      "pass_rate": { "mean": 0.25, "stddev": 0.22, "min": 0.0,  "max": 0.5 }
+    },
+    "delta": { "pass_rate": "+0.75" }
+  },
+
+  "acceptance": {
+    "with_skill_mean_threshold": 0.9,
+    "delta_threshold": 0.5,
+    "result": "PASS",
+    "notes": [
+      "with_skill 1.0 > threshold 0.9 ✓",
+      "delta +0.75 > threshold 0.5 ✓",
+      "Eval 2 without_skill: 0/4 — day-of-year fallback concept entirely absent from LLM general knowledge",
+      "Eval 3 without_skill: anthropic-dangerous-direct-browser-access header missing causes CORS rejection"
+    ]
+  },
+
+  "fix_targets": [
+    "Eval 1 without_skill failure: ISO date split not prominent enough — add Gotchas entry",
+    "Eval 2 without_skill failure: day-of-year formula needs dedicated callout in SKILL.md",
+    "Eval 3 without_skill partial: env var name VITE_ANTHROPIC_API_KEY needs bolding"
+  ]
+}

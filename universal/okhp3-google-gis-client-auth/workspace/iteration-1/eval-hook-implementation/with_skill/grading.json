@@ -1,0 +1,28 @@
+{
+  "eval_id": 3,
+  "eval_name": "hook-implementation",
+  "configuration": "with_skill",
+  "assertion_results": [
+    {
+      "text": "Response provides a hook named useGoogleAuth (exact name)",
+      "passed": true,
+      "evidence": "`export function useGoogleAuth()` — exact name"
+    },
+    {
+      "text": "Response includes a getToken() function that attempts silent refresh before showing consent popup",
+      "passed": true,
+      "evidence": "`const getToken = useCallback(…)` with `prompt: 'none'` for silent first, comment 'if silent fails, GIS shows popup automatically'"
+    },
+    {
+      "text": "Response stores token in sessionStorage using keys g_token and g_expiry (exact key names)",
+      "passed": true,
+      "evidence": "`sessionStorage.setItem('g_token', response.access_token)` and `sessionStorage.setItem('g_expiry', String(expiry))` — exact keys"
+    },
+    {
+      "text": "Response includes a connect() function that fetches user profile from googleapis.com/oauth2/v3/userinfo",
+      "passed": true,
+      "evidence": "`function fetchUserProfile(token)` fetches from `https://www.googleapis.com/oauth2/v3/userinfo` — exact URL, called from connect()"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

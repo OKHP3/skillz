@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google GIS Client Auth"
+  short_description: "Plan safe client-only Google GIS auth flows"
+  default_prompt: "Use $okhp3-google-gis-client-auth to design or troubleshoot a client-only Google GIS auth and read flow."

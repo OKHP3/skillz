@@ -1,0 +1,28 @@
+{
+  "eval_id": 1,
+  "eval_name": "cache-key-daily-stability",
+  "configuration": "without_skill",
+  "assertion_results": [
+    {
+      "text": "Response uses a cache key pattern that includes both a userId component and a YYYY-MM-DD date string",
+      "passed": false,
+      "evidence": "Key is `oracle_${date}` — no userId component by default (only mentioned as an afterthought: 'you could prefix with user ID'). Date is NOT YYYY-MM-DD format — uses toLocaleDateString() which produces '6/26/2026' (locale-dependent, not sortable)"
+    },
+    {
+      "text": "Response uses localStorage.getItem and localStorage.setItem as the storage mechanism",
+      "passed": true,
+      "evidence": "localStorage.getItem(cacheKey) and localStorage.setItem both used correctly"
+    },
+    {
+      "text": "Response extracts the date as new Date().toISOString().split('T')[0]",
+      "passed": false,
+      "evidence": "Uses `new Date().toLocaleDateString()` instead — produces locale-dependent strings like '6/26/2026' that differ by browser locale and will silently break caching for non-US locales"
+    },
+    {
+      "text": "Response explains per-user isolation via userId in cache key",
+      "passed": false,
+      "evidence": "userId mentioned as an optional afterthought in a comment. Not part of the primary implementation, not explained as isolation pattern, no userId parameter in function signature"
+    }
+  ],
+  "summary": { "passed": 1, "failed": 3, "total": 4, "pass_rate": 0.25 }
+}

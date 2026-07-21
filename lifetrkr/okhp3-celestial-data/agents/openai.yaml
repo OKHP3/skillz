@@ -1,0 +1,4 @@
+interface:
+  display_name: "Celestial Data"
+  short_description: "Calculate offline moon, zodiac, and Mercury display data"
+  default_prompt: "Use $okhp3-celestial-data to plan, implement, and validate deterministic client-side celestial data without an external astrology API."

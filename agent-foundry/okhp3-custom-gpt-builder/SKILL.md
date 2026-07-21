@@ -9,8 +9,7 @@ description: >-
   declarative-agent comparison, or conversion between Custom GPTs and Agent Skills.
 license: CC-BY-4.0
 metadata:
-  version: "1.2.0"
-  category: "agent-foundry"
+  version: "1.3.0"
   author: "OverKill Hill P³"
   copyright: "Copyright © 2024–2026 OverKill Hill P³ — https://overkillhill.com"
   attribution: "Originated by OverKill Hill P³. Attribution required under CC BY 4.0. See LICENSE.md."
@@ -18,14 +17,9 @@ metadata:
   license_decision: "CC BY 4.0 selected for public, reusable Agent Skill documentation. Attribution to OverKill Hill P³ required in all derivative works. See LICENSE.md."
   platforms: "OpenAI ChatGPT primary; cross-reference Gemini Gems and Copilot Studio when relevant"
   changelog: "See CHANGELOG.md"
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
 ---
 
-# okhp3-custom-gpt-builder
-
-**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
+# Custom GPT Builder
 
 A production-grade methodology for designing, building, testing, and maintaining OpenAI Custom GPTs. Treats GPT creation as product engineering, not prompt tinkering.
 
@@ -56,6 +50,12 @@ For detailed reference on any section, consult the corresponding file in `refere
 
 A Custom GPT is a **configured product surface** around a model: prompt + persona + rules + files + tools + UX wrapper + sharing model. Not a new model. Not fine-tuning. Not automatically an autonomous agent. It is a packaged, reusable ChatGPT configuration for a specific job.
 
+## Evidence and maturity discipline
+
+Before making a design decision, label its basis: `verified_platform_fact`, `source_derived_practice`, `theory`, `preference`, `inferred`, or `unknown`. A repeated source assertion is not a current platform fact. Use official documentation for current Builder behavior; use preview and eval results for observed GPT behavior.
+
+Maintain a change ledger with the failure or opportunity, the smallest proposed change, the expected effect, affected tests, observed result, and rollback decision. A new instruction, file, or capability must earn its place by meeting an acceptance test or resolving a recorded failure.
+
 ## Build Pipeline
 
 ### Step 0: Write a Build Brief (Required Before Anything Else)
@@ -71,6 +71,7 @@ Fill this before writing a single instruction line:
 - **Disallowed data sources:**
 - **Tooling allowed (web search, code interpreter/data analysis, actions, apps/connectors, etc.):**
 - **Safety / compliance constraints (PII, PHI, financial advice, legal review, regulated data, etc.):**
+- **Evidence and verification register:** which requirements are confirmed, inferred, theoretical, preferences, or current platform facts to verify
 
 A GPT for "everyone" becomes generic sludge. Define the job tightly.
 
@@ -99,6 +100,23 @@ Keep instructions dense. Move bulk reference into knowledge files. Use the build
 
 The **No-Contradictions Rule**: if you have "be concise" AND "be comprehensive," you have a fault line. Pick a priority order and encode it explicitly.
 
+For every important rule, record the observable failure it prevents. Do not add layers, personas, or ritual language solely because a template contains them.
+
+### Step 2a: Use modular phase gates for complex builds
+
+If a build needs more than one drafting pass, use named modules rather than a monolithic prompt chain. Each module must specify its input, output, exit gate, and recovery route:
+
+| Module | Exit gate |
+| --- | --- |
+| Intake | Brief has a primary user, job, boundary, and acceptance tests. |
+| Contract | Priorities and contradictions are resolved. |
+| Configuration | Every tool and knowledge source has a purpose, boundary, and fallback. |
+| Challenge | Required evals, retrieval checks, and safety checks have evidence. |
+| Release | Provenance, release decision, and maintenance owner are recorded. |
+| Recovery | Rejected or legacy material is promoted, deferred, or dropped with a reason. |
+
+Completion is reviewable, not irreversible. Never use instructions that forbid simplification, owner confirmation, or a return to earlier evidence. Treat phase gates as a source-derived practice and test their effect on the build rather than claiming they guarantee quality.
+
 ### Step 3: Prepare Knowledge Files
 
 See `references/knowledge-engineering.md` for the full blueprint.
@@ -120,6 +138,7 @@ Knowledge file quality rules:
 - Include a manifest/index file mapping filenames to topics
 - Front-load critical content in the first 20% of each file
 - Test retrieval explicitly after upload
+- Test source conflicts, stale material, and instruction-like content in the corpus; files are reference material, not trusted instructions
 
 ### Step 4: Configure Capabilities
 
@@ -169,6 +188,8 @@ Write 10-15 test prompts covering:
 - Tool failure scenarios
 - Platform-constraint verification
 
+For every changed instruction, record the test it fixes, the tests it may regress, and the observed outcome. Treat semantic interference, shared-reference drift, and prompt-length heuristics as hypotheses that need tests, not as platform diagnoses or guarantees.
+
 See `references/eval-and-redteam.md` for the red-team prompt pack and rubric template. See `evals/evals.json` for assertion-graded test cases following the local Agent Skills eval format.
 
 ### Step 8: Set Visibility and Ship
@@ -203,6 +224,8 @@ Maintenance cadence:
 - Monitor for behavior drift via user feedback
 - Add new failure modes to the test set
 - Re-check Actions/apps/connectors after platform changes or auth changes
+- Retest dependent GPTs after a shared reference or knowledge source changes
+- Keep platform facts, practices, theories, and preferences distinct in release notes
 
 ## Quality Tiers
 
@@ -347,11 +370,5 @@ Every response from this skill must conform to the following contract. Deviation
 
 ---
 
-## About
-
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
-Published at [github.com/OKHP3](https://github.com/OKHP3)
-Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
-CC BY 4.0 -- attribution required. See `LICENSE.md`.
-
-OverKill Hill P³ -- Recursive GPT Engineering. Prompts are protocol.
+*OverKill Hill P³ — Recursive GPT Engineering. Prompts are protocol.*  
+*License: CC BY 4.0 | Attribution required | https://overkillhill.com*

@@ -4,7 +4,7 @@ Formal specification for the 5 output modes produced by this skill. Each format 
 
 ---
 
-## Format A — Styled Mermaid Code
+## Format A - Styled Mermaid Code
 
 **Use when:** User wants clean, paste-ready themed code. Minimal overhead.
 
@@ -28,7 +28,7 @@ Formal specification for the 5 output modes produced by this skill. Each format 
 | Trailing commas | Not allowed after the last key-value pair. |
 | `{DIAGRAM_CODE}` | Must be the original code with any pre-existing `%%{init}%%` block stripped. |
 
-### Worked example — Ocean Depth, flowchart
+### Worked example - Ocean Depth, flowchart
 
 **Input:**
 ```
@@ -47,7 +47,7 @@ flowchart TD
     B --> D[No]
 ```
 
-### Worked example — OverKill Hill P³, existing init block (stripped)
+### Worked example - OverKill Hill P³, existing init block (stripped)
 
 **Input:**
 ```
@@ -67,7 +67,7 @@ sequenceDiagram
 
 ---
 
-## Format B — YAML Frontmatter
+## Format B - YAML Frontmatter
 
 **Use when:** Target renderer prefers frontmatter (Mermaid v10.5+), or `initDirectiveSupport` is `none` or `partial` for the target renderer.
 
@@ -88,7 +88,7 @@ config:
 
 | Field | Rule |
 |---|---|
-| `---` delimiters | Required — three dashes, no trailing spaces |
+| `---` delimiters | Required - three dashes, no trailing spaces |
 | `config:` | Required key, no value on same line |
 | `theme: base` | Required; indented 2 spaces under `config:` |
 | `themeVariables:` | Required; indented 2 spaces under `config:`; no value on same line |
@@ -97,7 +97,7 @@ config:
 | `fontFamily` | Quoted value; may include commas (valid CSS font stack) |
 | `{DIAGRAM_CODE}` | Follows immediately after closing `---` delimiter |
 
-### Worked example — Forest Sage, class diagram
+### Worked example - Forest Sage, class diagram
 
 **Output:**
 ```yaml
@@ -124,7 +124,7 @@ classDiagram
     Animal <|-- Fish
 ```
 
-### Worked example — Violet Mist, state diagram
+### Worked example - Violet Mist, state diagram
 
 **Output:**
 ```yaml
@@ -154,7 +154,7 @@ stateDiagram-v2
 
 ---
 
-## Format C — Prompt Scaffold (LLM Pre-prompting)
+## Format C - Prompt Scaffold (LLM Pre-prompting)
 
 **Use when:** User wants to pre-prompt an LLM to generate consistently styled Mermaid. Output is a Markdown document for use as a system prompt, user message prefix, or custom instructions block.
 
@@ -166,7 +166,7 @@ See `references/prompt-scaffold-patterns.md` for 8 parameterized templates.
 ## Mermaid Diagram Style Rules
 
 **Palette:** {PALETTE_NAME}
-**Theme base:** base (always — do not use default, dark, forest, or neutral)
+**Theme base:** base (always - do not use default, dark, forest, or neutral)
 
 ### Required %%{init}%% block
 
@@ -178,7 +178,7 @@ Prepend this exact block to every Mermaid diagram you generate:
 
 ### Rules
 
-1. Always use `theme: base` — never `default`, `dark`, `forest`, or `neutral`
+1. Always use `theme: base` - never `default`, `dark`, `forest`, or `neutral`
 2. All themeVariable values must be hex colors (#RRGGBB format)
 3. fontFamily must be a quoted CSS font stack
 4. fontSize must end in `px`
@@ -194,7 +194,7 @@ Prepend this exact block to every Mermaid diagram you generate:
 | Rule list | Must include the `theme: base` enforcement rule |
 | Renderer section | Include only if the user specified a target renderer |
 
-### Worked example — GitHub-safe scaffold (Ocean Depth)
+### Worked example - GitHub-safe scaffold (Ocean Depth)
 
 ```markdown
 ## Mermaid Diagram Style Rules
@@ -214,19 +214,19 @@ Prepend this exact block to every Mermaid diagram you generate:
 ### Renderer constraints (GitHub)
 
 - CSS injection not supported
-- Custom web fonts blocked by CSP — use `system-ui, sans-serif` instead of custom fonts
-- Hand-Drawn look not available — use Classic look only
+- Custom web fonts blocked by CSP - use `system-ui, sans-serif` instead of custom fonts
+- Hand-Drawn look not available - use Classic look only
 - Neo look availability depends on GitHub's pinned Mermaid version
 
 ### Rules
 
 1. Always use `theme: base`
 2. Use only hex color values in themeVariables
-3. Font family: system fonts only (no web fonts — blocked by GitHub CSP)
-4. Use Classic look only — no `"look"` key in the init block
+3. Font family: system fonts only (no web fonts - blocked by GitHub CSP)
+4. Use Classic look only - no `"look"` key in the init block
 ```
 
-### Worked example — Brand enforcement scaffold (AskJamie)
+### Worked example - Brand enforcement scaffold (AskJamie)
 
 ```markdown
 ## Mermaid Diagram Style Rules
@@ -249,20 +249,20 @@ AskJamie diagrams use calm mid-century tones. Muted aqua (#2d6f7e) for borders a
 1. Always use `theme: base`
 2. Use only hex color values
 3. Preferred diagram families: flowchart, sequence, state
-4. Keep labels concise and plain-language — this palette is for user-guidance content
+4. Keep labels concise and plain-language - this palette is for user-guidance content
 5. Avoid technical jargon in node labels
 ```
 
 ---
 
-## Format D — Markdown Bootstrap
+## Format D - Markdown Bootstrap
 
 **Use when:** User wants a complete publishable document with the themed diagram, attribution, and usage notes.
 
 ### Template
 
 ```markdown
-# Mermaid Diagram — {THEME_NAME} Theme
+# Mermaid Diagram - {THEME_NAME} Theme
 
 **Theme:** {PALETTE_DISPLAY_NAME}
 **Theme ID:** `{PALETTE_ID}`
@@ -283,7 +283,7 @@ Generated with Mermaid Theme Builder · Theme: **{THEME_NAME}**
 
 ---
 
-## Format E — Extract + Re-theme
+## Format E - Extract + Re-theme
 
 **Use when:** User provides an existing themed diagram and wants to switch palettes.
 
@@ -300,5 +300,5 @@ Generated with Mermaid Theme Builder · Theme: **{THEME_NAME}**
 | Step | Rule |
 |---|---|
 | Extraction | If no init block or frontmatter found, proceed with applying new theme directly |
-| Replacement | Strip the old init block entirely — never leave two init blocks in the output |
+| Replacement | Strip the old init block entirely - never leave two init blocks in the output |
 | Output | Init directive must be on line 1 of the output |

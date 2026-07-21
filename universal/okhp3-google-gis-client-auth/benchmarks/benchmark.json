@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-google-gis-client-auth",
+    "skill_path": ".agents/skills/okhp3-google-gis-client-auth",
+    "skill_version": "1.2.0",
+    "evaluated_skill_version": "1.1.0",
+    "executor_model": "main-agent-graded",
+    "analyzer_model": "main-agent-grader",
+    "timestamp": "2026-06-26T00:00:00Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 1,
+    "note": "Historical Iteration-1 main-agent graded simulation recorded against the prior 1.1.0 content. Results were not rerun after 1.2.0 changes and must not be treated as live benchmark outcomes for 1.2.0."
+  },
+
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "no-backend-oauth",
+      "configuration": "with_skill",
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4 },
+      "assertions": [
+        { "text": "4-step implicit token flow described", "passed": true, "evidence": "Numbered list: popup → consent → token to callback → no server exchange" },
+        { "text": "JavaScript Origins ONLY, NOT redirect URIs", "passed": true, "evidence": "'⛔ Do NOT add Authorized redirect URIs' with explanation" },
+        { "text": "window.google.accounts.oauth2.initTokenClient exact name", "passed": true, "evidence": "Exact API name with window. prefix" },
+        { "text": "Client ID public, Client Secret intentionally absent", "passed": true, "evidence": "'The token model uses no Client Secret — it is intentionally absent from this flow'" }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "no-backend-oauth",
+      "configuration": "without_skill",
+      "result": { "pass_rate": 0.5, "passed": 2, "failed": 2, "total": 4 },
+      "assertions": [
+        { "text": "4-step implicit token flow described", "passed": false, "evidence": "Flow described without enumerating the 4 steps or stating 'no server exchange' explicitly" },
+        { "text": "JavaScript Origins ONLY, NOT redirect URIs", "passed": false, "evidence": "JavaScript Origins mentioned but no explicit 'do NOT add redirect URIs' prohibition" },
+        { "text": "initTokenClient exact name", "passed": true, "evidence": "`google.accounts.oauth2.initTokenClient` — correct API (without window. prefix)" },
+        { "text": "Client ID public — correct and expected", "passed": true, "evidence": "'The Client ID is public — safe to include in client-side code'" }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "token-expiry-silent-reauth",
+      "configuration": "with_skill",
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4 },
+      "assertions": [
+        { "text": "2-minute buffer (tokenExpiry - 120_000)", "passed": true, "evidence": "`Date.now() < Number(expiry) - 120_000` — exact expression" },
+        { "text": "Silent prompt:'none' first, popup fallback", "passed": true, "evidence": "requestAccessToken({ prompt: 'none' }) with fallback explanation" },
+        { "text": "sessionStorage + keys g_token / g_expiry", "passed": true, "evidence": "setItem('g_token') and setItem('g_expiry') — exact keys, sessionStorage" },
+        { "text": "isTokenValid() with buffer", "passed": true, "evidence": "Full isTokenValid() function shown with 120_000 buffer" }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "token-expiry-silent-reauth",
+      "configuration": "without_skill",
+      "result": { "pass_rate": 0.0, "passed": 0, "failed": 4, "total": 4 },
+      "assertions": [
+        { "text": "2-minute buffer (tokenExpiry - 120_000)", "passed": false, "evidence": "No buffer — checks exact expiry with `Date.now() > Number(expiresAt)`" },
+        { "text": "Silent prompt:'none' first, popup fallback", "passed": false, "evidence": "requestAccessToken() called directly, no prompt option — user sees popup immediately" },
+        { "text": "sessionStorage + keys g_token / g_expiry", "passed": false, "evidence": "localStorage used; keys are 'access_token' and 'token_expires' — wrong storage and wrong names" },
+        { "text": "isTokenValid() with buffer", "passed": false, "evidence": "`isTokenExpired()` — inverted boolean, no buffer, wrong name" }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "hook-implementation",
+      "configuration": "with_skill",
+      "result": { "pass_rate": 1.0, "passed": 4, "failed": 0, "total": 4 },
+      "assertions": [
+        { "text": "Hook named useGoogleAuth", "passed": true, "evidence": "`export function useGoogleAuth()` — exact name" },
+        { "text": "getToken() with silent-first refresh", "passed": true, "evidence": "getToken() with prompt:'none' and popup fallback" },
+        { "text": "sessionStorage g_token / g_expiry keys", "passed": true, "evidence": "setItem('g_token') and setItem('g_expiry') — both exact" },
+        { "text": "connect() → googleapis.com/oauth2/v3/userinfo", "passed": true, "evidence": "fetchUserProfile() called from connect(), fetches /oauth2/v3/userinfo — exact URL" }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "hook-implementation",
+      "configuration": "without_skill",
+      "result": { "pass_rate": 0.0, "passed": 0, "failed": 4, "total": 4 },
+      "assertions": [
+        { "text": "Hook named useGoogleAuth", "passed": false, "evidence": "Named useGoogleOAuth — ARE-incompatible" },
+        { "text": "getToken() with silent-first refresh", "passed": false, "evidence": "getAuthToken() returns state variable, no refresh logic" },
+        { "text": "sessionStorage g_token / g_expiry keys", "passed": false, "evidence": "localStorage, key 'google_token', no expiry stored" },
+        { "text": "connect() → /oauth2/v3/userinfo", "passed": false, "evidence": "signIn(), uses /userinfo/v2/me endpoint — different response shape (id vs sub)" }
+      ]
+    }
+  ],
+
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": { "mean": 1.0,  "stddev": 0.0, "min": 1.0, "max": 1.0 }
+    },
+    "without_skill": {
+      "pass_rate": { "mean": 0.17, "stddev": 0.24, "min": 0.0, "max": 0.5 }
+    },
+    "delta": { "pass_rate": "+0.83" }
+  },
+
+  "acceptance": {
+    "with_skill_mean_threshold": 0.9,
+    "delta_threshold": 0.5,
+    "result": "PASS",
+    "notes": [
+      "with_skill 1.0 > threshold 0.9 ✓",
+      "delta +0.83 > threshold 0.5 ✓",
+      "Evals 2 and 3 without_skill: 0/4 — key names, buffer values, silent-auth pattern all absent from LLM general knowledge",
+      "Eval 3 without_skill: /userinfo/v2/me vs /oauth2/v3/userinfo returns different shapes (id vs sub field)"
+    ]
+  },
+
+  "fix_targets": [
+    "Eval 1: explicit 4-step flow + 'do NOT add redirect URIs' needs to remain prominent — no change needed (already has callout)",
+    "Eval 2: prompt:'none' silent auth and exact key names need Gotchas entry for clarity",
+    "Eval 3: useGoogleAuth hook name + g_token/g_expiry keys + connect() name — add Key constants table"
+  ]
+}

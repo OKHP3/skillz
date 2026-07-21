@@ -42,7 +42,7 @@ Mermaid does not require or want semicolons after statements. They cause inconsi
 The `<br>` tag and HTML-style formatting in labels (`<b>`, `<i>`, `<span>`) render inconsistently across Mermaid versions and export targets. Use plain text. If line breaks are needed, split into multiple nodes or use `\n` in supported contexts.
 
 **Do not invent classDef names.**
-Apply only `classDef` names that are defined within the current diagram's `%%{init}%%` block or at the top of the diagram. Applying an undefined class results in silent failure — the style is not applied and no error is raised.
+Apply only `classDef` names that are defined within the current diagram's `%%{init}%%` block or at the top of the diagram. Applying an undefined class results in silent failure - the style is not applied and no error is raised.
 
 **Every `classDef` must set `fill`, `stroke`, AND `color`.**
 Omitting any of these three properties causes dark/light-mode rendering failures. This is the single most common style defect in community Mermaid diagrams.

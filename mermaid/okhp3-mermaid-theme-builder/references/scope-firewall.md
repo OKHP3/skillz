@@ -1,6 +1,6 @@
 # Scope Firewall
 
-This document defines what must never appear in any skill output. These are hard rules — not guidelines.
+This document defines what must never appear in any skill output. These are hard rules - not guidelines.
 
 ---
 
@@ -26,12 +26,12 @@ Never use themeVariable names that are not:
 2. Documented at https://mermaid.js.org/config/theming.html as official Mermaid themeVariables
 
 **Prohibited examples** (do not use):
-- `accentColor` — not a Mermaid themeVariable
-- `highlightColor` — not a Mermaid themeVariable
-- `primaryAccent` — not a Mermaid themeVariable
-- `borderRadius` — not a themeVariable (CSS property, not applicable here)
-- `linkColor` — not the correct name (use `lineColor`)
-- `nodeBackground` — not the correct name (use `mainBkg` or `primaryColor`)
+- `accentColor` - not a Mermaid themeVariable
+- `highlightColor` - not a Mermaid themeVariable
+- `primaryAccent` - not a Mermaid themeVariable
+- `borderRadius` - not a themeVariable (CSS property, not applicable here)
+- `linkColor` - not the correct name (use `lineColor`)
+- `nodeBackground` - not the correct name (use `mainBkg` or `primaryColor`)
 
 **Why this matters:** Hallucinated variable names silently fail in Mermaid. The renderer ignores unknown keys, leaving the diagram unstyled.
 
@@ -72,15 +72,15 @@ Never output:
 
 Before generating any themed output, verify:
 
-1. **Palette ID exists** — The palette ID must match one of the 7 IDs in `assets/palettes.json`: `ocean-depth`, `forest-sage`, `slate-ember`, `violet-mist`, `overkill-hill`, `glee-fully`, `askjamie`
+1. **Palette ID exists** - The palette ID must match one of the 7 IDs in `assets/palettes.json`: `ocean-depth`, `forest-sage`, `slate-ember`, `violet-mist`, `overkill-hill`, `glee-fully`, `askjamie`
 
-2. **Hex values are exact** — All hex values must match `assets/palettes.json` exactly. Do not round, approximate, or adjust.
+2. **Hex values are exact** - All hex values must match `assets/palettes.json` exactly. Do not round, approximate, or adjust.
 
-3. **themeVariable names are canonical** — Only variable names present in `assets/theme-variable-map.json` or `assets/palettes.json` are permitted.
+3. **themeVariable names are canonical** - Only variable names present in `assets/theme-variable-map.json` or `assets/palettes.json` are permitted.
 
-4. **Renderer claims match the matrix** — All renderer support claims must match `assets/renderer-profiles.json`.
+4. **Renderer claims match the matrix** - All renderer support claims must match `assets/renderer-profiles.json`.
 
-5. **`"theme": "base"` is always present** — Never omit this. Never substitute another theme name.
+5. **`"theme": "base"` is always present** - Never omit this. Never substitute another theme name.
 
 ---
 
@@ -105,9 +105,9 @@ The following are safe to reference: `docs/renderer-compatibility.md`, `docs/mer
 
 Do not attempt to provide, simulate, or reference:
 
-- **Live rendering** — This skill produces text output only. Mermaid rendering requires a browser or CLI environment.
-- **DOM manipulation** — No JavaScript, React, or browser API references in skill output.
-- **File downloads** — No Blob, FileReader, canvas-to-PNG, or SVG export instructions.
-- **Backend services** — The tool is 100% client-side. There is no API, webhook, or backend.
-- **Network calls from scripts** — The scripts in `scripts/` must have zero external dependencies. No `fetch`, `axios`, or HTTP requests.
-- **BPMN for Mermaid** — The companion skill `okhp3-mermaid-bpmn` covers BPMN content in this distribution. Load it before this visual-governance skill when the request includes process semantics.
+- **Live rendering** - This skill produces text output only. Mermaid rendering requires a browser or CLI environment.
+- **DOM manipulation** - No JavaScript, React, or browser API references in skill output.
+- **File downloads** - No Blob, FileReader, canvas-to-PNG, or SVG export instructions.
+- **Backend services** - The tool is 100% client-side. There is no API, webhook, or backend.
+- **Network calls from scripts** - The scripts in `scripts/` must have zero external dependencies. No `fetch`, `axios`, or HTTP requests.
+- **BPMN for Mermaid** - A separate skill (`okhp3-bpmn-for-mermaid`) covers BPMN content in the `OKHP3/mermaid-diagram-bpmn` repository. Do not conflate the two.

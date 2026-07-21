@@ -1,0 +1,42 @@
+{
+  "skill_name": "okhp3-google-gis-client-auth",
+  "skill_version": "1.2.0",
+  "evals": [
+    {
+      "id": 1,
+      "name": "no-backend-oauth",
+      "prompt": "Every Google OAuth tutorial I find requires a redirect URI and a backend server to handle the callback. I'm building a static site on Netlify with no server. Can I still get Google Calendar read access? How does it work?",
+      "expected_output": "Agent explains the GIS implicit token model: popup opens, user consents, access token returned directly to JS callback — no redirect, no server. Specifies Authorized JavaScript Origins (NOT redirect URIs) in GCP Console. References initTokenClient.",
+      "assertions": [
+        "Response describes the 4-step implicit token flow: popup opens → user consents → access token returned directly to JS callback → no server exchange required",
+        "Response explicitly states that Authorized JavaScript Origins should be set and redirect URIs should NOT be added to the GCP Console OAuth client",
+        "Response references `window.google.accounts.oauth2.initTokenClient` by exact API name",
+        "Response clarifies the Client ID is intentionally public and safe to embed in client-side code — the token model does not use a Client Secret"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "token-expiry-silent-reauth",
+      "prompt": "My Google Calendar integration works when the user first signs in but stops fetching data after about an hour. Users have to reload and sign in again. How do I automatically handle token expiry without interrupting the user experience?",
+      "expected_output": "Agent provides the isTokenValid() check with a 2-minute buffer (tokenExpiry - 120_000), describes the two-step getToken() flow (silent prompt:'none' first, popup fallback), and specifies sessionStorage for token storage using the repository keys gal_token and gal_expiry.",
+      "assertions": [
+        "Response describes a validity check that includes a time buffer before expiry (referencing `tokenExpiry - 120_000` ms or the 2-minute buffer concept)",
+        "Response describes a two-step token refresh: attempt silent refresh with `prompt: 'none'` first, then fall back to a consent popup only if silent fails",
+        "Response specifies `sessionStorage` (not localStorage) for storing the token, and references the repository key names `gal_token` and `gal_expiry`",
+        "Response includes or references the `isTokenValid()` function that checks both token existence and the expiry buffer"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "hook-implementation",
+      "prompt": "I'm implementing Google Calendar read access in a React TypeScript app on GitHub Pages. I need a reusable hook that handles sign-in, token storage, automatic refresh when expired, and sign-out. Give me the pattern.",
+      "expected_output": "Agent provides the useGoogleAuth hook with connect(), getToken(), disconnect(). Token stored in sessionStorage with the repository keys gal_token and gal_expiry; profile reads remain a separate Google API read operation.",
+      "assertions": [
+        "Response provides a hook named `useGoogleAuth` (exact name)",
+        "Response includes a `getToken()` function that attempts silent token refresh before showing the user a consent popup",
+        "Response stores the token in sessionStorage using the repository keys `gal_token` and `gal_expiry` (exact key names)",
+        "Response keeps profile fetching separate from the auth hook and, when needed, references `https://www.googleapis.com/oauth2/v3/userinfo` as the profile read endpoint"
+      ]
+    }
+  ]
+}

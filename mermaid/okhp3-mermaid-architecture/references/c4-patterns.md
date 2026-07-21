@@ -1,16 +1,16 @@
 # C4 Patterns
 
-## Layer definitions
+TOC for Phase 2 authoring.
 
-- Context: the system, users, and external systems. Use for boundary and purpose.
-- Container: deployable applications, services, stores, and queues inside the system boundary.
-- Component: major responsibilities inside one container. Do not mix unrelated containers.
-- Code: classes or modules. Prefer `okhp3-mermaid-data` class diagrams when code detail is the actual request.
+## Layer definitions
+- [ ] Context - system + external actors/systems, Executive-appropriate
+- [ ] Container - major technical building blocks (apps, databases, services), Analyst-appropriate
+- [ ] Component - internals of one container, Technical-appropriate
+- [ ] Code - class/module level, rarely diagrammed in Mermaid (usually routed to `okhp3-mermaid-data`'s class diagrams instead)
 
 ## Mermaid syntax per layer
-
-Use the C4 syntax only when the target renderer supports the required C4 extension. Otherwise use a flowchart with explicit boundary subgraphs and state that it is C4-informed rather than strict C4 syntax.
+- [ ] C4Context, C4Container, C4Component syntax differences
+- [ ] When to use C4 syntax vs. plain flowchart with subgraphs for "architecture-flavored" diagrams
 
 ## Cross-layer naming consistency
-
-Keep stable IDs and display names for the same actors, systems, containers, and stores across views. Before delivery, compare the Context and Container diagrams and record renamed, split, merged, or removed elements in the registry note.
+- [ ] Container names must match between Context and Container diagrams - checklist for this Gate 2 cross-diagram check

@@ -1,6 +1,6 @@
 {
   "skill": "custom-gpt-builder",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "format": "agentskills-eval-v1",
   "description": "Assertion-graded eval cases for the custom-gpt-builder skill. Run with-skill vs without-skill baseline. Assertions prefer stable design behavior and require verification of volatile platform constraints.",
   "evals": [
@@ -14,7 +14,8 @@
         {"type": "contains_concept", "value": "primary user identified as sales team or sales rep"},
         {"type": "contains_concept", "value": "non-goals or out-of-scope items"},
         {"type": "contains_concept", "value": "acceptance criteria or done-when criteria"},
-        {"type": "not_contains_concept", "value": "just writes instructions immediately without a brief"}
+        {"type": "not_contains_concept", "value": "just writes instructions immediately without a brief"},
+        {"type": "contains_concept", "value": "evidence or verification status for consequential requirements"}
       ]
     },
     {
@@ -27,7 +28,8 @@
         {"type": "contains_concept", "value": "output format or output policy"},
         {"type": "contains_concept", "value": "safety policy or refusal rules or boundaries"},
         {"type": "contains_concept", "value": "knowledge files or reference files"},
-        {"type": "contains_concept", "value": "No-Contradictions Rule or instruction conflicts or priority order"}
+        {"type": "contains_concept", "value": "No-Contradictions Rule or instruction conflicts or priority order"},
+        {"type": "contains_concept", "value": "important rules linked to observable failures or acceptance tests"}
       ]
     },
     {
@@ -191,6 +193,19 @@
         {"type": "contains_concept", "value": "outperform a well-written one-off prompt"},
         {"type": "contains_concept", "value": "maintenance plan or scheduled review"},
         {"type": "contains_concept", "value": "verified platform claims or current-platform verification"}
+      ]
+    },
+    {
+      "id": "process-01-phase-gates",
+      "category": "process-design",
+      "prompt": "I have a 40-step GPT-building prompt chain. Should I paste it into the GPT instructions and run it without stopping?",
+      "expected": "Agent converts the chain into modular intake, contract, configuration, challenge, release, and recovery stages; gives each a measurable exit gate; preserves owner review and simplification; and avoids treating prior prompt assertions as platform facts.",
+      "assertions": [
+        {"type": "contains_concept", "value": "modular phase gates or named modules"},
+        {"type": "contains_concept", "value": "input output exit gate or recovery route"},
+        {"type": "contains_concept", "value": "owner confirmation or reviewable decision or return to evidence"},
+        {"type": "contains_concept", "value": "do not paste the full chain into GPT instructions or not monolithic"},
+        {"type": "not_contains_concept", "value": "permanent irreversible ready status"}
       ]
     }
   ]

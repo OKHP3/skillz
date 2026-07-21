@@ -1,0 +1,28 @@
+{
+  "eval_id": 3,
+  "eval_name": "anthropic-direct-browser",
+  "configuration": "without_skill",
+  "assertion_results": [
+    {
+      "text": "Response includes the `anthropic-dangerous-direct-browser-access: 'true'` request header by exact name",
+      "passed": false,
+      "evidence": "The `anthropic-dangerous-direct-browser-access` header is absent entirely. Without it, Anthropic's API will reject browser fetch requests with a CORS error."
+    },
+    {
+      "text": "Response uses `import.meta.env.VITE_ANTHROPIC_API_KEY` as the environment variable pattern (Vite-specific)",
+      "passed": false,
+      "evidence": "Uses `import.meta.env.VITE_ANTHROPIC_KEY` — missing `_API_KEY` suffix. The skill specifies `VITE_ANTHROPIC_API_KEY` as the canonical name. Different name means agents and users following this response won't match the expected pattern."
+    },
+    {
+      "text": "Response explicitly warns that the API key will be visible in the JavaScript bundle",
+      "passed": true,
+      "evidence": "'Your API key will be visible in the browser bundle' — present but less specific than skill response (doesn't mention DevTools → Sources)"
+    },
+    {
+      "text": "Response states this approach is only acceptable for personal or single-user apps",
+      "passed": true,
+      "evidence": "'Only use this for personal/demo projects' — personal use caveat present"
+    }
+  ],
+  "summary": { "passed": 2, "failed": 2, "total": 4, "pass_rate": 0.5 }
+}

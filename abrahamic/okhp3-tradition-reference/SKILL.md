@@ -1,37 +1,45 @@
 ---
 name: okhp3-tradition-reference
 description: >
-  Compact structured reference for each of the three in-scope Abrahamic
-  traditions -- Judaism, Christianity (5 denominations), and Islam. Covers
-  canon scope, key texts, US population share with Pew citation, available
-  translations, API provider, and a clear out-of-scope section. Use when an
-  agent needs authoritative metadata about any of the three traditions before
-  generating content, making API calls, or answering scope questions. Also
-  activate when an agent needs to know which scriptures a denomination uses,
-  which translations are available and free, what canon a tradition follows,
-  which denominations meet the 1% threshold, what API endpoint serves a given
-  tradition, or how to represent a tradition accurately and neutrally. This is
-  the primary authoritative reference for tradition-level facts in the ARE
-  ecosystem -- use it before assuming anything about a tradition's canon,
-  denominational structure, or API availability. Always read this skill before
-  writing fetch code or answering canon/denomination questions -- it is the
-  single source of truth for which APIs, translations, and scope boundaries
-  the ARE ecosystem uses. Activate when a user asks about LDS scriptures,
-  Orthodox canon, Catholic deuterocanonicals, which Quran translation to use,
-  or whether a given tradition is in scope.
+  Reference ARE scope, canon, denominations, translations, Pew US shares, and
+  free API providers for Judaism, Christianity, and Islam. Use before answering
+  canon or denomination questions, choosing a translation, writing scripture
+  fetch code, checking whether a tradition is in scope, or explaining LDS,
+  Catholic, Orthodox, Jewish, or Islamic reference coverage. Preserve
+  denominational variation, source dates, licensing, and known API gaps.
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.0"
+  version: "1.2.0"
   category: interfaith-reference
   origin: okhp3/abrahamic-reference-engine
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  spec-version: "agentskills-1.0"
+  reviewed: "2026-07-21"
+compatibility: Markdown reference material. Network access is optional and only needed to verify provider availability or current demographic sources.
 ---
 
 # OKHP3 -- Tradition Reference Skill
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3) · [OKHP3/skillz](https://github.com/OKHP3/skillz)
+
+## Execution contract
+
+- Apply the scope test before adding a tradition, denomination, translation, or
+  API: Abrahamic lineage and the 1% US threshold are both required by ARE.
+- Use the focused `knowledge/` file for the question at hand. Do not load every
+  primer when one denomination or one API gap is sufficient.
+- Separate canonical or historical description from ARE implementation policy,
+  provider availability, and user-facing UI guidance.
+- Preserve variation within a tradition. Do not turn one denomination's canon,
+  practice, or interpretation into a universal claim.
+- Treat Pew shares and provider coverage as time-sensitive. Cite the source and
+  date, record known gaps in `reserve-02-api-gap-register.md`, and verify live
+  availability before promising that an endpoint currently works.
+- This is a neutral reference layer, not spiritual or doctrinal authority. Do
+  not rank traditions or recommend a translation without stating its license
+  and coverage limits.
 
 ## Scope criteria
 

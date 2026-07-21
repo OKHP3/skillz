@@ -6,6 +6,30 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.3.0] - 2026-07-20
+
+### Added
+- `SKILL.md`: modular phase-gate method with explicit inputs, exit gates, and recovery paths for complex builds
+
+### Changed
+- `SKILL.md`: replaces irreversible prompt-chain behavior with reviewable, evidence-backed progression
+- `SKILL.md`: version bumped `1.2.0` to `1.3.0`
+
+---
+
+## [1.2.0] - 2026-07-21
+
+### Added
+- `SKILL.md`: claim classification for verified platform facts, source-derived practices, theories, preferences, inferences, and unknowns
+- `SKILL.md`: measured maturity loop linking each change to a failure, test, observed result, and rollback decision
+- `SKILL.md`: knowledge-corpus conflict and instruction-like-content tests
+
+### Changed
+- `SKILL.md`: version bumped `1.1.0` to `1.2.0`
+- `SKILL.md`: Build Brief now records the evidence and verification basis for consequential requirements
+
+---
+
 ## [1.1.0] — 2026-06-04
 
 ### Added

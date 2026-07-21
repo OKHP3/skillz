@@ -1,0 +1,42 @@
+{
+  "skill_name": "okhp3-daily-oracle",
+  "skill_version": "1.3.0",
+  "evals": [
+    {
+      "id": 1,
+      "name": "cache-key-daily-stability",
+      "prompt": "I'm building a React wellness app and want to add a daily tarot card + AI oracle message that generates once per day and stays the same if the user refreshes. How do I implement the caching so each user gets their own reading that's stable for the whole day?",
+      "expected_output": "Agent provides the getOrCreateOracle() function with the cache key pattern `{appPrefix}:{userId}:oracle:{YYYY-MM-DD}`. Uses new Date().toISOString().split('T')[0] for the date string. Explains per-user isolation via userId component.",
+      "assertions": [
+        "Response uses a cache key pattern that includes both a userId component and a YYYY-MM-DD date string (e.g. `myapp:${userId}:oracle:${today}`)",
+        "Response uses localStorage.getItem and localStorage.setItem as the storage mechanism",
+        "Response extracts the date as new Date().toISOString().split('T')[0] — not toLocaleDateString() or toDateString()",
+        "Response explains that the userId component provides per-user isolation so different users get different readings on the same day"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "tarot-api-fallback",
+      "prompt": "My daily oracle app fetches a tarot card from tarotapi.dev. What happens if that API goes down? I don't want the user to see a blank card or an error — I want a graceful fallback. Walk me through the exact fallback strategy.",
+      "expected_output": "Agent describes the deterministic day-of-year fallback used by this repo: the 22-card MAJOR_ARCANA pool selected by dayOfYear % MAJOR_ARCANA.length. Explains the day-of-year calculation. Confirms user always sees a meaningful reading.",
+      "assertions": [
+        "Response describes a deterministic fallback — not a random selection and not a static single card",
+        "Response references the repo's fixed 22-card MAJOR_ARCANA fallback pool",
+        "Response includes the day-of-year calculation using Date.now() and getTime() subtraction divided by 86400000",
+        "Response uses modulo (`doy % FALLBACK.length` or equivalent) to select from the pool, ensuring determinism across the year"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "anthropic-direct-browser",
+      "prompt": "I want to add Claude-generated oracle messages to my personal app deployed on GitHub Pages. I don't have a backend server. How do I call the Anthropic API directly from the browser in a Vite/React app?",
+      "expected_output": "Agent provides the direct browser fetch approach with the anthropic-dangerous-direct-browser-access header, using VITE_ANTHROPIC_API_KEY as the env var. Includes bundle exposure warning and personal-use caveat.",
+      "assertions": [
+        "Response includes the `anthropic-dangerous-direct-browser-access: 'true'` request header by exact name",
+        "Response uses `import.meta.env.VITE_ANTHROPIC_API_KEY` as the environment variable pattern (Vite-specific)",
+        "Response explicitly warns that the API key will be visible in the JavaScript bundle",
+        "Response states this approach is only acceptable for personal or single-user apps — not for public-facing multi-user deployments"
+      ]
+    }
+  ]
+}

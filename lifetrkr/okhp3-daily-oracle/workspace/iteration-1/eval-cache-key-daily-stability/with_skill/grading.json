@@ -1,0 +1,28 @@
+{
+  "eval_id": 1,
+  "eval_name": "cache-key-daily-stability",
+  "configuration": "with_skill",
+  "assertion_results": [
+    {
+      "text": "Response uses a cache key pattern that includes both a userId component and a YYYY-MM-DD date string",
+      "passed": true,
+      "evidence": "Key shown as `${APP_PREFIX}:${userId}:oracle:${today}` where today = toISOString().split('T')[0] — both userId and YYYY-MM-DD date present"
+    },
+    {
+      "text": "Response uses localStorage.getItem and localStorage.setItem as the storage mechanism",
+      "passed": true,
+      "evidence": "localStorage.getItem(cacheKey) and localStorage.setItem(cacheKey, JSON.stringify(oracle)) both explicitly present"
+    },
+    {
+      "text": "Response extracts the date as new Date().toISOString().split('T')[0]",
+      "passed": true,
+      "evidence": "Code comment reads 'YYYY-MM-DD' and the exact expression `new Date().toISOString().split('T')[0]` is used"
+    },
+    {
+      "text": "Response explains per-user isolation via userId in cache key",
+      "passed": true,
+      "evidence": "'Because userId is in the key, Alice's reading on June 26 is stored separately from Bob's. Both users can have the app open simultaneously without cache collisions.'"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

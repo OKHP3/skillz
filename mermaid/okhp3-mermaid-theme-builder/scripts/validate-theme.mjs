@@ -1,7 +1,7 @@
 /**
  * validate-theme.mjs
  * Validate a themed Mermaid diagram's %%{init}%% block.
- * No external dependencies — runs with: node scripts/validate-theme.mjs
+ * No external dependencies - runs with: node scripts/validate-theme.mjs
  */
 
 const HEX_RE = /^#([A-Fa-f0-9]{3}|[A-Fa-f0-9]{6})$/;
@@ -146,11 +146,11 @@ export function validateTheme(code) {
   const { theme, vars } = extracted;
 
   if (theme && theme !== "base") {
-    errors.push(`theme must be "base" — found "${theme}"`);
+    errors.push(`theme must be "base" - found "${theme}"`);
   }
 
   if (!theme) {
-    errors.push('theme key is missing — must be "base"');
+    errors.push('theme key is missing - must be "base"');
   }
 
   for (const [key, value] of Object.entries(vars)) {
@@ -167,7 +167,7 @@ export function validateTheme(code) {
 
     if (key === "fontSize") {
       if (!PX_RE.test(value)) {
-        errors.push(`fontSize must end in "px" — found "${value}" for key "${key}"`);
+        errors.push(`fontSize must end in "px" - found "${value}" for key "${key}"`);
       }
       continue;
     }
@@ -204,11 +204,11 @@ export function validateTheme(code) {
       key.startsWith("label");
 
     if (isColorVar && !HEX_RE.test(value)) {
-      errors.push(`Invalid hex value "${value}" for variable "${key}" — must match #RGB or #RRGGBB`);
+      errors.push(`Invalid hex value "${value}" for variable "${key}" - must match #RGB or #RRGGBB`);
     }
 
     if (!KNOWN_VARS.has(key)) {
-      warnings.push(`Unknown themeVariable "${key}" — may be ignored by Mermaid renderer`);
+      warnings.push(`Unknown themeVariable "${key}" - may be ignored by Mermaid renderer`);
     }
   }
 

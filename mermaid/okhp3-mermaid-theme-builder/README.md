@@ -6,7 +6,7 @@ Apply reusable color palettes and visual governance to Mermaid diagram code. Thi
 
 ## What it does
 
-Generates renderer-aware `%%{init}%%` directives with `themeVariables` for 7 built-in palettes across 27+ Mermaid diagram families. Produces styled code, YAML frontmatter, Markdown bootstrap documents, and LLM prompt scaffolds — all validated against a 7-renderer compatibility matrix.
+Generates renderer-aware `%%{init}%%` directives with `themeVariables` for 7 built-in palettes across 27+ Mermaid diagram families. Produces styled code, YAML frontmatter, Markdown bootstrap documents, and LLM prompt scaffolds - all validated against a 7-renderer compatibility matrix.
 
 ---
 
@@ -18,8 +18,8 @@ Generates renderer-aware `%%{init}%%` directives with `themeVariables` for 7 bui
 # Clone or copy the skill into your project
 cp -r skills/okhp3-mermaid-theme-builder ~/.claude/skills/
 
-# Or reference directly in AGENTS.md
-echo "## Skills\n- skills/okhp3-mermaid-theme-builder/SKILL.md" >> AGENTS.md
+# Or reference directly in CLAUDE.md
+echo "## Skills\n- skills/okhp3-mermaid-theme-builder/SKILL.md" >> CLAUDE.md
 ```
 
 ### GitHub Copilot (VS Code)

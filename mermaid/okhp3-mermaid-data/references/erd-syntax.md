@@ -1,30 +1,16 @@
-# ER Diagram Syntax and Cardinality Conventions
+# ER Diagram Syntax & Cardinality Conventions
 
-Use Mermaid `erDiagram` for entities and relationships. Treat field names, types, keys, and cardinalities as evidence-backed content; label inferred design choices as assumptions.
+TOC for Phase 2 authoring.
 
-## Entity and attribute syntax
-
-```mermaid
-erDiagram
-  CUSTOMER ||--o{ ORDER : places
-  CUSTOMER {
-    string customer_id PK
-    string display_name
-  }
-  ORDER {
-    string order_id PK
-    string customer_id FK
-  }
-```
-
-Use `PK` and `FK` only when the source schema or design explicitly establishes them. Omit field lists for Executive and most Analyst views.
+## Entity/attribute syntax
+- [ ] Mermaid `erDiagram` entity block syntax, attribute typing
+- [ ] PK/FK annotation conventions - included for Technical, omitted for Analyst
 
 ## Cardinality notation
-
-Use `||` for exactly one, `o|` for zero or one, `|{` for one or more, and `o{` for zero or more. Read `CUSTOMER ||--o{ ORDER` as “one customer may place zero or more orders, and each order belongs to exactly one customer.” Add a relationship label that describes the verb.
+- [ ] One-to-one, one-to-many, many-to-many - exact Mermaid notation (`||--o{` etc.), pick OKHP3-standard and document so it's not re-decided per diagram
+- [ ] Optional vs. mandatory relationships - notation for each
 
 ## Audience scaling
-
-- Executive: flag ERD as potentially too technical; offer a C4 Context or flowchart.
-- Analyst: show entity names, relationship verbs, and cardinality; omit field lists unless requested.
-- Technical: show supported fields, types, PK/FK markers, and source-of-truth metadata.
+- [ ] Executive: when is an ER diagram even the right type? (Often it isn't - flag and suggest C4 Context or a simple flowchart instead)
+- [ ] Analyst: entity names + relationships, no attribute lists
+- [ ] Technical: full attribute lists with types

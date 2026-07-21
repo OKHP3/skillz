@@ -1,29 +1,23 @@
 ---
 name: okhp3-cross-tradition-compare
 description: >
-  Find thematically parallel passages across Judaism, Christianity, and Islam.
-  Embeds 20 pre-seeded themes with passage references for all three traditions,
-  a neutral bridging note style guide, and the proportional representation rule
-  for agents generating new comparisons. All 20 themes include static passage
-  text -- no API call required to display a comparison immediately. Use when an
-  agent needs to surface shared wisdom, common ground, or parallel teachings
-  across the three in-scope Abrahamic traditions -- including when users ask what
-  religions have in common, want side-by-side scripture comparisons, are
-  exploring interfaith dialogue, need religiously neutral bridging language, or
-  want to see how Judaism, Christianity, and Islam approach the same moral or
-  theological theme. Also activate when building a cross-tradition comparison UI,
-  selecting themes for educational or devotional content, generating multi-
-  tradition displays, or adding a compare feature to any religious reference or
-  interfaith app. Activate for any "what do these faiths share" or "compare
-  religions on X" request -- even when the user does not use the word "compare".
+  Compare shared themes across Judaism, Christianity, and Islam using 20 seeded
+  passage sets, neutral bridging notes, and the ARE proportional-representation
+  rule. Use for side-by-side scripture comparisons, interfaith education,
+  neutral common-ground explanations, comparison UI work, or requests about
+  what these traditions share. Do not use it to rank traditions, prove
+  theological priority, or invent a parallel where none is established.
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.0"
+  version: "1.2.0"
   category: interfaith-reference
   origin: okhp3/abrahamic-reference-engine
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  spec-version: "agentskills-1.0"
+  reviewed: "2026-07-21"
+compatibility: Static Markdown and TypeScript data. No network access is required for seeded comparisons.
 ---
 
 # OKHP3 -- Cross-Tradition Compare Skill
@@ -36,7 +30,7 @@ The 20 pre-seeded themes are embedded in this skill with static passage text. Us
 
 1. Pick a theme ID from the index at the bottom of this file (e.g. `forgiveness`)
 2. Read the theme's three tradition objects from `compareThemes.ts` in the host project
-3. Render each tradition's `staticText` and `attribution` in a three-panel layout
+3. Render each tradition's `staticText` and `translationName` in a three-panel layout; add provider attribution from the host data
 4. Display `bridgingNote` below the panels under "What Connects These?"
 
 No network call is required. The data is ready. For live verse fetching on top of static text, use `okhp3-verse-lookup` with the `liveRef` field.
@@ -46,6 +40,24 @@ No network call is required. The data is ready. For live verse fetching on top o
 ## Mission
 
 Identify shared themes and structurally parallel passages across Judaism, Christianity, and Islam -- presented without declaring any tradition superior, more complete, or more historically prior. The goal is discovery and translation between faiths, not synthesis, merger, or competitive ranking.
+
+## Execution contract
+
+- Start from a seeded theme ID when one fits. Preserve its references, lookup
+  keys, translation names, and provider mapping exactly unless the host data is
+  intentionally being revised.
+- Treat `staticText` as display seed text, not proof that a live provider is
+  available. If exact wording, scope, or coverage is uncertain, use
+  `okhp3-verse-lookup` or label the passage as unavailable instead of inventing
+  a quotation.
+- Present one structurally equal panel per tradition. Proportionality affects
+  the number of examples, never the dignity, visual weight, or authority of a
+  panel.
+- Describe observed parallels and real differences separately. Do not infer
+  borrowing, fulfillment, correction, priority, or superiority from a thematic
+  resemblance.
+- Preserve translation and source attribution in the host UI. A bridging note
+  is interpretation of the comparison structure, not a doctrinal conclusion.
 
 ## Scope
 

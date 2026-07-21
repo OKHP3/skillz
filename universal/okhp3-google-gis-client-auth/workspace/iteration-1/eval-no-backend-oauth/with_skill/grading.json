@@ -1,0 +1,28 @@
+{
+  "eval_id": 1,
+  "eval_name": "no-backend-oauth",
+  "configuration": "with_skill",
+  "assertion_results": [
+    {
+      "text": "Response describes the 4-step implicit token flow: popup opens → user consents → access token returned directly to JS callback → no server exchange required",
+      "passed": true,
+      "evidence": "Numbered list: '1. initTokenClient… 2. popup opens with consent screen 3. user grants → access token directly to JavaScript callback 4. No redirect, no authorization code, no server exchange'"
+    },
+    {
+      "text": "Response explicitly states that JavaScript Origins should be set and redirect URIs should NOT be added to GCP Console",
+      "passed": true,
+      "evidence": "'⛔ Do NOT add Authorized redirect URIs — the token model does not use them. Leave the redirect URIs section completely empty.'"
+    },
+    {
+      "text": "Response references window.google.accounts.oauth2.initTokenClient by exact API name",
+      "passed": true,
+      "evidence": "`window.google.accounts.oauth2.initTokenClient({ client_id, scope, callback })` — exact name with window. prefix"
+    },
+    {
+      "text": "Response clarifies the Client ID is intentionally public and safe to embed — Client Secret intentionally absent from this model",
+      "passed": true,
+      "evidence": "'The token model uses no Client Secret — it is intentionally absent from this flow'"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

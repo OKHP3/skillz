@@ -18,12 +18,14 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.0"
+  version: "1.2.0"
   category: interfaith-reference
   origin: okhp3/abrahamic-reference-engine
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
   app-url: https://okhp3.github.io/abrahamic-reference-engine
+  spec-version: "agentskills-1.0"
+  reviewed: "2026-07-21"
 compatibility: >
   TypeScript (browser or Node). Fetch API required. No API keys or accounts.
   Optional: sessionStorage for browser caching. Optional: FullCalendar.io for
@@ -37,6 +39,26 @@ compatibility: >
 Fetch, compute, and format religious observance calendars for the Abrahamic Reference Engine.
 
 Covers **Judaism** (Hebcal API), **Christianity** (Computus algorithm -- Western and Orthodox), and **Islam** (AlAdhan API). All sources are free and anonymous. No API key. No cost. Zero runtime dependencies beyond `fetch`.
+
+## Execution contract
+
+- Accept a target year and optional tradition or denomination filter. Validate
+  the year before constructing provider URLs or date objects.
+- Normalize every source into `ObservanceEvent` and retain the source,
+  attribution, and caveat fields. Computed dates, provider dates, and missing
+  dates must remain distinguishable.
+- Use `Promise.allSettled` for independent provider or month requests so one
+  outage does not discard successful results. Surface partial failure in the UI
+  or return metadata rather than hiding it.
+- Do not replace the deterministic Christian Computus path with a paid,
+  credentialed, or unverified holiday API. Run the bundled Easter validator
+  after algorithm changes.
+- Treat Islamic dates as calendar estimates. State the local moon-sighting
+  caveat, and never present an estimated date as universally authoritative.
+- Fetch Wikipedia descriptions lazily, cache only non-sensitive results, and
+  display the exact attribution string with the returned article URL.
+- Escape user- or provider-derived values before inserting them into `.ics`.
+  Follow the bundled RFC 5545 line-folding and date rules.
 
 ---
 

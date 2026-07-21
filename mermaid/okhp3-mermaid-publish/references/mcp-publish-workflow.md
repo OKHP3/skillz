@@ -1,22 +1,18 @@
 # Mermaid Chart MCP Publish Workflow
 
-Use the Mermaid Chart connector only when it is available and the user has authorized sharing the diagram content.
+TOC for Phase 1 authoring (this is part of the differentiator - no community skill has this).
 
 ## Availability check
-
-1. Confirm the connector/tool is present in the current runtime.
-2. Confirm the diagram has passed core Gates 1 to 3.
-3. Confirm the user wants a shareable or team-visible artifact.
-4. If any check fails, render locally or return source only and say why.
+- [ ] How to check whether the Mermaid Chart MCP connector is active in the current session before attempting to use it
+- [ ] Graceful fallback message if not connected: "publish locally instead, or connect Mermaid Chart for a shareable link"
 
 ## Publish sequence
-
-Validated `.mmd` content -> connector save call -> capture returned share link and artifact ID -> re-open or fetch the published artifact when supported -> record status. If the save fails, preserve the local render and report the connector error without retrying blindly.
+- [ ] Validated `.mmd` content -> MCP save call -> returned share link
+- [ ] Error handling - what if the MCP save fails after local validation already passed?
 
 ## Registry capture
-
-On success, write the returned link or ID into the diagram's registry row and change status from `validated` to `published`. Record the publish time and target account or workspace only when it is safe to do so.
+- [ ] Write the returned share link into the diagram's `DIAGRAMS.md` row (per core's naming-conventions.md "Mermaid Chart link" column)
+- [ ] Update `Status` from "validated" to "published" on successful MCP save
 
 ## Consent for shared/team diagrams
-
-If the destination is team-visible or persistent, warn the user before sending proprietary, personal, or confidential diagram content. Do not treat connector availability as consent.
+- [ ] If the Mermaid Chart account is a team/shared account, note this to the user before publishing - same principle as the persistent-storage "shared: true" warning pattern

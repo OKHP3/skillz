@@ -1,6 +1,6 @@
 # Audience Profiles
 
-Three profiles. Every diagram declares one before generation starts. This is Gate 3 of the validation framework — the diagram must match its declared profile or it fails regardless of syntax/semantic correctness.
+Three profiles. Every diagram declares one before generation starts. This is Gate 3 of the validation framework - the diagram must match its declared profile or it fails regardless of syntax/semantic correctness.
 
 ## Executive
 
@@ -21,14 +21,14 @@ Three profiles. Every diagram declares one before generation starts. This is Gat
 ## Technical
 
 - **Node count**: 15-20 before splitting into multiple diagrams (per core's splitting guidance)
-- **Detail level**: full annotation — attribute details, real API/event names, companion `.md` files for large payloads (notes, JSON examples)
+- **Detail level**: full annotation - attribute details, real API/event names, companion `.md` files for large payloads (notes, JSON examples)
 - **Edge labels**: precise, including data types/formats where relevant
 - **Vocabulary**: implementation-accurate (real endpoint names, real schema fields)
 - **Typical types**: C4 component/code level, ER diagrams, class diagrams, sequence diagrams with notes
 
 ## Determining audience
 
-If the user states it, use it. If not, ask one question: "Who's this diagram for — a quick exec overview, an analyst working the process, or technical detail?" Do not guess silently; a wrong guess fails Gate 3 after the work is already done.
+If the user states it, use it. If not, ask one question: "Who's this diagram for - a quick exec overview, an analyst working the process, or technical detail?" Do not guess silently; a wrong guess fails Gate 3 after the work is already done.
 
 ## Multi-audience requests
 

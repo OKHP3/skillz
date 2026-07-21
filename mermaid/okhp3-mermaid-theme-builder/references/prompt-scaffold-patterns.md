@@ -9,7 +9,7 @@ Substitute template variables before use:
 
 ---
 
-## Pattern 1 — General Purpose
+## Pattern 1 - General Purpose
 
 Use for: most diagrams where no specific renderer or brand constraint applies.
 
@@ -17,7 +17,7 @@ Use for: most diagrams where no specific renderer or brand constraint applies.
 ## Mermaid Diagram Style Rules
 
 **Palette:** {{PALETTE_NAME}}
-**Theme base:** base (always — never use default, dark, forest, or neutral)
+**Theme base:** base (always - never use default, dark, forest, or neutral)
 
 ### Required %%{init}%% block
 
@@ -39,12 +39,12 @@ Prepend this exact block to every Mermaid diagram you generate:
 
 ---
 
-## Pattern 2 — GitHub-Safe
+## Pattern 2 - GitHub-Safe
 
 Use for: diagrams destined for GitHub markdown files, issues, PRs, or wikis.
 
 ```markdown
-## Mermaid Diagram Style Rules — GitHub Target
+## Mermaid Diagram Style Rules - GitHub Target
 
 **Palette:** {{PALETTE_NAME}}
 **Target renderer:** GitHub
@@ -58,16 +58,16 @@ Use for: diagrams destined for GitHub markdown files, issues, PRs, or wikis.
 
 ### GitHub renderer constraints
 
-- CSS injection NOT supported — do not suggest or include CSS
-- Custom web fonts are blocked by GitHub's CSP — use `system-ui, sans-serif` as font fallback
+- CSS injection NOT supported - do not suggest or include CSS
+- Custom web fonts are blocked by GitHub's CSP - use `system-ui, sans-serif` as font fallback
 - Hand-Drawn look NOT supported (requires Rough.js which GitHub does not bundle)
-- Neo look availability depends on GitHub's pinned Mermaid version — use Classic look to be safe
+- Neo look availability depends on GitHub's pinned Mermaid version - use Classic look to be safe
 - Some beta/experimental diagram families may not render
 
 ### Rules
 
 1. Always use `"theme": "base"`
-2. Use Classic look only — omit the `"look"` key entirely
+2. Use Classic look only - omit the `"look"` key entirely
 3. Replace any custom `fontFamily` with `"system-ui, sans-serif"`
 4. Use only stable diagram families: flowchart, sequenceDiagram, classDiagram, stateDiagram, erDiagram, gantt, pie, gitGraph
 5. Hex values only in themeVariables
@@ -75,12 +75,12 @@ Use for: diagrams destined for GitHub markdown files, issues, PRs, or wikis.
 
 ---
 
-## Pattern 3 — Documentation Site
+## Pattern 3 - Documentation Site
 
 Use for: diagrams embedded in static site generators (Docusaurus, MkDocs, VitePress, Astro), technical documentation portals.
 
 ```markdown
-## Mermaid Diagram Style Rules — Documentation
+## Mermaid Diagram Style Rules - Documentation
 
 **Palette:** {{PALETTE_NAME}}
 **Theme base:** base (always)
@@ -94,7 +94,7 @@ Use for: diagrams embedded in static site generators (Docusaurus, MkDocs, VitePr
 ### Documentation diagram conventions
 
 - Prefer flowchart, sequenceDiagram, classDiagram, and erDiagram for technical documentation
-- Keep node labels concise — max 5 words; use subgraph titles for context
+- Keep node labels concise - max 5 words; use subgraph titles for context
 - Use subgraphs to group related components
 - Use `classDef` to differentiate node types (only in flowchart, classDiagram, stateDiagram, block)
 - Avoid experimental/beta diagram families unless the site's Mermaid version is pinned to 11.x+
@@ -109,22 +109,22 @@ Use for: diagrams embedded in static site generators (Docusaurus, MkDocs, VitePr
 
 ---
 
-## Pattern 4 — Brand Enforcement
+## Pattern 4 - Brand Enforcement
 
 Use for: diagrams that must strictly follow an organization's brand palette with no deviation.
 
 ```markdown
-## Mermaid Diagram Style Rules — Brand Enforced
+## Mermaid Diagram Style Rules - Brand Enforced
 
 **Palette:** {{PALETTE_NAME}}
 **Brand:** OverKill Hill P³ (okhp3)
-**Theme base:** base (always — immutable)
+**Theme base:** base (always - immutable)
 
 ### Brand identity
 
 This theme is a brand preset. Color values are non-negotiable. Do not adjust, substitute, or suggest alternative colors.
 
-### Required %%{init}%% block — DO NOT MODIFY
+### Required %%{init}%% block - DO NOT MODIFY
 
 \`\`\`
 %%{init: {"theme": "base", "themeVariables": {{THEME_VARIABLES_JSON}}}}%%
@@ -132,9 +132,9 @@ This theme is a brand preset. Color values are non-negotiable. Do not adjust, su
 
 ### Brand enforcement rules
 
-1. `"theme": "base"` is immutable — never change this
-2. The themeVariables block above must be used verbatim — no color substitutions
-3. fontFamily must be the exact font stack from the palette — no substitutions
+1. `"theme": "base"` is immutable - never change this
+2. The themeVariables block above must be used verbatim - no color substitutions
+3. fontFamily must be the exact font stack from the palette - no substitutions
 4. Do not add additional themeVariables not listed in this block
 5. Do not use `"look": "neo"` or `"look": "handDrawn"` unless explicitly requested
 6. Strip any existing %%{init}%% block before prepending this one
@@ -143,12 +143,12 @@ This theme is a brand preset. Color values are non-negotiable. Do not adjust, su
 
 ---
 
-## Pattern 5 — Architecture Diagrams
+## Pattern 5 - Architecture Diagrams
 
 Use for: system architecture, infrastructure maps, C4 diagrams, service topology.
 
 ```markdown
-## Mermaid Diagram Style Rules — Architecture
+## Mermaid Diagram Style Rules - Architecture
 
 **Palette:** {{PALETTE_NAME}}
 **Theme base:** base (always)
@@ -170,7 +170,7 @@ Use for: system architecture, infrastructure maps, C4 diagrams, service topology
   - External systems → tertiary fill
   - Boundaries → cluster/subgraph with dashed border
 - Use `c4Context` or `c4Container` for high-level architecture; flowchart for detailed component views
-- Keep labels precise and technical — this is for engineers and architects
+- Keep labels precise and technical - this is for engineers and architects
 
 ### Rules
 
@@ -183,12 +183,12 @@ Use for: system architecture, infrastructure maps, C4 diagrams, service topology
 
 ---
 
-## Pattern 6 — Process Diagrams
+## Pattern 6 - Process Diagrams
 
 Use for: business process flows, onboarding sequences, approval workflows, decision trees.
 
 ```markdown
-## Mermaid Diagram Style Rules — Process
+## Mermaid Diagram Style Rules - Process
 
 **Palette:** {{PALETTE_NAME}}
 **Theme base:** base (always)
@@ -215,18 +215,18 @@ Use for: business process flows, onboarding sequences, approval workflows, decis
 1. Always use `"theme": "base"`
 2. Hex values only in themeVariables
 3. fontFamily must be a quoted CSS font stack
-4. Limit diagram depth — max 3 levels of nesting for readability
+4. Limit diagram depth - max 3 levels of nesting for readability
 5. Strip any existing %%{init}%% before prepending
 ```
 
 ---
 
-## Pattern 7 — Data Visualization
+## Pattern 7 - Data Visualization
 
 Use for: Gantt charts, XY charts, Sankey diagrams, pie charts, quadrant charts.
 
 ```markdown
-## Mermaid Diagram Style Rules — Data Visualization
+## Mermaid Diagram Style Rules - Data Visualization
 
 **Palette:** {{PALETTE_NAME}}
 **Theme base:** base (always)
@@ -240,8 +240,8 @@ Use for: Gantt charts, XY charts, Sankey diagrams, pie charts, quadrant charts.
 
 ### Data visualization constraints
 
-- Gantt: individual task bar colors are managed internally — themeVariables control background and titles only
-- Pie: slice colors cycle through Mermaid's internal palette — themeVariables control background and title only
+- Gantt: individual task bar colors are managed internally - themeVariables control background and titles only
+- Pie: slice colors cycle through Mermaid's internal palette - themeVariables control background and title only
 - XY Chart (beta): background, axis labels, and titles apply; bar/line series colors partially respond to themeVariables
 - Sankey (beta): node fills and labels respond to themeVariables; link flow colors are internally cycled
 - Quadrant: background, axis labels, and grid lines apply; quadrant fills partially respond
@@ -251,18 +251,18 @@ Use for: Gantt charts, XY charts, Sankey diagrams, pie charts, quadrant charts.
 1. Always use `"theme": "base"`
 2. Hex values only in themeVariables
 3. For beta families (xychart-beta, sankey-beta): validate in target renderer before publishing
-4. For Gantt and Pie: do not promise full color control — themeVariables only control canvas-level colors
+4. For Gantt and Pie: do not promise full color control - themeVariables only control canvas-level colors
 5. Strip any existing %%{init}%% before prepending
 ```
 
 ---
 
-## Pattern 8 — Minimal / Accessible
+## Pattern 8 - Minimal / Accessible
 
 Use for: high-contrast diagrams, accessibility-first output, minimal styling with clear legibility.
 
 ```markdown
-## Mermaid Diagram Style Rules — Minimal / Accessible
+## Mermaid Diagram Style Rules - Minimal / Accessible
 
 **Palette:** {{PALETTE_NAME}}
 **Theme base:** base (always)
@@ -276,17 +276,17 @@ Use for: high-contrast diagrams, accessibility-first output, minimal styling wit
 ### Accessibility conventions
 
 - Prioritize high contrast between node fills and text (minimum 4.5:1 ratio for normal text)
-- Avoid color as the only differentiator — use shape and label to convey meaning
+- Avoid color as the only differentiator - use shape and label to convey meaning
 - Keep node labels short and plain-language (max 4 words)
-- Avoid Hand-Drawn look — it reduces legibility
+- Avoid Hand-Drawn look - it reduces legibility
 - Use Classic look for maximum renderer compatibility
-- Prefer flowchart and stateDiagram — they have the broadest styling surface
+- Prefer flowchart and stateDiagram - they have the broadest styling surface
 
 ### Rules
 
 1. Always use `"theme": "base"`
 2. Hex values only in themeVariables
-3. Use Classic look only — omit the `"look"` key
+3. Use Classic look only - omit the `"look"` key
 4. Do not use fontFamily values with decorative or low-legibility fonts
 5. Strip any existing %%{init}%% before prepending
 6. Do not use opacity or transparency modifiers in themeVariables

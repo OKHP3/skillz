@@ -4,12 +4,12 @@
 
 - **Skill name:** `custom-gpt-builder`
 - **Purpose:** Build, audit, improve, package, and govern OpenAI Custom GPTs as productized AI assistants.
-- **Version:** `1.1.0`
+- **Version:** `1.3.0`
 - **Author:** OverKill Hill P³
 - **Copyright:** Copyright © 2024–2026 OverKill Hill P³ — https://overkillhill.com
 - **License:** CC BY 4.0 — Attribution required. See `LICENSE.md`.
 - **Attribution required:** "Originated by OverKill Hill P³ (https://overkillhill.com) — Skill: custom-gpt-builder — License: CC BY 4.0"
-- **Last verified:** 2026-06-04
+- **Last verified:** 2026-07-20
 - **Changelog:** See `CHANGELOG.md`
 
 ## License Summary

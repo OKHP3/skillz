@@ -1,7 +1,7 @@
 /**
  * apply-theme.mjs
  * Apply a palette to Mermaid diagram code.
- * No external dependencies — runs with: node scripts/apply-theme.mjs
+ * No external dependencies - runs with: node scripts/apply-theme.mjs
  */
 
 import { readFileSync } from "node:fs";

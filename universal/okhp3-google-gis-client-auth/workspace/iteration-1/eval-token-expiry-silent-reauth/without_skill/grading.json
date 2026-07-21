@@ -1,0 +1,28 @@
+{
+  "eval_id": 2,
+  "eval_name": "token-expiry-silent-reauth",
+  "configuration": "without_skill",
+  "assertion_results": [
+    {
+      "text": "Response describes a validity check that includes a time buffer before expiry (tokenExpiry - 120_000 ms or 2-minute buffer)",
+      "passed": false,
+      "evidence": "Check uses `Date.now() > Number(expiresAt)` — checks at exact expiry time, no buffer. The skill-specified 120_000ms (2-minute) pre-expiry buffer is absent."
+    },
+    {
+      "text": "Response describes two-step refresh: silent prompt:'none' first, popup fallback only if silent fails",
+      "passed": false,
+      "evidence": "Calls `tokenClient.requestAccessToken()` directly with no `prompt` option. Silent refresh (`prompt: 'none'`) not mentioned. User will see a popup every time the token expires."
+    },
+    {
+      "text": "Response specifies sessionStorage (not localStorage) and references key names g_token and g_expiry",
+      "passed": false,
+      "evidence": "Uses `localStorage` for both token and expiry. Key names are `access_token` and `token_expires` — not `g_token` / `g_expiry`. sessionStorage not mentioned."
+    },
+    {
+      "text": "Response includes or references the isTokenValid() function with expiry buffer check",
+      "passed": false,
+      "evidence": "Function named `isTokenExpired()` (opposite boolean) with no buffer. Different name, opposite semantic, missing the 120_000 buffer — ARE-incompatible."
+    }
+  ],
+  "summary": { "passed": 0, "failed": 4, "total": 4, "pass_rate": 0.0 }
+}
