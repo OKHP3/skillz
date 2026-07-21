@@ -8,6 +8,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `okhp3-custom-gpt-readiness` and `okhp3-custom-gpt-skill-conversion-planner` with structured dossiers, gap analysis, semantic-loss tracking, and Foundry handoffs for the Custom GPT lifecycle.
 - Added technology inventory, explicit Mermaid CLI and PyYAML dependency declarations, Dependabot configuration, and scheduled version-inventory pull-request automation.
 - Added root `AGENTS.md` routing index for active and planned skills.
 - Added Mermaid family skeletons:
