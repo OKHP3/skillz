@@ -1,28 +1,22 @@
 ---
 name: okhp3-mermaid-theme-builder
-version: 0.5.0
-description: Apply reusable color palettes and visual governance to Mermaid diagram code. Use this skill when the user wants to style, theme, color, or brand a Mermaid diagram; when they want a themeVariables block or %%{init}%% configuration; when they ask for a prompt scaffold that enforces consistent diagram styling for future AI-generated Mermaid; when they want renderer-safe output for GitHub, GitLab, Obsidian, Notion, Confluence, or the Mermaid CLI; when they want to make Mermaid output renderer-safe or renderer-compatible; when they mention Mermaid colors, palettes, CSS variables, diagram cleanup, or on-brand diagrams; or when they want to extract and re-theme existing styled Mermaid code.
-author: OverKill Hill P³
+description: OverKill Hill P³ reusable theming and renderer governance for Mermaid code. Use when the user wants to style, theme, color, brand, re-theme, or make Mermaid output renderer-safe; generate a themeVariables or init block; create a prompt scaffold; or target GitHub, GitLab, Obsidian, Notion, Confluence, or Mermaid CLI. Use `okhp3-mermaid-governance` for a project-wide profile and `okhp3-mermaid-core` for diagram semantics or type selection.
 license: MIT
-homepage: https://okhp3.github.io/mermaid-theme-builder
-repository: https://github.com/OKHP3/mermaid-theme-builder
-category: diagram-governance
-tags:
-  - mermaid
-  - diagram
-  - theme
-  - palette
-  - themeVariables
-  - prompt-scaffold
-  - renderer-profiles
-  - look-api
-tools:
-  - read_file
-  - write_file
-  - run_command
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "0.6.0"
+  category: developer-tooling
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  repository: https://github.com/OKHP3/mermaid-theme-builder
+  tags: "mermaid, diagram, theme, palette, themeVariables, prompt-scaffold, renderer-profiles, look-api"
+  bundled_tools: "read_file, write_file, run_command"
 ---
 
 # okhp3-mermaid-theme-builder
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Visual governance for Mermaid diagram code. Applies brand palettes, generates `%%{init}%%` directives, and produces renderer-aware output for GitHub, GitLab, Obsidian, Notion, Confluence, and the Mermaid CLI.
 
@@ -47,7 +41,7 @@ Visual governance for Mermaid diagram code. Applies brand palettes, generates `%
 
 - **General software development** unrelated to Mermaid theming or styling
 - **Prose editing** — user is writing or editing text that describes a diagram without any styling, export, or theming need
-- **BPMN modeling** — unless the user specifically wants Mermaid-themed output from a BPMN-like structure; for dedicated BPMN tooling use the `okhp3-bpmn-for-mermaid` skill instead
+- **BPMN modeling** — unless the user specifically wants Mermaid-themed output from a BPMN-like structure; for dedicated BPMN tooling use `okhp3-mermaid-bpmn` first
 - **Image generation or raster export** — this skill produces text output only; rendering requires a browser or CLI environment
 - **Generic color theory** — color advice with no Mermaid diagram output target
 - **Non-Mermaid tools** — Draw.io, Lucidchart, PlantUML, D2, Excalidraw, and similar have no overlap with this skill
@@ -73,9 +67,9 @@ Target renderers      GitHub, Notion, Obsidian, M365/Loop, Confluence, Mermaid L
 
 **Use this skill** when the task involves visual governance, palette application, renderer profiling, or diagram output contract enforcement.
 
-**Hand off to `okhp3-bpmn-for-mermaid`** when the task involves process structure, workflow notation, or BPMN-like semantics before styling.
+**Hand off to `okhp3-mermaid-bpmn`** when the task involves process structure, workflow notation, or BPMN-like semantics before styling.
 
-**Stack principle:** This skill does not interpret process logic or business semantics. It governs visual output. When both process structure and visual governance are needed, apply `okhp3-bpmn-for-mermaid` first, then this skill.
+**Stack principle:** This skill does not interpret process logic or business semantics. It governs visual output. When both process structure and visual governance are needed, apply `okhp3-mermaid-bpmn` first, then this skill.
 
 See `docs/okhp3-visual-language-stack.md` in the tool repository for the authoritative stack reference.
 
@@ -495,3 +489,10 @@ Run with `node --test tests/*.test.mjs`:
 - `tests/apply-theme.test.mjs`
 - `tests/validate-theme.test.mjs`
 - `tests/skill-integrity.test.mjs` — Validates frontmatter, required fields, referenced files, and version alignment
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

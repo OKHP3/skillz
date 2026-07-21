@@ -110,4 +110,4 @@ Do not attempt to provide, simulate, or reference:
 - **File downloads** — No Blob, FileReader, canvas-to-PNG, or SVG export instructions.
 - **Backend services** — The tool is 100% client-side. There is no API, webhook, or backend.
 - **Network calls from scripts** — The scripts in `scripts/` must have zero external dependencies. No `fetch`, `axios`, or HTTP requests.
-- **BPMN for Mermaid** — A separate skill (`okhp3-bpmn-for-mermaid`) covers BPMN content in the `OKHP3/mermaid-diagram-bpmn` repository. Do not conflate the two.
+- **BPMN for Mermaid** — The companion skill `okhp3-mermaid-bpmn` covers BPMN content in this distribution. Load it before this visual-governance skill when the request includes process semantics.

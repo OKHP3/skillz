@@ -1,16 +1,17 @@
 # Output Format Selection
 
-TOC for Phase 1 authoring.
+## Default: `.mmd` file
 
-## Default: .mmd file
-- [ ] Standalone source file, named per core's naming-conventions.md pattern
+Use a standalone source file named per core's naming conventions when the diagram is a reusable or renderable artifact.
 
 ## Fenced block (embed)
-- [ ] Triggers: user says "embed", "add to docs", "in the README", or the target file is already `.md`
-- [ ] Fenced ` ```mermaid ` block inserted at the appropriate location in the target file
+
+Use a fenced `mermaid` block when the user says “embed”, “add to docs”, or “in the README”, or when the target file is already Markdown. Preserve the source file too when future edits or re-rendering matter.
 
 ## Both
-- [ ] When source-of-truth `.mmd` + embedded preview are both wanted (e.g., `.mmd` for editing/re-rendering, `.md` with embed for GitHub preview) — matches the dual-output pattern seen in one reviewed community skill (figures/<name>.mmd + figures/<name>.md with identical content)
+
+Return both source and preview when the diagram is a maintained artifact and a documentation preview. State which file is the source of truth.
 
 ## Format vs. MCP publish
-- [ ] These are orthogonal — a diagram can be both a local `.mmd` file AND published via MCP. Output format selection happens regardless of publish path.
+
+Output format and publish destination are separate decisions. A diagram can be a local `.mmd`, an embedded Markdown block, and a published link, provided the user authorizes each destination.

@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 58 distribution skills in 9 active families, 2 placeholder family directories, and 6 project-local support skills under `.agents/skills/`
+- **Current inventory:** 58 distribution skills in 10 active families, 3 placeholder family directories, and 6 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -40,7 +40,9 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `notion/` | AI conversation capture and routing into Notion knowledge structures |
 | `process-capture/` | Process-analysis and documentation pipeline plus the recurring-task capture skill |
 | `refolddec/` | ReFolDec fold, unfold, and refold transformations |
+| `agent-foundry/` | AI-agent creation, readiness, platform comparison, portability, and lifecycle skills |
 | `universal/` | Cross-project builders, cataloging, API proxy, OAuth, and deployment skills |
+| `context-extraction/` | Planned source-agnostic family for mining, extracting, validating, and refining value from source material |
 | `glee-fully/` | Placeholder for a future conversion of Glee-fully capabilities |
 | `askjamie/` | Placeholder for future professional-support capabilities |
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
@@ -108,6 +110,10 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | `okhp3-notion-capture-router` | Capture ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF, or pasted AI conversations into Notion structures, dedupe them, split extracts, and reconcile against OKHP3 GitHub. This is not generic note-taking. |
 | `okhp3-refolddec-core` | Explicitly transform an artifact between representations, such as idea to diagram, diagram to documentation, documentation to SKILL.md, or unfold/refold with semantic-loss tracking. Load the target domain skill alongside it. |
 
+### Context-extraction family: planned
+
+`context-extraction/` is a placeholder for source-agnostic extraction and refinement skills. Future skills will cover source profiling, evidence extraction, provenance-preserving normalization, refinement into downstream products, and extraction quality or semantic-loss checks. Load the narrowest source-access skill first when one exists, then the relevant context-extraction skill, then the downstream artifact or domain skill.
+
 ### Abrahamic family
 
 | Skill | Trigger |
@@ -144,14 +150,21 @@ These are general-purpose or imported skills. Prefer the narrower OKHP3 family s
 | `web-artifacts-builder` | Build complex multi-component HTML artifacts using React, Tailwind, shadcn, and related frontend tooling. |
 | `web-design-guidelines` | Audit UI code for interface, accessibility, UX, or design-guideline compliance. |
 
+### Agent-foundry family
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-custom-gpt-builder` | Create, audit, test, improve, compare, document, or package a Custom GPT or related reusable AI workflow. Verify current platform facts before stating them as definitive. |
+| `okhp3-custom-gpt-readiness` | Assess an incomplete Custom GPT concept, inventory evidence, identify blockers and gaps, and prepare a builder handoff. |
+| `okhp3-custom-gpt-skill-conversion-planner` | Assess an existing Custom GPT for conversion into a portable Agent Skill, map semantic coverage and loss, and prepare a Skill Foundry handoff. |
+
+The family is intended to expand to Gemini Gems, Copilot declarative agents, OpenClaw agents, and other agent runtimes when their creation or lifecycle methods become concrete skills.
+
 ### Universal family
 
 | Skill | Trigger |
 |---|---|
 | `okhp3-cloudflare-worker-api-proxy` | Keep an API key server-side while proxying calls from a static frontend through a Cloudflare Worker. |
-| `okhp3-custom-gpt-builder` | Create, audit, test, improve, compare, document, or package a Custom GPT or related reusable AI workflow. Verify current platform facts before stating them as definitive. |
-| `okhp3-custom-gpt-readiness` | Assess an incomplete Custom GPT concept, inventory evidence, identify blockers and gaps, and prepare a builder handoff. |
-| `okhp3-custom-gpt-skill-conversion-planner` | Assess an existing Custom GPT for conversion into a portable Agent Skill, map semantic coverage and loss, and prepare a Skill Foundry handoff. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |
@@ -228,4 +241,4 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-07-13
+Updated: 2026-07-21

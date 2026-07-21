@@ -1,9 +1,19 @@
 ---
 name: okhp3-mermaid-governance
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: developer-tooling
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 description: Governance profile management for Mermaid diagram projects. Use when the user wants to establish a visual and behavioral standard for a diagram project ("set up our diagram style guide", "create a governance profile for this project", "what palette and rules should we use for all our diagrams"), when they want to check whether an existing diagram conforms to a declared profile ("does this diagram follow our standard?", "check this against the governance profile", "is this still on-brand?"), or when they want to audit multiple diagrams for cross-project coherence ("audit all my BPMN diagrams", "are these 12 diagrams consistent?", "which diagrams have drifted from our style?"). Also triggers when the user references a GOVERNANCE.md file, mentions profile drift, asks about cross-diagram consistency, or says a diagram "doesn't match the others." Load okhp3-mermaid-core first. For applying a specific palette to a single new diagram without a declared project standard, use okhp3-mermaid-theme-builder directly instead.
 ---
 
-# OKHP3 Mermaid Governance
+# okhp3-mermaid-governance
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Cross-diagram standard management for Mermaid diagram projects. A governance profile is not a theme — a theme controls colors, a governance profile controls behavior. It declares the complete visual and behavioral contract for a diagram project and checks that diagrams produced over time honor it.
 
@@ -208,3 +218,14 @@ See `docs/SECURITY.md`.
 - `okhp3-mermaid-core/references/audience-profiles.md` — Audience tier definitions and density limits
 - `okhp3-mermaid-core/references/naming-conventions.md` — File naming and DIAGRAMS.md registry schema
 - `okhp3-mermaid-theme-builder/references/renderer-profiles.md` — Full renderer constraint matrix
+
+## Output contract
+
+Declare, check, and audit modes must return the profile path or proposed profile, the diagrams inspected, each failed rule with evidence, and a disposition of `pass`, `pass_with_exceptions`, or `needs_revision`. Never overwrite a profile or bulk-edit diagrams without explicit user authorization.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

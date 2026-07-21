@@ -1,12 +1,13 @@
 # Schema Documentation Patterns
 
-TOC for Phase 2 authoring.
-
 ## Documenting vs. designing
-- [ ] When the diagram documents an EXISTING schema (research required — actual field names/types, per core's research step for technical diagrams) vs. designing a NEW one (more abstract acceptable)
+
+For an existing schema, identify the source of truth, capture the extraction date or version, and preserve actual names and types. For a proposed schema, label assumptions and design intent. Never present an inferred field or relationship as an existing fact.
 
 ## Drift management
-- [ ] Schema diagrams are high-drift-risk (the schema changes, the diagram doesn't). DIAGRAMS.md registry entry should note "source of truth" — is this diagram generated from the schema, or hand-maintained? If hand-maintained, what's the re-validation cadence?
+
+The registry entry must record the source of truth, whether the diagram is generated or hand-maintained, the last verified version, and the next review trigger. A schema diagram with no provenance is incomplete.
 
 ## Large schema splitting
-- [ ] When a schema has 20+ entities — split by domain/bounded-context, one diagram per context, with a single "context map" diagram showing how the contexts relate
+
+Split by domain or bounded context when labels, edges, or audience limits make one view unreadable. Add a small context map showing how the split views relate; do not duplicate every entity in every view.

@@ -1,16 +1,19 @@
 # Swim Lane Layouts
 
-TOC for Phase 1 authoring.
+Use one Mermaid `subgraph` per role, department, or external system. A lane is a responsibility boundary, not a decorative container.
 
 ## Encoding
-- [ ] One `subgraph` per lane (department/role/system)
-- [ ] `direction` per subgraph — when to use TB vs LR within a lane
-- [ ] Lane ordering — does source order in the .mmd determine left-to-right or top-to-bottom lane placement?
+
+- Give each lane a stable short ID and a quoted role label.
+- Choose one primary flow direction for the whole diagram. Use a lane-local `direction` only when it improves readability and has been checked in the target renderer.
+- Order lanes by the first meaningful handoff or by the operating sequence. Do not rely on source order alone for layout guarantees.
 
 ## Multi-lane direction
-- [ ] Horizontal lanes (lanes stacked top-to-bottom, flow left-to-right) vs vertical lanes (lanes side-by-side, flow top-to-bottom) — when each is appropriate
-- [ ] How cross-lane edges (a task in lane A triggers a task in lane B) render without excessive crossings
 
-## Crossing reduction specific to swim lanes
-- [ ] Cross-lane edges are the primary crossing source in multi-lane diagrams — patterns for minimizing
-- [ ] When to split a swim-lane diagram into multiple diagrams (one per lane-pair?) vs keep as one
+- Use stacked horizontal lanes for a left-to-right process with several roles.
+- Use side-by-side vertical lanes for a top-to-bottom lifecycle or when the role columns are the primary comparison.
+- Put the receiving task near the handoff edge and label the edge when the handoff is not obvious.
+
+## Crossing reduction
+
+Keep each handoff local, avoid sending an edge across more than one unrelated lane, and use a note or a separate handoff diagram when a shared service connects many lanes. Split by phase or bounded process, not arbitrarily by lane pair.

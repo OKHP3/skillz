@@ -1,17 +1,17 @@
 # Subprocess Patterns
 
-TOC for Phase 1 authoring.
-
 ## Collapsed subprocess
-- [ ] Single node, visually distinct (double border or similar) indicating "more detail exists"
-- [ ] Naming convention linking collapsed node to its expanded diagram (DIAGRAMS.md cross-reference)
+
+Use a clearly labeled node such as `[[Validate request]]` or a class-defined double-border equivalent. Add `Related diagram: <stable-name>` in the registry when an expanded view exists.
 
 ## Expanded subprocess
-- [ ] Inline detail via nested subgraph
-- [ ] When inline beats a separate diagram (small enough to not violate node-count limits for the declared audience)
+
+Use a nested subgraph when the subprocess is small, has one owner, and remains readable for the declared audience. Use a separate diagram when it has its own start/end events, multiple consumers, or enough detail to overwhelm the parent view.
 
 ## Call activity
-- [ ] Reference to a reusable process defined elsewhere — how is this visually distinguished from a one-off subprocess?
+
+Label a reusable process as `Call: <process name>` and link it through the registry. Do not make a one-off subprocess look reusable unless the source process is actually shared.
 
 ## Cross-diagram registration
-- [ ] When a subprocess becomes its own diagram: both diagrams get DIAGRAMS.md entries with mutual "Related diagrams" references (per core's naming-conventions.md)
+
+When a subprocess becomes its own diagram, add entries for both artifacts with mutual `Related diagrams` references, stable names, and a short parent/child relationship note.

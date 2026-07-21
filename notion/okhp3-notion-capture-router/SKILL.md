@@ -4,13 +4,18 @@ description: Use this skill whenever an agent needs to export, capture, ingest, 
 license: MIT
 compatibility: Requires a Notion connector or API-capable integration for writes. Read-only report mode works without write access. Do not commit account-specific Notion URLs, IDs, tokens, or workspace structure.
 metadata:
-  author: OKHP3
-  version: "0.2.0"
+  author: Jamie Hill (OverKill Hill P³)
+  version: "0.3.0"
+  category: notion
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
   maturity: draftable
-  family: notion
 ---
 
-# Notion Capture and Export Router
+# okhp3-notion-capture-router
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Turn conversations and other content artifacts into useful Notion pages or database records. The skill teaches an agent-enabled platform how to use Notion as a destination without assuming a particular user's account, workspace taxonomy, page hierarchy, or database schema.
 
@@ -34,6 +39,12 @@ Use it when the user asks to:
 - move content between pages and databases while preserving traceability
 
 Do not use it for generic Notion advice that does not involve capture, export, routing, schema mapping, or a Notion write.
+
+## Scope
+
+| In scope | Out of scope |
+|---|---|
+| Source normalization, destination resolution, schema inspection, deduplication, safe page or row writes, verification, and capture reporting | Guessing workspace structure, bypassing connector permissions, exporting private material publicly, or creating a new schema without explicit authorization |
 
 ## Operating principles
 
@@ -203,3 +214,14 @@ Load only what the request needs:
 - `references/final-check.md`: verification checklist before reporting completion.
 - `assets/report-template.md`: reusable report scaffold.
 - `assets/trigger-eval-queries.json`: trigger and non-trigger examples for description testing.
+
+## Output contract
+
+Always report the mode (`write`, `append`, `update`, or `report_only`), resolved destination type, source coverage, created/updated/skipped/redacted items, verification result, and pending failures. If the connector cannot resolve or re-fetch the destination, do not claim completion.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

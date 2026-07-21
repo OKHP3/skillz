@@ -9,19 +9,30 @@ description: >
   expiry handling, and silent re-auth. Works with Calendar API and Tasks API.
 license: MIT
 metadata:
-  author: okhp3
-  version: "1.0.0"
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: universal
   origin: kierans-lifetrkr
   published-to: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 compatibility: >
   React 18+ with TypeScript. Requires google.accounts.oauth2 global (GIS CDN loaded in index.html).
   Designed for static hosting — GitHub Pages, Netlify, Cloudflare Pages, etc.
 ---
 
-# GIS Token Model Skill
+# okhp3-google-gis-client-auth
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Client-only Google OAuth for single-page applications. Eliminates the need for
 a backend server, redirect callback route, Client Secret, or session management.
+
+## Scope
+
+| In scope | Out of scope |
+|---|---|
+| Browser-only GIS access tokens for read-oriented Calendar or Tasks integrations, consent setup, expiry handling, and static-host deployment | Refresh-token or offline access, service accounts, backend authorization, write operations, or treating a client ID as a secret |
 
 ## Why this matters
 
@@ -229,7 +240,7 @@ Always request the minimum scopes you need. Users see a consent dialog listing e
 - **Token lives in sessionStorage** — clears when the browser tab closes. Intentional.
 - **Never store the token in localStorage** — sessionStorage is cleared per session; localStorage persists across sessions and is higher risk.
 - **The Client ID is public** — this is correct. Only the Client Secret is sensitive, and the token model requires no Client Secret.
-- **Rate limits** — Google's APIs have per-user quotas. Calendar API: 1M requests/day free. Tasks API: 50k requests/day free.
+- **Rate limits** — Google's APIs have project and user quotas. Check the current official Calendar and Tasks quota documentation for the deployed project instead of relying on hard-coded limits.
 
 ## What this does NOT support
 
@@ -247,3 +258,14 @@ Always request the minimum scopes you need. Users see a consent dialog listing e
 - [ ] Authorized JavaScript Origins set (NOT redirect URIs)
 - [ ] Test users added (while in Testing mode, max 100 users)
 - [ ] Client ID copied to app constants or environment variable
+
+## Output contract
+
+Return the GCP setup, exact scopes requested, token lifecycle, API call shape, user-facing expiry/error behavior, and a security checklist. Keep tokens out of persistent storage unless the application has a documented threat model and explicit user consent. Verify current Google API scopes, quota, consent, and GIS behavior against official documentation before shipping.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

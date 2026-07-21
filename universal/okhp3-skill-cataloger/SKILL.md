@@ -1,25 +1,15 @@
 ---
 name: okhp3-skill-cataloger
 description: >
-  OverKill Hill P³ skill cataloger. Discover, index, and catalog all Agent Skills
-  in a repository's .agents/skills/ directory by scanning each SKILL.md file and
-  generating a structured, maintained README.md that serves as a living table of
-  contents for the skill ecosystem. Use when asked to catalog, list, inventory,
-  or update skills; regenerate the skills readme or catalog; show what skills are
-  installed; check skill versions; validate naming conventions; or refresh the
-  skills list. Also activates on "what skills does this project have",
-  "is the skills catalog current", or "run the skill cataloger".
-  Use the full index mode when asked to catalog the distribution surface, index all
-  available skills, rebuild README.md, run a full catalog, run a full index, index
-  all skills in this repo, or show all skills available for distribution. Also
-  generates a FAMILY.md inside each family directory with an auto-sourced summary
-  and skill inventory; use --no-family-md to skip. Also generates a FAMILY.md
-  inside each family directory with an auto-sourced summary and skill inventory;
-  use --no-family-md to skip. On first FAMILY.md creation, absorbs and deletes
-  any existing README.md in that family directory (use --no-absorb-readme to
-  skip). Also auto-updates the Families table in root README.md when
-  FAMILIES_TABLE_START/END markers are present.
+  OverKill Hill P³ cataloger for Agent Skills. Use when the user asks to list,
+  inventory, validate, refresh, or explain the skills in a repository; rebuild a
+  skills README; check versions or naming; or run a full distribution index.
+  Catalog mode scans `.agents/skills/`; full mode scans distribution families,
+  writes the root catalog, and may generate FAMILY.md inventories. Use the
+  bundled generator and its check/preview modes. Do not hand-edit generated
+  sections, delete source skills, or treat stale manifest metadata as authoritative.
 license: MIT
+compatibility: Requires a Python runtime and repository write access for generation. Check and JSON modes are read-only.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
   version: "1.4.0"

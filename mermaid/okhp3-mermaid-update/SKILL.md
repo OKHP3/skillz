@@ -1,9 +1,19 @@
 ---
 name: okhp3-mermaid-update
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: developer-tooling
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 description: Style-preserving update of an existing Mermaid diagram. Use when the user provides an existing .mmd file (or fenced Mermaid block) and a change request — new nodes, revised labels, added edges, restructured flow, or changed content — and the goal is to apply the minimum diff required without touching the diagram's style configuration, classDef declarations, or init block. Load okhp3-mermaid-core first for audience/type context. Do NOT use this skill for syntax repair (broken parse) — use okhp3-mermaid-repair for that.
 ---
 
-# OKHP3 Mermaid Update
+# okhp3-mermaid-update
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Applies targeted changes to an existing diagram while preserving everything the original author intentionally configured: style, theme, class definitions, and structural conventions.
 
@@ -66,3 +76,14 @@ If the diagram was previously published via Mermaid Chart MCP, note that a re-pu
 - Does not change governance profiles or classDef definitions unless explicitly instructed
 - Does not produce new diagrams from scratch — route to `okhp3-mermaid-core`
 - Does not select diagram types — route to `okhp3-mermaid-core` if the update requires a type change
+
+## Output contract
+
+Return the complete updated source, a concise change summary, a preserved-style checklist, all three gate results, and the registry update or a clearly labeled reason it could not be made. Do not report success when the source or registry was not actually written.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

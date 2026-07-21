@@ -2,7 +2,7 @@
 family: abrahamic
 skill_count: 4
 generated_by: okhp3-skill-cataloger v1.4.0
-generated_at: 2026-07-20T20:37:20Z
+generated_at: 2026-07-21T17:25:45Z
 ---
 
 # abrahamic
@@ -14,7 +14,7 @@ A family of 4 skills. Find thematically parallel passages across Judaism, Christ
 ## Skills (4)
 
 <!-- FAMILY_INVENTORY_START -->
-*4 skills &nbsp;·&nbsp; inventory last updated: **July 20, 2026 at 20:37 UTC***
+*4 skills &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 17:25 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

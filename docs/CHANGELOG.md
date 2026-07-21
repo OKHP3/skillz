@@ -8,6 +8,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added the planned `context-extraction/` family scaffold for source profiling, evidence extraction, provenance-preserving normalization, refinement, and quality checks.
 - Added `okhp3-custom-gpt-readiness` and `okhp3-custom-gpt-skill-conversion-planner` with structured dossiers, gap analysis, semantic-loss tracking, and Foundry handoffs for the Custom GPT lifecycle.
 - Added technology inventory, explicit Mermaid CLI and PyYAML dependency declarations, Dependabot configuration, and scheduled version-inventory pull-request automation.
 - Added root `AGENTS.md` routing index for active and planned skills.
@@ -39,6 +40,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Hardened the `agent-foundry`, `linkedin`, `mermaid`, `notion`, and `universal` skills against the current Agent Skills format: standardized discovery metadata, clarified scope and output contracts, replaced Mermaid scaffold references with operational guidance, tightened connector and publication safety, and removed brittle quota/platform guarantees.
+- Created the `agent-foundry/` family and migrated the Custom GPT readiness, builder, and Agent Skill conversion-planning packages from `universal/`; updated the catalogs, routing guide, Forge catalog, and Pages workflow path.
 - Generalized `okhp3-notion-capture-router` from a personal-workspace capture workflow into a platform-neutral Notion export and API/connector usage contract for pages, databases, and data sources.
 - Clarified that GitHub is the installable source of truth, Notion is the strategy and decision ledger, and OverKill Hill is the canonical public landing surface.
 - Updated root catalog, index, and README to include the Notion capture router and ReFolDec family.

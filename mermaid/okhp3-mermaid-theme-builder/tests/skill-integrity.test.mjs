@@ -16,7 +16,7 @@ const skillRoot = join(__dirname, "..");
 const skillMdPath = join(skillRoot, "SKILL.md");
 
 function parseSkillFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return null;
   return match[1];
 }
@@ -37,7 +37,7 @@ function extractYamlField(frontmatter, key) {
 const skillContent = readFileSync(skillMdPath, "utf8");
 const frontmatter = parseSkillFrontmatter(skillContent);
 
-// ── Frontmatter structure — flat Agent Skills format ──────────────────────
+// ── Frontmatter structure — standard Agent Skills format ──────────────────
 
 test("SKILL.md contains a frontmatter block", () => {
   assert.ok(frontmatter !== null, "Expected --- frontmatter --- block at top of SKILL.md");
@@ -53,43 +53,40 @@ test("frontmatter name is correct", () => {
   assert.equal(name, "okhp3-mermaid-theme-builder");
 });
 
-test("frontmatter contains top-level version field", () => {
-  assert.ok(frontmatter.match(/^version:/m), "Missing top-level 'version:' in frontmatter — must be flat, not nested under metadata:");
+test("frontmatter contains metadata version field", () => {
+  assert.ok(frontmatter.match(/^  version:/m), "Missing metadata 'version:' in frontmatter");
 });
 
-test("frontmatter contains top-level author field", () => {
-  assert.ok(frontmatter.match(/^author:/m), "Missing top-level 'author:' in frontmatter");
+test("frontmatter contains metadata author field", () => {
+  assert.ok(frontmatter.match(/^  author:/m), "Missing metadata 'author:' in frontmatter");
 });
 
 test("frontmatter contains license field", () => {
   assert.ok(frontmatter.match(/^license:/m), "Missing 'license' in frontmatter");
 });
 
-test("frontmatter contains top-level homepage field", () => {
-  assert.ok(frontmatter.match(/^homepage:/m), "Missing top-level 'homepage:' in frontmatter");
+test("frontmatter contains metadata homepage field", () => {
+  assert.ok(frontmatter.match(/^  homepage:/m), "Missing metadata 'homepage:' in frontmatter");
 });
 
-test("frontmatter contains top-level repository field", () => {
-  assert.ok(frontmatter.match(/^repository:/m), "Missing top-level 'repository:' in frontmatter");
+test("frontmatter contains metadata repository field", () => {
+  assert.ok(frontmatter.match(/^  repository:/m), "Missing metadata 'repository:' in frontmatter");
 });
 
-test("frontmatter contains top-level category field", () => {
-  assert.ok(frontmatter.match(/^category:/m), "Missing top-level 'category:' in frontmatter");
+test("frontmatter contains metadata category field", () => {
+  assert.ok(frontmatter.match(/^  category:/m), "Missing metadata 'category:' in frontmatter");
 });
 
-test("frontmatter contains top-level tags field", () => {
-  assert.ok(frontmatter.match(/^tags:/m), "Missing top-level 'tags:' in frontmatter");
+test("frontmatter contains metadata tags field", () => {
+  assert.ok(frontmatter.match(/^  tags:/m), "Missing metadata 'tags:' in frontmatter");
 });
 
-test("frontmatter contains top-level tools field", () => {
-  assert.ok(frontmatter.match(/^tools:/m), "Missing top-level 'tools:' in frontmatter — required by Agent Skills standard");
+test("frontmatter records bundled tooling", () => {
+  assert.ok(frontmatter.match(/^  bundled_tools:/m), "Missing metadata 'bundled_tools:' in frontmatter");
 });
 
-test("frontmatter does NOT use deprecated nested metadata block", () => {
-  assert.ok(
-    !frontmatter.includes("metadata:"),
-    "Frontmatter must not contain a nested 'metadata:' block — all fields must be top-level (Agent Skills standard)"
-  );
+test("frontmatter uses the standard metadata block", () => {
+  assert.ok(frontmatter.includes("metadata:"), "Missing standard metadata block");
 });
 
 // ── Version alignment ──────────────────────────────────────────────────────
@@ -101,10 +98,10 @@ test("skill version is not stale 0.3.0", () => {
   );
 });
 
-test("skill version is 0.5.0", () => {
+test("skill version is 0.6.0", () => {
   assert.ok(
-    skillContent.includes('"0.5.0"') || skillContent.includes("version: 0.5.0"),
-    "Expected version '0.5.0' in SKILL.md frontmatter"
+    skillContent.includes('"0.6.0"') || skillContent.includes("version: 0.6.0"),
+    "Expected version '0.6.0' in SKILL.md metadata"
   );
 });
 

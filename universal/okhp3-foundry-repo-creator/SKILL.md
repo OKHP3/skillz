@@ -1,12 +1,27 @@
 ---
 name: okhp3-foundry-repo-creator
 description: Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt bundles, Notion concepts, research notes, or prototype ideas. Use whenever the user wants to migrate an AI capability into GitHub, standardize a repo, create a child repo scaffold, or convert platform-specific AI work into a reusable capability package.
-enabled: true
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: universal
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 ---
 
-# FoundRy Repo Creator
+# okhp3-foundry-repo-creator
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Create a governed child repository package from an AI capability, prompt artifact, research concept, or product idea.
+
+## Scope
+
+| In scope | Out of scope |
+|---|---|
+| Repository planning, safe scaffold generation, provenance preservation, governance overlays, manifest planning, and graduation checks | Publishing, pushing, creating remote repositories, copying secrets/private data, or selecting a parent FoundRy without evidence |
 
 ## Trigger When
 
@@ -60,3 +75,14 @@ archive/
 ## Graduation Gate
 
 Do not mark a repository as public-ready until PII, employer references, licensed material, source rights, and manifest visibility fields have been reviewed.
+
+## Output contract
+
+Return the chosen parent FoundRy with evidence, target path, proposed tree, files created or skipped, provenance and privacy decisions, unresolved blockers, and a graduation disposition. Require explicit approval before remote creation, commit, push, or publication. Write only inside a user-confirmed target directory.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

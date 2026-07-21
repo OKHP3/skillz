@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-skill-foundry",
-  "skill_version": "1.0.0",
+  "skill_version": "1.1.0",
   "note": "Self-evals -- tests the Foundry skill on concrete authoring tasks",
   "evals": [
     {

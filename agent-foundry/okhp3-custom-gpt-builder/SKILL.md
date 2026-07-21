@@ -9,7 +9,8 @@ description: >-
   declarative-agent comparison, or conversion between Custom GPTs and Agent Skills.
 license: CC-BY-4.0
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
+  category: "agent-foundry"
   author: "OverKill Hill P³"
   copyright: "Copyright © 2024–2026 OverKill Hill P³ — https://overkillhill.com"
   attribution: "Originated by OverKill Hill P³. Attribution required under CC BY 4.0. See LICENSE.md."
@@ -17,9 +18,14 @@ metadata:
   license_decision: "CC BY 4.0 selected for public, reusable Agent Skill documentation. Attribution to OverKill Hill P³ required in all derivative works. See LICENSE.md."
   platforms: "OpenAI ChatGPT primary; cross-reference Gemini Gems and Copilot Studio when relevant"
   changelog: "See CHANGELOG.md"
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 ---
 
-# Custom GPT Builder
+# okhp3-custom-gpt-builder
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 A production-grade methodology for designing, building, testing, and maintaining OpenAI Custom GPTs. Treats GPT creation as product engineering, not prompt tinkering.
 
@@ -341,5 +347,11 @@ Every response from this skill must conform to the following contract. Deviation
 
 ---
 
-*OverKill Hill P³ — Recursive GPT Engineering. Prompts are protocol.*  
-*License: CC BY 4.0 | Attribution required | https://overkillhill.com*
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+CC BY 4.0 -- attribution required. See `LICENSE.md`.
+
+OverKill Hill P³ -- Recursive GPT Engineering. Prompts are protocol.

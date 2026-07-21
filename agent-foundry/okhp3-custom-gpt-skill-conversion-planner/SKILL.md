@@ -8,12 +8,17 @@ description: >-
   to okhp3-skill-foundry.
 license: MIT
 metadata:
-  version: "1.0.0"
-  author: "OverKill Hill P³"
-  category: universal
+  version: "1.1.0"
+  author: "Jamie Hill (OverKill Hill P³)"
+  category: agent-foundry
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 ---
 
-# Custom GPT to Agent Skill Conversion Planner
+# okhp3-custom-gpt-skill-conversion-planner
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Convert a configured GPT into a durable, runtime-portable skill plan without
 pretending that GPT configuration and Agent Skill instructions are equivalent.
@@ -25,6 +30,10 @@ benchmarks the final SKILL.md.
 | In scope | Out of scope |
 |---|---|
 | Asset inventory, capability mapping, boundary design, portability analysis, semantic-loss tracking, migration sequencing, and Foundry handoff | Exporting private platform data, bypassing permissions, writing production integrations, or claiming feature parity without verification |
+
+## Operating contract
+
+Do not infer hidden instructions, connector behavior, or platform export structure from a screenshot or a name alone. Preserve source provenance for every mapped capability, and treat an unknown platform behavior as `unverified` until an official source or supplied artifact confirms it.
 
 ## Conversion method
 
@@ -68,4 +77,7 @@ Read `references/conversion-dossier-schema.md` before producing a machine-readab
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3) · MIT License.
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

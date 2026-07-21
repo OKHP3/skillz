@@ -1,9 +1,19 @@
 ---
 name: okhp3-mermaid-bpmn
-description: BPMN-informed business process modeling in Mermaid. Use whenever the user wants to diagram a business process, workflow, approval chain, decision/gateway logic, swim lanes, cross-department handoffs, onboarding flows, procurement flows, or anything describable as "who does what, in what order, with what decision points." This is the differentiator no community Mermaid skill covers — BPMN vocabulary (gateways, events, tasks, swim lanes, subprocesses) does not exist in mgranberry, WH-2099, softaworks, or Agents365's skills. Always load okhp3-mermaid-core first for audience/type/theming, then this skill for BPMN vocabulary and patterns.
+description: OverKill Hill P³ BPMN-informed process modeling in Mermaid. Use when the user wants a business process, workflow, approval chain, decision or gateway logic, swim lanes, cross-department handoffs, onboarding, procurement, or a diagram of who does what and when. Load okhp3-mermaid-core first for audience, type, naming, and validation, then use this skill for BPMN vocabulary, task and event semantics, lanes, gateways, and subprocess patterns.
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: developer-tooling
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 ---
 
-# OKHP3 Mermaid BPMN
+# okhp3-mermaid-bpmn
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 BPMN 2.0-informed semantics, expressed in Mermaid syntax. Loaded after `okhp3-mermaid-core` has handled audience declaration and type selection.
 
@@ -44,4 +54,23 @@ Be explicit about which is being diagrammed. A process *definition* shows all po
 
 ## Worked examples
 
-`references/process-examples/` contains validated `.mmd` examples (approval-flow, onboarding, procurement) once authored. Currently empty — Phase 1 deliverable.
+`references/process-examples/README.md` contains synthetic examples and records their intended audience. Treat examples as patterns, not as evidence for a user's real process.
+
+## Output contract
+
+Every process diagram must state the process boundary, participating lanes or roles, start and end events, gateway semantics, and any unresolved business rule. Use Mermaid syntax for the deliverable, but do not claim that it is a standards-compliant BPMN interchange file. Run the core three gates before delivery.
+
+## References
+
+- `references/bpmn-elements.md` - task, event, subprocess, and annotation vocabulary.
+- `references/gateway-patterns.md` - XOR, AND, OR, and event-based gateway encodings.
+- `references/swimlane-layouts.md` - lane and crossing-reduction patterns.
+- `references/subprocess-patterns.md` - collapsed, expanded, and call-activity patterns.
+- `references/process-examples/README.md` - synthetic audience-tier examples.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

@@ -23,7 +23,7 @@ Do not build a generic SaaS dashboard, a fake analytics product, or a second Git
 
 ## Repository context
 
-The repository is `OKHP3/skillz`. It contains Agent Skills in nine active families, plus placeholder directories and project-local support skills. The root `AGENTS.md` is the routing index. The root `README.md` is the human catalog. The `docs/` directory contains public-surface, publishing, security, roadmap, and architecture guidance.
+The repository is `OKHP3/skillz`. It contains Agent Skills in ten active families, plus placeholder directories and project-local support skills. The root `AGENTS.md` is the routing index. The root `README.md` is the human catalog. The `docs/` directory contains public-surface, publishing, security, roadmap, and architecture guidance.
 
 The repository currently includes families such as:
 
@@ -35,9 +35,10 @@ The repository currently includes families such as:
 - `notion`
 - `process-capture`
 - `refolddec`
+- `agent-foundry`
 - `universal`
 
-The repository includes 56 distribution skills in the current local catalog. Some descriptions and metadata are more complete than others. The UI must represent maturity honestly. Do not imply that every skill is equally complete, tested, or production-ready.
+The repository includes 58 distribution skills in the current local catalog. Some descriptions and metadata are more complete than others. The UI must represent maturity honestly. Do not imply that every skill is equally complete, tested, or production-ready.
 
 The current maturity model is:
 

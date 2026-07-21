@@ -16,7 +16,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: meta-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -32,6 +32,8 @@ The Foundry is an eight-phase, repeatable methodology for taking a skill from bl
 **The primary quality signal is the with/without gap.** A skill that scores 1.0 with skill access and 0.3 without is doing real work. A skill that scores 0.9 both ways is a placeholder. Everything the Foundry does points at that gap.
 
 ---
+
+The open format adds a portability gate around this method: the directory name must match `name`, descriptions must fit the discovery budget, metadata must use standard fields, and optional `scripts/`, `references/`, `assets/`, and `agents/openai.yaml` files must be inspected for safety and runtime assumptions. A benchmark is not a substitute for format validation.
 
 ## The eight phases
 
@@ -85,6 +87,8 @@ skill-name/
 ```
 
 **Under 500 lines.** When the SKILL.md body approaches 500 lines, move detail into a reference file and add a clear pointer: "Read `references/foo.md` for the full spec."
+
+After drafting, run a spec validator such as `skills-ref validate <skill-dir>` when available. If the target runtime supports Codex UI metadata, review `agents/openai.yaml` separately; do not make it a portability requirement for the core skill.
 
 ---
 
@@ -143,6 +147,8 @@ USER QUESTION:
 ```
 
 Use `startAsyncSubagent` for all 6 runs. Follow with a single `wait_for_background_tasks`.
+
+If the current runtime exposes a different executor interface, use its equivalent parallel background-run mechanism. If no executor is available, do not fabricate a benchmark: retain the eval design, label the result as not run, and report the missing capability.
 
 Workspace layout:
 ```

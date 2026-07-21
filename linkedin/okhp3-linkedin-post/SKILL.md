@@ -1,9 +1,19 @@
 ---
 name: okhp3-linkedin-post
 description: Draft a LinkedIn post from a chosen angle. Use when the user has picked a candidate from okhp3-linkedin-angles' registry, or names a topic directly ("write a post about X"). Produces a draft, applies okhp3-linkedin-voice, then runs the BFS-scrub gate as the final non-negotiable step before returning output.
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: linkedin
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 ---
 
-# OKHP3 LinkedIn Post
+# okhp3-linkedin-post
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Drafting, from a chosen angle to finished output.
 
@@ -22,3 +32,19 @@ Draft -> Voice -> BFS scrub -> output. Not scrub-then-voice — voice polish hap
 ## Relationship to angles
 
 If no angle was provided and the user just says "write a post about X" with no prior `okhp3-linkedin-angles` pass, that's fine — angles is for triage of EXISTING work, not a mandatory gate before every post. Direct topic requests skip straight to drafting.
+
+## Output contract
+
+Return one paste-ready LinkedIn draft followed by a compact gate report. The draft must contain no employer-identifying material, no unsupported factual claims presented as facts, and no unresolved BFS findings. If the requested claim cannot survive the scrub, return a generalized version or stop with the specific category of blocker.
+
+## References
+
+- `references/bfs-scrub-checklist.md` - final employer-context and public-safety gate.
+- `../okhp3-linkedin-voice/references/voice-rules.md` - voice rules applied by the voice pass.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

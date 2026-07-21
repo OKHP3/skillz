@@ -1,9 +1,20 @@
 ---
 name: okhp3-mermaid-publish
+license: MIT
+compatibility: Local rendering requires the repository's Mermaid CLI pipeline. Mermaid Chart publishing requires an explicitly connected MCP integration. Local-only output remains supported without either external service.
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: developer-tooling
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 description: Rendering, exporting, and publishing finished Mermaid diagrams. Use after a diagram has passed okhp3-mermaid-core's three validation gates and needs to become a viewable artifact — local PNG/SVG render, embedding in a .md file, or publishing via the Mermaid Chart MCP for a shareable link. NEVER deletes rendered output; the render IS the deliverable.
 ---
 
-# OKHP3 Mermaid Publish
+# okhp3-mermaid-publish
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 The output layer. Runs after core's Gate 1-3 validation.
 
@@ -30,3 +41,14 @@ Three output shapes — `.mmd` file, fenced ` ```mermaid ` block in a `.md` file
 ## Privacy
 
 Never route diagram source through third-party rendering APIs (e.g., Kroki) without explicit user consent. This is a known issue in at least one reviewed community skill — diagram content may be proprietary, and a silent cloud fallback is a data governance failure, not a convenience.
+
+## Output contract
+
+Return the source path, rendered artifact path or share link, renderer/version used, validation result, and any caveat. Preserve both source and render. If publishing is unavailable, report a local-only result rather than silently substituting an unapproved service.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

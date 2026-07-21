@@ -4,7 +4,7 @@ Single source of truth for theming. Every diagram produced by this skill family 
 
 ## Source
 
-Palette definitions originate in `OKHP3/mermaid-theme-builder` (the standalone visual theme builder). This file currently documents palette NAMES and the dark/light requirement. Extracting the actual hex values and converting them to `classDef` recipes is a Phase 1 task — see TODO below.
+Palette definitions originate in `OKHP3/mermaid-theme-builder` and are canonical in that skill's `assets/palettes.json`. Load the palette asset when exact tokens are needed; do not retype or invent a second palette registry here.
 
 ## Available palettes (from mermaid-theme-builder)
 
@@ -13,7 +13,7 @@ Palette definitions originate in `OKHP3/mermaid-theme-builder` (the standalone v
 - **Slate Ember**
 - **Violet Mist**
 
-Each needs a semantic mapping (trigger / success / error / ai / decision / primary / secondary — the semantic role names, not just raw colors) before it's usable as a `classDef` library here.
+Map palette tokens to semantic roles such as primary, secondary, decision, success, error, and AI only from the canonical palette asset. The role is more important than the color name, because it keeps diagrams coherent when a palette changes.
 
 ## Non-negotiable rule
 
@@ -27,9 +27,6 @@ classDef primary fill:#5b21b6,stroke:#ddd6fe,stroke-width:2px,color:#fff
 
 Set subgraph `fill:none` so subgraphs adapt to the viewer's background rather than fighting it.
 
-## TODO (Phase 1)
+## Validation
 
-1. Pull the 4 palette definitions (hex values) from `mermaid-theme-builder`'s `lib/` directory.
-2. Map each palette to the semantic roles above.
-3. Produce one `classDef` block per palette, validated in both light and dark GitHub rendering.
-4. Decide: one default palette for all OKHP3 output, or palette-per-family (e.g., bpmn diagrams use one, architecture diagrams use another)?
+Before publishing, validate the selected palette in the target renderer's light and dark contexts when both are supported. Record the palette ID and renderer profile in the diagram registry. Use the theme-builder skill for exact token generation and renderer compatibility.

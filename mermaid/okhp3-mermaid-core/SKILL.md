@@ -1,9 +1,19 @@
 ---
 name: okhp3-mermaid-core
-description: Foundation skill for ALL Mermaid diagram work. Load this first for any task involving Mermaid syntax, diagrams, flowcharts, process maps, architecture sketches, or visualizing relationships/workflows/structures. Handles audience declaration, diagram type selection across all 27 current Mermaid types (stable and beta), the OKHP3 design system, file naming and the diagram registry, and the three-gate validation framework. Routes to okhp3-mermaid-bpmn, okhp3-mermaid-architecture, or okhp3-mermaid-data for domain-specific vocabulary, and to okhp3-mermaid-publish for rendering/output.
+description: OverKill Hill P³ foundation for every Mermaid diagram task. Use when the user asks for Mermaid syntax, flowcharts, process maps, architecture sketches, relationship diagrams, or visualizing a workflow or structure. Load this skill before a domain skill to choose the audience and diagram type, apply the repository design system, name and register the artifact, and run syntax, semantic, and audience-fit gates. Route BPMN, architecture, and data-model work to their companion skills, then use the publish skill for rendering or sharing.
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: developer-tooling
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 ---
 
-# OKHP3 Mermaid Core
+# okhp3-mermaid-core
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Foundation for the Mermaid family. Every Mermaid task starts here, even if it ends in a domain skill.
 
@@ -15,7 +25,7 @@ A diagram produced for the wrong audience is a design failure independent of syn
 
 ## 2. Type Selection
 
-Consult `references/type-selection-matrix.md`. It catalogs all 27 current Mermaid diagram types (stable + beta, as of v11.15) with OKHP3 disposition: core-handled, routed to a domain skill, or explicitly excluded with rationale.
+Consult `references/type-selection-matrix.md`. Treat its support and disposition entries as repository guidance, not as a substitute for checking the target Mermaid renderer or current Mermaid release when a type is beta, experimental, or version-sensitive.
 
 If the matrix routes to a domain skill (bpmn / architecture / data), load that skill's SKILL.md now for the type-specific syntax and patterns. Core handles selection and theming; domain skills handle vocabulary.
 
@@ -44,3 +54,22 @@ Hand off to `okhp3-mermaid-publish` for rendering and (if available) Mermaid Cha
 ## Excluded types (do not use, with rationale)
 
 Pie charts, XY charts, and Git graphs. See `references/type-selection-matrix.md` for the full disposition table and reasoning per type.
+
+## Output contract
+
+Before delivery, report the declared audience, selected diagram type, validation status for each gate, output path or fenced block, and any renderer or semantic caveat. If a gate cannot be run locally, label it `not_run` and give the exact manual validation needed.
+
+## References
+
+- `references/audience-profiles.md` - audience tiers and detail limits.
+- `references/type-selection-matrix.md` - repository routing and exclusions.
+- `references/design-system.md` - palette and class styling rules.
+- `references/naming-conventions.md` - filenames and registry entries.
+- `references/diagram-output-contract.md` - required output metadata.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

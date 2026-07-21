@@ -1,14 +1,25 @@
 # Class Diagram Syntax
 
-TOC for Phase 2 authoring.
-
 ## Structure
-- [ ] Class block syntax — attributes, methods, visibility markers (+/-/#)
-- [ ] Relationship types — inheritance, composition, aggregation, association, dependency, and their exact arrow notations
+
+```mermaid
+classDiagram
+  class Order {
+    +string id
+    +submit() bool
+  }
+  class LineItem
+  Order "1" *-- "1..*" LineItem : contains
+```
+
+Use visibility markers and method signatures only when the audience needs implementation detail. Keep relationship labels verb-first and distinguish composition from simple association.
 
 ## Namespaces
-- [ ] Mermaid classDiagram namespace support — when OKHP3 diagrams need this (large systems with package structure)
+
+Use namespaces for large systems with meaningful package boundaries. If the renderer or target embed does not support the syntax reliably, use a package label or split the diagram instead of hiding relationships.
 
 ## Audience scaling
-- [ ] Technical: full method signatures
-- [ ] Analyst: class names + relationships, methods omitted
+
+- Technical: supported attributes, methods, visibility, and relationship multiplicity.
+- Analyst: class names, responsibilities, and relationships; omit methods unless they explain behavior.
+- Executive: prefer a context or capability view over a class diagram.

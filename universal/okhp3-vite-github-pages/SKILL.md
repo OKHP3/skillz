@@ -1,24 +1,32 @@
 ---
 name: okhp3-vite-github-pages
 description: >
-  Deploy a React or Vue SPA built with Vite to GitHub Pages using the gh-pages
-  npm package. Covers the three most common failure modes: missing base path in
-  vite.config (blank page), BrowserRouter instead of HashRouter (404 on reload),
-  and missing gh-pages branch (deploy command fails). Use when setting up or
-  fixing GitHub Pages deployment for a Vite single-page application.
+  Deploy a React or Vue SPA built with Vite to GitHub Pages using either a
+  supported branch workflow or GitHub Actions. Covers the three most common
+  failure modes: missing base path in vite.config (blank page), BrowserRouter
+  instead of HashRouter (404 on reload), and a workflow that does not publish
+  the built artifact. Use when setting up or fixing GitHub Pages deployment for
+  a Vite single-page application.
 license: MIT
 metadata:
-  author: okhp3
-  version: "1.0.0"
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: universal
   origin: kierans-lifetrkr
   published-to: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 compatibility: Vite 4+, React 18+ or Vue 3+, npm. GitHub repository with Pages enabled.
 ---
 
-# GitHub Pages Vite SPA Skill
+# okhp3-vite-github-pages
 
-Three configuration changes are required to deploy a Vite SPA to GitHub Pages.
-All three must be present. Missing any one produces a silently broken deploy.
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
+
+Three concerns must be resolved to deploy a Vite SPA to GitHub Pages. The exact
+deployment mechanism may vary, but the built asset must use the correct base
+path, the router must match the host's fallback behavior, and Pages must publish
+the intended build output. Do not assume `gh-pages` is the only valid path.
 
 ## The three required changes
 
@@ -140,3 +148,14 @@ In GitHub Actions: add them as repository secrets and inject into the build step
 3. Configure DNS: CNAME `www` → `username.github.io`, A records for apex
 4. GitHub Settings → Pages → Custom domain → enter domain → Save
 5. Wait for DNS propagation (up to 48h) + GitHub TLS certificate (~15 min)
+
+## Output contract
+
+Return the chosen deployment mode, repository/base-path mapping, router decision, build and publish commands or workflow, live URL shape, and verification results for deep links and reloads. Treat GitHub Pages UI, Actions, DNS, and certificate timing as current platform facts that require verification when they affect the user's setup.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.
