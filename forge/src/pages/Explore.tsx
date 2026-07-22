@@ -211,8 +211,13 @@ export default function Explore() {
                   <div className="skill-card-header">
                     <div>
                       <Link to={`/skills/${skill.family}/${skill.name}`} className="skill-card-title">
-                        {skill.name}
+                        {skill.displayName || skill.name}
                       </Link>
+                      {skill.displayName && skill.displayName !== skill.name && (
+                        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-dark)', marginTop: '2px' }}>
+                          {skill.name}
+                        </div>
+                      )}
                       <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '4px' }}>
                         <span className="skill-card-family">{skill.family}</span>
                         <span data-maturity={skill.maturity}>{skill.maturity}</span>
@@ -223,7 +228,7 @@ export default function Explore() {
                   <p className="skill-card-desc">{skill.description}</p>
                   
                   {skill.triggers.length > 0 && (
-                    <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-light)', background: 'var(--color-bg)', padding: 'var(--space-2) var(--space-4)', borderRadius: 'var(--radius)', borderLeft: '2px solid var(--color-copper)' }}>
+                    <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)', background: 'var(--color-bg)', padding: 'var(--space-2) var(--space-4)', borderRadius: 'var(--radius)', borderLeft: '2px solid var(--color-copper)' }}>
                       <strong>Triggers when:</strong> {skill.triggers[0]}
                     </div>
                   )}

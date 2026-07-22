@@ -6,14 +6,20 @@ const FUSE_OPTIONS: IFuseOptions<Skill> = {
   threshold: 0.4,
   minMatchCharLength: 2,
   keys: [
-    { name: 'name', weight: 0.25 },
-    { name: 'displayName', weight: 0.2 },
-    { name: 'description', weight: 0.2 },
-    { name: 'triggers', weight: 0.15 },
-    { name: 'family', weight: 0.08 },
-    { name: 'category', weight: 0.05 },
-    { name: 'topics', weight: 0.04 },
-    { name: 'examples', weight: 0.03 },
+    { name: 'name',        weight: 0.25 },
+    { name: 'displayName', weight: 0.20 },
+    { name: 'description', weight: 0.18 },
+    { name: 'triggers',    weight: 0.12 },
+    { name: 'inputs',      weight: 0.06 },
+    { name: 'outputs',     weight: 0.06 },
+    { name: 'family',      weight: 0.05 },
+    { name: 'category',    weight: 0.04 },
+    { name: 'topics',      weight: 0.03 },
+    { name: 'tools',       weight: 0.03 },
+    { name: 'runtimes',    weight: 0.02 },
+    { name: 'companions',  weight: 0.02 },
+    { name: 'boundaries',  weight: 0.02 },
+    { name: 'examples',    weight: 0.02 },
   ],
 };
 
@@ -80,8 +86,14 @@ function sortResults(results: SearchResult[], sort: FilterState['sort']): Search
 function buildMatchReason(skill: Skill, query: string): string {
   const q = query.toLowerCase();
   if (skill.name.toLowerCase().includes(q)) return `Matches skill name "${skill.name}"`;
+  const dn = skill.displayName || '';
+  if (dn && dn.toLowerCase().includes(q)) return `Matches display name "${dn}"`;
   if (skill.description.toLowerCase().includes(q)) return `Matches description`;
   if (skill.triggers.some(t => t.toLowerCase().includes(q))) return `Matches trigger phrase`;
+  if (skill.inputs.some(t => t.toLowerCase().includes(q))) return `Matches input: "${skill.inputs.find(t => t.toLowerCase().includes(q))}"`;
+  if (skill.outputs.some(t => t.toLowerCase().includes(q))) return `Matches output: "${skill.outputs.find(t => t.toLowerCase().includes(q))}"`;
+  if (skill.tools.some(t => t.toLowerCase().includes(q))) return `Matches tool: ${skill.tools.find(t => t.toLowerCase().includes(q))}`;
+  if (skill.companions.some(c => c.toLowerCase().includes(q))) return `Companion of ${skill.companions.find(c => c.toLowerCase().includes(q))}`;
   if (skill.family.toLowerCase().includes(q)) return `Matches family "${skill.family}"`;
   return `Related to "${query}"`;
 }
