@@ -15,8 +15,8 @@
 - **Introduction:** A compact continuation package for finishing the eight skills by preserving shared rules and assets, resolving capture ambiguities through evaluation, and regenerating the catalog.
 - **Primary topic:** Standalone Cross-Platform Thread Extraction Skill Continuity
 - **Artifact title:** Thread Extraction Skill Continuity Brief
-- **Filename:** `standalone-cross-platform-thread-extraction-skill-continuity.md`
+- **Filename:** `standalone-thread-extract-continuity.md`
 
 ## Output
 
-`.agents/skills/okhp3-thread-context-extraction-workspace/iteration-1/eval-2-scan-rapid/without_skill/outputs/standalone-cross-platform-thread-extraction-skill-continuity.md`
+`.agents/skills/thread-extract-work/iteration-1/eval-2-scan-rapid/without_skill/outputs/standalone-thread-extract-continuity.md`

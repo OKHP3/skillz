@@ -25,7 +25,7 @@ The current repository skill was not read. No source platform, external URL, PDF
 ## Script result
 
 - The baseline bundled `create_thread_extract.py` completed successfully using the installed Python 3.12 runtime.
-- It normalized `substantial` to `balanced` and generated `outputs/repository-independent-ai-thread-extraction-missing-asset-controls.md`.
+- It normalized `substantial` to `balanced` and generated `outputs/repo-independent-thread-extract-missing-assets.md`.
 - After rereading the generated file, speaker labels were moved exclusively to turn-boundary evidence, the five-element ledger was renumbered, and the previously generated artifact was deliberately replaced with `--allow-existing`.
 - Final verification confirmed the title chain, metadata, partial provenance, `needs-review` retention decision, required headings, missing-asset treatment, and standalone continuation guidance.
 

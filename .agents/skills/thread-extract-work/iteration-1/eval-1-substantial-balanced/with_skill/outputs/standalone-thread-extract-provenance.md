@@ -55,7 +55,7 @@ The supplied capture describes a goal of creating a repeatable way to evacuate u
 2. **Introduction:** The opening paragraph compresses those facts into a durable handoff that a reader can use without the source platform.
 3. **Primary topic:** `Standalone AI thread extraction with provenance and rehydration`
 4. **Artifact title:** `Standalone AI Thread Extraction with Provenance and Rehydration`
-5. **Derived filename:** `standalone-ai-thread-extraction-provenance-rehydration.md`
+5. **Derived filename:** `standalone-thread-extract-provenance.md`
 
 ## Turn ledger
 

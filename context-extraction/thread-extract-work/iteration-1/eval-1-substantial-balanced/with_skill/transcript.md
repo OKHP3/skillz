@@ -24,13 +24,13 @@ No source platform, connector, network source, referenced PDF, image payload, or
 - Cataloged five rich-element records: one image placeholder, one PDF reference, one Canvas reference, and two grouped UI-control records.
 - Treated Copy, Good response, Sources, and Retry as boundary evidence and excluded them from semantic content.
 - Marked the image, PDF, and Canvas payloads as missing without inferring their contents.
-- Selected primary topic `Standalone AI thread extraction with provenance and rehydration`; the bundled writer derived `standalone-ai-thread-extraction-provenance-rehydration.md`.
+- Selected primary topic `Standalone AI thread extraction with provenance and rehydration`; the bundled writer derived `standalone-thread-extract-provenance.md`.
 - Recorded source independence as `pass` because the workflow and handoff are standalone; final retention validation and recovery of the Canvas comparison remain explicitly blocked capabilities.
 
 ## Writer result
 
 - Dry run: validated successfully with the `py -3` launcher.
-- Final run: wrote `outputs/standalone-ai-thread-extraction-provenance-rehydration.md` successfully.
+- Final run: wrote `outputs/standalone-thread-extract-provenance.md` successfully.
 - Verification: all required headings present; no unresolved template comments; no em dash; metadata records balanced depth, partial completeness, `needs-review`, and source-independence `pass`; output remained inside the assigned run directory.
 
 ## Errors
