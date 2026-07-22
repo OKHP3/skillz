@@ -47,6 +47,24 @@ function getGitRef() {
   } catch { return 'main'; }
 }
 
+
+// ─── Per-file Git info ────────────────────────────────────────────────────────
+
+function getFileGitInfo(relPath) {
+  try {
+    const result = execSync(
+        'git log -n 1 --format="%aI %H" -- ' + JSON.stringify(relPath),
+        { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8' }
+      ).trim();
+    if (!result) return { lastModified: null, commitSha: null };
+    const spaceIdx = result.indexOf(' ');
+    return {
+      lastModified: spaceIdx > 0 ? result.slice(0, spaceIdx) : null,
+      commitSha: spaceIdx > 0 ? result.slice(spaceIdx + 1, spaceIdx + 9) : null,
+    };
+  } catch { return { lastModified: null, commitSha: null }; }
+}
+
 // ─── YAML frontmatter parser ──────────────────────────────────────────────────
 
 function parseYamlFrontmatter(text) {
@@ -319,7 +337,8 @@ function buildCatalog() {
       ? h1Text
       : slugTitle;
 
-    skills.push({
+    const fileGitInfo = getFileGitInfo(relPath);
+        skills.push({
       name,
       displayName: derivedDisplayName,
       family,
@@ -347,8 +366,8 @@ function buildCatalog() {
       boundaries,
       rawUrl,
       githubUrl,
-      lastModified: null,
-      commitSha: sourceCommit,
+      lastModified: fileGitInfo.lastModified,
+      commitSha: fileGitInfo.commitSha || sourceCommit,
     });
   }
 
