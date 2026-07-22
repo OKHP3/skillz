@@ -25,7 +25,7 @@ metadata:
   author-github: https://github.com/OKHP3
 ---
 
-# okhp3-thread-context-extraction
+# Thread Context Extraction
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 

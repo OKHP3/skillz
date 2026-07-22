@@ -51,15 +51,15 @@ export default function StackDetail() {
         <article className="detail-article" style={{ margin: '0 auto' }}>
           <header style={{ marginBottom: 'var(--space-8)' }}>
             <h1 style={{ fontSize: 'var(--text-display)', marginBottom: 'var(--space-4)' }}>{stack.name}</h1>
-            <p style={{ fontSize: 'var(--text-h3)', color: 'var(--color-text-muted-light)' }}>{stack.tagline}</p>
+            <p style={{ fontSize: 'var(--text-h3)', color: 'var(--color-text-muted-dark)' }}>{stack.tagline}</p>
           </header>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-6)', marginBottom: 'var(--space-8)' }}>
-            <div style={{ background: 'rgba(0,0,0,0.03)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-copper)' }}>
+            <div style={{ background: 'rgba(28,58,52,0.18)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-copper)' }}>
               <h2 style={{ marginTop: 0, paddingBottom: 0, border: 'none', fontSize: 'var(--text-sm)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>The Problem</h2>
               <p style={{ margin: 0 }}>{stack.problem}</p>
             </div>
-            <div style={{ background: 'rgba(0,0,0,0.03)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-steel)' }}>
+            <div style={{ background: 'rgba(28,58,52,0.18)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-steel)' }}>
               <h2 style={{ marginTop: 0, paddingBottom: 0, border: 'none', fontSize: 'var(--text-sm)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Audience</h2>
               <p style={{ margin: 0 }}>{stack.audience}</p>
             </div>
@@ -86,18 +86,18 @@ export default function StackDetail() {
               {stack.steps.map((step, i) => {
                 const skills = step.skillNames.map(n => catalog.skills.find(s => s.name === n)).filter(Boolean);
                 return (
-                  <li key={i} style={{ border: '1px solid var(--color-border-light)', padding: 'var(--space-6)', position: 'relative' }}>
+                  <li key={i} style={{ border: '1px solid var(--color-border-dark)', padding: 'var(--space-6)', position: 'relative' }}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '40px', height: '40px', background: 'var(--color-bg)', color: 'var(--color-copper)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontSize: 'var(--text-h3)', fontWeight: 600 }}>
                       {i + 1}
                     </div>
                     <div style={{ marginLeft: 'var(--space-8)' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-2)' }}>
-                        <h3 style={{ margin: 0, color: 'var(--color-text-light)' }}>{step.label}</h3>
+                        <h3 style={{ margin: 0, color: 'var(--color-text-dark)' }}>{step.label}</h3>
                         {step.optional && <span style={{ fontSize: 'var(--text-xs)', background: 'var(--color-bg)', color: 'var(--color-text-muted-dark)', padding: '2px 8px', textTransform: 'uppercase' }}>optional</span>}
                       </div>
-                      <p style={{ color: 'var(--color-text-muted-light)', marginBottom: 'var(--space-4)' }}>{step.purpose}</p>
+                      <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-4)' }}>{step.purpose}</p>
                       
-                      <div style={{ display: 'grid', gap: 'var(--space-2)', fontSize: 'var(--text-sm)', fontFamily: 'var(--font-mono)', background: 'rgba(0,0,0,0.03)', padding: 'var(--space-4)', marginBottom: 'var(--space-4)' }}>
+                      <div style={{ display: 'grid', gap: 'var(--space-2)', fontSize: 'var(--text-sm)', fontFamily: 'var(--font-mono)', background: 'var(--color-bg)', padding: 'var(--space-4)', marginBottom: 'var(--space-4)' }}>
                         {step.inputs && <div><strong style={{ color: 'var(--color-steel)' }}>In:</strong> {step.inputs}</div>}
                         {step.outputs && <div><strong style={{ color: 'var(--color-copper)' }}>Out:</strong> {step.outputs}</div>}
                       </div>

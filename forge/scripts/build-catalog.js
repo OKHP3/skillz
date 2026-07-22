@@ -47,6 +47,24 @@ function getGitRef() {
   } catch { return 'main'; }
 }
 
+
+// ─── Per-file Git info ────────────────────────────────────────────────────────
+
+function getFileGitInfo(relPath) {
+  try {
+    const result = execSync(
+        'git log -n 1 --format="%aI %H" -- ' + JSON.stringify(relPath),
+        { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8' }
+      ).trim();
+    if (!result) return { lastModified: null, commitSha: null };
+    const spaceIdx = result.indexOf(' ');
+    return {
+      lastModified: spaceIdx > 0 ? result.slice(0, spaceIdx) : null,
+      commitSha: spaceIdx > 0 ? result.slice(spaceIdx + 1, spaceIdx + 9) : null,
+    };
+  } catch { return { lastModified: null, commitSha: null }; }
+}
+
 // ─── YAML frontmatter parser ──────────────────────────────────────────────────
 
 function parseYamlFrontmatter(text) {
@@ -305,9 +323,24 @@ function buildCatalog() {
     const githubUrl = `${GITHUB_BASE}/blob/main/${relPath}`;
     const rawUrl = `${RAW_BASE}/${relPath}`;
 
-    skills.push({
+    const h1Match = body.match(/^\#\s+(.+)$/m);
+    const BRAND_MAP = {
+      chatgpt: 'ChatGPT', gpt: 'GPT', ai: 'AI', llm: 'LLM',
+      seo: 'SEO', m365: 'M365', okhp3: 'OKHP3',
+      api: 'API', bpmn: 'BPMN', sop: 'SOP', csv: 'CSV',
+      linkedin: 'LinkedIn', github: 'GitHub', tiktok: 'TikTok',
+    };
+    const slugTitle = name.replace(/^okhp3-/, '').replace(/-/g, ' ')
+             .replace(/\b\w+\b/g, w => BRAND_MAP[w.toLowerCase()] || (w[0].toUpperCase() + w.slice(1)));
+    const h1Text = h1Match ? h1Match[1].trim() : null;
+    const derivedDisplayName = (h1Text && h1Text.toLowerCase() !== name.toLowerCase())
+      ? h1Text
+      : slugTitle;
+
+    const fileGitInfo = getFileGitInfo(relPath);
+        skills.push({
       name,
-      displayName: name.replace(/^okhp3-/, '').replace(/-/g, ' '),
+      displayName: derivedDisplayName,
       family,
       skillDir: skillName,
       path: relPath,
@@ -333,8 +366,8 @@ function buildCatalog() {
       boundaries,
       rawUrl,
       githubUrl,
-      lastModified: null,
-      commitSha: sourceCommit,
+      lastModified: fileGitInfo.lastModified,
+      commitSha: fileGitInfo.commitSha || sourceCommit,
     });
   }
 
