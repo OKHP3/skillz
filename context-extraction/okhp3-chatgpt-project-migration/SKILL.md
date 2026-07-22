@@ -25,7 +25,7 @@ metadata:
     - Committing unreviewed raw conversations or private data to the repository
 ---
 
-# okhp3-chatgpt-project-migration
+# ChatGPT Project Migration
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
