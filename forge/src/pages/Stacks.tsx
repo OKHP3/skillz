@@ -48,7 +48,7 @@ export default function Stacks() {
                   <h2><Link to={`/stacks/${stack.id}`}>{stack.name}</Link></h2>
                   <p className="stack-tagline">{stack.tagline}</p>
                 </div>
-                <p style={{ color: 'var(--color-text-muted-light)', fontSize: 'var(--text-sm)', marginBottom: 'var(--space-4)' }}>
+                <p style={{ color: 'var(--color-text-muted-dark)', fontSize: 'var(--text-sm)', marginBottom: 'var(--space-4)' }}>
                   <strong>For:</strong> {stack.audience}
                 </p>
                 
@@ -64,7 +64,7 @@ export default function Stacks() {
                   {allSkills.length} skill{allSkills.length !== 1 ? 's' : ''} in stack
                 </div>
                 
-                <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'center', marginTop: 'var(--space-6)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border-light)' }}>
+                <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'center', marginTop: 'var(--space-6)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border-dark)' }}>
                   <Link to={`/stacks/${stack.id}`} className="btn">View stack</Link>
                   <button
                     onClick={() => handleCopyAll(stack.id, allSkillNames)}
