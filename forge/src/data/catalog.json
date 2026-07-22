@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-22T03:22:58.637Z",
+  "generatedAt": "2026-07-22T04:19:01.257Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "58d54a7",
+  "sourceCommit": "cc0a025",
   "skillCount": 67,
   "familyCount": 11,
   "families": [
@@ -175,7 +175,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-cross-tradition-compare/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-cross-tradition-compare/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-tradition-observance-calendar",
@@ -206,7 +206,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-tradition-observance-calendar/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-tradition-observance-calendar/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-tradition-reference",
@@ -237,7 +237,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-tradition-reference/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-tradition-reference/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-verse-lookup",
@@ -268,7 +268,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-verse-lookup/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-verse-lookup/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-custom-gpt-builder",
@@ -299,7 +299,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-builder/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-custom-gpt-readiness",
@@ -332,7 +332,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-readiness/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-readiness/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-custom-gpt-skill-conversion-planner",
@@ -365,7 +365,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-skill-conversion-planner/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-skill-conversion-planner/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "ai-social-media-content",
@@ -396,7 +396,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/ai-social-media-content/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/ai-social-media-content/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "architecture-decision-records",
@@ -434,7 +434,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/architecture-decision-records/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/architecture-decision-records/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "brand-guidelines",
@@ -465,7 +465,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/brand-guidelines/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/brand-guidelines/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "find-skills",
@@ -501,7 +501,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/find-skills/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/find-skills/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "frontend-design",
@@ -532,7 +532,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/frontend-design/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/frontend-design/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "mcp-builder",
@@ -563,7 +563,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/mcp-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/mcp-builder/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "mermaid-diagrams",
@@ -594,7 +594,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/mermaid-diagrams/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/mermaid-diagrams/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "skill-creator",
@@ -625,7 +625,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/skill-creator/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/skill-creator/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "theme-factory",
@@ -656,7 +656,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/theme-factory/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/theme-factory/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "vercel-react-best-practices",
@@ -687,7 +687,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/vercel-react-best-practices/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/vercel-react-best-practices/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "vercel-react-native-skills",
@@ -718,7 +718,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/vercel-react-native-skills/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/vercel-react-native-skills/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "web-artifacts-builder",
@@ -749,7 +749,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/web-artifacts-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/web-artifacts-builder/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "web-design-guidelines",
@@ -780,7 +780,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/web-design-guidelines/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/web-design-guidelines/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-chatgpt-project-migration",
@@ -811,7 +811,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-chatgpt-project-migration/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-chatgpt-project-migration/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-thread-context-extraction",
@@ -844,7 +844,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-thread-context-extraction-chatgpt",
@@ -878,7 +878,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-chatgpt/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-chatgpt/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-thread-context-extraction-claude",
@@ -911,7 +911,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-claude/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-claude/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-thread-context-extraction-copilot-m365",
@@ -942,7 +942,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-copilot-m365/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-copilot-m365/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-thread-context-extraction-gemini",
@@ -973,7 +973,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-gemini/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-gemini/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-thread-context-extraction-grok",
@@ -1004,7 +1004,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-grok/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-grok/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-thread-context-extraction-mistral-vibe",
@@ -1035,7 +1035,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-mistral-vibe/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-mistral-vibe/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-thread-context-extraction-perplexity",
@@ -1066,7 +1066,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-perplexity/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-perplexity/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-celestial-data",
@@ -1097,7 +1097,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/lifetrkr/okhp3-celestial-data/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/lifetrkr/okhp3-celestial-data/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-daily-oracle",
@@ -1128,7 +1128,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/lifetrkr/okhp3-daily-oracle/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/lifetrkr/okhp3-daily-oracle/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-linkedin-angles",
@@ -1162,7 +1162,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-angles/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-angles/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-linkedin-post",
@@ -1196,7 +1196,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-post/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-linkedin-voice",
@@ -1230,7 +1230,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-voice/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-voice/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-architecture",
@@ -1263,7 +1263,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-bpmn",
@@ -1296,7 +1296,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-core",
@@ -1329,7 +1329,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-data",
@@ -1362,7 +1362,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-governance",
@@ -1399,7 +1399,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-governance/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-governance/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-publish",
@@ -1432,7 +1432,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-repair",
@@ -1467,7 +1467,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-repair/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-repair/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-theme-builder",
@@ -1516,7 +1516,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-theme-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-theme-builder/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-mermaid-update",
@@ -1551,7 +1551,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-update/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-update/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-notion-capture-router",
@@ -1582,7 +1582,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-capture-router/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-capture-router/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-as-is-process-capture",
@@ -1629,7 +1629,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-as-is-process-capture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-as-is-process-capture/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-decision-model-authoring",
@@ -1669,7 +1669,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-decision-model-authoring/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-decision-model-authoring/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-elicitation-and-interview-facilitation",
@@ -1709,7 +1709,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-elicitation-and-interview-facilitation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-elicitation-and-interview-facilitation/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-future-state-and-change-strategy",
@@ -1762,7 +1762,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-future-state-and-change-strategy/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-future-state-and-change-strategy/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-process-capture",
@@ -1793,7 +1793,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-capture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-capture/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-process-gap-and-exception-analysis",
@@ -1833,7 +1833,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-gap-and-exception-analysis/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-gap-and-exception-analysis/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-process-intake-and-scope",
@@ -1873,7 +1873,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-process-measures-and-controls-definition",
@@ -1913,7 +1913,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-measures-and-controls-definition/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-measures-and-controls-definition/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-process-narrative-authoring",
@@ -1953,7 +1953,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-process-validation-and-quality-scoring",
@@ -1992,7 +1992,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-validation-and-quality-scoring/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-validation-and-quality-scoring/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-publication-and-handoff-packaging",
@@ -2030,7 +2030,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-publication-and-handoff-packaging/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-publication-and-handoff-packaging/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-raci-and-governance-matrix-generation",
@@ -2069,7 +2069,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-raci-and-governance-matrix-generation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-raci-and-governance-matrix-generation/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-sipoc-generation",
@@ -2108,7 +2108,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sipoc-generation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sipoc-generation/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-sop-and-work-instruction-generation",
@@ -2148,7 +2148,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sop-and-work-instruction-generation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sop-and-work-instruction-generation/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-stakeholder-and-role-mapping",
@@ -2187,7 +2187,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-visual-process-modeling",
@@ -2227,7 +2227,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-visual-process-modeling/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-visual-process-modeling/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-refolddec-core",
@@ -2263,7 +2263,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/refolddec/okhp3-refolddec-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/refolddec/okhp3-refolddec-core/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-cloudflare-worker-api-proxy",
@@ -2298,7 +2298,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-cloudflare-worker-api-proxy/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-cloudflare-worker-api-proxy/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-foundry-repo-creator",
@@ -2335,7 +2335,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-foundry-repo-creator/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-foundry-repo-creator/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-google-gis-client-auth",
@@ -2372,7 +2372,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-google-gis-client-auth/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-google-gis-client-auth/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-skill-cataloger",
@@ -2403,7 +2403,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-cataloger/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-cataloger/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-skill-foundry",
@@ -2434,7 +2434,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-foundry/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     },
     {
       "name": "okhp3-vite-github-pages",
@@ -2465,7 +2465,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-vite-github-pages/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-vite-github-pages/SKILL.md",
       "lastModified": null,
-      "commitSha": "58d54a7"
+      "commitSha": "cc0a025"
     }
   ]
 }
