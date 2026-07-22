@@ -23,7 +23,7 @@ metadata:
   author-github: https://github.com/OKHP3
 ---
 
-# okhp3-skill-foundry
+# Skill Foundry
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 

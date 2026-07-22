@@ -18,7 +18,7 @@ metadata:
   author-github: "https://github.com/OKHP3"
 ---
 
-# okhp3-skill-cataloger
+# Skill Cataloger
 
 **Intent:** Turn a repository’s `SKILL.md` files into a reproducible inventory
 without editing skill content or hiding validation failures.
