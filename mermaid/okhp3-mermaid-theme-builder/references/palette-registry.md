@@ -2,15 +2,15 @@
 
 All 7 built-in palettes derived from `src/lib/palettes.ts`. Hex values are exact source-of-truth copies.
 
-Use `"theme": "base"` for all palettes. Never use `"default"`, `"dark"`, `"forest"`, or `"neutral"` — they override `themeVariables`.
+Use `"theme": "base"` for all palettes. Never use `"default"`, `"dark"`, `"forest"`, or `"neutral"` - they override `themeVariables`.
 
 ---
 
 ## ocean-depth
 
-**Display name:** Ocean Depth  
-**Brand:** utility (no brandFamily)  
-**Recommended for:** Technical diagrams, professional documentation, clean architecture maps. Deep blues and teals — calm and credible.
+**Display name:** Ocean Depth
+**Brand:** utility (no brandFamily)
+**Recommended for:** Technical diagrams, professional documentation, clean architecture maps. Deep blues and teals - calm and credible.
 
 | Variable | Value |
 |---|---|
@@ -32,9 +32,9 @@ Use `"theme": "base"` for all palettes. Never use `"default"`, `"dark"`, `"fores
 
 ## forest-sage
 
-**Display name:** Forest Sage  
-**Brand:** utility (no brandFamily)  
-**Recommended for:** Process flows, onboarding diagrams, approachable content. Earthy greens and warm neutrals — calm and trustworthy.
+**Display name:** Forest Sage
+**Brand:** utility (no brandFamily)
+**Recommended for:** Process flows, onboarding diagrams, approachable content. Earthy greens and warm neutrals - calm and trustworthy.
 
 | Variable | Value |
 |---|---|
@@ -56,9 +56,9 @@ Use `"theme": "base"` for all palettes. Never use `"default"`, `"dark"`, `"fores
 
 ## slate-ember
 
-**Display name:** Slate Ember  
-**Brand:** utility (no brandFamily)  
-**Recommended for:** Architecture diagrams, dark-mode presentations, high-contrast technical flows. Dark grays with warm orange accents — striking and modern.
+**Display name:** Slate Ember
+**Brand:** utility (no brandFamily)
+**Recommended for:** Architecture diagrams, dark-mode presentations, high-contrast technical flows. Dark grays with warm orange accents - striking and modern.
 
 | Variable | Value |
 |---|---|
@@ -80,9 +80,9 @@ Use `"theme": "base"` for all palettes. Never use `"default"`, `"dark"`, `"fores
 
 ## violet-mist
 
-**Display name:** Violet Mist  
-**Brand:** utility (no brandFamily)  
-**Recommended for:** Product flows, UX documentation, creative and design-oriented diagrams. Soft purples and lavenders — elegant and creative.
+**Display name:** Violet Mist
+**Brand:** utility (no brandFamily)
+**Recommended for:** Product flows, UX documentation, creative and design-oriented diagrams. Soft purples and lavenders - elegant and creative.
 
 | Variable | Value |
 |---|---|
@@ -104,10 +104,10 @@ Use `"theme": "base"` for all palettes. Never use `"default"`, `"dark"`, `"fores
 
 ## overkill-hill
 
-**Display name:** OverKill Hill P³  
-**Brand:** `okhp3`  
-**Theme intent:** Technical, architectural, systems, AI tooling, strategy, and executive-facing diagrams  
-**Recommended for:** Dark-mode architecture maps, systems design, AI orchestration flows, executive strategy presentations. Industrial dark mode with teal and amber forge accents — bold and high-contrast.
+**Display name:** OverKill Hill P³
+**Brand:** `okhp3`
+**Theme intent:** Technical, architectural, systems, AI tooling, strategy, and executive-facing diagrams
+**Recommended for:** Dark-mode architecture maps, systems design, AI orchestration flows, executive strategy presentations. Industrial dark mode with teal and amber forge accents - bold and high-contrast.
 
 | Variable | Value |
 |---|---|
@@ -134,10 +134,10 @@ Use `"theme": "base"` for all palettes. Never use `"default"`, `"dark"`, `"fores
 
 ## glee-fully
 
-**Display name:** Glee-fully  
-**Brand:** `okhp3`  
-**Theme intent:** Life-organization, personal productivity, family-friendly, consumer-facing, and approachable explainer diagrams  
-**Recommended for:** How-to flows, tutorials, personal productivity diagrams, family-friendly content. Warm and playful with coral and cream — approachable and energetic.
+**Display name:** Glee-fully
+**Brand:** `okhp3`
+**Theme intent:** Life-organization, personal productivity, family-friendly, consumer-facing, and approachable explainer diagrams
+**Recommended for:** How-to flows, tutorials, personal productivity diagrams, family-friendly content. Warm and playful with coral and cream - approachable and energetic.
 
 | Variable | Value |
 |---|---|
@@ -164,10 +164,10 @@ Use `"theme": "base"` for all palettes. Never use `"default"`, `"dark"`, `"fores
 
 ## askjamie
 
-**Display name:** AskJamie  
-**Brand:** `okhp3`  
-**Theme intent:** Support flows, helpdesk diagrams, explainers, user-assistance workflows, and friendly AI-generated step-by-step guides  
-**Recommended for:** Support flows, helpdesk process diagrams, user-guidance explainers, onboarding content. Calm mid-century tones with muted aquas and beige — clean and readable.
+**Display name:** AskJamie
+**Brand:** `okhp3`
+**Theme intent:** Support flows, helpdesk diagrams, explainers, user-assistance workflows, and friendly AI-generated step-by-step guides
+**Recommended for:** Support flows, helpdesk process diagrams, user-guidance explainers, onboarding content. Calm mid-century tones with muted aquas and beige - clean and readable.
 
 | Variable | Value |
 |---|---|

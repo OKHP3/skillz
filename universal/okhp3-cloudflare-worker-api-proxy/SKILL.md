@@ -6,22 +6,34 @@ description: >
   (GitHub Pages, Netlify, Cloudflare Pages) needs to call an API that requires
   an API key — and exposing that key in the JavaScript bundle is unacceptable.
   Covers Worker code, CORS headers, secret storage, and the client-side fetch
-  pattern. Free tier: 100,000 requests/day with no credit card.
+  pattern. Verify current Cloudflare pricing, quotas, and product behavior from
+  official documentation before presenting them as guarantees.
 license: MIT
 metadata:
-  author: okhp3
-  version: "1.0.0"
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: universal
   origin: kierans-lifetrkr
   published-to: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
 compatibility: >
-  Cloudflare account (free tier). Static frontend on any host.
+  Cloudflare account and a static frontend on any host.
   No Node.js or local tooling required — deploy via Cloudflare dashboard.
 ---
 
-# Cloudflare Worker API Proxy Skill
+# okhp3-cloudflare-worker-api-proxy
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 A Cloudflare Worker is a serverless function that runs at Cloudflare's edge.
 It handles the API call server-side, holds the API key in secrets, and returns
+
+## Scope
+
+| In scope | Out of scope |
+|---|---|
+| A narrow static-frontend-to-keyed-API proxy, CORS policy, secret binding, request validation, and client fetch example | Hiding a public endpoint, replacing authentication or authorization, rate-abuse prevention by assumption, or promising current plan limits without verification |
 the result to your browser. The key never appears in your JavaScript bundle.
 
 ## When to use this
@@ -142,7 +154,7 @@ const upstream = await fetch('https://api.anthropic.com/v1/messages', {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    model: body.model || 'claude-sonnet-4-6',
+        model: body.model || 'YOUR_CURRENT_MODEL_ID',
     max_tokens: body.max_tokens || 1000,
     system: body.system,
     messages: body.messages,
@@ -150,17 +162,9 @@ const upstream = await fetch('https://api.anthropic.com/v1/messages', {
 });
 ```
 
-## Cloudflare free tier limits
+## Current Cloudflare limits
 
-| Resource | Free limit |
-|---|---|
-| Requests/day | 100,000 |
-| CPU time/request | 10ms |
-| Memory | 128MB |
-| Workers | 100 |
-| Monthly cost | $0 |
-
-For a personal app with <100k daily requests, this is permanently free.
+Do not hard-code plan limits or a permanence claim in an implementation. Check the current official Workers pricing and limits documentation for the account, plan, runtime, and deployment date, then record the verified limits in the project deployment notes.
 
 ## CORS configuration
 
@@ -189,3 +193,14 @@ frontend domain in production to prevent others from using your proxy.
 
 For higher-security scenarios: add an additional shared secret that the frontend sends
 and the Worker validates before proxying.
+
+## Output contract
+
+Return the Worker source, secret names, allowed-origin policy, request/response shape, deployment steps, and a verification checklist. Never place a real key in source, logs, examples, or client code. Treat the proxy URL as public and state what abuse controls are still missing.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

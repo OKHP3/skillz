@@ -24,14 +24,14 @@ These variables apply broadly across most diagram families. Always include them 
 | `clusterBkg` | hex | Flowchart, State, C4 | Subgraph / cluster background |
 | `titleColor` | hex | Most families | Diagram and section titles |
 | `edgeLabelBackground` | hex | Flowchart | Edge label box background |
-| `fontFamily` | font-string | All families | CSS font stack — always quoted |
+| `fontFamily` | font-string | All families | CSS font stack - always quoted |
 | `fontSize` | px | Flowchart, Sequence, Class, State, ER, Gantt | Global base font size |
 
 ---
 
 ## Flowchart
 
-**Style strategy:** `full` — all themeVariables apply; classDef, linkStyle, and subgraph style also available.
+**Style strategy:** `full` - all themeVariables apply; classDef, linkStyle, and subgraph style also available.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -59,7 +59,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## Sequence Diagram
 
-**Style strategy:** `partial` — backgrounds, actor boxes, and line colors apply. No classDef or linkStyle.
+**Style strategy:** `partial` - backgrounds, actor boxes, and line colors apply. No classDef or linkStyle.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -82,7 +82,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## Class Diagram
 
-**Style strategy:** `partial` — class box backgrounds, borders, and text apply; classDef supported.
+**Style strategy:** `partial` - class box backgrounds, borders, and text apply; classDef supported.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -104,7 +104,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## State Diagram
 
-**Style strategy:** `partial` — state boxes, transitions, and composite state backgrounds apply; classDef supported.
+**Style strategy:** `partial` - state boxes, transitions, and composite state backgrounds apply; classDef supported.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -127,7 +127,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## ER Diagram
 
-**Style strategy:** `partial` — entity backgrounds, borders, and text apply. No classDef.
+**Style strategy:** `partial` - entity backgrounds, borders, and text apply. No classDef.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -146,7 +146,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## Gantt Chart
 
-**Style strategy:** `limited` — background and grid colors apply. Individual task bar colors are managed internally and cannot be overridden via themeVariables.
+**Style strategy:** `limited` - background and grid colors apply. Individual task bar colors are managed internally and cannot be overridden via themeVariables.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -161,7 +161,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## Pie Chart
 
-**Style strategy:** `limited` — background and title colors apply. Slice colors cycle through Mermaid's internal palette and cannot be overridden.
+**Style strategy:** `limited` - background and title colors apply. Slice colors cycle through Mermaid's internal palette and cannot be overridden.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -174,7 +174,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## Git Graph
 
-**Style strategy:** `limited` — background colors apply. Branch and commit colors are managed internally.
+**Style strategy:** `limited` - background colors apply. Branch and commit colors are managed internally.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -187,7 +187,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## Mindmap
 
-**Style strategy:** `limited` — background colors apply. Node fills are managed by the mindmap renderer.
+**Style strategy:** `limited` - background colors apply. Node fills are managed by the mindmap renderer.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -201,7 +201,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## Timeline
 
-**Style strategy:** `limited` — background and title colors apply. Section and event colors respond partially.
+**Style strategy:** `limited` - background and title colors apply. Section and event colors respond partially.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -214,7 +214,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## User Journey
 
-**Style strategy:** `limited` — background and global text colors apply. Task bar and section colors managed internally.
+**Style strategy:** `limited` - background and global text colors apply. Task bar and section colors managed internally.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|
@@ -227,7 +227,7 @@ These variables apply broadly across most diagram families. Always include them 
 
 ## Quadrant Chart
 
-**Style strategy:** `partial` — background, axis labels, and grid lines apply. Quadrant fills partially respond to themeVariables.
+**Style strategy:** `partial` - background, axis labels, and grid lines apply. Quadrant fills partially respond to themeVariables.
 
 | Variable | Format | Applies to | Notes |
 |---|---|---|---|

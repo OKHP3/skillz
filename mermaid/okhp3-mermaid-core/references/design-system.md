@@ -1,10 +1,10 @@
 # OKHP3 Mermaid Design System
 
-Single source of truth for theming. Every diagram produced by this skill family uses these palettes via `classDef` — never raw Mermaid defaults.
+Single source of truth for theming. Every diagram produced by this skill family uses these palettes via `classDef` - never raw Mermaid defaults.
 
 ## Source
 
-Palette definitions originate in `OKHP3/mermaid-theme-builder` (the standalone visual theme builder). This file currently documents palette NAMES and the dark/light requirement. Extracting the actual hex values and converting them to `classDef` recipes is a Phase 1 task — see TODO below.
+Palette definitions originate in `OKHP3/mermaid-theme-builder` (the standalone visual theme builder). This file currently documents palette NAMES and the dark/light requirement. Extracting the actual hex values and converting them to `classDef` recipes is a Phase 1 task - see TODO below.
 
 ## Available palettes (from mermaid-theme-builder)
 
@@ -13,7 +13,7 @@ Palette definitions originate in `OKHP3/mermaid-theme-builder` (the standalone v
 - **Slate Ember**
 - **Violet Mist**
 
-Each needs a semantic mapping (trigger / success / error / ai / decision / primary / secondary — the semantic role names, not just raw colors) before it's usable as a `classDef` library here.
+Each needs a semantic mapping (trigger / success / error / ai / decision / primary / secondary - the semantic role names, not just raw colors) before it's usable as a `classDef` library here.
 
 ## Non-negotiable rule
 

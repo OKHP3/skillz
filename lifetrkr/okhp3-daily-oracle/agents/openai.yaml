@@ -1,0 +1,4 @@
+interface:
+  display_name: "Daily Oracle"
+  short_description: "Build stable, graceful daily readings for LifeTrkr"
+  default_prompt: "Use $okhp3-daily-oracle to plan, implement, and validate the client-only tarot, horoscope, and oracle-message workflow while preserving LifeTrkr's cache and security boundaries."

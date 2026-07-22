@@ -1,0 +1,28 @@
+{
+  "eval_id": 2,
+  "eval_name": "tarot-api-fallback",
+  "configuration": "with_skill",
+  "assertion_results": [
+    {
+      "text": "Response describes a deterministic fallback — not random selection, not a static single card",
+      "passed": true,
+      "evidence": "'The fallback selects by day of year (doy), not at random' and 'User refreshes during an outage → same card, not a different random one'"
+    },
+    {
+      "text": "Response references a fixed pool of 12 Major Arcana fallback cards",
+      "passed": true,
+      "evidence": "FALLBACK_CARDS array shown with exactly 12 named Major Arcana cards"
+    },
+    {
+      "text": "Response includes the day-of-year calculation using Date.now() and getTime() subtraction divided by 86400000",
+      "passed": true,
+      "evidence": "`const doy = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000)` — exact formula"
+    },
+    {
+      "text": "Response uses modulo to select from the pool, ensuring determinism across the year",
+      "passed": true,
+      "evidence": "`FALLBACK_CARDS[doy % FALLBACK_CARDS.length]` — explicit modulo selection"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

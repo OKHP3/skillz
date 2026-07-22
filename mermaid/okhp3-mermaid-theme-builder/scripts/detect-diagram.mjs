@@ -1,7 +1,7 @@
 /**
  * detect-diagram.mjs
  * Detect diagram family from Mermaid code.
- * No external dependencies — runs with: node scripts/detect-diagram.mjs
+ * No external dependencies - runs with: node scripts/detect-diagram.mjs
  */
 
 const FAMILY_TABLE = [
@@ -62,7 +62,7 @@ export function detectDiagramFamily(code) {
     family: "unknown",
     keyword: "",
     confidence: "low",
-    warnings: ["Could not detect diagram family — no recognized keyword found at start of code"],
+    warnings: ["Could not detect diagram family - no recognized keyword found at start of code"],
   };
 }
 

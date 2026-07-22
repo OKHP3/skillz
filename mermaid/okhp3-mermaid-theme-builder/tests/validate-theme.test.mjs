@@ -21,13 +21,13 @@ flowchart TD
     A[Start] --> B{Decision}
     B --> C[Yes]`;
 
-test("valid themed diagram — valid: true, no errors", () => {
+test("valid themed diagram - valid: true, no errors", () => {
   const result = validateTheme(validCode);
   assert.equal(result.valid, true, `Expected valid: true, errors: ${JSON.stringify(result.errors)}`);
   assert.deepEqual(result.errors, []);
 });
 
-test("valid themed diagram — has correct shape", () => {
+test("valid themed diagram - has correct shape", () => {
   const result = validateTheme(validCode);
   assert.ok("valid" in result, "Result should have valid field");
   assert.ok("errors" in result, "Result should have errors field");
@@ -36,7 +36,7 @@ test("valid themed diagram — has correct shape", () => {
   assert.ok(Array.isArray(result.warnings), "warnings should be array");
 });
 
-test("invalid hex (#GGGGGG) — error with variable name", () => {
+test("invalid hex (#GGGGGG) - error with variable name", () => {
   const code = `%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#GGGGGG", "background": "#ffffff", "mainBkg": "#ffffff", "nodeBorder": "#888888", "titleColor": "#000000", "lineColor": "#888888"}}}%%\nflowchart TD\n  A --> B`;
   const result = validateTheme(code);
   assert.equal(result.valid, false);
@@ -44,7 +44,7 @@ test("invalid hex (#GGGGGG) — error with variable name", () => {
   assert.ok(errorHasPrimaryColor, `Expected error mentioning primaryColor, got: ${JSON.stringify(result.errors)}`);
 });
 
-test("invalid hex (#ZZZZZZ) — error with variable name", () => {
+test("invalid hex (#ZZZZZZ) - error with variable name", () => {
   const code = `%%{init: {"theme": "base", "themeVariables": {"titleColor": "#ZZXXYY"}}}%%\nflowchart TD\n  A --> B`;
   const result = validateTheme(code);
   assert.equal(result.valid, false);
@@ -52,7 +52,7 @@ test("invalid hex (#ZZZZZZ) — error with variable name", () => {
   assert.ok(errorHasTitleColor, `Expected error mentioning titleColor, got: ${JSON.stringify(result.errors)}`);
 });
 
-test("missing px suffix on fontSize — error", () => {
+test("missing px suffix on fontSize - error", () => {
   const code = `%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#1a4f8a", "fontSize": "14", "background": "#ffffff"}}}%%\nflowchart TD\n  A --> B`;
   const result = validateTheme(code);
   assert.equal(result.valid, false);
@@ -60,42 +60,42 @@ test("missing px suffix on fontSize — error", () => {
   assert.ok(errorHasFontSize, `Expected error mentioning fontSize, got: ${JSON.stringify(result.errors)}`);
 });
 
-test("fontSize without px (number only) — error", () => {
+test("fontSize without px (number only) - error", () => {
   const code = `%%{init: {"theme": "base", "themeVariables": {"fontSize": "16"}}}%%\nflowchart TD\n  A --> B`;
   const result = validateTheme(code);
   assert.equal(result.valid, false);
   assert.ok(result.errors.some((e) => e.includes("fontSize")));
 });
 
-test("unknown variable name — warning (not error)", () => {
+test("unknown variable name - warning (not error)", () => {
   const code = `%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#1a4f8a", "magicInvisibleColor": "#aabbcc"}}}%%\nflowchart TD\n  A --> B`;
   const result = validateTheme(code);
   const hasWarning = result.warnings.some((w) => w.includes("magicInvisibleColor"));
   assert.ok(hasWarning, `Expected warning for unknown variable, got warnings: ${JSON.stringify(result.warnings)}`);
 });
 
-test("theme is not base — error", () => {
+test("theme is not base - error", () => {
   const code = `%%{init: {"theme": "dark", "themeVariables": {"primaryColor": "#1a4f8a"}}}%%\nflowchart TD\n  A --> B`;
   const result = validateTheme(code);
   assert.equal(result.valid, false);
   assert.ok(result.errors.some((e) => e.includes("base")));
 });
 
-test("no init block at all — error", () => {
+test("no init block at all - error", () => {
   const code = `flowchart TD\n  A --> B`;
   const result = validateTheme(code);
   assert.equal(result.valid, false);
   assert.ok(result.errors.length > 0);
 });
 
-test("init not on line 1 — error", () => {
+test("init not on line 1 - error", () => {
   const code = `flowchart TD\n%%{init: {"theme": "base"}}%%\n  A --> B`;
   const result = validateTheme(code);
   assert.equal(result.valid, false);
   assert.ok(result.errors.some((e) => e.includes("line 1")));
 });
 
-test("all 7 named palettes applied to flowchart — each passes validation", () => {
+test("all 7 named palettes applied to flowchart - each passes validation", () => {
   const flowchart = readFileSync(
     join(__dirname, "..", "assets", "fixtures", "flowchart-basic.mmd"),
     "utf-8"
@@ -111,7 +111,7 @@ test("all 7 named palettes applied to flowchart — each passes validation", () 
   }
 });
 
-test("valid fontSize with px — no error", () => {
+test("valid fontSize with px - no error", () => {
   const code = `%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#1a4f8a", "fontSize": "14px", "background": "#ffffff"}}}%%\nflowchart TD\n  A --> B`;
   const result = validateTheme(code);
   const fontSizeError = result.errors.some((e) => e.includes("fontSize"));

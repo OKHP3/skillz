@@ -8,7 +8,7 @@
 #   - Fails LOUDLY and CLEARLY if Node/npx is unavailable. No silent
 #     fallback, no confusing raw mmdc stack trace as the only signal.
 #   - Exit codes: 0 = success, 1 = bad usage, 2 = missing dependency,
-#     3 = mmdc render failure (syntax error — return to core Gate 1).
+#     3 = mmdc render failure (syntax error - return to core Gate 1).
 
 set -euo pipefail
 
@@ -30,7 +30,7 @@ if [[ -z "$OUTPUT" ]]; then
   OUTPUT="${INPUT%.mmd}.png"
 fi
 
-# Dependency check — clear, actionable error, not a silent failure.
+# Dependency check - clear, actionable error, not a silent failure.
 if ! command -v npx >/dev/null 2>&1; then
   echo "ERROR: npx (Node.js) not found on this system." >&2
   echo "Local Mermaid rendering requires Node.js. Install it, or:" >&2
@@ -39,24 +39,9 @@ if ! command -v npx >/dev/null 2>&1; then
   exit 2
 fi
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PACKAGE_FILE="$SCRIPT_DIR/../package.json"
+echo "Rendering $INPUT -> $OUTPUT (first run may take ~30s to fetch mermaid-cli)..."
 
-if [[ ! -f "$PACKAGE_FILE" ]]; then
-  echo "ERROR: Mermaid CLI package manifest not found at $PACKAGE_FILE" >&2
-  exit 1
-fi
-
-CLI_VERSION="$(node -p 'require(process.argv[1]).devDependencies["@mermaid-js/mermaid-cli"]' "$PACKAGE_FILE")"
-
-if [[ -z "$CLI_VERSION" || "$CLI_VERSION" == "undefined" ]]; then
-  echo "ERROR: @mermaid-js/mermaid-cli version is not declared in $PACKAGE_FILE" >&2
-  exit 1
-fi
-
-echo "Rendering $INPUT -> $OUTPUT with Mermaid CLI $CLI_VERSION (first run may take ~30s)..."
-
-if npx --yes "@mermaid-js/mermaid-cli@$CLI_VERSION" -i "$INPUT" -o "$OUTPUT"; then
+if npx --yes @mermaid-js/mermaid-cli -i "$INPUT" -o "$OUTPUT"; then
   echo "OK: $OUTPUT written. Input preserved at $INPUT."
   echo "Next: view $OUTPUT and check against the audience profile (Gate 3)."
   exit 0

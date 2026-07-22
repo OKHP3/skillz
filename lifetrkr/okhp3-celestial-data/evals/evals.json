@@ -1,40 +1,41 @@
 {
   "skill_name": "okhp3-celestial-data",
+  "skill_version": "1.3.0",
   "evals": [
     {
       "id": 1,
-      "prompt": "I'm building a nature journal app in TypeScript. I need a widget that shows today's moon phase with an emoji, illumination percentage, and how many days until the next phase. No external APIs -- it has to work offline.",
-      "expected_output": "Agent provides the getMoonPhase() TypeScript implementation from the skill, or instructs the user to copy it from the skill's references/celestial.ts. Output includes the correct return shape (name, emoji, illumination, daysUntilNext) and a usage example.",
-      "files": [],
-      "expectations": [
-        "Response includes or references the getMoonPhase function",
-        "Response mentions the return fields: emoji, illumination, daysUntilNext",
+      "name": "moon-phase-widget",
+      "prompt": "I'm building a nature journal app in TypeScript. I need a widget that shows today's moon phase with an emoji, illumination percentage, and how many days until the next phase. No external APIs — it has to work offline.",
+      "expected_output": "Agent provides the getMoonPhase() TypeScript function with correct return shape (name, emoji, illumination as 0.0–1.0, daysUntilNext). References the Julian Date Number algorithm (367*y formula). No network calls.",
+      "assertions": [
+        "Response includes or references the getMoonPhase function by exact name",
+        "Response mentions all three return fields: emoji, illumination (as 0.0–1.0 float), and daysUntilNext",
         "Response does not require a network call or external API",
-        "Response includes or references the Julian Date algorithm"
+        "Response includes or references the Julian Date algorithm using the toJulianDate helper (367*y formula pattern)"
       ]
     },
     {
       "id": 2,
-      "prompt": "Is Mercury retrograde right now? If so, when does it end? I need to show this in my wellness tracker UI.",
-      "expected_output": "Agent provides the getMercuryStatus() function and explains that it uses a hardcoded array sourced from published ephemeris data. Should confirm whether today (late June 2026) is retrograde and give the end date if applicable.",
-      "files": [],
-      "expectations": [
-        "Response includes or references the getMercuryStatus function",
-        "Response correctly handles whether today is in a retrograde window",
-        "Response mentions the hardcoded MERCURY_RETROGRADE array with ephemeris sources",
-        "Response shows the { retrograde: boolean, endDate: string | null } return shape"
+      "name": "mercury-retrograde-status",
+      "prompt": "Is Mercury retrograde right now? I need to show this in my wellness tracker UI — a TypeScript function I can call with any date that returns whether Mercury is retrograde and when it ends.",
+      "expected_output": "Agent provides getMercuryStatus() with the hardcoded MERCURY_RETROGRADE array sourced from published ephemeris (Cafe Astrology / Astro-Seek Swiss Ephemeris). Returns { retrograde: boolean, endDate: string | null }. Correctly reports not retrograde in late June 2026.",
+      "assertions": [
+        "Response includes or references the getMercuryStatus function by exact name",
+        "Response shows the { retrograde: boolean, endDate: string | null } return shape with correct field names and types",
+        "Response mentions the hardcoded MERCURY_RETROGRADE array and names at least one ephemeris source (Cafe Astrology or Astro-Seek Swiss Ephemeris)",
+        "Response correctly indicates Mercury is NOT retrograde in late June 2026 (skill data shows next period starts Jul 17, 2026)"
       ]
     },
     {
       "id": 3,
-      "prompt": "My meditation app needs to display the current astrological season (zodiac sign), its element (Fire/Earth/Air/Water), and a star emoji. The calculation must be client-side, zero dependencies.",
-      "expected_output": "Agent provides the getAstroSeason() function. Output includes the AstroSeason type shape with sign, emoji, element, and dates fields. Includes a concrete usage example.",
-      "files": [],
-      "expectations": [
-        "Response includes or references the getAstroSeason function",
-        "Response shows the return shape with sign, emoji, element, dates",
-        "Response confirms zero dependencies and client-side execution",
-        "Response includes the ASTRO_SEASONS lookup table or a reference to it"
+      "name": "astrological-season-widget",
+      "prompt": "My meditation app needs to display the current astrological season: the zodiac sign, its classical element (Fire/Earth/Air/Water), and the correct zodiac emoji — not a generic star. The calculation must be client-side, zero dependencies.",
+      "expected_output": "Agent provides getAstroSeason() with the ASTRO_SEASONS lookup table. Returns { sign, emoji (zodiac symbol not ⭐), element, dates }. Confirms zero deps and client-side. Usage example included.",
+      "assertions": [
+        "Response includes or references the getAstroSeason function by exact name",
+        "Response shows all four return fields: sign, emoji (a zodiac symbol like ♋ not a generic star), element, and dates",
+        "Response confirms zero dependencies and client-side execution with no fetch or npm packages",
+        "Response includes or references the ASTRO_SEASONS lookup table using startMD/endMD integer keys (month×100+day pattern)"
       ]
     }
   ]

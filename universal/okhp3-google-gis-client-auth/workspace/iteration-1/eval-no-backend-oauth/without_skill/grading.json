@@ -1,0 +1,28 @@
+{
+  "eval_id": 1,
+  "eval_name": "no-backend-oauth",
+  "configuration": "without_skill",
+  "assertion_results": [
+    {
+      "text": "Response describes the 4-step implicit token flow: popup opens → user consents → access token returned directly to JS callback → no server exchange required",
+      "passed": false,
+      "evidence": "Flow is described but not as explicit 4 steps. Missing the key discriminating phrase 'no server exchange' and does not enumerate the popup → consent → callback sequence explicitly."
+    },
+    {
+      "text": "Response explicitly states that JavaScript Origins should be set and redirect URIs should NOT be added",
+      "passed": false,
+      "evidence": "Mentions 'Authorized JavaScript Origins' but does not include the explicit prohibition against redirect URIs. The 'do NOT add redirect URIs' instruction — the most safety-critical callout — is absent."
+    },
+    {
+      "text": "Response references window.google.accounts.oauth2.initTokenClient by exact API name",
+      "passed": true,
+      "evidence": "`google.accounts.oauth2.initTokenClient` referenced — correct API name (without window. prefix but functionally equivalent)"
+    },
+    {
+      "text": "Response clarifies the Client ID is intentionally public and Client Secret intentionally absent",
+      "passed": true,
+      "evidence": "'The Client ID is public — safe to include in client-side code' — correct statement, though doesn't explain why Client Secret is absent"
+    }
+  ],
+  "summary": { "passed": 2, "failed": 2, "total": 4, "pass_rate": 0.5 }
+}

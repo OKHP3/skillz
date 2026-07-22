@@ -1,0 +1,28 @@
+{
+  "eval_id": 2,
+  "eval_name": "tarot-api-fallback",
+  "configuration": "without_skill",
+  "assertion_results": [
+    {
+      "text": "Response describes a deterministic fallback — not random selection, not a static single card",
+      "passed": false,
+      "evidence": "Response shows two alternatives: a hardcoded single card ('The Star') OR random selection from a 3-card list. Both approaches violate the determinism requirement."
+    },
+    {
+      "text": "Response references a fixed pool of 12 Major Arcana fallback cards",
+      "passed": false,
+      "evidence": "Pool has 3 cards ('The Star', 'The Sun', 'The World') — not 12. Selection is random, not deterministic by day."
+    },
+    {
+      "text": "Response includes the day-of-year calculation using Date.now() and getTime() subtraction divided by 86400000",
+      "passed": false,
+      "evidence": "No day-of-year calculation present. The concept is absent entirely — selection is either hardcoded or random."
+    },
+    {
+      "text": "Response uses modulo to select from the pool, ensuring determinism across the year",
+      "passed": false,
+      "evidence": "Modulo not used. Math.random() used for selection — non-deterministic and will produce a different card on every refresh during an outage."
+    }
+  ],
+  "summary": { "passed": 0, "failed": 4, "total": 4, "pass_rate": 0.0 }
+}

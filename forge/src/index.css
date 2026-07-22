@@ -357,36 +357,32 @@ input, select, textarea {
 .home-families {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-3);
+  gap: var(--space-4);
   max-width: 1000px;
   margin: var(--space-16) auto;
   text-align: left;
 }
 .home-family-card {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-dark);
-  padding: var(--space-4) var(--space-6);
-  border: 1px solid var(--color-border-dark);
-  border-left: 3px solid var(--color-copper);
+  background: var(--color-surface);
+  color: var(--color-text-light);
+  padding: var(--space-6);
+  border-top: 4px solid var(--color-copper);
   display: block;
-  transition: border-color var(--transition), background var(--transition);
+  transition: transform var(--transition);
 }
 .home-family-card:hover {
-  background: var(--color-teal);
-  border-left-color: var(--color-amber);
-  color: var(--color-text-dark);
+  transform: translateY(-2px);
+  color: var(--color-text-light);
 }
 .home-family-card strong {
   display: block;
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  margin-bottom: var(--space-1);
-  color: var(--color-text-dark);
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  margin-bottom: var(--space-2);
 }
 .home-family-card span {
-  color: var(--color-text-muted-dark);
-  font-size: var(--text-xs);
+  color: var(--color-text-muted-light);
+  font-size: var(--text-sm);
 }
 
 /* Explore */
@@ -491,18 +487,17 @@ input, select, textarea {
   gap: var(--space-6);
 }
 .skill-card {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-dark);
-  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface);
+  color: var(--color-text-light);
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  border-left: 3px solid transparent;
-  border-bottom: 1px solid var(--color-border-dark);
+  gap: var(--space-4);
+  border-left: 4px solid transparent;
   transition: border-color var(--transition);
 }
 .skill-card:hover {
-  border-left-color: var(--color-copper);
+  border-color: var(--color-copper);
 }
 .skill-card-header {
   display: flex;
@@ -511,12 +506,10 @@ input, select, textarea {
   gap: var(--space-4);
 }
 .skill-card-title {
-  font-family: var(--font-mono);
-  font-size: var(--text-body);
-  font-weight: 600;
-  color: var(--color-text-dark);
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
+  color: var(--color-text-light);
   margin-bottom: var(--space-1);
-  letter-spacing: 0.01em;
 }
 .skill-card-family {
   font-family: var(--font-mono);
@@ -524,21 +517,16 @@ input, select, textarea {
   color: var(--color-steel);
 }
 .skill-card-desc {
-  color: var(--color-text-muted-dark);
-  font-size: var(--text-sm);
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  color: var(--color-text-muted-light);
+  font-size: var(--text-body);
 }
 .skill-card-actions {
   display: flex;
   gap: var(--space-4);
   align-items: center;
   margin-top: var(--space-2);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border-dark);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-light);
 }
 
 /* Page Headers for generic pages */
@@ -606,24 +594,22 @@ input, select, textarea {
   gap: var(--space-8);
 }
 .stack-card {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-dark);
+  background: var(--color-surface);
+  color: var(--color-text-light);
   padding: var(--space-6);
-  border: 1px solid var(--color-border-dark);
-  border-top: 3px solid var(--color-steel);
+  border-top: 4px solid var(--color-steel);
 }
 .stack-card h2 a {
-  color: var(--color-text-dark);
-  font-family: var(--font-sans);
-  font-size: var(--text-h3);
-  font-weight: 600;
+  color: var(--color-text-light);
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
 }
 .stack-card h2 a:hover {
   color: var(--color-copper);
 }
 .stack-tagline {
-  color: var(--color-text-muted-dark);
-  font-size: var(--text-body);
+  color: var(--color-text-muted-light);
+  font-size: var(--text-h3);
   margin: var(--space-2) 0 var(--space-4);
 }
 .stack-steps {
@@ -681,29 +667,24 @@ input, select, textarea {
   margin-bottom: var(--space-12);
 }
 .contribute-card {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-dark);
+  background: var(--color-surface);
+  color: var(--color-text-light);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--color-border-dark);
-  border-top: 3px solid var(--color-steel);
 }
 .contribute-card h2 {
   font-size: var(--text-h3);
   margin-bottom: var(--space-2);
-  color: var(--color-text-dark);
-  font-family: var(--font-sans);
-  font-weight: 600;
+  color: var(--color-text-light);
 }
 .contribute-card[data-sensitive="true"] {
-  border-top: 3px solid var(--color-ember);
+  border-top: 4px solid var(--color-ember);
 }
 .contribute-card p {
-  color: var(--color-text-muted-dark);
+  color: var(--color-text-muted-light);
   margin-bottom: var(--space-4);
   flex: 1;
-  font-size: var(--text-sm);
 }
 
 /* Activity */

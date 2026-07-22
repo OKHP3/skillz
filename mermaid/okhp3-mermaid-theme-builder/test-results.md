@@ -16,13 +16,13 @@
 | Todo     |     0 |
 | Duration |  658 ms |
 
-**Result: ✅ ALL PASS — v0.5.x sprint verification gate CLEARED**
+**Result: ✅ ALL PASS - v0.5.x sprint verification gate CLEARED**
 
 ---
 
 ## Test files
 
-### `tests/skill-integrity.test.mjs` — 53 tests, all pass
+### `tests/skill-integrity.test.mjs` - 53 tests, all pass
 
 Validates the SKILL.md file and all referenced assets exist and are structurally correct.
 
@@ -42,9 +42,9 @@ Validates the SKILL.md file and all referenced assets exist and are structurally
 | Renderer table column | 1 |
 | Output Rules look validation | 1 |
 
-### `tests/detect-diagram.test.mjs` — 15 tests, all pass
+### `tests/detect-diagram.test.mjs` - 15 tests, all pass
 
-Tests for `scripts/detect-diagram.mjs` — the standalone family detector.
+Tests for `scripts/detect-diagram.mjs` - the standalone family detector.
 
 - flowchart LR, flowchart TD, graph TD (alias)
 - sequenceDiagram, classDiagram, gantt, stateDiagram, stateDiagram-v2, erDiagram
@@ -53,9 +53,9 @@ Tests for `scripts/detect-diagram.mjs` — the standalone family detector.
 - Empty string → `unknown` / `low`
 - pie chart, mindmap
 
-### `tests/apply-theme.test.mjs` — 12 tests, all pass
+### `tests/apply-theme.test.mjs` - 12 tests, all pass
 
-Tests for `scripts/apply-theme.mjs` — palette application and init block generation.
+Tests for `scripts/apply-theme.mjs` - palette application and init block generation.
 
 - Init block on line 1; `"theme": "base"` enforced
 - Required themeVariable set present (7 variables checked)
@@ -66,9 +66,9 @@ Tests for `scripts/apply-theme.mjs` — palette application and init block gener
 - Unknown palette ID → throws `/not found/`
 - All 7 named palettes applied without error
 
-### `tests/validate-theme.test.mjs` — 12 tests, all pass
+### `tests/validate-theme.test.mjs` - 12 tests, all pass
 
-Tests for `scripts/validate-theme.mjs` — output validation.
+Tests for `scripts/validate-theme.mjs` - output validation.
 
 - Valid themed diagram → `valid: true`, empty `errors`
 - Return shape: `{ valid, errors, warnings }` all present

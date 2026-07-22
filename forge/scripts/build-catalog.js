@@ -99,6 +99,20 @@ function parseYamlFrontmatter(text) {
       }
     }
 
+    // Frontmatter metadata is a nested mapping. Handle indented keys before
+    // matching top-level keys so version, status, category, and related fields
+    // survive regeneration of the public catalog.
+    const nestedMatch = line.match(/^\s+([a-zA-Z_-]+):\s*(.*)$/);
+    if (nestedMatch && result.metadata) {
+      let nval = nestedMatch[2].trim();
+      if ((nval.startsWith('"') && nval.endsWith('"')) ||
+          (nval.startsWith("'") && nval.endsWith("'"))) {
+        nval = nval.slice(1, -1);
+      }
+      result.metadata[nestedMatch[1]] = nval;
+      continue;
+    }
+
     const kvMatch = line.match(/^([a-zA-Z_-]+):\s*(.*)$/);
     if (!kvMatch) continue;
     const key = kvMatch[1];
@@ -126,18 +140,6 @@ function parseYamlFrontmatter(text) {
     if ((val.startsWith('"') && val.endsWith('"')) ||
         (val.startsWith("'") && val.endsWith("'"))) {
       val = val.slice(1, -1);
-    }
-
-    const nestedMatch = line.match(/^\s+([a-zA-Z_-]+):\s*(.*)$/);
-    if (nestedMatch) {
-      if (!result.metadata) result.metadata = {};
-      let nval = nestedMatch[2].trim();
-      if ((nval.startsWith('"') && nval.endsWith('"')) ||
-          (nval.startsWith("'") && nval.endsWith("'"))) {
-        nval = nval.slice(1, -1);
-      }
-      result.metadata[nestedMatch[1]] = nval;
-      continue;
     }
 
     result[key] = val;
@@ -303,9 +305,23 @@ function buildCatalog() {
     const githubUrl = `${GITHUB_BASE}/blob/main/${relPath}`;
     const rawUrl = `${RAW_BASE}/${relPath}`;
 
+    const h1Match = body.match(/^\#\s+(.+)$/m);
+    const BRAND_MAP = {
+      chatgpt: 'ChatGPT', gpt: 'GPT', ai: 'AI', llm: 'LLM',
+      seo: 'SEO', m365: 'M365', okhp3: 'OKHP3',
+      api: 'API', bpmn: 'BPMN', sop: 'SOP', csv: 'CSV',
+      linkedin: 'LinkedIn', github: 'GitHub', tiktok: 'TikTok',
+    };
+    const slugTitle = name.replace(/^okhp3-/, '').replace(/-/g, ' ')
+             .replace(/\b\w+\b/g, w => BRAND_MAP[w.toLowerCase()] || (w[0].toUpperCase() + w.slice(1)));
+    const h1Text = h1Match ? h1Match[1].trim() : null;
+    const derivedDisplayName = (h1Text && h1Text.toLowerCase() !== name.toLowerCase())
+      ? h1Text
+      : slugTitle;
+
     skills.push({
       name,
-      displayName: name.replace(/^okhp3-/, '').replace(/-/g, ' '),
+      displayName: derivedDisplayName,
       family,
       skillDir: skillName,
       path: relPath,

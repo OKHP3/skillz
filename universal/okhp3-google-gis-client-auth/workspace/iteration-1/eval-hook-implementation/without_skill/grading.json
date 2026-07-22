@@ -1,0 +1,28 @@
+{
+  "eval_id": 3,
+  "eval_name": "hook-implementation",
+  "configuration": "without_skill",
+  "assertion_results": [
+    {
+      "text": "Response provides a hook named useGoogleAuth (exact name)",
+      "passed": false,
+      "evidence": "Hook named `useGoogleOAuth` — not `useGoogleAuth`. ARE-incompatible. Importing this hook requires a different import path."
+    },
+    {
+      "text": "Response includes a getToken() function that attempts silent refresh before showing consent popup",
+      "passed": false,
+      "evidence": "`getAuthToken()` returns the in-memory state variable — no refresh logic at all. No `prompt: 'none'` silent refresh. If token expires, user must call signIn() again manually."
+    },
+    {
+      "text": "Response stores token in sessionStorage using keys g_token and g_expiry (exact key names)",
+      "passed": false,
+      "evidence": "Uses `localStorage.setItem('google_token', …)` — wrong storage type (localStorage vs sessionStorage) and wrong key name ('google_token' vs 'g_token'). Expiry not stored at all."
+    },
+    {
+      "text": "Response includes a connect() function that fetches profile from googleapis.com/oauth2/v3/userinfo",
+      "passed": false,
+      "evidence": "Function named `signIn()` (not connect()). Profile URL is `googleapis.com/userinfo/v2/me` (v2 endpoint) not `googleapis.com/oauth2/v3/userinfo` (v3 endpoint) — different response shape (id vs sub field)."
+    }
+  ],
+  "summary": { "passed": 0, "failed": 4, "total": 4, "pass_rate": 0.0 }
+}

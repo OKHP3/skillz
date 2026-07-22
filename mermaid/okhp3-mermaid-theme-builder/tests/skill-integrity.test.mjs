@@ -16,7 +16,7 @@ const skillRoot = join(__dirname, "..");
 const skillMdPath = join(skillRoot, "SKILL.md");
 
 function parseSkillFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return null;
   return match[1];
 }
@@ -37,7 +37,7 @@ function extractYamlField(frontmatter, key) {
 const skillContent = readFileSync(skillMdPath, "utf8");
 const frontmatter = parseSkillFrontmatter(skillContent);
 
-// ── Frontmatter structure — flat Agent Skills format ──────────────────────
+// Frontmatter structure follows the portable Agent Skills format.
 
 test("SKILL.md contains a frontmatter block", () => {
   assert.ok(frontmatter !== null, "Expected --- frontmatter --- block at top of SKILL.md");
@@ -53,58 +53,38 @@ test("frontmatter name is correct", () => {
   assert.equal(name, "okhp3-mermaid-theme-builder");
 });
 
-test("frontmatter contains top-level version field", () => {
-  assert.ok(frontmatter.match(/^version:/m), "Missing top-level 'version:' in frontmatter — must be flat, not nested under metadata:");
-});
-
-test("frontmatter contains top-level author field", () => {
-  assert.ok(frontmatter.match(/^author:/m), "Missing top-level 'author:' in frontmatter");
-});
-
 test("frontmatter contains license field", () => {
   assert.ok(frontmatter.match(/^license:/m), "Missing 'license' in frontmatter");
 });
 
-test("frontmatter contains top-level homepage field", () => {
-  assert.ok(frontmatter.match(/^homepage:/m), "Missing top-level 'homepage:' in frontmatter");
-});
-
-test("frontmatter contains top-level repository field", () => {
-  assert.ok(frontmatter.match(/^repository:/m), "Missing top-level 'repository:' in frontmatter");
-});
-
-test("frontmatter contains top-level category field", () => {
-  assert.ok(frontmatter.match(/^category:/m), "Missing top-level 'category:' in frontmatter");
-});
-
-test("frontmatter contains top-level tags field", () => {
-  assert.ok(frontmatter.match(/^tags:/m), "Missing top-level 'tags:' in frontmatter");
-});
-
-test("frontmatter contains top-level tools field", () => {
-  assert.ok(frontmatter.match(/^tools:/m), "Missing top-level 'tools:' in frontmatter — required by Agent Skills standard");
-});
-
-test("frontmatter does NOT use deprecated nested metadata block", () => {
+test("frontmatter contains portable metadata block", () => {
   assert.ok(
-    !frontmatter.includes("metadata:"),
-    "Frontmatter must not contain a nested 'metadata:' block — all fields must be top-level (Agent Skills standard)"
+    frontmatter.includes("metadata:") && frontmatter.includes("version: \"0.5.1\""),
+    "Frontmatter must contain portable metadata with the current version"
   );
 });
 
-// ── Version alignment ──────────────────────────────────────────────────────
+test("frontmatter does not contain unsupported top-level fields", () => {
+  const allowed = new Set(["name", "description", "license", "compatibility", "metadata", "allowed-tools"]);
+  for (const line of frontmatter.split("\n")) {
+    const match = line.match(/^([A-Za-z0-9_-]+):/);
+    if (match) assert.ok(allowed.has(match[1]), `Unsupported top-level field: ${match[1]}`);
+  }
+});
+
+// Version alignment
 
 test("skill version is not stale 0.3.0", () => {
   assert.ok(
     !skillContent.includes('"0.3.0"') && !skillContent.includes("'0.3.0'") && !skillContent.includes("version: 0.3.0"),
-    "Stale version '0.3.0' found in SKILL.md — update to current version"
+    "Stale version '0.3.0' found in SKILL.md - update to current version"
   );
 });
 
-test("skill version is 0.5.0", () => {
+test("skill version is 0.5.1", () => {
   assert.ok(
-    skillContent.includes('"0.5.0"') || skillContent.includes("version: 0.5.0"),
-    "Expected version '0.5.0' in SKILL.md frontmatter"
+    skillContent.includes('"0.5.1"') || skillContent.includes("version: 0.5.1"),
+    "Expected version '0.5.1' in SKILL.md frontmatter"
   );
 });
 
@@ -265,7 +245,7 @@ test("assets/theme-variable-map.json exists", () => {
 test("assets/fixtures/er-basic.mmd exists", () => {
   assert.ok(
     existsSync(join(skillRoot, "assets/fixtures/er-basic.mmd")),
-    "assets/fixtures/er-basic.mmd not found — required fixture file"
+    "assets/fixtures/er-basic.mmd not found - required fixture file"
   );
 });
 

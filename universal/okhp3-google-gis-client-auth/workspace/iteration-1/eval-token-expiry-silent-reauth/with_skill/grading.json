@@ -1,0 +1,28 @@
+{
+  "eval_id": 2,
+  "eval_name": "token-expiry-silent-reauth",
+  "configuration": "with_skill",
+  "assertion_results": [
+    {
+      "text": "Response describes a validity check that includes a time buffer before expiry (tokenExpiry - 120_000 ms or the 2-minute buffer concept)",
+      "passed": true,
+      "evidence": "`Date.now() < Number(expiry) - 120_000` — exact expression with comment 'The 2-minute buffer (tokenExpiry - 120_000) prevents the edge case where a token is valid when checked but expires mid-request'"
+    },
+    {
+      "text": "Response describes two-step refresh: silent prompt:'none' first, popup fallback only if silent fails",
+      "passed": true,
+      "evidence": "'Step 1: Try silent refresh — no popup, no user interaction' with `{ prompt: 'none' }`, followed by 'If silent fails… falls back to showing the popup automatically'"
+    },
+    {
+      "text": "Response specifies sessionStorage (not localStorage) and references key names g_token and g_expiry",
+      "passed": true,
+      "evidence": "`sessionStorage.setItem('g_token', response.access_token)` and `sessionStorage.setItem('g_expiry', ...)` — exact key names. 'Never use localStorage for the token' explicit."
+    },
+    {
+      "text": "Response includes or references the isTokenValid() function with expiry buffer check",
+      "passed": true,
+      "evidence": "`function isTokenValid(): boolean` shown in full with the 120_000 buffer and both existence and expiry checks"
+    }
+  ],
+  "summary": { "passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0 }
+}

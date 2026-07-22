@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "catalog": "node scripts/build-catalog.js",
+    "prebuild": "node scripts/build-catalog.js",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

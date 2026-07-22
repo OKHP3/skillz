@@ -14,12 +14,12 @@ Examples:
 - **domain**: the subject area (procurement, onboarding, shoal, etc.)
 - **process**: the specific process or system being diagrammed
 - **view**: what slice this is (overview, detail, context, sequence, etc.)
-- **audience**: exec / analyst / tech — must match the declared audience from core Step 1
+- **audience**: exec / analyst / tech - must match the declared audience from core Step 1
 - **version**: increments when the underlying process changes, not when the diagram is re-rendered
 
-## Diagram registry — `DIAGRAMS.md`
+## Diagram registry - `DIAGRAMS.md`
 
-Every diagram produced gets one row. The registry lives at the root of whatever project/repo the diagrams belong to (not in this skills repo — this repo defines the *pattern*, each consuming project maintains its own registry).
+Every diagram produced gets one row. The registry lives at the root of whatever project/repo the diagrams belong to (not in this skills repo - this repo defines the *pattern*, each consuming project maintains its own registry).
 
 | Field | Description |
 |---|---|
@@ -36,9 +36,9 @@ Every diagram produced gets one row. The registry lives at the root of whatever 
 | ID | Filename | Audience | Family | Related | Status | MC Link | Updated |
 |---|---|---|---|---|---|---|---|
 | PROC-001 | procurement-po-approval-overview-exec-v1.mmd | exec | bpmn | PROC-002 | published | [link] | 2026-06-11 |
-| PROC-002 | procurement-po-approval-detail-analyst-v2.mmd | analyst | bpmn | PROC-001 | validated | — | 2026-06-11 |
+| PROC-002 | procurement-po-approval-detail-analyst-v2.mmd | analyst | bpmn | PROC-001 | validated | - | 2026-06-11 |
 ```
 
 ## Skill identifier naming (this repo)
 
-Pattern: `okhp3-mermaid-<domain>`. Matches the directory name and the frontmatter `name:` field exactly — required for portability (`gh skill install OKHP3/skillz okhp3-mermaid-bpmn`).
+Pattern: `okhp3-mermaid-<domain>`. Matches the directory name and the frontmatter `name:` field exactly - required for portability (`gh skill install OKHP3/skillz okhp3-mermaid-bpmn`).

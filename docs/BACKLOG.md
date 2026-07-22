@@ -57,6 +57,7 @@ Placeholder families — no SKILL.md content yet. Promote via `okhp3-process-cap
 | `process-capture/` | Skeleton (Level 1) | 1 meta-skill |
 | `notion/` | Draftable (Level 2) | 1 skill: `okhp3-notion-capture-router` |
 | `refolddec/` | Skeleton (Level 1) | 1 skill: `okhp3-refolddec-core` |
+| `agent-foundry/` | Draftable | Custom GPT readiness, building, and portability planning |
 | `universal/` | Varies | Skills cataloger, foundry tools |
 
 ## Catalog upkeep

@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 56 distribution skills in 9 active families, 2 placeholder family directories, and 6 project-local support skills under `.agents/skills/`
+- **Current inventory:** 67 distribution skills in 11 active families, 2 placeholder family directories, and 18 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -24,7 +24,7 @@ Become the reusable execution layer of the OKHP3 Visual Language Stack, with com
 
 This repository contains SKILL.md contracts, references, examples, fixtures, and small validation or rendering utilities. It is not a deployed application, service, monorepo, or npm workspace. There is one Git repository at the root; no nested Git repositories were found.
 
-The root family directories are the distribution surface. `.agents/skills/` is a project-local support surface containing cataloging, skill-authoring, and FoundRy tooling. Do not count those six entries as additional distribution families.
+The root family directories are the distribution surface. `.agents/skills/` is a project-local support surface containing cataloging, skill-authoring, FoundRy tooling, and platform-specific context-extraction support. Do not count those 18 entries as additional distribution families.
 
 Do not add employer-specific confidential material, private credentials, tokens, cookies, customer or employee data, proprietary system names, hidden network calls, or destructive behavior. Public skills must use synthetic or public-safe examples. A skill must not instruct an agent to bypass permissions, conceal actions, or remove user consent.
 
@@ -40,13 +40,15 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `notion/` | AI conversation capture and routing into Notion knowledge structures |
 | `process-capture/` | Process-analysis and documentation pipeline plus the recurring-task capture skill |
 | `refolddec/` | ReFolDec fold, unfold, and refold transformations |
+| `agent-foundry/` | AI-agent creation, readiness, platform comparison, portability, and lifecycle skills |
 | `universal/` | Cross-project builders, cataloging, API proxy, OAuth, and deployment skills |
+| `context-extraction/` | Source-agnostic and platform-specific AI-thread extraction, project migration, provenance preservation, and handoff skills |
 | `glee-fully/` | Placeholder for a future conversion of Glee-fully capabilities |
 | `askjamie/` | Placeholder for future professional-support capabilities |
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata; currently behind the discovered inventory and must not override this guide |
+| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 67-skill distribution inventory |
 
 ## Routing index
 
@@ -108,6 +110,22 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | `okhp3-notion-capture-router` | Capture ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF, or pasted AI conversations into Notion structures, dedupe them, split extracts, and reconcile against OKHP3 GitHub. This is not generic note-taking. |
 | `okhp3-refolddec-core` | Explicitly transform an artifact between representations, such as idea to diagram, diagram to documentation, documentation to SKILL.md, or unfold/refold with semantic-loss tracking. Load the target domain skill alongside it. |
 
+### Context-extraction family
+
+The `context-extraction/` family contains nine distribution skills for extracting durable, actionable context from manually supplied AI conversations and migrating ChatGPT project material. Load the narrowest platform adapter first when one exists, then the shared extraction contract or migration skill, then the downstream destination or artifact skill.
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-thread-context-extraction` | Cross-platform or unknown-source AI thread extraction with provenance and semantic-loss controls. |
+| `okhp3-thread-context-extraction-chatgpt` | Manually supplied ChatGPT chats, Projects, Canvas, Deep Research, or export excerpts. |
+| `okhp3-thread-context-extraction-claude` | Manually supplied Claude chats, Projects, Artifacts, Research, or export excerpts. |
+| `okhp3-thread-context-extraction-copilot-m365` | Manually supplied Microsoft Copilot or Microsoft 365 Copilot captures. |
+| `okhp3-thread-context-extraction-gemini` | Manually supplied Gemini chats, Canvas, Deep Research, or Workspace-grounded captures. |
+| `okhp3-thread-context-extraction-grok` | Manually supplied Grok or X-grounded captures. |
+| `okhp3-thread-context-extraction-mistral-vibe` | Manually supplied Mistral Vibe or former Le Chat captures. |
+| `okhp3-thread-context-extraction-perplexity` | Manually supplied Perplexity threads, Research, or source-rich captures. |
+| `okhp3-chatgpt-project-migration` | ChatGPT project migration, lossless archives, provenance ledgers, and repository reconciliation. |
+
 ### Abrahamic family
 
 | Skill | Trigger |
@@ -144,12 +162,21 @@ These are general-purpose or imported skills. Prefer the narrower OKHP3 family s
 | `web-artifacts-builder` | Build complex multi-component HTML artifacts using React, Tailwind, shadcn, and related frontend tooling. |
 | `web-design-guidelines` | Audit UI code for interface, accessibility, UX, or design-guideline compliance. |
 
+### Agent-foundry family
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-custom-gpt-builder` | Create, audit, test, improve, compare, document, or package a Custom GPT or related reusable AI workflow. Verify current platform facts before stating them as definitive. |
+| `okhp3-custom-gpt-readiness` | Assess an incomplete Custom GPT concept, inventory evidence, identify blockers and gaps, and prepare a builder handoff. |
+| `okhp3-custom-gpt-skill-conversion-planner` | Assess an existing Custom GPT for conversion into a portable Agent Skill, map semantic coverage and loss, and prepare a Skill Foundry handoff. |
+
+The family is intended to expand to Gemini Gems, Copilot declarative agents, OpenClaw agents, and other agent runtimes when their creation or lifecycle methods become concrete skills.
+
 ### Universal family
 
 | Skill | Trigger |
 |---|---|
 | `okhp3-cloudflare-worker-api-proxy` | Keep an API key server-side while proxying calls from a static frontend through a Cloudflare Worker. |
-| `okhp3-custom-gpt-builder` | Create, audit, test, improve, compare, document, or package a Custom GPT or related reusable AI workflow. Verify current platform facts before stating them as definitive. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |
@@ -188,7 +215,7 @@ python3 .agents/skills/skill-creator/scripts/quick_validate.py path/to/skill
 (cd mermaid/okhp3-mermaid-theme-builder && node --test tests/*.test.mjs)
 ```
 
-The full-index check passed and discovered 56 distribution skills. A structural frontmatter audit found 62 `SKILL.md` files with delimiters, names, and descriptions present. The bundled strict validator currently reports 26 failures across older or extended frontmatter, description length, and YAML formatting. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
+The full-index check passed and discovered 67 distribution skills in 11 active families. The project cataloger found 18 local support skills, and a structural frontmatter audit found 85 `SKILL.md` files with delimiters, names, and descriptions present. The bundled strict validator currently reports 26 failures across older or extended frontmatter, description length, and YAML formatting. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
 
 For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. Do not run the technology refresh script casually because it makes network requests and writes the generated technology section and runtime pins.
 
@@ -218,12 +245,12 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs are stale relative to the current filesystem. `README.md` reports 51 skills and 8 categories from June 24, 2026; the current full-index check finds 56 skills in 9 active families. Several `FAMILY.md` files and `.agents/skills/README.md` are also older snapshots.
-- `skillz.manifest.json` still describes the earlier six-family scaffold and 12 listed skills. Treat it as stale metadata until it is reconciled in a dedicated metadata update.
+- Generated catalogs now reflect the current filesystem: `README.md` reports 67 distribution skills in 11 active families, `context-extraction/FAMILY.md` is active, and `.agents/skills/README.md` reports 18 project-local support skills.
+- `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - Not every skill has a version in metadata. The cataloger check warns about 25 unversioned entries but passes structural catalog validation.
 - There is no release tag and no repository-wide CI test command. Promotion remains gated by `docs/PUBLISHING.md`.
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-07-13
+Updated: 2026-07-21

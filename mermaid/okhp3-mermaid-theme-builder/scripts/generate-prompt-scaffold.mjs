@@ -1,7 +1,7 @@
 /**
  * generate-prompt-scaffold.mjs
  * Generate a prompt scaffold document for LLM pre-prompting.
- * No external dependencies — runs with: node scripts/generate-prompt-scaffold.mjs
+ * No external dependencies - runs with: node scripts/generate-prompt-scaffold.mjs
  */
 
 import { readFileSync } from "node:fs";
@@ -46,9 +46,9 @@ function buildRendererSection(renderer) {
 
   const blocked = [];
   if (renderer.supportsCSSInjection === "none") blocked.push("CSS injection not supported");
-  if (renderer.supportsCustomFonts === "none") blocked.push("Custom web fonts blocked (CSP) — use system-ui, sans-serif");
-  if (renderer.supportsInitDirective === "partial") blocked.push("%%{init}%% support is partial — validate in target renderer");
-  if (renderer.supportsThemeVariables === "partial") blocked.push("themeVariable support is partial — some vars may be ignored");
+  if (renderer.supportsCustomFonts === "none") blocked.push("Custom web fonts blocked (CSP) - use system-ui, sans-serif");
+  if (renderer.supportsInitDirective === "partial") blocked.push("%%{init}%% support is partial - validate in target renderer");
+  if (renderer.supportsThemeVariables === "partial") blocked.push("themeVariable support is partial - some vars may be ignored");
 
   if (blocked.length === 0) return "";
 
@@ -95,7 +95,7 @@ export function generatePromptScaffold(palette, options = {}) {
   const rendererLabel = rendererObj ? `\n**Target renderer:** ${rendererObj.name}` : "";
 
   if (format === "A") {
-    return `## Mermaid Styling Rules — ${paletteObj.display}
+    return `## Mermaid Styling Rules - ${paletteObj.display}
 
 **Palette:** ${paletteObj.display}${rendererLabel}
 
@@ -106,7 +106,7 @@ ${initBlock}
   }
 
   if (format === "B") {
-    return `## Mermaid Theme — ${paletteObj.display}
+    return `## Mermaid Theme - ${paletteObj.display}
 
 Palette: ${paletteObj.display}${rendererLabel ? `\nRenderer: ${rendererObj?.name}` : ""}
 
@@ -120,7 +120,7 @@ ${rendererSection}`;
   return `## Mermaid Diagram Style Rules
 
 **Palette:** ${paletteObj.display}${rendererLabel}
-**Theme base:** base (always — never use default, dark, forest, or neutral)
+**Theme base:** base (always - never use default, dark, forest, or neutral)
 
 ### Required %%{init}%% block
 
@@ -132,7 +132,7 @@ ${initBlock}
 ${rendererSection}
 ### Rules
 
-1. Always use \`"theme": "base"\` — immutable
+1. Always use \`"theme": "base"\` - immutable
 2. All themeVariable color values must be hex (#RRGGBB format)
 3. fontFamily must be a quoted CSS font stack string
 4. fontSize must end in \`px\` if used
@@ -143,12 +143,12 @@ ${rendererSection}
 }
 
 if (process.argv[1] === new URL(import.meta.url).pathname) {
-  console.log("=== Format C — General (ocean-depth) ===");
+  console.log("=== Format C - General (ocean-depth) ===");
   console.log(generatePromptScaffold("ocean-depth"));
 
-  console.log("\n=== Format C — GitHub renderer (overkill-hill) ===");
+  console.log("\n=== Format C - GitHub renderer (overkill-hill) ===");
   console.log(generatePromptScaffold("overkill-hill", { targetRenderer: "github" }));
 
-  console.log("\n=== Format A — Minimal (askjamie) ===");
+  console.log("\n=== Format A - Minimal (askjamie) ===");
   console.log(generatePromptScaffold("askjamie", { format: "A" }));
 }

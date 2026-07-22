@@ -11,7 +11,7 @@ TOC for Phase 1 authoring.
 - [ ] When inline beats a separate diagram (small enough to not violate node-count limits for the declared audience)
 
 ## Call activity
-- [ ] Reference to a reusable process defined elsewhere — how is this visually distinguished from a one-off subprocess?
+- [ ] Reference to a reusable process defined elsewhere - how is this visually distinguished from a one-off subprocess?
 
 ## Cross-diagram registration
 - [ ] When a subprocess becomes its own diagram: both diagrams get DIAGRAMS.md entries with mutual "Related diagrams" references (per core's naming-conventions.md)

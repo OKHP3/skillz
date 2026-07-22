@@ -1,292 +1,195 @@
 ---
 name: okhp3-daily-oracle
-description: >
-  Generates a personalized daily reading by combining a tarot card, a daily horoscope,
-  and an AI-synthesized message — all cached in localStorage so it generates once per
-  day and stays stable. Use when building daily insight features, horoscope integrations,
-  affirmation systems, or any "word of the day" pattern that should feel personal and
-  consistent within a single day. Also use when a user wants to add a tarot, astrology,
-  or AI-powered daily message feature to an app without a persistent database.
+description: "OverKill Hill P³ daily oracle workflow. Use when building or reviewing a stable reading that combines a tarot card, optional zodiac horoscope, and an AI message. Also activate for daily insight, affirmation, card-draw, or consistent word-of-the-day features in a client-only app. Preserve the repo's ISO cache key, deterministic fallback, graceful degradation, and direct-browser security warning; do not add a backend or proxy to this repository."
 license: MIT
+compatibility: "Browser, React, and Vite environments. Public tarot/horoscope requests are optional and network-dependent; this repository's Anthropic call is a personal-app direct-browser exception owned by src/lib/oracle.ts."
 metadata:
-  author: Jamie Hill (OKHP3 / OverKill Hill P³)
-  version: "1.0"
-  origin: Kieran's LifeTrkr (https://github.com/OKHP3/kierans-lifetrkr)
-  published-via: OKHP3/skillz
-compatibility: Browser environment. Requires a Claude API proxy (Cloudflare Worker or similar) to avoid exposing the Anthropic API key client-side. Tarot and horoscope sources are free public APIs.
+  author: "Jamie Hill (OverKill Hill P³)"
+  version: "1.3.0"
+  category: "wellness-astrology"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  implementation: "references/oracle.ts"
+  scripts: "scripts/test-oracle-apis.cjs"
+  assets: "assets/oracle-component-template.tsx"
+  scope: "Daily tarot, optional horoscope, AI message synthesis, local per-user caching, fallbacks, and React integration"
+  boundaries: "Client-only personal-app workflow; no backend, proxy, database, accounts, push delivery, natal chart, or multi-user security design"
 ---
 
-# daily-oracle
+# okhp3-daily-oracle
 
-A three-layer daily reading system that combines a tarot card, a daily horoscope,
-and an AI-synthesized oracle message. Generates once per day and caches the result
-in localStorage. Degrades gracefully if any layer fails.
+Treat the oracle as a three-layer, once-per-day reading: tarot is the anchor,
+horoscope is optional context, and the AI message is a best-effort synthesis.
+The user must still receive a meaningful card and message when network services
+or the AI key are unavailable.
 
-## When to use this skill
+## Scope
 
-- Adding a "daily reading," "word of the day," or "daily affirmation" feature
-- Building wellness, astrology, or personal-growth apps
-- Any feature that should feel personalized, contextual, and consistent within a day
-- When you need the AI message to incorporate real data (moon phase, date, sign) naturally
+| In scope | Out of scope |
+| --- | --- |
+| `tarotapi.dev` card fetch with a deterministic Major Arcana fallback | Birth charts, natal calculations, or multi-day forecasts |
+| Optional `freehoroscopeapi.com` daily horoscope | Push notifications, external writes, or server-side persistence |
+| Anthropic message generation through this repo's `src/lib/oracle.ts` | Adding a backend, Cloudflare Worker, API route, secure proxy, or database |
+| Per-user, per-day `localStorage` cache and graceful degradation | Non-Claude AI providers or public multi-user secret management |
+| Existing `useOracle`, `OracleReading`, and `OracleCard` integration | Replacing the app's state and storage architecture |
 
-## Architecture overview
+## Repository boundary: read this first
 
-```
-Day N starts
-    ↓
-Check localStorage cache key: myapp:{userId}:oracle:{YYYY-MM-DD}
-    ↓ cache miss
-Fetch tarot card        → tarotapi.dev (free, no auth)
-Fetch daily horoscope   → freehoroscopeapi.com (free, no auth, needs birth sign)
-Generate AI message     → Claude API via proxy (holds API key server-side)
-    ↓
-Combine all three → cache in localStorage → render
-    ↓
-Day N+1: same flow, new key, new reading
-```
+When working in Kieran's LifeTrkr, preserve these facts:
 
-## Data sources
+- `src/lib/oracle.ts` owns tarot, horoscope, Anthropic access, the fallback, and
+  the oracle-message cache. `src/hooks/useOracle.ts` orchestrates the reading;
+  `src/components/OracleCard.tsx` renders it.
+- The cache key is exactly
+  `lifetrkr:{userId}:oracle:{YYYY-MM-DD}`. The profile `sub` is the user ID;
+  use `guest` when no profile exists or parsing fails. The date is
+  `new Date().toISOString().split('T')[0]`, never a locale-formatted date.
+- The current tarot fallback uses the full 22-card `MAJOR_ARCANA` list and
+  selects `MAJOR_ARCANA[dayOfYear % MAJOR_ARCANA.length]`. Do not substitute a
+  random card or a static single card, and do not describe a 12-card pool as the
+  repo implementation.
+- The current app is deliberately client-only. Do not recommend or add a
+  Cloudflare Worker, server, proxy, database, or API route as part of this
+  repository task. A secure public proxy is a separate architecture and is out
+  of scope here.
 
-| Source | URL | Auth | Fallback |
-|---|---|---|---|
-| Tarot card | `tarotapi.dev/api/v1/cards/random?n=1` | None | Hardcoded 12-card Major Arcana pool, selected by day-of-year |
-| Daily horoscope | `freehoroscopeapi.com/api/v1/get-horoscope/daily?sign={sign}` | None | Omit section gracefully |
-| Oracle message (AI) | Your Claude proxy URL | Via proxy | Use tarot card's `meaning_up` field as fallback |
+## Workflow
 
-## The API key problem — and how to solve it
+### 1. Plan
 
-The Anthropic API requires an `x-api-key` header. Including this in client-side
-JavaScript exposes it in the browser's network panel and source bundle.
+1. Identify whether the task changes the data layer, cache contract, UI, or
+   validation only.
+2. Inspect `src/lib/oracle.ts`, `src/hooks/useOracle.ts`, `src/types.ts`, and
+   `src/components/OracleCard.tsx` before editing. Preserve their public names
+   and data flow.
+3. Decide the fallback at each layer: tarot must always resolve, horoscope may
+   become `undefined`, and the AI message must fall back to `card.meaning_up`.
+4. If adapting this pattern outside the repo, name the app prefix explicitly;
+   inside this repo, never replace the `lifetrkr` namespace with `myapp`.
 
-**Solution: Cloudflare Worker proxy (free, 100k requests/day, ~30 lines of code)**
+### 2. Validate
 
-Deploy a Worker that holds your API key in secrets and accepts POST requests from
-your app's domain:
+1. Read `references/oracle.ts` for implementation detail and
+   `assets/oracle-component-template.tsx` only when a UI template is needed.
+2. Run the optional public-source smoke test when network access is available:
 
-```javascript
-// Cloudflare Worker — deploy at: your-app-oracle.workers.dev
-export default {
-  async fetch(request, env) {
-    if (request.method === 'OPTIONS') {
-      return new Response(null, {
-        headers: {
-          'Access-Control-Allow-Origin': 'https://your-domain.com',
-          'Access-Control-Allow-Methods': 'POST',
-          'Access-Control-Allow-Headers': 'Content-Type',
-        },
-      });
-    }
-    const body = await request.json();
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': env.ANTHROPIC_API_KEY,   // stored in CF Worker secrets
-        'anthropic-version': '2023-06-01',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 150,
-        system: body.system,
-        messages: body.messages,
-      }),
-    });
-    const data = await res.json();
-    return new Response(JSON.stringify(data), {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://your-domain.com',
-      },
-    });
-  }
-};
-```
+   ```text
+   node .agents/skills/okhp3-daily-oracle/scripts/test-oracle-apis.cjs --sign cancer
+   ```
 
-Worker setup:
-1. Cloudflare dashboard → Workers & Pages → Create Worker
-2. Paste the code above
-3. Settings → Variables → Add Secret: `ANTHROPIC_API_KEY`
-4. Deploy → copy the worker URL
+   A non-zero result can be a transient API or CORS failure; it does not remove
+   the fallback requirement. Never put keys or `.env` files in test output.
+3. Verify the cache with a fixed `YYYY-MM-DD` value and two reads. Confirm the
+   same user/date returns the same message, another user has an isolated key,
+   and `guest` is used without a profile.
+4. Simulate tarot failure, horoscope failure, missing key, AI non-2xx response,
+   malformed JSON, and offline mode. Each path must render useful output or
+   omit only the optional horoscope. Report unverified external endpoints.
 
-Store the worker URL as an environment variable:
-```
-VITE_ORACLE_WORKER_URL=https://your-app-oracle.workers.dev
-```
+### 3. Execute
 
-## Implementation
+1. Use the existing `useOracle()` hook in the app. Keep network and local
+   storage work in `src/lib/oracle.ts`; do not move it into a component.
+2. Fetch tarot and the local celestial values in parallel. Fetch the horoscope
+   only when `settings.birthSign` exists; treat failure as optional.
+3. Generate the AI message only after the tarot card is available. Cache the
+   resulting message or its `meaning_up` fallback under the exact key above.
+4. Keep the cache read before any external call. This is what makes refreshes
+   stable and prevents unnecessary requests.
+5. Render `OracleReading` through the existing `OracleCard` API. Keep the date
+   in ISO form and expose moon, season, and horoscope context without making
+   the visual layer responsible for fetching it.
 
-### Step 1 — Fetch the tarot card
+## Portable cache pattern
+
+Use this compact pattern only when adapting the workflow to another app; replace
+`APP_PREFIX` with that app's explicit namespace. In this repository the concrete
+key must remain `lifetrkr:${userId}:oracle:${today}`.
 
 ```typescript
-async function fetchTarotCard(): Promise<TarotCard> {
-  try {
-    const res = await fetch('https://tarotapi.dev/api/v1/cards/random?n=1');
-    const data = await res.json();
-    return data.cards[0];
-  } catch {
-    // Deterministic fallback — same card for same day each year
-    const FALLBACK = [
-      { name: 'The Star',      meaning_up: 'Hope, renewal, trust in the unfolding.' },
-      { name: 'The Moon',      meaning_up: 'Cycles, dreams, what lies beneath.' },
-      { name: 'The Sun',       meaning_up: 'Clarity, vitality, things coming to light.' },
-      { name: 'Temperance',    meaning_up: 'Balance, patience, the middle path.' },
-      { name: 'Strength',      meaning_up: 'Inner courage, gentle power, compassion.' },
-      { name: 'The Hermit',    meaning_up: 'Stillness, inner guidance, turning inward.' },
-      { name: 'The World',     meaning_up: 'Completion, wholeness, the journey fulfilled.' },
-      { name: 'The Empress',   meaning_up: 'Abundance, creativity, nurturing life.' },
-      { name: 'The High Priestess', meaning_up: 'Intuition, inner knowing, the unseen.' },
-      { name: 'Judgement',     meaning_up: 'Awakening, reckoning, the call toward purpose.' },
-      { name: 'Wheel of Fortune', meaning_up: 'Change, cycles, forces larger than yourself.' },
-      { name: 'The Fool',      meaning_up: 'New beginnings, open heart, the unknown.' },
-    ];
-    const doy = Math.floor(
-      (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000
-    );
-    const card = FALLBACK[doy % FALLBACK.length];
-    return { name: card.name, meaning_up: card.meaning_up, type: 'major', desc: '' };
-  }
-}
+const today = new Date().toISOString().split('T')[0]
+const userId = profile?.sub || 'guest'
+const cacheKey = `${APP_PREFIX}:${userId}:oracle:${today}`
+const cached = localStorage.getItem(cacheKey)
+if (cached) return cached
+// Generate tarot/context/message, then localStorage.setItem(cacheKey, message)
 ```
 
-### Step 2 — Fetch the horoscope (optional)
+The user ID provides isolation; the ISO date provides daily stability and
+zero-TTL expiry. Do not use `toLocaleDateString()`, `toDateString()`, or
+`Math.random()` for the cache or fallback selection.
 
-Only fires if the user has set their birth sign:
+## Data and fallback contract
+
+- Tarot: request
+  `https://tarotapi.dev/api/v1/cards/random?n=1`; require a usable card and
+  fall back deterministically from the 22-card `MAJOR_ARCANA` array using the
+  `Date.now()`/`getTime()` day-of-year calculation and modulo.
+- Horoscope: request
+  `https://freehoroscopeapi.com/api/v1/get-horoscope/daily?sign={sign}` only
+  when a birth sign is set; return `null`/`undefined` on failure and keep the
+  reading usable.
+- Oracle message: preserve the function
+  `generateOracleMessage(card, moon, season, mercury, birthSign?)` and its
+  fallback to `card.meaning_up`.
+- Keep the prompt warm, grounded, concise, and non-diagnostic. Treat tarot and
+  horoscope as reflective content, not medical, legal, financial, or predictive
+  advice.
+
+## Anthropic security boundary
+
+This repository has one intentional exception: `src/lib/oracle.ts` performs a
+direct browser request for a personal app. If using that path, preserve all of
+the following:
 
 ```typescript
-async function fetchHoroscope(sign: string): Promise<string | null> {
-  try {
-    const res = await fetch(
-      `https://freehoroscopeapi.com/api/v1/get-horoscope/daily?sign=${sign.toLowerCase()}`
-    );
-    const data = await res.json();
-    return data?.data?.horoscope || null;
-  } catch {
-    return null; // skip gracefully
-  }
-}
+const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY
+// headers include:
+// 'anthropic-dangerous-direct-browser-access': 'true'
 ```
 
-### Step 3 — Generate the AI oracle message
+The `VITE_` value is embedded in the production JavaScript bundle and can be
+read by anyone who loads the site. This is acceptable only for a personal or
+single-user app whose owner accepts exposure and key rotation risk. It is not a
+secure public deployment pattern. Never commit the key, print it, or imply that
+Vite hides it. If the user requests public multi-user hardening, explain that a
+server-side proxy would be the normal solution but is explicitly outside this
+repository task; do not implement it here.
 
-```typescript
-async function generateOracleMessage(
-  card: TarotCard,
-  context: { moonPhase?: string; season?: string; sign?: string; isRetrograde?: boolean }
-): Promise<string> {
-  const today = new Date().toLocaleDateString('en-US', {
-    weekday: 'long', month: 'long', day: 'numeric'
-  });
+## Gotchas
 
-  const userPrompt = [
-    `Today is ${today}.`,
-    context.moonPhase   ? `The moon is ${context.moonPhase}.` : '',
-    context.season      ? `The sun is in ${context.season}.` : '',
-    context.isRetrograde ? 'Mercury is currently retrograde.' : '',
-    context.sign        ? `This person's sun sign is ${context.sign}.` : '',
-    `The tarot card for today is ${card.name}: ${card.meaning_up}`,
-    'Write a 2–3 sentence daily oracle message. Warm, grounded, quietly insightful.',
-  ].filter(Boolean).join(' ');
+- Check `response.ok` and response shape before trusting external JSON.
+- Cache only after a complete reading or a deliberate fallback; do not cache a
+  transient loading state or an error object.
+- Keep `userId` in the key. A global `oracle_${date}` key leaks one user's
+  reading into another user's session.
+- Keep the fallback deterministic. A refresh during an outage must not redraw a
+  different card for the same day.
+- Treat public endpoints as optional and CORS-sensitive. The smoke script is a
+  diagnostic, not a production dependency or uptime guarantee.
+- Do not introduce ad hoc storage keys in components. Use the existing
+  `lifetrkr` conventions and `src/lib/storage.ts` where applicable.
 
-  try {
-    const res = await fetch(import.meta.env.VITE_ORACLE_WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: 'You are a warm, grounded daily oracle. Write 2–3 sentences. No clichés.',
-        messages: [{ role: 'user', content: userPrompt }],
-      }),
-    });
-    const data = await res.json();
-    return data.content?.[0]?.text || card.meaning_up;
-  } catch {
-    return card.meaning_up; // always have something to show
-  }
-}
-```
+## Bundled resources
 
-### Step 4 — Cache and assemble
+- `references/oracle.ts` — full TypeScript data-layer reference. Read on demand;
+  it is the implementation depth, not a reason to duplicate app modules.
+- `scripts/test-oracle-apis.cjs` — network-dependent tarot/horoscope response
+  shape check; it does not test Anthropic or prove production availability.
+- `assets/oracle-component-template.tsx` — UI-only template aligned with the
+  repo's `OracleReading`/`OracleCard` boundary. Do not copy API calls into it.
 
-```typescript
-async function getOrCreateOracle(userId: string, context: OracleContext): Promise<Oracle> {
-  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-  const cacheKey = `myapp:${userId}:oracle:${today}`;
+## Output contract
 
-  const cached = localStorage.getItem(cacheKey);
-  if (cached) return JSON.parse(cached);
+Return the planned data flow, exact cache key, fallback behavior, files changed,
+validation commands and results, and any API/CORS or key-exposure concern. Do
+not claim that a live endpoint or benchmark was verified unless it was actually
+run.
 
-  const [card, horoscope] = await Promise.all([
-    fetchTarotCard(),
-    context.sign ? fetchHoroscope(context.sign) : Promise.resolve(null),
-  ]);
+## About
 
-  const message = await generateOracleMessage(card, context);
-
-  const oracle = { date: today, card, message, horoscope };
-  localStorage.setItem(cacheKey, JSON.stringify(oracle));
-  return oracle;
-}
-```
-
-## React component pattern
-
-```tsx
-function OracleCard({ userId, context }: Props) {
-  const [oracle, setOracle] = useState<Oracle | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getOrCreateOracle(userId, context)
-      .then(setOracle)
-      .finally(() => setLoading(false));
-  }, [userId]);
-
-  if (loading) return <Skeleton />;
-  if (!oracle) return null;
-
-  return (
-    <div>
-      <h3>{oracle.card.name}</h3>
-      <p>{oracle.message}</p>
-      {oracle.horoscope && <p>{oracle.horoscope}</p>}
-    </div>
-  );
-}
-```
-
-## Cache key design
-
-The cache key pattern `myapp:{userId}:oracle:{YYYY-MM-DD}` provides:
-- **Per-user isolation** — different users get different readings
-- **Daily stability** — the same reading all day, even across page refreshes
-- **Automatic expiry** — yesterday's reading is simply never accessed again
-  (no explicit TTL needed; old keys can be cleaned up periodically)
-
-If you don't have a userId yet, use `guest` as a fallback.
-
-## Customizing the AI prompt
-
-The oracle context object passed to `generateOracleMessage` can be expanded to include:
-- Current moon phase (from the `celestial-data` skill)
-- Astrological season (from the `celestial-data` skill)
-- Mercury retrograde status (from the `celestial-data` skill)
-- User's sun sign (from a settings screen)
-- User's mood (from a mood-check prompt)
-- Day of the week
-
-The more contextual signal you pass, the more specific and resonant the message feels.
-
-## Graceful degradation
-
-The system produces *something useful* even when every external call fails:
-
-| Scenario | Output |
-|---|---|
-| All APIs succeed | Full three-layer reading |
-| Tarot API down | Deterministic fallback card by day-of-year |
-| Horoscope API down | Reading without horoscope (no error shown) |
-| Claude proxy down | Tarot card's `meaning_up` field as the message |
-| Total offline | Deterministic card + `meaning_up` as message |
-
-## Files
-
-- `references/oracle.ts` — Full TypeScript implementation
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.
