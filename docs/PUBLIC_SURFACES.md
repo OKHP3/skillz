@@ -64,10 +64,10 @@ skillz: Agent Skills by OverKill Hill
 Recommended positioning:
 
 ```text
-67 reusable SKILL.md delegation contracts across 11 active families for Claude, OpenClaw, Codex, and compatible AI agents.
+68 reusable SKILL.md delegation contracts across 11 active families for Claude, OpenClaw, Codex, and compatible AI agents.
 ```
 
-Current inventory snapshot, indexed July 21, 2026: 67 public distribution skills across 11 active families. The repository also contains two placeholder family directories and 18 project-local support skills. The placeholders and local support skills are not public distribution entries.
+Current inventory snapshot, indexed July 24, 2026: 68 public distribution skills across 11 active families. The repository also contains two placeholder family directories and 18 project-local support skills. The placeholders and local support skills are not public distribution entries.
 
 Recommended sections:
 

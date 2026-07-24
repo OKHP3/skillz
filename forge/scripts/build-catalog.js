@@ -373,9 +373,26 @@ function buildCatalog() {
 
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
 
+
+// ─── Canonical family display names ──────────────────────────────────────────
+
+const FAMILY_DISPLAY_NAMES = {
+  'abrahamic':         'Abrahamic',
+  'agent-foundry':     'Agent Foundry',
+  'community':         'Community',
+  'context-extraction':'Context Extraction',
+  'lifetrkr':          'LifeTrkr',
+  'linkedin':          'LinkedIn',
+  'mermaid':           'Mermaid',
+  'notion':            'Notion',
+  'process-capture':   'Process Capture',
+  'refolddec':         'ReFolDec',
+  'universal':         'Universal',
+};
+
   const familyMap = {};
   for (const s of skills) {
-    if (!familyMap[s.family]) familyMap[s.family] = { name: s.family, skillCount: 0, skills: [] };
+    if (!familyMap[s.family]) familyMap[s.family] = { name: s.family, displayName: FAMILY_DISPLAY_NAMES[s.family] || s.family, skillCount: 0, skills: [] };
     familyMap[s.family].skillCount++;
     familyMap[s.family].skills.push(s.name);
   }

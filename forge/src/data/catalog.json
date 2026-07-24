@@ -1,13 +1,14 @@
 {
-  "generatedAt": "2026-07-22T05:00:12.936Z",
+  "generatedAt": "2026-07-24T20:19:02.832Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "7d59d41",
-  "skillCount": 67,
+  "sourceCommit": "737675d",
+  "skillCount": 68,
   "familyCount": 11,
   "families": [
     {
       "name": "abrahamic",
+      "displayName": "Abrahamic",
       "skillCount": 4,
       "skills": [
         "okhp3-cross-tradition-compare",
@@ -18,15 +19,17 @@
     },
     {
       "name": "agent-foundry",
+      "displayName": "Agent Foundry",
       "skillCount": 3,
       "skills": [
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
-        "okhp3-custom-gpt-skill-conversion-planner"
+        "okhp3-gpt-skill-conversion-plan"
       ]
     },
     {
       "name": "community",
+      "displayName": "Community",
       "skillCount": 13,
       "skills": [
         "ai-social-media-content",
@@ -46,21 +49,23 @@
     },
     {
       "name": "context-extraction",
+      "displayName": "Context Extraction",
       "skillCount": 9,
       "skills": [
         "okhp3-chatgpt-project-migration",
         "okhp3-thread-context-extraction",
-        "okhp3-thread-context-extraction-chatgpt",
-        "okhp3-thread-context-extraction-claude",
-        "okhp3-thread-context-extraction-copilot-m365",
-        "okhp3-thread-context-extraction-gemini",
         "okhp3-thread-context-extraction-grok",
-        "okhp3-thread-context-extraction-mistral-vibe",
-        "okhp3-thread-context-extraction-perplexity"
+        "okhp3-thread-extract-chatgpt",
+        "okhp3-thread-extract-claude",
+        "okhp3-thread-extract-copilot-m365",
+        "okhp3-thread-extract-gemini",
+        "okhp3-thread-extract-mistral-vibe",
+        "okhp3-thread-extract-perplexity"
       ]
     },
     {
       "name": "lifetrkr",
+      "displayName": "LifeTrkr",
       "skillCount": 2,
       "skills": [
         "okhp3-celestial-data",
@@ -69,6 +74,7 @@
     },
     {
       "name": "linkedin",
+      "displayName": "LinkedIn",
       "skillCount": 3,
       "skills": [
         "okhp3-linkedin-angles",
@@ -78,6 +84,7 @@
     },
     {
       "name": "mermaid",
+      "displayName": "Mermaid",
       "skillCount": 9,
       "skills": [
         "okhp3-mermaid-architecture",
@@ -93,6 +100,7 @@
     },
     {
       "name": "notion",
+      "displayName": "Notion",
       "skillCount": 1,
       "skills": [
         "okhp3-notion-capture-router"
@@ -100,28 +108,30 @@
     },
     {
       "name": "process-capture",
+      "displayName": "Process Capture",
       "skillCount": 16,
       "skills": [
         "okhp3-as-is-process-capture",
         "okhp3-decision-model-authoring",
-        "okhp3-elicitation-and-interview-facilitation",
-        "okhp3-future-state-and-change-strategy",
+        "okhp3-elicitation-interviews",
+        "okhp3-future-state-strategy",
+        "okhp3-handoff-packaging",
         "okhp3-process-capture",
-        "okhp3-process-gap-and-exception-analysis",
+        "okhp3-process-controls-metrics",
+        "okhp3-process-gap-analysis",
         "okhp3-process-intake-and-scope",
-        "okhp3-process-measures-and-controls-definition",
         "okhp3-process-narrative-authoring",
-        "okhp3-process-validation-and-quality-scoring",
-        "okhp3-publication-and-handoff-packaging",
-        "okhp3-raci-and-governance-matrix-generation",
+        "okhp3-process-quality-validation",
+        "okhp3-raci-governance-matrix",
         "okhp3-sipoc-generation",
-        "okhp3-sop-and-work-instruction-generation",
+        "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
         "okhp3-visual-process-modeling"
       ]
     },
     {
       "name": "refolddec",
+      "displayName": "ReFolDec",
       "skillCount": 1,
       "skills": [
         "okhp3-refolddec-core"
@@ -129,9 +139,11 @@
     },
     {
       "name": "universal",
-      "skillCount": 6,
+      "displayName": "Universal",
+      "skillCount": 7,
       "skills": [
         "okhp3-cloudflare-worker-api-proxy",
+        "okhp3-database-cartographer",
         "okhp3-foundry-repo-creator",
         "okhp3-google-gis-client-auth",
         "okhp3-skill-cataloger",
@@ -205,8 +217,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-tradition-observance-calendar/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-tradition-observance-calendar/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-tradition-reference",
@@ -267,8 +279,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-verse-lookup/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-verse-lookup/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-custom-gpt-builder",
@@ -298,8 +310,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-builder/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-custom-gpt-readiness",
@@ -335,11 +347,11 @@
       "commitSha": "159332f5"
     },
     {
-      "name": "okhp3-custom-gpt-skill-conversion-planner",
+      "name": "okhp3-gpt-skill-conversion-plan",
       "displayName": "Custom GPT to Agent Skill Conversion Planner",
       "family": "agent-foundry",
-      "skillDir": "okhp3-custom-gpt-skill-conversion-planner",
-      "path": "agent-foundry/okhp3-custom-gpt-skill-conversion-planner/SKILL.md",
+      "skillDir": "okhp3-gpt-skill-conversion-plan",
+      "path": "agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md",
       "description": "Plan conversion of an existing Custom GPT into a portable Agent Skill. Use when a GPT already has instructions, knowledge files, actions, conversation starters, test prompts, or usage history and the user needs a capability map, semantic-loss analysis, reusable skill boundary, migration plan, or handoff to okhp3-skill-foundry.",
       "version": "1.2.0",
       "license": "MIT",
@@ -362,10 +374,10 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-skill-conversion-planner/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-skill-conversion-planner/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "ai-social-media-content",
@@ -847,135 +859,6 @@
       "commitSha": "58d54a79"
     },
     {
-      "name": "okhp3-thread-context-extraction-chatgpt",
-      "displayName": "Thread Context Extraction: ChatGPT",
-      "family": "context-extraction",
-      "skillDir": "okhp3-thread-context-extraction-chatgpt",
-      "path": "context-extraction/okhp3-thread-context-extraction-chatgpt/SKILL.md",
-      "description": "Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when the user pastes a ChatGPT chat, Project thread, Canvas, Deep Research report, search answer, prompt-response sequence, generated file or image reference, or export excerpt and wants its goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for control-all copies, turn-by-turn transfers, flattened UI text, and uncertain roles. Do not use for account login or scraping, wholesale Project migration, Custom GPT design, OpenAI API support, ordinary summaries, or lossless transcript archival.",
-      "version": "2.0.0",
-      "license": "MIT",
-      "category": "meta-tooling",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "status": null,
-      "tags": [],
-      "topics": [],
-      "triggers": [],
-      "avoid": [],
-      "companions": [
-        "okhp3-notion-capture-router",
-        "okhp3-chatgpt-project-migration"
-      ],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-chatgpt/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-chatgpt/SKILL.md",
-      "lastModified": "2026-07-22T03:22:23Z",
-      "commitSha": "58d54a79"
-    },
-    {
-      "name": "okhp3-thread-context-extraction-claude",
-      "displayName": "Thread Context Extraction: Claude",
-      "family": "context-extraction",
-      "skillDir": "okhp3-thread-context-extraction-claude",
-      "path": "context-extraction/okhp3-thread-context-extraction-claude/SKILL.md",
-      "description": "Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the user pastes a Claude chat, Project excerpt, Artifact, Research or web-search output, prompt-response sequence, uploaded-file reference, or export excerpt and wants its goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for control-all copies, turn-by-turn transfers, flattened UI text, Artifact versions, and uncertain roles. Do not use for Claude account access or scraping, ordinary summaries, unrelated Anthropic API support, or lossless transcript archival.",
-      "version": "2.0.0",
-      "license": "MIT",
-      "category": "meta-tooling",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "status": null,
-      "tags": [],
-      "topics": [],
-      "triggers": [],
-      "avoid": [],
-      "companions": [
-        "okhp3-notion-capture-router"
-      ],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-claude/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-claude/SKILL.md",
-      "lastModified": "2026-07-22T03:22:23Z",
-      "commitSha": "58d54a79"
-    },
-    {
-      "name": "okhp3-thread-context-extraction-copilot-m365",
-      "displayName": "Thread Context Extraction: Microsoft Copilot & M365",
-      "family": "context-extraction",
-      "skillDir": "okhp3-thread-context-extraction-copilot-m365",
-      "path": "context-extraction/okhp3-thread-context-extraction-copilot-m365/SKILL.md",
-      "description": "Extract manually supplied Microsoft Copilot and Microsoft 365 Copilot chats into standalone, actionable Markdown. Use when the user pastes a Copilot chat, Work or Web-grounded answer, Copilot Page, agent output, prompt-response sequence, or references to files, emails, meetings, people, or tenant sources and wants goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for flattened or turn-by-turn captures. Do not use for Microsoft tenant, Graph, SharePoint, Teams, Outlook, or OneDrive access; GitHub Copilot coding chats; ordinary summaries; or lossless archival.",
-      "version": "2.0.0",
-      "license": "MIT",
-      "category": "meta-tooling",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "status": null,
-      "tags": [],
-      "topics": [],
-      "triggers": [],
-      "avoid": [],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-copilot-m365/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-copilot-m365/SKILL.md",
-      "lastModified": "2026-07-22T03:22:23Z",
-      "commitSha": "58d54a79"
-    },
-    {
-      "name": "okhp3-thread-context-extraction-gemini",
-      "displayName": "Thread Context Extraction: Gemini",
-      "family": "context-extraction",
-      "skillDir": "okhp3-thread-context-extraction-gemini",
-      "path": "context-extraction/okhp3-thread-context-extraction-gemini/SKILL.md",
-      "description": "Extract manually supplied Google Gemini conversations into standalone, actionable Markdown. Use when the user pastes a Gemini chat, Gem output, Canvas, Deep Research report, Workspace-grounded answer, file analysis, prompt-response sequence, image or audio reference, or export excerpt and wants its goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for control-all copies, turn-by-turn transfers, flattened UI text, and uncertain roles. Do not use for Google account or Drive access, ordinary summaries, Gemini API support, or lossless transcript archival.",
-      "version": "2.0.0",
-      "license": "MIT",
-      "category": "meta-tooling",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "status": null,
-      "tags": [],
-      "topics": [],
-      "triggers": [],
-      "avoid": [],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-gemini/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-gemini/SKILL.md",
-      "lastModified": "2026-07-22T03:22:23Z",
-      "commitSha": "58d54a79"
-    },
-    {
       "name": "okhp3-thread-context-extraction-grok",
       "displayName": "Thread Context Extraction: Grok",
       "family": "context-extraction",
@@ -1007,11 +890,140 @@
       "commitSha": "58d54a79"
     },
     {
-      "name": "okhp3-thread-context-extraction-mistral-vibe",
+      "name": "okhp3-thread-extract-chatgpt",
+      "displayName": "Thread Context Extraction: ChatGPT",
+      "family": "context-extraction",
+      "skillDir": "okhp3-thread-extract-chatgpt",
+      "path": "context-extraction/okhp3-thread-extract-chatgpt/SKILL.md",
+      "description": "Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when the user pastes a ChatGPT chat, Project thread, Canvas, Deep Research report, search answer, prompt-response sequence, generated file or image reference, or export excerpt and wants its goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for control-all copies, turn-by-turn transfers, flattened UI text, and uncertain roles. Do not use for account login or scraping, wholesale Project migration, Custom GPT design, OpenAI API support, ordinary summaries, or lossless transcript archival.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "meta-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-capture-router",
+        "okhp3-chatgpt-project-migration"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-chatgpt/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-chatgpt/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
+    },
+    {
+      "name": "okhp3-thread-extract-claude",
+      "displayName": "Thread Context Extraction: Claude",
+      "family": "context-extraction",
+      "skillDir": "okhp3-thread-extract-claude",
+      "path": "context-extraction/okhp3-thread-extract-claude/SKILL.md",
+      "description": "Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the user pastes a Claude chat, Project excerpt, Artifact, Research or web-search output, prompt-response sequence, uploaded-file reference, or export excerpt and wants its goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for control-all copies, turn-by-turn transfers, flattened UI text, Artifact versions, and uncertain roles. Do not use for Claude account access or scraping, ordinary summaries, unrelated Anthropic API support, or lossless transcript archival.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "meta-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-capture-router"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-claude/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-claude/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
+    },
+    {
+      "name": "okhp3-thread-extract-copilot-m365",
+      "displayName": "Thread Context Extraction: Microsoft Copilot & M365",
+      "family": "context-extraction",
+      "skillDir": "okhp3-thread-extract-copilot-m365",
+      "path": "context-extraction/okhp3-thread-extract-copilot-m365/SKILL.md",
+      "description": "Extract manually supplied Microsoft Copilot and Microsoft 365 Copilot chats into standalone, actionable Markdown. Use when the user pastes a Copilot chat, Work or Web-grounded answer, Copilot Page, agent output, prompt-response sequence, or references to files, emails, meetings, people, or tenant sources and wants goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for flattened or turn-by-turn captures. Do not use for Microsoft tenant, Graph, SharePoint, Teams, Outlook, or OneDrive access; GitHub Copilot coding chats; ordinary summaries; or lossless archival.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "meta-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-copilot-m365/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-copilot-m365/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
+    },
+    {
+      "name": "okhp3-thread-extract-gemini",
+      "displayName": "Thread Context Extraction: Gemini",
+      "family": "context-extraction",
+      "skillDir": "okhp3-thread-extract-gemini",
+      "path": "context-extraction/okhp3-thread-extract-gemini/SKILL.md",
+      "description": "Extract manually supplied Google Gemini conversations into standalone, actionable Markdown. Use when the user pastes a Gemini chat, Gem output, Canvas, Deep Research report, Workspace-grounded answer, file analysis, prompt-response sequence, image or audio reference, or export excerpt and wants its goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for control-all copies, turn-by-turn transfers, flattened UI text, and uncertain roles. Do not use for Google account or Drive access, ordinary summaries, Gemini API support, or lossless transcript archival.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "meta-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-gemini/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-gemini/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
+    },
+    {
+      "name": "okhp3-thread-extract-mistral-vibe",
       "displayName": "Thread Context Extraction: Mistral Vibe",
       "family": "context-extraction",
-      "skillDir": "okhp3-thread-context-extraction-mistral-vibe",
-      "path": "context-extraction/okhp3-thread-context-extraction-mistral-vibe/SKILL.md",
+      "skillDir": "okhp3-thread-extract-mistral-vibe",
+      "path": "context-extraction/okhp3-thread-extract-mistral-vibe/SKILL.md",
       "description": "Extract manually supplied Mistral Vibe or former Le Chat conversations into standalone, actionable Markdown. Use when the user pastes a Vibe Work, Chat, or Code thread, Canvas, plan, tool trace, approval request, connector result, file analysis, prompt-response sequence, or export excerpt and wants its goals, reasoning, decisions, reusable assets, next actions, provenance, and missing sidecars preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for control-all copies, flattened UI text, and uncertain roles. Do not use for Mistral account or connector access, Vibe operation, API support, ordinary summaries, or lossless transcript archival.",
       "version": "2.0.0",
       "license": "MIT",
@@ -1032,17 +1044,17 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-mistral-vibe/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-mistral-vibe/SKILL.md",
-      "lastModified": "2026-07-22T03:22:23Z",
-      "commitSha": "58d54a79"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-mistral-vibe/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-mistral-vibe/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
-      "name": "okhp3-thread-context-extraction-perplexity",
+      "name": "okhp3-thread-extract-perplexity",
       "displayName": "Thread Context Extraction: Perplexity",
       "family": "context-extraction",
-      "skillDir": "okhp3-thread-context-extraction-perplexity",
-      "path": "context-extraction/okhp3-thread-context-extraction-perplexity/SKILL.md",
+      "skillDir": "okhp3-thread-extract-perplexity",
+      "path": "context-extraction/okhp3-thread-extract-perplexity/SKILL.md",
       "description": "Extract manually supplied Perplexity conversations into standalone, actionable Markdown. Use when the user pastes a Perplexity Thread, Space excerpt, Research or Create output, source-rich answer, prompt-response sequence, uploaded-file reference, or export excerpt and wants its goals, reasoning, decisions, citations, reusable assets, next actions, provenance, and missing sources preserved at rapid, balanced, comprehensive, essential, substantial, exhaustive, scan, distill, or catalog depth. Use for control-all copies, turn-by-turn transfers, flattened source cards, and uncertain roles. Do not use for Perplexity account access or live research, citation verification by itself, ordinary summaries, API support, or lossless archival.",
       "version": "2.0.0",
       "license": "MIT",
@@ -1063,10 +1075,10 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-perplexity/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-perplexity/SKILL.md",
-      "lastModified": "2026-07-22T03:22:23Z",
-      "commitSha": "58d54a79"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-perplexity/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-perplexity/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-celestial-data",
@@ -1262,8 +1274,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-mermaid-bpmn",
@@ -1295,8 +1307,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-mermaid-core",
@@ -1328,8 +1340,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-mermaid-data",
@@ -1361,8 +1373,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-mermaid-governance",
@@ -1370,7 +1382,7 @@
       "family": "mermaid",
       "skillDir": "okhp3-mermaid-governance",
       "path": "mermaid/okhp3-mermaid-governance/SKILL.md",
-      "description": "Governance profile management for Mermaid diagram projects. Use when the user wants to establish a visual and behavioral standard for a diagram project (\"set up our diagram style guide\", \"create a governance profile for this project\", \"what palette and rules should we use for all our diagrams\"), when they want to check whether an existing diagram conforms to a declared profile (\"does this diagram follow our standard?\", \"check this against the governance profile\", \"is this still on-brand?\"), or when they want to audit multiple diagrams for cross-project coherence (\"audit all my BPMN diagrams\", \"are these 12 diagrams consistent?\", \"which diagrams have drifted from our style?\"). Also triggers when the user references a GOVERNANCE.md file, mentions profile drift, asks about cross-diagram consistency, or says a diagram \"doesn't match the others.\" Load okhp3-mermaid-core first. For applying a specific palette to a single new diagram without a declared project standard, use okhp3-mermaid-theme-builder directly instead.",
+      "description": "OverKill Hill P³ Mermaid governance profile manager. Use when establishing a visual and behavioral standard for a diagram project, checking a diagram against a declared profile, or auditing multiple diagrams for cross-project coherence. Also activate for GOVERNANCE.md, profile drift, cross-diagram consistency, or a diagram that “doesn’t match the others.” Load okhp3-mermaid-core first. For a palette on one new diagram without a project standard, use okhp3-mermaid-theme-builder instead.",
       "version": "1.1.0",
       "license": "MIT",
       "category": "developer-tooling",
@@ -1398,8 +1410,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-governance/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-governance/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-mermaid-publish",
@@ -1414,7 +1426,7 @@
       "origin": "okhp3/mermaid-theme-builder",
       "author": "Jamie Hill (OverKill Hill P3)",
       "homepage": null,
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "status": null,
       "tags": [],
       "topics": [],
@@ -1431,8 +1443,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-mermaid-repair",
@@ -1466,8 +1478,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-repair/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-repair/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-mermaid-theme-builder",
@@ -1515,8 +1527,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-theme-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-theme-builder/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-mermaid-update",
@@ -1550,8 +1562,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-update/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-update/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-notion-capture-router",
@@ -1628,8 +1640,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-as-is-process-capture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-as-is-process-capture/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-decision-model-authoring",
@@ -1668,15 +1680,15 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-decision-model-authoring/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-decision-model-authoring/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
-      "name": "okhp3-elicitation-and-interview-facilitation",
-      "displayName": "Elicitation And Interview Facilitation",
+      "name": "okhp3-elicitation-interviews",
+      "displayName": "Elicitation Interviews",
       "family": "process-capture",
-      "skillDir": "okhp3-elicitation-and-interview-facilitation",
-      "path": "process-capture/okhp3-elicitation-and-interview-facilitation/SKILL.md",
+      "skillDir": "okhp3-elicitation-interviews",
+      "path": "process-capture/okhp3-elicitation-interviews/SKILL.md",
       "description": "Plan and facilitate structured elicitation sessions using BABOK v3 interview and workshop techniques. Use this skill when you need to gather process knowledge from subject matter experts; when the user wants a question plan before an interview or workshop; when elicitation is incomplete and gaps need targeted follow-up; when they say \"help me interview the process owner\", \"prepare questions for the workshop\", or \"what should I ask to fill in the missing steps\". Produces a question plan and elicitation notes template.",
       "version": "0.1.0",
       "license": "MIT",
@@ -1706,17 +1718,17 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-elicitation-and-interview-facilitation/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-elicitation-and-interview-facilitation/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-elicitation-interviews/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-elicitation-interviews/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
-      "name": "okhp3-future-state-and-change-strategy",
-      "displayName": "Future State And Change Strategy",
+      "name": "okhp3-future-state-strategy",
+      "displayName": "Future State Strategy",
       "family": "process-capture",
-      "skillDir": "okhp3-future-state-and-change-strategy",
-      "path": "process-capture/okhp3-future-state-and-change-strategy/SKILL.md",
+      "skillDir": "okhp3-future-state-strategy",
+      "path": "process-capture/okhp3-future-state-strategy/SKILL.md",
       "description": "Design a target-state process and a structured change strategy from a gap analysis. Use this skill when the user wants to redesign a process after gaps have been identified; when they ask \"what should the process look like\", \"how do we fix this\", \"design the to-be process\", or \"build a change plan\". Produces a future-state process artifact and a change strategy document. This is a recommended extension skill — use after process-gap-and-exception-analysis has produced a gap analysis. Scope firewall applies: never include employer-proprietary constraints without explicit user authorisation.",
       "version": "0.1.0",
       "license": "MIT",
@@ -1759,24 +1771,62 @@
         "Flag all assumed constraints with `confidence: assumed` in the future-state YAML",
         "Do not include employer-identifying details in any generated artifact"
       ],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-future-state-and-change-strategy/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-future-state-and-change-strategy/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-future-state-strategy/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-future-state-strategy/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
+    },
+    {
+      "name": "okhp3-handoff-packaging",
+      "displayName": "Handoff Packaging",
+      "family": "process-capture",
+      "skillDir": "okhp3-handoff-packaging",
+      "path": "process-capture/okhp3-handoff-packaging/SKILL.md",
+      "description": "Assemble all validated BP-SKILL process artifacts into a publication-ready bundle with a manifest, approvals record, and completeness check. Use this skill when the user is ready to publish or hand off a complete process documentation set; when they ask to package the process docs, create a handoff bundle, publish the process artifacts, or generate a release package. Requires a passing validation report (Band A or B) before bundling. Produces a MANIFEST.yaml, APPROVALS.yaml, and a ZIP-ready directory structure.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "process-publication",
+      "origin": null,
+      "author": "OverKill Hill P³",
+      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/publication-and-handoff-packaging",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [
+        "`validation-report.yaml` exists with `ready_for_publication: true` (Band A or B)",
+        "User is ready to hand off the process documentation to stakeholders or a document management system",
+        "User wants to create a release package for audit, certification, or onboarding"
+      ],
+      "avoid": [
+        "Validation report is missing or `ready_for_publication: false` — run `process-validation-and-quality-scoring` first",
+        "Only a subset of artifacts is ready — wait until all required artifacts pass validation"
+      ],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-handoff-packaging/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-handoff-packaging/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-process-capture",
-      "displayName": "OKHP3 Process Capture",
+      "displayName": "Process Capture",
       "family": "process-capture",
       "skillDir": "okhp3-process-capture",
       "path": "process-capture/okhp3-process-capture/SKILL.md",
       "description": "Capture a recurring task as either a backlog entry or a new skill skeleton. Use when the user says \"I keep doing X\", \"this is the third time\", \"make this a skill\", \"let's capture this\", or at the natural end of a work session when a repeatable pattern just occurred. Extracts the pattern from conversation context (tools used, sequence of steps, input/output formats, corrections made) and produces either a BACKLOG.md line or a SKILL.md skeleton following this repo's conventions — not full skill authoring (that's skill-creator's job once a skeleton exists).",
-      "version": null,
+      "version": "1.1.0",
       "license": "MIT",
-      "category": "process-capture",
-      "origin": null,
-      "author": null,
-      "homepage": null,
+      "category": "meta-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
       "maturity": "skeleton",
       "status": null,
       "tags": [],
@@ -1792,15 +1842,55 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-capture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-capture/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
-      "name": "okhp3-process-gap-and-exception-analysis",
-      "displayName": "Process Gap And Exception Analysis",
+      "name": "okhp3-process-controls-metrics",
+      "displayName": "Process Controls Metrics",
       "family": "process-capture",
-      "skillDir": "okhp3-process-gap-and-exception-analysis",
-      "path": "process-capture/okhp3-process-gap-and-exception-analysis/SKILL.md",
+      "skillDir": "okhp3-process-controls-metrics",
+      "path": "process-capture/okhp3-process-controls-metrics/SKILL.md",
+      "description": "Define process performance measures, KPIs, and compliance controls for a validated PNS. Use this skill when the user needs to add measurability and governance to a documented process; when they ask to define KPIs, set performance targets, add compliance controls, or map the process to a control framework. This is a recommended extension skill — use after process-narrative-authoring when governance and measurement rigour is required. Produces a measures register and a controls register.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "process-governance",
+      "origin": null,
+      "author": "OverKill Hill P³",
+      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-measures-and-controls-definition",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [
+        "PNS quality score ≥ 75 and user needs additional governance structure",
+        "User needs to map process activities to a control framework",
+        "Preparing process documentation for audit or certification",
+        "PNS `kpis[]` or `controls_and_compliance[]` sections are sparse and need enrichment"
+      ],
+      "avoid": [
+        "PNS does not exist or is below quality threshold — complete `process-narrative-authoring` first",
+        "User only needs basic KPIs — use the KPI authoring in `process-narrative-authoring` directly",
+        "Do not invent performance targets without user confirmation — record as `target: TBD` with an open question"
+      ],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-controls-metrics/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-controls-metrics/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
+    },
+    {
+      "name": "okhp3-process-gap-analysis",
+      "displayName": "Process Gap Analysis",
+      "family": "process-capture",
+      "skillDir": "okhp3-process-gap-analysis",
+      "path": "process-capture/okhp3-process-gap-analysis/SKILL.md",
       "description": "Identify deviations, gaps, and exception paths between an as-is process capture and its intended design. Use this skill when the user wants to find where a process breaks down, where steps are missing or inconsistent, where exception handling is undefined, or where current execution differs from documented procedure. Use when they say \"what's wrong with the current process\", \"find the gaps\", \"where does this break\", or \"analyze exceptions\". Produces a gap analysis report and exception catalog.",
       "version": "0.1.0",
       "license": "MIT",
@@ -1830,10 +1920,10 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-gap-and-exception-analysis/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-gap-and-exception-analysis/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-gap-analysis/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-gap-analysis/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-process-intake-and-scope",
@@ -1872,48 +1962,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
-    },
-    {
-      "name": "okhp3-process-measures-and-controls-definition",
-      "displayName": "Process Measures And Controls Definition",
-      "family": "process-capture",
-      "skillDir": "okhp3-process-measures-and-controls-definition",
-      "path": "process-capture/okhp3-process-measures-and-controls-definition/SKILL.md",
-      "description": "Define process performance measures, KPIs, and compliance controls for a validated PNS. Use this skill when the user needs to add measurability and governance to a documented process; when they ask to define KPIs, set performance targets, add compliance controls, or map the process to a control framework. This is a recommended extension skill — use after process-narrative-authoring when governance and measurement rigour is required. Produces a measures register and a controls register.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "category": "process-governance",
-      "origin": null,
-      "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-measures-and-controls-definition",
-      "maturity": "draftable",
-      "status": null,
-      "tags": [],
-      "topics": [],
-      "triggers": [
-        "PNS quality score ≥ 75 and user needs additional governance structure",
-        "User needs to map process activities to a control framework",
-        "Preparing process documentation for audit or certification",
-        "PNS `kpis[]` or `controls_and_compliance[]` sections are sparse and need enrichment"
-      ],
-      "avoid": [
-        "PNS does not exist or is below quality threshold — complete `process-narrative-authoring` first",
-        "User only needs basic KPIs — use the KPI authoring in `process-narrative-authoring` directly",
-        "Do not invent performance targets without user confirmation — record as `target: TBD` with an open question"
-      ],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-measures-and-controls-definition/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-measures-and-controls-definition/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-process-narrative-authoring",
@@ -1952,15 +2002,15 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
-      "name": "okhp3-process-validation-and-quality-scoring",
-      "displayName": "Process Validation And Quality Scoring",
+      "name": "okhp3-process-quality-validation",
+      "displayName": "Process Quality Validation",
       "family": "process-capture",
-      "skillDir": "okhp3-process-validation-and-quality-scoring",
-      "path": "process-capture/okhp3-process-validation-and-quality-scoring/SKILL.md",
+      "skillDir": "okhp3-process-quality-validation",
+      "path": "process-capture/okhp3-process-quality-validation/SKILL.md",
       "description": "Orchestrate the full V1–V9 validation suite across all BP-SKILL process artifacts and produce a 0-100 quality score with band classification. Use this skill when the user wants to validate a complete process documentation set before publication; when they ask \"is this ready to publish\", \"validate the process docs\", \"run the quality check\", or \"what is the quality score\". Produces a validation report with per-artifact scores, rule-level findings, band classification (A–D), and a publication gate verdict.",
       "version": "0.1.0",
       "license": "MIT",
@@ -1989,55 +2039,17 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-validation-and-quality-scoring/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-validation-and-quality-scoring/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-quality-validation/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-quality-validation/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
-      "name": "okhp3-publication-and-handoff-packaging",
-      "displayName": "Publication And Handoff Packaging",
+      "name": "okhp3-raci-governance-matrix",
+      "displayName": "Raci Governance Matrix",
       "family": "process-capture",
-      "skillDir": "okhp3-publication-and-handoff-packaging",
-      "path": "process-capture/okhp3-publication-and-handoff-packaging/SKILL.md",
-      "description": "Assemble all validated BP-SKILL process artifacts into a publication-ready bundle with a manifest, approvals record, and completeness check. Use this skill when the user is ready to publish or hand off a complete process documentation set; when they ask to package the process docs, create a handoff bundle, publish the process artifacts, or generate a release package. Requires a passing validation report (Band A or B) before bundling. Produces a MANIFEST.yaml, APPROVALS.yaml, and a ZIP-ready directory structure.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "category": "process-publication",
-      "origin": null,
-      "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/publication-and-handoff-packaging",
-      "maturity": "draftable",
-      "status": null,
-      "tags": [],
-      "topics": [],
-      "triggers": [
-        "`validation-report.yaml` exists with `ready_for_publication: true` (Band A or B)",
-        "User is ready to hand off the process documentation to stakeholders or a document management system",
-        "User wants to create a release package for audit, certification, or onboarding"
-      ],
-      "avoid": [
-        "Validation report is missing or `ready_for_publication: false` — run `process-validation-and-quality-scoring` first",
-        "Only a subset of artifacts is ready — wait until all required artifacts pass validation"
-      ],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-publication-and-handoff-packaging/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-publication-and-handoff-packaging/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
-    },
-    {
-      "name": "okhp3-raci-and-governance-matrix-generation",
-      "displayName": "Raci And Governance Matrix Generation",
-      "family": "process-capture",
-      "skillDir": "okhp3-raci-and-governance-matrix-generation",
-      "path": "process-capture/okhp3-raci-and-governance-matrix-generation/SKILL.md",
+      "skillDir": "okhp3-raci-governance-matrix",
+      "path": "process-capture/okhp3-raci-governance-matrix/SKILL.md",
       "description": "Generate and validate a RACI matrix and governance responsibility document from a validated PNS. Use this skill when the user needs a standalone RACI chart, a governance matrix, or a responsibility assignment document for a process; when they ask to produce a RACI table, document who is responsible for what, or generate a governance framework for a process. Derives directly from PNS roles_and_raci and activity_sequence sections. Produces raci.md and governance-matrix.md.",
       "version": "0.1.0",
       "license": "MIT",
@@ -2045,7 +2057,7 @@
       "origin": null,
       "author": "OverKill Hill P³",
       "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/raci-and-governance-matrix-generation",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "status": null,
       "tags": [],
       "topics": [],
@@ -2066,10 +2078,10 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-raci-and-governance-matrix-generation/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-raci-and-governance-matrix-generation/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-raci-governance-matrix/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-raci-governance-matrix/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-sipoc-generation",
@@ -2084,7 +2096,7 @@
       "origin": null,
       "author": "OverKill Hill P³",
       "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sipoc-generation",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "status": null,
       "tags": [],
       "topics": [],
@@ -2107,15 +2119,15 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sipoc-generation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sipoc-generation/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
-      "name": "okhp3-sop-and-work-instruction-generation",
-      "displayName": "SOP And Work Instruction Generation",
+      "name": "okhp3-sop-work-instructions",
+      "displayName": "SOP Work Instructions",
       "family": "process-capture",
-      "skillDir": "okhp3-sop-and-work-instruction-generation",
-      "path": "process-capture/okhp3-sop-and-work-instruction-generation/SKILL.md",
+      "skillDir": "okhp3-sop-work-instructions",
+      "path": "process-capture/okhp3-sop-work-instructions/SKILL.md",
       "description": "Generate Standard Operating Procedures (SOPs) and work instructions from a validated PNS. Use this skill when the user needs to produce a human-readable procedure document from a process narrative; when they ask to write an SOP, create work instructions, generate a procedure, or produce an ISO 9001-compliant process document. The generated SOP follows ISO 9001 §4.4.2 documented information requirements. Produces sop.md and optional work-instructions.md for each role.",
       "version": "0.1.0",
       "license": "MIT",
@@ -2145,10 +2157,10 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sop-and-work-instruction-generation/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sop-and-work-instruction-generation/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sop-work-instructions/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sop-work-instructions/SKILL.md",
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-stakeholder-and-role-mapping",
@@ -2163,7 +2175,7 @@
       "origin": null,
       "author": "OverKill Hill P³",
       "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/stakeholder-and-role-mapping",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "status": null,
       "tags": [],
       "topics": [],
@@ -2186,8 +2198,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-visual-process-modeling",
@@ -2226,22 +2238,22 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-visual-process-modeling/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-visual-process-modeling/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-refolddec-core",
-      "displayName": "OKHP3 ReFolDec Core",
+      "displayName": "Refolddec Core",
       "family": "refolddec",
       "skillDir": "okhp3-refolddec-core",
       "path": "refolddec/okhp3-refolddec-core/SKILL.md",
       "description": "Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifact from one representation type to another — folding an idea or process into a compact form, unfolding an artifact into its primitives, or refolding across representation types (diagram to documentation, documentation to SKILL.md, SKILL.md to procedure). Also use when semantic loss across a transformation needs to be tracked or compared. This is not a general writing or diagramming skill — it is a representation-change skill. Load domain skills (okhp3-mermaid-core, okhp3-process-capture) alongside this skill when the transformation target is a diagram or a skill skeleton.",
-      "version": null,
+      "version": "1.1.0",
       "license": "MIT",
-      "category": "refolddec",
-      "origin": null,
-      "author": null,
-      "homepage": null,
+      "category": "meta-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
       "maturity": "draftable",
       "status": null,
       "tags": [],
@@ -2262,8 +2274,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/refolddec/okhp3-refolddec-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/refolddec/okhp3-refolddec-core/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-cloudflare-worker-api-proxy",
@@ -2301,6 +2313,37 @@
       "commitSha": "a6bfd720"
     },
     {
+      "name": "okhp3-database-cartographer",
+      "displayName": "Database Cartographer",
+      "family": "universal",
+      "skillDir": "okhp3-database-cartographer",
+      "path": "universal/okhp3-database-cartographer/SKILL.md",
+      "description": "OverKill Hill P³ database cartographer. Reverse-engineers and documents the live structure of Postgres, MySQL/MariaDB, MS SQL Server, SQLite, Oracle, and Microsoft Access databases via SQLAlchemy reflection or the right engine driver, producing a normalized schema inventory, a severity-classified (P1/P2/P3) diff against a locked design spec, and a Mermaid ER diagram handed to okhp3-mermaid-*/mermaid-diagrams for rendering. Use when asked to reverse-engineer, interrogate, document, or audit an existing database; verify a live build against a schema spec or data dictionary; generate an ER diagram from a real database connection; or check for schema drift. Also activate on \"what does this database actually look like,\" \"document this database,\" \"audit against the spec,\" or \"reflect this database's structure.\" Read-only by design -- not a data-quality profiler, not a migration generator, never writes to the target database.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "universal",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-database-cartographer/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-database-cartographer/SKILL.md",
+      "lastModified": "2026-07-24T12:11:36-05:00",
+      "commitSha": "2dcc4f28"
+    },
+    {
       "name": "okhp3-foundry-repo-creator",
       "displayName": "Foundry Repo Creator",
       "family": "universal",
@@ -2334,8 +2377,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-foundry-repo-creator/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-foundry-repo-creator/SKILL.md",
-      "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-google-gis-client-auth",
@@ -2381,7 +2424,7 @@
       "skillDir": "okhp3-skill-cataloger",
       "path": "universal/okhp3-skill-cataloger/SKILL.md",
       "description": "OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safely regenerate a marked README catalog and machine-readable catalog metadata. Use when asked to list, audit, version-check, validate, or refresh skills under .agents/skills/, or to index a distribution repository’s root family folders. Choose catalog mode for a project surface and explicit --full mode for a distribution index; use --check or --dry-run when no file changes are authorized.",
-      "version": "1.5.0",
+      "version": "1.6.1",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -2402,8 +2445,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-cataloger/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-cataloger/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-skill-foundry",
@@ -2412,7 +2455,7 @@
       "skillDir": "okhp3-skill-foundry",
       "path": "universal/okhp3-skill-foundry/SKILL.md",
       "description": "OverKill Hill P³ skill-authoring and quality system. Use when creating, repairing, refactoring, evaluating, benchmarking, or optimizing any Agent Skill, including its SKILL.md, references, scripts, evals, metadata, or trigger description. Also activate when auditing a skill library for portability, security, progressive disclosure, or with/without-skill lift. This is the authoritative OKHP3 authoring workflow; use it even when the request only says to improve or polish a skill.",
-      "version": "2.0.0",
+      "version": "2.2.0",
       "license": "MIT",
       "category": "meta-tooling",
       "origin": "okhp3/skillz",
@@ -2433,8 +2476,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-foundry/SKILL.md",
-      "lastModified": "2026-07-21T14:53:32-05:00",
-      "commitSha": "159332f5"
+      "lastModified": "2026-07-24T12:55:10-05:00",
+      "commitSha": "30268870"
     },
     {
       "name": "okhp3-vite-github-pages",

@@ -291,49 +291,8 @@ The reference is URL-encoded with `encodeURIComponent`. Response is JSON; the te
 
 **Important:** This is a community API with no uptime guarantee. Treat it as best-effort and implement a graceful fallback to a static error message when unavailable.
 
-#### Book of Mormon reference format
-
-```
-{book abbreviation} {chapter}:{verse}
-```
-
-| Book | Abbreviation |
-|------|-------------|
-| 1 Nephi | `1 Ne.` |
-| 2 Nephi | `2 Ne.` |
-| Jacob | `Jacob` |
-| Enos | `Enos` |
-| Jarom | `Jarom` |
-| Omni | `Omni` |
-| Words of Mormon | `W of M` |
-| Mosiah | `Mosiah` |
-| Alma | `Alma` |
-| Helaman | `Hel.` |
-| 3 Nephi | `3 Ne.` |
-| 4 Nephi | `4 Ne.` |
-| Mormon | `Morm.` |
-| Ether | `Ether` |
-| Moroni | `Moro.` |
-
-Examples: `1 Ne. 3:7`, `Alma 32:21`, `3 Ne. 11:10-11`
-
-#### Doctrine and Covenants reference format
-
-```
-D&C {section}:{verse}
-```
-
-Examples: `D&C 76:22`, `D&C 1:37`
-
-#### Pearl of Great Price reference format
-
-```
-{text} {chapter}:{verse}
-```
-
-Texts: `Moses`, `Abraham`, `JS-H` (Joseph Smith -- History), `JS-M` (Joseph Smith -- Matthew), `A of F` (Articles of Faith)
-
-Examples: `Moses 1:39`, `Abraham 3:22`, `A of F 1:13`
+For accepted Book of Mormon, Doctrine and Covenants, and Pearl of Great Price
+formats and examples, read `references/lds-reference-formats.md`.
 
 ### Fallback behavior for LDS non-Bible passages
 

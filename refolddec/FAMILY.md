@@ -1,8 +1,8 @@
 ---
 family: refolddec
 skill_count: 1
-generated_by: okhp3-skill-cataloger v1.5.0
-generated_at: 2026-07-21T22:35:47Z
+generated_by: okhp3-skill-cataloger v1.6.1
+generated_at: 2026-07-24T17:49:19Z
 ---
 
 # refolddec
@@ -85,9 +85,9 @@ Agent Skills for ReFolDec operations — recursive folding, unfolding, and refol
 ## Skills (1)
 
 <!-- FAMILY_INVENTORY_START -->
-*1 skill &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 22:35 UTC***
+*1 skill &nbsp;·&nbsp; inventory last updated: **July 24, 2026 at 17:49 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-refolddec-core](okhp3-refolddec-core/SKILL.md) | Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifac... | — |
+| [okhp3-refolddec-core](okhp3-refolddec-core/SKILL.md) | Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifac... | 1.1.0 |
 <!-- FAMILY_INVENTORY_END -->

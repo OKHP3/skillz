@@ -370,5 +370,7 @@ Every response from this skill must conform to the following contract. Deviation
 
 ---
 
+## About
+
 *OverKill Hill P³ — Recursive GPT Engineering. Prompts are protocol.*  
 *License: CC BY 4.0 | Attribution required | https://overkillhill.com*

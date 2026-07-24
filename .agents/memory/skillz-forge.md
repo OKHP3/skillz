@@ -66,3 +66,12 @@ Displays: displayName (h1), slug (secondary mono), family, maturity (with toolti
 ## Catalog skill fields
 
 All 67 skills have: name, displayName, family, skillDir, path, description, version, license, category, origin, author, homepage, maturity, status, tags, topics, triggers, avoid, companions, examples, inputs, outputs, tools, runtimes, boundaries, rawUrl, githubUrl, lastModified (ISO 8601, from per-file git log), commitSha (per-file short SHA).
+
+## Family displayNames (added 2026-07-24)
+
+`build-catalog.js` now has a `FAMILY_DISPLAY_NAMES` constant mapping the 11 active
+family slugs to their canonical human-readable names (Abrahamic, Agent Foundry,
+Community, Context Extraction, LifeTrkr, LinkedIn, Mermaid, Notion, Process Capture,
+ReFolDec, Universal). Each family object in catalog.json includes `displayName`.
+The `Family` interface in `forge/src/types/catalog.ts` includes `displayName: string`.
+Home.tsx, Explore.tsx, and Activity.tsx all use `f.displayName || f.name`.

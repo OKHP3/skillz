@@ -15,7 +15,7 @@ compatibility: >
   Node.js 18+ is required for the bundled validator.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "2.0.0"
+  version: "2.2.0"
   category: meta-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -68,12 +68,15 @@ agent is likely to get wrong without the skill; omit facts it already knows.
 
 ### 2. Draft
 
-Start with valid YAML frontmatter. `name` must match the directory and use only
-lowercase letters, numbers, and single hyphens. Keep `description` imperative,
-intent-focused, trigger-rich, and under 1,024 characters. Keep the body under
-500 lines and roughly 5,000 tokens; move depth to focused `references/` files.
-Use relative, one-level-deep links. Add `scripts/` only for deterministic work
-that is clearer or safer as code, and document prerequisites and `--help`.
+Start with valid YAML frontmatter. `name` must match the directory, use only
+lowercase letters, numbers, and single hyphens, and stay within the 64-character
+portable-spec maximum. In this repository, keep the package directory at 36
+characters or fewer to preserve safe clone paths. Keep `description` imperative,
+intent-focused, trigger-rich, and under 1,024 characters; keep `compatibility`
+under 500 characters when it is needed. Keep the body at or under 500 lines and
+roughly 5,000 tokens; move depth to focused `references/` files. Use relative,
+one-level-deep links. Add `scripts/` only for deterministic work that is clearer
+or safer as code, and document prerequisites and `--help`.
 
 OKHP3 skills additionally require the metadata, header, and exact About footer
 defined in `references/brand-standard.md`. Generic skills should not receive
@@ -138,6 +141,20 @@ Before handoff, run the bundled validator:
 node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --skills-dir .agents/skills
 ```
 
+For a distribution-library audit in this repository, scan every package rather
+than only the local support surface:
+
+```text
+node universal/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root .
+```
+
+The validator accepts UTF-8 SKILL.md files with Unix or Windows line endings,
+validates only actual skill packages, and ignores command arguments after a
+backticked resource path. It enforces the 64-character name, 1,024-character
+description, 500-character compatibility, 500-line body, 36-character package,
+64-character path-element, and 180-character repository-relative path limits.
+Treat warnings as improvement work; resolve every error before release.
+
 Then inspect the diff, check all referenced files, review scripts for unsafe
 network or filesystem behavior, scan for secrets and prompt-injection markers,
 and confirm that generated artifacts are intentional. If dependencies are
@@ -159,7 +176,8 @@ missing, report that limitation instead of weakening the validation claim.
 - `references/eval-patterns.md` — evidence-anchored expectation design.
 - `references/grading-schema.md` — grading and benchmark JSON contracts.
 - `assets/skill-template.md` — starter structure for a new OKHP3 skill.
-- `scripts/validate-skill-suite.cjs` — dependency-free structural validator.
+- `scripts/validate-skill-suite.cjs` — dependency-free structural validator with
+  flat `--skills-dir` and recursive `--root` modes.
 
 ## About
 

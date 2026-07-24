@@ -1,8 +1,8 @@
 ---
 family: context-extraction
 skill_count: 9
-generated_by: okhp3-skill-cataloger v1.5.0
-generated_at: 2026-07-21T22:35:47Z
+generated_by: okhp3-skill-cataloger v1.6.1
+generated_at: 2026-07-24T17:49:19Z
 ---
 
 # context-extraction
@@ -56,17 +56,17 @@ The context-extraction family is the mining, extraction, and refinement layer fo
 ## Skills (9)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **July 21, 2026 at 22:35 UTC***
+*9 skills &nbsp;·&nbsp; inventory last updated: **July 24, 2026 at 17:49 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-chatgpt-project-migration](okhp3-chatgpt-project-migration/SKILL.md) | OverKill Hill P³ ChatGPT project migration. Use when migrating, preserving, extracting, inventory... | 1.0.0 |
 | [okhp3-thread-context-extraction](okhp3-thread-context-extraction/SKILL.md) | Extract pasted or uploaded AI chat threads into standalone, actionable Markdown. Use when the use... | 2.0.0 |
-| [okhp3-thread-context-extraction-chatgpt](okhp3-thread-context-extraction-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.0.0 |
-| [okhp3-thread-context-extraction-claude](okhp3-thread-context-extraction-claude/SKILL.md) | Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the... | 2.0.0 |
-| [okhp3-thread-context-extraction-copilot-m365](okhp3-thread-context-extraction-copilot-m365/SKILL.md) | Extract manually supplied Microsoft Copilot and Microsoft 365 Copilot chats into standalone, acti... | 2.0.0 |
-| [okhp3-thread-context-extraction-gemini](okhp3-thread-context-extraction-gemini/SKILL.md) | Extract manually supplied Google Gemini conversations into standalone, actionable Markdown. Use w... | 2.0.0 |
 | [okhp3-thread-context-extraction-grok](okhp3-thread-context-extraction-grok/SKILL.md) | Extract manually supplied xAI Grok conversations into standalone, actionable Markdown. Use when t... | 2.0.0 |
-| [okhp3-thread-context-extraction-mistral-vibe](okhp3-thread-context-extraction-mistral-vibe/SKILL.md) | Extract manually supplied Mistral Vibe or former Le Chat conversations into standalone, actionabl... | 2.0.0 |
-| [okhp3-thread-context-extraction-perplexity](okhp3-thread-context-extraction-perplexity/SKILL.md) | Extract manually supplied Perplexity conversations into standalone, actionable Markdown. Use when... | 2.0.0 |
+| [okhp3-thread-extract-chatgpt](okhp3-thread-extract-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.0.0 |
+| [okhp3-thread-extract-claude](okhp3-thread-extract-claude/SKILL.md) | Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the... | 2.0.0 |
+| [okhp3-thread-extract-copilot-m365](okhp3-thread-extract-copilot-m365/SKILL.md) | Extract manually supplied Microsoft Copilot and Microsoft 365 Copilot chats into standalone, acti... | 2.0.0 |
+| [okhp3-thread-extract-gemini](okhp3-thread-extract-gemini/SKILL.md) | Extract manually supplied Google Gemini conversations into standalone, actionable Markdown. Use w... | 2.0.0 |
+| [okhp3-thread-extract-mistral-vibe](okhp3-thread-extract-mistral-vibe/SKILL.md) | Extract manually supplied Mistral Vibe or former Le Chat conversations into standalone, actionabl... | 2.0.0 |
+| [okhp3-thread-extract-perplexity](okhp3-thread-extract-perplexity/SKILL.md) | Extract manually supplied Perplexity conversations into standalone, actionable Markdown. Use when... | 2.0.0 |
 <!-- FAMILY_INVENTORY_END -->

@@ -8,6 +8,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `okhp3-database-cartographer`, a read-only SQL schema-reflection,
+  specification-diff, and Mermaid ER-handoff skill in the universal family.
 - Added the `context-extraction/` distribution family with nine skills for cross-platform AI-thread extraction, platform-specific capture, provenance-preserving handoffs, and ChatGPT project migration.
 - Added `okhp3-custom-gpt-readiness` and `okhp3-custom-gpt-skill-conversion-planner` with structured dossiers, gap analysis, semantic-loss tracking, and Foundry handoffs for the Custom GPT lifecycle.
 - Added technology inventory, explicit Mermaid CLI and PyYAML dependency declarations, Dependabot configuration, and scheduled version-inventory pull-request automation.
@@ -40,7 +42,12 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
-- Reindexed the full distribution surface at 67 skills across 11 active families, refreshed all generated `README.md` and `FAMILY.md` catalogs, and refreshed the 18-entry project-local support catalog.
+- Reindexed the full distribution surface at 68 skills across 11 active families, refreshed all generated `README.md` and `FAMILY.md` catalogs, refreshed the 18-entry project-local support catalog, and regenerated the Forge search catalog.
+- Shortened 15 public and 7 project-local package identifiers to a 36-character maximum, updated their frontmatter, eval manifests, routing, manifest, stack references, and generated catalogs, and added a portable path gate to the Foundry validator.
+- Hardened `okhp3-skill-cataloger` for UTF-8 Windows-console output and documented the explicit Forge search-index refresh step.
+- Hardened `okhp3-skill-foundry` with a recursive, line-ending-safe validator that enforces current portable Agent Skills limits for names, descriptions, compatibility, bodies, and repository paths.
+- Moved detailed observance-calendar and LDS reference-format material into focused reference files to keep every `SKILL.md` at or under the 500-line progressive-disclosure limit.
+- Updated all Replit handoff PRDs to the 68-skill public inventory and required Replit to rebuild generated catalog data rather than preserve stale counts, timestamps, or package identifiers.
 - Updated the Skillz Forge generated catalog, build pipeline, and curated AI conversation capture stack so new and improved repository skills are represented automatically. The catalog builder now preserves nested frontmatter metadata such as versions, categories, and maturity signals.
 - Updated the Skillz Forge and OverKill Hill Replit handoffs, public-surface family cards, agent routing guide, and machine-readable manifest to reflect the current inventory and distinguish public distribution skills from project-local support tooling.
 - Hardened the `agent-foundry`, `linkedin`, `mermaid`, `notion`, and `universal` skills against the current Agent Skills format: standardized discovery metadata, clarified scope and output contracts, replaced Mermaid scaffold references with operational guidance, tightened connector and publication safety, and removed brittle quota/platform guarantees.

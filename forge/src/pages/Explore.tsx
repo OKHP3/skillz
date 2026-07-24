@@ -104,7 +104,7 @@ export default function Explore() {
                       onClick={() => updateFilter('family', f.name)}
                       aria-pressed={filters.family === f.name}
                     >
-                      {f.name} <span style={{ opacity: 0.5 }}>{f.skillCount}</span>
+                      {f.displayName || f.name} <span style={{ opacity: 0.5 }}>{f.skillCount}</span>
                     </button>
                   </li>
                 ))}
