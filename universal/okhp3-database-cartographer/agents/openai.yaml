@@ -1,0 +1,6 @@
+interface:
+  display_name: "Database Cartographer"
+  short_description: "Reverse-engineer and diagram a live database's real structure."
+  default_prompt: "Interrogate this database, diff it against the design spec, and produce a schema inventory and Mermaid ER diagram."
+policy:
+  allow_implicit_invocation: true

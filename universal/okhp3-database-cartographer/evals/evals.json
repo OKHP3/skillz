@@ -1,0 +1,47 @@
+{
+  "skill_name": "okhp3-database-cartographer",
+  "skill_version": "1.1.0",
+  "status": "designed, not yet executed -- Foundry Phases 4-6 (live execution, grading, benchmarking) not run",
+  "evals": [
+    {
+      "id": "engine-selection",
+      "prompt": "I have a MySQL database and a SQL Server database, both need their schemas documented and diagrammed against our data dictionary. What's the plan?",
+      "expectations": [
+        "Recommends sqlalchemy.inspect() as one shared code path for both engines rather than proposing separate custom scripts per engine.",
+        "Recommends pyodbc for the SQL Server connection, not pymssql, citing its uncertain maintenance status.",
+        "States that diagram generation is a separate step from schema interrogation, not bundled into the same tool.",
+        "Names the three severity tiers (P1/P2/P3) as the classification scheme for any deviations found against the data dictionary."
+      ]
+    },
+    {
+      "id": "access-fragility-disclosure",
+      "prompt": "Can you pull the schema out of this old Access database and tell me what's actually in it?",
+      "expectations": [
+        "States plainly that the Access path (pyodbc+ODBC driver or COM/DAO) is less reliable than the SQLAlchemy path for other engines, not presented with equal confidence.",
+        "Names at least one concrete Access-specific limitation (Windows-only ODBC driver reliance, or mdbtools' known reliability issues on Linux/Mac).",
+        "Notes that DAO/COM can often read linked-table metadata without being able to open the records behind an external link.",
+        "Does not silently fall back to attempting Firestore/NoSQL-style document sampling or any out-of-scope technique."
+      ]
+    },
+    {
+      "id": "diagram-only-request",
+      "prompt": "Just give me an ER diagram of these three tables, I already know the schema, here's the JSON.",
+      "expectations": [
+        "Uses the schema-inventory JSON shape directly (entities/columns/relationships keys) without re-deriving it from a live database connection.",
+        "References the to_mermaid_erdiagram function or scripts/schema_to_mermaid.py by name as the mechanism used.",
+        "Produces valid Mermaid erDiagram syntax with entity attribute lines in the type/name/constraint/note format.",
+        "Does not introduce eralchemy2, Graphviz, or any other third-party ER-diagram library into the response."
+      ]
+    },
+    {
+      "id": "cardinality-inference-without-hand-specification",
+      "prompt": "Here's my schema inventory JSON -- the relationships only have from/to/label plus fk_nullable and fk_unique, I didn't specify cardinality. Generate the ER diagram.",
+      "expectations": [
+        "References infer_cardinality() by name as the mechanism that derives cardinality from fk_nullable/fk_unique, rather than asking the user to supply cardinality manually.",
+        "States that a NOT-NULL, non-unique FK infers to a required one-to-many operator (||--|{), distinguishing it from a nullable FK's optional one-to-many (||--o{).",
+        "States that a unique FK infers to a one-to-one operator (||--|| or ||--|o depending on nullability), not a one-to-many operator.",
+        "Notes that fk_nullable and fk_unique are already available from sqlalchemy.inspect()'s get_columns()/get_unique_constraints() output, not from an extra query."
+      ]
+    }
+  ]
+}
