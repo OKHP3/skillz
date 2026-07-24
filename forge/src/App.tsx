@@ -1,3 +1,4 @@
+import { ThemeProvider } from './contexts/ThemeContext';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
 import { trackPageview } from './utils/analytics';
@@ -46,6 +47,7 @@ function AnalyticsTracker() {
 
 export default function App() {
   return (
+    <ThemeProvider>
     <HashRouter>
       <AnalyticsTracker />
       <Suspense fallback={<Loading />}>
@@ -63,5 +65,6 @@ export default function App() {
         </Routes>
       </Suspense>
     </HashRouter>
+    </ThemeProvider>
   );
 }
