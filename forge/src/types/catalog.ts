@@ -34,6 +34,7 @@ export interface Skill {
 
 export interface Family {
   name: string;
+  displayName: string;
   skillCount: number;
   skills: string[];
 }

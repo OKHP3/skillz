@@ -47,7 +47,7 @@ export default function Activity() {
               {recentSkills.map(skill => (
                 <li key={skill.name}>
                   <div>
-                    <Link to={`/skills/${skill.family}/${skill.name}`} style={{ fontWeight: 500, display: 'block' }}>{skill.name}</Link>
+                    <Link to={`/skills/${skill.family}/${skill.name}`} style={{ fontWeight: 500, display: 'block' }}>{skill.displayName || skill.name}</Link>
                     <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-steel)', fontFamily: 'var(--font-mono)' }}>{skill.family}</span>
                   </div>
                   <span data-maturity={skill.maturity}>{skill.maturity}</span>

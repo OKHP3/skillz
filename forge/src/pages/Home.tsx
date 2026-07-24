@@ -89,7 +89,7 @@ export default function Home() {
           <div className="home-families">
             {catalog.families.map(f => (
               <Link to={`/explore?family=${f.name}`} key={f.name} className="home-family-card">
-                <strong>{f.name}</strong>
+                <strong>{f.displayName || f.name}</strong>
                 <span>{f.skillCount} skill{f.skillCount !== 1 ? 's' : ''}</span>
               </Link>
             ))}
