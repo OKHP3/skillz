@@ -22,7 +22,7 @@ Become the reusable execution layer of the OKHP3 Visual Language Stack, with com
 
 ## Scope and boundaries
 
-This repository contains SKILL.md contracts, references, examples, fixtures, and small validation or rendering utilities. It is not a deployed application, service, monorepo, or npm workspace. There is one Git repository at the root; no nested Git repositories were found.
+This repository contains SKILL.md contracts, references, examples, fixtures, and small validation or rendering utilities. It also contains the `forge/` Vite/React frontend that builds the public Skillz Forge catalog. It is not a backend service or npm workspace. The root `package.json` is a legacy/scaffold manifest and is not the repository runtime; use the `forge/` and package-local commands documented below. There is one Git repository at the root; no nested Git repositories were found.
 
 The root family directories are the distribution surface. `.agents/skills/` is a project-local support surface containing cataloging, skill-authoring, FoundRy tooling, and platform-specific context-extraction support. Do not count those 18 entries as additional distribution families.
 
@@ -194,7 +194,8 @@ The family is intended to expand to Gemini Gems, Copilot declarative agents, Ope
 - Node.js runs the 15 process-capture package test suites and JavaScript utilities. The tracked CI LTS pin is `.github/node-version`.
 - Python runs the cataloger, skill-authoring utilities, MCP examples, and technology inventory script. The tracked CI pin is `.github/python-version`; `.replit` requests Python 3.11.
 - `process-capture/*/package.json` files are private, standalone ESM packages at version `0.1.0` with no npm dependencies and the test script `node --test tests/*.test.mjs`.
-- `mermaid/okhp3-mermaid-publish/package.json` is a private ESM package with Mermaid CLI `11.16.0` as a dev dependency. There is no root `package.json`, workspace, lockfile, TypeScript config, Vite config, Dockerfile, or deployed runtime.
+- `forge/package.json` is the private Vite/React frontend package for Skillz Forge; its build is deployed to GitHub Pages by `.github/workflows/deploy-pages.yml`.
+- `mermaid/okhp3-mermaid-publish/package.json` is a private ESM package with Mermaid CLI `11.16.0` as a dev dependency. The root package is not a workspace and is not the application runtime; there is no root TypeScript config, Vite config, Dockerfile, or backend runtime.
 - Python requirements are local to `community/skill-creator` and `community/mcp-builder`. Do not assume a root virtual environment or dependency installation.
 - `.github/workflows/refresh-technology-inventory.yml` is scheduled automation for version inventory updates. It is not the repository's general CI test suite.
 
@@ -255,4 +256,4 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-07-21
+Updated: 2026-07-24
