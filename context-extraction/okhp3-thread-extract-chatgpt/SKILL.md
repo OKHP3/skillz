@@ -1,5 +1,5 @@
 ---
-name: okhp3-thread-context-extraction-chatgpt
+name: okhp3-thread-extract-chatgpt
 description: >
   Extract manually supplied ChatGPT conversations into standalone, actionable
   Markdown. Use when the user pastes a ChatGPT chat, Project thread, Canvas,

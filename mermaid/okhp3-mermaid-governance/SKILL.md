@@ -8,7 +8,14 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
-description: Governance profile management for Mermaid diagram projects. Use when the user wants to establish a visual and behavioral standard for a diagram project ("set up our diagram style guide", "create a governance profile for this project", "what palette and rules should we use for all our diagrams"), when they want to check whether an existing diagram conforms to a declared profile ("does this diagram follow our standard?", "check this against the governance profile", "is this still on-brand?"), or when they want to audit multiple diagrams for cross-project coherence ("audit all my BPMN diagrams", "are these 12 diagrams consistent?", "which diagrams have drifted from our style?"). Also triggers when the user references a GOVERNANCE.md file, mentions profile drift, asks about cross-diagram consistency, or says a diagram "doesn't match the others." Load okhp3-mermaid-core first. For applying a specific palette to a single new diagram without a declared project standard, use okhp3-mermaid-theme-builder directly instead.
+description: >
+  OverKill Hill P³ Mermaid governance profile manager. Use when establishing a
+  visual and behavioral standard for a diagram project, checking a diagram
+  against a declared profile, or auditing multiple diagrams for cross-project
+  coherence. Also activate for GOVERNANCE.md, profile drift, cross-diagram
+  consistency, or a diagram that “doesn’t match the others.” Load
+  okhp3-mermaid-core first. For a palette on one new diagram without a project
+  standard, use okhp3-mermaid-theme-builder instead.
 ---
 
 # okhp3-mermaid-governance

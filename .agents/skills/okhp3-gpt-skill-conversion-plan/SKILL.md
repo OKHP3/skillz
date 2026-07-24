@@ -1,5 +1,5 @@
 ---
-name: okhp3-custom-gpt-skill-conversion-planner
+name: okhp3-gpt-skill-conversion-plan
 description: >-
   Plan conversion of an existing Custom GPT into a portable Agent Skill. Use
   when a GPT already has instructions, knowledge files, actions, conversation

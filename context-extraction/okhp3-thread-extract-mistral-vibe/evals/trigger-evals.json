@@ -1,5 +1,5 @@
 {
-  "skill_name": "okhp3-thread-context-extraction-mistral-vibe",
+  "skill_name": "okhp3-thread-extract-mistral-vibe",
   "skill_version": "2.0.0",
   "should_trigger": [
     "I pasted a Mistral Vibe Work thread and Canvas. Distill it into a standalone repository artifact.",

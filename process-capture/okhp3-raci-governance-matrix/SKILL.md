@@ -1,5 +1,5 @@
 ---
-name: okhp3-raci-and-governance-matrix-generation
+name: okhp3-raci-governance-matrix
 description: Generate and validate a RACI matrix and governance responsibility document from a validated PNS. Use this skill when the user needs a standalone RACI chart, a governance matrix, or a responsibility assignment document for a process; when they ask to produce a RACI table, document who is responsible for what, or generate a governance framework for a process. Derives directly from PNS roles_and_raci and activity_sequence sections. Produces raci.md and governance-matrix.md.
 license: MIT
 homepage: https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/raci-and-governance-matrix-generation
@@ -112,3 +112,10 @@ Load on demand:
 ## Assets
 
 - `assets/fixtures/raci-example.yaml` — canonical RACI fixture for purchase-approval process
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

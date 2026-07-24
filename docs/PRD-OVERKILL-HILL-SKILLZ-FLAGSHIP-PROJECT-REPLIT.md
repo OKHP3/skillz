@@ -319,13 +319,13 @@ Present the project surfaces in the same spirit as the other flagship pages:
 
 Use the following repository-backed facts in the public page copy, as indexed July 21, 2026:
 
-- 67 public distribution skills.
+- 68 public distribution skills.
 - 11 active families.
 - 2 placeholder family directories that are not counted as available skills.
 - 9 context-extraction skills for cross-platform AI-thread handoffs, platform-specific capture, and ChatGPT project migration.
 - 18 project-local support skills under `.agents/skills/`; these are repository tooling and are not public distribution entries.
 
-Treat the GitHub repository and generated catalog as the source of truth. Do not manually enumerate the full catalog in the OverKill Hill project page, and do not advertise the 18 project-local support skills as public installable entries.
+Treat the GitHub repository and generated catalog as the source of truth. Do not manually enumerate the full catalog in the OverKill Hill project page, and do not advertise the 18 project-local support skills as public installable entries. Before publishing, regenerate the Forge catalog from the checked-out repository and use its actual public count, family count, and `generatedAt` value rather than stale prose.
 
 ### 12. Honest scope
 

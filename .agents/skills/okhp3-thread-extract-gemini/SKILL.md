@@ -1,5 +1,5 @@
 ---
-name: okhp3-thread-context-extraction-gemini
+name: okhp3-thread-extract-gemini
 description: >
   Extract manually supplied Google Gemini conversations into standalone,
   actionable Markdown. Use when the user pastes a Gemini chat, Gem output,

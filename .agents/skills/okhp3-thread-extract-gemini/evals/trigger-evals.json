@@ -1,5 +1,5 @@
 {
-  "skill_name": "okhp3-thread-context-extraction-gemini",
+  "skill_name": "okhp3-thread-extract-gemini",
   "skill_version": "2.0.0",
   "should_trigger": [
     "I pasted a Gemini chat and Canvas document. Distill them into a standalone repository artifact.",

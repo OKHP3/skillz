@@ -1,5 +1,5 @@
 {
-  "skill_name": "okhp3-thread-context-extraction-chatgpt",
+  "skill_name": "okhp3-thread-extract-chatgpt",
   "skill_version": "2.0.0",
   "should_trigger": [
     "I pasted a ChatGPT Project chat and its Canvas text. Distill it into a standalone repository handoff.",

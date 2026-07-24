@@ -32,8 +32,8 @@ metadata:
 
 | Field | Rule |
 |-------|------|
-| `name` | Must match the directory name exactly. `okhp3-<slug>`. |
-| `description` | Triggering text. See "Writing the description" below. |
+| `name` | Must match the directory name exactly. `okhp3-<slug>`, at most 64 characters by the Agent Skills specification; keep the package directory at 36 or fewer in this repository. |
+| `description` | Triggering text, at least one character and at most 1,024. See "Writing the description" below. |
 | `license` | `MIT` for all OKHP3 skills. |
 | `metadata.author` | `Jamie Hill (OverKill Hill P³)` -- exact string. |
 | `metadata.version` | Quoted string. Semver. Start at `"1.0.0"`. |
@@ -68,7 +68,9 @@ The description field is the primary triggering mechanism. It is always in conte
 3. Include at least one "Also activate when..." sentence for secondary triggers.
 4. End with a disambiguation sentence if the skill competes with another for the same trigger territory.
 
-**Length:** 4-8 sentences. The `>` block scalar removes newlines -- write it as flowing text.
+**Length:** Prefer 2-5 concise, trigger-rich sentences; never exceed 1,024
+characters. The `>` block scalar removes newlines -- write it as flowing text.
+Front-load the primary trigger because clients may truncate the initial list.
 
 **Tone:** Assertive. The description should cause the agent to load the skill slightly earlier rather than slightly later. Err toward triggering.
 

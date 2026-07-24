@@ -1,9 +1,19 @@
 ---
 name: okhp3-refolddec-core
 description: Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifact from one representation type to another — folding an idea or process into a compact form, unfolding an artifact into its primitives, or refolding across representation types (diagram to documentation, documentation to SKILL.md, SKILL.md to procedure). Also use when semantic loss across a transformation needs to be tracked or compared. This is not a general writing or diagramming skill — it is a representation-change skill. Load domain skills (okhp3-mermaid-core, okhp3-process-capture) alongside this skill when the transformation target is a diagram or a skill skeleton.
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: meta-tooling
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Explicit fold, unfold, and refold operations with semantic-loss tracking."
+  out_of_scope: "General writing, direct diagram authoring, or syntax repair without a representation change."
 ---
 
-# OKHP3 ReFolDec Core
+# okhp3-refolddec-core
 
 Transformation-aware execution for fold, unfold, and refold operations across representation types.
 
@@ -83,3 +93,10 @@ When the user needs to evaluate two representations of the same content — e.g.
 - Does not edit existing diagrams for content changes — route to `okhp3-mermaid-update`
 - Does not repair broken syntax — route to `okhp3-mermaid-repair`
 - Does not produce generalist summaries or rewrites — the transformation must be named and the source/target types must be distinct
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

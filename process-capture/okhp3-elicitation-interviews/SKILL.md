@@ -1,5 +1,5 @@
 ---
-name: okhp3-elicitation-and-interview-facilitation
+name: okhp3-elicitation-interviews
 description: Plan and facilitate structured elicitation sessions using BABOK v3 interview and workshop techniques. Use this skill when you need to gather process knowledge from subject matter experts; when the user wants a question plan before an interview or workshop; when elicitation is incomplete and gaps need targeted follow-up; when they say "help me interview the process owner", "prepare questions for the workshop", or "what should I ask to fill in the missing steps". Produces a question plan and elicitation notes template.
 license: MIT
 homepage: https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/elicitation-and-interview-facilitation
@@ -121,3 +121,10 @@ Load on demand:
 ## Assets
 
 - `assets/fixtures/question-plan-example.yaml` — canonical question plan for purchase-approval intake
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

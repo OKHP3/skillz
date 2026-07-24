@@ -13,7 +13,7 @@ metadata:
   maturity: draftable
 ---
 
-# Notion Capture Router
+# okhp3-notion-capture-router
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 

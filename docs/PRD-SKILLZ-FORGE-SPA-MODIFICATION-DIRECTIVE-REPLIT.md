@@ -123,10 +123,10 @@ The following facts were observed from the current GitHub repository during prep
 - Default branch: `main`.
 - Current repository state is unreleased. The manifest version is `0.0.0-unreleased`.
 - Repository license is MIT.
-- Distribution catalog snapshot: 67 public skills across 11 active families.
+- Distribution catalog snapshot: 68 public skills across 11 active families.
 - Placeholder families: `askjamie` and `glee-fully`.
 - Project-local support skills under `.agents/skills/` are excluded from the public distribution count.
-- The generated catalog snapshot observed in `forge/src/data/catalog.json` was generated at `2026-07-22T03:22:58.637Z` from source commit `58d54a7`.
+- Treat `forge/src/data/catalog.json` as a generated snapshot. Rebuild it from the current repository before implementation and report its actual `generatedAt` and source commit rather than preserving an old timestamp or commit hash.
 - The observed GitHub branch head was `cc0a0255be71babd62f52e9436ec179e4d2c37d6`. Re-resolve this value before implementation.
 - The current source includes the `agent-foundry` and `context-extraction` families.
 - The current `context-extraction` source contains nine skills with human-readable H1 titles. The UI must display those titles where available instead of presenting only slug-derived names.

@@ -1,5 +1,5 @@
 ---
-name: okhp3-thread-context-extraction-perplexity
+name: okhp3-thread-extract-perplexity
 description: >
   Extract manually supplied Perplexity conversations into standalone,
   actionable Markdown. Use when the user pastes a Perplexity Thread, Space

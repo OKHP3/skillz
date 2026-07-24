@@ -20,7 +20,7 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 67,
+  "distributionSkillCount": 68,
   "activeFamilyCount": 11,
   "placeholderFamilyCount": 2,
   "projectLocalSupportSkillCount": 18,
@@ -41,7 +41,7 @@
       "skills": [
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
-        "okhp3-custom-gpt-skill-conversion-planner"
+        "okhp3-gpt-skill-conversion-plan"
       ]
     },
     {
@@ -69,13 +69,13 @@
       "skills": [
         "okhp3-chatgpt-project-migration",
         "okhp3-thread-context-extraction",
-        "okhp3-thread-context-extraction-chatgpt",
-        "okhp3-thread-context-extraction-claude",
-        "okhp3-thread-context-extraction-copilot-m365",
-        "okhp3-thread-context-extraction-gemini",
+        "okhp3-thread-extract-chatgpt",
+        "okhp3-thread-extract-claude",
+        "okhp3-thread-extract-copilot-m365",
+        "okhp3-thread-extract-gemini",
         "okhp3-thread-context-extraction-grok",
-        "okhp3-thread-context-extraction-mistral-vibe",
-        "okhp3-thread-context-extraction-perplexity"
+        "okhp3-thread-extract-mistral-vibe",
+        "okhp3-thread-extract-perplexity"
       ]
     },
     {
@@ -123,18 +123,18 @@
       "skills": [
         "okhp3-as-is-process-capture",
         "okhp3-decision-model-authoring",
-        "okhp3-elicitation-and-interview-facilitation",
-        "okhp3-future-state-and-change-strategy",
+        "okhp3-elicitation-interviews",
+        "okhp3-future-state-strategy",
         "okhp3-process-capture",
-        "okhp3-process-gap-and-exception-analysis",
+        "okhp3-process-gap-analysis",
         "okhp3-process-intake-and-scope",
-        "okhp3-process-measures-and-controls-definition",
+        "okhp3-process-controls-metrics",
         "okhp3-process-narrative-authoring",
-        "okhp3-process-validation-and-quality-scoring",
-        "okhp3-publication-and-handoff-packaging",
-        "okhp3-raci-and-governance-matrix-generation",
+        "okhp3-process-quality-validation",
+        "okhp3-handoff-packaging",
+        "okhp3-raci-governance-matrix",
         "okhp3-sipoc-generation",
-        "okhp3-sop-and-work-instruction-generation",
+        "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
         "okhp3-visual-process-modeling"
       ]
@@ -151,6 +151,7 @@
       "status": "draftable",
       "skills": [
         "okhp3-cloudflare-worker-api-proxy",
+        "okhp3-database-cartographer",
         "okhp3-foundry-repo-creator",
         "okhp3-google-gis-client-auth",
         "okhp3-skill-cataloger",

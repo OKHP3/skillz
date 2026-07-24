@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: "Jamie Hill (OverKill Hill P³)"
-  version: "1.5.0"
+  version: "1.6.1"
   category: "universal"
   origin: "okhp3/skillz"
   homepage: "https://overkillhill.com"
@@ -103,11 +103,27 @@ that would be absorbed and deleted. A normal `--full` may delete a family
 `README.md` on first `FAMILY.md` creation; pass `--no-absorb-readme` to preserve
 it. Use `--no-family-md` to skip family files entirely.
 
+### 4. Refresh a web search index when present
+
+The cataloger owns the README, family inventories, and catalog metadata. A web
+application may keep a separate derived search index. After a successful full
+index run, detect a documented project-local builder and run it explicitly. In
+this repository, refresh the Forge index with:
+
+```bash
+node forge/scripts/build-catalog.js
+```
+
+Do not claim the web catalog is current until this command succeeds and its
+generated diff is reviewed. This project-specific step is intentionally not
+embedded in the dependency-free Python cataloger.
+
 ## Output contract
 
 Report the discovered count, explicit/effective mode, scan root, output path,
-whether the output changed, warnings, and whether `.catalog-meta.json` was
-written. Explain that generated sections are delimited by:
+whether the output changed, warnings, whether `.catalog-meta.json` was written,
+and the result of any separately invoked web-index refresh. Explain that
+generated sections are delimited by:
 
 ```text
 <!-- SKILLS_CATALOG_START -->

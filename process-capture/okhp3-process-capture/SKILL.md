@@ -1,9 +1,19 @@
 ---
 name: okhp3-process-capture
 description: Capture a recurring task as either a backlog entry or a new skill skeleton. Use when the user says "I keep doing X", "this is the third time", "make this a skill", "let's capture this", or at the natural end of a work session when a repeatable pattern just occurred. Extracts the pattern from conversation context (tools used, sequence of steps, input/output formats, corrections made) and produces either a BACKLOG.md line or a SKILL.md skeleton following this repo's conventions — not full skill authoring (that's skill-creator's job once a skeleton exists).
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.1.0"
+  category: meta-tooling
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Recurring-task recognition, bounded backlog capture, and skill-skeleton handoff."
+  out_of_scope: "Full skill authoring, unapproved repository edits, and treating one-off work as a durable workflow."
 ---
 
-# OKHP3 Process Capture
+# okhp3-process-capture
 
 The intake mechanism. Turns "I just did this for the third time" into a structured artifact, not a lost observation.
 
@@ -24,3 +34,10 @@ The intake mechanism. Turns "I just did this for the third time" into a structur
 ## Handoff
 
 A skeleton from this skill is a starting point for `skill-creator` (the Anthropic example skill, if available) for full authoring, testing, and description-optimization — this skill does intake and structure, not iteration and evals.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

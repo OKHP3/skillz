@@ -1,5 +1,5 @@
 ---
-name: okhp3-thread-context-extraction-claude
+name: okhp3-thread-extract-claude
 description: >
   Extract manually supplied Claude conversations into standalone, actionable
   Markdown. Use when the user pastes a Claude chat, Project excerpt, Artifact,

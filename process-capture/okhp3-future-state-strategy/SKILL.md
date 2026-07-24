@@ -1,5 +1,5 @@
 ---
-name: okhp3-future-state-and-change-strategy
+name: okhp3-future-state-strategy
 description: Design a target-state process and a structured change strategy from a gap analysis. Use this skill when the user wants to redesign a process after gaps have been identified; when they ask "what should the process look like", "how do we fix this", "design the to-be process", or "build a change plan". Produces a future-state process artifact and a change strategy document. This is a recommended extension skill — use after process-gap-and-exception-analysis has produced a gap analysis. Scope firewall applies: never include employer-proprietary constraints without explicit user authorisation.
 license: MIT
 homepage: https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/future-state-and-change-strategy
@@ -137,3 +137,10 @@ Load on demand:
 ## Assets
 
 - `assets/fixtures/future-state-example.yaml` — canonical future-state design for purchase-approval process
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

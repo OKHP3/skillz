@@ -1,5 +1,5 @@
 ---
-name: okhp3-process-validation-and-quality-scoring
+name: okhp3-process-quality-validation
 description: Orchestrate the full V1–V9 validation suite across all BP-SKILL process artifacts and produce a 0-100 quality score with band classification. Use this skill when the user wants to validate a complete process documentation set before publication; when they ask "is this ready to publish", "validate the process docs", "run the quality check", or "what is the quality score". Produces a validation report with per-artifact scores, rule-level findings, band classification (A–D), and a publication gate verdict.
 license: MIT
 homepage: https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-validation-and-quality-scoring
@@ -129,3 +129,10 @@ Load on demand:
 ## Assets
 
 - `assets/fixtures/validation-report-example.yaml` — canonical validation report for purchase-approval process set
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

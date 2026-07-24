@@ -1,5 +1,5 @@
 {
-  "skill_name": "okhp3-thread-context-extraction-claude",
+  "skill_name": "okhp3-thread-extract-claude",
   "skill_version": "2.0.0",
   "should_trigger": [
     "I pasted a Claude Project conversation and two Artifact versions. Create a portable repository extract.",

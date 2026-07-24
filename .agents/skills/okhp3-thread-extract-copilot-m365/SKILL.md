@@ -1,5 +1,5 @@
 ---
-name: okhp3-thread-context-extraction-copilot-m365
+name: okhp3-thread-extract-copilot-m365
 description: >
   Extract manually supplied Microsoft Copilot and Microsoft 365 Copilot chats
   into standalone, actionable Markdown. Use when the user pastes a Copilot chat,

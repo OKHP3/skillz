@@ -76,13 +76,13 @@ The current forge application already provides a useful base:
 
 Catalog snapshot for this handoff, indexed July 21, 2026:
 
-- 67 public distribution skills.
+- 68 public distribution skills.
 - 11 active families.
 - 2 placeholder family directories, excluded from the skill count.
 - 18 project-local support skills under `.agents/skills/`, excluded from the public distribution catalog.
 - 9 skills in the newly active `context-extraction` family.
 
-The catalog must remain generated from repository content. Do not hardcode these numbers in the UI. Regenerate `forge/src/data/catalog.json` from `forge/scripts/build-catalog.js` during the app build so repository additions and improvements become visible automatically.
+The catalog must remain generated from repository content. Do not hardcode these numbers in the UI. Regenerate `forge/src/data/catalog.json` from `forge/scripts/build-catalog.js` during the app build so repository additions, renamed package identifiers, and improvements become visible automatically.
 
 Preserve the working app. Do not replace it with a screenshot or a non-functional redesign.
 

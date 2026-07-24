@@ -377,68 +377,9 @@ function computeOrthodoxEaster(year: number): Date {
 
 ### 6.3 Holiday generation
 
-```typescript
-function generateChristianHolidays(year: number): ObservanceEvent[] {
-  const w = computeWesternEaster(year);
-  const o = computeOrthodoxEaster(year);
-  const off = (base: Date, days: number) => {
-    const d = new Date(base); d.setDate(d.getDate() + days); return d;
-  };
-  const fix = (m: number, d: number) => new Date(year, m - 1, d);
-
-  // Compute First Sunday of Advent
-  const christmas = fix(12, 25);
-  const christmasDow = christmas.getDay();
-  const advent1 = new Date(christmas);
-  advent1.setDate(christmas.getDate() - christmasDow - 21);
-
-  // Compute Reformation Sunday (last Sunday of October)
-  const oct31 = fix(10, 31);
-  const reformationSunday = new Date(oct31);
-  reformationSunday.setDate(oct31.getDate() - oct31.getDay());
-
-  return [
-    // Fixed feasts -- all denominations
-    { rawName: 'Epiphany',              emoji: '✝️', denomination: 'all',            startDate: fix(1,6),    endDate: fix(1,6),    source: 'algorithm' },
-    { rawName: 'Christmas Eve',         emoji: '✝️', denomination: 'all',            startDate: fix(12,24),  endDate: fix(12,24),  source: 'algorithm' },
-    { rawName: 'Christmas',             emoji: '✝️', denomination: 'all',            startDate: fix(12,25),  endDate: fix(12,25),  source: 'algorithm' },
-    // Catholic-specific fixed feasts
-    { rawName: 'Candlemas',             emoji: '✝️', denomination: 'catholic',       startDate: fix(2,2),    endDate: fix(2,2),    source: 'algorithm' },
-    { rawName: 'All Saints Day',        emoji: '✝️', denomination: 'catholic',       startDate: fix(11,1),   endDate: fix(11,1),   source: 'algorithm' },
-    { rawName: 'Immaculate Conception', emoji: '✝️', denomination: 'catholic',       startDate: fix(12,8),   endDate: fix(12,8),   source: 'algorithm' },
-    // Advent
-    { rawName: 'Advent (First Sunday)', emoji: '✝️', denomination: 'all',            startDate: advent1,     endDate: advent1,     source: 'algorithm' },
-    // Easter-derived -- Western
-    { rawName: 'Ash Wednesday',         emoji: '✝️', denomination: 'all',            startDate: off(w,-46),  endDate: off(w,-46),  source: 'algorithm' },
-    { rawName: 'Palm Sunday',           emoji: '✝️', denomination: 'all',            startDate: off(w,-7),   endDate: off(w,-7),   source: 'algorithm' },
-    { rawName: 'Maundy Thursday',       emoji: '✝️', denomination: 'all',            startDate: off(w,-3),   endDate: off(w,-3),   source: 'algorithm' },
-    { rawName: 'Good Friday',           emoji: '✝️', denomination: 'all',            startDate: off(w,-2),   endDate: off(w,-2),   source: 'algorithm' },
-    { rawName: 'Holy Saturday',         emoji: '✝️', denomination: 'all',            startDate: off(w,-1),   endDate: off(w,-1),   source: 'algorithm' },
-    { rawName: 'Easter Sunday',         emoji: '✝️', denomination: 'all',            startDate: w,           endDate: w,           source: 'algorithm' },
-    { rawName: 'Easter Monday',         emoji: '✝️', denomination: 'catholic',       startDate: off(w,1),    endDate: off(w,1),    source: 'algorithm' },
-    { rawName: 'Ascension Thursday',    emoji: '✝️', denomination: 'all',            startDate: off(w,39),   endDate: off(w,39),   source: 'algorithm' },
-    { rawName: 'Pentecost',             emoji: '✝️', denomination: 'all',            startDate: off(w,49),   endDate: off(w,49),   source: 'algorithm' },
-    { rawName: 'Trinity Sunday',        emoji: '✝️', denomination: 'protestant',     startDate: off(w,56),   endDate: off(w,56),   source: 'algorithm' },
-    { rawName: 'Corpus Christi',        emoji: '✝️', denomination: 'catholic',       startDate: off(w,60),   endDate: off(w,60),   source: 'algorithm' },
-    // Protestant-specific
-    { rawName: 'Reformation Sunday',    emoji: '✝️', denomination: 'protestant',     startDate: reformationSunday, endDate: reformationSunday, source: 'algorithm' },
-    // Orthodox
-    { rawName: 'Orthodox Christmas',    emoji: '☦️', denomination: 'orthodox',       startDate: fix(1,7),    endDate: fix(1,7),    source: 'algorithm' },
-    { rawName: 'Theophany',             emoji: '☦️', denomination: 'orthodox',       startDate: fix(1,19),   endDate: fix(1,19),   source: 'algorithm' },
-    { rawName: 'Orthodox Palm Sunday',  emoji: '☦️', denomination: 'orthodox',       startDate: off(o,-7),   endDate: off(o,-7),   source: 'algorithm' },
-    { rawName: 'Orthodox Good Friday',  emoji: '☦️', denomination: 'orthodox',       startDate: off(o,-2),   endDate: off(o,-2),   source: 'algorithm' },
-    { rawName: 'Orthodox Easter',       emoji: '☦️', denomination: 'orthodox',       startDate: o,           endDate: o,           source: 'algorithm' },
-    { rawName: 'Orthodox Pentecost',    emoji: '☦️', denomination: 'orthodox',       startDate: off(o,49),   endDate: off(o,49),   source: 'algorithm' },
-  ].map(h => ({
-    ...h,
-    id: `christianity-${h.rawName.replace(/\s+/g, '-').toLowerCase()}-${year}-${h.startDate.toISOString().split('T')[0]}`,
-    title: `${h.emoji} ${h.rawName}`,
-    tradition: 'christianity' as const,
-    isMultiDay: false,
-    wikiArticle: WIKIPEDIA_ARTICLE_MAP[h.rawName],
-  }));
-}
-```
+Generate from the two Easter anchors, preserving denomination labels and
+stable event IDs. Read `references/computus.md` for the complete deterministic
+implementation, feast inventory, and validation dates.
 
 ---
 
@@ -454,99 +395,10 @@ GET https://en.wikipedia.org/api/rest_v1/page/summary/{article_title}
 
 ### 7.2 Fetch pattern
 
-```typescript
-async function getHolidayDescription(rawName: string): Promise<{
-  extract: string;
-  wikiUrl: string;
-} | null> {
-  const normalized = rawName.replace(/\s+\d{4}$/, '').trim(); // strip Hebcal year suffix
-  const articleTitle = WIKIPEDIA_ARTICLE_MAP[normalized] || WIKIPEDIA_ARTICLE_MAP[rawName];
-  if (!articleTitle) return null;
-
-  const cacheKey = `are_wiki_${articleTitle}`;
-  const cached = sessionStorage?.getItem(cacheKey);
-  if (cached) return JSON.parse(cached);
-
-  try {
-    const res = await fetch(
-      `https://en.wikipedia.org/api/rest_v1/page/summary/${articleTitle}`,
-      { headers: { Accept: 'application/json' } }
-    );
-    if (!res.ok) return null;
-    const data = await res.json();
-    const result = {
-      extract: data.extract || '',
-      wikiUrl: data.content_urls?.desktop?.page ?? `https://en.wikipedia.org/wiki/${articleTitle}`,
-    };
-    sessionStorage?.setItem(cacheKey, JSON.stringify(result));
-    return result;
-  } catch {
-    return null;
-  }
-}
-```
-
-Fetch only on user interaction (event click). Do not pre-fetch all events on load.
-
-### 7.3 Wikipedia article map
-
-```typescript
-export const WIKIPEDIA_ARTICLE_MAP: Record<string, string> = {
-  // Jewish
-  'Rosh Hashanah':        'Rosh_Hashanah',
-  'Rosh Hashana':         'Rosh_Hashanah',
-  'Yom Kippur':           'Yom_Kippur',
-  'Sukkot':               'Sukkot',
-  'Shemini Atzeret':      'Shemini_Atzeret',
-  'Simchat Torah':        'Simchat_Torah',
-  'Hanukkah':             'Hanukkah',
-  'Tu BiShvat':           'Tu_BiShvat',
-  'Purim':                'Purim',
-  'Passover':             'Passover',
-  'Pesach':               'Passover',
-  'Yom HaShoah':          'Yom_HaShoah',
-  "Yom HaAtzmaut":        "Yom_Ha%27atzmaut",
-  'Shavuot':              'Shavuot',
-  "Tisha B'Av":           "Tisha_B'Av",
-  'Lag BaOmer':           'Lag_BaOmer',
-  // Christian (Western)
-  'Epiphany':             'Epiphany_(holiday)',
-  'Candlemas':            'Candlemas',
-  'Ash Wednesday':        'Ash_Wednesday',
-  'Palm Sunday':          'Palm_Sunday',
-  'Maundy Thursday':      'Maundy_Thursday',
-  'Good Friday':          'Good_Friday',
-  'Holy Saturday':        'Holy_Saturday',
-  'Easter Sunday':        'Easter',
-  'Easter Monday':        'Easter_Monday',
-  'Ascension Thursday':   'Feast_of_the_Ascension',
-  'Pentecost':            'Pentecost',
-  'Trinity Sunday':       'Trinity_Sunday',
-  'Corpus Christi':       'Corpus_Christi_(feast)',
-  'All Saints Day':       "All_Saints%27_Day",
-  'Immaculate Conception':'Immaculate_Conception',
-  'Christmas Eve':        'Christmas_Eve',
-  'Christmas':            'Christmas',
-  'Reformation Sunday':   'Reformation_Day',
-  // Christian (Orthodox)
-  'Orthodox Christmas':   'Christmas#Eastern_Christianity',
-  'Theophany':            'Theophany',
-  'Orthodox Easter':      'Easter#Eastern_Christianity',
-  'Orthodox Palm Sunday': 'Palm_Sunday',
-  'Orthodox Good Friday': 'Good_Friday',
-  'Orthodox Pentecost':   'Pentecost',
-  // Islamic
-  'Islamic New Year (Muharram 1)':         'Islamic_New_Year',
-  'Ashura':                                'Ashura',
-  "Mawlid al-Nabi (Prophet's Birthday)":  'Mawlid',
-  "Isra and Mi'raj (Night Journey)":       "Isra%27_and_Mi%27raj",
-  'First Day of Ramadan':                  'Ramadan',
-  'Laylat al-Qadr (Night of Power)':       'Laylat_al-Qadr',
-  'Eid al-Fitr':                           'Eid_al-Fitr',
-  'Day of Arafah':                         'Day_of_Arafah',
-  'Eid al-Adha':                           'Eid_al-Adha',
-};
-```
+Fetch on user interaction only and cache by article title. Read
+`references/api-reference.md` for the error-safe fetch pattern and
+`references/holiday-data.md` for the complete article map. Do not pre-fetch
+all descriptions on calendar load.
 
 ### 7.4 Attribution
 
@@ -556,70 +408,10 @@ Always display in UI: `"Description via Wikipedia (CC BY-SA 3.0)"` with link to 
 
 ## 8. iCalendar (.ics) Generation
 
-Client-side only. No external service.
-
-```typescript
-function generateICS(events: ObservanceEvent[], calendarTitle: string): string {
-  const formatDateOnly = (d: Date): string =>
-    [
-      d.getFullYear(),
-      String(d.getMonth() + 1).padStart(2, '0'),
-      String(d.getDate()).padStart(2, '0'),
-    ].join('');
-
-  const nowStamp = (): string => {
-    const d = new Date();
-    return d.toISOString().replace(/[-:.]/g, '').slice(0, 15) + 'Z';
-  };
-
-  const escape = (s: string) =>
-    s.replace(/\\/g, '\\\\').replace(/,/g, '\\,').replace(/;/g, '\\;').replace(/\n/g, '\\n');
-
-  const vevents = events.map(e => {
-    const endPlusOne = new Date(e.endDate);
-    endPlusOne.setDate(endPlusOne.getDate() + 1);
-    const desc = e.tradition === 'islam'
-      ? 'Actual observance may vary by one day based on local moon sighting. More info: https://okhp3.github.io/abrahamic-reference-engine'
-      : 'More info: https://okhp3.github.io/abrahamic-reference-engine';
-    return [
-      'BEGIN:VEVENT',
-      `UID:${escape(e.id)}@abrahamic-reference-engine.okhp3`,
-      `SUMMARY:${escape(e.title)}`,
-      `DTSTART;VALUE=DATE:${formatDateOnly(e.startDate)}`,
-      `DTEND;VALUE=DATE:${formatDateOnly(endPlusOne)}`,
-      `DESCRIPTION:${escape(desc)}`,
-      e.sourceUrl ? `URL:${e.sourceUrl}` : null,
-      `CATEGORIES:${e.tradition.toUpperCase()}`,
-      `DTSTAMP:${nowStamp()}`,
-      'END:VEVENT',
-    ].filter(Boolean).join('\r\n');
-  }).join('\r\n');
-
-  return [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//OKHP3//Abrahamic Reference Engine//EN',
-    `X-WR-CALNAME:${escape(calendarTitle)}`,
-    'X-WR-CALDESC:Religious observances for Judaism\\, Christianity\\, and Islam. Source: Abrahamic Reference Engine by OverKill Hill P3.',
-    'CALSCALE:GREGORIAN',
-    'METHOD:PUBLISH',
-    vevents,
-    'END:VCALENDAR',
-  ].join('\r\n');
-}
-
-function downloadICS(content: string, filename: string): void {
-  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-```
+Generate client-side only. Preserve RFC 5545 all-day `DATE` semantics, use an
+exclusive end date, escape content, and include a stable `UID`. Read
+`references/ics-spec.md` for the full implementation and interoperability
+requirements.
 
 ---
 

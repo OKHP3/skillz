@@ -1,5 +1,5 @@
 ---
-name: okhp3-thread-context-extraction-mistral-vibe
+name: okhp3-thread-extract-mistral-vibe
 description: >
   Extract manually supplied Mistral Vibe or former Le Chat conversations into
   standalone, actionable Markdown. Use when the user pastes a Vibe Work, Chat,

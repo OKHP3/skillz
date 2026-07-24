@@ -1,5 +1,5 @@
 ---
-name: okhp3-process-measures-and-controls-definition
+name: okhp3-process-controls-metrics
 description: Define process performance measures, KPIs, and compliance controls for a validated PNS. Use this skill when the user needs to add measurability and governance to a documented process; when they ask to define KPIs, set performance targets, add compliance controls, or map the process to a control framework. This is a recommended extension skill — use after process-narrative-authoring when governance and measurement rigour is required. Produces a measures register and a controls register.
 license: MIT
 homepage: https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-measures-and-controls-definition
@@ -123,3 +123,10 @@ Load on demand:
 ## Assets
 
 - `assets/fixtures/measures-register-example.yaml` — canonical measures and controls for purchase-approval process
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

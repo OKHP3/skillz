@@ -1,5 +1,5 @@
 ---
-name: okhp3-process-gap-and-exception-analysis
+name: okhp3-process-gap-analysis
 description: Identify deviations, gaps, and exception paths between an as-is process capture and its intended design. Use this skill when the user wants to find where a process breaks down, where steps are missing or inconsistent, where exception handling is undefined, or where current execution differs from documented procedure. Use when they say "what's wrong with the current process", "find the gaps", "where does this break", or "analyze exceptions". Produces a gap analysis report and exception catalog.
 license: MIT
 homepage: https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-gap-and-exception-analysis
@@ -141,3 +141,10 @@ Load on demand:
 ## Assets
 
 - `assets/fixtures/gap-analysis-example.yaml` — canonical gap analysis for purchase-approval as-is process
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

@@ -1,5 +1,5 @@
 ---
-name: okhp3-sop-and-work-instruction-generation
+name: okhp3-sop-work-instructions
 description: Generate Standard Operating Procedures (SOPs) and work instructions from a validated PNS. Use this skill when the user needs to produce a human-readable procedure document from a process narrative; when they ask to write an SOP, create work instructions, generate a procedure, or produce an ISO 9001-compliant process document. The generated SOP follows ISO 9001 §4.4.2 documented information requirements. Produces sop.md and optional work-instructions.md for each role.
 license: MIT
 homepage: https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sop-and-work-instruction-generation
@@ -148,3 +148,10 @@ Load on demand:
 ## Assets
 
 - `assets/fixtures/sop-example.yaml` — canonical SOP metadata fixture for purchase-approval process
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

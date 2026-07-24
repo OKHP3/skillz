@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gen-skills-readme.py — okhp3-skill-cataloger v1.5.0
+gen-skills-readme.py — okhp3-skill-cataloger v1.6.1
 OverKill Hill P³ · https://overkillhill.com · https://github.com/OKHP3
 =======================================================
 Bundled with the okhp3-skill-cataloger Agent Skill.
@@ -28,6 +28,12 @@ Two modes of operation:
     $ python3 scripts/gen-skills-readme.py --full --no-absorb-readme
 
 No external dependencies. Python 3.9+ only.
+
+What changed in v1.6.1 vs v1.6.0:
+  - Normalize generated catalog output to one final newline.
+
+What changed in v1.6.0 vs v1.5.0:
+  - Configured UTF-8 stdout and stderr so warning output remains portable in Windows consoles.
 
 What changed in v1.5.0 vs v1.4.0:
   - Clarified catalog/full-index contracts and safe dry-run/check behavior in the skill docs.
@@ -82,7 +88,14 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-CATALOGER_VERSION = "1.5.0"
+# Windows consoles can default to cp1252, while catalog warnings intentionally
+# include Unicode status glyphs. Keep stdout/stderr portable for interactive use.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
+
+CATALOGER_VERSION = "1.6.1"
 OKHP3_HOMEPAGE    = "https://overkillhill.com"
 OKHP3_GITHUB      = "https://github.com/OKHP3"
 
@@ -744,7 +757,7 @@ def inject_strict(readme: Path, block: str) -> tuple[bool, str]:
             f"  {START_MARKER}\n"
             f"  {END_MARKER}"
         )
-    new = content[:s] + block + "\n" + content[e + len(END_MARKER):]
+    new = (content[:s] + block + "\n" + content[e + len(END_MARKER):]).rstrip() + "\n"
     return new != content, new
 
 
@@ -757,9 +770,9 @@ def inject_soft(output: Path, block: str) -> tuple[bool, str]:
     if START_MARKER in original and END_MARKER in original:
         s = original.find(START_MARKER)
         e = original.find(END_MARKER)
-        new = original[:s] + block + "\n" + original[e + len(END_MARKER):]
+        new = (original[:s] + block + "\n" + original[e + len(END_MARKER):]).rstrip() + "\n"
     else:
-        new = (original.rstrip() + "\n\n" if original.strip() else "") + block + "\n"
+        new = ((original.rstrip() + "\n\n" if original.strip() else "") + block).rstrip() + "\n"
     return new != original, new
 
 
