@@ -88,6 +88,22 @@
   --transition-slow: 400ms ease;
 }
 
+/* ─── Light theme overrides ─────────────────────────────────────────────────── */
+
+[data-theme="light"] {
+  --color-bg: #ede8df;
+  --color-bg-secondary: #e2dbd0;
+  --color-bg-teal: #d4e8e0;
+  --color-text-dark: #1e1916;
+  --color-text-muted-dark: #5a5248;
+  --color-border-dark: #c4bbb0;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f8f4ef;
+  --color-text-light: #1a1410;
+  --color-text-muted-light: #4a4440;
+  --color-border-light: #d0c8bc;
+}
+
 /* Reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }

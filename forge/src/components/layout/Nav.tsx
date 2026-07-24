@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeToggle from '../ui/ThemeToggle';
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,6 +42,7 @@ export default function Nav() {
           <a href="https://overkillhill.com/" target="_blank" rel="noopener noreferrer" className="nav-link-brand">
             OverKill Hill
           </a>
+          <ThemeToggle />
         </nav>
       </header>
     </div>
