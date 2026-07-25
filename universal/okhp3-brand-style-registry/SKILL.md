@@ -5,19 +5,11 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: developer-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
-  in_scope:
-    - Extracting named, evidence-backed visual style profiles
-    - Maintaining a library of any number of independently callable profiles
-    - Applying one primary profile and explicitly scoped supporting profiles to target artifacts
-  out_of_scope:
-    - Copying protected brand assets or implying authorization to use a third-party identity
-    - Averaging multiple profiles into an untraceable hybrid style
-    - Replacing a brand owner’s legal, accessibility, or final design approval
 ---
 
 # okhp3-brand-style-registry
@@ -25,6 +17,8 @@ metadata:
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Build a durable library of named visual profiles, then use it to create work that feels intentionally aligned instead of generically themed. Treat a profile as design evidence and reusable direction, not as permission to copy another organization’s identity.
+
+This skill has two operating modes: capture a source into a named profile, or apply one or more existing profiles to a target. Keep those modes separate. A capture updates the library only after provenance and confidence are recorded; an application changes the target only after the profile roles and target boundaries are explicit.
 
 ---
 
@@ -51,9 +45,13 @@ brand-styles/
     <style-id>.yaml
 ```
 
+If the target repository already has a style-library convention, preserve it and map the same profile fields into that convention. Do not create a second registry merely because the directory name differs.
+
 At capture time, ask the user for a human-readable style name and a stable slug. If the user provides several sources for one identity, confirm that they belong to one profile before combining their evidence. If sources represent different identities, create separate profiles.
 
 Read `references/style-profile-schema.md` before creating or revising a profile. Use `assets/style-library.example.yaml` when a starter registry helps.
+
+When a CSS file is available, run `scripts/extract_css_signals.py --input <path> --source <locator>` before interpreting it. The JSON output is an observation ledger, not a finished profile. Use the same principle for documents, screenshots, and rendered pages: preserve the raw locator or page or region reference before assigning semantic roles.
 
 ---
 
@@ -64,6 +62,8 @@ Read `references/style-profile-schema.md` before creating or revising a profile.
 3. Extract only reusable cues. Capture color roles, typography roles, spacing, radii, borders, shadows, motion, grid and density, components, imagery direction, icon treatment, and language describing the intended emotional effect.
 4. Preserve variants. A dark mode, campaign surface, application view, or section theme is a named variant, not a conflicting duplicate token.
 5. Record uncertainty. Do not turn a visually estimated color or font into a declared token. Use a confidence value and source note.
+
+Keep the original source file or a public locator available for review. When a source cannot be accessed, say so in the profile and continue only with user-supplied material. Never fabricate an extraction from a URL that was not inspected.
 
 For a website, inspect both its declared styling and its rendered hierarchy. For a document or infographic, sample visible visual patterns and mark values as observed unless a style guide establishes them. Do not add private URLs as a required dependency for a public profile.
 
@@ -83,6 +83,8 @@ Create one `<style-id>.yaml` file using the schema. Include at minimum:
 
 Add the profile to `registry.yaml` with its display name, path, status, and tags. Never replace an existing profile just because its palette shares colors with a new one. Version a changed profile and explain whether it reflects a source update or a corrected extraction.
 
+Use a transaction-like update: write the profile to a new or temporary path, validate its identity and required fields, then update the registry entry. If validation fails, leave the existing profile untouched. Preserve old profiles as `archived` when a new identity supersedes them.
+
 ---
 
 ## Phase 3: select and apply
@@ -98,6 +100,8 @@ supporting:
 
 The primary profile controls the target’s overall visual grammar: palette hierarchy, typography, surfaces, spacing, component anatomy, and interaction tone. A supporting profile may contribute only the explicitly allowed roles. It cannot silently replace the primary palette, fonts, or layout. If the user wants a true hybrid, create a new named profile with its own evidence and rationale rather than mutating either parent profile.
 
+If the user names a specialized wrapper such as `okhp3-overkill-hill-brand`, treat that wrapper’s bundled profile as the default primary. Still inspect the target’s existing tokens and report any source conflict before editing.
+
 For an SPA, work in this order:
 
 1. Map profile tokens to the application’s token layer or theme variables.
@@ -105,6 +109,8 @@ For an SPA, work in this order:
 3. Apply typography, surfaces, spacing, controls, and imagery direction to the relevant views.
 4. Inspect the rendered result at representative viewport sizes.
 5. Check contrast, focus visibility, font fallbacks, density, and any target-framework constraints.
+
+Do not rewrite generated files, dependency lockfiles, or unrelated components merely to make the target look consistent. Prefer a small token-layer change that can be reverted and reviewed.
 
 For documentation, presentations, and image briefs, translate the profile into target-appropriate direction. Preserve hierarchy, tone, proportion, and texture without pretending that CSS can be applied directly to a non-web artifact.
 
@@ -135,7 +141,10 @@ These are examples and specialization seeds, not a universal default visual iden
 ## References
 
 - `references/style-profile-schema.md` - profile structure, evidence levels, and multi-profile conflict rules.
+- `references/source-sampling.md` - source-specific sampling, evidence ledger, rights, and confidence rules.
+- `references/application-playbook.md` - selection, target preflight, application sequence, and handoff contract.
 - `assets/style-library.example.yaml` - starter registry with separate profile entries.
+- `scripts/extract_css_signals.py` - deterministic CSS signal extraction for the capture phase.
 - `evals/evals.json` - three draft evaluation cases for the public workflow.
 
 ---

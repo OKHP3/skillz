@@ -5,24 +5,26 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: developer-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
-  in_scope:
-    - Applying the approved AskJamie profile to repository artifacts
-    - Preserving calm helpdesk clarity in SPA and related artifact work
-  out_of_scope:
-    - Applying OverKill Hill or Glee-fully styles as a substitute for the AskJamie profile
-    - Modifying a shared stylesheet or sibling repository without explicit direction
 ---
 
 # okhp3-askjamie-brand
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
-Load `references/askjamie.yaml` and apply it as the primary profile. Preserve calm hierarchy, explanatory pacing, and the profile’s accessibility notes. Do not blend in another family profile unless the user explicitly asks and scopes its supporting role.
+Load `references/askjamie.yaml` before editing and treat it as the primary profile baseline. Preserve calm hierarchy, explanatory pacing, and the profile’s accessibility notes. Do not blend in another family profile unless the user explicitly asks and scopes its supporting role.
+
+## Workflow
+
+1. Inspect the target’s existing token layer, framework constraints, generated files, and behavior that must remain unchanged.
+2. Map the profile’s declared tokens first, then apply observed and inferred direction to shared primitives before one-off components.
+3. Preserve routing, data flow, responsive behavior, and content. Do not rewrite sibling repositories or shared stylesheets without explicit direction.
+4. Verify representative viewports, light-text contrast on brown surfaces, keyboard focus, font fallback, reduced motion, and readable essential instruction.
+5. Review the diff and report the profile version, changed surfaces, omitted cues, unresolved conflicts, and remaining human decisions.
 
 ## Scope
 
