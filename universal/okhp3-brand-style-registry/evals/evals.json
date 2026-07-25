@@ -1,0 +1,20 @@
+{
+  "skill_name": "okhp3-brand-style-registry",
+  "evals": [
+    {
+      "id": "capture-named-profile",
+      "prompt": "I own a CSS file and a product landing page. Extract a reusable style profile called 'field-notes' and save it without assuming the rendering reveals every declared value.",
+      "expected_output": "A named profile that separates declared, observed, and inferred evidence with source provenance."
+    },
+    {
+      "id": "apply-single-profile-spa",
+      "prompt": "Restyle this React SPA using the 'field-notes' style profile. Preserve the existing application behavior and tell me what you changed.",
+      "expected_output": "A token-first SPA application plan with component and accessibility verification."
+    },
+    {
+      "id": "apply-multiple-profiles",
+      "prompt": "Use 'field-notes' and 'studio-warmth' on a product brief. I like the typography from the first and imagery from the second.",
+      "expected_output": "An explicit primary profile and bounded supporting role rather than an untraceable blended style."
+    }
+  ]
+}

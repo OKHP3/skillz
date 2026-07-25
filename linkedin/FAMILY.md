@@ -2,7 +2,7 @@
 family: linkedin
 skill_count: 3
 generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-07-24T17:49:19Z
+generated_at: 2026-07-25T15:00:08Z
 ---
 
 # linkedin
@@ -24,7 +24,7 @@ Three skills, one pipeline: voice -> angles -> post.
 ## Skills (3)
 
 <!-- FAMILY_INVENTORY_START -->
-*3 skills &nbsp;·&nbsp; inventory last updated: **July 24, 2026 at 17:49 UTC***
+*3 skills &nbsp;·&nbsp; inventory last updated: **July 25, 2026 at 15:00 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

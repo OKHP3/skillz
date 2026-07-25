@@ -20,7 +20,7 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 68,
+  "distributionSkillCount": 69,
   "activeFamilyCount": 11,
   "placeholderFamilyCount": 2,
   "projectLocalSupportSkillCount": 18,
@@ -150,6 +150,7 @@
       "name": "universal",
       "status": "draftable",
       "skills": [
+        "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
         "okhp3-database-cartographer",
         "okhp3-foundry-repo-creator",

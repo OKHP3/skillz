@@ -1,0 +1,49 @@
+schema_version: "1.0"
+style:
+  id: askjamie
+  display_name: AskJamie
+  status: seed
+  purpose: A calm, articulate mid-century helpdesk that makes complex decisions navigable.
+  owner_context: owned
+  sources:
+    - type: css
+      locator: https://github.com/OKHP3/AskJamie/blob/main/assets/css/theme.css
+      authority: declared
+      sampled_on: 2026-07-25
+      notes: Declares dark brown surfaces, quiet blue-teal accents, and inherited type roles.
+    - type: website
+      locator: https://askjamie.bot
+      authority: observed
+      sampled_on: 2026-07-25
+      notes: Establishes a vintage-tech helpdesk, paper grain, and a steady reading pace.
+  evidence_summary:
+    declared: Dark brown backgrounds, light text, muted secondary text, and blue-teal accent values.
+    observed: Mid-century helpdesk objects, calm information hierarchy, and reassurance under pressure.
+    inferred: An intelligent companion who reduces cognitive load without minimizing complexity.
+  tokens:
+    color:
+      foundation:
+        background: "#1e1a17"
+        surface: "#2a2420"
+        soft_surface: "#231f1c"
+        foreground: "#e8e4df"
+        muted: "#9e918a"
+        teal: "#4ba8bd"
+      semantic:
+        accent: "#4ba8bd"
+        border_subtle: "rgba(255, 255, 255, 0.12)"
+    typography:
+      roles:
+        heading: { family: Baloo 2, fallback: [system-ui, sans-serif], notes: Shared theme declaration; use with the quieter AskJamie hierarchy. }
+        body: { family: Open Sans, fallback: [system-ui, sans-serif], notes: Shared theme declaration for readable helpdesk guidance. }
+        accent: { family: Kalam, fallback: [system-ui, sans-serif], notes: Shared theme declaration; reserve for a small, personal note rather than instructional copy. }
+  direction:
+    visual_narrative: Vintage technical helpdesk clarity with calm, human pacing.
+    components: [quiet dark panels, considered dividers, stepped walkthroughs, modest teal cues]
+    imagery: [mid-century office technology, diagrams, desktop objects, paper texture]
+    motion: [restrained, explanatory, and never urgent]
+    avoid: [alarmist alerts, visual noise, overly glossy AI imagery, pressure-heavy calls to action]
+  application:
+    suitable_targets: [spa, documentation, presentation, image-brief]
+    accessibility_notes: [Check light-text contrast on brown surfaces and do not use muted text for essential instruction.]
+  confidence: { overall: high, notes: Seed derived from declared theme tokens and current site language. }
