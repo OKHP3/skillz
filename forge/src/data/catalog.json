@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-24T20:19:02.832Z",
+  "generatedAt": "2026-07-25T15:38:36.536Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "737675d",
-  "skillCount": 68,
+  "sourceCommit": "7fcdef0",
+  "skillCount": 69,
   "familyCount": 11,
   "families": [
     {
@@ -140,8 +140,9 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 7,
+      "skillCount": 8,
       "skills": [
+        "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
         "okhp3-database-cartographer",
         "okhp3-foundry-repo-creator",
@@ -2276,6 +2277,39 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/refolddec/okhp3-refolddec-core/SKILL.md",
       "lastModified": "2026-07-24T12:55:10-05:00",
       "commitSha": "30268870"
+    },
+    {
+      "name": "okhp3-brand-style-registry",
+      "displayName": "Brand Style Registry",
+      "family": "universal",
+      "skillDir": "okhp3-brand-style-registry",
+      "path": "universal/okhp3-brand-style-registry/SKILL.md",
+      "description": "OverKill Hill P³ visual style registry and application workflow. Use when a user wants to extract a reusable brand, visual style, palette, typography system, layout language, or interface aura from a website, stylesheet, document, presentation, infographic, or set of visual assets. Also activate when a user wants an SPA, documentation, presentation, image brief, or other target artifact aligned to one or more named style profiles. This is the authoritative profile-driven workflow for capturing and applying visual style without blending unrelated brands or treating inferred cues as declared rules.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "developer-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-overkill-hill-brand"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-brand-style-registry/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-brand-style-registry/SKILL.md",
+      "lastModified": "2026-07-25T10:07:58-05:00",
+      "commitSha": "7fcdef02"
     },
     {
       "name": "okhp3-cloudflare-worker-api-proxy",

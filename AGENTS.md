@@ -177,6 +177,7 @@ The family is intended to expand to Gemini Gems, Copilot declarative agents, Ope
 | Skill | Trigger |
 |---|---|
 | `okhp3-cloudflare-worker-api-proxy` | Keep an API key server-side while proxying calls from a static frontend through a Cloudflare Worker. |
+| `okhp3-brand-style-registry` | Extract named, evidence-backed visual style profiles from approved sources and apply one primary profile with explicitly scoped supporting profiles to SPAs and other artifacts. |
 | `okhp3-database-cartographer` | Reverse-engineer a live SQL database into a schema inventory, severity-classified diff, and Mermaid ER handoff without writing to the target. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |

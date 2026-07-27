@@ -8,6 +8,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `okhp3-brand-style-registry`, a public, profile-driven workflow for capturing named visual styles and applying primary and explicitly bounded supporting profiles to SPAs and related artifacts.
 - Added `okhp3-database-cartographer`, a read-only SQL schema-reflection,
   specification-diff, and Mermaid ER-handoff skill in the universal family.
 - Added the `context-extraction/` distribution family with nine skills for cross-platform AI-thread extraction, platform-specific capture, provenance-preserving handoffs, and ChatGPT project migration.

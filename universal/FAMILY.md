@@ -1,8 +1,8 @@
 ---
 family: universal
-skill_count: 7
-generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-07-24T17:49:19Z
+skill_count: 8
+generated_by: okhp3-skill-cataloger v1.4.0
+generated_at: 2026-07-25T15:38:27Z
 ---
 
 # universal
@@ -11,13 +11,14 @@ generated_at: 2026-07-24T17:49:19Z
 A family of 6 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (7)
+## Skills (8)
 
 <!-- FAMILY_INVENTORY_START -->
-*7 skills &nbsp;·&nbsp; inventory last updated: **July 24, 2026 at 17:49 UTC***
+*8 skills &nbsp;·&nbsp; inventory last updated: **July 25, 2026 at 15:38 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
+| [okhp3-brand-style-registry](okhp3-brand-style-registry/SKILL.md) | OverKill Hill P³ visual style registry and application workflow. Use when a user wants to extract... | 1.1.0 |
 | [okhp3-cloudflare-worker-api-proxy](okhp3-cloudflare-worker-api-proxy/SKILL.md) | Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping ... | 1.1.0 |
 | [okhp3-database-cartographer](okhp3-database-cartographer/SKILL.md) | OverKill Hill P³ database cartographer. Reverse-engineers and documents the live structure of Pos... | 1.1.0 |
 | [okhp3-foundry-repo-creator](okhp3-foundry-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
