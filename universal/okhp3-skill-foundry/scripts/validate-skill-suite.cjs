@@ -8,8 +8,18 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const args = process.argv.slice(2);
+if (args.includes('--help') || args.includes('-h')) {
+  console.log('Usage: node validate-skill-suite.cjs [--skills-dir <directory> | --root <directory>]');
+  console.log('  --skills-dir  Validate direct child skill packages (default: .agents/skills).');
+  console.log('  --root        Recursively validate packages beneath a directory, or that directory when it is a package.');
+  process.exit(0);
+}
 const dirIndex = args.indexOf('--skills-dir');
 const rootIndex = args.indexOf('--root');
+if ((dirIndex >= 0 && !args[dirIndex + 1]) || (rootIndex >= 0 && !args[rootIndex + 1])) {
+  console.error('ERROR --skills-dir and --root each require a directory argument. Use --help for usage.');
+  process.exit(1);
+}
 const targetDir = path.resolve(
   rootIndex >= 0 ? args[rootIndex + 1] : dirIndex >= 0 ? args[dirIndex + 1] : '.agents/skills'
 );
@@ -64,6 +74,7 @@ function references(body, skillDir) {
 }
 function findSkills(dir, deep) {
   if (!fs.existsSync(dir)) return [];
+  if (fs.existsSync(path.join(dir, 'SKILL.md'))) return [dir];
   const results = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (!entry.isDirectory() || entry.name === '.git' || entry.name === 'node_modules') continue;
@@ -72,6 +83,69 @@ function findSkills(dir, deep) {
     else if (deep) results.push(...findSkills(child, true));
   }
   return results;
+}
+function readJson(file, label) {
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (error) {
+    fail(`${label}: invalid JSON (${error.message})`);
+    return null;
+  }
+}
+function validateFoundryEvidence(skillDir) {
+  if (path.basename(skillDir) !== 'okhp3-skill-foundry') return;
+  const evalsFile = path.join(skillDir, 'evals', 'evals.json');
+  const benchmarkFile = path.join(skillDir, 'benchmarks', 'benchmark.json');
+  const ledgerFile = path.join(skillDir, 'benchmarks', 'learning-ledger-2026-07-27.json');
+  if (!fs.existsSync(evalsFile)) {
+    fail(`${skillDir}: Foundry package is missing evals/evals.json`);
+  } else {
+    const evals = readJson(evalsFile, `${skillDir}/evals/evals.json`);
+    if (evals) {
+      if (!evals.skill_version || !evals.status || !Array.isArray(evals.evals) || evals.evals.length < 3) {
+        fail(`${skillDir}: evals/evals.json must declare version, status, and at least three cases`);
+      }
+      const development = Array.isArray(evals.evals) ? evals.evals.filter(item => item.partition === 'development') : [];
+      if (development.length < 3) fail(`${skillDir}: Foundry requires at least three development evaluation cases`);
+      for (const item of evals.evals || []) {
+        for (const key of ['id', 'name', 'partition', 'risk', 'prompt', 'fixtures', 'output_contract', 'failure_consequence']) {
+          if (!item[key]) fail(`${skillDir}: eval ${item.id || '<unnamed>'} is missing ${key}`);
+        }
+        if (!['development', 'holdout'].includes(item.partition)) fail(`${skillDir}: eval ${item.id || '<unnamed>'} has invalid partition`);
+        if (!Array.isArray(item.expectations) || item.expectations.length < 3) fail(`${skillDir}: eval ${item.id || '<unnamed>'} needs at least three expectations`);
+        for (const expectation of item.expectations || []) {
+          if (!expectation.id || !expectation.text) fail(`${skillDir}: eval ${item.id || '<unnamed>'} contains an incomplete expectation`);
+        }
+      }
+      const holdout = evals.release_holdout;
+      if (!holdout || !holdout.status || !holdout.reason) fail(`${skillDir}: evals/evals.json must declare release holdout protection or external requirement`);
+    }
+  }
+  if (!fs.existsSync(benchmarkFile)) {
+    fail(`${skillDir}: Foundry package is missing benchmarks/benchmark.json`);
+  } else {
+    const benchmark = readJson(benchmarkFile, `${skillDir}/benchmarks/benchmark.json`);
+    if (benchmark) {
+      const metadata = benchmark.metadata || {};
+      if (!benchmark.schema_version || !metadata.evaluated_skill_version || !metadata.evaluation_status) {
+        fail(`${skillDir}: benchmark metadata must declare schema version, evaluated version, and evidence status`);
+      }
+      if (String(benchmark.schema_version).includes('historical') && metadata.evaluation_status !== 'historical') {
+        fail(`${skillDir}: historical benchmark schema requires evaluation_status historical`);
+      }
+      if (benchmark.schema_version === '2.0' && (!metadata.runner || !metadata.fixtures || !benchmark.acceptance_criteria)) {
+        fail(`${skillDir}: version 2.0 benchmark requires runner, fixtures, and acceptance criteria`);
+      }
+    }
+  }
+  if (!fs.existsSync(ledgerFile)) {
+    warn(`${skillDir}: no dated Foundry learning ledger found`);
+  } else {
+    const ledger = readJson(ledgerFile, `${skillDir}/benchmarks/learning-ledger-2026-07-27.json`);
+    if (ledger && (!Array.isArray(ledger.evidence_sources) || !Array.isArray(ledger.review_passes) || !Array.isArray(ledger.changes))) {
+      fail(`${skillDir}: learning ledger must contain evidence_sources, review_passes, and changes arrays`);
+    }
+  }
 }
 function validatePortablePaths(skillDir, rootDir) {
   const stack = [skillDir];
@@ -107,10 +181,12 @@ function validateSkill(skillDir, rootDir) {
   if (text.match(/ignore (all|any|previous)|system message|developer message|exfiltrat/i)) warn(`${entry.name}: review instruction-like security markers manually`);
   references(body, skillDir);
   validatePortablePaths(skillDir, rootDir);
+  validateFoundryEvidence(skillDir);
 }
 if (!fs.existsSync(targetDir)) fail(`skills directory does not exist: ${targetDir}`);
 else {
   const skillDirs = findSkills(targetDir, recursive);
+  if (!skillDirs.length) fail(`no skill packages found under ${targetDir}`);
   for (const skillDir of skillDirs) validateSkill(skillDir, targetDir);
 }
 for (const warning of warnings) console.warn(`WARN ${warning}`);
