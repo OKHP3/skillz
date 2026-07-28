@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-28T04:28:55.314Z",
+  "generatedAt": "2026-07-28T06:03:35.854Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "2493ce0",
+  "sourceCommit": "147a2a0",
   "skillCount": 70,
   "familyCount": 11,
   "families": [
@@ -2480,8 +2480,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repository-organizer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repository-organizer/SKILL.md",
-      "lastModified": null,
-      "commitSha": "2493ce0"
+      "lastModified": "2026-07-27T23:48:48-05:00",
+      "commitSha": "88533066"
     },
     {
       "name": "okhp3-skill-cataloger",
@@ -2520,8 +2520,8 @@
       "family": "universal",
       "skillDir": "okhp3-skill-foundry",
       "path": "universal/okhp3-skill-foundry/SKILL.md",
-      "description": "OverKill Hill P³ skill-authoring and quality system. Use when creating, repairing, refactoring, evaluating, benchmarking, or optimizing any Agent Skill, including its SKILL.md, references, scripts, evals, metadata, or trigger description. Also activate when auditing a skill library for portability, security, progressive disclosure, or with/without-skill lift. This is the authoritative OKHP3 authoring workflow; use it even when the request only says to improve or polish a skill.",
-      "version": "2.2.0",
+      "description": "Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progressive disclosure, risk-based evaluations, and release checks. Use when authoring a new SKILL.md, improving an existing skill, designing or grading evaluations, diagnosing weak trigger behavior, or synchronizing a skill across repositories. Also activate when a workflow should become a reusable skill or a skill must improve itself without making unsupported quality claims. This is the authoritative OKHP3 authoring and skill-evolution workflow.",
+      "version": "3.1.0",
       "license": "MIT",
       "category": "meta-tooling",
       "origin": "okhp3/skillz",
@@ -2542,8 +2542,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-foundry/SKILL.md",
-      "lastModified": "2026-07-24T12:55:10-05:00",
-      "commitSha": "30268870"
+      "lastModified": "2026-07-28T00:08:23-05:00",
+      "commitSha": "0b73d205"
     },
     {
       "name": "okhp3-vite-github-pages",

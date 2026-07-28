@@ -183,7 +183,7 @@ The family is intended to expand to Gemini Gems, Copilot declarative agents, Ope
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
 | `okhp3-repository-organizer` | Profile and safely reorganize content-first Git repositories containing mixed knowledge, prompt, document, research, and media assets, with cross-platform naming safeguards. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |
-| `okhp3-skill-foundry` | Create, hone, evaluate, benchmark, brand, or polish a production-quality Agent Skill using the eight-phase Foundry method, evidence ledger, and conditional dissent review for material releases. |
+| `okhp3-skill-foundry` | Create, hone, evaluate, benchmark, brand, or polish a production-quality Agent Skill using the eight-phase Foundry method, evidence ledger, conditional dissent review, and enforced current-state evidence integrity for material releases. |
 | `okhp3-vite-github-pages` | Deploy or repair a React or Vue Vite SPA on GitHub Pages, especially base path, router, and gh-pages issues. |
 
 ### Project-local support skills
@@ -219,7 +219,7 @@ python3 .agents/skills/skill-creator/scripts/quick_validate.py path/to/skill
 (cd mermaid/okhp3-mermaid-theme-builder && node --test tests/*.test.mjs)
 ```
 
-The full-index check passed and discovered 70 distribution skills in 11 active families. The project cataloger found 18 local support skills. The Foundry structural validator now checks all 88 `SKILL.md` packages recursively, including portable name, description, compatibility, body, and path limits; it passes without structural errors. Its remaining advisory warnings identify imported-skill conventions and optional scope or validation refinements. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
+The full-index check passed and discovered 70 distribution skills in 11 active families. The project cataloger found 18 local support skills. The Foundry structural validator now checks all 88 `SKILL.md` packages recursively, including portable name, description, compatibility, body, and path limits; it passes without structural errors. For the Foundry package, it also enforces version-coherent evaluation evidence, explicit protected or external-required holdout states, current-state synchronization records, and associated negative tests. These checks establish structural integrity only, not task-quality uplift or production readiness. Its remaining advisory warnings identify imported-skill conventions and optional scope or validation refinements. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
 
 For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. Do not run the technology refresh script casually because it makes network requests and writes the generated technology section and runtime pins.
 
