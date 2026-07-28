@@ -20,7 +20,7 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 69,
+  "distributionSkillCount": 70,
   "activeFamilyCount": 11,
   "placeholderFamilyCount": 2,
   "projectLocalSupportSkillCount": 18,
@@ -155,6 +155,7 @@
         "okhp3-database-cartographer",
         "okhp3-foundry-repo-creator",
         "okhp3-google-gis-client-auth",
+        "okhp3-repository-organizer",
         "okhp3-skill-cataloger",
         "okhp3-skill-foundry",
         "okhp3-vite-github-pages"

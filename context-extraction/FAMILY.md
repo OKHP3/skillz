@@ -1,8 +1,8 @@
 ---
 family: context-extraction
 skill_count: 9
-generated_by: okhp3-skill-cataloger v1.4.0
-generated_at: 2026-07-25T15:38:27Z
+generated_by: okhp3-skill-cataloger v1.6.1
+generated_at: 2026-07-28T04:26:58Z
 ---
 
 # context-extraction
@@ -56,7 +56,7 @@ The context-extraction family is the mining, extraction, and refinement layer fo
 ## Skills (9)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **July 25, 2026 at 15:38 UTC***
+*9 skills &nbsp;·&nbsp; inventory last updated: **July 28, 2026 at 04:26 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

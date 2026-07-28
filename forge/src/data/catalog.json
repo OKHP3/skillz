@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-25T15:38:36.536Z",
+  "generatedAt": "2026-07-28T04:28:55.314Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "7fcdef0",
-  "skillCount": 69,
+  "sourceCommit": "2493ce0",
+  "skillCount": 70,
   "familyCount": 11,
   "families": [
     {
@@ -140,13 +140,14 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 8,
+      "skillCount": 9,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
         "okhp3-database-cartographer",
         "okhp3-foundry-repo-creator",
         "okhp3-google-gis-client-auth",
+        "okhp3-repository-organizer",
         "okhp3-skill-cataloger",
         "okhp3-skill-foundry",
         "okhp3-vite-github-pages"
@@ -2308,8 +2309,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-brand-style-registry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-brand-style-registry/SKILL.md",
-      "lastModified": "2026-07-25T10:07:58-05:00",
-      "commitSha": "7fcdef02"
+      "lastModified": "2026-07-25T10:41:35-05:00",
+      "commitSha": "7175eed8"
     },
     {
       "name": "okhp3-cloudflare-worker-api-proxy",
@@ -2450,6 +2451,37 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-google-gis-client-auth/SKILL.md",
       "lastModified": "2026-07-21T14:53:32-05:00",
       "commitSha": "159332f5"
+    },
+    {
+      "name": "okhp3-repository-organizer",
+      "displayName": "Repository Organizer",
+      "family": "universal",
+      "skillDir": "okhp3-repository-organizer",
+      "path": "universal/okhp3-repository-organizer/SKILL.md",
+      "description": "OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git repository grew organically from a folder and needs an evidence-based profile, purpose summary, classification, cross-platform naming cleanup, folder design, governance scaffolding, or a safe reorganization plan. Also activate when a repository contains prompts, AI conversations, research, Word documents, spreadsheets, PDFs, images, or mixed knowledge assets rather than a conventional application. This is the authoritative workflow for understanding and organizing an existing repository; use it instead of application-template advice, skill cataloging, or new-repository creation workflows.",
+      "version": "1.1.1",
+      "license": "MIT",
+      "category": "universal",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "status": null,
+      "tags": [],
+      "topics": [],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repository-organizer/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repository-organizer/SKILL.md",
+      "lastModified": null,
+      "commitSha": "2493ce0"
     },
     {
       "name": "okhp3-skill-cataloger",

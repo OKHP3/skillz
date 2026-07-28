@@ -8,6 +8,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `okhp3-repository-organizer`, a content-first workflow for profiling organically grown local Git repositories, choosing selective governance scaffolding, and executing approval-gated reorganizations without forcing an application layout.
 - Added `okhp3-brand-style-registry`, a public, profile-driven workflow for capturing named visual styles and applying primary and explicitly bounded supporting profiles to SPAs and related artifacts.
 - Added `okhp3-database-cartographer`, a read-only SQL schema-reflection,
   specification-diff, and Mermaid ER-handoff skill in the universal family.
@@ -43,6 +44,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Refined `okhp3-repository-organizer` with explicit assess/propose/execute inputs, optional-tool fallback behavior, assessment-only output semantics, compact portable examples, and stricter read-only inventory argument and truncation diagnostics. Bumped the skill package to `1.1.1`.
+- Hardened `okhp3-repository-organizer` with a cross-platform naming gate covering ASCII-safe web paths, case and Unicode normalization collisions, Windows reserved names, URL and shell hazards, and conservative path-length diagnostics.
 - Reindexed the full distribution surface at 68 skills across 11 active families, refreshed all generated `README.md` and `FAMILY.md` catalogs, refreshed the 18-entry project-local support catalog, and regenerated the Forge search catalog.
 - Shortened 15 public and 7 project-local package identifiers to a 36-character maximum, updated their frontmatter, eval manifests, routing, manifest, stack references, and generated catalogs, and added a portable path gate to the Foundry validator.
 - Hardened `okhp3-skill-cataloger` for UTF-8 Windows-console output and documented the explicit Forge search-index refresh step.
