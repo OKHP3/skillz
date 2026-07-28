@@ -30,6 +30,15 @@ it was longer, newer by label, or more numerous.
 - Directory and marketplace sources supplied for this review: agentskill.sh,
   SkillsMP, AgenticSkills, and skills.sh. These were used as discovery signals,
   not as normative requirements.
+- Prompt Equilibrium framework attachments supplied by the package owner:
+  treated as a conceptual source for conditional dissent, provenance ledgers,
+  semantic-interference controls, and evidence negotiation. Their platform and
+  research claims were not adopted as current normative facts without separate
+  verification.
+
+The detailed source authority, retrieval dates, review passes, hypotheses, and
+applicability limits are preserved in
+`benchmarks/learning-ledger-2026-07-27.json`.
 
 ## Accepted changes
 
@@ -43,6 +52,10 @@ it was longer, newer by label, or more numerous.
    decision, hash verification, semantic review, and a stopping rule.
 6. Update the brand, evaluation, grading, template, and adapter references so
    the package teaches the method it now follows.
+7. Add an equilibrium-inspired review protocol: materially concordant reviews
+   trigger a falsification pass; material disagreement triggers evidence-based
+   negotiation or a deferred decision. This is process control, not a claim that
+   the package computes a formal Nash equilibrium.
 
 ## Rejected or constrained changes
 
@@ -52,6 +65,8 @@ it was longer, newer by label, or more numerous.
 - No marketplace score, popularity count, timestamp, or version label was used
   as a standalone quality signal.
 - No host-specific automation was made a requirement for the portable skill.
+- No consensus result, including independent-agent agreement, is treated as
+  proof of perfection or a substitute for version-matched live evidence.
 
 ## Release evidence
 

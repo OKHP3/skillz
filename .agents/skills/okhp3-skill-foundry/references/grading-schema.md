@@ -101,3 +101,34 @@ but null is more honest than invented telemetry.
   model, runner, fixtures, or material behavior no longer matches the candidate.
 - Preserve older evidence. Add a new record or a status note rather than
   rewriting history.
+
+## Equilibrium review record
+
+When the conditional multi-review protocol is used, add a review record to the
+learning ledger or release evidence:
+
+```json
+{
+  "review_protocol": "equilibrium-v1",
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "shared_model_or_source_limits": ["Reviewers used the same model family"]
+  },
+  "initial_reviews": [
+    { "role": "evidence reviewer", "claim": "approve", "evidence_ids": ["SRC-01"] }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "falsification_hypotheses": ["A stale benchmark is being treated as current evidence"],
+    "test_results": ["Rejected: benchmark metadata marks it historical"]
+  },
+  "negotiator": { "triggered": false, "decision": null },
+  "release_decision": "approved-with-limits"
+}
+```
+
+If the initial reviewers materially disagree, set `concordance` to
+`material-disagreement`, do not run a ceremonial disruptor, and use the
+negotiator record to state the decisive evidence, requested experiment, or
+unresolved issue. A release decision must name its limitations.

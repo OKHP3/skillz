@@ -87,6 +87,30 @@ Every distinct real failure should become a regression case with:
 Retire a case only when it is duplicate, unsafe to retain, or the underlying
 contract has intentionally changed. Record that decision.
 
+## Conditional dissent and reconciliation
+
+Independent reviewers can converge because the evidence is strong or because
+they share a blind spot. Record their model or reviewer identity, context,
+tools, and source set so this distinction is visible. For a material release
+decision, use the following escalation:
+
+1. Obtain at least three independent evidence-led reviews when that capability
+   is available.
+2. If their material claims disagree, send the claim ledger to a negotiator or
+   human reviewer. It may resolve only from cited evidence, request a decisive
+   test, or leave the decision open. Do not take a vote or overwrite a minority
+   claim merely to restore harmony.
+3. If the material claims agree, ask a disruptor to formulate falsifiable
+   counterexamples, hidden assumptions, and regression tests. The disruptor is
+   required to challenge the conclusion, not to manufacture a false verdict.
+4. If a counterexample survives testing, return it to the development set and
+   reopen the decision. If it fails, record the attempted falsification and the
+   limits of the test before release review.
+
+This protocol is a practical check against correlated error. It is not evidence
+that a consensus is universally correct, and it should be skipped for
+low-consequence changes when its cost exceeds the risk.
+
 ## Evals file shape
 
 `evals/evals.json` is a portable design record. Add the version, status, test

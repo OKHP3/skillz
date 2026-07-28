@@ -44,6 +44,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Renewed `okhp3-skill-foundry` to version `3.0.0` with portable-core and host-adapter boundaries, risk-based version-specific evaluation records, protected-holdout rules, non-compensatory critical-risk gates, a learning ledger, a reviewed mirror manifest, and a conditional dissent protocol. The protocol treats agreement as a trigger for falsification and material disagreement as a trigger for evidence-based negotiation; it does not claim consensus or a historical benchmark proves current quality.
+- Synchronized the reviewed Foundry core package, including its evaluation, evidence, validator, and equilibrium-review resources, to the project-local active copy and every discovered authorized `.agents/skills/okhp3-skill-foundry` mirror. Local `workspace/` evidence was intentionally excluded from propagation.
 - Refined `okhp3-repository-organizer` with explicit assess/propose/execute inputs, optional-tool fallback behavior, assessment-only output semantics, compact portable examples, and stricter read-only inventory argument and truncation diagnostics. Bumped the skill package to `1.1.1`.
 - Hardened `okhp3-repository-organizer` with a cross-platform naming gate covering ASCII-safe web paths, case and Unicode normalization collisions, Windows reserved names, URL and shell hazards, and conservative path-length diagnostics.
 - Reindexed the full distribution surface at 68 skills across 11 active families, refreshed all generated `README.md` and `FAMILY.md` catalogs, refreshed the 18-entry project-local support catalog, and regenerated the Forge search catalog.

@@ -1,8 +1,8 @@
 {
-  "schema_version": "2.0",
+  "schema_version": "1.0-historical",
   "metadata": {
     "skill_name": "okhp3-skill-foundry",
-    "skill_path": ".agents/skills/okhp3-skill-foundry",
+    "skill_path": "okhp3-skill-foundry",
     "evaluated_skill_version": "1.0.0",
     "evaluation_status": "historical",
     "status_reason": "The package is now version 3.0.0. These completed runs remain useful provenance but do not validate the current release candidate.",
@@ -11,7 +11,8 @@
     "timestamp": "2026-06-26T00:00:00Z",
     "evals_run": [1, 2, 3],
     "runs_per_configuration": 1,
-    "note": "All 3 evals were LIVE delegation-subagent runs for version 1.0.0. No analytical stubs. Self-benchmark graded the Foundry on its then-current methodology."
+    "note": "All 3 evals were LIVE delegation-subagent runs for version 1.0.0. No analytical stubs. Self-benchmark graded the Foundry on its then-current methodology.",
+    "legacy_schema_note": "This complete legacy evidence record is intentionally preserved under its original 1.0-era shape. It is historical provenance, not a version 2.0 record and not current-release validation."
   },
 
   "runs": [
