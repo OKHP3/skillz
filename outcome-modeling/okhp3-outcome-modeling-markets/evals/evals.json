@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-outcome-modeling-markets",
-  "skill_version": "1.0.0",
+  "skill_version": "1.1.0",
   "status": "design-ready",
   "release_status": "analytical-structural-integrity",
   "performance_evidence_status": "not-run",
@@ -57,6 +57,22 @@
         {"id": "calibration-metrics", "text": "Response includes calibration or proper scoring metrics, not only profit."},
         {"id": "transaction-costs", "text": "Response accounts for spread, fees, liquidity, and slippage."},
         {"id": "paper-only", "text": "Response keeps paper evaluation separate from live trade execution."}
+      ]
+    },
+    {
+      "id": "market-calculation-payload",
+      "name": "market-calculation-payload",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Use a synthetic binary contract to calculate market probability, edge, all-in cost, expected value, and break-even probability.",
+      "fixtures": "examples/market-example.json and scripts/calculate-market-comparison.py.",
+      "output_contract": "A research-only arithmetic result that verifies resolution status and separates model probability from price.",
+      "failure_consequence": "A theoretical difference could be presented as guaranteed profit or executable advice.",
+      "expectations": [
+        {"id": "price-separation", "text": "Response keeps model probability, market price, and all-in cost as separate fields."},
+        {"id": "value-formula", "text": "Response calculates edge, expected value, and break-even probability."},
+        {"id": "resolution-check", "text": "Response checks whether the resolution rule is confirmed before interpreting the result."},
+        {"id": "execution-boundary", "text": "Response labels the result research or paper-only and does not place a trade."}
       ]
     }
   ]

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-29T04:39:26.443Z",
+  "generatedAt": "2026-07-29T09:44:53.791Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "f292ad5",
+  "sourceCommit": "b37ea82",
   "skillCount": 75,
   "familyCount": 12,
   "families": [
@@ -1616,8 +1616,8 @@
       "family": "outcome-modeling",
       "skillDir": "okhp3-nfl-fantasy-picks",
       "path": "outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
-      "description": "OverKill Hill P³ NFL fantasy picks. Use when selecting NFL fantasy players, DFS lineups, salary-cap rosters, waiver priorities, or trade targets under a scoring and budget system. Also activate when comparing projected points per cost, replacement value, positional scarcity, floor, ceiling, or roster correlation. Load `okhp3-outcome-modeling-core` and `okhp3-outcome-modeling-sports` first; this is fantasy decision support, not sportsbook betting advice.",
-      "version": "1.0.0",
+      "description": "Select NFL fantasy players, DFS lineups, salary-cap rosters, waiver priorities, or trade targets under a scoring and budget system. Use when comparing projected points per cost, replacement value, positional scarcity, floor, ceiling, or roster correlation. Load `okhp3-outcome-modeling-core` and `okhp3-outcome-modeling-sports` first; this is fantasy decision support, not sportsbook betting advice.",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -1638,8 +1638,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
-      "lastModified": null,
-      "commitSha": "f292ad5"
+      "lastModified": "2026-07-29T04:44:41-05:00",
+      "commitSha": "b37ea827"
     },
     {
       "name": "okhp3-outcome-modeling-core",
@@ -1647,8 +1647,8 @@
       "family": "outcome-modeling",
       "skillDir": "okhp3-outcome-modeling-core",
       "path": "outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
-      "description": "OverKill Hill P³ outcome modeling core. Use when designing, reviewing, or operationalizing a model that compresses high-dimensional event histories into calibrated forecasts and constrained decisions. Also activate when the user moves a prediction method between sports, business, sales, advertising, finance, or prediction markets. This is the shared foundation for the outcome-modeling family; load a domain adapter after this skill when one fits.",
-      "version": "1.0.0",
+      "description": "Design and operationalize outcome models that compress noisy event histories into calibrated forecasts and constrained decisions. Use when a user asks about feature reduction, probability, expected value, aggregation, or moving a prediction method between sports, business, sales, advertising, finance, or prediction markets. Load a domain adapter when one fits.",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -1674,8 +1674,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
-      "lastModified": null,
-      "commitSha": "f292ad5"
+      "lastModified": "2026-07-29T04:44:41-05:00",
+      "commitSha": "b37ea827"
     },
     {
       "name": "okhp3-outcome-modeling-markets",
@@ -1683,8 +1683,8 @@
       "family": "outcome-modeling",
       "skillDir": "okhp3-outcome-modeling-markets",
       "path": "outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
-      "description": "OverKill Hill P³ prediction-market outcome modeling. Use when estimating probabilities for event contracts, comparing an independent model with market-implied prices, evaluating expected value, or designing a paper-only market research workflow. Also activate when the user asks about odds, calibration, liquidity, resolution rules, edge, or risk-adjusted position sizing. Load `okhp3-outcome-modeling-core` first; this skill does not place or manage trades.",
-      "version": "1.0.0",
+      "description": "Compare independent probabilities with prediction-market prices and evaluate expected value, calibration, liquidity, spread, and resolution risk. Use when analyzing event contracts, odds, edge, paper backtests, or risk-adjusted position sizing. Load `okhp3-outcome-modeling-core` first; this skill does not place or manage trades.",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -1707,8 +1707,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
-      "lastModified": null,
-      "commitSha": "f292ad5"
+      "lastModified": "2026-07-29T04:44:41-05:00",
+      "commitSha": "b37ea827"
     },
     {
       "name": "okhp3-outcome-modeling-sales",
@@ -1716,8 +1716,8 @@
       "family": "outcome-modeling",
       "skillDir": "okhp3-outcome-modeling-sales",
       "path": "outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
-      "description": "OverKill Hill P³ business sales outcome modeling. Use when forecasting pipeline, comparing salespeople, allocating territories, evaluating account quality, or optimizing commercial decisions under capacity and margin constraints. Also activate when a 100% close rate, stage probability, quota forecast, discount, retention, or customer lifetime value may hide economic inefficiency. Load `okhp3-outcome-modeling-core` first.",
-      "version": "1.0.0",
+      "description": "Forecast pipeline and compare salespeople, territories, accounts, and commercial allocations using expected contribution rather than close rate alone. Use when evaluating stage probability, quota, discount, retention, margin, customer lifetime value, or opportunity quality. Load `okhp3-outcome-modeling-core` first.",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -1751,8 +1751,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
-      "lastModified": null,
-      "commitSha": "f292ad5"
+      "lastModified": "2026-07-29T04:44:41-05:00",
+      "commitSha": "b37ea827"
     },
     {
       "name": "okhp3-outcome-modeling-sports",
@@ -1760,8 +1760,8 @@
       "family": "outcome-modeling",
       "skillDir": "okhp3-outcome-modeling-sports",
       "path": "outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
-      "description": "OverKill Hill P³ sports outcome modeling. Use when modeling team, game, or player outcomes from repeated sports events, matchup history, schedules, injuries, or performance metrics. Also activate when designing a sports ranking, matchup forecast, season projection, or fantasy-oriented state model. Load `okhp3-outcome-modeling-core` first; this adapter supplies sports structure and does not provide live odds or trade execution.",
-      "version": "1.0.0",
+      "description": "Model team, game, and player outcomes from repeated sports events, matchup history, schedules, injuries, and performance metrics. Use for sports rankings, matchup forecasts, season projections, or fantasy-oriented state models. Load `okhp3-outcome-modeling-core` first; this adapter does not provide live odds or trade execution.",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -1795,8 +1795,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
-      "lastModified": null,
-      "commitSha": "f292ad5"
+      "lastModified": "2026-07-29T04:44:41-05:00",
+      "commitSha": "b37ea827"
     },
     {
       "name": "okhp3-as-is-process-capture",

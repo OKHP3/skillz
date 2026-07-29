@@ -1,19 +1,18 @@
 ---
 name: okhp3-outcome-modeling-sales
 description: >
-  OverKill Hill P³ business sales outcome modeling. Use when forecasting
-  pipeline, comparing salespeople, allocating territories, evaluating account
-  quality, or optimizing commercial decisions under capacity and margin
-  constraints. Also activate when a 100% close rate, stage probability, quota
-  forecast, discount, retention, or customer lifetime value may hide economic
-  inefficiency. Load `okhp3-outcome-modeling-core` first.
+  Forecast pipeline and compare salespeople, territories, accounts, and
+  commercial allocations using expected contribution rather than close rate
+  alone. Use when evaluating stage probability, quota, discount, retention,
+  margin, customer lifetime value, or opportunity quality. Load
+  `okhp3-outcome-modeling-core` first.
 license: MIT
 compatibility: >
   Requires user-supplied or approved CRM, finance, or customer data. Do not
   infer private customer facts or connect to a CRM without user authorization.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -26,6 +25,12 @@ metadata:
     - Inventing CRM, customer, quota, or pricing data
     - Ranking people without opportunity and territory context
     - Sending outreach, changing CRM records, or making employment decisions
+  status: enhanced-computational-payload
+  tags: sales forecasting, pipeline, contribution margin, win rate, selection bias, allocation, retention
+  triggers: close rate, quota forecast, pipeline, salesperson comparison, discount, margin, CAC, LTV, territory
+  inputs: dated opportunity records, assignment context, probabilities, revenue, margin, cost, capacity, and baseline
+  outputs: calibrated pipeline forecast, economic comparison, bias assessment, constrained allocation, and experiment plan
+  runtimes: Portable prose by default; optional Python 3.9+ standard library helper for local JSON arithmetic
 ---
 
 # okhp3-outcome-modeling-sales
@@ -63,6 +68,15 @@ expected contribution margin
 
 The exact objective must be agreed before ranking salespeople or allocating resources.
 
+## Computational payload
+
+Read `references/computational-model.md` for expected contribution, incremental
+lift, and constrained allocation formulas. Read `references/glossary.md` before
+using sales abbreviations. Reproduce the synthetic allocation with
+`scripts/calculate-sales-allocation.py examples/sales-example.json`. The helper
+uses local JSON, exhaustive search for small fixtures, and no CRM connection or
+file writes.
+
 ## Workflow
 
 1. Load `okhp3-outcome-modeling-core` and define the decision horizon, owner, and target.
@@ -98,11 +112,15 @@ Never punish a salesperson for a low close rate until opportunity difficulty and
 
 ## References
 
+- `references/computational-model.md` -- sales equations and example.
+- `references/glossary.md` -- sales terms and abbreviations.
+- `examples/sales-example.json` -- synthetic opportunity fixture.
+- `scripts/calculate-sales-allocation.py` -- transparent small-allocation helper.
 - `../okhp3-outcome-modeling-core/SKILL.md` -- shared objective, state, and validation contract.
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

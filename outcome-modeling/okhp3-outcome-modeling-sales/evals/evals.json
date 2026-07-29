@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-outcome-modeling-sales",
-  "skill_version": "1.0.0",
+  "skill_version": "1.1.0",
   "status": "design-ready",
   "release_status": "analytical-structural-integrity",
   "performance_evidence_status": "not-run",
@@ -57,6 +57,22 @@
         {"id": "margin-objective", "text": "Response defines contribution margin and discount cost in the objective."},
         {"id": "intervention-test", "text": "Response proposes an experiment, holdout, or quasi-experimental design."},
         {"id": "durable-value", "text": "Response includes retention, expansion, and service-cost consequences."}
+      ]
+    },
+    {
+      "id": "sales-calculation-payload",
+      "name": "sales-calculation-payload",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Use a small opportunity fixture to calculate expected contribution, incremental lift, and a capacity-constrained allocation.",
+      "fixtures": "examples/sales-example.json and scripts/calculate-sales-allocation.py.",
+      "output_contract": "A margin-aware calculation with intermediate fields, allocation constraints, glossary support, and selection-bias caveat.",
+      "failure_consequence": "A close-rate or revenue result could reward easy opportunities, discounting, or low-margin work.",
+      "expectations": [
+        {"id": "contribution-formula", "text": "Response calculates net margin and probability-weighted expected contribution."},
+        {"id": "baseline-lift", "text": "Response distinguishes action probability from baseline probability when lift is available."},
+        {"id": "constraint-check", "text": "Response checks budget and capacity constraints for the selected allocation."},
+        {"id": "bias-boundary", "text": "Response explains selection bias and does not rank people from the toy fixture alone."}
       ]
     }
   ]
