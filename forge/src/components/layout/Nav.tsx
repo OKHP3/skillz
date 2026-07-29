@@ -13,8 +13,6 @@ export default function Nav() {
     <div className="nav-wrapper">
       <header className="nav-content">
         <Link to="/" className="nav-wordmark" aria-label="Skillz Forge — OverKill Hill P³™ home">
-          <span className="nav-parent">OverKill Hill P³™</span>
-          <span className="nav-sep" aria-hidden="true">/</span>
           <span className="nav-product">Skillz Forge</span>
         </Link>
 
@@ -40,7 +38,7 @@ export default function Nav() {
           </a>
           <span className="nav-divider" aria-hidden="true" />
           <a href="https://overkillhill.com/" target="_blank" rel="noopener noreferrer" className="nav-link-brand">
-            OverKill Hill
+            OverKill Hill P³™
           </a>
           <ThemeToggle />
         </nav>

@@ -280,6 +280,9 @@ input, select, textarea {
   .nav-mobile-toggle {
     display: block;
   }
+  .nav-divider {
+    display: none;
+  }
 }
 
 /* Maturity Badges */

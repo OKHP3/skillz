@@ -29,6 +29,7 @@ export interface Skill {
   tools: string[];
   runtimes: string[];
   boundaries: string[];
+  bodyText: string;
   rawUrl: string;
   githubUrl: string;
   lastModified: string | null;

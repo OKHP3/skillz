@@ -5,6 +5,11 @@ const FUSE_OPTIONS: IFuseOptions<Skill> = {
   includeScore: true,
   threshold: 0.4,
   minMatchCharLength: 2,
+  // Fuse's default location/distance scoring only rewards matches near the
+  // start of a field. Several fields here (description, bodyText) run to
+  // hundreds or thousands of characters, so without this a real match deep
+  // in the text scores as "no match" and silently vanishes from results.
+  ignoreLocation: true,
   keys: [
     { name: 'name',        weight: 0.25 },
     { name: 'displayName', weight: 0.20 },
@@ -20,6 +25,10 @@ const FUSE_OPTIONS: IFuseOptions<Skill> = {
     { name: 'companions',  weight: 0.02 },
     { name: 'boundaries',  weight: 0.02 },
     { name: 'examples',    weight: 0.02 },
+    // Full-text body of the SKILL.md (stripped of markdown syntax). Weighted
+    // low so a stray word deep in prose doesn't outrank a name/description
+    // match, but it means nothing written in a skill file is unsearchable.
+    { name: 'bodyText',    weight: 0.08 },
   ],
 };
 
