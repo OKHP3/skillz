@@ -18,6 +18,7 @@ const COMPARE_FIELDS: Array<{ key: keyof Skill; label: string; render?: (v: unkn
   { key: 'description', label: 'Purpose' },
   { key: 'family', label: 'Family', render: (v) => <code className="mono-tag">{String(v)}</code> },
   { key: 'maturity', label: 'Maturity', render: (v, s) => <span data-maturity={s.maturity}>{String(v)}</span> },
+  { key: 'evidenceStatus', label: 'Evidence', render: (v) => <span>{String(v).replace('-', ' ')}</span> },
   { key: 'triggers', label: 'Use when', render: (v) => {
     const items = v as string[];
     if (!items?.length) return <span className="meta-pending">—</span>;

@@ -1,4 +1,5 @@
 export type Maturity = 'placeholder' | 'skeleton' | 'draftable' | 'usable' | 'validated' | 'published';
+export type EvidenceStatus = 'none' | 'local-checks' | 'designed' | 'analytical' | 'not-run' | 'historical' | 'live';
 
 export interface Skill {
   name: string;
@@ -14,6 +15,8 @@ export interface Skill {
   author: string | null;
   homepage: string | null;
   maturity: Maturity;
+  evidenceStatus: EvidenceStatus;
+  evidenceNote: string;
   status: string | null;
   tags: string[];
   topics: string[];

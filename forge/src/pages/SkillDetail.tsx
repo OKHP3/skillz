@@ -13,7 +13,7 @@ const MATURITY_DESCRIPTIONS: Record<string, string> = {
   placeholder: 'Directory reserved. No content yet.',
   skeleton: 'Structure and trigger phrases present. Body incomplete.',
   draftable: 'Usable in practice. Not yet benchmarked.',
-  usable: 'Benchmarked and in active production use.',
+  usable: 'Evidence-backed and exercised in a defined workflow. This is not the same as live validation.',
   validated: 'Passed live eval benchmarks with a measurable quality gap.',
   published: 'Production-ready. Official distribution surface.',
 };
@@ -224,6 +224,9 @@ export default function SkillDetail() {
           <div style={{ background: 'rgba(0,0,0,0.03)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-steel)', marginTop: 'var(--space-8)' }}>
             <h2 style={{ marginTop: 0, border: 'none', padding: 0 }}>Maturity: <span style={{ textTransform: 'capitalize' }}>{skill.maturity}</span></h2>
             <p style={{ marginBottom: 'var(--space-2)' }}>{MATURITY_DESCRIPTIONS[skill.maturity]}</p>
+            <p style={{ marginBottom: 'var(--space-2)', fontSize: 'var(--text-sm)' }}>
+              <strong>Evidence state:</strong> {skill.evidenceStatus.replace('-', ' ')}. {skill.evidenceNote}
+            </p>
             <Link to="/faq#maturity-label" style={{ fontSize: 'var(--text-sm)', fontWeight: 500 }}>What maturity labels mean &rarr;</Link>
           </div>
 
@@ -306,6 +309,8 @@ export default function SkillDetail() {
                 <dt style={{ color: 'var(--color-text-muted-light)', whiteSpace: 'nowrap' }}>Last modified</dt>
                 <dd style={{ margin: 0, fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)' }}>{formatDate(skill.lastModified)}</dd>
               </>}
+              <dt style={{ color: 'var(--color-text-muted-light)', whiteSpace: 'nowrap' }}>Evidence</dt>
+              <dd style={{ margin: 0, fontSize: 'var(--text-sm)' }}>{skill.evidenceStatus.replace('-', ' ')}</dd>
               {skill.commitSha && <>
                 <dt style={{ color: 'var(--color-text-muted-light)', whiteSpace: 'nowrap' }}>Commit</dt>
                 <dd style={{ margin: 0, fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)' }}>

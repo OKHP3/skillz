@@ -46,6 +46,12 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Added the 2026-07-29 repository-wide maturity audit and Replit reconciliation
+  PRD. The audit records all 75 distribution skills, package versions, first
+  Git records, last modifications, package resources, maturity, and evidence
+  state. The Forge catalog now keeps `usable` distinct from `validated` and
+  exposes evidence states for none, local checks, analytical design, not-run,
+  historical, and live records.
 - Enhanced all five `outcome-modeling` skills to version `1.1.0` with
   computational-model references, plain-language glossaries, synthetic JSON
   fixtures, dependency-free Python helpers, package-level calculation tests,
