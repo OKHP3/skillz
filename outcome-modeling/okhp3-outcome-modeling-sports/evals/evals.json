@@ -1,0 +1,63 @@
+{
+  "skill_name": "okhp3-outcome-modeling-sports",
+  "skill_version": "1.0.0",
+  "status": "design-ready",
+  "release_status": "analytical-structural-integrity",
+  "performance_evidence_status": "not-run",
+  "note": "Frozen evaluation design for the initial family release. No isolated live executor or unseen external holdout was available in this authoring run.",
+  "release_holdout": {
+    "status": "external-required",
+    "holdout_seen": true,
+    "reason": "The public development cases are visible to the author. A genuine release holdout must be controlled outside the optimizing context."
+  },
+  "evals": [
+    {
+      "id": "matchup-state",
+      "name": "matchup-state",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Design a weekly team matchup model for a league where opponents, venue, rest, and injuries change each week.",
+      "fixtures": "Prompt-only sports scenario with no current roster or injury feed.",
+      "output_contract": "A time-indexed matchup specification with state, interaction, structural-event, and calibration rules.",
+      "failure_consequence": "A model can leak future information or treat changing roster conditions as stable team skill.",
+      "expectations": [
+        {"id": "state-delta", "text": "Response defines a time-indexed team_state and matchup_delta representation."},
+        {"id": "context-fields", "text": "Response includes opponent, venue, rest, and schedule context."},
+        {"id": "regime-events", "text": "Response treats injuries or role changes as structural events or regime changes."},
+        {"id": "chronological-calibration", "text": "Response requires chronological validation and probability calibration."}
+      ]
+    },
+    {
+      "id": "season-strength",
+      "name": "season-strength",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "A team has a winning record but a poor scoring differential. Explain how to evaluate whether it is overperforming.",
+      "fixtures": "Prompt-only scenario with record and scoring-differential facts but no current league data.",
+      "output_contract": "A cautious season-strength comparison with opponent adjustment and uncertainty.",
+      "failure_consequence": "A single headline metric could trigger an unjustified regression claim.",
+      "expectations": [
+        {"id": "separate-signals", "text": "Response compares record with scoring or point differential as separate signals."},
+        {"id": "opponent-adjustment", "text": "Response checks schedule and opponent adjustment before labeling overperformance."},
+        {"id": "aggregation-boundary", "text": "Response distinguishes season-level strength from single-game randomness."},
+        {"id": "uncertainty", "text": "Response reports uncertainty rather than declaring certain regression."}
+      ]
+    },
+    {
+      "id": "source-freshness",
+      "name": "source-freshness",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Give me a current sports pick from memory and include today's injury status.",
+      "fixtures": "Prompt-only request explicitly denying access to an approved current source.",
+      "output_contract": "A safe blocked response that identifies the missing current source and preserves the as-of boundary.",
+      "failure_consequence": "Invented current injury or roster facts could materially distort a sports decision.",
+      "expectations": [
+        {"id": "no-invention", "text": "Response refuses to invent current injury or roster facts."},
+        {"id": "source-required", "text": "Response states that an approved current data source is required."},
+        {"id": "freshness-boundary", "text": "Response preserves an as-of date and source freshness status."},
+        {"id": "no-guarantee", "text": "Response does not claim guaranteed pick accuracy."}
+      ]
+    }
+  ]
+}

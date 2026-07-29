@@ -1,0 +1,63 @@
+{
+  "skill_name": "okhp3-outcome-modeling-sales",
+  "skill_version": "1.0.0",
+  "status": "design-ready",
+  "release_status": "analytical-structural-integrity",
+  "performance_evidence_status": "not-run",
+  "note": "Frozen evaluation design for the initial family release. No isolated live executor or unseen external holdout was available in this authoring run.",
+  "release_holdout": {
+    "status": "external-required",
+    "holdout_seen": true,
+    "reason": "The public development cases are visible to the author. A genuine release holdout must be controlled outside the optimizing context."
+  },
+  "evals": [
+    {
+      "id": "close-rate-trap",
+      "name": "close-rate-trap",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "One salesperson closes 100% of deals while another closes 65%. Decide who is better.",
+      "fixtures": "Prompt-only comparison with no private employee or customer records.",
+      "output_contract": "A context-aware economic comparison that refuses to rank people from close rate alone.",
+      "failure_consequence": "A headline rate could drive an unfair personnel or territory decision.",
+      "expectations": [
+        {"id": "assignment-context", "text": "Response checks opportunity assignment and customer or deal difficulty."},
+        {"id": "economic-fields", "text": "Response examines discounting, deal size, margin, cycle time, and retention."},
+        {"id": "no-rate-ranking", "text": "Response refuses to rank the salespeople from close rate alone."},
+        {"id": "contribution-value", "text": "Response proposes an economic-value or contribution-margin comparison."}
+      ]
+    },
+    {
+      "id": "pipeline-forecast",
+      "name": "pipeline-forecast",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Forecast whether a sales team will hit quota from an opportunity export.",
+      "fixtures": "Prompt-only CRM export request with no attached records or quota definition.",
+      "output_contract": "A time-aware forecast specification with pipeline buckets, quota gap, and data request.",
+      "failure_consequence": "Future pipeline information or a single uncalibrated total could create a false commit forecast.",
+      "expectations": [
+        {"id": "as-of-boundary", "text": "Response defines an as-of date and prevents future pipeline information from leaking into the forecast."},
+        {"id": "pipeline-buckets", "text": "Response separates commit, upside, and risk-adjusted pipeline rather than using one total."},
+        {"id": "quota-gap", "text": "Response includes a gap-to-quota and capacity-aware action plan."},
+        {"id": "forecast-fields", "text": "Response identifies data fields needed for opportunity quality, margin, and close probability."}
+      ]
+    },
+    {
+      "id": "commercial-intervention",
+      "name": "commercial-intervention",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Recommend a discount policy to increase close rate without destroying contribution margin.",
+      "fixtures": "Prompt-only intervention request with no CRM, pricing, or customer-level data.",
+      "output_contract": "A margin-aware intervention design with causal test, retention consequences, and safe boundaries.",
+      "failure_consequence": "A discount policy could increase reported wins while reducing durable economic value.",
+      "expectations": [
+        {"id": "causal-boundary", "text": "Response distinguishes predictive association from the causal effect of discounting."},
+        {"id": "margin-objective", "text": "Response defines contribution margin and discount cost in the objective."},
+        {"id": "intervention-test", "text": "Response proposes an experiment, holdout, or quasi-experimental design."},
+        {"id": "durable-value", "text": "Response includes retention, expansion, and service-cost consequences."}
+      ]
+    }
+  ]
+}
