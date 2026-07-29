@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-29T17:24:14.264Z",
+  "generatedAt": "2026-07-29T19:21:35.145Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "c677fa7",
+  "sourceCommit": "2bb3980",
   "skillCount": 75,
   "familyCount": 12,
   "families": [
@@ -108,7 +108,7 @@
     },
     {
       "name": "outcome-modeling",
-      "displayName": "outcome-modeling",
+      "displayName": "Outcome Modeling",
       "skillCount": 5,
       "skills": [
         "okhp3-nfl-fantasy-picks",

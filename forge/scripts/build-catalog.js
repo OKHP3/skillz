@@ -440,6 +440,7 @@ const FAMILY_DISPLAY_NAMES = {
   'linkedin':          'LinkedIn',
   'mermaid':           'Mermaid',
   'notion':            'Notion',
+  'outcome-modeling':  'Outcome Modeling',
   'process-capture':   'Process Capture',
   'refolddec':         'ReFolDec',
   'universal':         'Universal',

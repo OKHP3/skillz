@@ -1,13 +1,23 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import catalogData from '../data/catalog.json';
-import type { Catalog, FilterState, SearchResult, Maturity } from '../types/catalog';
+import type { Catalog, FilterState, SearchResult, Maturity, EvidenceStatus } from '../types/catalog';
 import { searchSkills, buildSearchIndex } from '../utils/search';
 import { copyInstallUrl as copyInstallCommand, shareSkill, useFavorites } from '../utils/clipboard';
 import Nav from '../components/layout/Nav';
 
 const catalog = catalogData as Catalog;
 const MATURITY_LEVELS: Maturity[] = ['placeholder', 'skeleton', 'draftable', 'usable', 'validated', 'published'];
+const EVIDENCE_LEVELS: EvidenceStatus[] = ['live', 'historical', 'analytical', 'local-checks', 'designed', 'not-run', 'none'];
+const EVIDENCE_LABELS: Record<EvidenceStatus, string> = {
+  live: 'Live',
+  historical: 'Historical',
+  analytical: 'Analytical',
+  'local-checks': 'Local checks',
+  designed: 'Designed',
+  'not-run': 'Not run',
+  none: 'No evidence record',
+};
 
 export default function Explore() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,6 +25,7 @@ export default function Explore() {
     query: searchParams.get('q') || '',
     family: searchParams.get('family') || '',
     maturity: (searchParams.get('maturity') as Maturity) || '',
+    evidence: (searchParams.get('evidence') as EvidenceStatus) || '',
     sort: (searchParams.get('sort') as FilterState['sort']) || 'relevance',
   });
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -40,6 +51,7 @@ export default function Explore() {
     if (filters.query) params.q = filters.query;
     if (filters.family) params.family = filters.family;
     if (filters.maturity) params.maturity = filters.maturity;
+    if (filters.evidence) params.evidence = filters.evidence;
     if (filters.sort !== 'relevance') params.sort = filters.sort;
     setSearchParams(params, { replace: true });
   }, [filters, setSearchParams]);
@@ -135,11 +147,36 @@ export default function Explore() {
               </ul>
             </section>
 
-            {(filters.family || filters.maturity) && (
+            <section className="filter-group">
+              <h3>Evidence</h3>
+              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-dark)', marginTop: 0 }}>
+                Evidence describes what proof exists for the current version — separate from maturity.
+              </p>
+              <ul className="filter-list">
+                <li>
+                  <button className="filter-btn" onClick={() => updateFilter('evidence', '')} aria-pressed={!filters.evidence}>
+                    Any evidence
+                  </button>
+                </li>
+                {EVIDENCE_LEVELS.map(e => (
+                  <li key={e}>
+                    <button
+                      className="filter-btn"
+                      onClick={() => updateFilter('evidence', e)}
+                      aria-pressed={filters.evidence === e}
+                    >
+                      {EVIDENCE_LABELS[e]}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {(filters.family || filters.maturity || filters.evidence) && (
               <button
                 className="btn btn-outline"
                 style={{ width: '100%' }}
-                onClick={() => setFilters(prev => ({ ...prev, family: '', maturity: '' }))}
+                onClick={() => setFilters(prev => ({ ...prev, family: '', maturity: '', evidence: '' }))}
               >
                 Clear filters
               </button>
@@ -156,7 +193,7 @@ export default function Explore() {
               aria-controls="filter-panel"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem' }}
             >
-              Filters {filters.family || filters.maturity ? '•' : ''}
+              Filters {filters.family || filters.maturity || filters.evidence ? '•' : ''}
             </button>
             <div style={{ flex: 1 }}>
               <label htmlFor="explore-search" className="sr-only">Search skills</label>
@@ -175,11 +212,12 @@ export default function Explore() {
           <div className="explore-meta" aria-live="polite" aria-atomic="true">
             <div>
               <strong style={{ color: 'var(--color-text-dark)' }}>{results.length}</strong> skill{results.length !== 1 ? 's' : ''} found
-              {(filters.query || filters.family || filters.maturity) && (
+              {(filters.query || filters.family || filters.maturity || filters.evidence) && (
                 <span style={{ marginLeft: '8px', opacity: 0.8 }}>
                   for {filters.query && <span>"{filters.query}"</span>}
                   {filters.family && <span> family: <strong>{filters.family}</strong></span>}
                   {filters.maturity && <span> maturity: <strong>{filters.maturity}</strong></span>}
+                  {filters.evidence && <span> evidence: <strong>{EVIDENCE_LABELS[filters.evidence]}</strong></span>}
                 </span>
               )}
             </div>
@@ -192,6 +230,7 @@ export default function Explore() {
               <option value="alpha">Sort: Alphabetical</option>
               <option value="family">Sort: By family</option>
               <option value="maturity">Sort: By maturity</option>
+              <option value="evidence">Sort: By evidence</option>
             </select>
           </div>
 
@@ -200,7 +239,7 @@ export default function Explore() {
               <h2 style={{ marginTop: 0 }}>No skills found</h2>
               <p>No skills matched "{filters.query || 'your filters'}".</p>
               <p>Try different search terms or browse by family.</p>
-              <button className="btn" onClick={() => setFilters({ query: '', family: '', maturity: '', sort: 'relevance' })}>
+              <button className="btn" onClick={() => setFilters({ query: '', family: '', maturity: '', evidence: '', sort: 'relevance' })}>
                 Clear all filters
               </button>
             </div>
@@ -218,9 +257,12 @@ export default function Explore() {
                           {skill.name}
                         </div>
                       )}
-                      <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '4px' }}>
+                      <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '4px', flexWrap: 'wrap' }}>
                         <span className="skill-card-family">{skill.family}</span>
                         <span data-maturity={skill.maturity}>{skill.maturity}</span>
+                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-dark)' }}>
+                          Evidence: {EVIDENCE_LABELS[skill.evidenceStatus]}
+                        </span>
                       </div>
                     </div>
                   </div>

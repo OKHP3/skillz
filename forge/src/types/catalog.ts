@@ -91,11 +91,12 @@ export interface SearchResult {
   matchReason?: string;
 }
 
-export type SortKey = 'relevance' | 'alpha' | 'family' | 'maturity';
+export type SortKey = 'relevance' | 'alpha' | 'family' | 'maturity' | 'evidence';
 
 export interface FilterState {
   query: string;
   family: string;
   maturity: Maturity | '';
+  evidence: EvidenceStatus | '';
   sort: SortKey;
 }

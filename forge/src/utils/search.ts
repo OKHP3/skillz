@@ -54,6 +54,11 @@ export function searchSkills(skills: Skill[], filters: FilterState): SearchResul
     results = results.filter(r => r.skill.maturity === filters.maturity);
   }
 
+  // Apply evidence filter
+  if (filters.evidence) {
+    results = results.filter(r => r.skill.evidenceStatus === filters.evidence);
+  }
+
   // Sort
   results = sortResults(results, filters.sort);
 
@@ -76,6 +81,14 @@ function sortResults(results: SearchResult[], sort: FilterState['sort']): Search
       };
       return [...results].sort((a, b) =>
         (order[a.skill.maturity] ?? 9) - (order[b.skill.maturity] ?? 9)
+      );
+    }
+    case 'evidence': {
+      const order: Record<string, number> = {
+        live: 0, historical: 1, analytical: 2, 'local-checks': 3, designed: 4, 'not-run': 5, none: 6,
+      };
+      return [...results].sort((a, b) =>
+        (order[a.skill.evidenceStatus] ?? 9) - (order[b.skill.evidenceStatus] ?? 9)
       );
     }
     default:

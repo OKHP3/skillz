@@ -56,7 +56,10 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         id: 'maturity-label',
         question: 'What does the maturity label mean?',
-        answer: 'Skills progress through six maturity states: Placeholder (directory exists, no content), Skeleton (structure and trigger phrases, incomplete body), Draftable (usable but not benchmarked), Usable (benchmarked, live in production use), Validated (passed live eval benchmarks with a measurable with/without gap), Published (production-ready, officially in the distribution surface). Lower-maturity skills are shown clearly — they are not hidden.',
+        answer: 'Maturity and evidence are two separate questions, and Skillz Forge never merges them. Maturity describes the state of the contract itself: Placeholder (directory exists, no content), Skeleton (basic contract shape, important behavior incomplete), Draftable (an agent can follow the workflow under supervision — this does not mean validated), Usable (a defined workflow has been exercised and its limits documented — this does not mean production-safe in every environment), Validated (a current, version-matched benchmark demonstrates the contract and a measurable gap), Published (stable public release with formal provenance). Evidence describes what proof exists for the current version: none, local checks, designed, analytical, not-run, historical, or live. A skill can be Draftable with live evidence, or Draftable with no evidence record at all — the evidence note on each skill page tells you which. Validated specifically requires fresh, version-matched evaluation evidence; a historical or not-run note means that evidence does not yet exist for the current version. Lower-maturity and lower-evidence skills are shown clearly — they are not hidden.',
+        links: [
+          { label: 'Filter by evidence', href: '/explore' },
+        ],
       },
       {
         id: 'why-prerequisite',
@@ -71,7 +74,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         id: 'skill-finished',
         question: 'How do I know whether a skill is finished?',
-        answer: 'Check the maturity label. Validated and Published mean the skill has been benchmarked with live executor runs and passes a measurable with/without quality gap. Skeleton and Draftable mean the skill is functional but not yet confirmed at scale. Placeholder means the directory exists as a reserved spot, nothing more.',
+        answer: 'Check both the maturity label and the evidence note on the skill\'s detail page. Validated and Published require a fresh, version-matched benchmark with a measurable quality gap. Usable means a workflow has been exercised with documented limits, but it is not a production-safety guarantee for every environment. Skeleton and Draftable mean the contract is functional but not yet benchmarked — an evidence note of "historical" means an older version was benchmarked, not the current one; "not-run" means the evaluation design exists but has not been executed; "none" means no indexed evidence record exists, which is not the same as unsafe. Placeholder means the directory is a reserved spot, nothing more.',
       },
     ],
   },
@@ -106,7 +109,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         id: 'how-validated',
         question: 'How are skills validated?',
-        answer: 'Production-quality skills are validated through the okhp3-skill-foundry 8-phase methodology: architecture, draft, eval design, live execution, grading, benchmark, fix loop, and description optimization. The primary quality signal is the with/without gap — a skill that scores 1.0 with skill access and 0.3 without is doing real work. Skills must pass live executor benchmarks before reaching Validated or Published status.',
+        answer: 'Production-quality skills are validated through the okhp3-skill-foundry 8-phase methodology: architecture, draft, eval design, live execution, grading, benchmark, fix loop, and description optimization. The primary quality signal is the with/without gap — a skill that scores 1.0 with skill access and 0.3 without is doing real work. Reaching Validated requires that gap to come from a benchmark matched to the skill\'s current version; a benchmark run against an earlier version is recorded as "historical" evidence, not treated as current proof. A skill is never promoted to Validated solely because it has tests, scripts, or a benchmark design — those establish local or analytical evidence, not live production performance.',
         links: [
           { label: 'okhp3-skill-foundry', href: '/skills/universal/okhp3-skill-foundry' },
         ],
@@ -154,7 +157,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         id: 'skill-becomes-published',
         question: 'How does a skill become published?',
-        answer: 'A skill moves through the maturity ladder: skeleton -> draftable -> usable -> validated -> published. The key gate is the okhp3-skill-foundry benchmarking phase — the skill must demonstrate a measurable with/without quality gap across live executor runs. Published status also requires review of the description for trigger recall quality.',
+        answer: 'A skill moves through the maturity ladder: skeleton -> draftable -> usable -> validated -> published. The key gate is the okhp3-skill-foundry benchmarking phase — the skill must demonstrate a measurable with/without quality gap across live executor runs, matched to its current version. Published status also requires a release record, catalog sync, a security gate, and review of the description for trigger recall quality. A skill is not promoted on the strength of a version-mismatched or historical benchmark.',
         links: [
           { label: 'okhp3-skill-foundry', href: '/skills/universal/okhp3-skill-foundry' },
         ],
