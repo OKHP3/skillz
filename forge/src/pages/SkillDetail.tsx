@@ -12,7 +12,7 @@ const catalog = catalogData as Catalog;
 const MATURITY_DESCRIPTIONS: Record<string, string> = {
   placeholder: 'Directory reserved. No content yet.',
   skeleton: 'Structure and trigger phrases present. Body incomplete.',
-  draftable: 'Usable in practice. Not yet benchmarked.',
+  draftable: 'Contract is written and reviewable. It is not yet benchmarked.',
   usable: 'Evidence-backed and exercised in a defined workflow. This is not the same as live validation.',
   validated: 'Passed live eval benchmarks with a measurable quality gap.',
   published: 'Production-ready. Official distribution surface.',
