@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-29T09:44:53.791Z",
+  "generatedAt": "2026-07-29T09:45:42.087Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "b37ea82",
+  "sourceCommit": "d251cf7",
   "skillCount": 75,
   "familyCount": 12,
   "families": [
@@ -1639,7 +1639,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
       "lastModified": "2026-07-29T04:44:41-05:00",
-      "commitSha": "b37ea827"
+      "commitSha": "d251cf73"
     },
     {
       "name": "okhp3-outcome-modeling-core",
@@ -1675,7 +1675,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
       "lastModified": "2026-07-29T04:44:41-05:00",
-      "commitSha": "b37ea827"
+      "commitSha": "d251cf73"
     },
     {
       "name": "okhp3-outcome-modeling-markets",
@@ -1708,7 +1708,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
       "lastModified": "2026-07-29T04:44:41-05:00",
-      "commitSha": "b37ea827"
+      "commitSha": "d251cf73"
     },
     {
       "name": "okhp3-outcome-modeling-sales",
@@ -1752,7 +1752,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
       "lastModified": "2026-07-29T04:44:41-05:00",
-      "commitSha": "b37ea827"
+      "commitSha": "d251cf73"
     },
     {
       "name": "okhp3-outcome-modeling-sports",
@@ -1796,7 +1796,7 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
       "lastModified": "2026-07-29T04:44:41-05:00",
-      "commitSha": "b37ea827"
+      "commitSha": "d251cf73"
     },
     {
       "name": "okhp3-as-is-process-capture",
