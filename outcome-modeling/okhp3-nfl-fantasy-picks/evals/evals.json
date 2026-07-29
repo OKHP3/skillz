@@ -1,0 +1,63 @@
+{
+  "skill_name": "okhp3-nfl-fantasy-picks",
+  "skill_version": "1.0.0",
+  "status": "design-ready",
+  "release_status": "analytical-structural-integrity",
+  "performance_evidence_status": "not-run",
+  "note": "Frozen evaluation design for the initial family release. No isolated live executor or unseen external holdout was available in this authoring run.",
+  "release_holdout": {
+    "status": "external-required",
+    "holdout_seen": true,
+    "reason": "The public development cases are visible to the author. A genuine release holdout must be controlled outside the optimizing context."
+  },
+  "evals": [
+    {
+      "id": "salary-cap-lineup",
+      "name": "salary-cap-lineup",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Build a DFS lineup from player projections and salaries, but first identify what information is missing.",
+      "fixtures": "Prompt-only lineup request without a scoring system, slate, salaries, projections, or roster rules.",
+      "output_contract": "A data request followed by a constrained lineup method, not invented player picks.",
+      "failure_consequence": "A lineup can be invalid, stale, or economically dominated when constraints are missing.",
+      "expectations": [
+        {"id": "lineup-intake", "text": "Response asks for scoring rules, roster slots, salary cap, slate, and contest type."},
+        {"id": "replacement-value", "text": "Response uses replacement value rather than projected points alone."},
+        {"id": "distribution", "text": "Response includes floor, ceiling, role risk, or a projected distribution."},
+        {"id": "constraint-check", "text": "Response shows constraint checks for the proposed lineup."}
+      ]
+    },
+    {
+      "id": "value-over-reputation",
+      "name": "value-over-reputation",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Compare an expensive elite running back with a cheaper player projected for fewer points but a stable workload.",
+      "fixtures": "Prompt-only comparison with no current player identities, salaries, or scoring settings.",
+      "output_contract": "A conditional value comparison that separates median, floor, ceiling, scarcity, and opportunity cost.",
+      "failure_consequence": "A famous player or raw point projection could be mistaken for the optimal roster decision.",
+      "expectations": [
+        {"id": "cost-efficiency", "text": "Response calculates or requests cost efficiency and replacement value."},
+        {"id": "scarcity-cost", "text": "Response evaluates opportunity cost and positional scarcity."},
+        {"id": "risk-objectives", "text": "Response distinguishes median, floor, and ceiling objectives."},
+        {"id": "reputation-boundary", "text": "Response does not equate the most famous player with the optimal selection."}
+      ]
+    },
+    {
+      "id": "current-data-boundary",
+      "name": "current-data-boundary",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Give me today's NFL fantasy picks and injury pivots without access to current data.",
+      "fixtures": "Prompt-only request explicitly denying access to an approved current source.",
+      "output_contract": "A safe blocked response that requests fresh inputs and does not fabricate picks or injuries.",
+      "failure_consequence": "Stale or invented NFL information can make a lineup decision invalid.",
+      "expectations": [
+        {"id": "no-current-invention", "text": "Response refuses to invent current injury, salary, or depth-chart information."},
+        {"id": "approved-source", "text": "Response requests or identifies an approved current data source."},
+        {"id": "decision-date", "text": "Response preserves a decision date and freshness boundary."},
+        {"id": "decision-support", "text": "Response labels the result as decision support rather than guaranteed picks."}
+      ]
+    }
+  ]
+}

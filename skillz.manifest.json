@@ -20,8 +20,8 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 70,
-  "activeFamilyCount": 11,
+  "distributionSkillCount": 75,
+  "activeFamilyCount": 12,
   "placeholderFamilyCount": 2,
   "projectLocalSupportSkillCount": 18,
   "families": [
@@ -115,6 +115,17 @@
       "status": "draftable",
       "skills": [
         "okhp3-notion-capture-router"
+      ]
+    },
+    {
+      "name": "outcome-modeling",
+      "status": "draftable",
+      "skills": [
+        "okhp3-nfl-fantasy-picks",
+        "okhp3-outcome-modeling-core",
+        "okhp3-outcome-modeling-markets",
+        "okhp3-outcome-modeling-sales",
+        "okhp3-outcome-modeling-sports"
       ]
     },
     {

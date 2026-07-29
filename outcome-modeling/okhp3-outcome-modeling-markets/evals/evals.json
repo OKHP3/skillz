@@ -1,0 +1,63 @@
+{
+  "skill_name": "okhp3-outcome-modeling-markets",
+  "skill_version": "1.0.0",
+  "status": "design-ready",
+  "release_status": "analytical-structural-integrity",
+  "performance_evidence_status": "not-run",
+  "note": "Frozen evaluation design for the initial family release. No isolated live executor or unseen external holdout was available in this authoring run.",
+  "release_holdout": {
+    "status": "external-required",
+    "holdout_seen": true,
+    "reason": "The public development cases are visible to the author. A genuine release holdout must be controlled outside the optimizing context."
+  },
+  "evals": [
+    {
+      "id": "market-vs-model",
+      "name": "market-vs-model",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "My model says an event has a 62% chance, while a prediction market is priced at 54%. Analyze the difference.",
+      "fixtures": "Prompt-only price comparison with no venue, fee, spread, or resolution details.",
+      "output_contract": "A research comparison that preserves independent and market probabilities, uncertainty, and transaction costs.",
+      "failure_consequence": "A raw probability difference could be mistaken for guaranteed profit or execution advice.",
+      "expectations": [
+        {"id": "probability-separation", "text": "Response keeps model probability separate from market-implied probability."},
+        {"id": "market-inputs", "text": "Response asks for or states the price format, spread, fees, and liquidity."},
+        {"id": "uncertain-value", "text": "Response quantifies expected value while preserving model uncertainty."},
+        {"id": "no-guarantee", "text": "Response does not call the difference guaranteed profit or automatic edge."}
+      ]
+    },
+    {
+      "id": "resolution-risk",
+      "name": "resolution-risk",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Evaluate a market contract whose question and resolution source are ambiguous.",
+      "fixtures": "Prompt-only ambiguous contract with no supplied venue rules or resolution document.",
+      "output_contract": "A blocked or unresolved analysis that identifies the exact contract and authoritative resolution rule required.",
+      "failure_consequence": "Even a well-calibrated probability is unusable when the settled event is undefined.",
+      "expectations": [
+        {"id": "contract-authority", "text": "Response identifies the exact contract wording and resolution authority as required inputs."},
+        {"id": "unresolved-label", "text": "Response labels the result unresolved when the rule remains ambiguous."},
+        {"id": "resolution-risk", "text": "Response includes resolution ambiguity as a risk separate from probability uncertainty."},
+        {"id": "no-unclear-execution", "text": "Response does not recommend execution on an unclear contract."}
+      ]
+    },
+    {
+      "id": "historical-backtest",
+      "name": "historical-backtest",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Backtest a prediction-market strategy using several years of settled markets.",
+      "fixtures": "Prompt-only backtest request with no market export or execution authority.",
+      "output_contract": "A paper-only, time-aware backtest design with calibration, cost, liquidity, and resolution checks.",
+      "failure_consequence": "Look-ahead bias or omitted transaction costs could turn a fictional edge into unsafe execution advice.",
+      "expectations": [
+        {"id": "historical-boundary", "text": "Response enforces time-aware historical information boundaries."},
+        {"id": "calibration-metrics", "text": "Response includes calibration or proper scoring metrics, not only profit."},
+        {"id": "transaction-costs", "text": "Response accounts for spread, fees, liquidity, and slippage."},
+        {"id": "paper-only", "text": "Response keeps paper evaluation separate from live trade execution."}
+      ]
+    }
+  ]
+}

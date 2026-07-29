@@ -8,6 +8,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added the `outcome-modeling/` family with a Foundry-3.1-aligned core and four domain adapters: sports, NFL fantasy picks, business-sales, and prediction markets. Each package includes frozen development evaluations, an external-required holdout declaration, and a version-matched benchmark record marked `not-run`.
+
 - Added `okhp3-repository-organizer`, a content-first workflow for profiling organically grown local Git repositories, choosing selective governance scaffolding, and executing approval-gated reorganizations without forcing an application layout.
 - Added `okhp3-brand-style-registry`, a public, profile-driven workflow for capturing named visual styles and applying primary and explicitly bounded supporting profiles to SPAs and related artifacts.
 - Added `okhp3-database-cartographer`, a read-only SQL schema-reflection,
