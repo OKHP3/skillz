@@ -109,13 +109,17 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--color-bg);
+  background: radial-gradient(circle at 50% 0%, #1c3a34 0%, #141210 50%, #2a2320 100%);
   color: var(--color-text-dark);
   font-family: var(--font-sans);
   font-size: var(--text-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+}
+
+[data-theme="light"] body {
+  background: radial-gradient(ellipse 160% 40% at 50% 0%, #d4cabb, #ede8df 55%);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -169,11 +173,16 @@ input, select, textarea {
 
 /* Nav */
 .nav-wrapper {
-  border-bottom: 1px solid var(--color-border-dark);
-  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-copper);
+  background: var(--color-bg-secondary);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+[data-theme="light"] .nav-wrapper {
+  background: var(--color-bg);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 .nav-content {
   display: flex;
@@ -384,11 +393,19 @@ input, select, textarea {
   padding: var(--space-6);
   border-top: 4px solid var(--color-copper);
   display: block;
-  transition: transform var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+[data-theme="light"] .home-family-card {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
 }
 .home-family-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
   color: var(--color-text-light);
+}
+[data-theme="light"] .home-family-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
 }
 .home-family-card strong {
   display: block;
@@ -468,6 +485,8 @@ input, select, textarea {
   color: var(--color-copper);
   background: rgba(196, 106, 44, 0.12);
   font-weight: 500;
+  border-left: 2px solid var(--color-copper);
+  padding-left: calc(var(--space-2) - 2px);
 }
 
 .explore-main {
@@ -510,10 +529,19 @@ input, select, textarea {
   flex-direction: column;
   gap: var(--space-4);
   border-left: 4px solid transparent;
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+[data-theme="light"] .skill-card {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.03);
 }
 .skill-card:hover {
   border-color: var(--color-copper);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.18), 0 0 0 1px rgba(196,106,44,0.15);
+  transform: translateY(-1px);
+}
+[data-theme="light"] .skill-card:hover {
+  box-shadow: 0 6px 22px rgba(0,0,0,0.10), 0 0 0 1px rgba(196,106,44,0.2);
 }
 .skill-card-header {
   display: flex;
@@ -553,6 +581,17 @@ input, select, textarea {
 }
 .page-header h1 {
   margin-bottom: var(--space-4);
+  position: relative;
+  padding-bottom: var(--space-4);
+}
+.page-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-copper), var(--color-teal));
 }
 .page-header p {
   color: var(--color-text-muted-dark);
@@ -567,6 +606,8 @@ input, select, textarea {
   padding: var(--space-8) var(--space-12);
   margin: var(--space-8) 0;
   max-width: 900px;
+  border-top: 3px solid var(--color-copper);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.1);
 }
 .detail-article h1, .detail-article h2 {
   color: var(--color-text-light);
@@ -614,6 +655,11 @@ input, select, textarea {
   color: var(--color-text-light);
   padding: var(--space-6);
   border-top: 4px solid var(--color-steel);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: box-shadow var(--transition);
+}
+.stack-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.16);
 }
 .stack-card h2 a {
   color: var(--color-text-light);
@@ -717,6 +763,7 @@ input, select, textarea {
   background: var(--color-bg-secondary);
   padding: var(--space-6);
   border: 1px solid var(--color-border-dark);
+  border-top: 3px solid var(--color-steel);
 }
 .activity-panel h2 {
   margin-bottom: var(--space-4);
@@ -929,4 +976,148 @@ input, select, textarea {
 }
 .compare-github-link:hover {
   color: var(--color-amber);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INDUSTRIAL BLUEPRINT ENHANCEMENTS
+   Depth, structural banding, and gradient language aligned with OKH P³™ brand
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Home page: teal radial wash behind the hero ─────────────────────────── */
+[data-page="home"] {
+  background-image: radial-gradient(
+    ellipse 100% 320px at 50% var(--nav-height),
+    rgba(28, 58, 52, 0.28),
+    transparent
+  );
+  background-repeat: no-repeat;
+}
+[data-theme="light"] [data-page="home"] {
+  background-image: radial-gradient(
+    ellipse 100% 260px at 50% var(--nav-height),
+    rgba(28, 58, 52, 0.07),
+    transparent
+  );
+}
+
+/* ── Hero section: forge mark separator after hero content ───────────────── */
+[data-page="home"] [data-section="hero"] {
+  padding-bottom: var(--space-12);
+  position: relative;
+}
+[data-page="home"] [data-section="hero"]::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-copper), var(--color-teal));
+  margin: var(--space-8) auto 0;
+}
+
+/* ── "What is a SKILL.md?" — teal-topped card panel ─────────────────────── */
+[data-section="what-is-skill"] {
+  background: var(--color-surface) !important;
+  border-top: 3px solid var(--color-steel) !important;
+  padding: var(--space-8) !important;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.12);
+}
+[data-theme="light"] [data-section="what-is-skill"] {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+[data-section="what-is-skill"] h2 {
+  color: var(--color-text-light);
+  position: relative;
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+[data-section="what-is-skill"] h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--color-steel);
+}
+
+/* ── Families section heading — centered forge mark ─────────────────────── */
+[data-page="home"] [data-section="families"] h2 {
+  position: relative;
+  padding-bottom: var(--space-4);
+}
+[data-page="home"] [data-section="families"] h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-copper), var(--color-teal));
+}
+
+/* ── FAQ group headings — bottom rule accent ─────────────────────────────── */
+.faq-group h2 {
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-copper);
+  margin-bottom: var(--space-6);
+}
+
+/* ── Explore sidebar section headings — teal accent ─────────────────────── */
+.filter-group h3 {
+  color: var(--color-steel-light);
+  border-bottom-color: rgba(106, 150, 170, 0.25);
+}
+
+/* ── Explore main area: subtle top steel rule ────────────────────────────── */
+.explore-main {
+  border-top: 3px solid var(--color-steel);
+}
+
+/* ── Contribute cards: shadow ────────────────────────────────────────────── */
+.contribute-card {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.contribute-card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+  transform: translateY(-2px);
+}
+[data-theme="light"] .contribute-card {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ── Compare table: teal structural accent on label column ───────────────── */
+.compare-row-label {
+  border-left: 3px solid rgba(78, 122, 140, 0.45);
+}
+
+/* ── Step pills: border + hover ──────────────────────────────────────────── */
+.step-pill {
+  border: 1px solid var(--color-border-dark);
+  transition: background var(--transition), border-color var(--transition);
+}
+.step-pill:hover {
+  background: rgba(196, 106, 44, 0.1);
+  border-color: var(--color-copper);
+}
+
+/* ── mono-tag: small steel border on left ────────────────────────────────── */
+.mono-tag {
+  border-left: 2px solid var(--color-steel);
+}
+
+/* ── Nav active link: copper + gentle underline ──────────────────────────── */
+.nav-links a[aria-current="page"] {
+  color: var(--color-copper) !important;
+  position: relative;
+}
+.nav-links a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-copper);
 }
