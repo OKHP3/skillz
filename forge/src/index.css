@@ -1019,13 +1019,13 @@ input, select, textarea {
 }
 
 /* ── "What is a SKILL.md?" — teal-topped card panel ─────────────────────── */
-[data-section="what-is-skill"] {
-  background: var(--color-surface) !important;
-  border-top: 3px solid var(--color-steel) !important;
-  padding: var(--space-8) !important;
+.home-explainer-panel {
+  background: var(--color-surface);
+  border-top: 3px solid var(--color-steel);
+  padding: var(--space-8);
   box-shadow: 0 2px 14px rgba(0,0,0,0.12);
 }
-[data-theme="light"] [data-section="what-is-skill"] {
+[data-theme="light"] .home-explainer-panel {
   box-shadow: 0 2px 10px rgba(0,0,0,0.07);
 }
 /* Paragraphs inside the light-surface panel must use light-surface text */
