@@ -1121,3 +1121,162 @@ input, select, textarea {
   height: 2px;
   background: var(--color-copper);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO LAYOUT — Murderbird 2-column hero
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Two-column hero: content left, Murderbird right ─────────────────────── */
+.hero-layout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  text-align: left;
+  padding-bottom: var(--space-12);
+  position: relative;
+}
+
+.hero-content {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+/* Heading: display size, no auto centering margins */
+.hero-heading {
+  font-size: var(--text-display);
+  margin-bottom: var(--space-6);
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 1.1;
+}
+
+/* Subtitle: left-aligned in hero */
+.hero-sub {
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-h3);
+  max-width: 540px;
+  margin: 0 0 var(--space-12);
+}
+
+/* Search form: full-width in hero column, remove auto-centering */
+.hero-search {
+  max-width: 560px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* CTA row */
+.hero-cta-row {
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Trust statement */
+.hero-trust {
+  margin-top: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-dark);
+}
+
+/* ── Murderbird: right column ─────────────────────────────────────────────── */
+.hero-bird {
+  flex-shrink: 0;
+  width: 300px;
+  position: relative;
+}
+
+.hero-bird-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  /* Dark mode: the vignette bg blends naturally into the teal-to-espresso body */
+  opacity: 0.95;
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));
+  transition: opacity var(--transition-slow), filter var(--transition-slow);
+}
+
+/* Light mode: soften the square dark vignette against the paper bg */
+[data-theme="light"] .hero-bird-img {
+  opacity: 0.88;
+  filter:
+    drop-shadow(0 6px 24px rgba(0,0,0,0.2))
+    contrast(1.05)
+    saturate(0.95);
+  /* Fade bottom edge into the page — masks the hard dark square bottom */
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* Subtle glow on hover — the eyes are already amber */
+.hero-bird:hover .hero-bird-img {
+  filter: drop-shadow(0 8px 40px rgba(196, 106, 44, 0.35)) drop-shadow(0 4px 16px rgba(0,0,0,0.5));
+  opacity: 1;
+}
+[data-theme="light"] .hero-bird:hover .hero-bird-img {
+  filter:
+    drop-shadow(0 8px 32px rgba(196, 106, 44, 0.2))
+    drop-shadow(0 4px 12px rgba(0,0,0,0.15))
+    contrast(1.05)
+    saturate(1.0);
+  opacity: 0.96;
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* ── Hero forge mark: override earlier ::after since layout is now flex ───── */
+.hero-layout[data-section="hero"]::after,
+[data-page="home"] .hero-layout::after {
+  content: '';
+  display: none; /* replaced by the bird; forge mark removed from hero */
+}
+
+/* ── Responsive: stack below 768px ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-6);
+  }
+
+  .hero-content {
+    text-align: center;
+    order: 2;
+  }
+
+  .hero-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-search {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero-cta-row {
+    justify-content: center;
+  }
+
+  .hero-bird {
+    width: 160px;
+    order: 1; /* bird above content on mobile */
+  }
+
+  /* Remove bottom mask on mobile — it's smaller and less jarring */
+  [data-theme="light"] .hero-bird-img,
+  [data-theme="light"] .hero-bird:hover .hero-bird-img {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-bird {
+    width: 120px;
+  }
+}

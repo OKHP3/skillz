@@ -4,6 +4,7 @@ import catalogData from '../data/catalog.json';
 import type { Catalog } from '../types/catalog';
 import { buildSearchIndex } from '../utils/search';
 import Nav from '../components/layout/Nav';
+import murderbirdSentinel from '../assets/murderbird-sentinel.png';
 
 const catalog = catalogData as Catalog;
 
@@ -44,40 +45,52 @@ export default function Home() {
     <div data-page="home">
       <Nav />
       <main className="container" style={{ padding: 'var(--space-16) var(--space-4)', textAlign: 'center' }}>
-        <section data-section="hero">
-          <h1 style={{ fontSize: 'var(--text-display)', maxWidth: '800px', margin: '0 auto var(--space-6)' }}>
-            Find the skill for the work in front of you.
-          </h1>
-          <p style={{ color: 'var(--color-text-muted-dark)', fontSize: 'var(--text-h3)', maxWidth: '600px', margin: '0 auto var(--space-12)' }}>
-            Search the open catalog of reusable agent capabilities. Filter by what matters to your task, then open, stack, install, and ship.
-          </p>
+        <section data-section="hero" className="hero-layout">
+          <div className="hero-content">
+            <h1 className="hero-heading">
+              Find the skill for the work in front of you.
+            </h1>
+            <p className="hero-sub">
+              Search the open catalog of reusable agent capabilities. Filter by what matters to your task, then open, stack, install, and ship.
+            </p>
 
-          <form onSubmit={handleSearch} className="home-search" role="search">
-            <label htmlFor="home-search" className="sr-only">Search skills</label>
-            <input
-              ref={inputRef}
-              id="home-search"
-              type="search"
-              className="input-text"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              placeholder="e.g. document a messy business process..."
-              autoComplete="off"
-              aria-label="Search agent skills"
-              style={{ fontSize: '1.25rem', padding: 'var(--space-4) var(--space-6)' }}
+            <form onSubmit={handleSearch} className="home-search hero-search" role="search">
+              <label htmlFor="home-search" className="sr-only">Search skills</label>
+              <input
+                ref={inputRef}
+                id="home-search"
+                type="search"
+                className="input-text"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                placeholder="e.g. document a messy business process..."
+                autoComplete="off"
+                aria-label="Search agent skills"
+                style={{ fontSize: '1.25rem', padding: 'var(--space-4) var(--space-6)' }}
+              />
+              <button type="submit" className="btn" style={{ fontSize: '1.25rem', padding: 'var(--space-4) var(--space-8)' }}>
+                Search
+              </button>
+            </form>
+
+            <div className="hero-cta-row">
+              <Link to="/explore" className="btn btn-outline">
+                Browse all {catalog.skillCount} skills
+              </Link>
+            </div>
+
+            <p className="hero-trust">
+              Read the contract, maturity, and evidence note before relying on a skill.
+            </p>
+          </div>
+
+          <div className="hero-bird" aria-hidden="true">
+            <img
+              src={murderbirdSentinel}
+              alt=""
+              className="hero-bird-img"
             />
-            <button type="submit" className="btn" style={{ fontSize: '1.25rem', padding: 'var(--space-4) var(--space-8)' }}>
-              Search
-            </button>
-          </form>
-
-          <Link to="/explore" className="btn btn-outline" style={{ display: 'inline-flex', marginTop: 'var(--space-4)' }}>
-            Browse all {catalog.skillCount} skills
-          </Link>
-
-          <p style={{ marginTop: 'var(--space-6)', fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)' }}>
-            Read the contract, maturity, and evidence note before relying on a skill.
-          </p>
+          </div>
         </section>
 
         <section data-section="what-is-skill" style={{ marginTop: 'var(--space-24)', maxWidth: '800px', marginInline: 'auto' }}>
