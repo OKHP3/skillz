@@ -260,7 +260,7 @@ export default function Explore() {
                       <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '4px', flexWrap: 'wrap' }}>
                         <span className="skill-card-family">{skill.family}</span>
                         <span data-maturity={skill.maturity}>{skill.maturity}</span>
-                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-dark)' }}>
+                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-light)' }}>
                           Evidence: {EVIDENCE_LABELS[skill.evidenceStatus]}
                         </span>
                       </div>

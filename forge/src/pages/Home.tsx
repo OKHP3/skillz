@@ -95,7 +95,7 @@ export default function Home() {
 
         <section data-section="what-is-skill" style={{ marginTop: 'var(--space-24)', maxWidth: '800px', marginInline: 'auto' }}>
           <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: 'var(--space-4)' }}>What is a SKILL.md?</h2>
-          <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-4)' }}>
+          <p style={{ color: 'var(--color-text-muted-light)', marginBottom: 'var(--space-4)' }}>
             A delegation contract for AI agents. Plain text, versioned, composable, installable. Each skill tells an agent exactly when to activate, what to do, and what not to do — so it behaves consistently without re-explaining.
           </p>
           <Link to="/faq#what-is-skillmd" style={{ fontWeight: 600 }}>Learn more &rarr;</Link>
