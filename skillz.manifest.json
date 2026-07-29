@@ -24,6 +24,23 @@
   "activeFamilyCount": 12,
   "placeholderFamilyCount": 2,
   "projectLocalSupportSkillCount": 18,
+  "maturityCounts": {
+    "placeholder": 0,
+    "skeleton": 13,
+    "draftable": 62,
+    "usable": 0,
+    "validated": 0,
+    "published": 0
+  },
+  "evidenceStatusCounts": {
+    "none": 26,
+    "local-checks": 19,
+    "analytical": 17,
+    "not-run": 5,
+    "historical": 6,
+    "live": 2
+  },
+  "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
     {
       "name": "abrahamic",
