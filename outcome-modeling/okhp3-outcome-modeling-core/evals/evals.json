@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-outcome-modeling-core",
-  "skill_version": "1.0.0",
+  "skill_version": "1.1.0",
   "status": "design-ready",
   "release_status": "analytical-structural-integrity",
   "performance_evidence_status": "not-run",
@@ -57,6 +57,22 @@
         {"id": "counterfactual", "text": "Response asks what would have happened without the proposed action."},
         {"id": "objective-constraints", "text": "Response states an explicit objective function with cost or capacity constraints."},
         {"id": "causal-design", "text": "Response recommends an experiment, holdout, or clearly labeled observational design when causal impact is claimed."}
+      ]
+    },
+    {
+      "id": "reproducible-calculation",
+      "name": "reproducible-calculation",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Show how a small event history becomes a weighted state, probability, calibration score, and expected-value comparison.",
+      "fixtures": "examples/core-example.json and scripts/calculate-outcome-model.py.",
+      "output_contract": "A plain-language calculation that defines symbols, reports intermediate values, and preserves the distinction between forecast and decision.",
+      "failure_consequence": "A reader could mistake an unexplained number or arithmetic example for a validated forecast.",
+      "expectations": [
+        {"id": "formula-definition", "text": "Response defines the weighted mean, logistic probability, Brier score, and expected-value calculations."},
+        {"id": "intermediate-values", "text": "Response shows at least one intermediate calculation rather than only a final ranking."},
+        {"id": "plain-language", "text": "Response expands technical terms or points to the glossary for a non-specialist reader."},
+        {"id": "uncertainty-boundary", "text": "Response states that a synthetic calculation does not establish live predictive performance."}
       ]
     }
   ]

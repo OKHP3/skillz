@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-nfl-fantasy-picks",
-  "skill_version": "1.0.0",
+  "skill_version": "1.1.0",
   "status": "design-ready",
   "release_status": "analytical-structural-integrity",
   "performance_evidence_status": "not-run",
@@ -57,6 +57,22 @@
         {"id": "approved-source", "text": "Response requests or identifies an approved current data source."},
         {"id": "decision-date", "text": "Response preserves a decision date and freshness boundary."},
         {"id": "decision-support", "text": "Response labels the result as decision support rather than guaranteed picks."}
+      ]
+    },
+    {
+      "id": "fantasy-calculation-payload",
+      "name": "fantasy-calculation-payload",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Use a synthetic salary-cap fixture to calculate replacement value and select a feasible roster.",
+      "fixtures": "examples/fantasy-example.json and scripts/calculate-fantasy-lineup.py.",
+      "output_contract": "A lineup result with player-level adjusted value, salary and roster checks, and plain-language definitions.",
+      "failure_consequence": "A lineup could appear optimal while violating roster rules or ignoring replacement value and risk.",
+      "expectations": [
+        {"id": "value-formula", "text": "Response calculates projected points minus replacement points and risk penalty."},
+        {"id": "feasibility", "text": "Response verifies salary, roster size, and positional constraints."},
+        {"id": "term-definition", "text": "Response explains replacement value and any fantasy abbreviation used."},
+        {"id": "synthetic-boundary", "text": "Response labels the fixture as illustrative and does not invent current NFL data."}
       ]
     }
   ]

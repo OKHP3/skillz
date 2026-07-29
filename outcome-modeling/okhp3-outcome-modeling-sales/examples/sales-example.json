@@ -1,0 +1,8 @@
+{
+  "constraints": {"max_budget": 20, "max_capacity_hours": 10},
+  "opportunities": [
+    {"name": "Account A", "win_probability": 0.60, "baseline_probability": 0.50, "revenue": 100, "gross_margin_rate": 0.70, "discount_rate": 0.10, "service_cost": 8, "acquisition_cost": 5, "capacity_hours": 4},
+    {"name": "Account B", "win_probability": 0.45, "baseline_probability": 0.45, "revenue": 140, "gross_margin_rate": 0.65, "discount_rate": 0.05, "service_cost": 12, "acquisition_cost": 6, "capacity_hours": 5},
+    {"name": "Account C", "win_probability": 0.70, "baseline_probability": 0.55, "revenue": 80, "gross_margin_rate": 0.75, "discount_rate": 0.00, "service_cost": 6, "acquisition_cost": 4, "capacity_hours": 3}
+  ]
+}
