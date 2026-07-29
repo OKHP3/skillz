@@ -23,17 +23,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
-  in_scope:
-    - Reflecting live schema structure (tables, columns, types, PK/FK/UK, indexes) from any SQLAlchemy-supported engine
-    - Reflecting Microsoft Access (.accdb/.mdb) via pyodbc or COM/DAO, flagged as the lower-reliability path
-    - Diffing live structure against a locked design spec and classifying deviations P1/P2/P3
-    - Generating a Mermaid ER diagram from the reflected schema, for rendering by okhp3-mermaid-*/mermaid-diagrams
-    - Producing a normalized schema-inventory document (JSON/Markdown) as a durable artifact
-  out_of_scope:
-    - Data quality profiling or row-level data validation
-    - Generating or running migration scripts
-    - Firestore/Firebase or other schemaless NoSQL stores (deferred -- no mature Python tooling exists yet)
-    - Writing to or modifying the target database in any way -- read-only interrogation only
+  in_scope: "Read-only SQL database inventory, schema comparison, severity classification, and Mermaid ER handoff."
+  out_of_scope: "Writing to the target database, production migration, credential disclosure, or unsupported security conclusions."
 ---
 
 # okhp3-database-cartographer

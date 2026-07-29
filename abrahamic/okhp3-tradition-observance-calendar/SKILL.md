@@ -26,15 +26,18 @@ metadata:
   app-url: https://okhp3.github.io/abrahamic-reference-engine
   spec-version: "agentskills-1.0"
   reviewed: "2026-07-21"
+  in_scope: "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources."
+  out_of_scope: "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
 compatibility: >
   TypeScript (browser or Node). Fetch API required. No API keys or accounts.
   Optional: sessionStorage for browser caching. Optional: FullCalendar.io for
   calendar UI rendering.
+
 ---
 
 # okhp3-tradition-observance-calendar
 
-**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3) · [OKHP3/skillz](https://github.com/OKHP3/skillz)
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Fetch, compute, and format religious observance calendars for the Abrahamic Reference Engine.
 

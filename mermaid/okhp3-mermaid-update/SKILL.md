@@ -7,9 +7,15 @@ metadata:
   version: "0.2.0"
   category: diagramming
   origin: okhp3/mermaid-theme-builder
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Authorized content updates to working Mermaid source while preserving established styling and configuration."
+  out_of_scope: "Syntax-only repair, unrequested style replacement, or deletion of source or rendered output."
 ---
 
-# OKHP3 Mermaid Update
+# okhp3-mermaid-update
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Applies targeted changes to an existing diagram while preserving everything the original author intentionally configured: style, theme, class definitions, and structural conventions.
 

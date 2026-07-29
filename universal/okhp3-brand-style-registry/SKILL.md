@@ -10,6 +10,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  in_scope: "Evidence-backed extraction, registration, and application of named visual style profiles to approved artifacts."
+  out_of_scope: "Inventing a brand identity, unauthorized source copying, or unrelated product redesign."
 ---
 
 # okhp3-brand-style-registry

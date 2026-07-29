@@ -9,6 +9,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  in_scope: "Deployment and repair of React or Vue Vite SPAs on GitHub Pages, including base paths and router behavior."
+  out_of_scope: "Unapproved publication, unrelated application redesign, or credential and repository administration."
 ---
 
 # okhp3-vite-github-pages

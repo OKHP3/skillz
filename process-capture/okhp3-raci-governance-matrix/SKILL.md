@@ -27,7 +27,16 @@ metadata:
     - who is responsible
     - accountability matrix
     - roles and responsibilities
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff."
+  out_of_scope: "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
 ---
+
+# okhp3-raci-governance-matrix
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 ## Purpose
 

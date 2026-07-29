@@ -7,9 +7,15 @@ metadata:
   version: "0.2.0"
   category: diagramming
   origin: okhp3/mermaid-theme-builder
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Mermaid ERD, class-diagram, schema, and relationship documentation after core routing."
+  out_of_scope: "Database migration execution, source-data changes, or non-data architecture modeling."
 ---
 
-# OKHP3 Mermaid Data
+# okhp3-mermaid-data
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Data modeling vocabulary, loaded after `okhp3-mermaid-core`.
 

@@ -14,9 +14,13 @@ metadata:
   scripts: "scripts/check-date.cjs; scripts/validate-mercury-dates.cjs"
   scope: "Moon phase, zodiac season, Mercury retrograde status, and upcoming New/Full Moon display data"
   boundaries: "Display-grade local calculations only; no external astrology service, natal chart, eclipse timing, or ephemeris beyond the bundled 2026-2031 data"
+  in_scope: "The named client-side celestial-data or daily-insight implementation and review workflow."
+  out_of_scope: "Scientific, medical, legal, or financial prediction; hidden network dependence; or personal advice presented as fact."
 ---
 
 # okhp3-celestial-data
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Use the skill as a small, deterministic display-data layer. It is intentionally
 offline and dependency-free: do not replace the calculations with a network

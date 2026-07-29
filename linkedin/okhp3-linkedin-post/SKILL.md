@@ -9,6 +9,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  in_scope: "The named LinkedIn content ideation, drafting, or voice-filtering workflow."
+  out_of_scope: "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
 ---
 
 # okhp3-linkedin-post
@@ -44,7 +46,7 @@ Return one paste-ready LinkedIn draft followed by a compact gate report. The dra
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

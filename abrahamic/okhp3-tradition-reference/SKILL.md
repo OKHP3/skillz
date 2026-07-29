@@ -17,12 +17,15 @@ metadata:
   author-github: https://github.com/OKHP3
   spec-version: "agentskills-1.0"
   reviewed: "2026-07-21"
+  in_scope: "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources."
+  out_of_scope: "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
 compatibility: Markdown reference material. Network access is optional and only needed to verify provider availability or current demographic sources.
+
 ---
 
-# OKHP3 -- Tradition Reference Skill
+# okhp3-tradition-reference
 
-**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3) · [OKHP3/skillz](https://github.com/OKHP3/skillz)
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 ## Execution contract
 

@@ -1,8 +1,8 @@
 ---
 family: universal
-skill_count: 9
+skill_count: 10
 generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-07-28T06:03:30Z
+generated_at: 2026-07-28T23:14:42Z
 ---
 
 # universal
@@ -11,16 +11,17 @@ generated_at: 2026-07-28T06:03:30Z
 A family of 6 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (9)
+## Skills (10)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **July 28, 2026 at 06:03 UTC***
+*10 skills &nbsp;·&nbsp; inventory last updated: **July 28, 2026 at 23:14 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-brand-style-registry](okhp3-brand-style-registry/SKILL.md) | OverKill Hill P³ visual style registry and application workflow. Use when a user wants to extract... | 1.1.0 |
 | [okhp3-cloudflare-worker-api-proxy](okhp3-cloudflare-worker-api-proxy/SKILL.md) | Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping ... | 1.1.0 |
 | [okhp3-database-cartographer](okhp3-database-cartographer/SKILL.md) | OverKill Hill P³ database cartographer. Reverse-engineers and documents the live structure of Pos... | 1.1.0 |
+| [okhp3-equilibrium-review](okhp3-equilibrium-review/SKILL.md) | Evaluate a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independ... | 1.0.0 |
 | [okhp3-foundry-repo-creator](okhp3-foundry-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
 | [okhp3-google-gis-client-auth](okhp3-google-gis-client-auth/SKILL.md) | OverKill Hill P³ client-only Google Identity Services (GIS) auth workflow. Use when designing, im... | 1.2.0 |
 | [okhp3-repository-organizer](okhp3-repository-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.1.1 |

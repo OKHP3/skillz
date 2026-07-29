@@ -7,9 +7,15 @@ metadata:
   version: "0.2.0"
   category: diagramming
   origin: okhp3/mermaid-theme-builder
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Mermaid audience selection, diagram-type routing, design-system application, naming, registry, and validation gates."
+  out_of_scope: "Domain-specific BPMN, architecture, or data modeling without the corresponding family skill; autonomous publication."
 ---
 
-# OKHP3 Mermaid Core
+# okhp3-mermaid-core
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Foundation for the Mermaid family. Every Mermaid task starts here, even if it ends in a domain skill.
 

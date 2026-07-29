@@ -7,9 +7,15 @@ metadata:
   version: "0.2.0"
   category: diagramming
   origin: okhp3/mermaid-theme-builder
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Minimum-change repair of malformed Mermaid syntax or rendering failures after core routing."
+  out_of_scope: "Intentional content changes, style redesign, or deletion of source or rendered output."
 ---
 
-# OKHP3 Mermaid Repair
+# okhp3-mermaid-repair
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Fixes broken Mermaid syntax using minimum intervention. The diagram after repair is semantically identical to the diagram before repair. Only syntax changes.
 

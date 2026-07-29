@@ -15,6 +15,8 @@ metadata:
 
 # okhp3-refolddec-core
 
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
+
 Transformation-aware execution for fold, unfold, and refold operations across representation types.
 
 ## 1. Identify the Transformation

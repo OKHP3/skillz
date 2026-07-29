@@ -7,9 +7,15 @@ metadata:
   version: "0.2.0"
   category: diagramming
   origin: okhp3/mermaid-theme-builder
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Rendering, exporting, and authorized publication of validated Mermaid diagrams."
+  out_of_scope: "Unvalidated diagram content changes, deletion of sources or renders, or publication without authorization."
 ---
 
-# OKHP3 Mermaid Publish
+# okhp3-mermaid-publish
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 The output layer. Runs after core's Gate 1-3 validation.
 

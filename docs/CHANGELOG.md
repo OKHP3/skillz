@@ -8,6 +8,10 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `okhp3-equilibrium-review`, a reusable five-role evidence, disruption,
+  adjudication, and release-review workflow for documents, data evaluations,
+  hypotheses, reports, and Agent Skills, with a provider-neutral Python
+  orchestrator and machine-readable review records.
 - Added `okhp3-repository-organizer`, a content-first workflow for profiling organically grown local Git repositories, choosing selective governance scaffolding, and executing approval-gated reorganizations without forcing an application layout.
 - Added `okhp3-brand-style-registry`, a public, profile-driven workflow for capturing named visual styles and applying primary and explicitly bounded supporting profiles to SPAs and related artifacts.
 - Added `okhp3-database-cartographer`, a read-only SQL schema-reflection,

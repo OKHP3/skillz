@@ -15,6 +15,8 @@ metadata:
 
 # okhp3-process-capture
 
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
+
 The intake mechanism. Turns "I just did this for the third time" into a structured artifact, not a lost observation.
 
 ## Process

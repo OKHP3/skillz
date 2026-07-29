@@ -11,9 +11,16 @@ metadata:
   version: "1.2.0"
   author: "OverKill Hill P³"
   category: universal
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Readiness assessment, evidence inventory, gap analysis, and builder handoff for a proposed Custom GPT."
+  out_of_scope: "Writing production integrations, managing credentials, publishing a GPT, or declaring volatile platform limits."
 ---
 
-# Custom GPT Readiness
+# okhp3-custom-gpt-readiness
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Turn scattered GPT ideas and partial artifacts into a buildable, testable brief.
 This is an intake and gap-analysis skill, not the builder itself.
@@ -67,3 +74,10 @@ Read `references/readiness-dossier-schema.md` before producing JSON or a machine
 ## About
 
 Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3) · MIT License.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

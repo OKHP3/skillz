@@ -17,15 +17,11 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
-  in_scope:
-    - ChatGPT project inventory, export capture, normalization, and reconciliation
-    - Source provenance, private staging, and public-safe repository routing
-  out_of_scope:
-    - Accessing unavailable, deleted, or unauthorized ChatGPT content
-    - Committing unreviewed raw conversations or private data to the repository
+  in_scope: "ChatGPT project inventory, export preservation, provenance-led normalization, and public-safe repository reconciliation."
+  out_of_scope: "Accessing unavailable or unauthorized ChatGPT content, committing unreviewed raw conversations, or exposing private data."
 ---
 
-# ChatGPT Project Migration
+# okhp3-chatgpt-project-migration
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
@@ -194,5 +190,5 @@ Owner decisions needed: <list or none>
 
 Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
-Part of the [OKHP3/skillz](https://github.com/OKHP3) Agent Skill library.
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

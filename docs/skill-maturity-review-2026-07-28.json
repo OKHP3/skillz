@@ -1,0 +1,114 @@
+{
+  "schema_version": "2.0",
+  "artifact": "OKHP3/skillz public maturity catalog",
+  "artifact_version": "catalog-generated-2026-07-28",
+  "decision_question": "Is the public catalog ready to promote current maturity labels from the available repository evidence?",
+  "acceptance_criteria": [
+    "Every public skill has a traceable current version or an explicit missing-version state",
+    "Historical and analytical evidence cannot promote a newer package version",
+    "Critical safety and authorization concerns block promotion",
+    "The Forge exposes maturity, evidence status, and promotion blockers separately"
+  ],
+  "evidence_status": "analytical",
+  "inputs": {
+    "public_skill_count": 70,
+    "untracked_public_path_candidates": ["universal/okhp3-equilibrium-review"],
+    "family_count": 11,
+    "current_maturity_counts": {
+      "skeleton": 13,
+      "draftable": 57
+    },
+    "catalog_path": "forge/src/data/catalog.json",
+    "browser_surfaces": [
+      "https://overkillhill.com/projects/skillz/",
+      "https://okhp3.github.io/skillz/"
+    ],
+    "skill_foundry_version": "3.1.0",
+    "equilibrium_review_version": "1.0.0",
+    "metadata_normalization": {
+      "scope": "All non-Community distribution packages, including the untracked universal/okhp3-equilibrium-review candidate",
+      "packages_audited": 58,
+      "packages_compliant": 58,
+      "packages_normalized": 56,
+      "packages_already_compliant": 2,
+      "process_capture_titles_added": 15,
+      "result": "analytical-structural-pass",
+      "behavioral_changes": false,
+      "version_changes": false,
+      "maturity_promotions": false
+    }
+  },
+  "role_contexts": [
+    {
+      "role": "evidence reviewer",
+      "identity": "main-agent analytical pass",
+      "status": "analytical",
+      "finding": "Evidence is uneven. Evaluation designs and historical benchmark files exist, but current package versions do not uniformly have live comparable runs.",
+      "evidence_ids": ["CAT-01", "GIT-01", "EVAL-01"]
+    },
+    {
+      "role": "outcome reviewer",
+      "identity": "main-agent analytical pass",
+      "status": "analytical",
+      "finding": "The Forge supports discovery, but one maturity badge does not tell a user whether the evidence is live, historical, analytical, or absent.",
+      "evidence_ids": ["WEB-01", "WEB-02", "CAT-02"]
+    },
+    {
+      "role": "safety and portability reviewer",
+      "identity": "main-agent analytical pass",
+      "status": "analytical",
+      "finding": "Bulk promotion could cause users to treat untested instruction packages as validated. Version-aware evidence and explicit blockers are required.",
+      "evidence_ids": ["FOUNDRY-01", "EQUILIBRIUM-01"]
+    }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "status": "analytical",
+    "falsification_hypotheses": [
+      "Existing benchmark files are current evidence for the live package",
+      "The 68-skill project-page count is still authoritative",
+      "A long SKILL.md body is sufficient evidence for usable maturity"
+    ],
+    "test_results": [
+      {
+        "hypothesis": "Existing benchmark files are current evidence for the live package",
+        "result": "survives",
+        "evidence": "The Google GIS benchmark records evaluated_skill_version 1.1.0 while the package is 1.2.0 and explicitly labels the result historical."
+      },
+      {
+        "hypothesis": "The 68-skill project-page count is still authoritative",
+        "result": "survives",
+        "evidence": "The project page says 68 while the live Forge and local catalog contain 70."
+      },
+      {
+        "hypothesis": "A long SKILL.md body is sufficient evidence for usable maturity",
+        "result": "survives",
+        "evidence": "The current builder derives draftable or skeleton from structure and does not require live execution."
+      }
+    ]
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "defer-for-evidence",
+    "rationale": "Defer bulk maturity promotion until current-version execution, protected holdouts, and release review exist. Approve the evidence-aware catalog and UI changes with limits."
+  },
+  "release_decision": "approve-with-limits",
+  "approved_scope": [
+    "Create the evidence-aware catalog contract",
+    "Expose creation date, last update, evaluated version, evidence status, and blockers",
+    "Expose normalized package provenance and scope metadata in the Forge",
+    "Use the per-skill audit to sequence contract hardening and current-version evaluations"
+  ],
+  "deferred_scope": [
+    "Promote all skills to usable, validated, or published",
+    "Claim live benchmark uplift for the current versions",
+    "Publish or modify external systems from this review"
+  ],
+  "follow_up": [
+    "Run the canonical Python cataloger check in CI",
+    "Make the Forge build fail when a non-Community package lacks the completed metadata baseline",
+    "Add current-version matched runs and a safety case to each public skill",
+    "Repeat the Equilibrium Review with separated reviewer contexts before each material promotion batch"
+  ]
+}

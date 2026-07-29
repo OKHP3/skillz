@@ -15,9 +15,13 @@ metadata:
   assets: "assets/oracle-component-template.tsx"
   scope: "Daily tarot, optional horoscope, AI message synthesis, local per-user caching, fallbacks, and React integration"
   boundaries: "Client-only personal-app workflow; no backend, proxy, database, accounts, push delivery, natal chart, or multi-user security design"
+  in_scope: "The named client-side celestial-data or daily-insight implementation and review workflow."
+  out_of_scope: "Scientific, medical, legal, or financial prediction; hidden network dependence; or personal advice presented as fact."
 ---
 
 # okhp3-daily-oracle
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Treat the oracle as a three-layer, once-per-day reading: tarot is the anchor,
 horoscope is optional context, and the AI message is a best-effort synthesis.
