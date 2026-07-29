@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "salary_cap": 21,
+    "roster_size": 3,
+    "min_positions": {"QB": 1, "RB": 1, "WR": 1}
+  },
+  "players": [
+    {"name": "Quarterback A", "position": "QB", "salary": 8, "projected_points": 20, "replacement_points": 15, "risk_penalty": 0.5},
+    {"name": "Running Back A", "position": "RB", "salary": 7, "projected_points": 18, "replacement_points": 10, "risk_penalty": 0.2},
+    {"name": "Wide Receiver A", "position": "WR", "salary": 6, "projected_points": 16, "replacement_points": 9, "risk_penalty": 0.4},
+    {"name": "Wide Receiver B", "position": "WR", "salary": 5, "projected_points": 14, "replacement_points": 9, "risk_penalty": 0.3}
+  ]
+}

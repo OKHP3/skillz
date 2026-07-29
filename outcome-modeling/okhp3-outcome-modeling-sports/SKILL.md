@@ -1,19 +1,18 @@
 ---
 name: okhp3-outcome-modeling-sports
 description: >
-  OverKill Hill P³ sports outcome modeling. Use when modeling team, game, or
-  player outcomes from repeated sports events, matchup history, schedules,
-  injuries, or performance metrics. Also activate when designing a sports
-  ranking, matchup forecast, season projection, or fantasy-oriented state
-  model. Load `okhp3-outcome-modeling-core` first; this adapter supplies sports
-  structure and does not provide live odds or trade execution.
+  Model team, game, and player outcomes from repeated sports events, matchup
+  history, schedules, injuries, and performance metrics. Use for sports
+  rankings, matchup forecasts, season projections, or fantasy-oriented state
+  models. Load `okhp3-outcome-modeling-core` first; this adapter does not
+  provide live odds or trade execution.
 license: MIT
 compatibility: >
   Any Agent Skills-compatible client with access to user-supplied or approved
   sports data. Live data retrieval requires a separate approved data skill.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -26,6 +25,12 @@ metadata:
     - Fabricating current scores, rosters, injuries, odds, or transactions
     - Treating one game as proof of a team or player skill level
     - Executing bets, trades, or sportsbook actions
+  status: enhanced-computational-payload
+  tags: sports forecasting, matchup model, team strength, player state, opponent adjustment, schedule
+  triggers: team projection, game forecast, player projection, Elo, EPA, strength of schedule, injury impact
+  inputs: dated sports events, team or player states, opponent context, venue, rest, and structural events
+  outputs: adjusted state, matchup probability or ranking, uncertainty, calibration, and data gaps
+  runtimes: Portable prose by default; optional Python 3.9+ standard library helper for local JSON arithmetic
 ---
 
 # okhp3-outcome-modeling-sports
@@ -69,6 +74,14 @@ outcome(matchup, date)
 
 Do not assume that the best team wins every individual game. Aggregation can reveal persistent strength while realized games retain randomness.
 
+## Computational payload
+
+Read `references/computational-model.md` for the rating update, matchup
+probability, and worked calculation. Read `references/glossary.md` before using
+abbreviations. Reproduce the synthetic example with
+`scripts/calculate-sports-model.py examples/sports-example.json`. The helper is
+local, deterministic, and read-only.
+
 ## Output contract
 
 Provide:
@@ -86,12 +99,16 @@ For betting or fantasy decisions, hand off to `okhp3-outcome-modeling-markets` o
 
 ## References
 
+- `references/computational-model.md` -- sports equations and example.
+- `references/glossary.md` -- sports terms and abbreviations.
+- `examples/sports-example.json` -- synthetic matchup fixture.
+- `scripts/calculate-sports-model.py` -- dependency-free rating helper.
 - `../okhp3-outcome-modeling-core/SKILL.md` -- shared outcome-modeling contract.
 - `../okhp3-nfl-fantasy-picks/SKILL.md` -- NFL fantasy-specific adapter.
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

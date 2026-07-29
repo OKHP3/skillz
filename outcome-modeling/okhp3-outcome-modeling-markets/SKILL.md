@@ -1,13 +1,11 @@
 ---
 name: okhp3-outcome-modeling-markets
 description: >
-  OverKill Hill P³ prediction-market outcome modeling. Use when estimating
-  probabilities for event contracts, comparing an independent model with
-  market-implied prices, evaluating expected value, or designing a paper-only
-  market research workflow. Also activate when the user asks about odds,
-  calibration, liquidity, resolution rules, edge, or risk-adjusted position
-  sizing. Load `okhp3-outcome-modeling-core` first; this skill does not place or
-  manage trades.
+  Compare independent probabilities with prediction-market prices and evaluate
+  expected value, calibration, liquidity, spread, and resolution risk. Use when
+  analyzing event contracts, odds, edge, paper backtests, or risk-adjusted
+  position sizing. Load `okhp3-outcome-modeling-core` first; this skill does not
+  place or manage trades.
 license: MIT
 compatibility: >
   Requires an approved current data source for live markets and an explicit
@@ -15,7 +13,7 @@ compatibility: >
   snapshots without market access.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -28,6 +26,12 @@ metadata:
     - Placing, cancelling, or managing trades or bets
     - Claims of guaranteed profit or certainty
     - Inventing live prices, market rules, or event-resolution facts
+  status: enhanced-computational-payload
+  tags: prediction markets, implied probability, expected value, edge, liquidity, resolution, paper backtest
+  triggers: market probability, contract price, odds, edge, EV, spread, fees, slippage, resolution rule
+  inputs: contract wording, resolution authority, observed price, model probability, timestamp, fees, slippage, and liquidity
+  outputs: probability comparison, all-in cost, expected value, break-even probability, uncertainty, and research status
+  runtimes: Portable prose by default; optional Python 3.9+ standard library helper for local JSON arithmetic
 ---
 
 # okhp3-outcome-modeling-markets
@@ -89,12 +93,24 @@ decision: research, pass, paper test, or requires explicit execution approval
 
 Do not treat a model-market difference as a trade recommendation automatically. A small edge can disappear through uncertainty, spread, fees, slippage, or ambiguous resolution.
 
+## Computational payload
+
+Read `references/computational-model.md` for binary price, edge, all-in cost,
+expected value, and break-even formulas. Read `references/glossary.md` before
+using market abbreviations. Reproduce the synthetic comparison with
+`scripts/calculate-market-comparison.py examples/market-example.json`. The
+helper is local, deterministic, read-only, and does not execute trades.
+
 ## Safety boundary
 
 This skill must not request private keys, place orders, cancel orders, or imply guaranteed returns. If the user asks for execution, route to an explicitly authorized trading workflow and require confirmation of the exact contract, side, price, amount, and risk.
 
 ## References
 
+- `references/computational-model.md` -- market equations and example.
+- `references/glossary.md` -- market terms and abbreviations.
+- `examples/market-example.json` -- synthetic contract fixture.
+- `scripts/calculate-market-comparison.py` -- dependency-free comparison helper.
 - `../okhp3-outcome-modeling-core/SKILL.md` -- shared outcome and validation contract.
 
 ## About

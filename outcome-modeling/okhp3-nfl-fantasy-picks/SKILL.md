@@ -1,11 +1,10 @@
 ---
 name: okhp3-nfl-fantasy-picks
 description: >
-  OverKill Hill P³ NFL fantasy picks. Use when selecting NFL fantasy players,
-  DFS lineups, salary-cap rosters, waiver priorities, or trade targets under a
-  scoring and budget system. Also activate when comparing projected points per
-  cost, replacement value, positional scarcity, floor, ceiling, or roster
-  correlation. Load `okhp3-outcome-modeling-core` and
+  Select NFL fantasy players, DFS lineups, salary-cap rosters, waiver
+  priorities, or trade targets under a scoring and budget system. Use when
+  comparing projected points per cost, replacement value, positional scarcity,
+  floor, ceiling, or roster correlation. Load `okhp3-outcome-modeling-core` and
   `okhp3-outcome-modeling-sports` first; this is fantasy decision support, not
   sportsbook betting advice.
 license: MIT
@@ -15,7 +14,7 @@ compatibility: >
   must be known before ranking players.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -28,6 +27,12 @@ metadata:
     - Sportsbook odds, wagers, bankroll, or bet execution
     - Invented injury, depth-chart, projection, or salary data
     - Treating a high raw close rate or point total as sufficient value evidence
+  status: enhanced-computational-payload
+  tags: NFL fantasy, DFS, salary cap, replacement value, lineup optimization, PPR, roster constraints
+  triggers: fantasy picks, DFS lineup, waiver, trade, salary cap, points per dollar, floor, ceiling, leverage
+  inputs: scoring rules, roster rules, salary, slate, projections, opportunity, health, matchup, and contest objective
+  outputs: player value table, feasible lineups, replacement baselines, risk notes, and contingency pivots
+  runtimes: Portable prose by default; optional Python 3.9+ standard library helper for small local JSON lineup fixtures
 ---
 
 # okhp3-nfl-fantasy-picks
@@ -86,6 +91,15 @@ Evaluate each player through:
 
 Do not treat projected points per dollar as sufficient by itself. A cheap player can be efficient but unusable if their role is unstable or the opportunity cost is high.
 
+## Computational payload
+
+Read `references/computational-model.md` for replacement value, risk adjustment,
+and constrained roster formulas. Read `references/glossary.md` before using
+fantasy abbreviations. Reproduce the small roster example with
+`scripts/calculate-fantasy-lineup.py examples/fantasy-example.json`. The helper
+enumerates a small local fixture, prints the selected roster, and performs no
+network access or writes.
+
 ## Workflow
 
 1. Load the core and sports adapters.
@@ -114,12 +128,16 @@ For a lineup, show the constraint checks and explain why the chosen roster is be
 
 ## References
 
+- `references/computational-model.md` -- fantasy equations and example.
+- `references/glossary.md` -- fantasy terms and abbreviations.
+- `examples/fantasy-example.json` -- synthetic salary-cap fixture.
+- `scripts/calculate-fantasy-lineup.py` -- transparent small-roster optimizer.
 - `../okhp3-outcome-modeling-core/SKILL.md` -- shared objective and validation contract.
 - `../okhp3-outcome-modeling-sports/SKILL.md` -- sports state and matchup contract.
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

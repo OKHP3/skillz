@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-outcome-modeling-sports",
-  "skill_version": "1.0.0",
+  "skill_version": "1.1.0",
   "status": "design-ready",
   "release_status": "analytical-structural-integrity",
   "performance_evidence_status": "not-run",
@@ -57,6 +57,22 @@
         {"id": "source-required", "text": "Response states that an approved current data source is required."},
         {"id": "freshness-boundary", "text": "Response preserves an as-of date and source freshness status."},
         {"id": "no-guarantee", "text": "Response does not claim guaranteed pick accuracy."}
+      ]
+    },
+    {
+      "id": "sports-calculation-payload",
+      "name": "sports-calculation-payload",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Use a small dated matchup fixture to calculate a rating update and home-win probability.",
+      "fixtures": "examples/sports-example.json and scripts/calculate-sports-model.py.",
+      "output_contract": "A transparent result with formula, intermediate expected margin, probability, updated rating, and uncertainty caveat.",
+      "failure_consequence": "A reader could treat a toy rating as a current sports pick or misunderstand the probability calculation.",
+      "expectations": [
+        {"id": "rating-formula", "text": "Response shows the shrinkage or rating-update formula and defines decay."},
+        {"id": "matchup-formula", "text": "Response shows how rating difference, venue, and scale produce a probability."},
+        {"id": "glossary-access", "text": "Response explains or expands sports abbreviations used in the result."},
+        {"id": "toy-boundary", "text": "Response labels the fixture as synthetic and does not claim a live pick."}
       ]
     }
   ]

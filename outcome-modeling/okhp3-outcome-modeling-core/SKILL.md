@@ -1,12 +1,11 @@
 ---
 name: okhp3-outcome-modeling-core
 description: >
-  OverKill Hill P³ outcome modeling core. Use when designing, reviewing, or
-  operationalizing a model that compresses high-dimensional event histories
-  into calibrated forecasts and constrained decisions. Also activate when the
-  user moves a prediction method between sports, business, sales, advertising,
-  finance, or prediction markets. This is the shared foundation for the
-  outcome-modeling family; load a domain adapter after this skill when one fits.
+  Design and operationalize outcome models that compress noisy event histories
+  into calibrated forecasts and constrained decisions. Use when a user asks
+  about feature reduction, probability, expected value, aggregation, or moving
+  a prediction method between sports, business, sales, advertising, finance,
+  or prediction markets. Load a domain adapter when one fits.
 license: MIT
 compatibility: >
   Any Agent Skills-compatible client with access to user-supplied data or
@@ -14,7 +13,7 @@ compatibility: >
   statistical runtime, but the method does not assume one.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -29,6 +28,12 @@ metadata:
     - Treating correlation as causal evidence without a causal design
     - Executing trades, bets, political persuasion, or external side effects
     - Replacing a domain adapter with generic advice when domain rules matter
+  status: enhanced-computational-payload
+  tags: outcome modeling, forecasting, calibration, feature compression, expected value, constrained allocation
+  triggers: probability model, many variables, noisy events, top features, 95 percent signal, forecast, allocation
+  inputs: target, horizon, as-of time, event history, feature inventory, costs, constraints, and decision objective
+  outputs: event-to-state ladder, feature tiers, calibrated forecast, uncertainty, objective function, and decision contract
+  runtimes: Portable prose by default; optional Python 3.9+ standard library helper for local JSON arithmetic
 ---
 
 # okhp3-outcome-modeling-core
@@ -59,6 +64,16 @@ events -> entity state -> outcome estimate -> objective and constraints -> decis
 ```
 
 Aggregation can reduce the relative influence of idiosyncratic noise, but it does not erase causal structure, dependencies, or meaningful rare events. The goal is to expose persistent signal while preserving uncertainty and time order.
+
+## Computational payload
+
+Use the formulas, glossary, synthetic fixture, and deterministic helper supplied
+with this package. Read `references/computational-model.md` for the event-to-state,
+logistic, feature-tier, calibration, and decision equations. Read
+`references/glossary.md` before using unfamiliar terms. Run
+`scripts/calculate-outcome-model.py examples/core-example.json` to reproduce the
+small arithmetic example. The helper reads local JSON, prints JSON, and performs
+no network access or writes.
 
 ## Operating procedure
 
@@ -164,6 +179,10 @@ Load this skill first, then add the narrowest adapter:
 
 ## References
 
+- `references/computational-model.md` -- shared equations and worked example.
+- `references/glossary.md` -- plain-language definitions and abbreviations.
+- `examples/core-example.json` -- synthetic input fixture.
+- `scripts/calculate-outcome-model.py` -- dependency-free local calculator.
 - `okhp3-outcome-modeling-sports/SKILL.md` -- sports state and matchup adapter.
 - `okhp3-nfl-fantasy-picks/SKILL.md` -- NFL fantasy decision adapter.
 - `okhp3-outcome-modeling-sales/SKILL.md` -- commercial value and sales adapter.

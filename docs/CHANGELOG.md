@@ -46,6 +46,11 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Enhanced all five `outcome-modeling` skills to version `1.1.0` with
+  computational-model references, plain-language glossaries, synthetic JSON
+  fixtures, dependency-free Python helpers, package-level calculation tests,
+  and evaluation cases for reproducible arithmetic. The helpers are local and
+  read-only; live performance evidence remains not run.
 - Advanced `okhp3-skill-foundry` to `3.1.0`, an analytical structural-integrity release. It enforces coherent evaluation and benchmark versions, finite protected/external-required holdout states, dated learning-ledger validation, current-state mirror-hash records, and regression tests for invalid evidence states. The release does not claim fresh live benchmarking, unseen-holdout results, task-quality uplift, or production readiness.
 - Synchronized the `3.1.0` Foundry core, its verification record, and its validator regression suite to the project-local active copy and every discovered authorized `.agents/skills/okhp3-skill-foundry` mirror. The current-state record verifies present equality only and does not recreate unrecorded historical authorization or pre-sync state.
 
