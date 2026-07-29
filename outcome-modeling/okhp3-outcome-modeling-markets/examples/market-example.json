@@ -1,0 +1,8 @@
+{
+  "model_probability": 0.62,
+  "market_price": 0.55,
+  "payoff": 1.0,
+  "fee": 0.02,
+  "slippage": 0.01,
+  "resolution_confirmed": true
+}

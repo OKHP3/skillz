@@ -9,7 +9,7 @@
  *   All other paths in SKIP_DIRS
  */
 
-import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -63,6 +63,57 @@ function getFileGitInfo(relPath) {
       commitSha: spaceIdx > 0 ? result.slice(spaceIdx + 1, spaceIdx + 9) : null,
     };
   } catch { return { lastModified: null, commitSha: null }; }
+}
+
+function readJsonFile(filePath) {
+  try {
+    return JSON.parse(readFileSync(filePath, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+// Evidence is reported separately from maturity. A package can have a strong
+// contract and useful local checks without having version-matched live
+// executor evidence. Keeping these dimensions separate prevents the catalog
+// from turning design records or historical runs into a current release claim.
+function deriveEvidence(filePath, currentVersion) {
+  const packageDir = dirname(filePath);
+  const evals = readJsonFile(join(packageDir, 'evals', 'evals.json'));
+  const benchmark = readJsonFile(join(packageDir, 'benchmarks', 'benchmark.json'));
+  const tests = existsSync(join(packageDir, 'tests'));
+  const scripts = existsSync(join(packageDir, 'scripts'));
+
+  const benchmarkMeta = benchmark?.metadata || {};
+  const evalMeta = evals || {};
+  const evaluatedVersion = benchmarkMeta.evaluated_skill_version || benchmarkMeta.skill_version || evalMeta.skill_version || null;
+  const versionMismatch = Boolean(evaluatedVersion && currentVersion && evaluatedVersion !== currentVersion);
+  const runs = Array.isArray(benchmark?.runs) ? benchmark.runs : [];
+  const statusText = [
+    benchmarkMeta.evaluation_status,
+    benchmarkMeta.status,
+    evalMeta.release_status,
+    evalMeta.performance_evidence_status,
+    benchmark?.notes,
+    evalMeta.note,
+  ].flat().filter(Boolean).join(' ').toLowerCase();
+
+  if (versionMismatch && runs.length > 0) {
+    return { evidenceStatus: 'historical', evidenceNote: `Benchmark evidence is for ${evaluatedVersion}, not ${currentVersion}.` };
+  }
+  if (runs.length > 0 && (statusText.includes('live') || benchmarkMeta.executor_model || benchmarkMeta.runner)) {
+    return { evidenceStatus: 'live', evidenceNote: 'Version-matched executor evidence is recorded in the package benchmark.' };
+  }
+  if (statusText.includes('not-run') || statusText.includes('not yet executed')) {
+    return { evidenceStatus: 'not-run', evidenceNote: 'Evaluation design exists, but the current package has no executed benchmark.' };
+  }
+  if (statusText.includes('analytical') || statusText.includes('design-ready') || evals || benchmark) {
+    return { evidenceStatus: 'analytical', evidenceNote: 'Evaluation or benchmark design exists; live release evidence is not established.' };
+  }
+  if (tests || scripts) {
+    return { evidenceStatus: 'local-checks', evidenceNote: 'Executable checks or helper scripts are present; no package benchmark record was found.' };
+  }
+  return { evidenceStatus: 'none', evidenceNote: 'No package evaluation record or executable test surface was found.' };
 }
 
 // ─── YAML frontmatter parser ──────────────────────────────────────────────────
@@ -232,9 +283,10 @@ function extractCapability(body, frontmatter, key, headings) {
 // ─── Maturity derivation ──────────────────────────────────────────────────────
 
 function deriveMaturity(meta, body) {
-  const status = (meta?.status || meta?.maturity || '').toLowerCase();
+  const status = (meta?.maturity || meta?.status || '').toLowerCase();
   if (status.includes('published')) return 'published';
-  if (status.includes('validated') || status.includes('usable')) return 'validated';
+  if (status.includes('validated')) return 'validated';
+  if (status.includes('usable')) return 'usable';
   if (status.includes('draftable')) return 'draftable';
   if (status.includes('skeleton') || status.includes('level 1')) return 'skeleton';
   if (status.includes('placeholder')) return 'placeholder';
@@ -338,6 +390,7 @@ function buildCatalog() {
       : slugTitle;
 
     const fileGitInfo = getFileGitInfo(relPath);
+    const evidence = deriveEvidence(filePath, version);
         skills.push({
       name,
       displayName: derivedDisplayName,
@@ -351,7 +404,9 @@ function buildCatalog() {
       origin,
       author,
       homepage,
-      maturity,
+          maturity,
+          evidenceStatus: evidence.evidenceStatus,
+          evidenceNote: evidence.evidenceNote,
       status: fm.status || null,
       tags: [],
       topics: [],
@@ -385,6 +440,7 @@ const FAMILY_DISPLAY_NAMES = {
   'linkedin':          'LinkedIn',
   'mermaid':           'Mermaid',
   'notion':            'Notion',
+  'outcome-modeling':  'Outcome Modeling',
   'process-capture':   'Process Capture',
   'refolddec':         'ReFolDec',
   'universal':         'Universal',

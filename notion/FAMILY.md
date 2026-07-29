@@ -2,7 +2,7 @@
 family: notion
 skill_count: 1
 generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-07-28T23:14:42Z
+generated_at: 2026-07-29T05:13:07Z
 ---
 
 # notion
@@ -26,7 +26,7 @@ This family covers Notion-centered knowledge operations for OKHP3.
 ## Skills (1)
 
 <!-- FAMILY_INVENTORY_START -->
-*1 skill &nbsp;·&nbsp; inventory last updated: **July 28, 2026 at 23:14 UTC***
+*1 skill &nbsp;·&nbsp; inventory last updated: **July 29, 2026 at 05:13 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

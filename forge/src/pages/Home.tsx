@@ -74,6 +74,10 @@ export default function Home() {
           <Link to="/explore" className="btn btn-outline" style={{ display: 'inline-flex', marginTop: 'var(--space-4)' }}>
             Browse all {catalog.skillCount} skills
           </Link>
+
+          <p style={{ marginTop: 'var(--space-6)', fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)' }}>
+            Read the contract, maturity, and evidence note before relying on a skill.
+          </p>
         </section>
 
         <section data-section="what-is-skill" style={{ marginTop: 'var(--space-24)', maxWidth: '800px', marginInline: 'auto' }}>

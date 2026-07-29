@@ -1,4 +1,5 @@
 export type Maturity = 'placeholder' | 'skeleton' | 'draftable' | 'usable' | 'validated' | 'published';
+export type EvidenceStatus = 'none' | 'local-checks' | 'designed' | 'analytical' | 'not-run' | 'historical' | 'live';
 
 export interface Skill {
   name: string;
@@ -14,6 +15,8 @@ export interface Skill {
   author: string | null;
   homepage: string | null;
   maturity: Maturity;
+  evidenceStatus: EvidenceStatus;
+  evidenceNote: string;
   status: string | null;
   tags: string[];
   topics: string[];
@@ -88,11 +91,12 @@ export interface SearchResult {
   matchReason?: string;
 }
 
-export type SortKey = 'relevance' | 'alpha' | 'family' | 'maturity';
+export type SortKey = 'relevance' | 'alpha' | 'family' | 'maturity' | 'evidence';
 
 export interface FilterState {
   query: string;
   family: string;
   maturity: Maturity | '';
+  evidence: EvidenceStatus | '';
   sort: SortKey;
 }

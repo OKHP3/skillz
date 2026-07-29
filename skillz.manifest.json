@@ -20,10 +20,27 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 71,
-  "activeFamilyCount": 11,
+  "distributionSkillCount": 76,
+  "activeFamilyCount": 12,
   "placeholderFamilyCount": 2,
   "projectLocalSupportSkillCount": 19,
+  "maturityCounts": {
+    "placeholder": 0,
+    "skeleton": 13,
+    "draftable": 63,
+    "usable": 0,
+    "validated": 0,
+    "published": 0
+  },
+  "evidenceStatusCounts": {
+    "none": 26,
+    "local-checks": 19,
+    "analytical": 17,
+    "not-run": 6,
+    "historical": 6,
+    "live": 2
+  },
+  "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
     {
       "name": "abrahamic",
@@ -115,6 +132,17 @@
       "status": "draftable",
       "skills": [
         "okhp3-notion-capture-router"
+      ]
+    },
+    {
+      "name": "outcome-modeling",
+      "status": "draftable",
+      "skills": [
+        "okhp3-nfl-fantasy-picks",
+        "okhp3-outcome-modeling-core",
+        "okhp3-outcome-modeling-markets",
+        "okhp3-outcome-modeling-sales",
+        "okhp3-outcome-modeling-sports"
       ]
     },
     {

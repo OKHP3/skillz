@@ -12,6 +12,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
   adjudication, and release-review workflow for documents, data evaluations,
   hypotheses, reports, and Agent Skills, with a provider-neutral Python
   orchestrator and machine-readable review records.
+- Added the `outcome-modeling/` family with a Foundry-3.1-aligned core and four domain adapters: sports, NFL fantasy picks, business-sales, and prediction markets. Each package includes frozen development evaluations, an external-required holdout declaration, and a version-matched benchmark record marked `not-run`.
+
 - Added `okhp3-repository-organizer`, a content-first workflow for profiling organically grown local Git repositories, choosing selective governance scaffolding, and executing approval-gated reorganizations without forcing an application layout.
 - Added `okhp3-brand-style-registry`, a public, profile-driven workflow for capturing named visual styles and applying primary and explicitly bounded supporting profiles to SPAs and related artifacts.
 - Added `okhp3-database-cartographer`, a read-only SQL schema-reflection,
@@ -48,6 +50,17 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Added the 2026-07-29 repository-wide maturity audit and Replit reconciliation
+  PRD. The audit records all 75 distribution skills, package versions, first
+  Git records, last modifications, package resources, maturity, and evidence
+  state. The Forge catalog now keeps `usable` distinct from `validated` and
+  exposes evidence states for none, local checks, analytical design, not-run,
+  historical, and live records.
+- Enhanced all five `outcome-modeling` skills to version `1.1.0` with
+  computational-model references, plain-language glossaries, synthetic JSON
+  fixtures, dependency-free Python helpers, package-level calculation tests,
+  and evaluation cases for reproducible arithmetic. The helpers are local and
+  read-only; live performance evidence remains not run.
 - Advanced `okhp3-skill-foundry` to `3.1.0`, an analytical structural-integrity release. It enforces coherent evaluation and benchmark versions, finite protected/external-required holdout states, dated learning-ledger validation, current-state mirror-hash records, and regression tests for invalid evidence states. The release does not claim fresh live benchmarking, unseen-holdout results, task-quality uplift, or production readiness.
 - Synchronized the `3.1.0` Foundry core, its verification record, and its validator regression suite to the project-local active copy and every discovered authorized `.agents/skills/okhp3-skill-foundry` mirror. The current-state record verifies present equality only and does not recreate unrecorded historical authorization or pre-sync state.
 
