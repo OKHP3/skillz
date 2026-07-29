@@ -84,13 +84,23 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="hero-bird" aria-hidden="true">
-            <img
-              src={murderbirdSentinel}
-              alt=""
-              className="hero-bird-img"
-            />
-          </div>
+          <a
+            href="https://overkillhill.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-bird-link"
+            title="Visit OverKill Hill P³™"
+            aria-label="Visit OverKill Hill P³™"
+          >
+            <div className="hero-bird">
+              <img
+                src={murderbirdSentinel}
+                alt=""
+                className="hero-bird-img"
+                aria-hidden="true"
+              />
+            </div>
+          </a>
         </section>
 
         <section data-section="what-is-skill" className="home-explainer-panel" style={{ marginTop: 'var(--space-24)', maxWidth: '800px', marginInline: 'auto' }}>

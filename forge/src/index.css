@@ -1191,6 +1191,17 @@ input, select, textarea {
 }
 
 /* ── Murderbird: right column ─────────────────────────────────────────────── */
+.hero-bird-link {
+  display: block;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  color: inherit;
+}
+.hero-bird-link:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 6px;
+}
+
 .hero-bird {
   flex-shrink: 0;
   width: 300px;
