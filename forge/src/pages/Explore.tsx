@@ -86,13 +86,12 @@ export default function Explore() {
       <Nav />
       <main data-layout="explore">
         <aside className="explore-sidebar" data-open={filterOpen} aria-label="Filters">
-          <div className="filter-group" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h3 style={{ margin: 0, border: 'none' }}>Filters</h3>
+          <div className="filter-group filter-group-header">
+            <h3>Filters</h3>
             <button 
-              className="nav-mobile-toggle"
+              className="nav-mobile-toggle filter-close-btn"
               onClick={() => setFilterOpen(false)}
               aria-label="Close filters"
-              style={{ fontSize: '1rem' }}
             >✕</button>
           </div>
 
@@ -116,7 +115,7 @@ export default function Explore() {
                       onClick={() => updateFilter('family', f.name)}
                       aria-pressed={filters.family === f.name}
                     >
-                      {f.displayName || f.name} <span style={{ opacity: 0.5 }}>{f.skillCount}</span>
+                      {f.displayName || f.name} <span className="filter-family-count">{f.skillCount}</span>
                     </button>
                   </li>
                 ))}
@@ -134,13 +133,12 @@ export default function Explore() {
                 {MATURITY_LEVELS.map(m => (
                   <li key={m}>
                     <button
-                      className="filter-btn"
+                      className="filter-btn filter-btn--maturity"
                       onClick={() => updateFilter('maturity', m)}
                       aria-pressed={filters.maturity === m}
-                      style={{ justifyContent: 'flex-start', gap: '8px' }}
                     >
-                      <span data-maturity={m} aria-label={`Maturity: ${m}`} style={{ width: 8, height: 8, borderRadius: '50%', padding: 0 }} />
-                      <span style={{ textTransform: 'capitalize' }}>{m}</span>
+                      <span data-maturity={m} aria-label={`Maturity: ${m}`} className="filter-maturity-dot" />
+                      <span className="filter-maturity-label">{m}</span>
                     </button>
                   </li>
                 ))}
@@ -149,7 +147,7 @@ export default function Explore() {
 
             <section className="filter-group">
               <h3>Evidence</h3>
-              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-dark)', marginTop: 0 }}>
+              <p className="filter-evidence-desc">
                 Evidence describes what proof exists for the current version — separate from maturity.
               </p>
               <ul className="filter-list">
@@ -174,8 +172,7 @@ export default function Explore() {
 
             {(filters.family || filters.maturity || filters.evidence) && (
               <button
-                className="btn btn-outline"
-                style={{ width: '100%' }}
+                className="btn btn-outline filter-clear-btn"
                 onClick={() => setFilters(prev => ({ ...prev, family: '', maturity: '', evidence: '' }))}
               >
                 Clear filters
@@ -191,11 +188,10 @@ export default function Explore() {
               onClick={() => setFilterOpen(true)}
               aria-expanded={filterOpen}
               aria-controls="filter-panel"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.875rem' }}
             >
               Filters {filters.family || filters.maturity || filters.evidence ? '•' : ''}
             </button>
-            <div style={{ flex: 1 }}>
+            <div className="explore-search-wrapper">
               <label htmlFor="explore-search" className="sr-only">Search skills</label>
               <input
                 id="explore-search"
@@ -211,9 +207,9 @@ export default function Explore() {
 
           <div className="explore-meta" aria-live="polite" aria-atomic="true">
             <div>
-              <strong style={{ color: 'var(--color-text-dark)' }}>{results.length}</strong> skill{results.length !== 1 ? 's' : ''} found
+              <strong className="explore-results-count">{results.length}</strong> skill{results.length !== 1 ? 's' : ''} found
               {(filters.query || filters.family || filters.maturity || filters.evidence) && (
-                <span style={{ marginLeft: '8px', opacity: 0.8 }}>
+                <span className="explore-filter-summary">
                   for {filters.query && <span>"{filters.query}"</span>}
                   {filters.family && <span> family: <strong>{filters.family}</strong></span>}
                   {filters.maturity && <span> maturity: <strong>{filters.maturity}</strong></span>}
@@ -235,8 +231,8 @@ export default function Explore() {
           </div>
 
           {results.length === 0 ? (
-            <div className="detail-article" style={{ textAlign: 'center', margin: 'var(--space-12) auto' }} role="status">
-              <h2 style={{ marginTop: 0 }}>No skills found</h2>
+            <div className="detail-article explore-empty" role="status">
+              <h2>No skills found</h2>
               <p>No skills matched "{filters.query || 'your filters'}".</p>
               <p>Try different search terms or browse by family.</p>
               <button className="btn" onClick={() => setFilters({ query: '', family: '', maturity: '', evidence: '', sort: 'relevance' })}>
@@ -253,14 +249,14 @@ export default function Explore() {
                         {skill.displayName || skill.name}
                       </Link>
                       {skill.displayName && skill.displayName !== skill.name && (
-                        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-dark)', marginTop: '2px' }}>
+                        <div className="skill-card-techname">
                           {skill.name}
                         </div>
                       )}
-                      <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginTop: '4px', flexWrap: 'wrap' }}>
+                      <div className="skill-card-meta">
                         <span className="skill-card-family">{skill.family}</span>
                         <span data-maturity={skill.maturity}>{skill.maturity}</span>
-                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted-dark)' }}>
+                        <span className="skill-card-evidence">
                           Evidence: {EVIDENCE_LABELS[skill.evidenceStatus]}
                         </span>
                       </div>
@@ -270,33 +266,32 @@ export default function Explore() {
                   <p className="skill-card-desc">{skill.description}</p>
                   
                   {skill.triggers.length > 0 && (
-                    <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)', background: 'var(--color-bg)', padding: 'var(--space-2) var(--space-4)', borderRadius: 'var(--radius)', borderLeft: '2px solid var(--color-copper)' }}>
+                    <div className="skill-card-trigger">
                       <strong>Triggers when:</strong> {skill.triggers[0]}
                     </div>
                   )}
 
                   {matchReason && filters.query && (
-                    <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-copper-dark)', marginTop: '-8px' }}>
+                    <p className="skill-card-match">
                       {matchReason}
                     </p>
                   )}
                   
                   <div className="skill-card-actions">
-                    <button className="btn btn-outline" style={{ padding: '4px 12px', fontSize: '0.875rem' }} onClick={() => handleCopy(skill)} data-action="copy">
+                    <button className="btn btn-outline" onClick={() => handleCopy(skill)} data-action="copy">
                       {copied === skill.name ? 'Copied!' : 'Copy install'}
                     </button>
-                    <button className="btn-ghost" style={{ fontSize: '0.875rem' }} onClick={() => handleShare(skill)} data-action="share">Share</button>
-                    <button className="btn-ghost" style={{ fontSize: '0.875rem' }} onClick={() => handleCompare(skill)} data-action="compare">Compare</button>
+                    <button className="btn-ghost" onClick={() => handleShare(skill)} data-action="share">Share</button>
+                    <button className="btn-ghost" onClick={() => handleCompare(skill)} data-action="compare">Compare</button>
                     <button
                       className="btn-ghost"
-                      style={{ fontSize: '0.875rem', color: isFavorite(skill.name) ? 'var(--color-copper)' : undefined }}
                       onClick={() => handleFavorite(skill.name)}
                       data-action="favorite"
                       aria-pressed={isFavorite(skill.name)}
                     >
                       {isFavorite(skill.name) ? 'Saved' : 'Save'}
                     </button>
-                    <Link to={`/skills/${skill.family}/${skill.name}`} className="btn-ghost" style={{ marginLeft: 'auto', fontSize: '0.875rem', color: 'var(--color-text-light)', fontWeight: 500 }} data-action="open">
+                    <Link to={`/skills/${skill.family}/${skill.name}`} className="btn-ghost skill-card-open" data-action="open">
                       Open &rarr;
                     </Link>
                   </div>

@@ -20,35 +20,35 @@ export default function Activity() {
   return (
     <div data-page="activity">
       <Nav />
-      <main className="container" style={{ paddingBottom: 'var(--space-24)' }}>
+      <main className="container page-main">
         <div className="page-header">
           <h1>Activity</h1>
           <p>Recent catalog updates, open pull requests, and active issues. All links open the native GitHub page.</p>
         </div>
 
-        <div style={{ padding: 'var(--space-6)', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--color-border-dark)', marginBottom: 'var(--space-8)', display: 'flex', flexWrap: 'wrap', gap: 'var(--space-12)' }}>
+        <div className="activity-stats">
           <div>
-            <span style={{ display: 'block', fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Last indexed</span>
-            <strong style={{ fontSize: 'var(--text-h3)', color: 'var(--color-text-dark)' }}>{new Date(catalog.generatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>
+            <span className="activity-stat-label">Last indexed</span>
+            <strong className="activity-stat-value">{new Date(catalog.generatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</strong>
           </div>
           <div>
-            <span style={{ display: 'block', fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Catalog size</span>
-            <strong style={{ fontSize: 'var(--text-h3)', color: 'var(--color-text-dark)' }}>{catalog.skillCount} skills across {catalog.families.length} families</strong>
+            <span className="activity-stat-label">Catalog size</span>
+            <strong className="activity-stat-value">{catalog.skillCount} skills across {catalog.families.length} families</strong>
           </div>
         </div>
 
         <div className="activity-panels">
           <section className="activity-panel">
             <h2>Catalog snapshot</h2>
-            <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-4)' }}>
+            <p className="activity-note">
               This is a static sample from the generated catalog — not a live activity feed. For real commit history, open GitHub.
             </p>
             <ul className="activity-list">
               {recentSkills.map(skill => (
                 <li key={skill.name}>
                   <div>
-                    <Link to={`/skills/${skill.family}/${skill.name}`} style={{ fontWeight: 500, display: 'block' }}>{skill.displayName || skill.name}</Link>
-                    <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-steel)', fontFamily: 'var(--font-mono)' }}>{skill.family}</span>
+                    <Link to={`/skills/${skill.family}/${skill.name}`} className="activity-skill-link">{skill.displayName || skill.name}</Link>
+                    <span className="activity-skill-family">{skill.family}</span>
                   </div>
                   <span data-maturity={skill.maturity}>{skill.maturity}</span>
                 </li>
@@ -58,45 +58,45 @@ export default function Activity() {
 
           <section className="activity-panel">
             <h2>On GitHub</h2>
-            <ul className="activity-list" style={{ gap: 'var(--space-6)' }}>
+            <ul className="activity-list activity-list--links">
               <li>
-                <a href={`${repoUrl()}/commits/main`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 500 }}>Recent commits</span>
-                  <span style={{ color: 'var(--color-copper)' }}>&rarr;</span>
+                <a href={`${repoUrl()}/commits/main`} target="_blank" rel="noopener noreferrer" className="activity-github-link">
+                  <span className="activity-link-label">Recent commits</span>
+                  <span className="activity-link-arrow">&rarr;</span>
                 </a>
               </li>
               <li>
-                <a href={prUrl()} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 500 }}>Open pull requests</span>
-                  <span style={{ color: 'var(--color-copper)' }}>&rarr;</span>
+                <a href={prUrl()} target="_blank" rel="noopener noreferrer" className="activity-github-link">
+                  <span className="activity-link-label">Open pull requests</span>
+                  <span className="activity-link-arrow">&rarr;</span>
                 </a>
               </li>
               <li>
-                <a href={`${repoUrl()}/issues?labels=enhancement`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 500 }}>Enhancement issues</span>
-                  <span style={{ color: 'var(--color-copper)' }}>&rarr;</span>
+                <a href={`${repoUrl()}/issues?labels=enhancement`} target="_blank" rel="noopener noreferrer" className="activity-github-link">
+                  <span className="activity-link-label">Enhancement issues</span>
+                  <span className="activity-link-arrow">&rarr;</span>
                 </a>
               </li>
               <li>
-                <a href={`${repoUrl()}/issues?labels=new-skill`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 500 }}>New skill proposals</span>
-                  <span style={{ color: 'var(--color-copper)' }}>&rarr;</span>
+                <a href={`${repoUrl()}/issues?labels=new-skill`} target="_blank" rel="noopener noreferrer" className="activity-github-link">
+                  <span className="activity-link-label">New skill proposals</span>
+                  <span className="activity-link-arrow">&rarr;</span>
                 </a>
               </li>
               <li>
-                <a href={`${repoUrl()}/releases`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 500 }}>Releases</span>
-                  <span style={{ color: 'var(--color-copper)' }}>&rarr;</span>
+                <a href={`${repoUrl()}/releases`} target="_blank" rel="noopener noreferrer" className="activity-github-link">
+                  <span className="activity-link-label">Releases</span>
+                  <span className="activity-link-arrow">&rarr;</span>
                 </a>
               </li>
               <li>
-                <a href={`${repoUrl()}/discussions`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 500 }}>Discussions</span>
-                  <span style={{ color: 'var(--color-copper)' }}>&rarr;</span>
+                <a href={`${repoUrl()}/discussions`} target="_blank" rel="noopener noreferrer" className="activity-github-link">
+                  <span className="activity-link-label">Discussions</span>
+                  <span className="activity-link-arrow">&rarr;</span>
                 </a>
               </li>
             </ul>
-            <p style={{ marginTop: 'var(--space-8)', fontSize: 'var(--text-sm)', color: 'var(--color-text-muted-dark)' }}>
+            <p className="activity-footer-note">
               Activity data is not polled live. Use the GitHub links above for real-time information.
             </p>
           </section>

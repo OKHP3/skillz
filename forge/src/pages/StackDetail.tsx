@@ -17,10 +17,10 @@ export default function StackDetail() {
     return (
       <div data-page="stack-detail">
         <Nav />
-        <main className="container" style={{ padding: 'var(--space-12) 0' }}>
-          <div className="detail-article" style={{ textAlign: 'center', margin: '0 auto' }}>
-            <h1 style={{ marginTop: 0 }}>Stack not found</h1>
-            <Link to="/stacks" className="btn" style={{ marginTop: 'var(--space-6)' }}>Browse all stacks</Link>
+        <main className="container sd-not-found-main">
+          <div className="detail-article sd-not-found-article">
+            <h1 className="sd-not-found-heading">Stack not found</h1>
+            <Link to="/stacks" className="btn sd-not-found-link">Browse all stacks</Link>
           </div>
         </main>
       </div>
@@ -41,27 +41,27 @@ export default function StackDetail() {
   return (
     <div data-page="stack-detail">
       <Nav />
-      <main className="container" style={{ paddingBottom: 'var(--space-24)' }}>
+      <main className="container sd-main">
         <div className="breadcrumb" aria-label="Breadcrumb">
           <Link to="/stacks">Stacks</Link>
           <span aria-hidden>/</span>
-          <span aria-current="page" style={{ color: 'var(--color-text-dark)' }}>{stack.name}</span>
+          <span aria-current="page" className="sd-breadcrumb-current">{stack.name}</span>
         </div>
 
-        <article className="detail-article" style={{ margin: '0 auto' }}>
-          <header style={{ marginBottom: 'var(--space-8)' }}>
-            <h1 style={{ fontSize: 'var(--text-display)', marginBottom: 'var(--space-4)' }}>{stack.name}</h1>
-            <p style={{ fontSize: 'var(--text-h3)', color: 'var(--color-text-muted-dark)' }}>{stack.tagline}</p>
+        <article className="detail-article sd-article">
+          <header className="sd-header">
+            <h1 className="sd-title">{stack.name}</h1>
+            <p className="sd-tagline">{stack.tagline}</p>
           </header>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-6)', marginBottom: 'var(--space-8)' }}>
-            <div style={{ background: 'rgba(28,58,52,0.18)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-copper)' }}>
-              <h2 style={{ marginTop: 0, paddingBottom: 0, border: 'none', fontSize: 'var(--text-sm)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>The Problem</h2>
-              <p style={{ margin: 0 }}>{stack.problem}</p>
+          <div className="sd-meta-grid">
+            <div className="sd-meta-card sd-meta-card--problem">
+              <h2 className="sd-meta-card-heading">The Problem</h2>
+              <p className="sd-meta-card-body">{stack.problem}</p>
             </div>
-            <div style={{ background: 'rgba(28,58,52,0.18)', padding: 'var(--space-6)', borderLeft: '4px solid var(--color-steel)' }}>
-              <h2 style={{ marginTop: 0, paddingBottom: 0, border: 'none', fontSize: 'var(--text-sm)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Audience</h2>
-              <p style={{ margin: 0 }}>{stack.audience}</p>
+            <div className="sd-meta-card sd-meta-card--audience">
+              <h2 className="sd-meta-card-heading">Audience</h2>
+              <p className="sd-meta-card-body">{stack.audience}</p>
             </div>
           </div>
 
@@ -75,36 +75,36 @@ export default function StackDetail() {
           </div>
 
           {stack.installNote && (
-            <p style={{ padding: 'var(--space-4)', background: 'var(--color-bg)', color: 'var(--color-copper-light)', fontSize: 'var(--text-sm)' }}>
+            <p className="sd-install-note">
               <strong>Note:</strong> {stack.installNote}
             </p>
           )}
 
-          <div style={{ marginTop: 'var(--space-12)' }}>
+          <div className="sd-section">
             <h2>Steps</h2>
-            <ol style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
+            <ol className="sd-steps-list">
               {stack.steps.map((step, i) => {
                 const skills = step.skillNames.map(n => catalog.skills.find(s => s.name === n)).filter(Boolean);
                 return (
-                  <li key={i} style={{ border: '1px solid var(--color-border-dark)', padding: 'var(--space-6)', position: 'relative' }}>
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '40px', height: '40px', background: 'var(--color-bg)', color: 'var(--color-copper)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-serif)', fontSize: 'var(--text-h3)', fontWeight: 600 }}>
+                  <li key={i} className="sd-step">
+                    <div className="sd-step-number">
                       {i + 1}
                     </div>
-                    <div style={{ marginLeft: 'var(--space-8)' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-2)' }}>
-                        <h3 style={{ margin: 0, color: 'var(--color-text-dark)' }}>{step.label}</h3>
-                        {step.optional && <span style={{ fontSize: 'var(--text-xs)', background: 'var(--color-bg)', color: 'var(--color-text-muted-dark)', padding: '2px 8px', textTransform: 'uppercase' }}>optional</span>}
+                    <div className="sd-step-body">
+                      <div className="sd-step-header">
+                        <h3 className="sd-step-title">{step.label}</h3>
+                        {step.optional && <span className="sd-step-optional">optional</span>}
                       </div>
-                      <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-4)' }}>{step.purpose}</p>
-                      
-                      <div style={{ display: 'grid', gap: 'var(--space-2)', fontSize: 'var(--text-sm)', fontFamily: 'var(--font-mono)', background: 'var(--color-bg)', padding: 'var(--space-4)', marginBottom: 'var(--space-4)' }}>
-                        {step.inputs && <div><strong style={{ color: 'var(--color-steel)' }}>In:</strong> {step.inputs}</div>}
-                        {step.outputs && <div><strong style={{ color: 'var(--color-copper)' }}>Out:</strong> {step.outputs}</div>}
+                      <p className="sd-step-purpose">{step.purpose}</p>
+
+                      <div className="sd-step-io">
+                        {step.inputs && <div><strong className="sd-step-io-in">In:</strong> {step.inputs}</div>}
+                        {step.outputs && <div><strong className="sd-step-io-out">Out:</strong> {step.outputs}</div>}
                       </div>
 
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
+                      <div className="sd-step-skills">
                         {skills.map(skill => (
-                          <Link key={skill!.name} to={`/skills/${skill!.family}/${skill!.name}`} style={{ fontSize: 'var(--text-sm)', background: 'var(--color-bg)', color: 'var(--color-text-dark)', padding: 'var(--space-1) var(--space-3)', border: '1px solid var(--color-border-dark)' }}>
+                          <Link key={skill!.name} to={`/skills/${skill!.family}/${skill!.name}`} className="sd-step-skill-link">
                             {skill!.name}
                           </Link>
                         ))}
@@ -116,13 +116,13 @@ export default function StackDetail() {
             </ol>
           </div>
 
-          <div style={{ marginTop: 'var(--space-12)' }}>
+          <div className="sd-section">
             <h2>All skills in this stack</h2>
-            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+            <ul className="sd-all-skills-list">
               {allSkills.map(skill => (
-                <li key={skill!.name} style={{ display: 'flex', justifyContent: 'space-between', padding: 'var(--space-3)', background: 'var(--color-bg)', border: '1px solid var(--color-border-dark)' }}>
-                  <Link to={`/skills/${skill!.family}/${skill!.name}`} style={{ fontWeight: 500 }}>{skill!.name}</Link>
-                  <span data-maturity={skill!.maturity} style={{ color: 'var(--color-text-muted-dark)' }}>{skill!.maturity}</span>
+                <li key={skill!.name} className="sd-all-skill-item">
+                  <Link to={`/skills/${skill!.family}/${skill!.name}`} className="sd-all-skill-link">{skill!.name}</Link>
+                  <span data-maturity={skill!.maturity} className="sd-all-skill-maturity">{skill!.maturity}</span>
                 </li>
               ))}
             </ul>

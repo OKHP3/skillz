@@ -280,6 +280,26 @@ function extractCapability(body, frontmatter, key, headings) {
   return extractListItems(extractSection(body, headings));
 }
 
+// Strips Markdown syntax down to plain, searchable text. Used to build a
+// full-text index of the SKILL.md body (not just frontmatter-derived fields)
+// so a word buried in prose — not just a trigger phrase or input/output list —
+// is still findable from the search box.
+function stripMarkdownToPlainText(body) {
+  return body
+    .replace(/```[\s\S]*?```/g, ' ')       // fenced code blocks
+    .replace(/`([^`]*)`/g, '$1')            // inline code
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')  // images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')// links -> link text
+    .replace(/^#{1,6}\s+/gm, '')            // heading markers
+    .replace(/^[-*+]\s+/gm, '')             // list bullets
+    .replace(/^>\s?/gm, '')                 // blockquote markers
+    .replace(/[*_~]{1,3}/g, '')             // emphasis markers
+    .replace(/\|/g, ' ')                    // table pipes
+    .replace(/---+/g, ' ')                  // rules/frontmatter fences
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 // ─── Maturity derivation ──────────────────────────────────────────────────────
 
 function deriveMaturity(meta, body) {
@@ -419,6 +439,7 @@ function buildCatalog() {
       tools,
       runtimes,
       boundaries,
+      bodyText: stripMarkdownToPlainText(body),
       rawUrl,
       githubUrl,
       lastModified: fileGitInfo.lastModified,

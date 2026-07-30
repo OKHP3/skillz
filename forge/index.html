@@ -12,6 +12,7 @@
     <!-- Identity -->
     <title>Skillz Forge | OverKill Hill P³™</title>
     <meta name="description" content="Find, inspect, compose, install, and improve reusable Agent Skills from the OverKill Hill P³™ forge." />
+    <meta name="keywords" content="agent skills, AI agents, SKILL.md, Claude skills, reusable AI capabilities, prompt engineering, agent tooling, skill catalog, OverKill Hill" />
     <meta name="author" content="OverKill Hill P³™" />
     <meta name="creator" content="OverKill Hill P³™" />
     <meta name="publisher" content="OverKill Hill P³™" />
@@ -30,13 +31,18 @@
     <meta property="og:title" content="Skillz Forge | OverKill Hill P³™" />
     <meta property="og:description" content="Find, inspect, compose, install, and improve reusable Agent Skills from the OverKill Hill P³™ forge." />
     <meta property="og:image" content="%BASE_URL%assets/skillz-forge-social-preview.jpg" />
-    <meta property="og:site_name" content="OverKill Hill P³™" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Skillz Forge — the OverKill Hill P³™ Murderbird mascot beside the catalog search hero" />
+    <meta property="og:site_name" content="Skillz Forge" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Skillz Forge | OverKill Hill P³™" />
     <meta name="twitter:description" content="Find, inspect, compose, install, and improve reusable Agent Skills from the OverKill Hill P³™ forge." />
     <meta name="twitter:image" content="%BASE_URL%assets/skillz-forge-social-preview.jpg" />
+    <meta name="twitter:image:alt" content="Skillz Forge — the OverKill Hill P³™ Murderbird mascot beside the catalog search hero" />
 
     <!-- Fonts: OverKill Hill canonical typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -49,8 +55,13 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      // SPA: disable automatic page_view — React router sends them
-      gtag('config', 'G-VJ1BKXS27H', { send_page_view: false });
+      // SPA: disable automatic page_view — React router sends them.
+      // Signal flags kept off, consistent with the no-PII promise in FAQ.
+      gtag('config', 'G-VJ1BKXS27H', {
+        send_page_view: false,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+      });
     </script>
 
     <!-- JSON-LD: truthful entity only -->
@@ -61,10 +72,20 @@
       "name": "Skillz Forge",
       "description": "Find, inspect, compose, install, and improve reusable Agent Skills from the OverKill Hill P³™ forge.",
       "url": "https://okhp3.github.io/skillz/",
+      "inLanguage": "en-US",
+      "isAccessibleForFree": true,
       "publisher": {
         "@type": "Organization",
         "name": "OverKill Hill P³™",
         "url": "https://overkillhill.com/"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://okhp3.github.io/skillz/#/explore?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
     }
     </script>

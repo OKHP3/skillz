@@ -71,7 +71,7 @@ export default function Contribute() {
   return (
     <div data-page="contribute">
       <Nav />
-      <main className="container" style={{ paddingBottom: 'var(--space-24)' }}>
+      <main className="container page-main">
         <div className="page-header">
           <h1>Contribute</h1>
           <p>The catalog improves through pull requests, issues, and discussion. Every improvement — from a corrected trigger phrase to a new benchmarked skill — makes the catalog more useful for everyone.</p>
@@ -82,15 +82,14 @@ export default function Contribute() {
             <li key={action.id} className="contribute-card" data-sensitive={action.sensitive}>
               <h2>{action.label}</h2>
               <p>{action.description}</p>
-              <div style={{ background: 'var(--color-bg)', padding: 'var(--space-4)', fontSize: 'var(--text-sm)', color: 'var(--color-text-dark)', marginBottom: 'var(--space-6)', borderLeft: action.sensitive ? '2px solid var(--color-ember)' : '2px solid var(--color-steel)' }}>
+              <div className={`contribute-how${action.sensitive ? ' contribute-how--sensitive' : ''}`}>
                 {action.how}
               </div>
               <a
                 href={action.href()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline"
-                style={{ alignSelf: 'flex-start', marginTop: 'auto' }}
+                className="btn btn-outline contribute-card-action"
               >
                 {action.linkLabel} &rarr;
               </a>
@@ -98,19 +97,19 @@ export default function Contribute() {
           ))}
         </ul>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-6)', marginTop: 'var(--space-16)' }}>
-          <div style={{ padding: 'var(--space-8)', border: '1px solid var(--color-border-dark)' }}>
-            <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: 'var(--space-4)' }}>Discuss before you build</h2>
-            <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-6)' }}>Not sure whether your idea fits? Start a discussion. Maintainers can confirm scope and naming before you invest time drafting.</p>
+        <div className="contribute-resources">
+          <div className="contribute-resource-panel">
+            <h2>Discuss before you build</h2>
+            <p>Not sure whether your idea fits? Start a discussion. Maintainers can confirm scope and naming before you invest time drafting.</p>
             <a href={discussionsUrl()} target="_blank" rel="noopener noreferrer" className="btn">
               GitHub Discussions &rarr;
             </a>
           </div>
 
-          <div style={{ padding: 'var(--space-8)', border: '1px solid var(--color-border-dark)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: 'var(--space-4)' }}>The Repository</h2>
-            <p style={{ color: 'var(--color-text-muted-dark)', marginBottom: 'var(--space-6)' }}>Explore the raw source code, star the project, or fork it to build your own private skills catalog.</p>
-            <a href={repoUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ alignSelf: 'flex-start' }}>
+          <div className="contribute-resource-panel contribute-resource-panel--centered">
+            <h2>The Repository</h2>
+            <p>Explore the raw source code, star the project, or fork it to build your own private skills catalog.</p>
+            <a href={repoUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-outline contribute-resource-link">
               View on GitHub &rarr;
             </a>
           </div>
