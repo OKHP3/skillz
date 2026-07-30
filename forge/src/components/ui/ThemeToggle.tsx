@@ -45,47 +45,19 @@ export default function ThemeToggle() {
   const { mode, setMode } = useTheme();
 
   return (
-    <div
-      role="group"
-      aria-label="Color theme"
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '2px',
-        background: 'var(--color-bg-secondary)',
-        border: '1px solid var(--color-border-dark)',
-        borderRadius: '3px',
-        padding: '2px',
-        flexShrink: 0,
-      }}
-    >
-      {OPTIONS.map(({ value, label, Icon }) => {
-        const active = mode === value;
-        return (
-          <button
-            key={value}
-            onClick={() => setMode(value)}
-            aria-label={label}
-            aria-pressed={active}
-            title={label}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '26px',
-              height: '22px',
-              borderRadius: '2px',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'background var(--transition), color var(--transition)',
-              background: active ? 'var(--color-copper)' : 'transparent',
-              color: active ? 'var(--color-bg)' : 'var(--color-text-muted-dark)',
-            }}
-          >
-            <Icon />
-          </button>
-        );
-      })}
+    <div role="group" aria-label="Color theme" className="theme-toggle">
+      {OPTIONS.map(({ value, label, Icon }) => (
+        <button
+          key={value}
+          onClick={() => setMode(value)}
+          aria-label={label}
+          aria-pressed={mode === value}
+          title={label}
+          className="theme-toggle-btn"
+        >
+          <Icon />
+        </button>
+      ))}
     </div>
   );
 }
