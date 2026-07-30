@@ -8,6 +8,8 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `okhp3-repository-janitor`, an audit-first workflow and helper script for reconciling multiple local Git mirrors with `origin/main`, preserving uncertain work, and preparing evidence-gated branch merge and pruning decisions.
+
 - Added 14 brand-specific forks under `glee-fully/` and `askjamie/` for visual style registration, FoundRy repository creation, content-first repository organization, ChatGPT project migration, shared thread-context extraction, and ChatGPT and Claude thread adapters. Each fork preserves its generic source workflow and adds an explicit brand overlay grounded in the current public site positioning.
 
 - Added brand-specific GPT creation forks under `glee-fully/` and `askjamie/`: `okhp3-glee-fully-gpt-builder`, `okhp3-glee-fully-gpt-readiness`, `okhp3-askjamie-gpt-builder`, and `okhp3-askjamie-gpt-readiness`. They derive from the generic `agent-foundry/` Custom GPT packages and apply the current public Glee-fully and AskJamie positioning as explicit overlays.
