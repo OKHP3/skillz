@@ -9,7 +9,7 @@ metadata:
   origin: okhp3/mermaid-theme-builder
 ---
 
-# OKHP3 Mermaid Update
+# Mermaid Update
 
 Applies targeted changes to an existing diagram while preserving everything the original author intentionally configured: style, theme, class definitions, and structural conventions.
 

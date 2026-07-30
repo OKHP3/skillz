@@ -9,7 +9,7 @@ metadata:
   origin: okhp3/mermaid-theme-builder
 ---
 
-# OKHP3 Mermaid Repair
+# Mermaid Repair
 
 Fixes broken Mermaid syntax using minimum intervention. The diagram after repair is semantically identical to the diagram before repair. Only syntax changes.
 

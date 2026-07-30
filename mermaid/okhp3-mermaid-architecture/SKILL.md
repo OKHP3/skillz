@@ -9,7 +9,7 @@ metadata:
   origin: okhp3/mermaid-theme-builder
 ---
 
-# OKHP3 Mermaid Architecture
+# Mermaid Architecture
 
 System/solution architecture vocabulary, loaded after `okhp3-mermaid-core`.
 

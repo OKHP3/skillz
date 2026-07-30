@@ -9,7 +9,7 @@ metadata:
   origin: okhp3/mermaid-theme-builder
 ---
 
-# OKHP3 Mermaid Core
+# Mermaid Core
 
 Foundation for the Mermaid family. Every Mermaid task starts here, even if it ends in a domain skill.
 

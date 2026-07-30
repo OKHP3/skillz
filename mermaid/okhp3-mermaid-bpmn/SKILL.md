@@ -9,7 +9,7 @@ metadata:
   origin: okhp3/mermaid-theme-builder
 ---
 
-# OKHP3 Mermaid BPMN
+# Mermaid BPMN
 
 BPMN 2.0-informed semantics, expressed in Mermaid syntax. Loaded after `okhp3-mermaid-core` has handled audience declaration and type selection.
 

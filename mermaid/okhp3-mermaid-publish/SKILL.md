@@ -9,7 +9,7 @@ metadata:
   origin: okhp3/mermaid-theme-builder
 ---
 
-# OKHP3 Mermaid Publish
+# Mermaid Publish
 
 The output layer. Runs after core's Gate 1-3 validation.
 

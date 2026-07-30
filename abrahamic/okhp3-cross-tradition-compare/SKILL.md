@@ -20,7 +20,7 @@ metadata:
 compatibility: Static Markdown and TypeScript data. No network access is required for seeded comparisons.
 ---
 
-# OKHP3 -- Cross-Tradition Compare Skill
+# Cross-Tradition Compare
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3) · [OKHP3/skillz](https://github.com/OKHP3/skillz)
 

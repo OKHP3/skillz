@@ -20,7 +20,7 @@ metadata:
 compatibility: Markdown reference material. Network access is optional and only needed to verify provider availability or current demographic sources.
 ---
 
-# OKHP3 -- Tradition Reference Skill
+# Tradition Reference
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3) · [OKHP3/skillz](https://github.com/OKHP3/skillz)
 

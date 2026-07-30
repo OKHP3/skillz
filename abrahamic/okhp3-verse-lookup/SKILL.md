@@ -20,7 +20,7 @@ metadata:
 compatibility: JavaScript or TypeScript with Fetch API for live lookup. Network access is required for provider calls; no credentials are required by the documented endpoints.
 ---
 
-# OKHP3 -- Verse Lookup Skill
+# Verse Lookup
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3) · [OKHP3/skillz](https://github.com/OKHP3/skillz)
 
