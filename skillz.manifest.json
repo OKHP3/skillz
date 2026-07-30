@@ -20,14 +20,14 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 75,
-  "activeFamilyCount": 12,
-  "placeholderFamilyCount": 2,
+  "distributionSkillCount": 94,
+  "activeFamilyCount": 14,
+  "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 18,
   "maturityCounts": {
     "placeholder": 0,
     "skeleton": 13,
-    "draftable": 62,
+    "draftable": 63,
     "usable": 0,
     "validated": 0,
     "published": 0
@@ -191,13 +191,34 @@
     },
     {
       "name": "glee-fully",
-      "status": "placeholder",
-      "skills": []
+      "status": "draftable",
+      "skills": [
+        "okhp3-glee-fully-chatgpt-migrate",
+        "okhp3-glee-fully-extract-chatgpt",
+        "okhp3-glee-fully-extract-claude",
+        "okhp3-glee-fully-foundry",
+        "okhp3-glee-fully-gpt-builder",
+        "okhp3-glee-fully-gpt-readiness",
+        "okhp3-glee-fully-repo-creator",
+        "okhp3-glee-fully-repo-organizer",
+        "okhp3-glee-fully-style-registry",
+        "okhp3-glee-fully-thread-context"
+      ]
     },
     {
       "name": "askjamie",
-      "status": "placeholder",
-      "skills": []
+      "status": "draftable",
+      "skills": [
+        "okhp3-askjamie-chatgpt-migrate",
+        "okhp3-askjamie-extract-chatgpt",
+        "okhp3-askjamie-extract-claude",
+        "okhp3-askjamie-gpt-builder",
+        "okhp3-askjamie-gpt-readiness",
+        "okhp3-askjamie-repo-creator",
+        "okhp3-askjamie-repo-organizer",
+        "okhp3-askjamie-style-registry",
+        "okhp3-askjamie-thread-context"
+      ]
     }
   ],
   "maturityLevels": {
