@@ -104,11 +104,11 @@ export default function Home() {
         </section>
 
         <section data-section="what-is-skill" className="home-explainer-panel">
-          <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: 'var(--space-4)' }}>What is a SKILL.md?</h2>
-          <p style={{ color: 'var(--color-text-muted-light)', marginBottom: 'var(--space-4)' }}>
+          <h2>What is a SKILL.md?</h2>
+          <p>
             A delegation contract for AI agents. Plain text, versioned, composable, installable. Each skill tells an agent exactly when to activate, what to do, and what not to do — so it behaves consistently without re-explaining.
           </p>
-          <Link to="/faq#what-is-skillmd" style={{ fontWeight: 600 }}>Learn more &rarr;</Link>
+          <Link to="/faq#what-is-skillmd">Learn more &rarr;</Link>
         </section>
 
         <section data-section="families" style={{ marginTop: 'var(--space-24)' }}>

@@ -1034,12 +1034,17 @@ input, select, textarea {
 /* Paragraphs inside the light-surface panel must use light-surface text */
 [data-section="what-is-skill"] p {
   color: var(--color-text-muted-light);
+  margin-bottom: var(--space-4);
 }
 [data-section="what-is-skill"] h2 {
+  font-size: var(--text-h2);
   color: var(--color-text-light);
   position: relative;
   padding-bottom: var(--space-3);
   margin-bottom: var(--space-4);
+}
+[data-section="what-is-skill"] a {
+  font-weight: 600;
 }
 [data-section="what-is-skill"] h2::after {
   content: '';
