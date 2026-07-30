@@ -2178,3 +2178,23 @@ input, select, textarea {
   background: var(--color-copper);
   color: var(--color-bg);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NARROW-PHONE OVERRIDES (≤ 639 px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 639px) {
+  /* Reduce the heavy horizontal padding on the skill detail card */
+  .detail-article {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  /* Collapse inputs/outputs two-column grid to a single column */
+  .detail-io-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Collapse related-skills grid to a single column */
+  .detail-related-list {
+    grid-template-columns: 1fr;
+  }
+}
