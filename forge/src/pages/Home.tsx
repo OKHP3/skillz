@@ -100,6 +100,7 @@ export default function Home() {
                 aria-hidden="true"
               />
             </div>
+            <span className="hero-bird-label" aria-hidden="true">OverKill Hill P³™ ↗</span>
           </a>
         </section>
 
