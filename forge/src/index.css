@@ -1631,7 +1631,7 @@ input, select, textarea {
 /* Search form: wider, centered under the heading/subtitle column */
 .hero-search {
   max-width: 640px !important;
-  margin-left: 0 !important;
+  margin-left: auto !important;
   margin-right: auto !important;
 }
 

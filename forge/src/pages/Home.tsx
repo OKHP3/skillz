@@ -30,6 +30,17 @@ export default function Home() {
     }
   }
 
+  // Auto-complete: once the visitor pauses typing for 3s, jump straight to
+  // results instead of waiting for them to hit Search.
+  useEffect(() => {
+    const trimmed = query.trim();
+    if (!trimmed) return;
+    const timer = setTimeout(() => {
+      navigate(`/explore?q=${encodeURIComponent(trimmed)}`);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [query, navigate]);
+
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === '/' && document.activeElement !== inputRef.current) {
