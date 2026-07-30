@@ -905,6 +905,17 @@ input, select, textarea {
   border: 1px solid var(--color-border-dark);
   padding: var(--space-1) var(--space-2);
 }
+
+@media (max-width: 480px) {
+  .explore-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .explore-meta select {
+    max-width: 100%;
+  }
+}
 .explore-results-count {
   color: var(--color-text-dark);
 }
