@@ -1628,26 +1628,11 @@ input, select, textarea {
   margin: 0 0 var(--space-12);
 }
 
-/* Search form: full-width in hero column, remove auto-centering */
+/* Search form: wider, centered under the heading/subtitle column */
 .hero-search {
-  max-width: 560px !important;
+  max-width: 640px !important;
   margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-/* CTA row */
-.hero-cta-row {
-  margin-top: var(--space-4);
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-}
-
-/* Trust statement */
-.hero-trust {
-  margin-top: var(--space-6);
-  font-size: var(--text-sm);
-  color: var(--color-text-muted-dark);
+  margin-right: auto !important;
 }
 
 /* ── Murderbird: right column ─────────────────────────────────────────────── */
@@ -1735,10 +1720,6 @@ input, select, textarea {
   .hero-search {
     margin-left: auto !important;
     margin-right: auto !important;
-  }
-
-  .hero-cta-row {
-    justify-content: center;
   }
 
   .hero-bird {

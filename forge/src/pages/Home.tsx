@@ -71,16 +71,6 @@ export default function Home() {
                 Search
               </button>
             </form>
-
-            <div className="hero-cta-row">
-              <Link to="/explore" className="btn btn-outline">
-                Browse all {catalog.skillCount} skills
-              </Link>
-            </div>
-
-            <p className="hero-trust">
-              Read the contract, maturity, and evidence note before relying on a skill.
-            </p>
           </div>
 
           <a
