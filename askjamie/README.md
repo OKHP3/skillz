@@ -1,13 +1,16 @@
 # AskJamie
 
-**Status: placeholder. Design not started.**
+**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.
 
-One of the three OKHP3 sub-brands — a conversational resume / helpdesk tool. No skill design work has happened yet for this family; this directory exists so `AGENTS.md` and the repo structure anticipate it, not because anything inside it is ready.
+One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 
-## Open questions for design phase
+## Current packages
 
-- What's the actual recurring task this serves? (Career-history Q&A for recruiters/network contacts? A helpdesk for OKHP3 itself? Both, as separate skills?)
-- Does this need a "voice" skill analogous to `okhp3-linkedin-voice` — a distinct AskJamie conversational register, separate from both BFS-professional and OKHP3-brand voices?
-- Source material: does this mine the same artifacts `okhp3-linkedin-angles` mines, or does it need its own corpus (actual resume/CV content, career history)?
+- `okhp3-askjamie-gpt-readiness/` assesses whether an AskJamie lens or Custom GPT is ready for build.
+- `okhp3-askjamie-gpt-builder/` builds and audits the resulting Custom GPT experience.
 
-Do not begin scaffolding sub-skills here until these are answered — this is a "process-capture" candidate in its own right once the recurring AskJamie use case is identified.
+## Design direction
+
+AskJamie favors plain-language explanations, visible walkthroughs, decision trees, diagrams when useful, tradeoffs, calm pacing, and a clear next step. Use https://askjamie.bot as the current public positioning reference.
+
+The GPT builder and readiness packages are migration scaffolding, not proof that a resulting GPT or Agent Skill is canon-ready. Complete source, privacy, eval, and authority checks before promotion.
