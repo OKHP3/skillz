@@ -1057,7 +1057,12 @@ input, select, textarea {
 }
 
 /* ── Families section heading — centered forge mark ─────────────────────── */
+[data-page="home"] [data-section="families"] {
+  margin-top: var(--space-24);
+}
 [data-page="home"] [data-section="families"] h2 {
+  font-size: var(--text-h2);
+  margin-bottom: var(--space-8);
   position: relative;
   padding-bottom: var(--space-4);
 }

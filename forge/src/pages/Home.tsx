@@ -111,8 +111,8 @@ export default function Home() {
           <Link to="/faq#what-is-skillmd">Learn more &rarr;</Link>
         </section>
 
-        <section data-section="families" style={{ marginTop: 'var(--space-24)' }}>
-          <h2 style={{ fontSize: 'var(--text-h2)', marginBottom: 'var(--space-8)' }}>Families</h2>
+        <section data-section="families">
+          <h2>Families</h2>
           <div className="home-families">
             {catalog.families.map(f => (
               <Link to={`/explore?family=${f.name}`} key={f.name} className="home-family-card">
