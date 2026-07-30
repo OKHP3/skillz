@@ -395,7 +395,7 @@
   padding-bottom: var(--space-16);
 }
 .stack-audience {
-  color: var(--color-text-muted-dark);
+  color: var(--color-text-muted-light);
   font-size: var(--text-sm);
   margin-bottom: var(--space-4);
 }
@@ -983,7 +983,7 @@ input, select, textarea {
 .skill-card-techname {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-text-muted-dark);
+  color: var(--color-text-muted-light);
   margin-top: 2px;
 }
 .skill-card-meta {
@@ -1274,7 +1274,7 @@ input, select, textarea {
   padding: 1px var(--space-2);
 }
 .meta-pending {
-  color: var(--color-text-muted-dark);
+  color: var(--color-text-muted-light);
   font-style: italic;
   font-size: var(--text-sm);
 }
