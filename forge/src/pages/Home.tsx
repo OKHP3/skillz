@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div data-page="home">
       <Nav />
-      <main className="container" style={{ padding: 'var(--space-16) var(--space-4)', textAlign: 'center' }}>
+      <main className="container">
         <section data-section="hero" className="hero-layout">
           <div className="hero-content">
             <h1 className="hero-heading">
@@ -66,9 +66,8 @@ export default function Home() {
                 placeholder="e.g. document a messy business process..."
                 autoComplete="off"
                 aria-label="Search agent skills"
-                style={{ fontSize: '1.25rem', padding: 'var(--space-4) var(--space-6)' }}
               />
-              <button type="submit" className="btn" style={{ fontSize: '1.25rem', padding: 'var(--space-4) var(--space-8)' }}>
+              <button type="submit" className="btn">
                 Search
               </button>
             </form>

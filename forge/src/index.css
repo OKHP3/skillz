@@ -360,6 +360,10 @@ input, select, textarea {
   text-align: center;
   padding: var(--space-16) var(--space-4);
 }
+[data-page="home"] .container {
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+}
 [data-page="home"] h1 {
   font-size: var(--text-display);
   margin-bottom: var(--space-6);
@@ -380,6 +384,14 @@ input, select, textarea {
 }
 .home-search input {
   flex: 1;
+}
+.hero-search .input-text {
+  font-size: 1.25rem;
+  padding: var(--space-4) var(--space-6);
+}
+.hero-search .btn {
+  font-size: 1.25rem;
+  padding: var(--space-4) var(--space-8);
 }
 
 .home-families {
