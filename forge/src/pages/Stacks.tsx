@@ -38,7 +38,7 @@ export default function Stacks() {
           <p>Curated combinations of skills for complete workflows. Each stack is a recipe — ordered steps, defined inputs and outputs, and a shareable URL.</p>
         </div>
 
-        <ul className="stack-list" style={{ paddingBottom: 'var(--space-16)' }}>
+        <ul className="stack-list">
           {STACKS.map(stack => {
             const allSkillNames = stack.steps.flatMap(s => s.skillNames);
             const allSkills = getSkillsForStack([...new Set(allSkillNames)]);
@@ -48,23 +48,23 @@ export default function Stacks() {
                   <h2><Link to={`/stacks/${stack.id}`}>{stack.name}</Link></h2>
                   <p className="stack-tagline">{stack.tagline}</p>
                 </div>
-                <p style={{ color: 'var(--color-text-muted-dark)', fontSize: 'var(--text-sm)', marginBottom: 'var(--space-4)' }}>
+                <p className="stack-audience">
                   <strong>For:</strong> {stack.audience}
                 </p>
-                
+
                 <div className="stack-steps">
                   {stack.steps.map((step, i) => (
-                    <span key={i} className="step-pill" style={{ borderLeft: step.optional ? '2px solid var(--color-border-dark)' : '2px solid var(--color-copper)' }}>
+                    <span key={i} className={`step-pill ${step.optional ? 'step-pill--optional' : 'step-pill--required'}`}>
                       {i + 1}. {step.label}
                     </span>
                   ))}
                 </div>
-                
-                <div style={{ marginTop: 'var(--space-4)', fontSize: 'var(--text-sm)', color: 'var(--color-steel)' }}>
+
+                <div className="stack-count">
                   {allSkills.length} skill{allSkills.length !== 1 ? 's' : ''} in stack
                 </div>
-                
-                <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'center', marginTop: 'var(--space-6)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border-dark)' }}>
+
+                <div className="stack-card-footer">
                   <Link to={`/stacks/${stack.id}`} className="btn">View stack</Link>
                   <button
                     onClick={() => handleCopyAll(stack.id, allSkillNames)}
