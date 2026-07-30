@@ -2,7 +2,7 @@
 family: refolddec
 skill_count: 1
 generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-07-29T20:05:36Z
+generated_at: 2026-07-30T13:29:51Z
 ---
 
 # refolddec
@@ -85,7 +85,7 @@ Agent Skills for ReFolDec operations — recursive folding, unfolding, and refol
 ## Skills (1)
 
 <!-- FAMILY_INVENTORY_START -->
-*1 skill &nbsp;·&nbsp; inventory last updated: **July 29, 2026 at 20:05 UTC***
+*1 skill &nbsp;·&nbsp; inventory last updated: **July 30, 2026 at 13:29 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
