@@ -12,20 +12,14 @@ compatibility: >
   resolution rule. Historical or hypothetical analysis can use user-supplied
   snapshots without market access.
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
-  category: universal
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
-  in_scope:
-    - Independent event probability modeling and calibration
-    - Market-implied probability, price, spread, liquidity, and resolution analysis
-    - Expected value, uncertainty, scenario, and paper-trading evaluation
-  out_of_scope:
-    - Placing, cancelling, or managing trades or bets
-    - Claims of guaranteed profit or certainty
-    - Inventing live prices, market rules, or event-resolution facts
+  category: "universal"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Independent event probability modeling and calibration; Market-implied probability, price, spread, liquidity, and resolution analysis; Expected value, uncertainty, scenario, and paper-trading evaluation"
+  out_of_scope: "Placing, cancelling, or managing trades or bets; Claims of guaranteed profit or certainty; Inventing live prices, market rules, or event-resolution facts"
   status: enhanced-computational-payload
   tags: prediction markets, implied probability, expected value, edge, liquidity, resolution, paper backtest
   triggers: market probability, contract price, odds, edge, EV, spread, fees, slippage, resolution rule
@@ -115,7 +109,7 @@ This skill must not request private keys, place orders, cancel orders, or imply 
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

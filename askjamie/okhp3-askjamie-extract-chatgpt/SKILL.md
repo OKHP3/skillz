@@ -16,17 +16,19 @@ compatibility: >
   Requires Python 3.10 or later and filesystem read/write access. No ChatGPT
   login, OpenAI API key, network access, or connector is required.
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "2.0.0"
-  category: askjamie
+  category: "askjamie"
   derived_from: okhp3-thread-extract-chatgpt
   brand: AskJamie
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material."
+  out_of_scope: "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
 ---
 
-# Thread Context Extraction: ChatGPT
+# okhp3-askjamie-extract-chatgpt
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 

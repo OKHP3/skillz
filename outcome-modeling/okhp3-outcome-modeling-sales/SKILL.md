@@ -11,20 +11,14 @@ compatibility: >
   Requires user-supplied or approved CRM, finance, or customer data. Do not
   infer private customer facts or connect to a CRM without user authorization.
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
-  category: universal
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
-  in_scope:
-    - Pipeline, account, salesperson, territory, and commercial-value modeling
-    - Margin-aware forecasting and constrained sales or resource allocation
-    - Selection bias, opportunity quality, retention, and incremental lift checks
-  out_of_scope:
-    - Inventing CRM, customer, quota, or pricing data
-    - Ranking people without opportunity and territory context
-    - Sending outreach, changing CRM records, or making employment decisions
+  category: "universal"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Pipeline, account, salesperson, territory, and commercial-value modeling; Margin-aware forecasting and constrained sales or resource allocation; Selection bias, opportunity quality, retention, and incremental lift checks"
+  out_of_scope: "Inventing CRM, customer, quota, or pricing data; Ranking people without opportunity and territory context; Sending outreach, changing CRM records, or making employment decisions"
   status: enhanced-computational-payload
   tags: sales forecasting, pipeline, contribution margin, win rate, selection bias, allocation, retention
   triggers: close rate, quota forecast, pipeline, salesperson comparison, discount, margin, CAC, LTV, territory

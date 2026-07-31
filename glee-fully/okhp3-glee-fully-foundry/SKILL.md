@@ -9,12 +9,12 @@ description: >
 license: MIT
 compatibility: Any Agent Skills-compatible client with filesystem access.
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "1.0.0"
-  category: glee-fully
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
+  category: "glee-fully"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
   in_scope: "Glee-fully Tool and Tool-ette skill architecture, persona density, hierarchy, canon, and release preparation."
   out_of_scope: "Generic skill authoring, employer-confidential material, platform-specific claims without verification, and publishing without authorization."
 ---
@@ -112,6 +112,6 @@ claimed by this package's existence.
 ## About
 
 Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
-Published at [github.com/OKHP3/skillz](https://github.com/OKHP3/skillz)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

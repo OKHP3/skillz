@@ -12,22 +12,14 @@ compatibility: >
   approved public sources. Computation may require a spreadsheet, notebook, or
   statistical runtime, but the method does not assume one.
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
-  category: universal
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
-  in_scope:
-    - Multi-scale event aggregation and entity-state modeling
-    - Feature inventory, compression, leakage control, and validation design
-    - Objective functions, constraints, uncertainty, and decision outputs
-    - Routing to sports, NFL fantasy, sales, and prediction-market adapters
-  out_of_scope:
-    - Inventing data, current facts, probabilities, or benchmark results
-    - Treating correlation as causal evidence without a causal design
-    - Executing trades, bets, political persuasion, or external side effects
-    - Replacing a domain adapter with generic advice when domain rules matter
+  category: "universal"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Multi-scale event aggregation and entity-state modeling; Feature inventory, compression, leakage control, and validation design; Objective functions, constraints, uncertainty, and decision outputs; Routing to sports, NFL fantasy, sales, and prediction-market adapters"
+  out_of_scope: "Inventing data, current facts, probabilities, or benchmark results; Treating correlation as causal evidence without a causal design; Executing trades, bets, political persuasion, or external side effects; Replacing a domain adapter with generic advice when domain rules matter"
   status: enhanced-computational-payload
   tags: outcome modeling, forecasting, calibration, feature compression, expected value, constrained allocation
   triggers: probability model, many variables, noisy events, top features, 95 percent signal, forecast, allocation

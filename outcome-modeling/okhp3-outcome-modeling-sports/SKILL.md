@@ -11,20 +11,14 @@ compatibility: >
   Any Agent Skills-compatible client with access to user-supplied or approved
   sports data. Live data retrieval requires a separate approved data skill.
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
-  category: universal
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
-  in_scope:
-    - Team, game, player, matchup, and season state modeling
-    - Opponent-adjusted metrics, schedule context, roster events, and uncertainty
-    - Sports ranking and projection specifications
-  out_of_scope:
-    - Fabricating current scores, rosters, injuries, odds, or transactions
-    - Treating one game as proof of a team or player skill level
-    - Executing bets, trades, or sportsbook actions
+  category: "universal"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Team, game, player, matchup, and season state modeling; Opponent-adjusted metrics, schedule context, roster events, and uncertainty; Sports ranking and projection specifications"
+  out_of_scope: "Fabricating current scores, rosters, injuries, odds, or transactions; Treating one game as proof of a team or player skill level; Executing bets, trades, or sportsbook actions"
   status: enhanced-computational-payload
   tags: sports forecasting, matchup model, team strength, player state, opponent adjustment, schedule
   triggers: team projection, game forecast, player projection, Elo, EPA, strength of schedule, injury impact

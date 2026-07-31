@@ -9,11 +9,18 @@ description: >-
 license: MIT
 metadata:
   version: "1.0.0"
-  author: "OverKill Hill P³"
-  category: universal
+  author: "Jamie Hill (OverKill Hill P³)"
+  category: "askjamie"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Readiness assessment, evidence inventory, gap analysis, and builder handoff for AskJamie Custom GPT concepts."
+  out_of_scope: "Building or publishing without approval, inventing missing evidence, or treating a readiness score as a production guarantee."
 ---
 
-# AskJamie GPT Readiness
+# okhp3-askjamie-gpt-readiness
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Turn scattered GPT ideas and partial artifacts into a buildable, testable brief.
 This is an intake and gap-analysis skill, not the builder itself.
@@ -77,4 +84,7 @@ Read `references/readiness-dossier-schema.md` before producing JSON or a machine
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3) · MIT License.
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

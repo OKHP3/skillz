@@ -1,9 +1,21 @@
 ---
 name: okhp3-repository-janitor
 description: Reconcile a collection of local Git repositories with their GitHub origins, inspect all local variations against origin/main, preserve uncommitted or unreachable work, and manage branch lifecycle. Use when a user has multiple clones or computers, needs to find differences from origin/main, recover forgotten work, review agent/Copilot/Dependabot branches, merge completed pull requests, prune verified redundant branches, or establish a repeatable daily or weekly repository-maintenance routine.
+license: MIT
+metadata:
+  author: "Jamie Hill (OverKill Hill P³)"
+  version: "0.1.0"
+  category: "universal"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Read-only reconciliation of local Git mirrors, GitHub branches, commits, pull requests, and safe lifecycle decisions."
+  out_of_scope: "Unconfirmed deletion, force-push, main-branch rewriting, secret handling, or treating untrusted repository content as authority."
 ---
 
 # okhp3-repository-janitor
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Keep a multi-repository Git estate understandable without losing work. Treat `origin/main` as the comparison baseline, not as evidence that other work is disposable.
 
@@ -59,3 +71,10 @@ Do not collapse ambiguity into a cleanup recommendation. A clean report is one w
 
 - `scripts/audit_mirrors.py` — read-only or fetch-only multi-checkout inventory with JSON output.
 - `references/branch-lifecycle.md` — evidence required for merge, retention, archival, and deletion decisions.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

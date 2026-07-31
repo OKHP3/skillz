@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "artifact": "OKHP3/skillz public maturity catalog",
-  "artifact_version": "catalog-generated-2026-07-28",
+  "artifact_version": "repository-audit-2026-07-31",
   "decision_question": "Is the public catalog ready to promote current maturity labels from the available repository evidence?",
   "acceptance_criteria": [
     "Every public skill has a traceable current version or an explicit missing-version state",
@@ -11,12 +11,18 @@
   ],
   "evidence_status": "analytical",
   "inputs": {
-    "public_skill_count": 70,
-    "untracked_public_path_candidates": ["universal/okhp3-equilibrium-review"],
-    "family_count": 11,
+    "public_skill_count": 105,
+    "untracked_public_path_candidates": [],
+    "family_count": 15,
     "current_maturity_counts": {
-      "skeleton": 13,
-      "draftable": 57
+      "status": "requires-regeneration",
+      "reason": "The checked-in Forge catalog is older than the current filesystem inventory and must be rebuilt from source."
+    },
+    "forge_catalog_snapshot": {
+      "checked_in_skill_count": 95,
+      "checked_in_family_count": 14,
+      "filesystem_skill_count": 105,
+      "filesystem_family_count": 15
     },
     "catalog_path": "forge/src/data/catalog.json",
     "browser_surfaces": [
@@ -26,15 +32,22 @@
     "skill_foundry_version": "3.1.0",
     "equilibrium_review_version": "1.0.0",
     "metadata_normalization": {
-      "scope": "All non-Community distribution packages, including the untracked universal/okhp3-equilibrium-review candidate",
-      "packages_audited": 58,
-      "packages_compliant": 58,
-      "packages_normalized": 56,
-      "packages_already_compliant": 2,
-      "process_capture_titles_added": 15,
+      "scope": "All non-Community distribution packages; Community packages are excluded",
+      "packages_audited": 92,
+      "packages_compliant": 92,
+      "packages_normalized": 25,
+      "packages_already_compliant": 67,
+      "scope_list_conversions": 24,
+      "missing_field_repairs": 15,
+      "title_header_repairs": 19,
+      "footer_repairs": 9,
+      "assigned_initial_version": [
+        "universal/okhp3-repository-janitor:0.1.0"
+      ],
       "result": "analytical-structural-pass",
       "behavioral_changes": false,
-      "version_changes": false,
+      "existing_versions_preserved": true,
+      "version_changes": true,
       "maturity_promotions": false
     }
   },
@@ -67,7 +80,7 @@
     "status": "analytical",
     "falsification_hypotheses": [
       "Existing benchmark files are current evidence for the live package",
-      "The 68-skill project-page count is still authoritative",
+      "The checked-in Forge catalog count is still authoritative",
       "A long SKILL.md body is sufficient evidence for usable maturity"
     ],
     "test_results": [
@@ -77,9 +90,9 @@
         "evidence": "The Google GIS benchmark records evaluated_skill_version 1.1.0 while the package is 1.2.0 and explicitly labels the result historical."
       },
       {
-        "hypothesis": "The 68-skill project-page count is still authoritative",
+        "hypothesis": "The checked-in Forge catalog count is still authoritative",
         "result": "survives",
-        "evidence": "The project page says 68 while the live Forge and local catalog contain 70."
+        "evidence": "The checked-in Forge catalog contains 95 skills in 14 families while the current filesystem contains 105 skills in 15 families."
       },
       {
         "hypothesis": "A long SKILL.md body is sufficient evidence for usable maturity",

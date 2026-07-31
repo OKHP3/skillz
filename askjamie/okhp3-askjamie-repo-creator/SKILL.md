@@ -3,17 +3,19 @@ name: okhp3-askjamie-repo-creator
 description: Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt bundles, Notion concepts, research notes, or prototype ideas. Use whenever the user wants to migrate an AI capability into GitHub, standardize a repo, create a child repo scaffold, or convert platform-specific AI work into a reusable capability package.
 license: MIT
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
-  category: askjamie
+  category: "askjamie"
   derived_from: okhp3-foundry-repo-creator
   brand: AskJamie
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Governed child-repository planning and package preparation from an approved reusable workflow source."
+  out_of_scope: "Autonomous publication, implicit source ownership, private data or secret handling, and remote repository changes without approval."
 ---
 
-# okhp3-foundry-repo-creator
+# okhp3-askjamie-repo-creator
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 

@@ -4,17 +4,19 @@ description: >
   OverKill Hill P³ visual style registry and application workflow. Use when a user wants to extract a reusable brand, visual style, palette, typography system, layout language, or interface aura from a website, stylesheet, document, presentation, infographic, or set of visual assets. Also activate when a user wants an SPA, documentation, presentation, image brief, or other target artifact aligned to one or more named style profiles. This is the authoritative profile-driven workflow for capturing and applying visual style without blending unrelated brands or treating inferred cues as declared rules.
 license: MIT
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
-  category: askjamie
+  category: "askjamie"
   derived_from: okhp3-brand-style-registry
   brand: AskJamie
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Extraction and application of approved AskJamie visual style profiles with explicit source and scope boundaries."
+  out_of_scope: "Invented brand authority, unapproved source use, hidden employer context, or automatic publication."
 ---
 
-# okhp3-brand-style-registry
+# okhp3-askjamie-style-registry
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 

@@ -63,6 +63,13 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Changed
 
+- Completed the 2026-07-31 Foundry metadata and presentation audit for all 92
+  non-Community distribution skills. Repaired 25 packages, preserved existing
+  versions except for assigning `0.1.0` to `universal/okhp3-repository-janitor`,
+  and left all 13 Community packages unchanged. Updated the maturity-reforging
+  PRD and machine-readable review record for the current 105-skill, 15-family
+  inventory. This is an analytical structural pass, not a maturity promotion.
+
 - Added the 2026-07-29 repository-wide maturity audit and Replit reconciliation
   PRD. The audit records all 75 distribution skills, package versions, first
   Git records, last modifications, package resources, maturity, and evidence

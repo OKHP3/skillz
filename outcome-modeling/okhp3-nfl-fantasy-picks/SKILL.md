@@ -13,20 +13,14 @@ compatibility: >
   The scoring system, roster rules, salary, contest type, and decision date
   must be known before ranking players.
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
-  category: universal
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
-  in_scope:
-    - Season-long fantasy, DFS, salary-cap, waiver, and trade analysis
-    - Projected points, cost efficiency, replacement value, and roster constraints
-    - Floor, ceiling, uncertainty, matchup, usage, and correlation analysis
-  out_of_scope:
-    - Sportsbook odds, wagers, bankroll, or bet execution
-    - Invented injury, depth-chart, projection, or salary data
-    - Treating a high raw close rate or point total as sufficient value evidence
+  category: "universal"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Season-long fantasy, DFS, salary-cap, waiver, and trade analysis; Projected points, cost efficiency, replacement value, and roster constraints; Floor, ceiling, uncertainty, matchup, usage, and correlation analysis"
+  out_of_scope: "Sportsbook odds, wagers, bankroll, or bet execution; Invented injury, depth-chart, projection, or salary data; Treating a high raw close rate or point total as sufficient value evidence"
   status: enhanced-computational-payload
   tags: NFL fantasy, DFS, salary cap, replacement value, lineup optimization, PPR, roster constraints
   triggers: fantasy picks, DFS lineup, waiver, trade, salary cap, points per dollar, floor, ceiling, leverage

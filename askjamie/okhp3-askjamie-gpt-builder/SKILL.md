@@ -9,16 +9,24 @@ description: >-
 license: CC-BY-4.0
 metadata:
   version: "1.0.0"
-  author: "OverKill Hill P³"
+  author: "Jamie Hill (OverKill Hill P³)"
   copyright: "Copyright © 2024–2026 OverKill Hill P³ — https://overkillhill.com"
   attribution: "Originated by OverKill Hill P³. Attribution required under CC BY 4.0. See LICENSE.md."
   last-verified: "2026-06-04"
   license_decision: "CC BY 4.0 selected for public, reusable Agent Skill documentation. Attribution to OverKill Hill P³ required in all derivative works. See LICENSE.md."
   platforms: "OpenAI Custom GPT primary; cross-reference other runtimes only when an AskJamie lens is being ported"
   changelog: "See CHANGELOG.md"
+  category: "askjamie"
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Design, audit, test, and package AskJamie Custom GPT workflows within declared platform boundaries."
+  out_of_scope: "Unverified platform claims, hidden side effects, private data publication, or replacing owner approval with an assumed build."
 ---
 
-# Custom GPT Builder
+# okhp3-askjamie-gpt-builder
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 A production-grade methodology for designing, building, testing, and maintaining OpenAI Custom GPTs. Treats GPT creation as product engineering, not prompt tinkering.
 
@@ -418,5 +426,7 @@ Every response from this skill must conform to the following contract. Deviation
 
 ## About
 
-*OverKill Hill P³ — Recursive GPT Engineering. Prompts are protocol.*  
-*License: CC BY 4.0 | Attribution required | https://overkillhill.com*
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+CC BY 4.0 License -- free to use and adapt with attribution to OverKill Hill P³.

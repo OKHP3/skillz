@@ -17,17 +17,19 @@ compatibility: >
   Requires Python 3.10 or later and filesystem read/write access. No source
   platform login, network access, API key, or connector is required.
 metadata:
-  author: Jamie Hill (OverKill Hill P³)
+  author: "Jamie Hill (OverKill Hill P³)"
   version: "2.0.0"
-  category: askjamie
+  category: "askjamie"
   derived_from: okhp3-thread-context-extraction
   brand: AskJamie
-  origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
+  origin: "okhp3/skillz"
+  homepage: "https://overkillhill.com"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "Durable, provenance-aware extraction of supplied AI conversation context for AskJamie workflows."
+  out_of_scope: "Account access, source-service scraping, invented context, unauthorized publication, or unsupported platform claims."
 ---
 
-# Thread Context Extraction
+# okhp3-askjamie-thread-context
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
