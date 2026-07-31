@@ -8,7 +8,7 @@ generated_at: 2026-07-29T05:13:07Z
 # universal
 
 <!-- FAMILY_SUMMARY_START -->
-A family of 6 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
+A family of 10 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
 <!-- FAMILY_SUMMARY_END -->
 
 ## Skills (10)
