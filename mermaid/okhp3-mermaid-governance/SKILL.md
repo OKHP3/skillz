@@ -8,6 +8,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  in_scope: "Cross-diagram standards, conformance checks, and style or behavior drift review for Mermaid assets."
+  out_of_scope: "Authoring business content, silent bulk rewrites, or autonomous publication."
 description: >
   OverKill Hill P³ Mermaid governance profile manager. Use when establishing a
   visual and behavioral standard for a diagram project, checking a diagram
@@ -16,6 +18,7 @@ description: >
   consistency, or a diagram that “doesn’t match the others.” Load
   okhp3-mermaid-core first. For a palette on one new diagram without a project
   standard, use okhp3-mermaid-theme-builder instead.
+
 ---
 
 # okhp3-mermaid-governance
@@ -232,7 +235,7 @@ Declare, check, and audit modes must return the profile path or proposed profile
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

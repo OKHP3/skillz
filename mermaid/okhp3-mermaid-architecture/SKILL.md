@@ -7,9 +7,15 @@ metadata:
   version: "0.2.0"
   category: diagramming
   origin: okhp3/mermaid-theme-builder
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Mermaid-native architecture, C4, deployment, integration, and system-topology diagram design after core routing."
+  out_of_scope: "General Mermaid governance, production infrastructure changes, or unsupported renderer claims."
 ---
 
-# Mermaid Architecture
+# okhp3-mermaid-architecture
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 System/solution architecture vocabulary, loaded after `okhp3-mermaid-core`.
 

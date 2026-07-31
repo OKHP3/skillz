@@ -7,9 +7,15 @@ metadata:
   version: "0.2.0"
   category: diagramming
   origin: okhp3/mermaid-theme-builder
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Mermaid-native BPMN-flavored process diagrams, gateways, lanes, events, and handoffs after core routing."
+  out_of_scope: "Process discovery without source facts, diagram publication, or non-process architecture modeling."
 ---
 
-# Mermaid BPMN
+# okhp3-mermaid-bpmn
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 BPMN 2.0-informed semantics, expressed in Mermaid syntax. Loaded after `okhp3-mermaid-core` has handled audience declaration and type selection.
 

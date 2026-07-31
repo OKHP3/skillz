@@ -9,6 +9,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  in_scope: "Creating a governed FoundRy child-repository plan and package from an approved reusable workflow source."
+  out_of_scope: "Autonomous repository publication, implicit source ownership, or inclusion of private material."
 ---
 
 # okhp3-foundry-repo-creator

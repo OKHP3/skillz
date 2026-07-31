@@ -22,9 +22,11 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  in_scope: "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow."
+  out_of_scope: "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
 ---
 
-# Thread Context Extraction: Gemini
+# okhp3-thread-extract-gemini
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 

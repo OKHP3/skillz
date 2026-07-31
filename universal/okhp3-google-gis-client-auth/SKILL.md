@@ -18,9 +18,13 @@ metadata:
   origin: "okhp3/skillz"
   homepage: "https://overkillhill.com"
   author-github: "https://github.com/OKHP3"
+  in_scope: "Client-only Google Identity Services OAuth for approved static React applications and scoped Google APIs."
+  out_of_scope: "Server-side OAuth, secret handling, consent bypass, or unsupported Google API claims."
 ---
 
 # okhp3-google-gis-client-auth
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 **Intent:** Give a static-site agent a reliable GIS token lifecycle for Google
 API read flows without inventing a backend or leaking a Client Secret.
@@ -183,4 +187,4 @@ At handoff, report:
 Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
-MIT License — free to use, fork, and adapt. A nod to the source is appreciated.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

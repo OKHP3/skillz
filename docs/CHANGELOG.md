@@ -8,6 +8,11 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `okhp3-equilibrium-review`, a reusable five-role evidence, disruption,
+  adjudication, and release-review workflow for documents, data evaluations,
+  hypotheses, reports, and Agent Skills, with a provider-neutral Python
+  orchestrator and machine-readable review records.
+
 - Added `okhp3-repository-janitor`, an audit-first workflow and helper script for reconciling multiple local Git mirrors with `origin/main`, preserving uncertain work, and preparing evidence-gated branch merge and pruning decisions.
 
 - Added 14 brand-specific forks under `glee-fully/` and `askjamie/` for visual style registration, FoundRy repository creation, content-first repository organization, ChatGPT project migration, shared thread-context extraction, and ChatGPT and Claude thread adapters. Each fork preserves its generic source workflow and adds an explicit brand overlay grounded in the current public site positioning.

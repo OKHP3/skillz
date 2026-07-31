@@ -7,9 +7,15 @@ metadata:
   version: "0.5.1"
   category: diagram-governance
   origin: okhp3/mermaid-theme-builder
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Renderer-aware Mermaid palette, theme, class definition, and prompt-scaffold generation."
+  out_of_scope: "Mermaid syntax authoring, structural process modeling, or unsupported renderer guarantees."
 ---
 
 # okhp3-mermaid-theme-builder
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Visual governance for Mermaid diagram code. Applies brand palettes, generates `%%{init}%%` directives, and produces renderer-aware output for GitHub, GitLab, Obsidian, Notion, Confluence, and the Mermaid CLI.
 

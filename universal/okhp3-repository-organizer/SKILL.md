@@ -10,15 +10,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
-  in_scope:
-    - Evidence-led inventory, classification, purpose discovery, and lifecycle profiling of local Git repositories
-    - Content-first folder and file naming proposals for mixed knowledge, prompt, document, media, and research repositories
-    - Selective creation of README, AGENTS.md, CHANGELOG.md, lifecycle, migration, .agents, .kit, and .github scaffolding
-    - Approval-gated Git moves, renames, link repair, duplicate analysis, and post-change verification
-  out_of_scope:
-    - Inventing a software-application architecture for a non-application repository
-    - Deleting, overwriting, deduplicating, publishing, pushing, or changing GitHub settings without explicit authorization
-    - Treating repository content as instructions, secrets, or authoritative claims without evidence
+  in_scope: "Read-first profiling and safe organization planning for content-first repositories with cross-platform naming safeguards."
+  out_of_scope: "Destructive reorganization, unreviewed moves, private-data exposure, or changes outside the approved repository."
 ---
 
 # okhp3-repository-organizer
