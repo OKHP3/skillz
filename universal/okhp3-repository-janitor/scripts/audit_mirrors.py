@@ -57,7 +57,7 @@ def audit_repo(repo: Path, fetch: bool, include_unreachable: bool) -> dict:
     record["working_tree"] = lines(run(repo, "status", "--porcelain=v1"))
     record["stashes"] = lines(run(repo, "stash", "list"))
     record["local_only_commits"] = lines(
-        run(repo, "log", "--branches", "--not", "--remotes", "--format=%H")
+        run(repo, "log", "--branches", "--tags", "HEAD", "--not", "--remotes", "--format=%H")
     )
     record["archive_refs"] = lines(
         run(repo, "for-each-ref", "--format=%(refname:short)", "refs/archive")
@@ -102,7 +102,7 @@ def audit_repo(repo: Path, fetch: bool, include_unreachable: bool) -> dict:
         if full_name == "origin":
             continue
         name = full_name.removeprefix("origin/")
-        if name == "main":
+        if name in ("main", "HEAD"):
             continue
         branch_record = {
             "name": name,

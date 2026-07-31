@@ -21,7 +21,7 @@ Keep a multi-repository Git estate understandable without losing work. Treat `or
 ## Audit workflow
 
 1. Resolve the mirror root and verify that every child is a Git checkout. Keep repositories outside that root out of scope.
-2. Run `scripts/audit_mirrors.py <mirror-root>` for a read-only baseline. Add `--fetch` to refresh remote-tracking refs without changing any working tree.
+2. Run `scripts/audit_mirrors.py <mirror-root> --include-unreachable` for a read-only baseline. Add `--fetch` to refresh remote-tracking refs without changing any working tree.
 3. For each repository, inspect the report sections in this order:
    - dirty working-tree files and stashes;
    - commits reachable locally but not from a remote;
@@ -37,7 +37,7 @@ Keep a multi-repository Git estate understandable without losing work. Treat `or
 Use audit-only mode for a daily task:
 
 ```text
-python3 scripts/audit_mirrors.py /Volumes/OKH-Local/04_GitHub_Mirrors --fetch
+python3 scripts/audit_mirrors.py /Volumes/OKH-Local/04_GitHub_Mirrors --fetch --include-unreachable
 ```
 
 Use the output to report only new or changed exceptions. A weekly task may prepare a decision ledger and inspect open pull requests, but must not merge, close, or delete without explicit authorization for the exact targets.
