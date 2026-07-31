@@ -119,7 +119,7 @@ If you are evaluating the product rather than authoring a skill, start with [Ski
 | [`process-capture/`](process-capture/FAMILY.md) | 16 | One skill: `okhp3-process-capture`. The meta-layer. |
 | [`refolddec/`](refolddec/FAMILY.md) | 1 | Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding acro... |
 | [`scripts/`](scripts/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
-| [`universal/`](universal/FAMILY.md) | 10 | A family of 6 skills. Create a Cloudflare Worker that proxies API calls from a static f... |
+| [`universal/`](universal/FAMILY.md) | 10 | A family of 10 skills. Create a Cloudflare Worker that proxies API calls from a static f... |
 <!-- FAMILIES_TABLE_END -->
 
 ## *"Skillz"* Inventory
