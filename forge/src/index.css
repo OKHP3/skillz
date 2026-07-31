@@ -395,7 +395,7 @@
   padding-bottom: var(--space-16);
 }
 .stack-audience {
-  color: var(--color-text-muted-dark);
+  color: var(--color-text-muted-light);
   font-size: var(--text-sm);
   margin-bottom: var(--space-4);
 }
@@ -983,7 +983,7 @@ input, select, textarea {
 .skill-card-techname {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-text-muted-dark);
+  color: var(--color-text-muted-light);
   margin-top: 2px;
 }
 .skill-card-meta {
@@ -1274,7 +1274,7 @@ input, select, textarea {
   padding: 1px var(--space-2);
 }
 .meta-pending {
-  color: var(--color-text-muted-dark);
+  color: var(--color-text-muted-light);
   font-style: italic;
   font-size: var(--text-sm);
 }
@@ -1689,6 +1689,46 @@ input, select, textarea {
   /* Fade bottom edge into the page — masks the hard dark square bottom */
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* Clickability hint label — fades in on hover, always visible on touch */
+.hero-bird-label {
+  display: block;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-copper);
+  letter-spacing: 0.04em;
+  margin-top: var(--space-2);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  pointer-events: none;
+}
+
+.hero-bird-link:hover .hero-bird-label,
+.hero-bird-link:focus-visible .hero-bird-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Touch devices: no hover — keep the label subtly visible so it's discoverable */
+@media (hover: none) {
+  .hero-bird-label {
+    opacity: 0.55;
+    transform: translateY(0);
+  }
+}
+
+/* Gentle scale on hover — distinct from the glow, signals interactivity */
+.hero-bird-link:hover .hero-bird,
+.hero-bird-link:focus-visible .hero-bird {
+  transform: scale(1.03);
+  transition: transform var(--transition-slow);
+}
+
+.hero-bird {
+  transition: transform var(--transition-slow);
 }
 
 /* Subtle glow on hover — the eyes are already amber */
@@ -2137,4 +2177,24 @@ input, select, textarea {
 .theme-toggle-btn[aria-pressed="true"] {
   background: var(--color-copper);
   color: var(--color-bg);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NARROW-PHONE OVERRIDES (≤ 639 px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 639px) {
+  /* Reduce the heavy horizontal padding on the skill detail card */
+  .detail-article {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  /* Collapse inputs/outputs two-column grid to a single column */
+  .detail-io-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Collapse related-skills grid to a single column */
+  .detail-related-list {
+    grid-template-columns: 1fr;
+  }
 }

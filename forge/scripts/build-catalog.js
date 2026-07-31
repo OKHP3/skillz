@@ -293,7 +293,8 @@ function stripMarkdownToPlainText(body) {
     .replace(/^#{1,6}\s+/gm, '')            // heading markers
     .replace(/^[-*+]\s+/gm, '')             // list bullets
     .replace(/^>\s?/gm, '')                 // blockquote markers
-    .replace(/[*_~]{1,3}/g, '')             // emphasis markers
+    .replace(/[*~]{1,3}/g, '')             // emphasis markers (asterisks and tildes)
+    .replace(/(?<![a-zA-Z0-9])_{1,3}(?![a-zA-Z0-9])/g, '') // underscore emphasis (not in identifiers)
     .replace(/\|/g, ' ')                    // table pipes
     .replace(/---+/g, ' ')                  // rules/frontmatter fences
     .replace(/\s+/g, ' ')

@@ -12,6 +12,15 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
   adjudication, and release-review workflow for documents, data evaluations,
   hypotheses, reports, and Agent Skills, with a provider-neutral Python
   orchestrator and machine-readable review records.
+
+- Added `okhp3-repository-janitor`, an audit-first workflow and helper script for reconciling multiple local Git mirrors with `origin/main`, preserving uncertain work, and preparing evidence-gated branch merge and pruning decisions.
+
+- Added 14 brand-specific forks under `glee-fully/` and `askjamie/` for visual style registration, FoundRy repository creation, content-first repository organization, ChatGPT project migration, shared thread-context extraction, and ChatGPT and Claude thread adapters. Each fork preserves its generic source workflow and adds an explicit brand overlay grounded in the current public site positioning.
+
+- Added brand-specific GPT creation forks under `glee-fully/` and `askjamie/`: `okhp3-glee-fully-gpt-builder`, `okhp3-glee-fully-gpt-readiness`, `okhp3-askjamie-gpt-builder`, and `okhp3-askjamie-gpt-readiness`. They derive from the generic `agent-foundry/` Custom GPT packages and apply the current public Glee-fully and AskJamie positioning as explicit overlays.
+
+- Added the `glee-fully/` family-level `okhp3-glee-fully-foundry` skill. It governs Glee-fully Tool and Tool-ette hierarchy, Persona Density, Twig `Best for` boundaries, leaf logic, sibling awareness, and canon-seal readiness. The consumer-skill conversion remains deferred until clustering is complete.
+
 - Added the `outcome-modeling/` family with a Foundry-3.1-aligned core and four domain adapters: sports, NFL fantasy picks, business-sales, and prediction markets. Each package includes frozen development evaluations, an external-required holdout declaration, and a version-matched benchmark record marked `not-run`.
 
 - Added `okhp3-repository-organizer`, a content-first workflow for profiling organically grown local Git repositories, choosing selective governance scaffolding, and executing approval-gated reorganizations without forcing an application layout.
@@ -40,9 +49,7 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
   - `okhp3-notion-capture-router`
 - Added ReFolDec family skeleton:
   - `okhp3-refolddec-core`
-- Added placeholder family areas for:
-  - `glee-fully/`
-  - `askjamie/`
+- Added placeholder family area for `askjamie/`.
 - Added `PUBLIC_SURFACES.md` to document the canonical OverKill Hill landing-page strategy and contextual Glee-fully / AskJamie touchpoints.
 - Added `PUBLISHING.md` for validation, release, registry, and promotion workflow.
 - Added `SECURITY.md` for skill supply-chain and employer-data safety posture.

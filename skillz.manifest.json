@@ -20,23 +20,23 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 76,
-  "activeFamilyCount": 12,
-  "placeholderFamilyCount": 2,
+  "distributionSkillCount": 96,
+  "activeFamilyCount": 14,
+  "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 19,
   "maturityCounts": {
     "placeholder": 0,
     "skeleton": 13,
-    "draftable": 63,
+    "draftable": 65,
     "usable": 0,
     "validated": 0,
     "published": 0
   },
   "evidenceStatusCounts": {
     "none": 26,
-    "local-checks": 19,
+    "local-checks": 20,
     "analytical": 17,
-    "not-run": 6,
+    "not-run": 5,
     "historical": 6,
     "live": 2
   },
@@ -184,6 +184,7 @@
         "okhp3-equilibrium-review",
         "okhp3-foundry-repo-creator",
         "okhp3-google-gis-client-auth",
+        "okhp3-repository-janitor",
         "okhp3-repository-organizer",
         "okhp3-skill-cataloger",
         "okhp3-skill-foundry",
@@ -192,13 +193,34 @@
     },
     {
       "name": "glee-fully",
-      "status": "placeholder",
-      "skills": []
+      "status": "draftable",
+      "skills": [
+        "okhp3-glee-fully-chatgpt-migrate",
+        "okhp3-glee-fully-extract-chatgpt",
+        "okhp3-glee-fully-extract-claude",
+        "okhp3-glee-fully-foundry",
+        "okhp3-glee-fully-gpt-builder",
+        "okhp3-glee-fully-gpt-readiness",
+        "okhp3-glee-fully-repo-creator",
+        "okhp3-glee-fully-repo-organizer",
+        "okhp3-glee-fully-style-registry",
+        "okhp3-glee-fully-thread-context"
+      ]
     },
     {
       "name": "askjamie",
-      "status": "placeholder",
-      "skills": []
+      "status": "draftable",
+      "skills": [
+        "okhp3-askjamie-chatgpt-migrate",
+        "okhp3-askjamie-extract-chatgpt",
+        "okhp3-askjamie-extract-claude",
+        "okhp3-askjamie-gpt-builder",
+        "okhp3-askjamie-gpt-readiness",
+        "okhp3-askjamie-repo-creator",
+        "okhp3-askjamie-repo-organizer",
+        "okhp3-askjamie-style-registry",
+        "okhp3-askjamie-thread-context"
+      ]
     }
   ],
   "maturityLevels": {
