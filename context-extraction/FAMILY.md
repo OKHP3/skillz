@@ -1,8 +1,8 @@
 ---
 family: context-extraction
-skill_count: 9
+skill_count: 10
 generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-07-30T13:29:51Z
+generated_at: 2026-07-31T15:48:49Z
 ---
 
 # context-extraction
@@ -53,14 +53,15 @@ Do not begin scaffolding sub-skills until a concrete recurring workflow, input c
 The context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (9)
+## Skills (10)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **July 30, 2026 at 13:29 UTC***
+*10 skills &nbsp;·&nbsp; inventory last updated: **July 31, 2026 at 15:48 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-chatgpt-project-migration](okhp3-chatgpt-project-migration/SKILL.md) | OverKill Hill P³ ChatGPT project migration. Use when migrating, preserving, extracting, inventory... | 1.0.0 |
+| [okhp3-session-handoff](okhp3-session-handoff/SKILL.md) | Create a durable continuation record when work pauses, becomes blocked, crosses a machine, or cro... | 0.1.0 |
 | [okhp3-thread-context-extraction](okhp3-thread-context-extraction/SKILL.md) | Extract pasted or uploaded AI chat threads into standalone, actionable Markdown. Use when the use... | 2.0.0 |
 | [okhp3-thread-context-extraction-grok](okhp3-thread-context-extraction-grok/SKILL.md) | Extract manually supplied xAI Grok conversations into standalone, actionable Markdown. Use when t... | 2.0.0 |
 | [okhp3-thread-extract-chatgpt](okhp3-thread-extract-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.0.0 |

@@ -8,6 +8,12 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added the authored `knowledge-operations/` family with seven portable,
+  provenance-aware lifecycle skills for intake, triage, evidence, research,
+  validation, graduation, and promotion. Added `okhp3-skill-discovery` to
+  `universal/` and `okhp3-session-handoff` to `context-extraction/` after
+  family-placement review. Community-originated packages remain unchanged.
+
 - Added `okhp3-equilibrium-review`, a reusable five-role evidence, disruption,
   adjudication, and release-review workflow for documents, data evaluations,
   hypotheses, reports, and Agent Skills, with a provider-neutral Python

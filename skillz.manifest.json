@@ -20,8 +20,8 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 96,
-  "activeFamilyCount": 14,
+  "distributionSkillCount": 105,
+  "activeFamilyCount": 15,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 19,
   "maturityCounts": {
@@ -36,7 +36,7 @@
     "none": 26,
     "local-checks": 20,
     "analytical": 17,
-    "not-run": 5,
+    "not-run": 14,
     "historical": 6,
     "live": 2
   },
@@ -85,6 +85,7 @@
       "status": "draftable",
       "skills": [
         "okhp3-chatgpt-project-migration",
+        "okhp3-session-handoff",
         "okhp3-thread-context-extraction",
         "okhp3-thread-extract-chatgpt",
         "okhp3-thread-extract-claude",
@@ -93,6 +94,19 @@
         "okhp3-thread-context-extraction-grok",
         "okhp3-thread-extract-mistral-vibe",
         "okhp3-thread-extract-perplexity"
+      ]
+    },
+    {
+      "name": "knowledge-operations",
+      "status": "draftable",
+      "skills": [
+        "okhp3-artifact-validation",
+        "okhp3-capture-intake",
+        "okhp3-evidence-standard",
+        "okhp3-graduation-gate",
+        "okhp3-project-promotion",
+        "okhp3-source-backed-research",
+        "okhp3-triage-and-file"
       ]
     },
     {
@@ -187,6 +201,7 @@
         "okhp3-repository-janitor",
         "okhp3-repository-organizer",
         "okhp3-skill-cataloger",
+        "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-vite-github-pages"
       ]
