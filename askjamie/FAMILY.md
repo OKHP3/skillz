@@ -1,8 +1,8 @@
 ---
 family: askjamie
-skill_count: 9
+skill_count: 10
 generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-08-01T02:50:54Z
+generated_at: 2026-08-01T12:39:26Z
 ---
 
 # askjamie
@@ -11,13 +11,14 @@ generated_at: 2026-08-01T02:50:54Z
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (9)
+## Skills (10)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **August 1, 2026 at 02:50 UTC***
+*10 skills &nbsp;·&nbsp; inventory last updated: **August 1, 2026 at 12:39 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
+| [okhp3-askjamie-brand](okhp3-askjamie-brand/SKILL.md) | OverKill Hill P³ AskJamie SPA styling. Use when a user wants an AskJamie application, documentati... | 1.1.0 |
 | [okhp3-askjamie-chatgpt-migrate](okhp3-askjamie-chatgpt-migrate/SKILL.md) | OverKill Hill P³ ChatGPT project migration. Use when migrating, preserving, extracting, inventory... | 1.0.0 |
 | [okhp3-askjamie-extract-chatgpt](okhp3-askjamie-extract-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.0.0 |
 | [okhp3-askjamie-extract-claude](okhp3-askjamie-extract-claude/SKILL.md) | Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the... | 2.0.0 |

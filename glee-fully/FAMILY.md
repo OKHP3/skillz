@@ -1,8 +1,8 @@
 ---
 family: glee-fully
-skill_count: 10
+skill_count: 12
 generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-08-01T02:50:54Z
+generated_at: 2026-08-01T12:39:26Z
 ---
 
 # glee-fully
@@ -11,13 +11,15 @@ generated_at: 2026-08-01T02:50:54Z
 Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee-fullyTools-FoundRy` inventory). Earlier analysis concluded the right packaging is neither 1 family nor a fixed 7 — cohesion (shared tool/MCP affinity, workflow proximity) should determine the cluster count, working estimate 4-6 sub-families.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (10)
+## Skills (12)
 
 <!-- FAMILY_INVENTORY_START -->
-*10 skills &nbsp;·&nbsp; inventory last updated: **August 1, 2026 at 02:50 UTC***
+*12 skills &nbsp;·&nbsp; inventory last updated: **August 1, 2026 at 12:39 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
+| [glee-fully-repo-standardizer](glee-fully-repo-standardizer/SKILL.md) | Scaffold and standardize any Glee-fully child repository (Toolbox, Tool, or Tool-ette tier). When... | 1.1.0 |
+| [okhp3-glee-fully-brand](okhp3-glee-fully-brand/SKILL.md) | OverKill Hill P³ Glee-fully SPA styling. Use when a user wants a Glee-fully application, document... | 1.1.0 |
 | [okhp3-glee-fully-chatgpt-migrate](okhp3-glee-fully-chatgpt-migrate/SKILL.md) | OverKill Hill P³ ChatGPT project migration. Use when migrating, preserving, extracting, inventory... | 1.0.0 |
 | [okhp3-glee-fully-extract-chatgpt](okhp3-glee-fully-extract-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.0.0 |
 | [okhp3-glee-fully-extract-claude](okhp3-glee-fully-extract-claude/SKILL.md) | Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the... | 2.0.0 |
