@@ -2,7 +2,7 @@
 family: universal
 skill_count: 12
 generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-07-31T15:48:49Z
+generated_at: 2026-08-01T02:50:54Z
 ---
 
 # universal
@@ -14,7 +14,7 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 ## Skills (12)
 
 <!-- FAMILY_INVENTORY_START -->
-*12 skills &nbsp;·&nbsp; inventory last updated: **July 31, 2026 at 15:48 UTC***
+*12 skills &nbsp;·&nbsp; inventory last updated: **August 1, 2026 at 02:50 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -24,7 +24,7 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 | [okhp3-equilibrium-review](okhp3-equilibrium-review/SKILL.md) | Evaluate a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independ... | 1.0.0 |
 | [okhp3-foundry-repo-creator](okhp3-foundry-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
 | [okhp3-google-gis-client-auth](okhp3-google-gis-client-auth/SKILL.md) | OverKill Hill P³ client-only Google Identity Services (GIS) auth workflow. Use when designing, im... | 1.2.0 |
-| [okhp3-repository-janitor](okhp3-repository-janitor/SKILL.md) | Reconcile a collection of local Git repositories with their GitHub origins, inspect all local var... | — |
+| [okhp3-repository-janitor](okhp3-repository-janitor/SKILL.md) | Reconcile a collection of local Git repositories with their GitHub origins, inspect all local var... | 0.1.0 |
 | [okhp3-repository-organizer](okhp3-repository-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.1.1 |
 | [okhp3-skill-cataloger](okhp3-skill-cataloger/SKILL.md) | OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safe... | 1.6.1 |
 | [okhp3-skill-discovery](okhp3-skill-discovery/SKILL.md) | Find, verify, compare, and route to project-local, installed, runtime, or plugin-provided agent s... | 0.1.0 |
