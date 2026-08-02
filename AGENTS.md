@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 112 distribution skills in 15 active families, and 9 project-local support skills under `.agents/skills/`
+- **Current inventory:** 113 distribution skills in 15 active families, and 16 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -50,7 +50,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 112-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 113-skill distribution inventory |
 
 ## Routing index
 
@@ -228,11 +228,12 @@ Load `okhp3-outcome-modeling-core` first for any outcome-modeling task, then add
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |
 | `okhp3-skill-discovery` | Find, verify, compare, and route to currently available project-local, installed, runtime, or plugin-provided skills. |
 | `okhp3-skill-foundry` | Create, hone, evaluate, benchmark, brand, or polish a production-quality Agent Skill using the eight-phase Foundry method, evidence ledger, conditional dissent review, and enforced current-state evidence integrity for material releases. |
+| `okhp3-skill-promotion` | Promote and synchronize a project-local skill into a verified `skills/` publication mirror and a reviewable canonical `skillz` handoff without blind overwrites or autonomous publication. |
 | `okhp3-vite-github-pages` | Deploy or repair a React or Vue Vite SPA on GitHub Pages, especially base path, router, and gh-pages issues. |
 
 ### Project-local support skills
 
-`.agents/skills/` contains 18 project-local support skill packages, cataloged in `.agents/skills/README.md`. They support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
+`.agents/skills/` contains 16 project-local support skill packages, cataloged in `.agents/skills/README.md`. They support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
 
 ## Technology and runtime
 
@@ -263,7 +264,7 @@ python3 .agents/skills/skill-creator/scripts/quick_validate.py path/to/skill
 (cd mermaid/okhp3-mermaid-theme-builder && node --test tests/*.test.mjs)
 ```
 
-The full-index check passed and discovered 112 distribution skills in 15 active families. The project cataloger found 9 local support skills. The Foundry structural validator now checks all 121 `SKILL.md` packages recursively, including portable name, description, compatibility, body, and path limits; it passes without structural errors. For the Foundry package, it also enforces version-coherent evaluation evidence, explicit protected or external-required holdout states, current-state synchronization records, and associated negative tests. These checks establish structural integrity only, not task-quality uplift or production readiness. Its remaining advisory warnings identify imported-skill conventions and optional scope or validation refinements. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
+The full-index check passed and discovered 113 distribution skills in 15 active families. The project cataloger found 16 local support skills. The Foundry structural validator now checks all 129 canonical and active `SKILL.md` packages recursively, including portable name, description, compatibility, body, and path limits; it passes without structural errors. For the Foundry package, it also enforces version-coherent evaluation evidence, explicit protected or external-required holdout states, current-state synchronization records, and associated negative tests. These checks establish structural integrity only, not task-quality uplift or production readiness. Its remaining advisory warnings identify imported-skill conventions and optional scope or validation refinements. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
 
 For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. Do not run the technology refresh script casually because it makes network requests and writes the generated technology section and runtime pins.
 
@@ -294,7 +295,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 112 distribution skills in 15 active families, `knowledge-operations/FAMILY.md`, `context-extraction/FAMILY.md`, `glee-fully/FAMILY.md`, and `askjamie/FAMILY.md` are active, and `.agents/skills/README.md` reports 9 project-local support skills.
+- Generated catalogs reflect the current filesystem: `README.md` reports 113 distribution skills in 15 active families, `knowledge-operations/FAMILY.md`, `context-extraction/FAMILY.md`, `glee-fully/FAMILY.md`, and `askjamie/FAMILY.md` are active, and `.agents/skills/README.md` reports 16 project-local support skills.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

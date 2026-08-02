@@ -1,8 +1,8 @@
 ---
 family: universal
-skill_count: 16
-generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-08-02T02:05:03Z
+skill_count: 17
+generated_by: okhp3-skill-cataloger v1.7.0
+generated_at: 2026-08-02T19:22:22Z
 ---
 
 # universal
@@ -11,10 +11,10 @@ generated_at: 2026-08-02T02:05:03Z
 A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (16)
+## Skills (17)
 
 <!-- FAMILY_INVENTORY_START -->
-*16 skills &nbsp;·&nbsp; inventory last updated: **August 2, 2026 at 02:05 UTC***
+*17 skills &nbsp;·&nbsp; inventory last updated: **August 2, 2026 at 19:22 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -28,9 +28,10 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 | [okhp3-repl-repo-janitor](okhp3-repl-repo-janitor/SKILL.md) | Clean up a single Replit-hosted Git repository — squash-merge and delete old, merged, or abandone... | 0.1.0 |
 | [okhp3-repository-janitor](okhp3-repository-janitor/SKILL.md) | Reconcile a collection of local Git repositories with their GitHub origins, inspect all local var... | 0.1.0 |
 | [okhp3-repository-organizer](okhp3-repository-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.1.1 |
-| [okhp3-skill-cataloger](okhp3-skill-cataloger/SKILL.md) | OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safe... | 1.6.1 |
+| [okhp3-skill-cataloger](okhp3-skill-cataloger/SKILL.md) | OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safe... | 1.7.0 |
 | [okhp3-skill-discovery](okhp3-skill-discovery/SKILL.md) | Find, verify, compare, and route to project-local, installed, runtime, or plugin-provided agent s... | 0.1.0 |
 | [okhp3-skill-foundry](okhp3-skill-foundry/SKILL.md) | Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progres... | 3.1.0 |
+| [okhp3-skill-promotion](okhp3-skill-promotion/SKILL.md) | Promote and synchronize a project-local Agent Skill into a portable, reviewable distribution pack... | 0.1.0 |
 | [okhp3-vite-github-pages](okhp3-vite-github-pages/SKILL.md) | OverKill Hill P³ Vite-to-GitHub-Pages deployment runbook. Use when deploying or troubleshooting t... | 1.0.0 |
 | [sp-build-auditor](sp-build-auditor/SKILL.md) | OverKill Hill P³ SharePoint List build screenshot auditor. Use when reviewing screenshots of Shar... | 1.1.0 |
 | [sp-list-architect](sp-list-architect/SKILL.md) | OverKill Hill P³ SharePoint List database architecture reviewer. Use when designing, reviewing, o... | 1.1.0 |

@@ -1,8 +1,8 @@
 ---
 family: process-capture
 skill_count: 16
-generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-08-02T02:05:03Z
+generated_by: okhp3-skill-cataloger v1.7.0
+generated_at: 2026-08-02T19:22:22Z
 ---
 
 # process-capture
@@ -26,7 +26,7 @@ One skill: `okhp3-process-capture`. The meta-layer.
 ## Skills (16)
 
 <!-- FAMILY_INVENTORY_START -->
-*16 skills &nbsp;·&nbsp; inventory last updated: **August 2, 2026 at 02:05 UTC***
+*16 skills &nbsp;·&nbsp; inventory last updated: **August 2, 2026 at 19:22 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

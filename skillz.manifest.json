@@ -20,14 +20,14 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 112,
+  "distributionSkillCount": 113,
   "activeFamilyCount": 15,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 9,
+  "projectLocalSupportSkillCount": 16,
   "maturityCounts": {
     "placeholder": 0,
     "skeleton": 13,
-    "draftable": 65,
+    "draftable": 66,
     "usable": 0,
     "validated": 0,
     "published": 0
@@ -36,7 +36,7 @@
     "none": 26,
     "local-checks": 20,
     "analytical": 17,
-    "not-run": 14,
+    "not-run": 15,
     "historical": 6,
     "live": 2
   },
@@ -205,6 +205,7 @@
         "okhp3-skill-cataloger",
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
+        "okhp3-skill-promotion",
         "sp-build-auditor",
         "sp-list-architect",
         "okhp3-vite-github-pages"

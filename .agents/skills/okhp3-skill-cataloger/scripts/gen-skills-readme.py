@@ -32,6 +32,9 @@ No external dependencies. Python 3.9+ only.
 What changed in v1.6.1 vs v1.6.0:
   - Normalize generated catalog output to one final newline.
 
+What changed in v1.7.0 vs v1.6.1:
+  - Exclude root skills/ publication mirrors from full distribution indexing.
+
 What changed in v1.6.0 vs v1.5.0:
   - Configured UTF-8 stdout and stderr so warning output remains portable in Windows consoles.
 
@@ -95,7 +98,7 @@ if hasattr(sys.stdout, "reconfigure"):
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
-CATALOGER_VERSION = "1.6.1"
+CATALOGER_VERSION = "1.7.0"
 OKHP3_HOMEPAGE    = "https://overkillhill.com"
 OKHP3_GITHUB      = "https://github.com/OKHP3"
 
@@ -120,6 +123,7 @@ def display_timestamp(value: datetime) -> str:
 # Directories excluded from root scan in --full mode
 FULL_SKIP = frozenset({
     ".git", ".github", ".agents", ".claude", ".vscode",
+    "skills",
     "node_modules", "__pycache__", ".venv", "venv",
     "dist", "build", "coverage", ".nyc_output", "attached_assets",
     "docs",

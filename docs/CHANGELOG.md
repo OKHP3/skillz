@@ -8,6 +8,13 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `okhp3-skill-promotion` to `universal/` and synchronized its portable
+  package to `.agents/skills/` and the root `skills/` publication mirror. The
+  package defines source selection, provenance, safe mirror verification,
+  public-safety gates, and canonical promotion handoff without autonomous
+  publication. Updated `okhp3-skill-cataloger` to exclude root `skills/`
+  publication mirrors from the canonical full distribution index.
+
 - Added the authored `knowledge-operations/` family with seven portable,
   provenance-aware lifecycle skills for intake, triage, evidence, research,
   validation, graduation, and promotion. Added `okhp3-skill-discovery` to

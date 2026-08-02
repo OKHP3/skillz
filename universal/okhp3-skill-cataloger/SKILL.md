@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: "Jamie Hill (OverKill Hill P³)"
-  version: "1.6.1"
+  version: "1.7.0"
   category: "universal"
   origin: "okhp3/skillz"
   homepage: "https://overkillhill.com"
@@ -47,11 +47,12 @@ implementation and you have inspected it.
 | Catalog (default) | `python3 ${SCRIPT} --skills-dir .agents/skills` | Direct child skill folders | `.agents/skills/README.md` between catalog markers and `.agents/skills/.catalog-meta.json` |
 | Catalog, flat | add `--mode project` | `.agents/skills/<skill>/SKILL.md` | One flat table: Skill, Description, Version, Category |
 | Catalog, categorized | add `--mode library` | `.agents/skills/<category>/<skill>/SKILL.md` | Category sections with skill counts |
-| Full index | `python3 ${SCRIPT} --full` | Root `<family>/<skill>/SKILL.md` folders; skips `.agents/` and tool directories | Root `README.md`, active-family `FAMILY.md`, root `.catalog-meta.json` |
+| Full index | `python3 ${SCRIPT} --full` | Root `<family>/<skill>/SKILL.md` folders; skips `.agents/`, `skills/` export mirrors, and tool directories | Root `README.md`, active-family `FAMILY.md`, root `.catalog-meta.json` |
 
 `--full` is a distinct distribution-surface operation and always uses library
-grouping. It does not catalog `.agents/skills/`. In full mode, `--output` changes
-the root catalog path; family files and root metadata remain part of the run.
+grouping. It does not catalog `.agents/skills/` or the root `skills/` publication
+mirror. In full mode, `--output` changes the root catalog path; family files and
+root metadata remain part of the run.
 
 ## Workflow
 
@@ -151,7 +152,8 @@ catalog freshness or conformance check.
   fix the layout when structures are mixed.
 - Catalog mode requires an existing README with both catalog markers. Full mode
   can create its root README, but family-table updates require their own markers.
-- The cataloger includes itself in catalog mode. Full mode excludes `.agents/`.
+- The cataloger includes itself in catalog mode. Full mode excludes `.agents/`
+  and root `skills/` publication mirrors.
 - Python 3.9+ and the standard library are sufficient; no network access is
   required. Do not install dependencies or fetch marketplace content to catalog.
 - `--quiet` changes presentation only; it does not change validation or writes.

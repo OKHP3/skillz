@@ -1,8 +1,8 @@
 ---
 family: askjamie
 skill_count: 10
-generated_by: okhp3-skill-cataloger v1.6.1
-generated_at: 2026-08-02T02:05:03Z
+generated_by: okhp3-skill-cataloger v1.7.0
+generated_at: 2026-08-02T19:22:22Z
 ---
 
 # askjamie
@@ -14,7 +14,7 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 ## Skills (10)
 
 <!-- FAMILY_INVENTORY_START -->
-*10 skills &nbsp;·&nbsp; inventory last updated: **August 2, 2026 at 02:05 UTC***
+*10 skills &nbsp;·&nbsp; inventory last updated: **August 2, 2026 at 19:22 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
