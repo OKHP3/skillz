@@ -4,7 +4,6 @@ import catalogData from '../data/catalog.json';
 import type { Catalog } from '../types/catalog';
 import { buildSearchIndex } from '../utils/search';
 import Nav from '../components/layout/Nav';
-import murderbirdSentinel from '../assets/murderbird-sentinel.png';
 
 const catalog = catalogData as Catalog;
 
@@ -93,12 +92,6 @@ export default function Home() {
             aria-label="Visit OverKill Hill P³™"
           >
             <div className="hero-bird">
-              <img
-                src={murderbirdSentinel}
-                alt=""
-                className="hero-bird-img"
-                aria-hidden="true"
-              />
             </div>
             <span className="hero-bird-label" aria-hidden="true">OverKill Hill P³™ ↗</span>
           </a>
