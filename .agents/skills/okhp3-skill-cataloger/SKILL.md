@@ -144,6 +144,28 @@ Use `--json` when a caller needs discovery data on stdout. It is a read-only
 listing path and returns before generation validation; do not describe it as a
 catalog freshness or conformance check.
 
+## FAMILY.md frontmatter fields
+
+When `--full` writes or regenerates a `FAMILY.md`, it always writes these
+machine-managed fields: `family`, `skill_count`, `generated_by`, `generated_at`.
+
+`display_name` is the **authoritative human-readable override** for a family's
+name. Set it once in the file and the cataloger will preserve it on every
+subsequent run — it is never overwritten or dropped during regeneration.
+
+```yaml
+---
+family: askjamie
+display_name: AskJamie   # preserved across all catalog runs
+skill_count: 10
+generated_by: okhp3-skill-cataloger v1.7.0
+generated_at: 2026-08-03T00:00:00Z
+---
+```
+
+If `display_name` is absent the cataloger does not invent one — the raw
+`family` slug is used wherever a display name is needed.
+
 ## Gotchas
 
 - Auto mode inspects the first non-hidden child directory: a direct `SKILL.md`
