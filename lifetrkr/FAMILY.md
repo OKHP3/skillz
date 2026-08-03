@@ -1,5 +1,6 @@
 ---
 family: lifetrkr
+display_name: LifeTrkr
 skill_count: 2
 generated_by: okhp3-skill-cataloger v1.7.0
 generated_at: 2026-08-02T19:22:22Z

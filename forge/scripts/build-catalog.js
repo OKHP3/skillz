@@ -456,29 +456,28 @@ function buildCatalog() {
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
 
 
-// ─── Canonical family display names ──────────────────────────────────────────
+// ─── Family display name resolution ──────────────────────────────────────────
+// Reads display_name from FAMILY.md frontmatter when present.
+// Falls back to auto-titlecase of the slug (hyphens → spaces, each word
+// capitalised) so new families never require a code change here.
 
-const FAMILY_DISPLAY_NAMES = {
-  'abrahamic':          'Abrahamic',
-  'agent-foundry':      'Agent Foundry',
-  'askjamie':           'AskJamie',
-  'community':          'Community',
-  'context-extraction': 'Context Extraction',
-  'glee-fully':         'Glee-fully',
-  'knowledge-operations':'Knowledge Operations',
-  'lifetrkr':           'LifeTrkr',
-  'linkedin':           'LinkedIn',
-  'mermaid':            'Mermaid',
-  'notion':             'Notion',
-  'outcome-modeling':   'Outcome Modeling',
-  'process-capture':    'Process Capture',
-  'refolddec':          'ReFolDec',
-  'universal':          'Universal',
-};
+function readFamilyDisplayName(familySlug) {
+  const familyMdPath = join(REPO_ROOT, familySlug, 'FAMILY.md');
+  try {
+    const text = readFileSync(familyMdPath, 'utf-8');
+    const fm = parseYamlFrontmatter(text.replace(/\r\n/g, '\n'));
+    if (fm.display_name && fm.display_name.trim()) return fm.display_name.trim();
+  } catch { /* no FAMILY.md or unreadable — fall through */ }
+  // Auto-titlecase: "agent-foundry" → "Agent Foundry"
+  return familySlug
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
 
   const familyMap = {};
   for (const s of skills) {
-    if (!familyMap[s.family]) familyMap[s.family] = { name: s.family, displayName: FAMILY_DISPLAY_NAMES[s.family] || s.family, skillCount: 0, skills: [] };
+    if (!familyMap[s.family]) familyMap[s.family] = { name: s.family, displayName: readFamilyDisplayName(s.family), skillCount: 0, skills: [] };
     familyMap[s.family].skillCount++;
     familyMap[s.family].skills.push(s.name);
   }
