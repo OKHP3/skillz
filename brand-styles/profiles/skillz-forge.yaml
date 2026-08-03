@@ -1,0 +1,124 @@
+schema_version: "1.0"
+style:
+  id: skillz-forge
+  display_name: Skillz Forge
+  version: "1.0.0"
+  status: active
+  purpose: >
+    A dark-default, editorial "field manual" aesthetic for a serious agent-skill
+    catalog: espresso-and-copper palette, a bold serif display face for headings,
+    and a plain, quiet body voice so the catalog content stays the focus.
+  owner_context: owned
+  tags: [espresso, copper, editorial-serif, catalog, dark-default]
+  created_on: "2026-08-03"
+  updated_on: "2026-08-03"
+  sources:
+    - type: css
+      locator: forge/src/index.css
+      authority: declared
+      sampled_on: "2026-08-03"
+      locator_detail: ":root custom properties (71 declared), extracted via okhp3-brand-style-registry/scripts/extract_css_signals.py"
+      notes: >
+        Raw signal ledger stored alongside this profile at
+        brand-styles/skillz-forge-signals.json. Colors, font-family variables,
+        radii, transitions, and spacing tokens below are read directly from
+        that ledger, not visually estimated.
+    - type: website
+      locator: forge/src/pages/Home.tsx
+      authority: observed
+      sampled_on: "2026-08-03"
+      locator_detail: "hero layout, nav, and Explore filter/card components (screenshots taken this session)"
+      notes: "Confirms how the declared tokens render: dark hero, copper CTA, serif display heading, right-aligned mascot art."
+  evidence_summary:
+    declared: "71 CSS custom properties in forge/src/index.css cover color, font-family, radius, transition, and spacing roles."
+    observed: "Screenshots of the home and Explore pages confirm the dark-default theme, copper accent buttons, and serif display headings render as declared."
+    inferred: "The 'field manual for AI agents' visual narrative and the MurderBird mascot's tone are interpretive, not declared in CSS."
+  evidence:
+    - claim: "Primary accent/CTA color is copper-orange (--color-orange #c46a2c, aliased --color-copper)."
+      source: "forge/src/index.css :root"
+      authority: declared
+      confidence: high
+      notes: "Used for the Search button and other primary actions per Home.tsx screenshot."
+    - claim: "Base surface is a dark espresso background (--color-espresso #2a2320) with a warm paper foreground (--color-paper #f6f2ee) for light surfaces/cards."
+      source: "forge/src/index.css :root"
+      authority: declared
+      confidence: high
+      notes: "Theme toggle exists (light/dark/system); dark is the apparent default per screenshots."
+    - claim: "Heading typography uses a bold serif/display face (var(--font-display)); body copy uses a separate sans/serif pairing (var(--font-sans), var(--font-serif))."
+      source: "forge/src/index.css :root"
+      authority: declared
+      confidence: medium
+      notes: "Actual font stack values are further custom properties not expanded by the extractor; family role assignment is declared, exact typeface name was not resolved in this pass."
+    - claim: "Visual tone reads as an editorial 'field manual' rather than a typical SaaS marketing site."
+      source: "forge/src/pages/Home.tsx rendered screenshots"
+      authority: inferred
+      confidence: medium
+      notes: "Interpretive; based on serif display headline, plain-spoken subhead copy, and the mechanical-bird mascot rather than any declared brand statement."
+  tokens:
+    color:
+      foundation:
+        espresso: "#2a2320"
+        teal: "#1c3a34"
+        olive: "#676a2c"
+        ochre: "#a06e28"
+        rust: "#5b3a27"
+        orange: "#c46a2c"
+        amber: "#e6a03c"
+        paper: "#f6f2ee"
+        ember: "#a83828"
+      semantic:
+        bg: "var(--color-espresso)"
+        bg-secondary: "#1f1b18"
+        bg-teal: "var(--color-teal)"
+        surface: "var(--color-paper)"
+        surface-hover: "#ffffff"
+        border-dark: "#3d3530"
+        border-light: "#d8cfc5"
+        copper: "var(--color-orange)"
+        copper-light: "var(--color-amber)"
+        copper-dark: "var(--color-ochre)"
+        text-dark: "#ede7de"
+        text-muted-dark: "#8a7e6e"
+        text-light: "#1e1916"
+    typography:
+      roles:
+        heading:
+          family: "var(--font-display)"
+          fallback: ["var(--font-serif)"]
+          notes: "Bold serif display face used for H1/H2 (e.g. hero headline, Explore card titles)."
+        body:
+          family: "var(--font-sans)"
+          fallback: ["var(--font-serif)"]
+          notes: "Plain-spoken body copy voice; var(--font-mono) reserved for skill slugs/code-like labels."
+    geometry:
+      spacing: {}
+      radius:
+        default: "var(--radius)"
+        large: "var(--radius-lg)"
+        pill: "50%"
+      shadow: {}
+      content_width: "not resolved in this extraction pass"
+  direction:
+    visual_narrative: "A dark, quietly technical field manual for reusable agent skills -- serious tools, not a flashy SaaS pitch."
+    components: ["copper-filled primary buttons", "bordered skill cards with slug + family tag", "sidebar family filter list"]
+    imagery: ["the MurderBird mascot (mechanical terror-bird, not a real animal) as the sole hero illustration"]
+    motion: ["not sampled in this extraction pass -- see forge/src/index.css transition tokens for raw values"]
+    avoid: ["bright SaaS-gradient hero treatments", "stock-photo imagery", "calling the mascot an owl or any real bird species"]
+  variants:
+    - id: light-mode
+      applies_to: "[data-theme='light'] surfaces"
+      token_overrides: { surface: "var(--color-espresso)", bg: "var(--color-paper)" }
+  application:
+    suitable_targets: [spa, documentation]
+    accessibility_notes: ["Verify copper-on-espresso and paper-on-espresso contrast ratios at both theme settings before reuse; not re-verified in this pass."]
+    target_constraints: ["Token layer lives in forge/src/index.css :root; apply via existing CSS custom properties rather than hardcoded hex values."]
+    acceptance_checks: ["Screenshot home + Explore in both light and dark theme after any token change."]
+  conflicts:
+    - "none recorded"
+  confidence:
+    overall: medium
+    notes: >
+      Color, radius, and font-role tokens are declared (high confidence).
+      Exact font-family stack values and spacing tokens were not fully resolved
+      by this extraction pass. Visual-narrative language is inferred and should
+      be treated as direction, not a declared brand rule.

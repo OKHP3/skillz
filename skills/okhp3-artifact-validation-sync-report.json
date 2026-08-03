@@ -1,0 +1,23 @@
+{
+  "action": "sync",
+  "comparison": {
+    "changed": [],
+    "exact": true,
+    "extra": [],
+    "missing": []
+  },
+  "destination": "/home/runner/workspace/skills/okhp3-artifact-validation",
+  "destination_aggregate_sha256": "88b974564dbb92bdc080b287dd9845162fda96cd5077b8f9a7ea4391d51703eb",
+  "destination_inventory": {
+    "SKILL.md": "6c8692beb0a3a8c8a635f03dd5cd3708aa4198a9140ee77b55f4c35a13a3a5ff",
+    "agents/openai.yaml": "39a5f14c7ecca4102865a3f42b31c30dde5432fe3251d73f74a6024e03d70c78",
+    "evals/evals.json": "cd70fa48a9ed97eca6c4674fb13750ad8f45b3ef0fc0e216c97af3cb1e395d56"
+  },
+  "source": "/home/runner/workspace/.agents/skills/okhp3-artifact-validation",
+  "source_aggregate_sha256": "88b974564dbb92bdc080b287dd9845162fda96cd5077b8f9a7ea4391d51703eb",
+  "source_inventory": {
+    "SKILL.md": "6c8692beb0a3a8c8a635f03dd5cd3708aa4198a9140ee77b55f4c35a13a3a5ff",
+    "agents/openai.yaml": "39a5f14c7ecca4102865a3f42b31c30dde5432fe3251d73f74a6024e03d70c78",
+    "evals/evals.json": "cd70fa48a9ed97eca6c4674fb13750ad8f45b3ef0fc0e216c97af3cb1e395d56"
+  }
+}
