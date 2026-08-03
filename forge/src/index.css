@@ -1180,6 +1180,11 @@ input, select, textarea {
   background: transparent;
   border: none;
 }
+.faq-item:has([aria-expanded="true"]) {
+  background: var(--color-bg-secondary);
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-sm);
+}
 .faq-item dd {
   margin: 0;
   padding-bottom: var(--space-6);
