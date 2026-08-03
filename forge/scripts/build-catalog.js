@@ -459,18 +459,21 @@ function buildCatalog() {
 // ─── Canonical family display names ──────────────────────────────────────────
 
 const FAMILY_DISPLAY_NAMES = {
-  'abrahamic':         'Abrahamic',
-  'agent-foundry':     'Agent Foundry',
-  'community':         'Community',
-  'context-extraction':'Context Extraction',
-  'lifetrkr':          'LifeTrkr',
-  'linkedin':          'LinkedIn',
-  'mermaid':           'Mermaid',
-  'notion':            'Notion',
-  'outcome-modeling':  'Outcome Modeling',
-  'process-capture':   'Process Capture',
-  'refolddec':         'ReFolDec',
-  'universal':         'Universal',
+  'abrahamic':          'Abrahamic',
+  'agent-foundry':      'Agent Foundry',
+  'askjamie':           'AskJamie',
+  'community':          'Community',
+  'context-extraction': 'Context Extraction',
+  'glee-fully':         'Glee-fully',
+  'knowledge-operations':'Knowledge Operations',
+  'lifetrkr':           'LifeTrkr',
+  'linkedin':           'LinkedIn',
+  'mermaid':            'Mermaid',
+  'notion':             'Notion',
+  'outcome-modeling':   'Outcome Modeling',
+  'process-capture':    'Process Capture',
+  'refolddec':          'ReFolDec',
+  'universal':          'Universal',
 };
 
   const familyMap = {};

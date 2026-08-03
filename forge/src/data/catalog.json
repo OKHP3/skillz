@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-03T17:34:21.269Z",
+  "generatedAt": "2026-08-03T17:40:28.550Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "6189f10",
+  "sourceCommit": "9cedb23",
   "skillCount": 113,
   "familyCount": 15,
   "families": [
@@ -29,7 +29,7 @@
     },
     {
       "name": "askjamie",
-      "displayName": "askjamie",
+      "displayName": "AskJamie",
       "skillCount": 10,
       "skills": [
         "okhp3-askjamie-brand",
@@ -83,7 +83,7 @@
     },
     {
       "name": "glee-fully",
-      "displayName": "glee-fully",
+      "displayName": "Glee-fully",
       "skillCount": 12,
       "skills": [
         "glee-fully-repo-standardizer",
@@ -102,7 +102,7 @@
     },
     {
       "name": "knowledge-operations",
-      "displayName": "knowledge-operations",
+      "displayName": "Knowledge Operations",
       "skillCount": 7,
       "skills": [
         "okhp3-artifact-validation",
