@@ -467,6 +467,12 @@ function readFamilyDisplayName(familySlug) {
     const text = readFileSync(familyMdPath, 'utf-8');
     const fm = parseYamlFrontmatter(text.replace(/\r\n/g, '\n'));
     if (fm.display_name && fm.display_name.trim()) return fm.display_name.trim();
+    // FAMILY.md exists but has no display_name — warn so the author knows to add it
+    process.stderr.write(
+      `[catalog warn] Family "${familySlug}": FAMILY.md has no display_name — ` +
+      `falling back to auto-titlecase "${familySlug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}". ` +
+      `Add display_name to FAMILY.md to suppress this warning.\n`
+    );
   } catch { /* no FAMILY.md or unreadable — fall through */ }
   // Auto-titlecase: "agent-foundry" → "Agent Foundry"
   return familySlug
