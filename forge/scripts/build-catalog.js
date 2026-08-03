@@ -337,7 +337,12 @@ function findSkillFiles(dir, depth = 0) {
     try { stat = statSync(fullPath); } catch { continue; }
 
     if (stat.isDirectory()) {
-      if (depth === 0 && SKIP_DIRS.has(entry)) continue;
+      if (depth === 0) {
+        // A top-level directory is only a real "family" if it declares itself
+        // as one with a FAMILY.md. This keeps stray/staging folders (e.g. a
+        // loose "skills/" scratch dir) from leaking into the family filter.
+        if (SKIP_DIRS.has(entry) || !existsSync(join(fullPath, 'FAMILY.md'))) continue;
+      }
       skills.push(...findSkillFiles(fullPath, depth + 1));
     } else if (entry === 'SKILL.md') {
       skills.push(fullPath);
