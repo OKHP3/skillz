@@ -1,9 +1,63 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { PathNode } from '../../utils/search';
+import { buildForwardPath } from '../../utils/search';
 import type { Skill } from '../../types/catalog';
 
 interface SkillPathwayProps {
   nodes: PathNode[];
+  allSkills: Skill[];
+}
+
+/** Compact inline sub-pathway rendered when a branch is expanded. */
+function SubPathway({ skill, allSkills }: { skill: Skill; allSkills: Skill[] }) {
+  const nodes = buildForwardPath(skill, allSkills, 5);
+  if (nodes.length === 0) return null;
+
+  return (
+    <div className="skill-pathway__sub-pathway" aria-label={`Downstream pathway from ${skill.displayName || skill.name}`}>
+      <div className="skill-pathway__sub-track">
+        {nodes.map((node, idx) => {
+          const isLast = idx === nodes.length - 1;
+
+          if (node.kind === 'unresolved') {
+            return (
+              <div key={`sub-unresolved-${node.name}-${idx}`} className="skill-pathway__sub-step">
+                <div
+                  className="skill-pathway__sub-node skill-pathway__sub-node--unresolved"
+                  title={`"${node.name}" is not in the catalog`}
+                >
+                  <span className="skill-pathway__node-name skill-pathway__node-name--unresolved">{node.name}</span>
+                </div>
+              </div>
+            );
+          }
+
+          const name = node.skill.displayName || node.skill.name;
+          return (
+            <div key={node.skill.name} className="skill-pathway__sub-step">
+              <Link
+                to={`/skills/${node.skill.family}/${node.skill.name}`}
+                className="skill-pathway__sub-node"
+                title={node.skill.description || name}
+              >
+                <span className="skill-pathway__node-name">{name}</span>
+                <span className="skill-pathway__node-family">{node.skill.family}</span>
+                <span
+                  className="skill-pathway__node-maturity"
+                  data-maturity={node.skill.maturity}
+                >
+                  {node.skill.maturity}
+                </span>
+              </Link>
+              {!isLast && <span className="skill-pathway__sub-arrow" aria-hidden>→</span>}
+            </div>
+          );
+        })}
+      </div>
+      <p className="skill-pathway__sub-hint">Downstream chain from this branch (up to 5 steps)</p>
+    </div>
+  );
 }
 
 /** Mini card for an alternate branch companion — always a link */
@@ -30,11 +84,24 @@ function BranchNode({ skill }: { skill: Skill }) {
 /**
  * Renders an ordered, visual workflow pathway for a skill's companion chain.
  * When a step has multiple outgoing companions the alternate branches are
- * shown as a fork lane hanging below that step — each branch links to its
- * skill detail page. Unresolved companion references (typos / renamed skills)
- * are surfaced as a terminal "not found" stop rather than silently dropped.
+ * shown as a fork lane hanging below that step — each branch has an expand
+ * toggle that reveals its own downstream chain inline.
  */
-export default function SkillPathway({ nodes }: SkillPathwayProps) {
+export default function SkillPathway({ nodes, allSkills }: SkillPathwayProps) {
+  const [expandedBranches, setExpandedBranches] = useState<Set<string>>(new Set());
+
+  const toggleBranch = (skillName: string) => {
+    setExpandedBranches(prev => {
+      const next = new Set(prev);
+      if (next.has(skillName)) {
+        next.delete(skillName);
+      } else {
+        next.add(skillName);
+      }
+      return next;
+    });
+  };
+
   if (nodes.length === 0) return null;
 
   // A single-node "chain" (no real pathway) — fall back to simple card
@@ -139,9 +206,7 @@ export default function SkillPathway({ nodes }: SkillPathwayProps) {
                   )}
                 </div>
 
-                {/* Broken-companion indicator — this node declared at least one
-                    companion name that isn't in the catalog, even if a valid
-                    companion let the chain keep going past it. */}
+                {/* Broken-companion indicator */}
                 {node.unresolvedCompanions.length > 0 && (
                   <span
                     className="skill-pathway__branch skill-pathway__branch--broken"
@@ -164,12 +229,36 @@ export default function SkillPathway({ nodes }: SkillPathwayProps) {
                   className="skill-pathway__fork"
                   aria-label={`${node.branchSkills.length} alternate branch${node.branchSkills.length > 1 ? 'es' : ''} from this step`}
                 >
-                  {node.branchSkills.map(branch => (
-                    <div key={branch.name} className="skill-pathway__fork-branch">
-                      <span className="skill-pathway__fork-arm" aria-hidden>↳</span>
-                      <BranchNode skill={branch} />
-                    </div>
-                  ))}
+                  {node.branchSkills.map(branch => {
+                    const isExpanded = expandedBranches.has(branch.name);
+                    const branchHasCompanions = branch.companions.length > 0;
+                    return (
+                      <div key={branch.name} className="skill-pathway__fork-branch">
+                        {/* Row: arm glyph + mini card + expand toggle */}
+                        <div className="skill-pathway__fork-branch-row">
+                          <span className="skill-pathway__fork-arm" aria-hidden>↳</span>
+                          <BranchNode skill={branch} />
+                          {branchHasCompanions && (
+                            <button
+                              className="skill-pathway__fork-expand"
+                              aria-expanded={isExpanded}
+                              aria-label={isExpanded
+                                ? `Collapse downstream pathway from ${branch.displayName || branch.name}`
+                                : `Expand downstream pathway from ${branch.displayName || branch.name}`
+                              }
+                              onClick={() => toggleBranch(branch.name)}
+                            >
+                              {isExpanded ? '▾' : '▸'}
+                            </button>
+                          )}
+                        </div>
+                        {/* Inline sub-pathway — rendered below the card row when expanded */}
+                        {isExpanded && (
+                          <SubPathway skill={branch} allSkills={allSkills} />
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -178,7 +267,7 @@ export default function SkillPathway({ nodes }: SkillPathwayProps) {
       </div>
       <p className="skill-pathway__hint">
         Steps follow each skill's declared companion sequence.
-        {hasBranches && <> Forked steps (↳) show alternate companion paths.</>}
+        {hasBranches && <> Forked steps (↳) show alternate companion paths — use ▸ to preview where a branch leads.</>}
         {hasUnresolved && <> A greyed-out or ⚠ marked stop means a declared companion name doesn't match any skill in the catalog.</>}
       </p>
     </div>

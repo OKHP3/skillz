@@ -444,8 +444,15 @@
   gap: var(--space-2);
 }
 
-/* A single alternate branch row: arm glyph + mini card */
+/* A single alternate branch: stacks the card row + optional sub-pathway below */
 .skill-pathway__fork-branch {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Inner row: arm glyph + mini card + expand toggle */
+.skill-pathway__fork-branch-row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -631,6 +638,114 @@
   font-size: 0.65rem;
   color: var(--color-ember);
   line-height: 1.3;
+}
+
+/* Expand toggle button on fork-branch rows */
+.skill-pathway__fork-expand {
+  background: none;
+  border: 1px solid var(--color-border-dark);
+  color: var(--color-text-muted-dark);
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: border-color var(--transition), color var(--transition);
+  align-self: center;
+}
+
+.skill-pathway__fork-expand:hover,
+.skill-pathway__fork-expand:focus-visible {
+  border-color: var(--color-steel-light);
+  color: var(--color-text-dark);
+}
+
+.skill-pathway__fork-expand[aria-expanded="true"] {
+  border-color: var(--color-steel);
+  color: var(--color-steel-light);
+}
+
+.skill-pathway__fork-expand:focus-visible {
+  outline: 2px solid var(--color-steel);
+  outline-offset: 2px;
+}
+
+/* Sub-pathway: the inline expanded branch preview */
+.skill-pathway__sub-pathway {
+  margin-top: var(--space-3);
+  margin-left: var(--space-4);
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  background: color-mix(in srgb, var(--color-teal) 25%, var(--color-bg-secondary));
+  border-left: 2px solid var(--color-steel);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.skill-pathway__sub-track {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.skill-pathway__sub-step {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* Sub-pathway node card (link) */
+.skill-pathway__sub-node {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 130px;
+  min-height: 66px;
+  border: 1px solid var(--color-border-dark);
+  background: var(--color-bg);
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transition: border-color var(--transition), opacity var(--transition);
+}
+
+.skill-pathway__sub-node:hover,
+.skill-pathway__sub-node:focus-visible {
+  border-color: var(--color-steel-light);
+  opacity: 1;
+}
+
+.skill-pathway__sub-node:focus-visible {
+  outline: 2px solid var(--color-steel);
+  outline-offset: 2px;
+}
+
+.skill-pathway__sub-node--unresolved {
+  border-style: dashed;
+  border-color: var(--color-ember);
+  background: transparent;
+  cursor: default;
+}
+
+/* Arrow between sub-pathway steps */
+.skill-pathway__sub-arrow {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-dark);
+  padding: 0 var(--space-1);
+  flex-shrink: 0;
+  user-select: none;
+  margin-top: 28px;
+}
+
+.skill-pathway__sub-hint {
+  margin: var(--space-2) 0 0;
+  font-size: 0.65rem;
+  color: var(--color-text-muted-dark);
+  font-style: italic;
 }
 
 .skill-pathway__hint {

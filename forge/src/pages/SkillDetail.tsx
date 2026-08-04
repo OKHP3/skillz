@@ -274,7 +274,7 @@ export default function SkillDetail() {
             <div>
               <h2>Workflow pathway</h2>
               {pathwayNodes.length > 1 ? (
-                <SkillPathway nodes={pathwayNodes} />
+                <SkillPathway nodes={pathwayNodes} allSkills={catalog.skills} />
               ) : (
                 /* Single skill with companions but no traversable chain — keep flat list */
                 <ul className="detail-companions-list">

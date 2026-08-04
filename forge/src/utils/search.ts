@@ -285,6 +285,62 @@ export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] 
   return nodes;
 }
 
+/**
+ * Walk forward from `skill` following the main (first-companion) chain,
+ * returning at most `maxSteps` PathNodes. Does NOT walk backward to a
+ * chain root — used to preview the downstream pathway of a branch skill
+ * inline without navigating away from the current page.
+ */
+export function buildForwardPath(skill: Skill, allSkills: Skill[], maxSteps = 5): PathNode[] {
+  const skillMap = new Map(allSkills.map(s => [s.name, s]));
+
+  // Predecessor index needed for incomingBranches count
+  const predecessors = new Map<string, string[]>();
+  for (const s of allSkills) {
+    for (const cName of s.companions) {
+      if (!predecessors.has(cName)) predecessors.set(cName, []);
+      predecessors.get(cName)!.push(s.name);
+    }
+  }
+
+  const nodes: PathNode[] = [];
+  const visited = new Set<string>();
+
+  function walk(name: string, depth: number): void {
+    if (visited.has(name) || depth >= maxSteps) return;
+    visited.add(name);
+    const s = skillMap.get(name);
+    if (!s) return;
+
+    const unresolvedCompanions = s.companions.filter(c => !skillMap.has(c));
+    const validCompanions = s.companions.filter(c => skillMap.has(c) && !visited.has(c));
+    const totalPreds = (predecessors.get(name) ?? []).length;
+
+    nodes.push({
+      kind: 'resolved',
+      skill: s,
+      isCurrent: false,
+      incomingBranches: Math.max(0, totalPreds - 1),
+      outgoingBranches: Math.max(0, validCompanions.length - 1),
+      unresolvedCompanions,
+      branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
+    });
+
+    if (validCompanions.length > 0 && nodes.length < maxSteps) {
+      walk(validCompanions[0], depth + 1);
+    } else if (
+      validCompanions.length === 0 &&
+      unresolvedCompanions.length > 0 &&
+      nodes.length < maxSteps
+    ) {
+      nodes.push({ kind: 'unresolved', name: unresolvedCompanions[0] });
+    }
+  }
+
+  walk(skill.name, 0);
+  return nodes;
+}
+
 export function getRelatedSkills(skill: Skill, allSkills: Skill[]): Skill[] {
   const related: Skill[] = [];
 
