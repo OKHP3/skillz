@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-04T21:09:52.740Z",
+  "generatedAt": "2026-08-04T21:27:41.721Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "f48b1f6",
+  "sourceCommit": "5e7f773",
   "skillCount": 113,
   "familyCount": 15,
   "maturityCounts": {
@@ -21,7 +21,7 @@
     "familyOrientationPages": true,
     "skillCompare": true,
     "curatedStacks": true,
-    "fullContractRenderer": false,
+    "fullContractRenderer": true,
     "localStackComposer": false,
     "guidedDiscoveryAid": false
   }

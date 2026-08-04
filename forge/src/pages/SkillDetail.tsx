@@ -4,8 +4,10 @@ import { useCatalog } from '../contexts/CatalogContext';
 import { getRelatedSkills, buildWorkflowPath } from '../utils/search';
 import { copyInstallUrl as copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
 import SkillPathway from '../components/ui/SkillPathway';
+import FullContract from '../components/ui/FullContract';
 import { issueUrl, skillGitHubUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
+import type { SkillDetailBody } from '../types/catalog';
 
 const RELEASE_READINESS_LABELS: Record<string, string> = {
   'needs-contract-work': 'Needs contract work',
@@ -46,10 +48,34 @@ export default function SkillDetail() {
   const [, forceUpdate] = useState(0);
   const navigate = useNavigate();
 
+  // Release 1: the Full Contract body (raw markdown) is not part of the
+  // main catalog payload — every route paying for every skill's full body
+  // text was the original problem. Fetched once per skill, on demand, only
+  // by this page.
+  const [contractState, setContractState] = useState<
+    { status: 'loading' } | { status: 'ready'; body: string } | { status: 'error' }
+  >({ status: 'loading' });
+
   useEffect(() => {
     if (skill) document.title = `${skill.displayName || skill.name} | Skillz Forge`;
     return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
   }, [skill?.name]);
+
+  useEffect(() => {
+    if (!skill) return;
+    let cancelled = false;
+    setContractState({ status: 'loading' });
+    fetch(`${import.meta.env.BASE_URL}data/skills/${skill.family}/${skill.name}.json`)
+      .then(res => { if (!res.ok) throw new Error(`${res.status}`); return res.json(); })
+      .then((detail: SkillDetailBody) => {
+        if (cancelled) return;
+        setContractState({ status: 'ready', body: detail.rawBody });
+      })
+      .catch(() => {
+        if (!cancelled) setContractState({ status: 'error' });
+      });
+    return () => { cancelled = true; };
+  }, [skill?.family, skill?.name]);
 
   if (!skill) {
     return (
@@ -452,6 +478,25 @@ export default function SkillDetail() {
               {' · '}
               <a href={skillGitHubUrl(skill.path)} target="_blank" rel="noopener noreferrer">View in repository</a>
             </p>
+          </div>
+
+          <div id="full-contract" className="detail-full-contract">
+            <h2>Full contract</h2>
+            <p className="detail-full-contract-hint">
+              The complete SKILL.md contract for this skill, rendered in-app.
+            </p>
+            {contractState.status === 'loading' && (
+              <p className="meta-pending" role="status">Loading contract…</p>
+            )}
+            {contractState.status === 'error' && (
+              <p className="meta-pending" role="alert">
+                Could not load the full contract.{' '}
+                <a href={skill.rawUrl} target="_blank" rel="noopener noreferrer">View raw SKILL.md instead</a>.
+              </p>
+            )}
+            {contractState.status === 'ready' && (
+              <FullContract rawBody={contractState.body} />
+            )}
           </div>
 
           <div className="detail-contribute">

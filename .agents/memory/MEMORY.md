@@ -3,3 +3,5 @@
 - [Bad build fixes from concurrent merges](concurrent-merge-bad-fixes.md) — a merge can "fix" a broken build by deleting the feature instead of the real cause; verify before trusting a fix commit.
 - [Skill-usage audit methodology](skill-audit-methodology.md) — verify claimed evidence files by hand; a skill's own shipped example/template is not proof it was actually run.
 - [Forge shallow-checkout provenance gate](forge-shallow-checkout-provenance.md) — fail-closed data-integrity gates in this pipeline should hard-fail only in CI, warn in local dev.
+- [Forge catalog/detail/search-index payload split](forge-catalog-payload-split.md) — full skill body text lives only in lazily-fetched search-index/detail assets, never in catalog.json.
+- [Forge evidence-policy substantive-artifact bar](forge-evidence-policy-substantive-bar.md) — a bare test file cannot sustain "validated"/"published"; only an eval or benchmark artifact counts.

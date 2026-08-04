@@ -16,7 +16,7 @@ import { readFileSync, existsSync } from 'fs';
 import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import { applyEvidencePolicy } from './build-catalog.js';
+import { applyEvidencePolicy, hasSubstantiveEvidenceArtifact } from './build-catalog.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..', '..');
@@ -61,7 +61,7 @@ function assert(cond, message) {
 const RELEASE_READINESS = new Set([
   'needs-contract-work', 'needs-live-evidence', 'ready-for-supervised-use', 'ready-for-peer-review', 'published',
 ]);
-const EVIDENCE_V2_STATUSES = new Set(['live', 'analytical', 'historical', 'not-run']);
+const EVIDENCE_V2_STATUSES = new Set(['live', 'analytical', 'historical', 'not-run', 'none']);
 const EVIDENCE_V1_STATUSES = new Set(['live', 'historical', 'analytical', 'local-checks', 'designed', 'not-run', 'none']);
 const MATURITY_SOURCES = new Set(['explicit-frontmatter', 'evidence-policy', 'fallback-structure']);
 
@@ -238,11 +238,34 @@ test('evidence-policy downgrades an unsupported "published" claim to "validated"
   assert(downgraded === true, 'expected downgraded=true for a "published" claim without live evidence');
 });
 
-test('evidence-policy leaves a "validated" claim alone when a test/eval/benchmark artifact exists', () => {
-  const withTests = { status: 'analytical', evalCount: 0, benchmarkCount: 0, testCount: 3, scriptCount: 0 };
-  const { maturity, downgraded } = applyEvidencePolicy('validated', withTests);
+test('evidence-policy leaves a "validated" claim alone when a real eval/benchmark artifact exists', () => {
+  const withEval = { status: 'analytical', evalCount: 2, benchmarkCount: 0, testCount: 0, scriptCount: 0 };
+  const { maturity, downgraded } = applyEvidencePolicy('validated', withEval);
   assert(maturity === 'validated', `expected "validated" to stand, got "${maturity}"`);
-  assert(downgraded === false, 'expected downgraded=false when a test artifact backs the claim');
+  assert(downgraded === false, 'expected downgraded=false when an eval artifact backs the claim');
+});
+
+// Release 1: a bare test file is structural scaffolding, not evidence that
+// a graded case was ever run — it must not be enough to sustain a
+// "validated" (or, transitively, "published") claim on its own.
+test('a bare test file alone cannot satisfy "validated"', () => {
+  const testFileOnly = { status: 'analytical', evalCount: 0, benchmarkCount: 0, testCount: 5, scriptCount: 0 };
+  assert(hasSubstantiveEvidenceArtifact(testFileOnly) === false,
+    'a test-file-only evidence record should not count as substantive evidence');
+  const { maturity, downgraded } = applyEvidencePolicy('validated', testFileOnly);
+  assert(maturity === 'usable', `expected a bare test file to downgrade "validated" to "usable", got "${maturity}"`);
+  assert(downgraded === true, 'expected downgraded=true when only a test file backs a "validated" claim');
+});
+
+test('a bare test file alone cannot satisfy "published"', () => {
+  // testCount alone never reaches evidence.status 'live' (live requires a
+  // graded benchmark run — see deriveEvidenceV2), so a "published" claim
+  // backed only by a test file must fall all the way to "usable", not stop
+  // at "validated".
+  const testFileOnly = { status: 'analytical', evalCount: 0, benchmarkCount: 0, testCount: 5, scriptCount: 0 };
+  const { maturity, downgraded } = applyEvidencePolicy('published', testFileOnly);
+  assert(maturity === 'usable', `expected a bare test file to downgrade "published" all the way to "usable", got "${maturity}"`);
+  assert(downgraded === true, 'expected downgraded=true when only a test file backs a "published" claim');
 });
 
 test('evidence-policy leaves a "published" claim alone when live evidence exists', () => {
@@ -343,6 +366,49 @@ test('at least one skill\'s createdAt predates the current HEAD commit (not a de
 });
 
 // ─── Release 0: project-summary.json contract ──────────────────────────────
+
+// ─── Release 1: catalog/detail/search-index payload split ─────────────────
+// Guards the regression this release fixes: shipping every skill's full
+// body text in the same payload every route (Home, Compare, family pages)
+// fetches just to support Explore's search box.
+
+test('catalog.json skills no longer carry a bodyText field (payload split)', () => {
+  const withBody = catalog.skills.filter(s => Object.prototype.hasOwnProperty.call(s, 'bodyText'));
+  assert(withBody.length === 0,
+    `${withBody.length} skill(s) still carry catalog.json bodyText — it should live only in search-index.json`);
+});
+
+test('search-index.json exists with one entry per catalog skill, each carrying non-empty bodyText', () => {
+  const SEARCH_INDEX_PATH = join(__dirname, '..', 'public', 'data', 'search-index.json');
+  assert(existsSync(SEARCH_INDEX_PATH), `${SEARCH_INDEX_PATH} was not generated`);
+  const index = JSON.parse(readFileSync(SEARCH_INDEX_PATH, 'utf-8'));
+  assert(Array.isArray(index), 'search-index.json is not an array');
+  assert(index.length === catalog.skillCount,
+    `search-index.json has ${index.length} entries, expected ${catalog.skillCount}`);
+  const byName = new Map(index.map(e => [e.name, e]));
+  for (const s of catalog.skills) {
+    const entry = byName.get(s.name);
+    assert(entry, `search-index.json is missing an entry for "${s.name}"`);
+    assert(typeof entry.bodyText === 'string' && entry.bodyText.length > 0,
+      `search-index.json entry for "${s.name}" has empty/missing bodyText`);
+  }
+});
+
+test('every skill has a per-skill detail JSON file with its raw (unstripped) markdown body', () => {
+  const sample = catalog.skills.slice(0, 8);
+  for (const s of sample) {
+    const detailPath = join(__dirname, '..', 'public', 'data', 'skills', s.family, `${s.name}.json`);
+    assert(existsSync(detailPath), `missing detail file for "${s.name}" at ${detailPath}`);
+    const detail = JSON.parse(readFileSync(detailPath, 'utf-8'));
+    assert(detail.name === s.name, `detail file for "${s.name}" has mismatched name "${detail.name}"`);
+    assert(typeof detail.rawBody === 'string' && detail.rawBody.length > 0,
+      `detail file for "${s.name}" has empty/missing rawBody`);
+    // rawBody must be real markdown (retains at least one heading marker),
+    // not the markdown-stripped plain text used for search.
+    assert(/^#{1,6}\s/m.test(detail.rawBody) || detail.rawBody.includes('#'),
+      `detail file for "${s.name}" rawBody looks stripped of markdown structure`);
+  }
+});
 
 test('project-summary.json exists and matches the catalog it was built from', () => {
   assert(existsSync(SUMMARY_PATH), `${SUMMARY_PATH} was not generated`);

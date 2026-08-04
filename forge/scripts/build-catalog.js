@@ -24,6 +24,18 @@ const REPO_ROOT = join(__dirname, '..', '..');
 // `forge/scripts/verify-deploy-trigger.mjs` and Phase D checks validate the
 // exact bytes that ship, not a TS-transpiled copy.
 const OUTPUT = join(__dirname, '..', 'public', 'data', 'catalog.json');
+// Release 1 fix: the compact index above no longer carries each skill's full
+// body text — that alone was the largest contributor to first-load payload
+// size, and Home/Compare/family pages never needed it. Full body text now
+// lives in two separate, purpose-specific artifacts fetched on demand:
+//   - SEARCH_INDEX_OUTPUT: {name, family, bodyText} for every skill, stripped
+//     of markdown syntax, fetched only by Explore when a visitor searches.
+//   - SKILL_DETAIL_DIR: one {name, family, rawBody} JSON per skill, carrying
+//     the *unstripped* markdown body (headings, links, code fences intact)
+//     so SkillDetail's Full Contract renderer has real structure to work
+//     with, not the plain-text search blob.
+const SEARCH_INDEX_OUTPUT = join(__dirname, '..', 'public', 'data', 'search-index.json');
+const SKILL_DETAIL_DIR = join(__dirname, '..', 'public', 'data', 'skills');
 const MANIFEST_PATH = join(REPO_ROOT, 'skillz.manifest.json');
 
 const GITHUB_REPO = 'OKHP3/skillz';
@@ -144,6 +156,17 @@ function getFileCreatedAt(relPath) {
   } catch { return null; }
 }
 
+// Release 1: writes one small per-skill JSON file carrying the *unstripped*
+// markdown body, so SkillDetail's Full Contract renderer can fetch it lazily
+// (only when a visitor opens that skill) instead of every route paying for
+// every skill's full body text up front.
+function writeSkillDetailFile(family, name, rawBody) {
+  const dir = join(SKILL_DETAIL_DIR, family);
+  mkdirSync(dir, { recursive: true });
+  const outPath = join(dir, `${name}.json`);
+  writeFileSync(outPath, JSON.stringify({ name, family, rawBody }, null, 2), 'utf-8');
+}
+
 function countDirFiles(dirPath) {
   try {
     if (!existsSync(dirPath) || !statSync(dirPath).isDirectory()) return 0;
@@ -192,7 +215,14 @@ function deriveEvidenceV2(filePath, currentVersion) {
   } else if (evals || benchmark || testCount > 0 || scriptCount > 0) {
     status = 'analytical';
   } else {
-    status = 'not-run';
+    // Release 1 fix: previously this catch-all also said 'not-run', which
+    // conflated "an evaluation design/plan exists but hasn't executed yet"
+    // with "no evaluation of any kind was ever designed for this package."
+    // Those are different claims — the first implies work is in flight,
+    // the second means the package has no evidence surface at all. `none`
+    // keeps that distinction visible in filters and copy instead of
+    // silently merging it into `not-run`.
+    status = 'none';
   }
 
   const lastEvidenceDate = benchmarkMeta.evaluated_at || benchmarkMeta.date || benchmarkMeta.timestamp || evalMeta.generated_at || evalMeta.date || evalMeta.timestamp || null;
@@ -205,6 +235,7 @@ function deriveEvidenceV2(filePath, currentVersion) {
   if (Array.isArray(evalMeta.blockers)) blockers.push(...evalMeta.blockers);
   if (blockers.length === 0) {
     if (status === 'not-run') blockers.push('No executed evaluation exists for the current package version.');
+    else if (status === 'none') blockers.push('No evaluation design or executable check exists for this package.');
     else if (status === 'historical') blockers.push(`Evidence evaluates version ${evaluatedSkillVersion}, not the current ${currentVersion ?? 'unversioned'} package.`);
     else if (status === 'analytical') blockers.push('Only design or structural review exists; no graded live run has been executed.');
   }
@@ -280,6 +311,20 @@ function hasAnyEvidenceArtifact(evidenceV2) {
   );
 }
 
+// Release 1 fix: "validated" per the maturity table means "peer-reviewed
+// against the stated contract" with "current-version evidence [and] a
+// protected or external check" — a bare test file (structural scaffolding,
+// never executed as a graded case) does not meet that bar on its own. Only
+// an actual eval case or benchmark run counts as evidence a validated claim
+// can stand on; testCount/scriptCount alone are necessary but not
+// sufficient (they still gate "usable" via hasAnyEvidenceArtifact, and a
+// live-status check upstream already requires benchmark runs for
+// "published"). This function is deliberately stricter than
+// hasAnyEvidenceArtifact, which remains the (lower) bar for "usable".
+function hasSubstantiveEvidenceArtifact(evidenceV2) {
+  return Boolean(evidenceV2 && (evidenceV2.evalCount > 0 || evidenceV2.benchmarkCount > 0));
+}
+
 function applyEvidencePolicy(frontmatterMaturity, evidenceV2) {
   let maturity = frontmatterMaturity;
   let downgraded = false;
@@ -288,7 +333,7 @@ function applyEvidencePolicy(frontmatterMaturity, evidenceV2) {
     maturity = 'validated';
     downgraded = true;
   }
-  if (maturity === 'validated' && !hasAnyEvidenceArtifact(evidenceV2)) {
+  if (maturity === 'validated' && !hasSubstantiveEvidenceArtifact(evidenceV2)) {
     maturity = 'usable';
     downgraded = true;
   }
@@ -635,6 +680,10 @@ function buildCatalog() {
   console.log(`Found ${skillFiles.length} SKILL.md files`);
 
   const skills = [];
+  // Release 1: collected alongside `skills` but written to separate files
+  // (see SEARCH_INDEX_OUTPUT / SKILL_DETAIL_DIR above) rather than embedded
+  // in catalog.json.
+  const searchIndexEntries = [];
 
   for (const filePath of skillFiles) {
     const relPath = relative(REPO_ROOT, filePath).replace(/\\/g, '/');
@@ -769,7 +818,6 @@ function buildCatalog() {
       tools,
       runtimes,
       boundaries,
-      bodyText: stripMarkdownToPlainText(body),
       rawUrl,
       githubUrl,
       lastModified: fileGitInfo.lastModified,
@@ -790,6 +838,9 @@ function buildCatalog() {
       maturityReviewedAt,
       releaseReadiness,
     });
+
+    searchIndexEntries.push({ name, family, bodyText: stripMarkdownToPlainText(body) });
+    writeSkillDetailFile(family, name, body);
   }
 
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
@@ -917,20 +968,12 @@ function readFamilyNarrative(familySlug) {
   console.log(`  ${skills.length} skills across ${familyList.length} families`);
   console.log(`  Source: ${sourceRef}@${sourceCommit ?? 'unknown'}`);
 
-  writeProjectSummary(catalog);
+  mkdirSync(dirname(SEARCH_INDEX_OUTPUT), { recursive: true });
+  writeFileSync(SEARCH_INDEX_OUTPUT, JSON.stringify(searchIndexEntries, null, 2), 'utf-8');
+  console.log(`✓ Written: ${SEARCH_INDEX_OUTPUT} (${searchIndexEntries.length} entries)`);
+  console.log(`✓ Written ${skills.length} per-skill detail file(s) under ${SKILL_DETAIL_DIR}`);
 
-  // Legacy compatibility copy: the committed deploy-pages.yml's "Verify
-  // catalog provenance" step still `require()`s ./src/data/catalog.json.
-  // That workflow file cannot be updated from this environment (GitHub
-  // rejects pushes touching .github/workflows/* without OAuth `workflow`
-  // scope), so until it is fixed at the source, also write a copy here so
-  // CI's provenance check does not fail against a path that no longer
-  // ships as the app's runtime data source. Remove this once the workflow
-  // file's provenance-check path is updated to ./public/data/catalog.json.
-  const LEGACY_OUTPUT = join(__dirname, '..', 'src', 'data', 'catalog.json');
-  mkdirSync(dirname(LEGACY_OUTPUT), { recursive: true });
-  writeFileSync(LEGACY_OUTPUT, JSON.stringify(catalog, null, 2), 'utf-8');
-  console.log(`✓ Written legacy CI-compat copy: ${LEGACY_OUTPUT}`);
+  writeProjectSummary(catalog);
 
   // CI verification: fail if catalog is empty
   if (skills.length === 0) {
@@ -1029,15 +1072,17 @@ function writeProjectSummary(catalog) {
     familyCount: catalog.familyCount,
     maturityCounts,
     evidenceStatusCounts,
-    // Release 1 (Full Contract renderer, local stack composer) and
-    // Release 2 (guided discovery aid) are not yet shipped — keep these
-    // false until the corresponding feature actually merges. Do not flip
-    // one of these ahead of the feature landing.
+    // Release 1's Full Contract renderer shipped (safe Markdown-subset
+    // renderer on SkillDetail, wired to a lazily-fetched per-skill body).
+    // The local stack composer (Release 1) and guided discovery aid
+    // (Release 2) are not yet shipped — keep those false until the
+    // corresponding feature actually merges. Do not flip one of these
+    // ahead of the feature landing.
     capabilities: {
       familyOrientationPages: true,
       skillCompare: true,
       curatedStacks: true,
-      fullContractRenderer: false,
+      fullContractRenderer: true,
       localStackComposer: false,
       guidedDiscoveryAid: false,
     },
@@ -1060,4 +1105,4 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
 // Exported for forge/scripts/test-catalog.mjs — pure functions only, no I/O
 // or process.exit side effects, safe to call directly against synthetic
 // fixtures without re-running the full repo walk.
-export { applyEvidencePolicy, hasAnyEvidenceArtifact, deriveMaturity, deriveMaturitySource };
+export { applyEvidencePolicy, hasAnyEvidenceArtifact, hasSubstantiveEvidenceArtifact, deriveMaturity, deriveMaturitySource };

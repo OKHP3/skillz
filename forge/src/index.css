@@ -1710,6 +1710,105 @@ input, select, textarea {
   border: none;
   margin: var(--space-4) 0;
 }
+/* ── Full Contract (Release 1) ──────────────────────────────────────────── */
+.detail-full-contract {
+  margin-top: var(--space-8);
+}
+.detail-full-contract-hint {
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-sm);
+}
+.full-contract {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-8);
+  align-items: start;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-dark);
+  border-radius: 4px;
+  padding: var(--space-6);
+}
+.full-contract-toc {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-4));
+  border-right: 1px solid var(--color-border-dark);
+  padding-right: var(--space-4);
+}
+.full-contract-toc-label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted-dark);
+  margin-bottom: var(--space-2);
+}
+.full-contract-toc ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: 0;
+  margin: 0;
+}
+.full-contract-toc li[data-depth="3"] {
+  padding-left: var(--space-3);
+}
+.full-contract-toc a {
+  font-size: var(--text-sm);
+  color: var(--color-steel-light);
+  text-decoration: none;
+}
+.full-contract-toc a:hover {
+  color: var(--color-amber);
+  text-decoration: underline;
+}
+.full-contract-body {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.full-contract-body h1,
+.full-contract-body h2,
+.full-contract-body h3,
+.full-contract-body h4,
+.full-contract-body h5,
+.full-contract-body h6 {
+  scroll-margin-top: calc(var(--nav-height) + var(--space-4));
+  color: var(--color-text-light);
+}
+.full-contract-list {
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+.full-contract-code {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-dark);
+  border-radius: 4px;
+  padding: var(--space-4);
+  overflow-x: auto;
+  margin-bottom: var(--space-4);
+}
+.full-contract-quote {
+  border-left: 3px solid var(--color-copper);
+  padding-left: var(--space-4);
+  color: var(--color-text-muted-dark);
+  margin: 0 0 var(--space-4);
+}
+.full-contract-link-domain {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-dark);
+}
+@media (max-width: 640px) {
+  .full-contract {
+    grid-template-columns: 1fr;
+  }
+  .full-contract-toc {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-dark);
+    padding-right: 0;
+    padding-bottom: var(--space-4);
+  }
+}
+
 .detail-meta {
   display: flex;
   gap: var(--space-4);
@@ -2077,6 +2176,74 @@ input, select, textarea {
 }
 .compare-github-link:hover {
   color: var(--color-amber);
+}
+.compare-list--blockers {
+  color: var(--color-ember);
+}
+.compare-evidence-date {
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-xs);
+}
+.compare-evidence-stale {
+  display: inline-block;
+  margin-left: var(--space-2);
+}
+
+/* ── Compare: card layout at narrow widths (Release 1) ────────────────────
+   Below 640px a data-driven comparison table is unreadable — this converts
+   it into stacked per-skill "cards" using the well-known accessible
+   responsive-table pattern (data-label + ::before) rather than duplicating
+   the whole comparison in a second markup structure. The <table> stays
+   semantic; only its visual layout changes. */
+@media (max-width: 640px) {
+  .compare-table--cards,
+  .compare-table--cards thead,
+  .compare-table--cards tbody,
+  .compare-table--cards th,
+  .compare-table--cards td,
+  .compare-table--cards tr {
+    display: block;
+    width: 100%;
+  }
+  .compare-table--cards thead tr {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 2;
+    background: var(--color-bg-secondary);
+  }
+  .compare-table--cards thead th {
+    flex: 1 1 45%;
+  }
+  .compare-table--cards thead .compare-row-label {
+    display: none;
+  }
+  .compare-table--cards tbody tr {
+    border: 1px solid var(--color-border-dark);
+    border-radius: 4px;
+    margin-bottom: var(--space-4);
+    overflow: hidden;
+  }
+  .compare-table--cards tbody .compare-row-label {
+    background: var(--color-bg-secondary);
+    border: none;
+    font-size: var(--text-xs);
+  }
+  .compare-table--cards tbody td.compare-cell {
+    border: none;
+    border-top: 1px solid var(--color-border-dark);
+  }
+  .compare-table--cards tbody td.compare-cell::before {
+    content: attr(data-label);
+    display: block;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted-dark);
+    margin-bottom: var(--space-1);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
