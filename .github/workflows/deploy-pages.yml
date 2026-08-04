@@ -5,30 +5,22 @@ on:
     branches:
       - main
     paths:
+      # Release 0 fix: the previous trigger hand-listed every top-level
+      # family folder (abrahamic/**, askjamie/**, ...). That allowlist
+      # already once silently missed 5 families for a third of the catalog,
+      # and any *new* family folder would again never trigger a deploy until
+      # someone remembered to add it here. These patterns match any
+      # top-level (or nested) family folder without naming it, so a 16th
+      # family with a SKILL.md/FAMILY.md deploys automatically. Do not
+      # revert to a per-family list — see
+      # forge/scripts/verify-deploy-trigger.mjs for the regression test this
+      # guards.
       - 'forge/**'
-      - '.github/workflows/deploy-pages.yml'
+      - '**/SKILL.md'
+      - '**/FAMILY.md'
       - 'skillz.manifest.json'
-      # A1 fix: this list must include every top-level family folder that has
-      # a FAMILY.md — it previously missed askjamie, glee-fully,
-      # knowledge-operations, context-extraction, and outcome-modeling, so
-      # edits to those 5 families (a third of the catalog) silently never
-      # triggered a deploy. Keep in sync with `ls -d */ | grep FAMILY.md`.
-      - 'abrahamic/**'
-      - 'agent-foundry/**'
-      - 'askjamie/**'
-      - 'community/**'
-      - 'context-extraction/**'
-      - 'glee-fully/**'
-      - 'knowledge-operations/**'
-      - 'lifetrkr/**'
-      - 'linkedin/**'
-      - 'mermaid/**'
-      - 'notion/**'
-      - 'outcome-modeling/**'
-      - 'process-capture/**'
-      - 'refolddec/**'
-      - 'universal/**'
       - 'AGENTS.md'
+      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -44,6 +36,15 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Release 0 fix: a shallow checkout (the previous default) has no
+          # per-file history, so `git log -- <path>` returns nothing for
+          # every skill and build-catalog.js silently substituted the
+          # top-level deploy commit as each skill's provenance. Every skill
+          # on the live site showed today's deploy date/commit instead of
+          # its real history. Full history is required for real per-skill
+          # createdAt/lastModified/commitSha.
+          fetch-depth: 0
 
       - name: Set up pnpm
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
@@ -60,6 +61,20 @@ jobs:
       - name: Install dependencies
         working-directory: forge
         run: pnpm install --frozen-lockfile
+
+      - name: Verify full git history is available
+        run: |
+          if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+            echo "FATAL: repository checkout is shallow. Per-skill provenance" >&2
+            echo "(createdAt/lastModified/commitSha) requires full git history." >&2
+            echo "Set 'fetch-depth: 0' on the checkout step." >&2
+            exit 1
+          fi
+          echo "OK: full git history is available ($(git rev-list --count HEAD) commits)."
+
+      - name: Verify deploy trigger is family-agnostic
+        working-directory: forge
+        run: node scripts/verify-deploy-trigger.mjs
 
       - name: Generate skill catalog
         working-directory: forge

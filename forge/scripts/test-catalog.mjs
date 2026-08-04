@@ -12,13 +12,16 @@
  * No test here promotes or fabricates evidence — see the non-goals in the
  * PRD this implements.
  */
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
+import { readFileSync, existsSync } from 'fs';
+import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 import { applyEvidencePolicy } from './build-catalog.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = join(__dirname, '..', '..');
 const CATALOG_PATH = join(__dirname, '..', 'public', 'data', 'catalog.json');
+const SUMMARY_PATH = join(__dirname, '..', 'public', 'data', 'project-summary.json');
 const MANIFEST_PATH = join(__dirname, '..', '..', 'skillz.manifest.json');
 
 let catalog, manifest;
@@ -272,6 +275,84 @@ test('every shipped skill satisfies its own declared maturitySource (evidence-po
       assert(!downgraded, `skill "${s.name}" claims maturity "${s.maturity}" via ${s.maturitySource} but does not meet the evidence-policy bar for it (policy would downgrade to "${policed}") — the build should have set maturitySource to "evidence-policy"`);
     }
   }
+});
+
+// ─── Release 0: provenance tests ───────────────────────────────────────────
+// These guard against the shallow-checkout regression where every skill's
+// createdAt/lastModified/commitSha silently fell back to today's deploy
+// commit instead of the file's real git history.
+
+// Only enforced in CI: a Replit dev workspace clone can report itself as
+// "shallow" while still carrying a large, useful commit window (see
+// ensureFullHistory()'s comment in build-catalog.js), so this would be a
+// false positive locally. The production deploy workflow is what must have
+// full history, and it sets GITHUB_ACTIONS=true.
+const inCI = process.env.GITHUB_ACTIONS === 'true' || process.env.CI === 'true';
+test('this checkout has full git history (not shallow) [enforced in CI]', () => {
+  if (!inCI) { console.log('    (skipped outside CI)'); return; }
+  let isShallow;
+  try {
+    isShallow = execSync('git rev-parse --is-shallow-repository', {
+      cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8',
+    }).trim();
+  } catch (err) {
+    throw new Error(`could not determine checkout depth: ${err.message}`);
+  }
+  assert(isShallow === 'false', 'checkout is shallow — per-file git history is unavailable, so the catalog cannot carry real provenance');
+});
+
+test('every skill has non-null lastModified, commitSha, and createdAt', () => {
+  const missing = catalog.skills.filter(s => !s.lastModified || !s.commitSha || !s.createdAt);
+  assert(missing.length === 0,
+    `${missing.length} skill(s) missing provenance fields (fabricated-fallback regression?): ${missing.slice(0, 5).map(s => s.name).join(', ')}`);
+});
+
+// Deterministic fixture check: recompute provenance directly with `git log`
+// for a sample of historically distinct skill paths and assert the catalog
+// build derived the same values, independent of build-catalog.js's own
+// internal helpers (this test does not import or call them).
+test('sampled skills\' provenance matches direct `git log` output', () => {
+  const sample = catalog.skills.filter(s => s.path).slice(0, 5);
+  assert(sample.length >= 1, 'no skills available to sample for provenance cross-check');
+  for (const s of sample) {
+    const relPath = s.path;
+    const absPath = join(REPO_ROOT, relPath);
+    if (!existsSync(absPath)) continue; // renamed/removed since catalog build; skip
+    const newest = execSync(`git log -n 1 --format="%aI %H" -- ${JSON.stringify(relPath)}`,
+      { cwd: REPO_ROOT, encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] }).trim();
+    assert(newest, `git log returned no history for "${relPath}" — cannot verify provenance`);
+    const [, expectedSha] = newest.split(' ');
+    assert(s.commitSha && expectedSha.startsWith(s.commitSha),
+      `skill "${s.name}" commitSha "${s.commitSha}" does not match \`git log\` HEAD-for-path "${expectedSha}"`);
+
+    const history = execSync(`git log --follow --format="%aI" -- ${JSON.stringify(relPath)}`,
+      { cwd: REPO_ROOT, encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] }).trim().split('\n').filter(Boolean);
+    const expectedCreatedAt = history[history.length - 1];
+    assert(s.createdAt === expectedCreatedAt,
+      `skill "${s.name}" createdAt "${s.createdAt}" does not match oldest \`git log --follow\` entry "${expectedCreatedAt}"`);
+  }
+});
+
+// At least one long-lived skill's real creation date must predate the
+// current HEAD commit's date — the concrete symptom of the shallow-checkout
+// bug was every skill showing the *deploy* date as its creation date.
+test('at least one skill\'s createdAt predates the current HEAD commit (not a deploy-timestamp fabrication)', () => {
+  const headDate = execSync('git log -n 1 --format=%aI', { cwd: REPO_ROOT, encoding: 'utf8' }).trim();
+  const older = catalog.skills.find(s => s.createdAt && s.createdAt < headDate);
+  assert(older, `no skill has a createdAt earlier than HEAD (${headDate}) — provenance may be fabricated from the deploy commit`);
+});
+
+// ─── Release 0: project-summary.json contract ──────────────────────────────
+
+test('project-summary.json exists and matches the catalog it was built from', () => {
+  assert(existsSync(SUMMARY_PATH), `${SUMMARY_PATH} was not generated`);
+  const summary = JSON.parse(readFileSync(SUMMARY_PATH, 'utf-8'));
+  assert(summary.skillCount === catalog.skillCount, 'project-summary.json skillCount does not match catalog.json');
+  assert(summary.familyCount === catalog.familyCount, 'project-summary.json familyCount does not match catalog.json');
+  assert(summary.sourceCommit === catalog.sourceCommit, 'project-summary.json sourceCommit does not match catalog.json');
+  assert(typeof summary.capabilities === 'object' && summary.capabilities !== null, 'project-summary.json is missing a capabilities object');
+  const maturitySum = Object.values(summary.maturityCounts || {}).reduce((a, b) => a + b, 0);
+  assert(maturitySum === summary.skillCount, `project-summary.json maturityCounts sum to ${maturitySum}, expected ${summary.skillCount}`);
 });
 
 console.log(`\n${passed} passed, ${failed} failed`);

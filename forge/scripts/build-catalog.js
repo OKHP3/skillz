@@ -45,6 +45,62 @@ function getGitCommit() {
   } catch { return null; }
 }
 
+// Release 0 fix: fail closed rather than silently publish fabricated
+// provenance. A shallow checkout has no per-file `git log` history, so
+// every skill's createdAt/lastModified/commitSha would come back null —
+// previously masked by falling back to the top-level deploy commit (see
+// the removed `|| sourceCommit` in the skill-building loop below). CI's
+// "Verify full git history is available" step in deploy-pages.yml already
+// checks this before build-catalog.js runs; this is defense in depth for
+// any other place the script gets invoked (local dev on a shallow clone,
+// a future workflow change, etc). Set ALLOW_SHALLOW_CATALOG_BUILD=1 to
+// intentionally build with placeholder-free-but-null provenance anyway
+// (e.g. a quick local shallow-clone smoke test) — it is never set in CI.
+function ensureFullHistory() {
+  let isShallow = false;
+  try {
+    isShallow = execSync('git rev-parse --is-shallow-repository', {
+      cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8',
+    }).trim() === 'true';
+  } catch {
+    // Not a git repo at all (e.g. a tarball export) — nothing to enforce.
+    return;
+  }
+  if (!isShallow) return;
+
+  // Only fail closed in CI, where a shallow checkout means GitHub Actions'
+  // default fetch-depth:1 — zero usable history beyond the deploy commit,
+  // which is exactly what caused every skill's provenance to be fabricated
+  // as the deploy date. deploy-pages.yml sets GITHUB_ACTIONS=true and now
+  // requests fetch-depth: 0, so this should never legitimately fire there.
+  // A Replit dev workspace clone can also report itself as "shallow" while
+  // still carrying a large, useful commit window — blocking every local
+  // `pnpm dev`/`pnpm build` on that would make ordinary development
+  // impossible for no safety benefit, since nothing here deploys to the
+  // public site. In that case, warn instead so the gap stays visible in
+  // local dev without being fabricated.
+  const inCI = process.env.GITHUB_ACTIONS === 'true' || process.env.CI === 'true';
+  if (inCI && !process.env.ALLOW_SHALLOW_CATALOG_BUILD) {
+    console.error(
+      'FATAL: this CI checkout is shallow. Per-skill provenance ' +
+      '(createdAt/lastModified/commitSha) requires full history, or every ' +
+      'skill silently ships fabricated deploy-time dates. Fetch full ' +
+      'history (`git fetch --unshallow` or a checkout with fetch-depth: 0) ' +
+      'before running this build, or set ALLOW_SHALLOW_CATALOG_BUILD=1 to ' +
+      'proceed anyway with null (not fabricated) provenance fields.'
+    );
+    process.exit(1);
+  }
+  if (!inCI) {
+    console.warn(
+      '[catalog warn] this checkout is shallow — some skills may show ' +
+      '"Unknown" provenance instead of real git history. This is expected ' +
+      'in local development and is not fabricated. The production deploy ' +
+      'workflow fails closed instead of shipping fabricated dates.'
+    );
+  }
+}
+
 function getGitRef() {
   // GitHub Actions sets GITHUB_REF_NAME (e.g. "main"); use it to avoid detached-HEAD "HEAD" value
   if (process.env.GITHUB_REF_NAME) return process.env.GITHUB_REF_NAME;
@@ -571,6 +627,7 @@ function findSkillFiles(dir, depth = 0) {
 // ─── Build catalog ────────────────────────────────────────────────────────────
 
 function buildCatalog() {
+  ensureFullHistory();
   const sourceCommit = getGitCommit();
   const sourceRef = getGitRef();
 
@@ -716,7 +773,16 @@ function buildCatalog() {
       rawUrl,
       githubUrl,
       lastModified: fileGitInfo.lastModified,
-      commitSha: fileGitInfo.commitSha || sourceCommit,
+      // Release 0 fix: this previously fell back to `sourceCommit` (the
+      // top-level deploy commit) whenever the per-file git lookup came back
+      // empty — which happens on every shallow checkout. That silently
+      // relabeled "we don't know this file's commit" as "this file was
+      // last touched in today's deploy," which is a fabricated claim, not
+      // a graceful degradation. When per-file history is genuinely
+      // unavailable this is now `null`, and the UI renders "Unknown"
+      // instead. ensureFullHistory() below fails the build closed on a
+      // shallow checkout so this should never legitimately happen in CI.
+      commitSha: fileGitInfo.commitSha,
       createdAt,
       packageMetadata,
       evidence: evidenceV2,
@@ -851,6 +917,8 @@ function readFamilyNarrative(familySlug) {
   console.log(`  ${skills.length} skills across ${familyList.length} families`);
   console.log(`  Source: ${sourceRef}@${sourceCommit ?? 'unknown'}`);
 
+  writeProjectSummary(catalog);
+
   // Legacy compatibility copy: the committed deploy-pages.yml's "Verify
   // catalog provenance" step still `require()`s ./src/data/catalog.json.
   // That workflow file cannot be updated from this environment (GitHub
@@ -911,6 +979,73 @@ function syncManifestCounts(catalog) {
 
   writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + '\n', 'utf-8');
   console.log(`✓ Synced counts into ${MANIFEST_PATH} (${catalog.skillCount} skills, ${catalog.familyCount} families)`);
+}
+
+// ─── Project summary contract ────────────────────────────────────────────────
+// Release 0: a single generated "truth" artifact that any external surface
+// (e.g. an OverKill Hill project dossier page describing Skillz Forge) can
+// fetch to stay in sync with what is actually deployed, instead of hand-
+// copying numbers that drift. Every field here must describe *actually
+// shipped* behavior — this is not a roadmap or an intent file. When a
+// capability flag flips from false to true, it must be because the
+// corresponding feature is live in this build, not because it is planned.
+//
+// Shape (documented here as the canonical reference — keep in sync with any
+// change to this function):
+//   {
+//     "generatedAt": ISO-8601 timestamp of this build,
+//     "sourceRepository": "https://github.com/OKHP3/skillz",
+//     "sourceRef": branch name the catalog was built from,
+//     "sourceCommit": short commit SHA the catalog was built from,
+//     "skillCount": number,
+//     "familyCount": number,
+//     "maturityCounts": { [maturityLevel]: number },
+//     "evidenceStatusCounts": { [v1EvidenceStatus]: number },
+//     "capabilities": {
+//       "familyOrientationPages": boolean,  // /families/:family pages
+//       "skillCompare": boolean,            // Compare page
+//       "curatedStacks": boolean,           // static, author-curated Stacks page
+//       "fullContractRenderer": boolean,    // in-app rendered SKILL.md ("Full Contract")
+//       "localStackComposer": boolean,      // visitor-built, exportable local stack
+//       "guidedDiscoveryAid": boolean       // "start with the work" question flow
+//     }
+//   }
+function writeProjectSummary(catalog) {
+  const SUMMARY_OUTPUT = join(__dirname, '..', 'public', 'data', 'project-summary.json');
+
+  const maturityCounts = {};
+  const evidenceStatusCounts = {};
+  for (const s of catalog.skills) {
+    maturityCounts[s.maturity] = (maturityCounts[s.maturity] || 0) + 1;
+    evidenceStatusCounts[s.evidenceStatus] = (evidenceStatusCounts[s.evidenceStatus] || 0) + 1;
+  }
+
+  const summary = {
+    generatedAt: catalog.generatedAt,
+    sourceRepository: catalog.sourceRepository,
+    sourceRef: catalog.sourceRef,
+    sourceCommit: catalog.sourceCommit,
+    skillCount: catalog.skillCount,
+    familyCount: catalog.familyCount,
+    maturityCounts,
+    evidenceStatusCounts,
+    // Release 1 (Full Contract renderer, local stack composer) and
+    // Release 2 (guided discovery aid) are not yet shipped — keep these
+    // false until the corresponding feature actually merges. Do not flip
+    // one of these ahead of the feature landing.
+    capabilities: {
+      familyOrientationPages: true,
+      skillCompare: true,
+      curatedStacks: true,
+      fullContractRenderer: false,
+      localStackComposer: false,
+      guidedDiscoveryAid: false,
+    },
+  };
+
+  mkdirSync(dirname(SUMMARY_OUTPUT), { recursive: true });
+  writeFileSync(SUMMARY_OUTPUT, JSON.stringify(summary, null, 2) + '\n', 'utf-8');
+  console.log(`✓ Written: ${SUMMARY_OUTPUT}`);
 }
 
 // Only run the full repo-walk build when this file is executed directly
