@@ -1,6 +1,46 @@
 {
-  "generatedAt": "2026-08-04T16:15:02.744Z",
+  "generatedAt": "2026-08-04T18:32:42.841Z",
   "commits": [
+    {
+      "sha": "8ae0463e3d4f20f7d1ddb8e01e7491764ef1a55f",
+      "shortSha": "8ae0463",
+      "message": "Add footer component and update project configuration and data files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T16:15:34Z",
+      "url": "https://github.com/OKHP3/skillz/commit/8ae0463e3d4f20f7d1ddb8e01e7491764ef1a55f"
+    },
+    {
+      "sha": "5e15f3cde3a7ccaa8a08e904e0cc20365453398f",
+      "shortSha": "5e15f3c",
+      "message": "Update catalog and manifest data files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T16:09:42Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5e15f3cde3a7ccaa8a08e904e0cc20365453398f"
+    },
+    {
+      "sha": "0948fbc3b261e518abb3e3385f4b703e246c859b",
+      "shortSha": "0948fbc",
+      "message": "Replace stub placeholder text in stacks.ts with finished copy\n\nReplit-Task-Id: 42f5925d-6e61-4dce-86f5-04974c0933d0",
+      "author": "overkillhillp3",
+      "date": "2026-08-04T16:09:29Z",
+      "url": "https://github.com/OKHP3/skillz/commit/0948fbc3b261e518abb3e3385f4b703e246c859b"
+    },
+    {
+      "sha": "9b9a26a4a54747e4cdb444d6a8aa2ad1ed77accb",
+      "shortSha": "9b9a26a",
+      "message": "Update activity data and enhance skill detail page styling\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T16:09:07Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9b9a26a4a54747e4cdb444d6a8aa2ad1ed77accb"
+    },
+    {
+      "sha": "370d8a8853ba33f33a9f174f68db6d56599b0d25",
+      "shortSha": "370d8a8",
+      "message": "Update catalog build script and add tests\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T16:06:36Z",
+      "url": "https://github.com/OKHP3/skillz/commit/370d8a8853ba33f33a9f174f68db6d56599b0d25"
+    },
     {
       "sha": "51bbfd97cfa6776fda76d2bb5be07b94e32f7977",
       "shortSha": "51bbfd9",
@@ -40,46 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-04T12:52:07Z",
       "url": "https://github.com/OKHP3/skillz/commit/db967624625858626aecc536e808e6773f5afdd5"
-    },
-    {
-      "sha": "6fbf1e4eb3f7aacc04dd03e95310179d57da96a0",
-      "shortSha": "6fbf1e4",
-      "message": "Update catalog and manifest data files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T12:33:40Z",
-      "url": "https://github.com/OKHP3/skillz/commit/6fbf1e4eb3f7aacc04dd03e95310179d57da96a0"
-    },
-    {
-      "sha": "56e2238633a84127bbd181ca438aa1af72e0f640",
-      "shortSha": "56e2238",
-      "message": "Show skill pathway branches as navigable fork lanes, not just +N counts\n\nReplit-Task-Id: 6f90902f-700f-4fea-9b5c-4b92b7c005b1",
-      "author": "overkillhillp3",
-      "date": "2026-08-04T12:33:25Z",
-      "url": "https://github.com/OKHP3/skillz/commit/56e2238633a84127bbd181ca438aa1af72e0f640"
-    },
-    {
-      "sha": "305fd30aeb0238f10b6069671d70c437f543ff98",
-      "shortSha": "305fd30",
-      "message": "Update catalog data and skill pathway UI components\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T12:04:24Z",
-      "url": "https://github.com/OKHP3/skillz/commit/305fd30aeb0238f10b6069671d70c437f543ff98"
-    },
-    {
-      "sha": "1fa5d9ae0d97acd341d55dd01e0fd65029f42f6f",
-      "shortSha": "1fa5d9a",
-      "message": "Update product catalog data\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T06:10:38Z",
-      "url": "https://github.com/OKHP3/skillz/commit/1fa5d9ae0d97acd341d55dd01e0fd65029f42f6f"
-    },
-    {
-      "sha": "79d520a8159a197fa41a5041633521e51f93453c",
-      "shortSha": "79d520a",
-      "message": "Add workflow pathway visualization to skill detail pages\n\n- Add buildWorkflowPath() to search.ts: traverses companion graph backward to chain root then forward, returning ordered PathNode[] with branch counts\n- New SkillPathway component renders the chain as a scrollable horizontal track with numbered nodes, directional arrows, and branch indicators (+N pills)\n- SkillDetail replaces flat companions list with SkillPathway when a multi-step chain is available; falls back to original flat list for single isolated companions\n- CSS: full pathway layout including maturity colour coding, current-skill highlight, and responsive vertical stack on narrow screens\n- Restore deploy-pages.yml to correct 37f966d version (fixes broken catalog path ./src/data → ./public/data, restores all family triggers, activity feed, and test-catalog steps reverted by 7ac8267)\n\nReplit-Task-Id: b24ea3ff-adfd-43a9-b767-5ee0b360de72",
-      "author": "overkillhillp3",
-      "date": "2026-08-04T06:10:26Z",
-      "url": "https://github.com/OKHP3/skillz/commit/79d520a8159a197fa41a5041633521e51f93453c"
     }
   ],
   "fetchError": null

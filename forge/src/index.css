@@ -1134,6 +1134,12 @@ input, select, textarea {
   color: var(--color-text-muted-dark);
   font-size: var(--text-xs);
   opacity: 0.7;
+  /* Cardinal rule: "OverKill Hill P³™" must never break across a line —
+     see the brand-name-integrity rule in the okhp3-brand-style-registry
+     skill. The &nbsp;-joined string in Nav.tsx already prevents mid-name
+     wraps; this belt-and-suspenders rule stops the whole string wrapping
+     away from its trailing "™" at narrow nav widths. */
+  white-space: nowrap;
 }
 .nav-link-brand:hover {
   opacity: 1;
@@ -1141,6 +1147,13 @@ input, select, textarea {
 }
 .nav-link-external {
   color: var(--color-text-muted-dark);
+}
+.nav-link-github {
+  display: inline-flex;
+  align-items: center;
+}
+.nav-link-github:hover {
+  color: var(--color-text-dark);
 }
 .nav-links {
   display: flex;

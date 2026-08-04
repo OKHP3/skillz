@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from '../ui/ThemeToggle';
+import GitHubIcon from '../ui/GitHubIcon';
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,12 +34,19 @@ export default function Nav() {
           <Link to="/faq" aria-current={isActive('/faq')}>FAQ</Link>
           <Link to="/contribute" aria-current={isActive('/contribute')}>Contribute</Link>
           <Link to="/activity" aria-current={isActive('/activity')}>Activity</Link>
-          <a href="https://github.com/OKHP3/skillz" target="_blank" rel="noopener noreferrer" className="nav-link-external">
-            GitHub
-          </a>
           <span className="nav-divider" aria-hidden="true" />
           <a href="https://overkillhill.com/" target="_blank" rel="noopener noreferrer" className="nav-link-brand">
-            OverKill Hill P³™
+            OverKill&nbsp;Hill&nbsp;P³™
+          </a>
+          <a
+            href="https://github.com/OKHP3/skillz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link-external nav-link-github"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <GitHubIcon />
           </a>
           <ThemeToggle />
         </nav>
