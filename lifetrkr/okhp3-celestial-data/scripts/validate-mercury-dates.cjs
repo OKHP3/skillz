@@ -8,6 +8,7 @@
  * - Windows are in ascending chronological order
  * - No gaps larger than 200 days (normal max spacing is ~115 days)
  * - Dates are valid ISO strings
+ * - Last end date is at least 365 days in the future (coverage expiry guard)
  *
  * Usage:
  *   node .agents/skills/okhp3-celestial-data/scripts/validate-mercury-dates.cjs
@@ -95,6 +96,28 @@ function main() {
           `[${i + 1}] LARGE GAP: ${Math.round(gapDays)} days between ${prev.raw[1]} and ${raw[0]} (max expected ~115)`
         );
       }
+    }
+  }
+
+  // Coverage expiry guard: last end date must be >= 365 days from today.
+  // If missed, getMercuryStatus silently returns retrograde:false for all
+  // dates beyond the last entry — this check fires before that happens.
+  if (dates.length > 0) {
+    const lastEntry = dates[dates.length - 1];
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0);
+    const daysRemaining = (lastEntry.end.getTime() - today.getTime()) / MS_PER_DAY;
+    if (daysRemaining < 365) {
+      console.error(
+        `COVERAGE EXPIRING: Last retrograde end date ${lastEntry.raw[1]} is only ` +
+        `${Math.round(daysRemaining)} day(s) away (minimum required: 365). ` +
+        `Update MERCURY_RETROGRADE with the next year of ephemeris data.`
+      );
+      errors++;
+    } else {
+      console.log(
+        `Coverage OK: last end date ${lastEntry.raw[1]} is ${Math.round(daysRemaining)} days away.`
+      );
     }
   }
 
