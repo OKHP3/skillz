@@ -168,7 +168,7 @@ export interface ResolvedPathNode {
   isCurrent: boolean;
   /** Extra incoming edges beyond the one in the displayed chain (shows branching) */
   incomingBranches: number;
-  /** Extra outgoing edges beyond the first companion (shows branching) */
+  /** Extra outgoing edges beyond the first companion (= branchSkills.length) */
   outgoingBranches: number;
   /** Companion names declared on this skill that do not match any real
    *  skill in the catalog (typo or unpropagated rename). Non-fatal at
@@ -176,6 +176,8 @@ export interface ResolvedPathNode {
    *  surfaced here so the UI can flag the break instead of silently
    *  omitting it, the way the old `.filter(c => skillMap.has(c))` did. */
   unresolvedCompanions: string[];
+  /** The actual alternate companion skills diverging from this node (companions[1..]) */
+  branchSkills: Skill[];
 }
 
 /** A companion name that was declared on the chain but does not resolve to
@@ -246,6 +248,7 @@ export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] 
       incomingBranches: Math.max(0, totalPreds - 1),
       outgoingBranches: Math.max(0, validCompanions.length - 1),
       unresolvedCompanions,
+      branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
     });
 
     if (validCompanions.length > 0 && nodes.length < MAX_TOTAL) {
@@ -275,6 +278,7 @@ export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] 
       incomingBranches: 0,
       outgoingBranches: Math.max(0, validCompanions.length - 1),
       unresolvedCompanions,
+      branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
     }];
   }
 

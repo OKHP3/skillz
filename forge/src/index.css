@@ -416,10 +416,80 @@
 
 .skill-pathway__step {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+/* Inner row: branch-in indicator + node card + arrow */
+.skill-pathway__step-main {
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: var(--space-2);
+}
+
+/* ── Fork lane ─────────────────────────────────────────────────────────────── */
+
+/* Container that hangs below a forked step */
+.skill-pathway__fork {
+  margin-top: var(--space-2);
+  /* Left border acts as the vertical part of the fork visual */
+  border-left: 2px solid var(--color-border-dark);
+  /* Indent to roughly align under the left edge of the node card */
+  margin-left: calc(var(--space-2) + 80px);
+  padding-left: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* A single alternate branch row: arm glyph + mini card */
+.skill-pathway__fork-branch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* The ↳ glyph connecting fork to branch card */
+.skill-pathway__fork-arm {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-dark);
   flex-shrink: 0;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Mini card for an alternate branch companion */
+.skill-pathway__fork-node {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 140px;
+  min-height: 60px;
+  border: 1px solid var(--color-border-dark);
+  background: var(--color-bg);
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  text-decoration: none;
+  transition: border-color var(--transition);
+  flex-shrink: 0;
+}
+
+.skill-pathway__fork-node:hover,
+.skill-pathway__fork-node:focus-visible {
+  border-color: var(--color-steel-light);
+}
+
+.skill-pathway__fork-node:focus-visible {
+  outline: 2px solid var(--color-steel);
+  outline-offset: 2px;
+}
+
+/* Slightly smaller name text inside fork cards */
+.skill-pathway__fork-node-name {
+  font-size: 0.7rem !important;
+  padding-right: 0 !important;
 }
 
 .skill-pathway__node {
@@ -578,14 +648,19 @@
     overflow-x: visible;
   }
 
+  /* step is already column; ensure it stretches full width */
   .skill-pathway__step {
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+  }
+
+  .skill-pathway__step-main {
+    align-items: center;
   }
 
   .skill-pathway__node {
     width: 100%;
     min-height: unset;
+    flex: 1;
   }
 
   .skill-pathway__arrow {
@@ -597,6 +672,17 @@
 
   .skill-pathway__branch {
     margin-top: 0;
+  }
+
+  /* On mobile the fork indentation is smaller */
+  .skill-pathway__fork {
+    margin-left: var(--space-6);
+  }
+
+  .skill-pathway__fork-node {
+    width: 100%;
+    flex: 1;
+    min-height: unset;
   }
 }
 
