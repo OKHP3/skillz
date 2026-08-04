@@ -719,7 +719,7 @@ input, select, textarea {
   background: var(--color-copper);
   color: var(--color-bg);
   font-weight: 500;
-  transition: all var(--transition);
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
   border: 1px solid transparent;
 }
 .btn:hover {
@@ -753,11 +753,11 @@ input, select, textarea {
 .input-text:focus {
   outline: none;
   border-color: var(--color-copper);
-  box-shadow: 0 0 0 2px var(--color-copper-light);
 }
 .input-text:focus-visible {
   outline: 2px solid var(--color-copper);
   outline-offset: 1px;
+  box-shadow: 0 0 0 2px var(--color-copper-light);
 }
 
 /* Home */

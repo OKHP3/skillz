@@ -574,9 +574,16 @@ function buildCatalog() {
     const tags = Array.isArray(tagsRaw)
       ? tagsRaw
       : (typeof tagsRaw === 'string' ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : []);
-    const topics = Array.isArray(topicsRaw)
+    let topics = Array.isArray(topicsRaw)
       ? topicsRaw
       : (typeof topicsRaw === 'string' ? topicsRaw.split(',').map(t => t.trim()).filter(Boolean) : []);
+    // C3: fall back to the package's own category (always populated per the
+    // Foundry baseline, rule 8 below) so `topics` is never a permanently
+    // empty, half-declared field for packages that simply never wrote an
+    // explicit `topics:` frontmatter line.
+    if (topics.length === 0 && category) {
+      topics = [category];
+    }
 
     const maturity = deriveMaturity(fm.metadata || {}, body);
     const maturitySource = deriveMaturitySource(fm.metadata || {});
