@@ -89,16 +89,22 @@ export function getAstroSeason(date: Date = new Date()): AstroSeason {
   return found ?? ASTRO_SEASONS[0]
 }
 
-// ─── Mercury Retrograde (hardcoded 2026-2031) ─────────────────────────────────
+// ─── Mercury Retrograde (hardcoded 2026-2032) ─────────────────────────────────
 // Sources:
 //   2026-2028 -- published ephemeris (original data set).
-//   2029      -- Cafe Astrology and cross-referenced sources (4 periods this year).
-//   2030      -- Astro-Seek Swiss Ephemeris planetary motion calendar; Dec period
-//                also confirmed by Cafe Astrology (station Rx Dec 6, sD Dec 25).
-//   2031      -- Astro-Seek Swiss Ephemeris (horoscopes.astro-seek.com/mercury-
-//                retrograde-astrology-calendar-2031; 6 station events confirmed).
+//   2029-2031 -- verified against NASA JPL Horizons (geocentric apparent RA,
+//                daily step 2029-01-01 to 2031-12-31, station dates identified
+//                from sign changes in daily RA motion; queried 2026-08-04).
+//                Entries within 1 day of prior projected values were kept;
+//                5 date fields differing by 2 days were corrected:
+//                2029-01 end, 2029-05 start, 2030-12 end, 2031-11 start+end.
+//   2032      -- NASA JPL Horizons (geocentric apparent RA, daily step
+//                2032-01-01 to 2032-12-31, station dates from sign changes
+//                in daily RA motion; queried 2026-08-04).
+//                3 retrograde periods: Mar, Jul, Nov.
 // Update this array annually. Note: 2029-12-22 entry straddles the year boundary
-//   (sD Jan 11, 2030) -- ISO string comparison handles this correctly.
+//   (JPL SD 2030-01-12, kept as 2030-01-11 within 1-day tolerance) --
+//   ISO string comparison handles this correctly.
 
 export const MERCURY_RETROGRADE = [
   { start: '2026-03-15', end: '2026-04-07' },
@@ -110,22 +116,39 @@ export const MERCURY_RETROGRADE = [
   { start: '2028-02-15', end: '2028-03-09' },
   { start: '2028-06-16', end: '2028-07-11' },
   { start: '2028-10-09', end: '2028-10-30' },
-  { start: '2029-01-07', end: '2029-01-27' }, // 2029 has 4 periods
-  { start: '2029-05-01', end: '2029-05-25' },
+  { start: '2029-01-07', end: '2029-01-29' }, // 2029 has 4 periods; end corrected +2d vs prior
+  { start: '2029-05-03', end: '2029-05-25' }, // start corrected +2d vs prior
   { start: '2029-09-02', end: '2029-09-25' },
-  { start: '2029-12-22', end: '2030-01-11' }, // straddles year; sD Jan 11 2030
+  { start: '2029-12-22', end: '2030-01-11' }, // straddles year; JPL SD 2030-01-12 (1d tol.)
   { start: '2030-04-13', end: '2030-05-06' },
   { start: '2030-08-16', end: '2030-09-08' },
-  { start: '2030-12-06', end: '2030-12-25' },
+  { start: '2030-12-06', end: '2030-12-27' }, // end corrected +2d vs prior
   { start: '2031-03-26', end: '2031-04-18' },
   { start: '2031-07-29', end: '2031-08-22' },
-  { start: '2031-11-19', end: '2031-12-09' },
+  { start: '2031-11-21', end: '2031-12-11' }, // start+end corrected +2d vs prior
+  { start: '2032-03-08', end: '2032-03-30' }, // JPL Horizons station dates: SR 2032-03-08, SD 2032-03-30
+  { start: '2032-07-10', end: '2032-08-04' }, // JPL Horizons station dates: SR 2032-07-10, SD 2032-08-04
+  { start: '2032-11-04', end: '2032-11-23' }, // JPL Horizons station dates: SR 2032-11-04, SD 2032-11-23
 ]
 
 export function getMercuryStatus(
   date: Date = new Date(),
 ): { retrograde: boolean; endDate: string | null } {
   const iso = date.toISOString().split('T')[0]
+
+  // Warn when the queried date is within 60 days of the last covered date,
+  // so callers notice before coverage silently runs out.
+  const lastEnd = MERCURY_RETROGRADE[MERCURY_RETROGRADE.length - 1].end
+  const msUntilLastEnd = new Date(lastEnd).getTime() - date.getTime()
+  const daysUntilLastEnd = msUntilLastEnd / 86_400_000
+  if (daysUntilLastEnd >= 0 && daysUntilLastEnd <= 60) {
+    console.warn(
+      `[getMercuryStatus] Mercury retrograde coverage expires in ` +
+      `${Math.round(daysUntilLastEnd)} day(s) (last entry ends ${lastEnd}). ` +
+      `Update MERCURY_RETROGRADE with the next year of ephemeris data.`
+    )
+  }
+
   const period = MERCURY_RETROGRADE.find(r => iso >= r.start && iso <= r.end)
   return { retrograde: !!period, endDate: period?.end ?? null }
 }
