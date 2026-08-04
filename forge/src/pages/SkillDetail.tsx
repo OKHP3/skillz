@@ -91,6 +91,17 @@ export default function SkillDetail() {
   const displayName = skill.displayName || skill.name;
   const showSlugSecondary = skill.displayName && skill.displayName !== skill.name;
 
+  // Evidence-contract v2: evidence is stale whenever it was evaluated against
+  // a different package version than the one currently shipping. Mirrors the
+  // "stale evidence" chip in Explore.tsx (~line 318) — same condition, same
+  // meaning, so a visitor sees the same warning whether they land here via
+  // search or a direct/shared link.
+  const isEvidenceStale = Boolean(
+    skill.evidence.evaluatedSkillVersion &&
+    skill.version &&
+    skill.evidence.evaluatedSkillVersion !== skill.version
+  );
+
   return (
     <div data-page="skill-detail">
       <Nav />
@@ -116,6 +127,14 @@ export default function SkillDetail() {
               </span>
               {skill.version && <span>v{skill.version}</span>}
               <span>{skill.license}</span>
+              {isEvidenceStale && (
+                <span
+                  className="evidence-chip evidence-chip--warn"
+                  title={`Evaluated ${skill.evidence.evaluatedSkillVersion}, current is ${skill.version}`}
+                >
+                  stale evidence
+                </span>
+              )}
             </div>
             <p className="detail-path">{skill.path}</p>
           </header>
@@ -359,6 +378,14 @@ export default function SkillDetail() {
               the 4-value evidence.status vocabulary and per-package counts. */}
           <div className="detail-evidence-release">
             <h2>Evidence and release state</h2>
+
+            {isEvidenceStale && (
+              <p className="detail-evidence-stale-warning" role="alert">
+                <strong>Stale evidence:</strong> This evidence was evaluated against version{' '}
+                {skill.evidence.evaluatedSkillVersion}, not the current {skill.version} package.
+              </p>
+            )}
+
             <dl>
               <dt>Package version</dt>
               <dd>{skill.version ?? <span className="meta-pending">No version declared</span>}</dd>

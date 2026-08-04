@@ -1,85 +1,85 @@
 {
-  "generatedAt": "2026-08-04T12:53:31.093Z",
+  "generatedAt": "2026-08-04T16:08:50.634Z",
   "commits": [
     {
-      "sha": "3d542c85ca9ce0e562b12534e4f102f932a311c1",
-      "shortSha": "3d542c8",
-      "message": "Update catalog data and apply CSS styling changes\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T06:08:54Z",
-      "url": "https://github.com/OKHP3/skillz/commit/3d542c85ca9ce0e562b12534e4f102f932a311c1"
-    },
-    {
-      "sha": "5d1a80a5c660a66cf7881e0d24972dfc7b3ef4fe",
-      "shortSha": "5d1a80a",
-      "message": "Remove obsolete contract deployment evidence file\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T05:47:54Z",
-      "url": "https://github.com/OKHP3/skillz/commit/5d1a80a5c660a66cf7881e0d24972dfc7b3ef4fe"
-    },
-    {
-      "sha": "cb947e63015b7c8369c31887fb41bc4e33cfb2fe",
-      "shortSha": "cb947e6",
-      "message": "fix: complete A5 accessibility fixes and A7 topics population\n\n- .input-text ring now only appears on :focus-visible (keyboard), not plain\n  mouse click focus (A5 was previously only half-applied).\n- .btn transition now lists explicit properties instead of 'all' (A5).\n- topics now falls back to the package's own category when no explicit\n  topics: frontmatter exists, so the field is never permanently empty\n  (C3/A7 — was populated for tags but not topics).",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T05:45:16Z",
-      "url": "https://github.com/OKHP3/skillz/commit/cb947e63015b7c8369c31887fb41bc4e33cfb2fe"
-    },
-    {
-      "sha": "9d9ea9576651bb1fdbb44c92238e73c61351a570",
-      "shortSha": "9d9ea95",
-      "message": "fix: restore legacy src/data/catalog.json copy so CI provenance check does not fail\n\nThe committed deploy-pages.yml still requires ./src/data/catalog.json in its\n'Verify catalog provenance' step. That workflow file cannot be updated from\nthis environment (GitHub rejects pushes touching .github/workflows/* without\nOAuth workflow scope). Moving the runtime catalog to public/data/catalog.json\n(evidence-contract-v2 work) broke that CI step. build-catalog.js now writes\nboth locations until the workflow file itself can be fixed.",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T05:41:35Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9d9ea9576651bb1fdbb44c92238e73c61351a570"
-    },
-    {
-      "sha": "7ac8267fb6bf4cbce5be40d2b9c804bd10c7394b",
-      "shortSha": "7ac8267",
-      "message": "chore: temporarily revert deploy-pages.yml to origin version to unblock push (OAuth app lacks workflow scope)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T05:30:53Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7ac8267fb6bf4cbce5be40d2b9c804bd10c7394b"
-    },
-    {
-      "sha": "f16886dbc2b006f0154e70b94869c3acdca61500",
-      "shortSha": "f16886d",
-      "message": "Merge remote-tracking branch 'origin/main'",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T05:21:32Z",
-      "url": "https://github.com/OKHP3/skillz/commit/f16886dbc2b006f0154e70b94869c3acdca61500"
-    },
-    {
-      "sha": "37f966d8ec11933d10b9b65088a8d468f37b61d2",
-      "shortSha": "37f966d",
-      "message": "Skillz Forge: evidence contract v2, deploy integrity fixes, family pages\n\nSection A (P0):\n- A1: deploy-pages.yml path filter was missing askjamie, glee-fully,\n  knowledge-operations, context-extraction, outcome-modeling (5 of 15\n  families never triggered a deploy). Fixed and documented.\n- A2: skillz.manifest.json counts are now regenerated from the just-built\n  catalog and self-checked at build time.\n- A3: catalog.json moved to public/data/ and fetched at runtime via a new\n  CatalogProvider/useCatalog() context, not bundled as a static JS import.\n  Added predev hook so the dev server has fresh data too.\n- A5: focus-visible ring on inputs, ellipsis character fix, mascot image\n  width/height to prevent layout shift.\n- A6: added a home-page trust statement explaining how evidence is derived.\n- A7: tags/topics are now parsed from metadata.tags/topics frontmatter\n  instead of being hardcoded to [].\n\nSection B (P1) - evidence-contract v2:\n- New SkillEvidence/SkillPackageMetadata/ReleaseReadiness types, kept\n  deliberately separate from the existing 7-value evidenceStatus (see\n  inline comments in catalog.ts and build-catalog.js).\n- build-catalog.js derives evidence.status, counts, blockers, and\n  releaseReadiness per skill; enforces rule 7 (live requires\n  evaluatedSkillVersion + lastEvidenceDate) and rule 8 (non-Community\n  packages need the full Foundry baseline) as build failures.\n- Explore: new release-readiness filter, evidence chips, new sort keys\n  (updated, evidence-freshness, version).\n- SkillDetail: new \"Evidence and release state\" section.\n- FAQ: new release-readiness entry.\n- 13 deterministic tests in scripts/test-catalog.mjs, wired into the\n  build/deploy workflow.\n\nSection C (P2):\n- C1: /families/:family page rendering each FAMILY.md's hand-written\n  narrative (previously had no home in the app at all).\n- C2: build-time GitHub commit feed (scripts/build-activity.mjs) - fetched\n  at build, not from the browser, so the SPA needs no GitHub token.\n- C3: tags/topics wired into SkillDetail display.\n\nDeferred: C4 (companion/pathway view) and full C5 (mobile/keyboard sweep)\nnot implemented this pass; maturitySource's evidence-policy derivation\npath also remains unimplemented (documented gap, not silently dropped).",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T05:20:37Z",
-      "url": "https://github.com/OKHP3/skillz/commit/37f966d8ec11933d10b9b65088a8d468f37b61d2"
-    },
-    {
-      "sha": "33e1d52afa343c9d62d95f2d43f75c243ec5d8c7",
-      "shortSha": "33e1d52",
-      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
+      "sha": "51bbfd97cfa6776fda76d2bb5be07b94e32f7977",
+      "shortSha": "51bbfd9",
+      "message": "\tmodified:   .github/workflows/deploy-pages.yml",
       "author": "Jamie Hill",
-      "date": "2026-08-04T05:01:26Z",
-      "url": "https://github.com/OKHP3/skillz/commit/33e1d52afa343c9d62d95f2d43f75c243ec5d8c7"
+      "date": "2026-08-04T15:38:58Z",
+      "url": "https://github.com/OKHP3/skillz/commit/51bbfd97cfa6776fda76d2bb5be07b94e32f7977"
     },
     {
-      "sha": "af6aef119883bc7be7693b2707bd51ffc760f4d0",
-      "shortSha": "af6aef1",
-      "message": "Update catalog and attach deployment integrity evidence\n\nReplit-Commit-Author: Agent",
+      "sha": "8e4a5d07fec459865e33d81467eb95b671ab2a95",
+      "shortSha": "8e4a5d0",
+      "message": "chore: revert deploy-pages.yml to origin version to unblock push (GitHub App still lacks workflow scope)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T14:28:34Z",
+      "url": "https://github.com/OKHP3/skillz/commit/8e4a5d07fec459865e33d81467eb95b671ab2a95"
+    },
+    {
+      "sha": "3a3f8d82d12ab882d90b0bf4d2d66b577632efb4",
+      "shortSha": "3a3f8d8",
+      "message": "Update catalog data definitions and manifest version\n\nReplit-Commit-Author: Agent",
       "author": "Replit Agent",
-      "date": "2026-08-04T04:33:29Z",
-      "url": "https://github.com/OKHP3/skillz/commit/af6aef119883bc7be7693b2707bd51ffc760f4d0"
+      "date": "2026-08-04T13:00:35Z",
+      "url": "https://github.com/OKHP3/skillz/commit/3a3f8d82d12ab882d90b0bf4d2d66b577632efb4"
     },
     {
-      "sha": "f5d9fad0ad92ea68e1f7bcc8949238dc06bb467a",
-      "shortSha": "f5d9fad",
-      "message": "\tnew file:   docs/PRD-SKILLZ-FORGE-V2-EVIDENCE-AND-INTEGRITY-REPLIT-2026-08-04.md",
-      "author": "Jamie Hill",
-      "date": "2026-08-04T04:31:55Z",
-      "url": "https://github.com/OKHP3/skillz/commit/f5d9fad0ad92ea68e1f7bcc8949238dc06bb467a"
+      "sha": "99af593b7577b5320871d8bcfe6d8d33a9ec4986",
+      "shortSha": "99af593",
+      "message": "Add expandable inline sub-pathway for branch nodes in SkillPathway\n\n- Each branch card in the fork lane now shows a ▸/▾ expand toggle when the branch skill has its own companions\n- Expanding reveals the branch's downstream chain (up to 5 steps) inline below the fork lane, using a teal-tinted, steel-bordered sub-track to distinguish it from the primary chain\n- Collapsing restores the compact fork lane\n- Added buildForwardPath() to search.ts — walks forward from an arbitrary skill root without backward root-finding, used for sub-pathway computation\n- Hint text updated to mention the ▸ toggle\n- SkillPathway now accepts allSkills prop passed through from SkillDetail\n\nReplit-Task-Id: d27ab54e-03a6-404d-958b-73fc46023af2",
+      "author": "overkillhillp3",
+      "date": "2026-08-04T13:00:20Z",
+      "url": "https://github.com/OKHP3/skillz/commit/99af593b7577b5320871d8bcfe6d8d33a9ec4986"
+    },
+    {
+      "sha": "db967624625858626aecc536e808e6773f5afdd5",
+      "shortSha": "db96762",
+      "message": "Add search utility tests and update forge dependencies and deployment workflow\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T12:52:07Z",
+      "url": "https://github.com/OKHP3/skillz/commit/db967624625858626aecc536e808e6773f5afdd5"
+    },
+    {
+      "sha": "6fbf1e4eb3f7aacc04dd03e95310179d57da96a0",
+      "shortSha": "6fbf1e4",
+      "message": "Update catalog and manifest data files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T12:33:40Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6fbf1e4eb3f7aacc04dd03e95310179d57da96a0"
+    },
+    {
+      "sha": "56e2238633a84127bbd181ca438aa1af72e0f640",
+      "shortSha": "56e2238",
+      "message": "Show skill pathway branches as navigable fork lanes, not just +N counts\n\nReplit-Task-Id: 6f90902f-700f-4fea-9b5c-4b92b7c005b1",
+      "author": "overkillhillp3",
+      "date": "2026-08-04T12:33:25Z",
+      "url": "https://github.com/OKHP3/skillz/commit/56e2238633a84127bbd181ca438aa1af72e0f640"
+    },
+    {
+      "sha": "305fd30aeb0238f10b6069671d70c437f543ff98",
+      "shortSha": "305fd30",
+      "message": "Update catalog data and skill pathway UI components\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T12:04:24Z",
+      "url": "https://github.com/OKHP3/skillz/commit/305fd30aeb0238f10b6069671d70c437f543ff98"
+    },
+    {
+      "sha": "1fa5d9ae0d97acd341d55dd01e0fd65029f42f6f",
+      "shortSha": "1fa5d9a",
+      "message": "Update product catalog data\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T06:10:38Z",
+      "url": "https://github.com/OKHP3/skillz/commit/1fa5d9ae0d97acd341d55dd01e0fd65029f42f6f"
+    },
+    {
+      "sha": "79d520a8159a197fa41a5041633521e51f93453c",
+      "shortSha": "79d520a",
+      "message": "Add workflow pathway visualization to skill detail pages\n\n- Add buildWorkflowPath() to search.ts: traverses companion graph backward to chain root then forward, returning ordered PathNode[] with branch counts\n- New SkillPathway component renders the chain as a scrollable horizontal track with numbered nodes, directional arrows, and branch indicators (+N pills)\n- SkillDetail replaces flat companions list with SkillPathway when a multi-step chain is available; falls back to original flat list for single isolated companions\n- CSS: full pathway layout including maturity colour coding, current-skill highlight, and responsive vertical stack on narrow screens\n- Restore deploy-pages.yml to correct 37f966d version (fixes broken catalog path ./src/data → ./public/data, restores all family triggers, activity feed, and test-catalog steps reverted by 7ac8267)\n\nReplit-Task-Id: b24ea3ff-adfd-43a9-b767-5ee0b360de72",
+      "author": "overkillhillp3",
+      "date": "2026-08-04T06:10:26Z",
+      "url": "https://github.com/OKHP3/skillz/commit/79d520a8159a197fa41a5041633521e51f93453c"
     }
   ],
   "fetchError": null
