@@ -13,7 +13,7 @@ export const STACKS: Stack[] = [
         skillNames: ['okhp3-mermaid-core'],
         purpose: 'Declare audience, select diagram type, apply design system, open the registry entry.',
         inputs: 'Task description, target audience (Executive / Analyst / Technical)',
-        outputs: 'Diagram type decision, classDef block, registry entry stub',
+        outputs: 'Diagram type decision, classDef block, open registry entry',
       },
       {
         label: 'Domain Layer',
@@ -76,7 +76,7 @@ export const STACKS: Stack[] = [
         skillNames: ['okhp3-stakeholder-and-role-mapping'],
         purpose: 'Identify roles, responsibilities, and decision authorities.',
         inputs: 'Scoped process, organizational context',
-        outputs: 'Role catalog, RACI stub',
+        outputs: 'Role catalog, draft RACI matrix',
         optional: true,
       },
       {
