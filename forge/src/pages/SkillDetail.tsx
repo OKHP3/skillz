@@ -5,8 +5,9 @@ import { getRelatedSkills, buildWorkflowPath } from '../utils/search';
 import { copyInstallUrl as copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
 import SkillPathway from '../components/ui/SkillPathway';
 import FullContract from '../components/ui/FullContract';
-import { issueUrl, skillGitHubUrl } from '../utils/github';
+import { issueUrl, skillGitHubUrl, skillCommitHistoryUrl, commitUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
+import AddToStackButton from '../components/ui/AddToStackButton';
 import type { SkillDetailBody } from '../types/catalog';
 
 const RELEASE_READINESS_LABELS: Record<string, string> = {
@@ -81,7 +82,7 @@ export default function SkillDetail() {
     return (
       <div data-page="skill-detail">
         <Nav />
-        <main className="container detail-not-found-main">
+        <main className="container detail-not-found-main" id="main-content">
           <div className="detail-article detail-article--centered">
             <h1>Skill not found</h1>
             <p>No skill named <code>{skillName}</code> in the <code>{family}</code> family.</p>
@@ -131,7 +132,7 @@ export default function SkillDetail() {
   return (
     <div data-page="skill-detail">
       <Nav />
-      <main className="container">
+      <main className="container" id="main-content">
         <div className="breadcrumb" aria-label="Breadcrumb">
           <Link to="/explore">Explore</Link>
           <span aria-hidden>/</span>
@@ -184,6 +185,7 @@ export default function SkillDetail() {
             >
               {isFavorite(skill.name) ? 'Saved' : 'Save'}
             </button>
+            <AddToStackButton skillName={skill.name} />
           </div>
 
           <div className="detail-install">
@@ -389,7 +391,7 @@ export default function SkillDetail() {
               {skill.commitSha && <>
                 <dt>Commit</dt>
                 <dd>
-                  <a href={`https://github.com/OKHP3/skillz/commit/${skill.commitSha}`} target="_blank" rel="noopener noreferrer">
+                  <a href={commitUrl(skill.commitSha)} target="_blank" rel="noopener noreferrer">
                     {skill.commitSha.slice(0, 8)}
                   </a>
                 </dd>
@@ -508,7 +510,7 @@ export default function SkillDetail() {
               <a href={skill.rawUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 View raw SKILL.md
               </a>
-              <a href={`https://github.com/OKHP3/skillz/commits/main/${skill.path}`} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+              <a href={skillCommitHistoryUrl(skill.path)} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 Commit history
               </a>
               <a href={issueUrl({ title: `Improve: ${skill.name}`, labels: ['enhancement'] })} target="_blank" rel="noopener noreferrer" className="btn btn-outline">

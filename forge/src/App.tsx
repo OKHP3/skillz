@@ -1,9 +1,11 @@
 import { ThemeProvider } from './contexts/ThemeContext';
 import { CatalogProvider, useCatalogState } from './contexts/CatalogContext';
+import { ComposerProvider } from './contexts/ComposerContext';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect, type ReactNode } from 'react';
 import { trackPageview } from './utils/analytics';
 import Footer from './components/layout/Footer';
+import ComposerDrawer from './components/ui/ComposerDrawer';
 
 // Module-level: persists across StrictMode remounts (unlike useRef which resets on remount)
 let _lastTrackedPath: string | null = null;
@@ -72,7 +74,9 @@ export default function App() {
   return (
     <ThemeProvider>
     <CatalogProvider>
+    <ComposerProvider>
     <HashRouter>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <AnalyticsTracker />
       <CatalogGate>
         <Suspense fallback={<Loading />}>
@@ -90,9 +94,11 @@ export default function App() {
             <Route path="*" element={<Home />} />
           </Routes>
         </Suspense>
+        <ComposerDrawer />
       </CatalogGate>
       <Footer />
     </HashRouter>
+    </ComposerProvider>
     </CatalogProvider>
     </ThemeProvider>
   );

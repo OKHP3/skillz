@@ -934,6 +934,109 @@ function readFamilyNarrative(familySlug) {
   }
 }
 
+// Release 2: family pages should show real author-controlled orientation
+// content ("Purpose", "Common outcomes", "First skill to try", "Composition
+// notes") when a FAMILY.md author has written it, and a clearly labeled
+// GENERATED fallback — derived only from real catalog fields, never invented
+// marketing prose — when they haven't. Authors opt in by adding one of these
+// exact `##` headings anywhere before the `<!-- FAMILY_SUMMARY_START -->`
+// marker in FAMILY.md:
+//   ## Purpose
+//   ## Common outcomes
+//   ## First skill to try
+//   ## Composition notes
+function readFamilyOrientationSections(familySlug) {
+  const familyMdPath = join(REPO_ROOT, familySlug, 'FAMILY.md');
+  const sections = {};
+  try {
+    const text = readFileSync(familyMdPath, 'utf-8').replace(/\r\n/g, '\n');
+    const afterH1 = text.split(/^#\s+.+$/m)[1];
+    if (!afterH1) return sections;
+    const body = afterH1.split('<!-- FAMILY_SUMMARY_START -->')[0];
+    const headingRe = /^##\s+(Purpose|Common outcomes|First skill to try|Composition notes)\s*$/gim;
+    const matches = [...body.matchAll(headingRe)];
+    for (let i = 0; i < matches.length; i++) {
+      const start = matches[i].index + matches[i][0].length;
+      const end = i + 1 < matches.length ? matches[i + 1].index : body.length;
+      const key = matches[i][1].toLowerCase();
+      const value = body.slice(start, end).trim();
+      if (value) sections[key] = value;
+    }
+  } catch {
+    // FAMILY.md missing/unreadable — fall through to generated content.
+  }
+  return sections;
+}
+
+/** Rank used to pick a deterministic "first skill to try" fallback: prefer
+ *  the most release-ready, most mature skill in the family; break ties
+ *  alphabetically by name so the choice never depends on file iteration
+ *  order. */
+const RELEASE_READINESS_RANK = {
+  published: 5,
+  'ready-for-peer-review': 4,
+  'ready-for-supervised-use': 3,
+  'needs-live-evidence': 2,
+  'needs-contract-work': 1,
+};
+
+function buildFamilyOrientation(familySlug, familySkills) {
+  const authored = readFamilyOrientationSections(familySlug);
+
+  const purpose = authored['purpose']
+    ? { value: authored['purpose'], source: 'authored' }
+    : { value: readFamilyNarrative(familySlug), source: 'generated' };
+
+  const commonOutcomes = authored['common outcomes']
+    ? { value: authored['common outcomes'].split(/\n+/).map(l => l.replace(/^[-*]\s*/, '').trim()).filter(Boolean), source: 'authored' }
+    : {
+        // Generated fallback: the real, distinct `category` values declared
+        // across this family's own skills — not invented marketing copy.
+        value: [...new Set(familySkills.map(s => s.category).filter(Boolean))].slice(0, 5),
+        source: 'generated',
+      };
+
+  let firstSkillToTry;
+  if (authored['first skill to try']) {
+    // Authors write the skill name (optionally as `code` or a sentence
+    // mentioning it) — extract the first token that matches a real skill in
+    // this family so a typo can't silently point nowhere.
+    const mentioned = familySkills.find(s => authored['first skill to try'].includes(s.name));
+    firstSkillToTry = { value: mentioned ? mentioned.name : null, note: authored['first skill to try'], source: 'authored' };
+  } else {
+    const ranked = [...familySkills].sort((a, b) => {
+      const rankDiff = (RELEASE_READINESS_RANK[b.releaseReadiness] ?? 0) - (RELEASE_READINESS_RANK[a.releaseReadiness] ?? 0);
+      if (rankDiff !== 0) return rankDiff;
+      return a.name.localeCompare(b.name);
+    });
+    firstSkillToTry = { value: ranked[0]?.name ?? null, note: null, source: 'generated' };
+  }
+
+  let compositionNotes;
+  if (authored['composition notes']) {
+    compositionNotes = { value: authored['composition notes'], source: 'authored' };
+  } else {
+    // Generated fallback: real declared companion relationships within this
+    // family only (cross-family companions belong to the skill detail page,
+    // not a family-level note).
+    const familyNames = new Set(familySkills.map(s => s.name));
+    const pairs = [];
+    for (const s of familySkills) {
+      for (const c of s.companions || []) {
+        if (familyNames.has(c) && !pairs.some(p => p[0] === c && p[1] === s.name)) {
+          pairs.push([s.name, c]);
+        }
+      }
+    }
+    compositionNotes = {
+      value: pairs.length > 0 ? pairs.slice(0, 5).map(([a, b]) => `${a} pairs with ${b}`).join('; ') : null,
+      source: 'generated',
+    };
+  }
+
+  return { purpose, commonOutcomes, firstSkillToTry, compositionNotes };
+}
+
   const familyMap = {};
   for (const s of skills) {
     if (!familyMap[s.family]) {
@@ -947,6 +1050,14 @@ function readFamilyNarrative(familySlug) {
     }
     familyMap[s.family].skillCount++;
     familyMap[s.family].skills.push(s.name);
+  }
+
+  // Release 2: orientation needs every family's own skills gathered first
+  // (for the category/companion/release-readiness-derived fallbacks), so
+  // this pass runs after the skill-collection loop above.
+  for (const familySlug of Object.keys(familyMap)) {
+    const familySkills = skills.filter(s => s.family === familySlug);
+    familyMap[familySlug].orientation = buildFamilyOrientation(familySlug, familySkills);
   }
 
   const familyList = Object.values(familyMap);

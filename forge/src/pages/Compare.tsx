@@ -5,6 +5,7 @@ import type { Skill } from '../types/catalog';
 import Nav from '../components/layout/Nav';
 import { copyToClipboard, shareCompare } from '../utils/clipboard';
 import { trackCompareOpen } from '../utils/analytics';
+import AddToStackButton from '../components/ui/AddToStackButton';
 
 const RELEASE_READINESS_LABELS: Record<string, string> = {
   'needs-contract-work': 'Needs contract work',
@@ -186,7 +187,7 @@ export default function Compare() {
   return (
     <div data-page="compare">
       <Nav />
-      <main className="container">
+      <main className="container" id="main-content">
         <div className="page-header">
           <h1>Compare Skills</h1>
           <p>Select two to four skills to compare release readiness, evidence, triggers, boundaries, and source metadata side by side.</p>
@@ -249,11 +250,14 @@ export default function Compare() {
                     <th key={s.name} scope="col">
                       <div className="compare-skill-head">
                         <Link to={`/skills/${s.family}/${s.name}`} className="compare-skill-name">{s.name}</Link>
-                        <button
-                          className="compare-remove"
-                          onClick={() => removeSkill(s.name)}
-                          aria-label={`Remove ${s.name} from comparison`}
-                        >✕</button>
+                        <div className="compare-skill-head-actions">
+                          <AddToStackButton skillName={s.name} className="btn-ghost btn-ghost--small" />
+                          <button
+                            className="compare-remove"
+                            onClick={() => removeSkill(s.name)}
+                            aria-label={`Remove ${s.name} from comparison`}
+                          >✕</button>
+                        </div>
                       </div>
                     </th>
                   ))}

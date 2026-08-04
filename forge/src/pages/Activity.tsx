@@ -46,7 +46,7 @@ export default function Activity() {
   return (
     <div data-page="activity">
       <Nav />
-      <main className="container page-main">
+      <main className="container page-main" id="main-content">
         <div className="page-header">
           <h1>Activity</h1>
           <p>Recent catalog updates, open pull requests, and active issues. All links open the native GitHub page.</p>

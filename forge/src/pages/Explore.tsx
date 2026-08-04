@@ -5,6 +5,8 @@ import type { FilterState, SearchResult, Maturity, EvidenceStatus, ReleaseReadin
 import { searchSkills, buildSearchIndex, setBodySearchIndex } from '../utils/search';
 import type { SearchIndexEntry } from '../types/catalog';
 import { copyInstallUrl as copyInstallCommand, shareSkill, useFavorites } from '../utils/clipboard';
+import AddToStackButton from '../components/ui/AddToStackButton';
+import DiscoveryAid from '../components/ui/DiscoveryAid';
 import Nav from '../components/layout/Nav';
 
 const MATURITY_LEVELS: Maturity[] = ['placeholder', 'skeleton', 'draftable', 'usable', 'validated', 'published'];
@@ -127,7 +129,7 @@ export default function Explore() {
   return (
     <div data-page="explore">
       <Nav />
-      <main data-layout="explore">
+      <main data-layout="explore" id="main-content">
         <aside className="explore-sidebar" data-open={filterOpen} aria-label="Filters">
           <div className="filter-group filter-group-header">
             <h3>Filters</h3>
@@ -250,6 +252,8 @@ export default function Explore() {
         </aside>
 
         <div className="explore-main">
+          <DiscoveryAid />
+
           <div className="explore-topbar">
             <button
               className="btn btn-outline nav-mobile-toggle"
@@ -377,6 +381,7 @@ export default function Explore() {
                     >
                       {isFavorite(skill.name) ? 'Saved' : 'Save'}
                     </button>
+                    <AddToStackButton skillName={skill.name} />
                     <Link to={`/skills/${skill.family}/${skill.name}`} className="btn-ghost skill-card-open" data-action="open">
                       Open &rarr;
                     </Link>

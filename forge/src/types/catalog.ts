@@ -96,6 +96,24 @@ export interface Skill {
   releaseReadiness: ReleaseReadiness;
 }
 
+/** One orientation field: either author-written content from FAMILY.md
+ *  (`source: 'authored'`) or a fallback derived purely from real catalog
+ *  fields — never invented marketing prose (`source: 'generated'`). */
+export interface FamilyOrientationField<T> {
+  value: T;
+  source: 'authored' | 'generated';
+}
+
+export interface FamilyOrientation {
+  purpose: FamilyOrientationField<string | null>;
+  commonOutcomes: FamilyOrientationField<string[]>;
+  /** `value` is a real skill name in this family (or null if none could be
+   *  determined); `note` is the author's original free-text mention of it,
+   *  when authored. */
+  firstSkillToTry: FamilyOrientationField<string | null> & { note: string | null };
+  compositionNotes: FamilyOrientationField<string | null>;
+}
+
 export interface Family {
   name: string;
   displayName: string;
@@ -105,6 +123,10 @@ export interface Family {
    *  generated summary/inventory markers), or null if the family has no
    *  narrative beyond its auto-generated one-line summary. */
   narrativeBody: string | null;
+  /** Release 2: structured orientation content (purpose, common outcomes,
+   *  first skill to try, composition notes), each independently authored or
+   *  generated. See `buildFamilyOrientation` in build-catalog.js. */
+  orientation: FamilyOrientation;
 }
 
 export interface Catalog {

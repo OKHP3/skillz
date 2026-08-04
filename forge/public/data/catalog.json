@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-04T21:27:41.721Z",
+  "generatedAt": "2026-08-04T21:57:15.913Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "5e7f773",
+  "sourceCommit": "b1f3fe7",
   "skillCount": 113,
   "familyCount": 15,
   "families": [
@@ -16,7 +16,28 @@
         "okhp3-tradition-reference",
         "okhp3-verse-lookup"
       ],
-      "narrativeBody": null
+      "narrativeBody": null,
+      "orientation": {
+        "purpose": {
+          "value": null,
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "interfaith-reference"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-cross-tradition-compare",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-cross-tradition-compare pairs with okhp3-verse-lookup",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "agent-foundry",
@@ -27,7 +48,29 @@
         "okhp3-custom-gpt-readiness",
         "okhp3-gpt-skill-conversion-plan"
       ],
-      "narrativeBody": "The agent-foundry family covers the creation, readiness assessment, and portability planning of AI agents across platform ecosystems. Its scope includes Custom GPTs, Gemini Gems, Copilot declarative agents, OpenClaw agents, and related agent runtimes.\n\nThe family keeps platform-specific behavior explicit while preserving reusable product definition, instruction architecture, knowledge design, tool configuration, evaluation, governance, and migration methods."
+      "narrativeBody": "The agent-foundry family covers the creation, readiness assessment, and portability planning of AI agents across platform ecosystems. Its scope includes Custom GPTs, Gemini Gems, Copilot declarative agents, OpenClaw agents, and related agent runtimes.\n\nThe family keeps platform-specific behavior explicit while preserving reusable product definition, instruction architecture, knowledge design, tool configuration, evaluation, governance, and migration methods.",
+      "orientation": {
+        "purpose": {
+          "value": "The agent-foundry family covers the creation, readiness assessment, and portability planning of AI agents across platform ecosystems. Its scope includes Custom GPTs, Gemini Gems, Copilot declarative agents, OpenClaw agents, and related agent runtimes.\n\nThe family keeps platform-specific behavior explicit while preserving reusable product definition, instruction architecture, knowledge design, tool configuration, evaluation, governance, and migration methods.",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "agent-authoring",
+            "universal"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-custom-gpt-builder",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-custom-gpt-readiness pairs with okhp3-custom-gpt-builder",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "askjamie",
@@ -45,7 +88,29 @@
         "okhp3-askjamie-style-registry",
         "okhp3-askjamie-thread-context"
       ],
-      "narrativeBody": null
+      "narrativeBody": null,
+      "orientation": {
+        "purpose": {
+          "value": null,
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "developer-tooling",
+            "askjamie"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-askjamie-chatgpt-migrate",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-askjamie-gpt-readiness pairs with okhp3-askjamie-gpt-builder",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "community",
@@ -66,7 +131,28 @@
         "web-artifacts-builder",
         "web-design-guidelines"
       ],
-      "narrativeBody": null
+      "narrativeBody": null,
+      "orientation": {
+        "purpose": {
+          "value": null,
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "community"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "ai-social-media-content",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": null,
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "context-extraction",
@@ -84,7 +170,29 @@
         "okhp3-thread-extract-mistral-vibe",
         "okhp3-thread-extract-perplexity"
       ],
-      "narrativeBody": "**Status: placeholder. Design not started.**\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```"
+      "narrativeBody": "**Status: placeholder. Design not started.**\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
+      "orientation": {
+        "purpose": {
+          "value": "**Status: placeholder. Design not started.**\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "meta-tooling",
+            "context-extraction"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-chatgpt-project-migration",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-thread-extract-chatgpt pairs with okhp3-chatgpt-project-migration",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "glee-fully",
@@ -104,7 +212,30 @@
         "okhp3-glee-fully-style-registry",
         "okhp3-glee-fully-thread-context"
       ],
-      "narrativeBody": null
+      "narrativeBody": null,
+      "orientation": {
+        "purpose": {
+          "value": null,
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "gleefully",
+            "developer-tooling",
+            "glee-fully"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "glee-fully-repo-standardizer",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-glee-fully-gpt-readiness pairs with okhp3-glee-fully-gpt-builder",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "knowledge-operations",
@@ -119,7 +250,28 @@
         "okhp3-source-backed-research",
         "okhp3-triage-and-file"
       ],
-      "narrativeBody": "The knowledge-operations family governs the portable lifecycle of loose\ninformation and exploratory work: preserve it, classify it, research it when\nneeded, validate it, decide whether it is ready, and prepare it for\nowner-approved formalization."
+      "narrativeBody": "The knowledge-operations family governs the portable lifecycle of loose\ninformation and exploratory work: preserve it, classify it, research it when\nneeded, validate it, decide whether it is ready, and prepare it for\nowner-approved formalization.",
+      "orientation": {
+        "purpose": {
+          "value": "The knowledge-operations family governs the portable lifecycle of loose\ninformation and exploratory work: preserve it, classify it, research it when\nneeded, validate it, decide whether it is ready, and prepare it for\nowner-approved formalization.",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "knowledge-operations"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-artifact-validation",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-project-promotion pairs with okhp3-graduation-gate; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "lifetrkr",
@@ -129,7 +281,28 @@
         "okhp3-celestial-data",
         "okhp3-daily-oracle"
       ],
-      "narrativeBody": null
+      "narrativeBody": null,
+      "orientation": {
+        "purpose": {
+          "value": null,
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "wellness-astrology"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-celestial-data",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": null,
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "linkedin",
@@ -140,7 +313,28 @@
         "okhp3-linkedin-post",
         "okhp3-linkedin-voice"
       ],
-      "narrativeBody": "Three skills, one pipeline: **voice -> angles -> post**.\n\n- `okhp3-linkedin-voice` — the brand contract. A filter applied to existing text, not a generator. Every other skill in this family (and any hand-written draft) passes through this last.\n- `okhp3-linkedin-angles` — triage. Mines a finished artifact (PRD, SKILL.md, technical writeup, conversation) for postable angles, writes candidates to a registry.\n- `okhp3-linkedin-post` — drafting. Takes a chosen angle, drafts in voice, runs the BFS-scrub gate (hard, non-negotiable, last).\n\nThe bottleneck this family targets isn't ideation or drafting — it's triage. Turning finished work into posts. `angles` is the differentiator; nothing in the reviewed community LinkedIn-skill landscape (sergebulaev, claudskills.com, Linked-API) does artifact-mining. They're all persona/ICP-driven topic generation.\n\nArticles (long-form) are a phase-2 addition with different structural rules than posts — not yet scaffolded."
+      "narrativeBody": "Three skills, one pipeline: **voice -> angles -> post**.\n\n- `okhp3-linkedin-voice` — the brand contract. A filter applied to existing text, not a generator. Every other skill in this family (and any hand-written draft) passes through this last.\n- `okhp3-linkedin-angles` — triage. Mines a finished artifact (PRD, SKILL.md, technical writeup, conversation) for postable angles, writes candidates to a registry.\n- `okhp3-linkedin-post` — drafting. Takes a chosen angle, drafts in voice, runs the BFS-scrub gate (hard, non-negotiable, last).\n\nThe bottleneck this family targets isn't ideation or drafting — it's triage. Turning finished work into posts. `angles` is the differentiator; nothing in the reviewed community LinkedIn-skill landscape (sergebulaev, claudskills.com, Linked-API) does artifact-mining. They're all persona/ICP-driven topic generation.\n\nArticles (long-form) are a phase-2 addition with different structural rules than posts — not yet scaffolded.",
+      "orientation": {
+        "purpose": {
+          "value": "Three skills, one pipeline: **voice -> angles -> post**.\n\n- `okhp3-linkedin-voice` — the brand contract. A filter applied to existing text, not a generator. Every other skill in this family (and any hand-written draft) passes through this last.\n- `okhp3-linkedin-angles` — triage. Mines a finished artifact (PRD, SKILL.md, technical writeup, conversation) for postable angles, writes candidates to a registry.\n- `okhp3-linkedin-post` — drafting. Takes a chosen angle, drafts in voice, runs the BFS-scrub gate (hard, non-negotiable, last).\n\nThe bottleneck this family targets isn't ideation or drafting — it's triage. Turning finished work into posts. `angles` is the differentiator; nothing in the reviewed community LinkedIn-skill landscape (sergebulaev, claudskills.com, Linked-API) does artifact-mining. They're all persona/ICP-driven topic generation.\n\nArticles (long-form) are a phase-2 addition with different structural rules than posts — not yet scaffolded.",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "linkedin"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-linkedin-angles",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-post pairs with okhp3-linkedin-voice; okhp3-linkedin-voice pairs with okhp3-linkedin-angles",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "mermaid",
@@ -157,7 +351,30 @@
         "okhp3-mermaid-theme-builder",
         "okhp3-mermaid-update"
       ],
-      "narrativeBody": "Nine skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer.\n\n`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.\n\nSee repo-root `AGENTS.md` for trigger conditions.\n\n---"
+      "narrativeBody": "Nine skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer.\n\n`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.\n\nSee repo-root `AGENTS.md` for trigger conditions.\n\n---",
+      "orientation": {
+        "purpose": {
+          "value": "Nine skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer.\n\n`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.\n\nSee repo-root `AGENTS.md` for trigger conditions.\n\n---",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "diagramming",
+            "developer-tooling",
+            "diagram-governance"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-mermaid-bpmn",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-mermaid-architecture pairs with okhp3-mermaid-core; okhp3-mermaid-bpmn pairs with okhp3-mermaid-core; okhp3-mermaid-core pairs with okhp3-mermaid-publish; okhp3-mermaid-data pairs with okhp3-mermaid-core; okhp3-mermaid-governance pairs with okhp3-mermaid-theme-builder",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "notion",
@@ -166,7 +383,28 @@
       "skills": [
         "okhp3-notion-capture-router"
       ],
-      "narrativeBody": "This family covers Notion-centered knowledge operations for OKHP3.\n\nCurrent skill:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |"
+      "narrativeBody": "This family covers Notion-centered knowledge operations for OKHP3.\n\nCurrent skill:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |",
+      "orientation": {
+        "purpose": {
+          "value": "This family covers Notion-centered knowledge operations for OKHP3.\n\nCurrent skill:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "notion"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-notion-capture-router",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": null,
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "outcome-modeling",
@@ -179,7 +417,28 @@
         "okhp3-outcome-modeling-sales",
         "okhp3-outcome-modeling-sports"
       ],
-      "narrativeBody": null
+      "narrativeBody": null,
+      "orientation": {
+        "purpose": {
+          "value": null,
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "universal"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-nfl-fantasy-picks",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-outcome-modeling-core pairs with okhp3-outcome-modeling-sports; okhp3-outcome-modeling-core pairs with okhp3-nfl-fantasy-picks; okhp3-outcome-modeling-core pairs with okhp3-outcome-modeling-sales; okhp3-outcome-modeling-core pairs with okhp3-outcome-modeling-markets; okhp3-outcome-modeling-sports pairs with okhp3-outcome-modeling-markets",
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "process-capture",
@@ -203,7 +462,32 @@
         "okhp3-stakeholder-and-role-mapping",
         "okhp3-visual-process-modeling"
       ],
-      "narrativeBody": "One skill: `okhp3-process-capture`. The meta-layer.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index."
+      "narrativeBody": "One skill: `okhp3-process-capture`. The meta-layer.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+      "orientation": {
+        "purpose": {
+          "value": "One skill: `okhp3-process-capture`. The meta-layer.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "process-analysis",
+            "process-documentation",
+            "process-improvement",
+            "process-publication",
+            "meta-tooling"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-as-is-process-capture",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": null,
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "refolddec",
@@ -212,7 +496,28 @@
       "skills": [
         "okhp3-refolddec-core"
       ],
-      "narrativeBody": "Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding across representation types.\n\n---"
+      "narrativeBody": "Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding across representation types.\n\n---",
+      "orientation": {
+        "purpose": {
+          "value": "Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding across representation types.\n\n---",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "meta-tooling"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-refolddec-core",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": null,
+          "source": "generated"
+        }
+      }
     },
     {
       "name": "universal",
@@ -237,7 +542,32 @@
         "sp-build-auditor",
         "sp-list-architect"
       ],
-      "narrativeBody": null
+      "narrativeBody": null,
+      "orientation": {
+        "purpose": {
+          "value": null,
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "developer-tooling",
+            "universal",
+            "evaluation-and-governance",
+            "meta-tooling",
+            "deployment"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-brand-style-registry",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-brand-style-registry pairs with okhp3-overkill-hill-brand; okhp3-repl-repo-janitor pairs with okhp3-repository-janitor; okhp3-repl-repo-janitor pairs with okhp3-repository-organizer; okhp3-skill-promotion pairs with okhp3-skill-foundry",
+          "source": "generated"
+        }
+      }
     }
   ],
   "skills": [

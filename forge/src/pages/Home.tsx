@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <div data-page="home">
       <Nav />
-      <main className="container">
+      <main className="container" id="main-content">
         <section data-section="hero" className="hero-layout">
           <div className="hero-content">
             <h1 className="hero-heading">
