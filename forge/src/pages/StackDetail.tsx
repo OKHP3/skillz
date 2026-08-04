@@ -2,13 +2,11 @@ import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { STACKS } from '../data/stacks';
 import { copyToClipboard, shareStack } from '../utils/clipboard';
-import catalogData from '../data/catalog.json';
-import type { Catalog } from '../types/catalog';
+import { useCatalog } from '../contexts/CatalogContext';
 import Nav from '../components/layout/Nav';
 
-const catalog = catalogData as Catalog;
-
 export default function StackDetail() {
+  const catalog = useCatalog();
   const { stackId } = useParams();
   const stack = STACKS.find(s => s.id === stackId);
   const [copied, setCopied] = useState(false);

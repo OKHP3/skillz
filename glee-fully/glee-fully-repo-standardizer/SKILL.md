@@ -14,7 +14,12 @@ metadata:
   version: "1.1.0"
   author: "OverKill Hill P³"
   category: gleefully
+  origin: OKHP3/Glee-fullyTools-FoundRy
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
   parent_foundry: OKHP3/Glee-fullyTools-FoundRy
+  in_scope: "Scaffolding and auditing Glee-fully child repository folder/file structure, brand payload, and governance stubs."
+  out_of_scope: "Writing entity-specific tone, persona, or content — only the structural scaffold and stubs."
 ---
 
 # glee-fully-repo-standardizer

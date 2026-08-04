@@ -2,19 +2,18 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { STACKS } from '../data/stacks';
 import { shareStack, copyToClipboard } from '../utils/clipboard';
-import catalogData from '../data/catalog.json';
-import type { Catalog } from '../types/catalog';
+import { useCatalog } from '../contexts/CatalogContext';
+import type { Skill } from '../types/catalog';
 import Nav from '../components/layout/Nav';
 
-const catalog = catalogData as Catalog;
-
-function getSkillsForStack(skillNames: string[]) {
-  return skillNames
-    .map(n => catalog.skills.find(s => s.name === n))
-    .filter(Boolean);
-}
-
 export default function Stacks() {
+  const catalog = useCatalog();
+  function getSkillsForStack(skillNames: string[]): Skill[] {
+    return skillNames
+      .map(n => catalog.skills.find(s => s.name === n))
+      .filter((s): s is Skill => Boolean(s));
+  }
+
   useEffect(() => {
     document.title = 'Stacks | Skillz Forge';
     return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };

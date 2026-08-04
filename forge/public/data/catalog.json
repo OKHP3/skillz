@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-04T04:29:42.674Z",
+  "generatedAt": "2026-08-04T05:20:02.009Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "57b1c5e",
+  "sourceCommit": "af6aef1",
   "skillCount": 113,
   "familyCount": 15,
   "families": [
@@ -15,7 +15,8 @@
         "okhp3-tradition-observance-calendar",
         "okhp3-tradition-reference",
         "okhp3-verse-lookup"
-      ]
+      ],
+      "narrativeBody": null
     },
     {
       "name": "agent-foundry",
@@ -25,7 +26,8 @@
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
         "okhp3-gpt-skill-conversion-plan"
-      ]
+      ],
+      "narrativeBody": "The agent-foundry family covers the creation, readiness assessment, and portability planning of AI agents across platform ecosystems. Its scope includes Custom GPTs, Gemini Gems, Copilot declarative agents, OpenClaw agents, and related agent runtimes.\n\nThe family keeps platform-specific behavior explicit while preserving reusable product definition, instruction architecture, knowledge design, tool configuration, evaluation, governance, and migration methods."
     },
     {
       "name": "askjamie",
@@ -42,7 +44,8 @@
         "okhp3-askjamie-repo-organizer",
         "okhp3-askjamie-style-registry",
         "okhp3-askjamie-thread-context"
-      ]
+      ],
+      "narrativeBody": null
     },
     {
       "name": "community",
@@ -62,7 +65,8 @@
         "vercel-react-native-skills",
         "web-artifacts-builder",
         "web-design-guidelines"
-      ]
+      ],
+      "narrativeBody": null
     },
     {
       "name": "context-extraction",
@@ -79,7 +83,8 @@
         "okhp3-thread-extract-gemini",
         "okhp3-thread-extract-mistral-vibe",
         "okhp3-thread-extract-perplexity"
-      ]
+      ],
+      "narrativeBody": "**Status: placeholder. Design not started.**\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```"
     },
     {
       "name": "glee-fully",
@@ -98,7 +103,8 @@
         "okhp3-glee-fully-repo-organizer",
         "okhp3-glee-fully-style-registry",
         "okhp3-glee-fully-thread-context"
-      ]
+      ],
+      "narrativeBody": null
     },
     {
       "name": "knowledge-operations",
@@ -112,7 +118,8 @@
         "okhp3-project-promotion",
         "okhp3-source-backed-research",
         "okhp3-triage-and-file"
-      ]
+      ],
+      "narrativeBody": "The knowledge-operations family governs the portable lifecycle of loose\ninformation and exploratory work: preserve it, classify it, research it when\nneeded, validate it, decide whether it is ready, and prepare it for\nowner-approved formalization."
     },
     {
       "name": "lifetrkr",
@@ -121,7 +128,8 @@
       "skills": [
         "okhp3-celestial-data",
         "okhp3-daily-oracle"
-      ]
+      ],
+      "narrativeBody": null
     },
     {
       "name": "linkedin",
@@ -131,7 +139,8 @@
         "okhp3-linkedin-angles",
         "okhp3-linkedin-post",
         "okhp3-linkedin-voice"
-      ]
+      ],
+      "narrativeBody": "Three skills, one pipeline: **voice -> angles -> post**.\n\n- `okhp3-linkedin-voice` — the brand contract. A filter applied to existing text, not a generator. Every other skill in this family (and any hand-written draft) passes through this last.\n- `okhp3-linkedin-angles` — triage. Mines a finished artifact (PRD, SKILL.md, technical writeup, conversation) for postable angles, writes candidates to a registry.\n- `okhp3-linkedin-post` — drafting. Takes a chosen angle, drafts in voice, runs the BFS-scrub gate (hard, non-negotiable, last).\n\nThe bottleneck this family targets isn't ideation or drafting — it's triage. Turning finished work into posts. `angles` is the differentiator; nothing in the reviewed community LinkedIn-skill landscape (sergebulaev, claudskills.com, Linked-API) does artifact-mining. They're all persona/ICP-driven topic generation.\n\nArticles (long-form) are a phase-2 addition with different structural rules than posts — not yet scaffolded."
     },
     {
       "name": "mermaid",
@@ -147,7 +156,8 @@
         "okhp3-mermaid-repair",
         "okhp3-mermaid-theme-builder",
         "okhp3-mermaid-update"
-      ]
+      ],
+      "narrativeBody": "Nine skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer.\n\n`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.\n\nSee repo-root `AGENTS.md` for trigger conditions.\n\n---"
     },
     {
       "name": "notion",
@@ -155,7 +165,8 @@
       "skillCount": 1,
       "skills": [
         "okhp3-notion-capture-router"
-      ]
+      ],
+      "narrativeBody": "This family covers Notion-centered knowledge operations for OKHP3.\n\nCurrent skill:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |"
     },
     {
       "name": "outcome-modeling",
@@ -167,7 +178,8 @@
         "okhp3-outcome-modeling-markets",
         "okhp3-outcome-modeling-sales",
         "okhp3-outcome-modeling-sports"
-      ]
+      ],
+      "narrativeBody": null
     },
     {
       "name": "process-capture",
@@ -190,7 +202,8 @@
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
         "okhp3-visual-process-modeling"
-      ]
+      ],
+      "narrativeBody": "One skill: `okhp3-process-capture`. The meta-layer.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index."
     },
     {
       "name": "refolddec",
@@ -198,7 +211,8 @@
       "skillCount": 1,
       "skills": [
         "okhp3-refolddec-core"
-      ]
+      ],
+      "narrativeBody": "Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding across representation types.\n\n---"
     },
     {
       "name": "universal",
@@ -222,7 +236,8 @@
         "okhp3-vite-github-pages",
         "sp-build-auditor",
         "sp-list-architect"
-      ]
+      ],
+      "narrativeBody": null
     }
   ],
   "skills": [
@@ -263,7 +278,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-cross-tradition-compare/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-cross-tradition-compare/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-25T23:21:08-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "interfaith-reference",
+        "origin": "okhp3/abrahamic-reference-engine",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources.",
+        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
+      },
+      "evidence": {
+        "status": "historical",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 6,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-06-26T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "Evidence evaluates version 1.1.0, not the current 1.2.0 package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": "2026-07-21",
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-tradition-observance-calendar",
@@ -297,7 +339,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-tradition-observance-calendar/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-tradition-observance-calendar/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-25T23:21:08-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "interfaith-reference",
+        "origin": "okhp3/abrahamic-reference-engine",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources.",
+        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
+      },
+      "evidence": {
+        "status": "historical",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 6,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-06-26T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "Evidence evaluates version 1.1.0, not the current 1.2.0 package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": "2026-07-21",
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-tradition-reference",
@@ -331,7 +400,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-tradition-reference/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-tradition-reference/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-25T23:21:08-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "interfaith-reference",
+        "origin": "okhp3/abrahamic-reference-engine",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources.",
+        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
+      },
+      "evidence": {
+        "status": "historical",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 6,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-06-26T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "Evidence evaluates version 1.1.0, not the current 1.2.0 package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": "2026-07-21",
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-verse-lookup",
@@ -365,7 +461,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-verse-lookup/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-verse-lookup/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-25T23:21:08-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "interfaith-reference",
+        "origin": "okhp3/abrahamic-reference-engine",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources.",
+        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
+      },
+      "evidence": {
+        "status": "historical",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 6,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-06-26T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "Evidence evaluates version 1.1.0, not the current 1.2.0 package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": "2026-07-21",
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-custom-gpt-builder",
@@ -399,7 +522,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-builder/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "agent-authoring",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Building, auditing, testing, and governing Custom GPTs and their reusable workflow artifacts.",
+        "outOfScope": "Autonomous publication, private-data export, credential handling, or unverified platform capability claims."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 16,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 8,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-custom-gpt-readiness",
@@ -435,7 +585,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-readiness/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-readiness/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-20T12:30:28-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Readiness assessment, evidence inventory, gap analysis, and builder handoff for a proposed Custom GPT.",
+        "outOfScope": "Writing production integrations, managing credentials, publishing a GPT, or declaring volatile platform limits."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-gpt-skill-conversion-plan",
@@ -471,7 +648,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-20T12:30:28-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Capability mapping, semantic-loss analysis, and migration planning from an existing Custom GPT to a portable Agent Skill.",
+        "outOfScope": "Exporting private platform data, bypassing permissions, implementing production integrations, or claiming unverified feature parity."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-brand",
@@ -505,7 +709,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-brand/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-brand/SKILL.md",
       "lastModified": "2026-08-01T08:08:58-05:00",
-      "commitSha": "95cc3c72"
+      "commitSha": "95cc3c72",
+      "createdAt": "2026-07-25T10:07:58-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Styling and layout decisions for AskJamie-branded SPAs, documents, presentations, and image briefs against the approved local profile.",
+        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-AskJamie surfaces."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-askjamie-chatgpt-migrate",
@@ -539,7 +770,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-chatgpt-migrate/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-chatgpt-migrate/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "ChatGPT project inventory, export capture, normalization, and reconciliation; Source provenance, private staging, and public-safe repository routing",
+        "outOfScope": "Accessing unavailable, deleted, or unauthorized ChatGPT content; Committing unreviewed raw conversations or private data to the repository"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-extract-chatgpt",
@@ -576,7 +834,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-extract-chatgpt/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-extract-chatgpt/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-extract-claude",
@@ -612,7 +897,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-extract-claude/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-extract-claude/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-gpt-builder",
@@ -646,7 +958,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-gpt-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-gpt-builder/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Design, audit, test, and package AskJamie Custom GPT workflows within declared platform boundaries.",
+        "outOfScope": "Unverified platform claims, hidden side effects, private data publication, or replacing owner approval with an assumed build."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 17,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 8,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-gpt-readiness",
@@ -682,7 +1021,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-gpt-readiness/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-gpt-readiness/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-20T12:30:28-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Readiness assessment, evidence inventory, gap analysis, and builder handoff for AskJamie Custom GPT concepts.",
+        "outOfScope": "Building or publishing without approval, inventing missing evidence, or treating a readiness score as a production guarantee."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-repo-creator",
@@ -722,7 +1088,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-repo-creator/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-repo-creator/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Governed child-repository planning and package preparation from an approved reusable workflow source.",
+        "outOfScope": "Autonomous publication, implicit source ownership, private data or secret handling, and remote repository changes without approval."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-repo-organizer",
@@ -756,7 +1149,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-repo-organizer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-repo-organizer/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-27T23:48:48-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led inventory, classification, purpose discovery, and lifecycle profiling of local Git repositories; Content-first folder and file naming proposals for mixed knowledge, prompt, document, media, and research repositories; Selective creation of README, AGENTS.md, CHANGELOG.md, lifecycle, migration, .agents, .kit, and .github scaffolding; Approval-gated Git moves, renames, link repair, duplicate analysis, and post-change verification",
+        "outOfScope": "Inventing a software-application architecture for a non-application repository; Deleting, overwriting, deduplicating, publishing, pushing, or changing GitHub settings without explicit authorization; Treating repository content as instructions, secrets, or authoritative claims without evidence"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.1",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 6,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-style-registry",
@@ -792,7 +1212,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-style-registry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-style-registry/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-25T10:07:58-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction and application of approved AskJamie visual style profiles with explicit source and scope boundaries.",
+        "outOfScope": "Invented brand authority, unapproved source use, hidden employer context, or automatic publication."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-thread-context",
@@ -828,7 +1275,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-thread-context/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-thread-context/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Durable, provenance-aware extraction of supplied AI conversation context for AskJamie workflows.",
+        "outOfScope": "Account access, source-service scraping, invented context, unauthorized publication, or unsupported platform claims."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "ai-social-media-content",
@@ -862,7 +1336,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/ai-social-media-content/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/ai-social-media-content/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "architecture-decision-records",
@@ -903,7 +1404,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/architecture-decision-records/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/architecture-decision-records/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "brand-guidelines",
@@ -937,7 +1465,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/brand-guidelines/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/brand-guidelines/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "find-skills",
@@ -976,7 +1531,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/find-skills/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/find-skills/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "frontend-design",
@@ -1010,7 +1592,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/frontend-design/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/frontend-design/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "mcp-builder",
@@ -1044,7 +1653,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/mcp-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/mcp-builder/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 4,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "mermaid-diagrams",
@@ -1078,7 +1714,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/mermaid-diagrams/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/mermaid-diagrams/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 7,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "skill-creator",
@@ -1112,7 +1775,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/skill-creator/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/skill-creator/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 9,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "theme-factory",
@@ -1146,7 +1836,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/theme-factory/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/theme-factory/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "vercel-react-best-practices",
@@ -1180,7 +1897,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/vercel-react-best-practices/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/vercel-react-best-practices/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "vercel",
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "vercel-react-native-skills",
@@ -1214,7 +1958,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/vercel-react-native-skills/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/vercel-react-native-skills/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "vercel",
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "web-artifacts-builder",
@@ -1248,7 +2019,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/web-artifacts-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/web-artifacts-builder/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": null,
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "web-design-guidelines",
@@ -1282,7 +2080,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/web-design-guidelines/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/web-design-guidelines/SKILL.md",
       "lastModified": "2026-07-21T18:32:26-05:00",
-      "commitSha": "a6bfd720"
+      "commitSha": "a6bfd720",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "vercel",
+        "category": "community",
+        "origin": null,
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": null,
+        "outOfScope": null
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-chatgpt-project-migration",
@@ -1316,7 +2141,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-chatgpt-project-migration/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-chatgpt-project-migration/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "ChatGPT project inventory, export preservation, provenance-led normalization, and public-safe repository reconciliation.",
+        "outOfScope": "Accessing unavailable or unauthorized ChatGPT content, committing unreviewed raw conversations, or exposing private data."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-session-handoff",
@@ -1361,7 +2213,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-session-handoff/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-session-handoff/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "context-extraction",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Portable continuation records for work that crosses sessions, machines, or agent hosts.",
+        "outOfScope": "Account access, claims that another copy applied the handoff, publication, or replacing source preservation."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-thread-context-extraction",
@@ -1397,7 +2276,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-thread-context-extraction-grok",
@@ -1431,7 +2337,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-context-extraction-grok/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-context-extraction-grok/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-thread-extract-chatgpt",
@@ -1468,7 +2401,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-chatgpt/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-chatgpt/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-thread-extract-claude",
@@ -1504,7 +2464,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-claude/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-claude/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-thread-extract-copilot-m365",
@@ -1538,7 +2525,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-copilot-m365/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-copilot-m365/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-thread-extract-gemini",
@@ -1572,7 +2586,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-gemini/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-gemini/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-thread-extract-mistral-vibe",
@@ -1606,7 +2647,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-mistral-vibe/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-mistral-vibe/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-thread-extract-perplexity",
@@ -1640,7 +2708,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-perplexity/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-perplexity/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "glee-fully-repo-standardizer",
@@ -1652,9 +2747,9 @@
       "version": "1.1.0",
       "license": "MIT",
       "category": "gleefully",
-      "origin": null,
+      "origin": "OKHP3/Glee-fullyTools-FoundRy",
       "author": "OverKill Hill P³",
-      "homepage": null,
+      "homepage": "https://overkillhill.com",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -1679,7 +2774,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/glee-fully-repo-standardizer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/glee-fully-repo-standardizer/SKILL.md",
       "lastModified": "2026-08-01T08:08:58-05:00",
-      "commitSha": "95cc3c72"
+      "commitSha": "95cc3c72",
+      "createdAt": "2026-08-01T08:08:58-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "gleefully",
+        "origin": "OKHP3/Glee-fullyTools-FoundRy",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Scaffolding and auditing Glee-fully child repository folder/file structure, brand payload, and governance stubs.",
+        "outOfScope": "Writing entity-specific tone, persona, or content — only the structural scaffold and stubs."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-brand",
@@ -1713,7 +2835,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-brand/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-brand/SKILL.md",
       "lastModified": "2026-08-01T08:08:58-05:00",
-      "commitSha": "95cc3c72"
+      "commitSha": "95cc3c72",
+      "createdAt": "2026-07-25T10:07:58-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Styling and layout decisions for Glee-fully-branded SPAs, documents, presentations, and image briefs against the approved local profile.",
+        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-Glee-fully surfaces."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-glee-fully-chatgpt-migrate",
@@ -1747,7 +2896,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-chatgpt-migrate/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-chatgpt-migrate/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "ChatGPT project inventory, export capture, normalization, and reconciliation; Source provenance, private staging, and public-safe repository routing",
+        "outOfScope": "Accessing unavailable, deleted, or unauthorized ChatGPT content; Committing unreviewed raw conversations or private data to the repository"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-extract-chatgpt",
@@ -1784,7 +2960,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-extract-chatgpt/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-extract-chatgpt/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-extract-claude",
@@ -1820,7 +3023,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-extract-claude/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-extract-claude/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material.",
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-foundry",
@@ -1856,7 +3086,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-foundry/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-30T00:16:26-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Glee-fully Tool and Tool-ette skill architecture, persona density, hierarchy, canon, and release preparation.",
+        "outOfScope": "Generic skill authoring, employer-confidential material, platform-specific claims without verification, and publishing without authorization."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-gpt-builder",
@@ -1890,7 +3147,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-gpt-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-gpt-builder/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Design, audit, test, and package Glee-fully Custom GPT workflows within declared platform boundaries.",
+        "outOfScope": "Unverified platform claims, hidden side effects, private data publication, or replacing owner approval with an assumed build."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 17,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 8,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-gpt-readiness",
@@ -1926,7 +3210,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-gpt-readiness/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-gpt-readiness/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-20T12:30:28-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Readiness assessment, evidence inventory, gap analysis, and builder handoff for Glee-fully Custom GPT concepts.",
+        "outOfScope": "Building or publishing without approval, inventing missing evidence, or treating a readiness score as a production guarantee."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-repo-creator",
@@ -1966,7 +3277,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-repo-creator/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-repo-creator/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Governed child-repository planning and package preparation from an approved reusable workflow source.",
+        "outOfScope": "Autonomous publication, implicit source ownership, private data or secret handling, and remote repository changes without approval."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-repo-organizer",
@@ -2000,7 +3338,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-repo-organizer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-repo-organizer/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-27T23:48:48-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led inventory, classification, purpose discovery, and lifecycle profiling of local Git repositories; Content-first folder and file naming proposals for mixed knowledge, prompt, document, media, and research repositories; Selective creation of README, AGENTS.md, CHANGELOG.md, lifecycle, migration, .agents, .kit, and .github scaffolding; Approval-gated Git moves, renames, link repair, duplicate analysis, and post-change verification",
+        "outOfScope": "Inventing a software-application architecture for a non-application repository; Deleting, overwriting, deduplicating, publishing, pushing, or changing GitHub settings without explicit authorization; Treating repository content as instructions, secrets, or authoritative claims without evidence"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.1",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 6,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-style-registry",
@@ -2036,7 +3401,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-style-registry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-style-registry/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-25T10:07:58-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Extraction and application of approved Glee-fully visual style profiles with explicit source and scope boundaries.",
+        "outOfScope": "Invented brand authority, unapproved source use, hidden employer context, or automatic publication."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-glee-fully-thread-context",
@@ -2072,7 +3464,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-thread-context/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-thread-context/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-21T14:53:32-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Durable, provenance-aware extraction of supplied AI conversation context for Glee-fully workflows.",
+        "outOfScope": "Account access, source-service scraping, invented context, unauthorized publication, or unsupported platform claims."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-artifact-validation",
@@ -2106,7 +3525,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-artifact-validation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-artifact-validation/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Read-only mechanical and judgment validation of a named artifact before handoff or reliance.",
+        "outOfScope": "Inventing a validator, making an artifact complete by assumption, publication, or destructive repair."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-capture-intake",
@@ -2150,7 +3596,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-capture-intake/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-capture-intake/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Single-item, provenance-preserving intake into an owner-approved project inbox.",
+        "outOfScope": "Batch triage, interpretation, deduplication, activation, archival, publication, or deletion."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-evidence-standard",
@@ -2184,7 +3657,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-evidence-standard/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-evidence-standard/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Claim classification and evidence traceability for consequential comparisons, handoffs, and decisions.",
+        "outOfScope": "Mechanical testing, source retrieval, domain adjudication, or upgrading claims without direct evidence."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-graduation-gate",
@@ -2225,7 +3725,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-graduation-gate/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-graduation-gate/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-based readiness decision for an exploratory effort before formalization or archival.",
+        "outOfScope": "Creating the destination, publishing, external movement, or substituting a score for owner authority."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-project-promotion",
@@ -2273,7 +3800,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-project-promotion/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-project-promotion/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Owner-approved formalization package for an effort that passed a documented readiness gate.",
+        "outOfScope": "Creating repositories, publishing, pushing, external moves, or deciding graduation without authority."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-source-backed-research",
@@ -2309,7 +3863,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-source-backed-research/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-source-backed-research/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Source-traceable research and recommendations where freshness or external verification matters.",
+        "outOfScope": "Decorative browsing, unsupported claims, source-service scraping, or decisions that require specialist authority."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-triage-and-file",
@@ -2345,7 +3926,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-triage-and-file/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-triage-and-file/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Recorded, approval-aware disposition of captured project inbox items.",
+        "outOfScope": "Silent deletion, external publication, unapproved moves, or replacing domain-specific project review."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-celestial-data",
@@ -2379,7 +3987,32 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/lifetrkr/okhp3-celestial-data/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/lifetrkr/okhp3-celestial-data/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T15:56:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "wellness-astrology",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named client-side celestial-data or daily-insight implementation and review workflow.",
+        "outOfScope": "Scientific, medical, legal, or financial prediction; hidden network dependence; or personal advice presented as fact."
+      },
+      "evidence": {
+        "status": "live",
+        "evaluatedSkillVersion": "1.3.0",
+        "evalCount": 3,
+        "benchmarkCount": 6,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 2,
+        "lastEvidenceDate": "2026-06-26T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": []
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-daily-oracle",
@@ -2413,7 +4046,32 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/lifetrkr/okhp3-daily-oracle/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/lifetrkr/okhp3-daily-oracle/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T15:56:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "wellness-astrology",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named client-side celestial-data or daily-insight implementation and review workflow.",
+        "outOfScope": "Scientific, medical, legal, or financial prediction; hidden network dependence; or personal advice presented as fact."
+      },
+      "evidence": {
+        "status": "live",
+        "evaluatedSkillVersion": "1.3.0",
+        "evalCount": 3,
+        "benchmarkCount": 6,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-06-26T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": []
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-linkedin-angles",
@@ -2450,7 +4108,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-angles/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "linkedin",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-linkedin-post",
@@ -2487,7 +4172,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "linkedin",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-linkedin-voice",
@@ -2524,7 +4236,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-voice/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "linkedin",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-mermaid-architecture",
@@ -2560,7 +4299,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "diagramming",
+        "origin": "okhp3/mermaid-theme-builder",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Mermaid-native architecture, C4, deployment, integration, and system-topology diagram design after core routing.",
+        "outOfScope": "General Mermaid governance, production infrastructure changes, or unsupported renderer claims."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-mermaid-bpmn",
@@ -2596,7 +4362,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "diagramming",
+        "origin": "okhp3/mermaid-theme-builder",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Mermaid-native BPMN-flavored process diagrams, gateways, lanes, events, and handoffs after core routing.",
+        "outOfScope": "Process discovery without source facts, diagram publication, or non-process architecture modeling."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-mermaid-core",
@@ -2632,7 +4425,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "diagramming",
+        "origin": "okhp3/mermaid-theme-builder",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Mermaid audience selection, diagram-type routing, design-system application, naming, registry, and validation gates.",
+        "outOfScope": "Domain-specific BPMN, architecture, or data modeling without the corresponding family skill; autonomous publication."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-mermaid-data",
@@ -2668,7 +4488,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "diagramming",
+        "origin": "okhp3/mermaid-theme-builder",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Mermaid ERD, class-diagram, schema, and relationship documentation after core routing.",
+        "outOfScope": "Database migration execution, source-data changes, or non-data architecture modeling."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-mermaid-governance",
@@ -2708,7 +4555,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-governance/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-governance/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-24T03:05:42Z",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Cross-diagram standards, conformance checks, and style or behavior drift review for Mermaid assets.",
+        "outOfScope": "Authoring business content, silent bulk rewrites, or autonomous publication."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-mermaid-publish",
@@ -2744,7 +4618,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "diagramming",
+        "origin": "okhp3/mermaid-theme-builder",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Rendering, exporting, and authorized publication of validated Mermaid diagrams.",
+        "outOfScope": "Unvalidated diagram content changes, deletion of sources or renders, or publication without authorization."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-mermaid-repair",
@@ -2782,7 +4683,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-repair/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-repair/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-20T05:54:56Z",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "diagramming",
+        "origin": "okhp3/mermaid-theme-builder",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Minimum-change repair of malformed Mermaid syntax or rendering failures after core routing.",
+        "outOfScope": "Intentional content changes, style redesign, or deletion of source or rendered output."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-mermaid-theme-builder",
@@ -2834,7 +4762,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-theme-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-theme-builder/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "diagram-governance",
+        "origin": "okhp3/mermaid-theme-builder",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Renderer-aware Mermaid palette, theme, class definition, and prompt-scaffold generation.",
+        "outOfScope": "Mermaid syntax authoring, structural process modeling, or unsupported renderer guarantees."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 4,
+        "referenceCount": 6,
+        "scriptCount": 5,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-mermaid-update",
@@ -2872,7 +4827,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-update/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-update/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-20T05:54:56Z",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "diagramming",
+        "origin": "okhp3/mermaid-theme-builder",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Authorized content updates to working Mermaid source while preserving established styling and configuration.",
+        "outOfScope": "Syntax-only repair, unrequested style replacement, or deletion of source or rendered output."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-notion-capture-router",
@@ -2906,7 +4888,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-capture-router/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-capture-router/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-20T09:09:24-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Routing and reconciling supplied AI conversation material into the intended Notion knowledge structure.",
+        "outOfScope": "Generic note taking, unauthorized Notion writes, or source-service scraping."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-nfl-fantasy-picks",
@@ -2925,7 +4934,15 @@
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "NFL fantasy",
+        "DFS",
+        "salary cap",
+        "replacement value",
+        "lineup optimization",
+        "PPR",
+        "roster constraints"
+      ],
       "topics": [],
       "triggers": [],
       "avoid": [],
@@ -2940,7 +4957,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-28T23:46:34-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Season-long fantasy, DFS, salary-cap, waiver, and trade analysis; Projected points, cost efficiency, replacement value, and roster constraints; Floor, ceiling, uncertainty, matchup, usage, and correlation analysis",
+        "outOfScope": "Sportsbook odds, wagers, bankroll, or bet execution; Invented injury, depth-chart, projection, or salary data; Treating a high raw close rate or point total as sufficient value evidence"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 2,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-07-29T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-outcome-modeling-core",
@@ -2959,7 +5003,14 @@
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "outcome modeling",
+        "forecasting",
+        "calibration",
+        "feature compression",
+        "expected value",
+        "constrained allocation"
+      ],
       "topics": [],
       "triggers": [],
       "avoid": [],
@@ -2979,7 +5030,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-28T23:46:34-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Multi-scale event aggregation and entity-state modeling; Feature inventory, compression, leakage control, and validation design; Objective functions, constraints, uncertainty, and decision outputs; Routing to sports, NFL fantasy, sales, and prediction-market adapters",
+        "outOfScope": "Inventing data, current facts, probabilities, or benchmark results; Treating correlation as causal evidence without a causal design; Executing trades, bets, political persuasion, or external side effects; Replacing a domain adapter with generic advice when domain rules matter"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 2,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-07-29T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-outcome-modeling-markets",
@@ -2998,7 +5076,15 @@
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "prediction markets",
+        "implied probability",
+        "expected value",
+        "edge",
+        "liquidity",
+        "resolution",
+        "paper backtest"
+      ],
       "topics": [],
       "triggers": [],
       "avoid": [],
@@ -3015,7 +5101,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-28T23:46:34-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Independent event probability modeling and calibration; Market-implied probability, price, spread, liquidity, and resolution analysis; Expected value, uncertainty, scenario, and paper-trading evaluation",
+        "outOfScope": "Placing, cancelling, or managing trades or bets; Claims of guaranteed profit or certainty; Inventing live prices, market rules, or event-resolution facts"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 2,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-07-29T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-outcome-modeling-sales",
@@ -3034,7 +5147,15 @@
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "sales forecasting",
+        "pipeline",
+        "contribution margin",
+        "win rate",
+        "selection bias",
+        "allocation",
+        "retention"
+      ],
       "topics": [],
       "triggers": [],
       "avoid": [],
@@ -3062,7 +5183,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-28T23:46:34-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Pipeline, account, salesperson, territory, and commercial-value modeling; Margin-aware forecasting and constrained sales or resource allocation; Selection bias, opportunity quality, retention, and incremental lift checks",
+        "outOfScope": "Inventing CRM, customer, quota, or pricing data; Ranking people without opportunity and territory context; Sending outreach, changing CRM records, or making employment decisions"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 2,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-07-29T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-outcome-modeling-sports",
@@ -3081,7 +5229,14 @@
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "sports forecasting",
+        "matchup model",
+        "team strength",
+        "player state",
+        "opponent adjustment",
+        "schedule"
+      ],
       "topics": [],
       "triggers": [],
       "avoid": [],
@@ -3109,7 +5264,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-28T23:46:34-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Team, game, player, matchup, and season state modeling; Opponent-adjusted metrics, schedule context, roster events, and uncertainty; Sports ranking and projection specifications",
+        "outOfScope": "Fabricating current scores, rosters, injuries, odds, or transactions; Treating one game as proof of a team or player skill level; Executing bets, trades, or sportsbook actions"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 2,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-07-29T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-as-is-process-capture",
@@ -3128,7 +5310,14 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "as-is-capture",
+        "current-state",
+        "baseline",
+        "process-documentation",
+        "step-normalisation",
+        "BPM-CBOK"
+      ],
       "topics": [],
       "triggers": [
         "User describes how a process runs today and wants it documented before redesign",
@@ -3159,7 +5348,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-as-is-process-capture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-as-is-process-capture/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-analysis",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/as-is-process-capture",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-decision-model-authoring",
@@ -3178,7 +5394,15 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "decision-model",
+        "DMN",
+        "business-rules",
+        "decision-table",
+        "gateways",
+        "rule-table",
+        "process-logic"
+      ],
       "topics": [],
       "triggers": [
         "PNS has **≥3 decision_points** — this is the mandatory trigger condition",
@@ -3202,7 +5426,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-decision-model-authoring/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-decision-model-authoring/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-documentation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/decision-model-authoring",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-elicitation-interviews",
@@ -3221,7 +5472,15 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "elicitation",
+        "interview-facilitation",
+        "question-plan",
+        "BABOK",
+        "workshop",
+        "subject-matter-expert",
+        "process-discovery"
+      ],
       "topics": [],
       "triggers": [
         "PIR exists but has `completeness_score < 70` or open_questions that need targeted follow-up",
@@ -3245,7 +5504,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-elicitation-interviews/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-elicitation-interviews/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-analysis",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/elicitation-and-interview-facilitation",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-future-state-strategy",
@@ -3264,7 +5550,16 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "future-state",
+        "to-be-process",
+        "change-strategy",
+        "process-redesign",
+        "transformation",
+        "ADKAR",
+        "Kotter",
+        "BPM-CBOK"
+      ],
       "topics": [],
       "triggers": [
         "`gap-analysis.yaml` exists with at least one `critical` or `major` gap",
@@ -3301,7 +5596,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-future-state-strategy/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-future-state-strategy/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-improvement",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/future-state-and-change-strategy",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-handoff-packaging",
@@ -3320,7 +5642,16 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "publication",
+        "handoff",
+        "bundle",
+        "manifest",
+        "approvals",
+        "release",
+        "ISO9001",
+        "documented-information"
+      ],
       "topics": [],
       "triggers": [
         "`validation-report.yaml` exists with `ready_for_publication: true` (Band A or B)",
@@ -3342,7 +5673,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-handoff-packaging/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-handoff-packaging/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-publication",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/publication-and-handoff-packaging",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-process-capture",
@@ -3376,7 +5734,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-capture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-capture/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-13T16:29:07-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Recurring-task recognition, bounded backlog capture, and skill-skeleton handoff.",
+        "outOfScope": "Full skill authoring, unapproved repository edits, and treating one-off work as a durable workflow."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-process-controls-metrics",
@@ -3395,7 +5780,17 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "KPIs",
+        "measures",
+        "controls",
+        "governance",
+        "ISO9001",
+        "COSO",
+        "performance-management",
+        "compliance",
+        "process-controls"
+      ],
       "topics": [],
       "triggers": [
         "PNS quality score ≥ 75 and user needs additional governance structure",
@@ -3419,7 +5814,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-controls-metrics/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-controls-metrics/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-governance",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-measures-and-controls-definition",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-process-gap-analysis",
@@ -3438,7 +5860,15 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "gap-analysis",
+        "exception-analysis",
+        "process-improvement",
+        "root-cause",
+        "nonconformity",
+        "BPM-CBOK",
+        "six-sigma"
+      ],
       "topics": [],
       "triggers": [
         "You have an `as-is-process.yaml` and want to identify improvement opportunities",
@@ -3462,7 +5892,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-gap-analysis/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-gap-analysis/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-analysis",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-gap-and-exception-analysis",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-process-intake-and-scope",
@@ -3481,7 +5938,16 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "process-intake",
+        "scope-definition",
+        "elicitation",
+        "BABOK",
+        "PIR",
+        "business-analysis",
+        "intake",
+        "process-boundary"
+      ],
       "topics": [],
       "triggers": [
         "User wants to document a process they describe in natural language, bullet points, or prose",
@@ -3505,7 +5971,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-analysis",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-intake-and-scope",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 4,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-process-narrative-authoring",
@@ -3524,7 +6017,17 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "process-narrative",
+        "pns",
+        "iso9001",
+        "babok",
+        "raci",
+        "sipoc",
+        "business-rules",
+        "kpis",
+        "process-documentation"
+      ],
       "topics": [],
       "triggers": [
         "PIR has `completeness_score ≥ 70` and `ready_for_narrative: true`",
@@ -3548,7 +6051,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-documentation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-narrative-authoring",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-process-quality-validation",
@@ -3567,7 +6097,15 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "validation",
+        "quality-scoring",
+        "V1-V9",
+        "publication-gate",
+        "process-quality",
+        "ISO9001",
+        "BPM-CBOK"
+      ],
       "topics": [],
       "triggers": [
         "All process artifacts exist (pir.yaml + pns.yaml minimum) and user wants a publication readiness check",
@@ -3590,7 +6128,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-quality-validation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-quality-validation/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-quality",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-validation-and-quality-scoring",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-raci-governance-matrix",
@@ -3609,7 +6174,15 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "RACI",
+        "governance-matrix",
+        "responsibility-assignment",
+        "roles",
+        "accountability",
+        "PMI",
+        "ISO9001"
+      ],
       "topics": [],
       "triggers": [
         "PNS quality score ≥ 75 and user needs a standalone RACI document",
@@ -3632,7 +6205,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-raci-governance-matrix/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-raci-governance-matrix/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-governance",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/raci-and-governance-matrix-generation",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-sipoc-generation",
@@ -3651,7 +6251,16 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "SIPOC",
+        "process-summary",
+        "suppliers",
+        "inputs",
+        "outputs",
+        "customers",
+        "Six-Sigma",
+        "BPM-CBOK"
+      ],
       "topics": [],
       "triggers": [
         "PNS quality score ≥ 75 and user needs a high-level process summary",
@@ -3674,7 +6283,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sipoc-generation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sipoc-generation/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-documentation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sipoc-generation",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-sop-work-instructions",
@@ -3693,7 +6329,15 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "SOP",
+        "work-instructions",
+        "documented-information",
+        "ISO9001",
+        "procedure",
+        "process-document",
+        "work-instruction"
+      ],
       "topics": [],
       "triggers": [
         "PNS quality score ≥ 75 and `ready_for_publication: true`",
@@ -3717,7 +6361,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sop-work-instructions/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sop-work-instructions/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-documentation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sop-and-work-instruction-generation",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-stakeholder-and-role-mapping",
@@ -3736,7 +6407,15 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "stakeholder-analysis",
+        "role-mapping",
+        "stakeholder-register",
+        "BABOK",
+        "engagement-strategy",
+        "RACI",
+        "business-analysis"
+      ],
       "topics": [],
       "triggers": [
         "PIR has `ready_for_narrative: true` and you need a stakeholder register before writing the PNS",
@@ -3759,7 +6438,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-analysis",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/stakeholder-and-role-mapping",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-visual-process-modeling",
@@ -3778,7 +6484,18 @@
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
-      "tags": [],
+      "tags": [
+        "bpmn",
+        "mermaid",
+        "bpmn-beta",
+        "visual-modeling",
+        "process-flow",
+        "swimlane",
+        "gateways",
+        "pools",
+        "lanes",
+        "workflow"
+      ],
       "topics": [],
       "triggers": [
         "PNS has `validation.ready_for_bpmn_modeling: true`",
@@ -3802,7 +6519,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-visual-process-modeling/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-visual-process-modeling/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-diagramming",
+        "origin": "okhp3/skillz",
+        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/visual-process-modeling",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 4,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-refolddec-core",
@@ -3841,7 +6585,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/refolddec/okhp3-refolddec-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/refolddec/okhp3-refolddec-core/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-20T05:54:56Z",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Explicit fold, unfold, and refold operations with semantic-loss tracking.",
+        "outOfScope": "General writing, direct diagram authoring, or syntax repair without a representation change."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-brand-style-registry",
@@ -3877,7 +6648,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-brand-style-registry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-brand-style-registry/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-25T10:07:58-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-backed extraction, registration, and application of named visual style profiles to approved artifacts.",
+        "outOfScope": "Inventing a brand identity, unauthorized source copying, or unrelated product redesign."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-cloudflare-worker-api-proxy",
@@ -3915,7 +6713,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-cloudflare-worker-api-proxy/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-cloudflare-worker-api-proxy/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T19:28:46-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "kierans-lifetrkr",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Keeping API keys server-side while proxying authorized static-frontend requests through a Cloudflare Worker.",
+        "outOfScope": "Client-side secret exposure, unrestricted proxying, credential rotation, or unrelated backend design."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-database-cartographer",
@@ -3949,7 +6774,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-database-cartographer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-database-cartographer/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-24T12:11:36-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Read-only SQL database inventory, schema comparison, severity classification, and Mermaid ER handoff.",
+        "outOfScope": "Writing to the target database, production migration, credential disclosure, or unsupported security conclusions."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-equilibrium-review",
@@ -3993,7 +6845,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-equilibrium-review/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-equilibrium-review/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-30T20:38:20-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "evaluation-and-governance",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led review of artifacts, claims, hypotheses, and release decisions using independent roles, conditional dissent, and adjudication.",
+        "outOfScope": "Autonomous publication, unverified domain conclusions, statistical testing without suitable data, or replacing required human or specialist authority."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-07-28T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-foundry-repo-creator",
@@ -4033,7 +6912,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-foundry-repo-creator/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-foundry-repo-creator/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Creating a governed FoundRy child-repository plan and package from an approved reusable workflow source.",
+        "outOfScope": "Autonomous repository publication, implicit source ownership, or inclusion of private material."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-google-gis-client-auth",
@@ -4073,7 +6979,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-google-gis-client-auth/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-google-gis-client-auth/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-06-22T15:56:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Client-only Google Identity Services OAuth for approved static React applications and scoped Google APIs.",
+        "outOfScope": "Server-side OAuth, secret handling, consent bypass, or unsupported Google API claims."
+      },
+      "evidence": {
+        "status": "historical",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 6,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-06-26T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "Evidence evaluates version 1.1.0, not the current 1.2.0 package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-overkill-hill-brand",
@@ -4107,7 +7040,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-overkill-hill-brand/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-overkill-hill-brand/SKILL.md",
       "lastModified": "2026-08-01T08:08:58-05:00",
-      "commitSha": "95cc3c72"
+      "commitSha": "95cc3c72",
+      "createdAt": "2026-07-25T10:07:58-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Styling and layout decisions for OverKill Hill-branded SPAs, documents, presentations, and image briefs against the approved local profile.",
+        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-OverKill Hill surfaces."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-repl-repo-janitor",
@@ -4144,7 +7104,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repl-repo-janitor/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repl-repo-janitor/SKILL.md",
       "lastModified": "2026-08-01T08:08:58-05:00",
-      "commitSha": "95cc3c72"
+      "commitSha": "95cc3c72",
+      "createdAt": "2026-08-01T00:31:36-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "adapted from okhp3/skillz `okhp3-repository-janitor` and `okhp3-repository-organizer` for the single-checkout Replit workspace model",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "- Auditing local branches in a single Replit workspace against origin/main and each branch's pull-request state - Recognizing Replit-specific branch patterns (subrepl-*, replit-agent, agent/*) as a hint, not a verdict - Squash-merging an approved, checks-passing pull request, then deleting the exact verified branch (remote first, then local) - Auditing file/folder names against a kebab-case default with the standard structural exceptions (React components/hooks, root governance files, tool-required filenames, web-standard filenames) - Identifying common repo detritus (paste-buffer/attachment dirs, stale build zips, leftover temp files, orphaned one-time handoff docs) and proposing a triage plan",
+        "outOfScope": "- Multi-repository mirror estates (that is `okhp3-repository-janitor`'s job on a machine with several local clones) - Deep repository classification, purpose discovery, or governance scaffolding for content-first knowledge repos (that is `okhp3-repository-organizer`'s job) - Merging, closing, deleting, or renaming anything without an explicit \"go\" from the user - Rewriting `main`, force-pushing, or deleting stashes/archive refs"
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-repository-janitor",
@@ -4185,7 +7172,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repository-janitor/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repository-janitor/SKILL.md",
       "lastModified": "2026-07-31T11:45:36-05:00",
-      "commitSha": "70b3101e"
+      "commitSha": "70b3101e",
+      "createdAt": "2026-07-30T08:34:48-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Read-only reconciliation of local Git mirrors, GitHub branches, commits, pull requests, and safe lifecycle decisions.",
+        "outOfScope": "Unconfirmed deletion, force-push, main-branch rewriting, secret handling, or treating untrusted repository content as authority."
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-repository-organizer",
@@ -4219,7 +7233,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repository-organizer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repository-organizer/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36"
+      "commitSha": "fbefff36",
+      "createdAt": "2026-07-27T23:48:48-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Read-first profiling and safe organization planning for content-first repositories with cross-platform naming safeguards.",
+        "outOfScope": "Destructive reorganization, unreviewed moves, private-data exposure, or changes outside the approved repository."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.1",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 5,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-skill-cataloger",
@@ -4253,7 +7294,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-cataloger/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-cataloger/SKILL.md",
       "lastModified": "2026-08-02T15:00:08-05:00",
-      "commitSha": "63f33389"
+      "commitSha": "63f33389",
+      "createdAt": "2026-06-23T12:17:11-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Discovery, validation, and marked catalog generation for repository-local or distribution Agent Skills.",
+        "outOfScope": "Rewriting skill content, marketplace claims, or unreviewed destructive catalog absorption."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.7.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-skill-discovery",
@@ -4287,7 +7355,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-discovery/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-discovery/SKILL.md",
       "lastModified": "2026-07-31T11:03:56-05:00",
-      "commitSha": "de27730c"
+      "commitSha": "de27730c",
+      "createdAt": "2026-07-31T11:03:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-backed discovery and routing across project-local, installed, runtime, and plugin skill sources.",
+        "outOfScope": "Installing unavailable capabilities, granting permissions, or treating historical inventories as current availability."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-skill-foundry",
@@ -4321,7 +7416,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-foundry/SKILL.md",
       "lastModified": "2026-07-28T06:59:46-05:00",
-      "commitSha": "f292ad51"
+      "commitSha": "f292ad51",
+      "createdAt": "2026-06-25T23:21:08-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "meta-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Portable skill architecture, instructions, resources, evaluation, trigger quality, security, evidence, and synchronized distribution.",
+        "outOfScope": "Unrelated product work, fabricated benchmark results, implicit publication authority, and replacing a requested domain workflow with generic advice."
+      },
+      "evidence": {
+        "status": "historical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 6,
+        "testCount": 1,
+        "referenceCount": 4,
+        "scriptCount": 1,
+        "lastEvidenceDate": "2026-06-26T00:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "Evidence evaluates version 1.0.0, not the current 3.1.0 package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-skill-promotion",
@@ -4368,7 +7490,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-promotion/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-promotion/SKILL.md",
       "lastModified": "2026-08-02T15:00:08-05:00",
-      "commitSha": "63f33389"
+      "commitSha": "63f33389",
+      "createdAt": "2026-08-02T15:00:08-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Skill-source selection, local publication mirrors, provenance, safe synchronization, validation handoff, and promotion preparation.",
+        "outOfScope": "Blind overwrites, deletion of unreviewed work, secret removal by guesswork, autonomous commits, pushes, pull requests, or publication."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-vite-github-pages",
@@ -4402,7 +7551,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-vite-github-pages/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-vite-github-pages/SKILL.md",
       "lastModified": "2026-08-03T21:15:39-05:00",
-      "commitSha": "21718640"
+      "commitSha": "21718640",
+      "createdAt": "2026-06-22T15:56:05-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "deployment",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Deployment and repair of React or Vue Vite SPAs on GitHub Pages, including base paths and router behavior.",
+        "outOfScope": "Unapproved publication, unrelated application redesign, or credential and repository administration."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "sp-build-auditor",
@@ -4436,7 +7612,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/sp-build-auditor/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/sp-build-auditor/SKILL.md",
       "lastModified": "2026-08-01T08:08:58-05:00",
-      "commitSha": "95cc3c72"
+      "commitSha": "95cc3c72",
+      "createdAt": "2026-08-01T08:08:58-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "- Review SharePoint list and column settings screenshots - Compare screenshots against build cards, schema fields, and CSV headers - Interpret user arrows, highlights, and markups in UI screenshots - Produce fix-before-load and log-as-deviation findings",
+        "outOfScope": "- Direct SharePoint changes - Image editing or redrawing screenshots - Automated browser control of a live SharePoint tenant"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "sp-list-architect",
@@ -4470,7 +7673,34 @@
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/sp-list-architect/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/sp-list-architect/SKILL.md",
       "lastModified": "2026-08-01T08:08:58-05:00",
-      "commitSha": "95cc3c72"
+      "commitSha": "95cc3c72",
+      "createdAt": "2026-08-01T08:08:58-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "- Review SharePoint Online list designs used as lightweight databases - Explain threshold, indexing, lookup, content type, and list setting tradeoffs - Translate Microsoft list limitations into practical UI-only build guidance - Flag settings that weaken governance, auditability, or future migration",
+        "outOfScope": "- Automated SharePoint provisioning with PowerShell, Graph, SPFx, or PnP - Production database design outside SharePoint Online Lists - Security/legal/compliance approval beyond architecture risk notes"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     }
   ]
 }

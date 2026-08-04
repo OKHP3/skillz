@@ -25,20 +25,16 @@
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 16,
   "maturityCounts": {
-    "placeholder": 0,
-    "skeleton": 13,
-    "draftable": 66,
-    "usable": 0,
-    "validated": 0,
-    "published": 0
+    "draftable": 88,
+    "skeleton": 25
   },
   "evidenceStatusCounts": {
-    "none": 26,
-    "local-checks": 20,
-    "analytical": 17,
-    "not-run": 15,
     "historical": 6,
-    "live": 2
+    "analytical": 43,
+    "none": 33,
+    "local-checks": 22,
+    "live": 2,
+    "not-run": 7
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
@@ -262,5 +258,8 @@
       "Glee-fully Toolbox",
       "AskJamie Lens System"
     ]
-  }
+  },
+  "distributionFamilyCount": 15,
+  "countsGeneratedAt": "2026-08-04T05:20:02.009Z",
+  "countsGeneratedFrom": "forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

@@ -236,6 +236,75 @@
   padding: 2px 8px;
   border: 1px solid var(--color-border-light);
 }
+.detail-tag--link {
+  text-decoration: none;
+  transition: border-color var(--transition), color var(--transition);
+}
+.detail-tag--link:hover,
+.detail-tag--link:focus-visible {
+  border-color: var(--color-copper);
+  color: var(--color-copper-dark);
+}
+
+/* Evidence-contract v2 section (SkillDetail) */
+.detail-evidence-release {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border-light);
+}
+.detail-evidence-counts,
+.detail-evidence-blockers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}
+.detail-evidence-blockers {
+  flex-direction: column;
+  color: var(--color-ember);
+}
+.detail-evidence-links {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+}
+
+/* Family narrative page */
+.family-narrative p {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-muted-light);
+  line-height: 1.6;
+}
+.family-actions {
+  margin: var(--space-6) 0;
+}
+.family-skill-list {
+  margin-top: var(--space-8);
+}
+
+/* Home trust panel (A6) */
+.home-trust-panel {
+  max-width: 720px;
+  margin: var(--space-16) auto 0;
+  text-align: left;
+  padding: var(--space-6) var(--space-4) 0;
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* Activity — commit feed */
+.activity-list--commits li {
+  align-items: flex-start;
+}
+.activity-commit-message {
+  display: block;
+  font-weight: 600;
+}
+.activity-commit-meta {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-dark);
+}
 
 /* Maturity callout box */
 .detail-maturity-box {
@@ -684,6 +753,11 @@ input, select, textarea {
 .input-text:focus {
   outline: none;
   border-color: var(--color-copper);
+  box-shadow: 0 0 0 2px var(--color-copper-light);
+}
+.input-text:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 1px;
 }
 
 /* Home */
@@ -996,6 +1070,30 @@ input, select, textarea {
 .skill-card-evidence {
   font-size: var(--text-xs);
   color: var(--color-text-muted-light);
+}
+.skill-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.evidence-chip {
+  font-size: var(--text-xs);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--color-bg);
+  color: var(--color-text-muted-light);
+  border: 1px solid var(--color-border-light);
+  white-space: nowrap;
+}
+.evidence-chip--historical {
+  color: var(--color-copper-dark);
+  border-color: var(--color-copper-light);
+}
+.evidence-chip--warn {
+  color: var(--color-ember);
+  border-color: var(--color-ember);
+  background: rgba(168, 56, 40, 0.08);
 }
 .skill-card-trigger {
   font-size: var(--text-sm);

@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import catalogData from '../data/catalog.json';
-import type { Catalog } from '../types/catalog';
+import { useCatalog } from '../contexts/CatalogContext';
 import { buildSearchIndex } from '../utils/search';
 import Nav from '../components/layout/Nav';
 import murderbirdSentinel from '../assets/murderbird-sentinel.png';
 
-const catalog = catalogData as Catalog;
-
 export default function Home() {
+  const catalog = useCatalog();
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -74,7 +72,7 @@ export default function Home() {
                 className="input-text"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                placeholder="e.g. document a messy business process..."
+                placeholder="e.g. document a messy business process…"
                 autoComplete="off"
                 aria-label="Search agent skills"
               />
@@ -98,6 +96,8 @@ export default function Home() {
                 alt=""
                 className="hero-bird-img"
                 aria-hidden="true"
+                width={160}
+                height={160}
               />
             </div>
             <span className="hero-bird-label" aria-hidden="true">OverKill Hill P³™ ↗</span>
@@ -116,12 +116,24 @@ export default function Home() {
           <h2>Families</h2>
           <div className="home-families">
             {catalog.families.map(f => (
-              <Link to={`/explore?family=${f.name}`} key={f.name} className="home-family-card">
+              <Link to={`/families/${f.name}`} key={f.name} className="home-family-card">
                 <strong>{f.displayName || f.name}</strong>
                 <span>{f.skillCount} skill{f.skillCount !== 1 ? 's' : ''}</span>
               </Link>
             ))}
           </div>
+        </section>
+
+        <section data-section="trust" className="home-trust-panel">
+          <h2>What "evidence" means here</h2>
+          <p>
+            Every skill in this catalog is scored on what it actually has, not what its description
+            promises. Maturity and evidence are derived at build time from files that ship with the
+            skill itself — <code>evals.json</code>, <code>benchmark.json</code>, test suites, reference
+            files — never from a description or a claim in prose. Nothing here fabricates a benchmark
+            or promotes a skill's status as a side effect of a redesign. If a skill has no evidence
+            record, it says so plainly rather than defaulting to a reassuring label.
+          </p>
         </section>
       </main>
     </div>

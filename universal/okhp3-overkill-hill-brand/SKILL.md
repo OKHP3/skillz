@@ -10,6 +10,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  in_scope: "Styling and layout decisions for OverKill Hill-branded SPAs, documents, presentations, and image briefs against the approved local profile."
+  out_of_scope: "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-OverKill Hill surfaces."
 ---
 
 # okhp3-overkill-hill-brand

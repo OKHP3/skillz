@@ -62,6 +62,14 @@ export const FAQ_GROUPS: FaqGroup[] = [
         ],
       },
       {
+        id: 'release-readiness',
+        question: 'What is "release readiness" and how is it different from maturity or evidence?',
+        answer: 'Release readiness is a derived, UI-only convenience field — it is not a new stored value, and it never overrides or merges the underlying maturity or evidence fields. It combines a skill\'s maturity level with its evidence-contract-v2 status (live, analytical, historical, or not-run — a separate, intentionally distinct vocabulary from the older 7-value evidence note) into one of five buckets: Needs contract work, Needs live evidence, Ready for supervised use, Ready for peer review, or Published. Use it as a quick filter on Explore; use the "Evidence and release state" section on a skill\'s detail page for the full picture, including evidence counts, promotion blockers, and whether the evaluated version still matches the current package version.',
+        links: [
+          { label: 'Filter by release readiness', href: '/explore' },
+        ],
+      },
+      {
         id: 'why-prerequisite',
         question: 'Why does one skill require another skill first?',
         answer: 'Some skills are layered: a domain skill adds vocabulary on top of a foundation skill that handles core logic. The mermaid family is an example — okhp3-mermaid-core handles audience, type selection, and design system; the domain skills (bpmn, architecture, data) add type-specific patterns on top. Loading only the domain skill without core produces incomplete results.',

@@ -10,6 +10,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  in_scope: "Styling and layout decisions for AskJamie-branded SPAs, documents, presentations, and image briefs against the approved local profile."
+  out_of_scope: "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-AskJamie surfaces."
 ---
 
 # okhp3-askjamie-brand

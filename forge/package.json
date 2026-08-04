@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/build-catalog.js && node scripts/build-activity.mjs",
     "dev": "vite",
     "catalog": "node scripts/build-catalog.js",
-    "prebuild": "node scripts/build-catalog.js",
+    "prebuild": "node scripts/build-catalog.js && node scripts/build-activity.mjs",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node scripts/test-catalog.mjs"
   },
   "devDependencies": {
     "typescript": "~6.0.2",

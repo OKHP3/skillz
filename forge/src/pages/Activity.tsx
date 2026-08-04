@@ -1,20 +1,46 @@
-import { useEffect } from 'react';
-import catalogData from '../data/catalog.json';
-import type { Catalog } from '../types/catalog';
+import { useEffect, useState } from 'react';
+import { useCatalog } from '../contexts/CatalogContext';
 import { repoUrl, prUrl, issueUrl } from '../utils/github';
 import { Link } from 'react-router-dom';
 import Nav from '../components/layout/Nav';
 
-const catalog = catalogData as Catalog;
+interface ActivityCommit {
+  sha: string;
+  shortSha: string;
+  message: string;
+  author: string;
+  date: string;
+  url: string;
+}
+interface ActivityFeed {
+  generatedAt: string;
+  commits: ActivityCommit[];
+  fetchError: string | null;
+}
+
+const ACTIVITY_URL = `${import.meta.env.BASE_URL}data/activity.json`;
 
 export default function Activity() {
+  const catalog = useCatalog();
+  const [feed, setFeed] = useState<ActivityFeed | null>(null);
+
   useEffect(() => {
     document.title = 'Activity | Skillz Forge';
     return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+    fetch(ACTIVITY_URL)
+      .then(res => res.ok ? res.json() : Promise.reject(new Error(String(res.status))))
+      .then((data: ActivityFeed) => { if (!cancelled) setFeed(data); })
+      .catch(() => { if (!cancelled) setFeed({ generatedAt: '', commits: [], fetchError: 'unavailable' }); });
+    return () => { cancelled = true; };
+  }, []);
+
   const recentSkills = [...catalog.skills]
     .filter(s => s.maturity !== 'placeholder')
+    .sort((a, b) => (b.lastModified ? Date.parse(b.lastModified) : 0) - (a.lastModified ? Date.parse(a.lastModified) : 0))
     .slice(0, 10);
 
   return (
@@ -39,9 +65,9 @@ export default function Activity() {
 
         <div className="activity-panels">
           <section className="activity-panel">
-            <h2>Catalog snapshot</h2>
+            <h2>Recently updated skills</h2>
             <p className="activity-note">
-              This is a static sample from the generated catalog — not a live activity feed. For real commit history, open GitHub.
+              Ranked by last-modified commit date from the generated catalog — not a live feed. Refreshes each time the catalog rebuilds.
             </p>
             <ul className="activity-list">
               {recentSkills.map(skill => (
@@ -54,6 +80,30 @@ export default function Activity() {
                 </li>
               ))}
             </ul>
+          </section>
+
+          <section className="activity-panel">
+            <h2>Recent commits</h2>
+            <p className="activity-note">
+              Fetched from the GitHub REST API at build time — read-only, no live polling. Regenerated on every catalog rebuild.
+            </p>
+            {feed === null && <p className="activity-note">Loading…</p>}
+            {feed?.fetchError && (
+              <p className="activity-note">Commit history is temporarily unavailable. <a href={`${repoUrl()}/commits/main`} target="_blank" rel="noopener noreferrer">View on GitHub instead &rarr;</a></p>
+            )}
+            {feed && !feed.fetchError && feed.commits.length > 0 && (
+              <ul className="activity-list activity-list--commits">
+                {feed.commits.map(c => (
+                  <li key={c.sha}>
+                    <div>
+                      <a href={c.url} target="_blank" rel="noopener noreferrer" className="activity-commit-message">{c.message.split('\n')[0]}</a>
+                      <span className="activity-commit-meta">{c.author} · {new Date(c.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                    </div>
+                    <code className="mono-tag">{c.shortSha}</code>
+                  </li>
+                ))}
+              </ul>
+            )}
           </section>
 
           <section className="activity-panel">

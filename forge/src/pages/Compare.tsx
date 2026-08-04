@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import catalogData from '../data/catalog.json';
-import type { Catalog, Skill } from '../types/catalog';
+import { useCatalog } from '../contexts/CatalogContext';
+import type { Skill } from '../types/catalog';
 import Nav from '../components/layout/Nav';
 import { copyToClipboard, shareCompare } from '../utils/clipboard';
 import { trackCompareOpen } from '../utils/analytics';
-
-const catalog = catalogData as unknown as Catalog;
 
 function renderList(value: unknown) {
   const items = value as string[];
@@ -52,6 +50,7 @@ const COMPARE_FIELDS: Array<{ key: keyof Skill; label: string; render?: (v: unkn
 ];
 
 export default function Compare() {
+  const catalog = useCatalog();
   const [searchParams, setSearchParams] = useSearchParams();
   const [addQuery, setAddQuery] = useState('');
   const [copied, setCopied] = useState(false);

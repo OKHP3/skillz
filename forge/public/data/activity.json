@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-08-04T05:20:02.060Z",
+  "commits": [
+    {
+      "sha": "33e1d52afa343c9d62d95f2d43f75c243ec5d8c7",
+      "shortSha": "33e1d52",
+      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
+      "author": "Jamie Hill",
+      "date": "2026-08-04T05:01:26Z",
+      "url": "https://github.com/OKHP3/skillz/commit/33e1d52afa343c9d62d95f2d43f75c243ec5d8c7"
+    },
+    {
+      "sha": "f5d9fad0ad92ea68e1f7bcc8949238dc06bb467a",
+      "shortSha": "f5d9fad",
+      "message": "\tnew file:   docs/PRD-SKILLZ-FORGE-V2-EVIDENCE-AND-INTEGRITY-REPLIT-2026-08-04.md",
+      "author": "Jamie Hill",
+      "date": "2026-08-04T04:31:55Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f5d9fad0ad92ea68e1f7bcc8949238dc06bb467a"
+    },
+    {
+      "sha": "25c60830d8b20f88d57f2fa272915437c1674ae2",
+      "shortSha": "25c6083",
+      "message": "fix(forge): fix .gitignore blind spot that broke every deploy since run #58\n\nforge/src/assets/murderbird-sentinel.png was matched by the blanket *.png\ngitignore rule with no exception for forge/src/assets/, so it was never\ncommitted even though Home.tsx imports it. Every checkout in this Replit\nworkspace already had the file on disk (untracked), so local builds always\nsucceeded silently. A fresh clone -- including every GitHub Actions run\nsince deploy #58 -- was missing the file, so 'vite build' failed on an\nunresolved import and the Pages deploy job was skipped. Add explicit\ngitignore exceptions for forge/src/assets/*.png and *.svg and track the file.",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T04:31:41Z",
+      "url": "https://github.com/OKHP3/skillz/commit/25c60830d8b20f88d57f2fa272915437c1674ae2"
+    },
+    {
+      "sha": "57b1c5e3523996906010d5ea343891c0de6a241d",
+      "shortSha": "57b1c5e",
+      "message": "chore(celestial-data): sync Mercury ephemeris from ARE — JPL-verified 2029-2031 + 2032 (#39)\n\n* chore(celestial-data): sync Mercury ephemeris from ARE — JPL-verified 2029-2031 + 2032 extension\n\n* chore(celestial-data): sync Mercury ephemeris from ARE — JPL-verified 2029-2031 + 2032 extension\n\n* chore(celestial-data): sync Mercury ephemeris from ARE — JPL-verified 2029-2031 + 2032 extension",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T02:39:47Z",
+      "url": "https://github.com/OKHP3/skillz/commit/57b1c5e3523996906010d5ea343891c0de6a241d"
+    },
+    {
+      "sha": "217186408a7a4e32570a08bcd4c56bc768ca5965",
+      "shortSha": "2171864",
+      "message": "skill(okhp3-vite-github-pages): promote v1.1.0 — remove project-specific references\n\nBumps okhp3-vite-github-pages from v1.0.0 to v1.1.0. Removes hard-coded references to kierans-lifetrkr project so the skill is generic for downstream consumers.",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T02:15:39Z",
+      "url": "https://github.com/OKHP3/skillz/commit/217186408a7a4e32570a08bcd4c56bc768ca5965"
+    },
+    {
+      "sha": "9cd4086bcdd4c9b494dbc26a8f20d398dd037a22",
+      "shortSha": "9cd4086",
+      "message": "Repository cleanup: remove dead Vite scaffold, orphaned assets, stray sync report, and redundant license files\n\n- forge/src/main.ts, counter.ts, style.css: leftover Vite init scaffold, unused (real entry is main.tsx)\n- forge/src/assets/{typescript.svg,vite.svg,hero.png,murderbird-crucible.png}: only referenced by the dead scaffold or unreferenced anywhere\n- skills/okhp3-artifact-validation-sync-report.json: one-off diagnostic output, not part of the publication mirror content\n- process-capture/*/license (15 files): redundant with each package's SKILL.md frontmatter license field; no other of the 131 skill packages carries a physical license file",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T01:02:00Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9cd4086bcdd4c9b494dbc26a8f20d398dd037a22"
+    },
+    {
+      "sha": "35f9b10d7ec522b5efbac47d87d641eb7c3f9510",
+      "shortSha": "35f9b10",
+      "message": "Update catalog data in forge\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T00:40:20Z",
+      "url": "https://github.com/OKHP3/skillz/commit/35f9b10d7ec522b5efbac47d87d641eb7c3f9510"
+    },
+    {
+      "sha": "311dbcc5cf4486faf882c02b660736436f87082f",
+      "shortSha": "311dbcc",
+      "message": "Animate FAQ accordion with CSS grid-template-rows transition; add inert on collapsed answers to preserve tab order\n\nReplit-Task-Id: 3771dcf2-fd37-4d79-966c-f311506d4df9",
+      "author": "overkillhillp3",
+      "date": "2026-08-04T00:40:15Z",
+      "url": "https://github.com/OKHP3/skillz/commit/311dbcc5cf4486faf882c02b660736436f87082f"
+    },
+    {
+      "sha": "517b7df6654780d38229cf9306b0a50d979ee50c",
+      "shortSha": "517b7df",
+      "message": "Update catalog data in forge\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T00:36:40Z",
+      "url": "https://github.com/OKHP3/skillz/commit/517b7df6654780d38229cf9306b0a50d979ee50c"
+    },
+    {
+      "sha": "4020820d0e8197870ee3e4f90ebd4170ed6961b8",
+      "shortSha": "4020820",
+      "message": "Warn on missing FAMILY.md in readFamilyDisplayName catch block\n\nReplit-Task-Id: df414aad-a2f7-48b0-98a3-734732585822",
+      "author": "overkillhillp3",
+      "date": "2026-08-04T00:36:34Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4020820d0e8197870ee3e4f90ebd4170ed6961b8"
+    }
+  ],
+  "fetchError": null
+}

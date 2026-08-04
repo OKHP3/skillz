@@ -68,6 +68,11 @@ export function searchSkills(skills: Skill[], filters: FilterState): SearchResul
     results = results.filter(r => r.skill.evidenceStatus === filters.evidence);
   }
 
+  // Apply release-readiness filter (evidence-contract v2)
+  if (filters.releaseReadiness) {
+    results = results.filter(r => r.skill.releaseReadiness === filters.releaseReadiness);
+  }
+
   // Sort
   results = sortResults(results, filters.sort);
 
@@ -100,9 +105,44 @@ function sortResults(results: SearchResult[], sort: FilterState['sort']): Search
         (order[a.skill.evidenceStatus] ?? 9) - (order[b.skill.evidenceStatus] ?? 9)
       );
     }
+    case 'updated':
+      return [...results].sort((a, b) =>
+        (b.skill.lastModified ? Date.parse(b.skill.lastModified) : 0) -
+        (a.skill.lastModified ? Date.parse(a.skill.lastModified) : 0)
+      );
+    case 'evidence-freshness': {
+      // Freshest evidence first: a live/analytical record with a recent
+      // lastEvidenceDate outranks a historical one, which outranks not-run.
+      const order: Record<string, number> = { live: 0, analytical: 1, historical: 2, 'not-run': 3 };
+      return [...results].sort((a, b) => {
+        const statusDiff = (order[a.skill.evidence.status] ?? 9) - (order[b.skill.evidence.status] ?? 9);
+        if (statusDiff !== 0) return statusDiff;
+        const aDate = a.skill.evidence.lastEvidenceDate ? Date.parse(a.skill.evidence.lastEvidenceDate) : 0;
+        const bDate = b.skill.evidence.lastEvidenceDate ? Date.parse(b.skill.evidence.lastEvidenceDate) : 0;
+        return bDate - aDate;
+      });
+    }
+    case 'version':
+      // Missing versions sort last but remain present and sortable (6.5 test 3).
+      return [...results].sort((a, b) => {
+        if (!a.skill.version && !b.skill.version) return a.skill.name.localeCompare(b.skill.name);
+        if (!a.skill.version) return 1;
+        if (!b.skill.version) return -1;
+        return compareVersions(b.skill.version, a.skill.version);
+      });
     default:
       return results;
   }
+}
+
+function compareVersions(a: string, b: string): number {
+  const pa = a.split('.').map(n => parseInt(n, 10) || 0);
+  const pb = b.split('.').map(n => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
 }
 
 function buildMatchReason(skill: Skill, query: string): string {

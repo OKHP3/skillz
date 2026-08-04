@@ -1,6 +1,57 @@
 export type Maturity = 'placeholder' | 'skeleton' | 'draftable' | 'usable' | 'validated' | 'published';
 export type EvidenceStatus = 'none' | 'local-checks' | 'designed' | 'analytical' | 'not-run' | 'historical' | 'live';
 
+// --- Evidence contract v2 (2026-07-31 spec) --------------------------------
+// This is a second, narrower evidence vocabulary layered alongside the
+// original 7-value `EvidenceStatus` above. The two are intentionally NOT
+// merged: `EvidenceStatus` keeps the finer-grained categories (`none`,
+// `local-checks`, `designed`) that Explore's filter, Compare's column, and
+// the FAQ copy already depend on; `SkillEvidence.status` is the coarser
+// 4-value classification the evidence-contract-v2 spec defines, plus the
+// richer per-package counts, blockers, and review metadata that spec adds.
+// Mapping from v1 -> v2 status (documented, not silent): `live` -> `live`,
+// `historical` -> `historical`, `not-run` -> `not-run`; `analytical`,
+// `local-checks`, `designed`, and `none` all collapse to `analytical` or
+// `not-run` depending on whether any executable/design artifact exists
+// (see `deriveEvidenceV2` in build-catalog.js for the exact rule).
+export type EvidenceStatusV2 = 'live' | 'analytical' | 'historical' | 'not-run';
+
+export interface SkillEvidence {
+  status: EvidenceStatusV2;
+  evaluatedSkillVersion: string | null;
+  evalCount: number;
+  benchmarkCount: number;
+  testCount: number;
+  referenceCount: number;
+  scriptCount: number;
+  lastEvidenceDate: string | null;
+  reviewDecision: 'approve' | 'approve-with-limits' | 'defer-for-evidence' | 'reject' | null;
+  blockers: string[];
+}
+
+export interface SkillPackageMetadata {
+  author: string | null;
+  category: string | null;
+  origin: string | null;
+  homepage: string | null;
+  authorGithub: string | null;
+  inScope: string | null;
+  outOfScope: string | null;
+}
+
+export type MaturitySource = 'explicit-frontmatter' | 'evidence-policy' | 'fallback-structure';
+
+// Derived UI convenience field, not a stored maturity value. Computed from
+// maturity + evidence.status so Explore can offer a single release-oriented
+// filter instead of forcing visitors to reason about maturity and evidence
+// together. See `deriveReleaseReadiness` in build-catalog.js for the mapping.
+export type ReleaseReadiness =
+  | 'needs-contract-work'
+  | 'needs-live-evidence'
+  | 'ready-for-supervised-use'
+  | 'ready-for-peer-review'
+  | 'published';
+
 export interface Skill {
   name: string;
   displayName: string;
@@ -34,6 +85,14 @@ export interface Skill {
   githubUrl: string;
   lastModified: string | null;
   commitSha: string | null;
+  /** Oldest tracked SKILL.md commit date (`git log --follow`), or null if unavailable. */
+  createdAt: string | null;
+  packageMetadata: SkillPackageMetadata;
+  evidence: SkillEvidence;
+  maturitySource: MaturitySource;
+  /** Date of the latest review record, or null if the package has never been reviewed. */
+  maturityReviewedAt: string | null;
+  releaseReadiness: ReleaseReadiness;
 }
 
 export interface Family {
@@ -41,6 +100,10 @@ export interface Family {
   displayName: string;
   skillCount: number;
   skills: string[];
+  /** Hand-written narrative body from FAMILY.md (between the H1 and the
+   *  generated summary/inventory markers), or null if the family has no
+   *  narrative beyond its auto-generated one-line summary. */
+  narrativeBody: string | null;
 }
 
 export interface Catalog {
@@ -92,12 +155,21 @@ export interface SearchResult {
   matchReason?: string;
 }
 
-export type SortKey = 'relevance' | 'alpha' | 'family' | 'maturity' | 'evidence';
+export type SortKey =
+  | 'relevance'
+  | 'alpha'
+  | 'family'
+  | 'maturity'
+  | 'evidence'
+  | 'updated'
+  | 'evidence-freshness'
+  | 'version';
 
 export interface FilterState {
   query: string;
   family: string;
   maturity: Maturity | '';
   evidence: EvidenceStatus | '';
+  releaseReadiness: ReleaseReadiness | '';
   sort: SortKey;
 }

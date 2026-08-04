@@ -1,13 +1,24 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import catalogData from '../data/catalog.json';
-import type { Catalog } from '../types/catalog';
+import { useCatalog } from '../contexts/CatalogContext';
 import { getRelatedSkills } from '../utils/search';
 import { copyInstallUrl as copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
 import { issueUrl, skillGitHubUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
 
-const catalog = catalogData as Catalog;
+const RELEASE_READINESS_LABELS: Record<string, string> = {
+  'needs-contract-work': 'Needs contract work',
+  'needs-live-evidence': 'Needs live evidence',
+  'ready-for-supervised-use': 'Ready for supervised use',
+  'ready-for-peer-review': 'Ready for peer review',
+  published: 'Published',
+};
+
+const MATURITY_SOURCE_LABELS: Record<string, string> = {
+  'explicit-frontmatter': 'declared in SKILL.md frontmatter',
+  'evidence-policy': 'derived from evidence policy',
+  'fallback-structure': 'inferred from document structure (no explicit maturity declared)',
+};
 
 const MATURITY_DESCRIPTIONS: Record<string, string> = {
   placeholder: 'Directory reserved. No content yet.',
@@ -26,6 +37,7 @@ function formatDate(iso: string | null): string {
 }
 
 export default function SkillDetail() {
+  const catalog = useCatalog();
   const { family, skillName } = useParams();
   const skill = catalog.skills.find(s => s.family === family && s.name === skillName);
   const [copied, setCopied] = useState<'install' | 'url' | null>(null);
@@ -203,6 +215,28 @@ export default function SkillDetail() {
             </div>
           )}
 
+          {skill.tags.length > 0 && (
+            <div>
+              <h2>Tags</h2>
+              <div className="detail-tags">
+                {skill.tags.map((t, i) => (
+                  <Link key={i} to={`/explore?q=${encodeURIComponent(t)}`} className="detail-tag detail-tag--link">{t}</Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {skill.topics.length > 0 && (
+            <div>
+              <h2>Topics</h2>
+              <div className="detail-tags">
+                {skill.topics.map((t, i) => (
+                  <Link key={i} to={`/explore?q=${encodeURIComponent(t)}`} className="detail-tag detail-tag--link">{t}</Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           {skill.runtimes.length > 0 && (
             <div>
               <h2>Runtimes</h2>
@@ -309,6 +343,81 @@ export default function SkillDetail() {
                 </dd>
               </>}
             </dl>
+          </div>
+
+          {/* Evidence-contract v2 section — deliberately kept separate from the
+              "Provenance" block above rather than merged into it. Provenance
+              answers "where did this file come from"; this section answers the
+              newer "how release-ready is the current version" question using
+              the 4-value evidence.status vocabulary and per-package counts. */}
+          <div className="detail-evidence-release">
+            <h2>Evidence and release state</h2>
+            <dl>
+              <dt>Package version</dt>
+              <dd>{skill.version ?? <span className="meta-pending">No version declared</span>}</dd>
+
+              <dt>Created</dt>
+              <dd>{skill.createdAt ? formatDate(skill.createdAt) : <span className="meta-pending">Unknown</span>}</dd>
+              <dt>Last modified</dt>
+              <dd>{skill.lastModified ? formatDate(skill.lastModified) : <span className="meta-pending">Unknown</span>}</dd>
+
+              <dt>Category</dt>
+              <dd>{skill.packageMetadata.category ?? <span className="meta-pending">Unclassified</span>}</dd>
+              <dt>Homepage</dt>
+              <dd>{skill.packageMetadata.homepage
+                ? <a href={skill.packageMetadata.homepage} target="_blank" rel="noopener noreferrer">{skill.packageMetadata.homepage}</a>
+                : <span className="meta-pending">None declared</span>}</dd>
+              <dt>In scope</dt>
+              <dd>{skill.packageMetadata.inScope ?? <span className="meta-pending">Not declared</span>}</dd>
+              <dt>Out of scope</dt>
+              <dd>{skill.packageMetadata.outOfScope ?? <span className="meta-pending">Not declared</span>}</dd>
+
+              <dt>Maturity source</dt>
+              <dd>{MATURITY_SOURCE_LABELS[skill.maturitySource] ?? skill.maturitySource}</dd>
+              {skill.maturityReviewedAt && <>
+                <dt>Maturity reviewed</dt>
+                <dd>{formatDate(skill.maturityReviewedAt)}</dd>
+              </>}
+
+              <dt>Release readiness</dt>
+              <dd>{RELEASE_READINESS_LABELS[skill.releaseReadiness] ?? skill.releaseReadiness}</dd>
+
+              <dt>Evidence status (v2)</dt>
+              <dd>
+                {skill.evidence.status}
+                {skill.evidence.status === 'historical' && skill.evidence.evaluatedSkillVersion && skill.version && (
+                  <> — historical benchmark for version {skill.evidence.evaluatedSkillVersion}, while the live package is version {skill.version}.</>
+                )}
+              </dd>
+
+              <dt>Evidence counts</dt>
+              <dd>
+                <ul className="detail-evidence-counts">
+                  <li>{skill.evidence.evalCount} eval{skill.evidence.evalCount !== 1 ? 's' : ''}</li>
+                  <li>{skill.evidence.benchmarkCount} benchmark run{skill.evidence.benchmarkCount !== 1 ? 's' : ''}</li>
+                  <li>{skill.evidence.testCount} test file{skill.evidence.testCount !== 1 ? 's' : ''}</li>
+                  <li>{skill.evidence.referenceCount} reference file{skill.evidence.referenceCount !== 1 ? 's' : ''}</li>
+                  <li>{skill.evidence.scriptCount} script file{skill.evidence.scriptCount !== 1 ? 's' : ''}</li>
+                </ul>
+              </dd>
+
+              {skill.evidence.blockers.length > 0 && <>
+                <dt>Promotion blockers</dt>
+                <dd>
+                  <ul className="detail-evidence-blockers">
+                    {skill.evidence.blockers.map((b, i) => <li key={i}>{b}</li>)}
+                  </ul>
+                </dd>
+              </>}
+
+              <dt>Review decision</dt>
+              <dd>{skill.evidence.reviewDecision ?? <span className="meta-pending">Not yet reviewed</span>}</dd>
+            </dl>
+            <p className="detail-evidence-links">
+              <a href={skill.rawUrl} target="_blank" rel="noopener noreferrer">View raw SKILL.md</a>
+              {' · '}
+              <a href={skillGitHubUrl(skill.path)} target="_blank" rel="noopener noreferrer">View in repository</a>
+            </p>
           </div>
 
           <div className="detail-contribute">
