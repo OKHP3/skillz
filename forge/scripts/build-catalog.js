@@ -473,7 +473,14 @@ function readFamilyDisplayName(familySlug) {
       `falling back to auto-titlecase "${familySlug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}". ` +
       `Add display_name to FAMILY.md to suppress this warning.\n`
     );
-  } catch { /* no FAMILY.md or unreadable — fall through */ }
+  } catch {
+    // FAMILY.md is missing or unreadable — warn so the gap is visible
+    process.stderr.write(
+      `[catalog warn] Family "${familySlug}": no FAMILY.md found — ` +
+      `falling back to auto-titlecase "${familySlug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}". ` +
+      `Add a FAMILY.md with a display_name field to suppress this warning.\n`
+    );
+  }
   // Auto-titlecase: "agent-foundry" → "Agent Foundry"
   return familySlug
     .split('-')
