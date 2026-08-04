@@ -682,6 +682,34 @@ function buildCatalog() {
 
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
 
+  // ─── Companion resolution check ─────────────────────────────────────────────
+  // extractCompanions() pulls companion names straight from `okhp3-...`
+  // back-tick references in the SKILL.md body — it has no way to know
+  // whether that name actually exists in the catalog. A typo or a rename
+  // that isn't propagated to every SKILL.md that references the old name
+  // otherwise fails silently: buildWorkflowPath() on the frontend just
+  // drops the unresolved link, so the pathway renders fewer steps than the
+  // author intended with no signal that anything is wrong. Warn at build
+  // time (not throw — a dangling reference isn't a build-breaking evidence
+  // violation like rules 7/8 above) so the gap surfaces in CI/build logs
+  // where an author will actually see it.
+  const knownSkillNames = new Set(skills.map(s => s.name));
+  let unresolvedCompanionCount = 0;
+  for (const s of skills) {
+    for (const cName of s.companions) {
+      if (!knownSkillNames.has(cName)) {
+        unresolvedCompanionCount++;
+        process.stderr.write(
+          `[catalog warn] ${s.path}: companion "${cName}" does not match any skill in ` +
+          `the catalog (misspelled or renamed?). The pathway view will show it as ` +
+          `unresolved rather than silently dropping it.\n`
+        );
+      }
+    }
+  }
+  if (unresolvedCompanionCount > 0) {
+    console.log(`  ⚠ ${unresolvedCompanionCount} unresolved companion reference(s) — see warnings above.`);
+  }
 
 // ─── Family display name resolution ──────────────────────────────────────────
 // Reads display_name from FAMILY.md frontmatter when present.

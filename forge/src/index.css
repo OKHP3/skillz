@@ -535,6 +535,34 @@
   margin-top: 36px;
 }
 
+/* Broken-companion warning pill — same shape as a branch pill, distinct
+   colour so a dangling reference reads as "needs attention", not just
+   "more paths exist". */
+.skill-pathway__branch--broken {
+  color: var(--color-ember);
+  border-color: var(--color-ember);
+}
+
+/* Unresolved companion node — a "not found" terminal stop. Greyed out and
+   dashed to read as absent/broken rather than as a real, navigable skill. */
+.skill-pathway__node--unresolved {
+  border-style: dashed;
+  border-color: var(--color-ember);
+  background: transparent;
+  opacity: 0.7;
+}
+.skill-pathway__node-name--unresolved {
+  color: var(--color-text-muted-dark);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-ember);
+}
+.skill-pathway__node-unresolved-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  color: var(--color-ember);
+  line-height: 1.3;
+}
+
 .skill-pathway__hint {
   font-size: var(--text-xs);
   color: var(--color-text-muted-dark);

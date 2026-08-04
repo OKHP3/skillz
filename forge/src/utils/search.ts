@@ -162,14 +162,32 @@ function buildMatchReason(skill: Skill, query: string): string {
 
 // ─── Workflow Pathway ────────────────────────────────────────────────────────
 
-export interface PathNode {
+export interface ResolvedPathNode {
+  kind: 'resolved';
   skill: Skill;
   isCurrent: boolean;
   /** Extra incoming edges beyond the one in the displayed chain (shows branching) */
   incomingBranches: number;
   /** Extra outgoing edges beyond the first companion (shows branching) */
   outgoingBranches: number;
+  /** Companion names declared on this skill that do not match any real
+   *  skill in the catalog (typo or unpropagated rename). Non-fatal at
+   *  build time (see build-catalog.js companion-resolution warning) but
+   *  surfaced here so the UI can flag the break instead of silently
+   *  omitting it, the way the old `.filter(c => skillMap.has(c))` did. */
+  unresolvedCompanions: string[];
 }
+
+/** A companion name that was declared on the chain but does not resolve to
+ *  any skill in the catalog. Rendered as a terminal "not found" pathway
+ *  stop rather than being dropped, so a misspelled or renamed companion is
+ *  visible on the page instead of just quietly shortening the chain. */
+export interface UnresolvedPathNode {
+  kind: 'unresolved';
+  name: string;
+}
+
+export type PathNode = ResolvedPathNode | UnresolvedPathNode;
 
 /**
  * Traverse companion relationships to build an ordered pathway containing
@@ -214,31 +232,49 @@ export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] 
     const s = skillMap.get(name);
     if (!s) return;
 
+    // Unresolved: declared on this skill but not a real catalog entry at
+    // all (typo/rename) — distinct from a resolved companion that just
+    // happens to already be `visited` (a cycle/merge, not a break).
+    const unresolvedCompanions = s.companions.filter(c => !skillMap.has(c));
     const validCompanions = s.companions.filter(c => skillMap.has(c) && !visited.has(c));
     const totalPreds = (predecessors.get(name) ?? []).length;
 
     nodes.push({
+      kind: 'resolved',
       skill: s,
       isCurrent: name === skill.name,
       incomingBranches: Math.max(0, totalPreds - 1),
       outgoingBranches: Math.max(0, validCompanions.length - 1),
+      unresolvedCompanions,
     });
 
     if (validCompanions.length > 0 && nodes.length < MAX_TOTAL) {
       walkForward(validCompanions[0], depth + 1);
+    } else if (
+      validCompanions.length === 0 &&
+      unresolvedCompanions.length > 0 &&
+      nodes.length < MAX_TOTAL
+    ) {
+      // The only declared next step(s) are all broken references — surface
+      // the first one as a visible "not found" stop instead of the chain
+      // just quietly ending one step early with no indication why.
+      nodes.push({ kind: 'unresolved', name: unresolvedCompanions[0] });
     }
   }
 
   walkForward(rootName, 0);
 
   // Safety: if the current skill ended up outside the chain, return it alone
-  if (!nodes.some(n => n.isCurrent)) {
+  if (!nodes.some(n => n.kind === 'resolved' && n.isCurrent)) {
     const validCompanions = skill.companions.filter(c => skillMap.has(c));
+    const unresolvedCompanions = skill.companions.filter(c => !skillMap.has(c));
     return [{
+      kind: 'resolved',
       skill,
       isCurrent: true,
       incomingBranches: 0,
       outgoingBranches: Math.max(0, validCompanions.length - 1),
+      unresolvedCompanions,
     }];
   }
 
