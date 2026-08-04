@@ -397,6 +397,181 @@
   color: var(--color-text-muted-light);
 }
 
+/* ─── Skill Pathway ─────────────────────────────────────────────────────────── */
+
+.skill-pathway {
+  margin-top: var(--space-4);
+}
+
+.skill-pathway__track {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  overflow-x: auto;
+  padding: var(--space-4) 0 var(--space-6);
+  /* Subtle scroll shadow hint on right edge */
+  -webkit-overflow-scrolling: touch;
+}
+
+.skill-pathway__step {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.skill-pathway__node {
+  position: relative;
+  width: 160px;
+  min-height: 90px;
+  border: 1px solid var(--color-border-dark);
+  background: var(--color-bg-secondary);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  transition: border-color var(--transition);
+}
+
+.skill-pathway__node--current {
+  border-color: var(--color-copper);
+  background: color-mix(in srgb, var(--color-copper) 8%, var(--color-bg-secondary));
+  box-shadow: 0 0 0 1px var(--color-copper);
+}
+
+.skill-pathway__step-number {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-dark);
+  line-height: 1;
+}
+
+.skill-pathway__node--current .skill-pathway__step-number {
+  color: var(--color-copper);
+}
+
+.skill-pathway__node-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-decoration: none;
+  flex: 1;
+}
+
+.skill-pathway__node-body--link:hover .skill-pathway__node-name,
+.skill-pathway__node-body--link:focus-visible .skill-pathway__node-name {
+  color: var(--color-copper-light);
+}
+
+.skill-pathway__node-body--link:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 2px;
+}
+
+.skill-pathway__node-name {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  line-height: 1.3;
+  /* Allow wrapping for long names */
+  word-break: break-word;
+  padding-right: var(--space-4); /* avoid overlap with step number */
+}
+
+.skill-pathway__node--current .skill-pathway__node-name {
+  color: var(--color-copper-light);
+}
+
+.skill-pathway__node-family {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-steel);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+.skill-pathway__node-maturity {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted-dark);
+  margin-top: auto;
+}
+
+/* Maturity colour coding on the pathway node (mirrors badge colours) */
+.skill-pathway__node-maturity[data-maturity="published"] { color: var(--color-maturity-published); }
+.skill-pathway__node-maturity[data-maturity="validated"] { color: var(--color-maturity-validated); }
+.skill-pathway__node-maturity[data-maturity="usable"]    { color: var(--color-maturity-usable); }
+.skill-pathway__node-maturity[data-maturity="draftable"] { color: var(--color-maturity-draftable); }
+.skill-pathway__node-maturity[data-maturity="skeleton"]  { color: var(--color-maturity-skeleton); }
+
+/* Arrow between steps */
+.skill-pathway__arrow {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted-dark);
+  padding: 0 var(--space-1);
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 36px; /* vertically centre against the card */
+  user-select: none;
+}
+
+/* Branch count pills */
+.skill-pathway__branch {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted-dark);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-dark);
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  cursor: help;
+  margin-top: 36px;
+}
+
+.skill-pathway__hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-dark);
+  margin: 0;
+  padding-top: var(--space-2);
+}
+
+/* Responsive: stack vertically on narrow screens */
+@media (max-width: 600px) {
+  .skill-pathway__track {
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: visible;
+  }
+
+  .skill-pathway__step {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skill-pathway__node {
+    width: 100%;
+    min-height: unset;
+  }
+
+  .skill-pathway__arrow {
+    margin-top: 0;
+    transform: rotate(90deg);
+    align-self: flex-start;
+    margin-left: var(--space-8);
+  }
+
+  .skill-pathway__branch {
+    margin-top: 0;
+  }
+}
+
 /* Related skills grid */
 .detail-related-list {
   list-style: none;

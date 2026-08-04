@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-04T06:08:33.244Z",
+  "generatedAt": "2026-08-04T05:39:52.486Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "5d1a80a",
+  "sourceCommit": "973eaab",
   "skillCount": 113,
   "familyCount": 15,
   "families": [
@@ -259,9 +259,7 @@
       "evidenceNote": "Benchmark evidence is for 1.1.0, not 1.2.0.",
       "status": null,
       "tags": [],
-      "topics": [
-        "interfaith-reference"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -327,9 +325,7 @@
       "evidenceNote": "Benchmark evidence is for 1.1.0, not 1.2.0.",
       "status": null,
       "tags": [],
-      "topics": [
-        "interfaith-reference"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -390,9 +386,7 @@
       "evidenceNote": "Benchmark evidence is for 1.1.0, not 1.2.0.",
       "status": null,
       "tags": [],
-      "topics": [
-        "interfaith-reference"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -453,9 +447,7 @@
       "evidenceNote": "Benchmark evidence is for 1.1.0, not 1.2.0.",
       "status": null,
       "tags": [],
-      "topics": [
-        "interfaith-reference"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -516,9 +508,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "agent-authoring"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -579,9 +569,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -644,9 +632,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -709,9 +695,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "developer-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -772,9 +756,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -835,9 +817,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -901,9 +881,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -966,9 +944,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1029,9 +1005,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -1094,9 +1068,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [
         "migrate a Custom GPT, Gem, Copilot agent, or prompt bundle into GitHub",
         "create a new FoundRy child repository",
@@ -1163,9 +1135,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1226,9 +1196,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -1291,9 +1259,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "askjamie"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -1356,9 +1322,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1419,9 +1383,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [
         "Making significant architectural decisions",
         "Documenting technology choices",
@@ -1489,9 +1451,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1552,9 +1512,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1620,9 +1578,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1683,9 +1639,7 @@
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1746,9 +1700,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1809,9 +1761,7 @@
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1872,9 +1822,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1935,9 +1883,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -1998,9 +1944,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2061,9 +2005,7 @@
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2124,9 +2066,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "community"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2187,9 +2127,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2250,9 +2188,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "context-extraction"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -2324,9 +2260,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -2389,9 +2323,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2452,9 +2384,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -2518,9 +2448,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -2583,9 +2511,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2646,9 +2572,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2709,9 +2633,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2772,9 +2694,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2835,9 +2755,7 @@
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "gleefully"
-      ],
+      "topics": [],
       "triggers": [
         "Create the canonical folder/file structure from scratch",
         "Audit an existing repo for missing folders or files",
@@ -2903,9 +2821,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "developer-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -2966,9 +2882,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -3029,9 +2943,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3095,9 +3007,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3160,9 +3070,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3225,9 +3133,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -3288,9 +3194,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3353,9 +3257,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [
         "migrate a Custom GPT, Gem, Copilot agent, or prompt bundle into GitHub",
         "create a new FoundRy child repository",
@@ -3422,9 +3324,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -3485,9 +3385,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3550,9 +3448,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "glee-fully"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3615,9 +3511,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "knowledge-operations"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -3678,9 +3572,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "knowledge-operations"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3751,9 +3643,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "knowledge-operations"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -3814,9 +3704,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "knowledge-operations"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3884,9 +3772,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "knowledge-operations"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -3961,9 +3847,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "knowledge-operations"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4026,9 +3910,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "knowledge-operations"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4091,9 +3973,7 @@
       "evidenceNote": "Version-matched executor evidence is recorded in the package benchmark.",
       "status": null,
       "tags": [],
-      "topics": [
-        "wellness-astrology"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -4152,9 +4032,7 @@
       "evidenceNote": "Version-matched executor evidence is recorded in the package benchmark.",
       "status": null,
       "tags": [],
-      "topics": [
-        "wellness-astrology"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -4213,9 +4091,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "linkedin"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4279,9 +4155,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "linkedin"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4345,9 +4219,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "linkedin"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4411,9 +4283,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "diagramming"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4476,9 +4346,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "diagramming"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4541,9 +4409,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "diagramming"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4606,9 +4472,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "diagramming"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4671,9 +4535,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "developer-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4740,9 +4602,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "diagramming"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4805,9 +4665,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "diagramming"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -4872,9 +4730,7 @@
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "diagram-governance"
-      ],
+      "topics": [],
       "triggers": [
         "User provides Mermaid code and wants it styled, themed, or on-brand",
         "User asks for a `themeVariables` block or `%%{init}%%` configuration",
@@ -4953,9 +4809,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "diagramming"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -5020,9 +4874,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "notion"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -5091,9 +4943,7 @@
         "PPR",
         "roster constraints"
       ],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -5161,9 +5011,7 @@
         "expected value",
         "constrained allocation"
       ],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -5237,9 +5085,7 @@
         "resolution",
         "paper backtest"
       ],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -5310,9 +5156,7 @@
         "allocation",
         "retention"
       ],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -5393,9 +5237,7 @@
         "opponent adjustment",
         "schedule"
       ],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -5476,9 +5318,7 @@
         "step-normalisation",
         "BPM-CBOK"
       ],
-      "topics": [
-        "process-analysis"
-      ],
+      "topics": [],
       "triggers": [
         "User describes how a process runs today and wants it documented before redesign",
         "You need a baseline artifact before running `process-gap-and-exception-analysis`",
@@ -5563,9 +5403,7 @@
         "rule-table",
         "process-logic"
       ],
-      "topics": [
-        "process-documentation"
-      ],
+      "topics": [],
       "triggers": [
         "PNS has **≥3 decision_points** — this is the mandatory trigger condition",
         "User needs a decision table to communicate routing logic to implementers",
@@ -5643,9 +5481,7 @@
         "subject-matter-expert",
         "process-discovery"
       ],
-      "topics": [
-        "process-analysis"
-      ],
+      "topics": [],
       "triggers": [
         "PIR exists but has `completeness_score < 70` or open_questions that need targeted follow-up",
         "User needs to interview a subject matter expert and wants a prepared question set",
@@ -5724,9 +5560,7 @@
         "Kotter",
         "BPM-CBOK"
       ],
-      "topics": [
-        "process-improvement"
-      ],
+      "topics": [],
       "triggers": [
         "`gap-analysis.yaml` exists with at least one `critical` or `major` gap",
         "User wants to redesign a process based on identified gaps",
@@ -5818,9 +5652,7 @@
         "ISO9001",
         "documented-information"
       ],
-      "topics": [
-        "process-publication"
-      ],
+      "topics": [],
       "triggers": [
         "`validation-report.yaml` exists with `ready_for_publication: true` (Band A or B)",
         "User is ready to hand off the process documentation to stakeholders or a document management system",
@@ -5888,9 +5720,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -5961,9 +5791,7 @@
         "compliance",
         "process-controls"
       ],
-      "topics": [
-        "process-governance"
-      ],
+      "topics": [],
       "triggers": [
         "PNS quality score ≥ 75 and user needs additional governance structure",
         "User needs to map process activities to a control framework",
@@ -6041,9 +5869,7 @@
         "BPM-CBOK",
         "six-sigma"
       ],
-      "topics": [
-        "process-analysis"
-      ],
+      "topics": [],
       "triggers": [
         "You have an `as-is-process.yaml` and want to identify improvement opportunities",
         "User asks where the current process fails, slows down, or creates risk",
@@ -6122,9 +5948,7 @@
         "intake",
         "process-boundary"
       ],
-      "topics": [
-        "process-analysis"
-      ],
+      "topics": [],
       "triggers": [
         "User wants to document a process they describe in natural language, bullet points, or prose",
         "User says \"help me scope this,\" \"let's map this process,\" or \"define the boundaries\"",
@@ -6204,9 +6028,7 @@
         "kpis",
         "process-documentation"
       ],
-      "topics": [
-        "process-documentation"
-      ],
+      "topics": [],
       "triggers": [
         "PIR has `completeness_score ≥ 70` and `ready_for_narrative: true`",
         "User needs a formal process document (ISO 9001 §4.4.1, BABOK §7)",
@@ -6284,9 +6106,7 @@
         "ISO9001",
         "BPM-CBOK"
       ],
-      "topics": [
-        "process-quality"
-      ],
+      "topics": [],
       "triggers": [
         "All process artifacts exist (pir.yaml + pns.yaml minimum) and user wants a publication readiness check",
         "You need a single quality score before passing artifacts to `publication-and-handoff-packaging`",
@@ -6363,9 +6183,7 @@
         "PMI",
         "ISO9001"
       ],
-      "topics": [
-        "process-governance"
-      ],
+      "topics": [],
       "triggers": [
         "PNS quality score ≥ 75 and user needs a standalone RACI document",
         "User needs to communicate role assignments to a wider stakeholder audience",
@@ -6443,9 +6261,7 @@
         "Six-Sigma",
         "BPM-CBOK"
       ],
-      "topics": [
-        "process-documentation"
-      ],
+      "topics": [],
       "triggers": [
         "PNS quality score ≥ 75 and user needs a high-level process summary",
         "User needs a single-page overview for a presentation or kickoff document",
@@ -6522,9 +6338,7 @@
         "process-document",
         "work-instruction"
       ],
-      "topics": [
-        "process-documentation"
-      ],
+      "topics": [],
       "triggers": [
         "PNS quality score ≥ 75 and `ready_for_publication: true`",
         "User needs a document that practitioners can follow step-by-step",
@@ -6602,9 +6416,7 @@
         "RACI",
         "business-analysis"
       ],
-      "topics": [
-        "process-analysis"
-      ],
+      "topics": [],
       "triggers": [
         "PIR has `ready_for_narrative: true` and you need a stakeholder register before writing the PNS",
         "User asks who should be consulted, informed, or responsible for a process",
@@ -6684,9 +6496,7 @@
         "lanes",
         "workflow"
       ],
-      "topics": [
-        "process-diagramming"
-      ],
+      "topics": [],
       "triggers": [
         "PNS has `validation.ready_for_bpmn_modeling: true`",
         "User wants a visual process diagram in Mermaid syntax",
@@ -6756,9 +6566,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -6824,9 +6632,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "developer-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -6889,9 +6695,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [
         "Your static site needs to call an API that requires a key (Anthropic, OpenAI, SendGrid, etc.)",
         "Exposing the key in client JavaScript would be a security risk or ToS violation",
@@ -6956,9 +6760,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7019,9 +6821,7 @@
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
-      "topics": [
-        "evaluation-and-governance"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7092,9 +6892,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [
         "migrate a Custom GPT, Gem, Copilot agent, or prompt bundle into GitHub",
         "create a new FoundRy child repository",
@@ -7161,9 +6959,7 @@
       "evidenceNote": "Benchmark evidence is for 1.1.0, not 1.2.0.",
       "status": null,
       "tags": [],
-      "topics": [
-        "developer-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7230,9 +7026,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "developer-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7293,9 +7087,7 @@
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -7359,9 +7151,7 @@
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7429,9 +7219,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7492,9 +7280,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7555,9 +7341,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7618,9 +7402,7 @@
       "evidenceNote": "Benchmark evidence is for 1.0.0, not 3.1.0.",
       "status": null,
       "tags": [],
-      "topics": [
-        "meta-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7681,9 +7463,7 @@
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
-      "topics": [
-        "universal"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [
@@ -7757,9 +7537,7 @@
       "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
-      "topics": [
-        "deployment"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7820,9 +7598,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "developer-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],
@@ -7883,9 +7659,7 @@
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
       "tags": [],
-      "topics": [
-        "developer-tooling"
-      ],
+      "topics": [],
       "triggers": [],
       "avoid": [],
       "companions": [],

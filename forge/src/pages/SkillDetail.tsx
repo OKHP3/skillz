@@ -1,8 +1,9 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useCatalog } from '../contexts/CatalogContext';
-import { getRelatedSkills } from '../utils/search';
+import { getRelatedSkills, buildWorkflowPath } from '../utils/search';
 import { copyInstallUrl as copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
+import SkillPathway from '../components/ui/SkillPathway';
 import { issueUrl, skillGitHubUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
 
@@ -66,6 +67,7 @@ export default function SkillDetail() {
   }
 
   const related = getRelatedSkills(skill, catalog.skills);
+  const pathwayNodes = buildWorkflowPath(skill, catalog.skills);
 
   async function handleCopyInstall() {
     const ok = await copyInstallCommand(skill!);
@@ -268,28 +270,33 @@ export default function SkillDetail() {
             </div>
           )}
 
-          {skill.companions.length > 0 && (
+          {(skill.companions.length > 0 || pathwayNodes.length > 1) && (
             <div>
-              <h2>Companion skills</h2>
-              <ul className="detail-companions-list">
-                {skill.companions.map(cName => {
-                  const companion = catalog.skills.find(s => s.name === cName);
-                  return (
-                    <li key={cName}>
-                      {companion ? (
-                        <Link
-                          to={`/skills/${companion.family}/${companion.name}`}
-                          className="detail-companion-link"
-                        >
-                          {companion.displayName || companion.name}
-                        </Link>
-                      ) : (
-                        <span className="detail-companion-unresolved">{cName}</span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+              <h2>Workflow pathway</h2>
+              {pathwayNodes.length > 1 ? (
+                <SkillPathway nodes={pathwayNodes} />
+              ) : (
+                /* Single skill with companions but no traversable chain — keep flat list */
+                <ul className="detail-companions-list">
+                  {skill.companions.map(cName => {
+                    const companion = catalog.skills.find(s => s.name === cName);
+                    return (
+                      <li key={cName}>
+                        {companion ? (
+                          <Link
+                            to={`/skills/${companion.family}/${companion.name}`}
+                            className="detail-companion-link"
+                          >
+                            {companion.displayName || companion.name}
+                          </Link>
+                        ) : (
+                          <span className="detail-companion-unresolved">{cName}</span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
             </div>
           )}
 

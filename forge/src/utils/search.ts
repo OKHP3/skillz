@@ -160,6 +160,91 @@ function buildMatchReason(skill: Skill, query: string): string {
   return `Related to "${query}"`;
 }
 
+// ─── Workflow Pathway ────────────────────────────────────────────────────────
+
+export interface PathNode {
+  skill: Skill;
+  isCurrent: boolean;
+  /** Extra incoming edges beyond the one in the displayed chain (shows branching) */
+  incomingBranches: number;
+  /** Extra outgoing edges beyond the first companion (shows branching) */
+  outgoingBranches: number;
+}
+
+/**
+ * Traverse companion relationships to build an ordered pathway containing
+ * `skill`.  Walks backward to the chain root, then forward through the main
+ * (first-companion) path, returning at most MAX_TOTAL nodes.
+ */
+export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] {
+  const MAX_DEPTH = 5;
+  const MAX_TOTAL = 10;
+  const skillMap = new Map(allSkills.map(s => [s.name, s]));
+
+  // Build predecessor index: predecessors.get(name) = all skills that list name as a companion
+  const predecessors = new Map<string, string[]>();
+  for (const s of allSkills) {
+    for (const cName of s.companions) {
+      if (!predecessors.has(cName)) predecessors.set(cName, []);
+      predecessors.get(cName)!.push(s.name);
+    }
+  }
+
+  // Walk backward to find chain root (the skill with no predecessor in the chain)
+  function findRoot(name: string, depth: number, visited: Set<string>): string {
+    if (depth >= MAX_DEPTH || visited.has(name)) return name;
+    visited.add(name);
+    const preds = (predecessors.get(name) ?? []).filter(p => !visited.has(p) && skillMap.has(p));
+    if (preds.length === 0) return name;
+    // Prefer a predecessor whose first companion is `name` (direct chain link)
+    const primary =
+      preds.find(p => skillMap.get(p)?.companions[0] === name) ?? preds[0];
+    return findRoot(primary, depth + 1, visited);
+  }
+
+  const rootName = findRoot(skill.name, 0, new Set());
+
+  // Walk forward from root following the first companion at each step
+  const nodes: PathNode[] = [];
+  const visited = new Set<string>();
+
+  function walkForward(name: string, depth: number): void {
+    if (visited.has(name) || depth >= MAX_TOTAL) return;
+    visited.add(name);
+    const s = skillMap.get(name);
+    if (!s) return;
+
+    const validCompanions = s.companions.filter(c => skillMap.has(c) && !visited.has(c));
+    const totalPreds = (predecessors.get(name) ?? []).length;
+
+    nodes.push({
+      skill: s,
+      isCurrent: name === skill.name,
+      incomingBranches: Math.max(0, totalPreds - 1),
+      outgoingBranches: Math.max(0, validCompanions.length - 1),
+    });
+
+    if (validCompanions.length > 0 && nodes.length < MAX_TOTAL) {
+      walkForward(validCompanions[0], depth + 1);
+    }
+  }
+
+  walkForward(rootName, 0);
+
+  // Safety: if the current skill ended up outside the chain, return it alone
+  if (!nodes.some(n => n.isCurrent)) {
+    const validCompanions = skill.companions.filter(c => skillMap.has(c));
+    return [{
+      skill,
+      isCurrent: true,
+      incomingBranches: 0,
+      outgoingBranches: Math.max(0, validCompanions.length - 1),
+    }];
+  }
+
+  return nodes;
+}
+
 export function getRelatedSkills(skill: Skill, allSkills: Skill[]): Skill[] {
   const related: Skill[] = [];
 

@@ -1,22 +1,6 @@
 {
-  "generatedAt": "2026-08-04T06:08:33.324Z",
+  "generatedAt": "2026-08-04T05:39:52.551Z",
   "commits": [
-    {
-      "sha": "cb947e63015b7c8369c31887fb41bc4e33cfb2fe",
-      "shortSha": "cb947e6",
-      "message": "fix: complete A5 accessibility fixes and A7 topics population\n\n- .input-text ring now only appears on :focus-visible (keyboard), not plain\n  mouse click focus (A5 was previously only half-applied).\n- .btn transition now lists explicit properties instead of 'all' (A5).\n- topics now falls back to the package's own category when no explicit\n  topics: frontmatter exists, so the field is never permanently empty\n  (C3/A7 — was populated for tags but not topics).",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T05:45:16Z",
-      "url": "https://github.com/OKHP3/skillz/commit/cb947e63015b7c8369c31887fb41bc4e33cfb2fe"
-    },
-    {
-      "sha": "9d9ea9576651bb1fdbb44c92238e73c61351a570",
-      "shortSha": "9d9ea95",
-      "message": "fix: restore legacy src/data/catalog.json copy so CI provenance check does not fail\n\nThe committed deploy-pages.yml still requires ./src/data/catalog.json in its\n'Verify catalog provenance' step. That workflow file cannot be updated from\nthis environment (GitHub rejects pushes touching .github/workflows/* without\nOAuth workflow scope). Moving the runtime catalog to public/data/catalog.json\n(evidence-contract-v2 work) broke that CI step. build-catalog.js now writes\nboth locations until the workflow file itself can be fixed.",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T05:41:35Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9d9ea9576651bb1fdbb44c92238e73c61351a570"
-    },
     {
       "sha": "7ac8267fb6bf4cbce5be40d2b9c804bd10c7394b",
       "shortSha": "7ac8267",
@@ -80,6 +64,22 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-04T02:39:47Z",
       "url": "https://github.com/OKHP3/skillz/commit/57b1c5e3523996906010d5ea343891c0de6a241d"
+    },
+    {
+      "sha": "217186408a7a4e32570a08bcd4c56bc768ca5965",
+      "shortSha": "2171864",
+      "message": "skill(okhp3-vite-github-pages): promote v1.1.0 — remove project-specific references\n\nBumps okhp3-vite-github-pages from v1.0.0 to v1.1.0. Removes hard-coded references to kierans-lifetrkr project so the skill is generic for downstream consumers.",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T02:15:39Z",
+      "url": "https://github.com/OKHP3/skillz/commit/217186408a7a4e32570a08bcd4c56bc768ca5965"
+    },
+    {
+      "sha": "9cd4086bcdd4c9b494dbc26a8f20d398dd037a22",
+      "shortSha": "9cd4086",
+      "message": "Repository cleanup: remove dead Vite scaffold, orphaned assets, stray sync report, and redundant license files\n\n- forge/src/main.ts, counter.ts, style.css: leftover Vite init scaffold, unused (real entry is main.tsx)\n- forge/src/assets/{typescript.svg,vite.svg,hero.png,murderbird-crucible.png}: only referenced by the dead scaffold or unreferenced anywhere\n- skills/okhp3-artifact-validation-sync-report.json: one-off diagnostic output, not part of the publication mirror content\n- process-capture/*/license (15 files): redundant with each package's SKILL.md frontmatter license field; no other of the 131 skill packages carries a physical license file",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T01:02:00Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9cd4086bcdd4c9b494dbc26a8f20d398dd037a22"
     }
   ],
   "fetchError": null
