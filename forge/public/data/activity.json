@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-08-04T18:32:42.841Z",
+  "generatedAt": "2026-08-04T19:06:34.160Z",
   "commits": [
+    {
+      "sha": "98515ec564a8d81b3163bdf917ed22ef0c016278",
+      "shortSha": "98515ec",
+      "message": "Update brand style registry and add GitHub icon component to navigation\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T18:33:01Z",
+      "url": "https://github.com/OKHP3/skillz/commit/98515ec564a8d81b3163bdf917ed22ef0c016278"
+    },
     {
       "sha": "8ae0463e3d4f20f7d1ddb8e01e7491764ef1a55f",
       "shortSha": "8ae0463",
@@ -72,14 +80,6 @@
       "author": "overkillhillp3",
       "date": "2026-08-04T13:00:20Z",
       "url": "https://github.com/OKHP3/skillz/commit/99af593b7577b5320871d8bcfe6d8d33a9ec4986"
-    },
-    {
-      "sha": "db967624625858626aecc536e808e6773f5afdd5",
-      "shortSha": "db96762",
-      "message": "Add search utility tests and update forge dependencies and deployment workflow\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T12:52:07Z",
-      "url": "https://github.com/OKHP3/skillz/commit/db967624625858626aecc536e808e6773f5afdd5"
     }
   ],
   "fetchError": null
