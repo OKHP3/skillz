@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-08-04T05:44:56.937Z",
+  "generatedAt": "2026-08-04T06:08:33.324Z",
   "commits": [
+    {
+      "sha": "cb947e63015b7c8369c31887fb41bc4e33cfb2fe",
+      "shortSha": "cb947e6",
+      "message": "fix: complete A5 accessibility fixes and A7 topics population\n\n- .input-text ring now only appears on :focus-visible (keyboard), not plain\n  mouse click focus (A5 was previously only half-applied).\n- .btn transition now lists explicit properties instead of 'all' (A5).\n- topics now falls back to the package's own category when no explicit\n  topics: frontmatter exists, so the field is never permanently empty\n  (C3/A7 — was populated for tags but not topics).",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T05:45:16Z",
+      "url": "https://github.com/OKHP3/skillz/commit/cb947e63015b7c8369c31887fb41bc4e33cfb2fe"
+    },
     {
       "sha": "9d9ea9576651bb1fdbb44c92238e73c61351a570",
       "shortSha": "9d9ea95",
@@ -72,14 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-04T02:39:47Z",
       "url": "https://github.com/OKHP3/skillz/commit/57b1c5e3523996906010d5ea343891c0de6a241d"
-    },
-    {
-      "sha": "217186408a7a4e32570a08bcd4c56bc768ca5965",
-      "shortSha": "2171864",
-      "message": "skill(okhp3-vite-github-pages): promote v1.1.0 — remove project-specific references\n\nBumps okhp3-vite-github-pages from v1.0.0 to v1.1.0. Removes hard-coded references to kierans-lifetrkr project so the skill is generic for downstream consumers.",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T02:15:39Z",
-      "url": "https://github.com/OKHP3/skillz/commit/217186408a7a4e32570a08bcd4c56bc768ca5965"
     }
   ],
   "fetchError": null

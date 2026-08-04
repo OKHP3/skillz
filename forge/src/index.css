@@ -235,6 +235,8 @@
   color: var(--color-text-muted-light);
   padding: 2px 8px;
   border: 1px solid var(--color-border-light);
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 .detail-tag--link {
   text-decoration: none;
@@ -252,6 +254,21 @@
   padding: var(--space-6);
   border: 1px solid var(--color-border-light);
 }
+.detail-evidence-release dl {
+  display: grid;
+  grid-template-columns: minmax(140px, auto) 1fr;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+}
+.detail-evidence-release dt {
+  color: var(--color-text-muted-light);
+  font-size: var(--text-sm);
+}
+.detail-evidence-release dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  overflow-wrap: anywhere;
+}
 .detail-evidence-counts,
 .detail-evidence-blockers {
   list-style: none;
@@ -268,6 +285,15 @@
 .detail-evidence-links {
   margin-top: var(--space-4);
   font-size: var(--text-sm);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  .detail-evidence-release dl {
+    grid-template-columns: 1fr;
+  }
+  .detail-evidence-release dt {
+    margin-top: var(--space-3);
+  }
 }
 
 /* Family narrative page */
@@ -361,6 +387,8 @@
   padding: var(--space-2) var(--space-4);
   border: 1px solid var(--color-border-light);
   display: block;
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 .detail-companion-link {
   color: var(--color-text-dark);
@@ -431,6 +459,7 @@
   margin: 0;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
+  overflow-wrap: anywhere;
 }
 .detail-provenance .detail-evidence-dd {
   font-family: var(--font-sans);
@@ -507,6 +536,7 @@
 /* Reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: hidden; }
 
 body {
   background: radial-gradient(circle at 50% 0%, #1c3a34 0%, #141210 50%, #2a2320 100%);
@@ -860,10 +890,16 @@ input, select, textarea {
     top: var(--nav-height);
     left: 0;
     bottom: 0;
-    width: 280px;
+    width: min(280px, 86vw);
     z-index: 50;
     transform: translateX(-100%);
     transition: transform var(--transition);
+    /* Sidebar content (Family/Maturity/Evidence/Release readiness sections)
+       is taller than most phone viewports. Without its own scroll container
+       the position:fixed box clips lower filter buttons outside the
+       viewport entirely, making them impossible to tap or keyboard-select. */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .explore-sidebar[data-open="true"] {
     transform: translateX(0);
