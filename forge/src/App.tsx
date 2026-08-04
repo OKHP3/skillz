@@ -3,6 +3,7 @@ import { CatalogProvider, useCatalogState } from './contexts/CatalogContext';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect, type ReactNode } from 'react';
 import { trackPageview } from './utils/analytics';
+import Footer from './components/layout/Footer';
 
 // Module-level: persists across StrictMode remounts (unlike useRef which resets on remount)
 let _lastTrackedPath: string | null = null;
@@ -90,6 +91,7 @@ export default function App() {
           </Routes>
         </Suspense>
       </CatalogGate>
+      <Footer />
     </HashRouter>
     </CatalogProvider>
     </ThemeProvider>
