@@ -1186,7 +1186,19 @@ input, select, textarea {
   border-radius: var(--radius-sm);
 }
 .faq-item dd {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows var(--transition), opacity var(--transition);
   margin: 0;
+}
+.faq-item:has([aria-expanded="true"]) dd {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.faq-answer-inner {
+  overflow: hidden;
+  min-height: 0;
   padding-bottom: var(--space-6);
   color: var(--color-text-muted-dark);
 }

@@ -73,17 +73,19 @@ export default function FAQ() {
                           <span aria-hidden className="faq-toggle-icon">{open.has(item.id) ? '−' : '+'}</span>
                         </button>
                       </dt>
-                      <dd id={`${item.id}-answer`} hidden={!open.has(item.id)}>
-                        <p className="faq-answer">{item.answer}</p>
-                        {item.links && item.links.length > 0 && (
-                          <ul className="faq-links">
-                            {item.links.map(link => (
-                              <li key={link.href}>
-                                <a href={link.href}>{link.label} &rarr;</a>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
+                      <dd id={`${item.id}-answer`} inert={!open.has(item.id) || undefined}>
+                        <div className="faq-answer-inner">
+                          <p className="faq-answer">{item.answer}</p>
+                          {item.links && item.links.length > 0 && (
+                            <ul className="faq-links">
+                              {item.links.map(link => (
+                                <li key={link.href}>
+                                  <a href={link.href}>{link.label} &rarr;</a>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
                       </dd>
                     </div>
                   ))}
