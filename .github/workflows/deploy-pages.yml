@@ -73,6 +73,10 @@ jobs:
         working-directory: forge
         run: node scripts/test-catalog.mjs
 
+      - name: Run unit tests
+        working-directory: forge
+        run: npx vitest run
+
       - name: Verify catalog provenance
         working-directory: forge
         run: |

@@ -10,11 +10,12 @@
     "prebuild": "node scripts/build-catalog.js && node scripts/build-activity.mjs",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "node scripts/test-catalog.mjs"
+    "test": "node scripts/test-catalog.mjs && vitest run"
   },
   "devDependencies": {
     "typescript": "~6.0.2",
-    "vite": "^8.1.1"
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
   },
   "dependencies": {
     "@types/react": "^19.2.17",
