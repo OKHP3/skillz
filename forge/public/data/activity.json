@@ -1,6 +1,38 @@
 {
-  "generatedAt": "2026-08-04T05:20:02.060Z",
+  "generatedAt": "2026-08-04T05:44:56.937Z",
   "commits": [
+    {
+      "sha": "9d9ea9576651bb1fdbb44c92238e73c61351a570",
+      "shortSha": "9d9ea95",
+      "message": "fix: restore legacy src/data/catalog.json copy so CI provenance check does not fail\n\nThe committed deploy-pages.yml still requires ./src/data/catalog.json in its\n'Verify catalog provenance' step. That workflow file cannot be updated from\nthis environment (GitHub rejects pushes touching .github/workflows/* without\nOAuth workflow scope). Moving the runtime catalog to public/data/catalog.json\n(evidence-contract-v2 work) broke that CI step. build-catalog.js now writes\nboth locations until the workflow file itself can be fixed.",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T05:41:35Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9d9ea9576651bb1fdbb44c92238e73c61351a570"
+    },
+    {
+      "sha": "7ac8267fb6bf4cbce5be40d2b9c804bd10c7394b",
+      "shortSha": "7ac8267",
+      "message": "chore: temporarily revert deploy-pages.yml to origin version to unblock push (OAuth app lacks workflow scope)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T05:30:53Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7ac8267fb6bf4cbce5be40d2b9c804bd10c7394b"
+    },
+    {
+      "sha": "f16886dbc2b006f0154e70b94869c3acdca61500",
+      "shortSha": "f16886d",
+      "message": "Merge remote-tracking branch 'origin/main'",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T05:21:32Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f16886dbc2b006f0154e70b94869c3acdca61500"
+    },
+    {
+      "sha": "37f966d8ec11933d10b9b65088a8d468f37b61d2",
+      "shortSha": "37f966d",
+      "message": "Skillz Forge: evidence contract v2, deploy integrity fixes, family pages\n\nSection A (P0):\n- A1: deploy-pages.yml path filter was missing askjamie, glee-fully,\n  knowledge-operations, context-extraction, outcome-modeling (5 of 15\n  families never triggered a deploy). Fixed and documented.\n- A2: skillz.manifest.json counts are now regenerated from the just-built\n  catalog and self-checked at build time.\n- A3: catalog.json moved to public/data/ and fetched at runtime via a new\n  CatalogProvider/useCatalog() context, not bundled as a static JS import.\n  Added predev hook so the dev server has fresh data too.\n- A5: focus-visible ring on inputs, ellipsis character fix, mascot image\n  width/height to prevent layout shift.\n- A6: added a home-page trust statement explaining how evidence is derived.\n- A7: tags/topics are now parsed from metadata.tags/topics frontmatter\n  instead of being hardcoded to [].\n\nSection B (P1) - evidence-contract v2:\n- New SkillEvidence/SkillPackageMetadata/ReleaseReadiness types, kept\n  deliberately separate from the existing 7-value evidenceStatus (see\n  inline comments in catalog.ts and build-catalog.js).\n- build-catalog.js derives evidence.status, counts, blockers, and\n  releaseReadiness per skill; enforces rule 7 (live requires\n  evaluatedSkillVersion + lastEvidenceDate) and rule 8 (non-Community\n  packages need the full Foundry baseline) as build failures.\n- Explore: new release-readiness filter, evidence chips, new sort keys\n  (updated, evidence-freshness, version).\n- SkillDetail: new \"Evidence and release state\" section.\n- FAQ: new release-readiness entry.\n- 13 deterministic tests in scripts/test-catalog.mjs, wired into the\n  build/deploy workflow.\n\nSection C (P2):\n- C1: /families/:family page rendering each FAMILY.md's hand-written\n  narrative (previously had no home in the app at all).\n- C2: build-time GitHub commit feed (scripts/build-activity.mjs) - fetched\n  at build, not from the browser, so the SPA needs no GitHub token.\n- C3: tags/topics wired into SkillDetail display.\n\nDeferred: C4 (companion/pathway view) and full C5 (mobile/keyboard sweep)\nnot implemented this pass; maturitySource's evidence-policy derivation\npath also remains unimplemented (documented gap, not silently dropped).",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T05:20:37Z",
+      "url": "https://github.com/OKHP3/skillz/commit/37f966d8ec11933d10b9b65088a8d468f37b61d2"
+    },
     {
       "sha": "33e1d52afa343c9d62d95f2d43f75c243ec5d8c7",
       "shortSha": "33e1d52",
@@ -8,6 +40,14 @@
       "author": "Jamie Hill",
       "date": "2026-08-04T05:01:26Z",
       "url": "https://github.com/OKHP3/skillz/commit/33e1d52afa343c9d62d95f2d43f75c243ec5d8c7"
+    },
+    {
+      "sha": "af6aef119883bc7be7693b2707bd51ffc760f4d0",
+      "shortSha": "af6aef1",
+      "message": "Update catalog and attach deployment integrity evidence\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T04:33:29Z",
+      "url": "https://github.com/OKHP3/skillz/commit/af6aef119883bc7be7693b2707bd51ffc760f4d0"
     },
     {
       "sha": "f5d9fad0ad92ea68e1f7bcc8949238dc06bb467a",
@@ -40,46 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-04T02:15:39Z",
       "url": "https://github.com/OKHP3/skillz/commit/217186408a7a4e32570a08bcd4c56bc768ca5965"
-    },
-    {
-      "sha": "9cd4086bcdd4c9b494dbc26a8f20d398dd037a22",
-      "shortSha": "9cd4086",
-      "message": "Repository cleanup: remove dead Vite scaffold, orphaned assets, stray sync report, and redundant license files\n\n- forge/src/main.ts, counter.ts, style.css: leftover Vite init scaffold, unused (real entry is main.tsx)\n- forge/src/assets/{typescript.svg,vite.svg,hero.png,murderbird-crucible.png}: only referenced by the dead scaffold or unreferenced anywhere\n- skills/okhp3-artifact-validation-sync-report.json: one-off diagnostic output, not part of the publication mirror content\n- process-capture/*/license (15 files): redundant with each package's SKILL.md frontmatter license field; no other of the 131 skill packages carries a physical license file",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T01:02:00Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9cd4086bcdd4c9b494dbc26a8f20d398dd037a22"
-    },
-    {
-      "sha": "35f9b10d7ec522b5efbac47d87d641eb7c3f9510",
-      "shortSha": "35f9b10",
-      "message": "Update catalog data in forge\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T00:40:20Z",
-      "url": "https://github.com/OKHP3/skillz/commit/35f9b10d7ec522b5efbac47d87d641eb7c3f9510"
-    },
-    {
-      "sha": "311dbcc5cf4486faf882c02b660736436f87082f",
-      "shortSha": "311dbcc",
-      "message": "Animate FAQ accordion with CSS grid-template-rows transition; add inert on collapsed answers to preserve tab order\n\nReplit-Task-Id: 3771dcf2-fd37-4d79-966c-f311506d4df9",
-      "author": "overkillhillp3",
-      "date": "2026-08-04T00:40:15Z",
-      "url": "https://github.com/OKHP3/skillz/commit/311dbcc5cf4486faf882c02b660736436f87082f"
-    },
-    {
-      "sha": "517b7df6654780d38229cf9306b0a50d979ee50c",
-      "shortSha": "517b7df",
-      "message": "Update catalog data in forge\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T00:36:40Z",
-      "url": "https://github.com/OKHP3/skillz/commit/517b7df6654780d38229cf9306b0a50d979ee50c"
-    },
-    {
-      "sha": "4020820d0e8197870ee3e4f90ebd4170ed6961b8",
-      "shortSha": "4020820",
-      "message": "Warn on missing FAMILY.md in readFamilyDisplayName catch block\n\nReplit-Task-Id: df414aad-a2f7-48b0-98a3-734732585822",
-      "author": "overkillhillp3",
-      "date": "2026-08-04T00:36:34Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4020820d0e8197870ee3e4f90ebd4170ed6961b8"
     }
   ],
   "fetchError": null
