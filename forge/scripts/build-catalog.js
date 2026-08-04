@@ -770,6 +770,19 @@ function readFamilyNarrative(familySlug) {
   console.log(`  ${skills.length} skills across ${familyList.length} families`);
   console.log(`  Source: ${sourceRef}@${sourceCommit ?? 'unknown'}`);
 
+  // Legacy compatibility copy: the committed deploy-pages.yml's "Verify
+  // catalog provenance" step still `require()`s ./src/data/catalog.json.
+  // That workflow file cannot be updated from this environment (GitHub
+  // rejects pushes touching .github/workflows/* without OAuth `workflow`
+  // scope), so until it is fixed at the source, also write a copy here so
+  // CI's provenance check does not fail against a path that no longer
+  // ships as the app's runtime data source. Remove this once the workflow
+  // file's provenance-check path is updated to ./public/data/catalog.json.
+  const LEGACY_OUTPUT = join(__dirname, '..', 'src', 'data', 'catalog.json');
+  mkdirSync(dirname(LEGACY_OUTPUT), { recursive: true });
+  writeFileSync(LEGACY_OUTPUT, JSON.stringify(catalog, null, 2), 'utf-8');
+  console.log(`✓ Written legacy CI-compat copy: ${LEGACY_OUTPUT}`);
+
   // CI verification: fail if catalog is empty
   if (skills.length === 0) {
     console.error('ERROR: Catalog is empty — build would deploy a broken site');
