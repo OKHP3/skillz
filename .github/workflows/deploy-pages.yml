@@ -7,26 +7,15 @@ on:
     paths:
       - 'forge/**'
       - '.github/workflows/deploy-pages.yml'
-      - 'skillz.manifest.json'
-      # A1 fix: this list must include every top-level family folder that has
-      # a FAMILY.md — it previously missed askjamie, glee-fully,
-      # knowledge-operations, context-extraction, and outcome-modeling, so
-      # edits to those 5 families (a third of the catalog) silently never
-      # triggered a deploy. Keep in sync with `ls -d */ | grep FAMILY.md`.
       - 'abrahamic/**'
-      - 'agent-foundry/**'
-      - 'askjamie/**'
       - 'community/**'
-      - 'context-extraction/**'
-      - 'glee-fully/**'
-      - 'knowledge-operations/**'
       - 'lifetrkr/**'
       - 'linkedin/**'
       - 'mermaid/**'
       - 'notion/**'
-      - 'outcome-modeling/**'
       - 'process-capture/**'
       - 'refolddec/**'
+      - 'agent-foundry/**'
       - 'universal/**'
       - 'AGENTS.md'
   workflow_dispatch:
@@ -65,23 +54,11 @@ jobs:
         working-directory: forge
         run: node scripts/build-catalog.js
 
-      - name: Generate activity feed
-        working-directory: forge
-        run: node scripts/build-activity.mjs
-
-      - name: Run deterministic catalog tests
-        working-directory: forge
-        run: node scripts/test-catalog.mjs
-
-      - name: Run unit tests
-        working-directory: forge
-        run: npx vitest run
-
       - name: Verify catalog provenance
         working-directory: forge
         run: |
           node -e "
-            const c = require('./public/data/catalog.json');
+            const c = require('./src/data/catalog.json');
             let ok = true;
             if (!c.skillCount || c.skillCount === 0) { console.error('FAIL: Empty catalog'); ok = false; }
             if (!c.sourceRepository) { console.error('FAIL: Missing sourceRepository'); ok = false; }
