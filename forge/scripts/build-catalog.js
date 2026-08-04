@@ -198,6 +198,48 @@ function deriveMaturitySource(meta) {
   return allowed.some(v => status.includes(v)) ? 'explicit-frontmatter' : 'fallback-structure';
 }
 
+// Evidence-policy derivation (BACKLOG.md maturity gates, section "Maturity
+// model"): a maturity claim above `usable` is a claim about evidence, not
+// just about the SKILL.md's own structure, so it must be backed by real
+// evidence artifacts or the catalog silently launders an unsupported claim.
+//   - Level 4 "Validated": "Has worked examples, validation gates, and a
+//     review checklist" -> requires at least one evidence artifact
+//     (an eval case, a benchmark run, a test, or a script).
+//   - Level 5 "Published": "Release-tagged, registry-ready" and (per the
+//     evidence-and-integrity PRD) "Validated evidence" -> requires
+//     version-matched `live` evidence, not just any artifact.
+// When the frontmatter-declared maturity outruns its own evidence, this
+// downgrades the *effective* maturity shown in the UI and marks
+// `maturitySource: 'evidence-policy'` so the mismatch is visible rather than
+// silently accepting the higher label. It never promotes a maturity the
+// frontmatter didn't already claim — it only ever holds a claim back.
+function hasAnyEvidenceArtifact(evidenceV2) {
+  return Boolean(
+    evidenceV2 && (
+      evidenceV2.evalCount > 0 ||
+      evidenceV2.benchmarkCount > 0 ||
+      evidenceV2.testCount > 0 ||
+      evidenceV2.scriptCount > 0
+    )
+  );
+}
+
+function applyEvidencePolicy(frontmatterMaturity, evidenceV2) {
+  let maturity = frontmatterMaturity;
+  let downgraded = false;
+
+  if (maturity === 'published' && evidenceV2?.status !== 'live') {
+    maturity = 'validated';
+    downgraded = true;
+  }
+  if (maturity === 'validated' && !hasAnyEvidenceArtifact(evidenceV2)) {
+    maturity = 'usable';
+    downgraded = true;
+  }
+
+  return { maturity, downgraded };
+}
+
 function readJsonFile(filePath) {
   try {
     return JSON.parse(readFileSync(filePath, 'utf8'));
@@ -585,8 +627,7 @@ function buildCatalog() {
       topics = [category];
     }
 
-    const maturity = deriveMaturity(fm.metadata || {}, body);
-    const maturitySource = deriveMaturitySource(fm.metadata || {});
+    const frontmatterMaturity = deriveMaturity(fm.metadata || {}, body);
     const triggers = extractTriggers(body);
     const avoid = extractAvoid(body);
     const companions = extractCompanions(body).filter(c => c !== name);
@@ -618,6 +659,11 @@ function buildCatalog() {
     const evidence = deriveEvidence(filePath, version);
     const evidenceV2 = deriveEvidenceV2(filePath, version);
     const createdAt = getFileCreatedAt(relPath);
+
+    const { maturity: policyMaturity, downgraded } = applyEvidencePolicy(frontmatterMaturity, evidenceV2);
+    const maturity = policyMaturity;
+    const maturitySource = downgraded ? 'evidence-policy' : deriveMaturitySource(fm.metadata || {});
+
     const releaseReadiness = deriveReleaseReadiness(maturity, evidenceV2.status);
     const packageMetadata = { author, category, origin, homepage, authorGithub, inScope, outOfScope };
 
@@ -867,4 +913,16 @@ function syncManifestCounts(catalog) {
   console.log(`✓ Synced counts into ${MANIFEST_PATH} (${catalog.skillCount} skills, ${catalog.familyCount} families)`);
 }
 
-buildCatalog();
+// Only run the full repo-walk build when this file is executed directly
+// (`node scripts/build-catalog.js`), not when it's imported elsewhere (e.g.
+// forge/scripts/test-catalog.mjs importing the pure helpers below) — an
+// import must not have the side effect of re-walking the repo and
+// rewriting catalog.json / skillz.manifest.json.
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  buildCatalog();
+}
+
+// Exported for forge/scripts/test-catalog.mjs — pure functions only, no I/O
+// or process.exit side effects, safe to call directly against synthetic
+// fixtures without re-running the full repo walk.
+export { applyEvidencePolicy, hasAnyEvidenceArtifact, deriveMaturity, deriveMaturitySource };

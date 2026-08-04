@@ -15,6 +15,7 @@
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { applyEvidencePolicy } from './build-catalog.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CATALOG_PATH = join(__dirname, '..', 'public', 'data', 'catalog.json');
@@ -210,6 +211,65 @@ test('families with a narrativeBody have real, non-trivial prose', () => {
         `family "${f.name}" has a narrativeBody but it is suspiciously short: "${f.narrativeBody}"`);
       assert(!f.narrativeBody.includes('FAMILY_SUMMARY_START'),
         `family "${f.name}" narrativeBody leaked a generated marker`);
+    }
+  }
+});
+
+// 13. Evidence-policy derivation: a `validated`/`published` claim with weak
+// or missing evidence must be held back to a lower maturity, with
+// maturitySource flagged as 'evidence-policy' so the mismatch is visible.
+// This exercises the pure applyEvidencePolicy() helper directly against
+// synthetic fixtures, since no current package's frontmatter declares
+// `validated`/`published` — it is not a re-assertion against catalog.json.
+test('evidence-policy downgrades an unsupported "validated" claim to "usable"', () => {
+  const noEvidence = { status: 'not-run', evalCount: 0, benchmarkCount: 0, testCount: 0, scriptCount: 0 };
+  const { maturity, downgraded } = applyEvidencePolicy('validated', noEvidence);
+  assert(maturity === 'usable', `expected downgrade to "usable", got "${maturity}"`);
+  assert(downgraded === true, 'expected downgraded=true for an unsupported "validated" claim');
+});
+
+test('evidence-policy downgrades an unsupported "published" claim to "validated"', () => {
+  const analyticalOnly = { status: 'analytical', evalCount: 1, benchmarkCount: 0, testCount: 0, scriptCount: 0 };
+  const { maturity, downgraded } = applyEvidencePolicy('published', analyticalOnly);
+  assert(maturity === 'validated', `expected downgrade to "validated", got "${maturity}"`);
+  assert(downgraded === true, 'expected downgraded=true for a "published" claim without live evidence');
+});
+
+test('evidence-policy leaves a "validated" claim alone when a test/eval/benchmark artifact exists', () => {
+  const withTests = { status: 'analytical', evalCount: 0, benchmarkCount: 0, testCount: 3, scriptCount: 0 };
+  const { maturity, downgraded } = applyEvidencePolicy('validated', withTests);
+  assert(maturity === 'validated', `expected "validated" to stand, got "${maturity}"`);
+  assert(downgraded === false, 'expected downgraded=false when a test artifact backs the claim');
+});
+
+test('evidence-policy leaves a "published" claim alone when live evidence exists', () => {
+  const live = { status: 'live', evalCount: 4, benchmarkCount: 2, testCount: 3, scriptCount: 1 };
+  const { maturity, downgraded } = applyEvidencePolicy('published', live);
+  assert(maturity === 'published', `expected "published" to stand, got "${maturity}"`);
+  assert(downgraded === false, 'expected downgraded=false when live evidence backs the claim');
+});
+
+test('evidence-policy never touches maturity at or below "usable"', () => {
+  for (const m of ['placeholder', 'skeleton', 'draftable', 'usable']) {
+    const { maturity, downgraded } = applyEvidencePolicy(m, { status: 'not-run', evalCount: 0, benchmarkCount: 0, testCount: 0, scriptCount: 0 });
+    assert(maturity === m, `expected "${m}" to be untouched, got "${maturity}"`);
+    assert(downgraded === false, `expected downgraded=false for "${m}"`);
+  }
+});
+
+// 14. Cross-check the shipped catalog.json itself: whenever a skill's
+// maturitySource is NOT 'evidence-policy', its maturity must actually meet
+// the evidence bar unassisted (i.e. the build didn't forget to flag a
+// downgrade). This re-runs the same pure policy against real package data.
+test('every shipped skill satisfies its own declared maturitySource (evidence-policy re-check)', () => {
+  for (const s of catalog.skills) {
+    const { maturity: policed, downgraded } = applyEvidencePolicy(s.maturity, s.evidence);
+    if (s.maturitySource === 'evidence-policy') {
+      // The catalog is already showing the held-back maturity; re-applying
+      // the policy to that (already-downgraded) value must be a no-op.
+      assert(!downgraded, `skill "${s.name}" is marked evidence-policy but its shipped maturity "${s.maturity}" still fails the policy (would downgrade further to "${policed}")`);
+    } else {
+      assert(!downgraded, `skill "${s.name}" claims maturity "${s.maturity}" via ${s.maturitySource} but does not meet the evidence-policy bar for it (policy would downgrade to "${policed}") — the build should have set maturitySource to "evidence-policy"`);
     }
   }
 });
