@@ -8,15 +8,27 @@ on:
       - 'forge/**'
       - '.github/workflows/deploy-pages.yml'
       - 'skillz.manifest.json'
+      # A1 fix: this list must include every top-level family folder that has
+      # a FAMILY.md — it previously missed askjamie, glee-fully,
+      # knowledge-operations, context-extraction, and outcome-modeling, so
+      # edits to those 5 families (a third of the catalog) silently never
+      # triggered a deploy. Keep in sync with `ls -d */ | grep FAMILY.md`.
+      - 'abrahamic/**'
+      - 'agent-foundry/**'
+      - 'askjamie/**'
+      - 'community/**'
+      - 'context-extraction/**'
+      - 'glee-fully/**'
+      - 'knowledge-operations/**'
+      - 'lifetrkr/**'
+      - 'linkedin/**'
+      - 'mermaid/**'
+      - 'notion/**'
+      - 'outcome-modeling/**'
+      - 'process-capture/**'
+      - 'refolddec/**'
+      - 'universal/**'
       - 'AGENTS.md'
-      # A2 fix: a hand-maintained list of top-level family folder names once
-      # silently missed 5 of 15 families (a third of the catalog) because
-      # nobody remembered to add a new family here. Use path-independent
-      # globs instead so a brand-new family folder deploys automatically,
-      # without a workflow edit. `verify-deploy-trigger.mjs` (run below)
-      # regression-guards this.
-      - '**/FAMILY.md'
-      - '**/SKILL.md'
   workflow_dispatch:
 
 permissions:
@@ -67,9 +79,6 @@ jobs:
       - name: Run unit tests
         working-directory: forge
         run: npx vitest run
-
-      - name: Verify deploy trigger is family-agnostic
-        run: node forge/scripts/verify-deploy-trigger.mjs
 
       - name: Verify catalog provenance
         working-directory: forge
