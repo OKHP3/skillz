@@ -6,7 +6,18 @@ This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
 
-_No unreleased changes yet._
+### Changed
+
+- Promoted `okhp3-mermaid-core` from `draftable` to `usable` maturity. The
+  promotion is backed by a real, non-synthetic worked example:
+  `mermaid/okhp3-mermaid-core/examples/WORKED-EXAMPLE-001.md` documents the
+  full workflow execution (audience declaration, type selection, design-system
+  application, naming and registry, three-gate validation) used to produce
+  `skill-maturity-lifecycle-analyst-v1.mmd` — an analyst-audience flowchart of
+  the `OKHP3/skillz` skill maturity lifecycle. Syntax validated with `mmdc`
+  v11.16.0 (exit 0); semantic and audience-fit gates passed. This is the first
+  skill in the repository to reach `usable` maturity and unblocks the `v0.2.0`
+  path described in the `v0.1.0` tag notes.
 
 ## v0.1.0 -- Initial public scaffold -- 2026-08-05
 

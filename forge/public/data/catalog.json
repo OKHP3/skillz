@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-05T22:04:28.886Z",
+  "generatedAt": "2026-08-05T22:20:20.810Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "355909d",
+  "sourceCommit": "31299f0",
   "skillCount": 113,
   "familyCount": 15,
   "families": [
@@ -366,7 +366,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-mermaid-bpmn",
+          "value": "okhp3-mermaid-core",
           "note": null,
           "source": "generated"
         },
@@ -4800,7 +4800,7 @@
       "origin": "okhp3/mermaid-theme-builder",
       "author": "Jamie Hill (OverKill Hill P3)",
       "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
+      "maturity": "usable",
       "evidenceStatus": "none",
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
@@ -4847,9 +4847,9 @@
           "No evaluation design or executable check exists for this package."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-mermaid-data",
