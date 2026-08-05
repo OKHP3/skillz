@@ -2,9 +2,29 @@
 
 All notable changes to `OKHP3/skillz` will be documented in this file.
 
-This project does not yet have a release tag. Until `v0.1.0`, entries are grouped under `Unreleased`.
+This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
+
+_No unreleased changes yet._
+
+## v0.1.0 -- Initial public scaffold -- 2026-08-05
+
+Tagged when the repository met a specific, checkable bar rather than a vague
+"feels done": the catalog build pipeline (`build-catalog.js`,
+`build-activity.mjs`), its deterministic regression suite
+(`test-catalog.mjs`, `vitest run`), and the Pages deploy trigger's
+family-agnostic regression guard (`verify-deploy-trigger.mjs`) all pass
+against the current 113-skill, 15-family inventory; `README.md`,
+`docs/PUBLIC_SURFACES.md`, and `docs/CHANGELOG.md` agree on that same
+113/15 count; and no skill's provenance is fabricated (each has a distinct,
+git-derived `createdAt`/`lastModified`/`commitSha`, verified against direct
+`git log` output). No skill has reached `usable` maturity yet -- that remains
+the bar for a future `v0.2.0` -- so this tag marks working, honest
+infrastructure and documentation, not a claim of usable skill content.
+
+The entries below, previously grouped under `Unreleased`, are the changes
+this tag covers.
 
 ### Added
 
@@ -143,4 +163,4 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 - Add GitHub topic tags.
 - Promote Mermaid Core + BPMN + Publish from skeleton to usable maturity (see promotion priority in `BACKLOG.md`).
 - Add worked examples and validation checklists.
-- Tag `v0.1.0` after the first usable skill path is complete.
+- Tag `v0.2.0` after the first `usable`-maturity skill path is complete (see `v0.1.0` above for the infrastructure/documentation bar already met).

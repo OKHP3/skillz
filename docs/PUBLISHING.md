@@ -84,6 +84,38 @@ Before adding or promoting `overkillhill.com/projects/skillz/`:
 - [ ] At least Mermaid Core, BPMN, and Publish have reached usable maturity.
 - [ ] Glee-fully and AskJamie references are framed as contextual touchpoints, not primary homes.
 
+## Syncing the overkillhill.com dossier
+
+`overkillhill.com/projects/skillz/` is **not** generated from this repository -- it
+is a separately hosted/edited page, so nothing in this codebase or its CI can
+push an update to it directly. Confirmed live on 2026-08-05, the dossier still
+read "75 public distribution skills across 12 active families" and labeled
+Compare and Activity as "Planned," while this repo's own docs already carried
+the correct current numbers and feature state.
+
+To avoid that drift recurring, whoever maintains the dossier should copy the
+current figures and status straight from this repo rather than re-deriving
+them:
+
+- **Skill/family counts and positioning copy** -- the "Recommended positioning"
+  and "Current inventory snapshot" text in
+  [`docs/PUBLIC_SURFACES.md`](PUBLIC_SURFACES.md) is the source of truth. Do
+  not hand-type counts on the dossier; paste from that section.
+- **Shipped-feature status** (e.g. Compare, Activity) -- the "Current
+  public-state rule" section at the bottom of `PUBLIC_SURFACES.md` lists what
+  Forge actually supports today; a feature listed there as shipped must not be
+  labeled "Planned" on the dossier.
+- **Machine-readable snapshot** -- `forge/public/data/project-summary.json` (or
+  the deployed `https://okhp3.github.io/skillz/data/project-summary.json`)
+  carries the same counts in JSON form if the dossier's CMS can consume it
+  directly instead of copy-paste.
+
+**When to re-sync:** any time `docs/PUBLIC_SURFACES.md`'s inventory snapshot or
+"Current public-state rule" section changes -- most commonly after a family is
+added/removed or a new Forge feature ships to `main`. There is no automated
+trigger for this; it is a manual step for whoever has edit access to the
+overkillhill.com site.
+
 ## Prestige path
 
 The prestige path should be deliberate, not automatic.
