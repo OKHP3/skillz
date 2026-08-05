@@ -1,6 +1,78 @@
 {
-  "generatedAt": "2026-08-04T22:20:21.845Z",
+  "generatedAt": "2026-08-05T16:09:03.284Z",
   "commits": [
+    {
+      "sha": "e2270f46ef24f5581e2ff0c91415e9214a60c558",
+      "shortSha": "e2270f4",
+      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
+      "author": "Jamie Hill",
+      "date": "2026-08-05T14:53:38Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e2270f46ef24f5581e2ff0c91415e9214a60c558"
+    },
+    {
+      "sha": "5c32e795a03eb56b94920772193bc26a31a1a88a",
+      "shortSha": "5c32e79",
+      "message": "\tmodified:   README.md\n\tmodified:   docs/CHANGELOG.md\n\tnew file:   docs/PRD-SKILLZ-FORGE-EXECUTION-RESET-2026-08-04.md\n\tnew file:   docs/PRD-SKILLZ-FORGE-INDEPENDENT-COMPLETION-2026-08-04.md\n\tnew file:   docs/PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md\n\tnew file:   docs/PRD-SKILLZ-FORGE-M4-LIVE-CONVERGENCE-2026-08-04.md\n\tmodified:   docs/PUBLIC_SURFACES.md\n\tnew file:   docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md",
+      "author": "Jamie Hill",
+      "date": "2026-08-05T14:52:59Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5c32e795a03eb56b94920772193bc26a31a1a88a"
+    },
+    {
+      "sha": "c1e71e715242d7a96387cc407d73c5a34e4fdf54",
+      "shortSha": "c1e71e7",
+      "message": "fix: fetch full history for catalog provenance (#40)\n\nAllow the catalog build to read full history for provenance.",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-05T13:27:53Z",
+      "url": "https://github.com/OKHP3/skillz/commit/c1e71e715242d7a96387cc407d73c5a34e4fdf54"
+    },
+    {
+      "sha": "001e2a976afeacd42c7e354d621da715d03dcd3e",
+      "shortSha": "001e2a9",
+      "message": "chore: revert deploy-pages.yml to origin version to unblock push (GitHub App still lacks workflow scope)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-04T22:32:03Z",
+      "url": "https://github.com/OKHP3/skillz/commit/001e2a976afeacd42c7e354d621da715d03dcd3e"
+    },
+    {
+      "sha": "2c221125b778988ade6a7a8e0fee97fa74ddba69",
+      "shortSha": "2c22112",
+      "message": "Update configuration and project data files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T22:22:41Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2c221125b778988ade6a7a8e0fee97fa74ddba69"
+    },
+    {
+      "sha": "66fc9f9e02304edb17e8358dc4c9b3a1b1a2932f",
+      "shortSha": "66fc9f9",
+      "message": "Update activity and catalog data files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T21:57:56Z",
+      "url": "https://github.com/OKHP3/skillz/commit/66fc9f9e02304edb17e8358dc4c9b3a1b1a2932f"
+    },
+    {
+      "sha": "b1f3fe7f6d1e68a9fda2c6df09e00700a72afbd1",
+      "shortSha": "b1f3fe7",
+      "message": "Update agent memory and refresh activity and catalog data\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T21:29:18Z",
+      "url": "https://github.com/OKHP3/skillz/commit/b1f3fe7f6d1e68a9fda2c6df09e00700a72afbd1"
+    },
+    {
+      "sha": "5e7f773fbd733da598d06d286932c489d57f0613",
+      "shortSha": "5e7f773",
+      "message": "Update catalog build scripts and deployment workflow configurations\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T21:10:08Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5e7f773fbd733da598d06d286932c489d57f0613"
+    },
+    {
+      "sha": "f48b1f61bb8eb46409319f57bdd3a0fe188876f7",
+      "shortSha": "f48b1f6",
+      "message": "Update forge catalog and activity data with contract deployment evidence\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-04T20:39:41Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f48b1f61bb8eb46409319f57bdd3a0fe188876f7"
+    },
     {
       "sha": "98515ec564a8d81b3163bdf917ed22ef0c016278",
       "shortSha": "98515ec",
@@ -8,78 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-04T18:33:01Z",
       "url": "https://github.com/OKHP3/skillz/commit/98515ec564a8d81b3163bdf917ed22ef0c016278"
-    },
-    {
-      "sha": "8ae0463e3d4f20f7d1ddb8e01e7491764ef1a55f",
-      "shortSha": "8ae0463",
-      "message": "Add footer component and update project configuration and data files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T16:15:34Z",
-      "url": "https://github.com/OKHP3/skillz/commit/8ae0463e3d4f20f7d1ddb8e01e7491764ef1a55f"
-    },
-    {
-      "sha": "5e15f3cde3a7ccaa8a08e904e0cc20365453398f",
-      "shortSha": "5e15f3c",
-      "message": "Update catalog and manifest data files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T16:09:42Z",
-      "url": "https://github.com/OKHP3/skillz/commit/5e15f3cde3a7ccaa8a08e904e0cc20365453398f"
-    },
-    {
-      "sha": "0948fbc3b261e518abb3e3385f4b703e246c859b",
-      "shortSha": "0948fbc",
-      "message": "Replace stub placeholder text in stacks.ts with finished copy\n\nReplit-Task-Id: 42f5925d-6e61-4dce-86f5-04974c0933d0",
-      "author": "overkillhillp3",
-      "date": "2026-08-04T16:09:29Z",
-      "url": "https://github.com/OKHP3/skillz/commit/0948fbc3b261e518abb3e3385f4b703e246c859b"
-    },
-    {
-      "sha": "9b9a26a4a54747e4cdb444d6a8aa2ad1ed77accb",
-      "shortSha": "9b9a26a",
-      "message": "Update activity data and enhance skill detail page styling\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T16:09:07Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9b9a26a4a54747e4cdb444d6a8aa2ad1ed77accb"
-    },
-    {
-      "sha": "370d8a8853ba33f33a9f174f68db6d56599b0d25",
-      "shortSha": "370d8a8",
-      "message": "Update catalog build script and add tests\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T16:06:36Z",
-      "url": "https://github.com/OKHP3/skillz/commit/370d8a8853ba33f33a9f174f68db6d56599b0d25"
-    },
-    {
-      "sha": "51bbfd97cfa6776fda76d2bb5be07b94e32f7977",
-      "shortSha": "51bbfd9",
-      "message": "\tmodified:   .github/workflows/deploy-pages.yml",
-      "author": "Jamie Hill",
-      "date": "2026-08-04T15:38:58Z",
-      "url": "https://github.com/OKHP3/skillz/commit/51bbfd97cfa6776fda76d2bb5be07b94e32f7977"
-    },
-    {
-      "sha": "8e4a5d07fec459865e33d81467eb95b671ab2a95",
-      "shortSha": "8e4a5d0",
-      "message": "chore: revert deploy-pages.yml to origin version to unblock push (GitHub App still lacks workflow scope)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-04T14:28:34Z",
-      "url": "https://github.com/OKHP3/skillz/commit/8e4a5d07fec459865e33d81467eb95b671ab2a95"
-    },
-    {
-      "sha": "3a3f8d82d12ab882d90b0bf4d2d66b577632efb4",
-      "shortSha": "3a3f8d8",
-      "message": "Update catalog data definitions and manifest version\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-04T13:00:35Z",
-      "url": "https://github.com/OKHP3/skillz/commit/3a3f8d82d12ab882d90b0bf4d2d66b577632efb4"
-    },
-    {
-      "sha": "99af593b7577b5320871d8bcfe6d8d33a9ec4986",
-      "shortSha": "99af593",
-      "message": "Add expandable inline sub-pathway for branch nodes in SkillPathway\n\n- Each branch card in the fork lane now shows a ▸/▾ expand toggle when the branch skill has its own companions\n- Expanding reveals the branch's downstream chain (up to 5 steps) inline below the fork lane, using a teal-tinted, steel-bordered sub-track to distinguish it from the primary chain\n- Collapsing restores the compact fork lane\n- Added buildForwardPath() to search.ts — walks forward from an arbitrary skill root without backward root-finding, used for sub-pathway computation\n- Hint text updated to mention the ▸ toggle\n- SkillPathway now accepts allSkills prop passed through from SkillDetail\n\nReplit-Task-Id: d27ab54e-03a6-404d-958b-73fc46023af2",
-      "author": "overkillhillp3",
-      "date": "2026-08-04T13:00:20Z",
-      "url": "https://github.com/OKHP3/skillz/commit/99af593b7577b5320871d8bcfe6d8d33a9ec4986"
     }
   ],
   "fetchError": null
