@@ -8,6 +8,18 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 
 ### Added
 
+- Added `docs/PRD-SKILLZ-FORGE-M4-LIVE-CONVERGENCE-2026-08-04.md`, the
+  post-implementation release-readiness PRD. It requires Replit-to-Git-to-live
+  reconciliation, source-backed provenance, complete in-app contract
+  inspection, public-surface convergence, and deployed evidence before an M4
+  distribution-center claim.
+
+- Added `docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`, a
+  capability-first review of the deployed Forge application. It records a
+  67/100 M3 decision-workbench assessment, observed capabilities beyond the
+  earlier catalog-stage roadmap, confirmed M4 blockers, and an ordered build
+  directive.
+
 - Added `okhp3-skill-promotion` to `universal/` and synchronized its portable
   package to `.agents/skills/` and the root `skills/` publication mirror. The
   package defines source selection, provenance, safe mirror verification,
@@ -69,6 +81,12 @@ This project does not yet have a release tag. Until `v0.1.0`, entries are groupe
 - Added `skillz.manifest.json` as a lightweight machine-readable manifest.
 
 ### Changed
+
+- Updated `docs/PUBLIC_SURFACES.md` and the root README to the current
+  113-skill, 15-family public inventory and the observed Forge maturity. The
+  document now distinguishes the active AskJamie and Glee-fully families from
+  historical placeholders and explicitly prevents public release or M4 claims
+  until their truth gates pass.
 
 - Completed the 2026-07-31 Foundry metadata and presentation audit for all 92
   non-Community distribution skills. Repaired 25 packages, preserved existing

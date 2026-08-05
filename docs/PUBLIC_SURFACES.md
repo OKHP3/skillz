@@ -64,10 +64,16 @@ skillz: Agent Skills by OverKill Hill
 Recommended positioning:
 
 ```text
-75 reusable SKILL.md delegation contracts across 12 active families for Claude, OpenClaw, Codex, and compatible AI agents.
+113 reusable SKILL.md delegation contracts across 15 active families for Claude, OpenClaw, Codex, and compatible AI agents.
 ```
 
-Current inventory snapshot, indexed July 29, 2026: 75 public distribution skills across 12 active families. The repository also contains two placeholder family directories and 18 project-local support skills. The placeholders and local support skills are not public distribution entries. See [`docs/SKILL-MATURITY-AUDIT-2026-07-29.md`](SKILL-MATURITY-AUDIT-2026-07-29.md) for per-skill version, Git date, maturity, and evidence records.
+Current inventory snapshot, assessed August 4, 2026: 113 public distribution
+skills across 15 active families. The repository also contains 16 project-local
+support skills, which are not public distribution entries. Forge itself is an
+M3 decision workbench, not yet a released or fully trustworthy distribution
+center. See
+[`docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`](SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md)
+for the observed capability score and M4 gates.
 
 Recommended sections:
 
@@ -82,22 +88,23 @@ Recommended sections:
 
 ## Skill family cards
 
-| Family | Public angle | Status |
+| Family | Public angle | Current public status |
 |---|---|---|
-| Abrahamic | Scripture lookup, observance calendars, tradition reference, and cross-tradition comparison | 4 Draftable; historical evidence |
-| Agent Foundry | Custom GPT construction, readiness, and conversion planning | 3 Draftable; analytical evidence |
-| Community | General-purpose UI, MCP, authoring, social, and engineering guidance | 6 Draftable, 7 Skeleton; mixed evidence |
-| Context Extraction | Cross-platform AI-thread extraction, provenance preservation, and ChatGPT project migration | 9 Draftable; analytical evidence |
-| LifeTrkr | Offline celestial data and daily oracle workflows | 2 Draftable; live evidence records |
-| LinkedIn | Turn finished work into postable angles and voice-consistent posts | 1 Draftable, 2 Skeleton; no indexed evidence |
-| Mermaid | Governed diagram authoring, theming, publishing, updating, and repair | 7 Draftable, 2 Skeleton; local-check evidence in one package |
-| Notion Capture | Route AI conversations into Notion with deduplication and GitHub reconciliation | 1 Draftable; no indexed evidence |
-| Outcome Modeling | Compress event histories into calibrated forecasts and constrained decisions | 5 Draftable; current evaluation designs not run |
-| Process Capture | Document, validate, govern, and package recurring organizational processes | 15 Draftable, 1 Skeleton; local-check evidence |
-| ReFolDec | Transform artifacts across representation types, including fold, unfold, refold, and semantic-loss tracking | 1 Draftable; no indexed evidence |
-| Universal | Cross-project builders, cataloging, API proxy, OAuth, and deployment skills | 8 Draftable, 1 Skeleton; mixed evidence |
-| Glee-fully | Future conversion path for personalizable tools | Placeholder (Level 0) |
-| AskJamie | Future lens-oriented professional support skills | Placeholder (Level 0) |
+| Abrahamic | Scripture lookup, observance calendars, tradition reference, and cross-tradition comparison | Active distribution family |
+| Agent Foundry | AI-agent creation, readiness, portability, comparison, and lifecycle | Active distribution family |
+| AskJamie | AskJamie-specific Custom GPT and professional-support capabilities | Active distribution family |
+| Community | General-purpose UI, MCP, authoring, social, and engineering guidance | Active distribution family |
+| Context Extraction | Cross-platform AI-thread extraction, provenance preservation, and migration | Active distribution family |
+| Glee-fully | Tool and Tool-ette architecture, persona density, and future consumer-skill conversion | Active distribution family |
+| Knowledge Operations | Capture, classify, research, validate, and promote information work | Active distribution family |
+| LifeTrkr | Offline celestial data and daily oracle workflows | Active distribution family |
+| LinkedIn | Turn finished work into postable angles and voice-consistent posts | Active distribution family |
+| Mermaid | Governed diagram authoring, theming, publishing, updating, and repair | Active distribution family |
+| Notion | Route AI conversations into Notion with deduplication and GitHub reconciliation | Active distribution family |
+| Outcome Modeling | Event-to-state forecasting and constrained decision adapters | Active distribution family |
+| Process Capture | Document, validate, govern, and package recurring organizational processes | Active distribution family |
+| ReFolDec | Transform artifacts across representations while tracking semantic loss | Active distribution family |
+| Universal | Cross-project builders, cataloging, database, API proxy, OAuth, and deployment skills | Active distribution family |
 
 ## Glee-fully Toolbox touchpoint
 
@@ -144,3 +151,13 @@ Notion is the source of truth for strategy, architecture, maturity assessment, r
 OverKill Hill is the canonical public landing surface.
 
 Glee-fully and AskJamie are contextual side doors only.
+
+## Current public-state rule
+
+Public surfaces must use the generated repository inventory for counts and
+describe Forge by observed capability, not planned features. As of 2026-08-04,
+Forge supports catalog discovery, detail inspection, family narratives,
+curated stacks, Compare, build-time activity, source/install links, and
+GitHub contribution handoff. It must not be described as a released or fully
+trustworthy distribution center until the M4 gates in the capability audit
+pass.
