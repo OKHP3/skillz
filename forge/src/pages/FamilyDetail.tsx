@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useCatalog } from '../contexts/CatalogContext';
 import Nav from '../components/layout/Nav';
+import AddToStackButton from '../components/ui/AddToStackButton';
 
 /** C1: renders the FAMILY.md narrative body as a real page, rather than
  *  leaving family context buried in a filter facet on Explore. This was
@@ -24,7 +25,7 @@ export default function FamilyDetail() {
     return (
       <div data-page="family-detail">
         <Nav />
-        <main className="container page-main">
+        <main className="container page-main" id="main-content">
           <div className="detail-article explore-empty" role="status">
             <h2>Family not found</h2>
             <p>No family named "{familySlug}" exists in the current catalog.</p>
@@ -41,7 +42,7 @@ export default function FamilyDetail() {
   return (
     <div data-page="family-detail">
       <Nav />
-      <main className="container page-main">
+      <main className="container page-main" id="main-content">
         <div className="page-header">
           <p className="breadcrumb"><Link to="/explore">Explore</Link> / {family.displayName}</p>
           <h1>{family.displayName}</h1>
@@ -53,6 +54,71 @@ export default function FamilyDetail() {
             paragraphs.map((p, i) => <p key={i}>{p}</p>)
           ) : (
             <p className="meta-pending">This family has no hand-written narrative yet — only an auto-generated summary is available on Explore.</p>
+          )}
+        </div>
+
+        <div className="family-orientation" aria-label="Family orientation">
+          <div className="family-orientation-field">
+            <h2>
+              Purpose
+              {family.orientation.purpose.source === 'generated' && (
+                <span className="orientation-generated-tag" title="Derived from this family's own skills and FAMILY.md metadata, not hand-written">generated</span>
+              )}
+            </h2>
+            {family.orientation.purpose.value ? (
+              <p>{family.orientation.purpose.value}</p>
+            ) : (
+              <p className="meta-pending">No purpose statement available for this family yet.</p>
+            )}
+          </div>
+
+          <div className="family-orientation-field">
+            <h2>
+              Common outcomes
+              {family.orientation.commonOutcomes.source === 'generated' && (
+                <span className="orientation-generated-tag" title="Derived from this family's own skill categories, not hand-written">generated</span>
+              )}
+            </h2>
+            {family.orientation.commonOutcomes.value.length > 0 ? (
+              <ul className="tag-list">
+                {family.orientation.commonOutcomes.value.map(o => <li key={o} className="tag-pill">{o}</li>)}
+              </ul>
+            ) : (
+              <p className="meta-pending">No common-outcome data available for this family yet.</p>
+            )}
+          </div>
+
+          <div className="family-orientation-field">
+            <h2>
+              First skill to try
+              {family.orientation.firstSkillToTry.source === 'generated' && (
+                <span className="orientation-generated-tag" title="Picked as the most release-ready skill in this family, not hand-picked by the author">generated</span>
+              )}
+            </h2>
+            {family.orientation.firstSkillToTry.value ? (
+              <p>
+                <Link to={`/skills/${family.name}/${family.orientation.firstSkillToTry.value}`} className="skill-card-title">
+                  {family.orientation.firstSkillToTry.value}
+                </Link>
+                {family.orientation.firstSkillToTry.note && (
+                  <span className="family-orientation-note"> — {family.orientation.firstSkillToTry.note}</span>
+                )}
+              </p>
+            ) : (
+              <p className="meta-pending">No recommendation available yet.</p>
+            )}
+          </div>
+
+          {family.orientation.compositionNotes.value && (
+            <div className="family-orientation-field">
+              <h2>
+                Composition notes
+                {family.orientation.compositionNotes.source === 'generated' && (
+                  <span className="orientation-generated-tag" title="Derived from this family's own declared companion relationships, not hand-written">generated</span>
+                )}
+              </h2>
+              <p>{family.orientation.compositionNotes.value}</p>
+            </div>
           )}
         </div>
 
@@ -71,7 +137,10 @@ export default function FamilyDetail() {
                   <Link to={`/skills/${skill.family}/${skill.name}`} className="activity-skill-link">{skill.displayName || skill.name}</Link>
                   <span className="activity-skill-family">{skill.description}</span>
                 </div>
-                <span data-maturity={skill.maturity}>{skill.maturity}</span>
+                <div className="family-skill-list-actions">
+                  <span data-maturity={skill.maturity}>{skill.maturity}</span>
+                  <AddToStackButton skillName={skill.name} className="btn-ghost btn-ghost--small" />
+                </div>
               </li>
             ))}
           </ul>

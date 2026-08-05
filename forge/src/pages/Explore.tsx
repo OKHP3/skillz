@@ -2,8 +2,11 @@ import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { useCatalog } from '../contexts/CatalogContext';
 import type { FilterState, SearchResult, Maturity, EvidenceStatus, ReleaseReadiness } from '../types/catalog';
-import { searchSkills, buildSearchIndex } from '../utils/search';
+import { searchSkills, buildSearchIndex, setBodySearchIndex } from '../utils/search';
+import type { SearchIndexEntry } from '../types/catalog';
 import { copyInstallUrl as copyInstallCommand, shareSkill, useFavorites } from '../utils/clipboard';
+import AddToStackButton from '../components/ui/AddToStackButton';
+import DiscoveryAid from '../components/ui/DiscoveryAid';
 import Nav from '../components/layout/Nav';
 
 const MATURITY_LEVELS: Maturity[] = ['placeholder', 'skeleton', 'draftable', 'usable', 'validated', 'published'];
@@ -61,6 +64,29 @@ export default function Explore() {
     buildSearchIndex(catalog.skills);
   }, []);
 
+  // Release 1: the compact catalog no longer carries every skill's full body
+  // text, so full-content search is a separate lazy fetch — it only happens
+  // when a visitor lands on Explore, not on every route that loads the
+  // catalog (Home, family pages, Compare). Once it resolves, re-run the
+  // current search so any body-only matches for the visitor's query appear
+  // without requiring them to retype it.
+  const [bodyIndexVersion, bumpBodyIndex] = useState(0);
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`${import.meta.env.BASE_URL}data/search-index.json`)
+      .then(res => { if (!res.ok) throw new Error(`${res.status}`); return res.json(); })
+      .then((entries: SearchIndexEntry[]) => {
+        if (cancelled) return;
+        setBodySearchIndex(entries);
+        bumpBodyIndex(n => n + 1);
+      })
+      .catch(() => {
+        // Full-body search is a progressive enhancement — metadata search
+        // (name/description/triggers/etc.) still works without it.
+      });
+    return () => { cancelled = true; };
+  }, []);
+
   useEffect(() => {
     const r = searchSkills(catalog.skills, filters);
     setResults(r);
@@ -72,7 +98,8 @@ export default function Explore() {
     if (filters.releaseReadiness) params.release = filters.releaseReadiness;
     if (filters.sort !== 'relevance') params.sort = filters.sort;
     setSearchParams(params, { replace: true });
-  }, [filters, setSearchParams, catalog.skills]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters, setSearchParams, catalog.skills, bodyIndexVersion]);
 
   const updateFilter = useCallback(<K extends keyof FilterState>(key: K, val: FilterState[K]) => {
     setFilters(prev => ({ ...prev, [key]: val }));
@@ -102,7 +129,7 @@ export default function Explore() {
   return (
     <div data-page="explore">
       <Nav />
-      <main data-layout="explore">
+      <main data-layout="explore" id="main-content">
         <aside className="explore-sidebar" data-open={filterOpen} aria-label="Filters">
           <div className="filter-group filter-group-header">
             <h3>Filters</h3>
@@ -225,6 +252,8 @@ export default function Explore() {
         </aside>
 
         <div className="explore-main">
+          <DiscoveryAid />
+
           <div className="explore-topbar">
             <button
               className="btn btn-outline nav-mobile-toggle"
@@ -352,6 +381,7 @@ export default function Explore() {
                     >
                       {isFavorite(skill.name) ? 'Saved' : 'Save'}
                     </button>
+                    <AddToStackButton skillName={skill.name} />
                     <Link to={`/skills/${skill.family}/${skill.name}`} className="btn-ghost skill-card-open" data-action="open">
                       Open &rarr;
                     </Link>

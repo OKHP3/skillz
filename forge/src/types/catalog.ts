@@ -10,11 +10,13 @@ export type EvidenceStatus = 'none' | 'local-checks' | 'designed' | 'analytical'
 // 4-value classification the evidence-contract-v2 spec defines, plus the
 // richer per-package counts, blockers, and review metadata that spec adds.
 // Mapping from v1 -> v2 status (documented, not silent): `live` -> `live`,
-// `historical` -> `historical`, `not-run` -> `not-run`; `analytical`,
-// `local-checks`, `designed`, and `none` all collapse to `analytical` or
-// `not-run` depending on whether any executable/design artifact exists
-// (see `deriveEvidenceV2` in build-catalog.js for the exact rule).
-export type EvidenceStatusV2 = 'live' | 'analytical' | 'historical' | 'not-run';
+// `historical` -> `historical`, `not-run` -> `not-run`, `none` -> `none`;
+// `analytical` and the v1 `local-checks`/`designed` categories collapse to
+// `analytical` (see `deriveEvidenceV2` in build-catalog.js for the exact
+// rule). `none` is distinct from `not-run`: `not-run` means an evaluation
+// design/plan exists but hasn't executed yet, `none` means no evaluation of
+// any kind — design or executed — exists for this package at all.
+export type EvidenceStatusV2 = 'live' | 'analytical' | 'historical' | 'not-run' | 'none';
 
 export interface SkillEvidence {
   status: EvidenceStatusV2;
@@ -80,7 +82,6 @@ export interface Skill {
   tools: string[];
   runtimes: string[];
   boundaries: string[];
-  bodyText: string;
   rawUrl: string;
   githubUrl: string;
   lastModified: string | null;
@@ -95,6 +96,24 @@ export interface Skill {
   releaseReadiness: ReleaseReadiness;
 }
 
+/** One orientation field: either author-written content from FAMILY.md
+ *  (`source: 'authored'`) or a fallback derived purely from real catalog
+ *  fields — never invented marketing prose (`source: 'generated'`). */
+export interface FamilyOrientationField<T> {
+  value: T;
+  source: 'authored' | 'generated';
+}
+
+export interface FamilyOrientation {
+  purpose: FamilyOrientationField<string | null>;
+  commonOutcomes: FamilyOrientationField<string[]>;
+  /** `value` is a real skill name in this family (or null if none could be
+   *  determined); `note` is the author's original free-text mention of it,
+   *  when authored. */
+  firstSkillToTry: FamilyOrientationField<string | null> & { note: string | null };
+  compositionNotes: FamilyOrientationField<string | null>;
+}
+
 export interface Family {
   name: string;
   displayName: string;
@@ -104,6 +123,10 @@ export interface Family {
    *  generated summary/inventory markers), or null if the family has no
    *  narrative beyond its auto-generated one-line summary. */
   narrativeBody: string | null;
+  /** Release 2: structured orientation content (purpose, common outcomes,
+   *  first skill to try, composition notes), each independently authored or
+   *  generated. See `buildFamilyOrientation` in build-catalog.js. */
+  orientation: FamilyOrientation;
 }
 
 export interface Catalog {
@@ -153,6 +176,26 @@ export interface SearchResult {
   skill: Skill;
   score: number;
   matchReason?: string;
+}
+
+/** One entry in the compact full-text search index (`data/search-index.json`),
+ *  fetched only by Explore when a visitor searches — not part of the main
+ *  catalog payload every route pays for. `bodyText` is markdown-stripped
+ *  plain text, weighted low in ranking (see utils/search.ts). */
+export interface SearchIndexEntry {
+  name: string;
+  family: string;
+  bodyText: string;
+}
+
+/** A single skill's Full Contract body (`data/skills/:family/:name.json`),
+ *  fetched on demand by SkillDetail. `rawBody` is the *unstripped* markdown
+ *  body (headings, links, code fences intact) — distinct from the
+ *  plain-text `bodyText` used for search. */
+export interface SkillDetailBody {
+  name: string;
+  family: string;
+  rawBody: string;
 }
 
 export type SortKey =

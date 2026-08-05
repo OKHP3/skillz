@@ -1,14 +1,19 @@
 import Fuse, { type IFuseOptions } from 'fuse.js';
-import type { Skill, SearchResult, FilterState } from '../types/catalog';
+import type { Skill, SearchResult, FilterState, SearchIndexEntry } from '../types/catalog';
 
+// Release 1: `bodyText` no longer ships on the `Skill` objects in the main
+// catalog payload (see build-catalog.js) — it lives in the separate,
+// lazily-fetched `data/search-index.json`. This index searches metadata
+// fields only; full-body matches are layered in via `bodyFuseIndex` below
+// once (and only if) that asset has been fetched (see setBodySearchIndex).
 const FUSE_OPTIONS: IFuseOptions<Skill> = {
   includeScore: true,
   threshold: 0.4,
   minMatchCharLength: 2,
   // Fuse's default location/distance scoring only rewards matches near the
-  // start of a field. Several fields here (description, bodyText) run to
-  // hundreds or thousands of characters, so without this a real match deep
-  // in the text scores as "no match" and silently vanishes from results.
+  // start of a field. Several fields here (description) run to hundreds of
+  // characters, so without this a real match deep in the text scores as "no
+  // match" and silently vanishes from results.
   ignoreLocation: true,
   keys: [
     { name: 'name',        weight: 0.25 },
@@ -25,17 +30,34 @@ const FUSE_OPTIONS: IFuseOptions<Skill> = {
     { name: 'companions',  weight: 0.02 },
     { name: 'boundaries',  weight: 0.02 },
     { name: 'examples',    weight: 0.02 },
-    // Full-text body of the SKILL.md (stripped of markdown syntax). Weighted
-    // low so a stray word deep in prose doesn't outrank a name/description
-    // match, but it means nothing written in a skill file is unsearchable.
-    { name: 'bodyText',    weight: 0.08 },
   ],
 };
 
+const BODY_FUSE_OPTIONS: IFuseOptions<SearchIndexEntry> = {
+  includeScore: true,
+  threshold: 0.4,
+  minMatchCharLength: 3,
+  ignoreLocation: true,
+  keys: [{ name: 'bodyText', weight: 1 }],
+};
+
 let fuseIndex: Fuse<Skill> | null = null;
+let bodyFuseIndex: Fuse<SearchIndexEntry> | null = null;
 
 export function buildSearchIndex(skills: Skill[]): void {
   fuseIndex = new Fuse(skills, FUSE_OPTIONS);
+}
+
+/** Wires in the lazily-fetched full-body search index (data/search-index.json).
+ *  Safe to call at any time, including after searches have already run —
+ *  Explore re-runs the search once this resolves so late-arriving body
+ *  matches still surface without a page reload. */
+export function setBodySearchIndex(entries: SearchIndexEntry[]): void {
+  bodyFuseIndex = new Fuse(entries, BODY_FUSE_OPTIONS);
+}
+
+export function hasBodySearchIndex(): boolean {
+  return bodyFuseIndex !== null;
 }
 
 export function searchSkills(skills: Skill[], filters: FilterState): SearchResult[] {
@@ -43,12 +65,38 @@ export function searchSkills(skills: Skill[], filters: FilterState): SearchResul
 
   if (filters.query.trim()) {
     if (!fuseIndex) buildSearchIndex(skills);
-    const raw = fuseIndex!.search(filters.query.trim());
-    results = raw.map(r => ({
-      skill: r.item,
-      score: 1 - (r.score ?? 0.5),
-      matchReason: buildMatchReason(r.item, filters.query),
-    }));
+    const query = filters.query.trim();
+    const raw = fuseIndex!.search(query);
+    const byName = new Map<string, SearchResult>();
+    for (const r of raw) {
+      byName.set(r.item.name, {
+        skill: r.item,
+        score: 1 - (r.score ?? 0.5),
+        matchReason: buildMatchReason(r.item, query),
+      });
+    }
+
+    // Layer in full-body matches (once the search index has loaded) for
+    // skills the metadata-only pass above missed entirely. Weighted lower
+    // than any metadata match so a stray word deep in prose never outranks
+    // a name/description hit, but it means nothing written in a skill's
+    // SKILL.md is unsearchable once the index is available.
+    if (bodyFuseIndex) {
+      const skillByName = new Map(skills.map(s => [s.name, s]));
+      const bodyRaw = bodyFuseIndex.search(query);
+      for (const r of bodyRaw) {
+        if (byName.has(r.item.name)) continue;
+        const skill = skillByName.get(r.item.name);
+        if (!skill) continue;
+        byName.set(r.item.name, {
+          skill,
+          score: (1 - (r.score ?? 0.5)) * 0.5,
+          matchReason: 'Matches skill content',
+        });
+      }
+    }
+
+    results = Array.from(byName.values());
   } else {
     results = skills.map(s => ({ skill: s, score: 0.5, matchReason: undefined }));
   }

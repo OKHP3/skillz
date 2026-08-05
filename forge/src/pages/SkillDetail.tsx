@@ -4,8 +4,11 @@ import { useCatalog } from '../contexts/CatalogContext';
 import { getRelatedSkills, buildWorkflowPath } from '../utils/search';
 import { copyInstallUrl as copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
 import SkillPathway from '../components/ui/SkillPathway';
-import { issueUrl, skillGitHubUrl } from '../utils/github';
+import FullContract from '../components/ui/FullContract';
+import { issueUrl, skillGitHubUrl, skillCommitHistoryUrl, commitUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
+import AddToStackButton from '../components/ui/AddToStackButton';
+import type { SkillDetailBody } from '../types/catalog';
 
 const RELEASE_READINESS_LABELS: Record<string, string> = {
   'needs-contract-work': 'Needs contract work',
@@ -46,16 +49,40 @@ export default function SkillDetail() {
   const [, forceUpdate] = useState(0);
   const navigate = useNavigate();
 
+  // Release 1: the Full Contract body (raw markdown) is not part of the
+  // main catalog payload — every route paying for every skill's full body
+  // text was the original problem. Fetched once per skill, on demand, only
+  // by this page.
+  const [contractState, setContractState] = useState<
+    { status: 'loading' } | { status: 'ready'; body: string } | { status: 'error' }
+  >({ status: 'loading' });
+
   useEffect(() => {
     if (skill) document.title = `${skill.displayName || skill.name} | Skillz Forge`;
     return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
   }, [skill?.name]);
 
+  useEffect(() => {
+    if (!skill) return;
+    let cancelled = false;
+    setContractState({ status: 'loading' });
+    fetch(`${import.meta.env.BASE_URL}data/skills/${skill.family}/${skill.name}.json`)
+      .then(res => { if (!res.ok) throw new Error(`${res.status}`); return res.json(); })
+      .then((detail: SkillDetailBody) => {
+        if (cancelled) return;
+        setContractState({ status: 'ready', body: detail.rawBody });
+      })
+      .catch(() => {
+        if (!cancelled) setContractState({ status: 'error' });
+      });
+    return () => { cancelled = true; };
+  }, [skill?.family, skill?.name]);
+
   if (!skill) {
     return (
       <div data-page="skill-detail">
         <Nav />
-        <main className="container detail-not-found-main">
+        <main className="container detail-not-found-main" id="main-content">
           <div className="detail-article detail-article--centered">
             <h1>Skill not found</h1>
             <p>No skill named <code>{skillName}</code> in the <code>{family}</code> family.</p>
@@ -105,7 +132,7 @@ export default function SkillDetail() {
   return (
     <div data-page="skill-detail">
       <Nav />
-      <main className="container">
+      <main className="container" id="main-content">
         <div className="breadcrumb" aria-label="Breadcrumb">
           <Link to="/explore">Explore</Link>
           <span aria-hidden>/</span>
@@ -158,6 +185,7 @@ export default function SkillDetail() {
             >
               {isFavorite(skill.name) ? 'Saved' : 'Save'}
             </button>
+            <AddToStackButton skillName={skill.name} />
           </div>
 
           <div className="detail-install">
@@ -363,7 +391,7 @@ export default function SkillDetail() {
               {skill.commitSha && <>
                 <dt>Commit</dt>
                 <dd>
-                  <a href={`https://github.com/OKHP3/skillz/commit/${skill.commitSha}`} target="_blank" rel="noopener noreferrer">
+                  <a href={commitUrl(skill.commitSha)} target="_blank" rel="noopener noreferrer">
                     {skill.commitSha.slice(0, 8)}
                   </a>
                 </dd>
@@ -454,6 +482,25 @@ export default function SkillDetail() {
             </p>
           </div>
 
+          <div id="full-contract" className="detail-full-contract">
+            <h2>Full contract</h2>
+            <p className="detail-full-contract-hint">
+              The complete SKILL.md contract for this skill, rendered in-app.
+            </p>
+            {contractState.status === 'loading' && (
+              <p className="meta-pending" role="status">Loading contract…</p>
+            )}
+            {contractState.status === 'error' && (
+              <p className="meta-pending" role="alert">
+                Could not load the full contract.{' '}
+                <a href={skill.rawUrl} target="_blank" rel="noopener noreferrer">View raw SKILL.md instead</a>.
+              </p>
+            )}
+            {contractState.status === 'ready' && (
+              <FullContract rawBody={contractState.body} />
+            )}
+          </div>
+
           <div className="detail-contribute">
             <h2>Contribute</h2>
             <div className="detail-contribute-actions">
@@ -463,7 +510,7 @@ export default function SkillDetail() {
               <a href={skill.rawUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 View raw SKILL.md
               </a>
-              <a href={`https://github.com/OKHP3/skillz/commits/main/${skill.path}`} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+              <a href={skillCommitHistoryUrl(skill.path)} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 Commit history
               </a>
               <a href={issueUrl({ title: `Improve: ${skill.name}`, labels: ['enhancement'] })} target="_blank" rel="noopener noreferrer" className="btn btn-outline">

@@ -3,19 +3,23 @@ import { useState } from 'react';
 import { STACKS } from '../data/stacks';
 import { copyToClipboard, shareStack } from '../utils/clipboard';
 import { useCatalog } from '../contexts/CatalogContext';
+import { useComposer } from '../contexts/ComposerContext';
+import { stackImproveIssueUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
+import AddToStackButton from '../components/ui/AddToStackButton';
 
 export default function StackDetail() {
   const catalog = useCatalog();
   const { stackId } = useParams();
   const stack = STACKS.find(s => s.id === stackId);
   const [copied, setCopied] = useState(false);
+  const { items: stackedItems, addItem, canAdd } = useComposer();
 
   if (!stack) {
     return (
       <div data-page="stack-detail">
         <Nav />
-        <main className="container sd-not-found-main">
+        <main className="container sd-not-found-main" id="main-content">
           <div className="detail-article sd-not-found-article">
             <h1 className="sd-not-found-heading">Stack not found</h1>
             <Link to="/stacks" className="btn sd-not-found-link">Browse all stacks</Link>
@@ -36,10 +40,18 @@ export default function StackDetail() {
     if (ok) { setCopied(true); setTimeout(() => setCopied(false), 2000); }
   }
 
+  const notInStackCount = allSkills.filter(s => !stackedItems.some(i => i.name === s!.name)).length;
+
+  function handleAddAllToStack() {
+    for (const skill of allSkills) {
+      addItem(skill!.name);
+    }
+  }
+
   return (
     <div data-page="stack-detail">
       <Nav />
-      <main className="container sd-main">
+      <main className="container sd-main" id="main-content">
         <div className="breadcrumb" aria-label="Breadcrumb">
           <Link to="/stacks">Stacks</Link>
           <span aria-hidden>/</span>
@@ -70,6 +82,22 @@ export default function StackDetail() {
             <button className="btn btn-outline" onClick={() => shareStack(stack.id, stack.name)}>
               Share this stack
             </button>
+            <button
+              className="btn-ghost"
+              onClick={handleAddAllToStack}
+              disabled={notInStackCount === 0 || !canAdd}
+              title={!canAdd && notInStackCount > 0 ? 'Your stack already has the maximum of 8 skills' : undefined}
+            >
+              {notInStackCount === 0 ? 'All in your stack' : `Add all to my stack`}
+            </button>
+            <a
+              href={stackImproveIssueUrl(stack.id, stack.name, allSkillNames)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+            >
+              Suggest an improvement
+            </a>
           </div>
 
           {stack.installNote && (
@@ -120,7 +148,10 @@ export default function StackDetail() {
               {allSkills.map(skill => (
                 <li key={skill!.name} className="sd-all-skill-item">
                   <Link to={`/skills/${skill!.family}/${skill!.name}`} className="sd-all-skill-link">{skill!.name}</Link>
-                  <span data-maturity={skill!.maturity} className="sd-all-skill-maturity">{skill!.maturity}</span>
+                  <div className="sd-all-skill-actions">
+                    <span data-maturity={skill!.maturity} className="sd-all-skill-maturity">{skill!.maturity}</span>
+                    <AddToStackButton skillName={skill!.name} className="btn-ghost btn-ghost--small" />
+                  </div>
                 </li>
               ))}
             </ul>

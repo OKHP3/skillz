@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
-import { bugReportUrl, newSkillUrl, improveSkillUrl, prUrl, discussionsUrl, repoUrl } from '../utils/github';
+import {
+  bugReportUrl, newSkillUrl, prUrl, discussionsUrl, repoUrl,
+  companionIssueUrl, securityAdvisoryUrl, composedStackIssueUrl,
+} from '../utils/github';
+import { useComposer } from '../contexts/ComposerContext';
 import Nav from '../components/layout/Nav';
 
 const ACTIONS = [
@@ -40,7 +44,7 @@ const ACTIONS = [
     label: 'Propose a companion skill relationship',
     description: 'You have found that two skills work well together in a way not documented.',
     how: 'Open a GitHub issue describing the combination, the task context, and why the pairing matters. Include a brief description of what each skill contributes.',
-    href: () => `https://github.com/OKHP3/skillz/issues/new?labels=companion&title=Companion+relationship%3A+`,
+    href: () => companionIssueUrl(),
     linkLabel: 'Open an issue',
   },
   {
@@ -48,7 +52,7 @@ const ACTIONS = [
     label: 'Report a security or privacy concern',
     description: 'A skill contains credentials, employer-confidential content, or other sensitive material.',
     how: 'Do not open a public issue. Use GitHub\'s private security advisory feature or contact the repository owner directly.',
-    href: () => 'https://github.com/OKHP3/skillz/security/advisories/new',
+    href: () => securityAdvisoryUrl(),
     linkLabel: 'Open a security advisory',
     sensitive: true,
   },
@@ -63,6 +67,8 @@ const ACTIONS = [
 ];
 
 export default function Contribute() {
+  const { items } = useComposer();
+
   useEffect(() => {
     document.title = 'Contribute | Skillz Forge';
     return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
@@ -71,7 +77,7 @@ export default function Contribute() {
   return (
     <div data-page="contribute">
       <Nav />
-      <main className="container page-main">
+      <main className="container page-main" id="main-content">
         <div className="page-header">
           <h1>Contribute</h1>
           <p>The catalog improves through pull requests, issues, and discussion. Every improvement — from a corrected trigger phrase to a new benchmarked skill — makes the catalog more useful for everyone.</p>
@@ -114,6 +120,25 @@ export default function Contribute() {
             </a>
           </div>
         </div>
+
+        {items.length > 0 && (
+          <div className="contribute-resource-panel contribute-stack-panel">
+            <h2>Suggest from your stack</h2>
+            <p>
+              You have {items.length} skill{items.length !== 1 ? 's' : ''} in your local stack. File an issue that
+              includes exactly what you selected, in order, with your notes — nothing is sent anywhere until you
+              open the link below.
+            </p>
+            <a
+              href={composedStackIssueUrl(items)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline contribute-resource-link"
+            >
+              Open an issue from my stack &rarr;
+            </a>
+          </div>
+        )}
       </main>
     </div>
   );

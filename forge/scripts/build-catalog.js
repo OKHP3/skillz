@@ -24,6 +24,18 @@ const REPO_ROOT = join(__dirname, '..', '..');
 // `forge/scripts/verify-deploy-trigger.mjs` and Phase D checks validate the
 // exact bytes that ship, not a TS-transpiled copy.
 const OUTPUT = join(__dirname, '..', 'public', 'data', 'catalog.json');
+// Release 1 fix: the compact index above no longer carries each skill's full
+// body text — that alone was the largest contributor to first-load payload
+// size, and Home/Compare/family pages never needed it. Full body text now
+// lives in two separate, purpose-specific artifacts fetched on demand:
+//   - SEARCH_INDEX_OUTPUT: {name, family, bodyText} for every skill, stripped
+//     of markdown syntax, fetched only by Explore when a visitor searches.
+//   - SKILL_DETAIL_DIR: one {name, family, rawBody} JSON per skill, carrying
+//     the *unstripped* markdown body (headings, links, code fences intact)
+//     so SkillDetail's Full Contract renderer has real structure to work
+//     with, not the plain-text search blob.
+const SEARCH_INDEX_OUTPUT = join(__dirname, '..', 'public', 'data', 'search-index.json');
+const SKILL_DETAIL_DIR = join(__dirname, '..', 'public', 'data', 'skills');
 const MANIFEST_PATH = join(REPO_ROOT, 'skillz.manifest.json');
 
 const GITHUB_REPO = 'OKHP3/skillz';
@@ -43,6 +55,62 @@ function getGitCommit() {
     return execSync('git rev-parse --short HEAD', { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'] })
       .toString().trim();
   } catch { return null; }
+}
+
+// Release 0 fix: fail closed rather than silently publish fabricated
+// provenance. A shallow checkout has no per-file `git log` history, so
+// every skill's createdAt/lastModified/commitSha would come back null —
+// previously masked by falling back to the top-level deploy commit (see
+// the removed `|| sourceCommit` in the skill-building loop below). CI's
+// "Verify full git history is available" step in deploy-pages.yml already
+// checks this before build-catalog.js runs; this is defense in depth for
+// any other place the script gets invoked (local dev on a shallow clone,
+// a future workflow change, etc). Set ALLOW_SHALLOW_CATALOG_BUILD=1 to
+// intentionally build with placeholder-free-but-null provenance anyway
+// (e.g. a quick local shallow-clone smoke test) — it is never set in CI.
+function ensureFullHistory() {
+  let isShallow = false;
+  try {
+    isShallow = execSync('git rev-parse --is-shallow-repository', {
+      cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8',
+    }).trim() === 'true';
+  } catch {
+    // Not a git repo at all (e.g. a tarball export) — nothing to enforce.
+    return;
+  }
+  if (!isShallow) return;
+
+  // Only fail closed in CI, where a shallow checkout means GitHub Actions'
+  // default fetch-depth:1 — zero usable history beyond the deploy commit,
+  // which is exactly what caused every skill's provenance to be fabricated
+  // as the deploy date. deploy-pages.yml sets GITHUB_ACTIONS=true and now
+  // requests fetch-depth: 0, so this should never legitimately fire there.
+  // A Replit dev workspace clone can also report itself as "shallow" while
+  // still carrying a large, useful commit window — blocking every local
+  // `pnpm dev`/`pnpm build` on that would make ordinary development
+  // impossible for no safety benefit, since nothing here deploys to the
+  // public site. In that case, warn instead so the gap stays visible in
+  // local dev without being fabricated.
+  const inCI = process.env.GITHUB_ACTIONS === 'true' || process.env.CI === 'true';
+  if (inCI && !process.env.ALLOW_SHALLOW_CATALOG_BUILD) {
+    console.error(
+      'FATAL: this CI checkout is shallow. Per-skill provenance ' +
+      '(createdAt/lastModified/commitSha) requires full history, or every ' +
+      'skill silently ships fabricated deploy-time dates. Fetch full ' +
+      'history (`git fetch --unshallow` or a checkout with fetch-depth: 0) ' +
+      'before running this build, or set ALLOW_SHALLOW_CATALOG_BUILD=1 to ' +
+      'proceed anyway with null (not fabricated) provenance fields.'
+    );
+    process.exit(1);
+  }
+  if (!inCI) {
+    console.warn(
+      '[catalog warn] this checkout is shallow — some skills may show ' +
+      '"Unknown" provenance instead of real git history. This is expected ' +
+      'in local development and is not fabricated. The production deploy ' +
+      'workflow fails closed instead of shipping fabricated dates.'
+    );
+  }
 }
 
 function getGitRef() {
@@ -86,6 +154,17 @@ function getFileCreatedAt(relPath) {
     const lines = result.split('\n').filter(Boolean);
     return lines.length ? lines[lines.length - 1] : null;
   } catch { return null; }
+}
+
+// Release 1: writes one small per-skill JSON file carrying the *unstripped*
+// markdown body, so SkillDetail's Full Contract renderer can fetch it lazily
+// (only when a visitor opens that skill) instead of every route paying for
+// every skill's full body text up front.
+function writeSkillDetailFile(family, name, rawBody) {
+  const dir = join(SKILL_DETAIL_DIR, family);
+  mkdirSync(dir, { recursive: true });
+  const outPath = join(dir, `${name}.json`);
+  writeFileSync(outPath, JSON.stringify({ name, family, rawBody }, null, 2), 'utf-8');
 }
 
 function countDirFiles(dirPath) {
@@ -136,7 +215,14 @@ function deriveEvidenceV2(filePath, currentVersion) {
   } else if (evals || benchmark || testCount > 0 || scriptCount > 0) {
     status = 'analytical';
   } else {
-    status = 'not-run';
+    // Release 1 fix: previously this catch-all also said 'not-run', which
+    // conflated "an evaluation design/plan exists but hasn't executed yet"
+    // with "no evaluation of any kind was ever designed for this package."
+    // Those are different claims — the first implies work is in flight,
+    // the second means the package has no evidence surface at all. `none`
+    // keeps that distinction visible in filters and copy instead of
+    // silently merging it into `not-run`.
+    status = 'none';
   }
 
   const lastEvidenceDate = benchmarkMeta.evaluated_at || benchmarkMeta.date || benchmarkMeta.timestamp || evalMeta.generated_at || evalMeta.date || evalMeta.timestamp || null;
@@ -149,6 +235,7 @@ function deriveEvidenceV2(filePath, currentVersion) {
   if (Array.isArray(evalMeta.blockers)) blockers.push(...evalMeta.blockers);
   if (blockers.length === 0) {
     if (status === 'not-run') blockers.push('No executed evaluation exists for the current package version.');
+    else if (status === 'none') blockers.push('No evaluation design or executable check exists for this package.');
     else if (status === 'historical') blockers.push(`Evidence evaluates version ${evaluatedSkillVersion}, not the current ${currentVersion ?? 'unversioned'} package.`);
     else if (status === 'analytical') blockers.push('Only design or structural review exists; no graded live run has been executed.');
   }
@@ -224,6 +311,20 @@ function hasAnyEvidenceArtifact(evidenceV2) {
   );
 }
 
+// Release 1 fix: "validated" per the maturity table means "peer-reviewed
+// against the stated contract" with "current-version evidence [and] a
+// protected or external check" — a bare test file (structural scaffolding,
+// never executed as a graded case) does not meet that bar on its own. Only
+// an actual eval case or benchmark run counts as evidence a validated claim
+// can stand on; testCount/scriptCount alone are necessary but not
+// sufficient (they still gate "usable" via hasAnyEvidenceArtifact, and a
+// live-status check upstream already requires benchmark runs for
+// "published"). This function is deliberately stricter than
+// hasAnyEvidenceArtifact, which remains the (lower) bar for "usable".
+function hasSubstantiveEvidenceArtifact(evidenceV2) {
+  return Boolean(evidenceV2 && (evidenceV2.evalCount > 0 || evidenceV2.benchmarkCount > 0));
+}
+
 function applyEvidencePolicy(frontmatterMaturity, evidenceV2) {
   let maturity = frontmatterMaturity;
   let downgraded = false;
@@ -232,7 +333,7 @@ function applyEvidencePolicy(frontmatterMaturity, evidenceV2) {
     maturity = 'validated';
     downgraded = true;
   }
-  if (maturity === 'validated' && !hasAnyEvidenceArtifact(evidenceV2)) {
+  if (maturity === 'validated' && !hasSubstantiveEvidenceArtifact(evidenceV2)) {
     maturity = 'usable';
     downgraded = true;
   }
@@ -571,6 +672,7 @@ function findSkillFiles(dir, depth = 0) {
 // ─── Build catalog ────────────────────────────────────────────────────────────
 
 function buildCatalog() {
+  ensureFullHistory();
   const sourceCommit = getGitCommit();
   const sourceRef = getGitRef();
 
@@ -578,6 +680,10 @@ function buildCatalog() {
   console.log(`Found ${skillFiles.length} SKILL.md files`);
 
   const skills = [];
+  // Release 1: collected alongside `skills` but written to separate files
+  // (see SEARCH_INDEX_OUTPUT / SKILL_DETAIL_DIR above) rather than embedded
+  // in catalog.json.
+  const searchIndexEntries = [];
 
   for (const filePath of skillFiles) {
     const relPath = relative(REPO_ROOT, filePath).replace(/\\/g, '/');
@@ -712,11 +818,19 @@ function buildCatalog() {
       tools,
       runtimes,
       boundaries,
-      bodyText: stripMarkdownToPlainText(body),
       rawUrl,
       githubUrl,
       lastModified: fileGitInfo.lastModified,
-      commitSha: fileGitInfo.commitSha || sourceCommit,
+      // Release 0 fix: this previously fell back to `sourceCommit` (the
+      // top-level deploy commit) whenever the per-file git lookup came back
+      // empty — which happens on every shallow checkout. That silently
+      // relabeled "we don't know this file's commit" as "this file was
+      // last touched in today's deploy," which is a fabricated claim, not
+      // a graceful degradation. When per-file history is genuinely
+      // unavailable this is now `null`, and the UI renders "Unknown"
+      // instead. ensureFullHistory() below fails the build closed on a
+      // shallow checkout so this should never legitimately happen in CI.
+      commitSha: fileGitInfo.commitSha,
       createdAt,
       packageMetadata,
       evidence: evidenceV2,
@@ -724,6 +838,9 @@ function buildCatalog() {
       maturityReviewedAt,
       releaseReadiness,
     });
+
+    searchIndexEntries.push({ name, family, bodyText: stripMarkdownToPlainText(body) });
+    writeSkillDetailFile(family, name, body);
   }
 
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
@@ -817,6 +934,109 @@ function readFamilyNarrative(familySlug) {
   }
 }
 
+// Release 2: family pages should show real author-controlled orientation
+// content ("Purpose", "Common outcomes", "First skill to try", "Composition
+// notes") when a FAMILY.md author has written it, and a clearly labeled
+// GENERATED fallback — derived only from real catalog fields, never invented
+// marketing prose — when they haven't. Authors opt in by adding one of these
+// exact `##` headings anywhere before the `<!-- FAMILY_SUMMARY_START -->`
+// marker in FAMILY.md:
+//   ## Purpose
+//   ## Common outcomes
+//   ## First skill to try
+//   ## Composition notes
+function readFamilyOrientationSections(familySlug) {
+  const familyMdPath = join(REPO_ROOT, familySlug, 'FAMILY.md');
+  const sections = {};
+  try {
+    const text = readFileSync(familyMdPath, 'utf-8').replace(/\r\n/g, '\n');
+    const afterH1 = text.split(/^#\s+.+$/m)[1];
+    if (!afterH1) return sections;
+    const body = afterH1.split('<!-- FAMILY_SUMMARY_START -->')[0];
+    const headingRe = /^##\s+(Purpose|Common outcomes|First skill to try|Composition notes)\s*$/gim;
+    const matches = [...body.matchAll(headingRe)];
+    for (let i = 0; i < matches.length; i++) {
+      const start = matches[i].index + matches[i][0].length;
+      const end = i + 1 < matches.length ? matches[i + 1].index : body.length;
+      const key = matches[i][1].toLowerCase();
+      const value = body.slice(start, end).trim();
+      if (value) sections[key] = value;
+    }
+  } catch {
+    // FAMILY.md missing/unreadable — fall through to generated content.
+  }
+  return sections;
+}
+
+/** Rank used to pick a deterministic "first skill to try" fallback: prefer
+ *  the most release-ready, most mature skill in the family; break ties
+ *  alphabetically by name so the choice never depends on file iteration
+ *  order. */
+const RELEASE_READINESS_RANK = {
+  published: 5,
+  'ready-for-peer-review': 4,
+  'ready-for-supervised-use': 3,
+  'needs-live-evidence': 2,
+  'needs-contract-work': 1,
+};
+
+function buildFamilyOrientation(familySlug, familySkills) {
+  const authored = readFamilyOrientationSections(familySlug);
+
+  const purpose = authored['purpose']
+    ? { value: authored['purpose'], source: 'authored' }
+    : { value: readFamilyNarrative(familySlug), source: 'generated' };
+
+  const commonOutcomes = authored['common outcomes']
+    ? { value: authored['common outcomes'].split(/\n+/).map(l => l.replace(/^[-*]\s*/, '').trim()).filter(Boolean), source: 'authored' }
+    : {
+        // Generated fallback: the real, distinct `category` values declared
+        // across this family's own skills — not invented marketing copy.
+        value: [...new Set(familySkills.map(s => s.category).filter(Boolean))].slice(0, 5),
+        source: 'generated',
+      };
+
+  let firstSkillToTry;
+  if (authored['first skill to try']) {
+    // Authors write the skill name (optionally as `code` or a sentence
+    // mentioning it) — extract the first token that matches a real skill in
+    // this family so a typo can't silently point nowhere.
+    const mentioned = familySkills.find(s => authored['first skill to try'].includes(s.name));
+    firstSkillToTry = { value: mentioned ? mentioned.name : null, note: authored['first skill to try'], source: 'authored' };
+  } else {
+    const ranked = [...familySkills].sort((a, b) => {
+      const rankDiff = (RELEASE_READINESS_RANK[b.releaseReadiness] ?? 0) - (RELEASE_READINESS_RANK[a.releaseReadiness] ?? 0);
+      if (rankDiff !== 0) return rankDiff;
+      return a.name.localeCompare(b.name);
+    });
+    firstSkillToTry = { value: ranked[0]?.name ?? null, note: null, source: 'generated' };
+  }
+
+  let compositionNotes;
+  if (authored['composition notes']) {
+    compositionNotes = { value: authored['composition notes'], source: 'authored' };
+  } else {
+    // Generated fallback: real declared companion relationships within this
+    // family only (cross-family companions belong to the skill detail page,
+    // not a family-level note).
+    const familyNames = new Set(familySkills.map(s => s.name));
+    const pairs = [];
+    for (const s of familySkills) {
+      for (const c of s.companions || []) {
+        if (familyNames.has(c) && !pairs.some(p => p[0] === c && p[1] === s.name)) {
+          pairs.push([s.name, c]);
+        }
+      }
+    }
+    compositionNotes = {
+      value: pairs.length > 0 ? pairs.slice(0, 5).map(([a, b]) => `${a} pairs with ${b}`).join('; ') : null,
+      source: 'generated',
+    };
+  }
+
+  return { purpose, commonOutcomes, firstSkillToTry, compositionNotes };
+}
+
   const familyMap = {};
   for (const s of skills) {
     if (!familyMap[s.family]) {
@@ -830,6 +1050,14 @@ function readFamilyNarrative(familySlug) {
     }
     familyMap[s.family].skillCount++;
     familyMap[s.family].skills.push(s.name);
+  }
+
+  // Release 2: orientation needs every family's own skills gathered first
+  // (for the category/companion/release-readiness-derived fallbacks), so
+  // this pass runs after the skill-collection loop above.
+  for (const familySlug of Object.keys(familyMap)) {
+    const familySkills = skills.filter(s => s.family === familySlug);
+    familyMap[familySlug].orientation = buildFamilyOrientation(familySlug, familySkills);
   }
 
   const familyList = Object.values(familyMap);
@@ -851,18 +1079,12 @@ function readFamilyNarrative(familySlug) {
   console.log(`  ${skills.length} skills across ${familyList.length} families`);
   console.log(`  Source: ${sourceRef}@${sourceCommit ?? 'unknown'}`);
 
-  // Legacy compatibility copy: the committed deploy-pages.yml's "Verify
-  // catalog provenance" step still `require()`s ./src/data/catalog.json.
-  // That workflow file cannot be updated from this environment (GitHub
-  // rejects pushes touching .github/workflows/* without OAuth `workflow`
-  // scope), so until it is fixed at the source, also write a copy here so
-  // CI's provenance check does not fail against a path that no longer
-  // ships as the app's runtime data source. Remove this once the workflow
-  // file's provenance-check path is updated to ./public/data/catalog.json.
-  const LEGACY_OUTPUT = join(__dirname, '..', 'src', 'data', 'catalog.json');
-  mkdirSync(dirname(LEGACY_OUTPUT), { recursive: true });
-  writeFileSync(LEGACY_OUTPUT, JSON.stringify(catalog, null, 2), 'utf-8');
-  console.log(`✓ Written legacy CI-compat copy: ${LEGACY_OUTPUT}`);
+  mkdirSync(dirname(SEARCH_INDEX_OUTPUT), { recursive: true });
+  writeFileSync(SEARCH_INDEX_OUTPUT, JSON.stringify(searchIndexEntries, null, 2), 'utf-8');
+  console.log(`✓ Written: ${SEARCH_INDEX_OUTPUT} (${searchIndexEntries.length} entries)`);
+  console.log(`✓ Written ${skills.length} per-skill detail file(s) under ${SKILL_DETAIL_DIR}`);
+
+  writeProjectSummary(catalog);
 
   // CI verification: fail if catalog is empty
   if (skills.length === 0) {
@@ -913,6 +1135,75 @@ function syncManifestCounts(catalog) {
   console.log(`✓ Synced counts into ${MANIFEST_PATH} (${catalog.skillCount} skills, ${catalog.familyCount} families)`);
 }
 
+// ─── Project summary contract ────────────────────────────────────────────────
+// Release 0: a single generated "truth" artifact that any external surface
+// (e.g. an OverKill Hill project dossier page describing Skillz Forge) can
+// fetch to stay in sync with what is actually deployed, instead of hand-
+// copying numbers that drift. Every field here must describe *actually
+// shipped* behavior — this is not a roadmap or an intent file. When a
+// capability flag flips from false to true, it must be because the
+// corresponding feature is live in this build, not because it is planned.
+//
+// Shape (documented here as the canonical reference — keep in sync with any
+// change to this function):
+//   {
+//     "generatedAt": ISO-8601 timestamp of this build,
+//     "sourceRepository": "https://github.com/OKHP3/skillz",
+//     "sourceRef": branch name the catalog was built from,
+//     "sourceCommit": short commit SHA the catalog was built from,
+//     "skillCount": number,
+//     "familyCount": number,
+//     "maturityCounts": { [maturityLevel]: number },
+//     "evidenceStatusCounts": { [v1EvidenceStatus]: number },
+//     "capabilities": {
+//       "familyOrientationPages": boolean,  // /families/:family pages
+//       "skillCompare": boolean,            // Compare page
+//       "curatedStacks": boolean,           // static, author-curated Stacks page
+//       "fullContractRenderer": boolean,    // in-app rendered SKILL.md ("Full Contract")
+//       "localStackComposer": boolean,      // visitor-built, exportable local stack
+//       "guidedDiscoveryAid": boolean       // "start with the work" question flow
+//     }
+//   }
+function writeProjectSummary(catalog) {
+  const SUMMARY_OUTPUT = join(__dirname, '..', 'public', 'data', 'project-summary.json');
+
+  const maturityCounts = {};
+  const evidenceStatusCounts = {};
+  for (const s of catalog.skills) {
+    maturityCounts[s.maturity] = (maturityCounts[s.maturity] || 0) + 1;
+    evidenceStatusCounts[s.evidenceStatus] = (evidenceStatusCounts[s.evidenceStatus] || 0) + 1;
+  }
+
+  const summary = {
+    generatedAt: catalog.generatedAt,
+    sourceRepository: catalog.sourceRepository,
+    sourceRef: catalog.sourceRef,
+    sourceCommit: catalog.sourceCommit,
+    skillCount: catalog.skillCount,
+    familyCount: catalog.familyCount,
+    maturityCounts,
+    evidenceStatusCounts,
+    // Release 1's Full Contract renderer shipped (safe Markdown-subset
+    // renderer on SkillDetail, wired to a lazily-fetched per-skill body).
+    // The local stack composer (Release 1) and guided discovery aid
+    // (Release 2) are not yet shipped — keep those false until the
+    // corresponding feature actually merges. Do not flip one of these
+    // ahead of the feature landing.
+    capabilities: {
+      familyOrientationPages: true,
+      skillCompare: true,
+      curatedStacks: true,
+      fullContractRenderer: true,
+      localStackComposer: false,
+      guidedDiscoveryAid: false,
+    },
+  };
+
+  mkdirSync(dirname(SUMMARY_OUTPUT), { recursive: true });
+  writeFileSync(SUMMARY_OUTPUT, JSON.stringify(summary, null, 2) + '\n', 'utf-8');
+  console.log(`✓ Written: ${SUMMARY_OUTPUT}`);
+}
+
 // Only run the full repo-walk build when this file is executed directly
 // (`node scripts/build-catalog.js`), not when it's imported elsewhere (e.g.
 // forge/scripts/test-catalog.mjs importing the pure helpers below) — an
@@ -925,4 +1216,4 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
 // Exported for forge/scripts/test-catalog.mjs — pure functions only, no I/O
 // or process.exit side effects, safe to call directly against synthetic
 // fixtures without re-running the full repo walk.
-export { applyEvidencePolicy, hasAnyEvidenceArtifact, deriveMaturity, deriveMaturitySource };
+export { applyEvidencePolicy, hasAnyEvidenceArtifact, hasSubstantiveEvidenceArtifact, deriveMaturity, deriveMaturitySource };

@@ -34,7 +34,6 @@ function makeSkill(overrides: Partial<Skill> & { name: string }): Skill {
     tools: [],
     runtimes: [],
     boundaries: [],
-    bodyText: '',
     rawUrl: '',
     githubUrl: '',
     lastModified: null,
