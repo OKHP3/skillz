@@ -5,3 +5,4 @@
 - [Forge shallow-checkout provenance gate](forge-shallow-checkout-provenance.md) — fail-closed data-integrity gates in this pipeline should hard-fail only in CI, warn in local dev.
 - [Forge catalog/detail/search-index payload split](forge-catalog-payload-split.md) — full skill body text lives only in lazily-fetched search-index/detail assets, never in catalog.json.
 - [Forge evidence-policy substantive-artifact bar](forge-evidence-policy-substantive-bar.md) — a bare test file cannot sustain "validated"/"published"; only an eval or benchmark artifact counts.
+- [GitHub workflow-scope push rejection](github-workflow-scope-push.md) — pushes touching `.github/workflows/*.yml` are rejected (missing `workflow` OAuth scope); revert-then-manual-paste workaround.
