@@ -2572,6 +2572,27 @@ input, select, textarea {
   display: inline-block;
   margin-left: var(--space-2);
 }
+.compare-field-note {
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-dark);
+}
+.compare-evidence-counts {
+  list-style: none;
+  padding-left: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted-dark);
+}
+.compare-evidence-counts li {
+  white-space: nowrap;
+}
+.compare-evidence-counts li:not(:last-child)::after {
+  content: '·';
+  margin-left: var(--space-2);
+}
 
 /* ── Compare: card layout at narrow widths (Release 1) ────────────────────
    Below 640px a data-driven comparison table is unreadable — this converts

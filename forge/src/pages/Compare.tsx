@@ -6,21 +6,14 @@ import Nav from '../components/layout/Nav';
 import { copyToClipboard, shareCompare } from '../utils/clipboard';
 import { trackCompareOpen } from '../utils/analytics';
 import AddToStackButton from '../components/ui/AddToStackButton';
-
-const RELEASE_READINESS_LABELS: Record<string, string> = {
-  'needs-contract-work': 'Needs contract work',
-  'needs-live-evidence': 'Needs live evidence',
-  'ready-for-supervised-use': 'Ready for supervised use',
-  'ready-for-peer-review': 'Ready for peer review',
-  published: 'Published',
-};
-
-function formatDate(iso: string | null | undefined): string {
-  if (!iso) return '';
-  try {
-    return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-  } catch { return ''; }
-}
+import {
+  RELEASE_READINESS_LABELS,
+  MATURITY_SOURCE_LABELS,
+  MATURITY_DESCRIPTIONS,
+  EVIDENCE_V2_LABELS,
+  formatDate,
+  isEvidenceStale,
+} from '../utils/evidenceVocabulary';
 
 function isEmptyValue(v: unknown): boolean {
   if (v == null || v === '') return true;
@@ -50,23 +43,49 @@ interface CompareField {
 // separate trip to each skill's detail page. Rows that are empty across
 // every selected skill are suppressed (see `visibleFields` below) instead
 // of rendering a wall of "Metadata pending" cells.
+// Evidence/maturity vocabulary policy (docs/PUBLISHING.md, "Evidence and
+// maturity vocabulary policy"): Compare is a release-decision surface, so
+// every field below reuses the same labels, descriptions, and stale-evidence
+// logic as SkillDetail (via utils/evidenceVocabulary.ts) rather than
+// hand-writing parallel copy that could drift and contradict the detail page
+// for the same skill.
 const COMPARE_FIELDS: CompareField[] = [
   { key: 'description', label: 'Purpose', getValue: s => s.description },
   { key: 'family', label: 'Family', getValue: s => s.family, render: v => <code className="mono-tag">{String(v)}</code>, isEmpty: () => false },
-  { key: 'maturity', label: 'Maturity', getValue: s => s.maturity, render: (v, s) => <span data-maturity={s.maturity}>{String(v)}</span>, isEmpty: () => false },
+  {
+    key: 'maturity', label: 'Maturity', getValue: s => s.maturity,
+    render: (v, s) => (
+      <>
+        <span data-maturity={s.maturity} title={MATURITY_DESCRIPTIONS[s.maturity]}>{String(v)}</span>
+        <p className="compare-field-note">{MATURITY_DESCRIPTIONS[s.maturity]}</p>
+      </>
+    ),
+    isEmpty: () => false,
+  },
+  {
+    key: 'maturitySource', label: 'Maturity source', getValue: s => s.maturitySource,
+    render: (v, s) => MATURITY_SOURCE_LABELS[s.maturitySource] ?? String(v),
+    isEmpty: () => false,
+  },
   {
     key: 'releaseReadiness', label: 'Release readiness', getValue: s => s.releaseReadiness,
-    render: v => RELEASE_READINESS_LABELS[v as string] ?? String(v),
+    render: (v, s) => RELEASE_READINESS_LABELS[s.releaseReadiness] ?? String(v),
     isEmpty: () => false,
   },
   {
     key: 'evidenceFreshness', label: 'Evidence', getValue: s => s.evidence,
+    // The evidence-contract-v2 status is the ground truth for "what has
+    // actually been recorded" for the current package version. `not-run`
+    // (an eval is designed but hasn't executed) and `none` (no evaluation
+    // of any kind exists) are distinct states with distinct labels here —
+    // see the evidence status schema split — never collapsed into one
+    // "no evidence" bucket.
     render: (_v, s) => {
       const ev = s.evidence;
-      const stale = Boolean(ev.evaluatedSkillVersion && s.version && ev.evaluatedSkillVersion !== s.version);
+      const stale = isEvidenceStale(s);
       return (
         <>
-          <span data-evidence-status={ev.status}>{ev.status.replace('-', ' ')}</span>
+          <span data-evidence-status={ev.status}>{EVIDENCE_V2_LABELS[ev.status]}</span>
           {ev.lastEvidenceDate && <span className="compare-evidence-date"> · evaluated {formatDate(ev.lastEvidenceDate)}</span>}
           {stale && (
             <span className="evidence-chip evidence-chip--warn compare-evidence-stale" title={`Evaluated ${ev.evaluatedSkillVersion}, current is ${s.version}`}>
@@ -74,6 +93,21 @@ const COMPARE_FIELDS: CompareField[] = [
             </span>
           )}
         </>
+      );
+    },
+    isEmpty: () => false,
+  },
+  {
+    key: 'evidenceCounts', label: 'Evidence counts', getValue: s => s.evidence,
+    render: (_v, s) => {
+      const ev = s.evidence;
+      return (
+        <ul className="compare-list compare-evidence-counts">
+          <li>{ev.evalCount} eval{ev.evalCount !== 1 ? 's' : ''}</li>
+          <li>{ev.benchmarkCount} benchmark run{ev.benchmarkCount !== 1 ? 's' : ''}</li>
+          <li>{ev.testCount} test file{ev.testCount !== 1 ? 's' : ''}</li>
+          <li>{ev.scriptCount} script{ev.scriptCount !== 1 ? 's' : ''}</li>
+        </ul>
       );
     },
     isEmpty: () => false,

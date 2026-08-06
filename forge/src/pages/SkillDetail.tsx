@@ -9,51 +9,14 @@ import { issueUrl, skillGitHubUrl, skillCommitHistoryUrl, commitUrl } from '../u
 import Nav from '../components/layout/Nav';
 import AddToStackButton from '../components/ui/AddToStackButton';
 import type { Skill, SkillDetailBody } from '../types/catalog';
-
-const RELEASE_READINESS_LABELS: Record<string, string> = {
-  'needs-contract-work': 'Needs contract work',
-  'needs-live-evidence': 'Needs live evidence',
-  'ready-for-supervised-use': 'Ready for supervised use',
-  'ready-for-peer-review': 'Ready for peer review',
-  published: 'Published',
-};
-
-const MATURITY_SOURCE_LABELS: Record<string, string> = {
-  'explicit-frontmatter': 'declared in SKILL.md frontmatter',
-  'evidence-policy': 'derived from evidence policy',
-  'fallback-structure': 'inferred from document structure (no explicit maturity declared)',
-};
-
-// Evidence/maturity vocabulary policy (docs/PUBLISHING.md, "Evidence and
-// maturity vocabulary policy"): maturity is a self-declared claim about the
-// CONTRACT's own completeness and track record. It is a separate axis from
-// evidence.status, which is what has actually been recorded for the current
-// package version. A maturity description must never claim a stronger
-// evidence state than that maturity level structurally requires — "usable"
-// requires only that a workflow has been exercised and its limits written
-// down, not that any eval/benchmark artifact exists, so its copy must not
-// say "evidence-backed." "validated" is enforced (in build-catalog.js's
-// applyEvidencePolicy) to require at least one eval or benchmark artifact,
-// but that artifact is not required to be a *live*, version-matched run —
-// it can be historical or analytical — so "validated" copy must not claim
-// "passed live benchmarks" either. Every description below defers the
-// specific evidence claim to the "Evidence state" / trust summary fields
-// instead of asserting it inline.
-const MATURITY_DESCRIPTIONS: Record<string, string> = {
-  placeholder: 'Directory reserved. No content yet.',
-  skeleton: 'Structure and trigger phrases present. Body incomplete.',
-  draftable: 'Contract is written and reviewable, and an agent can follow it under supervision. Evidence, if any, is shown separately below.',
-  usable: 'Contract is complete and has been exercised on at least one real task, with its limits documented. This is a track-record claim about the contract, not a claim about recorded evaluation evidence -- check "Evidence state" below for what is actually on file.',
-  validated: 'Has at least one recorded eval or benchmark artifact backing this claim. Whether that record is a current, historical, or design-only for this version is shown in "Evidence state" below.',
-  published: 'Production-ready and release-tagged, backed by a live, version-matched evaluation. Official distribution surface.',
-};
-
-function formatDate(iso: string | null): string {
-  if (!iso) return '';
-  try {
-    return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-  } catch { return ''; }
-}
+import {
+  RELEASE_READINESS_LABELS,
+  MATURITY_SOURCE_LABELS,
+  MATURITY_DESCRIPTIONS,
+  EVIDENCE_V2_SUMMARY_LINES,
+  formatDate,
+  isEvidenceStale,
+} from '../utils/evidenceVocabulary';
 
 // Plain-language trust summary shown on every skill detail page (evidence/
 // maturity vocabulary policy, docs/PUBLISHING.md). It is generated entirely
@@ -71,17 +34,9 @@ const TRUST_CONTRACT_LINES: Record<string, string> = {
   published: 'a production-ready contract on the official distribution surface',
 };
 
-const TRUST_EVIDENCE_LINES: Record<string, (skill: Skill) => string> = {
-  live: () => 'a live, version-matched evaluation is on file',
-  historical: (skill) => `only a historical benchmark exists (evaluated against version ${skill.evidence.evaluatedSkillVersion ?? 'unknown'}), not the current ${skill.version ?? 'unversioned'} package`,
-  analytical: () => 'only design or structural review exists; no graded run has been executed',
-  'not-run': () => 'an evaluation is designed but has not yet been executed',
-  none: () => 'no evaluation of any kind is recorded for this package',
-};
-
 function buildTrustSummary(skill: Skill, isStale: boolean): string {
   const contractLine = TRUST_CONTRACT_LINES[skill.maturity] ?? `at maturity level "${skill.maturity}"`;
-  const evidenceLine = TRUST_EVIDENCE_LINES[skill.evidence.status]?.(skill) ?? `evidence status is "${skill.evidence.status}"`;
+  const evidenceLine = EVIDENCE_V2_SUMMARY_LINES[skill.evidence.status]?.(skill) ?? `evidence status is "${skill.evidence.status}"`;
   const readinessLine = RELEASE_READINESS_LABELS[skill.releaseReadiness] ?? skill.releaseReadiness;
 
   const parts = [
@@ -184,15 +139,11 @@ export default function SkillDetail() {
   const showSlugSecondary = skill.displayName && skill.displayName !== skill.name;
 
   // Evidence-contract v2: evidence is stale whenever it was evaluated against
-  // a different package version than the one currently shipping. Mirrors the
-  // "stale evidence" chip in Explore.tsx (~line 318) — same condition, same
-  // meaning, so a visitor sees the same warning whether they land here via
-  // search or a direct/shared link.
-  const isEvidenceStale = Boolean(
-    skill.evidence.evaluatedSkillVersion &&
-    skill.version &&
-    skill.evidence.evaluatedSkillVersion !== skill.version
-  );
+  // a different package version than the one currently shipping. Shared with
+  // Explore's chip and Compare's row via utils/evidenceVocabulary.ts — same
+  // condition, same meaning, so a visitor sees the same warning wherever
+  // they land.
+  const staleEvidence = isEvidenceStale(skill);
 
   return (
     <div data-page="skill-detail">
@@ -219,7 +170,7 @@ export default function SkillDetail() {
               </span>
               {skill.version && <span>v{skill.version}</span>}
               <span>{skill.license}</span>
-              {isEvidenceStale && (
+              {staleEvidence && (
                 <span
                   className="evidence-chip evidence-chip--warn"
                   title={`Evaluated ${skill.evidence.evaluatedSkillVersion}, current is ${skill.version}`}
@@ -233,7 +184,7 @@ export default function SkillDetail() {
 
           <div className="detail-trust-summary" role="note" aria-label="Trust summary">
             <h2>In plain terms</h2>
-            <p>{buildTrustSummary(skill, isEvidenceStale)}</p>
+            <p>{buildTrustSummary(skill, staleEvidence)}</p>
             <Link to="/faq#maturity-label" className="detail-maturity-link">What maturity and evidence labels mean &rarr;</Link>
           </div>
 
@@ -478,7 +429,7 @@ export default function SkillDetail() {
           <div className="detail-evidence-release">
             <h2>Evidence and release state</h2>
 
-            {isEvidenceStale && (
+            {staleEvidence && (
               <p className="detail-evidence-stale-warning" role="alert">
                 <strong>Stale evidence:</strong> This evidence was evaluated against version{' '}
                 {skill.evidence.evaluatedSkillVersion}, not the current {skill.version} package.
