@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-08-06T22:29:34.430Z",
+  "generatedAt": "2026-08-06T23:41:16.840Z",
   "commits": [
+    {
+      "sha": "86e11280109af543e7a823e592bdfd852312cc14",
+      "shortSha": "86e1128",
+      "message": "updates",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T22:40:23Z",
+      "url": "https://github.com/OKHP3/skillz/commit/86e11280109af543e7a823e592bdfd852312cc14"
+    },
+    {
+      "sha": "416069b650b71f5ad1fa4c82bdcb5b65dc7d870a",
+      "shortSha": "416069b",
+      "message": "Update project and catalog metadata files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T21:11:43Z",
+      "url": "https://github.com/OKHP3/skillz/commit/416069b650b71f5ad1fa4c82bdcb5b65dc7d870a"
+    },
+    {
+      "sha": "e0b65a02797d4d10142fe13abb559db5bcc2f351",
+      "shortSha": "e0b65a0",
+      "message": "Promote okhp3-mermaid-update and okhp3-mermaid-repair to Usable maturity\n\n- Added examples/WORKED-EXAMPLE-001.md and output .mmd for okhp3-mermaid-update: style-preserving minimum diff (one new Author task node A4, rerouted edge) on skill-promotion-review-analyst-v1.mmd, all three gates passed (mmdc exit 0)\n- Added examples/WORKED-EXAMPLE-001.md and repaired .mmd for okhp3-mermaid-repair: reserved-keyword node-ID parse error diagnosis and minimum rename fix, Gate 1 re-run (mmdc exit 0)\n- Bumped metadata.maturity to usable in both SKILL.md frontmatter blocks\n- Updated docs/BACKLOG.md Active families table to reflect update+repair at Usable\n- Updated docs/CHANGELOG.md Unreleased section with promotion record\n- Regenerated Forge catalog: 113 skills, 15 families, all 33 test-catalog checks pass, vitest 32/32 pass\n\nReplit-Task-Id: 069844ec-3668-4768-be4e-80e4294e70fc",
+      "author": "overkillhillp3",
+      "date": "2026-08-06T21:11:23Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e0b65a02797d4d10142fe13abb559db5bcc2f351"
+    },
     {
       "sha": "9581a6311b4a10f26565a66b7c15fae7254bcfe0",
       "shortSha": "9581a63",
@@ -56,30 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-06T19:44:33Z",
       "url": "https://github.com/OKHP3/skillz/commit/1a593be41218b579619c95abe8591e8f0b7dd3f8"
-    },
-    {
-      "sha": "f70624efee4bbaa4c70721eac53e93a8b5422c19",
-      "shortSha": "f70624e",
-      "message": "Update composer drawer component and logic with tests\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T18:50:41Z",
-      "url": "https://github.com/OKHP3/skillz/commit/f70624efee4bbaa4c70721eac53e93a8b5422c19"
-    },
-    {
-      "sha": "9e258f09115d47fd16ae3ee24586e40dd270fdc3",
-      "shortSha": "9e258f0",
-      "message": "Refactor comparison page and implement evidence vocabulary utility\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T18:41:13Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9e258f09115d47fd16ae3ee24586e40dd270fdc3"
-    },
-    {
-      "sha": "fc31fe356482e6c0146dc661d359384f8a5414cb",
-      "shortSha": "fc31fe3",
-      "message": "Update family documentation and project catalog data\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T18:36:12Z",
-      "url": "https://github.com/OKHP3/skillz/commit/fc31fe356482e6c0146dc661d359384f8a5414cb"
     }
   ],
   "fetchError": null

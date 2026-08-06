@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FAQ_GROUPS } from '../data/faq';
 import Nav from '../components/layout/Nav';
+
+function isExternalHref(href: string) {
+  return /^https?:\/\//.test(href);
+}
 
 export default function FAQ() {
   const [open, setOpen] = useState<Set<string>>(new Set());
@@ -80,7 +85,13 @@ export default function FAQ() {
                             <ul className="faq-links">
                               {item.links.map(link => (
                                 <li key={link.href}>
-                                  <a href={link.href}>{link.label} &rarr;</a>
+                                  {isExternalHref(link.href) ? (
+                                    <a href={link.href} target="_blank" rel="noopener noreferrer">
+                                      {link.label} &rarr;
+                                    </a>
+                                  ) : (
+                                    <Link to={link.href}>{link.label} &rarr;</Link>
+                                  )}
                                 </li>
                               ))}
                             </ul>

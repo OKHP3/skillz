@@ -103,7 +103,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
         question: 'What data does Skillz Forge collect?',
         answer: 'Skillz Forge uses Google Analytics 4 (GA4) for aggregate usage measurement — page views and interaction events such as copy, share, and filter actions. Search and filter results are summarized as bucketed counts (e.g. "6–15 results") and never sent as raw text. Favorites, composer selections, and theme preference are stored in your browser\'s local storage and never leave your device. No skill content or personal information is sent to any analytics service. You can block GA4 with a standard browser extension. See the Privacy page for the full disclosure, including how to clear local data.',
         links: [
-          { label: 'Privacy', href: '#/privacy' },
+          { label: 'Privacy', href: '/privacy' },
           { label: 'Google Analytics privacy', href: 'https://policies.google.com/privacy' },
         ],
       },
