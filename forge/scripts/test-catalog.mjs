@@ -12,10 +12,11 @@
  * No test here promotes or fabricates evidence — see the non-goals in the
  * PRD this implements.
  */
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync, mkdtempSync, rmSync } from 'fs';
 import { join, dirname, relative } from 'path';
+import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import { execSync, spawnSync } from 'child_process';
 import { applyEvidencePolicy, hasSubstantiveEvidenceArtifact } from './build-catalog.js';
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 
@@ -449,6 +450,56 @@ test('project-summary.json exists and matches the catalog it was built from', ()
   const maturitySum = Object.values(summary.maturityCounts || {}).reduce((a, b) => a + b, 0);
   assert(maturitySum === summary.skillCount, `project-summary.json maturityCounts sum to ${maturitySum}, expected ${summary.skillCount}`);
 });
+
+// ─── Regression: build must hard-fail on a genuinely shallow checkout in CI ──
+// The unit-level checks above assert the *current* checkout has full history
+// and skip outside CI — they never actually exercise the failure path. This
+// test creates a real shallow clone (git clone --depth 1) of the repo and
+// runs build-catalog.js against it with GITHUB_ACTIONS=true, proving the
+// guard in ensureFullHistory() actually exits non-zero instead of silently
+// falling back to fabricated provenance. This is the concrete regression
+// this task hardens against: a future edit to ensureFullHistory() (or its
+// removal) that stops failing closed would be caught here, not just by a
+// check against whatever this environment's checkout already happens to be.
+test('build-catalog.js hard-fails in CI against a genuinely shallow checkout (not a silent fallback)', () => {
+  const tmpParent = mktempCloneDir();
+  try {
+    const clonePath = join(tmpParent, 'shallow-clone');
+    execSync(`git clone --depth 1 --no-local --quiet file://${REPO_ROOT} ${JSON.stringify(clonePath)}`, {
+      encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'],
+    });
+    const buildScript = join(clonePath, 'forge', 'scripts', 'build-catalog.js');
+    assert(existsSync(buildScript), `shallow clone is missing ${buildScript} — clone did not succeed as expected`);
+
+    const result = spawnSync(process.execPath, [buildScript], {
+      cwd: clonePath,
+      env: { ...process.env, GITHUB_ACTIONS: 'true', CI: 'true', ALLOW_SHALLOW_CATALOG_BUILD: '' },
+      encoding: 'utf8',
+    });
+    assert(result.status !== 0,
+      `expected build-catalog.js to exit non-zero against a shallow checkout in CI, got exit code ${result.status}\nstdout: ${result.stdout}\nstderr: ${result.stderr}`);
+    assert(/shallow/i.test(result.stderr) || /shallow/i.test(result.stdout),
+      `build failed as expected, but the failure output does not mention "shallow" — may be failing for an unrelated reason:\nstderr: ${result.stderr}`);
+
+    // The escape hatch documented in ensureFullHistory() must still let a
+    // deliberate override proceed (exit 0) with the same shallow checkout,
+    // confirming the hard-fail is specifically the CI default, not a
+    // permanent block on ever building from a shallow clone.
+    const overrideResult = spawnSync(process.execPath, [buildScript], {
+      cwd: clonePath,
+      env: { ...process.env, GITHUB_ACTIONS: 'true', CI: 'true', ALLOW_SHALLOW_CATALOG_BUILD: '1' },
+      encoding: 'utf8',
+    });
+    assert(overrideResult.status === 0,
+      `expected ALLOW_SHALLOW_CATALOG_BUILD=1 to let the build proceed on a shallow checkout, got exit code ${overrideResult.status}\nstderr: ${overrideResult.stderr}`);
+  } finally {
+    rmSync(tmpParent, { recursive: true, force: true });
+  }
+});
+
+function mktempCloneDir() {
+  return mkdtempSync(join(tmpdir(), 'catalog-shallow-clone-test-'));
+}
 
 console.log(`\n${passed} passed, ${failed} failed`);
 if (failed > 0) {
