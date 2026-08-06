@@ -6,8 +6,8 @@ This is a long-form implementation directive for the Replit maintainer of
 Skillz Forge (`forge/`). It is the current companion to, and supersedes the
 open items in, both prior Forge directives:
 
-- [`docs/PRD-SKILLZ-FORGE-MATURITY-RECONCILIATION-REPLIT-2026-07-29.md`](../docs/PRD-SKILLZ-FORGE-MATURITY-RECONCILIATION-REPLIT-2026-07-29.md) — **shipped.** Its acceptance criteria are largely met in the current build. See §1.
-- [`docs/SKILLZ-MATURITY-REFORGING-PRD.md`](../docs/SKILLZ-MATURITY-REFORGING-PRD.md) — **not shipped.** This is the more recent, more detailed spec (dated 2026-07-31, marked "Status: Ready for Replit implementation"), and none of its catalog-schema or UI requirements exist in the current build. Closing this gap is §2 of this directive, and is the highest-priority work item here.
+- [`docs/PRD-SKILLZ-FORGE-MATURITY-RECONCILIATION-REPLIT-2026-07-29.md`](PRD-SKILLZ-FORGE-MATURITY-RECONCILIATION-REPLIT-2026-07-29.md) — **shipped.** Its acceptance criteria are largely met in the current build. See §1.
+- [`docs/SKILLZ-MATURITY-REFORGING-PRD.md`](SKILLZ-MATURITY-REFORGING-PRD.md) — **not shipped.** This is the more recent, more detailed spec (dated 2026-07-31, marked "Status: Ready for Replit implementation"), and none of its catalog-schema or UI requirements exist in the current build. Closing this gap is §2 of this directive, and is the highest-priority work item here.
 
 This directive does not replace the SPA with a mockup, does not create a
 second catalog, and does not promote any skill's maturity level. It also does

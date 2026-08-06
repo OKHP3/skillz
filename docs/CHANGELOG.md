@@ -55,17 +55,18 @@ this tag covers.
 
 ### Added
 
-- Added `docs/PRD-SKILLZ-FORGE-M4-LIVE-CONVERGENCE-2026-08-04.md`, the
-  post-implementation release-readiness PRD. It requires Replit-to-Git-to-live
-  reconciliation, source-backed provenance, complete in-app contract
-  inspection, public-surface convergence, and deployed evidence before an M4
+- Added `docs/PRD-SKILLZ-FORGE-M4-LIVE-CONVERGENCE-2026-08-04.md` (now archived
+  at `docs/archive/planning-2026-08/`), the post-implementation
+  release-readiness PRD. It requires Replit-to-Git-to-live reconciliation,
+  source-backed provenance, complete in-app contract inspection,
+  public-surface convergence, and deployed evidence before an M4
   distribution-center claim.
 
-- Added `docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`, a
-  capability-first review of the deployed Forge application. It records a
-  67/100 M3 decision-workbench assessment, observed capabilities beyond the
-  earlier catalog-stage roadmap, confirmed M4 blockers, and an ordered build
-  directive.
+- Added `docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md` (now
+  archived at `docs/archive/planning-2026-08/`), a capability-first review of
+  the deployed Forge application. It records a 67/100 M3 decision-workbench
+  assessment, observed capabilities beyond the earlier catalog-stage roadmap,
+  confirmed M4 blockers, and an ordered build directive.
 
 - Added `okhp3-skill-promotion` to `universal/` and synchronized its portable
   package to `.agents/skills/` and the root `skills/` publication mirror. The

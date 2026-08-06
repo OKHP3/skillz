@@ -72,8 +72,9 @@ skills across 15 active families. The repository also contains 16 project-local
 support skills, which are not public distribution entries. Forge itself is an
 M3 decision workbench, not yet a released or fully trustworthy distribution
 center. See
-[`docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`](SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md)
-for the observed capability score and M4 gates.
+[`docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md`](PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md)
+for the current build directive; the earlier capability score is preserved in
+[`docs/archive/planning-2026-08/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`](archive/planning-2026-08/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md).
 
 The overkillhill.com dossier now live-syncs these two counts (skill count,
 family count) directly from `project-summary.json` at page load, rather than

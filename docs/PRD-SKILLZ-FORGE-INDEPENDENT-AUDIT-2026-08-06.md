@@ -2,14 +2,14 @@
 
 **Author:** Claude (Cowork), acting as independent second opinion, per direct instruction from Jamie Hill
 **Date:** 2026-08-06
-**Status:** Authoritative for next-phase planning. Supersedes nothing on the P0 fixes already verified live below; extends and partially corrects `PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md`.
+**Status:** Authoritative for next-phase planning. This is the current top-level directive in `docs/`; other PRDs, audits, and evaluations from this project's planning history are archived at `docs/archive/planning-2026-08/`. Supersedes nothing on the P0 fixes already verified live below; extends and partially corrects `docs/archive/planning-2026-08/PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md`.
 **Method:** Reconstructed vision from 24 repo documents (README, AGENTS.md, docs/, ADRs, audits, evidence, handoffs). Verified current state by fetching the live app at `okhp3.github.io/skillz`, its live `catalog.json` and `project-summary.json`, the live `overkillhill.com/projects/skillz/` dossier and its GitHub source, and by reading the `forge/` React/TypeScript source directly. Every claim below is tagged **live-verified**, **source-verified**, or **doc-only** so you can tell what I actually checked from what I'm relaying.
 
 ---
 
 ## 0. Read this first: you've asked for this exact audit before
 
-On 2026-08-05, a prior Claude session wrote `docs/PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md` under the same instruction (independent second opinion, verify live, don't trust self-reports). That document explicitly told Replit: *"do not author new PRDs, audits, or scorecards of this project's own completion state. Jamie and Claude own the next directive."*
+On 2026-08-05, a prior Claude session wrote `docs/PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md` (now archived at `docs/archive/planning-2026-08/PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md`) under the same instruction (independent second opinion, verify live, don't trust self-reports). That document explicitly told Replit: *"do not author new PRDs, audits, or scorecards of this project's own completion state. Jamie and Claude own the next directive."*
 
 That's worth knowing before you read another word of this one, for two reasons.
 
@@ -285,7 +285,7 @@ This section is written to be actionable directly, in order, with nothing deferr
 2. If they contain real work: decide whether to review and merge it, or explicitly abandon it. Either is fine; "still unknown eight days later" is the only bad option.
 3. If they're stale scaffolding from earlier Replit sessions: delete them and note that decision in `docs/CHANGELOG.md` so a future audit doesn't re-flag it as an open question.
 
-### Step 4: Only after Steps 1 through 3 are live-verified, resume the P1/P2 backlog exactly as scoped in `PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md` sections 4 and 5 (evidence not-run split, Compare v2-field upgrade, local stack composer, guided-intent recommender). That scoping is still correct; this report does not change it.
+### Step 4: Only after Steps 1 through 3 are live-verified, resume the P1/P2 backlog exactly as scoped in `docs/archive/planning-2026-08/PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md` sections 4 and 5 (evidence not-run split, Compare v2-field upgrade, local stack composer, guided-intent recommender). That scoping is still correct; this report does not change it.
 
 ### Standing rule for every future session on this project
 

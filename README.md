@@ -89,8 +89,7 @@ If you are evaluating the product rather than authoring a skill, start with [Ski
 | `docs/SECURITY.md` | Skill supply-chain and employer-data safety posture. |
 | `docs/CHANGELOG.md` | Change log until the first release tag and beyond. |
 | `docs/BACKLOG.md` | Maturity model, promotion priorities, and planned families. |
-| `docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md` | Capability-first assessment of the published Forge application, its maturity score, and its next gates. |
-| `docs/PRD-SKILLZ-FORGE-M4-LIVE-CONVERGENCE-2026-08-04.md` | Live-release PRD that reconciles Replit, GitHub Pages, Forge, and the public dossier before any M4 claim. |
+| `docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md` | Current directive: independent product audit and the active build plan. Superseded planning docs live in `docs/archive/planning-2026-08/`. |
 | `skillz.manifest.json` | Lightweight machine-readable manifest for the skill library. |
 
 ## Families
@@ -421,10 +420,12 @@ Public contributions must not include credentials, cookies, private account data
 
 This repository is unreleased and has no Git tags. The generated inventory above is the current distribution catalog, organized into 15 active families; project-local support skills are maintained separately.
 
-The published Forge application is assessed separately at **M3 decision
-workbench (67/100)**. It has exceeded a simple catalog, while its M4 trust and
-release gates remain open. See
-[`docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`](docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md).
+The published Forge application's most recent independent assessment and
+active build directive is
+[`docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md`](docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md).
+Earlier capability-maturity scores and superseded PRDs are preserved in
+[`docs/archive/planning-2026-08/`](docs/archive/planning-2026-08/) for
+historical reference.
 
 Skills marked `Built (skeleton)` have complete frontmatter and section structure, but their reference coverage varies. Treat a skeleton as the shape of a delegation contract, not as a claim that every supporting section is finished.
 
