@@ -207,6 +207,56 @@ test('tags/topics are arrays (A7: not a hardcoded dead field)', () => {
   assert(anyPopulated, 'no skill in the catalog has any tags or topics populated — check frontmatter parsing');
 });
 
+// 11b. Governance guard: every companion reference a skill's body points to
+// must resolve to a real skill name in this catalog. extractCompanions()
+// pulls `okhp3-...` back-tick references straight from SKILL.md prose with
+// no way to know if the name is real, so a typo or an unpropagated rename
+// (e.g. a skill referencing an old/misspelled sibling name) otherwise ships
+// silently — the pathway view just drops the link with no build signal.
+// This is a hard failure, not a warning: any legitimate forward-looking or
+// cross-repo companion reference should be added to KNOWN_UNRESOLVED_COMPANIONS
+// below with a comment explaining why, rather than passing silently.
+const KNOWN_UNRESOLVED_COMPANIONS = new Set([
+  // e.g. 'skill-path::companion-name' — none currently documented.
+]);
+test('every companion reference resolves to a real skill (or is an explicitly documented exception)', () => {
+  const knownSkillNames = new Set(catalog.skills.map(s => s.name));
+  const unresolved = [];
+  for (const s of catalog.skills) {
+    for (const cName of s.companions || []) {
+      if (!knownSkillNames.has(cName) && !KNOWN_UNRESOLVED_COMPANIONS.has(`${s.path}::${cName}`)) {
+        unresolved.push(`${s.path} -> "${cName}"`);
+      }
+    }
+  }
+  assert(unresolved.length === 0,
+    `${unresolved.length} unresolved companion reference(s) found (misspelled/renamed skill, or a missing ` +
+    `KNOWN_UNRESOLVED_COMPANIONS entry if intentional): ${unresolved.join(', ')}`);
+});
+
+// 11c. Governance guard: every family must declare an explicit display_name
+// in its FAMILY.md frontmatter — no family should rely on the auto-titlecase
+// fallback in readFamilyDisplayName(), which exists only so a brand-new
+// family never blocks a build, not as a permanent substitute for a real name.
+test('every family declares an explicit display_name in FAMILY.md (no generated-fallback names)', () => {
+  const missing = [];
+  for (const f of catalog.families) {
+    const familyMdPath = join(REPO_ROOT, f.name, 'FAMILY.md');
+    let text;
+    try {
+      text = readFileSync(familyMdPath, 'utf-8');
+    } catch {
+      missing.push(`${f.name} (no FAMILY.md found)`);
+      continue;
+    }
+    const fmMatch = text.replace(/\r\n/g, '\n').match(/^---\n([\s\S]*?)\n---/);
+    const hasDisplayName = !!fmMatch && /^display_name:\s*\S.*$/m.test(fmMatch[1]);
+    if (!hasDisplayName) missing.push(f.name);
+  }
+  assert(missing.length === 0,
+    `${missing.length} famil${missing.length === 1 ? 'y' : 'ies'} missing an explicit display_name in FAMILY.md: ${missing.join(', ')}`);
+});
+
 // 12. C1: every family with a non-null narrativeBody actually has prose
 // content (not just whitespace or the generated summary marker leaking
 // through), so /families/:family never renders an empty page silently.

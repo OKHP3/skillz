@@ -1,5 +1,6 @@
 ---
 family: abrahamic
+display_name: Abrahamic
 skill_count: 4
 generated_by: okhp3-skill-cataloger v1.7.0
 generated_at: 2026-08-02T19:22:22Z

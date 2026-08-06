@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-06T18:31:03.845Z",
+  "generatedAt": "2026-08-06T18:35:31.754Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "7c386f7",
+  "sourceCommit": "17abca7",
   "skillCount": 113,
   "familyCount": 15,
   "families": [
@@ -5146,14 +5146,14 @@
       "avoid": [
         "**General software development** unrelated to Mermaid theming or styling",
         "**Prose editing** - user is writing or editing text that describes a diagram without any styling, export, or theming need",
-        "**BPMN modeling** - unless the user specifically wants Mermaid-themed output from a BPMN-like structure; for dedicated BPMN tooling use the `okhp3-bpmn-for-mermaid` skill instead",
+        "**BPMN modeling** - unless the user specifically wants Mermaid-themed output from a BPMN-like structure; for dedicated BPMN tooling use the `okhp3-mermaid-bpmn` skill instead",
         "**Image generation or raster export** - this skill produces text output only; rendering requires a browser or CLI environment",
         "**Generic color theory** - color advice with no Mermaid diagram output target",
         "**Non-Mermaid tools** - Draw.io, Lucidchart, PlantUML, D2, Excalidraw, and similar have no overlap with this skill",
         "**Chart data or data analysis** - user wants to work with the data behind a chart, not style it"
       ],
       "companions": [
-        "okhp3-bpmn-for-mermaid"
+        "okhp3-mermaid-bpmn"
       ],
       "examples": [],
       "inputs": [],

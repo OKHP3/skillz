@@ -1,5 +1,6 @@
 ---
 family: process-capture
+display_name: Process Capture
 skill_count: 16
 generated_by: okhp3-skill-cataloger v1.7.0
 generated_at: 2026-08-02T19:22:22Z

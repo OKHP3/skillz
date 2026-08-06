@@ -44,7 +44,7 @@ Inspect the diagram family and renderer profile before applying a palette. Prese
 
 - **General software development** unrelated to Mermaid theming or styling
 - **Prose editing** - user is writing or editing text that describes a diagram without any styling, export, or theming need
-- **BPMN modeling** - unless the user specifically wants Mermaid-themed output from a BPMN-like structure; for dedicated BPMN tooling use the `okhp3-bpmn-for-mermaid` skill instead
+- **BPMN modeling** - unless the user specifically wants Mermaid-themed output from a BPMN-like structure; for dedicated BPMN tooling use the `okhp3-mermaid-bpmn` skill instead
 - **Image generation or raster export** - this skill produces text output only; rendering requires a browser or CLI environment
 - **Generic color theory** - color advice with no Mermaid diagram output target
 - **Non-Mermaid tools** - Draw.io, Lucidchart, PlantUML, D2, Excalidraw, and similar have no overlap with this skill
@@ -70,9 +70,9 @@ Target renderers      GitHub, Notion, Obsidian, M365/Loop, Confluence, Mermaid L
 
 **Use this skill** when the task involves visual governance, palette application, renderer profiling, or diagram output contract enforcement.
 
-**Hand off to `okhp3-bpmn-for-mermaid`** when the task involves process structure, workflow notation, or BPMN-like semantics before styling.
+**Hand off to `okhp3-mermaid-bpmn`** when the task involves process structure, workflow notation, or BPMN-like semantics before styling.
 
-**Stack principle:** This skill does not interpret process logic or business semantics. It governs visual output. When both process structure and visual governance are needed, apply `okhp3-bpmn-for-mermaid` first, then this skill.
+**Stack principle:** This skill does not interpret process logic or business semantics. It governs visual output. When both process structure and visual governance are needed, apply `okhp3-mermaid-bpmn` first, then this skill.
 
 See `docs/okhp3-visual-language-stack.md` in the tool repository for the authoritative stack reference.
 

@@ -1,5 +1,6 @@
 ---
 family: community
+display_name: Community
 skill_count: 13
 generated_by: okhp3-skill-cataloger v1.7.0
 generated_at: 2026-08-02T19:22:22Z
