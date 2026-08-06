@@ -11,15 +11,24 @@ interface ComposerContextValue {
   setNote: (name: string, note: string) => void;
   moveItem: (name: string, direction: -1 | 1) => void;
   clearAll: () => void;
+  /** Latest human-readable outcome of a composer action (add/remove/clear/
+   *  copy/save), meant to be rendered into a single polite live region.
+   *  Lives here rather than in ComposerDrawer's local state so that actions
+   *  triggered from "Add to stack" buttons on other pages are announced
+   *  even while the drawer itself is closed. */
+  announcement: string;
+  announce: (message: string) => void;
 }
 
 const ComposerContext = createContext<ComposerContextValue | null>(null);
 
 export function ComposerProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<ComposerItem[]>(() => loadComposerState());
+  const [announcement, setAnnouncement] = useState('');
 
   const isInStack = useCallback((name: string) => items.some(i => i.name === name), [items]);
   const canAdd = items.length < COMPOSER_MAX_ITEMS;
+  const announce = useCallback((message: string) => setAnnouncement(message), []);
 
   const addItem = useCallback((name: string) => {
     setItems(prev => {
@@ -28,6 +37,7 @@ export function ComposerProvider({ children }: { children: ReactNode }) {
       saveComposerState(next);
       return next;
     });
+    setAnnouncement(`${name} added to stack.`);
   }, []);
 
   const removeItem = useCallback((name: string) => {
@@ -36,6 +46,7 @@ export function ComposerProvider({ children }: { children: ReactNode }) {
       saveComposerState(next);
       return next;
     });
+    setAnnouncement(`${name} removed from stack.`);
   }, []);
 
   const toggleOptional = useCallback((name: string) => {
@@ -70,11 +81,13 @@ export function ComposerProvider({ children }: { children: ReactNode }) {
   const clearAll = useCallback(() => {
     setItems([]);
     saveComposerState([]);
+    setAnnouncement('Stack cleared.');
   }, []);
 
   const value = useMemo<ComposerContextValue>(() => ({
     items, isInStack, canAdd, addItem, removeItem, toggleOptional, setNote, moveItem, clearAll,
-  }), [items, isInStack, canAdd, addItem, removeItem, toggleOptional, setNote, moveItem, clearAll]);
+    announcement, announce,
+  }), [items, isInStack, canAdd, addItem, removeItem, toggleOptional, setNote, moveItem, clearAll, announcement, announce]);
 
   return <ComposerContext.Provider value={value}>{children}</ComposerContext.Provider>;
 }

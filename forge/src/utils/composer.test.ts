@@ -4,6 +4,7 @@ import {
   buildMarkdownBrief,
   buildJsonManifest,
   getCompanionSuggestions,
+  getStackIntegrityReport,
   type ComposerItem,
 } from './composer';
 
@@ -107,13 +108,59 @@ describe('composer: buildMarkdownBrief', () => {
     expect(md).toContain('no longer present in the catalog');
   });
 
-  it('lists declared companions not currently in the stack', () => {
+  it('lists declared companions not currently in the stack under "Unresolved relationships"', () => {
     const a = makeSkill({ name: 'a', companions: ['b'] });
     const items: ComposerItem[] = [{ name: 'a', optional: false, note: '' }];
     const md = buildMarkdownBrief(items, [a]);
-    expect(md).toContain('Declared companions not in this stack');
+    expect(md).toContain('Unresolved relationships');
     expect(md).toContain('`a`');
     expect(md).toContain('`b`');
+  });
+
+  it('includes a source URL, export timestamp, and caveats', () => {
+    const a = makeSkill({ name: 'skill-a' });
+    const items: ComposerItem[] = [{ name: 'skill-a', optional: false, note: '' }];
+    const md = buildMarkdownBrief(items, [a]);
+    expect(md).toMatch(/\*\*Source:\*\* /);
+    expect(md).toMatch(/\*\*Exported:\*\* \d{4}-\d{2}-\d{2}T/);
+    expect(md).toContain('not a validated bundle');
+  });
+});
+
+describe('composer: getStackIntegrityReport', () => {
+  it('flags a skill with weak evidence or low maturity without declaring the stack validated', () => {
+    const a = makeSkill({ name: 'a', maturity: 'skeleton', evidence: {
+      status: 'none', evaluatedSkillVersion: null, evalCount: 0, benchmarkCount: 0,
+      testCount: 0, referenceCount: 0, scriptCount: 0, lastEvidenceDate: null,
+      reviewDecision: null, blockers: [],
+    } });
+    const items: ComposerItem[] = [{ name: 'a', optional: false, note: '' }];
+    const report = getStackIntegrityReport(items, [a]);
+    expect(report.maturityWarnings).toHaveLength(1);
+    expect(report.maturityWarnings[0].name).toBe('a');
+    expect(report.maturityWarnings[0].note).toContain('maturity is "skeleton"');
+    expect(report.maturityWarnings[0].note).toContain('evidence status is "none"');
+  });
+
+  it('does not flag a well-evidenced, mature skill', () => {
+    const a = makeSkill({ name: 'a', maturity: 'validated', evidence: {
+      status: 'live', evaluatedSkillVersion: '1.0.0', evalCount: 1, benchmarkCount: 0,
+      testCount: 0, referenceCount: 0, scriptCount: 0, lastEvidenceDate: null,
+      reviewDecision: null, blockers: [],
+    } });
+    const items: ComposerItem[] = [{ name: 'a', optional: false, note: '' }];
+    expect(getStackIntegrityReport(items, [a]).maturityWarnings).toEqual([]);
+  });
+
+  it('surfaces unresolved catalog items alongside companion suggestions', () => {
+    const a = makeSkill({ name: 'a', companions: ['b'] });
+    const items: ComposerItem[] = [
+      { name: 'a', optional: false, note: '' },
+      { name: 'gone', optional: false, note: '' },
+    ];
+    const report = getStackIntegrityReport(items, [a]);
+    expect(report.unresolvedItems).toEqual(['gone']);
+    expect(report.companionSuggestions).toEqual([{ from: 'a', companion: 'b' }]);
   });
 });
 
@@ -130,5 +177,19 @@ describe('composer: buildJsonManifest', () => {
       { name: 'gone', family: null, optional: true, note: 'was here once', installUrl: null, resolved: false },
     ]);
     expect(manifest.itemCount).toBe(2);
+  });
+
+  it('includes source URL, export timestamp, caveats, and unresolved relationships', () => {
+    const a = makeSkill({ name: 'a', companions: ['b'] });
+    const items: ComposerItem[] = [
+      { name: 'a', optional: false, note: '' },
+      { name: 'gone', optional: false, note: '' },
+    ];
+    const manifest = buildJsonManifest(items, [a]);
+    expect(manifest.sourceUrl).toBeTruthy();
+    expect(manifest.exportedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+    expect(manifest.caveats).toContain('not a validated bundle');
+    expect(manifest.unresolvedRelationships.unresolvedItems).toEqual(['gone']);
+    expect(manifest.unresolvedRelationships.companionSuggestions).toEqual([{ from: 'a', companion: 'b' }]);
   });
 });
