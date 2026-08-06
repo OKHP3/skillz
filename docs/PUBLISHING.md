@@ -86,35 +86,68 @@ Before adding or promoting `overkillhill.com/projects/skillz/`:
 
 ## Syncing the overkillhill.com dossier
 
-`overkillhill.com/projects/skillz/` is **not** generated from this repository -- it
-is a separately hosted/edited page, so nothing in this codebase or its CI can
-push an update to it directly. Confirmed live on 2026-08-05, the dossier still
-read "75 public distribution skills across 12 active families" and labeled
-Compare and Activity as "Planned," while this repo's own docs already carried
-the correct current numbers and feature state.
+`overkillhill.com/projects/skillz/` is **not** generated from this repository --
+it lives in the separate `OKHP3/OverKill-Hill` repo as hand-authored static
+HTML, so nothing in this codebase or its CI can push an update to it directly.
+Confirmed live on 2026-08-05, the dossier still read "75 public distribution
+skills across 12 active families" and labeled Compare and Activity as
+"Planned," while this repo's own docs already carried the correct current
+numbers and feature state. It was hand-corrected on 2026-08-06, but a
+hand-corrected page can drift again the same way with no warning.
 
-To avoid that drift recurring, whoever maintains the dossier should copy the
-current figures and status straight from this repo rather than re-deriving
-them:
+**Decision (2026-08-06): hybrid sync.** The two fields that actually drifted
+(skill count, family count) are simple numbers with one unambiguous source
+(`project-summary.json`), so the dossier now fetches and displays them live
+instead of relying on a human to notice and re-type them. The richer
+shipped-feature roadmap section (Compare/Activity/Composer/etc., with curated
+descriptive prose per feature) is not similarly automated -- mapping a
+`capabilities` boolean onto the right prose block is a judgment call each
+time a feature ships, not a safe blind substitution, so it stays
+hand-maintained behind an explicit manual-sync checklist instead.
 
-- **Skill/family counts and positioning copy** -- the "Recommended positioning"
-  and "Current inventory snapshot" text in
-  [`docs/PUBLIC_SURFACES.md`](PUBLIC_SURFACES.md) is the source of truth. Do
-  not hand-type counts on the dossier; paste from that section.
-- **Shipped-feature status** (e.g. Compare, Activity) -- the "Current
-  public-state rule" section at the bottom of `PUBLIC_SURFACES.md` lists what
-  Forge actually supports today; a feature listed there as shipped must not be
-  labeled "Planned" on the dossier.
-- **Machine-readable snapshot** -- `forge/public/data/project-summary.json` (or
-  the deployed `https://okhp3.github.io/skillz/data/project-summary.json`)
-  carries the same counts in JSON form if the dossier's CMS can consume it
-  directly instead of copy-paste.
+### Live-synced (no manual action needed)
 
-**When to re-sync:** any time `docs/PUBLIC_SURFACES.md`'s inventory snapshot or
-"Current public-state rule" section changes -- most commonly after a family is
-added/removed or a new Forge feature ships to `main`. There is no automated
-trigger for this; it is a manual step for whoever has edit access to the
-overkillhill.com site.
+`projects/skillz/index.html` in `OKHP3/OverKill-Hill` carries an inline
+`<script>` (added 2026-08-06) that fetches
+`https://okhp3.github.io/skillz/data/project-summary.json` on every page load
+and rewrites:
+
+- the "Hot off the FORGE" banner's skill/family count,
+- the "Current Inventory" heading's skill/family count,
+- the inventory paragraph's "as of" date.
+
+This is progressive enhancement, not a hard dependency: the HTML already
+carries the last-known-good numbers as static text, and the script only
+overwrites them on a successful fetch. If `project-summary.json` is
+unreachable (CORS change, endpoint move, visitor offline), the page silently
+keeps showing the last hand-synced numbers rather than breaking or showing a
+blank state -- check the browser console for a `[skillz dossier]` warning if
+the live numbers ever look stale; that's the signal the fetch is failing and
+this mechanism needs attention (endpoint moved, response shape changed,
+etc.), not that a human forgot to type new numbers.
+
+### Still manual (documented trigger + checklist)
+
+The "Brand Alignment" progress/roadmap list (Compare, Activity, Custom Local
+Stack Composition, Issue/PR Context Panels, Authenticated Collaboration, and
+any future entries) stays hand-authored. Re-sync it whenever:
+
+1. `forge/public/data/project-summary.json`'s `capabilities` object gains,
+   loses, or flips a flag (see `forge/scripts/capabilities.mjs` for the
+   current flag list and what each one means), or
+2. `docs/PUBLIC_SURFACES.md`'s "Current public-state rule" section changes.
+
+When either happens, whoever has edit access to `OKHP3/OverKill-Hill` should:
+
+- [ ] Compare each `capabilities.*` flag (or the "Current public-state rule"
+      prose) against the dossier's roadmap list.
+- [ ] Update any list item whose `phase-pill` (Shipped/Active/Planned) no
+      longer matches, and its description if the feature scope changed.
+- [ ] Update the "Recommended positioning" one-liner in
+      `docs/PUBLIC_SURFACES.md` if it changed, then paste the new copy in.
+
+There is no automated trigger for this half -- it remains a manual step, owned
+by whoever maintains `OKHP3/OverKill-Hill`, same as before this decision.
 
 ## Prestige path
 
