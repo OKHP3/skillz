@@ -21,6 +21,7 @@ at the top level:
 | `CHANGELOG.md` | Change log, including the `v0.1.0` tag record and its release-gate reconciliation. |
 | `BACKLOG.md` | Maturity model, promotion priorities, and planned families. |
 | `COMPETITIVE-LANDSCAPE-SCAN-2026-08-06.md` | Research record of comparable agent-skill repos/lists/registries and a differentiation check against BPMN-Mermaid and LinkedIn angle-mining claims. Not a submission. |
+| `LINKEDIN-POST-QUEUE-2026-08-06.md` | Draft LinkedIn post queue mined from the capability audit via `okhp3-linkedin-angles` → `okhp3-linkedin-post` → `okhp3-linkedin-voice`. Nothing here is published. |
 | `STACK-POSITION.md` | Stack position and conceptual layer map. |
 | `TECHNOLOGY-INVENTORY.md` | Technology inventory for the repository. |
 | `SECURITY.md` | Skill supply-chain and employer-data safety posture. |
