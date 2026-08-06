@@ -5,30 +5,18 @@ on:
     branches:
       - main
     paths:
+      # Path-independent trigger (replaces the prior hand-maintained
+      # per-family allowlist, which already once silently missed 5 of 15
+      # families for an entire release cycle). A 16th family — or any
+      # future family — is covered automatically because the trigger keys
+      # off the file patterns every family/skill folder always contains,
+      # not a list of folder names that must be remembered and updated.
       - 'forge/**'
-      - '.github/workflows/deploy-pages.yml'
+      - '**/SKILL.md'
+      - '**/FAMILY.md'
       - 'skillz.manifest.json'
-      # A1 fix: this list must include every top-level family folder that has
-      # a FAMILY.md — it previously missed askjamie, glee-fully,
-      # knowledge-operations, context-extraction, and outcome-modeling, so
-      # edits to those 5 families (a third of the catalog) silently never
-      # triggered a deploy. Keep in sync with `ls -d */ | grep FAMILY.md`.
-      - 'abrahamic/**'
-      - 'agent-foundry/**'
-      - 'askjamie/**'
-      - 'community/**'
-      - 'context-extraction/**'
-      - 'glee-fully/**'
-      - 'knowledge-operations/**'
-      - 'lifetrkr/**'
-      - 'linkedin/**'
-      - 'mermaid/**'
-      - 'notion/**'
-      - 'outcome-modeling/**'
-      - 'process-capture/**'
-      - 'refolddec/**'
-      - 'universal/**'
       - 'AGENTS.md'
+      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -75,6 +63,10 @@ jobs:
       - name: Run deterministic catalog tests
         working-directory: forge
         run: node scripts/test-catalog.mjs
+
+      - name: Verify deploy trigger is family-agnostic
+        working-directory: forge
+        run: node scripts/verify-deploy-trigger.mjs
 
       - name: Run unit tests
         working-directory: forge
