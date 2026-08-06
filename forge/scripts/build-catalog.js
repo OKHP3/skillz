@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSy
 import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
+import { computeCapabilities } from './capabilities.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..', '..');
@@ -1183,20 +1184,13 @@ function writeProjectSummary(catalog) {
     familyCount: catalog.familyCount,
     maturityCounts,
     evidenceStatusCounts,
-    // Release 1's Full Contract renderer shipped (safe Markdown-subset
-    // renderer on SkillDetail, wired to a lazily-fetched per-skill body).
-    // The local stack composer (Release 1) and guided discovery aid
-    // (Release 2) are not yet shipped — keep those false until the
-    // corresponding feature actually merges. Do not flip one of these
-    // ahead of the feature landing.
-    capabilities: {
-      familyOrientationPages: true,
-      skillCompare: true,
-      curatedStacks: true,
-      fullContractRenderer: true,
-      localStackComposer: false,
-      guidedDiscoveryAid: false,
-    },
+    // Derived from `capabilities.mjs`'s single declarative source, not
+    // hand-set booleans — each flag is proven from the real repo tree (the
+    // implementing file exists AND is actually imported/wired in), so a
+    // shipped feature can't silently keep reporting `false` (or vice
+    // versa) the way `localStackComposer` previously did for a full
+    // release cycle after the composer shipped.
+    capabilities: computeCapabilities(join(__dirname, '..')),
   };
 
   mkdirSync(dirname(SUMMARY_OUTPUT), { recursive: true });
