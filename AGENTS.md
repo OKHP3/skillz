@@ -22,7 +22,7 @@ Become the reusable execution layer of the OKHP3 Visual Language Stack, with com
 
 ## Scope and boundaries
 
-This repository contains SKILL.md contracts, references, examples, fixtures, and small validation or rendering utilities. It also contains the `forge/` Vite/React frontend that builds the public Skillz Forge catalog. It is not a backend service or npm workspace. The root `package.json` is a legacy/scaffold manifest and is not the repository runtime; use the `forge/` and package-local commands documented below. There is one Git repository at the root; no nested Git repositories were found.
+This repository contains SKILL.md contracts, references, examples, fixtures, and small validation or rendering utilities. It also contains the `forge/` Vite/React frontend that builds the public Skillz Forge catalog. It is not a backend service or npm workspace. The former root `package.json` and lockfile are retained under `docs/archive/root-scaffold/` for provenance and are not the repository runtime; use the `forge/` and package-local commands documented below. There is one Git repository at the root; no nested Git repositories were found.
 
 The root family directories are the distribution surface. `.agents/skills/` is a project-local support surface containing cataloging, skill-authoring, FoundRy tooling, and platform-specific context-extraction support. Do not count those 9 entries as additional distribution families.
 
