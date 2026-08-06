@@ -11,6 +11,8 @@ metadata:
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
   maturity: draftable
+  in_scope: "Routing and reconciling supplied AI conversation material into the intended Notion knowledge structure."
+  out_of_scope: "Generic note taking, unauthorized Notion writes, or source-service scraping."
 ---
 
 # okhp3-notion-capture-router
@@ -221,7 +223,7 @@ Always report the mode (`write`, `append`, `update`, or `report_only`), resolved
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3)
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.
