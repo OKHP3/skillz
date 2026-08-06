@@ -1,6 +1,70 @@
 {
-  "generatedAt": "2026-08-06T17:33:53.912Z",
+  "generatedAt": "2026-08-06T18:28:47.547Z",
   "commits": [
+    {
+      "sha": "f4d8009569a7d66e12debdb0344fad03ed61622c",
+      "shortSha": "f4d8009",
+      "message": "Document dossier hybrid live-sync decision (task #71)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:49:55Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f4d8009569a7d66e12debdb0344fad03ed61622c"
+    },
+    {
+      "sha": "0188341e09f59e96d300c78802e889afe87d9eb5",
+      "shortSha": "0188341",
+      "message": "Document dossier hybrid live-sync decision (task #71)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:49:54Z",
+      "url": "https://github.com/OKHP3/skillz/commit/0188341e09f59e96d300c78802e889afe87d9eb5"
+    },
+    {
+      "sha": "cd7e67aa024b028e435c1041e5b877b0e3f8e354",
+      "shortSha": "cd7e67a",
+      "message": "Document git push auth failure workaround for this repo",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:34:23Z",
+      "url": "https://github.com/OKHP3/skillz/commit/cd7e67aa024b028e435c1041e5b877b0e3f8e354"
+    },
+    {
+      "sha": "6f3a5bfa7820db9744ffad54d20036b75a8eabf9",
+      "shortSha": "6f3a5bf",
+      "message": "Sync manifest counts",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:34:23Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6f3a5bfa7820db9744ffad54d20036b75a8eabf9"
+    },
+    {
+      "sha": "4860aa9b5ebafd1ca62d77aa48c6e62ad6615028",
+      "shortSha": "4860aa9",
+      "message": "Regenerate project-summary.json",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:34:22Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4860aa9b5ebafd1ca62d77aa48c6e62ad6615028"
+    },
+    {
+      "sha": "af88567b4f042198552384e23c3dd5f90e1162ba",
+      "shortSha": "af88567",
+      "message": "Regenerate catalog.json",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:34:20Z",
+      "url": "https://github.com/OKHP3/skillz/commit/af88567b4f042198552384e23c3dd5f90e1162ba"
+    },
+    {
+      "sha": "03e1dd5c673267b0ce7ea211a50838ae63e8f129",
+      "shortSha": "03e1dd5",
+      "message": "Regenerate activity.json",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:34:19Z",
+      "url": "https://github.com/OKHP3/skillz/commit/03e1dd5c673267b0ce7ea211a50838ae63e8f129"
+    },
+    {
+      "sha": "83f99f3e0d8e8252b91a59442576545a32aa2c5a",
+      "shortSha": "83f99f3",
+      "message": "Add regression test proving catalog build hard-fails on a genuinely shallow checkout in CI (task #70)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:34:18Z",
+      "url": "https://github.com/OKHP3/skillz/commit/83f99f3e0d8e8252b91a59442576545a32aa2c5a"
+    },
     {
       "sha": "ad46d8fbe6827b8097629224a4f1dffc1eba1167",
       "shortSha": "ad46d8f",
@@ -16,70 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-06T17:31:18Z",
       "url": "https://github.com/OKHP3/skillz/commit/6f6ec99d69ac05e195fd6adaf6cdbe464d68de10"
-    },
-    {
-      "sha": "b388d44e6e0d14c1c64e80510ce810136e72eaee",
-      "shortSha": "b388d44",
-      "message": "Regenerate catalog.json with corrected capability flags",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:16Z",
-      "url": "https://github.com/OKHP3/skillz/commit/b388d44e6e0d14c1c64e80510ce810136e72eaee"
-    },
-    {
-      "sha": "e0bb91a93348bdbc6e4137eaaf824648ae0982ef",
-      "shortSha": "e0bb91a",
-      "message": "Regenerate activity.json",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:15Z",
-      "url": "https://github.com/OKHP3/skillz/commit/e0bb91a93348bdbc6e4137eaaf824648ae0982ef"
-    },
-    {
-      "sha": "7d59d1da45b51a1f13e60b57ccb00ee666284da0",
-      "shortSha": "7d59d1d",
-      "message": "Add regression test asserting project-summary.json capabilities match capabilities.mjs (task #68)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:14Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7d59d1da45b51a1f13e60b57ccb00ee666284da0"
-    },
-    {
-      "sha": "2159aa7ef21da06fa8d0a4ebd1b7d5fadff1c6e8",
-      "shortSha": "2159aa7",
-      "message": "Derive project-summary.json capabilities from capabilities.mjs instead of hand-set booleans (task #68)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:12Z",
-      "url": "https://github.com/OKHP3/skillz/commit/2159aa7ef21da06fa8d0a4ebd1b7d5fadff1c6e8"
-    },
-    {
-      "sha": "424dc72176186c662ac41bae3042e2cdea03ecdc",
-      "shortSha": "424dc72",
-      "message": "Add capabilities.mjs: single declarative source for capability flags (task #68)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:11Z",
-      "url": "https://github.com/OKHP3/skillz/commit/424dc72176186c662ac41bae3042e2cdea03ecdc"
-    },
-    {
-      "sha": "21ad43df26f38917cce3d4faa13f668beeb8d389",
-      "shortSha": "21ad43d",
-      "message": "Add next-phase PRD source paste",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:10Z",
-      "url": "https://github.com/OKHP3/skillz/commit/21ad43df26f38917cce3d4faa13f668beeb8d389"
-    },
-    {
-      "sha": "69221df558dfb8305742587bfd6244a334f53974",
-      "shortSha": "69221df",
-      "message": "Add independent product audit source paste",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:09Z",
-      "url": "https://github.com/OKHP3/skillz/commit/69221df558dfb8305742587bfd6244a334f53974"
-    },
-    {
-      "sha": "b5dc301823d19b8b449ac4a9953b770d23af72b8",
-      "shortSha": "b5dc301",
-      "message": "Add promotion strategy source paste",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:08Z",
-      "url": "https://github.com/OKHP3/skillz/commit/b5dc301823d19b8b449ac4a9953b770d23af72b8"
     }
   ],
   "fetchError": null

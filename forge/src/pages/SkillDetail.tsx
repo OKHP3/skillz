@@ -8,7 +8,7 @@ import FullContract from '../components/ui/FullContract';
 import { issueUrl, skillGitHubUrl, skillCommitHistoryUrl, commitUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
 import AddToStackButton from '../components/ui/AddToStackButton';
-import type { SkillDetailBody } from '../types/catalog';
+import type { Skill, SkillDetailBody } from '../types/catalog';
 
 const RELEASE_READINESS_LABELS: Record<string, string> = {
   'needs-contract-work': 'Needs contract work',
@@ -24,13 +24,28 @@ const MATURITY_SOURCE_LABELS: Record<string, string> = {
   'fallback-structure': 'inferred from document structure (no explicit maturity declared)',
 };
 
+// Evidence/maturity vocabulary policy (docs/PUBLISHING.md, "Evidence and
+// maturity vocabulary policy"): maturity is a self-declared claim about the
+// CONTRACT's own completeness and track record. It is a separate axis from
+// evidence.status, which is what has actually been recorded for the current
+// package version. A maturity description must never claim a stronger
+// evidence state than that maturity level structurally requires — "usable"
+// requires only that a workflow has been exercised and its limits written
+// down, not that any eval/benchmark artifact exists, so its copy must not
+// say "evidence-backed." "validated" is enforced (in build-catalog.js's
+// applyEvidencePolicy) to require at least one eval or benchmark artifact,
+// but that artifact is not required to be a *live*, version-matched run —
+// it can be historical or analytical — so "validated" copy must not claim
+// "passed live benchmarks" either. Every description below defers the
+// specific evidence claim to the "Evidence state" / trust summary fields
+// instead of asserting it inline.
 const MATURITY_DESCRIPTIONS: Record<string, string> = {
   placeholder: 'Directory reserved. No content yet.',
   skeleton: 'Structure and trigger phrases present. Body incomplete.',
-  draftable: 'Contract is written and reviewable. It is not yet benchmarked.',
-  usable: 'Evidence-backed and exercised in a defined workflow. This is not the same as live validation.',
-  validated: 'Passed live eval benchmarks with a measurable quality gap.',
-  published: 'Production-ready. Official distribution surface.',
+  draftable: 'Contract is written and reviewable, and an agent can follow it under supervision. Evidence, if any, is shown separately below.',
+  usable: 'Contract is complete and has been exercised on at least one real task, with its limits documented. This is a track-record claim about the contract, not a claim about recorded evaluation evidence -- check "Evidence state" below for what is actually on file.',
+  validated: 'Has at least one recorded eval or benchmark artifact backing this claim. Whether that record is a current, historical, or design-only for this version is shown in "Evidence state" below.',
+  published: 'Production-ready and release-tagged, backed by a live, version-matched evaluation. Official distribution surface.',
 };
 
 function formatDate(iso: string | null): string {
@@ -38,6 +53,56 @@ function formatDate(iso: string | null): string {
   try {
     return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   } catch { return ''; }
+}
+
+// Plain-language trust summary shown on every skill detail page (evidence/
+// maturity vocabulary policy, docs/PUBLISHING.md). It is generated entirely
+// from the same fields already rendered lower on the page -- never a
+// separately hand-authored sentence -- specifically so it cannot say
+// anything that contradicts the "Maturity" box, the "Evidence and release
+// state" section, or the promotion blockers below it. If a claim isn't
+// backed by a field, it doesn't appear here.
+const TRUST_CONTRACT_LINES: Record<string, string> = {
+  placeholder: 'a reserved placeholder with no content yet',
+  skeleton: 'a basic contract shape with important behavior still incomplete',
+  draftable: 'a complete, reviewable contract that an agent can follow under supervision',
+  usable: 'a complete contract that has been exercised on at least one real task, with limits documented',
+  validated: 'a contract backed by at least one recorded eval or benchmark artifact',
+  published: 'a production-ready contract on the official distribution surface',
+};
+
+const TRUST_EVIDENCE_LINES: Record<string, (skill: Skill) => string> = {
+  live: () => 'a live, version-matched evaluation is on file',
+  historical: (skill) => `only a historical benchmark exists (evaluated against version ${skill.evidence.evaluatedSkillVersion ?? 'unknown'}), not the current ${skill.version ?? 'unversioned'} package`,
+  analytical: () => 'only design or structural review exists; no graded run has been executed',
+  'not-run': () => 'an evaluation is designed but has not yet been executed',
+  none: () => 'no evaluation of any kind is recorded for this package',
+};
+
+function buildTrustSummary(skill: Skill, isStale: boolean): string {
+  const contractLine = TRUST_CONTRACT_LINES[skill.maturity] ?? `at maturity level "${skill.maturity}"`;
+  const evidenceLine = TRUST_EVIDENCE_LINES[skill.evidence.status]?.(skill) ?? `evidence status is "${skill.evidence.status}"`;
+  const readinessLine = RELEASE_READINESS_LABELS[skill.releaseReadiness] ?? skill.releaseReadiness;
+
+  const parts = [
+    `This skill's contract is ${contractLine}. For the current version, ${evidenceLine}, which puts it at "${readinessLine}."`,
+  ];
+
+  if (skill.evidence.blockers.length > 0) {
+    parts.push(`It has not moved further because: ${skill.evidence.blockers.join('; ')}.`);
+  }
+
+  if (isStale) {
+    parts.push(`Its recorded evidence predates the current package version, so treat it as unverified for this release.`);
+  }
+
+  parts.push(
+    skill.lastModified
+      ? `Source was last touched ${formatDate(skill.lastModified)}.`
+      : `Source's last-modified date is unknown.`
+  );
+
+  return parts.join(' ');
 }
 
 export default function SkillDetail() {
@@ -165,6 +230,12 @@ export default function SkillDetail() {
             </div>
             <p className="detail-path">{skill.path}</p>
           </header>
+
+          <div className="detail-trust-summary" role="note" aria-label="Trust summary">
+            <h2>In plain terms</h2>
+            <p>{buildTrustSummary(skill, isEvidenceStale)}</p>
+            <Link to="/faq#maturity-label" className="detail-maturity-link">What maturity and evidence labels mean &rarr;</Link>
+          </div>
 
           <div className="detail-actions" aria-label="Skill actions">
             <button className="btn" onClick={handleCopyInstall}>

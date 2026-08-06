@@ -249,6 +249,29 @@
   color: var(--color-copper-dark);
 }
 
+/* Plain-language trust summary (SkillDetail) -- see evidence/maturity
+   vocabulary policy in docs/PUBLISHING.md. Deliberately styled as a
+   standalone callout, ahead of the actions row, so it's the first thing a
+   visitor reads about release confidence before the detailed fields below. */
+.detail-trust-summary {
+  margin: var(--space-6) 0;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--color-border-light);
+  border-left-width: 4px;
+  border-left-color: var(--color-copper);
+  background: var(--color-surface-raised, rgba(0, 0, 0, 0.02));
+}
+.detail-trust-summary h2 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted-light);
+}
+.detail-trust-summary p {
+  margin: 0 0 var(--space-3);
+}
+
 /* Evidence-contract v2 section (SkillDetail) */
 .detail-evidence-release {
   margin-top: var(--space-8);
