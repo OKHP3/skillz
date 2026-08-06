@@ -381,7 +381,18 @@ function deriveEvidence(filePath, currentVersion) {
   if (runs.length > 0 && (statusText.includes('live') || benchmarkMeta.executor_model || benchmarkMeta.runner)) {
     return { evidenceStatus: 'live', evidenceNote: 'Version-matched executor evidence is recorded in the package benchmark.' };
   }
-  if (statusText.includes('not-run') || statusText.includes('not yet executed')) {
+  // Evidence status schema split (2026-08-06): this rule previously only
+  // matched an explicit "not-run"/"not yet executed" statusText annotation,
+  // so an eval design with no graded run silently fell through to the
+  // 'analytical' branch below unless someone had hand-written that exact
+  // phrase into evidence metadata. That collapsed "never attempted" (none)
+  // and "attempted, not yet passing" (not-run) into the same 'analytical'
+  // bucket in practice, even though the FAQ already promises visitors these
+  // are distinct evidence states and the v2 evidence-contract vocabulary
+  // (`deriveEvidenceV2` above) already derives this structurally. Mirror
+  // that same structural rule here so the two vocabularies agree on which
+  // bucket a given package falls into.
+  if (statusText.includes('not-run') || statusText.includes('not yet executed') || (evals && runs.length === 0 && !benchmark)) {
     return { evidenceStatus: 'not-run', evidenceNote: 'Evaluation design exists, but the current package has no executed benchmark.' };
   }
   if (statusText.includes('analytical') || statusText.includes('design-ready') || evals || benchmark) {
