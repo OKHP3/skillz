@@ -56,6 +56,36 @@ function CatalogGate({ children }: { children: ReactNode }) {
 /** Route-aware GA4 pageview tracking. Module-level _lastTrackedPath prevents StrictMode
  *  double-fire (useRef resets on remount; module var does not). setTimeout(0) ensures
  *  document.title has been set by the destination page's useEffect before tracking fires. */
+// A real `href="#main-content"` anchor would work under BrowserRouter, but
+// this app uses HashRouter — the URL hash *is* the route, so setting it to a
+// non-route fragment breaks navigation instead of just scrolling. Move focus
+// programmatically instead.
+function SkipToMainContent() {
+  function handleClick(e: React.MouseEvent) {
+    e.preventDefault();
+    // The route's <main id="main-content"> mounts only after the catalog
+    // fetch resolves (see CatalogGate), so a user who activates this
+    // immediately on page load can beat that render. Poll briefly rather
+    // than silently no-op'ing.
+    const deadline = Date.now() + 1500;
+    function tryFocus() {
+      const main = document.getElementById('main-content');
+      if (main) {
+        main.focus();
+        main.scrollIntoView({ block: 'start' });
+        return;
+      }
+      if (Date.now() < deadline) requestAnimationFrame(tryFocus);
+    }
+    tryFocus();
+  }
+  return (
+    <button type="button" className="skip-link skip-link--button" onClick={handleClick}>
+      Skip to main content
+    </button>
+  );
+}
+
 function AnalyticsTracker() {
   const location = useLocation();
 
@@ -76,7 +106,7 @@ export default function App() {
     <CatalogProvider>
     <ComposerProvider>
     <HashRouter>
-      <a href="#main-content" className="skip-link">Skip to main content</a>
+      <SkipToMainContent />
       <AnalyticsTracker />
       <CatalogGate>
         <Suspense fallback={<Loading />}>

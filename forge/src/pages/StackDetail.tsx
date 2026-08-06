@@ -19,7 +19,7 @@ export default function StackDetail() {
     return (
       <div data-page="stack-detail">
         <Nav />
-        <main className="container sd-not-found-main" id="main-content">
+        <main className="container sd-not-found-main" id="main-content" tabIndex={-1}>
           <div className="detail-article sd-not-found-article">
             <h1 className="sd-not-found-heading">Stack not found</h1>
             <Link to="/stacks" className="btn sd-not-found-link">Browse all stacks</Link>
@@ -51,7 +51,7 @@ export default function StackDetail() {
   return (
     <div data-page="stack-detail">
       <Nav />
-      <main className="container sd-main" id="main-content">
+      <main className="container sd-main" id="main-content" tabIndex={-1}>
         <div className="breadcrumb" aria-label="Breadcrumb">
           <Link to="/stacks">Stacks</Link>
           <span aria-hidden>/</span>
@@ -77,7 +77,7 @@ export default function StackDetail() {
 
           <div className="detail-actions">
             <button className="btn" onClick={handleCopyAll}>
-              {copied ? 'Copied!' : `Copy all ${allSkills.length} install URLs`}
+              {copied ? 'Copied!' : `Copy all ${allSkills.length} skill URLs`}
             </button>
             <button className="btn btn-outline" onClick={() => shareStack(stack.id, stack.name)}>
               Share this stack

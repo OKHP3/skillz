@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { useCatalog } from '../contexts/CatalogContext';
 import type { FilterState, SearchResult, Maturity, EvidenceStatus, ReleaseReadiness } from '../types/catalog';
@@ -37,6 +37,14 @@ const RELEASE_READINESS_LABELS: Record<ReleaseReadiness, string> = {
   published: 'Published',
 };
 
+// Explore's catalog can hold 100+ rich cards, each with several focusable
+// actions. Rendering them all at once means keyboard users tab through
+// hundreds of controls to reach anything past the list (e.g. the nav or
+// footer), and every card pays layout/paint cost even off-screen. Paginating
+// keeps each page's DOM (and tab order) small; content-visibility on the
+// card itself (see index.css) further trims paint cost within a page.
+const PAGE_SIZE = 24;
+
 export default function Explore() {
   const catalog = useCatalog();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,6 +61,8 @@ export default function Explore() {
   const [copied, setCopied] = useState<string | null>(null);
   const { isFavorite, toggleFavorite } = useFavorites();
   const [, forceUpdate] = useState(0);
+  const [page, setPage] = useState(1);
+  const paginationRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -90,6 +100,7 @@ export default function Explore() {
   useEffect(() => {
     const r = searchSkills(catalog.skills, filters);
     setResults(r);
+    setPage(1);
     const params: Record<string, string> = {};
     if (filters.query) params.q = filters.query;
     if (filters.family) params.family = filters.family;
@@ -104,6 +115,36 @@ export default function Explore() {
   const updateFilter = useCallback(<K extends keyof FilterState>(key: K, val: FilterState[K]) => {
     setFilters(prev => ({ ...prev, [key]: val }));
   }, []);
+
+  const pageCount = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount);
+  const pageStart = (currentPage - 1) * PAGE_SIZE;
+  const pagedResults = results.slice(pageStart, pageStart + PAGE_SIZE);
+
+  function goToPage(n: number) {
+    const clamped = Math.min(Math.max(1, n), pageCount);
+    setPage(clamped);
+    // Move scroll back to the top of the page so keyboard and screen-reader
+    // users land somewhere sensible after paging, rather than staying
+    // scrolled to wherever the "Next"/"Previous" button happened to be.
+    // Deferred a frame so it runs after any browser default
+    // focus-follows-scroll behavior on the button that was just activated.
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      document.getElementById('explore-results-heading')?.focus();
+    });
+  }
+
+  // Programmatic focus jump rather than a real `href="#explore-pagination"`
+  // anchor — this app uses HashRouter, so the URL hash *is* the route.
+  // Setting the hash to a non-route fragment breaks routing instead of just
+  // scrolling, so the "skip past this page's cards" control has to be a
+  // button that moves focus directly.
+  function skipToPagination(e: React.MouseEvent | React.KeyboardEvent) {
+    e.preventDefault();
+    paginationRef.current?.focus();
+    paginationRef.current?.scrollIntoView({ block: 'start' });
+  }
 
   async function handleCopy(skill: (typeof catalog.skills)[0]) {
     const ok = await copyInstallCommand(skill);
@@ -129,7 +170,7 @@ export default function Explore() {
   return (
     <div data-page="explore">
       <Nav />
-      <main data-layout="explore" id="main-content">
+      <main data-layout="explore" id="main-content" tabIndex={-1}>
         <aside className="explore-sidebar" data-open={filterOpen} aria-label="Filters">
           <div className="filter-group filter-group-header">
             <h3>Filters</h3>
@@ -278,8 +319,13 @@ export default function Explore() {
           </div>
 
           <div className="explore-meta" aria-live="polite" aria-atomic="true">
-            <div>
+            <div id="explore-results-heading" tabIndex={-1}>
               <strong className="explore-results-count">{results.length}</strong> skill{results.length !== 1 ? 's' : ''} found
+              {results.length > PAGE_SIZE && (
+                <span className="explore-page-summary">
+                  {' '}— showing {pageStart + 1}–{Math.min(pageStart + PAGE_SIZE, results.length)} (page {currentPage} of {pageCount})
+                </span>
+              )}
               {(filters.query || filters.family || filters.maturity || filters.evidence || filters.releaseReadiness) && (
                 <span className="explore-filter-summary">
                   for {filters.query && <span>"{filters.query}"</span>}
@@ -318,8 +364,14 @@ export default function Explore() {
               </button>
             </div>
           ) : (
+            <>
+            {pageCount > 1 && (
+              <button type="button" className="skip-link skip-link--button" onClick={skipToPagination}>
+                Skip {pagedResults.length} results on this page to pagination controls
+              </button>
+            )}
             <ul className="skill-list" aria-label="Skill results">
-              {results.map(({ skill, matchReason }) => (
+              {pagedResults.map(({ skill, matchReason }) => (
                 <li key={skill.name} className="skill-card">
                   <div className="skill-card-header">
                     <div>
@@ -369,7 +421,7 @@ export default function Explore() {
                   
                   <div className="skill-card-actions">
                     <button className="btn btn-outline" onClick={() => handleCopy(skill)} data-action="copy">
-                      {copied === skill.name ? 'Copied!' : 'Copy install'}
+                      {copied === skill.name ? 'Copied!' : 'Copy skill URL'}
                     </button>
                     <button className="btn-ghost" onClick={() => handleShare(skill)} data-action="share">Share</button>
                     <button className="btn-ghost" onClick={() => handleCompare(skill)} data-action="compare">Compare</button>
@@ -389,6 +441,29 @@ export default function Explore() {
                 </li>
               ))}
             </ul>
+            </>
+          )}
+
+          {pageCount > 1 && (
+            <nav className="explore-pagination" aria-label="Results pages" id="explore-pagination" ref={paginationRef} tabIndex={-1}>
+              <button
+                type="button"
+                className="btn btn-outline"
+                onClick={() => goToPage(currentPage - 1)}
+                disabled={currentPage <= 1}
+              >
+                &larr; Previous
+              </button>
+              <span className="explore-pagination-status">Page {currentPage} of {pageCount}</span>
+              <button
+                type="button"
+                className="btn btn-outline"
+                onClick={() => goToPage(currentPage + 1)}
+                disabled={currentPage >= pageCount}
+              >
+                Next &rarr;
+              </button>
+            </nav>
           )}
         </div>
       </main>

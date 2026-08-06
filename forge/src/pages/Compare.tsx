@@ -221,7 +221,7 @@ export default function Compare() {
   return (
     <div data-page="compare">
       <Nav />
-      <main className="container" id="main-content">
+      <main className="container" id="main-content" tabIndex={-1}>
         <div className="page-header">
           <h1>Compare Skills</h1>
           <p>Select two to four skills to compare release readiness, evidence, triggers, boundaries, and source metadata side by side.</p>
@@ -327,15 +327,15 @@ export default function Compare() {
                   ))}
                 </tr>
                 <tr>
-                  <td className="compare-row-label">Install</td>
+                  <td className="compare-row-label">Get skill</td>
                   {skills.map(s => (
-                    <td key={s.name} className="compare-cell" data-label="Install">
+                    <td key={s.name} className="compare-cell" data-label="Get skill">
                       <button
                         className="btn btn-outline btn-sm"
                         onClick={async () => {
                           await copyToClipboard(s.rawUrl);
                         }}
-                        aria-label={`Copy install URL for ${s.name}`}
+                        aria-label={`Copy skill URL for ${s.name}`}
                       >
                         Copy URL
                       </button>

@@ -6,3 +6,5 @@
 - [Forge catalog/detail/search-index payload split](forge-catalog-payload-split.md) — full skill body text lives only in lazily-fetched search-index/detail assets, never in catalog.json.
 - [Forge evidence-policy substantive-artifact bar](forge-evidence-policy-substantive-bar.md) — a bare test file cannot sustain "validated"/"published"; only an eval or benchmark artifact counts.
 - [GitHub workflow-scope push rejection](github-workflow-scope-push.md) — pushes touching `.github/workflows/*.yml` are rejected (missing `workflow` OAuth scope); revert-then-manual-paste workaround.
+- [HashRouter breaks fragment anchors](hashrouter-skip-links.md) — `href="#id"` skip/jump links hijack navigation under HashRouter; use a button + JS focus instead.
+- [content-visibility insufficient for keyboard access](content-visibility-tab-order.md) — CSS content-visibility:auto defers paint but does not remove elements from tab order; large lists need pagination/virtualization for keyboard a11y.

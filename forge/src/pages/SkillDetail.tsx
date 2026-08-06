@@ -102,7 +102,7 @@ export default function SkillDetail() {
     return (
       <div data-page="skill-detail">
         <Nav />
-        <main className="container detail-not-found-main" id="main-content">
+        <main className="container detail-not-found-main" id="main-content" tabIndex={-1}>
           <div className="detail-article detail-article--centered">
             <h1>Skill not found</h1>
             <p>No skill named <code>{skillName}</code> in the <code>{family}</code> family.</p>
@@ -148,7 +148,7 @@ export default function SkillDetail() {
   return (
     <div data-page="skill-detail">
       <Nav />
-      <main className="container" id="main-content">
+      <main className="container" id="main-content" tabIndex={-1}>
         <div className="breadcrumb" aria-label="Breadcrumb">
           <Link to="/explore">Explore</Link>
           <span aria-hidden>/</span>
@@ -190,7 +190,7 @@ export default function SkillDetail() {
 
           <div className="detail-actions" aria-label="Skill actions">
             <button className="btn" onClick={handleCopyInstall}>
-              {copied === 'install' ? 'Copied!' : 'Copy install URL'}
+              {copied === 'install' ? 'Copied!' : 'Copy skill URL'}
             </button>
             <button className="btn btn-outline" onClick={handleCopyUrl}>
               {copied === 'url' ? 'Copied!' : 'Copy raw URL'}
@@ -211,10 +211,10 @@ export default function SkillDetail() {
           </div>
 
           <div className="detail-install">
-            <h2>Install</h2>
+            <h2>Get this skill</h2>
             <pre><code>{skill.rawUrl}</code></pre>
             <p className="detail-install-hint">
-              Paste this URL into your agent's context, Claude Project, or agent instructions file.
+              No package to install — copy this raw file URL and paste it into your agent's context, Claude Project, or agent instructions file.
             </p>
           </div>
 

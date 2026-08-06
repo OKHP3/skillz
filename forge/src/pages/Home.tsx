@@ -3,7 +3,20 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useCatalog } from '../contexts/CatalogContext';
 import { buildSearchIndex } from '../utils/search';
 import Nav from '../components/layout/Nav';
-import murderbirdSentinel from '../assets/murderbird-sentinel.png';
+import heroAvif160 from '../assets/murderbird-sentinel-160.avif';
+import heroAvif320 from '../assets/murderbird-sentinel-320.avif';
+import heroAvif480 from '../assets/murderbird-sentinel-480.avif';
+import heroAvif640 from '../assets/murderbird-sentinel-640.avif';
+import heroWebp160 from '../assets/murderbird-sentinel-160.webp';
+import heroWebp320 from '../assets/murderbird-sentinel-320.webp';
+import heroWebp480 from '../assets/murderbird-sentinel-480.webp';
+import heroWebp640 from '../assets/murderbird-sentinel-640.webp';
+import heroFallback from '../assets/murderbird-sentinel-640.png';
+
+// Matches the .hero-bird width breakpoints in index.css (300px desktop,
+// 160px <=768px, 120px <=480px) so the browser picks a derivative close to
+// the rendered size instead of always downloading the largest one.
+const HERO_BIRD_SIZES = '(max-width: 480px) 120px, (max-width: 768px) 160px, 300px';
 
 export default function Home() {
   const catalog = useCatalog();
@@ -28,17 +41,6 @@ export default function Home() {
     }
   }
 
-  // Auto-complete: once the visitor pauses typing for 3s, jump straight to
-  // results instead of waiting for them to hit Search.
-  useEffect(() => {
-    const trimmed = query.trim();
-    if (!trimmed) return;
-    const timer = setTimeout(() => {
-      navigate(`/explore?q=${encodeURIComponent(trimmed)}`);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [query, navigate]);
-
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === '/' && document.activeElement !== inputRef.current) {
@@ -53,14 +55,14 @@ export default function Home() {
   return (
     <div data-page="home">
       <Nav />
-      <main className="container" id="main-content">
+      <main className="container" id="main-content" tabIndex={-1}>
         <section data-section="hero" className="hero-layout">
           <div className="hero-content">
             <h1 className="hero-heading">
               Find the skill for the work in front of you.
             </h1>
             <p className="hero-sub">
-              Search the open catalog of reusable agent capabilities. Filter by what matters to your task, then open, stack, install, and ship.
+              Search the open catalog of reusable agent capabilities. Filter by what matters to your task, then open, stack, copy into your agent, and ship.
             </p>
 
             <form onSubmit={handleSearch} className="home-search hero-search" role="search">
@@ -91,14 +93,26 @@ export default function Home() {
             aria-label="Visit OverKill Hill P³™"
           >
             <div className="hero-bird">
-              <img
-                src={murderbirdSentinel}
-                alt=""
-                className="hero-bird-img"
-                aria-hidden="true"
-                width={160}
-                height={160}
-              />
+              <picture>
+                <source
+                  type="image/avif"
+                  sizes={HERO_BIRD_SIZES}
+                  srcSet={`${heroAvif160} 160w, ${heroAvif320} 320w, ${heroAvif480} 480w, ${heroAvif640} 640w`}
+                />
+                <source
+                  type="image/webp"
+                  sizes={HERO_BIRD_SIZES}
+                  srcSet={`${heroWebp160} 160w, ${heroWebp320} 320w, ${heroWebp480} 480w, ${heroWebp640} 640w`}
+                />
+                <img
+                  src={heroFallback}
+                  alt=""
+                  className="hero-bird-img"
+                  aria-hidden="true"
+                  width={160}
+                  height={160}
+                />
+              </picture>
             </div>
             <span className="hero-bird-label" aria-hidden="true">OverKill Hill P³™ ↗</span>
           </a>
@@ -107,7 +121,7 @@ export default function Home() {
         <section data-section="what-is-skill" className="home-explainer-panel">
           <h2>What is a SKILL.md?</h2>
           <p>
-            A delegation contract for AI agents. Plain text, versioned, composable, installable. Each skill tells an agent exactly when to activate, what to do, and what not to do — so it behaves consistently without re-explaining.
+            A delegation contract for AI agents. Plain text, versioned, composable, and portable — copy the raw file into any agent's context. Each skill tells an agent exactly when to activate, what to do, and what not to do — so it behaves consistently without re-explaining.
           </p>
           <Link to="/faq#what-is-skillmd">Learn more &rarr;</Link>
         </section>

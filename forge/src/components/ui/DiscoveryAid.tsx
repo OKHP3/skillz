@@ -12,20 +12,66 @@ import {
 
 type Step = 'outcome' | 'context' | 'result';
 
+// Persisted so a visitor who dismisses the guided-discovery aid doesn't see
+// it reappear on every visit to Explore. Still leaves an explicit, always
+// -visible way back in (the reopener below) rather than hiding the feature.
+const DISMISS_KEY = 'skillzforge-discovery-dismissed';
+
+function readDismissed(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    return window.localStorage.getItem(DISMISS_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function writeDismissed(value: boolean): void {
+  if (typeof window === 'undefined') return;
+  try {
+    if (value) window.localStorage.setItem(DISMISS_KEY, '1');
+    else window.localStorage.removeItem(DISMISS_KEY);
+  } catch {
+    // Storage may be unavailable (private browsing, disabled cookies) — the
+    // aid just won't remember the choice across visits in that case.
+  }
+}
+
 /** Optional, skippable 2-question aid that sits above Explore's normal
  *  filters. Grounded entirely in the 5 hand-authored curated stacks — never
  *  fabricates a taxonomy, a compatibility claim, or an evidence/maturity
  *  fact. A visitor can bail to ordinary Explore at any step. */
 export default function DiscoveryAid() {
   const catalog = useCatalog();
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissed, setDismissed] = useState(readDismissed);
   const [step, setStep] = useState<Step>('outcome');
   const [stackId, setStackId] = useState<string | null>(null);
   const [context, setContext] = useState<DiscoveryContext | null>(null);
 
   const outcomeOptions = getDiscoveryOutcomeOptions();
 
-  if (dismissed) return null;
+  function dismiss() {
+    setDismissed(true);
+    writeDismissed(true);
+  }
+
+  function reopen() {
+    setStep('outcome');
+    setStackId(null);
+    setContext(null);
+    setDismissed(false);
+    writeDismissed(false);
+  }
+
+  if (dismissed) {
+    return (
+      <div className="discovery-aid-reopener">
+        <button type="button" className="btn-ghost btn-ghost--small" onClick={reopen}>
+          Not sure where to start? Show guided discovery
+        </button>
+      </div>
+    );
+  }
 
   let result: DiscoveryResult | null = null;
   if (step === 'result' && stackId && context) {
@@ -42,7 +88,7 @@ export default function DiscoveryAid() {
     <section className="discovery-aid" aria-label="Guided discovery">
       <div className="discovery-aid-header">
         <h2>Not sure where to start?</h2>
-        <button type="button" className="btn-ghost btn-ghost--small" onClick={() => setDismissed(true)}>
+        <button type="button" className="btn-ghost btn-ghost--small" onClick={dismiss}>
           Skip — go straight to Explore
         </button>
       </div>

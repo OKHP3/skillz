@@ -1257,6 +1257,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
 }
 
 :focus-visible {
@@ -1282,6 +1283,11 @@ body {
 }
 .skip-link:focus {
   top: var(--space-4);
+}
+.skip-link--button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 h1, h2 {
@@ -1786,6 +1792,9 @@ input, select, textarea {
   padding: var(--space-5);
   margin-bottom: var(--space-6);
 }
+.discovery-aid-reopener {
+  margin-bottom: var(--space-4);
+}
 .discovery-aid-header {
   display: flex;
   align-items: center;
@@ -1920,6 +1929,29 @@ input, select, textarea {
   margin-left: 8px;
   opacity: 0.8;
 }
+.explore-page-summary {
+  color: var(--color-text-muted-dark);
+  font-weight: 400;
+}
+.explore-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border-dark);
+}
+.explore-pagination-status {
+  color: var(--color-text-muted-dark);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .explore-pagination {
+    flex-wrap: wrap;
+  }
+}
 .explore-empty {
   text-align: center;
   margin: var(--space-12) auto;
@@ -1944,6 +1976,11 @@ input, select, textarea {
   border-left: 4px solid transparent;
   transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  /* Explore can render 100+ cards at once — skip layout/paint/style work for
+     cards scrolled off-screen. contain-intrinsic-size reserves an estimated
+     height so the scrollbar doesn't jump as cards enter/leave the viewport. */
+  content-visibility: auto;
+  contain-intrinsic-size: 0 340px;
 }
 [data-theme="light"] .skill-card {
   box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.03);

@@ -31,7 +31,7 @@ export default function Stacks() {
   return (
     <div data-page="stacks">
       <Nav />
-      <main className="container" id="main-content">
+      <main className="container" id="main-content" tabIndex={-1}>
         <div className="page-header">
           <h1>Stacks</h1>
           <p>Curated combinations of skills for complete workflows. Each stack is a recipe — ordered steps, defined inputs and outputs, and a shareable URL.</p>
@@ -69,7 +69,7 @@ export default function Stacks() {
                     onClick={() => handleCopyAll(stack.id, allSkillNames)}
                     className="btn btn-outline"
                   >
-                    {copied === stack.id ? 'Copied!' : 'Copy all installs'}
+                    {copied === stack.id ? 'Copied!' : 'Copy all skill URLs'}
                   </button>
                   <button
                     onClick={() => shareStack(stack.id, stack.name)}

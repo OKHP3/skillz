@@ -77,7 +77,7 @@ export default function Contribute() {
   return (
     <div data-page="contribute">
       <Nav />
-      <main className="container page-main" id="main-content">
+      <main className="container page-main" id="main-content" tabIndex={-1}>
         <div className="page-header">
           <h1>Contribute</h1>
           <p>The catalog improves through pull requests, issues, and discussion. Every improvement — from a corrected trigger phrase to a new benchmarked skill — makes the catalog more useful for everyone.</p>

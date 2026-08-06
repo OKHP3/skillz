@@ -31,7 +31,7 @@ export default function FAQ() {
   return (
     <div data-page="faq">
       <Nav />
-      <main className="container page-main" id="main-content">
+      <main className="container page-main" id="main-content" tabIndex={-1}>
         <div className="page-header">
           <h1>Frequently asked questions</h1>
           <p>Everything about Agent Skills, using Skillz, trust and safety, and contributing.</p>

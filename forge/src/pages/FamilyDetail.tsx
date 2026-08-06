@@ -25,7 +25,7 @@ export default function FamilyDetail() {
     return (
       <div data-page="family-detail">
         <Nav />
-        <main className="container page-main" id="main-content">
+        <main className="container page-main" id="main-content" tabIndex={-1}>
           <div className="detail-article explore-empty" role="status">
             <h2>Family not found</h2>
             <p>No family named "{familySlug}" exists in the current catalog.</p>
@@ -42,7 +42,7 @@ export default function FamilyDetail() {
   return (
     <div data-page="family-detail">
       <Nav />
-      <main className="container page-main" id="main-content">
+      <main className="container page-main" id="main-content" tabIndex={-1}>
         <div className="page-header">
           <p className="breadcrumb"><Link to="/explore">Explore</Link> / {family.displayName}</p>
           <h1>{family.displayName}</h1>

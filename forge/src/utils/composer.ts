@@ -113,8 +113,8 @@ export function buildMarkdownBrief(items: ComposerItem[], allSkills: Skill[]): s
   lines.push('');
   lines.push(
     'This brief was built entirely on the visitor\'s device. It does not install anything, ' +
-    'contact any server, or resolve undeclared dependencies — it is a shareable list of install ' +
-    'URLs and notes for the skills selected.'
+    'contact any server, or resolve undeclared dependencies — it is a shareable list of raw skill ' +
+    'file URLs and notes for the skills selected.'
   );
   lines.push('');
   lines.push(`- **Source:** ${currentSourceUrl()}`);
@@ -131,7 +131,7 @@ export function buildMarkdownBrief(items: ComposerItem[], allSkills: Skill[]): s
       if (skill.description) lines.push(skill.description, '');
       lines.push(`- Family: \`${skill.family}\``);
       lines.push(`- Maturity: ${skill.maturity}`);
-      lines.push(`- Install: ${skill.rawUrl}`);
+      lines.push(`- Skill file URL: ${skill.rawUrl}`);
     } else {
       lines.push('_This skill is no longer present in the catalog — it may have been renamed or removed._');
     }
