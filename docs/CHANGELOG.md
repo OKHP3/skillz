@@ -8,6 +8,11 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Changed
 
+- Removed three superseded pasted Forge checkpoint artifacts from the tracked
+  `attached_assets/` working buffer, repaired stale README document links, and
+  clarified that the `v0.1.0` entry is a release record rather than evidence of
+  an existing Git tag.
+
 - Promoted `okhp3-mermaid-core` from `draftable` to `usable` maturity. The
   promotion is backed by a real, non-synthetic worked example:
   `mermaid/okhp3-mermaid-core/examples/WORKED-EXAMPLE-001.md` documents the
@@ -17,11 +22,11 @@ This project's release history follows Keep a Changelog conventions.
   the `OKHP3/skillz` skill maturity lifecycle. Syntax validated with `mmdc`
   v11.16.0 (exit 0); semantic and audience-fit gates passed. This is the first
   skill in the repository to reach `usable` maturity and unblocks the `v0.2.0`
-  path described in the `v0.1.0` tag notes.
+  path described in the `v0.1.0` release notes.
 
-## v0.1.0 -- Initial public scaffold -- 2026-08-05
+## v0.1.0 -- Initial public scaffold record -- 2026-08-05
 
-Tagged when the repository met a specific, checkable bar rather than a vague
+Recorded when the repository met a specific, checkable bar rather than a vague
 "feels done": the catalog build pipeline (`build-catalog.js`,
 `build-activity.mjs`), its deterministic regression suite
 (`test-catalog.mjs`, `vitest run`), and the Pages deploy trigger's

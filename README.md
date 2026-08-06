@@ -92,9 +92,6 @@ If you are evaluating the product rather than authoring a skill, start with [Ski
 | `docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md` | Capability-first assessment of the published Forge application, its maturity score, and its next gates. |
 | `docs/PRD-SKILLZ-FORGE-M4-LIVE-CONVERGENCE-2026-08-04.md` | Live-release PRD that reconciles Replit, GitHub Pages, Forge, and the public dossier before any M4 claim. |
 | `skillz.manifest.json` | Lightweight machine-readable manifest for the skill library. |
-| `docs/SKILLZ-FORGE-REPLIT-BUILD-DIRECTIVE.md` | Earlier Replit build directive for the interactive catalog. |
-| `docs/PRD-OVERKILL-HILL-SKILLZ-FLAGSHIP-PROJECT-REPLIT.md` | Replit PRD for the OverKill Hill flagship project page and route model. |
-| `docs/PRD-SKILLZ-FORGE-FLAGSHIP-SPA-REPLIT.md` | Replit PRD for the branded Skillz Forge SPA. |
 
 ## Families
 
