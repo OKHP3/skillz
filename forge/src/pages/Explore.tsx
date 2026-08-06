@@ -63,7 +63,26 @@ export default function Explore() {
   const [, forceUpdate] = useState(0);
   const [page, setPage] = useState(1);
   const paginationRef = useRef<HTMLElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const sidebarRef = useRef<HTMLElement>(null);
+  const filtersToggleRef = useRef<HTMLButtonElement>(null);
+  const filterOpenMounted = useRef(false);
   const navigate = useNavigate();
+
+  // On mobile, the "Filters" toggle lives in the main column, after the
+  // <aside> in DOM order — so once it has focus, Tab continues forward
+  // through the rest of main and never loops back to the sidebar that just
+  // became visible. Move focus into the sidebar on open (landing on the
+  // "Skip filters" button, its first child) and back to the toggle on close,
+  // matching the standard disclosure/drawer focus-management pattern.
+  useEffect(() => {
+    if (!filterOpenMounted.current) { filterOpenMounted.current = true; return; }
+    if (filterOpen) {
+      sidebarRef.current?.focus();
+    } else {
+      filtersToggleRef.current?.focus();
+    }
+  }, [filterOpen]);
 
   useEffect(() => {
     document.title = 'Explore Agent Skills | Skillz Forge';
@@ -146,6 +165,21 @@ export default function Explore() {
     paginationRef.current?.scrollIntoView({ block: 'start' });
   }
 
+  // The filter sidebar (Family + Maturity + Evidence + Release readiness) can
+  // hold 30+ individual filter buttons and is always in the DOM ahead of the
+  // search box / results in source order (it renders first, as an <aside>
+  // before the main results column). On desktop the sidebar is permanently
+  // visible, so a keyboard user has no way around tabbing through every
+  // filter button first. This mirrors `skipToPagination` above: a real,
+  // always-first focusable control that jumps straight past the filters to
+  // the search input, bounding the trip to a single Tab + Enter regardless
+  // of how many families/filters the catalog grows to.
+  function skipFiltersToSearch(e: React.MouseEvent | React.KeyboardEvent) {
+    e.preventDefault();
+    searchInputRef.current?.focus();
+    searchInputRef.current?.scrollIntoView({ block: 'start' });
+  }
+
   async function handleCopy(skill: (typeof catalog.skills)[0]) {
     const ok = await copyInstallCommand(skill);
     if (ok) {
@@ -171,7 +205,10 @@ export default function Explore() {
     <div data-page="explore">
       <Nav />
       <main data-layout="explore" id="main-content" tabIndex={-1}>
-        <aside className="explore-sidebar" data-open={filterOpen} aria-label="Filters">
+        <aside className="explore-sidebar" data-open={filterOpen} aria-label="Filters" ref={sidebarRef} tabIndex={-1}>
+          <button type="button" className="skip-link skip-link--button" onClick={skipFiltersToSearch}>
+            Skip filters, go to search
+          </button>
           <div className="filter-group filter-group-header">
             <h3>Filters</h3>
             <button 
@@ -301,6 +338,7 @@ export default function Explore() {
               onClick={() => setFilterOpen(true)}
               aria-expanded={filterOpen}
               aria-controls="filter-panel"
+              ref={filtersToggleRef}
             >
               Filters {filters.family || filters.maturity || filters.evidence ? '•' : ''}
             </button>
@@ -308,6 +346,7 @@ export default function Explore() {
               <label htmlFor="explore-search" className="sr-only">Search skills</label>
               <input
                 id="explore-search"
+                ref={searchInputRef}
                 type="search"
                 className="input-text"
                 value={filters.query}

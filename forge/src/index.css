@@ -1709,16 +1709,25 @@ input, select, textarea {
     width: min(280px, 86vw);
     z-index: 50;
     transform: translateX(-100%);
-    transition: transform var(--transition);
+    transition: transform var(--transition), visibility 0s linear var(--transition);
     /* Sidebar content (Family/Maturity/Evidence/Release readiness sections)
        is taller than most phone viewports. Without its own scroll container
        the position:fixed box clips lower filter buttons outside the
        viewport entirely, making them impossible to tap or keyboard-select. */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    /* translateX alone moves the panel off-screen but leaves every filter
+       button focusable — a keyboard user tabbing from the top of the page
+       would silently walk through 30+ invisible controls before reaching
+       the "Filters" toggle or search box. visibility:hidden removes it from
+       the tab order entirely while closed; the transition-delay lets the
+       slide-out animation finish before it disappears. */
+    visibility: hidden;
   }
   .explore-sidebar[data-open="true"] {
     transform: translateX(0);
+    visibility: visible;
+    transition: transform var(--transition), visibility 0s linear;
   }
 }
 .filter-group {
