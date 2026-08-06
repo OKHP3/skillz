@@ -1374,6 +1374,22 @@ input, select, textarea {
 [data-theme="light"] .site-footer-copyright {
   color: var(--color-text-muted-light);
 }
+.site-footer-links {
+  text-align: right;
+  font-size: var(--text-xs);
+  white-space: nowrap;
+}
+.site-footer-privacy-link {
+  color: var(--color-text-muted-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+[data-theme="light"] .site-footer-privacy-link {
+  color: var(--color-text-muted-light);
+}
+.site-footer-privacy-link:hover {
+  color: var(--color-copper);
+}
 @media (max-width: 640px) {
   .site-footer-inner {
     grid-template-columns: 1fr;
@@ -1383,8 +1399,8 @@ input, select, textarea {
   .site-footer-built-with {
     white-space: normal;
   }
-  .site-footer-spacer {
-    display: none;
+  .site-footer-links {
+    text-align: center;
   }
 }
 
@@ -2387,6 +2403,49 @@ input, select, textarea {
   color: var(--color-text-muted-light);
   margin-bottom: var(--space-4);
   flex: 1;
+}
+
+/* Privacy */
+.privacy-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: 760px;
+}
+.privacy-section h2 {
+  font-size: var(--text-h3);
+  margin-bottom: var(--space-3);
+}
+.privacy-section p {
+  color: var(--color-text-muted-light);
+  margin-bottom: var(--space-3);
+  line-height: 1.6;
+}
+.privacy-section ul,
+.privacy-section ol {
+  color: var(--color-text-muted-light);
+  line-height: 1.6;
+  margin: 0 0 var(--space-3) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.privacy-section code {
+  background: var(--color-bg-secondary);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.privacy-section a {
+  color: var(--color-copper);
+}
+.privacy-section--note {
+  background: var(--color-bg-secondary);
+  padding: var(--space-6);
+  border-left: 4px solid var(--color-ember);
+}
+.privacy-section--note p {
+  margin-bottom: 0;
 }
 
 /* Activity */

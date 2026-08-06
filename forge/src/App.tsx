@@ -20,6 +20,7 @@ const Compare = lazy(() => import('./pages/Compare'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const Contribute = lazy(() => import('./pages/Contribute'));
 const Activity = lazy(() => import('./pages/Activity'));
+const Privacy = lazy(() => import('./pages/Privacy'));
 
 function Loading() {
   return (
@@ -121,6 +122,7 @@ export default function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contribute" element={<Contribute />} />
             <Route path="/activity" element={<Activity />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </Suspense>

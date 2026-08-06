@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 // Global site footer, rendered once for the whole app (see App.tsx) rather
 // than per-page like <Nav /> — every route should carry the same brand
 // attribution and copyright line, and there is no per-page variation to
@@ -25,7 +27,9 @@ export default function Footer() {
         <p className="site-footer-copyright">
           &copy; {year} OverKill&nbsp;Hill&nbsp;P&sup3;&trade;. All rights reserved.
         </p>
-        <span className="site-footer-spacer" aria-hidden="true" />
+        <span className="site-footer-links">
+          <Link to="/privacy" className="site-footer-privacy-link">Privacy</Link>
+        </span>
       </div>
     </footer>
   );
