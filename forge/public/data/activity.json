@@ -1,85 +1,85 @@
 {
-  "generatedAt": "2026-08-06T20:38:29.208Z",
+  "generatedAt": "2026-08-06T22:29:34.430Z",
   "commits": [
     {
-      "sha": "f4d8009569a7d66e12debdb0344fad03ed61622c",
-      "shortSha": "f4d8009",
-      "message": "Document dossier hybrid live-sync decision (task #71)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:49:55Z",
-      "url": "https://github.com/OKHP3/skillz/commit/f4d8009569a7d66e12debdb0344fad03ed61622c"
+      "sha": "9581a6311b4a10f26565a66b7c15fae7254bcfe0",
+      "shortSha": "9581a63",
+      "message": "Update documentation and add Mermaid workflow examples\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T20:39:13Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9581a6311b4a10f26565a66b7c15fae7254bcfe0"
     },
     {
-      "sha": "0188341e09f59e96d300c78802e889afe87d9eb5",
-      "shortSha": "0188341",
-      "message": "Document dossier hybrid live-sync decision (task #71)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:49:54Z",
-      "url": "https://github.com/OKHP3/skillz/commit/0188341e09f59e96d300c78802e889afe87d9eb5"
+      "sha": "4851491b35cfd8336986b6e071f607a27cb07555",
+      "shortSha": "4851491",
+      "message": "Add LinkedIn post queue and update README\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T20:14:43Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4851491b35cfd8336986b6e071f607a27cb07555"
     },
     {
-      "sha": "cd7e67aa024b028e435c1041e5b877b0e3f8e354",
-      "shortSha": "cd7e67a",
-      "message": "Document git push auth failure workaround for this repo",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:34:23Z",
-      "url": "https://github.com/OKHP3/skillz/commit/cd7e67aa024b028e435c1041e5b877b0e3f8e354"
+      "sha": "36f20f3e59b38f94806371365dffdc80c673ff8e",
+      "shortSha": "36f20f3",
+      "message": "Update README and add competitive landscape scan document\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T20:07:22Z",
+      "url": "https://github.com/OKHP3/skillz/commit/36f20f3e59b38f94806371365dffdc80c673ff8e"
     },
     {
-      "sha": "6f3a5bfa7820db9744ffad54d20036b75a8eabf9",
-      "shortSha": "6f3a5bf",
-      "message": "Sync manifest counts",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:34:23Z",
-      "url": "https://github.com/OKHP3/skillz/commit/6f3a5bfa7820db9744ffad54d20036b75a8eabf9"
+      "sha": "f2c29214905464297c883c34c7c5aeca0749f698",
+      "shortSha": "f2c2921",
+      "message": "Archive planning documents and update project documentation\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T20:04:24Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f2c29214905464297c883c34c7c5aeca0749f698"
     },
     {
-      "sha": "4860aa9b5ebafd1ca62d77aa48c6e62ad6615028",
-      "shortSha": "4860aa9",
-      "message": "Regenerate project-summary.json",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:34:22Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4860aa9b5ebafd1ca62d77aa48c6e62ad6615028"
+      "sha": "e71402a687bd1ea160e2b6731ce2517c8ceb61f5",
+      "shortSha": "e71402a",
+      "message": "Update documentation for publishing process and changelog\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T19:58:14Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e71402a687bd1ea160e2b6731ce2517c8ceb61f5"
     },
     {
-      "sha": "af88567b4f042198552384e23c3dd5f90e1162ba",
-      "shortSha": "af88567",
-      "message": "Regenerate catalog.json",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:34:20Z",
-      "url": "https://github.com/OKHP3/skillz/commit/af88567b4f042198552384e23c3dd5f90e1162ba"
+      "sha": "7f791d1512f9219e86eb97bb0c0878c94afdb64c",
+      "shortSha": "7f791d1",
+      "message": "Add privacy policy page and update site content and styles\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T19:55:59Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7f791d1512f9219e86eb97bb0c0878c94afdb64c"
     },
     {
-      "sha": "03e1dd5c673267b0ce7ea211a50838ae63e8f129",
-      "shortSha": "03e1dd5",
-      "message": "Regenerate activity.json",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:34:19Z",
-      "url": "https://github.com/OKHP3/skillz/commit/03e1dd5c673267b0ce7ea211a50838ae63e8f129"
+      "sha": "1a593be41218b579619c95abe8591e8f0b7dd3f8",
+      "shortSha": "1a593be",
+      "message": "Update forge application UI and data with new discovery features\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T19:44:33Z",
+      "url": "https://github.com/OKHP3/skillz/commit/1a593be41218b579619c95abe8591e8f0b7dd3f8"
     },
     {
-      "sha": "83f99f3e0d8e8252b91a59442576545a32aa2c5a",
-      "shortSha": "83f99f3",
-      "message": "Add regression test proving catalog build hard-fails on a genuinely shallow checkout in CI (task #70)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:34:18Z",
-      "url": "https://github.com/OKHP3/skillz/commit/83f99f3e0d8e8252b91a59442576545a32aa2c5a"
+      "sha": "f70624efee4bbaa4c70721eac53e93a8b5422c19",
+      "shortSha": "f70624e",
+      "message": "Update composer drawer component and logic with tests\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T18:50:41Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f70624efee4bbaa4c70721eac53e93a8b5422c19"
     },
     {
-      "sha": "ad46d8fbe6827b8097629224a4f1dffc1eba1167",
-      "shortSha": "ad46d8f",
-      "message": "Sync manifest counts",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:18Z",
-      "url": "https://github.com/OKHP3/skillz/commit/ad46d8fbe6827b8097629224a4f1dffc1eba1167"
+      "sha": "9e258f09115d47fd16ae3ee24586e40dd270fdc3",
+      "shortSha": "9e258f0",
+      "message": "Refactor comparison page and implement evidence vocabulary utility\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T18:41:13Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9e258f09115d47fd16ae3ee24586e40dd270fdc3"
     },
     {
-      "sha": "6f6ec99d69ac05e195fd6adaf6cdbe464d68de10",
-      "shortSha": "6f6ec99",
-      "message": "Regenerate project-summary.json with corrected capability flags",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T17:31:18Z",
-      "url": "https://github.com/OKHP3/skillz/commit/6f6ec99d69ac05e195fd6adaf6cdbe464d68de10"
+      "sha": "fc31fe356482e6c0146dc661d359384f8a5414cb",
+      "shortSha": "fc31fe3",
+      "message": "Update family documentation and project catalog data\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T18:36:12Z",
+      "url": "https://github.com/OKHP3/skillz/commit/fc31fe356482e6c0146dc661d359384f8a5414cb"
     }
   ],
   "fetchError": null
