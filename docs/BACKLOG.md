@@ -52,7 +52,7 @@ Placeholder families — no SKILL.md content yet. Promote via `okhp3-process-cap
 
 | Family | Status | Notes |
 |---|---|---|
-| `mermaid/` | Mixed (Level 1/3) | `core`, `bpmn`, `publish` promoted to Usable (Level 3); `update`, `repair`, `architecture`, `data` remain Skeleton — promotion path above |
+| `mermaid/` | Mixed (Level 1/3) | `core`, `bpmn`, `publish`, `update`, `repair` promoted to Usable (Level 3); `architecture`, `data` remain Skeleton — promotion path above |
 | `linkedin/` | Skeleton (Level 1) | 3 skills built |
 | `process-capture/` | Skeleton (Level 1) | 1 meta-skill |
 | `notion/` | Draftable (Level 2) | 1 skill: `okhp3-notion-capture-router` |

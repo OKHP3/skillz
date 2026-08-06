@@ -8,6 +8,21 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Changed
 
+- Promoted `okhp3-mermaid-update` and `okhp3-mermaid-repair` from `skeleton` to
+  `usable` maturity, completing the `update + repair` step in the Mermaid promotion
+  priority set in `docs/BACKLOG.md`. Each promotion is backed by a real, non-synthetic
+  worked example: `mermaid/okhp3-mermaid-update/examples/WORKED-EXAMPLE-001.md`
+  documents applying a style-preserving minimum diff (one new Author task node, one
+  rerouted edge) to `skill-promotion-review-analyst-v1.mmd`, producing
+  `skill-promotion-review-analyst-v2.mmd`, with all three validation gates passed
+  (`mmdc` v11.16.0, exit 0).
+  `mermaid/okhp3-mermaid-repair/examples/WORKED-EXAMPLE-001.md` documents diagnosing
+  and repairing a reserved-keyword node-ID parse error (`end` used as a node ID),
+  applying the minimum rename fix, and re-running Gate 1 (`mmdc`, exit 0). Neither
+  worked example claims "evidence-backed" or "validated" status -- per the
+  evidence/maturity vocabulary policy recorded below, Usable means a workflow was
+  exercised, not that it produced a recorded eval/benchmark.
+
 - Promoted `okhp3-mermaid-bpmn` and `okhp3-mermaid-publish` from `draftable` to
   `usable` maturity, completing the `core + bpmn + publish` promotion priority set in
   `docs/BACKLOG.md`. Each promotion is backed by a real, non-synthetic worked example:

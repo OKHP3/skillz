@@ -9,6 +9,7 @@ metadata:
   origin: okhp3/mermaid-theme-builder
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  maturity: usable
   in_scope: "Minimum-change repair of malformed Mermaid syntax or rendering failures after core routing."
   out_of_scope: "Intentional content changes, style redesign, or deletion of source or rendered output."
 ---

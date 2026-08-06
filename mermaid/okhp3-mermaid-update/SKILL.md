@@ -9,6 +9,7 @@ metadata:
   origin: okhp3/mermaid-theme-builder
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  maturity: usable
   in_scope: "Authorized content updates to working Mermaid source while preserving established styling and configuration."
   out_of_scope: "Syntax-only repair, unrequested style replacement, or deletion of source or rendered output."
 ---
