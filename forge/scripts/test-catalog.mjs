@@ -17,9 +17,11 @@ import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { applyEvidencePolicy, hasSubstantiveEvidenceArtifact } from './build-catalog.js';
+import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..', '..');
+const FORGE_ROOT = join(__dirname, '..');
 const CATALOG_PATH = join(__dirname, '..', 'public', 'data', 'catalog.json');
 const SUMMARY_PATH = join(__dirname, '..', 'public', 'data', 'project-summary.json');
 const MANIFEST_PATH = join(__dirname, '..', '..', 'skillz.manifest.json');
@@ -408,6 +410,33 @@ test('every skill has a per-skill detail JSON file with its raw (unstripped) mar
     assert(/^#{1,6}\s/m.test(detail.rawBody) || detail.rawBody.includes('#'),
       `detail file for "${s.name}" rawBody looks stripped of markdown structure`);
   }
+});
+
+// Capability flags: this is the regression test for the exact defect that
+// motivated `capabilities.mjs` — `localStackComposer` sitting hardcoded
+// `false` in project-summary.json while the composer was actually shipped
+// and wired in. Re-derive every flag fresh from the real repo tree (not
+// from build-catalog.js's cached run) and fail if it disagrees with what
+// shipped in project-summary.json.
+test('project-summary.json capabilities match freshly re-derived capabilities.mjs output', () => {
+  assert(existsSync(SUMMARY_PATH), `${SUMMARY_PATH} was not generated`);
+  const summary = JSON.parse(readFileSync(SUMMARY_PATH, 'utf-8'));
+  const fresh = computeCapabilities(FORGE_ROOT);
+  for (const capability of CAPABILITIES) {
+    assert(
+      Object.prototype.hasOwnProperty.call(summary.capabilities, capability.key),
+      `project-summary.json capabilities is missing "${capability.key}" (${capability.description})`
+    );
+    assert(
+      summary.capabilities[capability.key] === fresh[capability.key],
+      `project-summary.json reports capabilities.${capability.key}=${summary.capabilities[capability.key]}, ` +
+        `but the shipped repo tree says it should be ${fresh[capability.key]} (${capability.description})`
+    );
+  }
+  const extraKeys = Object.keys(summary.capabilities).filter(
+    (key) => !CAPABILITIES.some((c) => c.key === key)
+  );
+  assert(extraKeys.length === 0, `project-summary.json has undeclared capability keys not in capabilities.mjs: ${extraKeys.join(', ')}`);
 });
 
 test('project-summary.json exists and matches the catalog it was built from', () => {
