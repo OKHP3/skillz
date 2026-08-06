@@ -75,6 +75,12 @@ center. See
 [`docs/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`](SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md)
 for the observed capability score and M4 gates.
 
+The overkillhill.com dossier now live-syncs these two counts (skill count,
+family count) directly from `project-summary.json` at page load, rather than
+relying on a hand-typed copy of this snapshot; see “Syncing the
+overkillhill.com dossier” in [`docs/PUBLISHING.md`](PUBLISHING.md) for the
+mechanism and what still requires a manual update.
+
 Recommended sections:
 
 1. What Agent Skills are
