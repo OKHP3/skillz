@@ -45,6 +45,21 @@ const RELEASE_READINESS_LABELS: Record<ReleaseReadiness, string> = {
 // card itself (see index.css) further trims paint cost within a page.
 const PAGE_SIZE = 24;
 
+// Shared by the filters-changed effect and goToPage so the URL's query
+// params are always built the same way regardless of which one triggers the
+// update — one is the source of truth for "what's in the URL right now".
+function buildSearchParams(f: FilterState, pageNum: number): Record<string, string> {
+  const params: Record<string, string> = {};
+  if (f.query) params.q = f.query;
+  if (f.family) params.family = f.family;
+  if (f.maturity) params.maturity = f.maturity;
+  if (f.evidence) params.evidence = f.evidence;
+  if (f.releaseReadiness) params.release = f.releaseReadiness;
+  if (f.sort !== 'relevance') params.sort = f.sort;
+  if (pageNum > 1) params.page = String(pageNum);
+  return params;
+}
+
 export default function Explore() {
   const catalog = useCatalog();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -61,7 +76,18 @@ export default function Explore() {
   const [copied, setCopied] = useState<string | null>(null);
   const { isFavorite, toggleFavorite } = useFavorites();
   const [, forceUpdate] = useState(0);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(() => {
+    const p = parseInt(searchParams.get('page') || '1', 10);
+    return Number.isFinite(p) && p > 0 ? p : 1;
+  });
+  // Tracks the filters object from the previous run of the effect below, so
+  // it can tell "the user actually changed a filter" (reset to page 1) apart
+  // from "this effect re-ran for some other reason" — e.g. the lazy
+  // full-body search index finishing its fetch and bumping bodyIndexVersion,
+  // or the catalog context re-rendering with a new (but equal) skills array.
+  // Those unrelated re-runs must NOT clobber a page number restored from the
+  // URL on mount or after Back navigation.
+  const prevFiltersKeyRef = useRef<string | null>(null);
   const paginationRef = useRef<HTMLElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const sidebarRef = useRef<HTMLElement>(null);
@@ -119,15 +145,24 @@ export default function Explore() {
   useEffect(() => {
     const r = searchSkills(catalog.skills, filters);
     setResults(r);
-    setPage(1);
-    const params: Record<string, string> = {};
-    if (filters.query) params.q = filters.query;
-    if (filters.family) params.family = filters.family;
-    if (filters.maturity) params.maturity = filters.maturity;
-    if (filters.evidence) params.evidence = filters.evidence;
-    if (filters.releaseReadiness) params.release = filters.releaseReadiness;
-    if (filters.sort !== 'relevance') params.sort = filters.sort;
-    setSearchParams(params, { replace: true });
+    const filtersKey = JSON.stringify(filters);
+    const filtersActuallyChanged = prevFiltersKeyRef.current !== null && prevFiltersKeyRef.current !== filtersKey;
+    prevFiltersKeyRef.current = filtersKey;
+    if (filtersActuallyChanged) {
+      // A real filter/sort change: start back at page 1, same as before.
+      setPage(1);
+      setSearchParams(buildSearchParams(filters, 1), { replace: true });
+    } else {
+      // First run (mount, or arriving via Back navigation), or a re-run
+      // triggered by something other than the user changing a filter: don't
+      // reset the page — a user who paged to 3, opened a skill, then hit
+      // Back should land back on page 3, not page 1. Just clamp it to the
+      // now-known result count in case the URL's ?page= is stale/out of range.
+      const pc = Math.max(1, Math.ceil(r.length / PAGE_SIZE));
+      const clampedPage = Math.min(page, pc);
+      if (clampedPage !== page) setPage(clampedPage);
+      setSearchParams(buildSearchParams(filters, clampedPage), { replace: true });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, setSearchParams, catalog.skills, bodyIndexVersion]);
 
@@ -143,6 +178,7 @@ export default function Explore() {
   function goToPage(n: number) {
     const clamped = Math.min(Math.max(1, n), pageCount);
     setPage(clamped);
+    setSearchParams(buildSearchParams(filters, clamped), { replace: true });
     // Move scroll back to the top of the page so keyboard and screen-reader
     // users land somewhere sensible after paging, rather than staying
     // scrolled to wherever the "Next"/"Previous" button happened to be.
