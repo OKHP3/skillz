@@ -39,6 +39,17 @@ git-derived `createdAt`/`lastModified`/`commitSha`, verified against direct
 the bar for a future `v0.2.0` -- so this tag marks working, honest
 infrastructure and documentation, not a claim of usable skill content.
 
+No owner-approved release-gate policy existed when this tag was cut. One was
+written retroactively on 2026-08-06 in `docs/PUBLISHING.md` ("Release gate"),
+and that same section reconciles this tag against it honestly: five of seven
+criteria were met at tag time (build pipeline, deterministic tests, deploy
+trigger guard, doc-count agreement, non-fabricated provenance), and two were
+open (public-truth convergence -- the `overkillhill.com` dossier was still
+stale when this was tagged -- and a documented live-deployment check). This
+tag's own scope claim already excluded usable skill content and
+public-surface convergence, so the open criteria do not contradict what was
+claimed; see `docs/PUBLISHING.md` for the full table.
+
 The entries below, previously grouped under `Unreleased`, are the changes
 this tag covers.
 

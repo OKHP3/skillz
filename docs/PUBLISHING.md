@@ -208,6 +208,85 @@ When either happens, whoever has edit access to `OKHP3/OverKill-Hill` should:
 There is no automated trigger for this half -- it remains a manual step, owned
 by whoever maintains `OKHP3/OverKill-Hill`, same as before this decision.
 
+## Release gate
+
+**Decision (2026-08-06, written retroactively):** `v0.1.0` was tagged on
+2026-08-06 without a written release-gate policy existing beforehand -- the
+tag message and the `docs/CHANGELOG.md` entry described what was checked at
+the time, but there was no owner-approved, reusable definition of "what must
+pass before any tag is cut." This section is that definition, written after
+the fact. It also serves as the acceptance checklist for every future tag.
+See "Reconciling `v0.1.0` against this gate" below for an honest accounting
+of which criteria the existing tag met and which were still open when it was
+cut -- the gate is not retroactively rewritten to make `v0.1.0` look like it
+passed criteria it did not actually satisfy.
+
+Before cutting any release tag, all of the following must hold:
+
+- [ ] **Build pipeline passes.** `forge/scripts/build-catalog.js` and
+      `forge/scripts/build-activity.mjs` run to completion without error
+      against the current skill inventory.
+- [ ] **Deterministic regression suite passes.**
+      `forge/scripts/test-catalog.mjs` and `vitest run` (in `forge/`) both
+      pass with no failing tests.
+- [ ] **Deploy trigger regression guard passes.**
+      `forge/scripts/verify-deploy-trigger.mjs` passes, confirming the Pages
+      deploy workflow's trigger paths stay family-agnostic (adding or
+      renaming a family does not silently stop deploys from firing).
+- [ ] **Doc counts agree.** `README.md`, `docs/PUBLIC_SURFACES.md`, and
+      `docs/CHANGELOG.md` all state the same skill count and family count as
+      the generated `forge/public/data/catalog.json` / `skillz.manifest.json`
+      at tag time.
+- [ ] **No fabricated provenance.** Every catalogued skill's
+      `createdAt`/`lastModified`/`commitSha` is derived from real Git
+      history for the checkout being tagged, not a placeholder or
+      shallow-checkout fallback value. (A shallow checkout is allowed to
+      warn and fall back to "Unknown" in local dev; it must never fabricate
+      a synthetic date, and CI must fail closed rather than tag from a
+      shallow checkout -- see `forge-shallow-checkout-provenance` decision.)
+- [ ] **Public-truth convergence, if the tag will be described publicly.**
+      If the release notes or any public surface (e.g. the
+      `overkillhill.com/projects/skillz/` dossier) will describe this tag's
+      state, that public description must already match what the tag
+      actually contains -- not what it is planned to contain next.
+- [ ] **Live verification, when the deploy target is reachable.** If the tag
+      corresponds to a live deployment (e.g. GitHub Pages), fetch the live
+      app/catalog and confirm it reflects the tagged commit's inventory
+      before treating the release as verified -- a passing local build is
+      necessary but not sufficient proof the public artifact matches.
+
+A tag may still be cut with some criteria open, but only if the release
+notes say so explicitly (which criteria passed, which did not, and why it
+was still tagged) rather than implying every criterion passed.
+
+### Reconciling `v0.1.0` against this gate
+
+`v0.1.0` was tagged 2026-08-06 before this policy was written. Checked
+against it retroactively, using the tag message and the corresponding
+`docs/CHANGELOG.md` entry as the source of truth for what was actually
+verified at tag time:
+
+| Gate criterion | Status at `v0.1.0` tag time |
+|---|---|
+| Build pipeline passes | Met -- `build-catalog.js` and `build-activity.mjs` ran clean against the 113-skill/15-family inventory. |
+| Deterministic regression suite passes | Met -- `test-catalog.mjs` and `vitest run` both passed. |
+| Deploy trigger regression guard passes | Met -- `verify-deploy-trigger.mjs` passed. |
+| Doc counts agree | Met -- `README.md`, `docs/PUBLIC_SURFACES.md`, and `docs/CHANGELOG.md` all carried the same 113/15 count at tag time. |
+| No fabricated provenance | Met -- provenance was verified against direct `git log` output rather than assumed. |
+| Public-truth convergence | **Open at tag time.** The `overkillhill.com/projects/skillz/` dossier still read "75 public distribution skills across 12 active families" and mislabeled Compare/Activity as "Planned" when `v0.1.0` was cut; it was only hand-corrected the same day, after the tag. |
+| Live verification against the deployed app | **Not documented as performed** at tag time -- the tag record does not show a live fetch of the deployed Pages site confirming it matched the tagged commit. |
+
+`v0.1.0`'s own tag message and CHANGELOG entry were honest about scope: it
+explicitly claims only "working, honest infrastructure and documentation,"
+not usable skill content or public-surface convergence, and says no skill
+had reached `usable` maturity yet. That framing is consistent with the two
+open criteria above -- the tag did not claim public-truth convergence or
+live verification, and in fact neither had happened yet. This reconciliation
+does not change or re-litigate that decision; it only makes the gate
+criteria explicit going forward so future tags are checked against a
+written bar instead of the ad hoc judgment call `v0.1.0` necessarily relied
+on.
+
 ## Prestige path
 
 The prestige path should be deliberate, not automatic.
