@@ -5,6 +5,7 @@ license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P3)
   version: "0.2.0"
+  maturity: usable
   category: diagramming
   origin: okhp3/mermaid-theme-builder
   homepage: https://overkillhill.com

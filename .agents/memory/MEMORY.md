@@ -8,3 +8,5 @@
 - [GitHub workflow-scope push rejection](github-workflow-scope-push.md) — pushes touching `.github/workflows/*.yml` are rejected (missing `workflow` OAuth scope); revert-then-manual-paste workaround.
 - [HashRouter breaks fragment anchors](hashrouter-skip-links.md) — `href="#id"` skip/jump links hijack navigation under HashRouter; use a button + JS focus instead.
 - [content-visibility insufficient for keyboard access](content-visibility-tab-order.md) — CSS content-visibility:auto defers paint but does not remove elements from tab order; large lists need pagination/virtualization for keyboard a11y.
+- [Repo docs use CRLF](repo-docs-crlf.md) — plain Edit silently fails to match on CRLF files (docs/CHANGELOG.md, .gitignore); use CodeExecution with explicit \r\n.
+- [Mermaid render sandbox fix](mermaid-render-sandbox.md) — mmdc's bundled Chromium can't launch here; install system chromium + PUPPETEER_EXECUTABLE_PATH instead of debugging the script.

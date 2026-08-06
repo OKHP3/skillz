@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-06T19:55:24.924Z",
+  "generatedAt": "2026-08-06T20:38:29.102Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "1a593be",
+  "sourceCommit": "4851491",
   "skillCount": 113,
   "familyCount": 15,
   "families": [
@@ -366,7 +366,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-mermaid-core",
+          "value": "okhp3-mermaid-bpmn",
           "note": null,
           "source": "generated"
         },
@@ -4736,7 +4736,7 @@
       "origin": "okhp3/mermaid-theme-builder",
       "author": "Jamie Hill (OverKill Hill P3)",
       "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
+      "maturity": "usable",
       "evidenceStatus": "none",
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
@@ -4783,9 +4783,9 @@
           "No evaluation design or executable check exists for this package."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-mermaid-core",
@@ -4996,7 +4996,7 @@
       "origin": "okhp3/mermaid-theme-builder",
       "author": "Jamie Hill (OverKill Hill P3)",
       "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
+      "maturity": "usable",
       "evidenceStatus": "none",
       "evidenceNote": "No package evaluation record or executable test surface was found.",
       "status": null,
@@ -5043,9 +5043,9 @@
           "No evaluation design or executable check exists for this package."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-mermaid-repair",

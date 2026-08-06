@@ -8,6 +8,20 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Changed
 
+- Promoted `okhp3-mermaid-bpmn` and `okhp3-mermaid-publish` from `draftable` to
+  `usable` maturity, completing the `core + bpmn + publish` promotion priority set in
+  `docs/BACKLOG.md`. Each promotion is backed by a real, non-synthetic worked example:
+  `mermaid/okhp3-mermaid-bpmn/examples/WORKED-EXAMPLE-001.md` documents producing
+  `skill-promotion-review-analyst-v1.mmd` (a swim-lane BPMN diagram of this repo's own
+  Author/Reviewer/Cataloger skill-promotion review process, with an Exclusive gateway
+  and feedback loop) and passing all three `okhp3-mermaid-core` validation gates.
+  `mermaid/okhp3-mermaid-publish/examples/WORKED-EXAMPLE-001.md` documents rendering
+  that same diagram end-to-end with `references/render-pipeline.sh` (`mmdc` v11.16.0,
+  exit 0), preserving the `.svg`/`.png` output alongside the write-up. Neither worked
+  example claims "evidence-backed" or "validated" status - per the evidence/maturity
+  vocabulary policy already recorded below, Usable means a workflow was exercised, not
+  that it produced a recorded eval/benchmark.
+
 - Removed three superseded pasted Forge checkpoint artifacts from the tracked
   `attached_assets/` working buffer, repaired stale README document links, and
   clarified that the `v0.1.0` entry is a release record rather than evidence of
@@ -189,6 +203,6 @@ this tag covers.
 
 - Verify every active `SKILL.md` frontmatter block.
 - Add GitHub topic tags.
-- Promote Mermaid Core + BPMN + Publish from skeleton to usable maturity (see promotion priority in `BACKLOG.md`).
+- Mermaid Core + BPMN + Publish promoted from skeleton/draftable to usable maturity (see promotion priority in `BACKLOG.md`); `update`, `repair`, `architecture`, `data` remain.
 - Add worked examples and validation checklists.
 - Tag `v0.2.0` after the first `usable`-maturity skill path is complete (see `v0.1.0` above for the infrastructure/documentation bar already met).

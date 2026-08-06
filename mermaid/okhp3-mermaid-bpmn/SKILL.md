@@ -5,6 +5,7 @@ license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P3)
   version: "0.2.0"
+  maturity: usable
   category: diagramming
   origin: okhp3/mermaid-theme-builder
   homepage: https://overkillhill.com
@@ -60,7 +61,7 @@ Be explicit about which is being diagrammed. A process *definition* shows all po
 
 ## Worked examples
 
-`references/process-examples/` contains validated `.mmd` examples (approval-flow, onboarding, procurement) once authored. Currently empty - Phase 1 deliverable.
+`references/process-examples/` contains validated `.mmd` examples. `skill-promotion-review-analyst-v1.mmd` (this repo's own skill-promotion review process) is the first, documented in `examples/WORKED-EXAMPLE-001.md`. Additional named processes (approval-flow, onboarding, procurement) remain open Phase 1 items.
 
 
 ## Scope
