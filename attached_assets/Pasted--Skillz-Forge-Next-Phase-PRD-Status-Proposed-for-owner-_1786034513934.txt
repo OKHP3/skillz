@@ -1,0 +1,206 @@
+# Skillz Forge Next-Phase PRD
+
+**Status:** Proposed for owner approval  
+**Product:** Skillz Forge  
+**Implementation surface:** `forge/` in the Replit project  
+**Product type:** Static, generated distribution and decision hub for portable Agent Skills
+
+## Product Vision
+
+Skillz Forge helps people discover, assess, compose, and act on reusable `SKILL.md` agent contracts without requiring a maintainer to interpret the library manually.
+
+Forge is not the source of truth for the contracts, a hosted agent runtime, a package registry, or a replacement for GitHub. It is the product layer that turns a repository of source artifacts into a coherent user experience.
+
+## Goals
+
+1. Make the public product state truthful, synchronized, and independently verifiable.
+2. Help a visitor select an appropriate skill or workflow for a stated outcome.
+3. Make trust signals understandable without overstating validation.
+4. Let visitors inspect full contracts before relying on them.
+5. Let visitors assemble and export a bounded local stack.
+6. Route contribution, source inspection, and installation to GitHub or the selected agent runtime clearly.
+7. Preserve a fast, static, privacy-conscious architecture.
+
+## Target Users
+
+- AI builders choosing reusable skills for a project.
+- Knowledge and operations practitioners seeking a governed workflow.
+- Developers evaluating a skill’s scope, safety boundaries, evidence, and source.
+- Maintainers reviewing, contributing to, or promoting skills.
+- Visitors arriving with a known task but no knowledge of the family taxonomy.
+
+## Primary Use Cases
+
+1. “I have a task. Which skill should I use?”
+2. “I found a skill. Is it ready enough for my situation?”
+3. “Which skills make up this end-to-end workflow?”
+4. “How do these two skills differ?”
+5. “I need a reusable handoff containing the skills I selected.”
+6. “I found a defect or want to contribute.”
+
+## Product Principles
+
+- GitHub is canonical for source, history, and collaboration.
+- Forge is generated from repository evidence, never a manually maintained second catalog.
+- Uncertainty is visible. Unknown evidence is not converted into reassurance.
+- A suggested stack is guidance, not a claim of compatibility or validation.
+- No backend, account, OAuth, or write-scoped GitHub integration without a separately approved product decision.
+- Public status must be testable from live URLs.
+
+## Functional Requirements
+
+### A. Public Truth and Release Integrity
+
+1. Generate `project-summary.json` from the same build as the catalog.
+2. Mark `localStackComposer` and `guidedDiscoveryAid` as true only when those live features are included in the deployed build.
+3. Define the capability set once in a typed source module or declarative product-capability file; test that it matches the corresponding routes/components.
+4. Replace the manual deploy-family allowlist with a path-independent trigger covering:
+   - `forge/**`
+   - `**/SKILL.md`
+   - `**/FAMILY.md`
+   - `skillz.manifest.json`
+   - `AGENTS.md`
+   - deployment workflow files
+5. Add a deployment test that proves a newly added family would trigger publication.
+6. Establish and document the real publishing path for `overkillhill.com/projects/skillz/`.
+7. Make the dossier consume the generated summary or display a dated, source-linked inventory snapshot with a mandatory update workflow.
+8. Do not claim a release until live Forge, generated summary, and public dossier agree.
+
+### B. Discovery and Decision Support
+
+1. Retain Explore search, filters, sort, family orientation, Compare, and curated stacks.
+2. Replace Home’s automatic 3-second search navigation with explicit submit.
+3. Add optional type-ahead suggestions or recent popular outcomes only if they are source-backed and measurable.
+4. Expand guided discovery from five stacks only after each recommendation can explain:
+   - why it was selected;
+   - what it does not cover;
+   - its evidence and maturity limits;
+   - the next action.
+5. Persist dismissing the guided-discovery panel locally, with an obvious way to reopen it.
+6. Keep search/filter/sort state in shareable URLs.
+
+### C. Skill Inspection and Evidence
+
+1. Retain lazy-loaded, safe full-contract rendering.
+2. Preserve raw GitHub and raw-source exits on every detail page.
+3. Reconcile maturity and evidence vocabulary in one approved policy.
+4. Ensure a visitor never sees a maturity description that conflicts with its evidence state or promotion blocker.
+5. Define whether `usable` requires executed evidence. If not, replace “Evidence-backed and exercised” with wording that is factually correct.
+6. Render a single plain-language trust summary:
+   - contract completeness;
+   - current evidence;
+   - release readiness;
+   - known blockers;
+   - source freshness.
+7. Add a catalog validation rule for unresolved companion references; either fail on them or explicitly classify them as known unresolved links.
+
+### D. Composition and Handoff
+
+1. Retain the browser-local composer and its export formats.
+2. Add clear companion rationale and ordering guidance only where source metadata supports it.
+3. Do not infer compatibility, prerequisites, or conflict rules from names or family membership.
+4. Add a small “stack integrity” panel:
+   - declared companions missing;
+   - unresolved references;
+   - duplicate purposes;
+   - maturity/evidence warnings;
+   - no claim of full validation.
+5. Support clear, accessible removal and local-state reset.
+6. Keep exports self-describing: source URL, generation timestamp, selected skills, notes, evidence caveats, and unresolved companions.
+
+### E. Accessibility and Responsiveness
+
+1. Make the composer a true modal dialog:
+   - `aria-modal="true"`;
+   - focus trap;
+   - restore focus to invoker;
+   - backdrop;
+   - Escape and backdrop close;
+   - inert background while open.
+2. Announce copy, save, add-to-stack, and clear outcomes through polite live regions.
+3. Keep visible focus styling and reduced-motion behavior.
+4. Test narrow mobile widths, keyboard-only navigation, and screen-reader landmarks.
+5. Use pagination, virtualization, or `content-visibility` for the 113-card Explore result list.
+6. Optimize the hero image into responsive modern formats.
+
+### F. Privacy and Analytics
+
+1. Publish a concise privacy notice linked from Forge.
+2. State clearly:
+   - what GA4 receives;
+   - that raw search text is not sent;
+   - what browser-local state is stored;
+   - how visitors can clear local state.
+3. Verify the legal and consent model appropriate to the actual jurisdictions and analytics configuration before making compliance claims.
+4. Do not add user profiling, account tracking, or session replay.
+
+## Non-Functional Requirements
+
+- Static deployment through GitHub Pages remains supported.
+- No secret, token, or credential enters the client bundle.
+- Build must fail on invalid catalog integrity, invalid provenance, or unsupported `live` evidence claims.
+- Every deployed feature claim must be independently checkable from the live site.
+- Initial code payload remains small; contracts load on demand.
+- Generated assets remain reproducible from repository source.
+
+## Information Architecture
+
+- Home: product promise, explicit search, family entry points, trust primer.
+- Explore: guided discovery, search, filters, sortable result list.
+- Family: orientation, intended outcomes, skills, relationship to other families.
+- Detail: what it does, boundaries, trust summary, workflow relationships, full contract, source actions.
+- Stacks: curated, authored workflow paths.
+- Composer: a persistent local handoff workspace.
+- Compare: bounded side-by-side decision support.
+- Activity: clearly labelled build-time repository snapshot.
+- Contribute: GitHub-first contribution routes.
+- FAQ and Privacy: terminology, evidence model, storage, analytics, and limitations.
+
+## Success Criteria
+
+### Release 0: Public Truth
+
+- Live Forge, `project-summary.json`, catalog counts, and public dossier agree.
+- Composer and guided discovery are accurately declared as shipped.
+- Deployment trigger is family-agnostic.
+- At least one external reviewer can verify the result without local source access.
+
+### Release 1: Trustworthy Selection
+
+- A user can find, inspect, compare, and act on a skill without leaving Forge until they intentionally choose a source or runtime exit.
+- No visible maturity/evidence contradiction remains.
+- All companion references are resolved or visibly classified.
+- Keyboard and mobile QA pass for Explore, Detail, Compare, and Composer.
+
+### Release 2: Measured Product Improvement
+
+- Analytics, subject to privacy approval, measure aggregate activation:
+  - Explore-to-detail rate;
+  - detail-to-source/use action rate;
+  - compare creation;
+  - composer export;
+  - guided-discovery completion.
+- No raw search queries or personal data are captured.
+- Future product work is chosen from observed friction, not feature appetite.
+
+## Non-Goals
+
+- Running skills inside Forge.
+- Custom GitHub issue, pull-request, or discussion workflows.
+- User accounts, a database, payments, or a marketplace.
+- Claiming that a stack is validated merely because it is composed.
+- Rebuilding the visual identity or changing frameworks.
+
+## Acceptance Criteria
+
+| Area | Acceptance criterion |
+|---|---|
+| Public state | Live Forge, summary JSON, and dossier show the same current counts and capability status. |
+| Provenance | Sampled skill dates and commit IDs correspond to direct Git history; no fallback deploy dates are fabricated. |
+| Deployment | Adding a new valid family path triggers the Pages workflow without workflow edits. |
+| Trust semantics | Every visible maturity label, evidence state, and blocker produces a non-contradictory plain-language explanation. |
+| Full contracts | A skill’s full `SKILL.md` renders in Forge with raw HTML disabled and source links retained. |
+| Composer | Users can add, reorder, annotate, remove, and export a local stack; dialog keyboard behavior passes. |
+| Mobile | No horizontal overflow at 375 px; filters, navigation, detail actions, and composer remain operable. |
+| Performance | Hero imagery is responsive; result rendering has a scalable strategy for 100+ items. |
+| Privacy | Analytics and local storage are disclosed in a public notice. |
