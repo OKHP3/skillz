@@ -1,85 +1,85 @@
 {
-  "generatedAt": "2026-08-06T17:27:44.486Z",
+  "generatedAt": "2026-08-06T17:33:53.912Z",
   "commits": [
     {
-      "sha": "2ed02937c81edc1f7422bd6214297e5773fd741f",
-      "shortSha": "2ed0293",
-      "message": "updates",
+      "sha": "ad46d8fbe6827b8097629224a4f1dffc1eba1167",
+      "shortSha": "ad46d8f",
+      "message": "Sync manifest counts",
       "author": "OverKill Hill P³",
-      "date": "2026-08-06T16:33:28Z",
-      "url": "https://github.com/OKHP3/skillz/commit/2ed02937c81edc1f7422bd6214297e5773fd741f"
+      "date": "2026-08-06T17:31:18Z",
+      "url": "https://github.com/OKHP3/skillz/commit/ad46d8fbe6827b8097629224a4f1dffc1eba1167"
     },
     {
-      "sha": "532a2f349b88e21fea5bbcc33c6464e35ca63c73",
-      "shortSha": "532a2f3",
-      "message": "\tnew file:   docs/PRD-SKILLZ-FORGE-NEXT-PHASE-2026-08-06.md\n\tnew file:   docs/PROMOTION-STRATEGY-2026-08-06.md\n\tnew file:   docs/SKILLZ-FORGE-PRODUCT-EVALUATION-2026-08-06.md",
-      "author": "OKHP3",
-      "date": "2026-08-06T16:26:05Z",
-      "url": "https://github.com/OKHP3/skillz/commit/532a2f349b88e21fea5bbcc33c6464e35ca63c73"
+      "sha": "6f6ec99d69ac05e195fd6adaf6cdbe464d68de10",
+      "shortSha": "6f6ec99",
+      "message": "Regenerate project-summary.json with corrected capability flags",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:18Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6f6ec99d69ac05e195fd6adaf6cdbe464d68de10"
     },
     {
-      "sha": "eb7858400caba28a6dd1412e82b8672bace66f4c",
-      "shortSha": "eb78584",
-      "message": "\tnew file:   docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md",
-      "author": "OKHP3",
-      "date": "2026-08-06T15:28:40Z",
-      "url": "https://github.com/OKHP3/skillz/commit/eb7858400caba28a6dd1412e82b8672bace66f4c"
+      "sha": "b388d44e6e0d14c1c64e80510ce810136e72eaee",
+      "shortSha": "b388d44",
+      "message": "Regenerate catalog.json with corrected capability flags",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:16Z",
+      "url": "https://github.com/OKHP3/skillz/commit/b388d44e6e0d14c1c64e80510ce810136e72eaee"
     },
     {
-      "sha": "49512103a646409c015b667c7b58f775a389e7cc",
-      "shortSha": "4951210",
-      "message": "\tmodified:   AGENTS.md",
-      "author": "OKHP3",
-      "date": "2026-08-06T12:26:42Z",
-      "url": "https://github.com/OKHP3/skillz/commit/49512103a646409c015b667c7b58f775a389e7cc"
+      "sha": "e0bb91a93348bdbc6e4137eaaf824648ae0982ef",
+      "shortSha": "e0bb91a",
+      "message": "Regenerate activity.json",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:15Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e0bb91a93348bdbc6e4137eaaf824648ae0982ef"
     },
     {
-      "sha": "803a1e2ddada673a4a8a603b34bef96d9744f7e2",
-      "shortSha": "803a1e2",
-      "message": "\trenamed:    package-lock.json -> docs/archive/root-scaffold/package-lock.json\n\trenamed:    package.json -> docs/archive/root-scaffold/package.json\n\tmodified:   AGENTS.md",
-      "author": "OKHP3",
-      "date": "2026-08-06T12:26:38Z",
-      "url": "https://github.com/OKHP3/skillz/commit/803a1e2ddada673a4a8a603b34bef96d9744f7e2"
+      "sha": "7d59d1da45b51a1f13e60b57ccb00ee666284da0",
+      "shortSha": "7d59d1d",
+      "message": "Add regression test asserting project-summary.json capabilities match capabilities.mjs (task #68)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:14Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7d59d1da45b51a1f13e60b57ccb00ee666284da0"
     },
     {
-      "sha": "214d09fbfc51813ed2ab8e05b5e0cf6e8d982f8e",
-      "shortSha": "214d09f",
-      "message": "\tnew file:   .agents/skills/okhp3-artifact-validation/promotion-manifest.json\n\tnew file:   .agents/skills/okhp3-as-is-process-capture/README.md\n\tnew file:   .agents/skills/okhp3-as-is-process-capture/SKILL.md\n\tnew file:   .agents/skills/okhp3-as-is-process-capture/assets/fixtures/as-is-process-example.yaml\n\tnew file:   .agents/skills/okhp3-as-is-process-capture/package.json\n\tnew file:   .agents/skills/okhp3-as-is-process-capture/references/as-is-capture-rules.md\n\tnew file:   .agents/skills/okhp3-as-is-process-capture/scripts/assign-step-ids.mjs\n\tnew file:   .agents/skills/okhp3-as-is-process-capture/tests/validate-skill.test.mjs\n\tnew file:   .agents/skills/okhp3-capture-intake/SKILL.md\n\tnew file:   .agents/skills/okhp3-capture-intake/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-capture-intake/evals/evals.json\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/CHANGELOG.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/LICENSE.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/MANIFEST.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/SKILL.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/evals/evals.json\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/references/actions-and-apps.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/references/eval-and-redteam.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/references/instruction-architecture.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/references/knowledge-engineering.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/references/platform-comparison.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/references/quality-tiers.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/references/repo-overlay.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-builder/references/taxonomy.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-readiness/SKILL.md\n\tnew file:   .agents/skills/okhp3-custom-gpt-readiness/evals/evals.json\n\tnew file:   .agents/skills/okhp3-custom-gpt-readiness/references/readiness-dossier-schema.md\n\tnew file:   .agents/skills/okhp3-decision-model-authoring/README.md\n\tnew file:   .agents/skills/okhp3-decision-model-authoring/SKILL.md\n\tnew file:   .agents/skills/okhp3-decision-model-authoring/assets/fixtures/decision-model-example.yaml\n\tnew file:   .agents/skills/okhp3-decision-model-authoring/package.json\n\tnew file:   .agents/skills/okhp3-decision-model-authoring/references/dmn-modeling-rules.md\n\tnew file:   .agents/skills/okhp3-decision-model-authoring/scripts/validate-decision-model.mjs\n\tnew file:   .agents/skills/okhp3-decision-model-authoring/tests/validate-skill.test.mjs\n\tnew file:   .agents/skills/okhp3-elicitation-interviews/README.md\n\tnew file:   .agents/skills/okhp3-elicitation-interviews/SKILL.md\n\tnew file:   .agents/skills/okhp3-elicitation-interviews/assets/fixtures/question-plan-example.yaml\n\tnew file:   .agents/skills/okhp3-elicitation-interviews/package.json\n\tnew file:   .agents/skills/okhp3-elicitation-interviews/references/babok-elicitation-techniques.md\n\tnew file:   .agents/skills/okhp3-elicitation-interviews/scripts/generate-question-plan.mjs\n\tnew file:   .agents/skills/okhp3-elicitation-interviews/tests/validate-skill.test.mjs\n\tnew file:   .agents/skills/okhp3-future-state-strategy/README.md\n\tnew file:   .agents/skills/okhp3-future-state-strategy/SKILL.md\n\tnew file:   .agents/skills/okhp3-future-state-strategy/assets/fixtures/future-state-example.yaml\n\tnew file:   .agents/skills/okhp3-future-state-strategy/package.json\n\tnew file:   .agents/skills/okhp3-future-state-strategy/references/change-strategy-framework.md\n\tnew file:   .agents/skills/okhp3-future-state-strategy/scripts/generate-future-state.mjs\n\tnew file:   .agents/skills/okhp3-future-state-strategy/tests/validate-skill.test.mjs\n\tnew file:   .agents/skills/okhp3-gpt-skill-conversion-plan/SKILL.md\n\tnew file:   .agents/skills/okhp3-gpt-skill-conversion-plan/evals/evals.json\n\tnew file:   .agents/skills/okhp3-gpt-skill-conversion-plan/references/conversion-dossier-schema.md\n\tnew file:   .agents/skills/okhp3-graduation-gate/SKILL.md\n\tnew file:   .agents/skills/okhp3-graduation-gate/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-graduation-gate/evals/evals.json\n\tnew file:   .agents/skills/okhp3-handoff-packaging/README.md\n\tnew file:   .agents/skills/okhp3-handoff-packaging/SKILL.md\n\tnew file:   .agents/skills/okhp3-handoff-packaging/assets/fixtures/handoff-manifest-example.yaml\n\tnew file:   .agents/skills/okhp3-handoff-packaging/package.json\n\tnew file:   .agents/skills/okhp3-handoff-packaging/references/publication-checklist.md\n\tnew file:   .agents/skills/okhp3-handoff-packaging/scripts/build-publication-bundle.mjs\n\tnew file:   .agents/skills/okhp3-handoff-packaging/tests/validate-skill.test.mjs\n\tmodified:   .agents/skills/okhp3-notion-capture-router/SKILL.md\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/SKILL.md\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/benchmarks/equilibrium-review-2026-07-28.json\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/benchmarks/learning-ledger-2026-07-28.json\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/evals/evals.json\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/examples/core-example.json\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/references/computational-model.md\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/references/glossary.md\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/scripts/calculate-outcome-model.py\n\tnew file:   .agents/skills/okhp3-outcome-modeling-core/tests/test_calculations.py\n\tnew file:   .agents/skills/okhp3-process-capture/SKILL.md\n\tnew file:   .agents/skills/okhp3-process-gap-analysis/README.md\n\tnew file:   .agents/skills/okhp3-process-gap-analysis/SKILL.md\n\tnew file:   .agents/skills/okhp3-process-gap-analysis/assets/fixtures/gap-analysis-example.yaml\n\tnew file:   .agents/skills/okhp3-process-gap-analysis/package.json\n\tnew file:   .agents/skills/okhp3-process-gap-analysis/references/gap-analysis-framework.md\n\tnew file:   .agents/skills/okhp3-process-gap-analysis/scripts/analyze-gaps.mjs\n\tnew file:   .agents/skills/okhp3-process-gap-analysis/tests/validate-skill.test.mjs\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/README.md\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/SKILL.md\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/assets/fixtures/intake-purchase-approval.yaml\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/package.json\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/references/pir-schema.md\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/scripts/generate-pir.mjs\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/scripts/parse-yaml-minimal.mjs\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/scripts/score-intake-completeness.mjs\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/scripts/validate-pir.mjs\n\tnew file:   .agents/skills/okhp3-process-intake-and-scope/tests/validate-skill.test.mjs\n\tnew file:   .agents/skills/okhp3-project-promotion/SKILL.md\n\tnew file:   .agents/skills/okhp3-project-promotion/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-project-promotion/evals/evals.json\n\tnew file:   .agents/skills/okhp3-source-backed-research/SKILL.md\n\tnew file:   .agents/skills/okhp3-source-backed-research/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-source-backed-research/evals/evals.json\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/SKILL.md\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/assets/thread-extract-template.md\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/evals/benchmark.md\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/evals/evals.json\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/references/evidence-map.md\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/references/extraction-contract.md\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/references/extraction-depth-profiles.md\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/references/platform-capture-patterns.md\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/scripts/create_thread_extract.py\n\tnew file:   .agents/skills/okhp3-thread-extract-claude/scripts/validate_package.py\n\tnew file:   .agents/skills/okhp3-triage-and-file/SKILL.md\n\tnew file:   .agents/skills/okhp3-triage-and-file/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-triage-and-file/evals/evals.json",
-      "author": "Jamie Hill",
-      "date": "2026-08-06T03:13:29Z",
-      "url": "https://github.com/OKHP3/skillz/commit/214d09fbfc51813ed2ab8e05b5e0cf6e8d982f8e"
+      "sha": "2159aa7ef21da06fa8d0a4ebd1b7d5fadff1c6e8",
+      "shortSha": "2159aa7",
+      "message": "Derive project-summary.json capabilities from capabilities.mjs instead of hand-set booleans (task #68)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:12Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2159aa7ef21da06fa8d0a4ebd1b7d5fadff1c6e8"
     },
     {
-      "sha": "839f82e0a48cadd0ba1e15632e99b385f6339c3e",
-      "shortSha": "839f82e",
-      "message": "\tnew file:   .agents/skills/okhp3-chatgpt-project-migration/SKILL.md\n\tnew file:   .agents/skills/okhp3-chatgpt-project-migration/evals/evals.json\n\tnew file:   .agents/skills/okhp3-chatgpt-project-migration/references/source-manifest-schema.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/SKILL.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/assets/thread-extract-template.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/evals/benchmark.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/evals/evals.json\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/evals/fixtures/comprehensive-adversarial-export.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/evals/fixtures/mixed-balanced-thread.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/evals/fixtures/rapid-continuity-thread.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/references/evidence-map.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/references/extraction-contract.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/references/extraction-depth-profiles.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/references/platform-capture-patterns.md\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/scripts/create_thread_extract.py\n\tnew file:   .agents/skills/okhp3-thread-context-extraction/scripts/validate_package.py\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/SKILL.md\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/assets/thread-extract-template.md\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/evals/benchmark.md\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/evals/evals.json\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/references/evidence-map.md\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/references/extraction-contract.md\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/references/extraction-depth-profiles.md\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/references/platform-capture-patterns.md\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/scripts/create_thread_extract.py\n\tnew file:   .agents/skills/okhp3-thread-extract-chatgpt/scripts/validate_package.py",
-      "author": "OKHP3",
-      "date": "2026-08-06T01:22:46Z",
-      "url": "https://github.com/OKHP3/skillz/commit/839f82e0a48cadd0ba1e15632e99b385f6339c3e"
+      "sha": "424dc72176186c662ac41bae3042e2cdea03ecdc",
+      "shortSha": "424dc72",
+      "message": "Add capabilities.mjs: single declarative source for capability flags (task #68)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:11Z",
+      "url": "https://github.com/OKHP3/skillz/commit/424dc72176186c662ac41bae3042e2cdea03ecdc"
     },
     {
-      "sha": "0c7c3d1bd177600b6673a64e824de5ef3d353768",
-      "shortSha": "0c7c3d1",
-      "message": "\tmodified:   README.md\n\tmodified:   docs/CHANGELOG.md",
-      "author": "OKHP3",
-      "date": "2026-08-06T00:47:04Z",
-      "url": "https://github.com/OKHP3/skillz/commit/0c7c3d1bd177600b6673a64e824de5ef3d353768"
+      "sha": "21ad43df26f38917cce3d4faa13f668beeb8d389",
+      "shortSha": "21ad43d",
+      "message": "Add next-phase PRD source paste",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:10Z",
+      "url": "https://github.com/OKHP3/skillz/commit/21ad43df26f38917cce3d4faa13f668beeb8d389"
     },
     {
-      "sha": "006cdddb4c6b709df9e90220a825e0880e4e9afd",
-      "shortSha": "006cddd",
-      "message": "\tdeleted:    attached_assets/Pasted--Independent-Verification-Replit-has-completed-all-requ_1785954081801.txt\n\tdeleted:    attached_assets/Pasted--PRD-Skillz-Forge-M4-Convergence-Directive-Status-Autho_1785954090858.txt\n\tdeleted:    attached_assets/Pasted--PRD-Skillz-Forge-M4-live-convergence-and-release-readi_1785953942195.txt\n\tmodified:   README.md\n\tmodified:   docs/CHANGELOG.md",
-      "author": "OKHP3",
-      "date": "2026-08-06T00:46:51Z",
-      "url": "https://github.com/OKHP3/skillz/commit/006cdddb4c6b709df9e90220a825e0880e4e9afd"
+      "sha": "69221df558dfb8305742587bfd6244a334f53974",
+      "shortSha": "69221df",
+      "message": "Add independent product audit source paste",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:09Z",
+      "url": "https://github.com/OKHP3/skillz/commit/69221df558dfb8305742587bfd6244a334f53974"
     },
     {
-      "sha": "a9f3c433a463631d05c30f45bd7832a01ae5fa0f",
-      "shortSha": "a9f3c43",
-      "message": "\tnew file:   .agents/skills/okhp3-overkill-hill-brand/SKILL.md\n\tnew file:   .agents/skills/okhp3-overkill-hill-brand/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-overkill-hill-brand/references/overkill-hill.yaml\n\tnew file:   .agents/skills/okhp3-repl-repo-janitor/SKILL.md\n\tnew file:   .agents/skills/okhp3-repl-repo-janitor/references/naming-conventions.md\n\tnew file:   .agents/skills/okhp3-repl-repo-janitor/scripts/audit-repo.py\n\tmodified:   .agents/skills/okhp3-skill-cataloger/SKILL.md\n\tnew file:   .agents/skills/okhp3-skill-discovery/SKILL.md\n\tnew file:   .agents/skills/okhp3-skill-discovery/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-skill-discovery/evals/evals.json",
-      "author": "Jamie Hill",
-      "date": "2026-08-05T23:04:03Z",
-      "url": "https://github.com/OKHP3/skillz/commit/a9f3c433a463631d05c30f45bd7832a01ae5fa0f"
+      "sha": "b5dc301823d19b8b449ac4a9953b770d23af72b8",
+      "shortSha": "b5dc301",
+      "message": "Add promotion strategy source paste",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-06T17:31:08Z",
+      "url": "https://github.com/OKHP3/skillz/commit/b5dc301823d19b8b449ac4a9953b770d23af72b8"
     }
   ],
   "fetchError": null
