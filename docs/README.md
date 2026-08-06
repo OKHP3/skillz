@@ -20,6 +20,7 @@ at the top level:
 | `PUBLIC_SURFACES.md` | Public information architecture across OverKill Hill, Glee-fully, and AskJamie. |
 | `CHANGELOG.md` | Change log, including the `v0.1.0` tag record and its release-gate reconciliation. |
 | `BACKLOG.md` | Maturity model, promotion priorities, and planned families. |
+| `COMPETITIVE-LANDSCAPE-SCAN-2026-08-06.md` | Research record of comparable agent-skill repos/lists/registries and a differentiation check against BPMN-Mermaid and LinkedIn angle-mining claims. Not a submission. |
 | `STACK-POSITION.md` | Stack position and conceptual layer map. |
 | `TECHNOLOGY-INVENTORY.md` | Technology inventory for the repository. |
 | `SECURITY.md` | Skill supply-chain and employer-data safety posture. |
