@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-08-07T00:01:29.546Z",
+  "generatedAt": "2026-08-07T01:32:48.577Z",
   "commits": [
+    {
+      "sha": "dd5f7b4e7efe01928585271b61c054ffbb58aed1",
+      "shortSha": "dd5f7b4",
+      "message": "Update catalog and project metadata files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-07T00:01:53Z",
+      "url": "https://github.com/OKHP3/skillz/commit/dd5f7b4e7efe01928585271b61c054ffbb58aed1"
+    },
+    {
+      "sha": "58525a71f4f504a9019c4a470b78fe039a136f57",
+      "shortSha": "58525a7",
+      "message": "Fix OverKill Hill stuck publish pipeline: migrate from legacy to Actions-based GitHub Pages deploy\n\nReplit-Task-Id: 5e946ff0-1ef2-4256-97e4-c8534c677648",
+      "author": "overkillhillp3",
+      "date": "2026-08-07T00:01:38Z",
+      "url": "https://github.com/OKHP3/skillz/commit/58525a71f4f504a9019c4a470b78fe039a136f57"
+    },
     {
       "sha": "260ac1ab063d2262647d8eb5c889bcbd0ad01a01",
       "shortSha": "260ac1a",
@@ -64,22 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-06T20:14:43Z",
       "url": "https://github.com/OKHP3/skillz/commit/4851491b35cfd8336986b6e071f607a27cb07555"
-    },
-    {
-      "sha": "36f20f3e59b38f94806371365dffdc80c673ff8e",
-      "shortSha": "36f20f3",
-      "message": "Update README and add competitive landscape scan document\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T20:07:22Z",
-      "url": "https://github.com/OKHP3/skillz/commit/36f20f3e59b38f94806371365dffdc80c673ff8e"
-    },
-    {
-      "sha": "f2c29214905464297c883c34c7c5aeca0749f698",
-      "shortSha": "f2c2921",
-      "message": "Archive planning documents and update project documentation\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T20:04:24Z",
-      "url": "https://github.com/OKHP3/skillz/commit/f2c29214905464297c883c34c7c5aeca0749f698"
     }
   ],
   "fetchError": null
