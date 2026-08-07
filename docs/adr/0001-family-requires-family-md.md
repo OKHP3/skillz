@@ -64,8 +64,8 @@ is not in `SKIP_DIRS` **and** contains a `FAMILY.md` file.
 - `skills/` (and any future non-family top-level directory) is excluded
   automatically, with no denylist maintenance.
 - The Explore page's family filter now shows exactly the 15 real content
-  families, each display-named via `FAMILY_DISPLAY_NAMES` (see also the
-  follow-up decision to keep that map in sync, project tasks #34-#38).
+  families, each display-named via `readFamilyDisplayName()` reading each
+  family's own `FAMILY.md` frontmatter (see "Related Decisions" below).
 
 ### Negative
 
