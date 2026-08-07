@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-08-06T23:56:08.037Z",
+  "generatedAt": "2026-08-07T00:01:29.546Z",
   "commits": [
+    {
+      "sha": "260ac1ab063d2262647d8eb5c889bcbd0ad01a01",
+      "shortSha": "260ac1a",
+      "message": "Update explore page and synchronize manifest data\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T23:56:38Z",
+      "url": "https://github.com/OKHP3/skillz/commit/260ac1ab063d2262647d8eb5c889bcbd0ad01a01"
+    },
+    {
+      "sha": "1d749b4e88581b1466c6c657d383ebe5f03e1fc1",
+      "shortSha": "1d749b4",
+      "message": "Update project data and styling for explore page\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T23:49:52Z",
+      "url": "https://github.com/OKHP3/skillz/commit/1d749b4e88581b1466c6c657d383ebe5f03e1fc1"
+    },
+    {
+      "sha": "12b80b82242e60310082ec4ead76b7b963a59c8c",
+      "shortSha": "12b80b8",
+      "message": "Update site data and FAQ page content\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-06T23:41:33Z",
+      "url": "https://github.com/OKHP3/skillz/commit/12b80b82242e60310082ec4ead76b7b963a59c8c"
+    },
     {
       "sha": "86e11280109af543e7a823e592bdfd852312cc14",
       "shortSha": "86e1128",
@@ -56,30 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-06T20:04:24Z",
       "url": "https://github.com/OKHP3/skillz/commit/f2c29214905464297c883c34c7c5aeca0749f698"
-    },
-    {
-      "sha": "e71402a687bd1ea160e2b6731ce2517c8ceb61f5",
-      "shortSha": "e71402a",
-      "message": "Update documentation for publishing process and changelog\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T19:58:14Z",
-      "url": "https://github.com/OKHP3/skillz/commit/e71402a687bd1ea160e2b6731ce2517c8ceb61f5"
-    },
-    {
-      "sha": "7f791d1512f9219e86eb97bb0c0878c94afdb64c",
-      "shortSha": "7f791d1",
-      "message": "Add privacy policy page and update site content and styles\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T19:55:59Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7f791d1512f9219e86eb97bb0c0878c94afdb64c"
-    },
-    {
-      "sha": "1a593be41218b579619c95abe8591e8f0b7dd3f8",
-      "shortSha": "1a593be",
-      "message": "Update forge application UI and data with new discovery features\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T19:44:33Z",
-      "url": "https://github.com/OKHP3/skillz/commit/1a593be41218b579619c95abe8591e8f0b7dd3f8"
     }
   ],
   "fetchError": null
