@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-08-07T01:32:48.577Z",
+  "generatedAt": "2026-08-08T21:06:58.568Z",
   "commits": [
+    {
+      "sha": "9c6ecd1fc7fa92e24561d7f10e139fb3a18eb8af",
+      "shortSha": "9c6ecd1",
+      "message": "docs: purge orphaned 2026-08-03 session detritus (handoffs/audits/evidence)\n\nRemoved docs/handoffs/, docs/audits/, docs/evidence/ — one-time session\noutput from a meta-audit exercise, never referenced by docs/README.md's\nliving-docs index and superseded by current repo state (ADR-0001,\nskill-promotion mirror, etc. all still exist independently).\n\nAlso fixed a stale FAMILY_DISPLAY_NAMES reference in ADR-0001's\nConsequences section (already replaced by readFamilyDisplayName() per\na later merge, as the ADR's own Related Decisions section notes).",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-07T02:45:03Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9c6ecd1fc7fa92e24561d7f10e139fb3a18eb8af"
+    },
+    {
+      "sha": "6f807c942f8870834131677f76ae41c1f20f916e",
+      "shortSha": "6f807c9",
+      "message": "Update project data and manifest records\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-07T02:44:18Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6f807c942f8870834131677f76ae41c1f20f916e"
+    },
     {
       "sha": "dd5f7b4e7efe01928585271b61c054ffbb58aed1",
       "shortSha": "dd5f7b4",
@@ -64,22 +80,6 @@
       "author": "overkillhillp3",
       "date": "2026-08-06T21:11:23Z",
       "url": "https://github.com/OKHP3/skillz/commit/e0b65a02797d4d10142fe13abb559db5bcc2f351"
-    },
-    {
-      "sha": "9581a6311b4a10f26565a66b7c15fae7254bcfe0",
-      "shortSha": "9581a63",
-      "message": "Update documentation and add Mermaid workflow examples\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T20:39:13Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9581a6311b4a10f26565a66b7c15fae7254bcfe0"
-    },
-    {
-      "sha": "4851491b35cfd8336986b6e071f607a27cb07555",
-      "shortSha": "4851491",
-      "message": "Add LinkedIn post queue and update README\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T20:14:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4851491b35cfd8336986b6e071f607a27cb07555"
     }
   ],
   "fetchError": null
