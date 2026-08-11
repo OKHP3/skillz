@@ -1,3 +1,8 @@
+---
+family: replit
+display_name: Replit
+---
+
 <!-- FAMILY_SUMMARY_START -->
 Agent Skills for building, presenting, deploying, and maintaining projects on the Replit
 platform. Covers the Replit workspace canvas, multi-artifact pnpm monorepo rules, the

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-11T16:08:48.856Z",
+  "generatedAt": "2026-08-11T18:22:20.132Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "1c7c4e0",
+  "sourceCommit": "9023aeb",
   "skillCount": 125,
   "familyCount": 16,
   "families": [
@@ -4541,7 +4541,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
       "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4605,7 +4605,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-06T20:39:13Z",
       "commitSha": "9581a631",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4669,7 +4669,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-05T22:30:03Z",
       "commitSha": "9fc9b8e7",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4733,7 +4733,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
       "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4865,7 +4865,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-06T20:39:13Z",
       "commitSha": "9581a631",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -5996,7 +5996,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-capture/SKILL.md",
       "lastModified": "2026-08-11T09:26:28-05:00",
       "commitSha": "7cd00f65",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -7139,7 +7139,7 @@
       "family": "replit",
       "skillDir": "okhp3-replit-repl-janitor",
       "path": "replit/okhp3-replit-repl-janitor/SKILL.md",
-      "description": "OverKill Hill P³ one-Repl repository cleanup workflow for safely auditing and tidying a single Replit workspace's Git checkout. Use when a user asks to clean up merged or abandoned branches and pull requests, purge stale subrepl-* or agent/* branches, normalize file and folder names, or remove repository detritus. Also activate for \"decrapify this Repl\", \"tidy this repo\", \"prune dead branches\", or \"fix inconsistent filenames\". This is the authoritative one-time cleanup workflow for one Replit checkout; use okhp3-repository-garden for recurring maintenance, okhp3-repository-janitor for multiple local clones, and okhp3-repository-organizer for structural reorganization.",
+      "description": "OverKill Hill P³ one-Repl repository cleanup workflow for safely auditing and tidying a single Replit workspace's Git checkout. Use when a user asks to clean up merged or abandoned branches and pull requests, purge stale subrepl-* or agent/* branches, normalize file and folder names, or remove repository detritus. Also activate for \"decrapify this Repl\", \"tidy this repo\", \"prune dead branches\", or \"fix inconsistent filenames\". This is the authoritative one-time cleanup workflow for one Replit checkout; use okhp3-repository-janitor for recurring maintenance and multiple local clones, and okhp3-repository-organizer for structural reorganization.",
       "version": "1.0.1",
       "license": "MIT",
       "category": "developer-tooling",
@@ -7157,7 +7157,6 @@
       "triggers": [],
       "avoid": [],
       "companions": [
-        "okhp3-repository-garden",
         "okhp3-repository-janitor",
         "okhp3-repository-organizer"
       ],
@@ -7489,7 +7488,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-08-11T09:26:28-05:00",
       "commitSha": "7cd00f65",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "social-posting",
@@ -7618,7 +7617,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-08-11T09:26:28-05:00",
       "commitSha": "7cd00f65",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "social-posting",
@@ -7683,7 +7682,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-08-11T09:26:28-05:00",
       "commitSha": "7cd00f65",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "social-posting",
@@ -8741,7 +8740,7 @@
         "evaluatedSkillVersion": "0.1.0",
         "evalCount": 4,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 1,
         "scriptCount": 1,
         "lastEvidenceDate": null,
