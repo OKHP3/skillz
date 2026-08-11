@@ -1,0 +1,89 @@
+# GitHub Actions workflow for the OKHP3/skillz repository
+#
+# SETUP INSTRUCTIONS
+# ------------------
+# 1. Copy this file to OKHP3/skillz at:
+#      .github/workflows/verify-skill-landing.yml
+#
+# 2. In the OKHP3/skillz repository settings, add a secret named:
+#      VERIFY_LANDING_PAT
+#    Set it to a GitHub personal access token that has:
+#      - repo scope on glee-fully-chai-chasers (to dispatch the workflow)
+#
+# 3. After each skill PR merges to main in OKHP3/skillz, this workflow fires
+#    and sends a repository_dispatch event to glee-fully-chai-chasers, passing
+#    the merge commit SHA.  The receiving workflow
+#    (.github/workflows/verify-skill-landing.yml in glee-fully-chai-chasers)
+#    locates the matching promotion manifest and runs verify_skill_landing.py.
+#
+# HOW IT WORKS
+# ------------
+# - Triggers on every push to main (covers both direct pushes and PR merges).
+# - Sends a repository_dispatch event of type "skillz-push" to the incubator
+#   repo (glee-fully-chai-chasers) with the push commit SHA in the payload.
+# - The incubator workflow matches that SHA against
+#   canonical_target.accepted_commit_or_hash in each promotion manifest and
+#   runs verify_skill_landing.py for any matches.
+#
+# ALTERNATIVE: run-in-place
+# If you prefer to run the verification directly inside OKHP3/skillz without
+# dispatching to the incubator, replace the "Dispatch" step with:
+#
+#   - name: Check out incubator (for verify script and manifests)
+#     uses: actions/checkout@v4
+#     with:
+#       repository: OKHP3/glee-fully-chai-chasers   # adjust if repo name differs
+#       token: ${{ secrets.VERIFY_LANDING_PAT }}
+#       path: incubator
+#
+#   - name: Run landing verification
+#     env:
+#       GITHUB_PAT: ${{ secrets.VERIFY_LANDING_PAT }}
+#     run: |
+#       python3 incubator/skills/promotion-handoff/verify_skill_landing.py \
+#         --manifest incubator/skills/promotion-handoff/promotion-manifest-<skill>.json \
+#         --ref ${{ github.sha }} \
+#         --token-env GITHUB_PAT
+
+name: Notify landing verification
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch-verify:
+    name: Dispatch landing verification to incubator
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Dispatch repository_dispatch to glee-fully-chai-chasers
+        uses: actions/github-script@v7
+        env:
+          VERIFY_LANDING_PAT: ${{ secrets.VERIFY_LANDING_PAT }}
+        with:
+          github-token: ${{ env.VERIFY_LANDING_PAT }}
+          script: |
+            // Replace OWNER/REPO below with the actual owner and repo name of
+            // the incubator project (glee-fully-chai-chasers).
+            const INCUBATOR_OWNER = "OKHP3";           // <-- adjust if needed
+            const INCUBATOR_REPO  = "glee-fully-chai-chasers"; // <-- adjust if needed
+
+            await github.rest.repos.createDispatchEvent({
+              owner: INCUBATOR_OWNER,
+              repo:  INCUBATOR_REPO,
+              event_type: "skillz-push",
+              client_payload: {
+                commit_sha:  context.sha,
+                ref:         context.ref,
+                triggered_by: "OKHP3/skillz push to main",
+              },
+            });
+
+            console.log(
+              `Dispatched skillz-push for commit ${context.sha} to ` +
+              `${INCUBATOR_OWNER}/${INCUBATOR_REPO}`
+            );
