@@ -20,21 +20,21 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 113,
+  "distributionSkillCount": 125,
   "activeFamilyCount": 15,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 16,
+  "projectLocalSupportSkillCount": 40,
   "maturityCounts": {
-    "draftable": 83,
-    "skeleton": 25,
+    "draftable": 90,
+    "skeleton": 30,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 50,
+    "not-run": 57,
     "none": 33,
     "local-checks": 22,
-    "live": 2
+    "live": 7
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
@@ -114,12 +114,19 @@
       ]
     },
     {
-      "name": "linkedin",
+      "name": "social-posting",
       "status": "draftable",
       "skills": [
+        "okhp3-discord-comment",
+        "okhp3-discord-post",
+        "okhp3-facebook-comment",
+        "okhp3-facebook-post",
         "okhp3-linkedin-angles",
+        "okhp3-linkedin-comment",
         "okhp3-linkedin-post",
-        "okhp3-linkedin-voice"
+        "okhp3-linkedin-voice",
+        "okhp3-twitter-comment",
+        "okhp3-twitter-post"
       ]
     },
     {
@@ -259,7 +266,7 @@
       "AskJamie Lens System"
     ]
   },
-  "distributionFamilyCount": 15,
-  "countsGeneratedAt": "2026-08-11T16:05:45.042Z",
+  "distributionFamilyCount": 16,
+  "countsGeneratedAt": "2026-08-11T16:07:34.608Z",
   "countsGeneratedFrom": "forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

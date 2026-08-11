@@ -35,7 +35,7 @@ Priority order:
 
 Rationale: `core + bpmn + publish` produces the strongest differentiated claim — BPMN-aware Mermaid generation with validation and publishing discipline. `update + repair` complete the lifecycle; generation is incomplete without a maintenance path.
 
-The first LinkedIn skill to promote should be `okhp3-linkedin-angles` — artifact-mining is more differentiated than generic voice polishing or post drafting.
+The first Social Posting skill to promote should be `okhp3-linkedin-angles` because artifact-mining is more differentiated than generic voice polishing or post drafting.
 
 `okhp3-refolddec-core` promotes when at least one full fold / publish / refold cycle has been run end-to-end and the instructions can be followed without explanation.
 
@@ -53,7 +53,7 @@ Placeholder families — no SKILL.md content yet. Promote via `okhp3-process-cap
 | Family | Status | Notes |
 |---|---|---|
 | `mermaid/` | Mixed (Level 1/3) | `core`, `bpmn`, `publish`, `update`, `repair` promoted to Usable (Level 3); `architecture`, `data` remain Skeleton — promotion path above |
-| `linkedin/` | Skeleton (Level 1) | 3 skills built |
+| `social-posting/` | Skeleton (Level 1) | 10 skills built across LinkedIn, Facebook, X/Twitter, and Discord |
 | `process-capture/` | Skeleton (Level 1) | 1 meta-skill |
 | `notion/` | Draftable (Level 2) | 1 skill: `okhp3-notion-capture-router` |
 | `refolddec/` | Skeleton (Level 1) | 1 skill: `okhp3-refolddec-core` |
@@ -75,7 +75,7 @@ Update this file (`BACKLOG.md`) when:
 
 | Date | Task | Times observed | Candidate family | Status |
 |---|---|---|---|---|
-| YYYY-MM-DD | One-line description of the recurring task | N | mermaid / linkedin / process-capture / refolddec / glee-fully / askjamie / new | captured / drafting / built |
+| YYYY-MM-DD | One-line description of the recurring task | N | mermaid / social-posting / process-capture / refolddec / glee-fully / askjamie / new | captured / drafting / built |
 
 ## Entries
 
