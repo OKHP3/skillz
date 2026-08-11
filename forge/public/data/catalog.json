@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-11T18:20:59.596Z",
+  "generatedAt": "2026-08-11T18:56:13.858Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "6b765d8",
+  "sourceCommit": "a81b7a8",
   "skillCount": 125,
   "familyCount": 16,
   "families": [
@@ -7139,7 +7139,7 @@
       "family": "replit",
       "skillDir": "okhp3-replit-repl-janitor",
       "path": "replit/okhp3-replit-repl-janitor/SKILL.md",
-      "description": "OverKill Hill P³ one-Repl repository cleanup workflow for safely auditing and tidying a single Replit workspace's Git checkout. Use when a user asks to clean up merged or abandoned branches and pull requests, purge stale subrepl-* or agent/* branches, normalize file and folder names, or remove repository detritus. Also activate for \"decrapify this Repl\", \"tidy this repo\", \"prune dead branches\", or \"fix inconsistent filenames\". This is the authoritative one-time cleanup workflow for one Replit checkout; use okhp3-repository-garden for recurring maintenance, okhp3-repository-janitor for multiple local clones, and okhp3-repository-organizer for structural reorganization.",
+      "description": "OverKill Hill P³ one-Repl repository cleanup workflow for safely auditing and tidying a single Replit workspace's Git checkout. Use when a user asks to clean up merged or abandoned branches and pull requests, purge stale subrepl-* or agent/* branches, normalize file and folder names, or remove repository detritus. Also activate for \"decrapify this Repl\", \"tidy this repo\", \"prune dead branches\", or \"fix inconsistent filenames\". This is the authoritative one-time cleanup workflow for one Replit checkout; use okhp3-repository-janitor for recurring maintenance and multiple local clones, and okhp3-repository-organizer for structural reorganization.",
       "version": "1.0.1",
       "license": "MIT",
       "category": "developer-tooling",
@@ -7157,7 +7157,6 @@
       "triggers": [],
       "avoid": [],
       "companions": [
-        "okhp3-repository-garden",
         "okhp3-repository-janitor",
         "okhp3-repository-organizer"
       ],

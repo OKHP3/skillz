@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-08-11T18:20:59.805Z",
+  "generatedAt": "2026-08-11T18:56:14.156Z",
   "commits": [
+    {
+      "sha": "407054dd1cb10547847a86b0bb4895a2fb143202",
+      "shortSha": "407054d",
+      "message": "fix: unblock Skillz Forge Pages deploy",
+      "author": "Jamie Hill",
+      "date": "2026-08-11T18:23:21Z",
+      "url": "https://github.com/OKHP3/skillz/commit/407054dd1cb10547847a86b0bb4895a2fb143202"
+    },
     {
       "sha": "9023aebed81c02911ed79432883af87eb48ac796",
       "shortSha": "9023aeb",
@@ -72,14 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-11T14:42:56Z",
       "url": "https://github.com/OKHP3/skillz/commit/0e796574111a3246b5841fc90b382a3995dc6a73"
-    },
-    {
-      "sha": "7cd00f65a48f28e19120b3e38d9978ed6ca933c3",
-      "shortSha": "7cd00f6",
-      "message": "\tmodified:   .agents/skills/.catalog-meta.json\n\tmodified:   .agents/skills/README.md\n\tmodified:   .catalog-meta.json\n\tmodified:   AGENTS.md\n\tmodified:   README.md\n\tmodified:   abrahamic/FAMILY.md\n\tmodified:   agent-foundry/FAMILY.md\n\tmodified:   askjamie/FAMILY.md\n\tmodified:   community/FAMILY.md\n\tmodified:   context-extraction/FAMILY.md\n\tmodified:   docs/BACKLOG.md\n\tmodified:   docs/CHANGELOG.md\n\tmodified:   docs/LINKEDIN-POST-QUEUE-2026-08-06.md\n\tmodified:   docs/PUBLIC_SURFACES.md\n\tmodified:   docs/PUBLISHING.md\n\tmodified:   docs/SECURITY.md\n\tmodified:   forge/public/data/catalog.json\n\tmodified:   forge/public/data/project-summary.json\n\tmodified:   forge/public/data/search-index.json\n\tdeleted:    forge/public/data/skills/linkedin/okhp3-linkedin-angles.json\n\tdeleted:    forge/public/data/skills/linkedin/okhp3-linkedin-post.json\n\tdeleted:    forge/public/data/skills/linkedin/okhp3-linkedin-voice.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-discord-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-discord-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-facebook-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-facebook-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-linkedin-angles.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-linkedin-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-linkedin-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-linkedin-voice.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-twitter-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-twitter-post.json\n\tmodified:   glee-fully/FAMILY.md\n\tmodified:   knowledge-operations/FAMILY.md\n\tmodified:   lifetrkr/FAMILY.md\n\tdeleted:    linkedin/FAMILY.md\n\tmodified:   mermaid/FAMILY.md\n\tmodified:   notion/FAMILY.md\n\tmodified:   outcome-modeling/FAMILY.md\n\tmodified:   process-capture/FAMILY.md\n\tmodified:   process-capture/okhp3-process-capture/SKILL.md\n\tmodified:   refolddec/FAMILY.md\n\tmodified:   skillz.manifest.json\n\tnew file:   social-posting/FAMILY.md\n\tnew file:   social-posting/okhp3-discord-comment/SKILL.md\n\tnew file:   social-posting/okhp3-discord-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-discord-post/SKILL.md\n\tnew file:   social-posting/okhp3-discord-post/evals/evals.json\n\tnew file:   social-posting/okhp3-facebook-comment/SKILL.md\n\tnew file:   social-posting/okhp3-facebook-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-facebook-post/SKILL.md\n\tnew file:   social-posting/okhp3-facebook-post/evals/evals.json\n\trenamed:    linkedin/okhp3-linkedin-angles/SKILL.md -> social-posting/okhp3-linkedin-angles/SKILL.md\n\trenamed:    linkedin/okhp3-linkedin-angles/references/angle-registry.md -> social-posting/okhp3-linkedin-angles/references/angle-registry.md\n\trenamed:    linkedin/okhp3-linkedin-angles/references/angle-taxonomy.md -> social-posting/okhp3-linkedin-angles/references/angle-taxonomy.md\n\tnew file:   social-posting/okhp3-linkedin-comment/SKILL.md\n\tnew file:   social-posting/okhp3-linkedin-comment/evals/evals.json\n\trenamed:    linkedin/okhp3-linkedin-post/SKILL.md -> social-posting/okhp3-linkedin-post/SKILL.md\n\trenamed:    linkedin/okhp3-linkedin-post/references/bfs-scrub-checklist.md -> social-posting/okhp3-linkedin-post/references/bfs-scrub-checklist.md\n\trenamed:    linkedin/okhp3-linkedin-voice/SKILL.md -> social-posting/okhp3-linkedin-voice/SKILL.md\n\trenamed:    linkedin/okhp3-linkedin-voice/references/voice-rules.md -> social-posting/okhp3-linkedin-voice/references/voice-rules.md\n\tnew file:   social-posting/okhp3-twitter-comment/SKILL.md\n\tnew file:   social-posting/okhp3-twitter-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-twitter-post/SKILL.md\n\tnew file:   social-posting/okhp3-twitter-post/evals/evals.json\n\tmodified:   universal/FAMILY.md",
-      "author": "OKHP3",
-      "date": "2026-08-11T14:26:28Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7cd00f65a48f28e19120b3e38d9978ed6ca933c3"
     }
   ],
   "fetchError": null

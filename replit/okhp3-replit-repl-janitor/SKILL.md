@@ -8,8 +8,8 @@ description: >
   repository detritus. Also activate for "decrapify this Repl", "tidy this
   repo", "prune dead branches", or "fix inconsistent filenames". This is the
   authoritative one-time cleanup workflow for one Replit checkout; use
-  okhp3-repository-garden for recurring maintenance, okhp3-repository-janitor
-  for multiple local clones, and okhp3-repository-organizer for structural
+  okhp3-repository-janitor for recurring maintenance and multiple local clones,
+  and okhp3-repository-organizer for structural
   reorganization.
 license: MIT
 metadata:
@@ -49,7 +49,7 @@ evidence-led, and destructive only after the owner approves exact line items.
 
 | In scope | Out of scope |
 |---|---|
-| One-time cleanup of one Replit checkout | Recurring maintenance; use `okhp3-repository-garden` |
+| One-time cleanup of one Replit checkout | Recurring maintenance; use `okhp3-repository-janitor` |
 | Branch and PR classification against a verified base | Multi-clone reconciliation; use `okhp3-repository-janitor` |
 | Naming and detritus audit | Structural redesign; use `okhp3-repository-organizer` |
 | Exact, owner-approved cleanup execution | Autonomous deletion, merging, renaming, or publishing |
