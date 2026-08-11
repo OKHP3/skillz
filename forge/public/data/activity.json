@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-08-11T16:08:48.926Z",
+  "generatedAt": "2026-08-11T18:20:59.805Z",
   "commits": [
+    {
+      "sha": "9023aebed81c02911ed79432883af87eb48ac796",
+      "shortSha": "9023aeb",
+      "message": "Bump pnpm/action-setup from 6.0.9 to 6.0.10 (#41)\n\nBumps [pnpm/action-setup](https://github.com/pnpm/action-setup) from 6.0.9 to 6.0.10.\n- [Release notes](https://github.com/pnpm/action-setup/releases)\n- [Commits](https://github.com/pnpm/action-setup/compare/0ebf47130e4866e96fce0953f49152a61190b271...0977fd99725f1db4007ccb2928dbb4e90d06cc86)\n\n---\nupdated-dependencies:\n- dependency-name: pnpm/action-setup\n  dependency-version: 6.0.10\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+      "author": "dependabot[bot]",
+      "date": "2026-08-11T17:00:57Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9023aebed81c02911ed79432883af87eb48ac796"
+    },
+    {
+      "sha": "37527f228e78af6b2a52410594b6940882a4e4be",
+      "shortSha": "37527f2",
+      "message": "ci: add verify-skill-landing workflow — dispatch-based trigger from incubator",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-11T16:29:36Z",
+      "url": "https://github.com/OKHP3/skillz/commit/37527f228e78af6b2a52410594b6940882a4e4be"
+    },
+    {
+      "sha": "6b765d82adb1c021cf9a2de50fcedce213a38884",
+      "shortSha": "6b765d8",
+      "message": "Update project data and manifest configuration files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-11T16:09:02Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6b765d82adb1c021cf9a2de50fcedce213a38884"
+    },
     {
       "sha": "1c7c4e08775366a58ce3e9b7c640c683eaf92e62",
       "shortSha": "1c7c4e0",
@@ -56,30 +80,6 @@
       "author": "OKHP3",
       "date": "2026-08-11T14:26:28Z",
       "url": "https://github.com/OKHP3/skillz/commit/7cd00f65a48f28e19120b3e38d9978ed6ca933c3"
-    },
-    {
-      "sha": "e58bc9fc983e6fc61c43d75962f867aa194c6a6c",
-      "shortSha": "e58bc9f",
-      "message": "chore: refresh technology inventory (#42)\n\nCo-authored-by: OKHP3 <222550606+OKHP3@users.noreply.github.com>",
-      "author": "github-actions[bot]",
-      "date": "2026-08-10T23:45:32Z",
-      "url": "https://github.com/OKHP3/skillz/commit/e58bc9fc983e6fc61c43d75962f867aa194c6a6c"
-    },
-    {
-      "sha": "4f492e08de91d519c242e972e4baa7bdc38f0afb",
-      "shortSha": "4f492e0",
-      "message": "Update project data files and skill manifest\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-09T01:49:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4f492e08de91d519c242e972e4baa7bdc38f0afb"
-    },
-    {
-      "sha": "defce2a9eb786ff12ef152806d9c1cedc5dcf7ad",
-      "shortSha": "defce2a",
-      "message": "updates",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-08T23:24:59Z",
-      "url": "https://github.com/OKHP3/skillz/commit/defce2a9eb786ff12ef152806d9c1cedc5dcf7ad"
     }
   ],
   "fetchError": null
