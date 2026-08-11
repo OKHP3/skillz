@@ -4,7 +4,7 @@ description: Capture a recurring task as either a backlog entry or a new skill s
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.0"
+  version: "1.1.1"
   category: meta-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -27,7 +27,7 @@ The intake mechanism. Turns "I just did this for the third time" into a structur
    - **Not ready** -> write a `docs/BACKLOG.md` entry (date, task, times observed, candidate family, status: captured). Stop here.
    - **Ready** -> continue to step 3.
 
-3. **Determine target family.** Does this fit an existing family (`mermaid/`, `linkedin/`, or this repo's own `process-capture/`), or does it need a new top-level family? If new, note this explicitly — adding a new family directory is a bigger decision than adding a skill within one, and the user should confirm.
+3. **Determine target family.** Does this fit an existing family (`mermaid/`, `social-posting/`, or this repo's own `process-capture/`), or does it need a new top-level family? If new, note this explicitly — adding a new family directory is a bigger decision than adding a skill within one, and the user should confirm.
 
 4. **Produce the skeleton.** Frontmatter (`name`, "pushy" `description` per skill-creator's triggering guidance) + section-header outline matching the body's intended structure, with 1-2 sentence descriptions per section and pointers to reference files that will need authoring. Match the structure of existing skills in this repo (core+domain pattern for multi-skill families, single-skill pattern for self-contained ones).
 

@@ -1,7 +1,12 @@
 ---
 family: replit
 display_name: Replit
+skill_count: 5
+generated_by: okhp3-skill-cataloger v1.7.0
+generated_at: 2026-08-11T18:58:48Z
 ---
+
+# replit
 
 <!-- FAMILY_SUMMARY_START -->
 Agent Skills for building, presenting, deploying, and maintaining projects on the Replit
@@ -12,12 +17,16 @@ non-obvious rules and workflows that save multiple debugging turns on any seriou
 project.
 <!-- FAMILY_SUMMARY_END -->
 
+## Skills (5)
+
 <!-- FAMILY_INVENTORY_START -->
-| Skill | Version | Description |
+*5 skills &nbsp;·&nbsp; inventory last updated: **August 11, 2026 at 18:58 UTC***
+
+| Skill | Description | Version |
 |---|---|---|
-| okhp3-replit-canvas-board | 1.0.0 | Structured canvas presentation board layout for judges and reviewers |
-| okhp3-replit-build-in-public | 1.0.0 | Full designathon submission playbook — canvas, artifacts, dual deployment |
-| okhp3-replit-design-pipeline | 1.0.0 | Extract → sandbox → variant → graduate design iteration loop |
-| okhp3-replit-multi-artifact | 1.0.0 | Five rules that prevent silent failures in a pnpm multi-artifact monorepo |
-| okhp3-replit-repl-janitor | 1.0.1 | Safe, evidence-led one-time cleanup of a Replit workspace Git checkout |
+| [okhp3-replit-build-in-public](okhp3-replit-build-in-public/SKILL.md) | Full playbook for a Replit Designathon competition submission — canvas organisation for judges, a... | 1.0.1 |
+| [okhp3-replit-canvas-board](okhp3-replit-canvas-board/SKILL.md) | Plan and build a structured multi-frame Replit canvas presentation board — hero rows, labeled zon... | 1.0.0 |
+| [okhp3-replit-design-pipeline](okhp3-replit-design-pipeline/SKILL.md) | The complete Replit design iteration loop as a single coherent workflow — extract → sandbox → var... | 1.0.0 |
+| [okhp3-replit-multi-artifact](okhp3-replit-multi-artifact/SKILL.md) | Navigate and build in a Replit pnpm multi-artifact monorepo without silent failures. Covers the n... | 1.0.0 |
+| [okhp3-replit-repl-janitor](okhp3-replit-repl-janitor/SKILL.md) | OverKill Hill P³ one-Repl repository cleanup workflow for safely auditing and tidying a single Re... | 1.0.1 |
 <!-- FAMILY_INVENTORY_END -->
