@@ -1,6 +1,62 @@
 {
-  "generatedAt": "2026-08-09T00:54:40.513Z",
+  "generatedAt": "2026-08-11T16:05:45.482Z",
   "commits": [
+    {
+      "sha": "93eff2ed68e21c67d034cd9a2c39d076704476cf",
+      "shortSha": "93eff2e",
+      "message": "Merge pull request #44: Add okhp3-replit-repl-janitor to replit/ family\n\nfeat(replit): add okhp3-replit-repl-janitor v1.0.1 (fifth replit/ skill)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-11T15:29:10Z",
+      "url": "https://github.com/OKHP3/skillz/commit/93eff2ed68e21c67d034cd9a2c39d076704476cf"
+    },
+    {
+      "sha": "d927b44384232bbaecc0bf4c89094ac4f1ba1a79",
+      "shortSha": "d927b44",
+      "message": "feat(replit): add okhp3-replit-repl-janitor v1.0.1\n\nFifth skill in the replit/ family. Safe, evidence-led cleanup of one\nReplit workspace Git checkout — four-bucket branch classification, bundled\naudit-repo.py script, kebab-case naming conventions, and detritus triage\npolicy. Destructive operations execute only after owner approval of exact\nline items.\n\n- Benchmark: with_skill mean 0.9167, delta +0.75 (3 live subagent runs)\n- Phase 8 trigger eval: 20/20, recall 1.0, precision 1.0\n- All 8 package files byte-equal with runtime source (SHA-256 960898a5)\n- Python 3 + Git required for audit-repo.py\n- MIT license",
+      "author": "Replit Agent",
+      "date": "2026-08-11T15:23:45Z",
+      "url": "https://github.com/OKHP3/skillz/commit/d927b44384232bbaecc0bf4c89094ac4f1ba1a79"
+    },
+    {
+      "sha": "7ef60c8e56602ec8acce7ada409c6e9318c55df4",
+      "shortSha": "7ef60c8",
+      "message": "Merge pull request #43: Add 4 Replit family skills\n\nfeat(replit): add replit/ family with 4 new Agent Skills",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-11T15:16:57Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7ef60c8e56602ec8acce7ada409c6e9318c55df4"
+    },
+    {
+      "sha": "0e796574111a3246b5841fc90b382a3995dc6a73",
+      "shortSha": "0e79657",
+      "message": "feat(replit): add replit/ family with 4 new skills\n\nAdds the replit/ family directory with four new Agent Skills extracted\nfrom the Glee-fully Chai Chasers Designathon project:\n\n- okhp3-replit-canvas-board v1.0.0\n  Structured canvas presentation board layout — hero rows, labeled zones,\n  iframe lifecycle (building→live), focusCanvasShapes presentation close.\n\n- okhp3-replit-build-in-public v1.0.0\n  Full designathon submission playbook — canvas organisation for judges,\n  artifact selection, dual deployment (Replit Publish + GitHub Pages),\n  session handoff, and building-in-public commit discipline.\n\n- okhp3-replit-design-pipeline v1.0.0\n  Complete Replit design iteration loop: extract → sandbox → variant →\n  graduate. Covers DESIGN subagent brief anatomy, variant labelling on\n  canvas, and the GENERAL vs. DESIGN subagent graduation decision.\n\n- okhp3-replit-multi-artifact v1.0.0\n  Five rules that prevent silent failures in a Replit pnpm multi-artifact\n  monorepo: BASE_URL prefix discipline, PORT env var reading, managed\n  workflow naming, pnpm catalog drift, and workspace:* shared libraries.\n\nAlso adds replit/FAMILY.md with inventory table and summary block.\n\nAll four skills passed public-safety review (no credentials, private URLs,\ninternal IDs, or employer data). MIT license declared on all four.\n\nKnown evaluation gap: okhp3-replit-build-in-public benchmark eval_id 4\n(without_skill, dual-deployment scenario) shows 0.5 pass rate — noted in\npromotion manifest; under active investigation downstream.",
+      "author": "Replit Agent",
+      "date": "2026-08-11T14:42:56Z",
+      "url": "https://github.com/OKHP3/skillz/commit/0e796574111a3246b5841fc90b382a3995dc6a73"
+    },
+    {
+      "sha": "7cd00f65a48f28e19120b3e38d9978ed6ca933c3",
+      "shortSha": "7cd00f6",
+      "message": "\tmodified:   .agents/skills/.catalog-meta.json\n\tmodified:   .agents/skills/README.md\n\tmodified:   .catalog-meta.json\n\tmodified:   AGENTS.md\n\tmodified:   README.md\n\tmodified:   abrahamic/FAMILY.md\n\tmodified:   agent-foundry/FAMILY.md\n\tmodified:   askjamie/FAMILY.md\n\tmodified:   community/FAMILY.md\n\tmodified:   context-extraction/FAMILY.md\n\tmodified:   docs/BACKLOG.md\n\tmodified:   docs/CHANGELOG.md\n\tmodified:   docs/LINKEDIN-POST-QUEUE-2026-08-06.md\n\tmodified:   docs/PUBLIC_SURFACES.md\n\tmodified:   docs/PUBLISHING.md\n\tmodified:   docs/SECURITY.md\n\tmodified:   forge/public/data/catalog.json\n\tmodified:   forge/public/data/project-summary.json\n\tmodified:   forge/public/data/search-index.json\n\tdeleted:    forge/public/data/skills/linkedin/okhp3-linkedin-angles.json\n\tdeleted:    forge/public/data/skills/linkedin/okhp3-linkedin-post.json\n\tdeleted:    forge/public/data/skills/linkedin/okhp3-linkedin-voice.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-discord-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-discord-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-facebook-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-facebook-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-linkedin-angles.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-linkedin-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-linkedin-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-linkedin-voice.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-twitter-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-twitter-post.json\n\tmodified:   glee-fully/FAMILY.md\n\tmodified:   knowledge-operations/FAMILY.md\n\tmodified:   lifetrkr/FAMILY.md\n\tdeleted:    linkedin/FAMILY.md\n\tmodified:   mermaid/FAMILY.md\n\tmodified:   notion/FAMILY.md\n\tmodified:   outcome-modeling/FAMILY.md\n\tmodified:   process-capture/FAMILY.md\n\tmodified:   process-capture/okhp3-process-capture/SKILL.md\n\tmodified:   refolddec/FAMILY.md\n\tmodified:   skillz.manifest.json\n\tnew file:   social-posting/FAMILY.md\n\tnew file:   social-posting/okhp3-discord-comment/SKILL.md\n\tnew file:   social-posting/okhp3-discord-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-discord-post/SKILL.md\n\tnew file:   social-posting/okhp3-discord-post/evals/evals.json\n\tnew file:   social-posting/okhp3-facebook-comment/SKILL.md\n\tnew file:   social-posting/okhp3-facebook-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-facebook-post/SKILL.md\n\tnew file:   social-posting/okhp3-facebook-post/evals/evals.json\n\trenamed:    linkedin/okhp3-linkedin-angles/SKILL.md -> social-posting/okhp3-linkedin-angles/SKILL.md\n\trenamed:    linkedin/okhp3-linkedin-angles/references/angle-registry.md -> social-posting/okhp3-linkedin-angles/references/angle-registry.md\n\trenamed:    linkedin/okhp3-linkedin-angles/references/angle-taxonomy.md -> social-posting/okhp3-linkedin-angles/references/angle-taxonomy.md\n\tnew file:   social-posting/okhp3-linkedin-comment/SKILL.md\n\tnew file:   social-posting/okhp3-linkedin-comment/evals/evals.json\n\trenamed:    linkedin/okhp3-linkedin-post/SKILL.md -> social-posting/okhp3-linkedin-post/SKILL.md\n\trenamed:    linkedin/okhp3-linkedin-post/references/bfs-scrub-checklist.md -> social-posting/okhp3-linkedin-post/references/bfs-scrub-checklist.md\n\trenamed:    linkedin/okhp3-linkedin-voice/SKILL.md -> social-posting/okhp3-linkedin-voice/SKILL.md\n\trenamed:    linkedin/okhp3-linkedin-voice/references/voice-rules.md -> social-posting/okhp3-linkedin-voice/references/voice-rules.md\n\tnew file:   social-posting/okhp3-twitter-comment/SKILL.md\n\tnew file:   social-posting/okhp3-twitter-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-twitter-post/SKILL.md\n\tnew file:   social-posting/okhp3-twitter-post/evals/evals.json\n\tmodified:   universal/FAMILY.md",
+      "author": "OKHP3",
+      "date": "2026-08-11T14:26:28Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7cd00f65a48f28e19120b3e38d9978ed6ca933c3"
+    },
+    {
+      "sha": "e58bc9fc983e6fc61c43d75962f867aa194c6a6c",
+      "shortSha": "e58bc9f",
+      "message": "chore: refresh technology inventory (#42)\n\nCo-authored-by: OKHP3 <222550606+OKHP3@users.noreply.github.com>",
+      "author": "github-actions[bot]",
+      "date": "2026-08-10T23:45:32Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e58bc9fc983e6fc61c43d75962f867aa194c6a6c"
+    },
+    {
+      "sha": "4f492e08de91d519c242e972e4baa7bdc38f0afb",
+      "shortSha": "4f492e0",
+      "message": "Update project data files and skill manifest\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-09T01:49:43Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4f492e08de91d519c242e972e4baa7bdc38f0afb"
+    },
     {
       "sha": "defce2a9eb786ff12ef152806d9c1cedc5dcf7ad",
       "shortSha": "defce2a",
@@ -24,62 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-07T02:44:18Z",
       "url": "https://github.com/OKHP3/skillz/commit/6f807c942f8870834131677f76ae41c1f20f916e"
-    },
-    {
-      "sha": "dd5f7b4e7efe01928585271b61c054ffbb58aed1",
-      "shortSha": "dd5f7b4",
-      "message": "Update catalog and project metadata files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-07T00:01:53Z",
-      "url": "https://github.com/OKHP3/skillz/commit/dd5f7b4e7efe01928585271b61c054ffbb58aed1"
-    },
-    {
-      "sha": "58525a71f4f504a9019c4a470b78fe039a136f57",
-      "shortSha": "58525a7",
-      "message": "Fix OverKill Hill stuck publish pipeline: migrate from legacy to Actions-based GitHub Pages deploy\n\nReplit-Task-Id: 5e946ff0-1ef2-4256-97e4-c8534c677648",
-      "author": "overkillhillp3",
-      "date": "2026-08-07T00:01:38Z",
-      "url": "https://github.com/OKHP3/skillz/commit/58525a71f4f504a9019c4a470b78fe039a136f57"
-    },
-    {
-      "sha": "260ac1ab063d2262647d8eb5c889bcbd0ad01a01",
-      "shortSha": "260ac1a",
-      "message": "Update explore page and synchronize manifest data\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T23:56:38Z",
-      "url": "https://github.com/OKHP3/skillz/commit/260ac1ab063d2262647d8eb5c889bcbd0ad01a01"
-    },
-    {
-      "sha": "1d749b4e88581b1466c6c657d383ebe5f03e1fc1",
-      "shortSha": "1d749b4",
-      "message": "Update project data and styling for explore page\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T23:49:52Z",
-      "url": "https://github.com/OKHP3/skillz/commit/1d749b4e88581b1466c6c657d383ebe5f03e1fc1"
-    },
-    {
-      "sha": "12b80b82242e60310082ec4ead76b7b963a59c8c",
-      "shortSha": "12b80b8",
-      "message": "Update site data and FAQ page content\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T23:41:33Z",
-      "url": "https://github.com/OKHP3/skillz/commit/12b80b82242e60310082ec4ead76b7b963a59c8c"
-    },
-    {
-      "sha": "86e11280109af543e7a823e592bdfd852312cc14",
-      "shortSha": "86e1128",
-      "message": "updates",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-06T22:40:23Z",
-      "url": "https://github.com/OKHP3/skillz/commit/86e11280109af543e7a823e592bdfd852312cc14"
-    },
-    {
-      "sha": "416069b650b71f5ad1fa4c82bdcb5b65dc7d870a",
-      "shortSha": "416069b",
-      "message": "Update project and catalog metadata files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-06T21:11:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/416069b650b71f5ad1fa4c82bdcb5b65dc7d870a"
     }
   ],
   "fetchError": null
