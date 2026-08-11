@@ -3,7 +3,7 @@ family: process-capture
 display_name: Process Capture
 skill_count: 16
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-11T13:07:21Z
+generated_at: 2026-08-11T18:58:48Z
 ---
 
 # process-capture
@@ -27,7 +27,7 @@ One skill: `okhp3-process-capture`. The meta-layer.
 ## Skills (16)
 
 <!-- FAMILY_INVENTORY_START -->
-*16 skills &nbsp;·&nbsp; inventory last updated: **August 11, 2026 at 13:07 UTC***
+*16 skills &nbsp;·&nbsp; inventory last updated: **August 11, 2026 at 18:58 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -36,7 +36,7 @@ One skill: `okhp3-process-capture`. The meta-layer.
 | [okhp3-elicitation-interviews](okhp3-elicitation-interviews/SKILL.md) | Plan and facilitate structured elicitation sessions using BABOK v3 interview and workshop techniq... | 0.1.0 |
 | [okhp3-future-state-strategy](okhp3-future-state-strategy/SKILL.md) | Design a target-state process and a structured change strategy from a gap analysis. Use this skil... | 0.1.0 |
 | [okhp3-handoff-packaging](okhp3-handoff-packaging/SKILL.md) | Assemble all validated BP-SKILL process artifacts into a publication-ready bundle with a manifest... | 0.1.0 |
-| [okhp3-process-capture](okhp3-process-capture/SKILL.md) | Capture a recurring task as either a backlog entry or a new skill skeleton. Use when the user say... | 1.1.0 |
+| [okhp3-process-capture](okhp3-process-capture/SKILL.md) | Capture a recurring task as either a backlog entry or a new skill skeleton. Use when the user say... | 1.1.1 |
 | [okhp3-process-controls-metrics](okhp3-process-controls-metrics/SKILL.md) | Define process performance measures, KPIs, and compliance controls for a validated PNS. Use this ... | 0.1.0 |
 | [okhp3-process-gap-analysis](okhp3-process-gap-analysis/SKILL.md) | Identify deviations, gaps, and exception paths between an as-is process capture and its intended ... | 0.1.0 |
 | [okhp3-process-intake-and-scope](okhp3-process-intake-and-scope/SKILL.md) | Conduct structured process intake and scope definition using BABOK v3 elicitation techniques. Use... | 0.1.0 |

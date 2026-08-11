@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-08-11T18:56:47.227Z",
+  "generatedAt": "2026-08-11T19:02:17.955Z",
   "commits": [
+    {
+      "sha": "df4ec456275c01988524708057f129e44a71951a",
+      "shortSha": "df4ec45",
+      "message": "\tmodified:   .agents/skills/.catalog-meta.json\n\tmodified:   .agents/skills/README.md\n\tmodified:   .agents/skills/okhp3-process-capture/SKILL.md\n\tmodified:   .catalog-meta.json\n\tmodified:   README.md\n\tmodified:   abrahamic/FAMILY.md\n\tmodified:   agent-foundry/FAMILY.md\n\tmodified:   askjamie/FAMILY.md\n\tmodified:   community/FAMILY.md\n\tmodified:   context-extraction/FAMILY.md\n\tmodified:   forge/public/data/catalog.json\n\tmodified:   forge/public/data/project-summary.json\n\tmodified:   forge/public/data/search-index.json\n\tmodified:   forge/public/data/skills/process-capture/okhp3-process-capture.json\n\tmodified:   glee-fully/FAMILY.md\n\tmodified:   knowledge-operations/FAMILY.md\n\tmodified:   lifetrkr/FAMILY.md\n\tmodified:   mermaid/FAMILY.md\n\tmodified:   notion/FAMILY.md\n\tmodified:   outcome-modeling/FAMILY.md\n\tmodified:   process-capture/FAMILY.md\n\tmodified:   refolddec/FAMILY.md\n\tmodified:   skillz.manifest.json\n\tmodified:   social-posting/FAMILY.md\n\tmodified:   universal/FAMILY.md",
+      "author": "OKHP3",
+      "date": "2026-08-11T18:56:28Z",
+      "url": "https://github.com/OKHP3/skillz/commit/df4ec456275c01988524708057f129e44a71951a"
+    },
+    {
+      "sha": "7b20ff07f7801151f8a233dfeafee6a5a69a2a45",
+      "shortSha": "7b20ff0",
+      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz\n\n# Conflicts:\n#\tforge/public/data/activity.json\n#\tforge/public/data/catalog.json\n#\tforge/public/data/project-summary.json\n#\tskillz.manifest.json",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-11T18:56:17Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7b20ff07f7801151f8a233dfeafee6a5a69a2a45"
+    },
+    {
+      "sha": "a81b7a8f506b5a3ffd08bc6861a2f1d83adff709",
+      "shortSha": "a81b7a8",
+      "message": "chore: sync auto-generated catalog/activity data",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-11T18:55:53Z",
+      "url": "https://github.com/OKHP3/skillz/commit/a81b7a8f506b5a3ffd08bc6861a2f1d83adff709"
+    },
     {
       "sha": "407054dd1cb10547847a86b0bb4895a2fb143202",
       "shortSha": "407054d",
@@ -56,30 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-11T15:29:10Z",
       "url": "https://github.com/OKHP3/skillz/commit/93eff2ed68e21c67d034cd9a2c39d076704476cf"
-    },
-    {
-      "sha": "d927b44384232bbaecc0bf4c89094ac4f1ba1a79",
-      "shortSha": "d927b44",
-      "message": "feat(replit): add okhp3-replit-repl-janitor v1.0.1\n\nFifth skill in the replit/ family. Safe, evidence-led cleanup of one\nReplit workspace Git checkout — four-bucket branch classification, bundled\naudit-repo.py script, kebab-case naming conventions, and detritus triage\npolicy. Destructive operations execute only after owner approval of exact\nline items.\n\n- Benchmark: with_skill mean 0.9167, delta +0.75 (3 live subagent runs)\n- Phase 8 trigger eval: 20/20, recall 1.0, precision 1.0\n- All 8 package files byte-equal with runtime source (SHA-256 960898a5)\n- Python 3 + Git required for audit-repo.py\n- MIT license",
-      "author": "Replit Agent",
-      "date": "2026-08-11T15:23:45Z",
-      "url": "https://github.com/OKHP3/skillz/commit/d927b44384232bbaecc0bf4c89094ac4f1ba1a79"
-    },
-    {
-      "sha": "7ef60c8e56602ec8acce7ada409c6e9318c55df4",
-      "shortSha": "7ef60c8",
-      "message": "Merge pull request #43: Add 4 Replit family skills\n\nfeat(replit): add replit/ family with 4 new Agent Skills",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-11T15:16:57Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7ef60c8e56602ec8acce7ada409c6e9318c55df4"
-    },
-    {
-      "sha": "0e796574111a3246b5841fc90b382a3995dc6a73",
-      "shortSha": "0e79657",
-      "message": "feat(replit): add replit/ family with 4 new skills\n\nAdds the replit/ family directory with four new Agent Skills extracted\nfrom the Glee-fully Chai Chasers Designathon project:\n\n- okhp3-replit-canvas-board v1.0.0\n  Structured canvas presentation board layout — hero rows, labeled zones,\n  iframe lifecycle (building→live), focusCanvasShapes presentation close.\n\n- okhp3-replit-build-in-public v1.0.0\n  Full designathon submission playbook — canvas organisation for judges,\n  artifact selection, dual deployment (Replit Publish + GitHub Pages),\n  session handoff, and building-in-public commit discipline.\n\n- okhp3-replit-design-pipeline v1.0.0\n  Complete Replit design iteration loop: extract → sandbox → variant →\n  graduate. Covers DESIGN subagent brief anatomy, variant labelling on\n  canvas, and the GENERAL vs. DESIGN subagent graduation decision.\n\n- okhp3-replit-multi-artifact v1.0.0\n  Five rules that prevent silent failures in a Replit pnpm multi-artifact\n  monorepo: BASE_URL prefix discipline, PORT env var reading, managed\n  workflow naming, pnpm catalog drift, and workspace:* shared libraries.\n\nAlso adds replit/FAMILY.md with inventory table and summary block.\n\nAll four skills passed public-safety review (no credentials, private URLs,\ninternal IDs, or employer data). MIT license declared on all four.\n\nKnown evaluation gap: okhp3-replit-build-in-public benchmark eval_id 4\n(without_skill, dual-deployment scenario) shows 0.5 pass rate — noted in\npromotion manifest; under active investigation downstream.",
-      "author": "Replit Agent",
-      "date": "2026-08-11T14:42:56Z",
-      "url": "https://github.com/OKHP3/skillz/commit/0e796574111a3246b5841fc90b382a3995dc6a73"
     }
   ],
   "fetchError": null
