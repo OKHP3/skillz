@@ -4,8 +4,8 @@ description: Mine a finished artifact (PRD, SKILL.md, technical writeup, governa
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.0"
-  category: linkedin
+  version: "2.0.0"
+  category: social-posting
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
@@ -18,6 +18,11 @@ metadata:
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Triage, not drafting. The actual bottleneck this family exists to solve.
+
+## Scope
+
+This package mines a finished artifact into LinkedIn angle candidates. It does
+not draft, publish, schedule, or repurpose content for another platform.
 
 ## Process
 
@@ -50,6 +55,12 @@ If candidates are produced but not acted on this session, they stay in the regis
 ## Output contract
 
 Return 3 to 5 candidates, including at least one `Surprising / Contrarian` candidate. Each row must include the insight, evidence location, category, suggested length, BFS flag, and a short reason it is publishable. If evidence is missing or employer-specific, mark the candidate `needs_evidence` or `needs_generalization` instead of presenting it as ready.
+
+## Validation
+
+Before return, validate that there are 3 to 5 candidates, at least one is marked
+`Surprising / Contrarian`, each names source evidence, and none is presented as
+ready when its support is missing or private.
 
 ## References
 

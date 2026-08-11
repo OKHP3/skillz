@@ -9,7 +9,7 @@ Validated maturity. None of the drafts below include a "go look at the repo"
 call to action for that reason.
 
 **Pipeline used:** `okhp3-linkedin-angles` → `okhp3-linkedin-post` →
-`okhp3-linkedin-voice`, per `linkedin/FAMILY.md`. Source artifacts mined:
+`okhp3-linkedin-voice`, per `social-posting/FAMILY.md`. Source artifacts mined:
 `docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md` (the current Forge
 capability audit and build directive), `docs/STACK-POSITION.md`, and
 `docs/COMPETITIVE-LANDSCAPE-SCAN-2026-08-06.md`.

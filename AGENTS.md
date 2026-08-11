@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 113 distribution skills in 15 active families, and 16 project-local support skills under `.agents/skills/`
+- **Current inventory:** 120 distribution skills in 15 active families, and 40 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -24,7 +24,7 @@ Become the reusable execution layer of the OKHP3 Visual Language Stack, with com
 
 This repository contains SKILL.md contracts, references, examples, fixtures, and small validation or rendering utilities. It also contains the `forge/` Vite/React frontend that builds the public Skillz Forge catalog. It is not a backend service or npm workspace. The former root `package.json` and lockfile are retained under `docs/archive/root-scaffold/` for provenance and are not the repository runtime; use the `forge/` and package-local commands documented below. There is one Git repository at the root; no nested Git repositories were found.
 
-The root family directories are the distribution surface. `.agents/skills/` is a project-local support surface containing cataloging, skill-authoring, FoundRy tooling, and platform-specific context-extraction support. Do not count those 9 entries as additional distribution families.
+The root family directories are the distribution surface. `.agents/skills/` is a project-local support surface containing cataloging, skill-authoring, FoundRy tooling, and platform-specific context-extraction support. Do not count its packages as additional distribution skills or families.
 
 Do not add employer-specific confidential material, private credentials, tokens, cookies, customer or employee data, proprietary system names, hidden network calls, or destructive behavior. Public skills must use synthetic or public-safe examples. A skill must not instruct an agent to bypass permissions, conceal actions, or remove user consent.
 
@@ -35,7 +35,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `abrahamic/` | Scripture lookup, observance calendar, tradition reference, and cross-tradition comparison skills |
 | `community/` | Imported or community-oriented general-purpose skills, including UI, MCP, social, and authoring guidance |
 | `lifetrkr/` | Celestial-data and daily-oracle skills |
-| `linkedin/` | LinkedIn content pipeline: angles, post drafting, and voice filtering |
+| `social-posting/` | Platform-specific posting and commenting contracts for LinkedIn, Facebook, X/Twitter, and Discord |
 | `mermaid/` | Mermaid diagram authoring, governance, theming, publishing, updating, and repair |
 | `notion/` | AI conversation capture and routing into Notion knowledge structures |
 | `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, validating, and promoting information or exploratory work |
@@ -50,7 +50,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 113-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 120-skill distribution inventory |
 
 ## Routing index
 
@@ -72,15 +72,22 @@ Load the narrowest matching skill. If several apply, load the foundation or upst
 
 Mermaid cross-cutting rules: preserve style during updates, repair syntax minimally, keep source local unless the user authorizes publication, use stable short IDs, quote labels with spaces or special characters, avoid semicolons, and never invent classDef names or renderer capabilities.
 
-### LinkedIn family
+### Social posting family
 
 | Skill | Trigger and loading rule |
 |---|---|
-| `okhp3-linkedin-angles` | Mine a finished artifact or conversation for 3 to 5 postable angles. It produces candidates and does not draft the post. |
-| `okhp3-linkedin-post` | Draft from a selected angle or directly named topic. It applies voice and runs the final employer-context scrub. |
+| `okhp3-linkedin-angles` | Mine a finished artifact or conversation for 3 to 5 LinkedIn-postable angles. It produces candidates and does not draft the post. |
+| `okhp3-linkedin-post` | Draft a LinkedIn post from a selected angle or directly named topic. It applies voice and runs the final employer-context scrub. |
 | `okhp3-linkedin-voice` | Final filter for any LinkedIn-bound draft, whether generated by this family or written by hand. It is not a generator. |
+| `okhp3-linkedin-comment` | Draft a context-aware LinkedIn comment or reply. Load after reading the target post or parent comment. |
+| `okhp3-facebook-post` | Draft a Facebook profile, Page, group, or event post after the destination and audience are explicit. |
+| `okhp3-facebook-comment` | Draft a Facebook comment or reply after reading the target conversation and identifying its surface. |
+| `okhp3-twitter-post` | Draft an X, formerly Twitter, post. `twitter` is the stable package slug; use the standard post constraint unless longer-post eligibility is explicitly established. |
+| `okhp3-twitter-comment` | Draft an X reply, called a comment in this family, from supplied parent-post context. |
+| `okhp3-discord-post` | Draft a new Discord message, forum post, or thread opener for a named server destination. |
+| `okhp3-discord-comment` | Draft a Discord reply to an existing message, thread, or forum conversation. |
 
-LinkedIn cross-cutting rules: no em dashes, preserve standalone punchy lines, make verbosity earn its space, route public links through OverKill Hill, and exclude employer context by default.
+Social-posting cross-cutting rules: identify acting account, destination, audience, and whether the task is a new post or a response before drafting. Prepare text only; do not publish, schedule, join communities, change settings, or automate engagement without explicit approval. Verify consequential public claims and exclude employer or private context by default. LinkedIn retains its voice and final scrub path; Discord requires channel and ping context; Facebook requires surface and audience context; X should not assume Premium capability.
 
 ### Process-capture family
 
@@ -233,7 +240,7 @@ Load `okhp3-outcome-modeling-core` first for any outcome-modeling task, then add
 
 ### Project-local support skills
 
-`.agents/skills/` contains 16 project-local support skill packages, cataloged in `.agents/skills/README.md`. They support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
+`.agents/skills/` contains 40 project-local support skill packages, cataloged in `.agents/skills/README.md`. They support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
 
 ## Technology and runtime
 
@@ -255,7 +262,7 @@ Run from the repository root.
 python3 .agents/skills/okhp3-skill-cataloger/scripts/gen-skills-readme.py --full --check
 
 # Validate one skill with the bundled strict validator
-python3 .agents/skills/skill-creator/scripts/quick_validate.py path/to/skill
+node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root path/to/skill
 
 # Run one process-capture package's tests
 (cd process-capture/okhp3-process-intake-and-scope && node --test tests/*.test.mjs)
@@ -264,7 +271,7 @@ python3 .agents/skills/skill-creator/scripts/quick_validate.py path/to/skill
 (cd mermaid/okhp3-mermaid-theme-builder && node --test tests/*.test.mjs)
 ```
 
-The full-index check passed and discovered 113 distribution skills in 15 active families. The project cataloger found 16 local support skills. The Foundry structural validator now checks all 129 canonical and active `SKILL.md` packages recursively, including portable name, description, compatibility, body, and path limits; it passes without structural errors. For the Foundry package, it also enforces version-coherent evaluation evidence, explicit protected or external-required holdout states, current-state synchronization records, and associated negative tests. These checks establish structural integrity only, not task-quality uplift or production readiness. Its remaining advisory warnings identify imported-skill conventions and optional scope or validation refinements. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
+The full-index check passed and discovered 120 distribution skills in 15 active families. The project cataloger found 40 local support skills. A full recursive Foundry validation checks 162 `SKILL.md` packages, including the 120 distribution packages, 40 project-local support packages, and 2 published mirrors; it passes without structural errors. The validator checks portable name, description, compatibility, body, path limits, and Foundry-specific version-coherent evidence, protected or external-required holdouts, current-state synchronization records, and associated negative tests. These checks establish structural integrity only, not task-quality uplift or production readiness. Its remaining advisory warnings identify imported-skill conventions and optional scope or validation refinements. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
 
 For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. Do not run the technology refresh script casually because it makes network requests and writes the generated technology section and runtime pins.
 
@@ -275,9 +282,9 @@ For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.ag
 - Keep every skill package directory at 36 characters or fewer; the portable Agent Skills name maximum is 64. Keep each path element at 64 characters or fewer and each repository-relative skill path at 180 or fewer.
 - Keep domain skills composable. Mermaid domain skills defer audience, naming, registry, and validation to `okhp3-mermaid-core`.
 - `okhp3-mermaid-update` changes content while preserving style. `okhp3-mermaid-repair` fixes syntax with minimum intervention. Do not merge these workflows.
-- `okhp3-linkedin-voice` filters existing text. It does not generate a post.
+- `okhp3-linkedin-voice` filters existing LinkedIn-bound text. It does not generate a post.
 - Keep public-surface decisions routed through OverKill Hill. Glee-fully and AskJamie are contextual side doors, not alternate canonical homes.
-- Keep employer references excluded by default. The LinkedIn post skill has an explicit final scrub gate.
+- Keep employer references excluded by default. Every public-posting draft requires a public-context check; the LinkedIn post skill retains its explicit final scrub gate.
 - Do not add em dashes to generated content. Preserve punchy standalone lines. AutoCAD version references, when relevant, use locked R10 wording.
 - A rendered diagram is disposable output unless explicitly requested for retention. Never delete source or rendered output as part of repair.
 
@@ -295,7 +302,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 113 distribution skills in 15 active families, `knowledge-operations/FAMILY.md`, `context-extraction/FAMILY.md`, `glee-fully/FAMILY.md`, and `askjamie/FAMILY.md` are active, and `.agents/skills/README.md` reports 16 project-local support skills.
+- Generated catalogs reflect the current filesystem: `README.md` reports 120 distribution skills in 15 active families, `knowledge-operations/FAMILY.md`, `context-extraction/FAMILY.md`, `glee-fully/FAMILY.md`, `askjamie/FAMILY.md`, and `social-posting/FAMILY.md` are active, and `.agents/skills/README.md` reports 40 project-local support skills.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

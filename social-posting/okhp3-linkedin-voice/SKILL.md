@@ -4,8 +4,8 @@ description: Apply the OKHP3 brand voice to any LinkedIn-bound text. Use as the 
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.0"
-  category: linkedin
+  version: "2.0.0"
+  category: social-posting
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
@@ -19,6 +19,11 @@ metadata:
 
 The brand contract. Runs last, on text that already exists.
 
+## Scope
+
+This package is a final LinkedIn prose filter. It does not generate a new post,
+publish content, or silently apply LinkedIn formatting to another platform.
+
 ## Process
 
 1. Read the draft.
@@ -31,13 +36,19 @@ The brand contract. Runs last, on text that already exists.
 
 `okhp3-linkedin-post` should call this skill as its final step, not skip it assuming the draft is already compliant. `okhp3-linkedin-angles` does not need this skill — angle candidates aren't prose yet.
 
-## Scope note
+## Platform note
 
 This skill governs LinkedIn output specifically. The "standalone punchy lines, don't consolidate" rule applies to non-LinkedIn long-form (articles, the Magnus Saga, etc.) — for LinkedIn posts specifically, paragraphs ARE consolidated (LinkedIn's renderer collapses single line breaks). See `references/voice-rules.md` for the platform-conditional rules.
 
 ## Output contract
 
 Return the revised text, then a short change log listing only the rule categories changed or judged. Do not invent new facts, examples, links, or employer context while polishing. If the input is not LinkedIn-bound prose, say so and route to the appropriate skill instead of silently rewriting it.
+
+## Validation
+
+Before return, check every applicable rule in `references/voice-rules.md`,
+confirm that no factual or employer context was introduced, and ensure a
+non-LinkedIn input is routed rather than silently reformatted.
 
 ## References
 

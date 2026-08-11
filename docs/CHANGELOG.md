@@ -6,6 +6,17 @@ This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
 
+### Added
+
+- Renamed the `linkedin/` family to `social-posting/` and expanded it from
+  three to ten platform-prefixed skills. The original LinkedIn angle, post,
+  and voice packages retain their purpose but move through a breaking
+  path-level reorganization to version 2.0.0, with a new LinkedIn
+  comment package and post/comment packages for Facebook, X/Twitter, and
+  Discord. The packages are draft-only, public-context-aware contracts with
+  versioned evaluation designs; no live evaluation or platform publication is
+  claimed.
+
 ### Changed
 
 - Promoted `okhp3-mermaid-update` and `okhp3-mermaid-repair` from `skeleton` to

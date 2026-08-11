@@ -4,8 +4,8 @@ description: Draft a LinkedIn post from a chosen angle. Use when the user has pi
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.0"
-  category: linkedin
+  version: "2.0.0"
+  category: social-posting
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
@@ -18,6 +18,11 @@ metadata:
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Drafting, from a chosen angle to finished output.
+
+## Scope
+
+This package drafts a LinkedIn post only. It does not publish, schedule, manage
+comments, or create content for another platform.
 
 ## Process
 
@@ -38,6 +43,12 @@ If no angle was provided and the user just says "write a post about X" with no p
 ## Output contract
 
 Return one paste-ready LinkedIn draft followed by a compact gate report. The draft must contain no employer-identifying material, no unsupported factual claims presented as facts, and no unresolved BFS findings. If the requested claim cannot survive the scrub, return a generalized version or stop with the specific category of blocker.
+
+## Validation
+
+Before return, verify the order was draft, voice, then BFS scrub; confirm the
+gate report names any category corrected; and do not return a claim whose
+evidence remains unsupported or employer-specific.
 
 ## References
 

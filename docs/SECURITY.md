@@ -24,7 +24,7 @@ Do not commit:
 
 Every skill in this repo excludes employer references by default.
 
-The LinkedIn post pipeline includes an explicit scrub gate because public content is especially likely to accidentally preserve identifying context.
+Every social-posting skill requires a public-context check because public content is especially likely to accidentally preserve identifying context. The LinkedIn post pipeline additionally includes an explicit final scrub gate.
 
 If an insight cannot survive generalization, do not publish it hollow. Mark it unsalvageable or retain it only in private notes.
 

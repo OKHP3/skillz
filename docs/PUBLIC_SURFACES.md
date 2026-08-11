@@ -64,12 +64,12 @@ skillz: Agent Skills by OverKill Hill
 Recommended positioning:
 
 ```text
-113 reusable SKILL.md delegation contracts across 15 active families for Claude, OpenClaw, Codex, and compatible AI agents.
+120 reusable SKILL.md delegation contracts across 15 active families for Claude, OpenClaw, Codex, and compatible AI agents.
 ```
 
-Current inventory snapshot, assessed August 4, 2026: 113 public distribution
-skills across 15 active families. The repository also contains 16 project-local
-support skills, which are not public distribution entries. Forge itself is an
+Current inventory: 120 public distribution skills across 15 active families.
+The repository also contains 40 project-local support skills, which are not
+public distribution entries. Forge itself is an
 M3 decision workbench, not yet a released or fully trustworthy distribution
 center. See
 [`docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md`](PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md)
@@ -105,7 +105,7 @@ Recommended sections:
 | Glee-fully | Tool and Tool-ette architecture, persona density, and future consumer-skill conversion | Active distribution family |
 | Knowledge Operations | Capture, classify, research, validate, and promote information work | Active distribution family |
 | LifeTrkr | Offline celestial data and daily oracle workflows | Active distribution family |
-| LinkedIn | Turn finished work into postable angles and voice-consistent posts | Active distribution family |
+| Social posting | Turn finished work into platform-specific drafts, comments, and LinkedIn-ready angles | Active distribution family |
 | Mermaid | Governed diagram authoring, theming, publishing, updating, and repair | Active distribution family |
 | Notion | Route AI conversations into Notion with deduplication and GitHub reconciliation | Active distribution family |
 | Outcome Modeling | Event-to-state forecasting and constrained decision adapters | Active distribution family |

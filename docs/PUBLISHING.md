@@ -35,7 +35,7 @@ skill-md
 skills-sh
 openclaw-skills
 mermaid
-linkedin
+social-posting
 ```
 
 Recommended root files:

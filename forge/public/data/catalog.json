@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-09T00:54:40.072Z",
+  "generatedAt": "2026-08-11T13:17:50.697Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "defce2a",
-  "skillCount": 113,
+  "sourceCommit": "e58bc9f",
+  "skillCount": 120,
   "familyCount": 15,
   "families": [
     {
@@ -305,38 +305,6 @@
       }
     },
     {
-      "name": "linkedin",
-      "displayName": "LinkedIn",
-      "skillCount": 3,
-      "skills": [
-        "okhp3-linkedin-angles",
-        "okhp3-linkedin-post",
-        "okhp3-linkedin-voice"
-      ],
-      "narrativeBody": "Three skills, one pipeline: **voice -> angles -> post**.\n\n- `okhp3-linkedin-voice` — the brand contract. A filter applied to existing text, not a generator. Every other skill in this family (and any hand-written draft) passes through this last.\n- `okhp3-linkedin-angles` — triage. Mines a finished artifact (PRD, SKILL.md, technical writeup, conversation) for postable angles, writes candidates to a registry.\n- `okhp3-linkedin-post` — drafting. Takes a chosen angle, drafts in voice, runs the BFS-scrub gate (hard, non-negotiable, last).\n\nThe bottleneck this family targets isn't ideation or drafting — it's triage. Turning finished work into posts. `angles` is the differentiator; nothing in the reviewed community LinkedIn-skill landscape (sergebulaev, claudskills.com, Linked-API) does artifact-mining. They're all persona/ICP-driven topic generation.\n\nArticles (long-form) are a phase-2 addition with different structural rules than posts — not yet scaffolded.",
-      "orientation": {
-        "purpose": {
-          "value": "Three skills, one pipeline: **voice -> angles -> post**.\n\n- `okhp3-linkedin-voice` — the brand contract. A filter applied to existing text, not a generator. Every other skill in this family (and any hand-written draft) passes through this last.\n- `okhp3-linkedin-angles` — triage. Mines a finished artifact (PRD, SKILL.md, technical writeup, conversation) for postable angles, writes candidates to a registry.\n- `okhp3-linkedin-post` — drafting. Takes a chosen angle, drafts in voice, runs the BFS-scrub gate (hard, non-negotiable, last).\n\nThe bottleneck this family targets isn't ideation or drafting — it's triage. Turning finished work into posts. `angles` is the differentiator; nothing in the reviewed community LinkedIn-skill landscape (sergebulaev, claudskills.com, Linked-API) does artifact-mining. They're all persona/ICP-driven topic generation.\n\nArticles (long-form) are a phase-2 addition with different structural rules than posts — not yet scaffolded.",
-          "source": "generated"
-        },
-        "commonOutcomes": {
-          "value": [
-            "linkedin"
-          ],
-          "source": "generated"
-        },
-        "firstSkillToTry": {
-          "value": "okhp3-linkedin-angles",
-          "note": null,
-          "source": "generated"
-        },
-        "compositionNotes": {
-          "value": "okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-post pairs with okhp3-linkedin-voice; okhp3-linkedin-voice pairs with okhp3-linkedin-angles",
-          "source": "generated"
-        }
-      }
-    },
-    {
       "name": "mermaid",
       "displayName": "Mermaid",
       "skillCount": 9,
@@ -515,6 +483,45 @@
         },
         "compositionNotes": {
           "value": null,
+          "source": "generated"
+        }
+      }
+    },
+    {
+      "name": "social-posting",
+      "displayName": "Social posting",
+      "skillCount": 10,
+      "skills": [
+        "okhp3-discord-comment",
+        "okhp3-discord-post",
+        "okhp3-facebook-comment",
+        "okhp3-facebook-post",
+        "okhp3-linkedin-angles",
+        "okhp3-linkedin-comment",
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-voice",
+        "okhp3-twitter-comment",
+        "okhp3-twitter-post"
+      ],
+      "narrativeBody": "Platform-specific drafting contracts for public-network posts and comments.\nThey prepare text only. They never publish, schedule, join a community, or\nchange an account setting without the user's explicit approval.",
+      "orientation": {
+        "purpose": {
+          "value": "Platform-specific drafting contracts for public-network posts and comments.\nThey prepare text only. They never publish, schedule, join a community, or\nchange an account setting without the user's explicit approval.",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "social-posting"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-discord-comment",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-comment pairs with okhp3-linkedin-voice; okhp3-linkedin-post pairs with okhp3-linkedin-voice; okhp3-linkedin-voice pairs with okhp3-linkedin-angles",
           "source": "generated"
         }
       }
@@ -4465,201 +4472,6 @@
       "releaseReadiness": "ready-for-supervised-use"
     },
     {
-      "name": "okhp3-linkedin-angles",
-      "displayName": "LinkedIn Angles",
-      "family": "linkedin",
-      "skillDir": "okhp3-linkedin-angles",
-      "path": "linkedin/okhp3-linkedin-angles/SKILL.md",
-      "description": "Mine a finished artifact (PRD, SKILL.md, technical writeup, governance doc, Mermaid diagram, public X source packet, or the current conversation) for LinkedIn-postable angles. Use when the user says \"mine this for a post\", \"what's postable here\", \"angles from this\", or at the natural end of a work session when something substantial just got produced. Surfaces 3-5 candidate angles across required categories, writes them to the angle registry. Does NOT draft the post; that's okhp3-linkedin-post.",
-      "version": "1.1.0",
-      "license": "MIT",
-      "category": "linkedin",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "linkedin"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [
-        "okhp3-linkedin-post",
-        "okhp3-process-capture"
-      ],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-angles/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-angles/SKILL.md",
-      "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
-      "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
-        "category": "linkedin",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
-        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
-      },
-      "evidence": {
-        "status": "none",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 0,
-        "referenceCount": 2,
-        "scriptCount": 0,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "No evaluation design or executable check exists for this package."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-linkedin-post",
-      "displayName": "LinkedIn Post",
-      "family": "linkedin",
-      "skillDir": "okhp3-linkedin-post",
-      "path": "linkedin/okhp3-linkedin-post/SKILL.md",
-      "description": "Draft a LinkedIn post from a chosen angle. Use when the user has picked a candidate from okhp3-linkedin-angles' registry, or names a topic directly (\"write a post about X\"). Produces a draft, applies okhp3-linkedin-voice, then runs the BFS-scrub gate as the final non-negotiable step before returning output.",
-      "version": "1.1.0",
-      "license": "MIT",
-      "category": "linkedin",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "linkedin"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [
-        "okhp3-linkedin-angles",
-        "okhp3-linkedin-voice"
-      ],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-post/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-post/SKILL.md",
-      "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
-      "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
-        "category": "linkedin",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
-        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
-      },
-      "evidence": {
-        "status": "none",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 0,
-        "referenceCount": 1,
-        "scriptCount": 0,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "No evaluation design or executable check exists for this package."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
-    },
-    {
-      "name": "okhp3-linkedin-voice",
-      "displayName": "LinkedIn Voice",
-      "family": "linkedin",
-      "skillDir": "okhp3-linkedin-voice",
-      "path": "linkedin/okhp3-linkedin-voice/SKILL.md",
-      "description": "Apply the OKHP3 brand voice to any LinkedIn-bound text. Use as the FINAL pass on any LinkedIn post or article draft, whether produced by okhp3-linkedin-post or written by hand. Checks for em dashes, paragraph consolidation, ROY-principle density, ending strength, and link-routing rules. This is a filter applied to existing text, not a generator — if there's no draft yet, use okhp3-linkedin-post first.",
-      "version": "1.1.0",
-      "license": "MIT",
-      "category": "linkedin",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "linkedin"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [
-        "okhp3-linkedin-post",
-        "okhp3-linkedin-angles"
-      ],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/linkedin/okhp3-linkedin-voice/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/linkedin/okhp3-linkedin-voice/SKILL.md",
-      "lastModified": "2026-07-30T20:38:20-05:00",
-      "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
-      "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
-        "category": "linkedin",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
-        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
-      },
-      "evidence": {
-        "status": "none",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 0,
-        "referenceCount": 1,
-        "scriptCount": 0,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "No evaluation design or executable check exists for this package."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
-    },
-    {
       "name": "okhp3-mermaid-architecture",
       "displayName": "Mermaid Architecture",
       "family": "mermaid",
@@ -4695,7 +4507,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
       "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4759,7 +4571,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-06T20:39:13Z",
       "commitSha": "9581a631",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4823,7 +4635,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-05T22:30:03Z",
       "commitSha": "9fc9b8e7",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4887,7 +4699,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
       "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -5019,7 +4831,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-06T20:39:13Z",
       "commitSha": "9581a631",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -6150,7 +5962,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-capture/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
       "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -7041,6 +6853,637 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-discord-comment",
+      "displayName": "Discord Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-discord-comment",
+      "path": "social-posting/okhp3-discord-comment/SKILL.md",
+      "description": "Draft a Discord reply to a supplied message, thread, or forum conversation. Use when the user wants to answer, clarify, or contribute to an existing Discord discussion. It preserves channel and thread context, avoids unauthorized pings, and returns a draft only. Do not use for a new message, a new thread, direct messages, or sending content.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-discord-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-discord-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Drafting a context-aware Discord reply to an existing message, thread, or forum post.",
+        "outOfScope": "Sending, creating a new thread, direct messages, moderation actions, or permission changes."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-discord-post",
+      "displayName": "Discord Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-discord-post",
+      "path": "social-posting/okhp3-discord-post/SKILL.md",
+      "description": "Draft a new Discord message, forum post, or thread opener for a named server destination. Use when the user asks to post an announcement, update, question, or discussion opener in Discord. It checks server, channel, and ping context, uses Discord-friendly Markdown when useful, and returns a draft only. Do not use for replies, direct messages, or sending content.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-discord-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-discord-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Drafting a new Discord message, forum post, or thread opener for a supplied destination.",
+        "outOfScope": "Sending messages, joining servers, permission changes, direct messages, or replying to existing content."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-facebook-comment",
+      "displayName": "Facebook Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-facebook-comment",
+      "path": "social-posting/okhp3-facebook-comment/SKILL.md",
+      "description": "Draft a Facebook comment or reply to a supplied post and conversation. Use when the user wants to comment on Facebook, reply in a group discussion, or respond beneath a Page or profile post. It respects the original context and visibility boundary, then returns a draft only. Do not use for a new post or publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "skeleton",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-facebook-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-facebook-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Drafting a contextual Facebook comment or reply from supplied conversation material.",
+        "outOfScope": "Publishing, moderation action, friend or group management, or standalone post drafting."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-facebook-post",
+      "displayName": "Facebook Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-facebook-post",
+      "path": "social-posting/okhp3-facebook-post/SKILL.md",
+      "description": "Draft a Facebook post for a named profile, Page, group, or event surface. Use when the user asks to write a Facebook update, Page post, or group post. It confirms destination and audience before drafting, preserves the supplied context, and returns a draft only. Do not use for comments, scheduling, or publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "skeleton",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-facebook-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-facebook-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Drafting a Facebook post for an explicitly named surface and audience.",
+        "outOfScope": "Publishing, scheduling, group joining, audience-setting changes, or comment drafting."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-linkedin-angles",
+      "displayName": "LinkedIn Angles",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-angles",
+      "path": "social-posting/okhp3-linkedin-angles/SKILL.md",
+      "description": "Mine a finished artifact (PRD, SKILL.md, technical writeup, governance doc, Mermaid diagram, public X source packet, or the current conversation) for LinkedIn-postable angles. Use when the user says \"mine this for a post\", \"what's postable here\", \"angles from this\", or at the natural end of a work session when something substantial just got produced. Surfaces 3-5 candidate angles across required categories, writes them to the angle registry. Does NOT draft the post; that's okhp3-linkedin-post.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "none",
+      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-post",
+        "okhp3-process-capture"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-angles/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+      },
+      "evidence": {
+        "status": "none",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No evaluation design or executable check exists for this package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-linkedin-comment",
+      "displayName": "LinkedIn Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-comment",
+      "path": "social-posting/okhp3-linkedin-comment/SKILL.md",
+      "description": "Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to respond on LinkedIn, contribute to a professional conversation, or answer a LinkedIn comment. It preserves the target context, applies the LinkedIn voice and public-context scrub, and returns a draft only. Do not use for a new standalone post or for publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "skeleton",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-voice"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Drafting a context-aware LinkedIn comment or reply from a supplied target conversation.",
+        "outOfScope": "Publishing, engagement automation, standalone post drafting, or employer-specific disclosure."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-linkedin-post",
+      "displayName": "LinkedIn Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-post",
+      "path": "social-posting/okhp3-linkedin-post/SKILL.md",
+      "description": "Draft a LinkedIn post from a chosen angle. Use when the user has picked a candidate from okhp3-linkedin-angles' registry, or names a topic directly (\"write a post about X\"). Produces a draft, applies okhp3-linkedin-voice, then runs the BFS-scrub gate as the final non-negotiable step before returning output.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "skeleton",
+      "evidenceStatus": "none",
+      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-angles",
+        "okhp3-linkedin-voice"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+      },
+      "evidence": {
+        "status": "none",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No evaluation design or executable check exists for this package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-linkedin-voice",
+      "displayName": "LinkedIn Voice",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-voice",
+      "path": "social-posting/okhp3-linkedin-voice/SKILL.md",
+      "description": "Apply the OKHP3 brand voice to any LinkedIn-bound text. Use as the FINAL pass on any LinkedIn post or article draft, whether produced by okhp3-linkedin-post or written by hand. Checks for em dashes, paragraph consolidation, ROY-principle density, ending strength, and link-routing rules. This is a filter applied to existing text, not a generator — if there's no draft yet, use okhp3-linkedin-post first.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "skeleton",
+      "evidenceStatus": "none",
+      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-angles"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-voice/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+      },
+      "evidence": {
+        "status": "none",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No evaluation design or executable check exists for this package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-twitter-comment",
+      "displayName": "Twitter Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-twitter-comment",
+      "path": "social-posting/okhp3-twitter-comment/SKILL.md",
+      "description": "Draft an X reply, called a Twitter comment in this family, to a supplied post and conversation. Use when the user wants to reply on X, answer a tweet, or join an existing X thread. It keeps the parent context and reply visibility in view, then returns a draft only. Do not use for a new standalone post or publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "skeleton",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-twitter-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-twitter-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Drafting an X reply from a supplied parent post and conversation context.",
+        "outOfScope": "Publishing, quote posting, pile-on behavior, or standalone post drafting."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-twitter-post",
+      "displayName": "Twitter Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-twitter-post",
+      "path": "social-posting/okhp3-twitter-post/SKILL.md",
+      "description": "Draft an X post using the portable name Twitter. Use when the user asks for a tweet, X post, concise Twitter update, quote text, or a thread opener. It writes one evidence-locked post for a named account and returns a draft only. Do not use for replies, posting automation, or assuming X Premium features.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "skeleton",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-twitter-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-twitter-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "social-posting",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Drafting an X, formerly Twitter, post from supplied facts and account context.",
+        "outOfScope": "Publishing, replies, thread expansion without request, automation, or unsupported real-time claims."
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
+    },
+    {
       "name": "okhp3-brand-style-registry",
       "displayName": "Brand Style Registry",
       "family": "universal",
@@ -7625,7 +8068,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
