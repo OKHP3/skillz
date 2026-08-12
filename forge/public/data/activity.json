@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-08-12T01:43:43.447Z",
+  "generatedAt": "2026-08-12T01:45:00.437Z",
   "commits": [
+    {
+      "sha": "1f346324ff49b57f4219a365825a9866f2db5a5b",
+      "shortSha": "1f34632",
+      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz\n\n# Conflicts:\n#\tforge/public/data/activity.json\n#\tforge/public/data/catalog.json\n#\tforge/public/data/project-summary.json\n#\tskillz.manifest.json",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-12T01:43:46Z",
+      "url": "https://github.com/OKHP3/skillz/commit/1f346324ff49b57f4219a365825a9866f2db5a5b"
+    },
+    {
+      "sha": "c230d1e11dd80af691fcbe1fd9500983d84263ec",
+      "shortSha": "c230d1e",
+      "message": "chore: sync auto-generated catalog/activity data",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-12T01:43:19Z",
+      "url": "https://github.com/OKHP3/skillz/commit/c230d1e11dd80af691fcbe1fd9500983d84263ec"
+    },
     {
       "sha": "9ff0b60749a15986d855982649018b1987a2da38",
       "shortSha": "9ff0b60",
@@ -64,22 +80,6 @@
       "author": "dependabot[bot]",
       "date": "2026-08-11T17:00:57Z",
       "url": "https://github.com/OKHP3/skillz/commit/9023aebed81c02911ed79432883af87eb48ac796"
-    },
-    {
-      "sha": "37527f228e78af6b2a52410594b6940882a4e4be",
-      "shortSha": "37527f2",
-      "message": "ci: add verify-skill-landing workflow — dispatch-based trigger from incubator",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-11T16:29:36Z",
-      "url": "https://github.com/OKHP3/skillz/commit/37527f228e78af6b2a52410594b6940882a4e4be"
-    },
-    {
-      "sha": "6b765d82adb1c021cf9a2de50fcedce213a38884",
-      "shortSha": "6b765d8",
-      "message": "Update project data and manifest configuration files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-11T16:09:02Z",
-      "url": "https://github.com/OKHP3/skillz/commit/6b765d82adb1c021cf9a2de50fcedce213a38884"
     }
   ],
   "fetchError": null
