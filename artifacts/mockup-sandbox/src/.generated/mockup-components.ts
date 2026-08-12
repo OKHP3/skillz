@@ -2,6 +2,7 @@
 type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/skillz-forge/ExploreB.tsx": () => import("../components/mockups/skillz-forge/ExploreB.tsx"),
+  "./components/mockups/skillz-forge/ExploreD.tsx": () => import("../components/mockups/skillz-forge/ExploreD.tsx"),
   "./components/mockups/skillz-forge/HomeA.tsx": () => import("../components/mockups/skillz-forge/HomeA.tsx"),
   "./components/mockups/skillz-forge/SkillDetailC.tsx": () => import("../components/mockups/skillz-forge/SkillDetailC.tsx")
 };
