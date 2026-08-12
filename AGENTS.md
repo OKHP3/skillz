@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 120 distribution skills in 15 active families, and 40 project-local support skills under `.agents/skills/`
+- **Current inventory:** 146 distribution skills in 16 active families, and 40 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -35,7 +35,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `abrahamic/` | Scripture lookup, observance calendar, tradition reference, and cross-tradition comparison skills |
 | `community/` | Imported or community-oriented general-purpose skills, including UI, MCP, social, and authoring guidance |
 | `lifetrkr/` | Celestial-data and daily-oracle skills |
-| `social-posting/` | Platform-specific posting and commenting contracts for LinkedIn, Facebook, X/Twitter, and Discord |
+| `social-posting/` | Platform-specific drafting contracts for LinkedIn, Facebook, X/Twitter, Discord, YouTube, Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and Telegram |
 | `mermaid/` | Mermaid diagram authoring, governance, theming, publishing, updating, and repair |
 | `notion/` | AI conversation capture and routing into Notion knowledge structures |
 | `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, validating, and promoting information or exploratory work |
@@ -50,7 +50,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 120-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 146-skill distribution inventory |
 
 ## Routing index
 
@@ -86,8 +86,29 @@ Mermaid cross-cutting rules: preserve style during updates, repair syntax minima
 | `okhp3-twitter-comment` | Draft an X reply, called a comment in this family, from supplied parent-post context. |
 | `okhp3-discord-post` | Draft a new Discord message, forum post, or thread opener for a named server destination. |
 | `okhp3-discord-comment` | Draft a Discord reply to an existing message, thread, or forum conversation. |
+| `okhp3-youtube-video` | Draft a YouTube video metadata bundle, optional chapters, and account-side setting handoff from supplied facts. |
+| `okhp3-youtube-community-post` | Draft a YouTube channel post or a supplied creator Community contribution, keeping their destinations separate. |
+| `okhp3-youtube-comment` | Draft a YouTube comment or reply after reading the supplied video, post, and parent-comment context. |
+| `okhp3-kofi-post` | Draft a Ko-fi content post after the post form and intended public or supporter-access audience are explicit. |
+| `okhp3-kofi-supporter-reply` | Draft a privacy-preserving reply to a supplied, redacted Ko-fi supporter message. |
+| `okhp3-instagram-post` | Draft an Instagram feed post, carousel, Reel, or Story brief after the supplied media form and audience are explicit. |
+| `okhp3-instagram-comment` | Draft a context-aware Instagram comment or reply from a supplied post and conversation. |
+| `okhp3-tiktok-post` | Draft a TikTok video or photo-post brief from supplied media and source facts. |
+| `okhp3-tiktok-comment` | Draft a grounded TikTok comment or reply from supplied post context. |
+| `okhp3-reddit-post` | Draft a Reddit submission after the named community, post form, and supplied rules are explicit. |
+| `okhp3-reddit-comment` | Draft a Reddit comment or nested reply from supplied thread and community-rule context. |
+| `okhp3-patreon-post` | Draft a Patreon post only after its intended public, free-member, or paid-member access boundary is supplied. |
+| `okhp3-patreon-comment` | Draft a privacy-preserving Patreon comment or reply from supplied post and access context. |
+| `okhp3-pinterest-pin` | Draft a Pinterest Pin title, description, destination-link note, and board handoff from supplied material. |
+| `okhp3-pinterest-comment` | Draft a Pinterest comment or reply from a supplied Pin and conversation. |
+| `okhp3-slack-channel-message` | Draft a new Slack channel message for a named workspace destination; broad pings need exact approval. |
+| `okhp3-slack-thread-reply` | Draft a reply that remains in a supplied Slack parent thread without turning it into a channel broadcast. |
+| `okhp3-teams-channel-post` | Draft a new Microsoft Teams channel post for a supplied team, channel, and layout, without assuming posting permissions. |
+| `okhp3-teams-thread-reply` | Draft a Microsoft Teams reply within a supplied channel conversation. |
+| `okhp3-telegram-channel-post` | Draft a Telegram broadcast-channel post from supplied destination and material context. |
+| `okhp3-telegram-group-reply` | Draft a Telegram group or topic reply from supplied parent-message context. |
 
-Social-posting cross-cutting rules: identify acting account, destination, audience, and whether the task is a new post or a response before drafting. Prepare text only; do not publish, schedule, join communities, change settings, or automate engagement without explicit approval. Verify consequential public claims and exclude employer or private context by default. LinkedIn retains its voice and final scrub path; Discord requires channel and ping context; Facebook requires surface and audience context; X should not assume Premium capability.
+Social-posting cross-cutting rules: identify acting account, destination, audience, and whether the task is a new post or a response before drafting. Prepare text only; do not publish, schedule, join communities, change settings, or automate engagement without explicit approval. Verify consequential public claims and exclude employer or private context by default. LinkedIn retains its voice and public-context scrub path; Discord requires channel and ping context; Facebook requires surface and audience context; X should not assume Premium capability; YouTube must distinguish video, channel-post, Community, and comment surfaces; Ko-fi and Patreon must treat access boundaries and supporter or member details as private; Reddit requires supplied community rules; Pinterest needs asset, board, and link context; and Slack, Teams, and Telegram require the exact message surface and parent thread when replying. Packages carry no fixed account, person, topic, or viewpoint and obtain their minimum necessary context only at runtime.
 
 ### Process-capture family
 
@@ -271,7 +292,7 @@ node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root 
 (cd mermaid/okhp3-mermaid-theme-builder && node --test tests/*.test.mjs)
 ```
 
-The full-index check passed and discovered 120 distribution skills in 15 active families. The project cataloger found 40 local support skills. A full recursive Foundry validation checks 162 `SKILL.md` packages, including the 120 distribution packages, 40 project-local support packages, and 2 published mirrors; it passes without structural errors. The validator checks portable name, description, compatibility, body, path limits, and Foundry-specific version-coherent evidence, protected or external-required holdouts, current-state synchronization records, and associated negative tests. These checks establish structural integrity only, not task-quality uplift or production readiness. Its remaining advisory warnings identify imported-skill conventions and optional scope or validation refinements. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
+The full-index check passed and discovered 146 distribution skills in 16 active families. The project cataloger found 40 local support skills. A full recursive Foundry validation now covers 188 `SKILL.md` packages, including the 146 distribution packages, 40 project-local support packages, and 2 published mirrors. The 31 social-posting packages pass a family-recursive structural validation; do not claim a full recursive repository run from that evidence. The validator checks portable name, description, compatibility, body, path limits, and Foundry-specific version-coherent evidence, protected or external-required holdouts, current-state synchronization records, and associated negative tests. These checks establish structural integrity only, not task-quality uplift or production readiness. Its remaining advisory warnings identify imported-skill conventions and optional scope or validation refinements. The 16 Node test suites currently run, but 15 have one failing name assertion because their test expects the directory name without the required `okhp3-` prefix. These are known gaps, not evidence that the whole library is validated.
 
 For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. Do not run the technology refresh script casually because it makes network requests and writes the generated technology section and runtime pins.
 
@@ -302,7 +323,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 120 distribution skills in 15 active families, `knowledge-operations/FAMILY.md`, `context-extraction/FAMILY.md`, `glee-fully/FAMILY.md`, `askjamie/FAMILY.md`, and `social-posting/FAMILY.md` are active, and `.agents/skills/README.md` reports 40 project-local support skills.
+- Generated catalogs reflect the current filesystem: `README.md` reports 146 distribution skills in 16 active families, `knowledge-operations/FAMILY.md`, `context-extraction/FAMILY.md`, `glee-fully/FAMILY.md`, `askjamie/FAMILY.md`, and `social-posting/FAMILY.md` are active, and `.agents/skills/README.md` reports 40 project-local support skills.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.
@@ -310,4 +331,4 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-07-31
+Updated: 2026-08-11

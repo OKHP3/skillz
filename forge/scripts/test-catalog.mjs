@@ -134,15 +134,23 @@ test('every "live" evidence.status has evaluatedSkillVersion and lastEvidenceDat
   }
 });
 
-// 7. Rule 8: non-Community packages carry the full Foundry baseline
-// (version + packageMetadata fields) — the build throws if violated, this
-// re-checks the shipped artifact.
-test('every non-community skill has version and full packageMetadata (rule 8)', () => {
+// 7. Rule 8: non-Community packages carry the full Foundry baseline unless a
+// declared context-agnostic social-posting package uses the narrow public
+// artifact exception. The build throws if violated; re-check the shipped data.
+test('every non-community skill has required package metadata (rule 8)', () => {
   for (const s of catalog.skills) {
     if (s.family === 'community') continue;
     assert(!!s.version, `skill "${s.name}" (family ${s.family}) is missing version`);
-    for (const field of ['author', 'category', 'origin', 'homepage', 'authorGithub', 'inScope', 'outOfScope']) {
+    const fields = s.packageMetadata.publicArtifact
+      ? ['author', 'category', 'origin', 'inScope', 'outOfScope']
+      : ['author', 'category', 'origin', 'homepage', 'authorGithub', 'inScope', 'outOfScope'];
+    for (const field of fields) {
       assert(!!s.packageMetadata[field], `skill "${s.name}" is missing packageMetadata.${field}`);
+    }
+    if (s.packageMetadata.publicArtifact) {
+      assert(s.family === 'social-posting', `skill "${s.name}" uses publicArtifact outside social-posting`);
+      assert(!s.packageMetadata.homepage, `skill "${s.name}" publicArtifact metadata must not include homepage`);
+      assert(!s.packageMetadata.authorGithub, `skill "${s.name}" publicArtifact metadata must not include authorGithub`);
     }
   }
 });

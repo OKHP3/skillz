@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-08-11T19:02:17.955Z",
+  "generatedAt": "2026-08-12T00:20:54.969Z",
   "commits": [
+    {
+      "sha": "2d3f40044399ec36333c3e22cbcdebe1372862aa",
+      "shortSha": "2d3f400",
+      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz\n\n# Conflicts:\n#\tforge/public/data/catalog.json\n#\tforge/public/data/project-summary.json\n#\tskillz.manifest.json",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-11T19:02:21Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2d3f40044399ec36333c3e22cbcdebe1372862aa"
+    },
     {
       "sha": "df4ec456275c01988524708057f129e44a71951a",
       "shortSha": "df4ec45",
@@ -8,6 +16,14 @@
       "author": "OKHP3",
       "date": "2026-08-11T18:56:28Z",
       "url": "https://github.com/OKHP3/skillz/commit/df4ec456275c01988524708057f129e44a71951a"
+    },
+    {
+      "sha": "b89c9193063a7773c6b6aaf43bf2abba385b20fb",
+      "shortSha": "b89c919",
+      "message": "Update project metadata and activity manifest details\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-11T18:57:48Z",
+      "url": "https://github.com/OKHP3/skillz/commit/b89c9193063a7773c6b6aaf43bf2abba385b20fb"
     },
     {
       "sha": "7b20ff07f7801151f8a233dfeafee6a5a69a2a45",
@@ -64,22 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-11T16:07:39Z",
       "url": "https://github.com/OKHP3/skillz/commit/1c7c4e08775366a58ce3e9b7c640c683eaf92e62"
-    },
-    {
-      "sha": "97069ebbfb2ae6a59e1cdb51d2dcc97d0b00a62f",
-      "shortSha": "97069eb",
-      "message": "chore: sync auto-generated catalog/activity data, remove stale pasted attachments",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-11T16:07:01Z",
-      "url": "https://github.com/OKHP3/skillz/commit/97069ebbfb2ae6a59e1cdb51d2dcc97d0b00a62f"
-    },
-    {
-      "sha": "93eff2ed68e21c67d034cd9a2c39d076704476cf",
-      "shortSha": "93eff2e",
-      "message": "Merge pull request #44: Add okhp3-replit-repl-janitor to replit/ family\n\nfeat(replit): add okhp3-replit-repl-janitor v1.0.1 (fifth replit/ skill)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-11T15:29:10Z",
-      "url": "https://github.com/OKHP3/skillz/commit/93eff2ed68e21c67d034cd9a2c39d076704476cf"
     }
   ],
   "fetchError": null

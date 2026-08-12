@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-11T19:02:17.667Z",
+  "generatedAt": "2026-08-12T00:20:54.899Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "b89c919",
-  "skillCount": 125,
+  "sourceCommit": "2d3f400",
+  "skillCount": 146,
   "familyCount": 16,
   "families": [
     {
@@ -88,10 +88,10 @@
         "okhp3-askjamie-style-registry",
         "okhp3-askjamie-thread-context"
       ],
-      "narrativeBody": null,
+      "narrativeBody": "**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.\n\nOne of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.",
       "orientation": {
         "purpose": {
-          "value": null,
+          "value": "**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.\n\nOne of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -212,10 +212,10 @@
         "okhp3-glee-fully-style-registry",
         "okhp3-glee-fully-thread-context"
       ],
-      "narrativeBody": null,
+      "narrativeBody": "**Status: early specific tooling.** The Glee-fully-specific Foundry skill now lives at\n`glee-fully/okhp3-glee-fully-foundry/`. The consumer Tool and Tool-ette skill\nfamilies remain a future conversion target.\n\nConversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee-fullyTools-FoundRy` inventory). Earlier analysis concluded the right packaging is neither 1 family nor a fixed 7 — cohesion (shared tool/MCP affinity, workflow proximity) should determine the cluster count, working estimate 4-6 sub-families.",
       "orientation": {
         "purpose": {
-          "value": null,
+          "value": "**Status: early specific tooling.** The Glee-fully-specific Foundry skill now lives at\n`glee-fully/okhp3-glee-fully-foundry/`. The consumer Tool and Tool-ette skill\nfamilies remain a future conversion target.\n\nConversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee-fullyTools-FoundRy` inventory). Earlier analysis concluded the right packaging is neither 1 family nor a fixed 7 — cohesion (shared tool/MCP affinity, workflow proximity) should determine the cluster count, working estimate 4-6 sub-families.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -524,18 +524,39 @@
     {
       "name": "social-posting",
       "displayName": "Social posting",
-      "skillCount": 10,
+      "skillCount": 31,
       "skills": [
         "okhp3-discord-comment",
         "okhp3-discord-post",
         "okhp3-facebook-comment",
         "okhp3-facebook-post",
+        "okhp3-instagram-comment",
+        "okhp3-instagram-post",
+        "okhp3-kofi-post",
+        "okhp3-kofi-supporter-reply",
         "okhp3-linkedin-angles",
         "okhp3-linkedin-comment",
         "okhp3-linkedin-post",
         "okhp3-linkedin-voice",
+        "okhp3-patreon-comment",
+        "okhp3-patreon-post",
+        "okhp3-pinterest-comment",
+        "okhp3-pinterest-pin",
+        "okhp3-reddit-comment",
+        "okhp3-reddit-post",
+        "okhp3-slack-channel-message",
+        "okhp3-slack-thread-reply",
+        "okhp3-teams-channel-post",
+        "okhp3-teams-thread-reply",
+        "okhp3-telegram-channel-post",
+        "okhp3-telegram-group-reply",
+        "okhp3-tiktok-comment",
+        "okhp3-tiktok-post",
         "okhp3-twitter-comment",
-        "okhp3-twitter-post"
+        "okhp3-twitter-post",
+        "okhp3-youtube-comment",
+        "okhp3-youtube-community-post",
+        "okhp3-youtube-video"
       ],
       "narrativeBody": "Platform-specific drafting contracts for public-network posts and comments.\nThey prepare text only. They never publish, schedule, join a community, or\nchange an account setting without the user's explicit approval.",
       "orientation": {
@@ -555,7 +576,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-comment pairs with okhp3-linkedin-voice; okhp3-linkedin-post pairs with okhp3-linkedin-voice; okhp3-linkedin-voice pairs with okhp3-linkedin-angles",
+          "value": "okhp3-discord-comment pairs with okhp3-discord-post; okhp3-facebook-post pairs with okhp3-facebook-comment; okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-comment pairs with okhp3-linkedin-post; okhp3-linkedin-comment pairs with okhp3-linkedin-voice",
           "source": "generated"
         }
       }
@@ -659,7 +680,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources.",
-        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
+        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "historical",
@@ -721,7 +743,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources.",
-        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
+        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "historical",
@@ -783,7 +806,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources.",
-        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
+        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "historical",
@@ -845,7 +869,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Reference, comparison, lookup, and observance work for the named in-scope Abrahamic traditions and sources.",
-        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims."
+        "outOfScope": "Theological adjudication, pastoral direction, invented scripture text, or unsupported doctrinal claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "historical",
@@ -907,7 +932,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Building, auditing, testing, and governing Custom GPTs and their reusable workflow artifacts.",
-        "outOfScope": "Autonomous publication, private-data export, credential handling, or unverified platform capability claims."
+        "outOfScope": "Autonomous publication, private-data export, credential handling, or unverified platform capability claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -971,7 +997,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Readiness assessment, evidence inventory, gap analysis, and builder handoff for a proposed Custom GPT.",
-        "outOfScope": "Writing production integrations, managing credentials, publishing a GPT, or declaring volatile platform limits."
+        "outOfScope": "Writing production integrations, managing credentials, publishing a GPT, or declaring volatile platform limits.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1035,7 +1062,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Capability mapping, semantic-loss analysis, and migration planning from an existing Custom GPT to a portable Agent Skill.",
-        "outOfScope": "Exporting private platform data, bypassing permissions, implementing production integrations, or claiming unverified feature parity."
+        "outOfScope": "Exporting private platform data, bypassing permissions, implementing production integrations, or claiming unverified feature parity.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1097,7 +1125,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Styling and layout decisions for AskJamie-branded SPAs, documents, presentations, and image briefs against the approved local profile.",
-        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-AskJamie surfaces."
+        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-AskJamie surfaces.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -1159,7 +1188,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "ChatGPT project inventory, export capture, normalization, and reconciliation; Source provenance, private staging, and public-safe repository routing",
-        "outOfScope": "Accessing unavailable, deleted, or unauthorized ChatGPT content; Committing unreviewed raw conversations or private data to the repository"
+        "outOfScope": "Accessing unavailable, deleted, or unauthorized ChatGPT content; Committing unreviewed raw conversations or private data to the repository",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1224,7 +1254,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1288,7 +1319,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1350,7 +1382,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Design, audit, test, and package AskJamie Custom GPT workflows within declared platform boundaries.",
-        "outOfScope": "Unverified platform claims, hidden side effects, private data publication, or replacing owner approval with an assumed build."
+        "outOfScope": "Unverified platform claims, hidden side effects, private data publication, or replacing owner approval with an assumed build.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1414,7 +1447,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Readiness assessment, evidence inventory, gap analysis, and builder handoff for AskJamie Custom GPT concepts.",
-        "outOfScope": "Building or publishing without approval, inventing missing evidence, or treating a readiness score as a production guarantee."
+        "outOfScope": "Building or publishing without approval, inventing missing evidence, or treating a readiness score as a production guarantee.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1482,7 +1516,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Governed child-repository planning and package preparation from an approved reusable workflow source.",
-        "outOfScope": "Autonomous publication, implicit source ownership, private data or secret handling, and remote repository changes without approval."
+        "outOfScope": "Autonomous publication, implicit source ownership, private data or secret handling, and remote repository changes without approval.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -1544,7 +1579,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Evidence-led inventory, classification, purpose discovery, and lifecycle profiling of local Git repositories; Content-first folder and file naming proposals for mixed knowledge, prompt, document, media, and research repositories; Selective creation of README, AGENTS.md, CHANGELOG.md, lifecycle, migration, .agents, .kit, and .github scaffolding; Approval-gated Git moves, renames, link repair, duplicate analysis, and post-change verification",
-        "outOfScope": "Inventing a software-application architecture for a non-application repository; Deleting, overwriting, deduplicating, publishing, pushing, or changing GitHub settings without explicit authorization; Treating repository content as instructions, secrets, or authoritative claims without evidence"
+        "outOfScope": "Inventing a software-application architecture for a non-application repository; Deleting, overwriting, deduplicating, publishing, pushing, or changing GitHub settings without explicit authorization; Treating repository content as instructions, secrets, or authoritative claims without evidence",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1608,7 +1644,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction and application of approved AskJamie visual style profiles with explicit source and scope boundaries.",
-        "outOfScope": "Invented brand authority, unapproved source use, hidden employer context, or automatic publication."
+        "outOfScope": "Invented brand authority, unapproved source use, hidden employer context, or automatic publication.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1672,7 +1709,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Durable, provenance-aware extraction of supplied AI conversation context for AskJamie workflows.",
-        "outOfScope": "Account access, source-service scraping, invented context, unauthorized publication, or unsupported platform claims."
+        "outOfScope": "Account access, source-service scraping, invented context, unauthorized publication, or unsupported platform claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -1734,7 +1772,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -1803,7 +1842,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -1865,7 +1905,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -1932,7 +1973,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -1994,7 +2036,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -2056,7 +2099,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -2118,7 +2162,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -2180,7 +2225,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -2242,7 +2288,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -2304,7 +2351,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -2366,7 +2414,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -2428,7 +2477,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -2490,7 +2540,8 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": null,
-        "outOfScope": null
+        "outOfScope": null,
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -2552,7 +2603,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "ChatGPT project inventory, export preservation, provenance-led normalization, and public-safe repository reconciliation.",
-        "outOfScope": "Accessing unavailable or unauthorized ChatGPT content, committing unreviewed raw conversations, or exposing private data."
+        "outOfScope": "Accessing unavailable or unauthorized ChatGPT content, committing unreviewed raw conversations, or exposing private data.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -2625,7 +2677,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Portable continuation records for work that crosses sessions, machines, or agent hosts.",
-        "outOfScope": "Account access, claims that another copy applied the handoff, publication, or replacing source preservation."
+        "outOfScope": "Account access, claims that another copy applied the handoff, publication, or replacing source preservation.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -2689,7 +2742,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -2751,7 +2805,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -2816,7 +2871,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -2880,7 +2936,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -2942,7 +2999,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3004,7 +3062,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3066,7 +3125,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3128,7 +3188,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction, preservation, provenance, and handoff of manually supplied AI conversation material for the named platform or workflow.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, or actions outside the supplied material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3195,7 +3256,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Scaffolding and auditing Glee-fully child repository folder/file structure, brand payload, and governance stubs.",
-        "outOfScope": "Writing entity-specific tone, persona, or content — only the structural scaffold and stubs."
+        "outOfScope": "Writing entity-specific tone, persona, or content — only the structural scaffold and stubs.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -3257,7 +3319,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Styling and layout decisions for Glee-fully-branded SPAs, documents, presentations, and image briefs against the approved local profile.",
-        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-Glee-fully surfaces."
+        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-Glee-fully surfaces.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -3319,7 +3382,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "ChatGPT project inventory, export capture, normalization, and reconciliation; Source provenance, private staging, and public-safe repository routing",
-        "outOfScope": "Accessing unavailable, deleted, or unauthorized ChatGPT content; Committing unreviewed raw conversations or private data to the repository"
+        "outOfScope": "Accessing unavailable, deleted, or unauthorized ChatGPT content; Committing unreviewed raw conversations or private data to the repository",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3384,7 +3448,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3448,7 +3513,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Platform-specific extraction, provenance preservation, normalization, and handoff for manually supplied AI conversation material.",
-        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material."
+        "outOfScope": "Account access, source-service scraping, unauthorized uploads, invented source facts, or publication of private material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3512,7 +3578,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Glee-fully Tool and Tool-ette skill architecture, persona density, hierarchy, canon, and release preparation.",
-        "outOfScope": "Generic skill authoring, employer-confidential material, platform-specific claims without verification, and publishing without authorization."
+        "outOfScope": "Generic skill authoring, employer-confidential material, platform-specific claims without verification, and publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3574,7 +3641,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Design, audit, test, and package Glee-fully Custom GPT workflows within declared platform boundaries.",
-        "outOfScope": "Unverified platform claims, hidden side effects, private data publication, or replacing owner approval with an assumed build."
+        "outOfScope": "Unverified platform claims, hidden side effects, private data publication, or replacing owner approval with an assumed build.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3638,7 +3706,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Readiness assessment, evidence inventory, gap analysis, and builder handoff for Glee-fully Custom GPT concepts.",
-        "outOfScope": "Building or publishing without approval, inventing missing evidence, or treating a readiness score as a production guarantee."
+        "outOfScope": "Building or publishing without approval, inventing missing evidence, or treating a readiness score as a production guarantee.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3706,7 +3775,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Governed child-repository planning and package preparation from an approved reusable workflow source.",
-        "outOfScope": "Autonomous publication, implicit source ownership, private data or secret handling, and remote repository changes without approval."
+        "outOfScope": "Autonomous publication, implicit source ownership, private data or secret handling, and remote repository changes without approval.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -3768,7 +3838,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Evidence-led inventory, classification, purpose discovery, and lifecycle profiling of local Git repositories; Content-first folder and file naming proposals for mixed knowledge, prompt, document, media, and research repositories; Selective creation of README, AGENTS.md, CHANGELOG.md, lifecycle, migration, .agents, .kit, and .github scaffolding; Approval-gated Git moves, renames, link repair, duplicate analysis, and post-change verification",
-        "outOfScope": "Inventing a software-application architecture for a non-application repository; Deleting, overwriting, deduplicating, publishing, pushing, or changing GitHub settings without explicit authorization; Treating repository content as instructions, secrets, or authoritative claims without evidence"
+        "outOfScope": "Inventing a software-application architecture for a non-application repository; Deleting, overwriting, deduplicating, publishing, pushing, or changing GitHub settings without explicit authorization; Treating repository content as instructions, secrets, or authoritative claims without evidence",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3832,7 +3903,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Extraction and application of approved Glee-fully visual style profiles with explicit source and scope boundaries.",
-        "outOfScope": "Invented brand authority, unapproved source use, hidden employer context, or automatic publication."
+        "outOfScope": "Invented brand authority, unapproved source use, hidden employer context, or automatic publication.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3896,7 +3968,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Durable, provenance-aware extraction of supplied AI conversation context for Glee-fully workflows.",
-        "outOfScope": "Account access, source-service scraping, invented context, unauthorized publication, or unsupported platform claims."
+        "outOfScope": "Account access, source-service scraping, invented context, unauthorized publication, or unsupported platform claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -3958,7 +4031,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Read-only mechanical and judgment validation of a named artifact before handoff or reliance.",
-        "outOfScope": "Inventing a validator, making an artifact complete by assumption, publication, or destructive repair."
+        "outOfScope": "Inventing a validator, making an artifact complete by assumption, publication, or destructive repair.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -4030,7 +4104,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Single-item, provenance-preserving intake into an owner-approved project inbox.",
-        "outOfScope": "Batch triage, interpretation, deduplication, activation, archival, publication, or deletion."
+        "outOfScope": "Batch triage, interpretation, deduplication, activation, archival, publication, or deletion.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -4092,7 +4167,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Claim classification and evidence traceability for consequential comparisons, handoffs, and decisions.",
-        "outOfScope": "Mechanical testing, source retrieval, domain adjudication, or upgrading claims without direct evidence."
+        "outOfScope": "Mechanical testing, source retrieval, domain adjudication, or upgrading claims without direct evidence.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -4161,7 +4237,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Evidence-based readiness decision for an exploratory effort before formalization or archival.",
-        "outOfScope": "Creating the destination, publishing, external movement, or substituting a score for owner authority."
+        "outOfScope": "Creating the destination, publishing, external movement, or substituting a score for owner authority.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -4237,7 +4314,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Owner-approved formalization package for an effort that passed a documented readiness gate.",
-        "outOfScope": "Creating repositories, publishing, pushing, external moves, or deciding graduation without authority."
+        "outOfScope": "Creating repositories, publishing, pushing, external moves, or deciding graduation without authority.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -4301,7 +4379,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Source-traceable research and recommendations where freshness or external verification matters.",
-        "outOfScope": "Decorative browsing, unsupported claims, source-service scraping, or decisions that require specialist authority."
+        "outOfScope": "Decorative browsing, unsupported claims, source-service scraping, or decisions that require specialist authority.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -4365,7 +4444,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Recorded, approval-aware disposition of captured project inbox items.",
-        "outOfScope": "Silent deletion, external publication, unapproved moves, or replacing domain-specific project review."
+        "outOfScope": "Silent deletion, external publication, unapproved moves, or replacing domain-specific project review.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -4427,7 +4507,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named client-side celestial-data or daily-insight implementation and review workflow.",
-        "outOfScope": "Scientific, medical, legal, or financial prediction; hidden network dependence; or personal advice presented as fact."
+        "outOfScope": "Scientific, medical, legal, or financial prediction; hidden network dependence; or personal advice presented as fact.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "live",
@@ -4487,7 +4568,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named client-side celestial-data or daily-insight implementation and review workflow.",
-        "outOfScope": "Scientific, medical, legal, or financial prediction; hidden network dependence; or personal advice presented as fact."
+        "outOfScope": "Scientific, medical, legal, or financial prediction; hidden network dependence; or personal advice presented as fact.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "live",
@@ -4541,7 +4623,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
       "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4549,7 +4631,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Mermaid-native architecture, C4, deployment, integration, and system-topology diagram design after core routing.",
-        "outOfScope": "General Mermaid governance, production infrastructure changes, or unsupported renderer claims."
+        "outOfScope": "General Mermaid governance, production infrastructure changes, or unsupported renderer claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -4605,7 +4688,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-06T20:39:13Z",
       "commitSha": "9581a631",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4613,7 +4696,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Mermaid-native BPMN-flavored process diagrams, gateways, lanes, events, and handoffs after core routing.",
-        "outOfScope": "Process discovery without source facts, diagram publication, or non-process architecture modeling."
+        "outOfScope": "Process discovery without source facts, diagram publication, or non-process architecture modeling.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -4669,7 +4753,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-05T22:30:03Z",
       "commitSha": "9fc9b8e7",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4677,7 +4761,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Mermaid audience selection, diagram-type routing, design-system application, naming, registry, and validation gates.",
-        "outOfScope": "Domain-specific BPMN, architecture, or data modeling without the corresponding family skill; autonomous publication."
+        "outOfScope": "Domain-specific BPMN, architecture, or data modeling without the corresponding family skill; autonomous publication.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -4733,7 +4818,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-07-30T20:38:20-05:00",
       "commitSha": "fbefff36",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4741,7 +4826,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Mermaid ERD, class-diagram, schema, and relationship documentation after core routing.",
-        "outOfScope": "Database migration execution, source-data changes, or non-data architecture modeling."
+        "outOfScope": "Database migration execution, source-data changes, or non-data architecture modeling.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -4809,7 +4895,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Cross-diagram standards, conformance checks, and style or behavior drift review for Mermaid assets.",
-        "outOfScope": "Authoring business content, silent bulk rewrites, or autonomous publication."
+        "outOfScope": "Authoring business content, silent bulk rewrites, or autonomous publication.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -4865,7 +4952,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-06T20:39:13Z",
       "commitSha": "9581a631",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4873,7 +4960,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Rendering, exporting, and authorized publication of validated Mermaid diagrams.",
-        "outOfScope": "Unvalidated diagram content changes, deletion of sources or renders, or publication without authorization."
+        "outOfScope": "Unvalidated diagram content changes, deletion of sources or renders, or publication without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -4939,7 +5027,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Minimum-change repair of malformed Mermaid syntax or rendering failures after core routing.",
-        "outOfScope": "Intentional content changes, style redesign, or deletion of source or rendered output."
+        "outOfScope": "Intentional content changes, style redesign, or deletion of source or rendered output.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -5019,7 +5108,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Renderer-aware Mermaid palette, theme, class definition, and prompt-scaffold generation.",
-        "outOfScope": "Mermaid syntax authoring, structural process modeling, or unsupported renderer guarantees."
+        "outOfScope": "Mermaid syntax authoring, structural process modeling, or unsupported renderer guarantees.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -5085,7 +5175,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Authorized content updates to working Mermaid source while preserving established styling and configuration.",
-        "outOfScope": "Syntax-only repair, unrequested style replacement, or deletion of source or rendered output."
+        "outOfScope": "Syntax-only repair, unrequested style replacement, or deletion of source or rendered output.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -5147,7 +5238,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Routing and reconciling supplied AI conversation material into the intended Notion knowledge structure.",
-        "outOfScope": "Generic note taking, unauthorized Notion writes, or source-service scraping."
+        "outOfScope": "Generic note taking, unauthorized Notion writes, or source-service scraping.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -5217,7 +5309,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Season-long fantasy, DFS, salary-cap, waiver, and trade analysis; Projected points, cost efficiency, replacement value, and roster constraints; Floor, ceiling, uncertainty, matchup, usage, and correlation analysis",
-        "outOfScope": "Sportsbook odds, wagers, bankroll, or bet execution; Invented injury, depth-chart, projection, or salary data; Treating a high raw close rate or point total as sufficient value evidence"
+        "outOfScope": "Sportsbook odds, wagers, bankroll, or bet execution; Invented injury, depth-chart, projection, or salary data; Treating a high raw close rate or point total as sufficient value evidence",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -5291,7 +5384,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Multi-scale event aggregation and entity-state modeling; Feature inventory, compression, leakage control, and validation design; Objective functions, constraints, uncertainty, and decision outputs; Routing to sports, NFL fantasy, sales, and prediction-market adapters",
-        "outOfScope": "Inventing data, current facts, probabilities, or benchmark results; Treating correlation as causal evidence without a causal design; Executing trades, bets, political persuasion, or external side effects; Replacing a domain adapter with generic advice when domain rules matter"
+        "outOfScope": "Inventing data, current facts, probabilities, or benchmark results; Treating correlation as causal evidence without a causal design; Executing trades, bets, political persuasion, or external side effects; Replacing a domain adapter with generic advice when domain rules matter",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -5363,7 +5457,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Independent event probability modeling and calibration; Market-implied probability, price, spread, liquidity, and resolution analysis; Expected value, uncertainty, scenario, and paper-trading evaluation",
-        "outOfScope": "Placing, cancelling, or managing trades or bets; Claims of guaranteed profit or certainty; Inventing live prices, market rules, or event-resolution facts"
+        "outOfScope": "Placing, cancelling, or managing trades or bets; Claims of guaranteed profit or certainty; Inventing live prices, market rules, or event-resolution facts",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -5446,7 +5541,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Pipeline, account, salesperson, territory, and commercial-value modeling; Margin-aware forecasting and constrained sales or resource allocation; Selection bias, opportunity quality, retention, and incremental lift checks",
-        "outOfScope": "Inventing CRM, customer, quota, or pricing data; Ranking people without opportunity and territory context; Sending outreach, changing CRM records, or making employment decisions"
+        "outOfScope": "Inventing CRM, customer, quota, or pricing data; Ranking people without opportunity and territory context; Sending outreach, changing CRM records, or making employment decisions",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -5528,7 +5624,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Team, game, player, matchup, and season state modeling; Opponent-adjusted metrics, schedule context, roster events, and uncertainty; Sports ranking and projection specifications",
-        "outOfScope": "Fabricating current scores, rosters, injuries, odds, or transactions; Treating one game as proof of a team or player skill level; Executing bets, trades, or sportsbook actions"
+        "outOfScope": "Fabricating current scores, rosters, injuries, odds, or transactions; Treating one game as proof of a team or player skill level; Executing bets, trades, or sportsbook actions",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -5613,7 +5710,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/as-is-process-capture",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -5692,7 +5790,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/decision-model-authoring",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -5771,7 +5870,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/elicitation-and-interview-facilitation",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -5864,7 +5964,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/future-state-and-change-strategy",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -5942,7 +6043,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/publication-and-handoff-packaging",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -5996,7 +6098,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-capture/SKILL.md",
       "lastModified": "2026-08-11T09:26:28-05:00",
       "commitSha": "7cd00f65",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -6004,7 +6106,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Recurring-task recognition, bounded backlog capture, and skill-skeleton handoff.",
-        "outOfScope": "Full skill authoring, unapproved repository edits, and treating one-off work as a durable workflow."
+        "outOfScope": "Full skill authoring, unapproved repository edits, and treating one-off work as a durable workflow.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -6085,7 +6188,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-measures-and-controls-definition",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6164,7 +6268,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-gap-and-exception-analysis",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6244,7 +6349,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-intake-and-scope",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6325,7 +6431,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-narrative-authoring",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6403,7 +6510,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-validation-and-quality-scoring",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6481,7 +6589,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/raci-and-governance-matrix-generation",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6560,7 +6669,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sipoc-generation",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6639,7 +6749,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sop-and-work-instruction-generation",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6717,7 +6828,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/stakeholder-and-role-mapping",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6799,7 +6911,8 @@
         "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/visual-process-modeling",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization."
+        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -6866,7 +6979,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Explicit fold, unfold, and refold operations with semantic-loss tracking.",
-        "outOfScope": "General writing, direct diagram authoring, or syntax repair without a representation change."
+        "outOfScope": "General writing, direct diagram authoring, or syntax repair without a representation change.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -6930,7 +7044,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "- Canvas organisation for judge review (hero row, labeled zones, focusCanvasShapes) - Artifact selection guide — which artifacts matter most to judges - Dual deployment — Replit Publish and GitHub Pages side-by-side - Session handoff conventions for multi-day builds - Building-in-public commit-message discipline - The distinction between \"canvas for building\" and \"canvas for judging\"",
-        "outOfScope": "- Canvas callback mechanics — read the canvas skill - GitHub Pages deployment mechanics — read the okhp3-vite-github-pages skill - Replit deployment mechanics — read the deployment skill - Multi-artifact monorepo rules — read the okhp3-replit-multi-artifact skill - Individual artifact build instructions (slides, video, web, etc.)"
+        "outOfScope": "- Canvas callback mechanics — read the canvas skill - GitHub Pages deployment mechanics — read the okhp3-vite-github-pages skill - Replit deployment mechanics — read the deployment skill - Multi-artifact monorepo rules — read the okhp3-replit-multi-artifact skill - Individual artifact build instructions (slides, video, web, etc.)",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "live",
@@ -6990,7 +7105,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "- Strategic planning of multi-frame canvas layouts (zones, gutters, hero rows) - iframe lifecycle management — building → modifying → live — for audience UX - Coordinate system quick reference and layout arithmetic - Section label shape conventions for zone navigation - focusCanvasShapes as the final step for judges or reviewers - Integration contract between the mockup-sandbox skill and the canvas",
-        "outOfScope": "- Canvas API mechanics (schemas, callback signatures) — read the canvas skill for those - Building or editing the components themselves — read the mockup-sandbox skill - Extracting existing app components onto the canvas — read the mockup-extract skill - Graduating a canvas mockup to production — read the mockup-graduate skill"
+        "outOfScope": "- Canvas API mechanics (schemas, callback signatures) — read the canvas skill for those - Building or editing the components themselves — read the mockup-sandbox skill - Extracting existing app components onto the canvas — read the mockup-extract skill - Graduating a canvas mockup to production — read the mockup-graduate skill",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "live",
@@ -7055,7 +7171,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "- The decision tree — when to extract vs. build from scratch - The extract → sandbox → variant → graduate pipeline as a coherent workflow - DESIGN subagent brief anatomy for mockup sandbox tasks - Variant labelling and canvas layout conventions - The graduation decision gate and GENERAL vs DESIGN subagent distinction - Common mistakes that break the pipeline",
-        "outOfScope": "- Canvas API mechanics — read the canvas skill - Mockup-sandbox setup and component URL patterns — read the mockup-sandbox skill - Import tracing and dependency stubbing during extraction — read the mockup-extract skill - Production wiring during graduation — read the mockup-graduate skill - Launching a DESIGN subagent — read the design skill"
+        "outOfScope": "- Canvas API mechanics — read the canvas skill - Mockup-sandbox setup and component URL patterns — read the mockup-sandbox skill - Import tracing and dependency stubbing during extraction — read the mockup-extract skill - Production wiring during graduation — read the mockup-graduate skill - Launching a DESIGN subagent — read the design skill",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "live",
@@ -7115,7 +7232,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "- Artifact kinds and their bootstrap skill pairings - BASE_URL prefix rule for routes and API calls - PORT env var discipline — reading vs. hard-coding - Managed workflow naming and the configureWorkflow prohibition - pnpm catalog drift and off-catalog pin consequences - workspace:* shared library wiring - Blank-preview debug checklist",
-        "outOfScope": "- Creating artifacts (bootstrapping, toml) — read the artifacts skill - Workflow restart mechanics — read the workflows skill - pnpm package installation — read the package-management skill - Replit secrets and environment variables — read the environment-secrets skill"
+        "outOfScope": "- Creating artifacts (bootstrapping, toml) — read the artifacts skill - Workflow restart mechanics — read the workflows skill - pnpm package installation — read the package-management skill - Replit secrets and environment variables — read the environment-secrets skill",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "live",
@@ -7185,7 +7303,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "- Auditing one Replit checkout's local branches against a verified base ref - Resolving pull-request state before classifying branches for keep, merge, delete, or review - Treating Replit-generated branch names as hints rather than deletion proof - Auditing kebab-case naming with documented structural exceptions - Finding nested detritus folders and preparing an owner-approved cleanup plan - Executing only the exact cleanup items the owner explicitly approves",
-        "outOfScope": "- Recurring repository maintenance and worktree reconciliation - Multi-repository mirror estates across computers or clones - Deep repository classification, taxonomy design, or governance scaffolding - Autonomous merges, deletions, renames, force-pushes, or publication - Rewriting main or deleting stashes, archive refs, or unreviewed work"
+        "outOfScope": "- Recurring repository maintenance and worktree reconciliation - Multi-repository mirror estates across computers or clones - Deep repository classification, taxonomy design, or governance scaffolding - Autonomous merges, deletions, renames, force-pushes, or publication - Rewriting main or deleting stashes, archive refs, or unreviewed work",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "live",
@@ -7210,12 +7329,12 @@
       "skillDir": "okhp3-discord-comment",
       "path": "social-posting/okhp3-discord-comment/SKILL.md",
       "description": "Draft a Discord reply to a supplied message, thread, or forum conversation. Use when the user wants to answer, clarify, or contribute to an existing Discord discussion. It preserves channel and thread context, avoids unauthorized pings, and returns a draft only. Do not use for a new message, a new thread, direct messages, or sending content.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
       "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
@@ -7226,7 +7345,9 @@
       ],
       "triggers": [],
       "avoid": [],
-      "companions": [],
+      "companions": [
+        "okhp3-discord-post"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -7239,18 +7360,19 @@
       "commitSha": "7cd00f65",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Drafting a context-aware Discord reply to an existing message, thread, or forum post.",
-        "outOfScope": "Sending, creating a new thread, direct messages, moderation actions, or permission changes."
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting a context-aware Discord reply to an existing message, thread, or forum post, including evidence-locked links and authorized mentions.",
+        "outOfScope": "Sending, creating a new thread, direct messages, moderation actions, or permission changes.",
+        "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -7272,12 +7394,12 @@
       "skillDir": "okhp3-discord-post",
       "path": "social-posting/okhp3-discord-post/SKILL.md",
       "description": "Draft a new Discord message, forum post, or thread opener for a named server destination. Use when the user asks to post an announcement, update, question, or discussion opener in Discord. It checks server, channel, and ping context, uses Discord-friendly Markdown when useful, and returns a draft only. Do not use for replies, direct messages, or sending content.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
       "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
@@ -7301,18 +7423,19 @@
       "commitSha": "7cd00f65",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Drafting a new Discord message, forum post, or thread opener for a supplied destination.",
-        "outOfScope": "Sending messages, joining servers, permission changes, direct messages, or replying to existing content."
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting a new Discord message, forum post, or thread opener for a supplied destination, including evidence-locked link bundles and public progress updates.",
+        "outOfScope": "Sending messages, joining servers, permission changes, direct messages, or replying to existing content.",
+        "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -7334,13 +7457,13 @@
       "skillDir": "okhp3-facebook-comment",
       "path": "social-posting/okhp3-facebook-comment/SKILL.md",
       "description": "Draft a Facebook comment or reply to a supplied post and conversation. Use when the user wants to comment on Facebook, reply in a group discussion, or respond beneath a Page or profile post. It respects the original context and visibility boundary, then returns a draft only. Do not use for a new post or publication.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -7363,18 +7486,19 @@
       "commitSha": "7cd00f65",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Drafting a contextual Facebook comment or reply from supplied conversation material.",
-        "outOfScope": "Publishing, moderation action, friend or group management, or standalone post drafting."
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting a contextual Facebook comment or reply from supplied conversation material, including public campaign updates.",
+        "outOfScope": "Publishing, moderation action, friend or group management, or standalone post drafting.",
+        "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -7387,7 +7511,7 @@
       },
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-facebook-post",
@@ -7396,13 +7520,78 @@
       "skillDir": "okhp3-facebook-post",
       "path": "social-posting/okhp3-facebook-post/SKILL.md",
       "description": "Draft a Facebook post for a named profile, Page, group, or event surface. Use when the user asks to write a Facebook update, Page post, or group post. It confirms destination and audience before drafting, preserves the supplied context, and returns a draft only. Do not use for comments, scheduling, or publication.",
+      "version": "1.2.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-facebook-comment"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-facebook-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-facebook-post/SKILL.md",
+      "lastModified": "2026-08-11T09:26:28-05:00",
+      "commitSha": "7cd00f65",
+      "createdAt": "2026-08-11T09:26:28-05:00",
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting a Facebook post for an explicitly named surface and audience, including public campaign updates.",
+        "outOfScope": "Publishing, scheduling, group joining, audience-setting changes, or comment drafting.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-instagram-comment",
+      "displayName": "Instagram Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-instagram-comment",
+      "path": "social-posting/okhp3-instagram-comment/SKILL.md",
+      "description": "Draft an Instagram comment or reply from supplied post and conversation context. Use when the user wants a context-aware response under a named Instagram post or comment thread. It returns a reviewable draft only and does not post, react, follow, message, moderate, or change comment controls.",
       "version": "1.0.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -7419,19 +7608,20 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-facebook-post/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-facebook-post/SKILL.md",
-      "lastModified": "2026-08-11T09:26:28-05:00",
-      "commitSha": "7cd00f65",
-      "createdAt": "2026-08-11T09:26:28-05:00",
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-instagram-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-instagram-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Drafting a Facebook post for an explicitly named surface and audience.",
-        "outOfScope": "Publishing, scheduling, group joining, audience-setting changes, or comment drafting."
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Instagram comments and threaded replies from supplied public-safe context.",
+        "outOfScope": "Posting, deleting or moderating comments, reactions, follows, direct messages, account settings, or automated engagement.",
+        "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
@@ -7449,7 +7639,196 @@
       },
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-instagram-post",
+      "displayName": "Instagram Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-instagram-post",
+      "path": "social-posting/okhp3-instagram-post/SKILL.md",
+      "description": "Draft an Instagram feed, carousel, Reel, or Story publishing brief from supplied material. Use when the user needs a caption, asset handoff, and visibility or disclosure checklist for a named Instagram post form. It prepares text only and does not create media, set controls, or publish.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-instagram-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-instagram-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Instagram captions and posting handoffs for a supplied post form and materials.",
+        "outOfScope": "Media creation, account inspection, tagging, accessibility settings, visibility controls, scheduling, publishing, or engagement automation.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-kofi-post",
+      "displayName": "Kofi Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-kofi-post",
+      "path": "social-posting/okhp3-kofi-post/SKILL.md",
+      "description": "Draft a Ko-fi post for a supplied audience and post form. Use when the user needs a public or supporter-access update, blog, image, audio, or embedded video post with an explicit access boundary. It prepares text only and does not inspect eligibility, set audience, save, schedule, or publish.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-kofi-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-kofi-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting an account-neutral Ko-fi post with supplied post type, audience boundary, and material.",
+        "outOfScope": "Publishing, scheduling, audience or tier configuration, payment settings, membership administration, shop or commission changes.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-kofi-supporter-reply",
+      "displayName": "Kofi Supporter Reply",
+      "family": "social-posting",
+      "skillDir": "okhp3-kofi-supporter-reply",
+      "path": "social-posting/okhp3-kofi-supporter-reply/SKILL.md",
+      "description": "Draft a private, privacy-preserving Ko-fi reply to a supplied supporter message. Use when the user wants to acknowledge support, answer a simple question, or provide a bounded update after a payment-linked interaction. It returns draft text only and never reads, sends, or manages messages.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-kofi-supporter-reply/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-kofi-supporter-reply/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting a redacted, account-neutral private reply to a supplied Ko-fi supporter conversation.",
+        "outOfScope": "Reading or sending messages, accessing supporter records, handling refunds, resolving transactions, or changing message preferences.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-linkedin-angles",
@@ -7457,16 +7836,16 @@
       "family": "social-posting",
       "skillDir": "okhp3-linkedin-angles",
       "path": "social-posting/okhp3-linkedin-angles/SKILL.md",
-      "description": "Mine a finished artifact (PRD, SKILL.md, technical writeup, governance doc, Mermaid diagram, public X source packet, or the current conversation) for LinkedIn-postable angles. Use when the user says \"mine this for a post\", \"what's postable here\", \"angles from this\", or at the natural end of a work session when something substantial just got produced. Surfaces 3-5 candidate angles across required categories, writes them to the angle registry. Does NOT draft the post; that's okhp3-linkedin-post.",
-      "version": "2.0.0",
+      "description": "Mine finished work, repository history, or a current conversation for 3 to 5 evidence-linked LinkedIn angles. Use for \"mine this for a post\", public progress updates, launch or checkpoint recaps, \"what's postable here\", or \"angles from this\". It does not draft or publish the post; use okhp3-linkedin-post or okhp3-linkedin-comment next.",
+      "version": "2.3.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
       "maturity": "draftable",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -7488,20 +7867,21 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-08-11T09:26:28-05:00",
       "commitSha": "7cd00f65",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
         "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
-        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management.",
+        "publicArtifact": true
       },
       "evidence": {
-        "status": "none",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.3.0",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 2,
@@ -7509,7 +7889,7 @@
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "No evaluation design or executable check exists for this package."
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
@@ -7522,14 +7902,14 @@
       "family": "social-posting",
       "skillDir": "okhp3-linkedin-comment",
       "path": "social-posting/okhp3-linkedin-comment/SKILL.md",
-      "description": "Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to respond on LinkedIn, contribute to a professional conversation, or answer a LinkedIn comment. It preserves the target context, applies the LinkedIn voice and public-context scrub, and returns a draft only. Do not use for a new standalone post or for publication.",
-      "version": "1.0.0",
+      "description": "Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to respond on LinkedIn, contribute to a professional conversation, answer a LinkedIn comment, or add a source-backed public progress, launch, or checkpoint update. It preserves the target context, applies the LinkedIn voice and public-context scrub, and returns a draft only. Do not use for a new standalone post or for publication.",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -7540,6 +7920,7 @@
       "triggers": [],
       "avoid": [],
       "companions": [
+        "okhp3-linkedin-post",
         "okhp3-linkedin-voice"
       ],
       "examples": [],
@@ -7554,21 +7935,22 @@
       "commitSha": "7cd00f65",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
         "inScope": "Drafting a context-aware LinkedIn comment or reply from a supplied target conversation.",
-        "outOfScope": "Publishing, engagement automation, standalone post drafting, or employer-specific disclosure."
+        "outOfScope": "Publishing, engagement automation, standalone post drafting, or employer-specific disclosure.",
+        "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
-        "referenceCount": 0,
+        "referenceCount": 1,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -7578,7 +7960,7 @@
       },
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-linkedin-post",
@@ -7586,16 +7968,16 @@
       "family": "social-posting",
       "skillDir": "okhp3-linkedin-post",
       "path": "social-posting/okhp3-linkedin-post/SKILL.md",
-      "description": "Draft a LinkedIn post from a chosen angle. Use when the user has picked a candidate from okhp3-linkedin-angles' registry, or names a topic directly (\"write a post about X\"). Produces a draft, applies okhp3-linkedin-voice, then runs the BFS-scrub gate as the final non-negotiable step before returning output.",
-      "version": "2.0.0",
+      "description": "Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts, public progress updates, launch or checkpoint recaps, deadline updates, or \"write a post about X\". It applies voice and the final public-context scrub, then returns a draft only.",
+      "version": "2.3.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -7617,20 +7999,21 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-08-11T09:26:28-05:00",
       "commitSha": "7cd00f65",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
         "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
-        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management.",
+        "publicArtifact": true
       },
       "evidence": {
-        "status": "none",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.3.0",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
@@ -7638,12 +8021,12 @@
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "No evaluation design or executable check exists for this package."
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-linkedin-voice",
@@ -7651,16 +8034,16 @@
       "family": "social-posting",
       "skillDir": "okhp3-linkedin-voice",
       "path": "social-posting/okhp3-linkedin-voice/SKILL.md",
-      "description": "Apply the OKHP3 brand voice to any LinkedIn-bound text. Use as the FINAL pass on any LinkedIn post or article draft, whether produced by okhp3-linkedin-post or written by hand. Checks for em dashes, paragraph consolidation, ROY-principle density, ending strength, and link-routing rules. This is a filter applied to existing text, not a generator — if there's no draft yet, use okhp3-linkedin-post first.",
-      "version": "2.0.0",
+      "description": "Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a post, comment, checkpoint update, or public progress draft, whether produced by another skill or written by hand. It checks prose density, uncertainty, supplied links, hashtags, and public-context handoff. This is a filter, not a generator.",
+      "version": "2.2.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -7682,20 +8065,21 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-08-11T09:26:28-05:00",
       "commitSha": "7cd00f65",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
         "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
-        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management.",
+        "publicArtifact": true
       },
       "evidence": {
-        "status": "none",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "2.2.0",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
@@ -7703,7 +8087,196 @@
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "No evaluation design or executable check exists for this package."
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-patreon-comment",
+      "displayName": "Patreon Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-patreon-comment",
+      "path": "social-posting/okhp3-patreon-comment/SKILL.md",
+      "description": "Draft a Patreon comment or reply from supplied post and access context. Use when the user needs a privacy-preserving response within a named Patreon post discussion. It returns text only and does not comment, change access, inspect membership or payment data, message members, moderate, or publish.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-patreon-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-patreon-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Patreon comments and replies from supplied post, access, and public-safe conversation context.",
+        "outOfScope": "Posting comments, access or membership changes, payment data, direct messages, moderation, scheduling, or publication.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-patreon-post",
+      "displayName": "Patreon Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-patreon-post",
+      "path": "social-posting/okhp3-patreon-post/SKILL.md",
+      "description": "Draft a Patreon post with a supplied access boundary and post form. Use when the user needs public, free-member, or paid-member post copy with a clear title, body, material handoff, and access-review note. It prepares text only and does not set membership access, attach media, schedule, or publish.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-patreon-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-patreon-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Patreon posts with supplied post form, material, and audience-access boundary.",
+        "outOfScope": "Publishing, scheduling, membership configuration, payment or benefit management, media upload, account inspection, or analytics.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-pinterest-comment",
+      "displayName": "Pinterest Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-pinterest-comment",
+      "path": "social-posting/okhp3-pinterest-comment/SKILL.md",
+      "description": "Draft a Pinterest comment or reply from supplied Pin and conversation context. Use when the user wants a concise, grounded response under a named Pin. It returns a draft only and does not comment, react, highlight, delete, filter, report, message, or moderate content.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "skeleton",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-pinterest-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-pinterest-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Pinterest comments and replies from supplied Pin and public-safe conversation context.",
+        "outOfScope": "Posting, reactions, comment highlighting, deletion, filtering, reporting, messaging, moderation, or account settings.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
@@ -7711,19 +8284,712 @@
       "releaseReadiness": "needs-contract-work"
     },
     {
+      "name": "okhp3-pinterest-pin",
+      "displayName": "Pinterest Pin",
+      "family": "social-posting",
+      "skillDir": "okhp3-pinterest-pin",
+      "path": "social-posting/okhp3-pinterest-pin/SKILL.md",
+      "description": "Draft a Pinterest Pin title, description, destination-link handoff, and board-context checklist from supplied material. Use when the user needs a Pin-ready copy bundle for a named board and asset. It prepares text only and does not create a Pin, upload media, select a board, set disclosure, or publish.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-pinterest-pin/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-pinterest-pin/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Pinterest Pin copy and board handoffs from supplied assets and source facts.",
+        "outOfScope": "Creating Pins, media upload, board administration, destination-link changes, AI labels, comment controls, scheduling, publishing, or analytics.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-reddit-comment",
+      "displayName": "Reddit Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-reddit-comment",
+      "path": "social-posting/okhp3-reddit-comment/SKILL.md",
+      "description": "Draft a Reddit comment or nested reply from supplied submission, thread, and community-rule context. Use when the user wants a grounded contribution to a named Reddit conversation. It returns a draft only and does not comment, vote, report, message moderators, moderate content, or coordinate engagement.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-reddit-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-reddit-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Reddit comments and replies from supplied community and conversation context.",
+        "outOfScope": "Posting comments, voting, reporting, messaging moderators, moderation actions, joining communities, or coordinated engagement.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-reddit-post",
+      "displayName": "Reddit Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-reddit-post",
+      "path": "social-posting/okhp3-reddit-post/SKILL.md",
+      "description": "Draft a Reddit text, link, image, or media submission for a supplied community. Use when the user needs a community-aware Reddit post that respects supplied rules, post form, title requirements, and flair context. It prepares a draft only and does not submit, vote, join communities, message moderators, apply flair, or manipulate engagement.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-reddit-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-reddit-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Reddit submissions from supplied community rules, post form, and public-safe source material.",
+        "outOfScope": "Submitting, voting, joining communities, moderator messages, flair changes, moderation, account eligibility checks, or coordinated engagement.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-slack-channel-message",
+      "displayName": "Slack Channel Message",
+      "family": "social-posting",
+      "skillDir": "okhp3-slack-channel-message",
+      "path": "social-posting/okhp3-slack-channel-message/SKILL.md",
+      "description": "Draft a new Slack channel message for a supplied workspace destination. Use when the user needs a clear announcement, update, question, or handoff for a named Slack channel. It returns formatted draft text only and does not send, schedule, direct-message, mention broadly, attach files, react, or change workspace or channel settings.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-slack-channel-message/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-slack-channel-message/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Slack channel messages from supplied destination, audience, and source context.",
+        "outOfScope": "Sending or scheduling messages, direct messages, broad mentions, attachments, reactions, pins, channel changes, user lookup, or workspace administration.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-slack-thread-reply",
+      "displayName": "Slack Thread Reply",
+      "family": "social-posting",
+      "skillDir": "okhp3-slack-thread-reply",
+      "path": "social-posting/okhp3-slack-thread-reply/SKILL.md",
+      "description": "Draft a Slack thread reply from a supplied channel, parent message, and conversation context. Use when the user needs a grounded response that stays in a named Slack thread. It returns a draft only and does not send, forward to a channel, direct-message, react, save, pin, schedule, or change notifications.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-slack-thread-reply/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-slack-thread-reply/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Slack thread replies from supplied channel and conversation context.",
+        "outOfScope": "Sending, forwarding replies to channel view, direct messages, reactions, saves, pins, reminders, scheduling, notifications, or workspace administration.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-teams-channel-post",
+      "displayName": "Teams Channel Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-teams-channel-post",
+      "path": "social-posting/okhp3-teams-channel-post/SKILL.md",
+      "description": "Draft a Microsoft Teams channel post for a supplied team and channel. Use when the user needs a clear new post for a named Teams channel, including a subject, body, supplied links, and a permission-aware handoff. It returns draft text only and does not send, create a channel, mention broadly, attach, react, pin, moderate, or change Teams settings.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-teams-channel-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-teams-channel-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Microsoft Teams channel posts from supplied team, channel, audience, and source context.",
+        "outOfScope": "Sending, channel creation, file attachment, broad mentions, reactions, pins, moderation, permission changes, chat messages, or Teams administration.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-teams-thread-reply",
+      "displayName": "Teams Thread Reply",
+      "family": "social-posting",
+      "skillDir": "okhp3-teams-thread-reply",
+      "path": "social-posting/okhp3-teams-thread-reply/SKILL.md",
+      "description": "Draft a Microsoft Teams channel-thread reply from supplied parent-post and channel context. Use when the user needs a grounded reply within a named Teams channel conversation. It returns a reviewable draft only and does not send, start a new post, react, attach, edit, delete, moderate, or change notification or channel settings.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-teams-thread-reply/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-teams-thread-reply/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Microsoft Teams channel-thread replies from supplied parent conversation and source context.",
+        "outOfScope": "Sending, starting a new post, chat messages, reactions, attachments, edits, deletion, moderation, notification changes, or Teams administration.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-telegram-channel-post",
+      "displayName": "Telegram Channel Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-telegram-channel-post",
+      "path": "social-posting/okhp3-telegram-channel-post/SKILL.md",
+      "description": "Draft a Telegram channel post from supplied broadcast-channel context. Use when the user needs a concise channel message, media-caption handoff, and review checklist for a named Telegram channel. It prepares text only and does not send, schedule, pin, enable comments, change channel settings, or manage subscribers or administrators.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-telegram-channel-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-telegram-channel-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Telegram broadcast-channel posts from supplied channel, audience, and source material.",
+        "outOfScope": "Sending or scheduling, media upload, pinning, channel-comment configuration, subscriber or administrator management, direct messages, or channel administration.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-telegram-group-reply",
+      "displayName": "Telegram Group Reply",
+      "family": "social-posting",
+      "skillDir": "okhp3-telegram-group-reply",
+      "path": "social-posting/okhp3-telegram-group-reply/SKILL.md",
+      "description": "Draft a Telegram group reply from supplied group, parent-message, and thread context. Use when the user needs a grounded response in a named Telegram group or topic. It returns a draft only and does not send, direct-message, mention, react, pin, delete, report, moderate, invite, remove, or change group permissions or settings.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-telegram-group-reply/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-telegram-group-reply/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral Telegram group replies from supplied message, topic, and public-safe context.",
+        "outOfScope": "Sending, direct messages, mentions, reactions, pins, deletion, reporting, moderation, invitations, member changes, or group administration.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-tiktok-comment",
+      "displayName": "TikTok Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-tiktok-comment",
+      "path": "social-posting/okhp3-tiktok-comment/SKILL.md",
+      "description": "Draft a TikTok comment or reply from supplied post and conversation context. Use when the user wants a context-aware response under a named TikTok post. It returns reviewable text only and does not post, delete, report, block, follow, message, manage filters, or automate engagement.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-tiktok-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-tiktok-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral TikTok comments and replies from supplied public-safe conversation context.",
+        "outOfScope": "Posting or deleting comments, moderation, reporting, blocking, follows, direct messages, filter settings, or automated engagement.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-tiktok-post",
+      "displayName": "TikTok Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-tiktok-post",
+      "path": "social-posting/okhp3-tiktok-post/SKILL.md",
+      "description": "Draft a TikTok video or photo post caption and publishing handoff from supplied material. Use when the user needs post text, on-screen-text notes, and a review checklist for a named TikTok post. It prepares a draft only and does not record, edit, upload, set privacy, schedule, or publish.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-tiktok-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-tiktok-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting account-neutral TikTok post captions and video or photo posting handoffs from supplied material.",
+        "outOfScope": "Recording, media editing, uploading, privacy or audience controls, sounds or effects selection, scheduling, publishing, or analytics actions.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-twitter-comment",
       "displayName": "Twitter Comment",
       "family": "social-posting",
       "skillDir": "okhp3-twitter-comment",
       "path": "social-posting/okhp3-twitter-comment/SKILL.md",
-      "description": "Draft an X reply, called a Twitter comment in this family, to a supplied post and conversation. Use when the user wants to reply on X, answer a tweet, or join an existing X thread. It keeps the parent context and reply visibility in view, then returns a draft only. Do not use for a new standalone post or publication.",
-      "version": "1.0.0",
+      "description": "Draft an X reply, called a Twitter comment in this family, to a supplied post and conversation. Use when the user wants to reply on X, answer a tweet, join an existing X thread, request feedback, or report public progress. It keeps the parent context and reply visibility in view, then returns a draft only. Do not use for a new standalone post or publication.",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -7746,18 +9012,19 @@
       "commitSha": "7cd00f65",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Drafting an X reply from a supplied parent post and conversation context.",
-        "outOfScope": "Publishing, quote posting, pile-on behavior, or standalone post drafting."
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting an evidence-locked X reply from a supplied parent post and conversation context, including public progress updates.",
+        "outOfScope": "Publishing, quote posting, pile-on behavior, or standalone post drafting.",
+        "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 5,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -7770,7 +9037,7 @@
       },
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-twitter-post",
@@ -7778,14 +9045,79 @@
       "family": "social-posting",
       "skillDir": "okhp3-twitter-post",
       "path": "social-posting/okhp3-twitter-post/SKILL.md",
-      "description": "Draft an X post using the portable name Twitter. Use when the user asks for a tweet, X post, concise Twitter update, quote text, or a thread opener. It writes one evidence-locked post for a named account and returns a draft only. Do not use for replies, posting automation, or assuming X Premium features.",
-      "version": "1.0.0",
+      "description": "Draft an X post using the portable name Twitter. Use when the user asks for a tweet, X post, concise Twitter update, quote text, standalone build log, or a thread opener. It writes one evidence-locked post for a named account and returns a draft only. Do not use for replies, posting automation, or assuming X Premium features.",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "social-posting",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-twitter-comment"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-twitter-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-twitter-post/SKILL.md",
+      "lastModified": "2026-08-11T09:26:28-05:00",
+      "commitSha": "7cd00f65",
+      "createdAt": "2026-08-11T09:26:28-05:00",
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting an evidence-locked standalone X post, quote text, or requested thread opener from supplied facts and account context.",
+        "outOfScope": "Publishing, replies, thread expansion without request, automation, or unsupported real-time claims.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 5,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-youtube-comment",
+      "displayName": "Youtube Comment",
+      "family": "social-posting",
+      "skillDir": "okhp3-youtube-comment",
+      "path": "social-posting/okhp3-youtube-comment/SKILL.md",
+      "description": "Draft a YouTube comment or reply from supplied video and conversation context. Use when the user wants to respond to a viewer, answer feedback, add a correction, or join a discussion below a video or channel post. It returns draft text only and does not reply, heart, pin, hide, or moderate comments.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -7802,23 +9134,24 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-twitter-post/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-twitter-post/SKILL.md",
-      "lastModified": "2026-08-11T09:26:28-05:00",
-      "commitSha": "7cd00f65",
-      "createdAt": "2026-08-11T09:26:28-05:00",
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-youtube-comment/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-youtube-comment/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
       "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
+        "author": "Public Agent Skill Library",
         "category": "social-posting",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Drafting an X, formerly Twitter, post from supplied facts and account context.",
-        "outOfScope": "Publishing, replies, thread expansion without request, automation, or unsupported real-time claims."
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting an account-neutral YouTube comment or reply from supplied parent and video context.",
+        "outOfScope": "Publishing replies, comment moderation, hiding, pinning, hearting, liking, or analytics review.",
+        "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
+        "evaluatedSkillVersion": "1.1.0",
         "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
@@ -7832,7 +9165,133 @@
       },
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-youtube-community-post",
+      "displayName": "Youtube Community Post",
+      "family": "social-posting",
+      "skillDir": "okhp3-youtube-community-post",
+      "path": "social-posting/okhp3-youtube-community-post/SKILL.md",
+      "description": "Draft a YouTube channel post or participant Community post from supplied destination context. Use for text, image, video, poll, or quiz posts that need a platform-native prompt and audience boundary. It prepares a draft only and does not test eligibility, schedule, or publish.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-youtube-community-post/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-youtube-community-post/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting a YouTube channel post or a supplied creator Community contribution with its native post form.",
+        "outOfScope": "Posting, scheduling, joining Communities, checking channel eligibility, channel administration, or comment replies.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-youtube-video",
+      "displayName": "Youtube Video",
+      "family": "social-posting",
+      "skillDir": "okhp3-youtube-video",
+      "path": "social-posting/okhp3-youtube-video/SKILL.md",
+      "description": "Draft a YouTube video publishing brief and metadata bundle from supplied video facts. Use when the user needs a title, description, chapters, CTA, or disclosure and setting handoff for a YouTube video or Short. It prepares text only and does not upload, edit, schedule, or publish a video.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "public skills library",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-youtube-video/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-youtube-video/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "public skills library",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting an account-neutral YouTube video metadata and publishing brief from supplied content facts.",
+        "outOfScope": "Uploading, video editing, thumbnail generation, selecting account settings, publishing, scheduling, or analytics optimization.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-brand-style-registry",
@@ -7878,7 +9337,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Evidence-backed extraction, registration, and application of named visual style profiles to approved artifacts.",
-        "outOfScope": "Inventing a brand identity, unauthorized source copying, or unrelated product redesign."
+        "outOfScope": "Inventing a brand identity, unauthorized source copying, or unrelated product redesign.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -7944,7 +9404,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Keeping API keys server-side while proxying authorized static-frontend requests through a Cloudflare Worker.",
-        "outOfScope": "Client-side secret exposure, unrestricted proxying, credential rotation, or unrelated backend design."
+        "outOfScope": "Client-side secret exposure, unrestricted proxying, credential rotation, or unrelated backend design.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -8006,7 +9467,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Read-only SQL database inventory, schema comparison, severity classification, and Mermaid ER handoff.",
-        "outOfScope": "Writing to the target database, production migration, credential disclosure, or unsupported security conclusions."
+        "outOfScope": "Writing to the target database, production migration, credential disclosure, or unsupported security conclusions.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -8078,7 +9540,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Evidence-led review of artifacts, claims, hypotheses, and release decisions using independent roles, conditional dissent, and adjudication.",
-        "outOfScope": "Autonomous publication, unverified domain conclusions, statistical testing without suitable data, or replacing required human or specialist authority."
+        "outOfScope": "Autonomous publication, unverified domain conclusions, statistical testing without suitable data, or replacing required human or specialist authority.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -8146,7 +9609,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Creating a governed FoundRy child-repository plan and package from an approved reusable workflow source.",
-        "outOfScope": "Autonomous repository publication, implicit source ownership, or inclusion of private material."
+        "outOfScope": "Autonomous repository publication, implicit source ownership, or inclusion of private material.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -8214,7 +9678,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Client-only Google Identity Services OAuth for approved static React applications and scoped Google APIs.",
-        "outOfScope": "Server-side OAuth, secret handling, consent bypass, or unsupported Google API claims."
+        "outOfScope": "Server-side OAuth, secret handling, consent bypass, or unsupported Google API claims.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "historical",
@@ -8276,7 +9741,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Styling and layout decisions for OverKill Hill-branded SPAs, documents, presentations, and image briefs against the approved local profile.",
-        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-OverKill Hill surfaces."
+        "outOfScope": "Blending other family profiles, inventing brand tokens not present in the profile, or restyling non-OverKill Hill surfaces.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -8341,7 +9807,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "- Auditing local branches in a single Replit workspace against origin/main and each branch's pull-request state - Recognizing Replit-specific branch patterns (subrepl-*, replit-agent, agent/*) as a hint, not a verdict - Squash-merging an approved, checks-passing pull request, then deleting the exact verified branch (remote first, then local) - Auditing file/folder names against a kebab-case default with the standard structural exceptions (React components/hooks, root governance files, tool-required filenames, web-standard filenames) - Identifying common repo detritus (paste-buffer/attachment dirs, stale build zips, leftover temp files, orphaned one-time handoff docs) and proposing a triage plan",
-        "outOfScope": "- Multi-repository mirror estates (that is `okhp3-repository-janitor`'s job on a machine with several local clones) - Deep repository classification, purpose discovery, or governance scaffolding for content-first knowledge repos (that is `okhp3-repository-organizer`'s job) - Merging, closing, deleting, or renaming anything without an explicit \"go\" from the user - Rewriting `main`, force-pushing, or deleting stashes/archive refs"
+        "outOfScope": "- Multi-repository mirror estates (that is `okhp3-repository-janitor`'s job on a machine with several local clones) - Deep repository classification, purpose discovery, or governance scaffolding for content-first knowledge repos (that is `okhp3-repository-organizer`'s job) - Merging, closing, deleting, or renaming anything without an explicit \"go\" from the user - Rewriting `main`, force-pushing, or deleting stashes/archive refs",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -8410,7 +9877,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Read-only reconciliation of local Git mirrors, GitHub branches, commits, pull requests, and safe lifecycle decisions.",
-        "outOfScope": "Unconfirmed deletion, force-push, main-branch rewriting, secret handling, or treating untrusted repository content as authority."
+        "outOfScope": "Unconfirmed deletion, force-push, main-branch rewriting, secret handling, or treating untrusted repository content as authority.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "analytical",
@@ -8419,7 +9887,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -8472,7 +9940,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Read-first profiling and safe organization planning for content-first repositories with cross-platform naming safeguards.",
-        "outOfScope": "Destructive reorganization, unreviewed moves, private-data exposure, or changes outside the approved repository."
+        "outOfScope": "Destructive reorganization, unreviewed moves, private-data exposure, or changes outside the approved repository.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -8534,7 +10003,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Discovery, validation, and marked catalog generation for repository-local or distribution Agent Skills.",
-        "outOfScope": "Rewriting skill content, marketplace claims, or unreviewed destructive catalog absorption."
+        "outOfScope": "Rewriting skill content, marketplace claims, or unreviewed destructive catalog absorption.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -8596,7 +10066,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Evidence-backed discovery and routing across project-local, installed, runtime, and plugin skill sources.",
-        "outOfScope": "Installing unavailable capabilities, granting permissions, or treating historical inventories as current availability."
+        "outOfScope": "Installing unavailable capabilities, granting permissions, or treating historical inventories as current availability.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -8658,7 +10129,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Portable skill architecture, instructions, resources, evaluation, trigger quality, security, evidence, and synchronized distribution.",
-        "outOfScope": "Unrelated product work, fabricated benchmark results, implicit publication authority, and replacing a requested domain workflow with generic advice."
+        "outOfScope": "Unrelated product work, fabricated benchmark results, implicit publication authority, and replacing a requested domain workflow with generic advice.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "historical",
@@ -8733,7 +10205,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Skill-source selection, local publication mirrors, provenance, safe synchronization, validation handoff, and promotion preparation.",
-        "outOfScope": "Blind overwrites, deletion of unreviewed work, secret removal by guesswork, autonomous commits, pushes, pull requests, or publication."
+        "outOfScope": "Blind overwrites, deletion of unreviewed work, secret removal by guesswork, autonomous commits, pushes, pull requests, or publication.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -8795,7 +10268,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "Deployment and repair of React or Vue Vite SPAs on GitHub Pages, including base paths and router behavior.",
-        "outOfScope": "Unapproved publication, unrelated application redesign, or credential and repository administration."
+        "outOfScope": "Unapproved publication, unrelated application redesign, or credential and repository administration.",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
@@ -8857,7 +10331,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "- Review SharePoint list and column settings screenshots - Compare screenshots against build cards, schema fields, and CSV headers - Interpret user arrows, highlights, and markups in UI screenshots - Produce fix-before-load and log-as-deviation findings",
-        "outOfScope": "- Direct SharePoint changes - Image editing or redrawing screenshots - Automated browser control of a live SharePoint tenant"
+        "outOfScope": "- Direct SharePoint changes - Image editing or redrawing screenshots - Automated browser control of a live SharePoint tenant",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",
@@ -8919,7 +10394,8 @@
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
         "inScope": "- Review SharePoint Online list designs used as lightweight databases - Explain threshold, indexing, lookup, content type, and list setting tradeoffs - Translate Microsoft list limitations into practical UI-only build guidance - Flag settings that weaken governance, auditability, or future migration",
-        "outOfScope": "- Automated SharePoint provisioning with PowerShell, Graph, SPFx, or PnP - Production database design outside SharePoint Online Lists - Security/legal/compliance approval beyond architecture risk notes"
+        "outOfScope": "- Automated SharePoint provisioning with PowerShell, Graph, SPFx, or PnP - Production database design outside SharePoint Online Lists - Security/legal/compliance approval beyond architecture risk notes",
+        "publicArtifact": false
       },
       "evidence": {
         "status": "none",

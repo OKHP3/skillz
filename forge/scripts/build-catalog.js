@@ -722,6 +722,10 @@ function buildCatalog() {
     const author = fm.author || (fm.metadata?.author) || null;
     const homepage = fm.homepage || (fm.metadata?.homepage) || null;
     const authorGithub = fm['author-github'] || fm.authorGithub || (fm.metadata?.['author-github']) || (fm.metadata?.authorGithub) || null;
+    const publicArtifactValue = fm['public-artifact'] ?? fm.publicArtifact ??
+      fm.public_artifact ?? fm.metadata?.['public-artifact'] ??
+      fm.metadata?.publicArtifact ?? fm.metadata?.public_artifact;
+    const publicArtifact = publicArtifactValue === true || publicArtifactValue === 'true';
     const inScope = fm['in-scope'] || fm.inScope || fm.in_scope || (fm.metadata?.['in-scope']) || (fm.metadata?.inScope) || (fm.metadata?.in_scope) || null;
     const outOfScope = fm['out-of-scope'] || fm.outOfScope || fm.out_of_scope || (fm.metadata?.['out-of-scope']) || (fm.metadata?.outOfScope) || (fm.metadata?.out_of_scope) || null;
     const maturityReviewedAt = fm['maturity-reviewed-at'] || fm.reviewed || (fm.metadata?.['maturity-reviewed-at']) || (fm.metadata?.reviewed) || null;
@@ -783,21 +787,37 @@ function buildCatalog() {
     const maturitySource = downgraded ? 'evidence-policy' : deriveMaturitySource(fm.metadata || {});
 
     const releaseReadiness = deriveReleaseReadiness(maturity, evidenceV2.status);
-    const packageMetadata = { author, category, origin, homepage, authorGithub, inScope, outOfScope };
+    const packageMetadata = { author, category, origin, homepage, authorGithub, inScope, outOfScope, publicArtifact };
 
     // Rule 8: every cataloged non-Community package must expose the completed
-    // Foundry baseline (version, author, category, origin, homepage,
-    // authorGithub, inScope, outOfScope). Community packages may leave these
-    // null (rule 9) — that gap renders honestly in the UI instead of failing
-    // the build.
+    // Foundry baseline. A declared context-agnostic social-posting package is
+    // the narrowly scoped exception: it retains source, version, category, and
+    // scope metadata but must not be forced to embed a personal homepage or
+    // account handle. Community packages may leave these fields null.
+    if (publicArtifact && family !== 'social-posting') {
+      throw new Error(
+        `Evidence contract violation: public_artifact is reserved for context-agnostic ` +
+        `social-posting packages (${relPath}).`
+      );
+    }
     if (family !== 'community') {
-      const missing = Object.entries({ version, ...packageMetadata })
+      const requiredMetadata = publicArtifact
+        ? { version, author, category, origin, inScope, outOfScope }
+        : { version, ...packageMetadata };
+      const missing = Object.entries(requiredMetadata)
         .filter(([, v]) => v === null || v === '')
         .map(([k]) => k);
       if (missing.length) {
         throw new Error(
           `Evidence contract violation: non-Community package ${relPath} is missing ` +
-          `Foundry baseline field(s): ${missing.join(', ')}. Build failed per rule 8.`
+          `${publicArtifact ? 'public-artifact' : 'Foundry baseline'} field(s): ` +
+          `${missing.join(', ')}. Build failed per rule 8.`
+        );
+      }
+      if (publicArtifact && (homepage || authorGithub)) {
+        throw new Error(
+          `Evidence contract violation: public-artifact package ${relPath} must not ` +
+          `embed homepage or author-github metadata.`
         );
       }
     }

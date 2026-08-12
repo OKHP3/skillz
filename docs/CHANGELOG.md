@@ -8,6 +8,24 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Added
 
+- Added 16 account-neutral, draft-only social-posting packages for Instagram,
+  TikTok, Reddit, Patreon, Pinterest, Slack, Microsoft Teams, and Telegram.
+  Each platform has at least two native-surface contracts, three
+  version-matched design evaluations, no account-specific or subject-specific
+  fixtures, and a source-backed boundary for account-side actions. The
+  distribution-readiness record is
+  `docs/SOCIAL-POSTING-MATURITY-2026-08-11.md`; it records an analytical
+  structural pass, not live task-quality or publication evidence.
+
+- Added five account-neutral, draft-only YouTube and Ko-fi packages to
+  `social-posting/`: video metadata, channel and Community posts, and comments
+  for YouTube; access-bound posts and redacted supporter replies for Ko-fi.
+  Each package reflects a distinct native surface, defers all account actions,
+  carries no fixed person, account, topic, or viewpoint, and contains
+  version-matched design evaluations marked `not-run`. See
+  `docs/SOCIAL-POSTING-PLATFORM-ADAPTERS-2026-08-11.md` for the first-party
+  research ledger and scope decisions.
+
 - Renamed the `linkedin/` family to `social-posting/` and expanded it from
   three to ten platform-prefixed skills. The original LinkedIn angle, post,
   and voice packages retain their purpose but move through a breaking
@@ -18,6 +36,20 @@ This project's release history follows Keep a Changelog conventions.
   claimed.
 
 ### Changed
+
+- Completed a Foundry maturity pass over the 31-package `social-posting/`
+  family. Every package now carries public-artifact metadata, a
+  public-neutrality gate, account- and subject-neutral fixture boundary, a
+  three-case risk-based evaluation declaration, and explicit draft-only scope.
+  LinkedIn angle and post packages were renewed to `2.3.0`, replacing an
+  internal shorthand with the portable `public-context scrub` term and a
+  generic checklist.
+
+- Renewed the LinkedIn subset of `social-posting` with source-bounded public
+  progress claims, pending-outcome handling, reply-versus-post routing, CTA
+  roles, hashtag preservation, and a draft-only host handoff. Added
+  version-matched synthetic evaluation designs; live with-skill/without-skill
+  evidence remains not run. See `docs/SOCIAL-POSTING-LEARNING-2026-08-11.md`.
 
 - Promoted `okhp3-mermaid-update` and `okhp3-mermaid-repair` from `skeleton` to
   `usable` maturity, completing the `update + repair` step in the Mermaid promotion

@@ -39,6 +39,7 @@ export interface SkillPackageMetadata {
   authorGithub: string | null;
   inScope: string | null;
   outOfScope: string | null;
+  publicArtifact?: boolean;
 }
 
 export type MaturitySource = 'explicit-frontmatter' | 'evidence-policy' | 'fallback-structure';
