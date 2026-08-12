@@ -1,41 +1,48 @@
-# OKHP3 Voice Rules
+# LinkedIn Voice Rules
 
-The canonical rule set. Run every LinkedIn-bound draft against this table.
+The canonical platform-specific rule set. Run every LinkedIn-bound draft
+against this table.
 
-## Hard rules (zero exceptions)
+## Public artifact boundary
+
+This reference is publicly distributed and must remain identity-agnostic. It
+contains no account name, handle, project, campaign, topic, opinion, or private
+link. The skill obtains those details at execution time from the current user
+request or approved runtime context. Use placeholders in examples and fixtures.
+
+## Hard rules
 
 | Rule | Check |
 |---|---|
-| No em dashes, ever | Scan for — and replace with period, comma, or restructure. Flagged as an AI tell across the industry, not just an OKHP3 preference — independent confirmation this is now a 2026 consensus signal, not idiosyncratic |
-| Natural contractions throughout | "don't" not "do not", "it's" not "it is", etc. |
-| Articles end hard | Closing line is the closing line. No appended reader question, no "what's your take?", no softening |
-| Mermaid.ai links never in body | Route any Mermaid Chart references through overkillhill.com instead |
+| Avoid em dashes | Replace them with a period, comma, or clearer structure. |
+| Use natural contractions | Prefer conversational forms when they fit the user's supplied voice. |
+| End articles decisively | The closing line is the closing line. Do not append an engagement question unless requested. |
+| Preserve supplied destinations | Do not invent, replace, or silently drop user-supplied URLs. Keep each requested primary or secondary role visible. |
+| Preserve uncertainty | Keep pending, conditional, and hopeful language intact. Never turn preparation, voting, or a proposed outcome into a win. |
+| Preserve requested hashtag count | If a count is supplied, return exactly that many unless a safety or evidence gate blocks one. |
 
 ## Platform-conditional formatting
 
 | Context | Rule |
 |---|---|
-| LinkedIn posts | Paragraphs consolidated (LinkedIn's renderer collapses single line breaks — double line breaks needed between paragraphs) |
-| Non-LinkedIn long-form (articles, Magnus Saga, etc.) | Short punchy standalone lines are intentional rhythm devices. Preserve them. Do NOT consolidate into paragraphs |
+| LinkedIn posts | Use double line breaks between paragraphs so the rendered post remains readable. |
+| Non-LinkedIn long-form | Preserve short standalone lines when they are intentional rhythm devices. Do not apply LinkedIn paragraph formatting to another platform. |
 
-This is the single most likely place for a voice-check to get it backwards — the same "standalone line" content needs different treatment depending on destination.
+## Density principle
 
-## Density principle (ROY)
-
-**ROY = understanding produced / explanation invested.** Every sentence has to earn its place. No wallpaper filler, no restating what was just said in different words, no padding to hit a length target.
-
-In practice: if a sentence could be deleted without the reader losing anything, delete it.
+Every sentence must earn its place. Remove filler, repeated claims, and padding.
+For public-progress updates, retain the evidence window, source qualifier, and
+pending-outcome language that keep a claim honest.
 
 ## Tone
 
-- Decision-memo tone. Confident opinions, not hedged into three equally-valid options.
-- Dry wit welcome. Sentimentality is not.
-- No sycophantic openers ("great question", "I'm so glad you asked" — these don't belong in LinkedIn voice any more than in conversation).
+Use a clear, confident, evidence-aware tone. Dry wit is acceptable when the
+user supplied it. Avoid generic praise, empty engagement bait, and invented
+consensus.
 
-## Fact-locks
+## Fact handling
 
-Specific factual claims that are locked regardless of what's technically true or debatable elsewhere — these come from the author's own stated context, not general knowledge:
-
-- AutoCAD version referenced in any OKHP3 content: **R10**. Not up for debate, not "the version I started on was roughly..." — R10, locked.
-
-(Add further fact-locks here as they're established — this section exists so a single source of truth prevents inconsistency across posts.)
+Specific factual claims must come from the supplied source packet or current
+runtime context. Do not create fact locks in this reference. If a fact cannot
+be verified or generalized, preserve the uncertainty or return
+`needs_generalization`.

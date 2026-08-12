@@ -5,7 +5,7 @@ Categories for triaging a finished artifact into LinkedIn-postable angles. The "
 | Category | What it looks like | Mandatory? |
 |---|---|---|
 | Summary / Lesson | "Here's what I learned doing X" — the safe, obvious angle | No — but usually present by default |
-| Surprising / Contrarian | A finding that cuts against the reader's expectation, deflates hype, or reverses the obvious framing. Example from this repo's own origin story: "I almost spent a weekend competing in a skills marketplace where #1 has 116 downloads" | **Yes — at least one candidate per set** |
+| Surprising / Contrarian | A finding that cuts against the reader's expectation, deflates hype, or reverses the obvious framing. Use a supplied, generalized observation rather than a fixed example. | **Yes — at least one candidate per set** |
 | Teardown / Critique | Structural critique of an existing tool, pattern, or piece of work — constructive, acknowledges real strengths, identifies gaps | No |
 | Behind-the-Scenes / Process | "Here's how this thing was actually built" — the system-story angle, especially valuable when the process itself demonstrates a capability | No |
 | Prediction / Trend | Forward-looking claim based on evidence in the source artifact | No |

@@ -2,9 +2,9 @@
 
 Candidates land here. This is the angle backlog - capture now, triage later, but in a structured place.
 
-| Date | Source artifact | Category | One-line summary | Suggested length | BFS flag | Status |
-|---|---|---|---|---|---|---|
-| YYYY-MM-DD | Filename or "conversation: [topic]" | Summary/Lesson / Surprising-Contrarian / Teardown / Behind-the-Scenes / Prediction | One sentence | post / article | yes/no | new / drafting / posted / archived |
+| Date | Source artifact | Category | One-line summary | Evidence status | Evidence window/source | Suggested length | Primary CTA | Public-context flag | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| YYYY-MM-DD | Filename or "conversation: [topic]" | Summary/Lesson / Surprising-Contrarian / Teardown / Behind-the-Scenes / Prediction | One sentence | confirmed / inferred / proposed / needs_evidence / needs_generalization | Bounded window, timezone, retrieval time, and public locator when applicable | post / article | One supplied destination | yes/no | new / drafting / posted / archived |
 
 ## Optional source packet note
 

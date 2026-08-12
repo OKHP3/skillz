@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-twitter-comment",
+  "evaluated_version": "1.1.0",
+  "status": "analytical",
+  "pre_change_sha256": "[PRE_CHANGE_DIGEST]",
+  "post_change_sha256": "[POST_CHANGE_DIGEST]",
+  "hypothesis": "Explicit parent resolution, claim-status handling, and evidence rules will reduce wrong-form replies and unsupported outcome claims.",
+  "source_evidence": [
+    "A supplied parent URL may be the real target even when shorthand says post.",
+    "Public progress updates should distinguish runtime behavior from supporting artifacts.",
+    "Deadlines, awards, and outcomes are consequential and require current supplied evidence.",
+    "Aspirational language must not be presented as an official result."
+  ],
+  "changes": [
+    "Added exact-parent and stale/deleted-parent routing.",
+    "Added concrete-change plus user-visible-effect requirements for progress replies.",
+    "Added confirmed, aspirational, and unknown claim statuses.",
+    "Added public-neutrality requirements and development evaluations."
+  ],
+  "rejected_alternatives": [
+    "Adding browser publishing was rejected because the portable skill remains draft-only.",
+    "Hardcoding dates, awards, account identifiers, or subject matter was rejected because the package is portable."
+  ],
+  "expected_benefit": "More reliable reply routing, clearer evidence status, and safer public copy.",
+  "regression_risk": "The evidence fields may make short casual replies more verbose; keep the note compact.",
+  "evaluation": {
+    "structural_validator": "pass",
+    "json_fixture_parse": "pass",
+    "live_benchmark": "not-run",
+    "unseen_holdout": "not-run",
+    "limitation": "Analytical evidence only; no isolated runner was available."
+  },
+  "applicability": "Portable X reply drafting; current platform facts require a current supplied source."
+}

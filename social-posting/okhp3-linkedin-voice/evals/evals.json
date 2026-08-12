@@ -1,0 +1,43 @@
+{
+  "skill_name": "okhp3-linkedin-voice",
+  "skill_version": "2.2.0",
+  "status": "design-ready",
+  "holdout_seen": true,
+  "holdout_status": "external-required",
+  "evidence_status": "not-run",
+  "evals": [
+    {
+      "id": "checkpoint-comment-polish",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Polish a LinkedIn checkpoint comment that contains dry humor, a public primary artifact link, a bounded commit count, and three requested hashtags.",
+      "expectations": [
+        {"id": "voice-rules", "text": "Removes em dashes, uses natural contractions, and consolidates LinkedIn paragraphs with blank-line separation."},
+        {"id": "fact-preservation", "text": "Preserves the supplied evidence window, pending-result language, and factual uncertainty."},
+        {"id": "link-hashtag-preservation", "text": "Preserves the supplied URL and returns exactly three hashtags."}
+      ]
+    },
+    {
+      "id": "standalone-versus-comment",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Apply the voice filter to a short reply that adds one contribution beneath an organization's final checkpoint post.",
+      "expectations": [
+        {"id": "surface-preservation", "text": "Keeps the response as a comment-sized contribution rather than expanding it into a standalone campaign post."},
+        {"id": "density", "text": "Removes filler and retains the single useful contribution and relevant CTA."},
+        {"id": "no-new-facts", "text": "Does not add links, metrics, mentions, or examples that were not supplied."}
+      ]
+    },
+    {
+      "id": "uncertainty-preservation",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Polish a draft that says the subject is anticipating a pending outcome before the campaign result is announced.",
+      "expectations": [
+        {"id": "pending-outcome", "text": "Retains a clearly playful but explicit acknowledgment that the result is undecided."},
+        {"id": "no-escalation", "text": "Does not strengthen hope or preparation into a claim of victory."},
+        {"id": "route-safety", "text": "Returns revised LinkedIn prose and a change log without publishing or declaring the draft safe for public context by itself."}
+      ]
+    }
+  ]
+}
