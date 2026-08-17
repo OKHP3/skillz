@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowDownAZ,
   ArrowUpRight,
@@ -165,6 +165,21 @@ export function ExploreB() {
   const [showFilters, setShowFilters] = useState(false);
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
 
+  // Lock body scroll and handle Escape key while the mobile drawer is open
+  useEffect(() => {
+    if (!showMobileSidebar) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowMobileSidebar(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [showMobileSidebar]);
+
   const visibleSkills = useMemo(() => {
     const normalized = query.toLowerCase().trim();
     const filtered = skills.filter((skill) => {
@@ -268,6 +283,9 @@ export function ExploreB() {
             <div className="absolute inset-0 bg-[#15110f]/70" />
             {/* Drawer panel */}
             <div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Family filter"
               className="absolute inset-y-0 left-0 w-[280px] overflow-y-auto border-r px-4 py-5"
               style={{ borderColor: "#3d3530", background: "#241e1b" }}
               onClick={(e) => e.stopPropagation()}
