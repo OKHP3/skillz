@@ -1,85 +1,85 @@
 {
-  "generatedAt": "2026-08-17T14:16:13.458Z",
+  "generatedAt": "2026-08-17T15:52:32.174Z",
   "commits": [
     {
-      "sha": "f495aef81eac1269e86c93c3afba235b81661c89",
-      "shortSha": "f495aef",
-      "message": "\tnew file:   replit/okhp3-replit-contest-score-keeper/SKILL.md\n\tnew file:   replit/okhp3-replit-contest-score-keeper/agents/openai.yaml",
-      "author": "OKHP3",
-      "date": "2026-08-12T20:07:56Z",
-      "url": "https://github.com/OKHP3/skillz/commit/f495aef81eac1269e86c93c3afba235b81661c89"
+      "sha": "dae15d24dac635e9caf578988bac1aefb1b28f57",
+      "shortSha": "dae15d2",
+      "message": "Return keyboard focus to Families button when mobile drawer closes\n\nReplit-Task-Id: afa0b472-9bf3-439c-aae0-927b528def5b",
+      "author": "overkillhillp3",
+      "date": "2026-08-17T15:51:25Z",
+      "url": "https://github.com/OKHP3/skillz/commit/dae15d24dac635e9caf578988bac1aefb1b28f57"
     },
     {
-      "sha": "89754d3b3c2579ff6876325caf9b306ca5381db4",
-      "shortSha": "89754d3",
-      "message": "chore: full skill catalog refresh (146 skills, 16 families)\n\n- Regenerate README.md and all family FAMILY.md tables via okhp3-skill-cataloger --full\n- Regenerate .agents/skills/README.md and .catalog-meta.json (project catalog mode)\n- Regenerate root .catalog-meta.json (distribution mode)\n- Refresh Forge search index and per-skill detail JSON via forge/scripts/build-catalog.js\n- Refresh forge/public/data/activity.json",
+      "sha": "f1c5491bf3fb34cfd6e8492f7419db3fac8eaf22",
+      "shortSha": "f1c5491",
+      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
       "author": "OverKill Hill P³",
-      "date": "2026-08-12T01:51:28Z",
-      "url": "https://github.com/OKHP3/skillz/commit/89754d3b3c2579ff6876325caf9b306ca5381db4"
+      "date": "2026-08-17T15:49:49Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f1c5491bf3fb34cfd6e8492f7419db3fac8eaf22"
     },
     {
-      "sha": "231519141c51493e8bbb583dbe38753f7f1fba34",
-      "shortSha": "2315191",
-      "message": "Update data and manifest configuration files\n\nReplit-Commit-Author: Agent",
+      "sha": "0a41c0b5af625671d42fca14baefa96bbed18802",
+      "shortSha": "0a41c0b",
+      "message": "Update catalog, project summary, and manifest version information\n\nReplit-Commit-Author: Agent",
       "author": "Replit Agent",
-      "date": "2026-08-12T01:45:08Z",
-      "url": "https://github.com/OKHP3/skillz/commit/231519141c51493e8bbb583dbe38753f7f1fba34"
+      "date": "2026-08-17T15:49:15Z",
+      "url": "https://github.com/OKHP3/skillz/commit/0a41c0b5af625671d42fca14baefa96bbed18802"
     },
     {
-      "sha": "1f346324ff49b57f4219a365825a9866f2db5a5b",
-      "shortSha": "1f34632",
-      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz\n\n# Conflicts:\n#\tforge/public/data/activity.json\n#\tforge/public/data/catalog.json\n#\tforge/public/data/project-summary.json\n#\tskillz.manifest.json",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-12T01:43:46Z",
-      "url": "https://github.com/OKHP3/skillz/commit/1f346324ff49b57f4219a365825a9866f2db5a5b"
+      "sha": "283812a03a91e1828fe2eea87bc705a1837c29fe",
+      "shortSha": "283812a",
+      "message": "Fix mobile filter drawer: add body scroll lock and Escape key handler\n\nReplit-Task-Id: fd83265b-58ce-455a-8000-dc3431c570e6",
+      "author": "overkillhillp3",
+      "date": "2026-08-17T15:48:53Z",
+      "url": "https://github.com/OKHP3/skillz/commit/283812a03a91e1828fe2eea87bc705a1837c29fe"
     },
     {
-      "sha": "c230d1e11dd80af691fcbe1fd9500983d84263ec",
-      "shortSha": "c230d1e",
-      "message": "chore: sync auto-generated catalog/activity data",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-12T01:43:19Z",
-      "url": "https://github.com/OKHP3/skillz/commit/c230d1e11dd80af691fcbe1fd9500983d84263ec"
-    },
-    {
-      "sha": "9ff0b60749a15986d855982649018b1987a2da38",
-      "shortSha": "9ff0b60",
-      "message": "\tmodified:   .catalog-meta.json\n\tmodified:   AGENTS.md\n\tmodified:   README.md\n\tmodified:   abrahamic/FAMILY.md\n\tmodified:   agent-foundry/FAMILY.md\n\tmodified:   askjamie/FAMILY.md\n\tmodified:   community/FAMILY.md\n\tmodified:   context-extraction/FAMILY.md\n\tmodified:   docs/CHANGELOG.md\n\tnew file:   docs/SOCIAL-POSTING-LEARNING-2026-08-11.md\n\tnew file:   docs/SOCIAL-POSTING-MATURITY-2026-08-11.md\n\tnew file:   docs/SOCIAL-POSTING-PLATFORM-ADAPTERS-2026-08-11.md\n\tmodified:   forge/public/data/activity.json\n\tmodified:   forge/public/data/catalog.json\n\tmodified:   forge/public/data/project-summary.json\n\tmodified:   forge/public/data/search-index.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-discord-comment.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-discord-post.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-facebook-comment.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-facebook-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-instagram-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-instagram-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-kofi-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-kofi-supporter-reply.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-linkedin-angles.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-linkedin-comment.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-linkedin-post.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-linkedin-voice.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-patreon-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-patreon-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-pinterest-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-pinterest-pin.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-reddit-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-reddit-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-slack-channel-message.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-slack-thread-reply.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-teams-channel-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-teams-thread-reply.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-telegram-channel-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-telegram-group-reply.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-tiktok-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-tiktok-post.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-twitter-comment.json\n\tmodified:   forge/public/data/skills/social-posting/okhp3-twitter-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-youtube-comment.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-youtube-community-post.json\n\tnew file:   forge/public/data/skills/social-posting/okhp3-youtube-video.json\n\tmodified:   forge/scripts/build-catalog.js\n\tmodified:   forge/scripts/test-catalog.mjs\n\tmodified:   forge/src/types/catalog.ts\n\tmodified:   glee-fully/FAMILY.md\n\tmodified:   glee-fully/README.md\n\tmodified:   knowledge-operations/FAMILY.md\n\tmodified:   lifetrkr/FAMILY.md\n\tmodified:   mermaid/FAMILY.md\n\tmodified:   notion/FAMILY.md\n\tmodified:   outcome-modeling/FAMILY.md\n\tmodified:   process-capture/FAMILY.md\n\tmodified:   refolddec/FAMILY.md\n\tmodified:   replit/FAMILY.md\n\tmodified:   skillz.manifest.json\n\tmodified:   social-posting/FAMILY.md\n\tnew file:   social-posting/PUBLIC-NEUTRALITY.md\n\tnew file:   social-posting/evals/public-neutrality.json\n\tmodified:   social-posting/okhp3-discord-comment/SKILL.md\n\tmodified:   social-posting/okhp3-discord-comment/evals/evals.json\n\tmodified:   social-posting/okhp3-discord-post/SKILL.md\n\tmodified:   social-posting/okhp3-discord-post/evals/evals.json\n\tmodified:   social-posting/okhp3-facebook-comment/SKILL.md\n\tmodified:   social-posting/okhp3-facebook-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-facebook-comment/evals/learning-record-1.1.0.json\n\tmodified:   social-posting/okhp3-facebook-post/SKILL.md\n\tmodified:   social-posting/okhp3-facebook-post/evals/evals.json\n\tnew file:   social-posting/okhp3-facebook-post/evals/learning-record-1.1.0.json\n\tnew file:   social-posting/okhp3-instagram-comment/SKILL.md\n\tnew file:   social-posting/okhp3-instagram-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-instagram-post/SKILL.md\n\tnew file:   social-posting/okhp3-instagram-post/evals/evals.json\n\tnew file:   social-posting/okhp3-kofi-post/SKILL.md\n\tnew file:   social-posting/okhp3-kofi-post/evals/evals.json\n\tnew file:   social-posting/okhp3-kofi-supporter-reply/SKILL.md\n\tnew file:   social-posting/okhp3-kofi-supporter-reply/evals/evals.json\n\tmodified:   social-posting/okhp3-linkedin-angles/SKILL.md\n\tnew file:   social-posting/okhp3-linkedin-angles/evals/evals.json\n\tmodified:   social-posting/okhp3-linkedin-angles/references/angle-registry.md\n\tmodified:   social-posting/okhp3-linkedin-angles/references/angle-taxonomy.md\n\tmodified:   social-posting/okhp3-linkedin-comment/SKILL.md\n\tmodified:   social-posting/okhp3-linkedin-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-linkedin-comment/references/public-context-gate.md\n\tmodified:   social-posting/okhp3-linkedin-post/SKILL.md\n\tnew file:   social-posting/okhp3-linkedin-post/evals/evals.json\n\tdeleted:    social-posting/okhp3-linkedin-post/references/bfs-scrub-checklist.md\n\tnew file:   social-posting/okhp3-linkedin-post/references/public-context-scrub-checklist.md\n\tmodified:   social-posting/okhp3-linkedin-voice/SKILL.md\n\tnew file:   social-posting/okhp3-linkedin-voice/evals/evals.json\n\tmodified:   social-posting/okhp3-linkedin-voice/references/voice-rules.md\n\tnew file:   social-posting/okhp3-patreon-comment/SKILL.md\n\tnew file:   social-posting/okhp3-patreon-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-patreon-post/SKILL.md\n\tnew file:   social-posting/okhp3-patreon-post/evals/evals.json\n\tnew file:   social-posting/okhp3-pinterest-comment/SKILL.md\n\tnew file:   social-posting/okhp3-pinterest-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-pinterest-pin/SKILL.md\n\tnew file:   social-posting/okhp3-pinterest-pin/evals/evals.json\n\tnew file:   social-posting/okhp3-reddit-comment/SKILL.md\n\tnew file:   social-posting/okhp3-reddit-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-reddit-post/SKILL.md\n\tnew file:   social-posting/okhp3-reddit-post/evals/evals.json\n\tnew file:   social-posting/okhp3-slack-channel-message/SKILL.md\n\tnew file:   social-posting/okhp3-slack-channel-message/evals/evals.json\n\tnew file:   social-posting/okhp3-slack-thread-reply/SKILL.md\n\tnew file:   social-posting/okhp3-slack-thread-reply/evals/evals.json\n\tnew file:   social-posting/okhp3-teams-channel-post/SKILL.md\n\tnew file:   social-posting/okhp3-teams-channel-post/evals/evals.json\n\tnew file:   social-posting/okhp3-teams-thread-reply/SKILL.md\n\tnew file:   social-posting/okhp3-teams-thread-reply/evals/evals.json\n\tnew file:   social-posting/okhp3-telegram-channel-post/SKILL.md\n\tnew file:   social-posting/okhp3-telegram-channel-post/evals/evals.json\n\tnew file:   social-posting/okhp3-telegram-group-reply/SKILL.md\n\tnew file:   social-posting/okhp3-telegram-group-reply/evals/evals.json\n\tnew file:   social-posting/okhp3-tiktok-comment/SKILL.md\n\tnew file:   social-posting/okhp3-tiktok-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-tiktok-post/SKILL.md\n\tnew file:   social-posting/okhp3-tiktok-post/evals/evals.json\n\tmodified:   social-posting/okhp3-twitter-comment/SKILL.md\n\tmodified:   social-posting/okhp3-twitter-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-twitter-comment/evals/learning-record-1.1.0.json\n\tmodified:   social-posting/okhp3-twitter-post/SKILL.md\n\tmodified:   social-posting/okhp3-twitter-post/evals/evals.json\n\tnew file:   social-posting/okhp3-twitter-post/evals/learning-record-1.1.0.json\n\tnew file:   social-posting/okhp3-youtube-comment/SKILL.md\n\tnew file:   social-posting/okhp3-youtube-comment/evals/evals.json\n\tnew file:   social-posting/okhp3-youtube-community-post/SKILL.md\n\tnew file:   social-posting/okhp3-youtube-community-post/evals/evals.json\n\tnew file:   social-posting/okhp3-youtube-video/SKILL.md\n\tnew file:   social-posting/okhp3-youtube-video/evals/evals.json\n\tmodified:   universal/FAMILY.md",
-      "author": "OKHP3",
-      "date": "2026-08-12T00:30:13Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9ff0b60749a15986d855982649018b1987a2da38"
-    },
-    {
-      "sha": "2d3f40044399ec36333c3e22cbcdebe1372862aa",
-      "shortSha": "2d3f400",
-      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz\n\n# Conflicts:\n#\tforge/public/data/catalog.json\n#\tforge/public/data/project-summary.json\n#\tskillz.manifest.json",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-11T19:02:21Z",
-      "url": "https://github.com/OKHP3/skillz/commit/2d3f40044399ec36333c3e22cbcdebe1372862aa"
-    },
-    {
-      "sha": "df4ec456275c01988524708057f129e44a71951a",
-      "shortSha": "df4ec45",
-      "message": "\tmodified:   .agents/skills/.catalog-meta.json\n\tmodified:   .agents/skills/README.md\n\tmodified:   .agents/skills/okhp3-process-capture/SKILL.md\n\tmodified:   .catalog-meta.json\n\tmodified:   README.md\n\tmodified:   abrahamic/FAMILY.md\n\tmodified:   agent-foundry/FAMILY.md\n\tmodified:   askjamie/FAMILY.md\n\tmodified:   community/FAMILY.md\n\tmodified:   context-extraction/FAMILY.md\n\tmodified:   forge/public/data/catalog.json\n\tmodified:   forge/public/data/project-summary.json\n\tmodified:   forge/public/data/search-index.json\n\tmodified:   forge/public/data/skills/process-capture/okhp3-process-capture.json\n\tmodified:   glee-fully/FAMILY.md\n\tmodified:   knowledge-operations/FAMILY.md\n\tmodified:   lifetrkr/FAMILY.md\n\tmodified:   mermaid/FAMILY.md\n\tmodified:   notion/FAMILY.md\n\tmodified:   outcome-modeling/FAMILY.md\n\tmodified:   process-capture/FAMILY.md\n\tmodified:   refolddec/FAMILY.md\n\tmodified:   skillz.manifest.json\n\tmodified:   social-posting/FAMILY.md\n\tmodified:   universal/FAMILY.md",
-      "author": "OKHP3",
-      "date": "2026-08-11T18:56:28Z",
-      "url": "https://github.com/OKHP3/skillz/commit/df4ec456275c01988524708057f129e44a71951a"
-    },
-    {
-      "sha": "b89c9193063a7773c6b6aaf43bf2abba385b20fb",
-      "shortSha": "b89c919",
-      "message": "Update project metadata and activity manifest details\n\nReplit-Commit-Author: Agent",
+      "sha": "9811290400a9bbb432760e9caf9a466cf03d2252",
+      "shortSha": "9811290",
+      "message": "Update catalog and project manifest metadata\n\nReplit-Commit-Author: Agent",
       "author": "Replit Agent",
-      "date": "2026-08-11T18:57:48Z",
-      "url": "https://github.com/OKHP3/skillz/commit/b89c9193063a7773c6b6aaf43bf2abba385b20fb"
+      "date": "2026-08-17T14:30:46Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9811290400a9bbb432760e9caf9a466cf03d2252"
     },
     {
-      "sha": "7b20ff07f7801151f8a233dfeafee6a5a69a2a45",
-      "shortSha": "7b20ff0",
-      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz\n\n# Conflicts:\n#\tforge/public/data/activity.json\n#\tforge/public/data/catalog.json\n#\tforge/public/data/project-summary.json\n#\tskillz.manifest.json",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-11T18:56:17Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7b20ff07f7801151f8a233dfeafee6a5a69a2a45"
+      "sha": "54bcc82fc543f18dd8c23a650a39b82ab1f16ed2",
+      "shortSha": "54bcc82",
+      "message": "Port ExploreB responsive fixes into live Skillz Forge Explore page\n\n- Convert skill-list from flex-column to CSS grid (1 col mobile / 2 col ≥900px / 3 col ≥1280px)\n- Add backdrop overlay that closes the mobile filter drawer on tap\n- Hide the Filters toggle button on desktop (sidebar always visible ≥769px)\n- Lock body scroll while the mobile filter drawer is open, with matchMedia guard that auto-closes the drawer and clears the lock when viewport crosses 768px\n\nReplit-Task-Id: 241a552f-9d19-4fe2-b3b2-faab005ea08b",
+      "author": "overkillhillp3",
+      "date": "2026-08-17T14:30:25Z",
+      "url": "https://github.com/OKHP3/skillz/commit/54bcc82fc543f18dd8c23a650a39b82ab1f16ed2"
+    },
+    {
+      "sha": "2f8593860d43f861aa593659fcc356db24c664ee",
+      "shortSha": "2f85938",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-17T14:29:55Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2f8593860d43f861aa593659fcc356db24c664ee"
+    },
+    {
+      "sha": "60300105181d65af511e53af75008e39c2e2408d",
+      "shortSha": "6030010",
+      "message": "Update catalog and project manifest data\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-17T14:08:00Z",
+      "url": "https://github.com/OKHP3/skillz/commit/60300105181d65af511e53af75008e39c2e2408d"
+    },
+    {
+      "sha": "bcb3417eef75994ef88f6a44ff426b43a3d5204b",
+      "shortSha": "bcb3417",
+      "message": "Add responsive layout to ExploreB and place mobile/tablet/desktop canvas frames\n\nReplit-Task-Id: 869e7232-eab6-44d5-a18e-9809102ac520",
+      "author": "overkillhillp3",
+      "date": "2026-08-17T14:07:43Z",
+      "url": "https://github.com/OKHP3/skillz/commit/bcb3417eef75994ef88f6a44ff426b43a3d5204b"
+    },
+    {
+      "sha": "a0d47fb88bd5b11c885e14951388856b3b71e869",
+      "shortSha": "a0d47fb",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-17T14:07:43Z",
+      "url": "https://github.com/OKHP3/skillz/commit/a0d47fb88bd5b11c885e14951388856b3b71e869"
     }
   ],
   "fetchError": null

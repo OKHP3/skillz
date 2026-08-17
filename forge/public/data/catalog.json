@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-17T15:49:11.856Z",
+  "generatedAt": "2026-08-17T15:52:27.081Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "283812a",
-  "skillCount": 146,
+  "sourceCommit": "dae15d2",
+  "skillCount": 147,
   "familyCount": 16,
   "families": [
     {
@@ -490,10 +490,11 @@
     {
       "name": "replit",
       "displayName": "Replit",
-      "skillCount": 5,
+      "skillCount": 6,
       "skills": [
         "okhp3-replit-build-in-public",
         "okhp3-replit-canvas-board",
+        "okhp3-replit-contest-score-keeper",
         "okhp3-replit-design-pipeline",
         "okhp3-replit-multi-artifact",
         "okhp3-replit-repl-janitor"
@@ -7123,6 +7124,69 @@
       "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "ready-for-supervised-use"
+    },
+    {
+      "name": "okhp3-replit-contest-score-keeper",
+      "displayName": "Replit Contest Score Keeper",
+      "family": "replit",
+      "skillDir": "okhp3-replit-contest-score-keeper",
+      "path": "replit/okhp3-replit-contest-score-keeper/SKILL.md",
+      "description": "Review and score fresh Replit BuildHub contest submissions with live rubric checks, safe public-app exploration, and verified per-project idempotency. Use when bulk-reviewing user-supplied Replit contest project URLs. Also activate when scoring availability or favorite state may differ between projects or change during a review batch. Do not use for virtual investments, contest manipulation, or unrelated Replit app changes.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "developer-tooling",
+      "origin": "OKHP3/skillz — Replit BuildHub contest review workflow",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "none",
+      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "developer-tooling"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-contest-score-keeper/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-contest-score-keeper/SKILL.md",
+      "lastModified": "2026-08-12T15:07:56-05:00",
+      "commitSha": "f495aef8",
+      "createdAt": "2026-08-12T15:07:56-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "OKHP3/skillz — Replit BuildHub contest review workflow",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "- Reviewing fresh Replit BuildHub contest project URLs supplied at runtime - Applying the contest rubric and submitting evidence-based score notes - Favoriting eligible projects only after confirmed score submission - Maintaining an auditable per-project evidence ledger",
+        "outOfScope": "- Virtual investments, contest manipulation, or unrelated Replit app changes - Reusing or inferring project URL lists from prior conversations or batches - Bypassing access controls or making purchases while exploring submissions",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "none",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No evaluation design or executable check exists for this package."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-replit-design-pipeline",

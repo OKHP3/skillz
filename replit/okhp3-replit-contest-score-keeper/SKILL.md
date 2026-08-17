@@ -7,6 +7,24 @@ description: >
   when scoring availability or favorite state may differ between projects or
   change during a review batch. Do not use for virtual investments, contest
   manipulation, or unrelated Replit app changes.
+license: MIT
+metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "1.0.0"
+  category: developer-tooling
+  origin: OKHP3/skillz — Replit BuildHub contest review workflow
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  maturity: draftable
+  in_scope:
+    - Reviewing fresh Replit BuildHub contest project URLs supplied at runtime
+    - Applying the contest rubric and submitting evidence-based score notes
+    - Favoriting eligible projects only after confirmed score submission
+    - Maintaining an auditable per-project evidence ledger
+  out_of_scope:
+    - Virtual investments, contest manipulation, or unrelated Replit app changes
+    - Reusing or inferring project URL lists from prior conversations or batches
+    - Bypassing access controls or making purchases while exploring submissions
 ---
 
 # okhp3-replit-contest-score-keeper
