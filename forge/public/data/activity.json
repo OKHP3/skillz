@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-08-12T01:50:28.869Z",
+  "generatedAt": "2026-08-12T12:21:18.324Z",
   "commits": [
+    {
+      "sha": "89754d3b3c2579ff6876325caf9b306ca5381db4",
+      "shortSha": "89754d3",
+      "message": "chore: full skill catalog refresh (146 skills, 16 families)\n\n- Regenerate README.md and all family FAMILY.md tables via okhp3-skill-cataloger --full\n- Regenerate .agents/skills/README.md and .catalog-meta.json (project catalog mode)\n- Regenerate root .catalog-meta.json (distribution mode)\n- Refresh Forge search index and per-skill detail JSON via forge/scripts/build-catalog.js\n- Refresh forge/public/data/activity.json",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-12T01:51:28Z",
+      "url": "https://github.com/OKHP3/skillz/commit/89754d3b3c2579ff6876325caf9b306ca5381db4"
+    },
+    {
+      "sha": "231519141c51493e8bbb583dbe38753f7f1fba34",
+      "shortSha": "2315191",
+      "message": "Update data and manifest configuration files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-12T01:45:08Z",
+      "url": "https://github.com/OKHP3/skillz/commit/231519141c51493e8bbb583dbe38753f7f1fba34"
+    },
     {
       "sha": "1f346324ff49b57f4219a365825a9866f2db5a5b",
       "shortSha": "1f34632",
@@ -64,22 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-11T18:55:53Z",
       "url": "https://github.com/OKHP3/skillz/commit/a81b7a8f506b5a3ffd08bc6861a2f1d83adff709"
-    },
-    {
-      "sha": "407054dd1cb10547847a86b0bb4895a2fb143202",
-      "shortSha": "407054d",
-      "message": "fix: unblock Skillz Forge Pages deploy",
-      "author": "Jamie Hill",
-      "date": "2026-08-11T18:23:21Z",
-      "url": "https://github.com/OKHP3/skillz/commit/407054dd1cb10547847a86b0bb4895a2fb143202"
-    },
-    {
-      "sha": "9023aebed81c02911ed79432883af87eb48ac796",
-      "shortSha": "9023aeb",
-      "message": "Bump pnpm/action-setup from 6.0.9 to 6.0.10 (#41)\n\nBumps [pnpm/action-setup](https://github.com/pnpm/action-setup) from 6.0.9 to 6.0.10.\n- [Release notes](https://github.com/pnpm/action-setup/releases)\n- [Commits](https://github.com/pnpm/action-setup/compare/0ebf47130e4866e96fce0953f49152a61190b271...0977fd99725f1db4007ccb2928dbb4e90d06cc86)\n\n---\nupdated-dependencies:\n- dependency-name: pnpm/action-setup\n  dependency-version: 6.0.10\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-      "author": "dependabot[bot]",
-      "date": "2026-08-11T17:00:57Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9023aebed81c02911ed79432883af87eb48ac796"
     }
   ],
   "fetchError": null
