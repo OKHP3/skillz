@@ -1730,6 +1730,20 @@ input, select, textarea {
     transition: transform var(--transition), visibility 0s linear;
   }
 }
+
+/* Backdrop overlay — appears behind the mobile filter drawer, closes on tap */
+.explore-sidebar-backdrop {
+  display: none;
+}
+@media (max-width: 768px) {
+  .explore-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 49; /* just below the sidebar's z-index: 50 */
+    background: rgba(21, 17, 15, 0.70);
+  }
+}
 .filter-group {
   margin-bottom: var(--space-8);
 }
@@ -1912,10 +1926,16 @@ input, select, textarea {
   align-items: center;
 }
 .explore-topbar .nav-mobile-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: var(--text-sm);
+  /* Hidden on desktop — the sidebar is always visible at ≥769px */
+  display: none;
+}
+@media (max-width: 768px) {
+  .explore-topbar .nav-mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--text-sm);
+  }
 }
 .explore-search-wrapper {
   flex: 1;
@@ -1987,9 +2007,21 @@ input, select, textarea {
 
 .skill-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
+  /* Responsive grid: 1 col mobile → 2 col tablet → 3 col desktop.
+     Breakpoints account for the 280px sidebar on ≥769px viewports. */
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-6);
+}
+@media (min-width: 900px) {
+  .skill-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1280px) {
+  .skill-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 .skill-card {
   background: var(--color-surface);

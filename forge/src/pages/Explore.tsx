@@ -216,6 +216,36 @@ export default function Explore() {
     searchInputRef.current?.scrollIntoView({ block: 'start' });
   }
 
+  // Lock body scroll while the mobile filter drawer is open so the page
+  // behind the backdrop can't scroll. The lock only applies while the mobile
+  // media query matches (≤768px) — if the user rotates or resizes to desktop
+  // while the drawer is open, we close the drawer and clear the lock so there
+  // is always a visible way to restore scrolling.
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+
+    function applyLock() {
+      if (filterOpen && mq.matches) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+        // Auto-close the drawer when the viewport leaves mobile so the
+        // sidebar goes back to its always-visible desktop position and the
+        // user is never left with a hidden-but-open drawer state.
+        if (filterOpen && !mq.matches) {
+          setFilterOpen(false);
+        }
+      }
+    }
+
+    applyLock();
+    mq.addEventListener('change', applyLock);
+    return () => {
+      mq.removeEventListener('change', applyLock);
+      document.body.style.overflow = '';
+    };
+  }, [filterOpen]);
+
   async function handleCopy(skill: (typeof catalog.skills)[0]) {
     const ok = await copyInstallCommand(skill);
     if (ok) {
@@ -241,6 +271,14 @@ export default function Explore() {
     <div data-page="explore">
       <Nav />
       <main data-layout="explore" id="main-content" tabIndex={-1}>
+        {/* Backdrop overlay — closes the filter drawer on mobile tap, matching ExploreB */}
+        {filterOpen && (
+          <div
+            className="explore-sidebar-backdrop"
+            aria-hidden="true"
+            onClick={() => setFilterOpen(false)}
+          />
+        )}
         <aside className="explore-sidebar" data-open={filterOpen} aria-label="Filters" ref={sidebarRef} tabIndex={-1}>
           <button type="button" className="skip-link skip-link--button" onClick={skipFiltersToSearch}>
             Skip filters, go to search
