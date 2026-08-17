@@ -165,19 +165,52 @@ export function ExploreB() {
   const [showFilters, setShowFilters] = useState(false);
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const familiesButtonRef = useRef<HTMLButtonElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
 
-  // Lock body scroll and handle Escape key while the mobile drawer is open.
-  // Cleanup runs when the drawer closes — return focus to the trigger button.
+  // Lock the main scroll container (iOS-safe) and handle Escape while the drawer is open.
+  //
+  // The visible page scroll lives inside <main> (overflow-y:auto), NOT on document.body.
+  // overflow:hidden on body alone doesn't stop iOS Safari's momentum scroll on that
+  // inner container. The reliable fix is to:
+  //   1. Capture <main>'s scrollTop before locking.
+  //   2. Set overflow:hidden on <main> so it can't scroll at all.
+  //   3. On close, restore overflow and scrollTop so the user lands back where they were.
+  //
+  // The drawer panel itself gets overscroll-behavior:contain (see below) so flinging
+  // inside the drawer at its top/bottom boundary doesn't leak through.
   useEffect(() => {
     if (!showMobileSidebar) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const main = mainRef.current;
+
+    // Save current scroll position and lock the container.
+    const savedScrollTop = main ? main.scrollTop : 0;
+    const prevOverflow = main ? main.style.overflowY : "";
+    if (main) {
+      main.style.overflowY = "hidden";
+    }
+
+    // Also prevent touchmove from propagating out of the overlay on iOS.
+    // The handler is passive:false so preventDefault() is honoured.
+    const preventBgTouch = (e: TouchEvent) => {
+      // Allow touches that originated inside the drawer panel to scroll the panel.
+      const drawer = document.querySelector("[data-drawer-panel]");
+      if (drawer && drawer.contains(e.target as Node)) return;
+      e.preventDefault();
+    };
+    document.addEventListener("touchmove", preventBgTouch, { passive: false });
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setShowMobileSidebar(false);
     };
     document.addEventListener("keydown", onKey);
+
     return () => {
-      document.body.style.overflow = prev;
+      // Restore scroll container to its original state.
+      if (main) {
+        main.style.overflowY = prevOverflow;
+        main.scrollTop = savedScrollTop;
+      }
+      document.removeEventListener("touchmove", preventBgTouch);
       document.removeEventListener("keydown", onKey);
       familiesButtonRef.current?.focus();
     };
@@ -290,8 +323,9 @@ export function ExploreB() {
               role="dialog"
               aria-modal="true"
               aria-label="Family filter"
+              data-drawer-panel
               className="absolute inset-y-0 left-0 w-[280px] overflow-y-auto border-r px-4 py-5"
-              style={{ borderColor: "#3d3530", background: "#241e1b" }}
+              style={{ borderColor: "#3d3530", background: "#241e1b", overscrollBehavior: "contain" }}
               onClick={(e) => e.stopPropagation()}
             >
               <SidebarContent
@@ -305,7 +339,7 @@ export function ExploreB() {
         )}
 
         {/* ── Main content ─────────────────────────────────── */}
-        <main className="min-w-0 flex-1 overflow-y-auto">
+        <main ref={mainRef} className="min-w-0 flex-1 overflow-y-auto">
           <div className="mx-auto max-w-[1060px] px-4 pb-10 pt-5 md:px-7 md:pt-7">
 
             {/* Page header */}
