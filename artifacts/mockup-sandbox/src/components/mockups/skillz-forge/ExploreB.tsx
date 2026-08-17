@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowDownAZ,
   ArrowUpRight,
@@ -164,8 +164,10 @@ export function ExploreB() {
   const [selected, setSelected] = useState<Skill | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [showMobileSidebar, setShowMobileSidebar] = useState(false);
+  const familiesButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Lock body scroll and handle Escape key while the mobile drawer is open
+  // Lock body scroll and handle Escape key while the mobile drawer is open.
+  // Cleanup runs when the drawer closes — return focus to the trigger button.
   useEffect(() => {
     if (!showMobileSidebar) return;
     const prev = document.body.style.overflow;
@@ -177,6 +179,7 @@ export function ExploreB() {
     return () => {
       document.body.style.overflow = prev;
       document.removeEventListener("keydown", onKey);
+      familiesButtonRef.current?.focus();
     };
   }, [showMobileSidebar]);
 
@@ -233,6 +236,7 @@ export function ExploreB() {
         <div className="flex items-center gap-3 md:gap-4">
           {/* Mobile filter toggle */}
           <button
+            ref={familiesButtonRef}
             type="button"
             aria-label="Open family filter"
             onClick={() => setShowMobileSidebar(true)}
