@@ -61,7 +61,7 @@ jobs:
 
     steps:
       - name: Dispatch repository_dispatch to glee-fully-chai-chasers
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           VERIFY_LANDING_PAT: ${{ secrets.VERIFY_LANDING_PAT }}
         with:
