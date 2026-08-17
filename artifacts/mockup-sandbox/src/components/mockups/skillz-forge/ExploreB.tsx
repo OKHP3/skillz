@@ -84,12 +84,86 @@ function familyLabel(key: string) {
   return familyMeta.find((family) => family.key === key)?.label ?? key;
 }
 
+/** Sidebar content — shared between desktop aside and mobile drawer */
+function SidebarContent({
+  activeFamily,
+  onFamilyChange,
+  onClose,
+  onNewSearch,
+}: {
+  activeFamily: string;
+  onFamilyChange: (key: string) => void;
+  onClose?: () => void;
+  onNewSearch: (q: string) => void;
+}) {
+  return (
+    <>
+      <div className="mb-5 flex items-end justify-between">
+        <div>
+          <div className="font-mono text-[9px] uppercase tracking-[.19em] text-[#8a7e6e]">Browse by family</div>
+          <div className="mt-1 text-[11px] text-[#675e55]">Signal groups, not folders</div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-[10px] text-[#c46a2c]">16</span>
+          {onClose && (
+            <button type="button" aria-label="Close filters" onClick={onClose} className="rounded p-1 text-[#8a7e6e] hover:text-[#f6f2ee] md:hidden">
+              <X size={15} />
+            </button>
+          )}
+        </div>
+      </div>
+      <div className="space-y-0.5">
+        {familyMeta.map((family) => {
+          const isActive = activeFamily === family.key;
+          return (
+            <button
+              type="button"
+              key={family.key}
+              onClick={() => { onFamilyChange(family.key); onClose?.(); }}
+              className="group flex w-full items-center justify-between rounded-sm px-2 py-[7px] text-left transition-colors"
+              style={{
+                background: isActive ? "rgba(196,106,44,.15)" : "transparent",
+                color: isActive ? "#f6f2ee" : "#a79b8d",
+              }}
+            >
+              <span className="flex min-w-0 items-center gap-2.5 text-[11px]">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: family.tint, opacity: isActive ? 1 : .65 }} />
+                <span className="truncate">{family.label}</span>
+              </span>
+              <span className="font-mono text-[10px]" style={{ color: isActive ? "#e6a03c" : "#675e55" }}>{family.count}</span>
+            </button>
+          );
+        })}
+      </div>
+      <div className="mt-6 border-t pt-4" style={{ borderColor: "#3d3530" }}>
+        <div className="mb-3 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[.18em] text-[#8a7e6e]">
+          <Layers3 size={11} /> Maturity
+        </div>
+        <div className="space-y-2 text-[10px] text-[#a79b8d]">
+          {(Object.keys(maturityStyles) as Maturity[]).map((maturity) => (
+            <div className="flex items-center justify-between" key={maturity}>
+              <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full" style={{ background: maturityStyles[maturity].color }} />{maturity}</span>
+              <span className="font-mono text-[#675e55]">{maturity === "Ready" ? "62" : maturity === "Validated" ? "39" : maturity === "Experimental" ? "28" : "17"}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-7 rounded-sm border p-3" style={{ borderColor: "#3d3530", background: "rgba(31,27,24,.75)" }}>
+        <div className="mb-2 flex items-center gap-2 text-[10px] font-semibold text-[#d8cfc4]"><Sparkles size={12} className="text-[#c46a2c]" /> New this week</div>
+        <p className="text-[10px] leading-[1.45] text-[#8a7e6e]">7 contracts cleared review and joined the forge.</p>
+        <button type="button" onClick={() => { onNewSearch("new"); onClose?.(); }} className="mt-3 text-[10px] font-semibold text-[#e6a03c] hover:text-[#f4bd65]">View arrivals →</button>
+      </div>
+    </>
+  );
+}
+
 export function ExploreB() {
   const [query, setQuery] = useState("");
   const [activeFamily, setActiveFamily] = useState("all");
   const [sortBy, setSortBy] = useState<"relevance" | "name">("relevance");
   const [selected, setSelected] = useState<Skill | null>(null);
   const [showFilters, setShowFilters] = useState(false);
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
 
   const visibleSkills = useMemo(() => {
     const normalized = query.toLowerCase().trim();
@@ -116,97 +190,113 @@ export function ExploreB() {
         fontFamily: "'DM Sans', sans-serif",
       }}
     >
+      {/* ── Header ─────────────────────────────────────────── */}
       <header
-        className="flex h-[58px] items-center justify-between border-b px-5"
+        className="flex h-[52px] items-center justify-between border-b px-4 md:h-[58px] md:px-5"
         style={{ borderColor: "#3d3530", background: "#1f1b18" }}
       >
-        <div className="flex items-center gap-7">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4 md:gap-7">
+          {/* Logo */}
+          <div className="flex items-center gap-2.5 md:gap-3">
             <div className="flex h-7 w-7 items-center justify-center rounded-sm border border-[#c46a2c] text-[#e6a03c]">
               <Terminal size={15} strokeWidth={2.4} />
             </div>
             <div className="leading-none">
-              <div className="text-[13px] font-semibold tracking-[.18em] text-[#f6f2ee]">SKILLZ FORGE</div>
-              <div className="mt-1 font-mono text-[8px] tracking-[.15em] text-[#8a7e6e]">OVERKILL HILL P³ / LIBRARY</div>
+              <div className="text-[12px] font-semibold tracking-[.16em] text-[#f6f2ee] md:text-[13px] md:tracking-[.18em]">SKILLZ FORGE</div>
+              <div className="mt-1 hidden font-mono text-[8px] tracking-[.15em] text-[#8a7e6e] sm:block">OVERKILL HILL P³ / LIBRARY</div>
             </div>
           </div>
-          <nav className="flex h-[58px] items-center gap-6 text-[12px]">
+          {/* Nav — hidden on mobile */}
+          <nav className="hidden h-[58px] items-center gap-5 text-[12px] sm:flex md:gap-6">
             <button className="h-full border-b-2 border-[#c46a2c] font-semibold text-[#f6f2ee]" type="button">Explore</button>
             <button className="text-[#8a7e6e] transition-colors hover:text-[#ede7de]" type="button">My forge</button>
-            <button className="text-[#8a7e6e] transition-colors hover:text-[#ede7de]" type="button">Collections</button>
+            <button className="hidden text-[#8a7e6e] transition-colors hover:text-[#ede7de] md:block" type="button">Collections</button>
           </nav>
         </div>
-        <div className="flex items-center gap-4">
+
+        {/* Right side */}
+        <div className="flex items-center gap-3 md:gap-4">
+          {/* Mobile filter toggle */}
+          <button
+            type="button"
+            aria-label="Open family filter"
+            onClick={() => setShowMobileSidebar(true)}
+            className="flex items-center gap-1.5 rounded-sm border border-[#4b4038] px-2.5 py-1.5 text-[11px] text-[#a79b8d] hover:border-[#c46a2c] hover:text-[#f6f2ee] md:hidden"
+          >
+            <Filter size={12} />
+            {activeFamily !== "all" ? (
+              <span style={{ color: "#e6a03c" }}>{familyLabel(activeFamily)}</span>
+            ) : (
+              "Families"
+            )}
+          </button>
+          {/* Registry synced badge */}
           <div className="hidden items-center gap-2 text-[11px] text-[#8a7e6e] sm:flex">
             <span className="h-1.5 w-1.5 rounded-full bg-[#75b9a4]" />
             Registry synced
           </div>
-          <div className="flex items-center gap-2 border-l border-[#3d3530] pl-4">
+          {/* Avatar */}
+          <div className="flex items-center gap-2 border-l border-[#3d3530] pl-3 md:pl-4">
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#5a3a2d] font-mono text-[10px] text-[#e6a03c]">OH</div>
-            <ChevronDown size={13} className="text-[#8a7e6e]" />
+            <ChevronDown size={13} className="hidden text-[#8a7e6e] sm:block" />
           </div>
         </div>
       </header>
 
-      <div className="flex h-[calc(100dvh-58px)] min-h-[742px]">
-        <aside className="w-[220px] shrink-0 overflow-y-auto border-r px-4 py-5" style={{ borderColor: "#3d3530", background: "#241e1b" }}>
-          <div className="mb-5 flex items-end justify-between">
-            <div>
-              <div className="font-mono text-[9px] uppercase tracking-[.19em] text-[#8a7e6e]">Browse by family</div>
-              <div className="mt-1 text-[11px] text-[#675e55]">Signal groups, not folders</div>
-            </div>
-            <span className="font-mono text-[10px] text-[#c46a2c]">16</span>
-          </div>
-          <div className="space-y-0.5">
-            {familyMeta.map((family) => {
-              const isActive = activeFamily === family.key;
-              return (
-                <button
-                  type="button"
-                  key={family.key}
-                  onClick={() => setActiveFamily(family.key)}
-                  className="group flex w-full items-center justify-between rounded-sm px-2 py-[7px] text-left transition-colors"
-                  style={{
-                    background: isActive ? "rgba(196,106,44,.15)" : "transparent",
-                    color: isActive ? "#f6f2ee" : "#a79b8d",
-                  }}
-                >
-                  <span className="flex min-w-0 items-center gap-2.5 text-[11px]">
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: family.tint, opacity: isActive ? 1 : .65 }} />
-                    <span className="truncate">{family.label}</span>
-                  </span>
-                  <span className="font-mono text-[10px]" style={{ color: isActive ? "#e6a03c" : "#675e55" }}>{family.count}</span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="mt-6 border-t pt-4" style={{ borderColor: "#3d3530" }}>
-            <div className="mb-3 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[.18em] text-[#8a7e6e]">
-              <Layers3 size={11} /> Maturity
-            </div>
-            <div className="space-y-2 text-[10px] text-[#a79b8d]">
-              {(Object.keys(maturityStyles) as Maturity[]).map((maturity) => (
-                <div className="flex items-center justify-between" key={maturity}>
-                  <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full" style={{ background: maturityStyles[maturity].color }} />{maturity}</span>
-                  <span className="font-mono text-[#675e55]">{maturity === "Ready" ? "62" : maturity === "Validated" ? "39" : maturity === "Experimental" ? "28" : "17"}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="mt-7 rounded-sm border p-3" style={{ borderColor: "#3d3530", background: "rgba(31,27,24,.75)" }}>
-            <div className="mb-2 flex items-center gap-2 text-[10px] font-semibold text-[#d8cfc4]"><Sparkles size={12} className="text-[#c46a2c]" /> New this week</div>
-            <p className="text-[10px] leading-[1.45] text-[#8a7e6e]">7 contracts cleared review and joined the forge.</p>
-            <button type="button" onClick={() => setQuery("new")} className="mt-3 text-[10px] font-semibold text-[#e6a03c] hover:text-[#f4bd65]">View arrivals →</button>
-          </div>
+      {/* ── Body ───────────────────────────────────────────── */}
+      <div className="flex h-[calc(100dvh-52px)] md:h-[calc(100dvh-58px)]">
+
+        {/* Desktop sidebar — hidden on mobile */}
+        <aside
+          className="hidden w-[220px] shrink-0 overflow-y-auto border-r px-4 py-5 md:block"
+          style={{ borderColor: "#3d3530", background: "#241e1b" }}
+        >
+          <SidebarContent
+            activeFamily={activeFamily}
+            onFamilyChange={setActiveFamily}
+            onNewSearch={setQuery}
+          />
         </aside>
 
+        {/* Mobile sidebar drawer */}
+        {showMobileSidebar && (
+          <div
+            className="fixed inset-0 z-30 md:hidden"
+            onClick={() => setShowMobileSidebar(false)}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-[#15110f]/70" />
+            {/* Drawer panel */}
+            <div
+              className="absolute inset-y-0 left-0 w-[280px] overflow-y-auto border-r px-4 py-5"
+              style={{ borderColor: "#3d3530", background: "#241e1b" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <SidebarContent
+                activeFamily={activeFamily}
+                onFamilyChange={setActiveFamily}
+                onClose={() => setShowMobileSidebar(false)}
+                onNewSearch={setQuery}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* ── Main content ─────────────────────────────────── */}
         <main className="min-w-0 flex-1 overflow-y-auto">
-          <div className="mx-auto max-w-[1060px] px-7 pb-10 pt-7">
+          <div className="mx-auto max-w-[1060px] px-4 pb-10 pt-5 md:px-7 md:pt-7">
+
+            {/* Page header */}
             <div className="flex items-start justify-between">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[.2em] text-[#c46a2c]">/ explore / signal index</div>
-                <h1 className="mt-2 text-[29px] leading-none tracking-[-.03em] text-[#f6f2ee]" style={{ fontFamily: "'Alfa Slab One', serif" }}>Find the right contract.</h1>
-                <p className="mt-2 text-[12px] text-[#8a7e6e]">146 portable skills for agents that need to get useful, quickly.</p>
+                <h1
+                  className="mt-2 text-[22px] leading-none tracking-[-.03em] text-[#f6f2ee] md:text-[29px]"
+                  style={{ fontFamily: "'Alfa Slab One', serif" }}
+                >
+                  Find the right contract.
+                </h1>
+                <p className="mt-2 text-[11px] text-[#8a7e6e] md:text-[12px]">146 portable skills for agents that need to get useful, quickly.</p>
               </div>
               <div className="mt-1 hidden text-right sm:block">
                 <div className="font-mono text-[22px] leading-none text-[#e6a03c]">146</div>
@@ -214,49 +304,82 @@ export function ExploreB() {
               </div>
             </div>
 
-            <div className="relative mt-7">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#c46a2c]" size={20} strokeWidth={2.2} />
+            {/* Search bar */}
+            <div className="relative mt-5 md:mt-7">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#c46a2c] md:left-4" size={18} strokeWidth={2.2} />
               <input
-                autoFocus
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search skills, families, or what you need to do..."
-                className="h-[58px] w-full rounded-sm border bg-[#1f1b18] pl-12 pr-28 text-[14px] text-[#f6f2ee] outline-none placeholder:text-[#675e55] focus:border-[#c46a2c] focus:ring-1 focus:ring-[#c46a2c]/40"
+                placeholder="Search skills, families, or what you need..."
+                className="h-[48px] w-full rounded-sm border bg-[#1f1b18] pl-10 pr-24 text-[13px] text-[#f6f2ee] outline-none placeholder:text-[#675e55] focus:border-[#c46a2c] focus:ring-1 focus:ring-[#c46a2c]/40 md:h-[58px] md:pl-12 md:text-[14px]"
                 style={{ borderColor: query ? "#c46a2c" : "#4b4038" }}
               />
-              <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center gap-2">
-                {query && <button type="button" aria-label="Clear search" onClick={() => setQuery("")} className="rounded p-1 text-[#8a7e6e] hover:text-[#f6f2ee]"><X size={14} /></button>}
-                <kbd className="rounded border border-[#3d3530] px-2 py-1 font-mono text-[10px] text-[#8a7e6e]">⌘ K</kbd>
+              <div className="absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-2">
+                {query && (
+                  <button type="button" aria-label="Clear search" onClick={() => setQuery("")} className="rounded p-1 text-[#8a7e6e] hover:text-[#f6f2ee]">
+                    <X size={14} />
+                  </button>
+                )}
+                <kbd className="hidden rounded border border-[#3d3530] px-2 py-1 font-mono text-[10px] text-[#8a7e6e] sm:block">⌘ K</kbd>
               </div>
             </div>
 
-            <div className="mt-5 flex items-center justify-between border-b pb-3" style={{ borderColor: "#3d3530" }}>
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] text-[#8a7e6e]"><span className="text-[#f6f2ee]">{visibleSkills.length}</span> showing</span>
+            {/* Toolbar row */}
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-b pb-3" style={{ borderColor: "#3d3530" }}>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-mono text-[10px] text-[#8a7e6e]">
+                  <span className="text-[#f6f2ee]">{visibleSkills.length}</span> showing
+                </span>
                 {activeFamily !== "all" && (
-                  <button type="button" onClick={() => setActiveFamily("all")} className="flex items-center gap-1 rounded-sm border border-[#6e452f] bg-[#5a3023] px-2 py-1 text-[10px] text-[#e6a03c]">
+                  <button
+                    type="button"
+                    onClick={() => setActiveFamily("all")}
+                    className="flex items-center gap-1 rounded-sm border border-[#6e452f] bg-[#5a3023] px-2 py-1 text-[10px] text-[#e6a03c]"
+                  >
                     {familyLabel(activeFamily)} <X size={11} />
                   </button>
                 )}
               </div>
               <div className="flex items-center gap-2">
-                <button type="button" onClick={() => setShowFilters(!showFilters)} className="flex items-center gap-1.5 rounded-sm px-2 py-1 text-[10px] text-[#8a7e6e] hover:bg-[#332a25] hover:text-[#ede7de]"><SlidersHorizontal size={12} /> Filters</button>
+                <button
+                  type="button"
+                  onClick={() => setShowFilters(!showFilters)}
+                  className="flex items-center gap-1.5 rounded-sm px-2 py-1 text-[10px] text-[#8a7e6e] hover:bg-[#332a25] hover:text-[#ede7de]"
+                >
+                  <SlidersHorizontal size={12} /> Filters
+                </button>
                 <div className="h-4 w-px bg-[#3d3530]" />
-                <button type="button" onClick={() => setSortBy(sortBy === "relevance" ? "name" : "relevance")} className="flex items-center gap-1.5 rounded-sm px-2 py-1 text-[10px] text-[#8a7e6e] hover:bg-[#332a25] hover:text-[#ede7de]">
-                  {sortBy === "relevance" ? <Grid2X2 size={12} /> : <ArrowDownAZ size={12} />} {sortBy === "relevance" ? "Relevance" : "A–Z"}
+                <button
+                  type="button"
+                  onClick={() => setSortBy(sortBy === "relevance" ? "name" : "relevance")}
+                  className="flex items-center gap-1.5 rounded-sm px-2 py-1 text-[10px] text-[#8a7e6e] hover:bg-[#332a25] hover:text-[#ede7de]"
+                >
+                  {sortBy === "relevance" ? <Grid2X2 size={12} /> : <ArrowDownAZ size={12} />}
+                  <span className="hidden sm:inline">{sortBy === "relevance" ? "Relevance" : "A–Z"}</span>
                 </button>
               </div>
             </div>
+
+            {/* Quick filters */}
             {showFilters && (
-              <div className="flex items-center gap-2 border-b py-3 text-[10px]" style={{ borderColor: "#3d3530" }}>
+              <div className="flex flex-wrap items-center gap-2 border-b py-3 text-[10px]" style={{ borderColor: "#3d3530" }}>
                 <Filter size={12} className="text-[#c46a2c]" />
                 <span className="text-[#8a7e6e]">Quick filter:</span>
                 {(Object.keys(maturityStyles) as Maturity[]).map((maturity) => (
-                  <button type="button" key={maturity} onClick={() => setQuery(maturity.toLowerCase())} className="rounded-sm border px-2 py-1" style={{ color: maturityStyles[maturity].color, borderColor: maturityStyles[maturity].line, background: maturityStyles[maturity].bg }}>{maturity}</button>
+                  <button
+                    type="button"
+                    key={maturity}
+                    onClick={() => setQuery(maturity.toLowerCase())}
+                    className="rounded-sm border px-2 py-1"
+                    style={{ color: maturityStyles[maturity].color, borderColor: maturityStyles[maturity].line, background: maturityStyles[maturity].bg }}
+                  >
+                    {maturity}
+                  </button>
                 ))}
               </div>
             )}
 
+            {/* Skill grid — 1 col mobile, 2 col tablet (md), 3 col desktop (xl) */}
             <div className="mt-4 grid grid-cols-1 gap-2.5 md:grid-cols-2 xl:grid-cols-3">
               {visibleSkills.map((skill) => {
                 const maturity = maturityStyles[skill.maturity];
@@ -266,15 +389,15 @@ export function ExploreB() {
                     type="button"
                     key={skill.slug}
                     onClick={() => setSelected(skill)}
-                    className="group relative min-h-[137px] overflow-hidden rounded-sm border p-3.5 text-left transition-transform duration-150 hover:-translate-y-0.5"
+                    className="group relative min-h-[120px] overflow-hidden rounded-sm border p-3.5 text-left transition-transform duration-150 hover:-translate-y-0.5 md:min-h-[137px]"
                     style={{ borderColor: "#403731", background: "#302824" }}
                   >
                     <div className="absolute inset-x-0 top-0 h-px opacity-60 transition-opacity group-hover:opacity-100" style={{ background: family?.tint ?? "#c46a2c" }} />
                     <div className="flex items-start justify-between gap-2">
-                      <span className="truncate font-mono text-[12px] font-semibold tracking-[-.01em] text-[#f6f2ee]">{skill.name}</span>
-                      <ArrowUpRight size={14} className="shrink-0 text-[#675e55] transition-colors group-hover:text-[#e6a03c]" />
+                      <span className="truncate font-mono text-[11px] font-semibold tracking-[-.01em] text-[#f6f2ee] md:text-[12px]">{skill.name}</span>
+                      <ArrowUpRight size={13} className="shrink-0 text-[#675e55] transition-colors group-hover:text-[#e6a03c]" />
                     </div>
-                    <p className="mt-2 line-clamp-2 min-h-[31px] text-[11px] leading-[1.45] text-[#a79b8d]">{skill.description}</p>
+                    <p className="mt-2 line-clamp-2 min-h-[28px] text-[11px] leading-[1.45] text-[#a79b8d]">{skill.description}</p>
                     <div className="mt-3 flex items-center gap-1.5">
                       <span className="rounded-sm px-1.5 py-0.5 text-[9px] font-medium" style={{ color: family?.tint, background: `${family?.tint}1a` }}>{family?.label}</span>
                       <span className="rounded-sm border px-1.5 py-0.5 text-[9px]" style={{ color: maturity.color, borderColor: maturity.line, background: maturity.bg }}>{skill.maturity}</span>
@@ -284,35 +407,65 @@ export function ExploreB() {
                 );
               })}
             </div>
+
+            {/* Empty state */}
             {visibleSkills.length === 0 && (
-              <div className="flex min-h-[220px] flex-col items-center justify-center rounded-sm border border-dashed border-[#4b4038] text-center">
+              <div className="flex min-h-[200px] flex-col items-center justify-center rounded-sm border border-dashed border-[#4b4038] text-center">
                 <Command size={24} className="mb-3 text-[#c46a2c]" />
                 <div className="text-[13px] text-[#f6f2ee]">No contract matches that signal.</div>
-                <button type="button" onClick={() => { setQuery(""); setActiveFamily("all"); }} className="mt-2 text-[11px] text-[#e6a03c]">Clear search and browse all</button>
+                <button type="button" onClick={() => { setQuery(""); setActiveFamily("all"); }} className="mt-2 text-[11px] text-[#e6a03c]">
+                  Clear search and browse all
+                </button>
               </div>
             )}
           </div>
         </main>
       </div>
 
+      {/* ── Skill detail modal ─────────────────────────────── */}
       {selected && (
-        <div className="fixed inset-0 z-20 flex items-center justify-center bg-[#15110f]/70 px-6" onClick={() => setSelected(null)}>
-          <div className="w-full max-w-[430px] rounded-sm border p-5 shadow-2xl" style={{ borderColor: "#59463a", background: "#2a2320" }} onClick={(event) => event.stopPropagation()}>
+        <div
+          className="fixed inset-0 z-20 flex items-end justify-center bg-[#15110f]/70 px-4 sm:items-center sm:px-6"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className="mb-0 w-full max-w-[430px] rounded-t-sm border p-5 shadow-2xl sm:mb-0 sm:rounded-sm"
+            style={{ borderColor: "#59463a", background: "#2a2320" }}
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className="flex items-start justify-between">
               <div>
                 <div className="font-mono text-[9px] uppercase tracking-[.18em] text-[#c46a2c]">Contract preview</div>
-                <h2 className="mt-2 font-mono text-[17px] font-semibold text-[#f6f2ee]">{selected.name}</h2>
+                <h2 className="mt-2 font-mono text-[15px] font-semibold text-[#f6f2ee] md:text-[17px]">{selected.name}</h2>
               </div>
-              <button type="button" aria-label="Close preview" onClick={() => setSelected(null)} className="rounded p-1 text-[#8a7e6e] hover:bg-[#3a2f29] hover:text-[#f6f2ee]"><X size={16} /></button>
+              <button type="button" aria-label="Close preview" onClick={() => setSelected(null)} className="rounded p-1 text-[#8a7e6e] hover:bg-[#3a2f29] hover:text-[#f6f2ee]">
+                <X size={16} />
+              </button>
             </div>
             <p className="mt-4 text-[12px] leading-[1.6] text-[#b3a89a]">{selected.description}</p>
             <div className="mt-5 grid grid-cols-2 gap-2">
-              <div className="rounded-sm border border-[#3d3530] bg-[#1f1b18] p-3"><div className="font-mono text-[9px] uppercase tracking-wider text-[#675e55]">Maturity</div><div className="mt-1 text-[12px] text-[#e6a03c]">{selected.maturity}</div></div>
-              <div className="rounded-sm border border-[#3d3530] bg-[#1f1b18] p-3"><div className="font-mono text-[9px] uppercase tracking-wider text-[#675e55]">Version</div><div className="mt-1 text-[12px] text-[#ede7de]">{selected.version}</div></div>
+              <div className="rounded-sm border border-[#3d3530] bg-[#1f1b18] p-3">
+                <div className="font-mono text-[9px] uppercase tracking-wider text-[#675e55]">Maturity</div>
+                <div className="mt-1 text-[12px] text-[#e6a03c]">{selected.maturity}</div>
+              </div>
+              <div className="rounded-sm border border-[#3d3530] bg-[#1f1b18] p-3">
+                <div className="font-mono text-[9px] uppercase tracking-wider text-[#675e55]">Version</div>
+                <div className="mt-1 text-[12px] text-[#ede7de]">{selected.version}</div>
+              </div>
             </div>
             <div className="mt-5 flex items-center justify-between">
-              <div className="flex gap-1.5">{selected.tags.map((tag) => <span key={tag} className="rounded-sm bg-[#3a302a] px-2 py-1 font-mono text-[9px] text-[#a79b8d]">#{tag}</span>)}</div>
-              <button type="button" onClick={() => setSelected(null)} className="flex items-center gap-1.5 rounded-sm bg-[#c46a2c] px-3 py-2 text-[11px] font-semibold text-[#1f1b18] hover:bg-[#e6a03c]"><Check size={13} /> Use contract</button>
+              <div className="flex flex-wrap gap-1.5">
+                {selected.tags.map((tag) => (
+                  <span key={tag} className="rounded-sm bg-[#3a302a] px-2 py-1 font-mono text-[9px] text-[#a79b8d]">#{tag}</span>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelected(null)}
+                className="flex shrink-0 items-center gap-1.5 rounded-sm bg-[#c46a2c] px-3 py-2 text-[11px] font-semibold text-[#1f1b18] hover:bg-[#e6a03c]"
+              >
+                <Check size={13} /> Use contract
+              </button>
             </div>
           </div>
         </div>
