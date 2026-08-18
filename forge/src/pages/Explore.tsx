@@ -534,7 +534,7 @@ export default function Explore() {
                   
                   <div className="skill-card-actions">
                     <button className="btn btn-outline" onClick={() => handleCopy(skill)} data-action="copy">
-                      {copied === skill.name ? 'Copied!' : 'Copy skill URL'}
+                      {copied === skill.name ? 'Copied!' : 'Copy URL'}
                     </button>
                     <button className="btn-ghost" onClick={() => handleShare(skill)} data-action="share">Share</button>
                     <button className="btn-ghost" onClick={() => handleCompare(skill)} data-action="compare">Compare</button>

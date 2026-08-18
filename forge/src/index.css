@@ -2033,6 +2033,9 @@ input, select, textarea {
   border-left: 4px solid transparent;
   transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  /* Respect the grid column width — without min-width:0 a grid child can
+     expand past its track and cause horizontal overflow. */
+  min-width: 0;
   /* Explore can render 100+ cards at once — skip layout/paint/style work for
      cards scrolled off-screen. contain-intrinsic-size reserves an estimated
      height so the scrollbar doesn't jump as cards enter/leave the viewport. */
@@ -2130,7 +2133,10 @@ input, select, textarea {
   flex-wrap: wrap;
   gap: var(--space-3);
   align-items: center;
-  margin-top: var(--space-2);
+  /* Push the action row to the bottom of the card so all cards in the same
+     grid row have their buttons aligned at the same vertical position,
+     regardless of how much body text or wrapping each card has. */
+  margin-top: auto;
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-border-light);
 }
@@ -2143,6 +2149,21 @@ input, select, textarea {
 }
 .skill-card-actions .btn-ghost[aria-pressed="true"] {
   color: var(--color-copper);
+}
+/* At the 2-column grid breakpoint (900–1280px) each column is ~290–380px wide.
+   Six controls at normal size wrap unevenly; shrink them so they fit in at most
+   two compact lines and never overflow the card boundary. */
+@media (min-width: 900px) and (max-width: 1279px) {
+  .skill-card-actions {
+    gap: var(--space-2);
+  }
+  .skill-card-actions .btn,
+  .skill-card-actions .btn-ghost {
+    font-size: var(--text-xs);
+  }
+  .skill-card-actions .btn {
+    padding: 3px 8px;
+  }
 }
 .skill-card-open {
   margin-left: auto;
