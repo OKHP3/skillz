@@ -167,6 +167,43 @@ export function ExploreB() {
   const familiesButtonRef = useRef<HTMLButtonElement>(null);
   const mainRef = useRef<HTMLElement>(null);
 
+  // Lock the main scroll container (iOS-safe) and handle Escape while the skill detail modal is open.
+  //
+  // Same approach as the drawer lock below: capture scrollTop, set overflow:hidden on <main>,
+  // add a passive:false touchmove guard that lets touches inside the modal panel through,
+  // and restore everything on close so the user lands back where they were.
+  useEffect(() => {
+    if (!selected) return;
+    const main = mainRef.current;
+
+    const savedScrollTop = main ? main.scrollTop : 0;
+    const prevOverflow = main ? main.style.overflowY : "";
+    if (main) {
+      main.style.overflowY = "hidden";
+    }
+
+    const preventBgTouch = (e: TouchEvent) => {
+      const panel = document.querySelector("[data-modal-panel]");
+      if (panel && panel.contains(e.target as Node)) return;
+      e.preventDefault();
+    };
+    document.addEventListener("touchmove", preventBgTouch, { passive: false });
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelected(null);
+    };
+    document.addEventListener("keydown", onKey);
+
+    return () => {
+      if (main) {
+        main.style.overflowY = prevOverflow;
+        main.scrollTop = savedScrollTop;
+      }
+      document.removeEventListener("touchmove", preventBgTouch);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [selected]);
+
   // Lock the main scroll container (iOS-safe) and handle Escape while the drawer is open.
   //
   // The visible page scroll lives inside <main> (overflow-y:auto), NOT on document.body.
@@ -485,6 +522,7 @@ export function ExploreB() {
           onClick={() => setSelected(null)}
         >
           <div
+            data-modal-panel
             className="mb-0 w-full max-w-[430px] rounded-t-sm border p-5 shadow-2xl sm:mb-0 sm:rounded-sm"
             style={{ borderColor: "#59463a", background: "#2a2320" }}
             onClick={(event) => event.stopPropagation()}
