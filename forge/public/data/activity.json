@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-08-18T01:08:07.985Z",
+  "generatedAt": "2026-08-18T02:07:56.175Z",
   "commits": [
+    {
+      "sha": "4ed6f13123f8630a4770574d98c00a9c283f0b8d",
+      "shortSha": "4ed6f13",
+      "message": "SEO: use properly-sized favicon icons instead of 2.4MB source PNG",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-18T01:45:18Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4ed6f13123f8630a4770574d98c00a9c283f0b8d"
+    },
+    {
+      "sha": "1cf9a7de43f450c62afc484fa7a3e76818104f55",
+      "shortSha": "1cf9a7d",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-18T01:44:05Z",
+      "url": "https://github.com/OKHP3/skillz/commit/1cf9a7de43f450c62afc484fa7a3e76818104f55"
+    },
     {
       "sha": "d4a371f97385d92af139294e41df99195489aeb4",
       "shortSha": "d4a371f",
@@ -64,22 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-17T14:30:46Z",
       "url": "https://github.com/OKHP3/skillz/commit/9811290400a9bbb432760e9caf9a466cf03d2252"
-    },
-    {
-      "sha": "54bcc82fc543f18dd8c23a650a39b82ab1f16ed2",
-      "shortSha": "54bcc82",
-      "message": "Port ExploreB responsive fixes into live Skillz Forge Explore page\n\n- Convert skill-list from flex-column to CSS grid (1 col mobile / 2 col ≥900px / 3 col ≥1280px)\n- Add backdrop overlay that closes the mobile filter drawer on tap\n- Hide the Filters toggle button on desktop (sidebar always visible ≥769px)\n- Lock body scroll while the mobile filter drawer is open, with matchMedia guard that auto-closes the drawer and clears the lock when viewport crosses 768px\n\nReplit-Task-Id: 241a552f-9d19-4fe2-b3b2-faab005ea08b",
-      "author": "overkillhillp3",
-      "date": "2026-08-17T14:30:25Z",
-      "url": "https://github.com/OKHP3/skillz/commit/54bcc82fc543f18dd8c23a650a39b82ab1f16ed2"
-    },
-    {
-      "sha": "2f8593860d43f861aa593659fcc356db24c664ee",
-      "shortSha": "2f85938",
-      "message": "Git commit prior to merge",
-      "author": "overkillhillp3",
-      "date": "2026-08-17T14:29:55Z",
-      "url": "https://github.com/OKHP3/skillz/commit/2f8593860d43f861aa593659fcc356db24c664ee"
     }
   ],
   "fetchError": null
