@@ -523,8 +523,13 @@ export function ExploreB() {
         >
           <div
             data-modal-panel
-            className="mb-0 w-full max-w-[430px] rounded-t-sm border p-5 shadow-2xl sm:mb-0 sm:rounded-sm"
-            style={{ borderColor: "#59463a", background: "#2a2320" }}
+            className="mb-0 w-full max-w-[430px] overflow-y-auto rounded-t-sm border p-5 shadow-2xl sm:mb-0 sm:rounded-sm"
+            style={{
+              borderColor: "#59463a",
+              background: "#2a2320",
+              maxHeight: "min(85dvh, 640px)",
+              overscrollBehavior: "contain",
+            }}
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between">
