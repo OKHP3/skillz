@@ -309,8 +309,15 @@ export function ExploreB() {
             ref={familiesButtonRef}
             type="button"
             aria-label="Open family filter"
+            aria-expanded={showMobileSidebar}
+            aria-controls="mobile-family-filter-drawer"
             onClick={() => setShowMobileSidebar(true)}
-            className="flex items-center gap-1.5 rounded-sm border border-[#4b4038] px-2.5 py-1.5 text-[11px] text-[#a79b8d] hover:border-[#c46a2c] hover:text-[#f6f2ee] md:hidden"
+            className="flex items-center gap-1.5 rounded-sm border px-2.5 py-1.5 text-[11px] transition-colors md:hidden"
+            style={
+              showMobileSidebar
+                ? { borderColor: "#c46a2c", background: "rgba(196,106,44,.15)", color: "#f6f2ee" }
+                : { borderColor: "#4b4038", color: "#a79b8d" }
+            }
           >
             <Filter size={12} />
             {activeFamily !== "all" ? (
@@ -357,6 +364,7 @@ export function ExploreB() {
             <div className="absolute inset-0 bg-[#15110f]/70" />
             {/* Drawer panel */}
             <div
+              id="mobile-family-filter-drawer"
               role="dialog"
               aria-modal="true"
               aria-label="Family filter"
