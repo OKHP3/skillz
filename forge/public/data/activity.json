@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-08-17T15:52:32.174Z",
+  "generatedAt": "2026-08-17T20:07:55.427Z",
   "commits": [
+    {
+      "sha": "d4a371f97385d92af139294e41df99195489aeb4",
+      "shortSha": "d4a371f",
+      "message": "Update project metadata and catalog entries\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-17T15:56:24Z",
+      "url": "https://github.com/OKHP3/skillz/commit/d4a371f97385d92af139294e41df99195489aeb4"
+    },
+    {
+      "sha": "7b88a41c6d0e0dce02eb9651404472e8dc8d9ec7",
+      "shortSha": "7b88a41",
+      "message": "Prevent iOS momentum-scroll from bleeding through the drawer overlay\n\nReplit-Task-Id: fe83b4cf-3266-4fa1-9a41-cd766d55fd44",
+      "author": "overkillhillp3",
+      "date": "2026-08-17T15:56:05Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7b88a41c6d0e0dce02eb9651404472e8dc8d9ec7"
+    },
+    {
+      "sha": "9bfef3cd6db2a380630eb658d682aa30f5bedd37",
+      "shortSha": "9bfef3c",
+      "message": "Fix: add Foundry baseline fields to okhp3-replit-contest-score-keeper SKILL.md; rebuild catalog (147 skills)",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-17T15:52:33Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9bfef3cd6db2a380630eb658d682aa30f5bedd37"
+    },
     {
       "sha": "dae15d24dac635e9caf578988bac1aefb1b28f57",
       "shortSha": "dae15d2",
@@ -56,30 +80,6 @@
       "author": "overkillhillp3",
       "date": "2026-08-17T14:29:55Z",
       "url": "https://github.com/OKHP3/skillz/commit/2f8593860d43f861aa593659fcc356db24c664ee"
-    },
-    {
-      "sha": "60300105181d65af511e53af75008e39c2e2408d",
-      "shortSha": "6030010",
-      "message": "Update catalog and project manifest data\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-17T14:08:00Z",
-      "url": "https://github.com/OKHP3/skillz/commit/60300105181d65af511e53af75008e39c2e2408d"
-    },
-    {
-      "sha": "bcb3417eef75994ef88f6a44ff426b43a3d5204b",
-      "shortSha": "bcb3417",
-      "message": "Add responsive layout to ExploreB and place mobile/tablet/desktop canvas frames\n\nReplit-Task-Id: 869e7232-eab6-44d5-a18e-9809102ac520",
-      "author": "overkillhillp3",
-      "date": "2026-08-17T14:07:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/bcb3417eef75994ef88f6a44ff426b43a3d5204b"
-    },
-    {
-      "sha": "a0d47fb88bd5b11c885e14951388856b3b71e869",
-      "shortSha": "a0d47fb",
-      "message": "Git commit prior to merge",
-      "author": "overkillhillp3",
-      "date": "2026-08-17T14:07:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/a0d47fb88bd5b11c885e14951388856b3b71e869"
     }
   ],
   "fetchError": null
