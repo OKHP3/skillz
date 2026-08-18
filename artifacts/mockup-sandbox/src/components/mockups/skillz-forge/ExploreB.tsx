@@ -237,9 +237,49 @@ export function ExploreB() {
     document.addEventListener("touchmove", preventBgTouch, { passive: false });
 
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setShowMobileSidebar(false);
+      if (e.key === "Escape") {
+        setShowMobileSidebar(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      // Focus trap: keep Tab / Shift+Tab cycling within the drawer panel only.
+      const panel = document.querySelector<HTMLElement>("[data-drawer-panel]");
+      if (!panel) return;
+
+      const focusable = Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => el.offsetParent !== null);
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (e.shiftKey) {
+        if (active === first || !panel.contains(active)) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (active === last || !panel.contains(active)) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     document.addEventListener("keydown", onKey);
+
+    // Move focus into the drawer once it mounts, so Tab starts trapped immediately.
+    const focusFirst = window.requestAnimationFrame(() => {
+      const panel = document.querySelector<HTMLElement>("[data-drawer-panel]");
+      const firstFocusable = panel?.querySelector<HTMLElement>(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      firstFocusable?.focus();
+    });
 
     return () => {
       // Restore scroll container to its original state.
@@ -247,6 +287,7 @@ export function ExploreB() {
         main.style.overflowY = prevOverflow;
         main.scrollTop = savedScrollTop;
       }
+      window.cancelAnimationFrame(focusFirst);
       document.removeEventListener("touchmove", preventBgTouch);
       document.removeEventListener("keydown", onKey);
       familiesButtonRef.current?.focus();
