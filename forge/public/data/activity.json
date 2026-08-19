@@ -1,85 +1,85 @@
 {
-  "generatedAt": "2026-08-18T01:49:19.367Z",
+  "generatedAt": "2026-08-19T16:54:31.675Z",
   "commits": [
     {
-      "sha": "4ed6f13123f8630a4770574d98c00a9c283f0b8d",
-      "shortSha": "4ed6f13",
-      "message": "SEO: use properly-sized favicon icons instead of 2.4MB source PNG",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-18T01:45:18Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4ed6f13123f8630a4770574d98c00a9c283f0b8d"
+      "sha": "5f26f88898beb7143c294d83958abd7239397816",
+      "shortSha": "5f26f88",
+      "message": "Update ExploreB mockup component\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-18T02:41:14Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5f26f88898beb7143c294d83958abd7239397816"
     },
     {
-      "sha": "1cf9a7de43f450c62afc484fa7a3e76818104f55",
-      "shortSha": "1cf9a7d",
+      "sha": "5eb0d2e70113f9d78931ae8cf6d2d5a14795bcdf",
+      "shortSha": "5eb0d2e",
+      "message": "chore: refresh technology inventory (#47)\n\nCo-authored-by: OKHP3 <222550606+OKHP3@users.noreply.github.com>",
+      "author": "github-actions[bot]",
+      "date": "2026-08-18T03:24:38Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5eb0d2e70113f9d78931ae8cf6d2d5a14795bcdf"
+    },
+    {
+      "sha": "cd421207b802bbdbfcb567e8a90fca0aa1505a60",
+      "shortSha": "cd42120",
+      "message": "Update anthropic requirement in /community/mcp-builder/scripts (#46)\n\nUpdates the requirements on [anthropic](https://github.com/anthropics/anthropic-sdk-python) to permit the latest version.\n- [Release notes](https://github.com/anthropics/anthropic-sdk-python/releases)\n- [Changelog](https://github.com/anthropics/anthropic-sdk-python/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/anthropics/anthropic-sdk-python/compare/v0.120.2...v0.122.0)\n\n---\nupdated-dependencies:\n- dependency-name: anthropic\n  dependency-version: 0.122.0\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+      "author": "dependabot[bot]",
+      "date": "2026-08-18T03:24:23Z",
+      "url": "https://github.com/OKHP3/skillz/commit/cd421207b802bbdbfcb567e8a90fca0aa1505a60"
+    },
+    {
+      "sha": "2aa9d02fb627b6098ef8f44a66976c6721d3b806",
+      "shortSha": "2aa9d02",
+      "message": "Bump actions/github-script from 7 to 9 (#45)\n\nBumps [actions/github-script](https://github.com/actions/github-script) from 7 to 9.\n- [Release notes](https://github.com/actions/github-script/releases)\n- [Commits](https://github.com/actions/github-script/compare/v7...v9)\n\n---\nupdated-dependencies:\n- dependency-name: actions/github-script\n  dependency-version: '9'\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+      "author": "dependabot[bot]",
+      "date": "2026-08-18T03:24:08Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2aa9d02fb627b6098ef8f44a66976c6721d3b806"
+    },
+    {
+      "sha": "3ca04215679ecf304fa92875cf024992d6b46058",
+      "shortSha": "3ca0421",
+      "message": "Update ExploreB mockup component\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-18T02:38:52Z",
+      "url": "https://github.com/OKHP3/skillz/commit/3ca04215679ecf304fa92875cf024992d6b46058"
+    },
+    {
+      "sha": "a55a408a7051d58d2d77ab624efa1610c7af46d0",
+      "shortSha": "a55a408",
+      "message": "Update catalog and project data manifests\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-18T02:36:59Z",
+      "url": "https://github.com/OKHP3/skillz/commit/a55a408a7051d58d2d77ab624efa1610c7af46d0"
+    },
+    {
+      "sha": "6e6e3e8326642e40d4bcceed03786a22f4fd9e67",
+      "shortSha": "6e6e3e8",
+      "message": "Prevent skill card action buttons from overflowing on narrow grid columns\n\n- Add min-width:0 to .skill-card so grid items respect column width\n- Change margin-top on .skill-card-actions to auto, pushing actions to the card bottom for consistent row alignment\n- Add 900–1279px media query to shrink action button font (xs) and padding at the 2-column breakpoint\n- Shorten 'Copy skill URL' label to 'Copy URL' to reduce button width\n\nReplit-Task-Id: de02740e-545e-4436-9353-e54801b5721b\nReplit-Merge-Attempt: MergeTask:de02740e-545e-4436-9353-e54801b5721b:2:9a55cdeb",
+      "author": "overkillhillp3",
+      "date": "2026-08-18T02:34:39Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6e6e3e8326642e40d4bcceed03786a22f4fd9e67"
+    },
+    {
+      "sha": "ec3b1d492c4633917cd1fe5230a62eb5f45b25df",
+      "shortSha": "ec3b1d4",
+      "message": "Update ExploreB mockup component\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-18T02:33:35Z",
+      "url": "https://github.com/OKHP3/skillz/commit/ec3b1d492c4633917cd1fe5230a62eb5f45b25df"
+    },
+    {
+      "sha": "5016fe667054fa7e3666836188640de9df3dca3f",
+      "shortSha": "5016fe6",
       "message": "Git commit prior to merge",
       "author": "overkillhillp3",
-      "date": "2026-08-18T01:44:05Z",
-      "url": "https://github.com/OKHP3/skillz/commit/1cf9a7de43f450c62afc484fa7a3e76818104f55"
+      "date": "2026-08-18T02:32:16Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5016fe667054fa7e3666836188640de9df3dca3f"
     },
     {
-      "sha": "d4a371f97385d92af139294e41df99195489aeb4",
-      "shortSha": "d4a371f",
-      "message": "Update project metadata and catalog entries\n\nReplit-Commit-Author: Agent",
+      "sha": "79abaf1f2e90c0260fd079dad5529064262a8013",
+      "shortSha": "79abaf1",
+      "message": "Update project and catalog metadata files\n\nReplit-Commit-Author: Agent",
       "author": "Replit Agent",
-      "date": "2026-08-17T15:56:24Z",
-      "url": "https://github.com/OKHP3/skillz/commit/d4a371f97385d92af139294e41df99195489aeb4"
-    },
-    {
-      "sha": "7b88a41c6d0e0dce02eb9651404472e8dc8d9ec7",
-      "shortSha": "7b88a41",
-      "message": "Prevent iOS momentum-scroll from bleeding through the drawer overlay\n\nReplit-Task-Id: fe83b4cf-3266-4fa1-9a41-cd766d55fd44",
-      "author": "overkillhillp3",
-      "date": "2026-08-17T15:56:05Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7b88a41c6d0e0dce02eb9651404472e8dc8d9ec7"
-    },
-    {
-      "sha": "9bfef3cd6db2a380630eb658d682aa30f5bedd37",
-      "shortSha": "9bfef3c",
-      "message": "Fix: add Foundry baseline fields to okhp3-replit-contest-score-keeper SKILL.md; rebuild catalog (147 skills)",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-17T15:52:33Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9bfef3cd6db2a380630eb658d682aa30f5bedd37"
-    },
-    {
-      "sha": "dae15d24dac635e9caf578988bac1aefb1b28f57",
-      "shortSha": "dae15d2",
-      "message": "Return keyboard focus to Families button when mobile drawer closes\n\nReplit-Task-Id: afa0b472-9bf3-439c-aae0-927b528def5b",
-      "author": "overkillhillp3",
-      "date": "2026-08-17T15:51:25Z",
-      "url": "https://github.com/OKHP3/skillz/commit/dae15d24dac635e9caf578988bac1aefb1b28f57"
-    },
-    {
-      "sha": "f1c5491bf3fb34cfd6e8492f7419db3fac8eaf22",
-      "shortSha": "f1c5491",
-      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-17T15:49:49Z",
-      "url": "https://github.com/OKHP3/skillz/commit/f1c5491bf3fb34cfd6e8492f7419db3fac8eaf22"
-    },
-    {
-      "sha": "0a41c0b5af625671d42fca14baefa96bbed18802",
-      "shortSha": "0a41c0b",
-      "message": "Update catalog, project summary, and manifest version information\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-17T15:49:15Z",
-      "url": "https://github.com/OKHP3/skillz/commit/0a41c0b5af625671d42fca14baefa96bbed18802"
-    },
-    {
-      "sha": "283812a03a91e1828fe2eea87bc705a1837c29fe",
-      "shortSha": "283812a",
-      "message": "Fix mobile filter drawer: add body scroll lock and Escape key handler\n\nReplit-Task-Id: fd83265b-58ce-455a-8000-dc3431c570e6",
-      "author": "overkillhillp3",
-      "date": "2026-08-17T15:48:53Z",
-      "url": "https://github.com/OKHP3/skillz/commit/283812a03a91e1828fe2eea87bc705a1837c29fe"
-    },
-    {
-      "sha": "9811290400a9bbb432760e9caf9a466cf03d2252",
-      "shortSha": "9811290",
-      "message": "Update catalog and project manifest metadata\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-17T14:30:46Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9811290400a9bbb432760e9caf9a466cf03d2252"
+      "date": "2026-08-18T01:45:51Z",
+      "url": "https://github.com/OKHP3/skillz/commit/79abaf1f2e90c0260fd079dad5529064262a8013"
     }
   ],
   "fetchError": null
