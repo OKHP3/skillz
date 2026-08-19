@@ -62,10 +62,11 @@ jobs:
     steps:
       - name: Dispatch repository_dispatch to glee-fully-chai-chasers
         uses: actions/github-script@v9
-        env:
-          VERIFY_LANDING_PAT: ${{ secrets.VERIFY_LANDING_PAT }}
         with:
-          github-token: ${{ env.VERIFY_LANDING_PAT }}
+          # Keep the secret reference direct in the action input.  The prior
+          # env indirection caused this workflow to fail during GitHub's
+          # workflow initialization on recent pushes, before a job existed.
+          github-token: ${{ secrets.VERIFY_LANDING_PAT }}
           script: |
             // Replace OWNER/REPO below with the actual owner and repo name of
             // the incubator project (glee-fully-chai-chasers).
