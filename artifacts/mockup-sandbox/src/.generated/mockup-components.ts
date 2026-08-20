@@ -3,7 +3,12 @@ type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/skillz-forge/ExploreB.tsx": () => import("../components/mockups/skillz-forge/ExploreB.tsx"),
   "./components/mockups/skillz-forge/ExploreD.tsx": () => import("../components/mockups/skillz-forge/ExploreD.tsx"),
+  "./components/mockups/skillz-forge/ExploreE.tsx": () => import("../components/mockups/skillz-forge/ExploreE.tsx"),
+  "./components/mockups/skillz-forge/ForgeWorkbench.tsx": () => import("../components/mockups/skillz-forge/ForgeWorkbench.tsx"),
   "./components/mockups/skillz-forge/HomeA.tsx": () => import("../components/mockups/skillz-forge/HomeA.tsx"),
+  "./components/mockups/skillz-forge/HomeB.tsx": () => import("../components/mockups/skillz-forge/HomeB.tsx"),
   "./components/mockups/skillz-forge/SkillDetailAudit.tsx": () => import("../components/mockups/skillz-forge/SkillDetailAudit.tsx"),
-  "./components/mockups/skillz-forge/SkillDetailC.tsx": () => import("../components/mockups/skillz-forge/SkillDetailC.tsx")
+  "./components/mockups/skillz-forge/SkillDetailC.tsx": () => import("../components/mockups/skillz-forge/SkillDetailC.tsx"),
+  "./components/mockups/skillz-forge/SkillDetailD.tsx": () => import("../components/mockups/skillz-forge/SkillDetailD.tsx"),
+  "./components/mockups/skillz-forge/SkillDetailE.tsx": () => import("../components/mockups/skillz-forge/SkillDetailE.tsx")
 };
