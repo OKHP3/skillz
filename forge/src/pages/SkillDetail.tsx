@@ -504,7 +504,7 @@ export default function SkillDetail() {
             </p>
           </div>
 
-          <div id="full-contract" className="detail-full-contract">
+          <div id="full-contract" className="detail-full-contract" tabIndex={-1}>
             <h2>Full contract</h2>
             <p className="detail-full-contract-hint">
               The complete SKILL.md contract for this skill, rendered in-app.

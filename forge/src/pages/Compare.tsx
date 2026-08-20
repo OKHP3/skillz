@@ -6,6 +6,7 @@ import Nav from '../components/layout/Nav';
 import { copyToClipboard, shareCompare } from '../utils/clipboard';
 import { trackCompareOpen } from '../utils/analytics';
 import AddToStackButton from '../components/ui/AddToStackButton';
+import { routeWithAnchor } from '../utils/routeAnchors';
 import {
   RELEASE_READINESS_LABELS,
   MATURITY_SOURCE_LABELS,
@@ -320,7 +321,7 @@ export default function Compare() {
                   <td className="compare-row-label">Full contract</td>
                   {skills.map(s => (
                     <td key={s.name} className="compare-cell" data-label="Full contract">
-                      <Link to={`/skills/${s.family}/${s.name}#full-contract`} className="compare-github-link">
+                      <Link to={routeWithAnchor(`/skills/${s.family}/${s.name}`, 'full-contract')} className="compare-github-link">
                         Read full contract &rarr;
                       </Link>
                     </td>

@@ -1,5 +1,6 @@
 import { Fragment, createElement } from 'react';
 import { parseMarkdownSubset, sanitizeHref, type InlineNode, type BlockNode } from '../../utils/markdown';
+import { focusAndScrollToId, getRouteAnchorId } from '../../utils/routeAnchors';
 
 function renderInline(nodes: InlineNode[], keyPrefix: string) {
   return nodes.map((node, i) => {
@@ -16,6 +17,7 @@ function renderInline(nodes: InlineNode[], keyPrefix: string) {
       case 'link': {
         const safeHref = sanitizeHref(node.href);
         const isExternal = /^https?:\/\//i.test(safeHref);
+        const fragmentTarget = getRouteAnchorId(safeHref);
         let hostname: string | null = null;
         if (isExternal) {
           try { hostname = new URL(safeHref).hostname; } catch { hostname = null; }
@@ -24,6 +26,10 @@ function renderInline(nodes: InlineNode[], keyPrefix: string) {
           <a
             key={key}
             href={safeHref}
+            onClick={fragmentTarget ? event => {
+              event.preventDefault();
+              focusAndScrollToId(fragmentTarget);
+            } : undefined}
             {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
             {renderInline(node.children, key)}
@@ -42,7 +48,7 @@ function renderBlock(block: BlockNode, key: string) {
     case 'heading': {
       const depth = Math.min(Math.max(block.depth, 1), 6);
       const tagName = `h${depth}`;
-      return createElement(tagName, { key, id: block.id }, renderInline(block.children, key));
+      return createElement(tagName, { key, id: block.id, tabIndex: -1 }, renderInline(block.children, key));
     }
     case 'paragraph':
       return <p key={key}>{renderInline(block.children, key)}</p>;
@@ -92,7 +98,13 @@ export default function FullContract({ rawBody }: FullContractProps) {
           <ul>
             {toc.map(entry => (
               <li key={entry.id} data-depth={entry.depth}>
-                <a href={`#${entry.id}`}>{entry.text}</a>
+                <button
+                  type="button"
+                  className="full-contract-toc-link"
+                  onClick={() => focusAndScrollToId(entry.id)}
+                >
+                  {entry.text}
+                </button>
               </li>
             ))}
           </ul>

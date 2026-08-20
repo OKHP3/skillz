@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FAQ_GROUPS } from '../data/faq';
 import Nav from '../components/layout/Nav';
+import { getRouteAnchorId } from '../utils/routeAnchors';
 
 function isExternalHref(href: string) {
   return /^https?:\/\//.test(href);
@@ -10,11 +11,25 @@ function isExternalHref(href: string) {
 export default function FAQ() {
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [search, setSearch] = useState('');
+  const location = useLocation();
 
   useEffect(() => {
     document.title = 'FAQ | Skillz Forge';
     return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
   }, []);
+
+  useEffect(() => {
+    const targetId = getRouteAnchorId(location.hash);
+    const isFaqItem = targetId && FAQ_GROUPS.some(group => group.items.some(item => item.id === targetId));
+    if (!targetId || !isFaqItem) return;
+
+    setOpen(previous => {
+      if (previous.has(targetId)) return previous;
+      const next = new Set(previous);
+      next.add(targetId);
+      return next;
+    });
+  }, [location.hash]);
 
   function toggleItem(id: string) {
     setOpen(prev => {
@@ -67,7 +82,7 @@ export default function FAQ() {
                 <h2>{group.title}</h2>
                 <dl>
                   {group.items.map(item => (
-                    <div key={item.id} id={item.id} className="faq-item">
+                    <div key={item.id} id={item.id} className="faq-item" tabIndex={-1}>
                       <dt>
                         <button
                           onClick={() => toggleItem(item.id)}

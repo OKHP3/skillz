@@ -4,6 +4,7 @@ import { ComposerProvider } from './contexts/ComposerContext';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect, type ReactNode } from 'react';
 import { trackPageview } from './utils/analytics';
+import { focusAndScrollToId, getRouteAnchorId } from './utils/routeAnchors';
 import Footer from './components/layout/Footer';
 import ComposerDrawer from './components/ui/ComposerDrawer';
 
@@ -51,7 +52,12 @@ function CatalogGate({ children }: { children: ReactNode }) {
     );
   }
   if (loading) return <Loading />;
-  return <>{children}</>;
+  return (
+    <>
+      <RouteAnchorFocus />
+      {children}
+    </>
+  );
 }
 
 /** Route-aware GA4 pageview tracking. Module-level _lastTrackedPath prevents StrictMode
@@ -97,6 +103,36 @@ function AnalyticsTracker() {
     const t = setTimeout(() => trackPageview(path, document.title), 0);
     return () => clearTimeout(t);
   }, [location.pathname]);
+
+  return null;
+}
+
+/** Handles `#/route#target` destinations after the catalog-gated application
+ * can mount. An observer waits for lazy route content instead of using a short
+ * retry window that can expire on a cold load. */
+function RouteAnchorFocus() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const targetId = getRouteAnchorId(location.hash);
+    if (!targetId) return;
+
+    let settled = false;
+    const focusWhenMounted = () => {
+      if (settled || !focusAndScrollToId(targetId)) return;
+      settled = true;
+      observer.disconnect();
+    };
+
+    const observer = new MutationObserver(focusWhenMounted);
+    observer.observe(document.body, { childList: true, subtree: true });
+    const frame = requestAnimationFrame(focusWhenMounted);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
+  }, [location.pathname, location.hash]);
 
   return null;
 }

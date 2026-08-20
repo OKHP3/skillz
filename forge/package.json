@@ -10,7 +10,8 @@
     "prebuild": "node scripts/build-catalog.js && node scripts/build-activity.mjs",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "node scripts/test-catalog.mjs && node scripts/verify-deploy-trigger.mjs && vitest run"
+    "test": "node scripts/test-catalog.mjs && node scripts/verify-deploy-trigger.mjs && vitest run",
+    "test:anchors:browser": "node scripts/test-route-anchors-browser.mjs"
   },
   "devDependencies": {
     "typescript": "~6.0.2",

@@ -2231,6 +2231,7 @@ input, select, textarea {
 /* ── Full Contract (Release 1) ──────────────────────────────────────────── */
 .detail-full-contract {
   margin-top: var(--space-8);
+  scroll-margin-top: calc(var(--nav-height) + var(--space-4));
 }
 .detail-full-contract-hint {
   color: var(--color-text-muted-dark);
@@ -2270,12 +2271,21 @@ input, select, textarea {
 .full-contract-toc li[data-depth="3"] {
   padding-left: var(--space-3);
 }
-.full-contract-toc a {
+.full-contract-toc-link {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
   font-size: var(--text-sm);
   color: var(--color-steel-light);
   text-decoration: none;
+  font: inherit;
 }
-.full-contract-toc a:hover {
+.full-contract-toc-link:hover,
+.full-contract-toc-link:focus-visible {
   color: var(--color-amber);
   text-decoration: underline;
 }
@@ -2399,6 +2409,7 @@ input, select, textarea {
 }
 .faq-item {
   border-bottom: 1px solid var(--color-border-dark);
+  scroll-margin-top: calc(var(--nav-height) + var(--space-4));
 }
 .faq-item dt button {
   width: 100%;
