@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-08-20T16:32:06.214Z",
+  "generatedAt": "2026-08-20T18:07:36.273Z",
   "commits": [
+    {
+      "sha": "6a49b7b0aa81b37748d6f0856e332336a9d5d635",
+      "shortSha": "6a49b7b",
+      "message": "Fix catalog manifest merge markers",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-20T16:32:20Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6a49b7b0aa81b37748d6f0856e332336a9d5d635"
+    },
     {
       "sha": "cafff630d56a553b8b6cdb7187a8fda8b5c750c3",
       "shortSha": "cafff63",
@@ -72,14 +80,6 @@
       "author": "Jamie Hill",
       "date": "2026-08-19T20:26:58Z",
       "url": "https://github.com/OKHP3/skillz/commit/ad3a112dba1d72e427bd4dadb5aa296ab2b22017"
-    },
-    {
-      "sha": "bc8f30596fffd8e4c350d071350539b0a4b85065",
-      "shortSha": "bc8f305",
-      "message": "fix(actions): prevent landing verification startup failure\n\nMerging the focused workflow initialization fix after local catalog validation and clean PR status.",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-19T17:19:19Z",
-      "url": "https://github.com/OKHP3/skillz/commit/bc8f30596fffd8e4c350d071350539b0a4b85065"
     }
   ],
   "fetchError": null
