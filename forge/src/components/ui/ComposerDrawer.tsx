@@ -139,10 +139,10 @@ export default function ComposerDrawer() {
         {items.length > 0 && <span className="composer-toggle-count">{items.length}</span>}
       </button>
 
-      {/* Single polite live region for the whole composer, kept mounted even
-          while the panel is closed — "Add to stack" buttons live on Explore,
-          skill detail, family detail, and Compare pages, and their outcome
-          should be announced whether or not this panel happens to be open. */}
+      {/* Single polite live region for the application, kept mounted even
+          while the panel is closed. The composer owns the shared announcement
+          state, so actions from Explore, detail, Compare, and stacks can
+          report copy/share/save outcomes without competing live regions. */}
       <div aria-live="polite" role="status" className="sr-only">{announcement}</div>
 
       {open && <div className="composer-backdrop" aria-hidden="true" onClick={() => setOpen(false)} />}

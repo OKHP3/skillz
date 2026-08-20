@@ -25,7 +25,7 @@ const Privacy = lazy(() => import('./pages/Privacy'));
 
 function Loading() {
   return (
-    <div style={{
+    <div role="status" aria-live="polite" style={{
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       height: '100vh', background: 'var(--color-bg)', color: 'var(--color-text-muted-dark)',
       fontFamily: 'var(--font-sans)', fontSize: '14px',
@@ -41,7 +41,7 @@ function CatalogGate({ children }: { children: ReactNode }) {
   const { loading, error } = useCatalogState();
   if (error) {
     return (
-      <div style={{
+      <div role="alert" style={{
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         height: '100vh', background: 'var(--color-bg)', color: 'var(--color-text-muted-dark)',
         fontFamily: 'var(--font-sans)', fontSize: '14px', gap: '8px', textAlign: 'center', padding: '0 24px',

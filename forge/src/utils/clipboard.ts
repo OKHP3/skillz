@@ -1,4 +1,5 @@
 import type { Skill } from '../types/catalog';
+import type { FavoriteOutcome, ShareOutcome } from './feedback';
 
 /** Canonical public base for share URLs — always points to the live site */
 const FORGE_CANONICAL = 'https://okhp3.github.io/skillz';
@@ -57,7 +58,7 @@ export async function copyRawUrl(skill: Skill): Promise<boolean> {
   return copyToClipboard(skill.rawUrl);
 }
 
-export async function shareSkill(skill: Skill): Promise<boolean> {
+export async function shareSkill(skill: Skill): Promise<ShareOutcome> {
   const url = buildShareUrl(`/skills/${skill.family}/${skill.name}`);
   const shareData = {
     title: `${skill.name} — Skillz Forge`,
@@ -68,16 +69,17 @@ export async function shareSkill(skill: Skill): Promise<boolean> {
   try {
     if (navigator.share && navigator.canShare?.(shareData)) {
       await navigator.share(shareData);
-      return true;
+      return 'shared';
     }
   } catch {
-    // Ignore AbortError from user canceling native share sheet
+    // Fall back to a copyable link when the native sheet is unavailable,
+    // dismissed, or fails. The caller receives the real outcome.
   }
 
-  return copyToClipboard(url);
+  return (await copyToClipboard(url)) ? 'copied' : 'failed';
 }
 
-export async function shareStack(stackId: string, stackName: string): Promise<boolean> {
+export async function shareStack(stackId: string, stackName: string): Promise<ShareOutcome> {
   const url = buildShareUrl(`/stacks/${stackId}`);
   const shareData = {
     title: `${stackName} — Skillz Forge`,
@@ -88,11 +90,13 @@ export async function shareStack(stackId: string, stackName: string): Promise<bo
   try {
     if (navigator.share && navigator.canShare?.(shareData)) {
       await navigator.share(shareData);
-      return true;
+      return 'shared';
     }
-  } catch { /* ignore */ }
+  } catch {
+    // See shareSkill: a copied link remains a useful fallback.
+  }
 
-  return copyToClipboard(url);
+  return (await copyToClipboard(url)) ? 'copied' : 'failed';
 }
 
 export async function shareSearch(query: string, family?: string): Promise<boolean> {
@@ -104,9 +108,9 @@ export async function shareSearch(query: string, family?: string): Promise<boole
   return copyToClipboard(url);
 }
 
-export async function shareCompare(skillNames: string[]): Promise<boolean> {
+export async function shareCompare(skillNames: string[]): Promise<ShareOutcome> {
   const url = buildShareUrl(`/compare?skills=${skillNames.join(',')}`);
-  return copyToClipboard(url);
+  return (await copyToClipboard(url)) ? 'copied' : 'failed';
 }
 
 // ─── Favorites (localStorage) ─────────────────────────────────────────────────
@@ -127,7 +131,7 @@ export function useFavorites() {
     return getFavorites().includes(skillName);
   }
 
-  function toggleFavorite(skillName: string): boolean {
+  function toggleFavorite(skillName: string): FavoriteOutcome {
     const favs = getFavorites();
     const idx = favs.indexOf(skillName);
     if (idx >= 0) {
@@ -137,8 +141,10 @@ export function useFavorites() {
     }
     try {
       localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
-    } catch { /* ignore storage errors */ }
-    return idx < 0;
+      return idx < 0 ? 'saved' : 'removed';
+    } catch {
+      return 'failed';
+    }
   }
 
   return { getFavorites, isFavorite, toggleFavorite };

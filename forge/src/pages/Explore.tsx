@@ -5,9 +5,11 @@ import type { FilterState, SearchResult, Maturity, EvidenceStatus, ReleaseReadin
 import { searchSkills, buildSearchIndex, setBodySearchIndex } from '../utils/search';
 import type { SearchIndexEntry } from '../types/catalog';
 import { copyInstallUrl as copyInstallCommand, shareSkill, useFavorites } from '../utils/clipboard';
+import { activeCatalogFilterCount, copyFeedback, favoriteFeedback, shareFeedback } from '../utils/feedback';
 import AddToStackButton from '../components/ui/AddToStackButton';
 import DiscoveryAid from '../components/ui/DiscoveryAid';
 import Nav from '../components/layout/Nav';
+import { useComposer } from '../contexts/ComposerContext';
 
 const MATURITY_LEVELS: Maturity[] = ['placeholder', 'skeleton', 'draftable', 'usable', 'validated', 'published'];
 const EVIDENCE_LEVELS: EvidenceStatus[] = ['live', 'historical', 'analytical', 'local-checks', 'designed', 'not-run', 'none'];
@@ -75,6 +77,7 @@ export default function Explore() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { announce } = useComposer();
   const [, forceUpdate] = useState(0);
   const [page, setPage] = useState(() => {
     const p = parseInt(searchParams.get('page') || '1', 10);
@@ -168,12 +171,18 @@ export default function Explore() {
 
   const updateFilter = useCallback(<K extends keyof FilterState>(key: K, val: FilterState[K]) => {
     setFilters(prev => ({ ...prev, [key]: val }));
-  }, []);
+    if (key === 'family') announce(val ? `Family filter set to ${val}.` : 'Family filter cleared.');
+    if (key === 'maturity') announce(val ? `Maturity filter set to ${val}.` : 'Maturity filter cleared.');
+    if (key === 'evidence') announce(val ? `Evidence filter set to ${EVIDENCE_LABELS[val as EvidenceStatus]}.` : 'Evidence filter cleared.');
+    if (key === 'releaseReadiness') announce(val ? `Release readiness filter set to ${RELEASE_READINESS_LABELS[val as ReleaseReadiness]}.` : 'Release readiness filter cleared.');
+    if (key === 'sort') announce(`Results sorted by ${String(val)}.`);
+  }, [announce]);
 
   const pageCount = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount);
   const pageStart = (currentPage - 1) * PAGE_SIZE;
   const pagedResults = results.slice(pageStart, pageStart + PAGE_SIZE);
+  const activeFilterCount = activeCatalogFilterCount(filters);
 
   function goToPage(n: number) {
     const clamped = Math.min(Math.max(1, n), pageCount);
@@ -252,10 +261,11 @@ export default function Explore() {
       setCopied(skill.name);
       setTimeout(() => setCopied(null), 2000);
     }
+    announce(copyFeedback(`${skill.displayName || skill.name} URL`, ok));
   }
 
   async function handleShare(skill: (typeof catalog.skills)[0]) {
-    await shareSkill(skill);
+    announce(shareFeedback(skill.displayName || skill.name, await shareSkill(skill)));
   }
 
   function handleCompare(skill: (typeof catalog.skills)[0]) {
@@ -263,8 +273,9 @@ export default function Explore() {
   }
 
   function handleFavorite(skillName: string) {
-    toggleFavorite(skillName);
+    const outcome = toggleFavorite(skillName);
     forceUpdate(n => n + 1);
+    announce(favoriteFeedback(skillName, outcome));
   }
 
   return (
@@ -395,7 +406,10 @@ export default function Explore() {
             {(filters.family || filters.maturity || filters.evidence || filters.releaseReadiness) && (
               <button
                 className="btn btn-outline filter-clear-btn"
-                onClick={() => setFilters(prev => ({ ...prev, family: '', maturity: '', evidence: '', releaseReadiness: '' }))}
+                onClick={() => {
+                  setFilters(prev => ({ ...prev, family: '', maturity: '', evidence: '', releaseReadiness: '' }));
+                  announce('All catalog filters cleared.');
+                }}
               >
                 Clear filters
               </button>
@@ -412,9 +426,10 @@ export default function Explore() {
               onClick={() => setFilterOpen(true)}
               aria-expanded={filterOpen}
               aria-controls="filter-panel"
+              aria-label={activeFilterCount ? `Filters, ${activeFilterCount} active ${activeFilterCount === 1 ? 'filter' : 'filters'}` : 'Filters'}
               ref={filtersToggleRef}
             >
-              Filters {filters.family || filters.maturity || filters.evidence ? '•' : ''}
+              Filters {activeFilterCount ? '•' : ''}
             </button>
             <div className="explore-search-wrapper">
               <label htmlFor="explore-search" className="sr-only">Search skills</label>
@@ -472,7 +487,10 @@ export default function Explore() {
               <h2>No skills found</h2>
               <p>No skills matched "{filters.query || 'your filters'}".</p>
               <p>Try different search terms or browse by family.</p>
-              <button className="btn" onClick={() => setFilters({ query: '', family: '', maturity: '', evidence: '', releaseReadiness: '', sort: 'relevance' })}>
+              <button className="btn" onClick={() => {
+                setFilters({ query: '', family: '', maturity: '', evidence: '', releaseReadiness: '', sort: 'relevance' });
+                announce('All search and catalog filters cleared.');
+              }}>
                 Clear all filters
               </button>
             </div>

@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 import { useCatalog } from '../contexts/CatalogContext';
 import { getRelatedSkills, buildWorkflowPath } from '../utils/search';
 import { copyInstallUrl as copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
+import { copyFeedback, favoriteFeedback, shareFeedback } from '../utils/feedback';
 import SkillPathway from '../components/ui/SkillPathway';
 import FullContract from '../components/ui/FullContract';
 import { issueUrl, skillGitHubUrl, skillCommitHistoryUrl, commitUrl } from '../utils/github';
 import Nav from '../components/layout/Nav';
 import AddToStackButton from '../components/ui/AddToStackButton';
 import type { Skill, SkillDetailBody } from '../types/catalog';
+import { useComposer } from '../contexts/ComposerContext';
 import {
   RELEASE_READINESS_LABELS,
   MATURITY_SOURCE_LABELS,
@@ -66,6 +68,7 @@ export default function SkillDetail() {
   const skill = catalog.skills.find(s => s.family === family && s.name === skillName);
   const [copied, setCopied] = useState<'install' | 'url' | null>(null);
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { announce } = useComposer();
   const [, forceUpdate] = useState(0);
   const navigate = useNavigate();
 
@@ -119,20 +122,23 @@ export default function SkillDetail() {
   async function handleCopyInstall() {
     const ok = await copyInstallCommand(skill!);
     if (ok) { setCopied('install'); setTimeout(() => setCopied(null), 2000); }
+    announce(copyFeedback(`${displayName} URL`, ok));
   }
 
   async function handleCopyUrl() {
     const ok = await copyRawUrl(skill!);
     if (ok) { setCopied('url'); setTimeout(() => setCopied(null), 2000); }
+    announce(copyFeedback(`${displayName} raw URL`, ok));
   }
 
   async function handleShare() {
-    await shareSkill(skill!);
+    announce(shareFeedback(displayName, await shareSkill(skill!)));
   }
 
   function handleFavorite() {
-    toggleFavorite(skill!.name);
+    const outcome = toggleFavorite(skill!.name);
     forceUpdate(n => n + 1);
+    announce(favoriteFeedback(displayName, outcome));
   }
 
   const displayName = skill.displayName || skill.name;

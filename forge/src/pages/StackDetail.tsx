@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { STACKS } from '../data/stacks';
 import { copyToClipboard, shareStack } from '../utils/clipboard';
+import { copyFeedback, shareFeedback } from '../utils/feedback';
 import { useCatalog } from '../contexts/CatalogContext';
 import { useComposer } from '../contexts/ComposerContext';
 import { stackImproveIssueUrl } from '../utils/github';
@@ -13,7 +14,7 @@ export default function StackDetail() {
   const { stackId } = useParams();
   const stack = STACKS.find(s => s.id === stackId);
   const [copied, setCopied] = useState(false);
-  const { items: stackedItems, addItem, canAdd } = useComposer();
+  const { items: stackedItems, addItem, canAdd, announce } = useComposer();
 
   if (!stack) {
     return (
@@ -38,6 +39,7 @@ export default function StackDetail() {
     const text = allSkills.map(s => s!.rawUrl).join('\n');
     const ok = await copyToClipboard(text);
     if (ok) { setCopied(true); setTimeout(() => setCopied(false), 2000); }
+    announce(copyFeedback(`${allSkills.length} skill URLs for ${stack!.name}`, ok));
   }
 
   const notInStackCount = allSkills.filter(s => !stackedItems.some(i => i.name === s!.name)).length;
@@ -79,7 +81,7 @@ export default function StackDetail() {
             <button className="btn" onClick={handleCopyAll}>
               {copied ? 'Copied!' : `Copy all ${allSkills.length} skill URLs`}
             </button>
-            <button className="btn btn-outline" onClick={() => shareStack(stack.id, stack.name)}>
+            <button className="btn btn-outline" onClick={async () => announce(shareFeedback(stack.name, await shareStack(stack.id, stack.name)))}>
               Share this stack
             </button>
             <button

@@ -4,9 +4,11 @@ import { useCatalog } from '../contexts/CatalogContext';
 import type { Skill } from '../types/catalog';
 import Nav from '../components/layout/Nav';
 import { copyToClipboard, shareCompare } from '../utils/clipboard';
+import { copyFeedback, shareFeedback } from '../utils/feedback';
 import { trackCompareOpen } from '../utils/analytics';
 import AddToStackButton from '../components/ui/AddToStackButton';
 import { routeWithAnchor } from '../utils/routeAnchors';
+import { useComposer } from '../contexts/ComposerContext';
 import {
   RELEASE_READINESS_LABELS,
   MATURITY_SOURCE_LABELS,
@@ -167,7 +169,8 @@ export default function Compare() {
   const catalog = useCatalog();
   const [searchParams, setSearchParams] = useSearchParams();
   const [addQuery, setAddQuery] = useState('');
-  const [copied, setCopied] = useState(false);
+  const [shareState, setShareState] = useState<'copied' | 'shared' | null>(null);
+  const { announce } = useComposer();
 
   const MAX = 4;
 
@@ -207,9 +210,17 @@ export default function Compare() {
     : [];
 
   async function handleShare() {
-    await shareCompare(skillNames);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const outcome = await shareCompare(skillNames);
+    announce(shareFeedback('this comparison', outcome));
+    if (outcome !== 'failed') {
+      setShareState(outcome);
+      setTimeout(() => setShareState(null), 2000);
+    }
+  }
+
+  async function handleCopySkillUrl(skill: Skill) {
+    const ok = await copyToClipboard(skill.rawUrl);
+    announce(copyFeedback(`${skill.displayName || skill.name} URL`, ok));
   }
 
   // Suppress rows that are empty for every selected skill — a wall of
@@ -260,7 +271,7 @@ export default function Compare() {
 
           {skills.length >= 2 && (
             <button className="btn btn-outline" onClick={handleShare}>
-              {copied ? 'Copied!' : 'Copy compare URL'}
+              {shareState === 'copied' ? 'Copied!' : shareState === 'shared' ? 'Shared!' : 'Copy compare URL'}
             </button>
           )}
         </div>
@@ -333,9 +344,7 @@ export default function Compare() {
                     <td key={s.name} className="compare-cell" data-label="Get skill">
                       <button
                         className="btn btn-outline btn-sm"
-                        onClick={async () => {
-                          await copyToClipboard(s.rawUrl);
-                        }}
+                        onClick={() => handleCopySkillUrl(s)}
                         aria-label={`Copy skill URL for ${s.name}`}
                       >
                         Copy URL

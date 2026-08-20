@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { STACKS } from '../data/stacks';
 import { shareStack, copyToClipboard } from '../utils/clipboard';
+import { copyFeedback, shareFeedback } from '../utils/feedback';
 import { useCatalog } from '../contexts/CatalogContext';
+import { useComposer } from '../contexts/ComposerContext';
 import type { Skill } from '../types/catalog';
 import Nav from '../components/layout/Nav';
 
@@ -19,6 +21,7 @@ export default function Stacks() {
     return () => { document.title = 'Skillz Forge | OverKill Hill P³™'; };
   }, []);
   const [copied, setCopied] = useState<string | null>(null);
+  const { announce } = useComposer();
 
   async function handleCopyAll(stackId: string, skillNames: string[]) {
     const allNames = [...new Set(skillNames)];
@@ -26,6 +29,7 @@ export default function Stacks() {
     const text = skills.map(s => s!.rawUrl).join('\n');
     const ok = await copyToClipboard(text);
     if (ok) { setCopied(stackId); setTimeout(() => setCopied(null), 2000); }
+    announce(copyFeedback(`${allNames.length} skill URLs for this stack`, ok));
   }
 
   return (
@@ -72,7 +76,7 @@ export default function Stacks() {
                     {copied === stack.id ? 'Copied!' : 'Copy all skill URLs'}
                   </button>
                   <button
-                    onClick={() => shareStack(stack.id, stack.name)}
+                    onClick={async () => announce(shareFeedback(stack.name, await shareStack(stack.id, stack.name)))}
                     className="btn-ghost"
                   >
                     Share
