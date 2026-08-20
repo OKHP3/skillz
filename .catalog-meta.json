@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
   "last_indexed": "2026-08-20T13:43:09Z",
   "skill_count": 148,
-=======
-  "last_indexed": "2026-08-19T18:43:29Z",
-  "skill_count": 147,
->>>>>>> 9dcffdcc073f3d5a11674e59a039b786e2747138
   "mode": "library",
   "surface": "distribution",
   "indexed_by": "okhp3-skill-cataloger v1.7.0",
