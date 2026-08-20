@@ -1147,6 +1147,10 @@ function syncManifestCounts(catalog) {
   }
 
   manifest.distributionSkillCount = catalog.skillCount;
+  // `activeFamilyCount` predates the explicit distribution-prefixed field but
+  // remains part of the public manifest. Keep the compatibility field derived
+  // from the same catalog so it cannot contradict `distributionFamilyCount`.
+  manifest.activeFamilyCount = catalog.familyCount;
   manifest.distributionFamilyCount = catalog.familyCount;
   manifest.maturityCounts = maturityCounts;
   manifest.evidenceStatusCounts = evidenceStatusCounts;

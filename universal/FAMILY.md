@@ -1,9 +1,9 @@
 ---
 family: universal
 display_name: Universal
-skill_count: 17
+skill_count: 18
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-12T01:49:17Z
+generated_at: 2026-08-20T13:43:09Z
 ---
 
 # universal
@@ -12,10 +12,10 @@ generated_at: 2026-08-12T01:49:17Z
 A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (17)
+## Skills (18)
 
 <!-- FAMILY_INVENTORY_START -->
-*17 skills &nbsp;·&nbsp; inventory last updated: **August 12, 2026 at 01:49 UTC***
+*18 skills &nbsp;·&nbsp; inventory last updated: **August 20, 2026 at 13:43 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -24,6 +24,7 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 | [okhp3-database-cartographer](okhp3-database-cartographer/SKILL.md) | OverKill Hill P³ database cartographer. Reverse-engineers and documents the live structure of Pos... | 1.1.0 |
 | [okhp3-equilibrium-review](okhp3-equilibrium-review/SKILL.md) | Evaluate a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independ... | 1.0.0 |
 | [okhp3-foundry-repo-creator](okhp3-foundry-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
+| [okhp3-github-notification-maintainer](okhp3-github-notification-maintainer/SKILL.md) | Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, c... | 1.0.0 |
 | [okhp3-google-gis-client-auth](okhp3-google-gis-client-auth/SKILL.md) | OverKill Hill P³ client-only Google Identity Services (GIS) auth workflow. Use when designing, im... | 1.2.0 |
 | [okhp3-overkill-hill-brand](okhp3-overkill-hill-brand/SKILL.md) | OverKill Hill P³ OverKill Hill SPA styling. Use when a user wants an OverKill Hill application, d... | 1.1.0 |
 | [okhp3-repl-repo-janitor](okhp3-repl-repo-janitor/SKILL.md) | Clean up a single Replit-hosted Git repository — squash-merge and delete old, merged, or abandone... | 0.1.0 |

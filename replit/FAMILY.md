@@ -1,9 +1,9 @@
 ---
 family: replit
 display_name: Replit
-skill_count: 5
+skill_count: 6
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-12T01:49:17Z
+generated_at: 2026-08-20T13:43:09Z
 ---
 
 # replit
@@ -17,15 +17,16 @@ non-obvious rules and workflows that save multiple debugging turns on any seriou
 project.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (5)
+## Skills (6)
 
 <!-- FAMILY_INVENTORY_START -->
-*5 skills &nbsp;·&nbsp; inventory last updated: **August 12, 2026 at 01:49 UTC***
+*6 skills &nbsp;·&nbsp; inventory last updated: **August 20, 2026 at 13:43 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-replit-build-in-public](okhp3-replit-build-in-public/SKILL.md) | Full playbook for a Replit Designathon competition submission — canvas organisation for judges, a... | 1.0.1 |
 | [okhp3-replit-canvas-board](okhp3-replit-canvas-board/SKILL.md) | Plan and build a structured multi-frame Replit canvas presentation board — hero rows, labeled zon... | 1.0.0 |
+| [okhp3-replit-contest-score-keeper](okhp3-replit-contest-score-keeper/SKILL.md) | Review and score fresh Replit BuildHub contest submissions with live rubric checks, safe public-a... | 1.0.0 |
 | [okhp3-replit-design-pipeline](okhp3-replit-design-pipeline/SKILL.md) | The complete Replit design iteration loop as a single coherent workflow — extract → sandbox → var... | 1.0.0 |
 | [okhp3-replit-multi-artifact](okhp3-replit-multi-artifact/SKILL.md) | Navigate and build in a Replit pnpm multi-artifact monorepo without silent failures. Covers the n... | 1.0.0 |
 | [okhp3-replit-repl-janitor](okhp3-replit-repl-janitor/SKILL.md) | OverKill Hill P³ one-Repl repository cleanup workflow for safely auditing and tidying a single Re... | 1.0.1 |

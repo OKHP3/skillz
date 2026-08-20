@@ -111,6 +111,11 @@ test('manifest distributionFamilyCount matches catalog family count', () => {
     `manifest.distributionFamilyCount=${manifest.distributionFamilyCount} !== ${catalog.families.length}`);
 });
 
+test('manifest activeFamilyCount matches catalog family count', () => {
+  assert(manifest.activeFamilyCount === catalog.families.length,
+    `manifest.activeFamilyCount=${manifest.activeFamilyCount} !== ${catalog.families.length}`);
+});
+
 // 5. Vocabulary reconciliation: v1 evidenceStatus and v2 evidence.status use
 // their own distinct enums and are NOT silently merged into one field.
 test('v1 evidenceStatus and v2 evidence.status use their own distinct (non-merged) vocabularies', () => {

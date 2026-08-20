@@ -164,7 +164,7 @@ descriptive prose per feature) is not similarly automated -- mapping a
 time a feature ships, not a safe blind substitution, so it stays
 hand-maintained behind an explicit manual-sync checklist instead.
 
-### Live-synced (no manual action needed)
+### Live-synced when reachable (fallback review required)
 
 `projects/skillz/index.html` in `OKHP3/OverKill-Hill` carries an inline
 `<script>` (added 2026-08-06) that fetches
@@ -185,6 +185,13 @@ the live numbers ever look stale; that's the signal the fetch is failing and
 this mechanism needs attention (endpoint moved, response shape changed,
 etc.), not that a human forgot to type new numbers.
 
+When the generated inventory changes, update every static fallback in
+`projects/skillz/index.html` in the same OverKill Hill change: the banner, the
+inventory heading's `data-fallback` values, any summary cards, and the
+last-synced date. This preserves truthful offline and fetch-failure behavior;
+the live fetch is a convergence check, not permission to leave stale fallback
+copy behind.
+
 ### Still manual (documented trigger + checklist)
 
 The "Brand Alignment" progress/roadmap list (Compare, Activity, Custom Local
@@ -204,6 +211,8 @@ When either happens, whoever has edit access to `OKHP3/OverKill-Hill` should:
       longer matches, and its description if the feature scope changed.
 - [ ] Update the "Recommended positioning" one-liner in
       `docs/PUBLIC_SURFACES.md` if it changed, then paste the new copy in.
+- [ ] Refresh the static count and date fallbacks described above, even though
+      the live page will replace them after a successful fetch.
 
 There is no automated trigger for this half -- it remains a manual step, owned
 by whoever maintains `OKHP3/OverKill-Hill`, same as before this decision.

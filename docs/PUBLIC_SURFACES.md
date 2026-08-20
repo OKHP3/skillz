@@ -64,14 +64,14 @@ skillz: Agent Skills by OverKill Hill
 Recommended positioning:
 
 ```text
-120 reusable SKILL.md delegation contracts across 15 active families for Claude, OpenClaw, Codex, and compatible AI agents.
+148 reusable SKILL.md delegation contracts across 16 active families for Claude, OpenClaw, Codex, and compatible AI agents.
 ```
 
-Current inventory: 120 public distribution skills across 15 active families.
+Current inventory: 148 public distribution skills across 16 active families.
 The repository also contains 40 project-local support skills, which are not
-public distribution entries. Forge itself is an
-M3 decision workbench, not yet a released or fully trustworthy distribution
-center. See
+public distribution entries. Forge is a live discovery workbench with guided
+discovery and visitor-built local stack composition, not a claim that every
+listed contract is released or fully trustworthy for every use. See
 [`docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md`](PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md)
 for the current build directive; the earlier capability score is preserved in
 [`docs/archive/planning-2026-08/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`](archive/planning-2026-08/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md).
@@ -162,9 +162,9 @@ Glee-fully and AskJamie are contextual side doors only.
 ## Current public-state rule
 
 Public surfaces must use the generated repository inventory for counts and
-describe Forge by observed capability, not planned features. As of 2026-08-04,
-Forge supports catalog discovery, detail inspection, family narratives,
-curated stacks, Compare, build-time activity, source/install links, and
-GitHub contribution handoff. It must not be described as a released or fully
-trustworthy distribution center until the M4 gates in the capability audit
-pass.
+describe Forge by observed capability, not planned features. The live Forge
+supports catalog discovery, guided discovery, detail inspection, family
+narratives, curated stacks, visitor-built local stack composition, Compare,
+build-time activity, source/install links, and GitHub contribution handoff. It
+must not be described as a released or fully trustworthy distribution center
+until the M4 gates in the capability audit pass.

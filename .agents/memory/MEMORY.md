@@ -11,3 +11,4 @@
 - [Repo docs use CRLF](repo-docs-crlf.md) — plain Edit silently fails to match on CRLF files (docs/CHANGELOG.md, .gitignore); use CodeExecution with explicit \r\n.
 - [Mermaid render sandbox fix](mermaid-render-sandbox.md) — mmdc's bundled Chromium can't launch here; install system chromium + PUPPETEER_EXECUTABLE_PATH instead of debugging the script.
 - [Mockup sandbox first-run setup](mockup-sandbox-setup.md) — npm install required in artifacts/mockup-sandbox/ before first workflow start.
+- [OverKill Hill dossier publishing](overkill-hill-dossier-publishing.md) — public dossier edits must clear the site validator before Pages can serve new fallbacks.
