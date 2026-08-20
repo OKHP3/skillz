@@ -21,7 +21,11 @@
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
   "distributionSkillCount": 148,
+<<<<<<< HEAD
   "activeFamilyCount": 16,
+=======
+  "activeFamilyCount": 15,
+>>>>>>> 9dcffdcc073f3d5a11674e59a039b786e2747138
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 40,
   "maturityCounts": {
@@ -267,6 +271,10 @@
     ]
   },
   "distributionFamilyCount": 16,
+<<<<<<< HEAD
   "countsGeneratedAt": "2026-08-20T16:11:39.571Z",
+=======
+  "countsGeneratedAt": "2026-08-19T18:45:37.198Z",
+>>>>>>> 9dcffdcc073f3d5a11674e59a039b786e2747138
   "countsGeneratedFrom": "forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
