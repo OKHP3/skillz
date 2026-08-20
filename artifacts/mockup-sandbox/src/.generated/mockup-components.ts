@@ -4,6 +4,7 @@ export const modules: ModuleMap = {
   "./components/mockups/skillz-forge/ExploreB.tsx": () => import("../components/mockups/skillz-forge/ExploreB.tsx"),
   "./components/mockups/skillz-forge/ExploreD.tsx": () => import("../components/mockups/skillz-forge/ExploreD.tsx"),
   "./components/mockups/skillz-forge/ExploreE.tsx": () => import("../components/mockups/skillz-forge/ExploreE.tsx"),
+  "./components/mockups/skillz-forge/ExploreF.tsx": () => import("../components/mockups/skillz-forge/ExploreF.tsx"),
   "./components/mockups/skillz-forge/ForgeWorkbench.tsx": () => import("../components/mockups/skillz-forge/ForgeWorkbench.tsx"),
   "./components/mockups/skillz-forge/HomeA.tsx": () => import("../components/mockups/skillz-forge/HomeA.tsx"),
   "./components/mockups/skillz-forge/HomeB.tsx": () => import("../components/mockups/skillz-forge/HomeB.tsx"),
