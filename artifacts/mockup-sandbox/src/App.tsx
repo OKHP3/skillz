@@ -1,6 +1,6 @@
-import { useEffect, useState, type ComponentType } from 'react';
+import { useEffect, useState, type ComponentType } from "react";
 
-import { modules as discoveredModules } from './.generated/mockup-components';
+import { modules as discoveredModules } from "./.generated/mockup-components";
 
 type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 
@@ -9,7 +9,7 @@ function _resolveComponent(
   name: string,
 ): ComponentType | undefined {
   const fns = Object.values(mod).filter(
-    (v) => typeof v === 'function',
+    (v) => typeof v === "function",
   ) as ComponentType[];
   return (
     (mod.default as ComponentType) ||
@@ -48,7 +48,7 @@ function PreviewRenderer({
         if (cancelled) {
           return;
         }
-        const name = componentPath.split('/').pop()!;
+        const name = componentPath.split("/").pop()!;
         const comp = _resolveComponent(mod, name);
         if (!comp) {
           setError(
@@ -76,7 +76,7 @@ function PreviewRenderer({
 
   if (error) {
     return (
-      <pre style={{ color: 'red', padding: '2rem', fontFamily: 'system-ui' }}>
+      <pre style={{ color: "red", padding: "2rem", fontFamily: "system-ui" }}>
         {error}
       </pre>
     );
@@ -88,7 +88,7 @@ function PreviewRenderer({
 }
 
 function getBasePath(): string {
-  return import.meta.env.BASE_URL.replace(/\/$/, '');
+  return import.meta.env.BASE_URL.replace(/\/$/, "");
 }
 
 function getPreviewExamplePath(): string {
@@ -107,7 +107,7 @@ function Gallery() {
           This server renders individual components for the workspace canvas.
         </p>
         <p className="text-sm text-gray-400">
-          Access component previews at{' '}
+          Access component previews at{" "}
           <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-600">
             {getPreviewExamplePath()}
           </code>
@@ -122,7 +122,7 @@ function getPreviewPath(): string | null {
   const { pathname } = window.location;
   const local =
     basePath && pathname.startsWith(basePath)
-      ? pathname.slice(basePath.length) || '/'
+      ? pathname.slice(basePath.length) || "/"
       : pathname;
   const match = local.match(/^\/preview\/(.+)$/);
   return match ? match[1] : null;
