@@ -1,27 +1,49 @@
-# Rendered diagram test outputs (never commit working renders)
-*.png
-*.svg
-*.pdf
-!assets/**/*.png
-!assets/**/*.svg
-!forge/public/assets/*.png
-!forge/src/assets/*.png
-!forge/src/assets/*.svg
-!mermaid/okhp3-mermaid-publish/examples/*.png
-!mermaid/okhp3-mermaid-publish/examples/*.svg
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# Node (mermaid-cli via npx)
-node_modules/
-.npm-cache/
+# compiled output
+dist
+tmp
+out-tsc
+*.tsbuildinfo
+.expo
+.expo-shared
 
-# Python (if any skill scripts use it)
-__pycache__/
-*.pyc
-.venv/
+# dependencies
+node_modules
 
-# Editor / OS
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
 .DS_Store
-.vscode/
+Thumbs.db
 
-# Env / secrets
-.env
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+
+# Replit
+.cache/
+.local/

@@ -1,0 +1,27 @@
+# Rendered diagram test outputs (never commit working renders)
+*.png
+*.svg
+*.pdf
+!assets/**/*.png
+!assets/**/*.svg
+!forge/public/assets/*.png
+!forge/src/assets/*.png
+!forge/src/assets/*.svg
+!mermaid/okhp3-mermaid-publish/examples/*.png
+!mermaid/okhp3-mermaid-publish/examples/*.svg
+
+# Node (mermaid-cli via npx)
+node_modules/
+.npm-cache/
+
+# Python (if any skill scripts use it)
+__pycache__/
+*.pyc
+.venv/
+
+# Editor / OS
+.DS_Store
+.vscode/
+
+# Env / secrets
+.env
