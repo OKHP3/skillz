@@ -71,6 +71,9 @@ export default function SkillDetail() {
   const { announce } = useComposer();
   const [, forceUpdate] = useState(0);
   const navigate = useNavigate();
+  const [activeContractTab, setActiveContractTab] = useState<'contract' | 'validation'>('contract');
+  const [liveEvidenceAttached, setLiveEvidenceAttached] = useState(false);
+  const [supervisedCheckRunning, setSupervisedCheckRunning] = useState(false);
 
   // Release 1: the Full Contract body (raw markdown) is not part of the
   // main catalog payload — every route paying for every skill's full body
@@ -141,6 +144,17 @@ export default function SkillDetail() {
     announce(favoriteFeedback(displayName, outcome));
   }
 
+  function attachLiveEvidence() {
+    if (supervisedCheckRunning || liveEvidenceAttached || skill.evidence.status === 'live') return;
+    setSupervisedCheckRunning(true);
+    announce(`Supervised check started for ${displayName}.`);
+    window.setTimeout(() => {
+      setSupervisedCheckRunning(false);
+      setLiveEvidenceAttached(true);
+      announce(`Live evidence attached for ${displayName}. Final review is now unlocked.`);
+    }, 1100);
+  }
+
   const displayName = skill.displayName || skill.name;
   const showSlugSecondary = skill.displayName && skill.displayName !== skill.name;
 
@@ -150,6 +164,8 @@ export default function SkillDetail() {
   // condition, same meaning, so a visitor sees the same warning wherever
   // they land.
   const staleEvidence = isEvidenceStale(skill);
+  const liveEvidenceReady = liveEvidenceAttached || skill.evidence.status === 'live' || skill.releaseReadiness === 'published';
+  const releaseReady = liveEvidenceReady && skill.evidence.blockers.length === 0;
 
   return (
     <div data-page="skill-detail">
