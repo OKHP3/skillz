@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-08-20T18:10:35.531Z",
+  "generatedAt": "2026-08-20T22:53:56.700Z",
   "commits": [
+    {
+      "sha": "09f15ddc9440fa035eeb79ac0c145e466a777f46",
+      "shortSha": "09f15dd",
+      "message": "Add ExploreE component to skillz-forge mockups\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-20T19:51:20Z",
+      "url": "https://github.com/OKHP3/skillz/commit/09f15ddc9440fa035eeb79ac0c145e466a777f46"
+    },
+    {
+      "sha": "1b0b47a1a5ace27f9b0cba34358f24fdb74f632f",
+      "shortSha": "1b0b47a",
+      "message": "Update project data and manifest files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-20T18:10:57Z",
+      "url": "https://github.com/OKHP3/skillz/commit/1b0b47a1a5ace27f9b0cba34358f24fdb74f632f"
+    },
     {
       "sha": "7263470c5a8eb2482794ea16f2c23a95c33e3d97",
       "shortSha": "7263470",
@@ -64,22 +80,6 @@
       "author": "overkillhillp3",
       "date": "2026-08-20T13:35:46Z",
       "url": "https://github.com/OKHP3/skillz/commit/5b337528c0b7dce9aeae0bdf8b8cb13ff166b719"
-    },
-    {
-      "sha": "8134ebbbac1cf962ef7ab1baaab1de75886a08d5",
-      "shortSha": "8134ebb",
-      "message": "Git commit prior to merge",
-      "author": "overkillhillp3",
-      "date": "2026-08-20T13:35:08Z",
-      "url": "https://github.com/OKHP3/skillz/commit/8134ebbbac1cf962ef7ab1baaab1de75886a08d5"
-    },
-    {
-      "sha": "9dcffdcc073f3d5a11674e59a039b786e2747138",
-      "shortSha": "9dcffdc",
-      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
-      "author": "Jamie Hill",
-      "date": "2026-08-19T20:27:24Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9dcffdcc073f3d5a11674e59a039b786e2747138"
     }
   ],
   "fetchError": null
