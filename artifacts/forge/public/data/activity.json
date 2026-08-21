@@ -1,6 +1,38 @@
 {
-  "generatedAt": "2026-08-21T01:21:44.989Z",
+  "generatedAt": "2026-08-21T13:55:13.701Z",
   "commits": [
+    {
+      "sha": "3850a85208502ba22edeb901bec404203068f25c",
+      "shortSha": "3850a85",
+      "message": "Update Replit configuration settings\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-21T01:42:54Z",
+      "url": "https://github.com/OKHP3/skillz/commit/3850a85208502ba22edeb901bec404203068f25c"
+    },
+    {
+      "sha": "8aa2834981e6e6f8819611be671b92a652566bec",
+      "shortSha": "8aa2834",
+      "message": "Port Skillz Forge to standalone artifact at artifacts/forge/\n\nReplit-Task-Id: 5631ab38-5b42-40ab-83c3-be43100c9000\nReplit-Merge-Attempt: MergeTask:5631ab38-5b42-40ab-83c3-be43100c9000:2:eccf63c8",
+      "author": "overkillhillp3",
+      "date": "2026-08-21T01:42:29Z",
+      "url": "https://github.com/OKHP3/skillz/commit/8aa2834981e6e6f8819611be671b92a652566bec"
+    },
+    {
+      "sha": "517d407a8387a3789f913b1875cfafbd81e1164f",
+      "shortSha": "517d407",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-21T01:42:11Z",
+      "url": "https://github.com/OKHP3/skillz/commit/517d407a8387a3789f913b1875cfafbd81e1164f"
+    },
+    {
+      "sha": "a0fe83fd0365a10def7476136f0a98c3a93120c1",
+      "shortSha": "a0fe83f",
+      "message": "Update project data and add styles to skill detail page\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-21T01:12:56Z",
+      "url": "https://github.com/OKHP3/skillz/commit/a0fe83fd0365a10def7476136f0a98c3a93120c1"
+    },
     {
       "sha": "56ef43e8cc89539da271d8869385efc98489fc02",
       "shortSha": "56ef43e",
@@ -48,38 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-20T16:32:20Z",
       "url": "https://github.com/OKHP3/skillz/commit/6a49b7b0aa81b37748d6f0856e332336a9d5d635"
-    },
-    {
-      "sha": "cafff630d56a553b8b6cdb7187a8fda8b5c750c3",
-      "shortSha": "cafff63",
-      "message": "Resolve origin/main merge and regenerate Forge data",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-20T16:29:15Z",
-      "url": "https://github.com/OKHP3/skillz/commit/cafff630d56a553b8b6cdb7187a8fda8b5c750c3"
-    },
-    {
-      "sha": "caa805c34a6ea8d262fd72a006f1b0e1f56edb03",
-      "shortSha": "caa805c",
-      "message": "Update project metadata and manifest files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-20T16:25:25Z",
-      "url": "https://github.com/OKHP3/skillz/commit/caa805c34a6ea8d262fd72a006f1b0e1f56edb03"
-    },
-    {
-      "sha": "c2255720bfb664d9d6de206b48215271cc16750b",
-      "shortSha": "c225572",
-      "message": "Implement feedback utility and update UI components and data manifests\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-20T15:14:50Z",
-      "url": "https://github.com/OKHP3/skillz/commit/c2255720bfb664d9d6de206b48215271cc16750b"
-    },
-    {
-      "sha": "162c18004ff7ecc663fe4eeae70cc9352d100398",
-      "shortSha": "162c180",
-      "message": "Synchronize public Skillz inventory story with live catalog\n\nReplit-Task-Id: 4079ff6a-b1f4-4923-ad86-3d222c841fb2\nReplit-Merge-Attempt: MergeTask:4079ff6a-b1f4-4923-ad86-3d222c841fb2:1:7fe3610f",
-      "author": "overkillhillp3",
-      "date": "2026-08-20T15:05:00Z",
-      "url": "https://github.com/OKHP3/skillz/commit/162c18004ff7ecc663fe4eeae70cc9352d100398"
     }
   ],
   "fetchError": null
