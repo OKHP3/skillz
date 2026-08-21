@@ -2350,6 +2350,223 @@ input, select, textarea {
   margin: var(--space-6) 0;
 }
 
+/* ── SkillDetailE review surface ───────────────────────────────────────── */
+.skill-review-page {
+  --review-deep: #211c19;
+  --review-panel: #241f1c;
+  --review-line: #453a34;
+  --review-ink: #ede7de;
+  --review-muted: #9b8e80;
+  --review-orange: #c87336;
+  --review-amber: #e2a158;
+  --review-green: #9ab59b;
+  background: var(--color-bg);
+}
+.skill-review-article {
+  max-width: 1180px;
+  padding: var(--space-8) var(--space-8) var(--space-12);
+  border-top: 0;
+  background: #211c19 !important;
+  color: #ede7de !important;
+}
+.skill-review-article h1,
+.skill-review-article h2,
+.skill-review-article h3 { color: var(--review-ink); }
+.skill-review-eyebrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--review-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.skill-review-badge {
+  padding: 4px 7px;
+  border: 1px solid #6c492f;
+  background: #3a281f;
+  color: #e2a064;
+}
+.skill-review-article .detail-header h1 {
+  margin-top: var(--space-3);
+  color: #f3ede5;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+.skill-review-article .detail-meta { color: var(--review-muted); }
+.skill-review-article .detail-meta-family { color: var(--review-amber); }
+.skill-review-article .detail-path { color: #74685d; }
+.skill-review-article .detail-actions {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: var(--space-5) 0;
+}
+.skill-review-article .detail-actions .btn,
+.skill-review-article .detail-actions .btn-ghost {
+  min-height: 36px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.skill-review-article .detail-actions .btn-primary {
+  border-color: #d27835;
+  background: var(--review-orange);
+  color: var(--review-deep);
+}
+.skill-review-article .detail-actions .btn-outline {
+  border-color: #665448;
+  background: transparent;
+  color: #d5c8bc;
+}
+.skill-review-page .detail-trust-summary {
+  margin: var(--space-4) 0;
+  border-color: #735133;
+  border-left-color: var(--review-orange);
+  background: #352920 !important;
+  color: #ede7de !important;
+}
+.skill-trust-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.skill-trust-heading h2 { margin: 0; color: var(--review-amber); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .12em; text-transform: uppercase; }
+.skill-trust-heading h2 span { color: #7e5940; }
+.skill-trust-icon {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 2px;
+  background: #5b3a26;
+  color: var(--review-amber);
+  font-weight: 700;
+}
+.skill-review-page .detail-trust-summary p { color: #eadfd3; }
+.skill-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--review-line);
+  background: var(--review-panel);
+}
+.skill-stat {
+  display: flex;
+  min-width: 0;
+  gap: 10px;
+  padding: 13px 15px;
+  border-right: 1px solid var(--review-line);
+}
+.skill-stat:last-child { border-right: 0; }
+.skill-stat-mark {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  place-items: center;
+  background: #332b27;
+  color: var(--review-amber);
+}
+.skill-stat > span:last-child { min-width: 0; }
+.skill-stat small,
+.skill-stat strong,
+.skill-stat em { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.skill-stat small { color: var(--review-muted); font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+.skill-stat strong { color: var(--review-amber); font-size: var(--text-sm); font-weight: 500; text-transform: lowercase; }
+.skill-stat em { color: #74685d; font-family: var(--font-mono); font-size: 10px; font-style: normal; }
+.skill-stat--ready strong,
+.skill-validation-row.is-passed { color: var(--review-green); }
+.skill-stat--blocked strong,
+.skill-validation-row.is-blocked { color: #d58c67; }
+.skill-review-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+.skill-validation-card,
+.skill-gate-panel {
+  min-width: 0;
+  border: 1px solid var(--review-line);
+  background: var(--review-panel);
+}
+.skill-gate-panel { border-color: #735133; background: #352920; }
+.skill-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--review-line);
+  color: #d9cfc4;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.skill-panel-heading span:last-child { color: var(--review-muted); }
+.skill-validation-rows { padding: var(--space-4); }
+.skill-validation-rows > div,
+.skill-validation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid var(--review-line);
+  color: var(--review-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.skill-validation-rows > div + div { margin-top: 8px; }
+.skill-validation-rows strong,
+.skill-validation-row strong { font-weight: 400; }
+.skill-validation-rows button { padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; }
+.skill-validation-rows button:disabled { cursor: default; }
+.skill-gate-panel h2 { margin: var(--space-4) var(--space-4) 0; color: #f3e8dc; font-family: var(--font-display); font-size: 1.55rem; font-weight: 400; }
+.skill-gate-panel > p { margin: var(--space-3) var(--space-4); color: #d5b8a6; font-size: var(--text-sm); }
+.skill-gate-progress { height: 6px; margin: 16px; background: #52372d; }
+.skill-gate-progress span { display: block; height: 100%; background: var(--review-orange); transition: width var(--transition); }
+.skill-gate-panel > .btn { width: calc(100% - 32px); margin: 0 16px 16px; }
+.skill-contract-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.skill-contract-heading h2 { margin-bottom: 0; }
+.skill-contract-tabs { display: flex; gap: 2px; padding: 3px; background: var(--color-bg); }
+.skill-contract-tabs button { padding: 7px 10px; border: 0; background: transparent; color: var(--review-muted); cursor: pointer; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.skill-contract-tabs button[aria-selected="true"] { background: #3a3029; color: var(--review-ink); }
+.skill-validation-list { padding: var(--space-4) 0; }
+.skill-contract-body { background: var(--review-deep); }
+.skill-contract-body .full-contract { background: var(--review-deep); border-color: var(--review-line); }
+.skill-contract-body .full-contract-body h1,
+.skill-contract-body .full-contract-body h2,
+.skill-contract-body .full-contract-body h3,
+.skill-contract-body .full-contract-body h4 { color: var(--review-ink); }
+.skill-contract-body .full-contract-body p,
+.skill-contract-body .full-contract-body li { color: #cabfb4; }
+.skill-review-page .detail-install,
+.skill-review-page .detail-maturity-box,
+.skill-review-page .detail-provenance,
+.skill-review-page .detail-evidence-release,
+.skill-review-page .detail-contribute { background: var(--review-panel); border-color: var(--review-line); }
+.skill-review-page .detail-install pre,
+.skill-review-page .detail-article pre { background: #211c19; color: var(--review-ink); }
+.skill-review-page .detail-article h2 { color: var(--review-ink); border-color: var(--review-line); }
+.skill-review-page .detail-article p,
+.skill-review-page .detail-article li { color: #b8aa9d; }
+@media (max-width: 900px) {
+  .skill-review-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .skill-review-article { padding-inline: var(--space-4); }
+  .skill-stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .skill-stat:nth-child(2) { border-right: 0; }
+  .skill-stat:nth-child(-n + 2) { border-bottom: 1px solid var(--review-line); }
+  .skill-contract-heading { align-items: flex-start; flex-direction: column; }
+  .skill-contract-tabs { width: 100%; }
+  .skill-contract-tabs button { flex: 1; }
+}
+
 /* Stacks */
 .stack-list {
   list-style: none;

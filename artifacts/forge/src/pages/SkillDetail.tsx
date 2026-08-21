@@ -145,7 +145,7 @@ export default function SkillDetail() {
   }
 
   function attachLiveEvidence() {
-    if (supervisedCheckRunning || liveEvidenceAttached || skill.evidence.status === 'live') return;
+    if (!skill || supervisedCheckRunning || liveEvidenceAttached || skill.evidence.status === 'live') return;
     setSupervisedCheckRunning(true);
     announce(`Supervised check started for ${displayName}.`);
     window.setTimeout(() => {
@@ -179,8 +179,12 @@ export default function SkillDetail() {
           <span aria-current="page">{displayName}</span>
         </div>
 
-        <article className="detail-article">
+        <article className="detail-article skill-review-article">
           <header className="detail-header">
+            <div className="skill-review-eyebrow">
+              <span className="skill-review-badge">{skill.family} family</span>
+              <span>{skill.name} / canonical</span>
+            </div>
             <h1>{displayName}</h1>
             {showSlugSecondary && (
               <p className="detail-slug">{skill.name}</p>
@@ -205,10 +209,35 @@ export default function SkillDetail() {
           </header>
 
           <div className="detail-trust-summary" role="note" aria-label="Trust summary">
-            <h2>In plain terms</h2>
+            <div className="skill-trust-heading"><span className="skill-trust-icon" aria-hidden>✓</span><h2>Trust summary <span>·</span> {releaseReady ? 'reviewable under supervision' : 'reviewable with limits'}</h2></div>
             <p>{buildTrustSummary(skill, staleEvidence)}</p>
             <Link to="/faq#maturity-label" className="detail-maturity-link">What maturity and evidence labels mean &rarr;</Link>
           </div>
+
+          <section className="skill-stat-strip" aria-label="Skill status">
+            <div className={`skill-stat skill-stat--${skill.maturity}`}><span className="skill-stat-mark" aria-hidden>◌</span><span><small>Maturity</small><strong>{skill.maturity}</strong><em>{MATURITY_DESCRIPTIONS[skill.maturity]}</em></span></div>
+            <div className={`skill-stat skill-stat--${skill.evidence.status}`}><span className="skill-stat-mark" aria-hidden>◌</span><span><small>Evidence</small><strong>{skill.evidence.status.replace('-', ' ')}</strong><em>{skill.evidence.evalCount} eval artifact{skill.evidence.evalCount === 1 ? '' : 's'}</em></span></div>
+            <div className="skill-stat"><span className="skill-stat-mark" aria-hidden>◌</span><span><small>Modified</small><strong>{skill.lastModified ? formatDate(skill.lastModified) : 'Unknown'}</strong><em>{skill.commitSha ? `${skill.commitSha.slice(0, 8)} commit` : 'No commit recorded'}</em></span></div>
+            <div className={`skill-stat ${releaseReady ? 'skill-stat--ready' : 'skill-stat--blocked'}`}><span className="skill-stat-mark" aria-hidden>◌</span><span><small>Readiness</small><strong>{RELEASE_READINESS_LABELS[skill.releaseReadiness] ?? skill.releaseReadiness}</strong><em>{staleEvidence ? 'stale evidence' : 'current package'}</em></span></div>
+          </section>
+
+          <section className="skill-review-grid" aria-label="Review checkpoints">
+            <div className="skill-validation-card">
+              <div className="skill-panel-heading"><span>▣ Review checkpoints</span><span>{liveEvidenceReady ? '4 / 4 ready' : '3 / 4 ready'}</span></div>
+              <div className="skill-validation-rows">
+                <div className="is-passed">✓ Contract is present <strong>complete</strong></div>
+                <div className={skill.evidence.status !== 'none' ? 'is-passed' : 'is-blocked'}>{skill.evidence.status !== 'none' ? '✓' : '◷'} Evidence recorded <strong>{skill.evidence.status}</strong></div>
+                <div className={liveEvidenceReady ? 'is-passed' : 'is-blocked'}><button type="button" onClick={attachLiveEvidence} disabled={liveEvidenceReady || supervisedCheckRunning}>{liveEvidenceReady ? '✓' : '◷'} Supervised run <strong>{liveEvidenceReady ? 'attached' : supervisedCheckRunning ? 'running…' : 'attach evidence'}</strong></button></div>
+              </div>
+            </div>
+            <div className="skill-gate-panel">
+              <div className="skill-panel-heading"><span>▣ Release readiness</span><span aria-hidden>♙</span></div>
+              <h2>{releaseReady ? 'Reviewable' : 'Blocked'}</h2>
+              <div className="skill-gate-progress"><span style={{ width: `${releaseReady ? 100 : 75}%` }} /></div>
+              {skill.evidence.blockers.length > 0 && <p>{skill.evidence.blockers[0]}</p>}
+              <button className="btn btn-primary" disabled={!liveEvidenceReady && !releaseReady} onClick={() => announce(`Final review requested for ${displayName}.`)}>Request final review</button>
+            </div>
+          </section>
 
           <div className="detail-actions" aria-label="Skill actions">
             <button className="btn" onClick={handleCopyInstall}>
@@ -527,21 +556,34 @@ export default function SkillDetail() {
           </div>
 
           <div id="full-contract" className="detail-full-contract" tabIndex={-1}>
-            <h2>Full contract</h2>
+            <div className="skill-contract-heading">
+              <h2>Full contract</h2>
+              <div className="skill-contract-tabs" role="tablist" aria-label="Contract views">
+                <button type="button" role="tab" aria-selected={activeContractTab === 'contract'} onClick={() => setActiveContractTab('contract')}>Raw markdown</button>
+                <button type="button" role="tab" aria-selected={activeContractTab === 'validation'} onClick={() => setActiveContractTab('validation')}>Validation</button>
+              </div>
+            </div>
             <p className="detail-full-contract-hint">
               The complete SKILL.md contract for this skill, rendered in-app.
             </p>
-            {contractState.status === 'loading' && (
+            {activeContractTab === 'contract' && contractState.status === 'loading' && (
               <p className="meta-pending" role="status">Loading contract…</p>
             )}
-            {contractState.status === 'error' && (
+            {activeContractTab === 'contract' && contractState.status === 'error' && (
               <p className="meta-pending" role="alert">
                 Could not load the full contract.{' '}
                 <a href={skill.rawUrl} target="_blank" rel="noopener noreferrer">View raw SKILL.md instead</a>.
               </p>
             )}
-            {contractState.status === 'ready' && (
+            {activeContractTab === 'contract' && contractState.status === 'ready' && (
               <FullContract rawBody={contractState.body} />
+            )}
+            {activeContractTab === 'validation' && (
+              <div className="skill-validation-list" role="tabpanel">
+                <div className="skill-validation-row is-passed"><span>✓ Contract body loaded</span><strong>{contractState.status === 'ready' ? 'passed' : 'pending'}</strong></div>
+                <div className={skill.evidence.status !== 'none' ? 'skill-validation-row is-passed' : 'skill-validation-row is-blocked'}><span>{skill.evidence.status !== 'none' ? '✓' : '◷'} Evidence record</span><strong>{skill.evidence.status}</strong></div>
+                <div className={liveEvidenceReady ? 'skill-validation-row is-passed' : 'skill-validation-row is-blocked'}><span>{liveEvidenceReady ? '✓' : '◷'} Supervised run</span><strong>{liveEvidenceReady ? 'attached' : supervisedCheckRunning ? 'running…' : 'missing'}</strong></div>
+              </div>
             )}
           </div>
 
