@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/forge-review-desk/"
+title = "Skillz Forge Review Desk"
+description = "A standalone evidence-first review desk for inspecting Skillz Forge contracts, progressing supervised evidence checks, and understanding release readiness."
+version = "1.0.0"
+id = "artifacts/forge-review-desk"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/forge-review-desk/" ]
+localPort = 18643
+
+[services.development]
+run = "pnpm --filter @workspace/forge-review-desk run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/forge-review-desk", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/forge-review-desk/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18643"
+BASE_PATH = "/forge-review-desk/"
