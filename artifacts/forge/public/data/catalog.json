@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-22T14:32:55.204Z",
+  "generatedAt": "2026-08-22T14:52:34.697Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "975efbd",
+  "sourceCommit": "6c30ffa",
   "skillCount": 149,
   "familyCount": 16,
   "families": [
@@ -7295,9 +7295,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-github-sync/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-github-sync/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-08-22T09:52:13-05:00",
+      "commitSha": "6c30ffa7",
+      "createdAt": "2026-08-22T09:52:13-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "developer-tooling",
