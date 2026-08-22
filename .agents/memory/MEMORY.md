@@ -1,1 +1,2 @@
 - [Forge monorepo migration](forge-migration.md) — build-catalog.js REPO_ROOT and ALLOW_SHALLOW_CATALOG_BUILD needed to find skills in .migration-backup/
+- [GitHub publishing audit](github-publishing-audit.md) — inspect workflow YAML through Contents API and record GitHub-managed Pages as an external dependency
