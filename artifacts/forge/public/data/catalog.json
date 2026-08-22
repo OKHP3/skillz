@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-22T00:15:02.564Z",
+  "generatedAt": "2026-08-22T14:32:55.204Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "f1e9f92",
-  "skillCount": 148,
+  "sourceCommit": "975efbd",
+  "skillCount": 149,
   "familyCount": 16,
   "families": [
     {
@@ -490,12 +490,13 @@
     {
       "name": "replit",
       "displayName": "Replit",
-      "skillCount": 6,
+      "skillCount": 7,
       "skills": [
         "okhp3-replit-build-in-public",
         "okhp3-replit-canvas-board",
         "okhp3-replit-contest-score-keeper",
         "okhp3-replit-design-pipeline",
+        "okhp3-replit-github-sync",
         "okhp3-replit-multi-artifact",
         "okhp3-replit-repl-janitor"
       ],
@@ -4625,7 +4626,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4690,7 +4691,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4755,7 +4756,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4820,7 +4821,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -4954,7 +4955,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -6100,7 +6101,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-capture/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -7256,6 +7257,76 @@
       "releaseReadiness": "ready-for-supervised-use"
     },
     {
+      "name": "okhp3-replit-github-sync",
+      "displayName": "Replit GitHub Sync",
+      "family": "replit",
+      "skillDir": "okhp3-replit-github-sync",
+      "path": "replit/okhp3-replit-github-sync/SKILL.md",
+      "description": "Recover and maintain safe GitHub synchronization for a Replit project. Use when Replit reports PUSH_REJECTED, cannot commit through its UI, or a project needs to pull, commit, reconcile, merge, or push changes to its GitHub default branch. Also activate for \"Replit GitHub out of sync\", \"push rejected\", \"sync Replit to origin/main\", or a safe branch-to-main squash merge. Do not use to force-push, discard unreviewed work, or bypass branch protection.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "developer-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "developer-tooling"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [
+        "verified repository root, `origin` URL, current branch, and base ref;",
+        "working-tree and ahead/behind state before any write;",
+        "reviewed commit scope and every commit, push, PR, or merge actually made;",
+        "the connector state used, or why hosted actions were not available;",
+        "conflict/protection/authorization blockers and the smallest safe next step;",
+        "post-action `git status`, target-ref comparison, commit SHA, and relevant"
+      ],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-github-sync/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-github-sync/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "One Replit checkout's GitHub sync diagnosis, safe pull/commit/push recovery, branch handoff, and approved PR merge verification.",
+        "outOfScope": "Force-pushes, secret handling, automatic conflict resolution, deletion, bypassing protections, or unrelated repository cleanup.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": "defer-for-evidence",
+        "blockers": [
+          "No executed evaluation exists for the initial package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-replit-multi-artifact",
       "displayName": "Replit Multi Artifact",
       "family": "replit",
@@ -7932,7 +8003,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -8064,7 +8135,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -8130,7 +8201,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-08-21T01:42:29Z",
       "commitSha": "8aa28349",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
