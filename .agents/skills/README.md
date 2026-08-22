@@ -16,6 +16,39 @@ node .agents/skills/publishing-trigger-check/run.mjs
 node .agents/skills/validation-smoke/run.mjs
 ```
 
+## CI reports
+
+Each validation runner keeps the readable console output above and accepts an
+optional `--json <path>` argument. The report is written even when the check
+fails, so CI can archive it without scraping logs:
+
+```bash
+node .agents/skills/static-route-validation/run.mjs --json validation-reports/routes.json
+```
+
+Reports use schema version `1` and include `check`, `status` (`passed` or
+`failed`), overall `severity`, `sourcePaths`, and check-specific details.
+Current validators classify failures as `release-blocking`; a future
+non-blocking finding should use `severity: "warning"` without changing the
+exit-code contract.
+
+Example GitHub Actions archival step (it does not authenticate, publish, or
+change deployment policy):
+
+```yaml
+- name: Run validation with report
+  run: |
+    mkdir -p validation-reports
+    node .agents/skills/static-route-validation/run.mjs \
+      --json validation-reports/static-route-validation.json
+- name: Archive validation report
+  if: always()
+  uses: actions/upload-artifact@v4
+  with:
+    name: validation-reports
+    path: validation-reports/
+```
+
 | Skill | Use when | Success | Release-blocking failure |
 | --- | --- | --- | --- |
 | `catalog-integrity` | After catalog source or evidence-contract changes | Rebuilds and validates catalog counts, metadata, evidence vocabulary, provenance, and payload split | Non-zero exit; CI provenance remains fail-closed |
