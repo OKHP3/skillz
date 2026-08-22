@@ -1,6 +1,62 @@
 {
-  "generatedAt": "2026-08-22T00:15:02.679Z",
+  "generatedAt": "2026-08-22T06:14:56.584Z",
   "commits": [
+    {
+      "sha": "975efbd71e881ede25a06287d892665747acf836",
+      "shortSha": "975efbd",
+      "message": "Fix catalog build execution through macOS path aliases",
+      "author": "OKHP3",
+      "date": "2026-08-22T02:14:00Z",
+      "url": "https://github.com/OKHP3/skillz/commit/975efbd71e881ede25a06287d892665747acf836"
+    },
+    {
+      "sha": "6df8719fe01da2bdee8e937322f5550243660291",
+      "shortSha": "6df8719",
+      "message": "Implement automated publishing audit tools and documentation\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-22T00:19:05Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6df8719fe01da2bdee8e937322f5550243660291"
+    },
+    {
+      "sha": "a9d1161b44c2ae1d2e9339c56e2e709c024e319f",
+      "shortSha": "a9d1161",
+      "message": "Implement new automated verification skills and update catalog artifacts\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-22T00:15:53Z",
+      "url": "https://github.com/OKHP3/skillz/commit/a9d1161b44c2ae1d2e9339c56e2e709c024e319f"
+    },
+    {
+      "sha": "6c0ea2993bfb15f722df943285b76f8be12d519c",
+      "shortSha": "6c0ea29",
+      "message": "Initialize forge review desk artifact scaffolding\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-21T20:24:31Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6c0ea2993bfb15f722df943285b76f8be12d519c"
+    },
+    {
+      "sha": "0cb7674572dc74bcf9685321c71e0b69c531e1b9",
+      "shortSha": "0cb7674",
+      "message": "Update skill detail page styles and metadata artifacts\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-21T20:14:17Z",
+      "url": "https://github.com/OKHP3/skillz/commit/0cb7674572dc74bcf9685321c71e0b69c531e1b9"
+    },
+    {
+      "sha": "87d2492147e2730a55c055175eab61f27b6f3c93",
+      "shortSha": "87d2492",
+      "message": "Update skill details page and related artifacts\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-21T19:56:29Z",
+      "url": "https://github.com/OKHP3/skillz/commit/87d2492147e2730a55c055175eab61f27b6f3c93"
+    },
+    {
+      "sha": "430f43b2bb13f0163ff272eb1c46ee6309333a67",
+      "shortSha": "430f43b",
+      "message": "Update migration manifest and artifact data files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-21T13:57:06Z",
+      "url": "https://github.com/OKHP3/skillz/commit/430f43b2bb13f0163ff272eb1c46ee6309333a67"
+    },
     {
       "sha": "ba8422031365ffcd51d0793028f3f7d72bf6dc36",
       "shortSha": "ba84220",
@@ -24,62 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-21T01:42:54Z",
       "url": "https://github.com/OKHP3/skillz/commit/3850a85208502ba22edeb901bec404203068f25c"
-    },
-    {
-      "sha": "8aa2834981e6e6f8819611be671b92a652566bec",
-      "shortSha": "8aa2834",
-      "message": "Port Skillz Forge to standalone artifact at artifacts/forge/\n\nReplit-Task-Id: 5631ab38-5b42-40ab-83c3-be43100c9000\nReplit-Merge-Attempt: MergeTask:5631ab38-5b42-40ab-83c3-be43100c9000:2:eccf63c8",
-      "author": "overkillhillp3",
-      "date": "2026-08-21T01:42:29Z",
-      "url": "https://github.com/OKHP3/skillz/commit/8aa2834981e6e6f8819611be671b92a652566bec"
-    },
-    {
-      "sha": "517d407a8387a3789f913b1875cfafbd81e1164f",
-      "shortSha": "517d407",
-      "message": "Git commit prior to merge",
-      "author": "overkillhillp3",
-      "date": "2026-08-21T01:42:11Z",
-      "url": "https://github.com/OKHP3/skillz/commit/517d407a8387a3789f913b1875cfafbd81e1164f"
-    },
-    {
-      "sha": "a0fe83fd0365a10def7476136f0a98c3a93120c1",
-      "shortSha": "a0fe83f",
-      "message": "Update project data and add styles to skill detail page\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-21T01:12:56Z",
-      "url": "https://github.com/OKHP3/skillz/commit/a0fe83fd0365a10def7476136f0a98c3a93120c1"
-    },
-    {
-      "sha": "56ef43e8cc89539da271d8869385efc98489fc02",
-      "shortSha": "56ef43e",
-      "message": "Update project data and manifest files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-21T01:08:14Z",
-      "url": "https://github.com/OKHP3/skillz/commit/56ef43e8cc89539da271d8869385efc98489fc02"
-    },
-    {
-      "sha": "faa8fb1c1520d3580fd3e1f40fd1dd070dc9241f",
-      "shortSha": "faa8fb1",
-      "message": "Add ExploreF mockup component and update component registry\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-20T22:48:02Z",
-      "url": "https://github.com/OKHP3/skillz/commit/faa8fb1c1520d3580fd3e1f40fd1dd070dc9241f"
-    },
-    {
-      "sha": "09f15ddc9440fa035eeb79ac0c145e466a777f46",
-      "shortSha": "09f15dd",
-      "message": "Add ExploreE component to skillz-forge mockups\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-20T19:51:20Z",
-      "url": "https://github.com/OKHP3/skillz/commit/09f15ddc9440fa035eeb79ac0c145e466a777f46"
-    },
-    {
-      "sha": "1b0b47a1a5ace27f9b0cba34358f24fdb74f632f",
-      "shortSha": "1b0b47a",
-      "message": "Update project data and manifest files\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-20T18:10:57Z",
-      "url": "https://github.com/OKHP3/skillz/commit/1b0b47a1a5ace27f9b0cba34358f24fdb74f632f"
     }
   ],
   "fetchError": null
