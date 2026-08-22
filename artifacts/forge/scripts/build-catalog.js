@@ -9,7 +9,7 @@
  *   All other paths in SKIP_DIRS
  */
 
-import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync, realpathSync } from 'fs';
 import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -1242,7 +1242,7 @@ function writeProjectSummary(catalog) {
 // forge/scripts/test-catalog.mjs importing the pure helpers below) — an
 // import must not have the side effect of re-walking the repo and
 // rewriting catalog.json / skillz.manifest.json.
-if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+if (process.argv[1] && realpathSync(fileURLToPath(import.meta.url)) === realpathSync(process.argv[1])) {
   buildCatalog();
 }
 
