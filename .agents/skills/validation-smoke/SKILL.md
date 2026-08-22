@@ -18,4 +18,6 @@ node .agents/skills/validation-smoke/run.mjs
 ```
 
 The suite uses temporary files and pure assertions; it does not mutate the
-repository, publish anything, or require credentials.
+repository, publish anything, or require credentials. It covers both a
+complete passing report and an incomplete failing report, including required
+fields, allowed status/severity values, and non-empty source paths.

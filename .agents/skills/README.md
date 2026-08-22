@@ -55,7 +55,7 @@ change deployment policy):
 | `static-route-validation` | After route, hash-anchor, or static page changes | Confirms expected routes and anchors exist in the shipped Forge source | Non-zero exit for missing route/anchor or malformed hash target |
 | `production-build-verification` | Before presenting or publishing Forge | Builds with the artifact's required `PORT` and `BASE_PATH`, then checks output | Non-zero exit if build fails or output is missing |
 | `publishing-trigger-check` | Before changing deploy workflow paths | Reuses the deploy-trigger guard and checks family-agnostic globs | Non-zero exit if workflow is missing, hardcodes families, or loses a glob |
-| `validation-smoke` | When changing validators themselves | Exercises malformed catalog, route/hash, missing-output, and blocked-publishing fixtures | Non-zero exit if a fixture is accepted or rejected incorrectly |
+| `validation-smoke` | When changing validators or CI report schemas | Exercises malformed catalog, route/hash, missing-output, blocked-publishing, and passing/failing report-contract fixtures | Non-zero exit if a fixture is accepted or rejected incorrectly |
 
 Warnings about shallow history are expected during local development when the
 catalog builder is allowed to proceed. In CI, the catalog builder must fail
