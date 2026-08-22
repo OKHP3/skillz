@@ -39,6 +39,22 @@ async function expectNoHorizontalOverflow(page, label) {
   assert(overflow <= 1, `${label} has horizontal overflow (${overflow}px).`);
 }
 
+async function expectKeyboardFocus(page, locator, label) {
+  await locator.scrollIntoViewIfNeeded();
+  await locator.focus();
+  assert(await locator.evaluate(element => document.activeElement === element), `${label} could not receive keyboard focus.`);
+  const focus = await locator.evaluate(element => {
+    const style = getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    return {
+      outline: style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) > 0,
+      withinViewport: rect.left >= 0 && rect.right <= window.innerWidth && rect.top >= 0 && rect.bottom <= window.innerHeight,
+    };
+  });
+  assert(focus.outline, `${label} has no visible focus indicator.`);
+  assert(focus.withinViewport, `${label} is clipped outside the viewport.`);
+}
+
 async function expectReviewSurface(page, skill) {
   await page.locator('[data-page="skill-detail"]').waitFor();
   await page.getByRole('heading', { name: 'Trust summary', exact: false }).waitFor();
@@ -52,6 +68,7 @@ async function expectReviewSurface(page, skill) {
   assert((await text(page, '[data-page="skill-detail"] h1')).length > 0, `No title rendered for ${skill.name}.`);
   assert((await text(page, '.skill-gate-panel h2')) === 'Blocked', `Expected blocked release gate for ${skill.name}.`);
   assert(await page.getByRole('button', { name: /Request final review/ }).isDisabled(), 'Blocked gate must disable final review.');
+  assert(await page.getByRole('button', { name: 'Supervised run: attach evidence' }).isEnabled(), 'Blocked gate must leave supervised check available.');
 }
 
 async function main() {
@@ -109,8 +126,20 @@ async function main() {
     await narrow.getByRole('heading', { name: 'Full contract' }).waitFor();
     const tabs = narrow.getByRole('tab');
     assert(await tabs.first().isVisible() && await tabs.last().isVisible(), 'Contract tabs are inaccessible on narrow view.');
-    assert(await narrow.getByRole('button', { name: /attached/ }).isVisible(), 'Locally unlocked supervised run is not visible.');
-    assert(await narrow.getByRole('button', { name: /Request final review/ }).isEnabled(), 'Locally unlocked final review remains disabled.');
+    const rawTab = narrow.getByRole('tab', { name: 'Raw markdown' });
+    const validationTab = narrow.getByRole('tab', { name: 'Validation' });
+    await expectKeyboardFocus(narrow, rawTab, 'Raw markdown tab');
+    await narrow.keyboard.press('Tab');
+    assert(await validationTab.evaluate(element => document.activeElement === element), 'Tab navigation does not reach Validation after Raw markdown.');
+    await narrow.keyboard.press('Enter');
+    assert(await validationTab.getAttribute('aria-selected') === 'true', 'Keyboard activation does not select Validation.');
+    assert(await narrow.getByRole('tabpanel', { name: 'Validation' }).isVisible(), 'Keyboard-selected Validation panel is not visible.');
+    const supervised = narrow.getByRole('button', { name: 'Supervised run: attached' });
+    const finalReview = narrow.getByRole('button', { name: 'Request final review: enabled' });
+    assert(await supervised.isVisible(), 'Locally unlocked supervised run is not visible.');
+    assert(await supervised.isDisabled(), 'Attached supervised run must expose its disabled state.');
+    assert(await finalReview.isEnabled(), 'Locally unlocked final review remains disabled.');
+    await expectKeyboardFocus(narrow, finalReview, 'Final review control');
     await expectNoHorizontalOverflow(narrow, 'narrow review surface');
     console.log(`✓ review surface covers loading, stale, blocked, validation, and locally unlocked states (${blocked.name}, ${stale.name}, ${unlocked.name})`);
   } finally {

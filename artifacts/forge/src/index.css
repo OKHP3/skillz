@@ -2534,6 +2534,7 @@ input, select, textarea {
 .skill-contract-heading h2 { margin-bottom: 0; }
 .skill-contract-tabs { display: flex; gap: 2px; padding: 3px; background: var(--color-bg); }
 .skill-contract-tabs button { padding: 7px 10px; border: 0; background: transparent; color: var(--review-muted); cursor: pointer; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.skill-contract-tabs button:focus-visible { position: relative; z-index: 1; outline: 2px solid var(--review-amber); outline-offset: -2px; }
 .skill-contract-tabs button[aria-selected="true"] { background: #3a3029; color: var(--review-ink); }
 .skill-validation-list { padding: var(--space-4) 0; }
 .skill-contract-body { background: var(--review-deep); }

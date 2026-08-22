@@ -227,7 +227,7 @@ export default function SkillDetail() {
               <div className="skill-validation-rows">
                 <div className="is-passed">✓ Contract is present <strong>complete</strong></div>
                 <div className={skill.evidence.status !== 'none' ? 'is-passed' : 'is-blocked'}>{skill.evidence.status !== 'none' ? '✓' : '◷'} Evidence recorded <strong>{skill.evidence.status}</strong></div>
-                <div className={liveEvidenceReady ? 'is-passed' : 'is-blocked'}><button type="button" onClick={attachLiveEvidence} disabled={liveEvidenceReady || supervisedCheckRunning}>{liveEvidenceReady ? '✓' : '◷'} Supervised run <strong>{liveEvidenceReady ? 'attached' : supervisedCheckRunning ? 'running…' : 'attach evidence'}</strong></button></div>
+                <div className={liveEvidenceReady ? 'is-passed' : 'is-blocked'}><button type="button" aria-label={`Supervised run: ${liveEvidenceReady ? 'attached' : supervisedCheckRunning ? 'running' : 'attach evidence'}`} onClick={attachLiveEvidence} disabled={liveEvidenceReady || supervisedCheckRunning}>{liveEvidenceReady ? '✓' : '◷'} Supervised run <strong>{liveEvidenceReady ? 'attached' : supervisedCheckRunning ? 'running…' : 'attach evidence'}</strong></button></div>
               </div>
             </div>
             <div className="skill-gate-panel">
@@ -235,7 +235,7 @@ export default function SkillDetail() {
               <h2>{releaseReady ? 'Reviewable' : 'Blocked'}</h2>
               <div className="skill-gate-progress"><span style={{ width: `${releaseReady ? 100 : 75}%` }} /></div>
               {skill.evidence.blockers.length > 0 && <p>{skill.evidence.blockers[0]}</p>}
-              <button className="btn btn-primary" disabled={!liveEvidenceReady && !releaseReady} onClick={() => announce(`Final review requested for ${displayName}.`)}>Request final review</button>
+              <button className="btn btn-primary" aria-label={`Request final review: ${liveEvidenceReady || releaseReady ? 'enabled' : 'blocked'}`} disabled={!liveEvidenceReady && !releaseReady} onClick={() => announce(`Final review requested for ${displayName}.`)}>Request final review</button>
             </div>
           </section>
 
@@ -559,27 +559,29 @@ export default function SkillDetail() {
             <div className="skill-contract-heading">
               <h2>Full contract</h2>
               <div className="skill-contract-tabs" role="tablist" aria-label="Contract views">
-                <button type="button" role="tab" aria-selected={activeContractTab === 'contract'} onClick={() => setActiveContractTab('contract')}>Raw markdown</button>
-                <button type="button" role="tab" aria-selected={activeContractTab === 'validation'} onClick={() => setActiveContractTab('validation')}>Validation</button>
+                <button type="button" role="tab" id="contract-tab-raw" aria-controls="contract-panel-raw" aria-selected={activeContractTab === 'contract'} onClick={() => setActiveContractTab('contract')}>Raw markdown</button>
+                <button type="button" role="tab" id="contract-tab-validation" aria-controls="contract-panel-validation" aria-selected={activeContractTab === 'validation'} onClick={() => setActiveContractTab('validation')}>Validation</button>
               </div>
             </div>
             <p className="detail-full-contract-hint">
               The complete SKILL.md contract for this skill, rendered in-app.
             </p>
             {activeContractTab === 'contract' && contractState.status === 'loading' && (
-              <p className="meta-pending" role="status">Loading contract…</p>
+              <p id="contract-panel-raw" className="meta-pending" role="tabpanel" aria-labelledby="contract-tab-raw" tabIndex={0}><span role="status">Loading contract…</span></p>
             )}
             {activeContractTab === 'contract' && contractState.status === 'error' && (
-              <p className="meta-pending" role="alert">
+              <p id="contract-panel-raw" className="meta-pending" role="tabpanel" aria-labelledby="contract-tab-raw" tabIndex={0}>
+                <span role="alert">
                 Could not load the full contract.{' '}
                 <a href={skill.rawUrl} target="_blank" rel="noopener noreferrer">View raw SKILL.md instead</a>.
+                </span>
               </p>
             )}
             {activeContractTab === 'contract' && contractState.status === 'ready' && (
-              <FullContract rawBody={contractState.body} />
+              <div id="contract-panel-raw" role="tabpanel" aria-labelledby="contract-tab-raw" tabIndex={0}><FullContract rawBody={contractState.body} /></div>
             )}
             {activeContractTab === 'validation' && (
-              <div className="skill-validation-list" role="tabpanel">
+              <div id="contract-panel-validation" className="skill-validation-list" role="tabpanel" aria-labelledby="contract-tab-validation" tabIndex={0}>
                 <div className="skill-validation-row is-passed"><span>✓ Contract body loaded</span><strong>{contractState.status === 'ready' ? 'passed' : 'pending'}</strong></div>
                 <div className={skill.evidence.status !== 'none' ? 'skill-validation-row is-passed' : 'skill-validation-row is-blocked'}><span>{skill.evidence.status !== 'none' ? '✓' : '◷'} Evidence record</span><strong>{skill.evidence.status}</strong></div>
                 <div className={liveEvidenceReady ? 'skill-validation-row is-passed' : 'skill-validation-row is-blocked'}><span>{liveEvidenceReady ? '✓' : '◷'} Supervised run</span><strong>{liveEvidenceReady ? 'attached' : supervisedCheckRunning ? 'running…' : 'missing'}</strong></div>
