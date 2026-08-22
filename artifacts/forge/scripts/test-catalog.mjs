@@ -21,11 +21,15 @@ import { applyEvidencePolicy, hasSubstantiveEvidenceArtifact } from './build-cat
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = join(__dirname, '..', '..');
+// The source skill repository remains under .migration-backup in the
+// PNPM_WORKSPACE layout. Keep the generated Forge artifact separate from the
+// catalog source and manifest so this check works from the migrated package.
+const REPO_ROOT = join(__dirname, '..', '..', '..', '.migration-backup');
+const WORKSPACE_ROOT = join(REPO_ROOT, '..');
 const FORGE_ROOT = join(__dirname, '..');
 const CATALOG_PATH = join(__dirname, '..', 'public', 'data', 'catalog.json');
 const SUMMARY_PATH = join(__dirname, '..', 'public', 'data', 'project-summary.json');
-const MANIFEST_PATH = join(__dirname, '..', '..', 'skillz.manifest.json');
+const MANIFEST_PATH = join(REPO_ROOT, 'skillz.manifest.json');
 
 let catalog, manifest;
 try {
@@ -528,10 +532,10 @@ test('build-catalog.js hard-fails in CI against a genuinely shallow checkout (no
   const tmpParent = mktempCloneDir();
   try {
     const clonePath = join(tmpParent, 'shallow-clone');
-    execSync(`git clone --depth 1 --no-local --quiet file://${REPO_ROOT} ${JSON.stringify(clonePath)}`, {
+    execSync(`git clone --depth 1 --no-local --quiet file://${WORKSPACE_ROOT} ${JSON.stringify(clonePath)}`, {
       encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'],
     });
-    const buildScript = join(clonePath, 'forge', 'scripts', 'build-catalog.js');
+    const buildScript = join(clonePath, 'artifacts', 'forge', 'scripts', 'build-catalog.js');
     assert(existsSync(buildScript), `shallow clone is missing ${buildScript} — clone did not succeed as expected`);
 
     const result = spawnSync(process.execPath, [buildScript], {

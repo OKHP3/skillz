@@ -17,7 +17,9 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = join(__dirname, '..', '..');
+// Publishing configuration and source families live in the migrated source
+// tree, not beside the standalone Forge artifact.
+const REPO_ROOT = join(__dirname, '..', '..', '..', '.migration-backup');
 const WORKFLOW_PATH = join(REPO_ROOT, '.github', 'workflows', 'deploy-pages.yml');
 
 const SKIP_DIRS = new Set([
