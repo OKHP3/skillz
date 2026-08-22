@@ -106,7 +106,7 @@ export default function SkillDetail() {
 
   if (!skill) {
     return (
-      <div data-page="skill-detail">
+      <div data-page="skill-detail" className="skill-review-page">
         <Nav />
         <main className="container detail-not-found-main" id="main-content" tabIndex={-1}>
           <div className="detail-article detail-article--centered">
@@ -168,7 +168,7 @@ export default function SkillDetail() {
   const releaseReady = liveEvidenceReady && skill.evidence.blockers.length === 0;
 
   return (
-    <div data-page="skill-detail">
+    <div data-page="skill-detail" className="skill-review-page">
       <Nav />
       <main className="container" id="main-content" tabIndex={-1}>
         <div className="breadcrumb" aria-label="Breadcrumb">

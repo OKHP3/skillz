@@ -35,3 +35,7 @@ exposeLocalhost = true
 [[ports]]
 localPort = 23636
 externalPort = 3002
+
+[nix]
+channel = "stable-25_05"
+packages = ["chromium"]

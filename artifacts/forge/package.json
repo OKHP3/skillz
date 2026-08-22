@@ -9,7 +9,8 @@
     "prebuild": "ALLOW_SHALLOW_CATALOG_BUILD=1 node scripts/build-catalog.js && node scripts/build-activity.mjs",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:review-browser": "node scripts/test-review-surface-browser.mjs"
   },
   "devDependencies": {
     "@replit/vite-plugin-cartographer": "catalog:",
@@ -21,6 +22,7 @@
     "@vitejs/plugin-react": "catalog:",
     "fuse.js": "^7.5.0",
     "lucide-react": "catalog:",
+    "playwright": "^1.55.0",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-router-dom": "^7.18.1",
