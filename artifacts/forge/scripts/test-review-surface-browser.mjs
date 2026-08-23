@@ -105,15 +105,26 @@ async function main() {
     assert((await text(desktop, '.skill-validation-list')).includes('Contract body loaded'), 'Validation tab did not render its checks.');
     await expectNoHorizontalOverflow(desktop, 'desktop review surface');
 
-    const missing = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+    const missing = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await missing.route('**/*.json', requestRoute => (
       requestRoute.request().url().includes('/data/skills/')
         ? requestRoute.fulfill({ status: 404, body: 'missing' })
         : requestRoute.continue()
     ));
     await missing.goto(route(blocked), { waitUntil: 'domcontentloaded' });
-    await missing.locator('.meta-pending').filter({ hasText: 'Could not load the full contract' }).waitFor();
-    assert(await missing.getByRole('link', { name: 'View raw SKILL.md' }).first().isVisible(), 'Missing-contract fallback link is inaccessible.');
+    const failedPanel = missing.getByRole('tabpanel', { name: 'Raw markdown' });
+    await failedPanel.filter({ hasText: 'Could not load the full contract' }).waitFor();
+    const failureAlert = failedPanel.getByRole('alert');
+    assert(await failureAlert.isVisible(), 'Failed contract state is not announced to assistive technology.');
+    assert((await failureAlert.innerText()).includes('Could not load the full contract'), 'Failure announcement does not explain the contract load failure.');
+    const fallbackLink = failureAlert.getByRole('link', { name: 'View raw SKILL.md instead' });
+    assert(await fallbackLink.isVisible(), 'Missing-contract fallback link is inaccessible.');
+    await failedPanel.focus();
+    assert(await failedPanel.evaluate(element => document.activeElement === element), 'Failed contract panel could not receive keyboard focus.');
+    await missing.keyboard.press('Tab');
+    assert(await fallbackLink.evaluate(element => document.activeElement === element), 'Keyboard navigation does not reach the missing-contract fallback link.');
+    await expectKeyboardFocus(missing, fallbackLink, 'Missing-contract fallback link');
+    await expectNoHorizontalOverflow(missing, 'narrow missing-contract surface');
     await missing.close();
 
     await desktop.goto(route(stale), { waitUntil: 'domcontentloaded' });
