@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 148,
+  "distributionSkillCount": 149,
   "activeFamilyCount": 16,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 40,
   "maturityCounts": {
-    "draftable": 119,
+    "draftable": 120,
     "skeleton": 24,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 82,
+    "not-run": 83,
     "none": 31,
     "local-checks": 22,
     "live": 7

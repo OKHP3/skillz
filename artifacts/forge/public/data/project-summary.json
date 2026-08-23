@@ -6,13 +6,13 @@
   "skillCount": 148,
   "familyCount": 16,
   "maturityCounts": {
-    "draftable": 119,
+    "draftable": 120,
     "skeleton": 24,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 82,
+    "not-run": 83,
     "none": 31,
     "local-checks": 22,
     "live": 7
