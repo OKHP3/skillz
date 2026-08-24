@@ -73,6 +73,17 @@ async function main() {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
+    // A stale bookmark must land on an actionable fallback instead of a
+    // blank route or crash, and its back link must return to the catalog.
+    await page.goto(`${baseUrl}/missing-family/missing-skill`, { waitUntil: 'domcontentloaded' });
+    await page.getByText('Skill not found', { exact: true }).waitFor();
+    assert(
+      await page.getByText(/No skill named "missing-skill"/).count() > 0,
+      'Missing-skill fallback did not explain which catalog entry was unavailable.',
+    );
+    await page.getByRole('link', { name: 'Back to catalog' }).click();
+    await page.getByTestId('input-catalog-search').waitFor();
+
     // Catalog picker loads from the real catalog data (not one hardcoded
     // example) and lets a reviewer navigate to any skill's dossier.
     await page.getByTestId('input-catalog-search').waitFor();
