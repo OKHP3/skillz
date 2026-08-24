@@ -419,10 +419,7 @@ Ko-fi, In... |
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 9dcffdcc073f3d5a11674e59a039b786e2747138
 ## Install a skill
 
 Skills are plain-text contracts. There is no hosted runtime, account requirement, or package registry in the way of using one. Choose a skill in [Skillz Forge](https://okhp3.github.io/skillz/), open its source in GitHub, and copy the skill directory into the skill location used by your agent client.
