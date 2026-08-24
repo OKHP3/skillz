@@ -1,5 +1,8 @@
 # Skillz Forge
 
+[![Deploy Skillz Forge to GitHub Pages](https://github.com/OKHP3/skillz/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/OKHP3/skillz/actions/workflows/deploy-pages.yml)
+[![Publish health check](https://github.com/OKHP3/skillz/actions/workflows/publish-health-check.yml/badge.svg)](https://github.com/OKHP3/skillz/actions/workflows/publish-health-check.yml)
+
 Skillz Forge is a catalog and review platform for the Skillz ecosystem. It
 verifies that skill catalog data, accessibility affordances, and release
 gates stay trustworthy as the underlying skills repository (`.migration-backup/`
