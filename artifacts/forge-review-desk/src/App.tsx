@@ -14,6 +14,7 @@ import {
   Code2,
   Copy,
   FileCheck2,
+  Filter,
   Github,
   Hash,
   Layers3,
@@ -32,7 +33,7 @@ import NotFound from '@/pages/not-found';
 import { Link, Route, Router as WouterRouter, Switch, useLocation, useParams } from 'wouter';
 import { fetchCatalog, findSkill } from '@/lib/catalog';
 import { buildEvidenceItems, buildRelatedSkills } from '@/lib/reviewEvidence';
-import type { Catalog, Skill } from '@/types/catalog';
+import type { Catalog, EvidenceStatusV2, Maturity, Skill } from '@/types/catalog';
 
 const queryClient = new QueryClient();
 
@@ -395,11 +396,43 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
 }
 
 function CatalogList({ catalog }: { catalog: Catalog }) {
-  const [query, setQuery] = useState('');
+  const [, navigate] = useLocation();
+  const [search, setSearch] = useState(() => window.location.search.slice(1));
+  useEffect(() => {
+    const handlePopState = () => setSearch(window.location.search.slice(1));
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+  const params = new URLSearchParams(search);
+  const query = params.get('q') ?? '';
+  const family = params.get('family') ?? '';
+  const evidence = params.get('evidence') ?? '';
+  const maturity = params.get('maturity') ?? '';
   const normalized = query.trim().toLowerCase();
-  const skills = normalized
-    ? catalog.skills.filter((s) => s.name.toLowerCase().includes(normalized) || s.displayName.toLowerCase().includes(normalized) || s.family.toLowerCase().includes(normalized))
-    : catalog.skills;
+  const evidenceStatuses: EvidenceStatusV2[] = ['live', 'analytical', 'historical', 'not-run', 'none'];
+  const maturities: Maturity[] = ['placeholder', 'skeleton', 'draftable', 'usable', 'validated', 'published'];
+  const skills = catalog.skills.filter((s) => {
+    const matchesQuery = !normalized
+      || s.name.toLowerCase().includes(normalized)
+      || s.displayName.toLowerCase().includes(normalized)
+      || s.family.toLowerCase().includes(normalized);
+    return matchesQuery
+      && (!family || s.family === family)
+      && (!evidence || s.evidence.status === evidence)
+      && (!maturity || s.maturity === maturity);
+  });
+
+  const updateFilter = (key: string, value: string) => {
+    const next = new URLSearchParams(search);
+    if (value) next.set(key, value);
+    else next.delete(key);
+    const nextQuery = next.toString();
+    navigate(nextQuery ? `/?${nextQuery}` : '/');
+    setSearch(nextQuery);
+  };
+
+  const clearFilters = () => navigate('/');
+  const activeFilterCount = [family, evidence, maturity].filter(Boolean).length;
 
   return (
     <main className="forge-noise min-h-[100dvh] w-full bg-[#1d2325] text-[#e8eee8]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -422,11 +455,69 @@ function CatalogList({ catalog }: { catalog: Catalog }) {
             data-testid="input-catalog-search"
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => updateFilter('q', e.target.value)}
             placeholder="Search skills by name or family"
             className="w-full bg-transparent font-mono text-[12px] outline-none"
             style={{ color: colors.ink }}
           />
+        </div>
+        <div className="mt-3 grid gap-3 md:grid-cols-[1fr_1fr_1fr_auto]">
+          <label className="flex min-w-0 flex-col gap-1 font-mono text-[9px] uppercase tracking-[0.1em]" style={{ color: colors.muted }}>
+            Family
+            <select
+              data-testid="select-catalog-family"
+              value={family}
+              onChange={(e) => updateFilter('family', e.target.value)}
+              className="h-9 min-w-0 border bg-[#202728] px-2 text-[11px] normal-case tracking-normal outline-none"
+              style={{ borderColor: colors.border, color: colors.ink }}
+            >
+              <option value="">All families</option>
+              {catalog.families
+                .slice()
+                .sort((a, b) => a.displayName.localeCompare(b.displayName))
+                .map((item) => <option key={item.name} value={item.name}>{item.displayName}</option>)}
+            </select>
+          </label>
+          <label className="flex min-w-0 flex-col gap-1 font-mono text-[9px] uppercase tracking-[0.1em]" style={{ color: colors.muted }}>
+            Evidence status
+            <select
+              data-testid="select-catalog-evidence"
+              value={evidence}
+              onChange={(e) => updateFilter('evidence', e.target.value)}
+              className="h-9 min-w-0 border bg-[#202728] px-2 text-[11px] normal-case tracking-normal outline-none"
+              style={{ borderColor: colors.border, color: colors.ink }}
+            >
+              <option value="">All evidence</option>
+              {evidenceStatuses.map((status) => <option key={status} value={status}>{status}</option>)}
+            </select>
+          </label>
+          <label className="flex min-w-0 flex-col gap-1 font-mono text-[9px] uppercase tracking-[0.1em]" style={{ color: colors.muted }}>
+            Maturity
+            <select
+              data-testid="select-catalog-maturity"
+              value={maturity}
+              onChange={(e) => updateFilter('maturity', e.target.value)}
+              className="h-9 min-w-0 border bg-[#202728] px-2 text-[11px] normal-case tracking-normal outline-none"
+              style={{ borderColor: colors.border, color: colors.ink }}
+            >
+              <option value="">All maturity</option>
+              {maturities.map((status) => <option key={status} value={status}>{status}</option>)}
+            </select>
+          </label>
+          <button
+            type="button"
+            data-testid="button-clear-catalog-filters"
+            onClick={clearFilters}
+            disabled={!query && !activeFilterCount}
+            className="mt-auto inline-flex h-9 items-center justify-center gap-2 border px-3 font-mono text-[9px] uppercase tracking-[0.1em] transition-colors hover:bg-[#303a3a] disabled:cursor-not-allowed disabled:opacity-40"
+            style={{ borderColor: colors.border, color: colors.muted }}
+          >
+            <Filter size={12} /> Clear
+          </button>
+        </div>
+        <div className="mt-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.1em]" style={{ color: colors.muted }}>
+          <span>{skills.length} of {catalog.skillCount} skills</span>
+          {(query || activeFilterCount > 0) && <span>filtered view · shareable URL</span>}
         </div>
         <ul className="mt-4 divide-y" style={{ borderColor: colors.border }}>
           {skills.map((s) => (
@@ -440,7 +531,7 @@ function CatalogList({ catalog }: { catalog: Catalog }) {
               </Link>
             </li>
           ))}
-          {skills.length === 0 && <li className="px-3 py-6 text-center text-[12px]" style={{ color: colors.muted }}>No skills match "{query}".</li>}
+          {skills.length === 0 && <li className="px-3 py-6 text-center text-[12px]" style={{ color: colors.muted }}>No skills match the current filters.</li>}
         </ul>
       </div>
     </main>
