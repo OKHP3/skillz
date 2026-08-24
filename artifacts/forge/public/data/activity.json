@@ -1,6 +1,70 @@
 {
-  "generatedAt": "2026-08-24T00:15:32.113Z",
+  "generatedAt": "2026-08-24T05:32:58.918Z",
   "commits": [
+    {
+      "sha": "976b6327d4014882095df7e2194206bbaa178965",
+      "shortSha": "976b632",
+      "message": "Record memory: gitignore path-migration asset loss, and Vite-config env requirement applies to any step loading vite.config.ts, not just build",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T05:31:56Z",
+      "url": "https://github.com/OKHP3/skillz/commit/976b6327d4014882095df7e2194206bbaa178965"
+    },
+    {
+      "sha": "046ddd5f97bab3b48705d0aa734b3d2caf14e304",
+      "shortSha": "046ddd5",
+      "message": "Fix .gitignore to stop dropping post-migration favicons/icons/social-art/hero-fallback assets under artifacts/*, which broke the CI production build (missing PNG import) and would have shipped broken favicons/social previews",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T05:27:38Z",
+      "url": "https://github.com/OKHP3/skillz/commit/046ddd5f97bab3b48705d0aa734b3d2caf14e304"
+    },
+    {
+      "sha": "8e52934abd3a5644f5c0f49495908d084d4d6e26",
+      "shortSha": "8e52934",
+      "message": "Fix deploy-pages.yml unit-test step missing PORT/BASE_PATH env (was crashing vite.config.ts load in CI); point verify-deploy-trigger.mjs at the real .github/workflows path instead of the stale migration-backup copy",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T05:24:31Z",
+      "url": "https://github.com/OKHP3/skillz/commit/8e52934abd3a5644f5c0f49495908d084d4d6e26"
+    },
+    {
+      "sha": "4fa241c1b34aef7328d3db83d141b452aaadc5d3",
+      "shortSha": "4fa241c",
+      "message": "Fix corrupted pnpm-lock.yaml: remove stray non-YAML merge-hint comment lines that caused duplicated mapping keys",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T04:26:03Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4fa241c1b34aef7328d3db83d141b452aaadc5d3"
+    },
+    {
+      "sha": "77a78a98c1ea62dda3c6a75a799315e0765926f7",
+      "shortSha": "77a78a9",
+      "message": "Confirm published Forge pages preserve keyboard recovery: restore deploy-pages.yml at .github/workflows/ with corrected artifacts/forge/ paths, required build env (PORT/BASE_PATH), and correct dist/public artifact path, so the post-deploy verify-keyboard-recovery job (running the published-keyboard-recovery-check) actually executes after each Pages deploy\n\nReplit-Task-Id: c41f745c-b304-4ec9-a9e0-9b5a55ebadf6\nReplit-Merge-Attempt: MergeTask:c41f745c-b304-4ec9-a9e0-9b5a55ebadf6:2:bfc5ffa8",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T04:25:04Z",
+      "url": "https://github.com/OKHP3/skillz/commit/77a78a98c1ea62dda3c6a75a799315e0765926f7"
+    },
+    {
+      "sha": "31a97e9cbbb143dc2f5a07be39eca134bb095b68",
+      "shortSha": "31a97e9",
+      "message": "Add root README with artifact map and validator overview",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T04:23:09Z",
+      "url": "https://github.com/OKHP3/skillz/commit/31a97e9cbbb143dc2f5a07be39eca134bb095b68"
+    },
+    {
+      "sha": "68fbc5a3ddfd3fa3956b58ad852bcbd37d5b7c9a",
+      "shortSha": "68fbc5a",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T04:17:52Z",
+      "url": "https://github.com/OKHP3/skillz/commit/68fbc5a3ddfd3fa3956b58ad852bcbd37d5b7c9a"
+    },
+    {
+      "sha": "aede1d7354fc6b8b3e80ed59e8f0ecf88428484d",
+      "shortSha": "aede1d7",
+      "message": "Update",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T04:17:43Z",
+      "url": "https://github.com/OKHP3/skillz/commit/aede1d7354fc6b8b3e80ed59e8f0ecf88428484d"
+    },
     {
       "sha": "475db52430c6ee8df8579e1bc0f96d2daa36e67e",
       "shortSha": "475db52",
@@ -16,70 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-23T04:38:52Z",
       "url": "https://github.com/OKHP3/skillz/commit/53fa7d2451b917bb8801c65e864dca5c7baf669f"
-    },
-    {
-      "sha": "56c038f35218ec48e7774174409a76006c1cd365",
-      "shortSha": "56c038f",
-      "message": "Refresh generated Forge catalog artifacts",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-23T04:38:49Z",
-      "url": "https://github.com/OKHP3/skillz/commit/56c038f35218ec48e7774174409a76006c1cd365"
-    },
-    {
-      "sha": "312616028ccd8001c892b136bd54fe43dc719416",
-      "shortSha": "3126160",
-      "message": "Update migration backup metadata and add new replit skill documentation\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-23T04:37:34Z",
-      "url": "https://github.com/OKHP3/skillz/commit/312616028ccd8001c892b136bd54fe43dc719416"
-    },
-    {
-      "sha": "c4ff6d3384509f96a063a5c42995db552bfacff2",
-      "shortSha": "c4ff6d3",
-      "message": "Update",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-23T03:15:18Z",
-      "url": "https://github.com/OKHP3/skillz/commit/c4ff6d3384509f96a063a5c42995db552bfacff2"
-    },
-    {
-      "sha": "a2643b5f17f164e738cafe116819ab492c6faf2e",
-      "shortSha": "a2643b5",
-      "message": "Run Forge review-surface browser check in release validation\n\nReplit-Task-Id: 0c325219-6836-49f8-bdee-65fdd6658ef7\nReplit-Merge-Attempt: MergeTask:0c325219-6836-49f8-bdee-65fdd6658ef7:1:37ba900b",
-      "author": "overkillhillp3",
-      "date": "2026-08-23T02:52:06Z",
-      "url": "https://github.com/OKHP3/skillz/commit/a2643b5f17f164e738cafe116819ab492c6faf2e"
-    },
-    {
-      "sha": "4de41a34e287a0bbd694b3d8f2eff1d1de956211",
-      "shortSha": "4de41a3",
-      "message": "Git commit prior to merge",
-      "author": "overkillhillp3",
-      "date": "2026-08-23T02:52:05Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4de41a34e287a0bbd694b3d8f2eff1d1de956211"
-    },
-    {
-      "sha": "b1474cc05465f18aa7a95a4ae26c4610b58adcdd",
-      "shortSha": "b1474cc",
-      "message": "Test keyboard recovery from failed contract loads\n\nReplit-Task-Id: 2c5908f4-370f-4d8e-8a1e-c980cea7c62a\nReplit-Merge-Attempt: MergeTask:2c5908f4-370f-4d8e-8a1e-c980cea7c62a:1:619d71fa",
-      "author": "overkillhillp3",
-      "date": "2026-08-23T02:35:00Z",
-      "url": "https://github.com/OKHP3/skillz/commit/b1474cc05465f18aa7a95a4ae26c4610b58adcdd"
-    },
-    {
-      "sha": "067948e738ab5762fe397da188ff94b57c8a07de",
-      "shortSha": "067948e",
-      "message": "Update public data artifacts and migration backup\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-23T02:24:17Z",
-      "url": "https://github.com/OKHP3/skillz/commit/067948e738ab5762fe397da188ff94b57c8a07de"
-    },
-    {
-      "sha": "3bcb6466b5908cf5e121ba5e3e8facc2657cd8a1",
-      "shortSha": "3bcb646",
-      "message": "Confirm keyboard accessibility for the Forge release review workflow\n\nReplit-Task-Id: 73f1e31c-f40e-4ba1-9d28-4c4a204d3b66\nReplit-Merge-Attempt: MergeTask:73f1e31c-f40e-4ba1-9d28-4c4a204d3b66:1:1ca68808",
-      "author": "overkillhillp3",
-      "date": "2026-08-22T23:57:12Z",
-      "url": "https://github.com/OKHP3/skillz/commit/3bcb6466b5908cf5e121ba5e3e8facc2657cd8a1"
     }
   ],
   "fetchError": null
