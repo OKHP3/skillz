@@ -82,18 +82,22 @@ jobs:
           # Keep the scheduled failure count across workflow runs in a
           # replaceable artifact. The concurrency group serializes readers and
           # writers, so two scheduled checks cannot lose an increment.
-          artifacts=$(curl -fsSL \
+          if artifacts=$(curl -fsSL \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/$REPO/actions/artifacts?name=publish-health-streak&per_page=1")
-          archive_url=$(printf '%s' "$artifacts" | node -e "
-            let data = '';
-            process.stdin.on('data', c => data += c);
-            process.stdin.on('end', () => {
-              const artifact = JSON.parse(data).artifacts?.[0];
-              console.log(artifact?.archive_download_url ?? '');
-            });
-          ")
+            "https://api.github.com/repos/$REPO/actions/artifacts?name=publish-health-streak&per_page=1"); then
+            archive_url=$(printf '%s' "$artifacts" | node -e "
+              let data = '';
+              process.stdin.on('data', c => data += c);
+              process.stdin.on('end', () => {
+                const artifact = JSON.parse(data).artifacts?.[0];
+                console.log(artifact?.archive_download_url ?? '');
+              });
+            ")
+          else
+            echo "Could not read prior alert state; treating this as no prior streak."
+            archive_url=''
+          fi
           if [ -n "$archive_url" ]; then
             if curl -fsSL \
               -H "Authorization: Bearer $GH_TOKEN" \
