@@ -107,6 +107,17 @@ async function main() {
     assert((await text(page, 'status-release-gate')) === 'Blocked', 'Release gate should stay blocked while the ownership checkpoint is still missing.');
     assert(await page.getByTestId('button-request-final-review').isDisabled(), 'Final review must stay disabled while a checkpoint is missing.');
 
+    // The supervised decision is durable: leaving the dossier and reloading
+    // the same skill restores the completed fixture state.
+    await page.getByTestId('button-breadcrumb-catalog').click();
+    await page.getByTestId('input-catalog-search').waitFor();
+    await page.getByTestId('input-catalog-search').fill('okhp3-skill-cataloger');
+    await page.getByTestId('link-catalog-skill-okhp3-skill-cataloger').click();
+    await page.getByTestId('text-skill-name').waitFor();
+    await page.getByTestId('status-supervised-check').waitFor();
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.getByTestId('status-supervised-check').waitFor();
+
     // Nearby contracts and the breadcrumb both let a reviewer jump to a
     // different skill without hand-editing the URL.
     await page.getByTestId('button-breadcrumb-catalog').click();

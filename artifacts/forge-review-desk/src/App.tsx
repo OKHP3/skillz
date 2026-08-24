@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useMemo, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   Activity,
@@ -53,6 +53,10 @@ const colors = {
 };
 
 type RunState = 'idle' | 'running' | 'complete';
+type PersistedReviewState = {
+  supervisedCheckComplete: boolean;
+  finalReviewRequested: boolean;
+};
 type CatalogState =
   | { status: 'loading' }
   | { status: 'ready'; catalog: Catalog }
@@ -62,6 +66,36 @@ function formatDate(value: string | null): string {
   if (!value) return 'not recorded';
   const d = new Date(value);
   return Number.isNaN(d.getTime()) ? value : d.toISOString().slice(0, 10);
+}
+
+function reviewStateKey(skill: Pick<Skill, 'family' | 'name'>): string {
+  return `skillz-forge-review:${skill.family}/${skill.name}`;
+}
+
+function readReviewState(skill: Pick<Skill, 'family' | 'name'>): PersistedReviewState {
+  const fallback = { supervisedCheckComplete: false, finalReviewRequested: false };
+  try {
+    const raw = window.localStorage.getItem(reviewStateKey(skill));
+    if (!raw) return fallback;
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return fallback;
+    const value = parsed as Partial<PersistedReviewState>;
+    return {
+      supervisedCheckComplete: value.supervisedCheckComplete === true,
+      finalReviewRequested: value.finalReviewRequested === true,
+    };
+  } catch {
+    return fallback;
+  }
+}
+
+function writeReviewState(skill: Pick<Skill, 'family' | 'name'>, state: PersistedReviewState): void {
+  try {
+    window.localStorage.setItem(reviewStateKey(skill), JSON.stringify(state));
+  } catch {
+    // Persistence is a convenience layer; private browsing or blocked
+    // storage must not prevent the reviewer from completing this session.
+  }
 }
 
 function Pill({ children, tone = 'muted' }: { children: ReactNode; tone?: 'muted' | 'green' | 'rust' | 'lime' }) {
@@ -169,20 +203,37 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
   const [selectedEvidence, setSelectedEvidence] = useState('runtime');
   const [copied, setCopied] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [runState, setRunState] = useState<RunState>('idle');
+  const initialReviewState = readReviewState(skill);
+  const [runState, setRunState] = useState<RunState>(initialReviewState.supervisedCheckComplete ? 'complete' : 'idle');
   const [showAudit, setShowAudit] = useState(false);
-  const [finalReview, setFinalReview] = useState(false);
+  const [finalReview, setFinalReview] = useState(initialReviewState.finalReviewRequested);
+  const hydratingSkill = useRef(false);
 
-  // Reset per-visit review state whenever the reviewer switches to a
-  // different skill, so a decision made on one contract never leaks onto
-  // the next one opened in the desk.
+  // Hydrate the reviewer's durable decision for each skill. The storage key
+  // includes family and name so decisions never leak between contracts.
   useEffect(() => {
+    const nextKey = reviewStateKey(skill);
+    hydratingSkill.current = true;
+    const persisted = readReviewState(skill);
     setSelectedEvidence('runtime');
-    setRunState('idle');
+    setRunState(persisted.supervisedCheckComplete ? 'complete' : 'idle');
     setShowAudit(false);
-    setFinalReview(false);
+    setFinalReview(persisted.finalReviewRequested);
     setActiveSection('Review desk');
   }, [skill.family, skill.name]);
+
+  useEffect(() => {
+    if (hydratingSkill.current) {
+      hydratingSkill.current = false;
+      return;
+    }
+    if (runState === 'complete' || finalReview) {
+      writeReviewState(skill, {
+        supervisedCheckComplete: runState === 'complete',
+        finalReviewRequested: finalReview,
+      });
+    }
+  }, [finalReview, runState, skill.family, skill.name]);
 
   useEffect(() => {
     if (runState !== 'running') return;
@@ -348,6 +399,7 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
                 <div className="mt-5 border p-3" style={{ borderColor: selected.status === 'missing' ? '#724b3c' : '#4a5d4f', background: selected.status === 'missing' ? '#332724' : '#28332e' }}>
                   <div className="mb-2 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.12em]" style={{ color: selected.status === 'missing' ? '#dc946b' : colors.green }}><Terminal size={12} /> Next action</div>
                   <p className="text-[11px] leading-4" style={{ color: '#c9d4ca' }}>{selected.status === 'missing' ? (selected.id === 'runtime' ? 'Run the supervised fixture to attach live output and unlock the release gate.' : 'Address the missing fields before this checkpoint can pass.') : 'No action needed. Keep this evidence attached to the next release.'}</p>
+                  {selected.id === 'runtime' && liveEvidence && <div data-testid="status-supervised-check" className="mt-3 flex items-center gap-2 border px-3 py-2 font-mono text-[9px] uppercase tracking-[0.1em]" style={{ borderColor: '#4b604f', background: '#28332e', color: colors.green }}><CheckCircle2 size={12} /> Supervised fixture complete</div>}
                   {selected.status === 'missing' && selected.id === 'runtime' && <button type="button" data-testid="button-run-supervised-check" onClick={() => setRunState('running')} disabled={runState === 'running'} className="mt-3 inline-flex h-8 w-full items-center justify-center gap-2 rounded-[2px] border border-[#d4986d] px-3 font-mono text-[9px] uppercase tracking-[0.1em] text-[#202322] transition-colors hover:bg-[#e0a27d] disabled:cursor-wait disabled:opacity-70" style={{ background: colors.rust }}><Play size={12} /> {runState === 'running' ? 'Running fixture...' : runState === 'complete' ? 'Fixture complete' : 'Run supervised check'}</button>}
                 </div>
                 <div className="mt-5 flex items-center gap-2 border-t pt-4 font-mono text-[9px] uppercase tracking-[0.11em]" style={{ borderColor: colors.border, color: colors.muted }}><Clock3 size={12} /> Last evidence · {formatDate(skill.evidence.lastEvidenceDate)}</div>
