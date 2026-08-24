@@ -34,11 +34,13 @@ See `.agents/skills/README.md` for the full list and how to run each validator l
 ## Publishing status
 
 `.github/workflows/deploy-pages.yml` builds and publishes Skillz Forge to
-GitHub Pages on every push to `main`. `.github/workflows/publish-health-check.yml`
-independently re-checks, every 30 minutes and right after each deploy run,
-that the live site is actually reachable and matches `main` -- a failure
-opens a tracking issue labeled `publish-health` (auto-closed once healthy
-again) so a silent publish failure doesn't go unnoticed between pushes.
+GitHub Pages on pushes to `main` that touch its watched paths.
+`.github/workflows/publish-health-check.yml` independently re-checks, every
+30 minutes and right after each deploy run, that the live site is actually
+reachable and matches the commit the last successful deploy run built -- a
+failure opens a tracking issue labeled `publish-health` (auto-closed once
+healthy again) so a silent publish failure doesn't go unnoticed between
+pushes.
 
 ## Development
 

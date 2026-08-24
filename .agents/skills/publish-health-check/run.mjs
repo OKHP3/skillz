@@ -18,10 +18,18 @@
  *   - exit 2: the last deploy-pages.yml run for `main` did not succeed
  *   - exit 3: the published site or its catalog.json is unreachable
  *   - exit 4: the published catalog.json's sourceCommit does not match the
- *             commit this checkout expects to be live (stale artifact)
- *   - exit 0: healthy -- last run succeeded and the live commit matches
+ *             commit that last successful run actually built (stale artifact)
+ *   - exit 0: healthy -- last run succeeded and the live commit matches it
+ *
+ * Freshness is checked against the last successful run's own `head_sha`,
+ * *not* against `main`'s current tip. deploy-pages.yml only fires on a
+ * `push.paths` allowlist, so plenty of legitimate main commits (docs,
+ * unrelated workflows, this very check) never trigger a deploy at all --
+ * comparing against "main" would misreport every one of those as a stale
+ * site. Comparing against the deploy run's own commit answers the question
+ * this check actually exists to answer: did the last deploy that *did* run
+ * actually make it live?
  */
-import { execFileSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -45,18 +53,6 @@ class StageError extends Error {
     super(message);
     this.stage = stage;
   }
-}
-
-function expectedMainCommit() {
-  if (process.env.EXPECTED_SOURCE_COMMIT) return process.env.EXPECTED_SOURCE_COMMIT.trim();
-  for (const ref of ['origin/main', 'HEAD']) {
-    try {
-      return execFileSync('git', ['rev-parse', ref], { cwd: root, encoding: 'utf8' }).trim();
-    } catch {
-      // try the next ref
-    }
-  }
-  return null;
 }
 
 async function fetchJson(url, label) {
@@ -116,8 +112,6 @@ function commitsMatch(a, b) {
 }
 
 async function main() {
-  const expected = expectedMainCommit();
-
   const run = await latestDeployRun();
   if (run.status !== 'completed') {
     // Still in progress -- not a failure signal on its own, but nothing to
@@ -133,19 +127,26 @@ async function main() {
     );
   }
 
+  // Compare against the commit that run itself built (`head_sha`), not
+  // main's current tip. deploy-pages.yml only fires for commits matching its
+  // push.paths allowlist, so main routinely advances past commits that were
+  // never supposed to trigger a deploy at all (docs, unrelated workflows,
+  // this very check). Holding the live site to "must match main" would flag
+  // every one of those as a false stale-site incident.
+  const expected = run.head_sha;
   const catalog = await publishedCatalog();
   if (!catalog.sourceCommit) {
     throw new StageError('unreachable', 'Published catalog.json is missing sourceCommit; cannot verify freshness.');
   }
-  if (expected && !commitsMatch(expected, catalog.sourceCommit)) {
+  if (!commitsMatch(expected, catalog.sourceCommit)) {
     throw new StageError(
       'stale',
-      `Published catalog.json reports sourceCommit ${catalog.sourceCommit}, but main is at ${expected}. `
-      + `The last ${WORKFLOW_FILE} run reported success, yet the live site did not pick up the newest commit.`,
+      `Published catalog.json reports sourceCommit ${catalog.sourceCommit}, but the last successful ${WORKFLOW_FILE} run `
+      + `built ${expected}. The run reported success, yet the live site did not pick up the commit it deployed. ${run.html_url}`,
     );
   }
 
-  console.log(`\u2713 ${baseUrl} is live at ${catalog.sourceCommit}, matching main (${expected ?? 'unknown'}). Last ${WORKFLOW_FILE} run: ${run.html_url}`);
+  console.log(`\u2713 ${baseUrl} is live at ${catalog.sourceCommit}, matching the last successful ${WORKFLOW_FILE} run (${expected}). ${run.html_url}`);
   return { status: 'healthy', run, liveCommit: catalog.sourceCommit, expectedCommit: expected };
 }
 

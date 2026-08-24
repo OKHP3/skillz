@@ -20,10 +20,13 @@ This check closes that gap two ways at once:
 1. It re-checks the *last* `deploy-pages.yml` run's conclusion for `main`,
    so a failed publish is flagged even if nobody is watching the Actions tab.
 2. It independently compares the *live* `catalog.json`'s `sourceCommit`
-   against what `main` currently is, so a run that reported "success" but
-   didn't actually ship the newest commit (a stale Pages cache, a
-   mis-scoped artifact, etc.) is caught too -- reporting success is not
-   the same as being live.
+   against the commit that the last successful deploy run actually built
+   (its `head_sha`) -- not against `main`'s current tip, since
+   `deploy-pages.yml` only fires on a `push.paths` allowlist and plenty of
+   legitimate `main` commits (docs, unrelated workflows) never trigger a
+   deploy at all. A mismatch here means a run reported "success" but didn't
+   actually ship the commit it built (a stale Pages cache, a mis-scoped
+   artifact, etc.) -- reporting success is not the same as being live.
 
 ## Running it
 
