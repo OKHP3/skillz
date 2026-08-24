@@ -25,6 +25,8 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
+    env:
+      PUBLISH_HEALTH_WEBHOOK_URL: ${{ secrets.PUBLISH_HEALTH_WEBHOOK_URL }}
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -58,6 +60,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Reflect result in tracking issue
+        id: incident
         if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -82,6 +85,8 @@ jobs:
           ")
 
           if [ "$HEALTHY" != "true" ]; then
+             echo "started=false" >> "$GITHUB_OUTPUT"
+             echo "recovered=false" >> "$GITHUB_OUTPUT"
             body=$(node -e "
               console.log(JSON.stringify({
                 title: 'Skillz Forge publish is unhealthy',
@@ -99,9 +104,12 @@ jobs:
             else
               curl -sS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
                 "$API/issues" -d "$body" > /dev/null
+               echo "started=true" >> "$GITHUB_OUTPUT"
               echo "Opened a new tracking issue"
             fi
           else
+             echo "started=false" >> "$GITHUB_OUTPUT"
+             echo "recovered=false" >> "$GITHUB_OUTPUT"
             if [ -n "$issue_number" ]; then
               curl -sS -X PATCH -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
                 "$API/issues/$issue_number" \
@@ -109,11 +117,47 @@ jobs:
               curl -sS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
                 "$API/issues/$issue_number/comments" \
                 -d "$(node -e "console.log(JSON.stringify({ body: 'Healthy again: $RUN_URL' }))")" > /dev/null
+               echo "recovered=true" >> "$GITHUB_OUTPUT"
               echo "Closed tracking issue #$issue_number"
             else
               echo "Healthy; no tracking issue to close."
             fi
           fi
+
+      - name: Send incident transition notification
+        if: always() && (steps.incident.outputs.started == 'true' || steps.incident.outputs.recovered == 'true') && env.PUBLISH_HEALTH_WEBHOOK_URL != ''
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          STARTED: ${{ steps.incident.outputs.started }}
+          RECOVERED: ${{ steps.incident.outputs.recovered }}
+        run: |
+          set -euo pipefail
+          if [ "$STARTED" = "true" ]; then
+            event="unhealthy"
+            message="Skillz Forge publish is unhealthy. A publish-health incident was opened: $RUN_URL"
+          else
+            event="recovered"
+            message="Skillz Forge publish has recovered. The publish-health incident was closed: $RUN_URL"
+          fi
+
+          # This payload works with Slack incoming webhooks (`text`) and
+          # Discord webhooks (`content`), so either can be configured without
+          # adding a provider-specific action or credential.
+          payload=$(MESSAGE="$message" EVENT="$event" node -e "
+            console.log(JSON.stringify({
+              text: process.env.MESSAGE,
+              content: process.env.MESSAGE,
+              event: process.env.EVENT,
+            }));
+          " MESSAGE="$message" EVENT="$event")
+          curl -sS --fail-with-body -X POST \
+            -H 'Content-Type: application/json' \
+            --data "$payload" \
+            "$PUBLISH_HEALTH_WEBHOOK_URL"
+
+      - name: Explain skipped incident notification
+        if: always() && steps.incident.outputs.started != 'true' && steps.incident.outputs.recovered != 'true' && env.PUBLISH_HEALTH_WEBHOOK_URL == ''
+        run: echo "No incident transition notification sent; PUBLISH_HEALTH_WEBHOOK_URL is not configured."
 
       - name: Fail the job if the publish is unhealthy
         if: steps.health.outputs.healthy == 'false'

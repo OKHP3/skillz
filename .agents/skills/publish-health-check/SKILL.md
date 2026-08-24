@@ -66,3 +66,12 @@ unhealthy result fails the job (visible in the Actions tab and any GitHub
 notification a watcher has enabled) and opens or updates a tracking issue
 labeled `publish-health`; a return to healthy automatically closes that
 issue. See that workflow file for the exact issue-management steps.
+
+If the repository secret `PUBLISH_HEALTH_WEBHOOK_URL` is configured, the same
+workflow sends a real-time transition notification to that webhook when an
+incident is first opened and when it recovers. It accepts Slack incoming
+webhooks and Discord webhooks: the workflow sends both `text` and `content`
+fields so either service can consume the message. Repeated checks during the
+same incident do not send another webhook notification. If the secret is
+absent, the notification step is skipped and GitHub issue tracking continues
+normally.
