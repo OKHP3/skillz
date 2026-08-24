@@ -60,6 +60,18 @@ Thumbs.db
 !mermaid/okhp3-mermaid-publish/examples/*.png
 !mermaid/okhp3-mermaid-publish/examples/*.svg
 
+# Post-monorepo-migration equivalents of the forge/ exceptions above --
+# without these, favicons, app icons, social-preview art, and the Home
+# hero fallback image are silently dropped from the repo and CI/production
+# builds fail or ship broken images (found 2026-08-24).
+!artifacts/forge/public/assets/*.png
+!artifacts/forge/src/assets/*.png
+!artifacts/forge/src/assets/*.svg
+!artifacts/forge/public/favicon.svg
+!artifacts/forge/public/icons.svg
+!artifacts/forge-review-desk/public/favicon.svg
+!artifacts/mockup-sandbox/public/favicon.svg
+
 # Node (mermaid-cli via npx)
 .npm-cache/
 
