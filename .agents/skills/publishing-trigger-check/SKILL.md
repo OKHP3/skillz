@@ -7,9 +7,9 @@ description: Verify GitHub Pages publishing remains family-agnostic and fail-clo
 
 ## Use when
 
-Run after changing `.migration-backup/.github/workflows/deploy-pages.yml` or
-family/skill folder conventions. It reuses the repository's existing
-`verify-deploy-trigger.mjs`.
+Run after changing `.github/workflows/deploy-pages.yml` (the real path GitHub
+Actions executes) or family/skill folder conventions. It reuses the
+repository's existing `verify-deploy-trigger.mjs`.
 
 ## Callable command
 

@@ -27,7 +27,7 @@ if (reportFile) {
     check: 'publishing-trigger-check',
     status,
     severity: 'release-blocking',
-    sourcePaths: ['.agents/skills/publishing-trigger-check/run.mjs', '.migration-backup/.github/workflows/deploy-pages.yml', 'artifacts/forge/scripts/verify-deploy-trigger.mjs'],
+    sourcePaths: ['.agents/skills/publishing-trigger-check/run.mjs', '.github/workflows/deploy-pages.yml', 'artifacts/forge/scripts/verify-deploy-trigger.mjs'],
     checks: [{ name: 'family-agnostic publishing trigger', status, severity: 'release-blocking' }],
   }, null, 2)}\n`);
 }

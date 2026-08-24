@@ -17,10 +17,14 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-// Publishing configuration and source families live in the migrated source
-// tree, not beside the standalone Forge artifact.
+// Source families (FAMILY.md folders) live in the migrated source tree, not
+// beside the standalone Forge artifact.
 const REPO_ROOT = join(__dirname, '..', '..', '..', '.migration-backup');
-const WORKFLOW_PATH = join(REPO_ROOT, '.github', 'workflows', 'deploy-pages.yml');
+// The deploy workflow that GitHub Actions actually executes lives at the
+// real repository root, not under .migration-backup -- GitHub only runs
+// workflows found at the real .github/workflows/ path.
+const MONOREPO_ROOT = join(__dirname, '..', '..', '..');
+const WORKFLOW_PATH = join(MONOREPO_ROOT, '.github', 'workflows', 'deploy-pages.yml');
 
 const SKIP_DIRS = new Set([
   '.git', '.github', '.agents', '.claude', '.vscode', 'node_modules',
