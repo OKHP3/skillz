@@ -1,0 +1,120 @@
+name: Publish health check
+
+# Confirms the live GitHub Pages site is actually up to date with `main`,
+# on a schedule and immediately after every deploy-pages.yml run -- so a
+# silently-failing or silently-stale publish surfaces on its own instead of
+# requiring someone to manually check the Actions tab or the live site.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_run:
+    workflows:
+      - Deploy Skillz Forge to GitHub Pages
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: publish-health-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .github/node-version
+
+      - name: Run publish health check
+        id: health
+        run: |
+          mkdir -p validation-reports
+          set +e
+          node .agents/skills/publish-health-check/run.mjs --json validation-reports/publish-health-check.json
+          exit_code=$?
+          set -e
+          if [ "$exit_code" -eq 0 ]; then
+            echo "healthy=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "healthy=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+
+      - name: Archive health check report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: publish-health-check-report
+          path: validation-reports/publish-health-check.json
+          if-no-files-found: ignore
+
+      - name: Reflect result in tracking issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEALTHY: ${{ steps.health.outputs.healthy }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          API="https://api.github.com/repos/$REPO"
+          AUTH_HEADER="Authorization: Bearer $GH_TOKEN"
+          ACCEPT_HEADER="Accept: application/vnd.github+json"
+
+          existing=$(curl -sS -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+            "$API/issues?state=open&labels=publish-health&per_page=1")
+          issue_number=$(echo "$existing" | node -e "
+            let data = '';
+            process.stdin.on('data', c => data += c);
+            process.stdin.on('end', () => {
+              const issues = JSON.parse(data);
+              console.log(issues[0]?.number ?? '');
+            });
+          ")
+
+          if [ "$HEALTHY" != "true" ]; then
+            body=$(node -e "
+              console.log(JSON.stringify({
+                title: 'Skillz Forge publish is unhealthy',
+                body: 'The publish-health-check workflow detected a problem with the live site.\n\nSee the run for the exact failure stage (workflow_failed, unreachable, or stale): $RUN_URL\n\nThis issue closes automatically once the check reports healthy again.',
+                labels: ['publish-health'],
+              }));
+            ")
+            if [ -n "$issue_number" ]; then
+              curl -sS -X PATCH -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+                "$API/issues/$issue_number" -d "$body" > /dev/null
+              curl -sS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+                "$API/issues/$issue_number/comments" \
+                -d "$(node -e "console.log(JSON.stringify({ body: 'Still unhealthy: $RUN_URL' }))")" > /dev/null
+              echo "Updated existing tracking issue #$issue_number"
+            else
+              curl -sS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+                "$API/issues" -d "$body" > /dev/null
+              echo "Opened a new tracking issue"
+            fi
+          else
+            if [ -n "$issue_number" ]; then
+              curl -sS -X PATCH -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+                "$API/issues/$issue_number" \
+                -d "$(node -e "console.log(JSON.stringify({ state: 'closed' }))")" > /dev/null
+              curl -sS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+                "$API/issues/$issue_number/comments" \
+                -d "$(node -e "console.log(JSON.stringify({ body: 'Healthy again: $RUN_URL' }))")" > /dev/null
+              echo "Closed tracking issue #$issue_number"
+            else
+              echo "Healthy; no tracking issue to close."
+            fi
+          fi
+
+      - name: Fail the job if the publish is unhealthy
+        if: steps.health.outputs.healthy == 'false'
+        run: exit 1

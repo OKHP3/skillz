@@ -24,8 +24,18 @@ Reusable validators live under `.agents/skills/` and are wired into
 - `publishing-trigger-check` — verifies GitHub Pages publishing stays family-agnostic and fails closed.
 - `static-route-validation` — checks Forge route declarations and hash-anchor targets.
 - `validation-smoke` — exercises validator failure boundaries with dependency-free fixtures, including CI report-contract checks.
+- `publish-health-check` — confirms the live GitHub Pages site actually matches `main`, on a schedule and after every deploy.
 
 See `.agents/skills/README.md` for the full list and how to run each validator locally.
+
+## Publishing status
+
+`.github/workflows/deploy-pages.yml` builds and publishes Skillz Forge to
+GitHub Pages on every push to `main`. `.github/workflows/publish-health-check.yml`
+independently re-checks, every 30 minutes and right after each deploy run,
+that the live site is actually reachable and matches `main` -- a failure
+opens a tracking issue labeled `publish-health` (auto-closed once healthy
+again) so a silent publish failure doesn't go unnoticed between pushes.
 
 ## Development
 
@@ -39,6 +49,4 @@ pnpm --filter @workspace/forge run dev
 
 ## Known gaps
 
-- Automatic GitHub Pages publishing on push to `main` is not currently wired
-  up in the live `.github/workflows/` directory (tracked as a project task).
 - The Review Desk artifact does not yet have automated tests or CI coverage.

@@ -14,6 +14,7 @@ node .agents/skills/static-route-validation/run.mjs
 node .agents/skills/production-build-verification/run.mjs
 node .agents/skills/publishing-trigger-check/run.mjs
 node .agents/skills/published-keyboard-recovery-check/run.mjs
+node .agents/skills/publish-health-check/run.mjs
 node .agents/skills/validation-smoke/run.mjs
 ```
 
@@ -57,6 +58,7 @@ change deployment policy):
 | `production-build-verification` | Before presenting or publishing Forge | Builds with the artifact's required `PORT` and `BASE_PATH`, then checks output | Non-zero exit if build fails or output is missing |
 | `publishing-trigger-check` | Before changing deploy workflow paths | Reuses the deploy-trigger guard and checks family-agnostic globs | Non-zero exit if workflow is missing, hardcodes families, or loses a glob |
 | `published-keyboard-recovery-check` | After a GitHub Pages deploy, or on demand against the live site | Confirms the published (not local) review surface preserves failed-contract keyboard recovery | Exit `2` for a deployment/staleness problem, exit `1` for an application regression |
+| `publish-health-check` | On a schedule and after every deploy run | Confirms the last deploy run succeeded and the live site's `sourceCommit` matches `main` | Exit `2` if the last run failed, `3` if unreachable, `4` if live but stale |
 | `validation-smoke` | When changing validators or CI report schemas | Exercises malformed catalog, route/hash, missing-output, blocked-publishing, and passing/failing report-contract fixtures | Non-zero exit if a fixture is accepted or rejected incorrectly |
 
 ## CI-only checks (not local skill runners)
