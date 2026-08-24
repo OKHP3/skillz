@@ -1,7 +1,7 @@
 name: Publish health check
 
-# Confirms the live GitHub Pages site is actually up to date with `main`,
-# on a schedule and immediately after every deploy-pages.yml run -- so a
+# Confirms the live GitHub Pages site matches the commit built by the last
+# successful deploy, on a schedule and immediately after every deploy-pages.yml run -- so a
 # silently-failing or silently-stale publish surfaces on its own instead of
 # requiring someone to manually check the Actions tab or the live site.
 on:
@@ -85,8 +85,8 @@ jobs:
           ")
 
           if [ "$HEALTHY" != "true" ]; then
-             echo "started=false" >> "$GITHUB_OUTPUT"
-             echo "recovered=false" >> "$GITHUB_OUTPUT"
+            echo "started=false" >> "$GITHUB_OUTPUT"
+            echo "recovered=false" >> "$GITHUB_OUTPUT"
             body=$(node -e "
               console.log(JSON.stringify({
                 title: 'Skillz Forge publish is unhealthy',
@@ -104,12 +104,12 @@ jobs:
             else
               curl -sS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
                 "$API/issues" -d "$body" > /dev/null
-               echo "started=true" >> "$GITHUB_OUTPUT"
+                echo "started=true" >> "$GITHUB_OUTPUT"
               echo "Opened a new tracking issue"
             fi
           else
-             echo "started=false" >> "$GITHUB_OUTPUT"
-             echo "recovered=false" >> "$GITHUB_OUTPUT"
+            echo "started=false" >> "$GITHUB_OUTPUT"
+            echo "recovered=false" >> "$GITHUB_OUTPUT"
             if [ -n "$issue_number" ]; then
               curl -sS -X PATCH -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
                 "$API/issues/$issue_number" \
@@ -117,7 +117,7 @@ jobs:
               curl -sS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
                 "$API/issues/$issue_number/comments" \
                 -d "$(node -e "console.log(JSON.stringify({ body: 'Healthy again: $RUN_URL' }))")" > /dev/null
-               echo "recovered=true" >> "$GITHUB_OUTPUT"
+                echo "recovered=true" >> "$GITHUB_OUTPUT"
               echo "Closed tracking issue #$issue_number"
             else
               echo "Healthy; no tracking issue to close."

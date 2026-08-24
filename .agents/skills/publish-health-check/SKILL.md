@@ -1,6 +1,6 @@
 ---
 name: publish-health-check
-description: Confirm the live Skillz Forge GitHub Pages site is actually up to date with `main`, independent of whether the last deploy-pages.yml run happened to report success.
+description: Confirm the live Skillz Forge GitHub Pages site matches the last successful deploy run, independent of whether the last deploy-pages.yml run happened to report success.
 ---
 
 # Publish health check
@@ -52,10 +52,10 @@ response:
 
 | Exit | Stage | Meaning |
 | --- | --- | --- |
-| `0` | healthy | Last run succeeded and the live commit matches `main`. |
+| `0` | healthy | Last run succeeded and the live commit matches that run's `head_sha`. |
 | `2` | `workflow_failed` | The last `deploy-pages.yml` run for `main` did not succeed. |
 | `3` | `unreachable` | The site, its catalog, or the Actions API could not be reached. |
-| `4` | `stale` | The run reported success, but the live `sourceCommit` still doesn't match `main`. |
+| `4` | `stale` | The run reported success, but the live `sourceCommit` still doesn't match that run's `head_sha`. |
 
 ## CI wiring
 

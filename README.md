@@ -27,7 +27,7 @@ Reusable validators live under `.agents/skills/` and are wired into
 - `publishing-trigger-check` — verifies GitHub Pages publishing stays family-agnostic and fails closed.
 - `static-route-validation` — checks Forge route declarations and hash-anchor targets.
 - `validation-smoke` — exercises validator failure boundaries with dependency-free fixtures, including CI report-contract checks.
-- `publish-health-check` — confirms the live GitHub Pages site actually matches `main`, on a schedule and after every deploy.
+- `publish-health-check` — confirms the live GitHub Pages site matches the last successful deploy, on a schedule and after every deploy.
 
 See `.agents/skills/README.md` for the full list and how to run each validator locally.
 
@@ -40,7 +40,10 @@ GitHub Pages on pushes to `main` that touch its watched paths.
 reachable and matches the commit the last successful deploy run built -- a
 failure opens a tracking issue labeled `publish-health` (auto-closed once
 healthy again) so a silent publish failure doesn't go unnoticed between
-pushes.
+pushes. If the `PUBLISH_HEALTH_WEBHOOK_URL` repository secret is configured,
+the workflow also sends one Slack/Discord-compatible notification when an
+incident opens and one when it recovers; repeated checks do not spam the
+webhook. Without the secret, issue tracking continues normally.
 
 ## Development
 
