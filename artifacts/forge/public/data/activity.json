@@ -1,6 +1,22 @@
 {
-  "generatedAt": "2026-08-24T17:46:33.635Z",
+  "generatedAt": "2026-08-24T18:05:22.976Z",
   "commits": [
+    {
+      "sha": "b911bcd8e16883f4aa6239d25d06cfecef2e4820",
+      "shortSha": "b911bcd",
+      "message": "Wire Review Desk to real Forge catalog data\n\nReplit-Task-Id: 5cc79973-529c-4ee0-b5c8-722eec32aa9d\nReplit-Merge-Attempt: MergeTask:5cc79973-529c-4ee0-b5c8-722eec32aa9d:1:40b38b7c",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T18:03:45Z",
+      "url": "https://github.com/OKHP3/skillz/commit/b911bcd8e16883f4aa6239d25d06cfecef2e4820"
+    },
+    {
+      "sha": "2e0c77b8bc91363a220dad58ff0fb43731496e69",
+      "shortSha": "2e0c77b",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T18:03:44Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2e0c77b8bc91363a220dad58ff0fb43731496e69"
+    },
     {
       "sha": "28d9525825dc778fdf5d8bdb597c9895ff91e652",
       "shortSha": "28d9525",
@@ -64,22 +80,6 @@
       "author": "overkillhillp3",
       "date": "2026-08-24T17:21:29Z",
       "url": "https://github.com/OKHP3/skillz/commit/d0350bda726c80cf0aa0e55f60710a5daad6d3c4"
-    },
-    {
-      "sha": "8963330935a69b514b97b23f346f8c6e346ab9be",
-      "shortSha": "8963330",
-      "message": "Wire deploy-pages.yml and release-validation.yml Node setup to read .github/node-version via node-version-file, making it the single authoritative pin instead of a disconnected hardcoded 22; add .github/node-version to both workflows' path triggers",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T05:41:55Z",
-      "url": "https://github.com/OKHP3/skillz/commit/8963330935a69b514b97b23f346f8c6e346ab9be"
-    },
-    {
-      "sha": "c54e567c5369de653c22c71b8ee6b5e02ab730fd",
-      "shortSha": "c54e567",
-      "message": "Add minimal, accurate .github/dependabot.yml (npm workspace root + github-actions) matching what docs/TECHNOLOGY-INVENTORY.md claims; note remaining ecosystems wait on family-folder migration out of .migration-backup/",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T05:39:38Z",
-      "url": "https://github.com/OKHP3/skillz/commit/c54e567c5369de653c22c71b8ee6b5e02ab730fd"
     }
   ],
   "fetchError": null

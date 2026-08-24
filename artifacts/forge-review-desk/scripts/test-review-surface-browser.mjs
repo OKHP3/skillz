@@ -46,6 +46,30 @@ async function main() {
   try {
     await waitForServer();
     browser = await chromium.launch({ headless: true, executablePath: chromiumExecutable() });
+
+    // A failed catalog load must land the reviewer on the error-recovery
+    // desk (not a blank screen or stuck skeleton), and retry must actually
+    // recover once the underlying data is reachable again.
+    const errorPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+    let failCatalogLoad = true;
+    await errorPage.route('**/data/catalog.json', async (route) => {
+      if (failCatalogLoad) {
+        await route.fulfill({ status: 500, body: 'Simulated catalog outage.' });
+      } else {
+        await route.continue();
+      }
+    });
+    await errorPage.goto(baseUrl, { waitUntil: 'domcontentloaded' });
+    await errorPage.getByTestId('button-retry-dossier').waitFor();
+    assert(
+      (await errorPage.locator('text=Catalog data failed to load.').count()) > 0,
+      'Error desk did not render its failure heading.',
+    );
+    failCatalogLoad = false;
+    await errorPage.getByTestId('button-retry-dossier').click();
+    await errorPage.getByTestId('input-catalog-search').waitFor({ timeout: 5000 });
+    await errorPage.close();
+
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
@@ -100,7 +124,7 @@ async function main() {
     assert(await navToggle.getAttribute('aria-expanded') === 'true', 'Mobile navigation toggle did not expand.');
     await expectKeyboardFocus(page, page.getByTestId('button-nav-catalog'), 'Catalog navigation control');
 
-    console.log('✓ review desk covers catalog navigation, real evidence state, evidence selection, supervised-check fixture, and mobile navigation');
+    console.log('✓ review desk covers catalog navigation, real evidence state, evidence selection, supervised-check fixture, error recovery, and mobile navigation');
   } finally {
     await browser?.close();
     server.kill('SIGTERM');
