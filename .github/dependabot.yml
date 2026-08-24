@@ -1,0 +1,24 @@
+version: 2
+updates:
+  # Covers the root package.json, pnpm-lock.yaml, and the pnpm-workspace
+  # catalog that every artifacts/* app depends on.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+
+# NOTE: .migration-backup/.github/dependabot.yml additionally tracks
+# pip ecosystems for community/mcp-builder and community/skill-creator, and
+# an npm ecosystem for mermaid/okhp3-mermaid-publish. Those directories still
+# live under .migration-backup/ pending migration to the repo root -- add the
+# matching entries here once each family folder moves to its real top-level
+# path, since Dependabot requires the directory to exist at the path given.

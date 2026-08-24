@@ -61,7 +61,7 @@ Last checked: 2026-08-24 (UTC).
 
 ## Maintenance plan
 
-1. Dependabot opens weekly pull requests for the explicit npm, Python, and GitHub Action dependencies.
+1. Dependabot (`.github/dependabot.yml`) opens weekly pull requests for the root npm workspace (`package.json` / `pnpm-lock.yaml`) and GitHub Actions dependencies. The Python ecosystems for `community/mcp-builder` and `community/skill-creator`, and the npm ecosystem for `mermaid/okhp3-mermaid-publish`, are not yet configured here because those family folders still live under `.migration-backup/`; add them once each folder migrates to its real top-level path.
 2. The `Refresh technology inventory` workflow runs every Monday and creates one pull request when Node LTS, Python, or any observed latest release changes.
 3. Review generated-project/skill guidance separately before changing Vite, React, or Tailwind versions there. Those are examples inside individual skills, not the live `artifacts/forge` dependencies, and Tailwind 4 requires template changes.
 4. Merge only after normal repository validation passes. The automation has no auto-merge permission.
