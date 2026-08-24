@@ -49,7 +49,15 @@ async function main() {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
-    // Initial state: dossier loads and the release gate starts blocked.
+    // Catalog picker loads from the real catalog data (not one hardcoded
+    // example) and lets a reviewer navigate to any skill's dossier.
+    await page.getByTestId('input-catalog-search').waitFor();
+    await page.getByTestId('input-catalog-search').fill('okhp3-skill-cataloger');
+    await page.getByTestId('link-catalog-skill-okhp3-skill-cataloger').click();
+
+    // Real catalog data renders: dossier loads and the release gate reflects
+    // this skill's actual evidence state (draftable contract, no live
+    // evidence attached yet, no maturity review on record -> starts blocked).
     await page.getByTestId('text-skill-name').waitFor();
     assert((await text(page, 'text-skill-name')) === 'okhp3-skill-cataloger', 'Skill name did not render.');
     assert((await text(page, 'status-release-gate')) === 'Blocked', 'Release gate should start blocked.');
@@ -62,36 +70,37 @@ async function main() {
     await page.getByTestId('button-evidence-runtime').click();
     assert((await text(page, 'text-selected-checkpoint')) === 'Runtime evidence', 'Runtime evidence checkpoint did not re-select.');
 
-    // Running the supervised fixture attaches live evidence and unlocks the gate.
-    // Once evidence is attached the runtime checkpoint is verified, so the
-    // "run supervised check" action retires along with the blocked state.
+    // Running the supervised fixture attaches live evidence for this session
+    // and unlocks the gate once every checkpoint reads verified.
     await page.getByTestId('button-run-supervised-check').click();
     await page.getByTestId('button-run-supervised-check').filter({ hasText: 'Running fixture' }).waitFor({ timeout: 2000 });
     await page.getByTestId('button-run-supervised-check').waitFor({ state: 'detached', timeout: 5000 });
-    assert((await text(page, 'status-release-gate')) === 'Open', 'Release gate did not open after evidence attached.');
-    assert(await page.getByTestId('button-request-final-review').isEnabled(), 'Final review must unlock once evidence is attached.');
 
-    // Requesting final review moves the gate into a review-pending state.
-    await expectKeyboardFocus(page, page.getByTestId('button-request-final-review'), 'Request final review control');
-    await page.getByTestId('button-request-final-review').click();
-    assert((await text(page, 'status-release-gate')) === 'In review', 'Release gate did not move to in-review after requesting final review.');
-    assert(await page.getByTestId('button-request-final-review').isDisabled(), 'Final review control must disable itself once requested.');
+    // okhp3-skill-cataloger has no maturity review on record, so the
+    // ownership checkpoint stays open even after runtime evidence attaches --
+    // the gate should reflect that real, still-missing checkpoint rather than
+    // opening on partial evidence.
+    assert((await text(page, 'status-release-gate')) === 'Blocked', 'Release gate should stay blocked while the ownership checkpoint is still missing.');
+    assert(await page.getByTestId('button-request-final-review').isDisabled(), 'Final review must stay disabled while a checkpoint is missing.');
 
-    // Primary navigation switches the active workspace section.
-    await page.getByTestId('button-nav-catalog').click();
-    await page.getByTestId('status-active-section').waitFor();
-    assert((await text(page, 'status-active-section')).toLowerCase().includes('catalog'), 'Navigating to Catalog did not update the active section indicator.');
+    // Nearby contracts and the breadcrumb both let a reviewer jump to a
+    // different skill without hand-editing the URL.
+    await page.getByTestId('button-breadcrumb-catalog').click();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert((await page.getByTestId('input-catalog-search').inputValue()) === '', 'Catalog picker should reset its search on return.');
 
     // Narrow viewport keeps navigation reachable behind the mobile toggle.
+    await page.getByTestId('link-catalog-skill-okhp3-skill-cataloger').click();
+    await page.getByTestId('text-skill-name').waitFor();
     await page.setViewportSize({ width: 390, height: 844 });
     const navToggle = page.getByTestId('button-toggle-navigation');
     await navToggle.waitFor();
     assert(await navToggle.getAttribute('aria-expanded') === 'false', 'Mobile navigation toggle should start collapsed.');
     await navToggle.click();
     assert(await navToggle.getAttribute('aria-expanded') === 'true', 'Mobile navigation toggle did not expand.');
-    await page.getByTestId('button-nav-review-desk').waitFor({ state: 'visible' });
+    await expectKeyboardFocus(page, page.getByTestId('button-nav-catalog'), 'Catalog navigation control');
 
-    console.log('✓ review desk covers evidence selection, supervised-check evidence attach, final review gate, and mobile navigation');
+    console.log('✓ review desk covers catalog navigation, real evidence state, evidence selection, supervised-check fixture, and mobile navigation');
   } finally {
     await browser?.close();
     server.kill('SIGTERM');

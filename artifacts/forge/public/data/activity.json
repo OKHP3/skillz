@@ -1,6 +1,70 @@
 {
-  "generatedAt": "2026-08-24T12:15:37.194Z",
+  "generatedAt": "2026-08-24T17:46:33.635Z",
   "commits": [
+    {
+      "sha": "28d9525825dc778fdf5d8bdb597c9895ff91e652",
+      "shortSha": "28d9525",
+      "message": "Remove temporary regression-test note from README",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:37:31Z",
+      "url": "https://github.com/OKHP3/skillz/commit/28d9525825dc778fdf5d8bdb597c9895ff91e652"
+    },
+    {
+      "sha": "e6ff00d5eed65afb7fd4a565833f3fe815200729",
+      "shortSha": "e6ff00d",
+      "message": "Regression-test publish-health-check: push a README-only change matching none of deploy-pages.yml's push.paths",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:35:04Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e6ff00d5eed65afb7fd4a565833f3fe815200729"
+    },
+    {
+      "sha": "34d0085ede029e0df5e4d3e567eff5a6a174b666",
+      "shortSha": "34d0085",
+      "message": "Document the non-deploying-commit regression check for publish-health-check freshness contract",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:32:15Z",
+      "url": "https://github.com/OKHP3/skillz/commit/34d0085ede029e0df5e4d3e567eff5a6a174b666"
+    },
+    {
+      "sha": "2f35b865955bb5ba9a11f3b7da9264f1a4d79bc3",
+      "shortSha": "2f35b86",
+      "message": "Fix publish-health-check freshness contract: compare live sourceCommit against the last successful deploy run's own head_sha instead of main's tip, since deploy-pages.yml only fires on a push.paths allowlist and would otherwise false-flag every non-deploying main commit as stale",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:29:32Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2f35b865955bb5ba9a11f3b7da9264f1a4d79bc3"
+    },
+    {
+      "sha": "5883737d040dc85ca1bd87f40a032252c567293d",
+      "shortSha": "5883737",
+      "message": "Add deploy-pages/publish-health-check status badges to README",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:27:07Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5883737d040dc85ca1bd87f40a032252c567293d"
+    },
+    {
+      "sha": "2cfd034104bd76dd5385cb5a67f5912516195c34",
+      "shortSha": "2cfd034",
+      "message": "Add publish-health-check: schedule + post-deploy verification that the live GitHub Pages site matches main, opening/closing a tracking issue on failure; correct stale README claim that auto-publishing is unwired",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:25:22Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2cfd034104bd76dd5385cb5a67f5912516195c34"
+    },
+    {
+      "sha": "9e0cb7bc2af5283c24c1c6f892543c375b6a8072",
+      "shortSha": "9e0cb7b",
+      "message": "Add CI type-check, build, and browser smoke test for the Review Desk\n\nReplit-Task-Id: 04baa378-e193-41cd-99c9-3aee5d306f16\nReplit-Merge-Attempt: MergeTask:04baa378-e193-41cd-99c9-3aee5d306f16:1:2b06d309",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T17:21:30Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9e0cb7bc2af5283c24c1c6f892543c375b6a8072"
+    },
+    {
+      "sha": "d0350bda726c80cf0aa0e55f60710a5daad6d3c4",
+      "shortSha": "d0350bd",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T17:21:29Z",
+      "url": "https://github.com/OKHP3/skillz/commit/d0350bda726c80cf0aa0e55f60710a5daad6d3c4"
+    },
     {
       "sha": "8963330935a69b514b97b23f346f8c6e346ab9be",
       "shortSha": "8963330",
@@ -16,70 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-24T05:39:38Z",
       "url": "https://github.com/OKHP3/skillz/commit/c54e567c5369de653c22c71b8ee6b5e02ab730fd"
-    },
-    {
-      "sha": "e7001cce1847eb6413d5b58d32abad9c092b44c5",
-      "shortSha": "e7001cc",
-      "message": "Restore weekly technology-inventory refresh workflow at the real .github/workflows/ path: brings back refresh_technology_inventory.py, .github/node-version and .github/python-version pins, and docs/TECHNOLOGY-INVENTORY.md updated to reflect the pnpm-workspace monorepo instead of the pre-migration SKILL.md-only repo",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T05:36:48Z",
-      "url": "https://github.com/OKHP3/skillz/commit/e7001cce1847eb6413d5b58d32abad9c092b44c5"
-    },
-    {
-      "sha": "db5232f54911ee7ff2bc966393798375a78d7288",
-      "shortSha": "db5232f",
-      "message": "Update skillz manifest and activity and catalog artifacts\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-24T05:33:15Z",
-      "url": "https://github.com/OKHP3/skillz/commit/db5232f54911ee7ff2bc966393798375a78d7288"
-    },
-    {
-      "sha": "976b6327d4014882095df7e2194206bbaa178965",
-      "shortSha": "976b632",
-      "message": "Record memory: gitignore path-migration asset loss, and Vite-config env requirement applies to any step loading vite.config.ts, not just build",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T05:31:56Z",
-      "url": "https://github.com/OKHP3/skillz/commit/976b6327d4014882095df7e2194206bbaa178965"
-    },
-    {
-      "sha": "046ddd5f97bab3b48705d0aa734b3d2caf14e304",
-      "shortSha": "046ddd5",
-      "message": "Fix .gitignore to stop dropping post-migration favicons/icons/social-art/hero-fallback assets under artifacts/*, which broke the CI production build (missing PNG import) and would have shipped broken favicons/social previews",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T05:27:38Z",
-      "url": "https://github.com/OKHP3/skillz/commit/046ddd5f97bab3b48705d0aa734b3d2caf14e304"
-    },
-    {
-      "sha": "8e52934abd3a5644f5c0f49495908d084d4d6e26",
-      "shortSha": "8e52934",
-      "message": "Fix deploy-pages.yml unit-test step missing PORT/BASE_PATH env (was crashing vite.config.ts load in CI); point verify-deploy-trigger.mjs at the real .github/workflows path instead of the stale migration-backup copy",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T05:24:31Z",
-      "url": "https://github.com/OKHP3/skillz/commit/8e52934abd3a5644f5c0f49495908d084d4d6e26"
-    },
-    {
-      "sha": "4fa241c1b34aef7328d3db83d141b452aaadc5d3",
-      "shortSha": "4fa241c",
-      "message": "Fix corrupted pnpm-lock.yaml: remove stray non-YAML merge-hint comment lines that caused duplicated mapping keys",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T04:26:03Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4fa241c1b34aef7328d3db83d141b452aaadc5d3"
-    },
-    {
-      "sha": "77a78a98c1ea62dda3c6a75a799315e0765926f7",
-      "shortSha": "77a78a9",
-      "message": "Confirm published Forge pages preserve keyboard recovery: restore deploy-pages.yml at .github/workflows/ with corrected artifacts/forge/ paths, required build env (PORT/BASE_PATH), and correct dist/public artifact path, so the post-deploy verify-keyboard-recovery job (running the published-keyboard-recovery-check) actually executes after each Pages deploy\n\nReplit-Task-Id: c41f745c-b304-4ec9-a9e0-9b5a55ebadf6\nReplit-Merge-Attempt: MergeTask:c41f745c-b304-4ec9-a9e0-9b5a55ebadf6:2:bfc5ffa8",
-      "author": "overkillhillp3",
-      "date": "2026-08-24T04:25:04Z",
-      "url": "https://github.com/OKHP3/skillz/commit/77a78a98c1ea62dda3c6a75a799315e0765926f7"
-    },
-    {
-      "sha": "31a97e9cbbb143dc2f5a07be39eca134bb095b68",
-      "shortSha": "31a97e9",
-      "message": "Add root README with artifact map and validator overview",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T04:23:09Z",
-      "url": "https://github.com/OKHP3/skillz/commit/31a97e9cbbb143dc2f5a07be39eca134bb095b68"
     }
   ],
   "fetchError": null

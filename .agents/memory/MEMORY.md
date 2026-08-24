@@ -18,3 +18,4 @@
 - [OverKill Hill dossier publishing](overkill-hill-dossier-publishing.md) — public dossier edits must clear the site validator before Pages can serve new fallbacks.
 - [Forge Pages workflow build requirements](forge-pages-workflow-build-requirements.md) — deploy-pages.yml's build step needs explicit PORT/BASE_PATH env and must upload dist/public, not dist.
 - [Gitignore path-migration asset loss](gitignore-path-migration-assets.md) — a directory rename leaves stale `.gitignore` path exceptions, silently dropping tracked assets on fresh checkouts.
+- [Cross-artifact data sharing](cross-artifact-data-sync.md) — copy generated JSON at build time via a predev/prebuild script rather than a live cross-origin fetch between two independently deployed artifacts.
