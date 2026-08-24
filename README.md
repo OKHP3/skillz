@@ -55,3 +55,7 @@ pnpm --filter @workspace/forge run dev
 ## Known gaps
 
 - The Review Desk artifact does not yet have automated tests or CI coverage.
+- This line exists purely to exercise publish-health-check's regression
+  check: editing this README does not match any of `deploy-pages.yml`'s
+  `push.paths` patterns, so it must not trigger a deploy or be reported as a
+  stale site by the health check.

@@ -41,11 +41,11 @@ published GitHub Pages site.
 
 Regression check: a `main` commit that does not touch any of
 `deploy-pages.yml`'s watched paths never triggers a deploy, so it must not
-be misreported as a stale site. This was verified by pushing a doc-only
-change (this very paragraph) that does not match the deploy trigger's
-`push.paths` allowlist and confirming the check still reported `healthy`,
-correctly comparing against the previous successful run's `head_sha`
-instead of `main`'s new tip.
+be misreported as a stale site. This was verified by pushing a change to the
+top-level README (which matches none of `deploy-pages.yml`'s `push.paths`
+patterns -- unlike this SKILL.md, which does) and confirming the check still
+reported `healthy`, correctly comparing against the previous successful
+run's `head_sha` instead of `main`'s new tip.
 
 Exit codes distinguish *why* it's unhealthy, since each needs a different
 response:
