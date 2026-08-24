@@ -1,6 +1,38 @@
 {
-  "generatedAt": "2026-08-24T05:32:58.918Z",
+  "generatedAt": "2026-08-24T12:15:37.194Z",
   "commits": [
+    {
+      "sha": "8963330935a69b514b97b23f346f8c6e346ab9be",
+      "shortSha": "8963330",
+      "message": "Wire deploy-pages.yml and release-validation.yml Node setup to read .github/node-version via node-version-file, making it the single authoritative pin instead of a disconnected hardcoded 22; add .github/node-version to both workflows' path triggers",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T05:41:55Z",
+      "url": "https://github.com/OKHP3/skillz/commit/8963330935a69b514b97b23f346f8c6e346ab9be"
+    },
+    {
+      "sha": "c54e567c5369de653c22c71b8ee6b5e02ab730fd",
+      "shortSha": "c54e567",
+      "message": "Add minimal, accurate .github/dependabot.yml (npm workspace root + github-actions) matching what docs/TECHNOLOGY-INVENTORY.md claims; note remaining ecosystems wait on family-folder migration out of .migration-backup/",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T05:39:38Z",
+      "url": "https://github.com/OKHP3/skillz/commit/c54e567c5369de653c22c71b8ee6b5e02ab730fd"
+    },
+    {
+      "sha": "e7001cce1847eb6413d5b58d32abad9c092b44c5",
+      "shortSha": "e7001cc",
+      "message": "Restore weekly technology-inventory refresh workflow at the real .github/workflows/ path: brings back refresh_technology_inventory.py, .github/node-version and .github/python-version pins, and docs/TECHNOLOGY-INVENTORY.md updated to reflect the pnpm-workspace monorepo instead of the pre-migration SKILL.md-only repo",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T05:36:48Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e7001cce1847eb6413d5b58d32abad9c092b44c5"
+    },
+    {
+      "sha": "db5232f54911ee7ff2bc966393798375a78d7288",
+      "shortSha": "db5232f",
+      "message": "Update skillz manifest and activity and catalog artifacts\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-24T05:33:15Z",
+      "url": "https://github.com/OKHP3/skillz/commit/db5232f54911ee7ff2bc966393798375a78d7288"
+    },
     {
       "sha": "976b6327d4014882095df7e2194206bbaa178965",
       "shortSha": "976b632",
@@ -48,38 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-24T04:23:09Z",
       "url": "https://github.com/OKHP3/skillz/commit/31a97e9cbbb143dc2f5a07be39eca134bb095b68"
-    },
-    {
-      "sha": "68fbc5a3ddfd3fa3956b58ad852bcbd37d5b7c9a",
-      "shortSha": "68fbc5a",
-      "message": "Git commit prior to merge",
-      "author": "overkillhillp3",
-      "date": "2026-08-24T04:17:52Z",
-      "url": "https://github.com/OKHP3/skillz/commit/68fbc5a3ddfd3fa3956b58ad852bcbd37d5b7c9a"
-    },
-    {
-      "sha": "aede1d7354fc6b8b3e80ed59e8f0ecf88428484d",
-      "shortSha": "aede1d7",
-      "message": "Update",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T04:17:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/aede1d7354fc6b8b3e80ed59e8f0ecf88428484d"
-    },
-    {
-      "sha": "475db52430c6ee8df8579e1bc0f96d2daa36e67e",
-      "shortSha": "475db52",
-      "message": "Repair",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-23T14:06:19Z",
-      "url": "https://github.com/OKHP3/skillz/commit/475db52430c6ee8df8579e1bc0f96d2daa36e67e"
-    },
-    {
-      "sha": "53fa7d2451b917bb8801c65e864dca5c7baf669f",
-      "shortSha": "53fa7d2",
-      "message": "Merge remote-tracking branch 'origin/main'",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-23T04:38:52Z",
-      "url": "https://github.com/OKHP3/skillz/commit/53fa7d2451b917bb8801c65e864dca5c7baf669f"
     }
   ],
   "fetchError": null
