@@ -23,3 +23,10 @@ looked plausible but would have failed (or deployed a broken site) in CI.
 steps, run `PORT=5000 BASE_PATH=/skillz/ pnpm --filter @workspace/forge run
 build` locally and confirm `dist/public/index.html` exists before assuming CI
 will succeed.
+
+The same `vite.config.ts` env requirement applies to *any* CI step that loads
+the Vite config, not just the build step — `npx vitest run` also loads
+`vite.config.ts` and crashes at startup without `PORT`/`BASE_PATH` set, which
+once shipped as a real deploy-pages.yml CI failure (the "Run unit tests" step
+had no `env:` block). Check every step in the workflow that shells into Vite
+or Vitest, not only the one literally named "build".
