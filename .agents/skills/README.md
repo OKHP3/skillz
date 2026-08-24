@@ -59,6 +59,17 @@ change deployment policy):
 | `published-keyboard-recovery-check` | After a GitHub Pages deploy, or on demand against the live site | Confirms the published (not local) review surface preserves failed-contract keyboard recovery | Exit `2` for a deployment/staleness problem, exit `1` for an application regression |
 | `validation-smoke` | When changing validators or CI report schemas | Exercises malformed catalog, route/hash, missing-output, blocked-publishing, and passing/failing report-contract fixtures | Non-zero exit if a fixture is accepted or rejected incorrectly |
 
+## CI-only checks (not local skill runners)
+
+The checks below run as `.github/workflows/release-validation.yml` jobs rather
+than as `.agents/skills/*/run.mjs` scripts, but they are part of the same
+release-validation contract and are documented here for the same reason: a
+broken build or review flow must fail the pipeline before merge.
+
+| Check | Use when | Success | Release-blocking failure |
+| --- | --- | --- | --- |
+| Review Desk type-check + build + browser smoke test | On every push/PR touching `artifacts/forge-review-desk/**` | `pnpm --filter @workspace/forge-review-desk run typecheck`, `run build`, and `run test:review-browser` all pass, confirming the review workspace compiles and its evidence-selection, supervised-check, final-review-gate, and mobile-navigation flows still work | Non-zero exit from any of the three steps fails the `review-desk-surface` job before merge |
+
 Warnings about shallow history are expected during local development when the
 catalog builder is allowed to proceed. In CI, the catalog builder must fail
 closed unless full Git history is available; do not suppress that failure with

@@ -7,7 +7,8 @@
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:review-browser": "node scripts/test-review-surface-browser.mjs"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -58,6 +59,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "catalog:",
     "next-themes": "^0.4.6",
+    "playwright": "^1.55.0",
     "react": "catalog:",
     "react-day-picker": "^9.11.1",
     "react-dom": "catalog:",

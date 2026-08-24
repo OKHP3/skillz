@@ -414,6 +414,9 @@ importers:
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      playwright:
+        specifier: ^1.55.0
+        version: 1.62.1
       react:
         specifier: 'catalog:'
         version: 19.1.0
