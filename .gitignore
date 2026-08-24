@@ -47,3 +47,27 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Rendered diagram test outputs (never commit working renders)
+*.png
+*.svg
+*.pdf
+!assets/**/*.png
+!assets/**/*.svg
+!forge/public/assets/*.png
+!forge/src/assets/*.png
+!forge/src/assets/*.svg
+!mermaid/okhp3-mermaid-publish/examples/*.png
+!mermaid/okhp3-mermaid-publish/examples/*.svg
+
+# Node (mermaid-cli via npx)
+.npm-cache/
+
+# Python (if any skill scripts use it)
+__pycache__/
+*.pyc
+.venv/
+
+# Env / secrets
+.env
+
