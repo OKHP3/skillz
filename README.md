@@ -43,7 +43,9 @@ healthy again) so a silent publish failure doesn't go unnoticed between
 pushes. If the `PUBLISH_HEALTH_WEBHOOK_URL` repository secret is configured,
 the workflow also sends one Slack/Discord-compatible notification when an
 incident opens and one when it recovers; repeated checks do not spam the
-webhook. Without the secret, issue tracking continues normally.
+webhook. Scheduled failures must persist across three consecutive checks
+before opening an incident, while a failed deploy run alerts immediately.
+Without the secret, issue tracking continues normally.
 
 ## Development
 

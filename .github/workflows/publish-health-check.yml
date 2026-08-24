@@ -3,7 +3,9 @@ name: Publish health check
 # Confirms the live GitHub Pages site matches the commit built by the last
 # successful deploy, on a schedule and immediately after every deploy-pages.yml run -- so a
 # silently-failing or silently-stale publish surfaces on its own instead of
-# requiring someone to manually check the Actions tab or the live site.
+# requiring someone to manually check the Actions tab or the live site. A
+# scheduled transient is debounced for three consecutive unhealthy runs;
+# a failed deploy run alerts immediately.
 on:
   schedule:
     - cron: '*/30 * * * *'
@@ -15,6 +17,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   issues: write
 
@@ -59,6 +62,93 @@ jobs:
           path: validation-reports/publish-health-check.json
           if-no-files-found: ignore
 
+      - name: Decide whether to alert
+        id: alert
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEALTHY: ${{ steps.health.outputs.healthy }}
+          EVENT_NAME: ${{ github.event_name }}
+          DEPLOY_CONCLUSION: ${{ github.event.workflow_run.conclusion || '' }}
+        run: |
+          set -euo pipefail
+          threshold=3
+          state_dir="$RUNNER_TEMP/publish-health-state"
+          state_file="$state_dir/streak.json"
+          mkdir -p "$state_dir"
+          streak=0
+
+          # Keep the scheduled failure count across workflow runs in a
+          # replaceable artifact. The concurrency group serializes readers and
+          # writers, so two scheduled checks cannot lose an increment.
+          artifacts=$(curl -fsSL \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/actions/artifacts?name=publish-health-streak&per_page=1")
+          archive_url=$(printf '%s' "$artifacts" | node -e "
+            let data = '';
+            process.stdin.on('data', c => data += c);
+            process.stdin.on('end', () => {
+              const artifact = JSON.parse(data).artifacts?.[0];
+              console.log(artifact?.archive_download_url ?? '');
+            });
+          ")
+          if [ -n "$archive_url" ]; then
+            if curl -fsSL \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "$archive_url" -o "$state_dir/streak.zip"; then
+              unzip -oq "$state_dir/streak.zip" -d "$state_dir/downloaded"
+              if [ -s "$state_dir/downloaded/streak.json" ]; then
+                streak=$(node -e "
+                  const fs = require('fs');
+                  try {
+                    const value = JSON.parse(fs.readFileSync(process.argv[1], 'utf8')).scheduledUnhealthyRuns;
+                    process.stdout.write(Number.isInteger(value) && value >= 0 ? String(value) : '0');
+                  } catch { process.stdout.write('0'); }
+                " "$state_dir/downloaded/streak.json")
+              fi
+            fi
+          fi
+
+          immediate=false
+          if [ "$EVENT_NAME" = "workflow_run" ] && [ "$DEPLOY_CONCLUSION" != "success" ]; then
+            # A failed deploy is definitive, so it bypasses the scheduled
+            # debounce even when this is the first unhealthy observation.
+            immediate=true
+          fi
+
+          if [ "$HEALTHY" = "true" ]; then
+            streak=0
+          elif [ "$EVENT_NAME" = "schedule" ]; then
+            streak=$((streak + 1))
+          fi
+
+          alert=false
+          if [ "$immediate" = "true" ] || { [ "$EVENT_NAME" = "schedule" ] && [ "$streak" -ge "$threshold" ]; }; then
+            alert=true
+          fi
+
+          node -e "
+            const fs = require('fs');
+            fs.writeFileSync(process.argv[1], JSON.stringify({
+              scheduledUnhealthyRuns: Number(process.argv[2]),
+            }) + '\\n');
+          " "$state_file" "$streak"
+          echo "alert=$alert" >> "$GITHUB_OUTPUT"
+          echo "scheduled_unhealthy_runs=$streak" >> "$GITHUB_OUTPUT"
+          echo "Alert decision: event=$EVENT_NAME healthy=$HEALTHY scheduled_unhealthy_runs=$streak immediate=$immediate alert=$alert"
+
+      - name: Archive alert state
+        if: always() && steps.alert.outcome == 'success'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: publish-health-streak
+          path: ${{ runner.temp }}/publish-health-state/streak.json
+          retention-days: 90
+          overwrite: true
+
       - name: Reflect result in tracking issue
         id: incident
         if: always()
@@ -66,6 +156,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           HEALTHY: ${{ steps.health.outputs.healthy }}
+          ALERT_UNHEALTHY: ${{ steps.alert.outputs.alert }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
@@ -84,7 +175,7 @@ jobs:
             });
           ")
 
-          if [ "$HEALTHY" != "true" ]; then
+          if [ "$HEALTHY" != "true" ] && [ "$ALERT_UNHEALTHY" = "true" ]; then
             echo "started=false" >> "$GITHUB_OUTPUT"
             echo "recovered=false" >> "$GITHUB_OUTPUT"
             body=$(node -e "
@@ -107,7 +198,7 @@ jobs:
                 echo "started=true" >> "$GITHUB_OUTPUT"
               echo "Opened a new tracking issue"
             fi
-          else
+          elif [ "$HEALTHY" = "true" ]; then
             echo "started=false" >> "$GITHUB_OUTPUT"
             echo "recovered=false" >> "$GITHUB_OUTPUT"
             if [ -n "$issue_number" ]; then
@@ -122,6 +213,10 @@ jobs:
             else
               echo "Healthy; no tracking issue to close."
             fi
+          else
+            echo "Unhealthy reading held for debounce; no tracking issue action taken."
+            echo "started=false" >> "$GITHUB_OUTPUT"
+            echo "recovered=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Send incident transition notification

@@ -62,10 +62,17 @@ response:
 `.github/workflows/publish-health-check.yml` runs this on a schedule (every
 30 minutes) and immediately after every `deploy-pages.yml` run completes, so
 a failure surfaces within minutes rather than at the next unrelated push. An
-unhealthy result fails the job (visible in the Actions tab and any GitHub
-notification a watcher has enabled) and opens or updates a tracking issue
-labeled `publish-health`; a return to healthy automatically closes that
-issue. See that workflow file for the exact issue-management steps.
+scheduled unhealthy result must persist across three consecutive scheduled
+runs before it opens or updates a tracking issue, preventing a one-off CDN,
+DNS, or API blip from becoming an incident. A `workflow_run` check caused by
+a failed deploy bypasses that debounce and alerts immediately. Healthy
+checks reset the scheduled streak, and a return to healthy automatically
+closes an existing issue. See that workflow file for the exact
+issue-management steps.
+
+The streak is persisted in the replaceable `publish-health-streak` Actions
+artifact and protected by the workflow's concurrency group, so separate
+scheduled runs share the same count without committing generated state.
 
 If the repository secret `PUBLISH_HEALTH_WEBHOOK_URL` is configured, the same
 workflow sends a real-time transition notification to that webhook when an
