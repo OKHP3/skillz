@@ -128,7 +128,7 @@ function SkeletonDesk() {
   );
 }
 
-function EmptyDesk({ title, message, backHref }: { title: string; message: string; backHref?: string }) {
+function EmptyDesk({ title, message, backHref, recovery }: { title: string; message: string; backHref?: string; recovery?: { searchHref: string; familyHref: string; family: string } }) {
   return (
     <main className="flex min-h-[100dvh] items-center justify-center bg-[#1d2325] px-6 text-[#e8eee8]">
       <section className="max-w-md border border-[#3b4747] bg-[#202728] p-7 text-center">
@@ -137,6 +137,24 @@ function EmptyDesk({ title, message, backHref }: { title: string; message: strin
         </div>
         <h1 className="mt-5 font-serif text-2xl">{title}</h1>
         <p className="mt-3 text-sm leading-6 text-[#899793]">{message}</p>
+        {recovery && (
+          <div className="mt-5 grid gap-2 text-left sm:grid-cols-2">
+            <Link
+              href={recovery.searchHref}
+              data-testid="button-recover-search"
+              className="inline-flex min-h-10 items-center justify-center gap-2 border border-[#d4986d] bg-[#d08254] px-3 py-2 text-center font-mono text-[10px] uppercase tracking-[0.08em] text-[#202322] transition-colors hover:bg-[#e0a27d]"
+            >
+              <Search size={13} /> Search current catalog
+            </Link>
+            <Link
+              href={recovery.familyHref}
+              data-testid="button-recover-family"
+              className="inline-flex min-h-10 items-center justify-center gap-2 border border-[#586965] bg-transparent px-3 py-2 text-center font-mono text-[10px] uppercase tracking-[0.08em] text-[#ced9d2] transition-colors hover:bg-[#303a3a]"
+            >
+              <Layers3 size={13} /> Browse {recovery.family}
+            </Link>
+          </div>
+        )}
         {backHref && (
           <Link href={backHref} className="mt-5 inline-flex h-9 items-center gap-2 border border-[#586965] bg-transparent px-4 font-mono text-[10px] uppercase tracking-[0.1em] text-[#ced9d2] transition-colors hover:bg-[#303a3a]">
             <ArrowLeft size={13} /> Back to catalog
@@ -599,6 +617,11 @@ function SkillRoute({ catalog }: { catalog: Catalog }) {
         title="Skill not found"
         message={`No skill named "${name}" in the "${family}" family. It may have been renamed or removed from the catalog.`}
         backHref="/"
+        recovery={{
+          searchHref: `/?q=${encodeURIComponent(name ?? '')}`,
+          familyHref: `/?family=${encodeURIComponent(family ?? '')}`,
+          family: family ?? 'family',
+        }}
       />
     );
   }

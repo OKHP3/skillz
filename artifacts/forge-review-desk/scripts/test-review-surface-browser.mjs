@@ -74,13 +74,28 @@ async function main() {
     await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
     // A stale bookmark must land on an actionable fallback instead of a
-    // blank route or crash, and its back link must return to the catalog.
+    // blank route or crash. Recovery links preserve both the old name and
+    // family context as shareable catalog filters.
     await page.goto(`${baseUrl}/missing-family/missing-skill`, { waitUntil: 'domcontentloaded' });
     await page.getByText('Skill not found', { exact: true }).waitFor();
     assert(
       await page.getByText(/No skill named "missing-skill"/).count() > 0,
       'Missing-skill fallback did not explain which catalog entry was unavailable.',
     );
+    assert(await page.getByTestId('button-recover-search').getAttribute('href') === '/?q=missing-skill', 'Name recovery link did not preserve the stale skill name.');
+    assert(await page.getByTestId('button-recover-family').getAttribute('href') === '/?family=missing-family', 'Family recovery link did not preserve the stale family.');
+    await page.getByTestId('button-recover-family').click();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).searchParams.get('family') === 'missing-family', 'Family recovery did not reach a filtered catalog URL.');
+    assert((await page.locator('text=No skills match the current filters.').count()) > 0, 'Family recovery did not render a useful filtered catalog result.');
+    await page.goBack();
+    await page.getByText('Skill not found', { exact: true }).waitFor();
+    await page.getByTestId('button-recover-search').click();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).searchParams.get('q') === 'missing-skill', 'Name recovery did not reach a searchable catalog URL.');
+    assert((await page.locator('text=No skills match the current filters.').count()) > 0, 'Name recovery did not render the catalog result state.');
+    await page.goBack();
+    await page.getByText('Skill not found', { exact: true }).waitFor();
     await page.getByRole('link', { name: 'Back to catalog' }).click();
     await page.getByTestId('input-catalog-search').waitFor();
 
