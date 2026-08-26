@@ -115,6 +115,53 @@ async function main() {
     await page.getByRole('link', { name: 'Back to catalog' }).click();
     await page.getByTestId('input-catalog-search').waitFor();
 
+    // Shared review-queue bookmarks hydrate every control, the filtered result
+    // count, and the browser history state. Keep the query narrow enough to
+    // make the expected result count explicit while retaining all URL filters.
+    const sharedQueueUrl = `${baseUrl}/?family=agent-foundry&evidence=not-run&maturity=draftable&q=custom-gpt`;
+    await page.goto(sharedQueueUrl, { waitUntil: 'domcontentloaded' });
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert((await page.getByTestId('input-catalog-search').inputValue()) === 'custom-gpt', 'Shared queue bookmark did not hydrate the search control.');
+    assert(await page.getByTestId('select-catalog-family').inputValue() === 'agent-foundry', 'Shared queue bookmark did not hydrate the family filter.');
+    assert(await page.getByTestId('select-catalog-evidence').inputValue() === 'not-run', 'Shared queue bookmark did not hydrate the evidence filter.');
+    assert(await page.getByTestId('select-catalog-maturity').inputValue() === 'draftable', 'Shared queue bookmark did not hydrate the maturity filter.');
+    assert((await text(page, 'text-catalog-result-count')).toLowerCase() === '2 of 149 skills', 'Shared queue bookmark did not hydrate the expected result count.');
+
+    await page.getByTestId('select-catalog-evidence').selectOption('live');
+    await page.waitForURL(`${baseUrl}/?family=agent-foundry&evidence=live&maturity=draftable&q=custom-gpt`);
+    const changedQueueUrl = new URL(page.url());
+    assert(changedQueueUrl.searchParams.get('family') === 'agent-foundry', 'Changing evidence dropped the family filter from the shared URL.');
+    assert(changedQueueUrl.searchParams.get('maturity') === 'draftable', 'Changing evidence dropped the maturity filter from the shared URL.');
+    assert(changedQueueUrl.searchParams.get('q') === 'custom-gpt', 'Changing evidence dropped the search filter from the shared URL.');
+    assert((await text(page, 'text-catalog-result-count')).toLowerCase() === '0 of 149 skills', 'Changing evidence did not update the filtered result count.');
+
+    await page.goBack();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Browser back did not recover the original shared queue URL.');
+    assert(await page.getByTestId('select-catalog-evidence').inputValue() === 'not-run', 'Browser back did not recover the original evidence filter.');
+    assert((await text(page, 'text-catalog-result-count')).toLowerCase() === '2 of 149 skills', 'Browser back did not recover the original result count.');
+
+    await page.goForward();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).search === new URL(`${baseUrl}/?family=agent-foundry&evidence=live&maturity=draftable&q=custom-gpt`).search, 'Browser forward did not recover the changed shared queue URL.');
+    assert(await page.getByTestId('select-catalog-evidence').inputValue() === 'live', 'Browser forward did not recover the changed evidence filter.');
+    assert((await text(page, 'text-catalog-result-count')).toLowerCase() === '0 of 149 skills', 'Browser forward did not recover the changed result count.');
+
+    await page.getByTestId('button-clear-catalog-filters').click();
+    await page.waitForURL(`${baseUrl}/`);
+    assert((await page.getByTestId('input-catalog-search').inputValue()) === '', 'Clear did not reset the catalog search.');
+    assert(await page.getByTestId('select-catalog-family').inputValue() === '', 'Clear did not reset the family filter.');
+    assert(await page.getByTestId('select-catalog-evidence').inputValue() === '', 'Clear did not reset the evidence filter.');
+    assert(await page.getByTestId('select-catalog-maturity').inputValue() === '', 'Clear did not reset the maturity filter.');
+    assert((await text(page, 'text-catalog-result-count')).toLowerCase() === '149 of 149 skills', 'Clear did not return to the unfiltered catalog.');
+
+    await page.goBack();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).search === new URL(`${baseUrl}/?family=agent-foundry&evidence=live&maturity=draftable&q=custom-gpt`).search, 'Browser back after Clear did not recover the shared filtered queue.');
+    await page.goForward();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).search === '', 'Browser forward after Clear did not recover the unfiltered catalog.');
+
     // Catalog picker loads from the real catalog data (not one hardcoded
     // example) and lets a reviewer navigate to any skill's dossier.
     await page.getByTestId('input-catalog-search').waitFor();
@@ -177,7 +224,7 @@ async function main() {
     assert(await navToggle.getAttribute('aria-expanded') === 'true', 'Mobile navigation toggle did not expand.');
     await expectKeyboardFocus(page, page.getByTestId('button-nav-catalog'), 'Catalog navigation control');
 
-    console.log('✓ review desk covers catalog navigation, real evidence state, evidence selection, supervised-check fixture, error recovery, and mobile navigation');
+    console.log('✓ review desk covers shareable filters, browser history recovery, catalog navigation, real evidence state, evidence selection, supervised-check fixture, error recovery, and mobile navigation');
   } finally {
     await browser?.close();
     server.kill('SIGTERM');

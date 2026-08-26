@@ -531,7 +531,10 @@ function CatalogList({ catalog }: { catalog: Catalog }) {
     setSearch(nextQuery);
   };
 
-  const clearFilters = () => navigate('/');
+  const clearFilters = () => {
+    navigate('/');
+    setSearch('');
+  };
   const activeFilterCount = [family, evidence, maturity].filter(Boolean).length;
   const replacements = skills.length === 0 && query
     ? findLikelyReplacements(query, family, catalog.skills)
@@ -619,7 +622,7 @@ function CatalogList({ catalog }: { catalog: Catalog }) {
           </button>
         </div>
         <div className="mt-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.1em]" style={{ color: colors.muted }}>
-          <span>{skills.length} of {catalog.skillCount} skills</span>
+          <span data-testid="text-catalog-result-count">{skills.length} of {catalog.skillCount} skills</span>
           {(query || activeFilterCount > 0) && <span>filtered view · shareable URL</span>}
         </div>
         <ul className="mt-4 divide-y" style={{ borderColor: colors.border }}>
