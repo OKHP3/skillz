@@ -1,0 +1,154 @@
+name: Deploy Skillz Forge to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      # Path-independent trigger (replaces the prior hand-maintained
+      # per-family allowlist, which already once silently missed 5 of 15
+      # families for an entire release cycle). A 16th family — or any
+      # future family — is covered automatically because the trigger keys
+      # off the file patterns every family/skill folder always contains,
+      # not a list of folder names that must be remembered and updated.
+      - 'artifacts/forge/**'
+      - '**/SKILL.md'
+      - '**/FAMILY.md'
+      - 'skillz.manifest.json'
+      - 'AGENTS.md'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The catalog embeds provenance from the source history.
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate skill catalog
+        working-directory: artifacts/forge
+        run: node scripts/build-catalog.js
+
+      - name: Generate activity feed
+        working-directory: artifacts/forge
+        run: node scripts/build-activity.mjs
+
+      - name: Run deterministic catalog tests
+        working-directory: artifacts/forge
+        run: node scripts/test-catalog.mjs
+
+      - name: Verify deploy trigger is family-agnostic
+        working-directory: artifacts/forge
+        run: node scripts/verify-deploy-trigger.mjs
+
+      - name: Run unit tests
+        working-directory: artifacts/forge
+        run: npx vitest run
+
+      - name: Verify catalog provenance
+        working-directory: artifacts/forge
+        run: |
+          node -e "
+            const c = require('./public/data/catalog.json');
+            let ok = true;
+            if (!c.skillCount || c.skillCount === 0) { console.error('FAIL: Empty catalog'); ok = false; }
+            if (!c.sourceRepository) { console.error('FAIL: Missing sourceRepository'); ok = false; }
+            if (!c.familyCount || c.familyCount === 0) { console.error('FAIL: Missing or zero familyCount'); ok = false; }
+            if (!c.sourceCommit) { console.error('FAIL: Missing sourceCommit'); ok = false; }
+            if (!c.sourceRef || c.sourceRef === 'HEAD') { console.error('FAIL: sourceRef is HEAD or missing (detached HEAD in CI)'); ok = false; }
+            if (!ok) process.exit(1);
+            console.log('Catalog OK:', c.skillCount, 'skills,', c.familyCount, 'families');
+            console.log('Source:', c.sourceRepository, '@', c.sourceRef, c.sourceCommit);
+          "
+
+      - name: Type-check and build
+        working-directory: artifacts/forge
+        env:
+          PORT: "5000"
+          BASE_PATH: /skillz/
+        run: pnpm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: artifacts/forge/dist/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
+
+  verify-keyboard-recovery:
+    name: Confirm published pages preserve keyboard recovery
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Chromium for browser validation
+        run: pnpm --filter @workspace/forge exec playwright install --with-deps chromium
+
+      - name: Run post-deploy keyboard recovery check
+        # This is deliberately credential-free: it only issues public HTTPS
+        # requests against the just-deployed Pages URL. A deployment-stage
+        # failure (unreachable site, stale artifact) exits 2; an application
+        # assertion failure (keyboard recovery itself regressed) exits 1.
+        env:
+          FORGE_PUBLISHED_URL: ${{ needs.deploy.outputs.page_url }}
+          EXPECTED_SOURCE_COMMIT: ${{ github.sha }}
+        run: node .agents/skills/published-keyboard-recovery-check/run.mjs

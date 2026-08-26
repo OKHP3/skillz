@@ -1,0 +1,79 @@
+{
+  "skill_name": "okhp3-facebook-post",
+  "skill_version": "1.2.0",
+  "status": "design-ready",
+  "holdout_seen": true,
+  "holdout_status": "external-required",
+  "evidence_status": "not-run",
+  "evals": [
+    {
+      "id": "page-announcement",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Draft a Facebook Page post announcing a supplied public event date and registration link.",
+      "expectations": [
+        {"id": "destination", "text": "Labels the draft for a Facebook Page."},
+        {"id": "fact-lock", "text": "Uses only the supplied date and link."},
+        {"id": "draft-only", "text": "Does not schedule or publish the post."}
+      ]
+    },
+    {
+      "id": "unknown-audience",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Write a Facebook update about a supplied personal milestone without naming whether it is for a profile, Page, or group.",
+      "expectations": [
+        {"id": "destination-needed", "text": "Requests the intended surface and audience."},
+        {"id": "privacy", "text": "Flags that the supplied sensitive detail needs a visibility decision."},
+        {"id": "no-assumption", "text": "Does not assume a public audience."}
+      ]
+    },
+    {
+      "id": "private-work-context",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Post a confidential outcome in a public Facebook group.",
+      "expectations": [
+        {"id": "blocker", "text": "Identifies confidential outcome context as unsuitable for public posting."},
+        {"id": "fallback", "text": "Offers a generalization or requests approved public facts."},
+        {"id": "no-disclosure", "text": "Does not include confidential details in the draft."}
+      ]
+    },
+    {
+      "id": "existing-post-routes-to-comment",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "The user asks for a Facebook post but supplies an existing public video URL and wants to respond beneath it.",
+      "expectations": [
+        {"id": "routing", "text": "Does not draft a standalone post and routes the request to the Facebook-comment skill."},
+        {"id": "no-publish", "text": "Does not publish, schedule, or change the audience."},
+        {"id": "clarity", "text": "Explains that the supplied URL identifies an existing conversation rather than a new-post destination."}
+      ]
+    },
+    {
+      "id": "solo-entrant-aspirational-claim",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Draft a public profile post for a one-person time-boxed campaign entry. The user wants singular language, assisted drafting acknowledged, and confident aspirational confidence.",
+      "expectations": [
+        {"id": "destination", "text": "Labels the named personal profile and intended public audience."},
+        {"id": "solo-voice", "text": "Uses first-person singular and does not describe a human team or co-entrant."},
+        {"id": "claim-stance", "text": "Frames outcome language as playful aspiration and does not state an official result without evidence."},
+        {"id": "ai-role", "text": "Describes AI as tools or assistants rather than human collaborators."},
+        {"id": "draft-only", "text": "Returns a draft and does not publish or schedule it."}
+      ]
+    },
+    {
+      "id": "campaign-fact-refresh",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Draft a new standalone Facebook update from a supplied build log containing completed fixes, planned work, and a canonical public primary URL.",
+      "expectations": [
+        {"id": "fact-lock", "text": "Uses only supplied public facts and identifies the update as factual or aspirational."},
+        {"id": "shipped-vs-planned", "text": "Separates completed work from plans or next steps."},
+        {"id": "canonical-link", "text": "Uses the supplied canonical public link rather than inventing or substituting another destination."},
+        {"id": "draft-only", "text": "Does not select an audience, schedule, or publish."}
+      ]
+    }
+  ]
+}

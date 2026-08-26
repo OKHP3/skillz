@@ -1,3 +1,53 @@
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+out-tsc
+*.tsbuildinfo
+.expo
+.expo-shared
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+
+# Replit
+.cache/
+.local/
+
 # Rendered diagram test outputs (never commit working renders)
 *.png
 *.svg
@@ -5,9 +55,24 @@
 !assets/**/*.png
 !assets/**/*.svg
 !forge/public/assets/*.png
+!forge/src/assets/*.png
+!forge/src/assets/*.svg
+!mermaid/okhp3-mermaid-publish/examples/*.png
+!mermaid/okhp3-mermaid-publish/examples/*.svg
+
+# Post-monorepo-migration equivalents of the forge/ exceptions above --
+# without these, favicons, app icons, social-preview art, and the Home
+# hero fallback image are silently dropped from the repo and CI/production
+# builds fail or ship broken images (found 2026-08-24).
+!artifacts/forge/public/assets/*.png
+!artifacts/forge/src/assets/*.png
+!artifacts/forge/src/assets/*.svg
+!artifacts/forge/public/favicon.svg
+!artifacts/forge/public/icons.svg
+!artifacts/forge-review-desk/public/favicon.svg
+!artifacts/mockup-sandbox/public/favicon.svg
 
 # Node (mermaid-cli via npx)
-node_modules/
 .npm-cache/
 
 # Python (if any skill scripts use it)
@@ -15,9 +80,6 @@ __pycache__/
 *.pyc
 .venv/
 
-# Editor / OS
-.DS_Store
-.vscode/
-
 # Env / secrets
 .env
+

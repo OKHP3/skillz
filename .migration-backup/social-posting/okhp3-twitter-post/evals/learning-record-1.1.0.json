@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-twitter-post",
+  "evaluated_version": "1.1.0",
+  "status": "analytical",
+  "pre_change_sha256": "[PRE_CHANGE_DIGEST]",
+  "post_change_sha256": "[POST_CHANGE_DIGEST]",
+  "hypothesis": "Explicit routing away from supplied-parent replies plus claim-status and progress rules will prevent standalone-post drift and unsupported outcome claims.",
+  "source_evidence": [
+    "A supplied parent URL can make a shorthand post request a reply task.",
+    "Progress copy is strongest when it names a concrete change and user-visible effect.",
+    "Deadlines, awards, and outcomes are consequential and require current supplied evidence.",
+    "Aspirational language must not be presented as an official result."
+  ],
+  "changes": [
+    "Added parent-URL routing to the reply skill.",
+    "Added progress change/effect and runtime-versus-supporting-artifact guidance.",
+    "Added confirmed, aspirational, and unknown claim statuses.",
+    "Added public-neutrality requirements and development evaluations."
+  ],
+  "rejected_alternatives": [
+    "Adding posting automation was rejected because publication requires separate approval and a host adapter.",
+    "Embedding a fixed deadline, award, or account identifier was rejected because the package is portable."
+  ],
+  "expected_benefit": "Cleaner selection between standalone posts and replies, with stronger evidence discipline.",
+  "regression_risk": "Routing any request with a parent URL may be over-broad when quote text was intended; preserve the explicit form or ask.",
+  "evaluation": {
+    "structural_validator": "pass",
+    "json_fixture_parse": "pass",
+    "live_benchmark": "not-run",
+    "unseen_holdout": "not-run",
+    "limitation": "Analytical evidence only; no isolated runner was available."
+  },
+  "applicability": "Portable standalone X drafting; current platform facts require live verification when consequential."
+}

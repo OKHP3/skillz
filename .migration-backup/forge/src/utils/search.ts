@@ -1,0 +1,410 @@
+import Fuse, { type IFuseOptions } from 'fuse.js';
+import type { Skill, SearchResult, FilterState, SearchIndexEntry } from '../types/catalog';
+
+// Release 1: `bodyText` no longer ships on the `Skill` objects in the main
+// catalog payload (see build-catalog.js) — it lives in the separate,
+// lazily-fetched `data/search-index.json`. This index searches metadata
+// fields only; full-body matches are layered in via `bodyFuseIndex` below
+// once (and only if) that asset has been fetched (see setBodySearchIndex).
+const FUSE_OPTIONS: IFuseOptions<Skill> = {
+  includeScore: true,
+  threshold: 0.4,
+  minMatchCharLength: 2,
+  // Fuse's default location/distance scoring only rewards matches near the
+  // start of a field. Several fields here (description) run to hundreds of
+  // characters, so without this a real match deep in the text scores as "no
+  // match" and silently vanishes from results.
+  ignoreLocation: true,
+  keys: [
+    { name: 'name',        weight: 0.25 },
+    { name: 'displayName', weight: 0.20 },
+    { name: 'description', weight: 0.18 },
+    { name: 'triggers',    weight: 0.12 },
+    { name: 'inputs',      weight: 0.06 },
+    { name: 'outputs',     weight: 0.06 },
+    { name: 'family',      weight: 0.05 },
+    { name: 'category',    weight: 0.04 },
+    { name: 'topics',      weight: 0.03 },
+    { name: 'tools',       weight: 0.03 },
+    { name: 'runtimes',    weight: 0.02 },
+    { name: 'companions',  weight: 0.02 },
+    { name: 'boundaries',  weight: 0.02 },
+    { name: 'examples',    weight: 0.02 },
+  ],
+};
+
+const BODY_FUSE_OPTIONS: IFuseOptions<SearchIndexEntry> = {
+  includeScore: true,
+  threshold: 0.4,
+  minMatchCharLength: 3,
+  ignoreLocation: true,
+  keys: [{ name: 'bodyText', weight: 1 }],
+};
+
+let fuseIndex: Fuse<Skill> | null = null;
+let bodyFuseIndex: Fuse<SearchIndexEntry> | null = null;
+
+export function buildSearchIndex(skills: Skill[]): void {
+  fuseIndex = new Fuse(skills, FUSE_OPTIONS);
+}
+
+/** Wires in the lazily-fetched full-body search index (data/search-index.json).
+ *  Safe to call at any time, including after searches have already run —
+ *  Explore re-runs the search once this resolves so late-arriving body
+ *  matches still surface without a page reload. */
+export function setBodySearchIndex(entries: SearchIndexEntry[]): void {
+  bodyFuseIndex = new Fuse(entries, BODY_FUSE_OPTIONS);
+}
+
+export function hasBodySearchIndex(): boolean {
+  return bodyFuseIndex !== null;
+}
+
+export function searchSkills(skills: Skill[], filters: FilterState): SearchResult[] {
+  let results: SearchResult[] = [];
+
+  if (filters.query.trim()) {
+    if (!fuseIndex) buildSearchIndex(skills);
+    const query = filters.query.trim();
+    const raw = fuseIndex!.search(query);
+    const byName = new Map<string, SearchResult>();
+    for (const r of raw) {
+      byName.set(r.item.name, {
+        skill: r.item,
+        score: 1 - (r.score ?? 0.5),
+        matchReason: buildMatchReason(r.item, query),
+      });
+    }
+
+    // Layer in full-body matches (once the search index has loaded) for
+    // skills the metadata-only pass above missed entirely. Weighted lower
+    // than any metadata match so a stray word deep in prose never outranks
+    // a name/description hit, but it means nothing written in a skill's
+    // SKILL.md is unsearchable once the index is available.
+    if (bodyFuseIndex) {
+      const skillByName = new Map(skills.map(s => [s.name, s]));
+      const bodyRaw = bodyFuseIndex.search(query);
+      for (const r of bodyRaw) {
+        if (byName.has(r.item.name)) continue;
+        const skill = skillByName.get(r.item.name);
+        if (!skill) continue;
+        byName.set(r.item.name, {
+          skill,
+          score: (1 - (r.score ?? 0.5)) * 0.5,
+          matchReason: 'Matches skill content',
+        });
+      }
+    }
+
+    results = Array.from(byName.values());
+  } else {
+    results = skills.map(s => ({ skill: s, score: 0.5, matchReason: undefined }));
+  }
+
+  // Apply family filter
+  if (filters.family) {
+    results = results.filter(r => r.skill.family === filters.family);
+  }
+
+  // Apply maturity filter
+  if (filters.maturity) {
+    results = results.filter(r => r.skill.maturity === filters.maturity);
+  }
+
+  // Apply evidence filter
+  if (filters.evidence) {
+    results = results.filter(r => r.skill.evidenceStatus === filters.evidence);
+  }
+
+  // Apply release-readiness filter (evidence-contract v2)
+  if (filters.releaseReadiness) {
+    results = results.filter(r => r.skill.releaseReadiness === filters.releaseReadiness);
+  }
+
+  // Sort
+  results = sortResults(results, filters.sort);
+
+  return results;
+}
+
+function sortResults(results: SearchResult[], sort: FilterState['sort']): SearchResult[] {
+  switch (sort) {
+    case 'relevance':
+      return [...results].sort((a, b) => b.score - a.score);
+    case 'alpha':
+      return [...results].sort((a, b) => a.skill.name.localeCompare(b.skill.name));
+    case 'family':
+      return [...results].sort((a, b) =>
+        a.skill.family.localeCompare(b.skill.family) || a.skill.name.localeCompare(b.skill.name)
+      );
+    case 'maturity': {
+      const order: Record<string, number> = {
+        published: 0, validated: 1, usable: 2, draftable: 3, skeleton: 4, placeholder: 5,
+      };
+      return [...results].sort((a, b) =>
+        (order[a.skill.maturity] ?? 9) - (order[b.skill.maturity] ?? 9)
+      );
+    }
+    case 'evidence': {
+      const order: Record<string, number> = {
+        live: 0, historical: 1, analytical: 2, 'local-checks': 3, designed: 4, 'not-run': 5, none: 6,
+      };
+      return [...results].sort((a, b) =>
+        (order[a.skill.evidenceStatus] ?? 9) - (order[b.skill.evidenceStatus] ?? 9)
+      );
+    }
+    case 'updated':
+      return [...results].sort((a, b) =>
+        (b.skill.lastModified ? Date.parse(b.skill.lastModified) : 0) -
+        (a.skill.lastModified ? Date.parse(a.skill.lastModified) : 0)
+      );
+    case 'evidence-freshness': {
+      // Freshest evidence first: a live/analytical record with a recent
+      // lastEvidenceDate outranks a historical one, which outranks not-run.
+      const order: Record<string, number> = { live: 0, analytical: 1, historical: 2, 'not-run': 3 };
+      return [...results].sort((a, b) => {
+        const statusDiff = (order[a.skill.evidence.status] ?? 9) - (order[b.skill.evidence.status] ?? 9);
+        if (statusDiff !== 0) return statusDiff;
+        const aDate = a.skill.evidence.lastEvidenceDate ? Date.parse(a.skill.evidence.lastEvidenceDate) : 0;
+        const bDate = b.skill.evidence.lastEvidenceDate ? Date.parse(b.skill.evidence.lastEvidenceDate) : 0;
+        return bDate - aDate;
+      });
+    }
+    case 'version':
+      // Missing versions sort last but remain present and sortable (6.5 test 3).
+      return [...results].sort((a, b) => {
+        if (!a.skill.version && !b.skill.version) return a.skill.name.localeCompare(b.skill.name);
+        if (!a.skill.version) return 1;
+        if (!b.skill.version) return -1;
+        return compareVersions(b.skill.version, a.skill.version);
+      });
+    default:
+      return results;
+  }
+}
+
+function compareVersions(a: string, b: string): number {
+  const pa = a.split('.').map(n => parseInt(n, 10) || 0);
+  const pb = b.split('.').map(n => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
+
+function buildMatchReason(skill: Skill, query: string): string {
+  const q = query.toLowerCase();
+  if (skill.name.toLowerCase().includes(q)) return `Matches skill name "${skill.name}"`;
+  const dn = skill.displayName || '';
+  if (dn && dn.toLowerCase().includes(q)) return `Matches display name "${dn}"`;
+  if (skill.description.toLowerCase().includes(q)) return `Matches description`;
+  if (skill.triggers.some(t => t.toLowerCase().includes(q))) return `Matches trigger phrase`;
+  if (skill.inputs.some(t => t.toLowerCase().includes(q))) return `Matches input: "${skill.inputs.find(t => t.toLowerCase().includes(q))}"`;
+  if (skill.outputs.some(t => t.toLowerCase().includes(q))) return `Matches output: "${skill.outputs.find(t => t.toLowerCase().includes(q))}"`;
+  if (skill.tools.some(t => t.toLowerCase().includes(q))) return `Matches tool: ${skill.tools.find(t => t.toLowerCase().includes(q))}`;
+  if (skill.companions.some(c => c.toLowerCase().includes(q))) return `Companion of ${skill.companions.find(c => c.toLowerCase().includes(q))}`;
+  if (skill.family.toLowerCase().includes(q)) return `Matches family "${skill.family}"`;
+  return `Related to "${query}"`;
+}
+
+// ─── Workflow Pathway ────────────────────────────────────────────────────────
+
+export interface ResolvedPathNode {
+  kind: 'resolved';
+  skill: Skill;
+  isCurrent: boolean;
+  /** Extra incoming edges beyond the one in the displayed chain (shows branching) */
+  incomingBranches: number;
+  /** Extra outgoing edges beyond the first companion (= branchSkills.length) */
+  outgoingBranches: number;
+  /** Companion names declared on this skill that do not match any real
+   *  skill in the catalog (typo or unpropagated rename). Non-fatal at
+   *  build time (see build-catalog.js companion-resolution warning) but
+   *  surfaced here so the UI can flag the break instead of silently
+   *  omitting it, the way the old `.filter(c => skillMap.has(c))` did. */
+  unresolvedCompanions: string[];
+  /** The actual alternate companion skills diverging from this node (companions[1..]) */
+  branchSkills: Skill[];
+}
+
+/** A companion name that was declared on the chain but does not resolve to
+ *  any skill in the catalog. Rendered as a terminal "not found" pathway
+ *  stop rather than being dropped, so a misspelled or renamed companion is
+ *  visible on the page instead of just quietly shortening the chain. */
+export interface UnresolvedPathNode {
+  kind: 'unresolved';
+  name: string;
+}
+
+export type PathNode = ResolvedPathNode | UnresolvedPathNode;
+
+/**
+ * Traverse companion relationships to build an ordered pathway containing
+ * `skill`.  Walks backward to the chain root, then forward through the main
+ * (first-companion) path, returning at most MAX_TOTAL nodes.
+ */
+export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] {
+  const MAX_DEPTH = 5;
+  const MAX_TOTAL = 10;
+  const skillMap = new Map(allSkills.map(s => [s.name, s]));
+
+  // Build predecessor index: predecessors.get(name) = all skills that list name as a companion
+  const predecessors = new Map<string, string[]>();
+  for (const s of allSkills) {
+    for (const cName of s.companions) {
+      if (!predecessors.has(cName)) predecessors.set(cName, []);
+      predecessors.get(cName)!.push(s.name);
+    }
+  }
+
+  // Walk backward to find chain root (the skill with no predecessor in the chain)
+  function findRoot(name: string, depth: number, visited: Set<string>): string {
+    if (depth >= MAX_DEPTH || visited.has(name)) return name;
+    visited.add(name);
+    const preds = (predecessors.get(name) ?? []).filter(p => !visited.has(p) && skillMap.has(p));
+    if (preds.length === 0) return name;
+    // Prefer a predecessor whose first companion is `name` (direct chain link)
+    const primary =
+      preds.find(p => skillMap.get(p)?.companions[0] === name) ?? preds[0];
+    return findRoot(primary, depth + 1, visited);
+  }
+
+  const rootName = findRoot(skill.name, 0, new Set());
+
+  // Walk forward from root following the first companion at each step
+  const nodes: PathNode[] = [];
+  const visited = new Set<string>();
+
+  function walkForward(name: string, depth: number): void {
+    if (visited.has(name) || depth >= MAX_TOTAL) return;
+    visited.add(name);
+    const s = skillMap.get(name);
+    if (!s) return;
+
+    // Unresolved: declared on this skill but not a real catalog entry at
+    // all (typo/rename) — distinct from a resolved companion that just
+    // happens to already be `visited` (a cycle/merge, not a break).
+    const unresolvedCompanions = s.companions.filter(c => !skillMap.has(c));
+    const validCompanions = s.companions.filter(c => skillMap.has(c) && !visited.has(c));
+    const totalPreds = (predecessors.get(name) ?? []).length;
+
+    nodes.push({
+      kind: 'resolved',
+      skill: s,
+      isCurrent: name === skill.name,
+      incomingBranches: Math.max(0, totalPreds - 1),
+      outgoingBranches: Math.max(0, validCompanions.length - 1),
+      unresolvedCompanions,
+      branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
+    });
+
+    if (validCompanions.length > 0 && nodes.length < MAX_TOTAL) {
+      walkForward(validCompanions[0], depth + 1);
+    } else if (
+      validCompanions.length === 0 &&
+      unresolvedCompanions.length > 0 &&
+      nodes.length < MAX_TOTAL
+    ) {
+      // The only declared next step(s) are all broken references — surface
+      // the first one as a visible "not found" stop instead of the chain
+      // just quietly ending one step early with no indication why.
+      nodes.push({ kind: 'unresolved', name: unresolvedCompanions[0] });
+    }
+  }
+
+  walkForward(rootName, 0);
+
+  // Safety: if the current skill ended up outside the chain, return it alone
+  if (!nodes.some(n => n.kind === 'resolved' && n.isCurrent)) {
+    const validCompanions = skill.companions.filter(c => skillMap.has(c));
+    const unresolvedCompanions = skill.companions.filter(c => !skillMap.has(c));
+    return [{
+      kind: 'resolved',
+      skill,
+      isCurrent: true,
+      incomingBranches: 0,
+      outgoingBranches: Math.max(0, validCompanions.length - 1),
+      unresolvedCompanions,
+      branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
+    }];
+  }
+
+  return nodes;
+}
+
+/**
+ * Walk forward from `skill` following the main (first-companion) chain,
+ * returning at most `maxSteps` PathNodes. Does NOT walk backward to a
+ * chain root — used to preview the downstream pathway of a branch skill
+ * inline without navigating away from the current page.
+ */
+export function buildForwardPath(skill: Skill, allSkills: Skill[], maxSteps = 5): PathNode[] {
+  const skillMap = new Map(allSkills.map(s => [s.name, s]));
+
+  // Predecessor index needed for incomingBranches count
+  const predecessors = new Map<string, string[]>();
+  for (const s of allSkills) {
+    for (const cName of s.companions) {
+      if (!predecessors.has(cName)) predecessors.set(cName, []);
+      predecessors.get(cName)!.push(s.name);
+    }
+  }
+
+  const nodes: PathNode[] = [];
+  const visited = new Set<string>();
+
+  function walk(name: string, depth: number): void {
+    if (visited.has(name) || depth >= maxSteps) return;
+    visited.add(name);
+    const s = skillMap.get(name);
+    if (!s) return;
+
+    const unresolvedCompanions = s.companions.filter(c => !skillMap.has(c));
+    const validCompanions = s.companions.filter(c => skillMap.has(c) && !visited.has(c));
+    const totalPreds = (predecessors.get(name) ?? []).length;
+
+    nodes.push({
+      kind: 'resolved',
+      skill: s,
+      isCurrent: false,
+      incomingBranches: Math.max(0, totalPreds - 1),
+      outgoingBranches: Math.max(0, validCompanions.length - 1),
+      unresolvedCompanions,
+      branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
+    });
+
+    if (validCompanions.length > 0 && nodes.length < maxSteps) {
+      walk(validCompanions[0], depth + 1);
+    } else if (
+      validCompanions.length === 0 &&
+      unresolvedCompanions.length > 0 &&
+      nodes.length < maxSteps
+    ) {
+      nodes.push({ kind: 'unresolved', name: unresolvedCompanions[0] });
+    }
+  }
+
+  walk(skill.name, 0);
+  return nodes;
+}
+
+export function getRelatedSkills(skill: Skill, allSkills: Skill[]): Skill[] {
+  const related: Skill[] = [];
+
+  // Explicit companions first
+  for (const name of skill.companions) {
+    const found = allSkills.find(s => s.name === name);
+    if (found && found.name !== skill.name) related.push(found);
+  }
+
+  // Same family, by maturity
+  if (related.length < 5) {
+    const sameFamily = allSkills
+      .filter(s => s.family === skill.family && s.name !== skill.name && !related.includes(s))
+      .slice(0, 5 - related.length);
+    related.push(...sameFamily);
+  }
+
+  return related.slice(0, 6);
+}

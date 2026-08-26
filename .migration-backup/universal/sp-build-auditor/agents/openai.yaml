@@ -1,0 +1,4 @@
+interface:
+  display_name: "SharePoint List Build Auditor"
+  short_description: "Audit SharePoint UI screenshots against schema."
+  default_prompt: "Review these SharePoint list settings screenshots against the build cards and report discrepancies."

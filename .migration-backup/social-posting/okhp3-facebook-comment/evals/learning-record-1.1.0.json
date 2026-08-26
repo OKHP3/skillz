@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-facebook-comment",
+  "evaluated_skill_version": "1.2.0",
+  "evaluation_status": "analytical",
+  "decision_question": "Does the comment contract resolve the target surface, authorship mode, claim status, and evidence freshness without embedding user or subject details?",
+  "source_evidence": [
+    {
+      "id": "SYNTH-01",
+      "source": "Synthetic workflow fixture reviewed at execution time",
+      "authority": "supplied conversation",
+      "observation": "A request used post-like shorthand while also supplying a parent URL, so the correct surface was a reply.",
+      "applicability": "direct"
+    },
+    {
+      "id": "SYNTH-02",
+      "source": "Synthetic workflow fixture reviewed at execution time",
+      "authority": "supplied conversation",
+      "observation": "The brief required singular human authorship while acknowledging non-human assistance.",
+      "applicability": "direct"
+    },
+    {
+      "id": "SYNTH-03",
+      "source": "[PUBLIC_SOURCE_URL]",
+      "authority": "public source supplied at execution time",
+      "observation": "A supplied source supported completed-work claims but did not prove an official result.",
+      "applicability": "direct"
+    }
+  ],
+  "hypothesis": "A target-surface gate, runtime authorship context, explicit claim stance, and evidence-refresh rule will reduce ambiguous or unsupported public replies.",
+  "changes": [
+    "Route supplied parent URLs to comment drafting even when shorthand says post.",
+    "Add runtime campaign context, shipped-versus-planned, claim stance, authorship, and AI-role rules.",
+    "Keep package artifacts and fixtures synthetic and identity-agnostic.",
+    "Expand the output contract and add development regression cases."
+  ],
+  "rejected_alternatives": [
+    "Did not add browser or publishing instructions to the portable drafting skill.",
+    "Did not make any source-specific tooling a hard dependency.",
+    "Did not store a real account, project, campaign, topic, or URL in the package."
+  ],
+  "regression_risks": [
+    "The skill may ask for context for a simple comment when the request includes an outcome claim.",
+    "A model may overuse claim labels in ordinary comments; labels remain conditional."
+  ],
+  "evaluation_limitations": [
+    "No isolated with-skill/without-skill executor was available.",
+    "No unseen release holdout was run; this record is analytical only."
+  ]
+}

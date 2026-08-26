@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-08-24T18:05:22.976Z",
+  "commits": [
+    {
+      "sha": "b911bcd8e16883f4aa6239d25d06cfecef2e4820",
+      "shortSha": "b911bcd",
+      "message": "Wire Review Desk to real Forge catalog data\n\nReplit-Task-Id: 5cc79973-529c-4ee0-b5c8-722eec32aa9d\nReplit-Merge-Attempt: MergeTask:5cc79973-529c-4ee0-b5c8-722eec32aa9d:1:40b38b7c",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T18:03:45Z",
+      "url": "https://github.com/OKHP3/skillz/commit/b911bcd8e16883f4aa6239d25d06cfecef2e4820"
+    },
+    {
+      "sha": "2e0c77b8bc91363a220dad58ff0fb43731496e69",
+      "shortSha": "2e0c77b",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T18:03:44Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2e0c77b8bc91363a220dad58ff0fb43731496e69"
+    },
+    {
+      "sha": "28d9525825dc778fdf5d8bdb597c9895ff91e652",
+      "shortSha": "28d9525",
+      "message": "Remove temporary regression-test note from README",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:37:31Z",
+      "url": "https://github.com/OKHP3/skillz/commit/28d9525825dc778fdf5d8bdb597c9895ff91e652"
+    },
+    {
+      "sha": "e6ff00d5eed65afb7fd4a565833f3fe815200729",
+      "shortSha": "e6ff00d",
+      "message": "Regression-test publish-health-check: push a README-only change matching none of deploy-pages.yml's push.paths",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:35:04Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e6ff00d5eed65afb7fd4a565833f3fe815200729"
+    },
+    {
+      "sha": "34d0085ede029e0df5e4d3e567eff5a6a174b666",
+      "shortSha": "34d0085",
+      "message": "Document the non-deploying-commit regression check for publish-health-check freshness contract",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:32:15Z",
+      "url": "https://github.com/OKHP3/skillz/commit/34d0085ede029e0df5e4d3e567eff5a6a174b666"
+    },
+    {
+      "sha": "2f35b865955bb5ba9a11f3b7da9264f1a4d79bc3",
+      "shortSha": "2f35b86",
+      "message": "Fix publish-health-check freshness contract: compare live sourceCommit against the last successful deploy run's own head_sha instead of main's tip, since deploy-pages.yml only fires on a push.paths allowlist and would otherwise false-flag every non-deploying main commit as stale",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:29:32Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2f35b865955bb5ba9a11f3b7da9264f1a4d79bc3"
+    },
+    {
+      "sha": "5883737d040dc85ca1bd87f40a032252c567293d",
+      "shortSha": "5883737",
+      "message": "Add deploy-pages/publish-health-check status badges to README",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:27:07Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5883737d040dc85ca1bd87f40a032252c567293d"
+    },
+    {
+      "sha": "2cfd034104bd76dd5385cb5a67f5912516195c34",
+      "shortSha": "2cfd034",
+      "message": "Add publish-health-check: schedule + post-deploy verification that the live GitHub Pages site matches main, opening/closing a tracking issue on failure; correct stale README claim that auto-publishing is unwired",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-24T17:25:22Z",
+      "url": "https://github.com/OKHP3/skillz/commit/2cfd034104bd76dd5385cb5a67f5912516195c34"
+    },
+    {
+      "sha": "9e0cb7bc2af5283c24c1c6f892543c375b6a8072",
+      "shortSha": "9e0cb7b",
+      "message": "Add CI type-check, build, and browser smoke test for the Review Desk\n\nReplit-Task-Id: 04baa378-e193-41cd-99c9-3aee5d306f16\nReplit-Merge-Attempt: MergeTask:04baa378-e193-41cd-99c9-3aee5d306f16:1:2b06d309",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T17:21:30Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9e0cb7bc2af5283c24c1c6f892543c375b6a8072"
+    },
+    {
+      "sha": "d0350bda726c80cf0aa0e55f60710a5daad6d3c4",
+      "shortSha": "d0350bd",
+      "message": "Git commit prior to merge",
+      "author": "overkillhillp3",
+      "date": "2026-08-24T17:21:29Z",
+      "url": "https://github.com/OKHP3/skillz/commit/d0350bda726c80cf0aa0e55f60710a5daad6d3c4"
+    }
+  ],
+  "fetchError": null
+}

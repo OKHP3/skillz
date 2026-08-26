@@ -1,54 +1,18 @@
-# OKHP3/skillz
+# Skillz Forge
 
-![Skillz Forge](forge/public/assets/skillz-forge-social-preview.jpg)
+[![Deploy Skillz Forge to GitHub Pages](https://github.com/OKHP3/skillz/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/OKHP3/skillz/actions/workflows/deploy-pages.yml)
+[![Publish health check](https://github.com/OKHP3/skillz/actions/workflows/publish-health-check.yml/badge.svg)](https://github.com/OKHP3/skillz/actions/workflows/publish-health-check.yml)
 
-**Agent Skills by OverKill Hill P³™.** Gotta have the skillz to pay the bills.
+Skillz Forge is a catalog and review platform for the Skillz ecosystem. It
+verifies that skill catalog data, accessibility affordances, and release
+gates stay trustworthy as the underlying skills repository (`.migration-backup/`
+and the wider Skillz project) evolves.
 
-Portable, composable [Agent Skills](https://agentskills.io) in the `SKILL.md` format. Each skill is a self-contained delegation contract that defines the task, available tools, expected behavior, safety boundaries, and quality gates.
+## Artifacts in this monorepo
 
-[Launch Skillz Forge](https://okhp3.github.io/skillz/) · [Read the OverKill Hill project dossier](https://overkillhill.com/projects/skillz/) · [View the source](https://github.com/OKHP3/skillz)
-
-## What this repository is
-
-`skillz` is the executable agent-skill substrate for the OKHP3 Visual Language Stack. It packages recurring methods as portable, agent-readable contracts that can run across compatible agent runtimes without repeating the same human explanation.
-
-The conceptual evolution is:
-
-```text
-mega-prompt
-→ reusable prompt kit
-→ repo-scoped instruction file
-→ SKILL.md
-→ portable agent execution contract
-→ composable skill family
-```
-
-A mega-prompt is authored once, used once, and forgotten. A `SKILL.md` is authored once and reused indefinitely.
-
-The repository is the source of truth for installable skill files. [Skillz Forge](https://okhp3.github.io/skillz/) is the public discovery and sharing surface. [OverKill Hill](https://overkillhill.com/projects/skillz/) is the canonical project narrative and brand home.
-
-## Skillz Forge
-
-[Skillz Forge](https://okhp3.github.io/skillz/) is the flagship interactive catalog for this repository. It helps a person start with an outcome, find a relevant delegation contract, understand how it works, and move into GitHub when they are ready to install, discuss, or contribute.
-
-The Forge currently provides:
-
-- Natural-language discovery across the generated catalog.
-- Family and maturity filtering.
-- Full skill detail views with triggers, examples, companions, and safety guidance.
-- Curated stacks that show how skills compose into a larger workflow.
-- Favorites stored locally in the browser.
-- Copyable install commands, raw file links, GitHub source links, and contribution entry points.
-- FAQ, contribution guidance, and an activity surface connected to repository context.
-
-The Forge is a read-friendly view over the repository, not a second catalog. GitHub remains authoritative for source files, history, issues, pull requests, reviews, and installable artifacts. The generated catalog is the bridge between those files and the interactive experience.
-
-Planned expansion includes richer metadata facets for topics, tools, runtimes, outputs, and patterns, followed by authenticated GitHub collaboration such as issue discussion, pull-request context, and review-aware contribution flows. These are intentionally described as product direction until the corresponding GitHub integration is live.
-
-## How the public surfaces fit together
-
-| Surface | Role | Link |
+| Artifact | Directory | Purpose |
 |---|---|---|
+<<<<<<< HEAD
 | GitHub repository | Canonical source for `SKILL.md` files, references, validation, history, issues, and pull requests. | [OKHP3/skillz](https://github.com/OKHP3/skillz) |
 | Skillz Forge SPA | Interactive discovery, comparison, stack composition, sharing, and contribution routing. | [okhp3.github.io/skillz](https://okhp3.github.io/skillz/) |
 | OverKill Hill project page | Flagship project dossier with the rationale, system relationship, scope, roadmap, and live-surface links. | [overkillhill.com/projects/skillz](https://overkillhill.com/projects/skillz/) |
@@ -288,64 +252,53 @@ If you are evaluating the product rather than authoring a skill, start with [Ski
 Skills are plain-text contracts. There is no hosted runtime, account requirement, or package registry in the way of using one. Choose a skill in [Skillz Forge](https://okhp3.github.io/skillz/), open its source in GitHub, and copy the skill directory into the skill location used by your agent client.
 
 For a local checkout, the shape is:
+=======
+| Skillz Forge | `artifacts/forge` | Public-facing catalog browser and review surface for skills. |
+| Skillz Forge Review Desk | `artifacts/forge-review-desk` | Standalone review workspace for auditing skill submissions. |
+| API Server | `artifacts/api-server` | Shared backend API used by the Forge artifacts. |
+| Canvas / Mockup Sandbox | `artifacts/mockup-sandbox` | Component preview sandbox for design iteration. |
+
+## Validation & release gates
+
+Reusable validators live under `.agents/skills/` and are wired into
+`.github/workflows/release-validation.yml` on pushes and pull requests:
+
+- `catalog-integrity` — rebuilds and checks catalog truth/provenance without credentials.
+- `production-build-verification` — builds the standalone Forge artifact and confirms its static output exists.
+- `publishing-trigger-check` — verifies GitHub Pages publishing stays family-agnostic and fails closed.
+- `static-route-validation` — checks Forge route declarations and hash-anchor targets.
+- `validation-smoke` — exercises validator failure boundaries with dependency-free fixtures, including CI report-contract checks.
+- `publish-health-check` — confirms the live GitHub Pages site matches the last successful deploy, on a schedule and after every deploy.
+
+See `.agents/skills/README.md` for the full list and how to run each validator locally.
+
+## Publishing status
+
+`.github/workflows/deploy-pages.yml` builds and publishes Skillz Forge to
+GitHub Pages on pushes to `main` that touch its watched paths.
+`.github/workflows/publish-health-check.yml` independently re-checks, every
+30 minutes and right after each deploy run, that the live site is actually
+reachable and matches the commit the last successful deploy run built -- a
+failure opens a tracking issue labeled `publish-health` (auto-closed once
+healthy again) so a silent publish failure doesn't go unnoticed between
+pushes. If the `PUBLISH_HEALTH_WEBHOOK_URL` repository secret is configured,
+the workflow also sends one Slack/Discord-compatible notification when an
+incident opens and one when it recovers; repeated checks do not spam the
+webhook. Scheduled failures must persist across three consecutive checks
+before opening an incident, while a failed deploy run alerts immediately.
+Without the secret, issue tracking continues normally.
+
+## Development
+
+This is a pnpm workspace. Each artifact runs as its own workflow/service; see
+`.replit`/`artifact.toml` for the managed dev commands, or run an artifact
+directly, e.g.:
+>>>>>>> origin/main
 
 ```bash
-git clone https://github.com/OKHP3/skillz.git
-cp -r skillz/mermaid/okhp3-mermaid-core .claude/skills/
+pnpm --filter @workspace/forge run dev
 ```
 
-Replace `mermaid/okhp3-mermaid-core` with the family and skill directory you selected. The live catalog provides raw-file links and client-specific installation guidance where available. `AGENTS.md` is the repository routing guide; `SKILL.md` is the portable contract an agent loads.
+## Known gaps
 
-## Structure
-
-Every distribution skill follows the same small, inspectable anatomy:
-
-```text
-skill-name/
-├── SKILL.md          required frontmatter and delegation contract
-└── references/       supporting material loaded on demand
-```
-
-The contract defines when a skill applies, what it needs, how it should work, what it must not do, and how its result is checked. A family-level [`FAMILY.md`](community/FAMILY.md) explains how related skills fit together. The generated inventory above is a map of the files below it, not a separate source of truth.
-
-## Public paths
-
-Skillz is intentionally spread across complementary public surfaces. Each one answers a different visitor question:
-
-| Surface | Best for | Link |
-|---|---|---|
-| Skillz Forge | Discovering, inspecting, comparing, composing, and installing reusable Agent Skills. | [Open the live catalog](https://okhp3.github.io/skillz/) |
-| GitHub repository | Reading authoritative source, history, validation, issues, pull requests, and reviews. | [Browse OKHP3/skillz](https://github.com/OKHP3/skillz) |
-| Skillz project page | Understanding the purpose, rationale, scope, and relationship of the catalog to the wider OverKill Hill stack. | [Read the project dossier](https://overkillhill.com/projects/skillz/) |
-| Prompt Forge | Turning messy intent into governed protocols, audit contracts, agent scaffolds, and execution-ready specifications. | [Visit Prompt Forge](https://overkillhill.com/prompt-forge/) |
-| FoundRy | Designing systems that assemble, evolve, and coordinate AI agents. When a capability becomes a governed reusable artifact, it can become a `SKILL.md` and enter Skillz Forge. | [Explore FoundRy](https://overkillhill.com/found-ry/) |
-
-The relationship is simple:
-
-```text
-Prompt Forge defines and governs a method
-→ FoundRy develops the surrounding agent system
-→ skillz packages the reusable method as SKILL.md
-→ Skillz Forge makes it discoverable and shareable
-→ GitHub preserves the source, history, and editorial record
-```
-
-Skillz Forge is a public discovery workbench, not a marketplace or hosted agent runtime. It does not claim that every skill is production-ready, complete, or safe for every environment. Read the contract, references, maturity signals, and safety boundaries before using a skill.
-
-## Contributing
-
-The repository is public, but changes to `main` are editorially reviewed. A proposal should arrive as a pull request with a clear purpose, public-safe examples, and enough evidence for a maintainer to understand its scope and limits.
-
-Before proposing a change, read [`AGENTS.md`](AGENTS.md), [`docs/PUBLISHING.md`](docs/PUBLISHING.md), and [`docs/SECURITY.md`](docs/SECURITY.md). For a new skill, follow the [Skill Foundry guidance](.agents/skills/okhp3-skill-foundry/SKILL.md). For catalog changes, use the cataloger workflow and do not hand-edit the generated inventory sections in this README.
-
-Public contributions must not include credentials, cookies, private account data, employer-confidential material, hidden network calls, destructive behavior, or instructions that bypass consent or permissions. Keep examples synthetic or public-safe.
-
-## Status and maturity
-
-This repository is unreleased and has no Git tags. The generated inventory above is the current distribution catalog, organized into active families plus the project’s placeholder and authoring surfaces.
-
-Skills marked `Built (skeleton)` have complete frontmatter and section structure, but their reference coverage varies. Treat a skeleton as the shape of a delegation contract, not as a claim that every supporting section is finished.
-
-## License
-
-MIT. See [`LICENSE`](LICENSE). The repository is informed by the community Agent Skills ecosystem; it does not copy code or text from external skills.
+- The Review Desk artifact does not yet have automated tests or CI coverage.

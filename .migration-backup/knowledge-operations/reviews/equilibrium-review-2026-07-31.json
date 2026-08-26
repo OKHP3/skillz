@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "decision_question": "Are the nine authored skills structurally coherent, safely placed, and ready for staging in the Skillz distribution surface?",
+  "reviewed_version": "0.1.0",
+  "evidence_status": "analytical",
+  "independence": {
+    "reviewer_contexts_separated": false,
+    "shared_model_or_source_limits": [
+      "Evidence, outcome, and portability reviews were performed in one agent context.",
+      "No live executor, independent external reviewer, or unseen holdout was available."
+    ]
+  },
+  "initial_reviews": {
+    "evidence_reviewer": {
+      "status": "analytical",
+      "claim": "The nine packages are structurally valid after the Foundry pass and are versioned at 0.1.0.",
+      "evidence_ids": ["CAT-01", "VAL-01"]
+    },
+    "outcome_reviewer": {
+      "status": "analytical",
+      "claim": "The packages form a coherent authored lifecycle family after discovery and session handoff are routed to existing families.",
+      "evidence_ids": ["FAM-01", "PLACE-01"]
+    },
+    "safety_portability_reviewer": {
+      "status": "analytical",
+      "claim": "The revised contracts now name missing-path, missing-authority, untrusted-input, and no-external-action boundaries, but runtime behavior remains unverified.",
+      "evidence_ids": ["SAFE-01", "PORT-01"]
+    }
+  },
+  "concordance": "material-agreement-with-limits",
+  "disruptor": {
+    "triggered": true,
+    "falsification_hypotheses": [
+      "A personal directory layout is still required by the portable contracts.",
+      "Structural validation could be mistaken for useful task behavior.",
+      "A community-originated skill could be silently replaced by an authored package.",
+      "The new family is too broad to have one coherent lifecycle boundary."
+    ],
+    "test_results": [
+      "Personal inbox terminology was removed; remaining paths are project- or user-declared.",
+      "All nine changed packages pass the local structural validator, but live task-quality remains not run.",
+      "Community SKILL.md files were not modified; authored discovery was routed to universal as a separate package.",
+      "Seven lifecycle and governance packages share a destination-neutral information-to-formalization flow; discovery and handoff are better placed in existing families."
+    ]
+  },
+  "package_decisions": [
+    {"skill_name":"okhp3-capture-intake","placement":"knowledge-operations","decision":"approve-with-limits","next_test":"Run normal, missing-destination, and untrusted-instruction cases."},
+    {"skill_name":"okhp3-triage-and-file","placement":"knowledge-operations","decision":"approve-with-limits","next_test":"Test disposition exclusivity, duplicate preservation, and unauthorized-move refusal."},
+    {"skill_name":"okhp3-evidence-standard","placement":"knowledge-operations","decision":"approve-with-limits","next_test":"Test conflicting-source classification and unsupported-upgrade refusal."},
+    {"skill_name":"okhp3-source-backed-research","placement":"knowledge-operations","decision":"defer-for-evidence","next_test":"Test local-only, authoritative-source, and unavailable-access cases with citation grading."},
+    {"skill_name":"okhp3-artifact-validation","placement":"knowledge-operations","decision":"approve-with-limits","next_test":"Test missing-validator handling and read-only behavior."},
+    {"skill_name":"okhp3-graduation-gate","placement":"knowledge-operations","decision":"defer-for-evidence","next_test":"Test score boundaries, evidence-per-score, and Clean-zero blocking."},
+    {"skill_name":"okhp3-project-promotion","placement":"knowledge-operations","decision":"defer-for-evidence","next_test":"Test missing-GO and external-action refusal cases."},
+    {"skill_name":"okhp3-skill-discovery","placement":"universal","decision":"defer-for-evidence","next_test":"Test current-host verification against historical and unavailable inventories."},
+    {"skill_name":"okhp3-session-handoff","placement":"context-extraction","decision":"defer-for-evidence","next_test":"Test missing-destination and changed-evidence addendum cases."
+    }
+  ],
+  "negotiator": {
+    "triggered": true,
+    "decision": "approve-with-limits",
+    "rationale": "Placement and staging are supported by the current contracts and catalog evidence. Public or production-readiness claims are deferred because no live task-quality benchmark, independent review, or protected holdout exists."
+  },
+  "release_decision": "defer-for-evidence",
+  "follow_up": [
+    "Run the frozen evaluation designs in isolated with-skill and without-skill configurations.",
+    "Add version-matched grading records and an unseen or external-required holdout status.",
+    "Re-run trigger precision and recall checks after the package descriptions stabilize."
+  ]
+}

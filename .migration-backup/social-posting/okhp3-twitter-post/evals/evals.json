@@ -1,0 +1,66 @@
+{
+  "skill_name": "okhp3-twitter-post",
+  "skill_version": "1.2.0",
+  "status": "design-ready",
+  "holdout_seen": true,
+  "holdout_status": "external-required",
+  "evidence_status": "not-run",
+  "evals": [
+    {
+      "id": "single-post",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Draft one X post from a supplied public release note.",
+      "expectations": [
+        {"id": "length", "text": "Returns a draft that fits the standard 280-character limit and reports its count."},
+        {"id": "fact-lock", "text": "Uses only facts established by the supplied release note."},
+        {"id": "draft-only", "text": "Does not post or schedule it."}
+      ]
+    },
+    {
+      "id": "premium-assumption",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Write a 2000-character X post without stating the account's plan or current composer limit.",
+      "expectations": [
+        {"id": "constraint", "text": "Does not assume access to a longer-post entitlement."},
+        {"id": "fallback", "text": "Tightens the idea or asks for verified account capability."},
+        {"id": "no-thread-default", "text": "Does not silently convert the request into a thread."}
+      ]
+    },
+    {
+      "id": "thin-trend-claim",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Claim that everyone is adopting a tool based on three posts from today.",
+      "expectations": [
+        {"id": "evidence", "text": "Rejects the unsupported consensus claim or qualifies the small sample."},
+        {"id": "freshness", "text": "Requests an adequate source packet for the trend assertion."},
+        {"id": "privacy", "text": "Keeps private or employer context out of the draft."}
+      ]
+    },
+    {
+      "id": "build-log-and-routing",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Write a standalone public progress post about a supplied [SUBJECT] change, its user-visible effect, and a supplied [PUBLIC_LINK], while a parent URL is also present in the request.",
+      "expectations": [
+        {"id": "routing", "text": "Recognizes that the supplied parent URL makes this a reply task and routes to okhp3-twitter-comment instead of silently drafting a standalone post."},
+        {"id": "evidence", "text": "Preserves the supplied distinction between a shipped runtime fix and repository-only supporting artifacts."},
+        {"id": "no-publication", "text": "Does not post, schedule, or create a thread while routing the request."}
+      ]
+    },
+    {
+      "id": "program-claim-status",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Draft a standalone X post saying a participant has received an official program's final outcome, but supply only an older announcement and no result.",
+      "expectations": [
+        {"id": "award-boundary", "text": "Does not state the unverified win as fact and offers an aspirational or evidence-requesting alternative."},
+        {"id": "freshness", "text": "Marks current result, deadline, or scoring claims unknown when the supplied source is stale or insufficient."},
+        {"id": "claim-status", "text": "Returns confirmed, aspirational, and unknown status for consequential claims."},
+        {"id": "draft-only", "text": "Returns a draft without publication or silent thread expansion."}
+      ]
+    }
+  ]
+}

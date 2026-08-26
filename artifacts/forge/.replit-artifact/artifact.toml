@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Skillz Forge"
+description = "The OverKill Hill P³™ Skillz Forge — a catalog for finding, inspecting, composing, and installing reusable Agent Skills. Lets users browse skills by family, search the catalog, compare skills side by side, compose stacks, and view full SKILL.md contracts."
+version = "1.0.0"
+id = "artifacts/forge"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18275
+
+[services.development]
+run = "pnpm --filter @workspace/forge run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/forge", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/forge/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18275"
+BASE_PATH = "/"

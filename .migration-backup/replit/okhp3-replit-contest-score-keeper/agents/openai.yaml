@@ -1,0 +1,4 @@
+interface:
+  display_name: "Replit Contest Score Keeper"
+  short_description: "Score fresh Replit contest projects"
+  default_prompt: "Use $okhp3-replit-contest-score-keeper to review the fresh Replit contest project URLs I provide, using the live rubric and verified per-project submission state."

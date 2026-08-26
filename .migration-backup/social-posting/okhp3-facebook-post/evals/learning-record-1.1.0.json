@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-facebook-post",
+  "evaluated_skill_version": "1.1.0",
+  "evaluation_status": "analytical",
+  "decision_question": "Does the post contract distinguish standalone posts from replies while resolving identity, claims, and links only at execution time?",
+  "source_evidence": [
+    {
+      "id": "SYNTH-01",
+      "source": "Synthetic workflow fixture reviewed at execution time",
+      "authority": "supplied conversation",
+      "observation": "A supplied parent URL identified an existing conversation rather than a new-post destination.",
+      "applicability": "direct"
+    },
+    {
+      "id": "SYNTH-02",
+      "source": "Synthetic workflow fixture reviewed at execution time",
+      "authority": "supplied conversation",
+      "observation": "Public copy needed singular human ownership and a distinction between aspirational language and an official result.",
+      "applicability": "direct"
+    },
+    {
+      "id": "SYNTH-03",
+      "source": "[PUBLIC_PROJECT_URL]",
+      "authority": "public source supplied at execution time",
+      "observation": "A canonical public link was retained for the call to action without being embedded in the package.",
+      "applicability": "direct"
+    }
+  ],
+  "hypothesis": "A standalone-post routing rule and visible claim stance will prevent wrong-surface drafting and unsupported outcome claims.",
+  "changes": [
+    "Route supplied parent URLs to the comment skill.",
+    "Add runtime campaign brief, authorship, AI-role, aspirational-claim, shipped-versus-planned, and canonical-link rules.",
+    "Keep examples and evaluation fixtures free of identity, account, project, and topic details.",
+    "Expand the output contract and add development regression cases."
+  ],
+  "rejected_alternatives": [
+    "Did not add publication or audience-setting behavior.",
+    "Did not duplicate the comment workflow inside the post skill.",
+    "Did not persist a real destination or URL."
+  ],
+  "regression_risks": [
+    "A supplied URL may be a reference rather than a parent conversation; inspect the target before routing.",
+    "Claim stance is conditional and should not clutter ordinary updates."
+  ],
+  "evaluation_limitations": [
+    "No isolated with-skill/without-skill executor was available.",
+    "No unseen release holdout was run; this record is analytical only."
+  ]
+}

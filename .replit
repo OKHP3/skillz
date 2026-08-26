@@ -1,39 +1,41 @@
-modules = ["bash", "python-3.11", "nodejs-22"]
-[agent]
-expertMode = true
-stack = "BEST_EFFORT_FALLBACK"
+modules = ["nodejs-24", "python-base-3.13"]
 
-[nix]
-channel = "stable-25_05"
+[deployment]
+router = "application"
+deploymentTarget = "autoscale"
+
+[deployment.postBuild]
+args = ["pnpm", "store", "prune"]
+env = { "CI" = "true" }
 
 [workflows]
 runButton = "Project"
 
-[[workflows.workflow]]
-name = "Project"
-mode = "parallel"
-author = "agent"
+[agent]
+stack = "PNPM_WORKSPACE"
+expertMode = true
 
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Start application"
-
-[[workflows.workflow]]
-name = "Start application"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "cd forge && pnpm dev"
-waitForPort = 5000
-
-[workflows.workflow.metadata]
-outputType = "webview"
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 120000
 
 [[ports]]
 localPort = 5000
 externalPort = 80
 
-[postMerge]
-path = "scripts/post-merge.sh"
-timeoutMs = 120000
+[[ports]]
+localPort = 5001
+externalPort = 3000
+
+[[ports]]
+localPort = 5173
+externalPort = 5173
+exposeLocalhost = true
+
+[[ports]]
+localPort = 23636
+externalPort = 3002
+
+[nix]
+channel = "stable-25_05"
+packages = ["chromium"]

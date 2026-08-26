@@ -1,0 +1,589 @@
+# PRD: Skillz Forge — evidence contract v2, deploy integrity, and functional expansion
+
+## Directive status
+
+This is a long-form implementation directive for the Replit maintainer of
+Skillz Forge (`forge/`). It is the current companion to, and supersedes the
+open items in, both prior Forge directives:
+
+- [`docs/PRD-SKILLZ-FORGE-MATURITY-RECONCILIATION-REPLIT-2026-07-29.md`](PRD-SKILLZ-FORGE-MATURITY-RECONCILIATION-REPLIT-2026-07-29.md) — **shipped.** Its acceptance criteria are largely met in the current build. See §1.
+- [`docs/SKILLZ-MATURITY-REFORGING-PRD.md`](SKILLZ-MATURITY-REFORGING-PRD.md) — **not shipped.** This is the more recent, more detailed spec (dated 2026-07-31, marked "Status: Ready for Replit implementation"), and none of its catalog-schema or UI requirements exist in the current build. Closing this gap is §2 of this directive, and is the highest-priority work item here.
+
+This directive does not replace the SPA with a mockup, does not create a
+second catalog, and does not promote any skill's maturity level. It also does
+not relitigate the maturity/evidence model itself — that decision is settled
+in the two prior PRDs. This document's job is: fix what is verifiably broken,
+finish what was already specified and approved but never built, and then, and
+only then, add net-new functionality.
+
+Target product: Skillz Forge (`forge/`)
+
+Canonical source repository: `https://github.com/OKHP3/skillz`
+
+Live SPA: `https://okhp3.github.io/skillz/`
+
+Canonical project dossier: `https://overkillhill.com/projects/skillz/`
+
+## Why this directive exists
+
+An independent review compared the repository's own documented product vision
+(`README.md`, `AGENTS.md`, both prior Forge PRDs, `docs/PUBLIC_SURFACES.md`,
+`docs/STACK-POSITION.md`) against the code actually shipped in `forge/` and
+against the most recent Replit session record
+(`docs/handoffs/2026-08-03-skill-usage-audit-and-first-runs.md`). Three
+findings drive the priority order below.
+
+**Finding 1 — the newest, most authoritative product spec for this app was never built.**
+The 2026-07-29 PRD's two-dimensional maturity/evidence model shipped
+correctly: `forge/src/types/catalog.ts` carries `evidenceStatus` and
+`evidenceNote`, `Explore.tsx` filters and sorts by evidence, `Compare.tsx`
+shows an evidence column, `SkillDetail.tsx` renders a maturity/evidence box,
+and `forge/src/data/faq.ts`'s `maturity-label` entry explains the two
+dimensions correctly and in the required plain language. That is real,
+verifiable, correctly-scoped work — credit where due.
+
+The 2026-07-31 PRD (`SKILLZ-MATURITY-REFORGING-PRD.md`) is the next, more
+detailed spec on top of that shipped foundation. It specifies a
+`SkillEvidence` object (`evaluatedSkillVersion`, `evalCount`,
+`benchmarkCount`, `testCount`, `referenceCount`, `scriptCount`,
+`lastEvidenceDate`, `reviewDecision`, `blockers[]`), a `SkillPackageMetadata`
+object (`authorGithub`, `inScope`, `outOfScope`), `createdAt`,
+`maturitySource`, `maturityReviewedAt`, an Explore release-readiness filter,
+evidence chips ("25 evals", "historical", "no version"), a stale-evidence
+warning, and ten specific deterministic tests. It is marked "Status: Ready
+for Replit implementation." None of it is in `forge/src/types/catalog.ts`,
+`forge/scripts/build-catalog.js`, `Explore.tsx`, or `SkillDetail.tsx` today.
+This is not a matter of interpretation — it is a direct schema diff between a
+PRD marked ready-to-build and the actual `Skill` interface in the repo.
+
+**Finding 2 — the most recent Replit session's effort went to repository
+self-audit, not to closing that gap or fixing defects.** The 2026-08-03
+handoff record shows the last major session running 10 of the 16
+`.agents/skills/` support skills against the repository itself: an ADR, a
+repository-janitor report, a brand-style profile capture, a skill-promotion
+mirror, an evidence ledger, and this handoff record. That is legitimate,
+well-documented work, and two of those runs (the React and web-design audits)
+did surface real defects — but the session did not act on those defects, and
+did not touch the unshipped 2026-07-31 evidence contract. If the incoming
+token budget repeats this pattern, it will again produce process artifacts
+rather than close the gap between the product's own most recent spec and its
+shipped state.
+
+**Finding 3 — several concrete, independently verifiable defects exist right
+now, including one that can silently stale the live production site.** See
+§3. These are cheap to fix and should be fixed before any new feature work,
+because at least one of them (the deploy workflow path filter) means changes
+to five of fifteen active skill families never trigger a redeploy at all.
+
+## 0. Preflight — run this before writing any code
+
+This step exists because the repository's own audit trail
+(`docs/audits/repository-janitor-2026-08-03.md`) found a local `replit-agent`
+branch **69 commits ahead of `origin/main`, 0 behind**, plus roughly 20
+`subrepl-*` branches. The janitor report's own read is that these are
+Replit's internal checkpoint/session branches, not developer feature
+branches — but that conclusion was not confirmed against Replit's own
+publish/promotion mechanism, and GitHub Pages deploys **only** from `main`
+(`.github/workflows/deploy-pages.yml`, `on.push.branches: [main]`).
+
+Before any further work:
+
+1. Determine, using Replit's own project/branch UI (not just `git`), whether
+   `replit-agent`'s 69 commits are: (a) Replit's internal checkpoint
+   mechanism with no independent content once squash-merged, or (b) real,
+   un-shipped work product that has never reached `main`. Report which.
+2. Run `git fetch origin main && git log HEAD..origin/main` and
+   `git log origin/main..HEAD` against whatever branch this session starts
+   on, and report the result before making changes.
+3. Confirm `deploy-pages.yml` has actually produced a **successful** run
+   recently (`gh run list --workflow=deploy-pages.yml` or the Actions tab).
+   The workflow file's existence was confirmed in the prior session; a
+   successful run was not.
+4. If (a) from step 1 is wrong and real work is stranded on `replit-agent`,
+   stop and get explicit owner authorization before merging it — do not
+   merge silently, and do not discard it either.
+
+Do not skip this step to save time. Losing track of which branch is real
+would waste far more of the incoming token budget than the ten minutes this
+takes.
+
+## 1. What is already correct (do not rework)
+
+Confirmed against source, not just docs:
+
+- `forge/src/types/catalog.ts` — `Maturity` and `EvidenceStatus` unions match
+  the 2026-07-29 PRD's six/seven-value enums exactly.
+- `forge/scripts/build-catalog.js` `deriveEvidence()` (lines 76-117) —
+  correctly distinguishes `historical` (version-mismatched benchmark),
+  `live` (version-matched executor evidence), `not-run`, `analytical`,
+  `local-checks`, and `none`, with an honest, non-inflating fallback order.
+  This is a faithful implementation of the 2026-07-29 evidence rules.
+- `forge/src/pages/Explore.tsx` — family, maturity, and evidence filters;
+  evidence-aware sort; URL-synced filter state (`searchParams`); accessible
+  `aria-live` result count. Matches the 2026-07-29 UX requirements.
+- `forge/src/pages/Compare.tsx` — shows both maturity and evidence per
+  skill, side by side, as required.
+- `forge/src/pages/SkillDetail.tsx` — maturity box, evidence state, evidence
+  note, version, last-modified date, commit link, and package path are all
+  present and separated, matching the 2026-07-29 detail-page spec.
+- `forge/src/data/faq.ts` (`maturity-label` entry) — correctly explains that
+  `draftable` does not mean validated, `usable` does not mean
+  production-safe everywhere, `validated` requires current version-matched
+  evidence, and that a note can be historical or not-run. This is a precise,
+  compliant answer to the exact PRD requirement.
+- `forge/src/pages/Activity.tsx` — explicitly labels itself "a static
+  sample from the generated catalog — not a live activity feed" and routes
+  real activity questions to GitHub. This correctly avoids the
+  "do not present a static catalog date as a live event feed" failure mode
+  the 2026-07-29 PRD called out.
+- ADR-0001 (`docs/adr/0001-family-requires-family-md.md`) and the
+  `FAMILY.md`-gated family detection in `build-catalog.js` `findSkillFiles()`
+  (lines 339-345) — a real, well-reasoned fix for a real bug (a stray
+  `skills/` publication-mirror directory was being indexed as a browsable
+  family). Keep this behavior.
+
+None of this should be rewritten. The gap is what was specified next and
+never built, plus the defects below.
+
+## 2. Section A — defect remediation (P0, do first)
+
+Each item below is independently verifiable in the current checkout. Fix all
+of them before starting Section B.
+
+### A1. Deploy workflow silently skips five of fifteen active families
+
+`.github/workflows/deploy-pages.yml` lines 7-20 trigger a Pages deploy only
+on pushes touching:
+
+```text
+forge/**, .github/workflows/deploy-pages.yml, abrahamic/**, community/**,
+lifetrkr/**, linkedin/**, mermaid/**, notion/**, process-capture/**,
+refolddec/**, agent-foundry/**, universal/**, AGENTS.md
+```
+
+`askjamie/`, `context-extraction/`, `glee-fully/`, `knowledge-operations/`,
+and `outcome-modeling/` — five of the repository's fifteen active families,
+representing dozens of skills — are **not** in that list. A commit that only
+touches, say, `knowledge-operations/okhp3-evidence-standard/SKILL.md` will
+not trigger a redeploy at all. The live site can drift from `main` with no
+error, no warning, and no visible signal to anyone.
+
+**Fix the root cause, not the instance.** Do not just append the five
+missing paths — that repeats the exact failure mode for the next new family.
+Instead, either:
+
+- (Preferred) Trigger on `paths: ['forge/**', '.github/workflows/deploy-pages.yml', '**/FAMILY.md', '**/SKILL.md', 'AGENTS.md']`, so any family — present or future — that contains a `SKILL.md` or `FAMILY.md` change triggers a build, with no per-family allowlist to maintain; or
+- Generate the workflow's path list from the same family-directory scan `build-catalog.js` already performs, as a pre-commit or CI-generation step, so the two can never drift independently again.
+
+Add a repository check (script or CI step) that fails if a top-level
+directory contains `FAMILY.md` but is absent from the deploy trigger's watch
+set, so this class of bug cannot recur silently even if the path-list
+approach is kept.
+
+### A2. `skillz.manifest.json` is internally inconsistent
+
+`distributionSkillCount` is `113` and the `families` array's skill-name
+lists sum to `113` (verified by direct count). But:
+
+- `maturityCounts` sums to `79` (`placeholder 0 + skeleton 13 + draftable 66 + usable 0 + validated 0 + published 0`).
+- `evidenceStatusCounts` sums to `86` (`none 26 + local-checks 20 + analytical 17 + not-run 15 + historical 6 + live 2`).
+
+Neither matches `113`. Both blocks are stale snapshots left over from an
+earlier, smaller inventory (the `skeleton: 13` figure is a leftover from the
+2026-07-29 75-skill audit; the rest do not match any single dated audit
+either, suggesting a partial, undocumented hand-edit). `AGENTS.md` itself
+states this exact file "must stay synchronized with the current family and
+skill inventory when public metadata is refreshed." It currently is not.
+
+**Fix:** regenerate `maturityCounts` and `evidenceStatusCounts` in
+`skillz.manifest.json` programmatically from `forge/src/data/catalog.json`
+(post-`build-catalog.js`), not by hand. Add a check step that fails the build
+if the manifest's counts do not sum to `distributionSkillCount`, so this
+cannot silently drift again. This is the same class of bug as A1: a
+hand-maintained number next to a generated one.
+
+### A3. `catalog.json` ships as a 931 KB JS chunk, not a cached JSON asset
+
+Confirmed in `docs/audits/vercel-react-best-practices-2026-08-03.md`.
+`forge/src/data/catalog.json` (974 KB on disk, including full `bodyText` for
+all 113 skills) is statically imported as an ES module in seven pages
+(`Home.tsx`, `Explore.tsx`, `SkillDetail.tsx`, `Stacks.tsx`,
+`StackDetail.tsx`, `Compare.tsx`, `Activity.tsx`). Vite correctly dedupes it
+into one shared chunk, but because it is a JS import rather than a `fetch()`
+of a static asset, the browser must download and parse the entire thing as
+JavaScript before first paint of any catalog-driven page, and it cannot be
+cached independently of app code.
+
+**Fix:** move `catalog.json` to `forge/public/data/catalog.json` (or
+equivalent static-asset location) and `fetch()` it at runtime with a small
+loading state, instead of a static import. Trim `bodyText` from the
+list/search payload if it is not needed until a skill detail view is opened;
+consider a lazy per-skill fetch for full body text. Re-run `pnpm run build`
+and confirm the 500 KB chunk-size warning is gone.
+
+### A4. Dead scaffold file
+
+`forge/src/main.ts` is an unreferenced Vite-template leftover (`setupCounter`
+demo). The real entry point is `forge/src/main.tsx`
+(`forge/index.html:95`). Confirmed nothing imports `main.ts`. Delete it.
+
+### A5. Two small, real accessibility/UX defects
+
+Both confirmed in `docs/audits/web-design-guidelines-2026-08-03.md`, neither
+acted on yet:
+
+- `forge/src/index.css:684-687` — `.input-text:focus` should be
+  `:focus-visible`, so the focus ring does not appear on a plain mouse
+  click, only on keyboard navigation.
+- `forge/src/index.css:653` — `transition: all var(--transition)` should
+  list explicit properties instead of `all`.
+- `forge/src/pages/Home.tsx:96-101` — the MurderBird mascot `<img>` has no
+  explicit `width`/`height`, contributing to layout shift while it loads.
+- `forge/src/pages/Home.tsx:77` — placeholder copy uses a literal `...`
+  instead of the `…` character.
+
+### A6. Home page is missing its own required trust statement
+
+The 2026-07-29 PRD's §Required UX changes, item 4, requires the home page to
+carry "one concise trust statement such as: *Read the contract, maturity,
+and evidence note before relying on a skill.*" `forge/src/pages/Home.tsx`
+does not contain this or any equivalent statement today — only a hero, a
+search box, a "What is a SKILL.md?" panel linking to FAQ, and the family
+grid. Add one short, visible line near the hero or the families section.
+Do not turn it into a banner or interrupt the layout — one sentence is the
+spec.
+
+### A7. `topics` and `tags` are dead, unpopulated fields
+
+`forge/src/types/catalog.ts` declares `tags: string[]` and
+`topics: string[]` on every `Skill`, and `forge/src/utils/search.ts:22`
+weights `topics` at `0.03` in the Fuse.js search index. But
+`forge/scripts/build-catalog.js` line 437 hardcodes `tags: [], topics: []`
+for every one of the 113 skills, with no extraction logic at all. This is a
+facet the product's own type contract and search index already advertise
+and pay a (small) runtime cost for, and it currently contributes nothing.
+Either populate it for real (§3.2 covers how) or remove the dead weight —
+do not leave it half-declared.
+
+## 3. Section B — ship the 2026-07-31 evidence contract (P1)
+
+This section restates the unshipped requirements from
+`docs/SKILLZ-MATURITY-REFORGING-PRD.md` §6, scoped to the current 113-skill,
+15-family baseline. Regenerate all counts from the current checkout; do not
+carry forward this document's or that PRD's dated snapshot numbers.
+
+### 3.1 Catalog data contract
+
+Extend `forge/src/types/catalog.ts` and `forge/scripts/build-catalog.js`
+with the `SkillEvidence` and `SkillPackageMetadata` shapes specified in
+`SKILLZ-MATURITY-REFORGING-PRD.md` §6.1, reproduced here for a single source
+of truth in this directive:
+
+```ts
+type EvidenceStatus = 'live' | 'analytical' | 'historical' | 'not-run';
+
+interface SkillEvidence {
+  status: EvidenceStatus;
+  evaluatedSkillVersion: string | null;
+  evalCount: number;
+  benchmarkCount: number;
+  testCount: number;
+  referenceCount: number;
+  scriptCount: number;
+  lastEvidenceDate: string | null;
+  reviewDecision: 'approve' | 'approve-with-limits' | 'defer-for-evidence' | 'reject' | null;
+  blockers: string[];
+}
+
+interface SkillPackageMetadata {
+  author: string | null;
+  category: string | null;
+  origin: string | null;
+  homepage: string | null;
+  authorGithub: string | null;
+  inScope: string | null;
+  outOfScope: string | null;
+}
+```
+
+Add to every catalog item: `createdAt` (oldest tracked `SKILL.md` commit date
+via `git log --follow`), `packageMetadata`, `evidence`, `maturitySource`
+(`explicit-frontmatter` | `evidence-policy` | `fallback-structure`), and
+`maturityReviewedAt`.
+
+Note that the existing simple `evidenceStatus`/`evidenceNote` fields
+(2026-07-29 model) and the new `evidence.status`/`evidence.blockers`
+(2026-07-31 model) use overlapping but not identical vocabularies — the
+older model has `none` and `local-checks` values the newer four-value
+`EvidenceStatus` does not. Do not silently collapse or drop the older
+fields; existing UI (Explore filter, Compare column, FAQ copy) depends on
+the exact seven-value set today. Add the new fields alongside the existing
+ones, and treat reconciling the two vocabularies into one as an explicit,
+called-out decision in your final report — not something to resolve
+silently either direction.
+
+Apply the nine parsing/build rules from `SKILLZ-MATURITY-REFORGING-PRD.md`
+§6.1 items 1-9 verbatim, including: a `live` record without provenance fails
+the build; a non-Community package missing any completed Foundry baseline
+field fails the build; Community metadata gaps render as visibly missing,
+never silently inherited.
+
+### 3.2 Explore page
+
+Add, on top of the existing family/maturity/evidence filters (keep those):
+
+- Release-readiness filter: *Needs contract work*, *Needs live evidence*,
+  *Ready for supervised use*, *Ready for peer review*, *Published*.
+- Evidence chips on each result card, e.g. `3 evals`, `historical`,
+  `no version` — short, scannable, not competing visually with the
+  maturity/evidence text already there.
+- Sort by last updated, evidence freshness, maturity, and version (extend
+  the existing `SortKey` union and `sortResults()` in
+  `forge/src/utils/search.ts`).
+- A stale-evidence warning shown inline when `evidence.evaluatedSkillVersion`
+  differs from the skill's current `version`.
+- Now that dead `tags`/`topics` fields are either populated or removed
+  (§2 A7), decide whether a topic facet belongs in this filter set too —
+  if populated, add it; if removed, do not leave orphaned UI for it.
+
+### 3.3 Skill detail page
+
+Add an "Evidence and release state" section to `SkillDetail.tsx` containing:
+
+- Current package version, creation date (`createdAt`), and last-modified
+  date (already present).
+- Package provenance, category, homepage, and scope boundaries
+  (`inScope`/`outOfScope` — distinct from the existing `boundaries` list
+  extracted from the SKILL.md body; both are useful, keep both, label them
+  differently).
+- Current maturity and its source (`maturitySource`).
+- Evidence state and evaluated version, with wording such as "historical
+  benchmark for version 1.1.0" when the live package is a newer version —
+  this pattern already exists in `deriveEvidence()`'s `evidenceNote` text;
+  extend it to also report evaluatedSkillVersion explicitly rather than only
+  in prose.
+- Counts and direct links for evals, benchmarks, tests, references, and
+  scripts (the four resource-count fields plus `referenceCount`).
+- Promotion blockers in plain language (render `evidence.blockers` as a
+  short list, not a wall of text).
+- Review decision and review date, when present.
+- Raw skill and repository path links (already present).
+
+### 3.4 Home, FAQ, and manifest copy
+
+Derive every public count from the generated catalog, never a hardcoded
+number — this is already mostly true in the shipped code
+(`catalog.skillCount`, `catalog.families.length`) and should stay true as
+these fields are added. Update the FAQ's `maturity-label` and
+`skill-finished` answers to mention the new release-readiness categories and
+blockers concept, without removing the existing correct explanation of
+maturity vs. evidence — extend it, do not replace it.
+
+### 3.5 Build and QA
+
+Implement the ten deterministic tests specified in
+`SKILLZ-MATURITY-REFORGING-PRD.md` §6.5, items 1-10, verbatim. In addition,
+given the defects found in this pass, add:
+
+11. A test asserting `skillz.manifest.json`'s `maturityCounts` and
+    `evidenceStatusCounts` sum to `distributionSkillCount` (closes A2).
+12. A test asserting every top-level directory containing `FAMILY.md` is
+    present in `deploy-pages.yml`'s trigger path list, or that the trigger
+    uses the path-independent pattern from A1 instead.
+
+## 4. Section C — functional and content expansion (P2, after A and B are done)
+
+This section is new scope: the "far more functionality and nuance and
+detail" the incoming session is expected to deliver. It is sequenced after
+Sections A and B deliberately — new surface area on top of a data model
+that is still being finished, and defects that are still live, produces
+compounding rework. Do not start here first.
+
+### C1. Family narrative pages (the highest-value gap found in this review)
+
+Every one of the 15 active families has an authored `FAMILY.md` — narrative
+content explaining, per `README.md`, "how related skills fit together."
+`build-catalog.js`'s `readFamilyDisplayName()` (lines 464-489) reads only
+the `display_name` frontmatter field from each `FAMILY.md` and discards the
+body. There is no `/families/:family` route in `App.tsx`, and
+`Explore.tsx`'s family filter only narrows the flat skill list — it never
+shows the family's own explanation. Fifteen pieces of real, already-written
+content are invisible in the shipped product.
+
+Build a `FamilyDetail` page: route `/families/:family`, rendering the
+`FAMILY.md` body (Markdown, not just frontmatter) alongside the family's
+skill list, maturity/evidence summary for that family, and links into
+relevant Stacks. Link to it from the Explore family filter buttons and from
+each skill's breadcrumb.
+
+### C2. Read-only GitHub activity, replacing the static Activity sample
+
+`README.md` already frames this as direction: "authenticated GitHub
+collaboration such as issue discussion, pull-request context, and
+review-aware contribution flows... intentionally described as product
+direction until the corresponding GitHub integration is live." Ship a first,
+scoped slice: at build time (in `build-catalog.js` or a sibling script,
+server-side, no client secrets), pull recent commit and PR metadata via the
+GitHub REST API for the repository, cache it into the generated catalog, and
+use it to replace `Activity.tsx`'s static top-10-skills sample with real
+recent-change data. Keep the existing, correct "not a live feed" framing —
+just make the snapshot real instead of arbitrary. This does not require
+account login or write access; it is a read-only, build-time data pull, an
+appropriate and much smaller first step than full authenticated
+collaboration.
+
+### C3. Populate `topics`/`tags` for real, or retire them cleanly
+
+If keeping these facets (recommended — the search index already accounts
+for them), extract `topics` from SKILL.md frontmatter (`metadata.category`
+plus any future `topics:` frontmatter key) and/or a lightweight controlled
+vocabulary derived from each family's domain, rather than free-text
+extraction that would need its own quality gate. Surface as a filter chip
+set in Explore once populated. If not pursuing this now, remove the dead
+fields and the associated search weight rather than leaving both declared
+and empty.
+
+### C4. Skill composition/pathway view
+
+`Compare.tsx` already shows `companions` as tag links, and `Stacks.tsx` /
+`StackDetail.tsx` show curated multi-skill workflows. Extend this into a
+lightweight visual pathway on `SkillDetail.tsx` — an ordered list or simple
+diagram of "skills that typically precede/follow this one," derived from
+existing `companions` data plus the routing tables already written in
+`AGENTS.md` (e.g., the Mermaid family's "load core first" rule, the
+process-capture family's intake-to-handoff sequence). This is presentation
+of already-modeled relationships, not new data modeling.
+
+### C5. Mobile and keyboard QA close-out
+
+The 2026-07-29 PRD required legibility at 390px and full keyboard
+navigation; the most recent audits did not check this. Run a real pass:
+Explore with each filter combination, SkillDetail evidence box, Compare
+table, and the new Section B evidence chips, all at 390px width, plus a
+full keyboard-only pass (tab order, focus visibility — tie this to the A5
+`:focus-visible` fix) across Explore, Compare, and SkillDetail.
+
+## 5. Non-goals (unchanged from prior directives, restated for this session)
+
+- Do not claim any skill is production-ready as a side effect of this work.
+- Do not fabricate live with/without runs or a protected holdout for any
+  skill.
+- Do not build a benchmark executor into the static SPA.
+- Do not add account login, private GitHub write access, or server-side
+  secrets. C2's GitHub integration is read-only and build-time only.
+- Do not replace the current application with a screenshot or a static
+  landing page.
+- Do not create a second manually maintained catalog.
+- Do not promote any skill's maturity level as part of this directive. This
+  is a catalog-integrity, defect-remediation, and UI-completion directive,
+  not an evidence-generation directive for individual skills.
+- Do not merge or delete the `replit-agent` or `subrepl-*` branches without
+  the explicit owner authorization described in §0.
+
+## 6. Implementation sequence
+
+### Phase 0: preflight (§0)
+
+Branch/deploy reconciliation, as specified above. Report findings before
+writing code.
+
+### Phase A: defect remediation (§2, all of A1-A7)
+
+Fix in the order listed. A1 and A2 are both "one number disagrees with
+another number" classes of bug — fix the root cause (generate, don't
+hand-maintain) in both cases, not just the current instance.
+
+### Phase B: evidence contract v2 (§3, all of 3.1-3.5)
+
+Data model first, then Explore, then SkillDetail, then copy, then tests —
+in that order, so UI work has real data to render against instead of
+placeholder shapes.
+
+### Phase C: functional expansion (§4)
+
+C1 first (highest value, purely additive, no dependency on external APIs).
+C2 second (real but bounded scope). C3-C5 as time and token budget allow,
+in that order.
+
+### Phase D: verification
+
+Run, in order:
+
+```bash
+python3 .agents/skills/okhp3-skill-cataloger/scripts/gen-skills-readme.py \
+  --full --no-absorb-readme --check
+node forge/scripts/build-catalog.js
+python3 scripts/audit-skill-maturity.py --markdown
+node universal/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root .
+cd forge && npx tsc --noEmit && pnpm run build
+```
+
+Then browser QA: Home (trust statement present), Explore (all filters
+including new release-readiness filter, evidence chips, stale-evidence
+warning), one skill each in `historical`, `not-run`, `local-checks`, `none`,
+and `live` evidence states, Compare (2-4 skills), a new Family detail page,
+the new Activity data source, Contribute, FAQ, and a full 390px + keyboard
+pass per §4 C5.
+
+## 7. Acceptance criteria
+
+### Data integrity
+
+- [ ] `skillz.manifest.json`'s `maturityCounts` and `evidenceStatusCounts`
+  sum to `distributionSkillCount`, generated, not hand-edited.
+- [ ] `deploy-pages.yml` triggers on a change to any family containing
+  `FAMILY.md`, with no per-family allowlist that can silently drift again.
+- [ ] `forge/src/data/catalog.json` is served as a static, cacheable asset
+  fetched at runtime, not bundled as a static JS import.
+- [ ] Every skill has both the existing `evidenceStatus`/`evidenceNote` and
+  the new `evidence` object; the two vocabularies are not silently merged
+  without an explicit, reported decision.
+- [ ] `topics`/`tags` are either populated with real data or removed
+  entirely — no half-declared dead fields.
+- [ ] Generated counts (skills, families) continue to come from the catalog,
+  never a hardcoded literal.
+
+### Honesty and safety
+
+- [ ] No skill is promoted to a higher maturity or evidence tier as a side
+  effect of any change in this directive.
+- [ ] No stale or version-mismatched benchmark is presented as current.
+- [ ] The new GitHub activity data (C2) is clearly labeled as a periodic
+  build-time snapshot, not a live feed — same discipline the current
+  `Activity.tsx` already correctly applies.
+- [ ] No client-side secrets or write-scoped GitHub tokens are introduced.
+
+### UX and accessibility
+
+- [ ] Home page carries the required one-line trust statement.
+- [ ] `:focus-visible` (not `:focus`) governs the input focus ring.
+- [ ] The MurderBird mascot image has explicit `width`/`height`.
+- [ ] Evidence chips and the release-readiness filter are legible at 390px.
+- [ ] Every family with a `FAMILY.md` has a working `/families/:family`
+  page linked from Explore and from each member skill's breadcrumb.
+- [ ] Existing hash routes, GitHub source links, search, filters, copy,
+  share, save, and compare behavior all continue to work unchanged.
+
+### Delivery evidence
+
+- [ ] The final report states the Phase 0 branch-reconciliation finding
+  explicitly (real work stranded, or confirmed-safe Replit-internal
+  branches) before describing any other work done.
+- [ ] The final report identifies the deployed source commit and confirms
+  (not just asserts) a successful `deploy-pages.yml` run against it.
+- [ ] The final report lists which of A1-A7, 3.1-3.5, and C1-C5 were
+  completed, deferred, or found already-done, with evidence for each —
+  matching the evidence-tiering discipline already established in
+  `docs/evidence/skill-usage-audit-2026-08-03.md`.
+
+## 8. Handoff note
+
+This directive was prepared without a live Replit connector available. It
+is therefore the authorized handoff artifact for the next Replit session,
+not a direct mutation of the Replit project. Read `AGENTS.md`,
+`docs/PUBLISHING.md`, `docs/SECURITY.md`, both prior Forge PRDs referenced
+above, and complete §0 before writing any code. Report any difference
+between the deployed app, the Replit checkout, and current GitHub `main`
+before proceeding, using the same evidence-tiering standard
+(`okhp3-evidence-standard`: confirmed / inferred / proposal / unknown) the
+repository's own skills already use for exactly this kind of claim.

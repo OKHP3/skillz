@@ -1,0 +1,5 @@
+{
+  "name": "find-skills",
+  "family": "community",
+  "rawBody": "# Find Skills\n\nUse this skill when a user asks whether an agent skill exists for a task, wants to extend the repository with reusable capabilities, or needs help choosing between existing skills and custom FoundRy-local skills.\n\n## Process\n\n1. Identify the user intent and domain.\n2. Check whether the task should use an external installable skill, a local `.agents/skills/` skill, or a new FoundRy child capability repo.\n3. Prefer reputable sources and official skill packages when recommending external skills.\n4. For OKHP3 work, consider whether the capability should instead become a reusable child repo under a FoundRy relay.\n\n## Output\n\nReturn:\n\n- recommended skill or skill family\n- reason for recommendation\n- install or copy guidance\n- whether the capability should become a local FoundRy skill or child repository"
+}

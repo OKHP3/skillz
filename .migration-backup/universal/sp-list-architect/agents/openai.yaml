@@ -1,0 +1,4 @@
+interface:
+  display_name: "SharePoint List DB Architect"
+  short_description: "Design SharePoint Lists used as governed lightweight databases."
+  default_prompt: "Review this SharePoint list/database design for constraints, limits, and safe build settings."
