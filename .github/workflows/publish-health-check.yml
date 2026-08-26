@@ -71,11 +71,10 @@ jobs:
           HEALTHY: ${{ steps.health.outputs.healthy }}
           EVENT_NAME: ${{ github.event_name }}
           DEPLOY_CONCLUSION: ${{ github.event.workflow_run.conclusion || '' }}
+          STATE_FILE: ${{ runner.temp }}/publish-health-state/streak.json
         run: |
           set -euo pipefail
-          threshold=3
           state_dir="$RUNNER_TEMP/publish-health-state"
-          state_file="$state_dir/streak.json"
           mkdir -p "$state_dir"
           streak=0
 
@@ -115,34 +114,8 @@ jobs:
               fi
             fi
           fi
-
-          immediate=false
-          if [ "$EVENT_NAME" = "workflow_run" ] && [ "$DEPLOY_CONCLUSION" != "success" ]; then
-            # A failed deploy is definitive, so it bypasses the scheduled
-            # debounce even when this is the first unhealthy observation.
-            immediate=true
-          fi
-
-          if [ "$HEALTHY" = "true" ]; then
-            streak=0
-          elif [ "$EVENT_NAME" = "schedule" ]; then
-            streak=$((streak + 1))
-          fi
-
-          alert=false
-          if [ "$immediate" = "true" ] || { [ "$EVENT_NAME" = "schedule" ] && [ "$streak" -ge "$threshold" ]; }; then
-            alert=true
-          fi
-
-          node -e "
-            const fs = require('fs');
-            fs.writeFileSync(process.argv[1], JSON.stringify({
-              scheduledUnhealthyRuns: Number(process.argv[2]),
-            }) + '\\n');
-          " "$state_file" "$streak"
-          echo "alert=$alert" >> "$GITHUB_OUTPUT"
-          echo "scheduled_unhealthy_runs=$streak" >> "$GITHUB_OUTPUT"
-          echo "Alert decision: event=$EVENT_NAME healthy=$HEALTHY scheduled_unhealthy_runs=$streak immediate=$immediate alert=$alert"
+          PREVIOUS_STREAK="$streak" \
+            node .agents/skills/publish-health-check/debounce.mjs
 
       - name: Archive alert state
         if: always() && steps.alert.outcome == 'success'

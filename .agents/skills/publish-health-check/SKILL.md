@@ -92,3 +92,12 @@ recovery, and rejection paths without credentials:
 ```bash
 node .agents/skills/publish-health-check/webhook-test.mjs
 ```
+
+Run the overlapping-trigger contract fixture to verify that scheduled
+failures remain debounced across successful `workflow_run` catch-up checks,
+failed deploys alert immediately, the third scheduled failure opens only one
+incident, and the streak artifact state is replaced safely:
+
+```bash
+node .agents/skills/publish-health-check/debounce-test.mjs
+```
