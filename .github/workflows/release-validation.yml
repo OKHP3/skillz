@@ -5,8 +5,10 @@ on:
     paths:
       - "artifacts/forge/**"
       - "artifacts/forge-review-desk/**"
+      - ".agents/skills/publish-health-check/**"
       - "package.json"
       - "pnpm-lock.yaml"
+      - ".github/workflows/publish-health-check.yml"
       - ".github/workflows/release-validation.yml"
       - ".github/node-version"
   push:
@@ -15,8 +17,10 @@ on:
     paths:
       - "artifacts/forge/**"
       - "artifacts/forge-review-desk/**"
+      - ".agents/skills/publish-health-check/**"
       - "package.json"
       - "pnpm-lock.yaml"
+      - ".github/workflows/publish-health-check.yml"
       - ".github/workflows/release-validation.yml"
       - ".github/node-version"
   workflow_dispatch:
@@ -25,6 +29,21 @@ permissions:
   contents: read
 
 jobs:
+  publish-health-debounce:
+    name: Check publish-health debounce contract
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .github/node-version
+
+      - name: Run publish-health debounce check
+        run: node .agents/skills/publish-health-check/debounce-test.mjs
+
   forge-review-surface:
     name: Check Forge review surface
     runs-on: ubuntu-latest
