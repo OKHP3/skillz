@@ -19,3 +19,4 @@
 - [Forge Pages workflow build requirements](forge-pages-workflow-build-requirements.md) — deploy-pages.yml's build step needs explicit PORT/BASE_PATH env and must upload dist/public, not dist.
 - [Gitignore path-migration asset loss](gitignore-path-migration-assets.md) — a directory rename leaves stale `.gitignore` path exceptions, silently dropping tracked assets on fresh checkouts.
 - [Cross-artifact data sharing](cross-artifact-data-sync.md) — copy generated JSON at build time via a predev/prebuild script rather than a live cross-origin fetch between two independently deployed artifacts.
+- [Review Desk browser fixtures](review-desk-browser-fixtures.md) — phase-gate catalog mocks so data-wide assertions stay real, and normalize labels because CSS uppercases action text.

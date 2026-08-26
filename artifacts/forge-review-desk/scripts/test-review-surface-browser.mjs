@@ -36,6 +36,28 @@ async function expectKeyboardFocus(page, locator, label) {
   assert(await locator.evaluate(element => document.activeElement === element), `${label} could not receive keyboard focus.`);
 }
 
+async function mockFinalReviewFixture(route) {
+  const response = await route.fetch();
+  const catalog = await response.json();
+  const fixtureName = 'okhp3-custom-gpt-builder';
+  const fixture = catalog.skills.find((skill) => skill.name === fixtureName);
+  assert(fixture, `Final-review fixture "${fixtureName}" is missing from the catalog.`);
+  catalog.skills = catalog.skills.map((skill) => (
+    skill.name === fixtureName
+      ? {
+          ...skill,
+          maturityReviewedAt: '2026-07-21',
+          evidence: {
+            ...skill.evidence,
+            status: 'live',
+            lastEvidenceDate: '2026-07-21',
+          },
+        }
+      : skill
+  ));
+  await route.fulfill({ response, body: JSON.stringify(catalog) });
+}
+
 async function main() {
   const server = spawn('pnpm', ['exec', 'vite', '--config', 'vite.config.ts', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], {
     cwd: reviewDeskDir,
@@ -71,6 +93,14 @@ async function main() {
     await errorPage.close();
 
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+    let finalReviewFixtureEnabled = false;
+    await page.route('**/data/catalog.json', async (route) => {
+      if (!finalReviewFixtureEnabled) {
+        await route.continue();
+        return;
+      }
+      await mockFinalReviewFixture(route);
+    });
     await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
     // A stale bookmark must land on an actionable fallback instead of a
@@ -207,6 +237,36 @@ async function main() {
     await page.reload({ waitUntil: 'domcontentloaded' });
     await page.getByTestId('status-supervised-check').waitFor();
 
+    // The final-review fixture supplies the two real catalog fields that the
+    // source cataloger entry lacks (live evidence and a maturity review date).
+    // Contract and provenance still come from the real catalog response, so
+    // the gate only opens when all four review checkpoints are verified.
+    finalReviewFixtureEnabled = true;
+    await page.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
+    await page.getByTestId('text-skill-name').waitFor();
+    assert((await text(page, 'status-release-gate')) === 'Open', 'Final-review fixture should start with an open release gate.');
+    assert(await page.getByTestId('button-request-final-review').isEnabled(), 'Final review should be available when every checkpoint is verified.');
+    await page.getByTestId('button-request-final-review').click();
+    assert((await text(page, 'status-release-gate')) === 'In review', 'Requesting final review did not update the release gate.');
+    assert(await page.getByTestId('button-request-final-review').isDisabled(), 'Final review button should be disabled after the request is recorded.');
+
+    // A reload models a reviewer handoff: the request must be restored from
+    // browser storage rather than requiring the original reviewer session.
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.getByTestId('status-release-gate').waitFor();
+    assert((await text(page, 'status-release-gate')) === 'In review', 'Final-review request did not survive reloading the dossier.');
+    assert(await page.getByTestId('button-request-final-review').isDisabled(), 'Final review button became enabled after reloading the dossier.');
+
+    // Review state is keyed by family and skill name. The real cataloger
+    // dossier must not inherit the request from the fixture skill.
+    await page.goto(`${baseUrl}/universal/okhp3-skill-cataloger`, { waitUntil: 'domcontentloaded' });
+    await page.getByTestId('text-skill-name').waitFor();
+    assert((await text(page, 'status-release-gate')) === 'Blocked', 'A different skill incorrectly inherited the final-review state.');
+    const differentSkillButton = page.getByTestId('button-request-final-review');
+    await differentSkillButton.waitFor();
+    await differentSkillButton.filter({ hasText: 'Unlock after live evidence' }).waitFor({ timeout: 5000 });
+    assert((await differentSkillButton.innerText()).trim().toLowerCase() === 'unlock after live evidence', 'A different skill incorrectly inherited the final-review button state.');
+
     // Nearby contracts and the breadcrumb both let a reviewer jump to a
     // different skill without hand-editing the URL.
     await page.getByTestId('button-breadcrumb-catalog').click();
@@ -224,7 +284,7 @@ async function main() {
     assert(await navToggle.getAttribute('aria-expanded') === 'true', 'Mobile navigation toggle did not expand.');
     await expectKeyboardFocus(page, page.getByTestId('button-nav-catalog'), 'Catalog navigation control');
 
-    console.log('✓ review desk covers shareable filters, browser history recovery, catalog navigation, real evidence state, evidence selection, supervised-check fixture, error recovery, and mobile navigation');
+    console.log('✓ review desk covers shareable filters, browser history recovery, catalog navigation, real evidence state, evidence selection, supervised-check fixture, final-review persistence, error recovery, and mobile navigation');
   } finally {
     await browser?.close();
     server.kill('SIGTERM');
