@@ -63,3 +63,7 @@ for "workflow scope" specifically (distinct from generic `PUSH_REJECTED` /
 transient, credential issue — see also: shell `git push` can have a stale
 token even when the `gitPush` callback's token is fresh, so prefer retrying
 via `gitPush` over shell first for plain non-workflow pushes).
+
+When the `GITHUB_PAT` API check succeeds but Git smart-HTTP rejects a
+`token`/`Bearer` extra header, use a temporary Basic header with
+`x-access-token:<GITHUB_PAT>`; do not write the header or token to Git config.
