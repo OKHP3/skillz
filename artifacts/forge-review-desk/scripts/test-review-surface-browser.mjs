@@ -39,11 +39,41 @@ async function expectKeyboardFocus(page, locator, label) {
 async function mockFinalReviewFixture(route) {
   const response = await route.fetch();
   const catalog = await response.json();
-  const fixtureName = 'okhp3-custom-gpt-builder';
-  const fixture = catalog.skills.find((skill) => skill.name === fixtureName);
-  assert(fixture, `Final-review fixture "${fixtureName}" is missing from the catalog.`);
+  const fixtureNames = ['okhp3-custom-gpt-builder'];
+  for (const fixtureName of fixtureNames) {
+    assert(
+      catalog.skills.some((skill) => skill.name === fixtureName),
+      `Final-review fixture "${fixtureName}" is missing from the catalog.`,
+    );
+  }
   catalog.skills = catalog.skills.map((skill) => (
-    skill.name === fixtureName
+    fixtureNames.includes(skill.name)
+      ? {
+          ...skill,
+          maturityReviewedAt: '2026-07-21',
+          evidence: {
+            ...skill.evidence,
+            status: 'live',
+            lastEvidenceDate: '2026-07-21',
+          },
+        }
+      : skill
+  ));
+  await route.fulfill({ response, body: JSON.stringify(catalog) });
+}
+
+async function mockCrossTabFinalReviewFixture(route) {
+  const response = await route.fetch();
+  const catalog = await response.json();
+  const fixtureNames = ['okhp3-custom-gpt-builder', 'okhp3-skill-cataloger'];
+  for (const fixtureName of fixtureNames) {
+    assert(
+      catalog.skills.some((skill) => skill.name === fixtureName),
+      `Cross-tab final-review fixture "${fixtureName}" is missing from the catalog.`,
+    );
+  }
+  catalog.skills = catalog.skills.map((skill) => (
+    fixtureNames.includes(skill.name)
       ? {
           ...skill,
           maturityReviewedAt: '2026-07-21',
@@ -299,29 +329,49 @@ async function main() {
     // Open the same dossier and a different dossier in sibling tabs within
     // one browser context. A request should arrive only at the matching
     // skill's storage key.
-    const crossTabContext = await browser.newContext();
+    const crossTabContext = await browser.newContext({
+      storageState: { cookies: [], origins: [] },
+    });
     const writerTab = await crossTabContext.newPage({ viewport: { width: 1440, height: 1000 } });
-    await writerTab.route('**/data/catalog.json', async (route) => mockFinalReviewFixture(route));
+    await writerTab.route('**/data/catalog.json', async (route) => mockCrossTabFinalReviewFixture(route));
     await writerTab.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
     await writerTab.getByTestId('status-release-gate').waitFor();
     assert((await text(writerTab, 'status-release-gate')) === 'Open', 'Cross-tab fixture should start with an open release gate.');
+    assert(
+      await writerTab.evaluate(() => Object.keys(window.localStorage).length === 0),
+      'Cross-tab fixture unexpectedly depended on pre-existing browser storage.',
+    );
 
     const sameSkillTab = await crossTabContext.newPage({ viewport: { width: 1440, height: 1000 } });
-    await sameSkillTab.route('**/data/catalog.json', async (route) => mockFinalReviewFixture(route));
+    await sameSkillTab.route('**/data/catalog.json', async (route) => mockCrossTabFinalReviewFixture(route));
     await sameSkillTab.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
     await sameSkillTab.getByTestId('status-release-gate').waitFor();
     assert((await text(sameSkillTab, 'status-release-gate')) === 'Open', 'Same-skill tab did not start with its own review state.');
 
     const differentSkillTab = await crossTabContext.newPage({ viewport: { width: 1440, height: 1000 } });
-    await differentSkillTab.route('**/data/catalog.json', async (route) => mockFinalReviewFixture(route));
+    await differentSkillTab.route('**/data/catalog.json', async (route) => mockCrossTabFinalReviewFixture(route));
     await differentSkillTab.goto(`${baseUrl}/universal/okhp3-skill-cataloger`, { waitUntil: 'domcontentloaded' });
     await differentSkillTab.getByTestId('status-release-gate').waitFor();
-    assert((await text(differentSkillTab, 'status-release-gate')) === 'Blocked', 'Different-skill tab did not start with its own review state.');
+    assert((await text(differentSkillTab, 'status-release-gate')) === 'Open', 'Different-skill tab did not start with its own review state.');
 
     await writerTab.getByTestId('button-request-final-review').click();
     await sameSkillTab.waitForFunction(() => document.querySelector('[data-testid="status-release-gate"]')?.textContent?.includes('In review'));
     assert((await text(sameSkillTab, 'status-release-gate')) === 'In review', 'Final-review request did not update the same-skill tab.');
-    assert((await text(differentSkillTab, 'status-release-gate')) === 'Blocked', 'Final-review request leaked into a different-skill tab.');
+    assert((await text(differentSkillTab, 'status-release-gate')) === 'Open', 'Final-review request leaked into a different-skill tab.');
+
+    // A reviewer can move the matching tab to the next dossier while the
+    // original writer and another reviewer tab remain open. A request for the
+    // newly matching dossier must update only tabs currently showing it.
+    await sameSkillTab.goto(`${baseUrl}/universal/okhp3-skill-cataloger`, { waitUntil: 'domcontentloaded' });
+    await sameSkillTab.getByTestId('text-skill-name').waitFor();
+    assert((await text(sameSkillTab, 'text-skill-name')) === 'okhp3-skill-cataloger', 'Reviewer tab did not navigate to the second dossier.');
+    assert((await text(sameSkillTab, 'status-release-gate')) === 'Open', 'Second dossier did not hydrate its own review state after navigation.');
+
+    await sameSkillTab.getByTestId('button-request-final-review').click();
+    await differentSkillTab.waitForFunction(() => document.querySelector('[data-testid="status-release-gate"]')?.textContent?.includes('In review'));
+    assert((await text(differentSkillTab, 'status-release-gate')) === 'In review', 'Final-review request did not update the tab showing the newly matching dossier.');
+    assert((await text(sameSkillTab, 'status-release-gate')) === 'In review', 'Navigated reviewer tab did not update its own final-review state.');
+    assert((await text(writerTab, 'status-release-gate')) === 'In review', 'Final-review request for the second dossier leaked into the original dossier tab.');
     await crossTabContext.close();
 
     // Review state is keyed by family and skill name. The real cataloger
@@ -351,7 +401,7 @@ async function main() {
     assert(await navToggle.getAttribute('aria-expanded') === 'true', 'Mobile navigation toggle did not expand.');
     await expectKeyboardFocus(page, page.getByTestId('button-nav-catalog'), 'Catalog navigation control');
 
-    console.log('✓ review desk covers shareable filters, browser history recovery, catalog navigation, real evidence state, evidence selection, supervised-check fixture, final-review persistence, error recovery, and mobile navigation');
+    console.log('✓ review desk covers shareable filters, browser history recovery, catalog navigation, real evidence state, evidence selection, supervised-check fixture, final-review persistence, cross-tab dossier switching, error recovery, and mobile navigation');
   } finally {
     await browser?.close();
     server.kill('SIGTERM');
