@@ -73,13 +73,10 @@ Read `references/readiness-dossier-schema.md` before producing JSON or a machine
 
 ## About
 
-<<<<<<< HEAD:agent-foundry/okhp3-custom-gpt-readiness/SKILL.md
 Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3) · MIT License.
 
 ## About
 
-=======
->>>>>>> origin/main:.migration-backup/.agents/skills/okhp3-custom-gpt-readiness/SKILL.md
 Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.

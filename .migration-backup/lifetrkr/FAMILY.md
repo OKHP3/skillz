@@ -2,13 +2,8 @@
 family: lifetrkr
 display_name: LifeTrkr
 skill_count: 2
-<<<<<<< HEAD:lifetrkr/FAMILY.md
 generated_by: okhp3-skill-cataloger v1.6.1
 generated_at: 2026-07-28T23:14:42Z
-=======
-generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-22T14:31:58Z
->>>>>>> origin/main:.migration-backup/lifetrkr/FAMILY.md
 ---
 
 # lifetrkr
@@ -20,11 +15,7 @@ A family of 2 skills. Calculate moon phase, astrological season, and Mercury ret
 ## Skills (2)
 
 <!-- FAMILY_INVENTORY_START -->
-<<<<<<< HEAD:lifetrkr/FAMILY.md
 *2 skills &nbsp;·&nbsp; inventory last updated: **July 28, 2026 at 23:14 UTC***
-=======
-*2 skills &nbsp;·&nbsp; inventory last updated: **August 22, 2026 at 14:31 UTC***
->>>>>>> origin/main:.migration-backup/lifetrkr/FAMILY.md
 
 | Skill | Description | Version |
 |---|---|---|

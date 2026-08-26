@@ -9,11 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-<<<<<<< HEAD:AGENTS.md
 - **Current inventory:** 71 distribution skills in 11 active families, 2 placeholder family directories, and 19 project-local support skills under `.agents/skills/`
-=======
-- **Current inventory:** 146 distribution skills in 16 active families, and 40 project-local support skills under `.agents/skills/`
->>>>>>> origin/main:.migration-backup/AGENTS.md
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -249,22 +245,12 @@ Load `okhp3-outcome-modeling-core` first for any outcome-modeling task, then add
 
 | Skill | Trigger |
 |---|---|
-<<<<<<< HEAD:AGENTS.md
 | `okhp3-cloudflare-worker-api-proxy` | Keep an API key server-side while proxying calls from a static frontend through a Cloudflare Worker. |
 | `okhp3-brand-style-registry` | Extract named, evidence-backed visual style profiles from approved sources and apply one primary profile with explicitly scoped supporting profiles to SPAs and other artifacts. |
 | `okhp3-database-cartographer` | Reverse-engineer a live SQL database into a schema inventory, severity-classified diff, and Mermaid ER handoff without writing to the target. |
 | `okhp3-equilibrium-review` | Evaluate documents, reports, spreadsheets, hypotheses, decision memos, or Agent Skills with independent evidence review, conditional disruption, and evidence-based adjudication. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
-=======
-| `okhp3-cloudflare-worker-api-proxy` | Keep an API key server-side while proxying calls from a static frontend through a Cloudflare Worker. |
-| `okhp3-brand-style-registry` | Extract named, evidence-backed visual style profiles from approved sources and apply one primary profile with explicitly scoped supporting profiles to SPAs and other artifacts. |
-| `okhp3-database-cartographer` | Reverse-engineer a live SQL database into a schema inventory, severity-classified diff, and Mermaid ER handoff without writing to the target. |
-| `okhp3-equilibrium-review` | Evaluate documents, reports, spreadsheets, hypotheses, decision memos, or Agent Skills with independent evidence review, conditional disruption, and evidence-based adjudication. |
-| `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
-| `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
-| `okhp3-repository-janitor` | Reconcile local Git mirrors against GitHub, preserve local variations, review branch lifecycle, and prepare safe merge or pruning actions. |
->>>>>>> origin/main:.migration-backup/AGENTS.md
 | `okhp3-repository-organizer` | Profile and safely reorganize content-first Git repositories containing mixed knowledge, prompt, document, research, and media assets, with cross-platform naming safeguards. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |
 | `okhp3-skill-discovery` | Find, verify, compare, and route to currently available project-local, installed, runtime, or plugin-provided skills. |
@@ -344,8 +330,4 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-<<<<<<< HEAD:AGENTS.md
 Updated: 2026-07-28
-=======
-Updated: 2026-08-11
->>>>>>> origin/main:.migration-backup/AGENTS.md

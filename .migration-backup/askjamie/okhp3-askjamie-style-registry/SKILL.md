@@ -6,23 +6,12 @@ license: MIT
 metadata:
   author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
-<<<<<<< HEAD:universal/okhp3-brand-style-registry/SKILL.md
   category: developer-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
   in_scope: "Evidence-backed extraction, registration, and application of named visual style profiles to approved artifacts."
   out_of_scope: "Inventing a brand identity, unauthorized source copying, or unrelated product redesign."
-=======
-  category: "askjamie"
-  derived_from: okhp3-brand-style-registry
-  brand: AskJamie
-  origin: "okhp3/skillz"
-  homepage: "https://overkillhill.com"
-  author-github: "https://github.com/OKHP3"
-  in_scope: "Extraction and application of approved AskJamie visual style profiles with explicit source and scope boundaries."
-  out_of_scope: "Invented brand authority, unapproved source use, hidden employer context, or automatic publication."
->>>>>>> origin/main:.migration-backup/askjamie/okhp3-askjamie-style-registry/SKILL.md
 ---
 
 # okhp3-askjamie-style-registry

@@ -77,13 +77,10 @@ Read `references/conversion-dossier-schema.md` before producing a machine-readab
 
 ## About
 
-<<<<<<< HEAD:agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md
 Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://github.com/OKHP3) · MIT License.
 
 ## About
 
-=======
->>>>>>> origin/main:.migration-backup/.agents/skills/okhp3-gpt-skill-conversion-plan/SKILL.md
 Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
 Published at [github.com/OKHP3](https://github.com/OKHP3)
 Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
