@@ -8,7 +8,8 @@
  * secret in CI.
  */
 
-import { resolve } from "node:path";
+import { mkdirSync, renameSync, writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const MAX_RESPONSE_DETAILS = 300;
@@ -41,10 +42,47 @@ function responseDetails(body) {
   return `: ${compact.slice(0, MAX_RESPONSE_DETAILS)}`;
 }
 
+function redactSecret(message, secret) {
+  return String(message).replaceAll(secret, "[REDACTED]");
+}
+
+function recordDeliveryFailure({
+  failureFile,
+  webhookUrl,
+  event,
+  runUrl,
+  status,
+  message,
+}) {
+  if (!failureFile) return;
+
+  const target = resolve(failureFile);
+  const record = {
+    type: "publish-health-webhook-delivery-failure",
+    event,
+    runUrl,
+    ...(status === undefined ? {} : { status }),
+    error: redactSecret(message, webhookUrl),
+  };
+
+  try {
+    mkdirSync(dirname(target), { recursive: true });
+    const temporary = `${target}.tmp-${process.pid}`;
+    writeFileSync(temporary, `${JSON.stringify(record)}\n`, { mode: 0o600 });
+    renameSync(temporary, target);
+  } catch (error) {
+    // Preserve the delivery error as the process failure, but make a failed
+    // diagnostic write visible in the log. The workflow has a safe fallback
+    // when this record is unavailable.
+    console.error(`Could not record webhook delivery failure: ${error.message}`);
+  }
+}
+
 export async function sendNotification({
   webhookUrl,
   event,
   runUrl,
+  failureFile,
   fetchImpl = fetch,
 }) {
   if (!webhookUrl) {
@@ -60,16 +98,46 @@ export async function sendNotification({
       body: JSON.stringify(payload),
     });
   } catch (error) {
-    throw new Error(
-      `Could not deliver the ${event} publish-health notification: ${error.message}`,
-    );
+    const message = `Could not deliver the ${event} publish-health notification: ${error.message}`;
+    recordDeliveryFailure({
+      failureFile,
+      webhookUrl,
+      event,
+      runUrl,
+      message,
+    });
+    throw new Error(redactSecret(message, webhookUrl));
   }
 
-  const body = await response.text();
+  let body;
+  try {
+    body = await response.text();
+  } catch (error) {
+    const message = `Could not read the ${event} publish-health webhook response: ${error.message}`;
+    recordDeliveryFailure({
+      failureFile,
+      webhookUrl,
+      event,
+      runUrl,
+      status: response.status,
+      message,
+    });
+    throw new Error(redactSecret(message, webhookUrl));
+  }
   if (!response.ok) {
-    throw new Error(
+    const message =
       `Webhook rejected the ${event} publish-health notification (HTTP ${response.status})` +
-        `${responseDetails(body)}. The publish-health result remains the source of truth.`,
+      `${responseDetails(body)}. The publish-health result remains the source of truth.`;
+    recordDeliveryFailure({
+      failureFile,
+      webhookUrl,
+      event,
+      runUrl,
+      status: response.status,
+      message,
+    });
+    throw new Error(
+      redactSecret(message, webhookUrl),
     );
   }
 
@@ -94,6 +162,7 @@ export async function sendTransitionNotification({
   started,
   recovered,
   runUrl,
+  failureFile,
   fetchImpl = fetch,
 }) {
   const event = transitionEvent({ started, recovered });
@@ -102,6 +171,7 @@ export async function sendTransitionNotification({
     webhookUrl,
     event,
     runUrl,
+    failureFile,
     fetchImpl,
   });
   return { sent: true, ...result };
@@ -116,6 +186,7 @@ if (
     started: process.env.STARTED,
     recovered: process.env.RECOVERED,
     runUrl: process.env.RUN_URL,
+    failureFile: process.env.NOTIFICATION_FAILURE_FILE,
   })
     .then((result) => {
       if (!result.sent) {

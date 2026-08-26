@@ -197,14 +197,107 @@ jobs:
           fi
 
       - name: Send incident transition notification
+        id: notification
         if: always() && (steps.incident.outputs.started == 'true' || steps.incident.outputs.recovered == 'true') && env.PUBLISH_HEALTH_WEBHOOK_URL != ''
         env:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           STARTED: ${{ steps.incident.outputs.started }}
           RECOVERED: ${{ steps.incident.outputs.recovered }}
+          NOTIFICATION_FAILURE_FILE: ${{ runner.temp }}/publish-health-webhook/failure.json
         run: |
           set -euo pipefail
           node .agents/skills/publish-health-check/send-notification.mjs
+
+      - name: Record webhook delivery failure
+        if: always() && steps.notification.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          STARTED: ${{ steps.incident.outputs.started }}
+          RECOVERED: ${{ steps.incident.outputs.recovered }}
+          FAILURE_FILE: ${{ runner.temp }}/publish-health-webhook/failure.json
+        run: |
+          set -euo pipefail
+          API="https://api.github.com/repos/$REPO"
+          AUTH_HEADER="Authorization: Bearer $GH_TOKEN"
+          ACCEPT_HEADER="Accept: application/vnd.github+json"
+          label="publish-health-webhook"
+          delivery_event="recovered"
+          if [ "$STARTED" = "true" ]; then
+            delivery_event="unhealthy"
+          fi
+
+          # Keep delivery failures in a separate, durable issue. PUT makes the
+          # label creation idempotent, so this works in repositories that do
+          # not already have the label from a previous failure.
+          curl -fsS -X PUT \
+            -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+            "$API/labels/$label" \
+            -d '{"name":"publish-health-webhook","color":"d73a4a","description":"Webhook delivery failures for publish-health alerts"}' \
+            > /dev/null
+
+          existing=$(curl -fsSL -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+            "$API/issues?state=open&labels=$label&per_page=1")
+          issue_number=$(echo "$existing" | node -e "
+            let data = '';
+            process.stdin.on('data', c => data += c);
+            process.stdin.on('end', () => {
+              const issues = JSON.parse(data);
+              console.log(issues[0]?.number ?? '');
+            });
+          ")
+
+          failure_details=$(node -e "
+            const fs = require('fs');
+            try {
+              const record = JSON.parse(fs.readFileSync(process.argv[1], 'utf8'));
+              process.stdout.write(String(record.error || 'No delivery details were recorded.').slice(0, 300));
+            } catch {
+              process.stdout.write('No delivery details were recorded; see the workflow run.');
+            }
+          " "$FAILURE_FILE")
+          body=$(
+            DELIVERY_EVENT="$delivery_event" \
+              FAILURE_DETAILS="$failure_details" \
+              RUN_URL="$RUN_URL" \
+              node <<'NODE'
+          const event = process.env.DELIVERY_EVENT;
+          const details = process.env.FAILURE_DETAILS;
+          const runUrl = process.env.RUN_URL;
+          process.stdout.write(JSON.stringify({
+            title: 'Publish-health webhook delivery failure',
+            body: [
+              `The ${event} publish-health transition notification could not be delivered.`,
+              '',
+              `The publish-health incident is tracked separately and may recover independently. This delivery issue remains open until the webhook provider outage is investigated and resolved.`,
+              '',
+              `Failure details: ${details}`,
+              `Workflow run: ${runUrl}`,
+            ].join('\n'),
+            labels: ['publish-health-webhook'],
+          }));
+          NODE
+          )
+
+          if [ -n "$issue_number" ]; then
+            curl -fsS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+              "$API/issues/$issue_number/comments" \
+              -d "$(DELIVERY_EVENT="$delivery_event" FAILURE_DETAILS="$failure_details" RUN_URL="$RUN_URL" node <<'NODE'
+          const event = process.env.DELIVERY_EVENT;
+          const details = process.env.FAILURE_DETAILS;
+          const runUrl = process.env.RUN_URL;
+          process.stdout.write(JSON.stringify({
+            body: `Another ${event} publish-health notification failed.\n\nFailure details: ${details}\nWorkflow run: ${runUrl}`,
+          }));
+          NODE
+              )" > /dev/null
+            echo "Updated existing webhook delivery issue #$issue_number"
+          else
+            curl -fsS -X POST -H "$AUTH_HEADER" -H "$ACCEPT_HEADER" \
+              "$API/issues" -d "$body" > /dev/null
+            echo "Opened webhook delivery issue"
+          fi
 
       - name: Explain skipped incident notification
         if: always() && steps.incident.outputs.started != 'true' && steps.incident.outputs.recovered != 'true' && env.PUBLISH_HEALTH_WEBHOOK_URL == ''

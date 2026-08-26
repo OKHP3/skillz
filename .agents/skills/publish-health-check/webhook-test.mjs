@@ -8,6 +8,9 @@
 
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
+import { mkdtemp, readFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   notificationPayload,
   sendTransitionNotification,
@@ -15,7 +18,7 @@ import {
 
 const runUrl = "https://example.test/actions/runs/123";
 const requests = [];
-const responseStatuses = [204, 204, 400];
+const responseStatuses = [204, 400];
 
 const server = createServer((request, response) => {
   let body = "";
@@ -31,13 +34,21 @@ const server = createServer((request, response) => {
     });
     const status = responseStatuses.shift() ?? 204;
     response.writeHead(status, { "Content-Type": "text/plain" });
-    response.end(status === 400 ? "provider rejected test payload" : "");
+    response.end(
+      status === 400
+        ? `provider rejected test payload at ${webhookUrl}`
+        : "",
+    );
   });
 });
 
 await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 const { port } = server.address();
 const webhookUrl = `http://127.0.0.1:${port}/webhook`;
+const failureFile = join(
+  await mkdtemp(join(tmpdir(), "publish-health-webhook-")),
+  "failure.json",
+);
 
 try {
   const failure = await sendTransitionNotification({
@@ -66,30 +77,18 @@ try {
   assert.equal(repeated.sent, false);
   assert.equal(requests.length, requestCountAfterFirstFailure);
 
-  const recovery = await sendTransitionNotification({
-    webhookUrl,
-    started: false,
-    recovered: true,
-    runUrl,
-  });
-  assert.equal(recovery.status, 204);
-  assert.deepEqual(requests[1], {
-    method: "POST",
-    contentType: "application/json",
-    body: notificationPayload("recovered", runUrl),
-  });
-
   await assert.rejects(
     sendTransitionNotification({
       webhookUrl,
-      started: true,
-      recovered: false,
+      started: false,
+      recovered: true,
       runUrl,
+      failureFile,
     }),
     (error) => {
       assert.match(
         error.message,
-        /Webhook rejected the unhealthy publish-health notification \(HTTP 400\)/,
+        /Webhook rejected the recovered publish-health notification \(HTTP 400\)/,
       );
       assert.match(
         error.message,
@@ -100,7 +99,16 @@ try {
       return true;
     },
   );
-  assert.equal(requests.length, 3);
+  const failureRecord = JSON.parse(await readFile(failureFile, "utf8"));
+  assert.deepEqual(failureRecord, {
+    type: "publish-health-webhook-delivery-failure",
+    event: "recovered",
+    runUrl,
+    status: 400,
+    error:
+      "Webhook rejected the recovered publish-health notification (HTTP 400): provider rejected test payload at [REDACTED]. The publish-health result remains the source of truth.",
+  });
+  assert.equal(requests.length, 2);
 
   console.log(
     "✓ webhook contract: failure, debounce, recovery, and rejection handling passed",

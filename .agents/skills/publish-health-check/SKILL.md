@@ -84,10 +84,14 @@ absent, the notification step is skipped and GitHub issue tracking continues
 normally.
 
 The notification sender reports the provider's HTTP rejection (without
-printing the secret URL) and the explicit publish-health failure step still
-runs afterward, so a delivery problem cannot obscure the underlying check
-failure. Run the local contract fixture to verify the failure, debounce,
-recovery, and rejection paths without credentials:
+printing the secret URL), writes a redacted failure record for the workflow,
+and the explicit publish-health failure step still runs afterward, so a
+delivery problem cannot obscure the underlying check failure. A separate
+`publish-health-webhook` tracking issue is opened or updated when delivery
+fails; it remains open independently of the publish-health incident issue, so
+a failed recovery notification remains discoverable after the incident closes.
+Run the local contract fixture to verify the failure, debounce, recovery, and
+rejection paths without credentials:
 
 ```bash
 node .agents/skills/publish-health-check/webhook-test.mjs
