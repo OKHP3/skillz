@@ -94,11 +94,10 @@ function reviewStateKey(skill: Pick<Skill, 'family' | 'name'>): string {
   return `skillz-forge-review:${skill.family}/${skill.name}`;
 }
 
-function readReviewState(skill: Pick<Skill, 'family' | 'name'>): PersistedReviewState {
+function parseReviewState(raw: string | null): PersistedReviewState {
   const fallback = { supervisedCheckComplete: false, finalReviewRequested: false };
+  if (!raw) return fallback;
   try {
-    const raw = window.localStorage.getItem(reviewStateKey(skill));
-    if (!raw) return fallback;
     const parsed: unknown = JSON.parse(raw);
     if (!parsed || typeof parsed !== 'object') return fallback;
     const value = parsed as Partial<PersistedReviewState>;
@@ -108,6 +107,14 @@ function readReviewState(skill: Pick<Skill, 'family' | 'name'>): PersistedReview
     };
   } catch {
     return fallback;
+  }
+}
+
+function readReviewState(skill: Pick<Skill, 'family' | 'name'>): PersistedReviewState {
+  try {
+    return parseReviewState(window.localStorage.getItem(reviewStateKey(skill)));
+  } catch {
+    return { supervisedCheckComplete: false, finalReviewRequested: false };
   }
 }
 
@@ -297,6 +304,19 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
     setShowAudit(false);
     setFinalReview(persisted.finalReviewRequested);
     setActiveSection('Review desk');
+  }, [skill.family, skill.name]);
+
+  // A reviewer may have the same dossier open in another tab. The storage
+  // event is delivered to other tabs only, so the initiating tab still uses
+  // its local state update and the listener keeps sibling tabs current.
+  useEffect(() => {
+    const stateKey = reviewStateKey(skill);
+    const handleStorage = (event: StorageEvent) => {
+      if (event.storageArea !== window.localStorage || event.key !== stateKey) return;
+      setFinalReview(parseReviewState(event.newValue).finalReviewRequested);
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
   }, [skill.family, skill.name]);
 
   useEffect(() => {

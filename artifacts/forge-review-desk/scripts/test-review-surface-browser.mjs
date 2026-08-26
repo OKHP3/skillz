@@ -296,6 +296,34 @@ async function main() {
     assert((await text(page, 'status-release-gate')) === 'In review', 'Final-review request did not survive reloading the dossier.');
     assert(await page.getByTestId('button-request-final-review').isDisabled(), 'Final review button became enabled after reloading the dossier.');
 
+    // Open the same dossier and a different dossier in sibling tabs within
+    // one browser context. A request should arrive only at the matching
+    // skill's storage key.
+    const crossTabContext = await browser.newContext();
+    const writerTab = await crossTabContext.newPage({ viewport: { width: 1440, height: 1000 } });
+    await writerTab.route('**/data/catalog.json', async (route) => mockFinalReviewFixture(route));
+    await writerTab.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
+    await writerTab.getByTestId('status-release-gate').waitFor();
+    assert((await text(writerTab, 'status-release-gate')) === 'Open', 'Cross-tab fixture should start with an open release gate.');
+
+    const sameSkillTab = await crossTabContext.newPage({ viewport: { width: 1440, height: 1000 } });
+    await sameSkillTab.route('**/data/catalog.json', async (route) => mockFinalReviewFixture(route));
+    await sameSkillTab.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
+    await sameSkillTab.getByTestId('status-release-gate').waitFor();
+    assert((await text(sameSkillTab, 'status-release-gate')) === 'Open', 'Same-skill tab did not start with its own review state.');
+
+    const differentSkillTab = await crossTabContext.newPage({ viewport: { width: 1440, height: 1000 } });
+    await differentSkillTab.route('**/data/catalog.json', async (route) => mockFinalReviewFixture(route));
+    await differentSkillTab.goto(`${baseUrl}/universal/okhp3-skill-cataloger`, { waitUntil: 'domcontentloaded' });
+    await differentSkillTab.getByTestId('status-release-gate').waitFor();
+    assert((await text(differentSkillTab, 'status-release-gate')) === 'Blocked', 'Different-skill tab did not start with its own review state.');
+
+    await writerTab.getByTestId('button-request-final-review').click();
+    await sameSkillTab.waitForFunction(() => document.querySelector('[data-testid="status-release-gate"]')?.textContent?.includes('In review'));
+    assert((await text(sameSkillTab, 'status-release-gate')) === 'In review', 'Final-review request did not update the same-skill tab.');
+    assert((await text(differentSkillTab, 'status-release-gate')) === 'Blocked', 'Final-review request leaked into a different-skill tab.');
+    await crossTabContext.close();
+
     // Review state is keyed by family and skill name. The real cataloger
     // dossier must not inherit the request from the fixture skill.
     await page.goto(`${baseUrl}/universal/okhp3-skill-cataloger`, { waitUntil: 'domcontentloaded' });
