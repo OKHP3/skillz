@@ -82,6 +82,22 @@ async function main() {
       await page.getByText(/No skill named "missing-skill"/).count() > 0,
       'Missing-skill fallback did not explain which catalog entry was unavailable.',
     );
+    await page.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-buider`, { waitUntil: 'domcontentloaded' });
+    await page.getByTestId('panel-likely-replacements').waitFor();
+    assert(await page.getByTestId('link-replacement-okhp3-custom-gpt-builder').count() === 1, 'Missing-skill fallback did not suggest the closest current contract.');
+    await page.getByTestId('link-replacement-okhp3-custom-gpt-builder').click();
+    await page.getByTestId('text-skill-name').waitFor();
+    assert((await text(page, 'text-skill-name')) === 'okhp3-custom-gpt-builder', 'Replacement link did not open the suggested dossier.');
+    await page.goto(`${baseUrl}/?q=okhp3-custom-gpt-buider`, { waitUntil: 'domcontentloaded' });
+    await page.getByTestId('panel-likely-replacements').waitFor();
+    assert(await page.getByTestId('link-replacement-okhp3-custom-gpt-builder').count() === 1, 'Empty filtered catalog did not suggest the closest current contract.');
+    await page.setViewportSize({ width: 390, height: 844 });
+    assert(await page.getByTestId('link-replacement-okhp3-custom-gpt-builder').isVisible(), 'Replacement suggestion is not usable on a narrow screen.');
+    await page.getByTestId('link-replacement-okhp3-custom-gpt-builder').click();
+    await page.getByTestId('text-skill-name').waitFor();
+    assert((await text(page, 'text-skill-name')) === 'okhp3-custom-gpt-builder', 'Filtered replacement link did not open the suggested dossier.');
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(`${baseUrl}/missing-family/missing-skill`, { waitUntil: 'domcontentloaded' });
     assert(await page.getByTestId('button-recover-search').getAttribute('href') === '/?q=missing-skill', 'Name recovery link did not preserve the stale skill name.');
     assert(await page.getByTestId('button-recover-family').getAttribute('href') === '/?family=missing-family', 'Family recovery link did not preserve the stale family.');
     await page.getByTestId('button-recover-family').click();

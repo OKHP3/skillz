@@ -31,7 +31,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Link, Route, Router as WouterRouter, Switch, useLocation, useParams } from 'wouter';
-import { fetchCatalog, findSkill } from '@/lib/catalog';
+import { fetchCatalog, findLikelyReplacements, findSkill, type SkillReplacement } from '@/lib/catalog';
 import { buildEvidenceItems, buildRelatedSkills } from '@/lib/reviewEvidence';
 import type { Catalog, EvidenceStatusV2, Maturity, Skill } from '@/types/catalog';
 
@@ -128,7 +128,36 @@ function SkeletonDesk() {
   );
 }
 
-function EmptyDesk({ title, message, backHref, recovery }: { title: string; message: string; backHref?: string; recovery?: { searchHref: string; familyHref: string; family: string } }) {
+function ReplacementSuggestions({ replacements, compact = false }: { replacements: SkillReplacement[]; compact?: boolean }) {
+  if (replacements.length === 0) return null;
+  return (
+    <div className={`${compact ? 'mt-4' : 'mt-5'} text-left`} data-testid="panel-likely-replacements">
+      <div className="mb-2 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.13em]" style={{ color: colors.lime }}>
+        <Search size={12} /> Likely replacements
+      </div>
+      <p className="mb-2 text-[10px] leading-4" style={{ color: colors.muted }}>These current contracts are close in name or family.</p>
+      <div className="grid gap-2">
+        {replacements.map(({ skill, reason }) => (
+          <Link
+            key={`${skill.family}/${skill.name}`}
+            href={`/${skill.family}/${skill.name}`}
+            data-testid={`link-replacement-${skill.name}`}
+            className="group flex min-w-0 items-center justify-between gap-3 border px-3 py-2 text-left transition-colors hover:bg-[#303a3a]"
+            style={{ borderColor: colors.border, background: '#1c2324' }}
+          >
+            <span className="min-w-0">
+              <span className="block truncate font-mono text-[11px]" style={{ color: colors.ink }}>{skill.name}</span>
+              <span className="mt-1 block truncate font-mono text-[9px] uppercase tracking-[0.08em]" style={{ color: colors.green }}>{skill.family} · {reason}</span>
+            </span>
+            <ArrowUpRight size={13} className="shrink-0 opacity-60 transition-opacity group-hover:opacity-100" style={{ color: colors.lime }} />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function EmptyDesk({ title, message, backHref, recovery, replacements }: { title: string; message: string; backHref?: string; recovery?: { searchHref: string; familyHref: string; family: string }; replacements?: SkillReplacement[] }) {
   return (
     <main className="flex min-h-[100dvh] items-center justify-center bg-[#1d2325] px-6 text-[#e8eee8]">
       <section className="max-w-md border border-[#3b4747] bg-[#202728] p-7 text-center">
@@ -155,6 +184,7 @@ function EmptyDesk({ title, message, backHref, recovery }: { title: string; mess
             </Link>
           </div>
         )}
+        {replacements && <ReplacementSuggestions replacements={replacements} />}
         {backHref && (
           <Link href={backHref} className="mt-5 inline-flex h-9 items-center gap-2 border border-[#586965] bg-transparent px-4 font-mono text-[10px] uppercase tracking-[0.1em] text-[#ced9d2] transition-colors hover:bg-[#303a3a]">
             <ArrowLeft size={13} /> Back to catalog
@@ -503,6 +533,9 @@ function CatalogList({ catalog }: { catalog: Catalog }) {
 
   const clearFilters = () => navigate('/');
   const activeFilterCount = [family, evidence, maturity].filter(Boolean).length;
+  const replacements = skills.length === 0 && query
+    ? findLikelyReplacements(query, family, catalog.skills)
+    : [];
 
   return (
     <main className="forge-noise min-h-[100dvh] w-full bg-[#1d2325] text-[#e8eee8]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -601,7 +634,12 @@ function CatalogList({ catalog }: { catalog: Catalog }) {
               </Link>
             </li>
           ))}
-          {skills.length === 0 && <li className="px-3 py-6 text-center text-[12px]" style={{ color: colors.muted }}>No skills match the current filters.</li>}
+          {skills.length === 0 && (
+            <li className="px-3 py-6 text-center text-[12px]" style={{ color: colors.muted }}>
+              <div>No skills match the current filters.</div>
+              <ReplacementSuggestions replacements={replacements} compact />
+            </li>
+          )}
         </ul>
       </div>
     </main>
@@ -612,6 +650,7 @@ function SkillRoute({ catalog }: { catalog: Catalog }) {
   const { family, name } = useParams<{ family: string; name: string }>();
   const skill = findSkill(catalog, family ?? '', name ?? '');
   if (!skill) {
+    const replacements = findLikelyReplacements(name ?? '', family ?? '', catalog.skills);
     return (
       <EmptyDesk
         title="Skill not found"
@@ -622,6 +661,7 @@ function SkillRoute({ catalog }: { catalog: Catalog }) {
           familyHref: `/?family=${encodeURIComponent(family ?? '')}`,
           family: family ?? 'family',
         }}
+        replacements={replacements}
       />
     );
   }
