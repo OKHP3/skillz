@@ -231,33 +231,14 @@ jobs:
           RECOVERED: ${{ steps.incident.outputs.recovered }}
         run: |
           set -euo pipefail
-          if [ "$STARTED" = "true" ]; then
-            event="unhealthy"
-            message="Skillz Forge publish is unhealthy. A publish-health incident was opened: $RUN_URL"
-          else
-            event="recovered"
-            message="Skillz Forge publish has recovered. The publish-health incident was closed: $RUN_URL"
-          fi
-
-          # This payload works with Slack incoming webhooks (`text`) and
-          # Discord webhooks (`content`), so either can be configured without
-          # adding a provider-specific action or credential.
-          payload=$(MESSAGE="$message" EVENT="$event" node -e "
-            console.log(JSON.stringify({
-              text: process.env.MESSAGE,
-              content: process.env.MESSAGE,
-              event: process.env.EVENT,
-            }));
-          " MESSAGE="$message" EVENT="$event")
-          curl -sS --fail-with-body -X POST \
-            -H 'Content-Type: application/json' \
-            --data "$payload" \
-            "$PUBLISH_HEALTH_WEBHOOK_URL"
+          node .agents/skills/publish-health-check/send-notification.mjs
 
       - name: Explain skipped incident notification
         if: always() && steps.incident.outputs.started != 'true' && steps.incident.outputs.recovered != 'true' && env.PUBLISH_HEALTH_WEBHOOK_URL == ''
         run: echo "No incident transition notification sent; PUBLISH_HEALTH_WEBHOOK_URL is not configured."
 
       - name: Fail the job if the publish is unhealthy
-        if: steps.health.outputs.healthy == 'false'
-        run: exit 1
+        if: always() && steps.health.outputs.healthy == 'false'
+        run: |
+          echo "Publish-health check failed; the underlying publish failure remains authoritative even if webhook delivery also failed."
+          exit 1

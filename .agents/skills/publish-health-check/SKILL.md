@@ -82,3 +82,13 @@ fields so either service can consume the message. Repeated checks during the
 same incident do not send another webhook notification. If the secret is
 absent, the notification step is skipped and GitHub issue tracking continues
 normally.
+
+The notification sender reports the provider's HTTP rejection (without
+printing the secret URL) and the explicit publish-health failure step still
+runs afterward, so a delivery problem cannot obscure the underlying check
+failure. Run the local contract fixture to verify the failure, debounce,
+recovery, and rejection paths without credentials:
+
+```bash
+node .agents/skills/publish-health-check/webhook-test.mjs
+```
