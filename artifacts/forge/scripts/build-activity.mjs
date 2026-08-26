@@ -2,7 +2,7 @@
 /**
  * build-activity.mjs
  * C2: fetches the 10 most recent commits to `main` from the public GitHub
- * REST API at BUILD time and writes forge/public/data/activity.json.
+ * REST API at BUILD time and writes artifacts/forge/public/data/activity.json.
  *
  * This is deliberately build-time, not a client-side fetch from the SPA:
  * - avoids exposing every visitor's browser to GitHub's unauthenticated

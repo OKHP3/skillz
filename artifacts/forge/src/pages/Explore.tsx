@@ -26,7 +26,7 @@ const EVIDENCE_LABELS: Record<EvidenceStatus, string> = {
 // Release-readiness is a NEW filter dimension (evidence-contract v2), kept
 // deliberately separate from the 7-value Evidence filter above rather than
 // replacing or duplicating it — see the "vocabulary reconciliation" note in
-// forge/src/types/catalog.ts. It answers "how close is this to a supervised
+// artifacts/forge/src/types/catalog.ts. It answers "how close is this to a supervised
 // or peer-reviewed release" by combining maturity + evidence.status.
 const RELEASE_READINESS_LEVELS: ReleaseReadiness[] = [
   'needs-contract-work', 'needs-live-evidence', 'ready-for-supervised-use', 'ready-for-peer-review', 'published',

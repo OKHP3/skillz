@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://okhp3.github.io/skillz/sitemap.xml

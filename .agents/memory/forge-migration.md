@@ -3,12 +3,12 @@ name: Forge monorepo migration
 description: Lessons from porting Skillz Forge into the pnpm monorepo at artifacts/forge/
 ---
 
-## REPO_ROOT fix in build-catalog.js
-When the script is at artifacts/forge/scripts/, REPO_ROOT must be join(__dirname,'..','..','..', '.migration-backup') — three levels up to workspace root, then into .migration-backup/ where the FAMILY.md files actually live.
+## REPO_ROOT in build-catalog.js
+When the script is at artifacts/forge/scripts/, REPO_ROOT must be the workspace root via join(__dirname,'..','..','..'). Distribution FAMILY.md files now live at that root.
 
-**Why:** Skills (with FAMILY.md) are all inside .migration-backup/ after migration. Using workspace root as REPO_ROOT finds no families because artifacts/ and lib/ have no FAMILY.md.
+**Why:** The tracked migration backup was consolidated into the root distribution layout. Keeping the builder pointed at a historical directory would make catalog paths and Git provenance diverge from the installable files.
 
-**How to apply:** Any time build-catalog.js is invoked from the new location, the .migration-backup path is the skill source root.
+**How to apply:** Any time build-catalog.js is invoked from the artifact location, use the workspace root as its source and Git working directory.
 
 ## ALLOW_SHALLOW_CATALOG_BUILD=1 in predev/prebuild
 The Replit git clone is shallow (git rev-parse --is-shallow-repository returns true). build-catalog.js calls ensureFullHistory() which exits the process unless this env var is set.

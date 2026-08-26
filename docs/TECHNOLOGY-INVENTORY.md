@@ -4,7 +4,7 @@ Audit date: 2026-07-13. Updated 2026-08-24 for the pnpm-workspace monorepo migra
 
 ## Scope and method
 
-This repository is now a pnpm workspace monorepo. It hosts deployed applications under `artifacts/` (the Skillz Forge review surface at `artifacts/forge`, its review desk at `artifacts/forge-review-desk`, an API server, and a mockup sandbox) alongside a large library of `SKILL.md` capability packages, most of which are still being migrated out of `.migration-backup/` into top-level family folders (e.g. `community/`, `universal/`). The inventory below distinguishes technology required to run the deployed apps and repository scripts from technology shown only in examples, templates, or reference snippets inside individual skills. Version evidence comes from committed manifests (`package.json`, `pnpm-workspace.yaml`), CI workflow files, runtime configuration, source imports, and the latest official registry metadata.
+This repository is a pnpm workspace monorepo. It hosts deployed applications under `artifacts/` (the Skillz Forge review surface at `artifacts/forge`, its review desk at `artifacts/forge-review-desk`, an API server, and a mockup sandbox) alongside the root distribution families and project-local support packages. The inventory below distinguishes technology required to run the deployed apps and repository scripts from technology shown only in examples, templates, or reference snippets inside individual skills. Version evidence comes from committed manifests (`package.json`, `pnpm-workspace.yaml`), CI workflow files, runtime configuration, source imports, and the latest official registry metadata.
 
 ## Executable technology
 
@@ -17,9 +17,9 @@ This repository is now a pnpm workspace monorepo. It hosts deployed applications
 | npm | Package registry client for Node tooling metadata lookups. | No repository pin or lockfile (the workspace uses pnpm exclusively). | Installed with the selected Node release. |
 | JavaScript | `.mjs`, `.cjs`, and `.js` scripts use Node built-ins and native ESM. | No ECMAScript edition is declared. | Governed by the Node LTS pin. |
 | Python | Cataloger requires Python 3.9+; Replit config requests `python-base-3.13`; other utilities (including this inventory script) use Python. | CI tracks the latest stable release via `.github/python-version` (`3.14.7`). | Weekly inventory PR updates the CI pin. |
-| Anthropic Python SDK | Direct dependency of `community/mcp-builder/scripts/evaluation.py` (currently under `.migration-backup/` pending migration). | `>=0.39.0` | Dependabot reviews updates weekly. |
-| MCP Python SDK | Direct dependency of `community/mcp-builder/scripts/connections.py` (currently under `.migration-backup/` pending migration). | `>=1.1.0` | Dependabot reviews updates weekly. |
-| PyYAML | Direct import in `community/skill-creator/scripts/quick_validate.py` (currently under `.migration-backup/` pending migration). | `>=6.0.3` | Added explicit requirements file; Dependabot reviews updates weekly. |
+| Anthropic Python SDK | Direct dependency of `community/mcp-builder/scripts/evaluation.py`. | `>=0.39.0` | Dependabot reviews updates weekly. |
+| MCP Python SDK | Direct dependency of `community/mcp-builder/scripts/connections.py`. | `>=1.1.0` | Dependabot reviews updates weekly. |
+| PyYAML | Direct import in `community/skill-creator/scripts/quick_validate.py`. | `>=6.0.3` | Added explicit requirements file; Dependabot reviews updates weekly. |
 | Mermaid CLI | Local Mermaid publish pipeline. | Exact dev dependency: 11.16.0. | Dependabot reviews updates weekly. |
 | Bash | Shell utilities, including the Mermaid render pipeline. | No Bash version is pinned. | Runner supplied. Scripts use `#!/bin/bash`. |
 | Mermaid diagram syntax | `.mmd` files plus generator and validator scripts. | No language or renderer version was previously pinned. Mermaid CLI is now pinned above. | Mermaid CLI Dependabot PRs. |
@@ -61,7 +61,7 @@ Last checked: 2026-08-24 (UTC).
 
 ## Maintenance plan
 
-1. Dependabot (`.github/dependabot.yml`) opens weekly pull requests for the root npm workspace (`package.json` / `pnpm-lock.yaml`) and GitHub Actions dependencies. The Python ecosystems for `community/mcp-builder` and `community/skill-creator`, and the npm ecosystem for `mermaid/okhp3-mermaid-publish`, are not yet configured here because those family folders still live under `.migration-backup/`; add them once each folder migrates to its real top-level path.
+1. Dependabot (`.github/dependabot.yml`) opens weekly pull requests for the root npm workspace, the Mermaid package, the two Python package locations, and GitHub Actions dependencies.
 2. The `Refresh technology inventory` workflow runs every Monday and creates one pull request when Node LTS, Python, or any observed latest release changes.
 3. Review generated-project/skill guidance separately before changing Vite, React, or Tailwind versions there. Those are examples inside individual skills, not the live `artifacts/forge` dependencies, and Tailwind 4 requires template changes.
 4. Merge only after normal repository validation passes. The automation has no auto-merge permission.

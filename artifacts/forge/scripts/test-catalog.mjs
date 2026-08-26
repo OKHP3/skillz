@@ -21,11 +21,11 @@ import { applyEvidencePolicy, hasSubstantiveEvidenceArtifact } from './build-cat
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-// The source skill repository remains under .migration-backup in the
-// PNPM_WORKSPACE layout. Keep the generated Forge artifact separate from the
-// catalog source and manifest so this check works from the migrated package.
-const REPO_ROOT = join(__dirname, '..', '..', '..', '.migration-backup');
-const WORKSPACE_ROOT = join(REPO_ROOT, '..');
+// Distribution families and the manifest live at the workspace root. Keep
+// the generated Forge artifact separate from those source files while making
+// all assertions against the paths that ship in the repository.
+const REPO_ROOT = join(__dirname, '..', '..', '..');
+const WORKSPACE_ROOT = REPO_ROOT;
 const FORGE_ROOT = join(__dirname, '..');
 const CATALOG_PATH = join(__dirname, '..', 'public', 'data', 'catalog.json');
 const SUMMARY_PATH = join(__dirname, '..', 'public', 'data', 'project-summary.json');

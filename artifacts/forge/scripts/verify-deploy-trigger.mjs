@@ -17,19 +17,16 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-// Source families (FAMILY.md folders) live in the migrated source tree, not
-// beside the standalone Forge artifact.
-const REPO_ROOT = join(__dirname, '..', '..', '..', '.migration-backup');
-// The deploy workflow that GitHub Actions actually executes lives at the
-// real repository root, not under .migration-backup -- GitHub only runs
-// workflows found at the real .github/workflows/ path.
-const MONOREPO_ROOT = join(__dirname, '..', '..', '..');
-const WORKFLOW_PATH = join(MONOREPO_ROOT, '.github', 'workflows', 'deploy-pages.yml');
+// Source families (FAMILY.md folders) and the deploy workflow both live at
+// the workspace root. Keep this check aligned with the published repository
+// layout rather than any historical migration directory.
+const REPO_ROOT = join(__dirname, '..', '..', '..');
+const WORKFLOW_PATH = join(REPO_ROOT, '.github', 'workflows', 'deploy-pages.yml');
 
 const SKIP_DIRS = new Set([
   '.git', '.github', '.agents', '.claude', '.vscode', 'node_modules',
   '__pycache__', '.venv', 'venv', 'dist', 'build', 'coverage',
-  '.nyc_output', 'attached_assets', 'docs', 'forge', '.local',
+  '.nyc_output', 'attached_assets', 'artifacts', 'docs', '.local',
 ]);
 
 function currentFamilyFolders() {

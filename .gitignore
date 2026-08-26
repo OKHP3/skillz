@@ -54,14 +54,11 @@ Thumbs.db
 *.pdf
 !assets/**/*.png
 !assets/**/*.svg
-!forge/public/assets/*.png
-!forge/src/assets/*.png
-!forge/src/assets/*.svg
 !mermaid/okhp3-mermaid-publish/examples/*.png
 !mermaid/okhp3-mermaid-publish/examples/*.svg
 
-# Post-monorepo-migration equivalents of the forge/ exceptions above --
-# without these, favicons, app icons, social-preview art, and the Home
+# Forge artifact exceptions -- without these, favicons, app icons,
+# social-preview art, and the Home
 # hero fallback image are silently dropped from the repo and CI/production
 # builds fail or ship broken images (found 2026-08-24).
 !artifacts/forge/public/assets/*.png

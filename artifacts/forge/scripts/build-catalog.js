@@ -2,7 +2,8 @@
 /**
  * build-catalog.js
  * Walks the repo root, finds all SKILL.md files at depth <= 3,
- * parses YAML frontmatter + body sections, and outputs forge/src/data/catalog.json.
+ * parses YAML frontmatter + body sections, and outputs
+ * artifacts/forge/public/data/catalog.json.
  *
  * Excluded from catalog:
  *   .agents/skills/  — project-local support skills (per AGENTS.md)
@@ -17,16 +18,16 @@ import { computeCapabilities } from './capabilities.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // In the monorepo, this script lives at artifacts/forge/scripts/.
-// Skills live in .migration-backup/ under the workspace root. Pointing
-// REPO_ROOT there keeps family paths and GitHub URLs correct (relative
-// paths from .migration-backup/ match the upstream OKHP3/skillz repo layout).
-const REPO_ROOT = join(__dirname, '..', '..', '..', '.migration-backup');
+// Distribution families live at the workspace root, alongside AGENTS.md and
+// skillz.manifest.json. Pointing REPO_ROOT at the workspace keeps catalog
+// paths, Git provenance, and GitHub URLs aligned with the published layout.
+const REPO_ROOT = join(__dirname, '..', '..', '..');
 // Catalog data is a build artifact, not source: it is fetched at runtime from
 // `public/data/catalog.json` (served as a static asset at `/data/catalog.json`)
 // rather than imported as a JS module. Bundling a 100+ skill catalog into the
 // JS bundle bloated the main chunk and made the data un-cacheable separately
 // from app code; fetching it lets the browser cache it independently and lets
-// `forge/scripts/verify-deploy-trigger.mjs` and Phase D checks validate the
+// `artifacts/forge/scripts/verify-deploy-trigger.mjs` and Phase D checks validate the
 // exact bytes that ship, not a TS-transpiled copy.
 const OUTPUT = join(__dirname, '..', 'public', 'data', 'catalog.json');
 // Release 1 fix: the compact index above no longer carries each skill's full
@@ -50,7 +51,7 @@ const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main`;
 const SKIP_DIRS = new Set([
   '.git', '.github', '.agents', '.claude', '.vscode', 'node_modules',
   '__pycache__', '.venv', 'venv', 'dist', 'build', 'coverage',
-  '.nyc_output', 'attached_assets', 'docs', 'forge', '.local',
+  '.nyc_output', 'attached_assets', 'artifacts', 'docs', '.local',
 ]);
 
 // ─── Provenance ───────────────────────────────────────────────────────────────
@@ -131,34 +132,71 @@ function getGitRef() {
 
 // ─── Per-file Git info ────────────────────────────────────────────────────────
 
-function getFileGitInfo(relPath) {
+// A consolidation can be staged as a rename before the new path exists in
+// HEAD. Git log cannot follow that index-only rename yet, so consult the
+// staged rename source as a provenance-preserving fallback. This is only used
+// when the current path has no history; it never substitutes the deploy commit.
+function getStagedRenameSource(relPath) {
   try {
-    const result = execSync(
-        'git log -n 1 --format="%aI %H" -- ' + JSON.stringify(relPath),
-        { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8' }
-      ).trim();
-    if (!result) return { lastModified: null, commitSha: null };
-    const spaceIdx = result.indexOf(' ');
-    return {
-      lastModified: spaceIdx > 0 ? result.slice(0, spaceIdx) : null,
-      commitSha: spaceIdx > 0 ? result.slice(spaceIdx + 1, spaceIdx + 9) : null,
-    };
-  } catch { return { lastModified: null, commitSha: null }; }
+    const lines = execSync(
+      'git diff --cached --name-status --find-renames=50% --',
+      { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8' }
+    ).trim().split('\n').filter(Boolean);
+    for (const line of lines) {
+      const fields = line.split('\t');
+      if (fields.length >= 3 && fields[0].startsWith('R') && fields[2] === relPath) {
+        return fields[1];
+      }
+    }
+  } catch {
+    // A clean checkout or non-Git export has no staged rename to inspect.
+  }
+  return null;
+}
+
+function gitPathCandidates(relPath) {
+  const stagedSource = getStagedRenameSource(relPath);
+  return stagedSource && stagedSource !== relPath ? [relPath, stagedSource] : [relPath];
+}
+
+function getFileGitInfo(relPath) {
+  for (const pathCandidate of gitPathCandidates(relPath)) {
+    try {
+      const result = execSync(
+          'git log -n 1 --format="%aI %H" -- ' + JSON.stringify(pathCandidate),
+          { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8' }
+        ).trim();
+      if (!result) continue;
+      const spaceIdx = result.indexOf(' ');
+      return {
+        lastModified: spaceIdx > 0 ? result.slice(0, spaceIdx) : null,
+        commitSha: spaceIdx > 0 ? result.slice(spaceIdx + 1, spaceIdx + 9) : null,
+      };
+    } catch {
+      // Try the next candidate, if a staged rename provided one.
+    }
+  }
+  return { lastModified: null, commitSha: null };
 }
 
 // Oldest tracked commit date for a path — used as `createdAt`. `git log
 // --follow` walks renames; we take the last line (oldest) rather than the
 // first (newest, already covered by getFileGitInfo/lastModified).
 function getFileCreatedAt(relPath) {
-  try {
-    const result = execSync(
-      'git log --follow --format="%aI" -- ' + JSON.stringify(relPath),
-      { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8' }
-    ).trim();
-    if (!result) return null;
-    const lines = result.split('\n').filter(Boolean);
-    return lines.length ? lines[lines.length - 1] : null;
-  } catch { return null; }
+  for (const pathCandidate of gitPathCandidates(relPath)) {
+    try {
+      const result = execSync(
+        'git log --follow --format="%aI" -- ' + JSON.stringify(pathCandidate),
+        { cwd: REPO_ROOT, stdio: ['pipe', 'pipe', 'ignore'], encoding: 'utf8' }
+      ).trim();
+      if (!result) continue;
+      const lines = result.split('\n').filter(Boolean);
+      if (lines.length) return lines[lines.length - 1];
+    } catch {
+      // Try the next candidate, if a staged rename provided one.
+    }
+  }
+  return null;
 }
 
 // Release 1: writes one small per-skill JSON file carrying the *unstripped*
@@ -1158,8 +1196,14 @@ function syncManifestCounts(catalog) {
   manifest.distributionFamilyCount = catalog.familyCount;
   manifest.maturityCounts = maturityCounts;
   manifest.evidenceStatusCounts = evidenceStatusCounts;
+  const supportRoot = join(REPO_ROOT, '.agents', 'skills');
+  if (existsSync(supportRoot)) {
+    manifest.projectLocalSupportSkillCount = readdirSync(supportRoot, { withFileTypes: true })
+      .filter(entry => entry.isDirectory() && existsSync(join(supportRoot, entry.name, 'SKILL.md')))
+      .length;
+  }
   manifest.countsGeneratedAt = catalog.generatedAt;
-  manifest.countsGeneratedFrom = 'forge/scripts/build-catalog.js (do not hand-edit these count fields)';
+  manifest.countsGeneratedFrom = 'artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)';
 
   const maturitySum = Object.values(maturityCounts).reduce((a, b) => a + b, 0);
   const evidenceSum = Object.values(evidenceStatusCounts).reduce((a, b) => a + b, 0);
@@ -1238,15 +1282,15 @@ function writeProjectSummary(catalog) {
 }
 
 // Only run the full repo-walk build when this file is executed directly
-// (`node scripts/build-catalog.js`), not when it's imported elsewhere (e.g.
-// forge/scripts/test-catalog.mjs importing the pure helpers below) — an
+// (`node artifacts/forge/scripts/build-catalog.js`), not when it's imported elsewhere (e.g.
+// artifacts/forge/scripts/test-catalog.mjs importing the pure helpers below) — an
 // import must not have the side effect of re-walking the repo and
 // rewriting catalog.json / skillz.manifest.json.
 if (process.argv[1] && realpathSync(fileURLToPath(import.meta.url)) === realpathSync(process.argv[1])) {
   buildCatalog();
 }
 
-// Exported for forge/scripts/test-catalog.mjs — pure functions only, no I/O
+// Exported for artifacts/forge/scripts/test-catalog.mjs — pure functions only, no I/O
 // or process.exit side effects, safe to call directly against synthetic
 // fixtures without re-running the full repo walk.
 export { applyEvidencePolicy, hasAnyEvidenceArtifact, hasSubstantiveEvidenceArtifact, deriveMaturity, deriveMaturitySource };

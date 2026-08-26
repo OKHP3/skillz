@@ -22,7 +22,7 @@ development escape hatch for a shallow checkout only; CI still fails closed.
 
 ## Inputs and outputs
 
-- Input: the current checkout, `.migration-backup` source tree, and generated
+- Input: the current checkout's root distribution families and generated
   `artifacts/forge/public/data/` assets.
 - Output: concise pass/fail lines and a non-zero exit on invalid counts,
   metadata, evidence vocabulary, payload split, or provenance.

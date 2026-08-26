@@ -16,9 +16,23 @@ updates:
       day: monday
     open-pull-requests-limit: 5
 
-# NOTE: .migration-backup/.github/dependabot.yml additionally tracks
-# pip ecosystems for community/mcp-builder and community/skill-creator, and
-# an npm ecosystem for mermaid/okhp3-mermaid-publish. Those directories still
-# live under .migration-backup/ pending migration to the repo root -- add the
-# matching entries here once each family folder moves to its real top-level
-# path, since Dependabot requires the directory to exist at the path given.
+  - package-ecosystem: npm
+    directory: /mermaid/okhp3-mermaid-publish
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: pip
+    directory: /community/mcp-builder/scripts
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: pip
+    directory: /community/skill-creator
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5

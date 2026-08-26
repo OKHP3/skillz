@@ -29,7 +29,7 @@ import { join } from 'path';
  * Recursively collects the contents of every source file under `dir` with
  * one of `extensions`, concatenated into one string. Used to check whether
  * a component is actually imported/rendered anywhere, not just present on
- * disk. Small enough (`forge/src` is a few hundred KB) to do on every build
+ * disk. Small enough (`artifacts/forge/src` is a few hundred KB) to do on every build
  * without caching.
  */
 function collectSourceText(dir, extensions = ['.ts', '.tsx']) {
@@ -152,7 +152,7 @@ export const CAPABILITIES = [
 
 /**
  * Computes the live capabilities object for `project-summary.json` from
- * `CAPABILITIES` above. `forgeRoot` is the `forge/` directory (parent of
+ * `CAPABILITIES` above. `forgeRoot` is the `artifacts/forge/` directory (parent of
  * `src/`).
  * @param {string} forgeRoot
  * @returns {Record<string, boolean>}
