@@ -339,7 +339,12 @@ export function SkillDetailAudit() {
               <div className="border-b px-4 py-3" style={{ borderColor: '#604531' }}><div className="flex items-center gap-2"><LockKeyhole size={14} style={{ color: amber }} /><span className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: amber }}>Release gates</span></div><p className="mt-1 text-[11px]" style={{ color: '#b9a391' }}>Publish only when every gate has a record.</p></div>
               <div className="p-4">
                 <div className="space-y-3">
-                  {[['contract hash', true, 'verified'], ['owner sign-off', true, 'verified'], ['second reviewer', reviewRequested, reviewRequested ? 'requested' : 'missing'], ['live invocation', liveEvidence, liveEvidence ? 'attached' : 'missing']].map(([label, done, state]) => <div key={label} className="flex items-center gap-3"><span className="flex h-5 w-5 items-center justify-center border" style={{ borderColor: done ? '#607661' : '#795047', color: done ? green : red, background: done ? '#263329' : '#362521' }}>{done ? <Check size={11} /> : <XCircle size={11} />}</span><span className="flex-1 font-mono text-[10px]" style={{ color: soft }}>{label}</span><span className="font-mono text-[8px] uppercase tracking-[0.08em]" style={{ color: done ? green : red }}>{state as string}</span></div>)}
+                  {([
+                    ['contract hash', true, 'verified'],
+                    ['owner sign-off', true, 'verified'],
+                    ['second reviewer', reviewRequested, reviewRequested ? 'requested' : 'missing'],
+                    ['live invocation', liveEvidence, liveEvidence ? 'attached' : 'missing'],
+                  ] as Array<[string, boolean, string]>).map(([label, done, state]) => <div key={label} className="flex items-center gap-3"><span className="flex h-5 w-5 items-center justify-center border" style={{ borderColor: done ? '#607661' : '#795047', color: done ? green : red, background: done ? '#263329' : '#362521' }}>{done ? <Check size={11} /> : <XCircle size={11} />}</span><span className="flex-1 font-mono text-[10px]" style={{ color: soft }}>{label}</span><span className="font-mono text-[8px] uppercase tracking-[0.08em]" style={{ color: done ? green : red }}>{state}</span></div>)}
                 </div>
                 <button type="button" onClick={() => setSelected('live')} className="mt-4 flex w-full items-center justify-center gap-2 border px-3 py-2.5 font-mono text-[9px] uppercase tracking-[0.1em] transition-colors hover:bg-[#432e22]" style={{ borderColor: '#986237', color: amber }}>Inspect blocked gate <ChevronRight size={13} /></button>
               </div>
