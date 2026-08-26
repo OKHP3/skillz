@@ -889,7 +889,7 @@ Safe exceptions:
 
 - Process-wide singletons that do not store request- or user-specific mutable data
 
-For static assets and config, see [Hoist Static I/O to Module Level](./server-hoist-static-io.md).
+For static assets and config, see [Hoist Static I/O to Module Level](./rules/server-hoist-static-io.md).
 
 ### 3.4 Cross-Request LRU Caching
 

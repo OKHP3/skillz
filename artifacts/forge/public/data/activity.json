@@ -1,85 +1,85 @@
 {
-  "generatedAt": "2026-08-26T18:26:06.723Z",
+  "generatedAt": "2026-08-26T18:34:09.612Z",
   "commits": [
     {
-      "sha": "4db8e0cd7ddcf15a024644b1dccf9c2a00701c20",
-      "shortSha": "4db8e0c",
-      "message": "Cover missing skill route recovery in browser test",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T18:24:19Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4db8e0cd7ddcf15a024644b1dccf9c2a00701c20"
-    },
-    {
-      "sha": "f4d7096780cae13bbf5bbdfce0734e639b81f12d",
-      "shortSha": "f4d7096",
-      "message": "Persist review desk decisions per skill",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T18:23:08Z",
-      "url": "https://github.com/OKHP3/skillz/commit/f4d7096780cae13bbf5bbdfce0734e639b81f12d"
-    },
-    {
-      "sha": "c626c462bbf856f3345db0b0d06cf058ee5ff868",
-      "shortSha": "c626c46",
-      "message": "Add shareable catalog family evidence and maturity filters",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T18:19:00Z",
-      "url": "https://github.com/OKHP3/skillz/commit/c626c462bbf856f3345db0b0d06cf058ee5ff868"
-    },
-    {
-      "sha": "727ff317bfbad3dd0a5c09b411fe12cd340b92f4",
-      "shortSha": "727ff31",
-      "message": "Fail closed when publish alert streak state is temporarily unavailable",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T18:11:15Z",
-      "url": "https://github.com/OKHP3/skillz/commit/727ff317bfbad3dd0a5c09b411fe12cd340b92f4"
-    },
-    {
-      "sha": "472ce0397b303ccef0fd9a06b21e7ab859f552f5",
-      "shortSha": "472ce03",
-      "message": "Debounce scheduled publish health alerts across transient failures",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T18:09:51Z",
-      "url": "https://github.com/OKHP3/skillz/commit/472ce0397b303ccef0fd9a06b21e7ab859f552f5"
-    },
-    {
-      "sha": "df57f0dad7ce3323a098993c24aec6e49ce5b3e0",
-      "shortSha": "df57f0d",
-      "message": "Alert monitored webhook when publish health incident changes state",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-24T18:07:54Z",
-      "url": "https://github.com/OKHP3/skillz/commit/df57f0dad7ce3323a098993c24aec6e49ce5b3e0"
-    },
-    {
-      "sha": "01079efdfcf7d534af4ad0244da83976fbc39d2e",
-      "shortSha": "01079ef",
-      "message": "Cover the Review Desk's error-recovery path in the CI browser check\n\nReplit-Task-Id: f5e26c04-44d2-42f5-b313-8361d42f3fcd\nReplit-Merge-Attempt: MergeTask:f5e26c04-44d2-42f5-b313-8361d42f3fcd:1:cdd7ed8c",
-      "author": "overkillhillp3",
-      "date": "2026-08-24T18:06:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/01079efdfcf7d534af4ad0244da83976fbc39d2e"
-    },
-    {
-      "sha": "fce4f585349b992496fdcf7143ab7fc0a6f320af",
-      "shortSha": "fce4f58",
-      "message": "Update publish health check documentation and workflow configuration\n\nReplit-Commit-Author: Agent",
+      "sha": "e22efde18dbaa1c4ec860ab399205b9a76249f66",
+      "shortSha": "e22efde",
+      "message": "Update catalog data in forge review desk\n\nReplit-Commit-Author: Agent",
       "author": "Replit Agent",
-      "date": "2026-08-24T18:05:51Z",
-      "url": "https://github.com/OKHP3/skillz/commit/fce4f585349b992496fdcf7143ab7fc0a6f320af"
+      "date": "2026-08-26T18:25:50Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e22efde18dbaa1c4ec860ab399205b9a76249f66"
     },
     {
-      "sha": "b911bcd8e16883f4aa6239d25d06cfecef2e4820",
-      "shortSha": "b911bcd",
-      "message": "Wire Review Desk to real Forge catalog data\n\nReplit-Task-Id: 5cc79973-529c-4ee0-b5c8-722eec32aa9d\nReplit-Merge-Attempt: MergeTask:5cc79973-529c-4ee0-b5c8-722eec32aa9d:1:40b38b7c",
+      "sha": "4e97aee5d8fdbb25c9346e26c5cf5e05949ab210",
+      "shortSha": "4e97aee",
+      "message": "Sync final-review requests across matching Review Desk tabs\n\nReplit-Task-Id: dfc374a6-ac59-4bab-bf28-9fac5c9c4499\nReplit-Merge-Attempt: MergeTask:dfc374a6-ac59-4bab-bf28-9fac5c9c4499:1:66d36fb2",
       "author": "overkillhillp3",
-      "date": "2026-08-24T18:03:45Z",
-      "url": "https://github.com/OKHP3/skillz/commit/b911bcd8e16883f4aa6239d25d06cfecef2e4820"
+      "date": "2026-08-26T18:25:24Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4e97aee5d8fdbb25c9346e26c5cf5e05949ab210"
     },
     {
-      "sha": "2e0c77b8bc91363a220dad58ff0fb43731496e69",
-      "shortSha": "2e0c77b",
+      "sha": "bd3ffcd81e700f3d16aaacfa158f51687337de1e",
+      "shortSha": "bd3ffcd",
       "message": "Git commit prior to merge",
       "author": "overkillhillp3",
-      "date": "2026-08-24T18:03:44Z",
-      "url": "https://github.com/OKHP3/skillz/commit/2e0c77b8bc91363a220dad58ff0fb43731496e69"
+      "date": "2026-08-26T18:25:23Z",
+      "url": "https://github.com/OKHP3/skillz/commit/bd3ffcd81e700f3d16aaacfa158f51687337de1e"
+    },
+    {
+      "sha": "d03d1de48ce2416b0250d71dfd3080c3b2e6ad98",
+      "shortSha": "d03d1de",
+      "message": "Update catalog data in forge review desk\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-26T17:57:36Z",
+      "url": "https://github.com/OKHP3/skillz/commit/d03d1de48ce2416b0250d71dfd3080c3b2e6ad98"
+    },
+    {
+      "sha": "97d2a903ceccd853d0a3bc666da81195cfd200ae",
+      "shortSha": "97d2a90",
+      "message": "Preserve review queue filters when returning from dossiers\n\nReplit-Task-Id: adc0927d-0fd5-43a9-85dc-65ee7ff39a00\nReplit-Merge-Attempt: MergeTask:adc0927d-0fd5-43a9-85dc-65ee7ff39a00:1:c82ca37a",
+      "author": "overkillhillp3",
+      "date": "2026-08-26T17:57:21Z",
+      "url": "https://github.com/OKHP3/skillz/commit/97d2a903ceccd853d0a3bc666da81195cfd200ae"
+    },
+    {
+      "sha": "ccdd3101362f58bef870c732ae865f3420537157",
+      "shortSha": "ccdd310",
+      "message": "Update catalog data in forge review desk\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-26T17:56:56Z",
+      "url": "https://github.com/OKHP3/skillz/commit/ccdd3101362f58bef870c732ae865f3420537157"
+    },
+    {
+      "sha": "ae96cfb8b02e20b431d398e455986085770e76e3",
+      "shortSha": "ae96cfb",
+      "message": "Run publish-health debounce contract in release validation\n\nReplit-Task-Id: 0d12dd7b-10b7-484c-b794-8eddd719f460\nReplit-Merge-Attempt: MergeTask:0d12dd7b-10b7-484c-b794-8eddd719f460:1:25e3b845",
+      "author": "overkillhillp3",
+      "date": "2026-08-26T17:49:09Z",
+      "url": "https://github.com/OKHP3/skillz/commit/ae96cfb8b02e20b431d398e455986085770e76e3"
+    },
+    {
+      "sha": "7647b437bf1680d549dc067b408295131cb328e6",
+      "shortSha": "7647b43",
+      "message": "Reorganize agent memory files and update skill documentation.\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-26T17:48:37Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7647b437bf1680d549dc067b408295131cb328e6"
+    },
+    {
+      "sha": "4fbe5e8e1e259959943f90b1c82be84210261d19",
+      "shortSha": "4fbe5e8",
+      "message": "Update catalog data in forge-review-desk\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-26T17:26:52Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4fbe5e8e1e259959943f90b1c82be84210261d19"
+    },
+    {
+      "sha": "4e61aefcf10cb81c142c75e5e2d450d0f1a311c1",
+      "shortSha": "4e61aef",
+      "message": "Keep publish-health webhook delivery failures visible after recovery\n\nReplit-Task-Id: 8e8d0cd8-ca24-461d-a22f-335944b3a639\nReplit-Merge-Attempt: MergeTask:8e8d0cd8-ca24-461d-a22f-335944b3a639:1:2563855c",
+      "author": "overkillhillp3",
+      "date": "2026-08-26T17:26:35Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4e61aefcf10cb81c142c75e5e2d450d0f1a311c1"
     }
   ],
   "fetchError": null
