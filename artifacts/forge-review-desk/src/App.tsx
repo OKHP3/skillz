@@ -68,6 +68,28 @@ function formatDate(value: string | null): string {
   return Number.isNaN(d.getTime()) ? value : d.toISOString().slice(0, 10);
 }
 
+const reviewQueueFilterKeys = ['family', 'evidence', 'maturity', 'q'] as const;
+
+function reviewQueueSearch(search: string): string {
+  const source = new URLSearchParams(search);
+  const queue = new URLSearchParams();
+  for (const key of reviewQueueFilterKeys) {
+    const value = source.get(key);
+    if (value) queue.set(key, value);
+  }
+  return queue.toString();
+}
+
+function catalogHref(search: string): string {
+  const queueSearch = reviewQueueSearch(search);
+  return queueSearch ? `/?${queueSearch}` : '/';
+}
+
+function skillHref(skill: Pick<Skill, 'family' | 'name'>, search: string): string {
+  const queueSearch = reviewQueueSearch(search);
+  return `/${skill.family}/${skill.name}${queueSearch ? `?${queueSearch}` : ''}`;
+}
+
 function reviewStateKey(skill: Pick<Skill, 'family' | 'name'>): string {
   return `skillz-forge-review:${skill.family}/${skill.name}`;
 }
@@ -140,7 +162,7 @@ function ReplacementSuggestions({ replacements, compact = false }: { replacement
         {replacements.map(({ skill, reason }) => (
           <Link
             key={`${skill.family}/${skill.name}`}
-            href={`/${skill.family}/${skill.name}`}
+            href={skillHref(skill, window.location.search)}
             data-testid={`link-replacement-${skill.name}`}
             className="group flex min-w-0 items-center justify-between gap-3 border px-3 py-2 text-left transition-colors hover:bg-[#303a3a]"
             style={{ borderColor: colors.border, background: '#1c2324' }}
@@ -342,7 +364,7 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
               data-testid={`button-nav-${item.toLowerCase().replaceAll(' ', '-')}`}
               onClick={() => {
                 setMobileNavOpen(false);
-                if (item === 'Catalog') { navigate('/'); return; }
+                if (item === 'Catalog') { navigate(catalogHref(window.location.search)); return; }
                 setActiveSection(item);
               }}
               className="relative px-3 py-3 text-left font-mono text-[10px] uppercase tracking-[0.12em] md:py-2"
@@ -357,7 +379,7 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
           <div className="flex items-center gap-2 border px-3 py-1.5" style={{ borderColor: colors.border, color: colors.muted }}>
             <Hash size={12} /><span className="font-mono text-[10px]">{catalog.skillCount} skills / {catalog.familyCount} families</span>
           </div>
-          <button type="button" data-testid="button-open-cli" onClick={() => navigate('/')} className="inline-flex h-8 items-center gap-2 border border-[#4d5b5b] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.1em] text-[#cbd7d1] transition-colors hover:bg-[#2b3435]">
+          <button type="button" data-testid="button-open-cli" onClick={() => navigate(catalogHref(window.location.search))} className="inline-flex h-8 items-center gap-2 border border-[#4d5b5b] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.1em] text-[#cbd7d1] transition-colors hover:bg-[#2b3435]">
             <Terminal size={13} /> CLI
           </button>
           <div className="flex h-7 w-7 items-center justify-center rounded-full border text-[10px] font-bold" style={{ borderColor: '#63766d', color: colors.lime }}>MR</div>
@@ -367,7 +389,7 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
       <div className="mx-auto max-w-[1320px] px-5 pb-14 pt-5 md:px-7">
         <div className="forge-reveal mb-4 flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em]" style={{ color: colors.muted }}>
           <ArrowLeft size={12} />
-          <Link href="/" data-testid="button-breadcrumb-catalog" className="transition-colors hover:text-[#e8eee8]">Catalog</Link>
+          <Link href={catalogHref(window.location.search)} data-testid="button-breadcrumb-catalog" className="transition-colors hover:text-[#e8eee8]">Catalog</Link>
           <ChevronRight size={11} /><span>{skill.family}</span><ChevronRight size={11} /><span style={{ color: '#c1d0c8' }}>Review desk</span>
         </div>
 
@@ -480,7 +502,7 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
               <div className="flex items-center justify-between border-b px-4 py-3" style={{ borderColor: colors.border }}><span className="font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: '#d8e0d9' }}>Nearby contracts</span><Layers3 size={14} style={{ color: colors.muted }} /></div>
               {related.length === 0 && <p className="px-4 py-3 text-[10px]" style={{ color: colors.muted }}>No related skills recorded.</p>}
               {related.map((r) => (
-                <Link key={r.name} href={`/${r.family}/${r.name}`} data-testid={`button-nearby-${r.name}`} className="group block w-full border-b px-4 py-3 text-left transition-colors last:border-b-0 hover:bg-[#303a3b]" style={{ borderColor: colors.border }}>
+                <Link key={r.name} href={skillHref(r, window.location.search)} data-testid={`button-nearby-${r.name}`} className="group block w-full border-b px-4 py-3 text-left transition-colors last:border-b-0 hover:bg-[#303a3b]" style={{ borderColor: colors.border }}>
                   <div className="flex items-start justify-between gap-2"><span className="font-mono text-[10px]" style={{ color: '#d9e2da' }}>{r.name}</span><ArrowUpRight size={12} className="opacity-0 transition-opacity group-hover:opacity-100" style={{ color: colors.lime }} /></div>
                   <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.1em]" style={{ color: colors.green }}>{r.maturity}</div>
                   <p className="mt-2 text-[10px]" style={{ color: colors.muted }}>{r.note}</p>
@@ -635,7 +657,7 @@ function CatalogList({ catalog }: { catalog: Catalog }) {
         <ul className="mt-4 divide-y" style={{ borderColor: colors.border }}>
           {skills.map((s) => (
             <li key={s.name} style={{ borderColor: colors.border }}>
-              <Link href={`/${s.family}/${s.name}`} data-testid={`link-catalog-skill-${s.name}`} className="group flex items-center justify-between gap-3 border-b px-3 py-3 transition-colors hover:bg-[#242d2e]" style={{ borderColor: colors.border }}>
+              <Link href={skillHref(s, search)} data-testid={`link-catalog-skill-${s.name}`} className="group flex items-center justify-between gap-3 border-b px-3 py-3 transition-colors hover:bg-[#242d2e]" style={{ borderColor: colors.border }}>
                 <span className="min-w-0">
                   <span className="block truncate font-mono text-[12px]" style={{ color: colors.ink }}>{s.name}</span>
                   <span className="mt-1 block truncate text-[10px]" style={{ color: colors.muted }}>{s.family} · {s.maturity} · {s.evidence.status}</span>

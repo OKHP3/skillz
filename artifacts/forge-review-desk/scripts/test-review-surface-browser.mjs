@@ -168,6 +168,34 @@ async function main() {
     assert(await page.getByTestId('select-catalog-maturity').inputValue() === 'draftable', 'Shared queue bookmark did not hydrate the maturity filter.');
     assert((await text(page, 'text-catalog-result-count')).toLowerCase() === '2 of 149 skills', 'Shared queue bookmark did not hydrate the expected result count.');
 
+    // Opening a skill carries the shared queue context into the dossier so
+    // the breadcrumb can return to the same filtered reviewer queue.
+    await page.getByTestId('link-catalog-skill-okhp3-custom-gpt-builder').click();
+    await page.getByTestId('text-skill-name').waitFor();
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Opening a skill dropped the shared queue filters from the dossier URL.');
+    assert(
+      await page.getByTestId('button-breadcrumb-catalog').getAttribute('href') === '/?family=agent-foundry&evidence=not-run&maturity=draftable&q=custom-gpt',
+      'Dossier breadcrumb did not preserve the originating shared queue URL.',
+    );
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.getByTestId('text-skill-name').waitFor();
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Reloading the dossier dropped the shared queue filters.');
+    await page.getByTestId('button-breadcrumb-catalog').click();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Catalog breadcrumb did not return to the shared filtered queue.');
+    assert((await page.getByTestId('input-catalog-search').inputValue()) === 'custom-gpt', 'Catalog breadcrumb did not restore the shared search filter.');
+    assert(await page.getByTestId('select-catalog-family').inputValue() === 'agent-foundry', 'Catalog breadcrumb did not restore the shared family filter.');
+    assert(await page.getByTestId('select-catalog-evidence').inputValue() === 'not-run', 'Catalog breadcrumb did not restore the shared evidence filter.');
+    assert(await page.getByTestId('select-catalog-maturity').inputValue() === 'draftable', 'Catalog breadcrumb did not restore the shared maturity filter.');
+    await page.goBack();
+    await page.getByTestId('text-skill-name').waitFor();
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Browser back did not recover the filtered dossier URL.');
+    await page.goForward();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Browser forward did not recover the filtered queue URL after the dossier return.');
+    assert((await page.getByTestId('input-catalog-search').inputValue()) === 'custom-gpt', 'Browser forward did not restore the shared search filter after dossier navigation.');
+
+    // Continue with filter edits after the dossier round trip.
     await page.getByTestId('select-catalog-evidence').selectOption('live');
     await page.waitForURL(`${baseUrl}/?family=agent-foundry&evidence=live&maturity=draftable&q=custom-gpt`);
     const changedQueueUrl = new URL(page.url());
