@@ -115,9 +115,20 @@ async function main() {
     await page.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-buider`, { waitUntil: 'domcontentloaded' });
     await page.getByTestId('panel-likely-replacements').waitFor();
     assert(await page.getByTestId('link-replacement-okhp3-custom-gpt-builder').count() === 1, 'Missing-skill fallback did not suggest the closest current contract.');
+    assert(
+      (await text(page, 'text-replacement-reason-okhp3-custom-gpt-builder')).toLowerCase().includes('same family + similar name'),
+      'Same-family replacement did not explain that both family and name signals matched.',
+    );
     await page.getByTestId('link-replacement-okhp3-custom-gpt-builder').click();
     await page.getByTestId('text-skill-name').waitFor();
     assert((await text(page, 'text-skill-name')) === 'okhp3-custom-gpt-builder', 'Replacement link did not open the suggested dossier.');
+    await page.goto(`${baseUrl}/missing-family/okhp3-custom-gpt-buider`, { waitUntil: 'domcontentloaded' });
+    await page.getByTestId('panel-likely-replacements').waitFor();
+    assert(
+      (await text(page, 'text-replacement-reason-okhp3-custom-gpt-builder')).toLowerCase().includes('similar name')
+        && !(await text(page, 'text-replacement-reason-okhp3-custom-gpt-builder')).toLowerCase().includes('same family'),
+      'Name-only replacement did not explain that the suggestion came from the name signal.',
+    );
     await page.goto(`${baseUrl}/?q=okhp3-custom-gpt-buider`, { waitUntil: 'domcontentloaded' });
     await page.getByTestId('panel-likely-replacements').waitFor();
     assert(await page.getByTestId('link-replacement-okhp3-custom-gpt-builder').count() === 1, 'Empty filtered catalog did not suggest the closest current contract.');

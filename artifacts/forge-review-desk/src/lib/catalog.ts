@@ -21,7 +21,7 @@ export function findSkill(catalog: Catalog, family: string, name: string): Skill
 export type SkillReplacement = {
   skill: Skill;
   score: number;
-  reason: 'same family' | 'closest name match' | 'same family · closest name';
+  reason: 'same family' | 'similar name' | 'same family + similar name';
 };
 
 function normalize(value: string): string {
@@ -74,7 +74,11 @@ export function findLikelyReplacements(query: string, family: string, skills: Sk
       return {
         skill,
         score,
-        reason: sameFamily && similarity >= 0.45 ? 'same family · closest name' as const : sameFamily ? 'same family' as const : 'closest name match' as const,
+        reason: sameFamily && similarity >= 0.45
+          ? 'same family + similar name' as const
+          : sameFamily
+            ? 'same family' as const
+            : 'similar name' as const,
       };
     })
     .filter((item) => item.score >= 0.3)

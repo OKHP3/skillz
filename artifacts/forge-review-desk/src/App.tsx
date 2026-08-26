@@ -135,7 +135,7 @@ function ReplacementSuggestions({ replacements, compact = false }: { replacement
       <div className="mb-2 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.13em]" style={{ color: colors.lime }}>
         <Search size={12} /> Likely replacements
       </div>
-      <p className="mb-2 text-[10px] leading-4" style={{ color: colors.muted }}>These current contracts are close in name or family.</p>
+      <p className="mb-2 text-[10px] leading-4" style={{ color: colors.muted }}>Each suggestion shows whether the match came from family, name, or both.</p>
       <div className="grid gap-2">
         {replacements.map(({ skill, reason }) => (
           <Link
@@ -147,7 +147,14 @@ function ReplacementSuggestions({ replacements, compact = false }: { replacement
           >
             <span className="min-w-0">
               <span className="block truncate font-mono text-[11px]" style={{ color: colors.ink }}>{skill.name}</span>
-              <span className="mt-1 block truncate font-mono text-[9px] uppercase tracking-[0.08em]" style={{ color: colors.green }}>{skill.family} · {reason}</span>
+              <span
+                className="mt-1 block truncate font-mono text-[9px] uppercase tracking-[0.08em]"
+                data-testid={`text-replacement-reason-${skill.name}`}
+                title={reason}
+                style={{ color: colors.green }}
+              >
+                {skill.family} · {reason}
+              </span>
             </span>
             <ArrowUpRight size={13} className="shrink-0 opacity-60 transition-opacity group-hover:opacity-100" style={{ color: colors.lime }} />
           </Link>
