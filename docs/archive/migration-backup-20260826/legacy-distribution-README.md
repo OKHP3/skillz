@@ -1,6 +1,12 @@
 # OKHP3/skillz
 
-![Skillz Forge](forge/public/assets/skillz-forge-social-preview.jpg)
+> **Historical archive notice:** This README is a preserved snapshot from before
+> the 2026-08-26 consolidation. Its content and generated inventory are kept
+> for provenance, not as active repository guidance. Relative references that
+> still describe the former root are intentional historical references; the
+> current active README and root layout are authoritative.
+
+![Skillz Forge](../../../artifacts/forge/public/assets/skillz-forge-social-preview.jpg)
 
 **Agent Skills by OverKill Hill P³™.** Gotta have the skillz to pay the bills.
 
@@ -68,13 +74,13 @@ Need an outcome
 
 ## Stack position
 
-`skillz` sits at the execution layer of the OKHP3 Visual Language Stack. [ReFolDec](refolddec/) names the transformation theory. [Mermaid Theme Builder](https://github.com/OKHP3/mermaid-theme-builder) is the visual-governance layer. [BPMN for Mermaid](https://github.com/OKHP3/mermaid-diagram-bpmn) is the process-notation layer.
+`skillz` sits at the execution layer of the OKHP3 Visual Language Stack. [ReFolDec](../../../refolddec/) names the transformation theory. [Mermaid Theme Builder](https://github.com/OKHP3/mermaid-theme-builder) is the visual-governance layer. [BPMN for Mermaid](https://github.com/OKHP3/mermaid-diagram-bpmn) is the process-notation layer.
 
-See [`docs/STACK-POSITION.md`](docs/STACK-POSITION.md) for the full stack map.
+See [`docs/STACK-POSITION.md`](../../../docs/STACK-POSITION.md) for the full stack map.
 
 ## Start here
 
-Read [`AGENTS.md`](AGENTS.md) first. It is the always-on routing index for this repository: what each skill does, when it triggers, which companions it uses, and where it lives.
+Read [`AGENTS.md`](../../../AGENTS.md) first. It is the always-on routing index for this repository: what each skill does, when it triggers, which companions it uses, and where it lives.
 
 If you are evaluating the product rather than authoring a skill, start with [Skillz Forge](https://okhp3.github.io/skillz/), then read the [OverKill Hill Skillz project page](https://overkillhill.com/projects/skillz/).
 
@@ -101,27 +107,27 @@ If you are evaluating the product rather than authoring a skill, start with [Ski
 
 | Family | Skills | What it covers |
 |---|---|---|
-| [`abrahamic/`](abrahamic/FAMILY.md) | 4 | A family of 4 skills. Find thematically parallel passages across Judaism, Christianity,... |
-| [`agent-foundry/`](agent-foundry/FAMILY.md) | 3 | The agent-foundry family covers the creation, readiness assessment, and portability pla... |
-| [`artifacts/`](artifacts/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
-| [`askjamie/`](askjamie/FAMILY.md) | 10 | One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and in... |
-| [`brand-styles/`](brand-styles/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
-| [`community/`](community/FAMILY.md) | 13 | A family of 13 skills. Create AI-powered social media content for TikTok, Instagram, Yo... |
-| [`context-extraction/`](context-extraction/FAMILY.md) | 10 | The context-extraction family is the mining, extraction, and refinement layer for sourc... |
-| [`forge/`](forge/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
-| [`glee-fully/`](glee-fully/FAMILY.md) | 12 | Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee-fullyT... |
-| [`knowledge-operations/`](knowledge-operations/FAMILY.md) | 7 | Portable lifecycle skills for capturing, classifying, researching, validating, and prom... |
-| [`lifetrkr/`](lifetrkr/FAMILY.md) | 2 | A family of 2 skills. Calculate moon phase, astrological season, and Mercury retrograde... |
-| [`mermaid/`](mermaid/FAMILY.md) | 9 | Nine skills. One foundation, four domain skills, one publish layer, one update skill, o... |
-| [`notion/`](notion/FAMILY.md) | 1 | This family covers Notion-centered knowledge operations for OKHP3. |
-| [`outcome-modeling/`](outcome-modeling/FAMILY.md) | 5 | A family of 5 skills. OverKill Hill P³ NFL fantasy picks. Use when selecting NFL fantas... |
-| [`process-capture/`](process-capture/FAMILY.md) | 16 | One skill: `okhp3-process-capture`. The meta-layer. |
-| [`refolddec/`](refolddec/FAMILY.md) | 1 | Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding acro... |
-| [`replit/`](replit/FAMILY.md) | 7 | Agent Skills for building, presenting, deploying, and maintaining projects on the Repli... |
-| [`scripts/`](scripts/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
-| [`social-posting/`](social-posting/FAMILY.md) | 31 | Platform-specific drafts for LinkedIn, Facebook, X/Twitter, Discord, YouTube,
+| [`abrahamic/`](../../../abrahamic/FAMILY.md) | 4 | A family of 4 skills. Find thematically parallel passages across Judaism, Christianity,... |
+| [`agent-foundry/`](../../../agent-foundry/FAMILY.md) | 3 | The agent-foundry family covers the creation, readiness assessment, and portability pla... |
+| [`artifacts/`](../../../artifacts/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
+| [`askjamie/`](../../../askjamie/FAMILY.md) | 10 | One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and in... |
+| [`brand-styles/`](../../../brand-styles/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
+| [`community/`](../../../community/FAMILY.md) | 13 | A family of 13 skills. Create AI-powered social media content for TikTok, Instagram, Yo... |
+| [`context-extraction/`](../../../context-extraction/FAMILY.md) | 10 | The context-extraction family is the mining, extraction, and refinement layer for sourc... |
+| [`forge/`](../../../artifacts/forge/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
+| [`glee-fully/`](../../../glee-fully/FAMILY.md) | 12 | Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee-fullyT... |
+| [`knowledge-operations/`](../../../knowledge-operations/FAMILY.md) | 7 | Portable lifecycle skills for capturing, classifying, researching, validating, and prom... |
+| [`lifetrkr/`](../../../lifetrkr/FAMILY.md) | 2 | A family of 2 skills. Calculate moon phase, astrological season, and Mercury retrograde... |
+| [`mermaid/`](../../../mermaid/FAMILY.md) | 9 | Nine skills. One foundation, four domain skills, one publish layer, one update skill, o... |
+| [`notion/`](../../../notion/FAMILY.md) | 1 | This family covers Notion-centered knowledge operations for OKHP3. |
+| [`outcome-modeling/`](../../../outcome-modeling/FAMILY.md) | 5 | A family of 5 skills. OverKill Hill P³ NFL fantasy picks. Use when selecting NFL fantas... |
+| [`process-capture/`](../../../process-capture/FAMILY.md) | 16 | One skill: `okhp3-process-capture`. The meta-layer. |
+| [`refolddec/`](../../../refolddec/FAMILY.md) | 1 | Agent Skills for ReFolDec operations — recursive folding, unfolding, and refolding acro... |
+| [`replit/`](../../../replit/FAMILY.md) | 7 | Agent Skills for building, presenting, deploying, and maintaining projects on the Repli... |
+| [`scripts/`](../../../scripts/) | — placeholder | A family of 0 skills. No skills cataloged yet. |
+| [`social-posting/`](../../../social-posting/FAMILY.md) | 31 | Platform-specific drafts for LinkedIn, Facebook, X/Twitter, Discord, YouTube,
 Ko-fi, In... |
-| [`universal/`](universal/FAMILY.md) | 18 | A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a static ... |
+| [`universal/`](../../../universal/FAMILY.md) | 18 | A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a static ... |
 <!-- FAMILIES_TABLE_END -->
 
 ## *"Skillz"* Inventory
@@ -136,45 +142,45 @@ Ko-fi, In... |
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-cross-tradition-compare](abrahamic/okhp3-cross-tradition-compare/SKILL.md) | Compare shared themes across Judaism, Christianity, and Islam using 20 seeded passage sets, neutr... | 1.2.0 |
-| [okhp3-tradition-observance-calendar](abrahamic/okhp3-tradition-observance-calendar/SKILL.md) | Fetch, compute, and format religious observance calendars for the three in-scope Abrahamic tradit... | 1.2.0 |
-| [okhp3-tradition-reference](abrahamic/okhp3-tradition-reference/SKILL.md) | Reference ARE scope, canon, denominations, translations, Pew US shares, and free API providers fo... | 1.2.0 |
-| [okhp3-verse-lookup](abrahamic/okhp3-verse-lookup/SKILL.md) | Fetch or integrate scripture passages from Judaism, Christianity, or Islam through the ARE free a... | 1.2.0 |
+| [okhp3-cross-tradition-compare](../../../abrahamic/okhp3-cross-tradition-compare/SKILL.md) | Compare shared themes across Judaism, Christianity, and Islam using 20 seeded passage sets, neutr... | 1.2.0 |
+| [okhp3-tradition-observance-calendar](../../../abrahamic/okhp3-tradition-observance-calendar/SKILL.md) | Fetch, compute, and format religious observance calendars for the three in-scope Abrahamic tradit... | 1.2.0 |
+| [okhp3-tradition-reference](../../../abrahamic/okhp3-tradition-reference/SKILL.md) | Reference ARE scope, canon, denominations, translations, Pew US shares, and free API providers fo... | 1.2.0 |
+| [okhp3-verse-lookup](../../../abrahamic/okhp3-verse-lookup/SKILL.md) | Fetch or integrate scripture passages from Judaism, Christianity, or Islam through the ARE free a... | 1.2.0 |
 
 ### agent-foundry (3 skills)
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-custom-gpt-builder](agent-foundry/okhp3-custom-gpt-builder/SKILL.md) | >- | 1.3.0 |
-| [okhp3-custom-gpt-readiness](agent-foundry/okhp3-custom-gpt-readiness/SKILL.md) | >- | 1.2.0 |
-| [okhp3-gpt-skill-conversion-plan](agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md) | >- | 1.2.0 |
+| [okhp3-custom-gpt-builder](../../../agent-foundry/okhp3-custom-gpt-builder/SKILL.md) | >- | 1.3.0 |
+| [okhp3-custom-gpt-readiness](../../../agent-foundry/okhp3-custom-gpt-readiness/SKILL.md) | >- | 1.2.0 |
+| [okhp3-gpt-skill-conversion-plan](../../../agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md) | >- | 1.2.0 |
 
 ### askjamie (10 skills)
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-askjamie-brand](askjamie/okhp3-askjamie-brand/SKILL.md) | OverKill Hill P³ AskJamie SPA styling. Use when a user wants an AskJamie application, documentati... | 1.1.0 |
-| [okhp3-askjamie-chatgpt-migrate](askjamie/okhp3-askjamie-chatgpt-migrate/SKILL.md) | OverKill Hill P³ ChatGPT project migration. Use when migrating, preserving, extracting, inventory... | 1.0.0 |
-| [okhp3-askjamie-extract-chatgpt](askjamie/okhp3-askjamie-extract-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.0.0 |
-| [okhp3-askjamie-extract-claude](askjamie/okhp3-askjamie-extract-claude/SKILL.md) | Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the... | 2.0.0 |
-| [okhp3-askjamie-gpt-builder](askjamie/okhp3-askjamie-gpt-builder/SKILL.md) | >- | 1.0.0 |
-| [okhp3-askjamie-gpt-readiness](askjamie/okhp3-askjamie-gpt-readiness/SKILL.md) | >- | 1.0.0 |
-| [okhp3-askjamie-repo-creator](askjamie/okhp3-askjamie-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
-| [okhp3-askjamie-repo-organizer](askjamie/okhp3-askjamie-repo-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.1.1 |
-| [okhp3-askjamie-style-registry](askjamie/okhp3-askjamie-style-registry/SKILL.md) | OverKill Hill P³ visual style registry and application workflow. Use when a user wants to extract... | 1.1.0 |
-| [okhp3-askjamie-thread-context](askjamie/okhp3-askjamie-thread-context/SKILL.md) | Extract pasted or uploaded AI chat threads into standalone, actionable Markdown. Use when the use... | 2.0.0 |
+| [okhp3-askjamie-brand](../../../askjamie/okhp3-askjamie-brand/SKILL.md) | OverKill Hill P³ AskJamie SPA styling. Use when a user wants an AskJamie application, documentati... | 1.1.0 |
+| [okhp3-askjamie-chatgpt-migrate](../../../askjamie/okhp3-askjamie-chatgpt-migrate/SKILL.md) | OverKill Hill P³ ChatGPT project migration. Use when migrating, preserving, extracting, inventory... | 1.0.0 |
+| [okhp3-askjamie-extract-chatgpt](../../../askjamie/okhp3-askjamie-extract-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.0.0 |
+| [okhp3-askjamie-extract-claude](../../../askjamie/okhp3-askjamie-extract-claude/SKILL.md) | Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the... | 2.0.0 |
+| [okhp3-askjamie-gpt-builder](../../../askjamie/okhp3-askjamie-gpt-builder/SKILL.md) | >- | 1.0.0 |
+| [okhp3-askjamie-gpt-readiness](../../../askjamie/okhp3-askjamie-gpt-readiness/SKILL.md) | >- | 1.0.0 |
+| [okhp3-askjamie-repo-creator](../../../askjamie/okhp3-askjamie-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
+| [okhp3-askjamie-repo-organizer](../../../askjamie/okhp3-askjamie-repo-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.1.1 |
+| [okhp3-askjamie-style-registry](../../../askjamie/okhp3-askjamie-style-registry/SKILL.md) | OverKill Hill P³ visual style registry and application workflow. Use when a user wants to extract... | 1.1.0 |
+| [okhp3-askjamie-thread-context](../../../askjamie/okhp3-askjamie-thread-context/SKILL.md) | Extract pasted or uploaded AI chat threads into standalone, actionable Markdown. Use when the use... | 2.0.0 |
 
 ### community (13 skills)
 
 | Skill | Description | Version |
 |---|---|---|
-| [ai-social-media-content](community/ai-social-media-content/SKILL.md) | Create AI-powered social media content for TikTok, Instagram, YouTube, Twitter/X. Generate: image... | — |
-| [architecture-decision-records](community/architecture-decision-records/SKILL.md) | Write and maintain Architecture Decision Records (ADRs) following best practices for technical de... | — |
-| [brand-guidelines](community/brand-guidelines/SKILL.md) | Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit... | — |
-| [find-skills](community/find-skills/SKILL.md) | Helps agents discover, evaluate, and recommend installable agent skills when a task may be better... | — |
-| [frontend-design](community/frontend-design/SKILL.md) | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill... | — |
-| [mcp-builder](community/mcp-builder/SKILL.md) | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact... | — |
-| [mermaid-diagrams](community/mermaid-diagrams/SKILL.md) | Comprehensive guide for creating software diagrams using Mermaid syntax. Use when users need to c... | — |
+| [ai-social-media-content](../../../community/ai-social-media-content/SKILL.md) | Create AI-powered social media content for TikTok, Instagram, YouTube, Twitter/X. Generate: image... | — |
+| [architecture-decision-records](../../../community/architecture-decision-records/SKILL.md) | Write and maintain Architecture Decision Records (ADRs) following best practices for technical de... | — |
+| [brand-guidelines](../../../community/brand-guidelines/SKILL.md) | Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit... | — |
+| [find-skills](../../../community/find-skills/SKILL.md) | Helps agents discover, evaluate, and recommend installable agent skills when a task may be better... | — |
+| [frontend-design](../../../community/frontend-design/SKILL.md) | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill... | — |
+| [mcp-builder](../../../community/mcp-builder/SKILL.md) | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact... | — |
+| [mermaid-diagrams](../../../community/mermaid-diagrams/SKILL.md) | Comprehensive guide for creating software diagrams using Mermaid syntax. Use when users need to c... | — |
 | [skill-creator](community/skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill performance. Use when us... | — |
 | [theme-factory](community/theme-factory/SKILL.md) | Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML... | — |
 | [vercel-react-best-practices](community/vercel-react-best-practices/SKILL.md) | React and Next.js performance optimization guidelines from Vercel Engineering. This skill should ... | 1.0.0 |

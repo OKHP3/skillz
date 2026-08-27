@@ -53,6 +53,19 @@ authoritative root monorepo layout.
   backup tree itself were removed. No active source depends on
   `.migration-backup/`.
 
+## Archived README link audit
+
+- `docs/archive/migration-backup-20260826/legacy-distribution-README.md` is a
+  preserved historical snapshot and is excluded from active-content link
+  failures.
+- Its original inventory contains 181 relative Markdown links and one image
+  reference written for the former repository root. The archive notice in that
+  README labels any remaining former-root references as intentional historical
+  references rather than current repository guidance.
+- References that were moved into the consolidated layout use paths that
+  resolve from the archived README; the root `README.md`, not this snapshot,
+  remains the source of truth for active links.
+
 ## Ignored working artifacts
 
 Pre-existing ignored root working directories named `forge/`, `community/`,
