@@ -366,6 +366,54 @@ async function main() {
     assert((await text(page, 'status-release-gate')) === 'In review', 'Final-review request did not survive reloading the dossier.');
     assert(await page.getByTestId('button-request-final-review').isDisabled(), 'Final review button became enabled after reloading the dossier.');
 
+    // Separate browser contexts model independent reviewer sessions. They
+    // must not inherit a request just because another context has the same
+    // dossier open. Keep both contexts empty so this boundary is deterministic.
+    const isolatedWriterContext = await browser.newContext({
+      storageState: { cookies: [], origins: [] },
+    });
+    const isolatedObserverContext = await browser.newContext({
+      storageState: { cookies: [], origins: [] },
+    });
+    const isolatedWriterPage = await isolatedWriterContext.newPage({ viewport: { width: 1440, height: 1000 } });
+    const isolatedObserverPage = await isolatedObserverContext.newPage({ viewport: { width: 1440, height: 1000 } });
+    await isolatedWriterPage.route('**/data/catalog.json', async (route) => mockCrossTabFinalReviewFixture(route));
+    await isolatedObserverPage.route('**/data/catalog.json', async (route) => mockCrossTabFinalReviewFixture(route));
+    await isolatedWriterPage.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
+    await isolatedObserverPage.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
+    await isolatedWriterPage.getByTestId('status-release-gate').waitFor();
+    await isolatedObserverPage.getByTestId('status-release-gate').waitFor();
+    assert((await text(isolatedWriterPage, 'status-release-gate')) === 'Open', 'Isolated writer context should start with an open release gate.');
+    assert((await text(isolatedObserverPage, 'status-release-gate')) === 'Open', 'Isolated observer context should start with an open release gate.');
+    assert(
+      await isolatedWriterPage.evaluate(() => Object.keys(window.localStorage).length === 0),
+      'Isolated writer context unexpectedly depended on pre-existing browser storage.',
+    );
+    assert(
+      await isolatedObserverPage.evaluate(() => Object.keys(window.localStorage).length === 0),
+      'Isolated observer context unexpectedly depended on pre-existing browser storage.',
+    );
+
+    await isolatedWriterPage.getByTestId('button-request-final-review').click();
+    assert((await text(isolatedWriterPage, 'status-release-gate')) === 'In review', 'Isolated writer context did not record the final-review request.');
+    await isolatedObserverPage.waitForTimeout(100);
+    assert(
+      (await text(isolatedObserverPage, 'status-release-gate')) === 'Open',
+      'Final-review request crossed browser contexts without an explicit reload or rehydration.',
+    );
+    assert(
+      await isolatedObserverPage.evaluate(() => Object.keys(window.localStorage).length === 0),
+      'Final-review request unexpectedly wrote into the isolated observer context storage.',
+    );
+    await isolatedObserverPage.reload({ waitUntil: 'domcontentloaded' });
+    await isolatedObserverPage.getByTestId('status-release-gate').waitFor();
+    assert(
+      (await text(isolatedObserverPage, 'status-release-gate')) === 'Open',
+      'Isolated observer context inherited the final-review request after reloading.',
+    );
+    await isolatedWriterContext.close();
+    await isolatedObserverContext.close();
+
     // Open the same dossier and a different dossier in sibling tabs within
     // one browser context. A request should arrive only at the matching
     // skill's storage key.
