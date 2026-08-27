@@ -1,6 +1,38 @@
 {
-  "generatedAt": "2026-08-26T18:34:09.612Z",
+  "generatedAt": "2026-08-27T03:36:03.144Z",
   "commits": [
+    {
+      "sha": "274bfd5ba9a45d33629c6f77f7913213127bfcdd",
+      "shortSha": "274bfd5",
+      "message": "Cover reviewer dossier switching across isolated tabs\n\nReplit-Task-Id: c93c58e0-b8bd-4e34-ac05-9e8ab3271635\nReplit-Merge-Attempt: MergeTask:c93c58e0-b8bd-4e34-ac05-9e8ab3271635:1:0b4dbca1",
+      "author": "overkillhillp3",
+      "date": "2026-08-26T18:47:18Z",
+      "url": "https://github.com/OKHP3/skillz/commit/274bfd5ba9a45d33629c6f77f7913213127bfcdd"
+    },
+    {
+      "sha": "5fae5d80b1b42fa5fb98f6dedf9587f020a82f12",
+      "shortSha": "5fae5d8",
+      "message": "Document PAT smart HTTP push workaround",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-26T18:42:40Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5fae5d80b1b42fa5fb98f6dedf9587f020a82f12"
+    },
+    {
+      "sha": "4bd8e9ae53e1587c5a99d8ebb1adb4126af1bbb3",
+      "shortSha": "4bd8e9a",
+      "message": "Repair active catalog documentation links",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-26T18:34:39Z",
+      "url": "https://github.com/OKHP3/skillz/commit/4bd8e9ae53e1587c5a99d8ebb1adb4126af1bbb3"
+    },
+    {
+      "sha": "e85dd2c1d455ff0d7ff9fc7b2fa75df8010d454d",
+      "shortSha": "e85dd2c",
+      "message": "Update vercel-react-best-practices documentation and metadata files\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-08-26T18:29:59Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e85dd2c1d455ff0d7ff9fc7b2fa75df8010d454d"
+    },
     {
       "sha": "e22efde18dbaa1c4ec860ab399205b9a76249f66",
       "shortSha": "e22efde",
@@ -48,38 +80,6 @@
       "author": "Replit Agent",
       "date": "2026-08-26T17:56:56Z",
       "url": "https://github.com/OKHP3/skillz/commit/ccdd3101362f58bef870c732ae865f3420537157"
-    },
-    {
-      "sha": "ae96cfb8b02e20b431d398e455986085770e76e3",
-      "shortSha": "ae96cfb",
-      "message": "Run publish-health debounce contract in release validation\n\nReplit-Task-Id: 0d12dd7b-10b7-484c-b794-8eddd719f460\nReplit-Merge-Attempt: MergeTask:0d12dd7b-10b7-484c-b794-8eddd719f460:1:25e3b845",
-      "author": "overkillhillp3",
-      "date": "2026-08-26T17:49:09Z",
-      "url": "https://github.com/OKHP3/skillz/commit/ae96cfb8b02e20b431d398e455986085770e76e3"
-    },
-    {
-      "sha": "7647b437bf1680d549dc067b408295131cb328e6",
-      "shortSha": "7647b43",
-      "message": "Reorganize agent memory files and update skill documentation.\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-26T17:48:37Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7647b437bf1680d549dc067b408295131cb328e6"
-    },
-    {
-      "sha": "4fbe5e8e1e259959943f90b1c82be84210261d19",
-      "shortSha": "4fbe5e8",
-      "message": "Update catalog data in forge-review-desk\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-08-26T17:26:52Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4fbe5e8e1e259959943f90b1c82be84210261d19"
-    },
-    {
-      "sha": "4e61aefcf10cb81c142c75e5e2d450d0f1a311c1",
-      "shortSha": "4e61aef",
-      "message": "Keep publish-health webhook delivery failures visible after recovery\n\nReplit-Task-Id: 8e8d0cd8-ca24-461d-a22f-335944b3a639\nReplit-Merge-Attempt: MergeTask:8e8d0cd8-ca24-461d-a22f-335944b3a639:1:2563855c",
-      "author": "overkillhillp3",
-      "date": "2026-08-26T17:26:35Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4e61aefcf10cb81c142c75e5e2d450d0f1a311c1"
     }
   ],
   "fetchError": null
