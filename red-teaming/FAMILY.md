@@ -1,17 +1,12 @@
 ---
-name: red-teaming
-description: >
-  Authorized, defensive assessment of agentic systems through evidence-led threat
-  intelligence, safe laboratory validation, detection, proportional response,
-  and governance. This family does not authorize live exploitation or offensive
-  operations.
-family_version: "2.0.0"
-compatibility: Agent Skills-compatible client
-license: MIT
-author: Jamie Hill (OverKill Hill P³)
+family: red-teaming
+display_name: Red Teaming
+skill_count: 24
+generated_by: okhp3-skill-cataloger v1.7.0
+generated_at: 2026-08-28T05:57:05Z
 ---
 
-# Red Teaming Family
+# red-teaming
 
 **OverKill Hill P³** · defensive agentic security assessment and control improvement.
 
@@ -95,3 +90,40 @@ The remastered packages are structurally validated and carry evaluation designs.
 ## Use and non-use
 
 Use this family for authorized defensive planning, evidence review, safe lab characterization, control validation, detection design, incident learning, and proportionate response design. Do not use it as a general penetration-testing playbook, a source of attack recipes, or a substitute for a qualified security team, legal review, incident-response authority, or system owner approval.
+
+<!-- FAMILY_SUMMARY_START -->
+A family of 24 skills. Forecast adoption of emerging agentic attack patterns from dated, source-backed signals. Use when.
+<!-- FAMILY_SUMMARY_END -->
+
+## Skills (24)
+
+<!-- FAMILY_INVENTORY_START -->
+*24 skills &nbsp;·&nbsp; inventory last updated: **August 28, 2026 at 05:57 UTC***
+
+| Skill | Description | Version |
+|---|---|---|
+| [okhp3-adversary-forecasting](okhp3-adversary-forecasting/SKILL.md) | Forecast adoption of emerging agentic attack patterns from dated, source-backed signals. Use when... | 2.0.0 |
+| [okhp3-agent-capability-inventory](okhp3-agent-capability-inventory/SKILL.md) | Inventory deployed agents, models, tools, identities, permissions, data access, and trust boundar... | 2.0.0 |
+| [okhp3-agentic-attack-patterns](okhp3-agentic-attack-patterns/SKILL.md) | Define a defensive taxonomy of agentic attack behaviors and observable indicators. Use when norma... | 2.0.0 |
+| [okhp3-agentic-credential-assessment](okhp3-agentic-credential-assessment/SKILL.md) | Assess authentication and credential-abuse controls with synthetic identities and approved harnes... | 2.0.0 |
+| [okhp3-agentic-data-exposure](okhp3-agentic-data-exposure/SKILL.md) | Assess data-loss prevention and access boundaries with synthetic canary data. Use when validating... | 2.0.0 |
+| [okhp3-agentic-exploitation-testing](okhp3-agentic-exploitation-testing/SKILL.md) | Assess whether an agent, tool, or configuration change can cross a defined control boundary in a ... | 2.0.0 |
+| [okhp3-agentic-lateral-assessment](okhp3-agentic-lateral-assessment/SKILL.md) | Assess agent-to-agent and service-to-service authorization boundaries using a synthetic capabilit... | 2.0.0 |
+| [okhp3-agentic-pattern-observatory](okhp3-agentic-pattern-observatory/SKILL.md) | Collect and triage dated public or approved threat signals about agentic abuse patterns. Use for ... | 2.0.0 |
+| [okhp3-agentic-persistence-assessment](okhp3-agentic-persistence-assessment/SKILL.md) | Assess whether agent and host controls detect unauthorized state retention in an isolated disposa... | 2.0.0 |
+| [okhp3-attack-economics](okhp3-attack-economics/SKILL.md) | Measure the economic sustainability of defensive controls against distributed agentic threats. Us... | 2.0.0 |
+| [okhp3-authorization-governance](okhp3-authorization-governance/SKILL.md) | Define and enforce authorization checkpoints for defensive assessment and response workflows. Use... | 2.0.0 |
+| [okhp3-behavioral-baselining](okhp3-behavioral-baselining/SKILL.md) | Establish privacy-aware baselines for agent behavior, tool use, requests, resource consumption, a... | 2.0.0 |
+| [okhp3-decision-chain-audit-trail](okhp3-decision-chain-audit-trail/SKILL.md) | Record decision-relevant evidence for detection, approval, response, and review decisions. Use wh... | 2.0.0 |
+| [okhp3-emerging-threat-lab](okhp3-emerging-threat-lab/SKILL.md) | Validate emerging agentic threat hypotheses and defensive controls in a disposable synthetic labo... | 2.0.0 |
+| [okhp3-lateral-movement-tracking](okhp3-lateral-movement-tracking/SKILL.md) | Detect abnormal agent-to-agent, service-to-service, and tool-call paths. Use when monitoring auth... | 2.0.0 |
+| [okhp3-model-anomaly-detection](okhp3-model-anomaly-detection/SKILL.md) | Detect meaningful changes in approved model behavior, tool use, refusal patterns, or output risk.... | 2.0.0 |
+| [okhp3-post-breach-forensics](okhp3-post-breach-forensics/SKILL.md) | Investigate a suspected agentic security incident and convert evidence into validated defensive l... | 2.0.0 |
+| [okhp3-precursor-detection](okhp3-precursor-detection/SKILL.md) | Detect early indicators of distributed or agentic abuse before a confirmed incident. Use when cor... | 2.0.0 |
+| [okhp3-proportional-response](okhp3-proportional-response/SKILL.md) | Select or execute preapproved, reversible, cost-proportional defensive responses to validated sig... | 2.0.0 |
+| [okhp3-response-cost-benefit](okhp3-response-cost-benefit/SKILL.md) | Compare defensive responses using expected loss, effectiveness, uncertainty, reversibility, and r... | 2.0.0 |
+| [okhp3-safe-intelligence-amplifier](okhp3-safe-intelligence-amplifier/SKILL.md) | Prepare privacy-preserving, source-traceable threat intelligence for approved peer sharing. Use w... | 2.0.0 |
+| [okhp3-supply-chain-agent-provenance](okhp3-supply-chain-agent-provenance/SKILL.md) | Verify provenance and integrity of agent packages, models, tools, configurations, and deployments... | 2.0.0 |
+| [okhp3-threat-intelligence-synthesis](okhp3-threat-intelligence-synthesis/SKILL.md) | Synthesize dated threat signals into coherent defensive narratives and validation priorities. Use... | 2.0.0 |
+| [okhp3-threat-pattern-validator](okhp3-threat-pattern-validator/SKILL.md) | Validate whether a proposed agentic threat pattern affects a representative synthetic architectur... | 2.0.0 |
+<!-- FAMILY_INVENTORY_END -->
