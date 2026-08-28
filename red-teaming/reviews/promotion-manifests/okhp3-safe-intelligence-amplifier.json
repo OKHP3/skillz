@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "skill": {
+    "name": "okhp3-safe-intelligence-amplifier",
+    "version": "2.0.0",
+    "maturity": "candidate",
+    "evidence_status": "not-run"
+  },
+  "source": {
+    "repository": "OKHP3/skillz shared checkout",
+    "package_path": "red-teaming/okhp3-safe-intelligence-amplifier",
+    "selected_as_canonical_incubator": false,
+    "selection_reason": "The remastered distribution package is the reviewed candidate in the current family; no separate project-local source or publication mirror was supplied."
+  },
+  "mirrors": [],
+  "canonical_target": {
+    "repository": "OKHP3/skillz",
+    "family": "red-teaming",
+    "package_path": "red-teaming/okhp3-safe-intelligence-amplifier",
+    "accepted_commit_or_hash": null
+  },
+  "inventory": [
+    {
+      "path": "red-teaming/okhp3-safe-intelligence-amplifier/SKILL.md",
+      "sha256": "7796b0799a485bc9cd5d67e20a0d031dab0843a6f093727a931f08363af7e194"
+    },
+    {
+      "path": "red-teaming/okhp3-safe-intelligence-amplifier/evals/evals.json",
+      "sha256": "b7b4e1ce8636a157cda8f873fd6a5923ba595f3bcb38bd47ab73b2448e0e0af8"
+    }
+  ],
+  "decision": {
+    "status": "candidate",
+    "alternatives_considered": [
+      "Original Claude-created draft preserved in the shared checkout or recovery artifacts where available."
+    ],
+    "unresolved_items": [
+      "Independent external review, controlled holdout, and owner decision on canonical acceptance remain outstanding."
+    ]
+  },
+  "safety": {
+    "license": "MIT",
+    "public_safety": "reviewed-with-explicit-defensive-boundaries",
+    "private_material_found": false,
+    "external_writes": "none-declared",
+    "adapter_differences": []
+  },
+  "authorization": {
+    "requested_actions": [
+      "Prepare a local promotion record and update the generated distribution catalog."
+    ],
+    "approved_actions": [
+      "Local package remastering, evaluation design, review record, and catalog update in this checkout."
+    ],
+    "withheld_actions": [
+      "commit",
+      "push",
+      "pull-request",
+      "external-publication",
+      "live-target-assessment"
+    ]
+  },
+  "verification": {
+    "checks": [
+      "validate-skill-suite.cjs --root red-teaming",
+      "gen-skills-readme.py --full --check --no-family-md",
+      "JSON parse and skill identity check",
+      "package name, length, footer, and repository-wide cross-reference audit",
+      "git diff --check"
+    ],
+    "review_record": "red-teaming/reviews/equilibrium-review-2026-08-28.json",
+    "verified_at": "2026-08-28",
+    "limitations": [
+      "Structural checks do not establish live control efficacy or production readiness.",
+      "No independent reviewer or unseen external holdout was available."
+    ]
+  },
+  "recovery": {
+    "path": "Inspect the uncommitted diff and restore only reviewed files; preserve the original recovery artifacts and do not delete destination-only files automatically.",
+    "pre_sync_git_status_recorded": true
+  }
+}

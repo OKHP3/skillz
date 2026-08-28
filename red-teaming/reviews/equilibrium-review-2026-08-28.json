@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "analytical-editorial-review",
+  "evaluation_status": "analytical",
+  "artifact": {
+    "path": "red-teaming/FAMILY.md",
+    "sha256": "03bde32a0e732860fb6fd36a6a5a6b973107063f27c0fe775a47db3ed3689d3d",
+    "version": "2.0.0"
+  },
+  "decision_question": "Are the 24 red-teaming packages clearly named, structurally portable, safely bounded, composable, and ready for local catalog preview without claiming operational security performance?",
+  "acceptance_criteria": [
+    "Every package directory uses the okhp3- prefix and matches its frontmatter name.",
+    "Every package directory is at most 36 characters and every package has portable frontmatter.",
+    "Every package states scope, safety boundaries, validation loop, output contract, and integration behavior.",
+    "Credential, data exposure, exploitation, lateral assessment, and persistence packages are limited to synthetic lab or evidence-review use.",
+    "Every package has a version-matched evaluation design with a declared external holdout and no fabricated performance result.",
+    "The family overview lists every package and does not make unsupported timing, cost, or live-system claims."
+  ],
+  "independence": {
+    "reviewer_contexts_separated": false,
+    "shared_model_or_source_limits": [
+      "The Codex reviewer/editor shares the repository and source context with the Claude-originated drafts.",
+      "No independent external reviewer, live executor, or unseen holdout was available in this run."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "reviewer": "Codex reviewer/editor",
+      "scope": "Names, adjacency, package structure, safety boundaries, evaluation design, and family composition.",
+      "result": "Structural and analytical issues were repaired; performance and live-system claims remain unverified.",
+      "evidence": [
+        "Current repository guidance and local Foundry, equilibrium, promotion, and catalog contracts were read.",
+        "The strict skill validator returned 24 validated packages with no errors or warnings.",
+        "The package inventory and directory-length audit were run against the current checkout."
+      ]
+    }
+  ],
+  "concordance": "not-applicable",
+  "disruptor": {
+    "triggered": true,
+    "authority": "Codex reviewer/editor",
+    "falsification_hypotheses": [
+      "A shorter package may have lost its actual defensive contract while appearing structurally valid.",
+      "The family may imply that analytical or lab evidence proves live-system security.",
+      "Parallel agents may escalate scope if handoff authority is not explicitly constrained."
+    ],
+    "test_results": [
+      "Each package retains a purpose, inputs, procedure, safety boundary, validation loop, output contract, and integration section.",
+      "The family now labels performance evidence not-run and forbids live-system inference.",
+      "The family requires identical written scope, synthetic fixtures, stop conditions, and reviewer reconciliation for delegated lanes."
+    ]
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "Defer performance and external promotion claims; allow local structural validation and catalog preview.",
+    "decisive_evidence": [
+      "Strict validator output for all 24 package directories.",
+      "Version-matched evaluation design files with external-required holdout status.",
+      "No independent benchmark or live test result in the current evidence set."
+    ],
+    "unresolved_items": [
+      "Owner decision on whether to write generated root catalog and Forge metadata.",
+      "Independent external review and controlled holdout execution.",
+      "A conventional project-local source and publication mirror are not present for promotion synchronization."
+    ]
+  },
+  "release_decision": "defer-for-evidence",
+  "limitations": [
+    "Structural validation is not a penetration test, control-efficacy result, or production-readiness proof.",
+    "No live with-skill versus without-skill benchmark was run.",
+    "No independent external equilibrium review was available.",
+    "The original long drafts and untracked root artifacts remain preserved separately and were not treated as validated current packages."
+  ],
+  "follow_up": [
+    "Run cataloger in dry-run mode and inspect generated diff before any catalog write.",
+    "Obtain owner authorization for generated catalog changes if the preview is accepted.",
+    "Run controlled external holdout evaluations against version 2.0.0 packages.",
+    "Prepare per-package promotion manifests only after source, mirror, and canonical acceptance paths are explicit."
+  ]
+}
