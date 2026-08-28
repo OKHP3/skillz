@@ -5,6 +5,12 @@ on:
     paths:
       - "artifacts/forge/**"
       - "artifacts/forge-review-desk/**"
+      - "docs/archive/**"
+      - "MIGRATION.md"
+      - "**/*.md"
+      - "LICENSE"
+      - "scripts/verify-archive-links.mjs"
+      - "scripts/verify-archive-links.test.mjs"
       - ".agents/skills/publish-health-check/**"
       - "package.json"
       - "pnpm-lock.yaml"
@@ -17,6 +23,12 @@ on:
     paths:
       - "artifacts/forge/**"
       - "artifacts/forge-review-desk/**"
+      - "docs/archive/**"
+      - "MIGRATION.md"
+      - "**/*.md"
+      - "LICENSE"
+      - "scripts/verify-archive-links.mjs"
+      - "scripts/verify-archive-links.test.mjs"
       - ".agents/skills/publish-health-check/**"
       - "package.json"
       - "pnpm-lock.yaml"
@@ -29,6 +41,24 @@ permissions:
   contents: read
 
 jobs:
+  archive-links:
+    name: Check archived link integrity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .github/node-version
+
+      - name: Verify archived README destinations
+        run: node scripts/verify-archive-links.mjs
+
+      - name: Exercise archive-link failure boundaries
+        run: node --test scripts/verify-archive-links.test.mjs
+
   publish-health-debounce:
     name: Check publish-health debounce contract
     runs-on: ubuntu-latest

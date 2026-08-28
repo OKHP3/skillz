@@ -225,6 +225,46 @@ async function main() {
     assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Browser forward did not recover the filtered queue URL after the dossier return.');
     assert((await page.getByTestId('input-catalog-search').inputValue()) === 'custom-gpt', 'Browser forward did not restore the shared search filter after dossier navigation.');
 
+    // Nearby contract links must preserve the active review queue just like
+    // catalog links and the breadcrumb. Exercise a neighboring dossier,
+    // reload it, return to the queue, and verify browser history restores both
+    // the filtered dossier and the filtered catalog state.
+    await page.getByTestId('link-catalog-skill-okhp3-custom-gpt-builder').click();
+    await page.getByTestId('text-skill-name').waitFor();
+    const nearbyLink = page.getByTestId('button-nearby-okhp3-custom-gpt-readiness');
+    await nearbyLink.waitFor();
+    assert(
+      await nearbyLink.getAttribute('href') === '/agent-foundry/okhp3-custom-gpt-readiness?family=agent-foundry&evidence=not-run&maturity=draftable&q=custom-gpt',
+      'Related-contract link did not preserve the active filtered queue URL.',
+    );
+    await nearbyLink.click();
+    await page.getByTestId('text-skill-name').waitFor();
+    assert((await text(page, 'text-skill-name')) === 'okhp3-custom-gpt-readiness', 'Related-contract link did not open the neighboring dossier.');
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Related-contract navigation dropped the filtered queue parameters.');
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.getByTestId('text-skill-name').waitFor();
+    assert((await text(page, 'text-skill-name')) === 'okhp3-custom-gpt-readiness', 'Reloading the related dossier did not restore the expected skill.');
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Reloading the related dossier dropped the filtered queue parameters.');
+    await page.getByTestId('button-breadcrumb-catalog').click();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Returning from a related dossier did not preserve the filtered queue URL.');
+    assert((await page.getByTestId('input-catalog-search').inputValue()) === 'custom-gpt', 'Returning from a related dossier did not restore the search filter.');
+    assert(await page.getByTestId('select-catalog-family').inputValue() === 'agent-foundry', 'Returning from a related dossier did not restore the family filter.');
+    assert(await page.getByTestId('select-catalog-evidence').inputValue() === 'not-run', 'Returning from a related dossier did not restore the evidence filter.');
+    assert(await page.getByTestId('select-catalog-maturity').inputValue() === 'draftable', 'Returning from a related dossier did not restore the maturity filter.');
+    assert((await text(page, 'text-catalog-result-count')).toLowerCase() === '2 of 149 skills', 'Returning from a related dossier did not restore the filtered queue result count.');
+    await page.goBack();
+    await page.getByTestId('text-skill-name').waitFor();
+    assert((await text(page, 'text-skill-name')) === 'okhp3-custom-gpt-readiness', 'Browser back did not recover the related dossier.');
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Browser back did not recover the related dossier queue parameters.');
+    await page.goForward();
+    await page.getByTestId('input-catalog-search').waitFor();
+    assert(new URL(page.url()).search === new URL(sharedQueueUrl).search, 'Browser forward did not recover the filtered queue after the related dossier return.');
+    assert((await page.getByTestId('input-catalog-search').inputValue()) === 'custom-gpt', 'Browser forward did not restore the search filter after the related dossier return.');
+    assert(await page.getByTestId('select-catalog-family').inputValue() === 'agent-foundry', 'Browser forward did not restore the family filter after the related dossier return.');
+    assert(await page.getByTestId('select-catalog-evidence').inputValue() === 'not-run', 'Browser forward did not restore the evidence filter after the related dossier return.');
+    assert(await page.getByTestId('select-catalog-maturity').inputValue() === 'draftable', 'Browser forward did not restore the maturity filter after the related dossier return.');
+
     // Continue with filter edits after the dossier round trip.
     await page.getByTestId('select-catalog-evidence').selectOption('live');
     await page.waitForURL(`${baseUrl}/?family=agent-foundry&evidence=live&maturity=draftable&q=custom-gpt`);
@@ -326,6 +366,54 @@ async function main() {
     assert((await text(page, 'status-release-gate')) === 'In review', 'Final-review request did not survive reloading the dossier.');
     assert(await page.getByTestId('button-request-final-review').isDisabled(), 'Final review button became enabled after reloading the dossier.');
 
+    // Separate browser contexts model independent reviewer sessions. They
+    // must not inherit a request just because another context has the same
+    // dossier open. Keep both contexts empty so this boundary is deterministic.
+    const isolatedWriterContext = await browser.newContext({
+      storageState: { cookies: [], origins: [] },
+    });
+    const isolatedObserverContext = await browser.newContext({
+      storageState: { cookies: [], origins: [] },
+    });
+    const isolatedWriterPage = await isolatedWriterContext.newPage({ viewport: { width: 1440, height: 1000 } });
+    const isolatedObserverPage = await isolatedObserverContext.newPage({ viewport: { width: 1440, height: 1000 } });
+    await isolatedWriterPage.route('**/data/catalog.json', async (route) => mockCrossTabFinalReviewFixture(route));
+    await isolatedObserverPage.route('**/data/catalog.json', async (route) => mockCrossTabFinalReviewFixture(route));
+    await isolatedWriterPage.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
+    await isolatedObserverPage.goto(`${baseUrl}/agent-foundry/okhp3-custom-gpt-builder`, { waitUntil: 'domcontentloaded' });
+    await isolatedWriterPage.getByTestId('status-release-gate').waitFor();
+    await isolatedObserverPage.getByTestId('status-release-gate').waitFor();
+    assert((await text(isolatedWriterPage, 'status-release-gate')) === 'Open', 'Isolated writer context should start with an open release gate.');
+    assert((await text(isolatedObserverPage, 'status-release-gate')) === 'Open', 'Isolated observer context should start with an open release gate.');
+    assert(
+      await isolatedWriterPage.evaluate(() => Object.keys(window.localStorage).length === 0),
+      'Isolated writer context unexpectedly depended on pre-existing browser storage.',
+    );
+    assert(
+      await isolatedObserverPage.evaluate(() => Object.keys(window.localStorage).length === 0),
+      'Isolated observer context unexpectedly depended on pre-existing browser storage.',
+    );
+
+    await isolatedWriterPage.getByTestId('button-request-final-review').click();
+    assert((await text(isolatedWriterPage, 'status-release-gate')) === 'In review', 'Isolated writer context did not record the final-review request.');
+    await isolatedObserverPage.waitForTimeout(100);
+    assert(
+      (await text(isolatedObserverPage, 'status-release-gate')) === 'Open',
+      'Final-review request crossed browser contexts without an explicit reload or rehydration.',
+    );
+    assert(
+      await isolatedObserverPage.evaluate(() => Object.keys(window.localStorage).length === 0),
+      'Final-review request unexpectedly wrote into the isolated observer context storage.',
+    );
+    await isolatedObserverPage.reload({ waitUntil: 'domcontentloaded' });
+    await isolatedObserverPage.getByTestId('status-release-gate').waitFor();
+    assert(
+      (await text(isolatedObserverPage, 'status-release-gate')) === 'Open',
+      'Isolated observer context inherited the final-review request after reloading.',
+    );
+    await isolatedWriterContext.close();
+    await isolatedObserverContext.close();
+
     // Open the same dossier and a different dossier in sibling tabs within
     // one browser context. A request should arrive only at the matching
     // skill's storage key.
@@ -401,7 +489,7 @@ async function main() {
     assert(await navToggle.getAttribute('aria-expanded') === 'true', 'Mobile navigation toggle did not expand.');
     await expectKeyboardFocus(page, page.getByTestId('button-nav-catalog'), 'Catalog navigation control');
 
-    console.log('✓ review desk covers shareable filters, browser history recovery, catalog navigation, real evidence state, evidence selection, supervised-check fixture, final-review persistence, cross-tab dossier switching, error recovery, and mobile navigation');
+    console.log('✓ review desk covers shareable filters, related-contract queue preservation, browser history recovery, catalog navigation, real evidence state, evidence selection, supervised-check fixture, final-review persistence, cross-tab dossier switching, error recovery, and mobile navigation');
   } finally {
     await browser?.close();
     server.kill('SIGTERM');
