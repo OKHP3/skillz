@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional",
+  "evaluation_status": "not-run",
+  "created_at": "2026-08-28T02:05:42Z",
+  "artifact": {
+    "path": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/README.md",
+    "sha256": "5a6d0d64fd407fa87bc954b63eef09c926ee84355f14d2363abcef825c517d0e"
+  },
+  "decision_question": "Is the Software Reclamation family coherently scoped, portable, safely triggered, and ready for controlled promotion as 15 remastered OKHP3 skill candidates?",
+  "acceptance_criteria": [
+    "All 15 package names match their directories and remain within the repository path limits.",
+    "Each package states a distinct outcome, input contract, output contract, evidence status, authorization boundary, and safe failure result.",
+    "The family composes with Context Extraction, Knowledge Operations, Process Capture, and host adapters without duplicating their generic responsibilities.",
+    "Each package has normal, edge, and safety evaluation cases, with live benchmark status explicitly not-run.",
+    "No package claims production readiness, legal authority, or permission to modify a live system."
+  ],
+  "independence": {
+    "reviewer_contexts_separated": false,
+    "shared_model_or_source_limits": [
+      "The orchestrator cannot establish provider-level independence; record it in the adapter output."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "status": "not-run",
+      "returncode": null,
+      "decision": "defer-for-evidence",
+      "structured": false,
+      "prompt_file": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/review/equilibrium-v0.1.0/prompts/evidence.md",
+      "output_file": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/review/equilibrium-v0.1.0/roles/evidence.stdout.txt",
+      "notes": "Prompt generated without an agent command."
+    },
+    {
+      "role": "outcome",
+      "status": "not-run",
+      "returncode": null,
+      "decision": "defer-for-evidence",
+      "structured": false,
+      "prompt_file": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/review/equilibrium-v0.1.0/prompts/outcome.md",
+      "output_file": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/review/equilibrium-v0.1.0/roles/outcome.stdout.txt",
+      "notes": "Prompt generated without an agent command."
+    },
+    {
+      "role": "safety_portability",
+      "status": "not-run",
+      "returncode": null,
+      "decision": "defer-for-evidence",
+      "structured": false,
+      "prompt_file": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/review/equilibrium-v0.1.0/prompts/safety_portability.md",
+      "output_file": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/review/equilibrium-v0.1.0/roles/safety_portability.stdout.txt",
+      "notes": "Prompt generated without an agent command."
+    }
+  ],
+  "concordance": "unknown",
+  "disruptor": {
+    "triggered": false,
+    "authority": "none",
+    "result": null,
+    "falsification_hypotheses": []
+  },
+  "negotiator": {
+    "triggered": true,
+    "result": {
+      "role": "negotiator",
+      "status": "not-run",
+      "returncode": null,
+      "decision": "defer-for-evidence",
+      "structured": false,
+      "prompt_file": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/review/equilibrium-v0.1.0/prompts/negotiator.md",
+      "output_file": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/review/equilibrium-v0.1.0/roles/negotiator.stdout.txt",
+      "notes": "Prompt generated without an agent command."
+    },
+    "decision": "defer-for-evidence",
+    "decisive_evidence": [],
+    "unresolved_items": []
+  },
+  "release_decision": "defer-for-evidence",
+  "limitations": [
+    "No agent command was supplied; prompts and record were generated without live review.",
+    "A protected or external holdout is still required before any outcome or uplift claim."
+  ],
+  "follow_up": [
+    "Run a protected or external holdout before making an uplift or production-readiness claim."
+  ]
+}

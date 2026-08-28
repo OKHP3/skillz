@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 149 distribution skills in 16 active families, and 46 project-local support skills under `.agents/skills/`
+- **Current inventory:** 258 distribution skills in 17 active families, and 46 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -45,12 +45,13 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `universal/` | Cross-project builders, repository organization, cataloging, database cartography, API proxy, OAuth, and deployment skills |
 | `context-extraction/` | Source-agnostic and platform-specific AI-thread extraction, project migration, provenance preservation, and handoff skills |
 | `outcome-modeling/` | Shared event-to-state forecasting core plus sports, NFL fantasy, business-sales, and prediction-market decision adapters |
+| `software-reclamation/` | Remastered software-reclamation workflow for reclaiming undocumented applications, documenting behavior, planning modernization, and handing off support or replacement |
 | `glee-fully/` | Glee-fully Tool and Tool-ette skill architecture, Persona Density, hierarchy, and future consumer-skill conversions |
 | `askjamie/` | AskJamie-specific Custom GPT creation skills and future professional-support capabilities |
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 149-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 258-skill distribution inventory |
 
 ## Routing index
 
@@ -241,6 +242,32 @@ Load `okhp3-outcome-modeling-core` first for any outcome-modeling task, then add
 | `okhp3-outcome-modeling-sales` | Pipeline, salesperson, account, territory, quota, discount, retention, margin, or commercial allocation work. Load after core. |
 | `okhp3-outcome-modeling-markets` | Prediction-market probabilities, market-implied prices, resolution rules, liquidity, expected value, or paper backtesting. Load after core; it does not execute trades. |
 
+### Software Reclamation family
+
+Load `okhp3-reclamation-scope` first for any reclamation task, then preserve
+evidence with `okhp3-reclamation-intake` and select the narrowest downstream
+package. These are remastered OKHP3 editions, not renamed community clones.
+They are candidate packages with analytical evidence; do not infer live-system,
+production-readiness, legal, or behavioral-uplift claims from their presence.
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-reclamation-scope` | Establish authority, target identity, data boundaries, technique modes, approvals, and stop conditions. |
+| `okhp3-reclamation-intake` | Preserve and inventory source, deployment, runtime, configuration, and business artifacts with provenance. |
+| `okhp3-reclamation-platform` | Fingerprint framework, runtime, dependencies, hosting, database, and deployment evidence. |
+| `okhp3-reclamation-code-archaeology` | Reconstruct code structure, dependencies, control flow, and application boundaries. |
+| `okhp3-reclamation-runtime-reconcile` | Reconcile source, configuration, deployment, observability, and runtime evidence. |
+| `okhp3-reclamation-rbac-tracing` | Trace authentication, authorization, roles, permissions, tenancy, and protected actions. |
+| `okhp3-reclamation-transaction-flow` | Model vendor, customer, purchase-order, invoice, quotation, document, status, and partner flows. |
+| `okhp3-reclamation-security-review` | Run an authorized evidence-led security review distinct from penetration testing. |
+| `okhp3-reclamation-char-tests` | Generate safe characterization tests and regression baselines from observed behavior. |
+| `okhp3-reclamation-technical-docs` | Produce evidence-led architecture, operations, code-tour, data, and findings documentation. |
+| `okhp3-reclamation-target-design` | Design a secure modernization target without prematurely implementing it. |
+| `okhp3-reclamation-replacement-spec` | Turn reclaimed evidence into traceable replacement requirements and acceptance criteria. |
+| `okhp3-reclamation-migration-cutover` | Plan reversible data, integration, rollback, and cutover stages. |
+| `okhp3-reclamation-replacement-build` | Implement an approved replacement in small, testable increments with secure defaults. |
+| `okhp3-reclamation-validation-handoff` | Validate and hand off documentation, tests, risks, and support or replacement next actions. |
+
 ### Universal family
 
 | Skill | Trigger |
@@ -292,7 +319,7 @@ node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root 
 (cd mermaid/okhp3-mermaid-theme-builder && node --test tests/*.test.mjs)
 ```
 
-The full-index check discovers the root distribution skills in 16 active families. The project cataloger indexes the project-local support skills separately. Structural validators establish package integrity only, not task-quality uplift or production readiness; preserve their warnings and known test gaps in validation reports rather than treating them as release evidence.
+The full-index check discovers the root distribution skills in 17 active families. The project cataloger indexes the project-local support skills separately. Structural validators establish package integrity only, not task-quality uplift or production readiness; preserve their warnings and known test gaps in validation reports rather than treating them as release evidence.
 
 For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. Do not run the technology refresh script casually because it makes network requests and writes the generated technology section and runtime pins.
 
@@ -323,7 +350,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 149 distribution skills in 16 active families, and `.agents/skills/README.md` reports 46 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
+- Generated catalogs reflect the current filesystem: `README.md` reports 258 distribution skills in 17 active families, and `.agents/skills/README.md` reports 46 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.
@@ -331,4 +358,4 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-08-11
+Updated: 2026-08-27

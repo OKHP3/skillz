@@ -1,0 +1,9 @@
+{
+  "_comment": "Example: register the lsp-mcp bridge with Claude Code to enable the codebase-discovery LSP navigation option. Merge this into ~/.claude/settings.json. Replace BOTH paths with the ABSOLUTE paths to your built binary and your config.yaml. A language server (gopls / typescript-language-server / pylsp / ...) must be installed and runnable, or the lsp_* tools will not appear and the skill falls back to grep.",
+  "mcpServers": {
+    "lsp": {
+      "command": "/absolute/path/to/lsp-mcp/bin/lsp-mcp",
+      "args": ["-config", "/absolute/path/to/lsp-mcp/config/config.yaml"]
+    }
+  }
+}

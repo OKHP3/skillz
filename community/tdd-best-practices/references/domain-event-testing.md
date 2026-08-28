@@ -1,0 +1,97 @@
+# Testing Domain Events
+
+Sources: lessons and counterexamples from [CodelyTV/domain_modeling-domain_events-course](https://github.com/CodelyTV/domain_modeling-domain_events-course), [CodelyTV/ddd_problems-domain_events_errors_handling-course](https://github.com/CodelyTV/ddd_problems-domain_events_errors_handling-course), [CodelyTV/inbox_outbox_pattern-course](https://github.com/CodelyTV/inbox_outbox_pattern-course), [CodelyTV/infrastructure_design-eventbus-db-course](https://github.com/CodelyTV/infrastructure_design-eventbus-db-course), [CodelyTV/infrastructure_design-eventbus-rabbitmq-course](https://github.com/CodelyTV/infrastructure_design-eventbus-rabbitmq-course), and [CodelyTV/infrastructure_design-eventbus-aws-course](https://github.com/CodelyTV/infrastructure_design-eventbus-aws-course), corrected for behavior-focused and failure-focused tests.
+
+## Aggregate Event Tests
+
+Drive one public command and assert the exact resulting facts:
+
+- event type/name;
+- aggregate identity;
+- complete business payload;
+- exact event count and order when order is contractual;
+- controlled metadata through injected clock/ID generation.
+
+Also prove creation records its fact, reconstitution records none, rejected commands leave state and events unchanged, and no-op commands follow their stated policy. For durable handoff, prove pending events can be inspected without loss, remain after rollback or failed Outbox append, and only the committed snapshot is cleared. If a destructive pull API is retained, the Unit of Work must restore it on rollback and tests must prove that recovery.
+
+## Application Handoff Tests
+
+Use a stub for reads and recording spies/fakes for writes and publication. Assert after Act:
+
+```typescript
+await registrar.execute(command);
+
+expect(repository.save).toHaveBeenCalledTimes(1);
+expect(eventBus.publish).toHaveBeenCalledTimes(1);
+expect(eventBus.publish).toHaveBeenCalledWith([expectedEvent]);
+```
+
+Never call `shouldPublish(expected)` during Arrange if that helper invokes the mock. Never keep the only assertion inside `publish()` or `save()`: if the System Under Test omits the call, no assertion executes. Recreate or reset doubles per test.
+
+## Subscriber Tests
+
+Test handler logic directly with a concrete event and assert its outgoing effect. Separately test registration through the real dispatcher so a wrong `subscribedTo()` declaration cannot hide behind direct `on(event)` tests.
+
+For a multi-event subscriber, use one isolated case per accepted event. Add negative assertions for ignored/stale events: zero saves, sends, and publications.
+
+## Event Bus Contract Tests
+
+Run focused tests against the real in-process bus:
+
+- routes an event only to matching subscribers;
+- invokes every registered subscriber exactly once;
+- awaits asynchronous handlers;
+- defines duplicate-registration behavior;
+- handles no-subscriber publication;
+- applies its documented failure policy without silently succeeding by accident.
+
+For a synchronous consistency policy, subscriber failure should reject publication. Best-effort logging must be an explicit non-critical contract, not an accidental `catch`.
+
+## Durable Delivery Tests
+
+Use real disposable infrastructure to prove:
+
+- Aggregate state and Outbox rows commit or roll back together;
+- relay claiming prevents concurrent duplicate work where intended;
+- broker success followed by relay crash remains safely retryable;
+- Inbox/deduplication and business effect share one transaction;
+- stale source versions are rejected or ignored according to policy;
+- out-of-order gaps are buffered/retried without acknowledging lost work;
+- restart and concurrent replicas preserve durable ordering/deduplication state;
+- retries classify transient vs permanent failures;
+- retry publication failure leaves the original delivery recoverable;
+- positive/negative confirms, unroutable messages, and ambiguous broker timeouts preserve recoverability;
+- empty polling backs off and backlog growth triggers the defined overload policy;
+- poison messages do not silently stall unrelated partitions;
+- dead-letter replay preserves message identity.
+- RabbitMQ topology declares the expected exchange/queue types and durability, subscriber bindings, persistent publication, retry TTL/DLX routing, manual acknowledgements, and prefetch.
+
+At-least-once delivery requires duplicate-delivery tests. A single happy-path consumer test is insufficient.
+
+Inject duplicates by publishing the exact same stable message ID repeatedly, including concurrent deliveries to separate consumer instances. Assert one Inbox row and one committed local effect per consumer identity; a manual duplicate-producing script without final-state assertions proves nothing.
+
+Inspect the actual persisted or encoded envelope in adapter contract tests: assert the exact subscriber set, stable ID, type and version, metadata, timestamps under a controlled clock, and payload. Queue deletion alone does not prove a handler ran, `length > 0` does not prove complete fan-out, and a mocked transaction that never executes its callback does not prove persistence.
+
+Exercise the crash matrix with independent connections or worker processes: before claim commit, during the handler, after the side effect but before acknowledgement, after acknowledgement commit with a lost response, and after an ambiguous publisher commit. Also prove concurrent workers do not overlap active claims, expired claims recover after restart, subscriber failures remain isolated, delayed retries are ineligible before `next_attempt_at`, and malformed/unknown oldest rows cannot starve valid work.
+
+With a real RabbitMQ broker, prove ack is withheld until an asynchronous handler settles; rejection enters the classified retry/dead-letter path; a failed replacement publish leaves the original redeliverable; mandatory unroutable messages are returned despite confirms; persistent messages and unacked deliveries survive restart; prefetch bounds in-flight work; consumer cancellation and reconnect restore service; and SIGTERM drains or safely redelivers in-flight work. Inject connection loss after the side effect but before ack to prove Inbox idempotency under broker redelivery.
+
+For AWS adapters, unit-test a resolved `PutEvents` response containing failed entries and retain only those failures. With pinned LocalStack, test rule matching, SQS delivery, visibility expiry/extension, retry, DLQ transfer, deletion-after-effect, duplicate IDs, poison payloads, and partial worker failure. Validate generated IaC with formatting, provider validation, and assertions for EventBridge rules/targets, SQS queue policies, target retry/DLQ, consumer redrive, encryption, and alarms. Run a small real-AWS smoke test because LocalStack does not prove IAM resource policies, service quotas, encryption permissions, or exact managed-service behavior.
+
+Fault-inject SQS delete failure after a committed effect, handler duration beyond visibility, throttling/timeouts, access denial, and concurrent standard-queue deliveries. Prove the Inbox prevents duplicate effects, unfinished messages become visible again, and FIFO tests assert the intended message-group scope rather than global order.
+
+For Inbox/Outbox integration, force failure after each state transition with real transaction-scoped repositories. Prove Aggregate state and Outbox append roll back together, Inbox insertion and local effect roll back together, concurrent relays claim safely, publish-before-complete redelivers, commit-before-ack deduplicates, unknown messages quarantine rather than delete, and remote intent workers tolerate success-before-complete ambiguity. A transaction callback around a subscriber is not evidence unless every repository receives or inherits that exact transaction handle.
+
+## Integration Event Contract Tests
+
+Test translation separately from transport. Assert stable type, schema version, envelope metadata, redaction, and payload. Keep compatibility fixtures for supported historical versions.
+
+## CDC Tests
+
+CDC mapping needs contract tests for each table/action pair, old/new row shape, unsupported mutations, schema changes, stable event identity across retries, empty batches, locking, duplicate delivery, and poison rows. CDC proves observed persistence changes, not domain intent.
+
+## Course Caveats
+
+The domain-modeling course contains many copied tests and self-asserting doubles. Several positive tests can remain green if save, publish, or send is removed; the concrete Event Bus and external-event filter have no direct tests. Treat its fixtures as modeling examples, not evidence of TDD discipline.
+
+The error-handling, Inbox/Outbox, database event-bus, RabbitMQ, and AWS courses present progressive snapshots, not production-ready queue infrastructure. Do not copy separately committed Aggregate/Outbox writes, Inbox transactions that exclude subscriber repositories, process-local ordering guards, mutable retry headers, republish-without-confirm flows, broker-first database fallback, long transactions around remote I/O, transient RabbitMQ messages, unobserved async consumer callbacks, unchecked EventBridge per-entry results, missing SQS target policies, fixed undersized visibility timeouts, or unknown rows/messages deleted or retained forever. Tests should kill/restart workers and fail each boundary between effect, Inbox, retry publish, acknowledgement, and dead-letter transition.

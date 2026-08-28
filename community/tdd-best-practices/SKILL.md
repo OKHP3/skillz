@@ -1,0 +1,132 @@
+---
+name: tdd-best-practices
+description: Test-Driven Development guidance. Use when writing tests before implementation, applying Red-Green-Refactor, testing Value Object contracts, typed domain failures/Results, DDD Aggregates, Domain Events/subscribers, transaction or cache boundaries, data migrations/backfills, Criteria/query adapters, repository contracts or persistence adapters, choosing between test doubles, deciding test granularity, reviewing test suite quality, or diagnosing brittle tests.
+license: MIT
+metadata:
+  author: luckys
+  version: "1.0.0"
+---
+
+# TDD Best Practices
+
+Use this skill when the main question is how to drive implementation from tests, how to structure a test suite, or how to recover discipline in a codebase where tests were written after the fact.
+
+## Working Style
+
+1. Write one failing test, then make it pass with the minimum code needed.
+2. Refactor only when all tests are green.
+3. Test behaviors, not implementations — the public API, not private methods.
+4. Keep tests as simple as the production code they verify.
+5. A test suite that is hard to change is as expensive as production code that is hard to change.
+
+## The Red-Green-Refactor Cycle
+
+```
+RED    → Write a failing test that describes the next behavior.
+GREEN  → Write the minimum code to make it pass.
+REFACTOR → Clean up both the code and the test — no new behavior.
+```
+
+The discipline is in the order. Never refactor on Red. On Green, add only the behavior demanded by the current failing test.
+
+### The 3 Laws (Uncle Bob)
+
+1. You may not write production code unless you have a failing unit test.
+2. You may not write more of a unit test than is sufficient to fail. An intentionally missing public API/type can be a valid first Red; unrelated compilation or setup failures are not.
+3. You may not write more production code than is sufficient to make the currently failing test pass.
+
+## Design Workflow
+
+1. **Describe the behavior** — what should the system do? Write the test name first.
+2. **Write a failing test** — make it fail for the right reason (assertion, not setup error).
+3. **Make it pass** — take the simplest path; you can clean up after.
+4. **Refactor** — remove duplication, improve names, reduce complexity.
+5. **Repeat** — the next test should be the smallest step forward.
+
+## Choosing Test Granularity
+
+| Level | Tests | Speed | Confidence |
+|---|---|---|---|
+| Unit | Single class/function in isolation | Milliseconds | Behavior of one unit |
+| Integration | Multiple real collaborators | Seconds | Module boundaries work |
+| Acceptance / E2E | Full system from user perspective | Minutes | Feature works end-to-end |
+
+Start with units for logic-heavy code. Start with acceptance tests when following outside-in TDD. Integration tests fill the seams.
+
+## Heuristics
+
+### When to mock
+Mock or fake I/O boundaries in unit/application tests. Use real disposable infrastructure in adapter integration tests where SQL, collation, constraints, search analyzers, transactions, or protocol behavior are the subject.
+
+### When testing an Aggregate
+Use real Value Objects and child Entities. Test commands through the root, including the rule that a rejected command leaves both state and pending events unchanged.
+
+### When testing Domain Events
+Assert exact facts after Act: type/name, aggregate identity, business payload, count, and controlled metadata. Test subscriber handling separately from real-bus registration and prove durable duplicate/retry behavior with integration tests.
+
+### When testing a Value Object
+Test the applicable public contract: semantic equality with distinct instances, exact invariant boundaries, and any exposed normalization, hashing, defensive-copy, operation, or serialization behavior. Inject clocks or policies instead of reading ambient context.
+
+### When a test is too big
+Large setup is a signal to review fixture clarity and test scope, not proof that the test is too big. Split when multiple behaviors or failure reasons are coupled.
+
+### When tests break on every refactor
+Tests are coupled to implementation, not behavior. Move the assertion to the public API surface.
+
+### When you can't write a test first
+Treat difficulty writing a test first as a design or boundary signal; legacy constraints, framework coupling, or missing seams may require characterization tests before redesign.
+
+## Warning Signs
+
+- Tests that only pass in a specific execution order.
+- Mocks that reproduce the production logic (over-mocking).
+- Tests with no assertion (`assertTrue(true)`).
+- Tests named after methods, not behaviors.
+- A test suite that takes more than 10 minutes to run on CI.
+- Tests that break when internal details change, not when behavior changes.
+
+## References
+
+- Read `references/tdd-core-practices.md` for Red-Green-Refactor detail, FIRST properties, the test pyramid, triangulation, and baby steps.
+- Read `references/test-doubles.md` for the Meszaros taxonomy (Dummy, Fake, Stub, Spy, Mock), when to use each, and the classicist vs mockist distinction.
+- Read `references/tdd-schools.md` for the London (outside-in/mockist) vs Chicago (inside-out/classicist) schools, BDD, and ATDD.
+- Read `references/tdd-anti-patterns.md` for James Carr's 15 anti-patterns, Ian Cooper's "TDD, Where Did It All Go Wrong" insights, and recovery strategies.
+- Read `references/tdd-language-examples.md` for Red-Green-Refactor walkthroughs in TypeScript, Java, Python, C#, Ruby, and PHP with their respective test frameworks.
+- Read `references/projection-testing.md` for duplicate, ordering, concurrency, checkpoint, schema migration, replay/rebuild, and eventual-consistency tests for read models.
+- Read `references/migration-testing.md` for transformation, dirty-data, idempotent rerun, batch, checkpoint, concurrent-write, reconciliation, cutover, and recovery tests for data migrations.
+- Read `references/value-object-testing.md` for semantic equality, invariant boundaries, deep immutability, normalization, optionality, serialization, and property-based Value Object tests.
+- Read `references/aggregate-testing.md` for invariant-first Aggregate tests, repository contract and adapter tests, including atomic failures, deterministic Mothers, collection equality, transaction propagation, and concurrency integration tests.
+- Read `references/domain-event-testing.md` for Aggregate event assertions, application handoff, subscriber and real-bus tests, Outbox/Inbox delivery tests, Integration Event contracts, and CDC mapping tests.
+- Read `references/transaction-testing.md` for atomic commit/rollback, connection propagation, concurrency, cleanup, commit ambiguity, decorators, and side-effect boundary tests.
+- Read `references/cache-testing.md` for cache hit/miss contracts, invalidation, TTL, key isolation, corruption, failure degradation, stampede, and HTTP privacy tests.
+- Read `references/domain-error-testing.md` for typed failure assertions, Result short-circuit tests, exhaustive boundary mappings, public redaction, unknown 500 behavior, Effect execution, and error-test-double caveats.
+- Read `references/criteria-testing.md` for parser/AST tests, shared query semantics, real-adapter operator/security tests, pagination traversal, joins, nested boolean filters, and false-confidence warnings.
+
+## Related Skills
+
+- Use `oop-best-practices` when a class is hard to test — the design needs improvement first.
+- Use `refactoring-best-practices` when adding tests to untested legacy code (characterization tests).
+- Use `ddd-best-practices` to decide Aggregate boundaries and invariant ownership before testing them.
+- Use `data-migration-best-practices` to design the operational migration workflow and cutover gates before testing it.
+
+## Source Influences
+
+This skill is synthesized from:
+
+- *Test Driven Development: By Example* by Kent Beck
+- *Growing Object-Oriented Software, Guided by Tests* (GOOS) by Steve Freeman & Nat Pryce
+- *Working Effectively with Legacy Code* by Michael Feathers
+- *xUnit Test Patterns* by Gerard Meszaros
+- Ian Cooper — "TDD, Where Did It All Go Wrong" (talk, Vimeo)
+- James Carr — "TDD Anti-Patterns" (blog)
+- Tim Ottinger & Jeff Langr — "Unit Tests Are FIRST" (Pragmatic Bookshelf)
+- Dan North — "Introducing BDD"
+- [CodelyTV Aggregates course](https://github.com/CodelyTV/aggregates-course) (including testing counterexamples)
+- [CodelyTV Value Objects course](https://github.com/CodelyTV/value_objects-course) (including testing and TypeScript counterexamples)
+- [CodelyTV Repository Pattern course](https://github.com/CodelyTV/repository_pattern-course) (including repository-double and integration-test counterexamples)
+- [CodelyTV Domain Events course](https://github.com/CodelyTV/domain_modeling-domain_events-course) (including self-asserting-double and Event Bus coverage counterexamples)
+- [CodelyTV Domain Modeling Errors course](https://github.com/CodelyTV/domain_modeling-errors-course) (including Result, Effect, stale-contract, and mock counterexamples)
+- [CodelyTV Criteria Pattern course](https://github.com/CodelyTV/design_patterns-criteria-course) (including converter, pagination, injection, and test-coverage counterexamples)
+- [CodelyTV Infrastructure Design Transactions course](https://github.com/CodelyTV/infrastructure_design-transactions-course) (including transaction-scope, shared-connection, deferred-side-effect, and coverage counterexamples)
+- [CodelyTV Infrastructure Design Cache course](https://github.com/CodelyTV/infrastructure_design-cache-course) (including key-collision, invalidation, ETag, destructive-test, and self-asserting-double counterexamples)
+- [CodelyTV Four Rules of Simple Design course](https://github.com/CodelyTV/four_rules_of_simple_design-course) (including private-method coupling and passing repository-mock counterexamples)

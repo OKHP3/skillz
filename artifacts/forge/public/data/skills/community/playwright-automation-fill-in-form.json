@@ -1,0 +1,5 @@
+{
+  "name": "playwright-automation-fill-in-form",
+  "family": "community",
+  "rawBody": "# Automating Filling in a Form with Playwright MCP\n\nYour goal is to automate the process of filling in a form using Playwright MCP.\n\n## Specific Instructions\n\nNavigate to https://forms.microsoft.com/url-of-my-form\n\n### Fill in the form with the following details:\n\n1. Show: playwright live\n\n2. Date: 15 July\n\n3. Time: 1:00 AM\n\n4. Topic: Playwright Live - Latest updates on Playwright MCP + Live Demo\n\n5. Upload image: /Users/myuserName/Downloads/my-image.png\n\nDO NOT SUBMIT THE FORM. \n\nAsk for a review of the form before submitting it."
+}
