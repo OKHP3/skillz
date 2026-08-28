@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-08-28T06:29:29.541Z",
+  "generatedAt": "2026-08-28T13:47:57.867Z",
   "commits": [
+    {
+      "sha": "15c0abadd6e958e11430eaf906956e21367f819b",
+      "shortSha": "15c0aba",
+      "message": "\tmodified:   .agents/skills/okhp3-artifact-validation/promotion-manifest.json",
+      "author": "Jamie Hill",
+      "date": "2026-08-28T13:16:17Z",
+      "url": "https://github.com/OKHP3/skillz/commit/15c0abadd6e958e11430eaf906956e21367f819b"
+    },
+    {
+      "sha": "f480bd8a56eff7371c5392f1ea7b4a9718378215",
+      "shortSha": "f480bd8",
+      "message": "\tdeleted:    skills/okhp3-artifact-validation/SKILL.md\n\tdeleted:    skills/okhp3-artifact-validation/agents/openai.yaml\n\tdeleted:    skills/okhp3-artifact-validation/evals/evals.json\n\tdeleted:    skills/okhp3-artifact-validation/promotion-manifest.json\n\tmodified:   .agents/skills/okhp3-artifact-validation/promotion-manifest.json",
+      "author": "Jamie Hill",
+      "date": "2026-08-28T13:16:09Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f480bd8a56eff7371c5392f1ea7b4a9718378215"
+    },
+    {
+      "sha": "6b580cbdb59686557f8181ce7ec2e7dd8500bc80",
+      "shortSha": "6b580cb",
+      "message": "fix: sync Forge catalog and comparison flow",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-28T06:33:17Z",
+      "url": "https://github.com/OKHP3/skillz/commit/6b580cbdb59686557f8181ce7ec2e7dd8500bc80"
+    },
     {
       "sha": "ac6fbd3c76135a6857eccbe1de40c80503072f3a",
       "shortSha": "ac6fbd3",
@@ -56,30 +80,6 @@
       "author": "Jamie Hill",
       "date": "2026-08-28T05:45:51Z",
       "url": "https://github.com/OKHP3/skillz/commit/c07667050d0a14a649bf9b432e8c39e6333ebae6"
-    },
-    {
-      "sha": "d88d1d6e83a53c9b9ee676d1cee41cd80a502379",
-      "shortSha": "d88d1d6",
-      "message": "\trenamed:    red-teaming/okhp3-adversary-capability-forecasting/SKILL.md -> red-teaming/okhp3-adversary-forecasting/SKILL.md\n\tmodified:   red-teaming/okhp3-agentic-attack-patterns/SKILL.md\n\trenamed:    red-teaming/okhp3-agentic-credtest-testing/SKILL.md -> red-teaming/okhp3-agentic-credential-assessment/SKILL.md\n\trenamed:    red-teaming/okhp3-agentic-exfiltration-testing/SKILL.md -> red-teaming/okhp3-agentic-data-exposure/SKILL.md\n\tnew file:   red-teaming/okhp3-agentic-exploitation-testing/SKILL.md\n\trenamed:    red-teaming/okhp3-agentic-lateralmovement-testing/SKILL.md -> red-teaming/okhp3-agentic-lateral-assessment/SKILL.md\n\trenamed:    red-teaming/okhp3-agentic-persistence-testing/SKILL.md -> red-teaming/okhp3-agentic-persistence-assessment/SKILL.md\n\trenamed:    red-teaming/okhp3-authorization-governance-checkpoint/SKILL.md -> red-teaming/okhp3-authorization-governance/SKILL.md\n\trenamed:    red-teaming/okhp3-model-behavior-anomaly-detection/SKILL.md -> red-teaming/okhp3-model-anomaly-detection/SKILL.md\n\trenamed:    red-teaming/okhp3-response-cost-benefit-calculator/SKILL.md -> red-teaming/okhp3-response-cost-benefit/SKILL.md\n\tmodified:   .catalog-meta.json\n\tmodified:   README.md\n\tmodified:   red-teaming/FAMILY.md\n\tmodified:   red-teaming/okhp3-adversary-forecasting/SKILL.md\n\tmodified:   red-teaming/okhp3-agent-capability-inventory/SKILL.md\n\tmodified:   red-teaming/okhp3-agentic-attack-patterns/SKILL.md\n\tmodified:   red-teaming/okhp3-agentic-credential-assessment/SKILL.md\n\tmodified:   red-teaming/okhp3-agentic-data-exposure/SKILL.md\n\tmodified:   red-teaming/okhp3-agentic-exploitation-testing/SKILL.md\n\tmodified:   red-teaming/okhp3-agentic-lateral-assessment/SKILL.md\n\tmodified:   red-teaming/okhp3-agentic-pattern-observatory/SKILL.md\n\tmodified:   red-teaming/okhp3-agentic-persistence-assessment/SKILL.md\n\tmodified:   red-teaming/okhp3-attack-economics/SKILL.md\n\tmodified:   red-teaming/okhp3-authorization-governance/SKILL.md\n\tmodified:   red-teaming/okhp3-behavioral-baselining/SKILL.md\n\tmodified:   red-teaming/okhp3-decision-chain-audit-trail/SKILL.md\n\tmodified:   red-teaming/okhp3-emerging-threat-lab/SKILL.md\n\tmodified:   red-teaming/okhp3-lateral-movement-tracking/SKILL.md\n\tmodified:   red-teaming/okhp3-model-anomaly-detection/SKILL.md\n\tmodified:   red-teaming/okhp3-post-breach-forensics/SKILL.md\n\tmodified:   red-teaming/okhp3-precursor-detection/SKILL.md\n\tmodified:   red-teaming/okhp3-proportional-response/SKILL.md\n\tmodified:   red-teaming/okhp3-response-cost-benefit/SKILL.md\n\tmodified:   red-teaming/okhp3-safe-intelligence-amplifier/SKILL.md\n\tmodified:   red-teaming/okhp3-supply-chain-agent-provenance/SKILL.md\n\tmodified:   red-teaming/okhp3-threat-intelligence-synthesis/SKILL.md\n\tmodified:   red-teaming/okhp3-threat-pattern-validator/SKILL.md\n\tdeleted:    red-teaming/test.md\n\t01-adversary-forecasting.md\n\t02-agent-inventory.md\n\t03-credential-assessment.md\n\t04-data-exposure.md\n\t05-exploitation.md\n\t06-lateral-assessment.md\n\t07-pattern-observatory.md\n\t08-persistence-assessment.md\n\t09-attack-patterns.md\n\t10-lateral-tracking.md\n\t11-model-anomaly.md\n\t12-response-cost.md\n\t13-safe-amplifier.md\n\t14-supply-chain.md\n\t15-threat-intel.md\n\t16-threat-validator.md\n\tcloud_skills.tar\n\tred-teaming/okhp3-adversary-forecasting/evals/\n\tred-teaming/okhp3-agent-capability-inventory/evals/\n\tred-teaming/okhp3-agentic-attack-patterns/evals/\n\tred-teaming/okhp3-agentic-credential-assessment/evals/\n\tred-teaming/okhp3-agentic-data-exposure/evals/\n\tred-teaming/okhp3-agentic-exploitation-testing/evals/\n\tred-teaming/okhp3-agentic-lateral-assessment/evals/\n\tred-teaming/okhp3-agentic-pattern-observatory/evals/\n\tred-teaming/okhp3-agentic-persistence-assessment/evals/\n\tred-teaming/okhp3-attack-economics/evals/\n\tred-teaming/okhp3-authorization-governance/evals/\n\tred-teaming/okhp3-behavioral-baselining/evals/\n\tred-teaming/okhp3-decision-chain-audit-trail/evals/\n\tred-teaming/okhp3-emerging-threat-lab/evals/\n\tred-teaming/okhp3-lateral-movement-tracking/evals/\n\tred-teaming/okhp3-model-anomaly-detection/evals/\n\tred-teaming/okhp3-post-breach-forensics/evals/\n\tred-teaming/okhp3-precursor-detection/evals/\n\tred-teaming/okhp3-proportional-response/evals/\n\tred-teaming/okhp3-response-cost-benefit/evals/\n\tred-teaming/okhp3-safe-intelligence-amplifier/evals/\n\tred-teaming/okhp3-supply-chain-agent-provenance/evals/\n\tred-teaming/okhp3-threat-intelligence-synthesis/evals/\n\tred-teaming/okhp3-threat-pattern-validator/evals/\n\tred-teaming/reviews/",
-      "author": "Jamie Hill",
-      "date": "2026-08-28T05:45:45Z",
-      "url": "https://github.com/OKHP3/skillz/commit/d88d1d6e83a53c9b9ee676d1cee41cd80a502379"
-    },
-    {
-      "sha": "a4610f610ed2a319ef7dae2f11ae219c07a46ca7",
-      "shortSha": "a4610f6",
-      "message": "Merge remote-tracking branch 'origin/main'\n\n# Conflicts:\n#\tartifacts/forge/public/data/catalog.json\n#\tartifacts/forge/public/data/project-summary.json\n#\tskillz.manifest.json",
-      "author": "OverKill Hill P³",
-      "date": "2026-08-28T05:26:09Z",
-      "url": "https://github.com/OKHP3/skillz/commit/a4610f610ed2a319ef7dae2f11ae219c07a46ca7"
-    },
-    {
-      "sha": "4c2beeb7869e53c30f755a0a1d3b7d0b7dc4b148",
-      "shortSha": "4c2beeb",
-      "message": "\tnew file:   red-teaming/okhp3-adversary-capability-forecasting/SKILL.md\n\tnew file:   red-teaming/okhp3-agent-capability-inventory/SKILL.md\n\tnew file:   red-teaming/okhp3-agentic-credtest-testing/SKILL.md\n\tnew file:   red-teaming/okhp3-agentic-exfiltration-testing/SKILL.md\n\tnew file:   red-teaming/okhp3-agentic-lateralmovement-testing/SKILL.md\n\tnew file:   red-teaming/okhp3-agentic-pattern-observatory/SKILL.md\n\tnew file:   red-teaming/okhp3-agentic-persistence-testing/SKILL.md\n\tnew file:   red-teaming/okhp3-lateral-movement-tracking/SKILL.md\n\tnew file:   red-teaming/okhp3-model-behavior-anomaly-detection/SKILL.md\n\tnew file:   red-teaming/okhp3-response-cost-benefit-calculator/SKILL.md\n\tnew file:   red-teaming/okhp3-safe-intelligence-amplifier/SKILL.md\n\tnew file:   red-teaming/okhp3-supply-chain-agent-provenance/SKILL.md\n\tnew file:   red-teaming/okhp3-threat-intelligence-synthesis/SKILL.md\n\tnew file:   red-teaming/okhp3-threat-pattern-validator/SKILL.md\n\tnew file:   red-teaming/test.md\n\tnew file:   skillz_restore.py",
-      "author": "OKHP3",
-      "date": "2026-08-28T05:16:27Z",
-      "url": "https://github.com/OKHP3/skillz/commit/4c2beeb7869e53c30f755a0a1d3b7d0b7dc4b148"
     }
   ],
   "fetchError": null
