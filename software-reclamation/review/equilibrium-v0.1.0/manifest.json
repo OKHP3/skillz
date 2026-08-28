@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-08-28T02:05:42Z",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional",
+  "artifact": {
+    "path": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/README.md",
+    "sha256": "5a6d0d64fd407fa87bc954b63eef09c926ee84355f14d2363abcef825c517d0e"
+  },
+  "decision_question": "Is the Software Reclamation family coherently scoped, portable, safely triggered, and ready for controlled promotion as 15 remastered OKHP3 skill candidates?",
+  "acceptance_criteria": [
+    "All 15 package names match their directories and remain within the repository path limits.",
+    "Each package states a distinct outcome, input contract, output contract, evidence status, authorization boundary, and safe failure result.",
+    "The family composes with Context Extraction, Knowledge Operations, Process Capture, and host adapters without duplicating their generic responsibilities.",
+    "Each package has normal, edge, and safety evaluation cases, with live benchmark status explicitly not-run.",
+    "No package claims production readiness, legal authority, or permission to modify a live system."
+  ],
+  "agent_command_supplied": false,
+  "dry_run": true
+}

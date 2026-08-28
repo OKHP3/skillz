@@ -8,6 +8,26 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Added
 
+- Added the `software-reclamation/` family as a candidate set of 15 fully
+  remastered OKHP3 editions for reclaiming undocumented software. The family
+  covers authority and intake, platform and code archaeology, runtime and
+  identity tracing, partner transaction modeling, authorized security review,
+  characterization tests, evidence-led documentation, modernization,
+  replacement, migration, validation, and handoff. Source lineage is retained
+  in `software-reclamation/README-PROVENANCE.md`; the promotion handoff and
+  package hashes are recorded in
+  `software-reclamation/promotion/family-promotion-manifest.json`. The
+  analytical equilibrium dry run remains `defer-for-evidence`; no live target,
+  production readiness, behavioral uplift, or publication is claimed.
+
+- Added eight public community-originated skill packages to `community/` for
+  codebase discovery, technology-stack analysis, architecture documentation,
+  modernization planning, .NET guidance, and C4 documentation. The exact
+  upstream repositories, commit revisions, license review, acquisition
+  boundary, and structural-validation results are recorded in
+  `community/COMMUNITY-SKILL-SOURCES.md`. The imported packages remain
+  upstream material and are not presented as OKHP3 release-ready adaptations.
+
 - Added 16 account-neutral, draft-only social-posting packages for Instagram,
   TikTok, Reddit, Patreon, Pinterest, Slack, Microsoft Teams, and Telegram.
   Each platform has at least two native-surface contracts, three

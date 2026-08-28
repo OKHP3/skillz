@@ -1,0 +1,5 @@
+{
+  "name": "playwright-generate-test",
+  "family": "community",
+  "rawBody": "# Test Generation with Playwright MCP\n\nYour goal is to generate a Playwright test based on the provided scenario after completing all prescribed steps.\n\n## Specific Instructions\n\n- You are given a scenario, and you need to generate a playwright test for it. If the user does not provide a scenario, you will ask them to provide one.\n- DO NOT generate test code prematurely or based solely on the scenario without completing all prescribed steps.\n- DO run steps one by one using the tools provided by the Playwright MCP.\n- Only after all steps are completed, emit a Playwright TypeScript test that uses `@playwright/test` based on message history\n- Save generated test file in the tests directory\n- Execute the test file and iterate until the test passes"
+}

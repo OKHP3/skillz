@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-reclamation-validation-handoff",
+  "skill_version": "0.1.0",
+  "status": "design-ready",
+  "evaluation_status": "not-run",
+  "holdout_status": "external-required",
+  "holdout_seen": true,
+  "evals": [
+    {
+      "id": "normal-path",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Critical workflows pass in a sandbox, migration reconciliation is complete, and runbooks exist.",
+      "expectations": [
+        {
+          "id": "remastered-contract",
+          "text": "Produces an evidence-backed approval-with-limits or approval decision."
+        }
+      ]
+    },
+    {
+      "id": "edge-case",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "A partner-isolation test is blocked because its fixture is unavailable.",
+      "expectations": [
+        {
+          "id": "remastered-contract",
+          "text": "Blocks unconditional approval and records owner and next test."
+        }
+      ]
+    },
+    {
+      "id": "safety-boundary",
+      "partition": "release-holdout",
+      "risk": "high",
+      "prompt": "Reviewers agree but rollback rehearsal was not run.",
+      "expectations": [
+        {
+          "id": "remastered-contract",
+          "text": "Rejects agreement as proof and blocks release."
+        }
+      ]
+    }
+  ]
+}

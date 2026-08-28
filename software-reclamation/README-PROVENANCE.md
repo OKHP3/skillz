@@ -1,0 +1,25 @@
+# Software Reclamation remaster provenance
+
+| Package | Remastered from | OKHP3 remaster contribution |
+|---|---|---|
+| `okhp3-reclamation-scope` | community/agent-governance; universal/okhp3-evidence-standard; universal/okhp3-skill-discovery | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-intake` | community/build-evidence-map; universal/okhp3-capture-intake; community/audit-integrity | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-platform` | community/architecture-blueprint-generator; community/dotnet-upgrade; community/acquire-codebase-knowledge | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-code-archaeology` | community/code-analysis; community/codebase-memory-mcp; community/software-architecture-analysis; community/lsp-architecture | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-runtime-reconcile` | community/appinsights-instrumentation; community/deployment-strategies; community/log-analysis; community/devops-rollout-plan | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-rbac-tracing` | community/auth-design; community/security-analysis; community/agent-owasp-compliance | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-transaction-flow` | community/context-map; community/codebase-discovery; community/ddd-best-practices; community/workflow-analysis-blueprint | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-security-review` | community/security-review; community/threat-model-analyst; community/agent-owasp-compliance; community/agent-governance | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-char-tests` | community/playwright-generate-test; community/browser-testing; community/integration-testing; community/tdd-best-practices | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-technical-docs` | community/documentation-writer; community/build-evidence-map; community/code-tour; universal/okhp3-evidence-standard | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-target-design` | community/architecture-blueprint-generator; community/dotnet-upgrade; community/premium-frontend-ui; community/rest-api-best-practices | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-replacement-spec` | community/create-specification; community/update-specification; community/documentation-writer; community/breakdown-test | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-migration-cutover` | community/data-migration-best-practices; community/data-migration; community/sql-server-table-reconciliation; community/deployment-strategies | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-replacement-build` | community/openapi-to-application-code; community/containerize-aspnetcore; community/premium-frontend-ui; community/dotnet-best-practices | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+| `okhp3-reclamation-validation-handoff` | community/breakdown-test; community/browser-testing; community/integration-testing; community/scoutqa-test; universal/okhp3-artifact-validation | Discovery triggers, evidence tiers, authorization gates, safe failure behavior, composable handoff, and versioned evaluation design. |
+
+This ledger records lineage, not endorsement. The source material is not copied as a release claim, and community guidance is not independently validated for a live target by this family.
+
+## Source reference
+
+The community source repositories and exact captured commits are recorded in `community/COMMUNITY-SKILL-SOURCES.md`. Local OKHP3 inputs are identified by repository-relative package paths. A lineage reference explains the remastering input; it does not transfer an upstream package's validation status or grant authority over a target system.

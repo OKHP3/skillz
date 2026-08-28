@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-08-28T02:10:32Z",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional",
+  "artifact": {
+    "path": "/Volumes/OKH-Local/04_GitHub_Mirrors/skillz/software-reclamation/README.md",
+    "sha256": "407768ddd9657066acda67f079a2c567c9fc0493db766cfd739902b54f3942b5"
+  },
+  "decision_question": "Is the Software Reclamation family a coherent, safe, evidence-bounded remaster of the 15 identified source lineages, ready for local promotion review?",
+  "acceptance_criteria": [
+    "Every package has a distinct remastered purpose and explicit scope.",
+    "The family does not claim live benchmark, production readiness, legal clearance, or target-system findings without evidence.",
+    "Promotion records preserve provenance, authorization boundaries, and withheld publication actions."
+  ],
+  "agent_command_supplied": false,
+  "dry_run": true
+}

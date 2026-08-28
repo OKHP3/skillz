@@ -1,0 +1,444 @@
+{
+  "schema_version": "1.0",
+  "family": "software-reclamation",
+  "title": "Software Reclamation",
+  "status": "candidate",
+  "maturity": "candidate",
+  "evidence_status": "analytical",
+  "remaster_status": "OKHP3 remastered editions; not renamed clones",
+  "source": {
+    "repository": "OKHP3/skillz",
+    "package_path": "software-reclamation",
+    "selected_as_canonical_incubator": true,
+    "selection_reason": "First coherent OKHP3 remaster family for reclaiming undocumented software from evidence through support, modernization, replacement, and handoff."
+  },
+  "canonical_target": {
+    "repository": "OKHP3/skillz",
+    "family": "software-reclamation",
+    "package_path": "software-reclamation",
+    "accepted_commit_or_hash": null
+  },
+  "packages": [
+    {
+      "name": "okhp3-reclamation-char-tests",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/playwright-generate-test",
+        "community/browser-testing",
+        "community/integration-testing",
+        "community/tdd-best-practices"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-char-tests",
+      "aggregate_sha256": "b2c83a8c98c4a1f999d0c897233452db019d42b5ca0364a3b65387d2f9a48ebf",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-char-tests/SKILL.md",
+          "sha256": "3d5e881bb1f2ab3be2d2e736da03616fe33bbd48574c5a97265c28105d0a4c9a"
+        },
+        {
+          "path": "okhp3-reclamation-char-tests/evals/evals.json",
+          "sha256": "5b88fa8bbce987fd4ef6b9af0fd8f2e2f378069eb1c93e74188d928d74eafc67"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-code-archaeology",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/code-analysis",
+        "community/codebase-memory-mcp",
+        "community/software-architecture-analysis",
+        "community/lsp-architecture"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-code-archaeology",
+      "aggregate_sha256": "fe16cad4b900b95bd27f68fd3ed6b4e806a7d83c7f15af4ed1fb99f89c512d89",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-code-archaeology/SKILL.md",
+          "sha256": "64751718f2752f846b6a02d907f4e5f355d2bc5549e51b1fd76e3646c213664b"
+        },
+        {
+          "path": "okhp3-reclamation-code-archaeology/evals/evals.json",
+          "sha256": "059dfe044efd808ee908626a986e94bb4c7e40a674f938c143c393e522a1f01c"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-intake",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/build-evidence-map",
+        "universal/okhp3-capture-intake",
+        "community/audit-integrity"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-intake",
+      "aggregate_sha256": "0352897a60db318c66e62946be30071720f7c38278026778dc8cb9e9afab0586",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-intake/SKILL.md",
+          "sha256": "20024010dfb3d80289877635e504ad76ad4b0e79dd53a8375e6d492dba836eb7"
+        },
+        {
+          "path": "okhp3-reclamation-intake/evals/evals.json",
+          "sha256": "c77e3c54e3d1a25f80db30c40882ab74afd2ab1a72a636f7063244d53f8ba7d2"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-migration-cutover",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/data-migration-best-practices",
+        "community/data-migration",
+        "community/sql-server-table-reconciliation",
+        "community/deployment-strategies"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-migration-cutover",
+      "aggregate_sha256": "4ce66f1a77600ac99a12614e3865aeca830ffb81c16b56003641611982a419be",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-migration-cutover/SKILL.md",
+          "sha256": "11901a1c744f2c9f7a4f63f5d93f1b668a0041d67e6d9d1ac8322479f437cc31"
+        },
+        {
+          "path": "okhp3-reclamation-migration-cutover/evals/evals.json",
+          "sha256": "0f2ff03b7bc665078e77c0b74c38b94ada49802bacba8f6c1611e64afe5374d3"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-platform",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/architecture-blueprint-generator",
+        "community/dotnet-upgrade",
+        "community/acquire-codebase-knowledge"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-platform",
+      "aggregate_sha256": "9a35a087d17921afc62d53cdb672942e93ffa7eb50a515bc18e5aaab97889004",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-platform/SKILL.md",
+          "sha256": "cdeb6733f1cfff8163c2304ef750c0651aa6b895a96a01a213196609329de1db"
+        },
+        {
+          "path": "okhp3-reclamation-platform/evals/evals.json",
+          "sha256": "16f546c2d58dd59f5eb257bef618df6006a9b4c919ca6c0652c06cb8655cca77"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-rbac-tracing",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/auth-design",
+        "community/security-analysis",
+        "community/agent-owasp-compliance"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-rbac-tracing",
+      "aggregate_sha256": "02e768b17e79f922f7037a3ce00dd5bba20a92c6bfce79850e88cc09dd7e84e2",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-rbac-tracing/SKILL.md",
+          "sha256": "52dac702c3b73068d0208d008c07ce3347266911e4a327d1d1cc981849461a2f"
+        },
+        {
+          "path": "okhp3-reclamation-rbac-tracing/evals/evals.json",
+          "sha256": "9504e37feb8cfa28fc542f19d67ae85f14cac1cf4495a26f0842306eb005810e"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-replacement-build",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/openapi-to-application-code",
+        "community/containerize-aspnetcore",
+        "community/premium-frontend-ui",
+        "community/dotnet-best-practices"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-replacement-build",
+      "aggregate_sha256": "b93360b522dd37bc021f5814b28e31b10f2c6b7ede9a14a94ef22e9b7998ecca",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-replacement-build/SKILL.md",
+          "sha256": "db1bc207c4e5ac4560de3e499949b78388dd592b01993f50c952a09b66dbf630"
+        },
+        {
+          "path": "okhp3-reclamation-replacement-build/evals/evals.json",
+          "sha256": "1dd1446dd3f53c9951e9163a0e80d41d830561b92679931db8f65df3377d0e43"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-replacement-spec",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/create-specification",
+        "community/update-specification",
+        "community/documentation-writer",
+        "community/breakdown-test"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-replacement-spec",
+      "aggregate_sha256": "f10fae1ae80f5a2b663772c86910ab02becacf3fccc82cba55a5302f67c0fc51",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-replacement-spec/SKILL.md",
+          "sha256": "a91b33cc3771b7ae7486e231b30dd2b4112e6f48286707f04032186d8c1ee62d"
+        },
+        {
+          "path": "okhp3-reclamation-replacement-spec/evals/evals.json",
+          "sha256": "acde1b9e40c6d92adf666e3e734bd05e0b5be7aacccd68dea914171067b357eb"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-runtime-reconcile",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/appinsights-instrumentation",
+        "community/deployment-strategies",
+        "community/log-analysis",
+        "community/devops-rollout-plan"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-runtime-reconcile",
+      "aggregate_sha256": "782bc26a38ba61b7302dfa142fd2f227d27ac96295542997bc9727d505e44d4a",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-runtime-reconcile/SKILL.md",
+          "sha256": "82b0999c539eec6dac5542bb3573a7ee8cc211672a7631bf0247bc4978901b16"
+        },
+        {
+          "path": "okhp3-reclamation-runtime-reconcile/evals/evals.json",
+          "sha256": "7804409f04e930e7b9c6a85f88e63aad966a0ec566bc4884a9ccf554483f2c09"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-scope",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/agent-governance",
+        "universal/okhp3-evidence-standard",
+        "universal/okhp3-skill-discovery"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-scope",
+      "aggregate_sha256": "e232893f692bbb2bbd1735ec307428b0756767bc2ed6f103f846266e2da873c4",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-scope/SKILL.md",
+          "sha256": "5052420edbaae132261ace0a8f09bd17296b476a5df984cef35dac5d02e17cea"
+        },
+        {
+          "path": "okhp3-reclamation-scope/evals/evals.json",
+          "sha256": "1a5ada734b08fbd194e3aa673ccabc1bee0381a9b5a24aa913ca15e562fec9a8"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-security-review",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/security-review",
+        "community/threat-model-analyst",
+        "community/agent-owasp-compliance",
+        "community/agent-governance"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-security-review",
+      "aggregate_sha256": "d8f31c0b13ca161ccbf7d511e75382b664700f43dd849c43784d720d786cf943",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-security-review/SKILL.md",
+          "sha256": "7f4ade07ebde4139e85d17567884bbf9354208d834810b5c03296ae36e6dff1f"
+        },
+        {
+          "path": "okhp3-reclamation-security-review/evals/evals.json",
+          "sha256": "0b3843736ea20c5267a3a51b3b158e74efc5da99d917923bf7e4884acb62ac54"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-target-design",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/architecture-blueprint-generator",
+        "community/dotnet-upgrade",
+        "community/premium-frontend-ui",
+        "community/rest-api-best-practices"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-target-design",
+      "aggregate_sha256": "7b01ea9dcbaea669cb14e25519937c6f8f34e062ccc8e9f9f56e83d631d81f9c",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-target-design/SKILL.md",
+          "sha256": "bbab920182e4bc0621237d8fb3dd2b5e105617aa5849c2aaf654996e75fbb59e"
+        },
+        {
+          "path": "okhp3-reclamation-target-design/evals/evals.json",
+          "sha256": "5a7eb54f5af622b286bcce870a0c9a103b2f6a75e0a227c6daeeaa513bcc096d"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-technical-docs",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/documentation-writer",
+        "community/build-evidence-map",
+        "community/code-tour",
+        "universal/okhp3-evidence-standard"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-technical-docs",
+      "aggregate_sha256": "b0954e6ded8b5522d48039d02db9ee7daded7730b5f568b5fe31e95f0ad0dd86",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-technical-docs/SKILL.md",
+          "sha256": "95de243c34155b0cdadcc616406c6c5e6149fe1b646fc59616d74c530c401c00"
+        },
+        {
+          "path": "okhp3-reclamation-technical-docs/evals/evals.json",
+          "sha256": "681ffc6e34336ab605eed2918246187b8b068a7e62c9ebbb78f3a6b661d93202"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-transaction-flow",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/context-map",
+        "community/codebase-discovery",
+        "community/ddd-best-practices",
+        "community/workflow-analysis-blueprint"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-transaction-flow",
+      "aggregate_sha256": "1f6386d205857fc906a63a8acd3497c38e7172f0ee6ed0c962ed15ec8cb65df7",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-transaction-flow/SKILL.md",
+          "sha256": "1a1729abadc1ca388332496e58830ae149108c1a295396fb1ddb1ab4d5121474"
+        },
+        {
+          "path": "okhp3-reclamation-transaction-flow/evals/evals.json",
+          "sha256": "831967c9fee783f542b4d1165062dd4bea4deca02b9f53258229bbdd92383f5e"
+        }
+      ]
+    },
+    {
+      "name": "okhp3-reclamation-validation-handoff",
+      "version": "0.1.0",
+      "maturity": "candidate",
+      "evidence_status": "analytical",
+      "remastered_from": [
+        "community/breakdown-test",
+        "community/browser-testing",
+        "community/integration-testing",
+        "community/scoutqa-test",
+        "universal/okhp3-artifact-validation"
+      ],
+      "canonical_target": "software-reclamation/okhp3-reclamation-validation-handoff",
+      "aggregate_sha256": "85c50b7767859a0267b3bdb66c96bba2be4b8e7411a4a760cff0d9d354a5bb82",
+      "inventory": [
+        {
+          "path": "okhp3-reclamation-validation-handoff/SKILL.md",
+          "sha256": "c6357218215307385f2db10f15026d645030e3e8fecd3b002d2a7d388f972c2f"
+        },
+        {
+          "path": "okhp3-reclamation-validation-handoff/evals/evals.json",
+          "sha256": "63e481ef612062cc97f939b9e5459660e8b5725b780f8f29d3760a2ed9ee0e0f"
+        }
+      ]
+    }
+  ],
+  "decision": {
+    "status": "candidate",
+    "alternatives_considered": [
+      "keeping generic community packages only",
+      "placing the technical packages in Knowledge Operations",
+      "treating the packages as renamed community copies"
+    ],
+    "unresolved_items": [
+      "live with-skill and without-skill benchmark",
+      "protected release holdout",
+      "human and domain review for EDI-like transaction semantics",
+      "canonical publication approval"
+    ]
+  },
+  "safety": {
+    "license": "MIT for OKHP3-authored packages; source lineage is recorded in README-PROVENANCE.md and the community source manifest.",
+    "public_safety": "Analytical review only; no private target material is included.",
+    "private_material_found": false,
+    "external_writes": "none-declared",
+    "adapter_differences": [
+      "The family is destination-neutral and does not grant access to a live application.",
+      "A deployment or security adapter must separately establish authorization, environment, data handling, and change controls.",
+      "Replacement implementation is limited to an approved target specification and does not authorize changes to a legacy system."
+    ]
+  },
+  "authorization": {
+    "requested_actions": [
+      "create the local software-reclamation family",
+      "run local validation, review, and catalog generation"
+    ],
+    "approved_actions": [
+      "create the local software-reclamation family",
+      "run local validation, review, and catalog generation"
+    ],
+    "withheld_actions": [
+      "commit",
+      "push",
+      "pull request",
+      "external publication",
+      "live target access"
+    ]
+  },
+  "verification": {
+    "checks": [
+      "okhp3-skill-discovery source and fit review completed",
+      "Foundry structural validation: 15 packages passed",
+      "equilibrium review: analytical dry run, reviewer execution not run, defer-for-evidence",
+      "post-review Foundry validation: 15 packages passed",
+      "evaluation integrity: 15 packages x 3 cases",
+      "git diff --check passed before final catalog refresh"
+    ],
+    "review_record": "software-reclamation/review/equilibrium-v0.1.0-post-refinement/equilibrium-review-record.json",
+    "verified_at": "2026-08-28T02:12:06Z",
+    "limitations": [
+      "No agent command was supplied to the equilibrium runner, so reviewer execution was not run.",
+      "The evaluation fixtures are design-ready cases, not live benchmark results.",
+      "A protected or external holdout is required before claiming behavioral uplift or release readiness.",
+      "No live target, source tree, database, deployment, or internet-facing application was accessed."
+    ]
+  },
+  "recovery": {
+    "path": "Inspect this family diff and remove only reviewed software-reclamation paths if the family is rejected; do not delete unrelated community or catalog work.",
+    "pre_sync_git_status_recorded": true
+  }
+}

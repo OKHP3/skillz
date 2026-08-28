@@ -1,0 +1,5 @@
+{
+  "name": "context-map",
+  "family": "community",
+  "rawBody": "# Context Map\n\nBefore implementing any changes, analyze the codebase and create a context map.\n\n## Task\n\n{{task_description}}\n\n## Instructions\n\n1. Search the codebase for files related to this task\n2. Identify direct dependencies (imports/exports)\n3. Find related tests\n4. Look for similar patterns in existing code\n\n## Output Format\n\n```markdown\n## Context Map\n\n### Files to Modify\n| File | Purpose | Changes Needed |\n|------|---------|----------------|\n| path/to/file | description | what changes |\n\n### Dependencies (may need updates)\n| File | Relationship |\n|------|--------------|\n| path/to/dep | imports X from modified file |\n\n### Test Files\n| Test | Coverage |\n|------|----------|\n| path/to/test | tests affected functionality |\n\n### Reference Patterns\n| File | Pattern |\n|------|---------|\n| path/to/similar | example to follow |\n\n### Risk Assessment\n- [ ] Breaking changes to public API\n- [ ] Database migrations needed\n- [ ] Configuration changes required\n```\n\nDo not proceed with implementation until this map is reviewed."
+}

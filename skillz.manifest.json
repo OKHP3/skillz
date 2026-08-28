@@ -20,20 +20,20 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 149,
-  "activeFamilyCount": 16,
+  "distributionSkillCount": 258,
+  "activeFamilyCount": 17,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 46,
   "maturityCounts": {
-    "draftable": 120,
-    "skeleton": 24,
+    "draftable": 202,
+    "skeleton": 51,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 83,
-    "none": 31,
-    "local-checks": 22,
+    "not-run": 99,
+    "none": 119,
+    "local-checks": 27,
     "live": 7
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
@@ -61,15 +61,23 @@
       "name": "community",
       "status": "draftable",
       "skills": [
+        "acquire-codebase-knowledge",
         "ai-social-media-content",
         "architecture-decision-records",
         "brand-guidelines",
+        "c4-codebase-architecture",
+        "codebase-architecture",
+        "codebase-discovery",
+        "doc-and-modernize",
+        "dotnet-best-practices",
         "find-skills",
         "frontend-design",
         "mcp-builder",
         "mermaid-diagrams",
         "skill-creator",
+        "software-architecture-analysis",
         "theme-factory",
+        "technology-stack-blueprint-generator",
         "vercel-react-best-practices",
         "vercel-react-native-skills",
         "web-artifacts-builder",
@@ -266,7 +274,7 @@
       "AskJamie Lens System"
     ]
   },
-  "distributionFamilyCount": 16,
-  "countsGeneratedAt": "2026-08-27T03:36:34.770Z",
+  "distributionFamilyCount": 17,
+  "countsGeneratedAt": "2026-08-28T02:12:46.564Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

@@ -1,0 +1,41 @@
+# Example lsp-mcp configuration for the codebase-discovery LSP navigation option.
+#
+# lsp-mcp: https://github.com/mickeyinfoshan/lsp-mcp
+#
+# Keep only the languages your target repo uses. Each language server listed here MUST be
+# installed and runnable on PATH — the bridge launches it as a child process on first use.
+# If the server isn't present, that language's LSP navigation simply won't be available and
+# the skill falls back to grep.
+
+lsp_servers:
+  # Go — requires: go install golang.org/x/tools/gopls@latest
+  go:
+    command: "gopls"
+    args: ["serve"]
+    env:
+      GOPATH: "~/go"
+      GO111MODULE: "on"
+
+  # TypeScript / JavaScript — requires: npm i -g typescript-language-server typescript
+  typescript:
+    command: "typescript-language-server"
+    args: ["--stdio"]
+
+  # Python — requires: pip install python-lsp-server
+  python:
+    command: "pylsp"
+    args: []
+
+mcp_server:
+  name: "lsp-bridge"
+  version: "1.0.0"
+
+session:
+  timeout: 300          # seconds before an idle language-server session is cleaned up
+  max_sessions: 100
+
+logging:
+  level: "info"         # debug | info | warn | error  (use debug to diagnose startup issues)
+  format: "json"
+  file_output: true
+  file_path: "./logs/lsp-mcp.log"
