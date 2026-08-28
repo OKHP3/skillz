@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { useCatalog } from '../contexts/CatalogContext';
+import { comparePathWithSkill } from '../utils/compare';
 import type { FilterState, SearchResult, Maturity, EvidenceStatus, ReleaseReadiness } from '../types/catalog';
 import { searchSkills, buildSearchIndex, setBodySearchIndex } from '../utils/search';
 import type { SearchIndexEntry } from '../types/catalog';
@@ -269,7 +270,7 @@ export default function Explore() {
   }
 
   function handleCompare(skill: (typeof catalog.skills)[0]) {
-    navigate(`/compare?skills=${encodeURIComponent(skill.name)}`);
+    navigate(comparePathWithSkill(skill.name));
   }
 
   function handleFavorite(skillName: string) {

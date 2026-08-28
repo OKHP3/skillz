@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type KeyboardEvent } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { useCatalog } from '../contexts/CatalogContext';
 import type { Skill } from '../types/catalog';
@@ -9,6 +9,12 @@ import { trackCompareOpen } from '../utils/analytics';
 import AddToStackButton from '../components/ui/AddToStackButton';
 import { routeWithAnchor } from '../utils/routeAnchors';
 import { useComposer } from '../contexts/ComposerContext';
+import {
+  COMPARE_MAX_ITEMS,
+  addToCompareSelection,
+  parseCompareSelection,
+  saveCompareSelection,
+} from '../utils/compare';
 import {
   RELEASE_READINESS_LABELS,
   MATURITY_SOURCE_LABELS,
@@ -172,9 +178,7 @@ export default function Compare() {
   const [shareState, setShareState] = useState<'copied' | 'shared' | null>(null);
   const { announce } = useComposer();
 
-  const MAX = 4;
-
-  const skillNames = (searchParams.get('skills') || '').split(',').filter(Boolean).slice(0, MAX);
+  const skillNames = parseCompareSelection(searchParams.get('skills'));
   const skills = skillNames
     .map(n => catalog.skills.find(s => s.name === n))
     .filter((s): s is Skill => Boolean(s));
@@ -188,9 +192,13 @@ export default function Compare() {
     if (skills.length > 0) trackCompareOpen(skills.length);
   }, [skills.length]);
 
+  useEffect(() => {
+    saveCompareSelection(skillNames);
+  }, [skillNames.join(',')]);
+
   function addSkill(name: string) {
-    if (skills.length >= MAX || skillNames.includes(name)) return;
-    const next = [...skillNames, name].filter(Boolean);
+    if (skills.length >= COMPARE_MAX_ITEMS || skillNames.includes(name)) return;
+    const next = addToCompareSelection(skillNames, name);
     setSearchParams({ skills: next.join(',') });
     setAddQuery('');
   }
@@ -208,6 +216,12 @@ export default function Compare() {
         ))
         .slice(0, 8)
     : [];
+
+  function handleAddKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key !== 'Enter' || suggestions.length === 0) return;
+    event.preventDefault();
+    addSkill(suggestions[0].name);
+  }
 
   async function handleShare() {
     const outcome = await shareCompare(skillNames);
@@ -247,8 +261,9 @@ export default function Compare() {
               placeholder="Add a skill to compare…"
               value={addQuery}
               onChange={e => setAddQuery(e.target.value)}
+              onKeyDown={handleAddKeyDown}
               aria-label="Add skill to comparison"
-              disabled={skills.length >= MAX}
+              disabled={skills.length >= COMPARE_MAX_ITEMS}
             />
             {suggestions.length > 0 && (
               <ul className="compare-suggestions" role="listbox" aria-label="Skill suggestions">
@@ -275,6 +290,31 @@ export default function Compare() {
             </button>
           )}
         </div>
+
+        {skills.length > 0 && (
+          <section className="compare-selection" aria-label="Selected skills">
+            <div className="compare-selection-heading">
+              <h2>Selected skills</h2>
+              <span>{skills.length} of {COMPARE_MAX_ITEMS}</span>
+            </div>
+            <ul>
+              {skills.map(skill => (
+                <li key={skill.name}>
+                  <Link to={`/skills/${skill.family}/${skill.name}`}>
+                    {skill.displayName || skill.name}
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => removeSkill(skill.name)}
+                    aria-label={`Remove ${skill.name} from comparison`}
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {skills.length === 0 && (
           <div className="compare-empty">

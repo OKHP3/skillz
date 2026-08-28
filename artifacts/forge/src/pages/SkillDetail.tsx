@@ -2,6 +2,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useCatalog } from '../contexts/CatalogContext';
 import { getRelatedSkills, buildWorkflowPath } from '../utils/search';
+import { comparePathWithSkill } from '../utils/compare';
 import { copyInstallUrl as copyInstallCommand, copyRawUrl, shareSkill, useFavorites } from '../utils/clipboard';
 import { copyFeedback, favoriteFeedback, shareFeedback } from '../utils/feedback';
 import SkillPathway from '../components/ui/SkillPathway';
@@ -250,7 +251,7 @@ export default function SkillDetail() {
               Open on GitHub
             </a>
             <button className="btn-ghost" onClick={handleShare}>Share</button>
-            <button className="btn-ghost" onClick={() => navigate(`/compare?skills=${encodeURIComponent(skill!.name)}`)}>Compare</button>
+            <button className="btn-ghost" onClick={() => navigate(comparePathWithSkill(skill!.name))}>Compare</button>
             <button
               className="btn-ghost"
               onClick={handleFavorite}

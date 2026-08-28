@@ -2881,6 +2881,59 @@ input, select, textarea {
   padding: var(--space-12) 0;
   color: var(--color-text-muted-dark);
 }
+.compare-selection {
+  max-width: 900px;
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--color-border-dark);
+  background: var(--color-bg-secondary);
+}
+.compare-selection-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border-dark);
+}
+.compare-selection-heading h2 {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.compare-selection-heading span {
+  color: var(--color-text-muted-dark);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+.compare-selection ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  list-style: none;
+}
+.compare-selection li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-dark);
+  background: var(--color-surface);
+  color: var(--color-text-light);
+}
+.compare-selection li a {
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+.compare-selection li button {
+  color: var(--color-ember);
+  font-size: var(--text-xs);
+  text-decoration: underline;
+}
 .compare-hint {
   padding: var(--space-6) 0;
   color: var(--color-text-muted-dark);
