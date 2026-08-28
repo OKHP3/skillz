@@ -3,28 +3,32 @@
   "skill": {
     "name": "okhp3-artifact-validation",
     "version": "0.1.0",
-    "maturity": "candidate",
+    "maturity": "canonical",
     "evidence_status": "not-run"
   },
   "source": {
     "repository": "OKHP3/skillz (this repl: overkill-hill/skillz)",
     "package_path": ".agents/skills/okhp3-artifact-validation",
     "selected_as_canonical_incubator": true,
-    "selection_reason": "Only known copy of this skill in the repository; no competing candidate to compare against."
+    "selection_reason": "Retained as the editable project-local source; the accepted canonical distribution is tracked separately under the knowledge-operations family."
   },
-  "mirrors": [
+  "mirrors": [],
+  "retired_mirrors": [
     {
       "path": "skills/okhp3-artifact-validation",
       "role": "publication-mirror",
       "authorized": true,
+      "status": "retired",
+      "retired_at": "2026-08-28",
+      "retirement_reason": "Redundant after canonical family placement; runtime source and canonical distribution retained.",
       "aggregate_sha256": "88b974564dbb92bdc080b287dd9845162fda96cd5077b8f9a7ea4391d51703eb"
     }
   ],
   "canonical_target": {
     "repository": "OKHP3/skillz",
-    "family": "universal",
-    "package_path": "universal/okhp3-artifact-validation",
-    "accepted_commit_or_hash": null
+    "family": "knowledge-operations",
+    "package_path": "knowledge-operations/okhp3-artifact-validation",
+    "accepted_commit_or_hash": "de27730c24663c2f75f7d324a6018efa17fd5b0c"
   },
   "inventory": [
     "SKILL.md",
@@ -32,11 +36,9 @@
     "evals/evals.json"
   ],
   "decision": {
-    "status": "mirrored",
+    "status": "canonical",
     "alternatives_considered": [],
-    "unresolved_items": [
-      "No canonical family assignment has been confirmed by the maintainer -- 'universal' is a reasonable default given the skill's project-agnostic scope, not a decision made by the maintainer."
-    ]
+    "unresolved_items": []
   },
   "safety": {
     "license": "MIT",
@@ -46,8 +48,8 @@
     "adapter_differences": []
   },
   "authorization": {
-    "requested_actions": ["create-publication-mirror"],
-    "approved_actions": ["create-publication-mirror"],
+    "requested_actions": ["create-publication-mirror", "retire-publication-mirror"],
+    "approved_actions": ["create-publication-mirror", "retire-publication-mirror"],
     "withheld_actions": ["commit", "push", "pull-request", "external-publication", "canonical-write"]
   },
   "verification": {
@@ -60,23 +62,28 @@
       {
         "check": "sync_skill_mirror.py --sync",
         "result": "PASS",
-        "evidence": "skills/okhp3-artifact-validation-sync-report.json: comparison.exact=true, no missing/extra/changed files"
+        "evidence": "Historical mirror-creation verification: source and publication mirror matched exactly before retirement (verified 2026-08-03)."
       },
       {
         "check": "manual diff -rq source vs mirror",
         "result": "PASS",
         "evidence": "no output (byte-identical)"
+      },
+      {
+        "check": "publication-mirror retirement and continuity",
+        "result": "PASS",
+        "evidence": "retired mirror path absent; runtime source and knowledge-operations canonical package remain present; catalog and Forge references resolve to the canonical package"
       }
     ],
     "review_record": null,
-    "verified_at": "2026-08-03",
+    "verified_at": "2026-08-28",
     "limitations": [
       "okhp3-skill-foundry review (architecture/portability/evaluation/evidence gates) was not run against this candidate in this pass.",
-      "Canonical family placement (universal/) is a suggestion, not an authorized decision."
+      "No live task-quality or unseen holdout evaluation has been run for version 0.1.0."
     ]
   },
   "recovery": {
-    "path": "skills/okhp3-artifact-validation is a generated mirror; delete and re-run sync_skill_mirror.py --sync from .agents/skills/okhp3-artifact-validation to restore it.",
+    "path": "Runtime source remains at .agents/skills/okhp3-artifact-validation and canonical distribution remains at knowledge-operations/okhp3-artifact-validation. The retired mirror can be restored from Git commit fdf3ad4a9a4d966c7e1e037322cb6cebd9b4ac13 or regenerated with sync_skill_mirror.py --sync if a future owner-approved need arises.",
     "pre_sync_git_status_recorded": true
   }
 }
