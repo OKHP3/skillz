@@ -3,7 +3,7 @@ family: glee-fully
 display_name: Glee-fully
 skill_count: 12
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-28T02:12:14Z
+generated_at: 2026-08-28T05:57:05Z
 ---
 
 # glee-fully
@@ -35,7 +35,7 @@ Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee
 ## Skills (12)
 
 <!-- FAMILY_INVENTORY_START -->
-*12 skills &nbsp;·&nbsp; inventory last updated: **August 28, 2026 at 02:12 UTC***
+*12 skills &nbsp;·&nbsp; inventory last updated: **August 28, 2026 at 05:57 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
