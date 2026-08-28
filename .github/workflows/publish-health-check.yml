@@ -89,10 +89,14 @@ jobs:
               let data = '';
               process.stdin.on('data', c => data += c);
               process.stdin.on('end', () => {
-                const artifact = JSON.parse(data).artifacts?.[0];
-                console.log(artifact?.archive_download_url ?? '');
+                try {
+                  const artifact = JSON.parse(data).artifacts?.[0];
+                  process.stdout.write(artifact?.archive_download_url ?? '');
+                } catch {
+                  process.stdout.write('');
+                }
               });
-            ")
+            " || true)
           else
             echo "Could not read prior alert state; treating this as no prior streak."
             archive_url=''

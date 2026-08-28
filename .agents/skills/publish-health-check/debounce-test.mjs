@@ -32,6 +32,10 @@ assert.match(
   workflow,
   /steps\.alert\.outcome\s*==\s*'success'[\s\S]*?path:.*publish-health-state\/streak\.json/,
 );
+assert.match(
+  workflow,
+  /archive_url=\$\(printf '%s' \"\$artifacts\" \| node -e \"[\s\S]*process\.stdout\.write\(artifact\?\.archive_download_url \?\? ''\);[\s\S]*process\.stdout\.write\(''\);/,
+);
 assert.doesNotMatch(workflow, /echo\s+["'][^"']*\$(?:GH_TOKEN|PUBLISH_HEALTH_WEBHOOK_URL)/);
 
 function applyCheck(state, input) {
