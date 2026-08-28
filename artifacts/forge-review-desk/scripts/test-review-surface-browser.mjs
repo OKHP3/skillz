@@ -240,6 +240,35 @@ async function main() {
       await nearbyLink.getAttribute('href') === '/agent-foundry/okhp3-custom-gpt-readiness?family=agent-foundry&evidence=not-run&maturity=draftable&q=custom-gpt',
       'Related-contract link did not preserve the active filtered queue URL.',
     );
+
+    // Reviewers can open a neighboring contract in a separate tab while
+    // keeping the current filtered dossier and its queue context available.
+    // Ctrl-click follows the browser's native new-tab behavior; Wouter leaves
+    // modified clicks alone so the destination href remains shareable.
+    const originalDossierUrl = page.url();
+    const [nearbyTab] = await Promise.all([
+      page.context().waitForEvent('page'),
+      nearbyLink.click({ modifiers: ['Control'] }),
+    ]);
+    await nearbyTab.waitForLoadState('domcontentloaded');
+    await nearbyTab.getByTestId('text-skill-name').waitFor();
+    assert((await text(nearbyTab, 'text-skill-name')) === 'okhp3-custom-gpt-readiness', 'New-tab related-contract link did not open the neighboring dossier.');
+    const nearbyTabUrl = new URL(nearbyTab.url());
+    const sharedQueueSearch = new URL(sharedQueueUrl).search;
+    assert(nearbyTabUrl.pathname === '/agent-foundry/okhp3-custom-gpt-readiness', 'New-tab related-contract link opened the wrong dossier path.');
+    assert(nearbyTabUrl.search === sharedQueueSearch, 'New-tab related-contract link dropped the filtered queue parameters.');
+    assert(nearbyTabUrl.searchParams.get('family') === 'agent-foundry', 'New-tab dossier dropped the family parameter.');
+    assert(nearbyTabUrl.searchParams.get('evidence') === 'not-run', 'New-tab dossier dropped the evidence parameter.');
+    assert(nearbyTabUrl.searchParams.get('maturity') === 'draftable', 'New-tab dossier dropped the maturity parameter.');
+    assert(nearbyTabUrl.searchParams.get('q') === 'custom-gpt', 'New-tab dossier dropped the search parameter.');
+    assert(page.url() === originalDossierUrl, 'Opening a related dossier in a new tab changed the original dossier URL.');
+    assert((await text(page, 'text-skill-name')) === 'okhp3-custom-gpt-builder', 'Opening a related dossier in a new tab changed the original dossier.');
+    assert(
+      await page.getByTestId('button-breadcrumb-catalog').getAttribute('href') === '/?family=agent-foundry&evidence=not-run&maturity=draftable&q=custom-gpt',
+      'Opening a related dossier in a new tab changed the original filtered queue context.',
+    );
+    await nearbyTab.close();
+
     await nearbyLink.click();
     await page.getByTestId('text-skill-name').waitFor();
     assert((await text(page, 'text-skill-name')) === 'okhp3-custom-gpt-readiness', 'Related-contract link did not open the neighboring dossier.');
