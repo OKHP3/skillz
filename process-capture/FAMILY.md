@@ -3,12 +3,12 @@ family: process-capture
 display_name: Process Capture
 skill_count: 16
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-29T04:44:47Z
+generated_at: 2026-08-29T04:47:58Z
 ---
 
 # process-capture
 
-One skill: `okhp3-process-capture`. The meta-layer.
+The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.
 
 This is the operationalized version of "write it down the third time you do something." It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.
 
@@ -18,16 +18,16 @@ This skill is also the reason this repo's AGENTS.md index needs to stay current 
 
 The process-capture pattern has earlier ancestry in PathScrib-R and Flowpilot Scribbler — informal process-capture agents that executed fold operations (recurring task → structured artifact) before the SKILL.md format existed. They are provenance, not active components.
 
-`okhp3-process-capture` is the formalized, SKILL.md-native version of that lineage. The underlying operation — fold recurring work into a portable execution contract — is also what ReFolDec calls a fold. See `refolddec/README.md` and `docs/STACK-POSITION.md`.
+`okhp3-recurring-task-capture` is the formalized, SKILL.md-native version of that lineage. The underlying operation — fold recurring work into a portable execution contract — is also what ReFolDec calls a fold. See `refolddec/README.md` and `docs/STACK-POSITION.md`.
 
 <!-- FAMILY_SUMMARY_START -->
-One skill: `okhp3-process-capture`. The meta-layer.
+The family includes `okhp3-recurring-task-capture` as its meta-layer.
 <!-- FAMILY_SUMMARY_END -->
 
 ## Skills (16)
 
 <!-- FAMILY_INVENTORY_START -->
-*16 skills &nbsp;·&nbsp; inventory last updated: **August 29, 2026 at 04:44 UTC***
+*16 skills &nbsp;·&nbsp; inventory last updated: **August 29, 2026 at 04:47 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
