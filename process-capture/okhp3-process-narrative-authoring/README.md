@@ -1,4 +1,4 @@
-# process-narrative-authoring
+# okhp3-process-narrative-authoring
 
 SKILL.md-compatible agent skill for authoring and validating Process Narrative Specifications (PNS).
 

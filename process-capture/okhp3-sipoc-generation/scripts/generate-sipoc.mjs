@@ -52,7 +52,7 @@ export function generateSipoc(pns) {
   const sipoc = {
     process_id: pns.process_id || '',
     process_name: pns.process_name || '',
-    generated_from: 'process-narrative-authoring:generate-sipoc',
+    generated_from: 'okhp3-process-narrative-authoring:generate-sipoc',
     suppliers,
     inputs,
     process,

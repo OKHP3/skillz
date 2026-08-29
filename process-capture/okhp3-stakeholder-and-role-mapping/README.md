@@ -1,4 +1,4 @@
-# stakeholder-and-role-mapping
+# okhp3-stakeholder-and-role-mapping
 
 SKILL.md-compatible agent skill for deriving a structured stakeholder register from a PIR.
 
