@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-08-29T21:26:55.247Z",
+  "generatedAt": "2026-08-29T21:32:54.525Z",
   "commits": [
+    {
+      "sha": "f3f82dd2622cfc85da5ad3ad8f5657570238ebc1",
+      "shortSha": "f3f82dd",
+      "message": "\tmodified:   artifacts/forge/public/data/activity.json\n\tmodified:   artifacts/forge/public/data/catalog.json\n\tmodified:   artifacts/forge/public/data/project-summary.json\n\tmodified:   artifacts/forge/public/data/search-index.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-as-is-process-capture.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-decision-model-authoring.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-elicitation-interviews.json\n\tnew file:   artifacts/forge/public/data/skills/process-capture/okhp3-future-state-change-strategy.json\n\tnew file:   artifacts/forge/public/data/skills/process-capture/okhp3-process-gap-exception-analysis.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-process-intake-and-scope.json\n\tnew file:   artifacts/forge/public/data/skills/process-capture/okhp3-process-measures-controls.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-process-narrative-authoring.json\n\tnew file:   artifacts/forge/public/data/skills/process-capture/okhp3-process-validation-scoring.json\n\tnew file:   artifacts/forge/public/data/skills/process-capture/okhp3-publication-handoff-packaging.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-raci-governance-matrix.json\n\tnew file:   artifacts/forge/public/data/skills/process-capture/okhp3-recurring-task-capture.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-sipoc-generation.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-sop-work-instructions.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-stakeholder-and-role-mapping.json\n\tmodified:   artifacts/forge/public/data/skills/process-capture/okhp3-visual-process-modeling.json\n\tmodified:   artifacts/forge/public/data/skills/refolddec/okhp3-refolddec-core.json\n\tmodified:   artifacts/forge/public/data/skills/social-posting/okhp3-linkedin-angles.json\n\tmodified:   docs/archive/migration-backup-20260826/legacy-distribution-README.md\n\tmodified:   process-capture/okhp3-as-is-process-capture/SKILL.md\n\tmodified:   process-capture/okhp3-decision-model-authoring/SKILL.md\n\tmodified:   process-capture/okhp3-elicitation-interviews/SKILL.md\n\tmodified:   process-capture/okhp3-future-state-change-strategy/SKILL.md\n\tmodified:   process-capture/okhp3-process-gap-exception-analysis/SKILL.md\n\tmodified:   process-capture/okhp3-process-intake-and-scope/SKILL.md\n\tmodified:   process-capture/okhp3-process-measures-controls/SKILL.md\n\tmodified:   process-capture/okhp3-process-narrative-authoring/SKILL.md\n\tmodified:   process-capture/okhp3-process-validation-scoring/SKILL.md\n\tmodified:   process-capture/okhp3-publication-handoff-packaging/SKILL.md\n\tmodified:   process-capture/okhp3-raci-governance-matrix/SKILL.md\n\tmodified:   process-capture/okhp3-sipoc-generation/SKILL.md\n\tmodified:   process-capture/okhp3-sop-work-instructions/SKILL.md\n\tmodified:   process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md\n\tmodified:   process-capture/okhp3-visual-process-modeling/SKILL.md\n\tmodified:   skillz.manifest.json",
+      "author": "Jamie Hill",
+      "date": "2026-08-29T21:27:32Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f3f82dd2622cfc85da5ad3ad8f5657570238ebc1"
+    },
     {
       "sha": "d7296593730b4ae927fd6c7e7388c5ccf6cd433d",
       "shortSha": "d729659",
@@ -72,14 +80,6 @@
       "author": "OverKill Hill P³",
       "date": "2026-08-28T06:33:17Z",
       "url": "https://github.com/OKHP3/skillz/commit/6b580cbdb59686557f8181ce7ec2e7dd8500bc80"
-    },
-    {
-      "sha": "ac6fbd3c76135a6857eccbe1de40c80503072f3a",
-      "shortSha": "ac6fbd3",
-      "message": "Merge remote-tracking branch 'origin/main'",
-      "author": "Jamie Hill",
-      "date": "2026-08-28T06:21:46Z",
-      "url": "https://github.com/OKHP3/skillz/commit/ac6fbd3c76135a6857eccbe1de40c80503072f3a"
     }
   ],
   "fetchError": null
