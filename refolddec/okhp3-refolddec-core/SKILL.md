@@ -1,6 +1,6 @@
 ---
 name: okhp3-refolddec-core
-description: Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifact from one representation type to another — folding an idea or process into a compact form, unfolding an artifact into its primitives, or refolding across representation types (diagram to documentation, documentation to SKILL.md, SKILL.md to procedure). Also use when semantic loss across a transformation needs to be tracked or compared. This is not a general writing or diagramming skill — it is a representation-change skill. Load domain skills (okhp3-mermaid-core, okhp3-process-capture) alongside this skill when the transformation target is a diagram or a skill skeleton.
+description: Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifact from one representation type to another — folding an idea or process into a compact form, unfolding an artifact into its primitives, or refolding across representation types (diagram to documentation, documentation to SKILL.md, SKILL.md to procedure). Also use when semantic loss across a transformation needs to be tracked or compared. This is not a general writing or diagramming skill — it is a representation-change skill. Load domain skills (okhp3-mermaid-core, okhp3-recurring-task-capture) alongside this skill when the transformation target is a diagram or a skill skeleton.
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
@@ -65,7 +65,7 @@ Do not proceed through a high-loss transformation without flagging it.
 Apply the appropriate domain skill for the target form:
 
 - **Target is a diagram** → load `okhp3-mermaid-core`, route to the appropriate domain skill (bpmn, architecture, data)
-- **Target is a SKILL.md skeleton** → follow `okhp3-process-capture` skeleton production steps
+- **Target is a SKILL.md skeleton** → follow `okhp3-recurring-task-capture` skeleton production steps
 - **Target is documentation (prose, structured markdown)** → apply the target's audience and format conventions; no external skill required
 
 The transformation produces a complete artifact in the target form. It is not a bridge document, a "here's what I'd do," or a hybrid.
@@ -91,7 +91,7 @@ When the user needs to evaluate two representations of the same content — e.g.
 ## What this skill does not do
 
 - Does not author diagrams from scratch — route to `okhp3-mermaid-core`
-- Does not author SKILL.md files from scratch — route to `okhp3-process-capture`
+- Does not author SKILL.md files from scratch — route to `okhp3-recurring-task-capture`
 - Does not edit existing diagrams for content changes — route to `okhp3-mermaid-update`
 - Does not repair broken syntax — route to `okhp3-mermaid-repair`
 - Does not produce generalist summaries or rewrites — the transformation must be named and the source/target types must be distinct

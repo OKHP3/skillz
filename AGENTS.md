@@ -113,11 +113,11 @@ Social-posting cross-cutting rules: identify acting account, destination, audien
 
 ### Process-capture family
 
-Use `okhp3-process-intake-and-scope` for a new process, then compose downstream skills as the artifact matures. Use `okhp3-process-capture` for the meta-task of recognizing a recurring workflow and capturing it as backlog or a new skill skeleton.
+Use `okhp3-process-intake-and-scope` for a new process, then compose downstream skills as the artifact matures. Use `okhp3-recurring-task-capture` for the meta-task of recognizing a recurring workflow and capturing it as backlog or a new skill skeleton.
 
 | Skill | Trigger |
 |---|---|
-| `okhp3-process-capture` | The user says they keep doing something, it is the second or third repetition, or asks to make a workflow into a skill. |
+| `okhp3-recurring-task-capture` | The user says they keep doing something, it is the second or third repetition, or asks to make a workflow into a skill. |
 | `okhp3-process-intake-and-scope` | Document or scope a process from scratch, including boundaries, inputs, outputs, and business rules. |
 | `okhp3-as-is-process-capture` | Capture and normalize the current running process before redesign or gap analysis. |
 | `okhp3-elicitation-interviews` | Prepare interviews, workshops, question plans, or targeted follow-up to fill process gaps. |
@@ -125,14 +125,14 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | `okhp3-process-narrative-authoring` | Turn a completed intake and stakeholder register into a Process Narrative Specification. |
 | `okhp3-visual-process-modeling` | Turn a PNS or process notes into a Mermaid-native bpmn-beta diagram, or validate and repair one. |
 | `okhp3-decision-model-authoring` | Convert three or more meaningful gateway decisions or explicit business rules into a DMN-aligned decision model. |
-| `okhp3-process-gap-analysis` | Find deviations, missing steps, breakdowns, and undefined exception paths between current and intended process. |
-| `okhp3-future-state-strategy` | Design a target-state process and change strategy from a gap analysis. |
-| `okhp3-process-controls-metrics` | Define KPIs, targets, measures, compliance controls, or governance registers for a validated process narrative. |
+| `okhp3-process-gap-exception-analysis` | Find deviations, missing steps, breakdowns, and undefined exception paths between current and intended process. |
+| `okhp3-future-state-change-strategy` | Design a target-state process and change strategy from a gap analysis. |
+| `okhp3-process-measures-controls` | Define KPIs, targets, measures, compliance controls, or governance registers for a validated process narrative. |
 | `okhp3-raci-governance-matrix` | Generate a RACI or governance responsibility document from a validated PNS. |
 | `okhp3-sipoc-generation` | Produce a Suppliers, Inputs, Process, Outputs, Customers summary from a validated PNS. |
 | `okhp3-sop-work-instructions` | Produce an SOP or role-specific work instructions from a validated PNS. |
-| `okhp3-process-quality-validation` | Run the V1 to V9 validation suite, quality scoring, and publication gate for a complete process documentation set. |
-| `okhp3-handoff-packaging` | Package validated process artifacts for publication or handoff; requires a passing validation report. |
+| `okhp3-process-validation-scoring` | Run the V1 to V9 validation suite, quality scoring, and publication gate for a complete process documentation set. |
+| `okhp3-publication-handoff-packaging` | Package validated process artifacts for publication or handoff; requires a passing validation report. |
 
 ### Notion and ReFolDec families
 

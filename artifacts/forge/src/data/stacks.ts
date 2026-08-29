@@ -103,7 +103,7 @@ export const STACKS: Stack[] = [
       },
       {
         label: 'Gap and Exception Analysis',
-        skillNames: ['okhp3-process-gap-analysis'],
+        skillNames: ['okhp3-process-gap-exception-analysis'],
         purpose: 'Identify undocumented exceptions, edge cases, and missing steps.',
         inputs: 'Process narrative, visual model',
         outputs: 'Gap report, exception inventory',
@@ -111,7 +111,7 @@ export const STACKS: Stack[] = [
       },
       {
         label: 'Measures and Controls',
-        skillNames: ['okhp3-process-controls-metrics'],
+        skillNames: ['okhp3-process-measures-controls'],
         purpose: 'Define KPIs, SLAs, and control checkpoints for the process.',
         inputs: 'Validated narrative, gap report',
         outputs: 'Measures and controls register',
@@ -126,14 +126,14 @@ export const STACKS: Stack[] = [
       },
       {
         label: 'Validation',
-        skillNames: ['okhp3-process-quality-validation'],
+        skillNames: ['okhp3-process-validation-scoring'],
         purpose: 'Score the process documentation against quality criteria.',
         inputs: 'SOP draft',
         outputs: 'Quality score, revision notes',
       },
       {
         label: 'Publication and Handoff',
-        skillNames: ['okhp3-handoff-packaging'],
+        skillNames: ['okhp3-publication-handoff-packaging'],
         purpose: 'Package and deliver the documentation set for the intended audience.',
         inputs: 'Validated SOP, all supporting artifacts',
         outputs: 'Publication-ready package',
@@ -180,7 +180,7 @@ export const STACKS: Stack[] = [
     steps: [
       {
         label: 'Process Capture',
-        skillNames: ['okhp3-process-capture'],
+        skillNames: ['okhp3-recurring-task-capture'],
         purpose: 'Identify the recurring pattern and determine if it is ready to formalize.',
         inputs: 'Recurring task description, conversation context',
         outputs: 'BACKLOG entry or SKILL.md skeleton',

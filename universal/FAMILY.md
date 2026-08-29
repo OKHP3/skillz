@@ -3,7 +3,7 @@ family: universal
 display_name: Universal
 skill_count: 18
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-28T05:57:05Z
+generated_at: 2026-08-29T04:44:47Z
 ---
 
 # universal
@@ -15,7 +15,7 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 ## Skills (18)
 
 <!-- FAMILY_INVENTORY_START -->
-*18 skills &nbsp;·&nbsp; inventory last updated: **August 28, 2026 at 05:57 UTC***
+*18 skills &nbsp;·&nbsp; inventory last updated: **August 29, 2026 at 04:44 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

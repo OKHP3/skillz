@@ -50,7 +50,7 @@ BPMN for Mermaid
 
 PathScrib-R / Flowpilot Scribbler
   Process-capture agent lineage.
-  The recurring work that okhp3-process-capture and the BPMN family formalize.
+  The recurring work that okhp3-recurring-task-capture and the BPMN family formalize.
   Treated as ancestry, not as a live component.
 ```
 
