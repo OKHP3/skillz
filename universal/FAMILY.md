@@ -1,9 +1,9 @@
 ---
 family: universal
 display_name: Universal
-skill_count: 20
+skill_count: 19
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-30T21:51:53Z
+generated_at: 2026-08-30T22:21:43Z
 ---
 
 # universal
@@ -12,10 +12,10 @@ generated_at: 2026-08-30T21:51:53Z
 A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (20)
+## Skills (19)
 
 <!-- FAMILY_INVENTORY_START -->
-*20 skills &nbsp;·&nbsp; inventory last updated: **August 30, 2026 at 21:51 UTC***
+*19 skills &nbsp;·&nbsp; inventory last updated: **August 30, 2026 at 22:21 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -36,7 +36,6 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 | [okhp3-skill-promotion](okhp3-skill-promotion/SKILL.md) | Promote and synchronize a project-local Agent Skill into a portable, reviewable distribution pack... | 0.1.0 |
 | [okhp3-vite-github-pages](okhp3-vite-github-pages/SKILL.md) | OverKill Hill P³ Vite-to-GitHub-Pages deployment runbook. Use when deploying or troubleshooting t... | 1.1.0 |
 | [okhp3-webpage-en-us-fr-fr](okhp3-webpage-en-us-fr-fr/SKILL.md) | Translate owned webpage content one-way from United States English (en-US) to France French (fr-F... | 0.2.0 |
-| [okhp3-webpage-localization](okhp3-webpage-localization/SKILL.md) | Localize an authoritative United States English webpage into approved target languages while pres... | 1.0.0 |
 | [sp-build-auditor](sp-build-auditor/SKILL.md) | OverKill Hill P³ SharePoint List build screenshot auditor. Use when reviewing screenshots of Shar... | 1.1.0 |
 | [sp-list-architect](sp-list-architect/SKILL.md) | OverKill Hill P³ SharePoint List database architecture reviewer. Use when designing, reviewing, o... | 1.1.0 |
 <!-- FAMILY_INVENTORY_END -->

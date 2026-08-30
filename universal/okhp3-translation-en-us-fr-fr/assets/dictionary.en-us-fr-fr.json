@@ -1,5 +1,6 @@
 {
   "schema_version": "1.0",
+  "dictionary_version": "0.1.0",
   "language_pair": {
     "source_locale": "en-US",
     "target_locale": "fr-FR",

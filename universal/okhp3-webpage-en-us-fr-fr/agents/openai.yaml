@@ -1,6 +1,0 @@
-interface:
-  display_name: "US English to France French Webpage Translator"
-  short_description: "Create controlled en-US to fr-FR webpage drafts"
-  default_prompt: "Use $okhp3-webpage-en-us-fr-fr to create or update one France French webpage draft from an en-US source."
-policy:
-  allow_implicit_invocation: true

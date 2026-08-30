@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plan en-US source pages and their fr-FR targets without writing files."""
+"""Plan en-US source artifacts and fr-FR targets without writing files."""
 
 from __future__ import annotations
 
@@ -62,7 +62,7 @@ def build_plan(project: Dict[str, Any], base_dir: Path) -> Dict[str, Any]:
         and path.suffix in extensions
         and not any(part.startswith(".") for part in path.relative_to(source_root).parts)
     )
-    pages: List[Dict[str, Any]] = []
+    artifacts: List[Dict[str, Any]] = []
     for source_path in source_files:
         relative = source_path.relative_to(source_root)
         target_path = target_root / relative
@@ -76,13 +76,13 @@ def build_plan(project: Dict[str, Any], base_dir: Path) -> Dict[str, Any]:
         }
         if target_path.is_file():
             entry["target_sha256"] = sha256(target_path)
-        pages.append(entry)
+        artifacts.append(entry)
     return {
         "schema_version": "1.0",
         "language_pair": {"source_locale": SOURCE_LOCALE, "target_locale": TARGET_LOCALE, "direction": "one-way"},
         "project_id": project["project_id"],
-        "source_page_count": len(source_files),
-        "pages": pages,
+            "source_artifact_count": len(source_files),
+        "artifacts": artifacts,
         "writes_performed": False,
         "translation_performed": False,
     }
@@ -112,8 +112,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         print("Language pair: en-US -> fr-FR")
         if output["passed"]:
             plan = output["plan"]
-            missing = sum(page["state"] == "missing" for page in plan["pages"])
-            print(f"Source pages: {plan['source_page_count']}")
+            missing = sum(artifact["state"] == "missing" for artifact in plan["artifacts"])
+            print(f"Source artifacts: {plan['source_artifact_count']}")
             print(f"Missing fr-FR targets: {missing}")
         else:
             for error in output["errors"]:

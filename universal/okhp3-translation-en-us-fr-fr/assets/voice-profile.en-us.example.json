@@ -15,7 +15,7 @@
   },
   "samples": [
     {
-      "path": "content/en/example-page.md",
+      "path": "content/en/example-artifact.md",
       "sampled_on": "YYYY-MM-DD",
       "notes": "Replace with an owned en-US source sample."
     }

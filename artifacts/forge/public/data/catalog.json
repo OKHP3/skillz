@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-30T21:55:36.091Z",
+  "generatedAt": "2026-08-30T22:23:09.893Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "8d6d6a4",
-  "skillCount": 284,
+  "sourceCommit": "fe2f621",
+  "skillCount": 283,
   "familyCount": 18,
   "families": [
     {
@@ -781,7 +781,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 20,
+      "skillCount": 19,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -800,7 +800,6 @@
         "okhp3-skill-promotion",
         "okhp3-vite-github-pages",
         "okhp3-webpage-en-us-fr-fr",
-        "okhp3-webpage-localization",
         "sp-build-auditor",
         "sp-list-architect"
       ],
@@ -19445,8 +19444,8 @@
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "not-run",
-      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
       "status": null,
       "tags": [],
       "topics": [
@@ -19477,80 +19476,17 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "not-run",
+        "status": "analytical",
         "evaluatedSkillVersion": "0.2.0",
         "evalCount": 3,
         "benchmarkCount": 0,
-        "testCount": 1,
-        "referenceCount": 2,
+        "testCount": 2,
+        "referenceCount": 3,
         "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "No executed evaluation exists for the current package version."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-webpage-localization",
-      "displayName": "Webpage Localization",
-      "family": "universal",
-      "skillDir": "okhp3-webpage-localization",
-      "path": "universal/okhp3-webpage-localization/SKILL.md",
-      "description": "Localize an authoritative United States English webpage into approved target languages while preserving its meaning, brand voice, structure, and source provenance. Use when translating, quality-checking, or keeping French, Spanish, German, or other localized web pages synchronized from one English source. Do not use for copyediting English, translating one target language from another, or publishing without approval.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "category": "universal",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "evidenceStatus": "not-run",
-      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "universal"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-webpage-localization/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-webpage-localization/SKILL.md",
-      "lastModified": "2026-08-30T15:41:17-05:00",
-      "commitSha": "19cce209",
-      "createdAt": "2026-08-30T15:41:17-05:00",
-      "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
-        "category": "universal",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "One-way, provenance-tracked localization of web pages from an authoritative en-US source.",
-        "outOfScope": "English copyediting, target-to-target translation, native-speaker certification, automated publication, or legal translation.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
-        "benchmarkCount": 0,
-        "testCount": 2,
-        "referenceCount": 4,
-        "scriptCount": 1,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "No executed evaluation exists for the current package version."
+          "Only design or structural review exists; no graded live run has been executed."
         ]
       },
       "maturitySource": "fallback-structure",

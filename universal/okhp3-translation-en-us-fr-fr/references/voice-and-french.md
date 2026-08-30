@@ -26,7 +26,7 @@ separate language-pair packages with separate dictionaries.
 
 Use French typography only where the target format supports it. Never introduce
 French spaces or punctuation changes into code, URLs, placeholders, identifiers,
-or locked copy. A visually clean page still needs rendering and accessibility
+or locked copy. A visually clean artifact still needs format-appropriate rendering and accessibility
 checks in the consuming site.
 
 ## Dictionary discipline

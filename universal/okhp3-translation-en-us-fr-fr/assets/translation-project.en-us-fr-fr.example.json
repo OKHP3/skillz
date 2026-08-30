@@ -22,6 +22,6 @@
     "slug_policy": "stable",
     "preserve_urls": true,
     "default_status": "machine-drafted",
-    "allowed_extensions": [".html", ".md", ".mdx"]
+    "allowed_extensions": [".html", ".md", ".mdx", ".txt", ".json", ".yaml", ".yml"]
   }
 }

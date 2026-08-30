@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate one en-US to fr-FR webpage translation manifest and optional pair.
+"""Validate one en-US to fr-FR text-artifact manifest and optional pair.
 
 This helper is deterministic and dependency-free. It never translates, fetches,
 publishes, or edits files. It checks one declared language pair, structure, and
@@ -178,8 +178,8 @@ def report(errors: List[str], warnings: List[str], output_format: str, project: 
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project", required=True, type=Path, help="single-pair en-US to fr-FR project JSON manifest")
-    parser.add_argument("--source-file", type=Path, help="optional en-US source page to compare")
-    parser.add_argument("--target-file", type=Path, help="optional fr-FR target page to compare")
+    parser.add_argument("--source-file", type=Path, help="optional en-US source artifact to compare")
+    parser.add_argument("--target-file", type=Path, help="optional fr-FR target artifact to compare")
     parser.add_argument("--format", choices=("text", "json"), default="text")
     args = parser.parse_args(argv)
     if bool(args.source_file) != bool(args.target_file):

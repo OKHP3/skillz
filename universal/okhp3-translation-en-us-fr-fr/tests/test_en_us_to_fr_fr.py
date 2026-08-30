@@ -98,7 +98,7 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             payload = json.loads(result.stdout)
             self.assertEqual(payload["plan"]["language_pair"]["target_locale"], "fr-FR")
-            self.assertEqual(payload["plan"]["pages"][0]["state"], "missing")
+            self.assertEqual(payload["plan"]["artifacts"][0]["state"], "missing")
             self.assertFalse(payload["plan"]["writes_performed"])
             self.assertFalse(payload["plan"]["translation_performed"])
 
