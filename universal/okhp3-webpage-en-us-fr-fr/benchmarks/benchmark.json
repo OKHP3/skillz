@@ -1,0 +1,16 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "skill_name": "okhp3-webpage-en-us-fr-fr",
+    "evaluated_skill_version": "0.2.0",
+    "evaluation_status": "not-run",
+    "runner": "not-run",
+    "model": "not-run",
+    "fixtures": "not-run"
+  },
+  "acceptance_criteria": {
+    "structural": "Package and helper tests pass.",
+    "behavioral": "France French quality, native acceptance, and live automation are not established by this record."
+  },
+  "runs": []
+}
