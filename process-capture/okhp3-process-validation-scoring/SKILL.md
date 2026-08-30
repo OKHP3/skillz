@@ -10,6 +10,10 @@ metadata:
   author: "OverKill Hill P³"
   project: "BP-SKILL: Business Process Agent Skill Suite"
   category: "process-quality"
+  origin: "OKHP3/mermaid-diagram-bpmn"
+  author-github: "https://github.com/OKHP3"
+  in_scope: "V1 to V9 validation and quality scoring across a complete process documentation set."
+  out_of_scope: "Single-artifact validation, fabricated evidence, production certification, or publication without the required gate."
   standards_refs: "ISO 9001:2015 §9.1 (Monitoring, measurement, analysis and evaluation); BABOK v3 §7.6 (Analyse Potential Value and Recommend Solution); BPM CBOK v4 §8 (Process Performance Management)"
   produces: "validation-report.yaml"
   consumes: "pns.yaml, pir.yaml"
@@ -140,7 +144,7 @@ Load on demand:
 
 ## Evaluation and release status
 
-This skill orchestrates the same underlying validators (`validate-pir.mjs`, `validate-pns.mjs`) that four of the five root-level `evals/` categories target — and those categories' `manifest.json` files currently point at stale `okhp3-process-discovery`/`okhp3-process-narrative` paths that don't exist in this repository (see `okhp3-process-intake-and-scope` and `okhp3-process-narrative-authoring` for the exact broken paths, verified by static inspection). This skill's own orchestration logic (`run-validation-suite.mjs`) has no dedicated eval coverage beyond the maintainer-facing `tests/validate-skill.test.mjs` against `assets/fixtures/validation-report-example.yaml` — notably, nothing currently proves the *composite scoring and band classification* logic itself is correct, only that the fixture round-trips. Evidence status: `not-run` for task quality and skill uplift.
+This skill orchestrates the underlying `validate-pir.mjs` and `validate-pns.mjs` validators. The former root-level evaluation notes referred to retired process-skill paths; the current canonical packages are `okhp3-process-intake-and-scope` and `okhp3-process-narrative-authoring`, and this repository does not claim those retired evaluations as live evidence. This skill's own orchestration logic (`run-validation-suite.mjs`) has no dedicated eval coverage beyond the maintainer-facing `tests/validate-skill.test.mjs` against `assets/fixtures/validation-report-example.yaml` — notably, nothing currently proves the *composite scoring and band classification* logic itself is correct, only that the fixture round-trips. Evidence status: `not-run` for task quality and skill uplift.
 
 Version 0.2.0 (this pass) added the `compatibility` declaration, the orchestrator fallback instruction, and a sharper discovery-time boundary against single-artifact validation. Classified minor per the versioning table, not patch. No regression suite exists to run before this bump; that limitation is disclosed, not implied away.
 
