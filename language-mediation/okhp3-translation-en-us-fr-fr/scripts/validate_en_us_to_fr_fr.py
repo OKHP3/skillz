@@ -158,8 +158,22 @@ def validate_manifest(project: Any, path: Path) -> List[str]:
     else:
         if source.get("locale") != SOURCE_LOCALE:
             add_error(errors, f"source.locale must be {SOURCE_LOCALE}")
+        if source.get("register_state") != "plainspoken":
+            add_error(errors, "source.register_state must be 'plainspoken'; specialist sources require a completed register-mediation stage")
         for key in ("root", "voice_profile"):
             require_nonempty_string(source.get(key), f"source.{key}", errors)
+        mediation_record = source.get("register_mediation_record")
+        if mediation_record is not None:
+            if not isinstance(mediation_record, dict):
+                add_error(errors, "source.register_mediation_record must be null or an object")
+            else:
+                if mediation_record.get("output_locale") != SOURCE_LOCALE:
+                    add_error(errors, f"source.register_mediation_record.output_locale must be {SOURCE_LOCALE}")
+                if mediation_record.get("output_register") != "plainspoken":
+                    add_error(errors, "source.register_mediation_record.output_register must be 'plainspoken'")
+                if mediation_record.get("status") != "completed":
+                    add_error(errors, "source.register_mediation_record.status must be 'completed'")
+                require_nonempty_string(mediation_record.get("record"), "source.register_mediation_record.record", errors)
     target = project.get("target")
     if not isinstance(target, dict):
         add_error(errors, "target must be one object for the fr-FR output")
@@ -243,7 +257,7 @@ def report(errors: List[str], warnings: List[str], output_format: str, project: 
         "pair": {"source": str(pair[0]), "target": str(pair[1])} if pair else None,
         "errors": errors,
         "warnings": warnings,
-        "scope": "manifest, structure, and protected-token checks only; no French-quality or native-review certification",
+        "scope": "manifest, completed plainspoken-register gate, structure, and protected-token checks only; no French-quality or native-review certification",
     }
     if output_format == "json":
         print(json.dumps(result, indent=2, ensure_ascii=False))

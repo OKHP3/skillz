@@ -8,8 +8,10 @@
   },
   "source": {
     "locale": "en-US",
+    "register_state": "plainspoken",
     "root": "content/en",
-    "voice_profile": "voice-profile.en-us.example.json"
+    "voice_profile": "voice-profile.en-us.example.json",
+    "register_mediation_record": null
   },
   "target": {
     "locale": "fr-FR",

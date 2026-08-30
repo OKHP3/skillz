@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "review_protocol": "equilibrium-v1",
   "review_mode": "analytical-five-role",
-  "evaluation_status": "analytical",
+  "evaluation_status": "historical",
   "artifact": {
     "path": "universal/okhp3-translation-en-us-fr-fr/SKILL.md",
     "sha256": "0268661fae9dd2e542131b06f721b8ea4e5e0356e21792d0329c3d6a60caed9c",

@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-30T23:22:05.398Z",
+  "generatedAt": "2026-08-30T23:43:20.968Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "d12d3ad",
+  "sourceCommit": "abc5211",
   "skillCount": 283,
-  "familyCount": 18,
+  "familyCount": 19,
   "families": [
     {
       "name": "abrahamic",
@@ -363,6 +363,36 @@
         },
         "compositionNotes": {
           "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-project-promotion pairs with okhp3-graduation-gate; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard",
+          "source": "generated"
+        }
+      }
+    },
+    {
+      "name": "language-mediation",
+      "displayName": "Language Mediation",
+      "skillCount": 1,
+      "skills": [
+        "okhp3-translation-en-us-fr-fr"
+      ],
+      "narrativeBody": null,
+      "orientation": {
+        "purpose": {
+          "value": null,
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "language-mediation"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-translation-en-us-fr-fr",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": null,
           "source": "generated"
         }
       }
@@ -781,7 +811,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 19,
+      "skillCount": 18,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -798,7 +828,6 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
-        "okhp3-translation-en-us-fr-fr",
         "okhp3-vite-github-pages",
         "sp-build-auditor",
         "sp-list-architect"
@@ -10775,6 +10804,69 @@
       "releaseReadiness": "needs-contract-work"
     },
     {
+      "name": "okhp3-translation-en-us-fr-fr",
+      "displayName": "Translation En Us Fr Fr",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-fr-fr",
+      "path": "language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to France French (fr-FR), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to fr-FR text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 3,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-celestial-data",
       "displayName": "Celestial Data",
       "family": "lifetrkr",
@@ -19361,69 +19453,6 @@
         "reviewDecision": null,
         "blockers": [
           "No executed evaluation exists for the current package version."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-translation-en-us-fr-fr",
-      "displayName": "Translation En Us Fr Fr",
-      "family": "universal",
-      "skillDir": "okhp3-translation-en-us-fr-fr",
-      "path": "universal/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "description": "Translate owned text artifacts one way from United States English (en-US) to France French (fr-FR), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use for HTML, Markdown, MDX, plain-text, and text-resource translation. Do not use for another language pair, reverse translation, generic copyediting, or machine-only publication.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "category": "universal",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "evidenceStatus": "analytical",
-      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "universal"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "lastModified": "2026-08-30T18:11:10-05:00",
-      "commitSha": "d12d3ad4",
-      "createdAt": "2026-08-30T18:11:10-05:00",
-      "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
-        "category": "universal",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Directed en-US to fr-FR text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
-        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
-        "benchmarkCount": 0,
-        "testCount": 1,
-        "referenceCount": 3,
-        "scriptCount": 2,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
         ]
       },
       "maturitySource": "fallback-structure",

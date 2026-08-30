@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 258 distribution skills in 17 active families, and 46 project-local support skills under `.agents/skills/`
+- **Current inventory:** 283 distribution skills in 19 active families, and 46 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -39,6 +39,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `mermaid/` | Mermaid diagram authoring, governance, theming, publishing, updating, and repair |
 | `notion/` | AI conversation capture and routing into Notion knowledge structures |
 | `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, validating, and promoting information or exploratory work |
+| `language-mediation/` | Controlled transformations across languages, locales, specialist registers, and plain-language audiences |
 | `process-capture/` | Process-analysis and documentation pipeline plus the recurring-task capture skill |
 | `refolddec/` | ReFolDec fold, unfold, and refold transformations |
 | `agent-foundry/` | AI-agent creation, readiness, platform comparison, portability, and lifecycle skills |
@@ -285,6 +286,17 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-skill-foundry` | Create, hone, evaluate, benchmark, brand, or polish a production-quality Agent Skill using the eight-phase Foundry method, evidence ledger, conditional dissent review, and enforced current-state evidence integrity for material releases. |
 | `okhp3-skill-promotion` | Promote and synchronize a project-local skill into a verified `skills/` publication mirror and a reviewable canonical `skillz` handoff without blind overwrites or autonomous publication. |
 | `okhp3-vite-github-pages` | Deploy or repair a React or Vue Vite SPA on GitHub Pages, especially base path, router, and gh-pages issues. |
+
+### Language-mediation family
+
+Language-mediation packages keep specialist-register mediation separate from
+regional-language translation. When both are needed, run them in series:
+specialist source locale to plainspoken source locale first, then plainspoken
+source locale to target locale. Do not collapse or parallelize the two stages.
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-translation-en-us-fr-fr` | Translate an owned plainspoken `en-US` text artifact to `fr-FR`. Load only after any specialist source has a completed plain-en-US mediation record. It does not perform medical, legal, engineering, or other register simplification. |
 
 ### Project-local support skills
 

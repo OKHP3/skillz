@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "artifact": "language-mediation/okhp3-translation-en-us-fr-fr",
+  "candidate_version": "1.1.0",
+  "pre_change_version": "1.0.0",
+  "hypothesis": "A dedicated Language Mediation family and an explicit plainspoken-input gate prevent an exact language-pair skill from silently combining specialist-register interpretation with regional-language translation.",
+  "evidence": [
+    {"source": "owner direction", "date": "2026-08-30", "finding": "Register mediation and regional-language translation must be two distinct serial skill invocations."},
+    {"source": "family review", "date": "2026-08-30", "finding": "The former generic multi-target webpage-localization package conflicts with exact-pair terminology and controlled composition."}
+  ],
+  "changes": [
+    {"id": "CHG-01", "change": "Moved the package from universal to language-mediation.", "benefit": "Family discovery now reflects its shared language, locale, and register-governance role.", "risk": "Existing links to the Universal path must migrate."},
+    {"id": "CHG-02", "change": "Raised the package to 1.1.0 and required a plainspoken en-US input or completed register-mediation record.", "benefit": "Prevents compounded specialist-to-French transformations.", "risk": "Technical-source requests now block until an upstream mediation skill exists."},
+    {"id": "CHG-03", "change": "Added a serial-mediation evaluation case and marked the 1.0.0 review historical.", "benefit": "The current package does not inherit an obsolete family-placement claim.", "risk": "No independent or native-language quality evidence is added."}
+  ],
+  "decision": "retain the exact-pair package as the first language-mediation family member; purge the generic multi-target webpage-localization concept rather than relocate it.",
+  "limitations": [
+    "This ledger records an architectural and structural change only.",
+    "No medical, legal, engineering, or other register-mediation package is created by this change.",
+    "No translation-quality, native-review, or live-automation claim is established."
+  ]
+}

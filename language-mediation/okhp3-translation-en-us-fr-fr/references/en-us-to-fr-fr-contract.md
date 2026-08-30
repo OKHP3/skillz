@@ -1,8 +1,9 @@
 # en-US to fr-FR text-artifact contract
 
-This package has one language pair and one direction. The source is `en-US` and
-the output is `fr-FR`. A manifest with another source, target, or a target list
-is invalid for this package.
+This package has one language pair and one direction. The source is plainspoken
+`en-US` and the output is `fr-FR`. A manifest with another source, target,
+target list, or a specialist source lacking a completed register-mediation
+record is invalid for this package.
 
 ## Translation record
 
@@ -12,7 +13,13 @@ but retain the language pair, provenance, status, and review fields.
 ```json
 {
   "language_pair": {"source_locale": "en-US", "target_locale": "fr-FR", "direction": "one-way"},
-  "source": {"path": "content/en/about.md", "sha256": "...", "revision": "git:abc1234"},
+  "source": {
+    "path": "content/en/about.md",
+    "sha256": "...",
+    "revision": "git:abc1234",
+    "register_state": "plainspoken",
+    "register_mediation_record": "records/structural-to-plain-en-us.json"
+  },
   "target": {"path": "content/fr/about.md", "sha256": "..."},
   "artifact_type": "markdown",
   "voice_profile": "config/voice-profile.en-us.json@1.0.0",
@@ -24,6 +31,11 @@ but retain the language pair, provenance, status, and review fields.
   "assumptions": ["Existing stable slug retained"]
 }
 ```
+
+`register_mediation_record` is `null` for material authored in plainspoken
+en-US. It is required when the source originated in a specialist register and
+must identify the completed upstream stage. The locale translation stage does
+not reinterpret the original specialist source.
 
 ## Structural parity
 

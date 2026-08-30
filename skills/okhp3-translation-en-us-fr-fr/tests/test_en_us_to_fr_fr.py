@@ -15,7 +15,7 @@ PROJECT = {
     "schema_version": "2.0",
     "project_id": "fixture-en-us-fr-fr",
     "language_pair": {"source_locale": "en-US", "target_locale": "fr-FR", "direction": "one-way"},
-    "source": {"locale": "en-US", "root": "content/en", "voice_profile": "config/voice.en-us.json"},
+    "source": {"locale": "en-US", "register_state": "plainspoken", "root": "content/en", "voice_profile": "config/voice.en-us.json", "register_mediation_record": None},
     "target": {"locale": "fr-FR", "root": "content/fr", "dictionary": "config/dictionary.en-us-fr-fr.json", "status": "draft", "needs_native_review": True},
     "rules": {"slug_policy": "stable", "preserve_urls": True, "default_status": "machine-drafted", "allowed_extensions": [".md"]},
 }
@@ -81,6 +81,24 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
             errors = json.loads(result.stdout)["errors"]
             self.assertTrue(any("fr-FR" in item for item in errors))
             self.assertTrue(any("targets is not allowed" in item for item in errors))
+
+    def test_rejects_specialist_register_without_completed_plainspoken_stage(self):
+        with tempfile.TemporaryDirectory() as raw:
+            directory = Path(raw)
+            invalid = json.loads(json.dumps(PROJECT))
+            invalid["source"]["register_state"] = "engineering"
+            invalid["source"]["register_mediation_record"] = {
+                "output_locale": "en-US",
+                "output_register": "plainspoken",
+                "status": "pending",
+                "record": "records/engineering-to-plain.json",
+            }
+            project = self.write_project(directory, invalid)
+            result = self.run_validator(project)
+            self.assertEqual(result.returncode, 1)
+            errors = json.loads(result.stdout)["errors"]
+            self.assertTrue(any("register_state" in item for item in errors))
+            self.assertTrue(any("status must be 'completed'" in item for item in errors))
 
     def test_protected_token_drift_fails(self):
         with tempfile.TemporaryDirectory() as raw:

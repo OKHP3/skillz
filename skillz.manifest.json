@@ -21,7 +21,7 @@
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
   "distributionSkillCount": 283,
-  "activeFamilyCount": 18,
+  "activeFamilyCount": 19,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 46,
   "maturityCounts": {
@@ -34,8 +34,8 @@
     "not-run": 123,
     "none": 119,
     "local-checks": 27,
-    "live": 7,
-    "analytical": 1
+    "analytical": 1,
+    "live": 7
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
@@ -275,7 +275,7 @@
       "AskJamie Lens System"
     ]
   },
-  "distributionFamilyCount": 18,
-  "countsGeneratedAt": "2026-08-30T23:22:05.398Z",
+  "distributionFamilyCount": 19,
+  "countsGeneratedAt": "2026-08-30T23:43:20.968Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

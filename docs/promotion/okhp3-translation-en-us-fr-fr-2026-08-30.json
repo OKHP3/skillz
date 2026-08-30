@@ -2,35 +2,36 @@
   "schema_version": "1.0",
   "skill": {
     "name": "okhp3-translation-en-us-fr-fr",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "maturity": "candidate",
     "evidence_status": "analytical"
   },
   "source": {
     "repository": "OKHP3/skillz",
-    "package_path": "universal/okhp3-translation-en-us-fr-fr",
+    "package_path": "language-mediation/okhp3-translation-en-us-fr-fr",
     "selected_as_canonical_incubator": true,
-    "selection_reason": "Exact-pair en-US to fr-FR text-artifact contract with Foundry validation, deterministic boundary tests, and a current analytical Equilibrium record.",
-    "aggregate_sha256": "dbf76fe18694d776a90df1956aa2bc6c50c1162c97a80e2f1dea4f7c8d32acdb"
+    "selection_reason": "Exact-pair plainspoken en-US to fr-FR text-artifact contract with Foundry validation, deterministic serial-boundary tests, and a current analytical Equilibrium record.",
+    "aggregate_sha256": "3b1776ccaa4f647f542191363c8d593765cc26c62f45fa6bf3fa1a225401ac49"
   },
   "mirrors": [
     {
       "path": "skills/okhp3-translation-en-us-fr-fr",
       "role": "publication-mirror",
       "authorized": true,
-      "aggregate_sha256": "dbf76fe18694d776a90df1956aa2bc6c50c1162c97a80e2f1dea4f7c8d32acdb"
+      "aggregate_sha256": "3b1776ccaa4f647f542191363c8d593765cc26c62f45fa6bf3fa1a225401ac49"
     }
   ],
   "canonical_target": {
     "repository": "OKHP3/skillz",
-    "family": "universal",
-    "package_path": "universal/okhp3-translation-en-us-fr-fr",
+    "family": "language-mediation",
+    "package_path": "language-mediation/okhp3-translation-en-us-fr-fr",
     "accepted_commit_or_hash": "not-committed"
   },
   "decision": {
     "status": "mirrored",
     "basis": [
       "The package is format-neutral for normalized UTF-8 text artifacts, including HTML, Markdown, MDX, plain text, and text-resource files.",
+      "The package is now governed by the Language Mediation family and accepts only plainspoken en-US after any specialist register is separately mediated.",
       "The name follows the adjacent exact-pair pattern okhp3-translation-<source-locale>-<target-locale>.",
       "The user authorized the local promotion and cataloging circuit, but did not authorize a commit, push, pull request, or external publication."
     ]
@@ -49,9 +50,9 @@
   },
   "verification": {
     "foundry_validator": "PASS",
-    "deterministic_tests": "PASS (5 tests)",
+    "deterministic_tests": "PASS (8 tests)",
     "json_parse": "PASS (8 JSON files)",
-    "equilibrium_review": "analytical, current version 1.0.0; not independent or native-speaker proof",
+    "equilibrium_review": "analytical, current version 1.1.0; not independent or native-speaker proof",
     "catalog": "PASS (full check found 283 distribution skills)",
     "mirror": "PASS (source and publication mirror inventories are exactly equal)",
     "artifact_validation": {
@@ -68,7 +69,8 @@
     }
   },
   "limitations": [
-    "This skill translates only en-US to fr-FR. Other language or regional pairs require separate exact-pair packages.",
+    "This skill translates only plainspoken en-US to fr-FR. Other language or regional pairs require separate exact-pair packages.",
+    "Specialist register mediation is a separate serial stage and requires a distinct upstream skill or an explicit blocked result.",
     "The package does not directly edit DOCX, PDF, slides, images, or other layout-sensitive binary formats. A format adapter must extract and reinsert normalized text and verify the rendered result.",
     "Structural checks and protected-token tests do not certify idiomatic French, native-speaker acceptance, translation quality, or live automation behavior."
   ],
