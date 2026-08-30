@@ -1,5 +1,6 @@
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -13,7 +14,7 @@ TARGET = """<!doctype html><html lang=\"fr\"><head><style>.x{color:red}</style><
 
 class WebpageLocalizationTests(unittest.TestCase):
     def run_command(self, *args):
-        return subprocess.run(["py", "-3", str(SCRIPT), *args], text=True, capture_output=True, check=False)
+        return subprocess.run([sys.executable, str(SCRIPT), *args], text=True, capture_output=True, check=False)
 
     def test_plan_then_verify_matching_html(self):
         with tempfile.TemporaryDirectory() as temp:
