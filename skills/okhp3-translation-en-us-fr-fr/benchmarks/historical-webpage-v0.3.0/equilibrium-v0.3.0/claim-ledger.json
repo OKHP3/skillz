@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "artifact": "universal/okhp3-webpage-en-us-fr-fr",
+  "evaluated_skill_version": "0.3.0",
+  "claims": [
+    {
+      "claim_id": "CLM-01",
+      "claim": "The package name is portable and matches its directory.",
+      "claim_type": "fact",
+      "evidence_ids": ["E-01", "E-02"],
+      "status": "supported",
+      "consequence": "A mismatch would weaken installation and discovery reliability.",
+      "next_test": "Run the Foundry validator after any rename."
+    },
+    {
+      "claim_id": "CLM-02",
+      "claim": "The package has the progressive-disclosure structure and evaluation design required for an OKHP3 skill.",
+      "claim_type": "design choice",
+      "evidence_ids": ["E-01", "E-03", "E-04"],
+      "status": "supported",
+      "consequence": "Missing resources or untested failure boundaries could make the package unsafe or hard to use.",
+      "next_test": "Re-run structural validation and the fixture suite after every material change."
+    },
+    {
+      "claim_id": "CLM-03",
+      "claim": "The package fails closed for missing, malformed, empty, or wrong-pair voice and dictionary controls.",
+      "claim_type": "fact",
+      "evidence_ids": ["E-05"],
+      "status": "supported",
+      "consequence": "A weak control file could otherwise create inconsistent French output while appearing valid.",
+      "next_test": "Add a regression fixture for each future control-schema change."
+    },
+    {
+      "claim_id": "CLM-04",
+      "claim": "The skill preserves owner voice and produces natural, accurate France French.",
+      "claim_type": "hypothesis",
+      "evidence_ids": ["E-04", "E-06"],
+      "status": "blocked",
+      "consequence": "Structural checks could pass while the French is awkward, inaccurate, or unlike the owner.",
+      "next_test": "Run a separately controlled evaluation on owned source pages with an external French-language review method."
+    },
+    {
+      "claim_id": "CLM-05",
+      "claim": "Universal is the current best family for this cross-project, non-brand-specific directed translation skill.",
+      "claim_type": "design choice",
+      "evidence_ids": ["E-07", "E-08"],
+      "status": "supported",
+      "consequence": "Prematurely creating a one-skill localization family would add a taxonomy without a demonstrated shared family contract.",
+      "next_test": "Reassess when multiple directed language-pair packages need shared routing or shared assets."
+    }
+  ],
+  "evidence_ledger": [
+    {
+      "id": "E-01",
+      "source": ".agents/skills/okhp3-skill-foundry/SKILL.md and references/brand-standard.md",
+      "type": "repository guidance",
+      "status": "current local artifact",
+      "relevance": "Defines naming, package, versioning, and release conventions."
+    },
+    {
+      "id": "E-02",
+      "source": "universal/okhp3-webpage-en-us-fr-fr/SKILL.md",
+      "type": "artifact",
+      "status": "current local artifact",
+      "relevance": "Name matches the 25-character package directory; active body is 173 lines."
+    },
+    {
+      "id": "E-03",
+      "source": "universal/okhp3-webpage-en-us-fr-fr assets, references, scripts, evals, and benchmarks",
+      "type": "artifact inventory",
+      "status": "current local artifact",
+      "relevance": "Confirms one-level resources and dedicated deterministic helpers."
+    },
+    {
+      "id": "E-04",
+      "source": "universal/okhp3-webpage-en-us-fr-fr/evals/evals.json and benchmarks/benchmark.json",
+      "type": "evaluation design",
+      "status": "not-run",
+      "relevance": "Documents normal, boundary, and unsafe-publication cases but makes no live quality claim."
+    },
+    {
+      "id": "E-05",
+      "source": "seven passing tests in tests/test_en_us_to_fr_fr.py",
+      "type": "deterministic execution",
+      "status": "analytical",
+      "relevance": "Covers valid controls, wrong locale and many targets, protected-token drift, missing controls, no-write planning, incomplete voice profiles, and empty or wrong-pair dictionaries."
+    },
+    {
+      "id": "E-06",
+      "source": "SKILL.md quality and review gates",
+      "type": "scope boundary",
+      "status": "current local artifact",
+      "relevance": "Explicitly states that structural checks do not certify idiomatic French or native review."
+    },
+    {
+      "id": "E-07",
+      "source": "AGENTS.md Universal-family routing guidance",
+      "type": "repository guidance",
+      "status": "current local artifact",
+      "relevance": "Places cross-project builders and reusable operational capabilities in Universal."
+    },
+    {
+      "id": "E-08",
+      "source": "root family inventory search",
+      "type": "repository inventory",
+      "status": "current local artifact",
+      "relevance": "Found no existing language-localization family or equivalent directed webpage translation package."
+    }
+  ]
+}

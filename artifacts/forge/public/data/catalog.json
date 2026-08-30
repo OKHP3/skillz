@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-30T22:23:09.893Z",
+  "generatedAt": "2026-08-30T23:22:05.398Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "fe2f621",
+  "sourceCommit": "d12d3ad",
   "skillCount": 283,
   "familyCount": 18,
   "families": [
@@ -755,10 +755,10 @@
         "okhp3-reclamation-transaction-flow",
         "okhp3-reclamation-validation-handoff"
       ],
-      "narrativeBody": "**Family crest:** The Reclamation Crest, Remastered\n\nSoftware Reclamation is the OKHP3 remastering line for undocumented software systems. It preserves source lineage, then turns generic methods into composable, evidence-led contracts for recovery, security, documentation, modernization, replacement, validation, and support handoff.",
+      "narrativeBody": null,
       "orientation": {
         "purpose": {
-          "value": "**Family crest:** The Reclamation Crest, Remastered\n\nSoftware Reclamation is the OKHP3 remastering line for undocumented software systems. It preserves source lineage, then turns generic methods into composable, evidence-led contracts for recovery, security, documentation, modernization, replacement, validation, and support handoff.",
+          "value": null,
           "source": "generated"
         },
         "commonOutcomes": {
@@ -798,8 +798,8 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
+        "okhp3-translation-en-us-fr-fr",
         "okhp3-vite-github-pages",
-        "okhp3-webpage-en-us-fr-fr",
         "sp-build-auditor",
         "sp-list-architect"
       ],
@@ -19368,6 +19368,69 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-translation-en-us-fr-fr",
+      "displayName": "Translation En Us Fr Fr",
+      "family": "universal",
+      "skillDir": "okhp3-translation-en-us-fr-fr",
+      "path": "universal/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "description": "Translate owned text artifacts one way from United States English (en-US) to France French (fr-FR), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use for HTML, Markdown, MDX, plain-text, and text-resource translation. Do not use for another language pair, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "universal",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "universal"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "lastModified": "2026-08-30T18:11:10-05:00",
+      "commitSha": "d12d3ad4",
+      "createdAt": "2026-08-30T18:11:10-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to fr-FR text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 3,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-vite-github-pages",
       "displayName": "Vite GitHub Pages",
       "family": "universal",
@@ -19424,69 +19487,6 @@
         "reviewDecision": null,
         "blockers": [
           "No executed evaluation exists for the current package version."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-webpage-en-us-fr-fr",
-      "displayName": "Webpage En Us Fr Fr",
-      "family": "universal",
-      "skillDir": "okhp3-webpage-en-us-fr-fr",
-      "path": "universal/okhp3-webpage-en-us-fr-fr/SKILL.md",
-      "description": "Translate owned webpage content one-way from United States English (en-US) to France French (fr-FR), preserving the source voice, claims, structure, protected markup, and pair-specific dictionary. Use when creating or updating an fr-FR page clone. Do not use for another language pair, reverse translation, generic copyediting, or machine-only publication.",
-      "version": "0.2.0",
-      "license": "MIT",
-      "category": "universal",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "evidenceStatus": "analytical",
-      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "universal"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-webpage-en-us-fr-fr/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-webpage-en-us-fr-fr/SKILL.md",
-      "lastModified": "2026-08-30T15:39:08-05:00",
-      "commitSha": "dad388df",
-      "createdAt": "2026-08-30T15:39:08-05:00",
-      "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
-        "category": "universal",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Directed en-US to fr-FR webpage translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
-        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, and hosted translation management.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": "0.2.0",
-        "evalCount": 3,
-        "benchmarkCount": 0,
-        "testCount": 2,
-        "referenceCount": 3,
-        "scriptCount": 3,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
         ]
       },
       "maturitySource": "fallback-structure",

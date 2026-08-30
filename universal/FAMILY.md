@@ -3,7 +3,7 @@ family: universal
 display_name: Universal
 skill_count: 19
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-30T22:21:43Z
+generated_at: 2026-08-30T23:20:29Z
 ---
 
 # universal
@@ -15,7 +15,7 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 ## Skills (19)
 
 <!-- FAMILY_INVENTORY_START -->
-*19 skills &nbsp;·&nbsp; inventory last updated: **August 30, 2026 at 22:21 UTC***
+*19 skills &nbsp;·&nbsp; inventory last updated: **August 30, 2026 at 23:20 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -34,8 +34,8 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 | [okhp3-skill-discovery](okhp3-skill-discovery/SKILL.md) | Find, verify, compare, and route to project-local, installed, runtime, or plugin-provided agent s... | 0.1.0 |
 | [okhp3-skill-foundry](okhp3-skill-foundry/SKILL.md) | Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progres... | 3.1.0 |
 | [okhp3-skill-promotion](okhp3-skill-promotion/SKILL.md) | Promote and synchronize a project-local Agent Skill into a portable, reviewable distribution pack... | 0.1.0 |
+| [okhp3-translation-en-us-fr-fr](okhp3-translation-en-us-fr-fr/SKILL.md) | Translate owned text artifacts one way from United States English (en-US) to France French (fr-FR... | 1.0.0 |
 | [okhp3-vite-github-pages](okhp3-vite-github-pages/SKILL.md) | OverKill Hill P³ Vite-to-GitHub-Pages deployment runbook. Use when deploying or troubleshooting t... | 1.1.0 |
-| [okhp3-webpage-en-us-fr-fr](okhp3-webpage-en-us-fr-fr/SKILL.md) | Translate owned webpage content one-way from United States English (en-US) to France French (fr-F... | 0.2.0 |
 | [sp-build-auditor](sp-build-auditor/SKILL.md) | OverKill Hill P³ SharePoint List build screenshot auditor. Use when reviewing screenshots of Shar... | 1.1.0 |
 | [sp-list-architect](sp-list-architect/SKILL.md) | OverKill Hill P³ SharePoint List database architecture reviewer. Use when designing, reviewing, o... | 1.1.0 |
 <!-- FAMILY_INVENTORY_END -->

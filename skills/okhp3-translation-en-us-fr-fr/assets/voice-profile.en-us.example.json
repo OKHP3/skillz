@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "owner-en-us-source-voice",
+  "source_locale": "en-US",
+  "status": "provisional",
+  "authority": "owner-supplied or owner-owned United States English writing",
+  "traits": {
+    "point_of_view": "Preserve the source point of view.",
+    "register": "Preserve the source's directness, warmth, and specificity.",
+    "rhythm": "Retain short standalone lines when they carry emphasis.",
+    "spelling": "United States English source evidence only.",
+    "punctuation": "Preserve intent and emphasis, then use natural fr-FR conventions in the target.",
+    "idioms": "Translate by effect, not word-for-word.",
+    "avoid": ["generic corporate polish", "invented certainty", "prestige-register rewrites"]
+  },
+  "samples": [
+    {
+      "path": "content/en/example-artifact.md",
+      "sampled_on": "YYYY-MM-DD",
+      "notes": "Replace with an owned en-US source sample."
+    }
+  ],
+  "owner_review": {
+    "confirmed_traits": [],
+    "open_questions": ["Confirm whether fr-FR copy should use vous or tu for this site."]
+  }
+}

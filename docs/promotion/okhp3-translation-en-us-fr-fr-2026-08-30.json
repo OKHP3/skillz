@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "skill": {
+    "name": "okhp3-translation-en-us-fr-fr",
+    "version": "1.0.0",
+    "maturity": "candidate",
+    "evidence_status": "analytical"
+  },
+  "source": {
+    "repository": "OKHP3/skillz",
+    "package_path": "universal/okhp3-translation-en-us-fr-fr",
+    "selected_as_canonical_incubator": true,
+    "selection_reason": "Exact-pair en-US to fr-FR text-artifact contract with Foundry validation, deterministic boundary tests, and a current analytical Equilibrium record.",
+    "aggregate_sha256": "dbf76fe18694d776a90df1956aa2bc6c50c1162c97a80e2f1dea4f7c8d32acdb"
+  },
+  "mirrors": [
+    {
+      "path": "skills/okhp3-translation-en-us-fr-fr",
+      "role": "publication-mirror",
+      "authorized": true,
+      "aggregate_sha256": "dbf76fe18694d776a90df1956aa2bc6c50c1162c97a80e2f1dea4f7c8d32acdb"
+    }
+  ],
+  "canonical_target": {
+    "repository": "OKHP3/skillz",
+    "family": "universal",
+    "package_path": "universal/okhp3-translation-en-us-fr-fr",
+    "accepted_commit_or_hash": "not-committed"
+  },
+  "decision": {
+    "status": "mirrored",
+    "basis": [
+      "The package is format-neutral for normalized UTF-8 text artifacts, including HTML, Markdown, MDX, plain text, and text-resource files.",
+      "The name follows the adjacent exact-pair pattern okhp3-translation-<source-locale>-<target-locale>.",
+      "The user authorized the local promotion and cataloging circuit, but did not authorize a commit, push, pull request, or external publication."
+    ]
+  },
+  "authorization": {
+    "approved": [
+      "Create a local publication mirror.",
+      "Regenerate repository catalog artifacts."
+    ],
+    "withheld": [
+      "Commit changes.",
+      "Push changes.",
+      "Open a pull request.",
+      "Publish to an external runtime."
+    ]
+  },
+  "verification": {
+    "foundry_validator": "PASS",
+    "deterministic_tests": "PASS (5 tests)",
+    "json_parse": "PASS (8 JSON files)",
+    "equilibrium_review": "analytical, current version 1.0.0; not independent or native-speaker proof",
+    "catalog": "PASS (full check found 283 distribution skills)",
+    "mirror": "PASS (source and publication mirror inventories are exactly equal)",
+    "artifact_validation": {
+      "status": "PASS with stated limitations",
+      "included": [
+        "Current-version Equilibrium record matches the SKILL.md SHA-256.",
+        "No unresolved Git index entries remain after the scoped resolution.",
+        "The obsolete webpage package and its generated Forge entry are absent."
+      ],
+      "not_established": [
+        "Native-speaker acceptance or translation quality.",
+        "Live site automation or publication behavior."
+      ]
+    }
+  },
+  "limitations": [
+    "This skill translates only en-US to fr-FR. Other language or regional pairs require separate exact-pair packages.",
+    "The package does not directly edit DOCX, PDF, slides, images, or other layout-sensitive binary formats. A format adapter must extract and reinsert normalized text and verify the rendered result.",
+    "Structural checks and protected-token tests do not certify idiomatic French, native-speaker acceptance, translation quality, or live automation behavior."
+  ],
+  "recovery": {
+    "mirror_created_by": "sync_skill_mirror.py",
+    "safe_rollback": "Remove only the exact skills/okhp3-translation-en-us-fr-fr mirror after inspecting its contents; leave the canonical universal package intact.",
+    "pre_sync_worktree_was_dirty": true
+  }
+}
