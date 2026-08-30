@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-30T21:53:23.611Z",
+  "generatedAt": "2026-08-30T21:55:36.091Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "19cce20",
+  "sourceCommit": "8d6d6a4",
   "skillCount": 284,
   "familyCount": 18,
   "families": [
@@ -19463,9 +19463,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-webpage-en-us-fr-fr/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-webpage-en-us-fr-fr/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-08-30T15:39:08-05:00",
+      "commitSha": "dad388df",
+      "createdAt": "2026-08-30T15:39:08-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "universal",
