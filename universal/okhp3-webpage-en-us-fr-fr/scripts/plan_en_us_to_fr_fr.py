@@ -10,7 +10,13 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from validate_en_us_to_fr_fr import SOURCE_LOCALE, TARGET_LOCALE, load_json, validate_manifest
+from validate_en_us_to_fr_fr import (
+    SOURCE_LOCALE,
+    TARGET_LOCALE,
+    load_json,
+    load_supporting_controls,
+    validate_manifest,
+)
 
 
 def sha256(path: Path) -> str:
@@ -28,31 +34,9 @@ def resolve_root(base_dir: Path, raw_root: str, label: str) -> Path:
     return (base_dir / candidate).resolve()
 
 
-def load_supporting_file(base_dir: Path, raw_path: str, label: str) -> Dict[str, Any]:
-    path = resolve_root(base_dir, raw_path, label)
-    if not path.is_file():
-        raise ValueError(f"missing {label}: {path}")
-    try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as exc:
-        raise ValueError(f"invalid JSON in {label}: {exc}")
-    if not isinstance(value, dict):
-        raise ValueError(f"{label} must contain a JSON object")
-    return value
-
-
-def build_plan(project: Dict[str, Any], base_dir: Path) -> Dict[str, Any]:
+def build_plan(project: Dict[str, Any], base_dir: Path, voice_profile: Dict[str, Any], dictionary: Dict[str, Any]) -> Dict[str, Any]:
     source_root = resolve_root(base_dir, project["source"]["root"], "source.root")
     target_root = resolve_root(base_dir, project["target"]["root"], "target.root")
-    voice_profile = load_supporting_file(base_dir, project["source"]["voice_profile"], "source.voice_profile")
-    dictionary = load_supporting_file(base_dir, project["target"]["dictionary"], "target.dictionary")
-    if voice_profile.get("source_locale") != SOURCE_LOCALE:
-        raise ValueError(f"source.voice_profile must declare source_locale {SOURCE_LOCALE}")
-    dictionary_pair = dictionary.get("language_pair")
-    if not isinstance(dictionary_pair, dict) or dictionary_pair.get("source_locale") != SOURCE_LOCALE or dictionary_pair.get("target_locale") != TARGET_LOCALE or dictionary_pair.get("direction") != "one-way":
-        raise ValueError("target.dictionary must declare exactly the en-US to fr-FR one-way pair")
-    if not isinstance(dictionary.get("entries"), list):
-        raise ValueError("target.dictionary must contain an entries array")
     if not source_root.is_dir():
         raise ValueError(f"missing en-US source root: {source_root}")
     extensions = set(project["rules"]["allowed_extensions"])
@@ -98,11 +82,17 @@ def main(argv: Optional[List[str]] = None) -> int:
     project = load_json(args.project, errors)
     if project is not None:
         errors.extend(validate_manifest(project, args.project))
+    controls = None
+    if not errors and isinstance(project, dict):
+        voice_profile, dictionary, control_errors = load_supporting_controls(project, args.base_dir.resolve())
+        errors.extend(control_errors)
+        if not control_errors and voice_profile is not None and dictionary is not None:
+            controls = (voice_profile, dictionary)
     if errors:
         output: Dict[str, Any] = {"passed": False, "errors": errors, "writes_performed": False, "translation_performed": False}
     else:
         try:
-            output = {"passed": True, "plan": build_plan(project, args.base_dir.resolve())}
+            output = {"passed": True, "plan": build_plan(project, args.base_dir.resolve(), *controls)}
         except (KeyError, OSError, ValueError) as exc:
             output = {"passed": False, "errors": [str(exc)], "writes_performed": False, "translation_performed": False}
     if args.format == "json":

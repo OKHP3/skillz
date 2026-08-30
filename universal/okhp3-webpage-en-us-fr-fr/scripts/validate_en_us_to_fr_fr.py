@@ -28,6 +28,7 @@ FENCE_RE = re.compile(r"```[^\n]*\n(.*?)```", re.DOTALL)
 INLINE_CODE_RE = re.compile(r"(?<!`)`([^`\n]+)`(?!`)")
 HEADING_RE = re.compile(r"^\s{0,3}(#{1,6})\s+.+$", re.MULTILINE)
 TARGET_STATUSES = {"draft", "ready-for-native-review", "approved"}
+ENTRY_HANDLING = {"translate", "adapt", "preserve"}
 
 
 def add_error(errors: List[str], message: str) -> None:
@@ -47,6 +48,91 @@ def load_json(path: Path, errors: List[str]) -> Any:
 def require_nonempty_string(value: Any, label: str, errors: List[str]) -> None:
     if not isinstance(value, str) or not value.strip():
         add_error(errors, f"{label} must be a non-empty string")
+
+
+def resolve_control_path(base_dir: Path, raw_path: Any, label: str, errors: List[str]) -> Optional[Path]:
+    if not isinstance(raw_path, str) or not raw_path.strip():
+        add_error(errors, f"{label} must be a non-empty relative path")
+        return None
+    candidate = Path(raw_path)
+    if candidate.is_absolute() or ".." in candidate.parts:
+        add_error(errors, f"{label} must be a relative path without '..': {raw_path}")
+        return None
+    return (base_dir / candidate).resolve()
+
+
+def validate_voice_profile(profile: Any) -> List[str]:
+    errors: List[str] = []
+    if not isinstance(profile, dict):
+        return ["source.voice_profile must contain a JSON object"]
+    if profile.get("schema_version") != "1.0":
+        add_error(errors, "source.voice_profile schema_version must be '1.0'")
+    if profile.get("source_locale") != SOURCE_LOCALE:
+        add_error(errors, f"source.voice_profile source_locale must be {SOURCE_LOCALE}")
+    require_nonempty_string(profile.get("profile_id"), "source.voice_profile profile_id", errors)
+    traits = profile.get("traits")
+    if not isinstance(traits, dict) or not traits:
+        add_error(errors, "source.voice_profile traits must be a non-empty object")
+    samples = profile.get("samples")
+    if not isinstance(samples, list) or not samples:
+        add_error(errors, "source.voice_profile samples must be a non-empty array")
+    return errors
+
+
+def validate_dictionary(dictionary: Any) -> List[str]:
+    errors: List[str] = []
+    if not isinstance(dictionary, dict):
+        return ["target.dictionary must contain a JSON object"]
+    if dictionary.get("schema_version") != "1.0":
+        add_error(errors, "target.dictionary schema_version must be '1.0'")
+    pair = dictionary.get("language_pair")
+    if not isinstance(pair, dict) or pair.get("source_locale") != SOURCE_LOCALE or pair.get("target_locale") != TARGET_LOCALE or pair.get("direction") != "one-way":
+        add_error(errors, "target.dictionary must declare exactly the en-US to fr-FR one-way pair")
+    entries = dictionary.get("entries")
+    if not isinstance(entries, list) or not entries:
+        add_error(errors, "target.dictionary entries must be a non-empty array")
+        return errors
+    seen = set()
+    for index, entry in enumerate(entries):
+        label = f"target.dictionary entries[{index}]"
+        if not isinstance(entry, dict):
+            add_error(errors, f"{label} must be an object")
+            continue
+        for field in ("source", "target", "context"):
+            require_nonempty_string(entry.get(field), f"{label}.{field}", errors)
+        if entry.get("handling") not in ENTRY_HANDLING:
+            add_error(errors, f"{label}.handling must be one of {sorted(ENTRY_HANDLING)}")
+        key = (entry.get("source"), entry.get("context"))
+        if all(isinstance(value, str) and value.strip() for value in key):
+            if key in seen:
+                add_error(errors, f"duplicate target.dictionary entry for source and context: {key[0]!r}, {key[1]!r}")
+            seen.add(key)
+    return errors
+
+
+def load_supporting_controls(project: Dict[str, Any], base_dir: Path) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]], List[str]]:
+    errors: List[str] = []
+    source = project.get("source") if isinstance(project, dict) else None
+    target = project.get("target") if isinstance(project, dict) else None
+    voice_path = resolve_control_path(base_dir, source.get("voice_profile") if isinstance(source, dict) else None, "source.voice_profile", errors)
+    dictionary_path = resolve_control_path(base_dir, target.get("dictionary") if isinstance(target, dict) else None, "target.dictionary", errors)
+    voice_profile = None
+    dictionary = None
+    if voice_path:
+        if not voice_path.is_file():
+            add_error(errors, f"missing source.voice_profile: {voice_path}")
+        else:
+            voice_profile = load_json(voice_path, errors)
+    if dictionary_path:
+        if not dictionary_path.is_file():
+            add_error(errors, f"missing target.dictionary: {dictionary_path}")
+        else:
+            dictionary = load_json(dictionary_path, errors)
+    if voice_profile is not None:
+        errors.extend(validate_voice_profile(voice_profile))
+    if dictionary is not None:
+        errors.extend(validate_dictionary(dictionary))
+    return voice_profile if isinstance(voice_profile, dict) else None, dictionary if isinstance(dictionary, dict) else None, errors
 
 
 def validate_manifest(project: Any, path: Path) -> List[str]:
@@ -189,6 +275,9 @@ def main(argv: Optional[List[str]] = None) -> int:
     project = load_json(args.project, errors)
     if project is not None:
         errors.extend(validate_manifest(project, args.project))
+        if not errors:
+            _, _, control_errors = load_supporting_controls(project, args.project.parent.resolve())
+            errors.extend(control_errors)
     pair = (args.source_file, args.target_file) if args.source_file and args.target_file else None
     if pair and project is not None:
         rules = project.get("rules", {}) if isinstance(project, dict) else {}

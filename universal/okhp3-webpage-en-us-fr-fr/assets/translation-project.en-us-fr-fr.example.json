@@ -9,12 +9,12 @@
   "source": {
     "locale": "en-US",
     "root": "content/en",
-    "voice_profile": "config/voice-profile.en-us.json"
+    "voice_profile": "voice-profile.en-us.example.json"
   },
   "target": {
     "locale": "fr-FR",
     "root": "content/fr",
-    "dictionary": "config/dictionary.en-us-fr-fr.json",
+    "dictionary": "dictionary.en-us-fr-fr.json",
     "status": "draft",
     "needs_native_review": true
   },

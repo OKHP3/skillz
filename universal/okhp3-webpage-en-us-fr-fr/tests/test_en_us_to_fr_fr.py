@@ -20,6 +20,20 @@ PROJECT = {
     "rules": {"slug_policy": "stable", "preserve_urls": True, "default_status": "machine-drafted", "allowed_extensions": [".md"]},
 }
 
+VOICE_PROFILE = {
+    "schema_version": "1.0",
+    "profile_id": "fixture-en-us-voice",
+    "source_locale": "en-US",
+    "traits": {"register": "direct"},
+    "samples": [{"path": "content/en/about.md"}],
+}
+
+DICTIONARY = {
+    "schema_version": "1.0",
+    "language_pair": {"source_locale": "en-US", "target_locale": "fr-FR", "direction": "one-way"},
+    "entries": [{"source": "Home", "target": "Accueil", "handling": "translate", "context": "navigation"}],
+}
+
 
 class EnUsToFrFrValidatorTests(unittest.TestCase):
     def write_project(self, directory: Path, value=PROJECT) -> Path:
@@ -33,10 +47,17 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
             command.extend(["--source-file", str(source), "--target-file", str(target)])
         return subprocess.run(command, capture_output=True, text=True, check=False)
 
+    def write_controls(self, directory: Path, dictionary=DICTIONARY, voice_profile=VOICE_PROFILE) -> None:
+        config_root = directory / "config"
+        config_root.mkdir()
+        (config_root / "voice.en-us.json").write_text(json.dumps(voice_profile), encoding="utf-8")
+        (config_root / "dictionary.en-us-fr-fr.json").write_text(json.dumps(dictionary), encoding="utf-8")
+
     def test_valid_pair_and_protected_tokens_pass(self):
         with tempfile.TemporaryDirectory() as raw:
             directory = Path(raw)
             project = self.write_project(directory)
+            self.write_controls(directory)
             source = directory / "source.md"
             target = directory / "target.md"
             source.write_text("# Hello\n\nUse `npm run check` at https://example.test/a.\n\n```js\nconst x = '{name}'\n```\n", encoding="utf-8")
@@ -65,6 +86,7 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as raw:
             directory = Path(raw)
             project = self.write_project(directory)
+            self.write_controls(directory)
             source = directory / "source.md"
             target = directory / "target.md"
             source.write_text("[Read](https://example.test/a) `{name}`", encoding="utf-8")
@@ -79,13 +101,7 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as raw:
             directory = Path(raw)
             project = self.write_project(directory)
-            config_root = directory / "config"
-            config_root.mkdir()
-            (config_root / "voice.en-us.json").write_text(json.dumps({"source_locale": "en-US"}), encoding="utf-8")
-            (config_root / "dictionary.en-us-fr-fr.json").write_text(
-                json.dumps({"language_pair": {"source_locale": "en-US", "target_locale": "fr-FR", "direction": "one-way"}, "entries": []}),
-                encoding="utf-8",
-            )
+            self.write_controls(directory)
             source_root = directory / "content" / "en"
             source_root.mkdir(parents=True)
             (source_root / "about.md").write_text("# About\n", encoding="utf-8")
@@ -118,6 +134,33 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
             self.assertEqual(result.returncode, 1)
             errors = json.loads(result.stdout)["errors"]
             self.assertTrue(any("source.voice_profile" in item for item in errors))
+
+    def test_validator_rejects_empty_or_wrong_pair_dictionary(self):
+        with tempfile.TemporaryDirectory() as raw:
+            directory = Path(raw)
+            project = self.write_project(directory)
+            invalid_dictionary = json.loads(json.dumps(DICTIONARY))
+            invalid_dictionary["language_pair"]["target_locale"] = "fr-CA"
+            invalid_dictionary["entries"] = []
+            self.write_controls(directory, invalid_dictionary)
+            result = self.run_validator(project)
+            self.assertEqual(result.returncode, 1)
+            errors = json.loads(result.stdout)["errors"]
+            self.assertTrue(any("en-US to fr-FR" in item for item in errors))
+            self.assertTrue(any("entries must be a non-empty array" in item for item in errors))
+
+    def test_validator_rejects_incomplete_voice_profile(self):
+        with tempfile.TemporaryDirectory() as raw:
+            directory = Path(raw)
+            project = self.write_project(directory)
+            incomplete_profile = {"schema_version": "1.0", "source_locale": "en-US", "traits": {}, "samples": []}
+            self.write_controls(directory, voice_profile=incomplete_profile)
+            result = self.run_validator(project)
+            self.assertEqual(result.returncode, 1)
+            errors = json.loads(result.stdout)["errors"]
+            self.assertTrue(any("profile_id" in item for item in errors))
+            self.assertTrue(any("traits must be a non-empty object" in item for item in errors))
+            self.assertTrue(any("samples must be a non-empty array" in item for item in errors))
 
 
 if __name__ == "__main__":

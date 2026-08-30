@@ -12,7 +12,7 @@ compatibility: >
   validator. Translation uses the host agent and does not require a paid API.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.2.0"
+  version: "0.3.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -99,9 +99,10 @@ to vague “French” or “English” just to proceed.
    hashes, profile and dictionary versions, source revision, status, review
    flags, unresolved terms, and assumptions. Preserve a reviewed French edit
    outside changed source units; never overwrite it blindly.
-7. Run `scripts/validate_en_us_to_fr_fr.py` for each pair and
-   `scripts/plan_en_us_to_fr_fr.py` when enumerating new or stale French
-   targets. Both helpers are read-only and cannot judge idiomatic French.
+7. Run `scripts/validate_en_us_to_fr_fr.py` for each pair. It validates the
+   declared voice profile and dictionary as well as the manifest and protected
+   tokens. Run `scripts/plan_en_us_to_fr_fr.py` when enumerating new or stale
+   French targets. Both helpers are read-only and cannot judge idiomatic French.
 8. Return `machine-drafted` or `ready-for-native-review`. Use `approved` only
    when an actual authorized review record is present. Do not publish, add
    hreflang, change a sitemap, or make a live route indexable solely because a
@@ -161,7 +162,8 @@ actual source and target locales in every handoff: `en-US -> fr-FR`.
 `evals/evals.json` covers the normal path, an English-variant boundary, and
 unsafe publication. Evidence remains `not-run`: helper tests establish only
 deterministic behavior, not French quality, native acceptance, or live
-automation behavior.
+automation behavior. `reviews/equilibrium-v0.3.0/` records the separate
+analytical design review and its release limits.
 
 ## About
 
