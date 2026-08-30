@@ -3,7 +3,7 @@ family: community
 display_name: Community
 skill_count: 107
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-30T22:07:57Z
+generated_at: 2026-08-30T22:37:27Z
 ---
 
 # community
@@ -15,7 +15,7 @@ A family of 107 community-originated skills spanning codebase discovery, archite
 ## Skills (107)
 
 <!-- FAMILY_INVENTORY_START -->
-*107 skills &nbsp;·&nbsp; inventory last updated: **August 30, 2026 at 22:07 UTC***
+*107 skills &nbsp;·&nbsp; inventory last updated: **August 30, 2026 at 22:37 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
