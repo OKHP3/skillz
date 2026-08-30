@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-29T21:32:51.433Z",
+  "generatedAt": "2026-08-30T18:26:56.056Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "f3f82dd",
-  "skillCount": 282,
+  "sourceCommit": "5947d99",
+  "skillCount": 283,
   "familyCount": 18,
   "families": [
     {
@@ -781,7 +781,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 18,
+      "skillCount": 19,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -799,6 +799,7 @@
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
         "okhp3-vite-github-pages",
+        "okhp3-webpage-localization",
         "sp-build-auditor",
         "sp-list-architect"
       ],
@@ -19419,6 +19420,69 @@
         "testCount": 0,
         "referenceCount": 0,
         "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-webpage-localization",
+      "displayName": "Webpage Localization",
+      "family": "universal",
+      "skillDir": "okhp3-webpage-localization",
+      "path": "universal/okhp3-webpage-localization/SKILL.md",
+      "description": "Localize an authoritative United States English webpage into approved target languages while preserving its meaning, brand voice, structure, and source provenance. Use when translating, quality-checking, or keeping French, Spanish, German, or other localized web pages synchronized from one English source. Do not use for copyediting English, translating one target language from another, or publishing without approval.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "universal",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "universal"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-webpage-localization/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-webpage-localization/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "One-way, provenance-tracked localization of web pages from an authoritative en-US source.",
+        "outOfScope": "English copyediting, target-to-target translation, native-speaker certification, automated publication, or legal translation.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 4,
+        "scriptCount": 1,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [

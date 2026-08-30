@@ -1,0 +1,29 @@
+{
+  "$schema": "https://example.invalid/okhp3-webpage-localization/v1",
+  "schema_version": "1.0",
+  "site_id": "REQUIRED-site-id",
+  "source_locale": "en-US",
+  "source_roots": ["REQUIRED/source/root"],
+  "output_roots": {
+    "fr": "REQUIRED/output/fr",
+    "es": "REQUIRED/output/es",
+    "de": "REQUIRED/output/de"
+  },
+  "locale_policies": {
+    "fr": {"audience": "REQUIRED", "writing_register": "natural modern French"},
+    "es": {"audience": "REQUIRED", "writing_register": "natural Spanish selected for the intended audience"},
+    "de": {"audience": "REQUIRED", "writing_register": "natural standard German"}
+  },
+  "route_policy": {
+    "source_prefix": "/",
+    "target_prefixes": {"fr": "/fr/", "es": "/es/", "de": "/de/"},
+    "require_reciprocal_hreflang": true
+  },
+  "protected_terms": [
+    {"source": "REQUIRED brand or product term", "state": "preserve", "locales": ["fr", "es", "de"]}
+  ],
+  "approval": {
+    "draft_destination": "REQUIRED review branch or queue",
+    "can_publish_automatically": false
+  }
+}

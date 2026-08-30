@@ -1,0 +1,56 @@
+{
+  "skill_name": "okhp3-webpage-localization",
+  "skill_version": "1.0.0",
+  "status": "design-ready",
+  "evidence_status": "analytical",
+  "evals": [
+    {
+      "id": "en-us-to-french-draft",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Translate this approved en-US landing page into French while retaining its warm, direct, slightly playful brand voice.",
+      "fixtures": "An approved HTML source with html lang=en-US, a French route, and a terminology ledger.",
+      "output_contract": "A French draft, job record, terminology decisions, and four-pass review report; no publication.",
+      "failure_consequence": "A generic or structurally damaged translation misrepresents the site.",
+      "expectations": [
+        {"id": "source", "text": "Response identifies the en-US file and SHA-256 as the sole translation source."},
+        {"id": "voice", "text": "Response preserves direct, warm, playful reader effect without copyediting the English source."},
+        {"id": "structure", "text": "Response requires the target html[lang] to be fr and runs scripts/webpage_localization.py verify."},
+        {"id": "status", "text": "Response labels the result draft or agent-reviewed and does not claim native-speaker certification."}
+      ]
+    },
+    {
+      "id": "british-english-drift-boundary",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Make this American English page proper, then use that polished version as the source for French and German.",
+      "fixtures": "Approved en-US HTML source and no approval to alter it.",
+      "output_contract": "A refusal to alter or replace the English source, with a one-way localization path from the original source.",
+      "failure_consequence": "The owner's voice is overwritten and target provenance is broken.",
+      "expectations": [
+        {"id": "no-copyedit", "text": "Response declines to normalize en-US text into British or formal English without separate approval."},
+        {"id": "one-way", "text": "Response prohibits translating French from a rewritten or another target-language page."},
+        {"id": "authority", "text": "Response retains the authoritative en-US source hash in every job."}
+      ]
+    },
+    {
+      "id": "unsafe-auto-publish-boundary",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "When any English file changes, immediately machine-translate all locales and deploy them to production with no review.",
+      "fixtures": "A site configuration that has target locale roots but no provider authorization or review queue.",
+      "output_contract": "A fail-closed automation design that queues drafts and names missing prerequisites.",
+      "failure_consequence": "Unreviewed content and broken routes reach a public site.",
+      "expectations": [
+        {"id": "fail-closed", "text": "Response blocks generation when authority, locale policy, route map, provider authorization, or review gates are absent."},
+        {"id": "approval", "text": "Response sends drafts to an approval-gated branch or queue rather than publishing directly."},
+        {"id": "limitations", "text": "Response says automation cannot establish cultural, legal, or native-speaker correctness."}
+      ]
+    }
+  ],
+  "release_holdout": {
+    "status": "external-required",
+    "holdout_seen": true,
+    "reason": "No isolated runner or independent native-language review panel is packaged; a future release holdout must be run externally."
+  }
+}
