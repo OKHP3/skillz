@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-30T23:43:20.968Z",
+  "generatedAt": "2026-08-31T01:10:52.191Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "abc5211",
+  "sourceCommit": "d64f3a8",
   "skillCount": 283,
   "familyCount": 19,
   "families": [
@@ -2010,7 +2010,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 2,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -10835,9 +10835,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-08-30T18:45:34-05:00",
+      "commitSha": "d64f3a81",
+      "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
