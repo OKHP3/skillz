@@ -1,0 +1,16 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "skill_name": "okhp3-translation-en-us-en-uk",
+    "evaluated_skill_version": "1.0.0",
+    "evaluation_status": "analytical",
+    "runner": "local unittest and Foundry validator",
+    "model": "same-context reviewer; not independent",
+    "fixtures": "SKILL.md, pair dictionary, project manifest, helper scripts, and deterministic tests"
+  },
+  "acceptance_criteria": {
+    "structural": "Current package and helper tests pass.",
+    "behavioral": "British English quality, native acceptance, and live automation are not established by this record."
+  },
+  "runs": []
+}

@@ -296,6 +296,10 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 
 | Skill | Trigger |
 |---|---|
+| `okhp3-translation-en-us-de-de` | Translate an owned plainspoken `en-US` text artifact to `de-DE`. Load only after any specialist source has a completed plain-en-US mediation record. It does not perform medical, legal, engineering, or other register simplification, and it does not cover `de-AT` or `de-CH`. |
+| `okhp3-translation-en-us-en-uk` | Adapt an owned plainspoken `en-US` text artifact to British English (`en-GB`) spelling, vocabulary, and locale conventions. A same-language regional adaptation, not a bilingual translation. Does not cover `en-AU`, `en-CA`, or `en-IE`. |
+| `okhp3-translation-en-us-es-es` | Translate an owned plainspoken `en-US` text artifact to `es-ES`. Load only after any specialist source has a completed plain-en-US mediation record. It does not perform medical, legal, engineering, or other register simplification, and it does not cover `es-419`, `es-MX`, or `es-US`. |
+| `okhp3-translation-en-us-es-mx` | Translate an owned plainspoken `en-US` text artifact to Mexican Spanish (`es-MX`). Load only after any specialist source has a completed plain-en-US mediation record. Does not cover `es-ES` or `es-419`. |
 | `okhp3-translation-en-us-fr-fr` | Translate an owned plainspoken `en-US` text artifact to `fr-FR`. Load only after any specialist source has a completed plain-en-US mediation record. It does not perform medical, legal, engineering, or other register simplification. |
 
 ### Project-local support skills

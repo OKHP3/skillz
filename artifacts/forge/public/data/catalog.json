@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-30T23:43:20.968Z",
+  "generatedAt": "2026-08-31T01:15:26.616Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "abc5211",
-  "skillCount": 283,
+  "sourceCommit": "d64f3a8",
+  "skillCount": 287,
   "familyCount": 19,
   "families": [
     {
@@ -370,14 +370,18 @@
     {
       "name": "language-mediation",
       "displayName": "Language Mediation",
-      "skillCount": 1,
+      "skillCount": 5,
       "skills": [
+        "okhp3-translation-en-us-de-de",
+        "okhp3-translation-en-us-en-uk",
+        "okhp3-translation-en-us-es-es",
+        "okhp3-translation-en-us-es-mx",
         "okhp3-translation-en-us-fr-fr"
       ],
-      "narrativeBody": null,
+      "narrativeBody": "Language Mediation governs controlled transformations across human languages,\nregional varieties, specialist registers, and audience-appropriate plain\nlanguage. Its purpose is to change expression without silently changing source\nauthority, technical meaning, or uncertainty.",
       "orientation": {
         "purpose": {
-          "value": null,
+          "value": "Language Mediation governs controlled transformations across human languages,\nregional varieties, specialist registers, and audience-appropriate plain\nlanguage. Its purpose is to change expression without silently changing source\nauthority, technical meaning, or uncertainty.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -387,12 +391,12 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-translation-en-us-fr-fr",
+          "value": "okhp3-translation-en-us-de-de",
           "note": null,
           "source": "generated"
         },
         "compositionNotes": {
-          "value": null,
+          "value": "okhp3-translation-en-us-en-uk pairs with okhp3-translation-en-us-fr-fr; okhp3-translation-en-us-es-mx pairs with okhp3-translation-en-us-fr-fr",
           "source": "generated"
         }
       }
@@ -10804,6 +10808,262 @@
       "releaseReadiness": "needs-contract-work"
     },
     {
+      "name": "okhp3-translation-en-us-de-de",
+      "displayName": "Translation En Us De De",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-de-de",
+      "path": "language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
+      "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Germany German (de-DE), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to de-DE text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-translation-en-us-en-uk",
+      "displayName": "Translation En Us En Uk",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-en-uk",
+      "path": "language-mediation/okhp3-translation-en-us-en-uk/SKILL.md",
+      "description": "Adapt owned plainspoken text artifacts one way from United States English (en-US) to British English (en-GB), preserving source voice, meaning, protected tokens, and structure while changing spelling, vocabulary, and locale conventions that genuinely differ. This is a same-language regional adaptation, not a bilingual translation. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another English locale (en-AU, en-CA, en-IE), a bilingual language pair, a register conversion, reverse adaptation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-translation-en-us-fr-fr"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-en-uk/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-en-uk/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to en-GB text-artifact regional adaptation, voice preservation, spelling/vocabulary dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target English locale, a bilingual language pair, native-speaker certification, autonomous publication, legal approval, reverse adaptation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-translation-en-us-es-es",
+      "displayName": "Translation En Us Es Es",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-es-es",
+      "path": "language-mediation/okhp3-translation-en-us-es-es/SKILL.md",
+      "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Spain Spanish (es-ES), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-es-es/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-es-es/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to es-ES text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-translation-en-us-es-mx",
+      "displayName": "Translation En Us Es Mx",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-es-mx",
+      "path": "language-mediation/okhp3-translation-en-us-es-mx/SKILL.md",
+      "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Mexican Spanish (es-MX), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair (including es-ES or es-419), a register conversion, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-translation-en-us-fr-fr"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-es-mx/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-es-mx/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to es-MX text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale (including es-ES and es-419), native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-translation-en-us-fr-fr",
       "displayName": "Translation En Us Fr Fr",
       "family": "language-mediation",
@@ -10835,9 +11095,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-08-30T18:45:34-05:00",
+      "commitSha": "d64f3a81",
+      "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
@@ -10855,7 +11115,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [

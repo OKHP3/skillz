@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-30T23:43:20.968Z",
+  "generatedAt": "2026-08-31T01:15:26.616Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "abc5211",
-  "skillCount": 283,
+  "sourceCommit": "d64f3a8",
+  "skillCount": 287,
   "familyCount": 19,
   "maturityCounts": {
-    "draftable": 204,
+    "draftable": 208,
     "skeleton": 74,
     "usable": 5
   },
@@ -15,7 +15,7 @@
     "not-run": 123,
     "none": 119,
     "local-checks": 27,
-    "analytical": 1,
+    "analytical": 5,
     "live": 7
   },
   "capabilities": {

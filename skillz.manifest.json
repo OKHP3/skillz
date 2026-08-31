@@ -20,12 +20,12 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 283,
+  "distributionSkillCount": 287,
   "activeFamilyCount": 19,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 46,
   "maturityCounts": {
-    "draftable": 204,
+    "draftable": 208,
     "skeleton": 74,
     "usable": 5
   },
@@ -34,7 +34,7 @@
     "not-run": 123,
     "none": 119,
     "local-checks": 27,
-    "analytical": 1,
+    "analytical": 5,
     "live": 7
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
@@ -276,6 +276,6 @@
     ]
   },
   "distributionFamilyCount": 19,
-  "countsGeneratedAt": "2026-08-30T23:43:20.968Z",
+  "countsGeneratedAt": "2026-08-31T01:15:26.616Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

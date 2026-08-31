@@ -1,0 +1,6 @@
+interface:
+  display_name: "US English to Spain Spanish Translator"
+  short_description: "Translate plainspoken en-US artifacts into controlled es-ES drafts"
+  default_prompt: "Use $okhp3-translation-en-us-es-es to create or update one Spain Spanish text-artifact draft from a plainspoken en-US source."
+policy:
+  allow_implicit_invocation: true

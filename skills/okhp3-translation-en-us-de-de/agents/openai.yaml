@@ -1,0 +1,6 @@
+interface:
+  display_name: "US English to Germany German Translator"
+  short_description: "Translate plainspoken en-US artifacts into controlled de-DE drafts"
+  default_prompt: "Use $okhp3-translation-en-us-de-de to create or update one Germany German text-artifact draft from a plainspoken en-US source."
+policy:
+  allow_implicit_invocation: true
