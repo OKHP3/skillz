@@ -279,6 +279,7 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-equilibrium-review` | Evaluate documents, reports, spreadsheets, hypotheses, decision memos, or Agent Skills with independent evidence review, conditional disruption, and evidence-based adjudication. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
+| `okhp3-i18n-page-sync` | Detect which pages on a static site are missing a translation or have drifted from a changed English source, by reusing the site's own search index as the page inventory. Reports drift and names the exact-pair translation skill for each flagged route; never translates or writes a page itself. |
 | `okhp3-repository-janitor` | Reconcile local Git mirrors against GitHub, preserve local variations, review branch lifecycle, and prepare safe merge or pruning actions. |
 | `okhp3-repository-organizer` | Profile and safely reorganize content-first Git repositories containing mixed knowledge, prompt, document, research, and media assets, with cross-platform naming safeguards. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |

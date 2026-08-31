@@ -1,0 +1,6 @@
+interface:
+  display_name: "i18n Page Sync Detector"
+  short_description: "Detect which pages need a new or updated translation draft, without translating"
+  default_prompt: "Use $okhp3-i18n-page-sync to report which routes are missing a translation or have drifted from a changed English source, then hand each flagged route to the matching okhp3-translation-en-us-<pair> skill."
+policy:
+  allow_implicit_invocation: true

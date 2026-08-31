@@ -1,0 +1,52 @@
+name: i18n Page Sync
+
+# Detects drift between English source pages and their configured
+# translations. Never translates, never writes, never calls an external
+# API. Copy this file into a consuming repository's .github/workflows/ as
+# i18n-page-sync.yml.
+#
+# If the repository has no i18n/sync.config.json yet, this job passes
+# instantly and says so -- adding this workflow to a repository that has
+# not started translating is safe and does nothing until that config file
+# exists. See okhp3-i18n-page-sync's references/config-schema.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: i18n-page-sync-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check translated pages are present and current
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+
+      - name: Run i18n page sync check
+        run: python3 .agents/skills/okhp3-i18n-page-sync/scripts/i18n-page-sync.py --root . --mode check
+
+      - name: What to do next
+        if: failure()
+        run: |
+          echo "One or more in-scope pages are missing a translation or have"
+          echo "drifted from a changed English source. For each flagged"
+          echo "route, run the named okhp3-translation-en-us-<pair> skill to"
+          echo "produce or update the draft, then confirm it with:"
+          echo "  python3 .agents/skills/okhp3-i18n-page-sync/scripts/i18n-page-sync.py --mode adopt --routes \"<route>\""
+          exit 1

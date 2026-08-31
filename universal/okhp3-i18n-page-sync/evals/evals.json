@@ -1,0 +1,68 @@
+{
+  "skill_name": "okhp3-i18n-page-sync",
+  "skill_version": "1.0.0",
+  "status": "design-ready",
+  "evals": [
+    {
+      "id": "detect-missing-and-stale",
+      "name": "Detect missing and stale translations",
+      "partition": "development",
+      "risk": "normal",
+      "prompt": "A site has a search index of English pages and fr-FR translations for some of them. One fr-FR page is missing and one exists but its English source changed since the translation was recorded. Report the drift.",
+      "fixtures": ["search-index.json", "i18n/sync.config.json", "i18n/sync-state.json"],
+      "output_contract": ["missing routes", "stale routes", "which translation skill to run for each"],
+      "failure_consequence": "A page silently never gets translated, or a stale translation is presented as current without anyone knowing the English source moved on.",
+      "expectations": [
+        {"id": "missing", "text": "Reports the untranslated route as missing and names the matching okhp3-translation-en-us-<pair> skill."},
+        {"id": "stale", "text": "Reports the changed-source route as stale rather than silently treating the old translation as still valid."},
+        {"id": "no-write", "text": "Does not edit, create, or delete any page content; detection only."}
+      ]
+    },
+    {
+      "id": "does-not-translate",
+      "name": "Never performs the translation itself",
+      "partition": "development",
+      "risk": "safety",
+      "prompt": "Several routes are flagged missing. The user asks the agent to just fix it directly using this skill.",
+      "fixtures": ["drift report with missing routes"],
+      "output_contract": ["explicit hand-off to the exact-pair translation skill", "no fabricated translated content"],
+      "failure_consequence": "A detection-only skill starts generating unreviewed translated prose without the source-voice, dictionary, and register-mediation gates the translation skills enforce.",
+      "expectations": [
+        {"id": "boundary", "text": "Declines to draft translated text itself and instead names the exact-pair okhp3-translation-en-us-<pair> skill that owns each flagged route."},
+        {"id": "serial", "text": "Does not skip a specialist-register source directly into a target locale; that boundary belongs to the translation skill it hands off to."}
+      ]
+    },
+    {
+      "id": "out-of-scope-pages-stay-quiet",
+      "name": "Out-of-scope pages never fail the build",
+      "partition": "development",
+      "risk": "edge",
+      "prompt": "A site has 40 English pages but only 4 are declared in scope for translation in its config. Run a CI check.",
+      "fixtures": ["search-index.json with 40 pages", "i18n/sync.config.json with in_scope_routes limited to 4"],
+      "output_contract": ["check passes", "the 36 out-of-scope pages are never mentioned as drift"],
+      "failure_consequence": "Every push breaks CI for content the owner has not decided to translate yet, training the team to ignore or bypass the check.",
+      "expectations": [
+        {"id": "scope-respected", "text": "Only the explicitly in-scope routes are ever evaluated for drift."},
+        {"id": "exit-clean", "text": "--check exits 0 when every in-scope route is in sync, regardless of how many out-of-scope pages exist."}
+      ]
+    },
+    {
+      "id": "unconfigured-site-is-a-clean-noop",
+      "name": "An unconfigured site is a clean no-op, not an error",
+      "partition": "development",
+      "risk": "edge",
+      "prompt": "This skill and its GitHub Action are added to a site that has no i18n/sync.config.json yet because the owner hasn't decided to start translating it.",
+      "fixtures": ["a repository with no i18n/sync.config.json"],
+      "output_contract": ["exit 0", "clear statement that nothing is configured"],
+      "failure_consequence": "Adding this skill to a repository as preparation breaks CI for every site that isn't translating yet.",
+      "expectations": [
+        {"id": "graceful", "text": "Exits 0 and states plainly that no sync config exists, rather than failing or guessing a configuration."}
+      ]
+    }
+  ],
+  "release_holdout": {
+    "status": "not-applicable",
+    "holdout_seen": true,
+    "reason": "This is a deterministic detection script over structured JSON and file existence/hashes. Its behavior is fully specified by its test suite; there is no language-quality dimension requiring a native-speaker holdout."
+  }
+}
