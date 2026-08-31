@@ -3,7 +3,7 @@ family: refolddec
 display_name: ReFolDec
 skill_count: 1
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-28T05:57:05Z
+generated_at: 2026-08-31T01:13:03Z
 ---
 
 # refolddec
@@ -57,7 +57,7 @@ ReFolDec-aware skills track semantic loss explicitly:
 
 ## Lineage
 
-The process-capture work that became `okhp3-process-capture` is a fold operation: recurring task → SKILL.md skeleton.
+The process-capture work that became `okhp3-recurring-task-capture` is a fold operation: recurring task → SKILL.md skeleton.
 
 PathScrib-R and Flowpilot Scribbler (earlier process-capture agent lineage) executed fold operations informally before the SKILL.md format existed. They are the ancestry of both `process-capture/` and the ReFolDec framework. See `process-capture/README.md` for the lineage note.
 
@@ -86,7 +86,7 @@ Agent Skills for ReFolDec operations — recursive folding, unfolding, and refol
 ## Skills (1)
 
 <!-- FAMILY_INVENTORY_START -->
-*1 skill &nbsp;·&nbsp; inventory last updated: **August 28, 2026 at 05:57 UTC***
+*1 skill &nbsp;·&nbsp; inventory last updated: **August 31, 2026 at 01:13 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

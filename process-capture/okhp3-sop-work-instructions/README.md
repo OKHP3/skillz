@@ -1,4 +1,4 @@
-# sop-and-work-instruction-generation
+# okhp3-sop-work-instructions
 
 SKILL.md-compatible agent skill for generating ISO 9001-compliant SOPs and role-scoped work instructions.
 

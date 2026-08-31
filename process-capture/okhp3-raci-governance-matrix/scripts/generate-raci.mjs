@@ -58,7 +58,7 @@ export function generateRaci(pns) {
   const raci = {
     process_id: pns.process_id || '',
     process_name: pns.process_name || '',
-    generated_from: 'process-narrative-authoring:generate-raci',
+    generated_from: 'okhp3-process-narrative-authoring:generate-raci',
     roles: roles.map((r) => ({ id: r.role_id || '', name: r.role_name || '' })),
     matrix: matrixRows,
   };

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "analytical-five-role",
+  "evaluation_status": "historical",
+  "artifact": {
+    "path": "universal/okhp3-webpage-en-us-fr-fr/SKILL.md (pre-remaster path)",
+    "sha256": "e9897e14005e5cdf1afd5f80a4a1acf238a9e94ef1848383cbb41e49df726e98",
+    "version": "0.2.0"
+  },
+  "decision_question": "Is this a structurally sound reference implementation for one-way en-US to fr-FR webpage translation, and is universal the appropriate family for this cross-site skill?",
+  "acceptance_criteria": [
+    "The package permits exactly one source locale, one target locale, and one direction.",
+    "A pair-specific dictionary, voice profile, manifest, and deterministic checks make output handling more controlled than a multi-target package.",
+    "The package preserves authorization, portability, and native-review limits.",
+    "The family placement is reusable across sites without claiming site-specific deployment ownership."
+  ],
+  "independence": {
+    "reviewer_contexts_separated": false,
+    "shared_model_or_source_limits": [
+      "All analytical role assessments were produced in the same agent context from the same local artifact set.",
+      "No independent model run, native French reviewer, or external holdout was available."
+    ]
+  },
+  "claim_ledger": [
+    {"claim_id": "CLM-01", "claim": "Universal is the appropriate family for a portable, cross-site directed webpage translation contract.", "claim_type": "design choice", "evidence_ids": ["E-01", "E-02"], "status": "supported", "consequence": "A site-specific family would duplicate a reusable method; a broad multi-target skill would blur discovery.", "next_test": "Create an actual site adapter and verify it contains only route, vocabulary, and build specifics."},
+    {"claim_id": "CLM-02", "claim": "The package enforces one-way en-US to fr-FR inputs and outputs.", "claim_type": "fact", "evidence_ids": ["E-03", "E-04"], "status": "supported", "consequence": "A multi-pair path could use an incorrect dictionary or output policy.", "next_test": "Run the directed-pair boundary fixture after future edits."},
+    {"claim_id": "CLM-03", "claim": "The pair dictionary improves controlled consistency but does not prove natural or culturally appropriate France French.", "claim_type": "interpretation", "evidence_ids": ["E-05", "E-06"], "status": "supported", "consequence": "Treating a seed dictionary as certification could publish poor or misleading content.", "next_test": "Run a separately controlled native-language or owner-approved external holdout."},
+    {"claim_id": "CLM-04", "claim": "Spanish and German pair packages must remain uncreated until their exact target locales and audiences are selected.", "claim_type": "design choice", "evidence_ids": ["E-05", "E-07"], "status": "supported", "consequence": "A guessed regional variant would bake the wrong dictionary and register into an allegedly controlled package.", "next_test": "Owner chooses the exact BCP 47 target tags and audiences."}
+  ],
+  "initial_reviews": [
+    {"role": "evidence", "decision": "approve-with-limits", "confidence": "medium", "material_findings": [{"id": "E-01", "claim": "The Universal family contains reusable cross-project workflows rather than a single website's implementation.", "status": "supported", "evidence_ids": ["universal/FAMILY.md", "references/family-placement.md"], "consequence": "Incorrect placement would weaken discovery and maintainability.", "next_test": "Review the first consuming-site adapter."}, {"id": "E-02", "claim": "No existing localization family is present in the distribution index.", "status": "supported", "evidence_ids": ["README.md", "universal/FAMILY.md"], "consequence": "A new family would be premature for one active pair package.", "next_test": "Reassess when several maintained pair packages share infrastructure."}], "notes": "Analytical local review only; source set was not independently retrieved."},
+    {"role": "outcome", "decision": "approve-with-limits", "confidence": "medium", "material_findings": [{"id": "E-03", "claim": "The manifest and validator reject any source or output other than en-US to fr-FR and reject a target list.", "status": "supported", "evidence_ids": ["scripts/validate_en_us_to_fr_fr.py", "tests/test_en_us_to_fr_fr.py"], "consequence": "The requested single input-output control would fail.", "next_test": "Keep the boundary fixture in the regression suite."}, {"id": "E-04", "claim": "The planner emits only fr-FR target plans and declares no translation or writes performed.", "status": "supported", "evidence_ids": ["scripts/plan_en_us_to_fr_fr.py", "tests/test_en_us_to_fr_fr.py"], "consequence": "Automation could overstep draft-only authorization.", "next_test": "Verify a consuming repository's approval queue separately."}], "notes": "The package meets the controlled-pair design outcome, not a translation-quality outcome."},
+    {"role": "safety_portability", "decision": "approve-with-limits", "confidence": "medium", "material_findings": [{"id": "E-05", "claim": "The dictionary is explicitly a seed with owner/project precedence and unresolved-term handling.", "status": "supported", "evidence_ids": ["assets/dictionary.en-us-fr-fr.json", "references/voice-and-french.md"], "consequence": "A model could otherwise overstate dictionary authority.", "next_test": "Add project-approved entries only through a consuming-site review."}, {"id": "E-06", "claim": "The package blocks autonomous publication and rejects source comments as authority.", "status": "supported", "evidence_ids": ["SKILL.md", "references/en-us-to-fr-fr-contract.md"], "consequence": "Untrusted content or an automated trigger could cause an unauthorized write.", "next_test": "Exercise the unsafe-publication evaluation with an isolated agent runner."}], "notes": "Scripts are dependency-free and read-only, but rendered-page and deployment checks remain site-specific."}
+  ],
+  "concordance": "material-agreement-with-limits",
+  "disruptor": {
+    "triggered": true,
+    "authority": "analytical-only",
+    "falsification_hypotheses": [
+      {"id": "D-01", "hypothesis": "Leaving a generic multi-target localization package discoverable beside the pair package will route work to the weaker contract.", "test": "Remove the generic package, regenerate the catalog, and confirm only the exact pair is discoverable.", "result": "accepted as a credible defect; corrected in this change."},
+      {"id": "D-02", "hypothesis": "Creating Spanish or German packages without a target regional policy would contradict the controlled-pair premise.", "test": "Require an owner-selected BCP 47 tag and audience before scaffolding either package.", "result": "survives; future packages are deferred."},
+      {"id": "D-03", "hypothesis": "A seed dictionary may yield unnatural or culturally unsuitable French despite passing mechanical checks.", "test": "Run a controlled external native-language holdout on representative owner pages.", "result": "survives; native quality remains unproven."}
+    ],
+    "test_results": ["Five deterministic helper tests passed on 2026-08-30; they do not test French fluency."]
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "approve-with-limits",
+    "decisive_evidence": ["The validator rejects other pairs and multiple targets.", "The planner is explicitly read-only.", "The package has a pair-specific dictionary and review gate.", "The skill remains portable across the three named sites and therefore belongs in universal."],
+    "unresolved_items": ["No independent role execution.", "No native French holdout.", "Spanish and German target locales and audiences are not selected."]
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": ["This is a historical analytical same-context review for version 0.2.0, not independent evidence.", "It does not validate the renamed 1.0.0 text-artifact scope.", "No fresh protected holdout was run."],
+  "follow_up": ["Select the exact Spanish and German target locales and audience policies before creating their pair packages.", "Run an independent native-language or owner-approved external holdout before any quality claim or automatic publication decision."]
+}

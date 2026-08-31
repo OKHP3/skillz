@@ -1,4 +1,4 @@
-# sipoc-generation
+# okhp3-sipoc-generation
 
 SKILL.md-compatible agent skill for generating SIPOC tables from a validated PNS.
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "US English to British English Translator"
+  short_description: "Adapt plainspoken en-US artifacts into controlled British English (en-GB) drafts"
+  default_prompt: "Use $okhp3-translation-en-us-en-uk to create or update one British English (en-GB) text-artifact draft, adapted from a plainspoken en-US source."
+policy:
+  allow_implicit_invocation: true

@@ -5,10 +5,11 @@
 # 1. Copy this file to OKHP3/skillz at:
 #      .github/workflows/verify-skill-landing.yml
 #
-# 2. In the OKHP3/skillz repository settings, add a secret named:
+# 2. In the OKHP3/skillz repository settings, optionally add a secret named:
 #      VERIFY_LANDING_PAT
-#    Set it to a GitHub personal access token that has:
-#      - repo scope on glee-fully-chai-chasers (to dispatch the workflow)
+#    Set it to a GitHub personal access token that can dispatch the workflow
+#    to glee-fully-chai-chasers. Without this optional secret, the workflow
+#    records a warning and exits successfully without dispatching.
 #
 # 3. After each skill PR merges to main in OKHP3/skillz, this workflow fires
 #    and sends a repository_dispatch event to glee-fully-chai-chasers, passing
@@ -61,30 +62,34 @@ jobs:
 
     steps:
       - name: Dispatch repository_dispatch to glee-fully-chai-chasers
-        uses: actions/github-script@v9
-        with:
-          # Keep the secret reference direct in the action input.  The prior
-          # env indirection caused this workflow to fail during GitHub's
-          # workflow initialization on recent pushes, before a job existed.
-          github-token: ${{ secrets.VERIFY_LANDING_PAT }}
-          script: |
-            // Replace OWNER/REPO below with the actual owner and repo name of
-            // the incubator project (glee-fully-chai-chasers).
-            const INCUBATOR_OWNER = "OKHP3";           // <-- adjust if needed
-            const INCUBATOR_REPO  = "glee-fully-chai-chasers"; // <-- adjust if needed
+        env:
+          VERIFY_LANDING_PAT: ${{ secrets.VERIFY_LANDING_PAT }}
+        run: |
+          set -euo pipefail
+          if [ -z "${VERIFY_LANDING_PAT:-}" ]; then
+            echo "::warning title=Landing verification skipped::VERIFY_LANDING_PAT is not configured; no cross-repository dispatch was sent."
+            exit 0
+          fi
 
-            await github.rest.repos.createDispatchEvent({
-              owner: INCUBATOR_OWNER,
-              repo:  INCUBATOR_REPO,
-              event_type: "skillz-push",
-              client_payload: {
-                commit_sha:  context.sha,
-                ref:         context.ref,
-                triggered_by: "OKHP3/skillz push to main",
-              },
-            });
+          payload="$(node <<'NODE'
+          const payload = {
+            event_type: 'skillz-push',
+            client_payload: {
+              commit_sha: process.env.GITHUB_SHA,
+              ref: process.env.GITHUB_REF,
+              triggered_by: `${process.env.GITHUB_REPOSITORY} push to main`,
+            },
+          };
+          process.stdout.write(JSON.stringify(payload));
+          NODE
+          )"
 
-            console.log(
-              `Dispatched skillz-push for commit ${context.sha} to ` +
-              `${INCUBATOR_OWNER}/${INCUBATOR_REPO}`
-            );
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${VERIFY_LANDING_PAT}" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            --data "$payload" \
+            "https://api.github.com/repos/OKHP3/glee-fully-chai-chasers/dispatches"
+
+          echo "Dispatched skillz-push for ${GITHUB_SHA} to OKHP3/glee-fully-chai-chasers"

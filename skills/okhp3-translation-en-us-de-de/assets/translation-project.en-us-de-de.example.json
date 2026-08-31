@@ -1,0 +1,29 @@
+{
+  "schema_version": "2.0",
+  "project_id": "example-site-en-us-de-de",
+  "language_pair": {
+    "source_locale": "en-US",
+    "target_locale": "de-DE",
+    "direction": "one-way"
+  },
+  "source": {
+    "locale": "en-US",
+    "register_state": "plainspoken",
+    "root": "content/en",
+    "voice_profile": "voice-profile.en-us.example.json",
+    "register_mediation_record": null
+  },
+  "target": {
+    "locale": "de-DE",
+    "root": "content/de",
+    "dictionary": "dictionary.en-us-de-de.json",
+    "status": "draft",
+    "needs_native_review": true
+  },
+  "rules": {
+    "slug_policy": "stable",
+    "preserve_urls": true,
+    "default_status": "machine-drafted",
+    "allowed_extensions": [".html", ".md", ".mdx", ".txt", ".json", ".yaml", ".yml"]
+  }
+}

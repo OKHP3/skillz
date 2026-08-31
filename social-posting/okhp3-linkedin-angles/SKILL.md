@@ -56,7 +56,7 @@ While mining, flag (don't yet remove - that's `okhp3-linkedin-post`'s job) any a
 
 ## Backlog interaction
 
-If candidates are produced but not acted on this session, they stay in the registry as "new" - this is the angle backlog. `okhp3-process-capture` and this skill share the principle: capture now, triage later, but capture in a structured place, not just chat scrollback.
+If candidates are produced but not acted on this session, they stay in the registry as "new" - this is the angle backlog. `okhp3-recurring-task-capture` and this skill share the principle: capture now, triage later, but capture in a structured place, not just chat scrollback.
 
 ## Output contract
 

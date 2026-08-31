@@ -3,7 +3,7 @@ family: social-posting
 display_name: Social posting
 skill_count: 31
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-28T05:57:05Z
+generated_at: 2026-08-31T01:13:03Z
 ---
 
 # social-posting
@@ -95,7 +95,7 @@ Telegram.
 ## Skills (31)
 
 <!-- FAMILY_INVENTORY_START -->
-*31 skills &nbsp;·&nbsp; inventory last updated: **August 28, 2026 at 05:57 UTC***
+*31 skills &nbsp;·&nbsp; inventory last updated: **August 31, 2026 at 01:13 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

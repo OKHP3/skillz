@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 258 distribution skills in 17 active families, and 46 project-local support skills under `.agents/skills/`
+- **Current inventory:** 283 distribution skills in 19 active families, and 46 project-local support skills under `.agents/skills/`
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -39,6 +39,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `mermaid/` | Mermaid diagram authoring, governance, theming, publishing, updating, and repair |
 | `notion/` | AI conversation capture and routing into Notion knowledge structures |
 | `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, validating, and promoting information or exploratory work |
+| `language-mediation/` | Controlled transformations across languages, locales, specialist registers, and plain-language audiences |
 | `process-capture/` | Process-analysis and documentation pipeline plus the recurring-task capture skill |
 | `refolddec/` | ReFolDec fold, unfold, and refold transformations |
 | `agent-foundry/` | AI-agent creation, readiness, platform comparison, portability, and lifecycle skills |
@@ -113,11 +114,11 @@ Social-posting cross-cutting rules: identify acting account, destination, audien
 
 ### Process-capture family
 
-Use `okhp3-process-intake-and-scope` for a new process, then compose downstream skills as the artifact matures. Use `okhp3-process-capture` for the meta-task of recognizing a recurring workflow and capturing it as backlog or a new skill skeleton.
+Use `okhp3-process-intake-and-scope` for a new process, then compose downstream skills as the artifact matures. Use `okhp3-recurring-task-capture` for the meta-task of recognizing a recurring workflow and capturing it as backlog or a new skill skeleton.
 
 | Skill | Trigger |
 |---|---|
-| `okhp3-process-capture` | The user says they keep doing something, it is the second or third repetition, or asks to make a workflow into a skill. |
+| `okhp3-recurring-task-capture` | The user says they keep doing something, it is the second or third repetition, or asks to make a workflow into a skill. |
 | `okhp3-process-intake-and-scope` | Document or scope a process from scratch, including boundaries, inputs, outputs, and business rules. |
 | `okhp3-as-is-process-capture` | Capture and normalize the current running process before redesign or gap analysis. |
 | `okhp3-elicitation-interviews` | Prepare interviews, workshops, question plans, or targeted follow-up to fill process gaps. |
@@ -125,14 +126,14 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | `okhp3-process-narrative-authoring` | Turn a completed intake and stakeholder register into a Process Narrative Specification. |
 | `okhp3-visual-process-modeling` | Turn a PNS or process notes into a Mermaid-native bpmn-beta diagram, or validate and repair one. |
 | `okhp3-decision-model-authoring` | Convert three or more meaningful gateway decisions or explicit business rules into a DMN-aligned decision model. |
-| `okhp3-process-gap-analysis` | Find deviations, missing steps, breakdowns, and undefined exception paths between current and intended process. |
-| `okhp3-future-state-strategy` | Design a target-state process and change strategy from a gap analysis. |
-| `okhp3-process-controls-metrics` | Define KPIs, targets, measures, compliance controls, or governance registers for a validated process narrative. |
+| `okhp3-process-gap-exception-analysis` | Find deviations, missing steps, breakdowns, and undefined exception paths between current and intended process. |
+| `okhp3-future-state-change-strategy` | Design a target-state process and change strategy from a gap analysis. |
+| `okhp3-process-measures-controls` | Define KPIs, targets, measures, compliance controls, or governance registers for a validated process narrative. |
 | `okhp3-raci-governance-matrix` | Generate a RACI or governance responsibility document from a validated PNS. |
 | `okhp3-sipoc-generation` | Produce a Suppliers, Inputs, Process, Outputs, Customers summary from a validated PNS. |
 | `okhp3-sop-work-instructions` | Produce an SOP or role-specific work instructions from a validated PNS. |
-| `okhp3-process-quality-validation` | Run the V1 to V9 validation suite, quality scoring, and publication gate for a complete process documentation set. |
-| `okhp3-handoff-packaging` | Package validated process artifacts for publication or handoff; requires a passing validation report. |
+| `okhp3-process-validation-scoring` | Run the V1 to V9 validation suite, quality scoring, and publication gate for a complete process documentation set. |
+| `okhp3-publication-handoff-packaging` | Package validated process artifacts for publication or handoff; requires a passing validation report. |
 
 ### Notion and ReFolDec families
 
@@ -285,6 +286,21 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-skill-foundry` | Create, hone, evaluate, benchmark, brand, or polish a production-quality Agent Skill using the eight-phase Foundry method, evidence ledger, conditional dissent review, and enforced current-state evidence integrity for material releases. |
 | `okhp3-skill-promotion` | Promote and synchronize a project-local skill into a verified `skills/` publication mirror and a reviewable canonical `skillz` handoff without blind overwrites or autonomous publication. |
 | `okhp3-vite-github-pages` | Deploy or repair a React or Vue Vite SPA on GitHub Pages, especially base path, router, and gh-pages issues. |
+
+### Language-mediation family
+
+Language-mediation packages keep specialist-register mediation separate from
+regional-language translation. When both are needed, run them in series:
+specialist source locale to plainspoken source locale first, then plainspoken
+source locale to target locale. Do not collapse or parallelize the two stages.
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-translation-en-us-de-de` | Translate an owned plainspoken `en-US` text artifact to `de-DE`. Load only after any specialist source has a completed plain-en-US mediation record. It does not perform medical, legal, engineering, or other register simplification, and it does not cover `de-AT` or `de-CH`. |
+| `okhp3-translation-en-us-en-uk` | Adapt an owned plainspoken `en-US` text artifact to British English (`en-GB`) spelling, vocabulary, and locale conventions. A same-language regional adaptation, not a bilingual translation. Does not cover `en-AU`, `en-CA`, or `en-IE`. |
+| `okhp3-translation-en-us-es-es` | Translate an owned plainspoken `en-US` text artifact to `es-ES`. Load only after any specialist source has a completed plain-en-US mediation record. It does not perform medical, legal, engineering, or other register simplification, and it does not cover `es-419`, `es-MX`, or `es-US`. |
+| `okhp3-translation-en-us-es-mx` | Translate an owned plainspoken `en-US` text artifact to Mexican Spanish (`es-MX`). Load only after any specialist source has a completed plain-en-US mediation record. Does not cover `es-ES` or `es-419`. |
+| `okhp3-translation-en-us-fr-fr` | Translate an owned plainspoken `en-US` text artifact to `fr-FR`. Load only after any specialist source has a completed plain-en-US mediation record. It does not perform medical, legal, engineering, or other register simplification. |
 
 ### Project-local support skills
 

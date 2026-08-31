@@ -1,4 +1,4 @@
-# visual-process-modeling
+# okhp3-visual-process-modeling
 
 SKILL.md-compatible agent skill for generating, validating, and explaining Mermaid-native `bpmn-beta` diagrams.
 
@@ -6,7 +6,7 @@ Part of the **BP-SKILL v0.2 Business Process Agent Skill Suite** — skill 06 in
 
 ## What this skill does
 
-Converts a PNS into a `bpmn-beta` diagram with pools, lanes, gateways, and message flows. Validates, normalises, and repairs existing diagrams. Triggers `decision-model-authoring` when ≥3 gateways are present. Produces:
+Converts a PNS into a `bpmn-beta` diagram with pools, lanes, gateways, and message flows. Validates, normalises, and repairs existing diagrams. Triggers `okhp3-decision-model-authoring` when ≥3 gateways are present. Produces:
 
 - **`bpmn-beta.mmd`** — Mermaid-native BPMN diagram ready for the BPMN for Mermaid playground
 - **`process-model.svg`** — rendered SVG (optional)

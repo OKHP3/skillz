@@ -1,6 +1,6 @@
 # Backlog
 
-Intake for "I just did this for the third time" moments. A line here is cheaper than a half-built skill. Promote to a real SKILL.md (via `okhp3-process-capture`) once a pattern is confirmed, not before.
+Intake for "I just did this for the third time" moments. A line here is cheaper than a half-built skill. Promote to a real SKILL.md (via `okhp3-recurring-task-capture`) once a pattern is confirmed, not before.
 
 ## Maturity model
 
@@ -41,7 +41,7 @@ The first Social Posting skill to promote should be `okhp3-linkedin-angles` beca
 
 ## Planned families
 
-Placeholder families — no SKILL.md content yet. Promote via `okhp3-process-capture` once use patterns are confirmed.
+Placeholder families — no SKILL.md content yet. Promote via `okhp3-recurring-task-capture` once use patterns are confirmed.
 
 | Family | Intended scope |
 |---|---|

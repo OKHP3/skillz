@@ -1,4 +1,4 @@
-# raci-and-governance-matrix-generation
+# okhp3-raci-governance-matrix
 
 SKILL.md-compatible agent skill for generating RACI matrices and governance responsibility documents.
 

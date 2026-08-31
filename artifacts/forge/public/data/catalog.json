@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-28T13:47:57.750Z",
+  "generatedAt": "2026-08-31T01:20:15.178Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "6b580cbd",
-  "skillCount": 282,
-  "familyCount": 18,
+  "sourceCommit": "06ae777",
+  "skillCount": 287,
+  "familyCount": 19,
   "families": [
     {
       "name": "abrahamic",
@@ -368,6 +368,40 @@
       }
     },
     {
+      "name": "language-mediation",
+      "displayName": "Language Mediation",
+      "skillCount": 5,
+      "skills": [
+        "okhp3-translation-en-us-de-de",
+        "okhp3-translation-en-us-en-uk",
+        "okhp3-translation-en-us-es-es",
+        "okhp3-translation-en-us-es-mx",
+        "okhp3-translation-en-us-fr-fr"
+      ],
+      "narrativeBody": "Language Mediation governs controlled transformations across human languages,\nregional varieties, specialist registers, and audience-appropriate plain\nlanguage. Its purpose is to change expression without silently changing source\nauthority, technical meaning, or uncertainty.",
+      "orientation": {
+        "purpose": {
+          "value": "Language Mediation governs controlled transformations across human languages,\nregional varieties, specialist registers, and audience-appropriate plain\nlanguage. Its purpose is to change expression without silently changing source\nauthority, technical meaning, or uncertainty.",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "language-mediation"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-translation-en-us-de-de",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-translation-en-us-en-uk pairs with okhp3-translation-en-us-fr-fr; okhp3-translation-en-us-es-mx pairs with okhp3-translation-en-us-fr-fr",
+          "source": "generated"
+        }
+      }
+    },
+    {
       "name": "lifetrkr",
       "displayName": "LifeTrkr",
       "skillCount": 2,
@@ -510,24 +544,24 @@
         "okhp3-as-is-process-capture",
         "okhp3-decision-model-authoring",
         "okhp3-elicitation-interviews",
-        "okhp3-future-state-strategy",
-        "okhp3-handoff-packaging",
-        "okhp3-process-capture",
-        "okhp3-process-controls-metrics",
-        "okhp3-process-gap-analysis",
+        "okhp3-future-state-change-strategy",
+        "okhp3-process-gap-exception-analysis",
         "okhp3-process-intake-and-scope",
+        "okhp3-process-measures-controls",
         "okhp3-process-narrative-authoring",
-        "okhp3-process-quality-validation",
+        "okhp3-process-validation-scoring",
+        "okhp3-publication-handoff-packaging",
         "okhp3-raci-governance-matrix",
+        "okhp3-recurring-task-capture",
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
         "okhp3-visual-process-modeling"
       ],
-      "narrativeBody": "One skill: `okhp3-process-capture`. The meta-layer.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+      "narrativeBody": "The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
       "orientation": {
         "purpose": {
-          "value": "One skill: `okhp3-process-capture`. The meta-layer.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+          "value": "The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -535,8 +569,8 @@
             "process-analysis",
             "process-documentation",
             "process-improvement",
-            "process-publication",
-            "meta-tooling"
+            "process-governance",
+            "process-quality"
           ],
           "source": "generated"
         },
@@ -546,7 +580,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": null,
+          "value": "okhp3-as-is-process-capture pairs with okhp3-process-gap-exception-analysis; okhp3-as-is-process-capture pairs with okhp3-process-intake-and-scope; okhp3-as-is-process-capture pairs with okhp3-future-state-change-strategy; okhp3-as-is-process-capture pairs with okhp3-process-narrative-authoring; okhp3-decision-model-authoring pairs with okhp3-publication-handoff-packaging",
           "source": "generated"
         }
       }
@@ -10774,6 +10808,325 @@
       "releaseReadiness": "needs-contract-work"
     },
     {
+      "name": "okhp3-translation-en-us-de-de",
+      "displayName": "Translation En Us De De",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-de-de",
+      "path": "language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
+      "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Germany German (de-DE), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
+      "lastModified": "2026-08-30T20:18:35-05:00",
+      "commitSha": "06ae777d",
+      "createdAt": "2026-08-30T18:45:34-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to de-DE text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-translation-en-us-en-uk",
+      "displayName": "Translation En Us En Uk",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-en-uk",
+      "path": "language-mediation/okhp3-translation-en-us-en-uk/SKILL.md",
+      "description": "Adapt owned plainspoken text artifacts one way from United States English (en-US) to British English (en-GB), preserving source voice, meaning, protected tokens, and structure while changing spelling, vocabulary, and locale conventions that genuinely differ. This is a same-language regional adaptation, not a bilingual translation. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another English locale (en-AU, en-CA, en-IE), a bilingual language pair, a register conversion, reverse adaptation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-translation-en-us-fr-fr"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-en-uk/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-en-uk/SKILL.md",
+      "lastModified": "2026-08-30T20:18:35-05:00",
+      "commitSha": "06ae777d",
+      "createdAt": "2026-08-30T20:18:35-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to en-GB text-artifact regional adaptation, voice preservation, spelling/vocabulary dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target English locale, a bilingual language pair, native-speaker certification, autonomous publication, legal approval, reverse adaptation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-translation-en-us-es-es",
+      "displayName": "Translation En Us Es Es",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-es-es",
+      "path": "language-mediation/okhp3-translation-en-us-es-es/SKILL.md",
+      "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Spain Spanish (es-ES), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-es-es/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-es-es/SKILL.md",
+      "lastModified": "2026-08-30T20:18:35-05:00",
+      "commitSha": "06ae777d",
+      "createdAt": "2026-08-30T18:11:10-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to es-ES text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-translation-en-us-es-mx",
+      "displayName": "Translation En Us Es Mx",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-es-mx",
+      "path": "language-mediation/okhp3-translation-en-us-es-mx/SKILL.md",
+      "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Mexican Spanish (es-MX), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair (including es-ES or es-419), a register conversion, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-translation-en-us-fr-fr"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-es-mx/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-es-mx/SKILL.md",
+      "lastModified": "2026-08-30T20:18:35-05:00",
+      "commitSha": "06ae777d",
+      "createdAt": "2026-08-30T20:18:35-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to es-MX text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale (including es-ES and es-419), native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-translation-en-us-fr-fr",
+      "displayName": "Translation En Us Fr Fr",
+      "family": "language-mediation",
+      "skillDir": "okhp3-translation-en-us-fr-fr",
+      "path": "language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to France French (fr-FR), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "language-mediation",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "language-mediation"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
+      "lastModified": "2026-08-30T18:45:34-05:00",
+      "commitSha": "d64f3a81",
+      "createdAt": "2026-08-30T18:11:10-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "language-mediation",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Directed en-US to fr-FR text-artifact translation, voice preservation, pair dictionary enforcement, provenance, parity checks, and review gating.",
+        "outOfScope": "Any other source or target locale, native-speaker certification, autonomous publication, legal approval, reverse translation, or layout-sensitive binary-document editing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 3,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-celestial-data",
       "displayName": "Celestial Data",
       "family": "lifetrkr",
@@ -10931,7 +11284,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -10996,7 +11349,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -11061,7 +11414,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -11126,7 +11479,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -11260,7 +11613,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -11959,13 +12312,13 @@
       "family": "process-capture",
       "skillDir": "okhp3-as-is-process-capture",
       "path": "process-capture/okhp3-as-is-process-capture/SKILL.md",
-      "description": "Capture and normalise a current-state process description into a structured as-is process YAML with stable step identifiers. Use this skill when the user has a process that is already running and needs to document its current state before gap analysis or redesign; when they provide step lists, SOPs, or process notes that need to be structured; when they say \"document what we do today\", \"capture the current process\", or \"baseline the process before we change it\". Produces a structured as-is process artifact with normalised step IDs.",
-      "version": "0.1.0",
+      "description": "Capture and normalise a current-state process description into a structured as-is process YAML with stable step identifiers. Use this skill when the user has a process that is already running and needs to document its current state before gap analysis or redesign; when they provide step lists, SOPs, or process notes that need to be structured; when they say \\\\\\\"document what we do today\\\\\\\", \\\\\\\"capture the current process\\\\\\\", or \\\\\\\"baseline the process before we change it\\\\\\\". Do not use this skill to design a target state or propose changes — that is okhp3-future-state-change-strategy; this skill records only what happens today. Produces a structured as-is process artifact with normalised step IDs.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-analysis",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/as-is-process-capture",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-as-is-process-capture",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -11983,42 +12336,47 @@
       ],
       "triggers": [
         "User describes how a process runs today and wants it documented before redesign",
-        "You need a baseline artifact before running `process-gap-and-exception-analysis`",
-        "PIR exists but steps lack stable IDs — normalise them with `scripts/assign-step-ids.mjs`",
+        "You need a baseline artifact before running `okhp3-process-gap-exception-analysis`",
+        "PIR exists but steps lack stable IDs: normalise them with `scripts/assign-step-ids.mjs`",
         "User imports existing process notes, SOPs, or procedure documents for structuring"
       ],
       "avoid": [
-        "No PIR exists — run `process-intake-and-scope` first to establish scope and boundaries",
-        "User wants to design a future state only — skip to `future-state-and-change-strategy`",
+        "No PIR exists: run `okhp3-process-intake-and-scope` first to establish scope and boundaries",
+        "User wants to design a future state only: skip to `okhp3-future-state-change-strategy`",
         "Do not include aspirational or proposed changes in the as-is record"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-process-gap-exception-analysis",
+        "okhp3-process-intake-and-scope",
+        "okhp3-future-state-change-strategy",
+        "okhp3-process-narrative-authoring"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [
-        "`process_id` — matches PIR `process_id`",
-        "`baseline_status` — draft | reviewed | approved",
+        "`process_id`: matches PIR `process_id`",
+        "`baseline_status`: draft | reviewed | approved",
         "`captured_date`, `capture_method`, `process_version`",
-        "`steps[]` — each with `id`, `description`, `actor_role_id`, `entry_criteria`, `exit_criteria`, `capture_quality`, `systems[]`, `notes`",
-        "`identified_gaps[]` — steps or sections with low capture quality or person-dependency",
-        "`open_questions[]` — unresolved items from the capture session"
+        "`steps[]`: each with `id`, `description`, `actor_role_id`, `entry_criteria`, `exit_criteria`, `capture_quality`, `systems[]`, `notes`",
+        "`identified_gaps[]`: steps or sections with low capture quality or person-dependency",
+        "`open_questions[]`: unresolved items from the capture session"
       ],
       "tools": [],
       "runtimes": [],
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-as-is-process-capture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-as-is-process-capture/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-analysis",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/as-is-process-capture",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-as-is-process-capture",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "Current-state process capture and normalization into the documented as-is process artifact.",
+        "outOfScope": "Future-state redesign, solution selection, unauthorized publication, or claims beyond supplied process evidence.",
         "publicArtifact": false
       },
       "evidence": {
@@ -12045,13 +12403,13 @@
       "family": "process-capture",
       "skillDir": "okhp3-decision-model-authoring",
       "path": "process-capture/okhp3-decision-model-authoring/SKILL.md",
-      "description": "Author and validate decision models from PNS decision points using DMN-aligned rule tables. Use this skill when the PNS contains three or more gateway decision points that warrant a structured decision table; when the user asks to document business rules as decision logic, build a DMN table, or make decision criteria explicit. This is a recommended extension skill triggered automatically when visual-process-modeling identifies three or more gateways. Produces a decision-model YAML and a human-readable DMN rule table.",
-      "version": "0.1.0",
+      "description": "Author and validate decision models from PNS decision points using DMN-aligned rule tables. Use this skill when the PNS contains three or more gateway decision points that warrant a structured decision table; when the user asks to document business rules as decision logic, build a DMN table, or make decision criteria explicit. This is a recommended extension skill triggered automatically when okhp3-visual-process-modeling identifies three or more gateways. Do not use it for fewer than three decision points — document those inline in the PNS decision_points section instead. Produces a decision-model YAML and a human-readable DMN rule table.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-documentation",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/decision-model-authoring",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-decision-model-authoring",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -12069,17 +12427,19 @@
         "process-documentation"
       ],
       "triggers": [
-        "PNS has **≥3 decision_points** — this is the mandatory trigger condition",
+        "PNS has **≥3 decision_points**: this is the mandatory trigger condition",
         "User needs a decision table to communicate routing logic to implementers",
         "Business rules are complex enough that prose descriptions are insufficient",
         "Preparing a decision catalog as part of governance documentation"
       ],
       "avoid": [
-        "PNS has fewer than 3 decision_points — inline the logic in the PNS `decision_points[]` section",
-        "Decision logic is trivially binary (yes/no) with no business rule — document in `business_rules[]` instead",
+        "PNS has fewer than 3 decision_points: inline the logic in the PNS `decision_points[]` section",
+        "Decision logic is trivially binary (yes/no) with no business rule: document in `business_rules[]` instead",
         "Do not model decisions before the PNS is validated (score ≥ 75)"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-publication-handoff-packaging"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -12088,17 +12448,17 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-decision-model-authoring/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-decision-model-authoring/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-documentation",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/decision-model-authoring",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-decision-model-authoring",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "DMN-aligned decision tables and explicit business rules for process decision points.",
+        "outOfScope": "Decision modeling below the stated gateway threshold, unrelated process redesign, unauthorized publication, or unsupported business claims.",
         "publicArtifact": false
       },
       "evidence": {
@@ -12125,13 +12485,13 @@
       "family": "process-capture",
       "skillDir": "okhp3-elicitation-interviews",
       "path": "process-capture/okhp3-elicitation-interviews/SKILL.md",
-      "description": "Plan and facilitate structured elicitation sessions using BABOK v3 interview and workshop techniques. Use this skill when you need to gather process knowledge from subject matter experts; when the user wants a question plan before an interview or workshop; when elicitation is incomplete and gaps need targeted follow-up; when they say \"help me interview the process owner\", \"prepare questions for the workshop\", or \"what should I ask to fill in the missing steps\". Produces a question plan and elicitation notes template.",
-      "version": "0.1.0",
+      "description": "Plan and facilitate structured elicitation sessions using BABOK v3 interview and workshop techniques. Use this skill when you need to gather process knowledge from subject matter experts; when the user wants a question plan before an interview or workshop; when elicitation is incomplete and gaps need targeted follow-up; when they say \\\\\\\"help me interview the process owner\\\\\\\", \\\\\\\"prepare questions for the workshop\\\\\\\", or \\\\\\\"what should I ask to fill in the missing steps\\\\\\\". Use only when a PIR already exists and has gaps — for first-pass process discovery from scratch, use okhp3-process-intake-and-scope instead. Produces a question plan and elicitation notes template.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-analysis",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/elicitation-and-interview-facilitation",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-elicitation-interviews",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -12152,14 +12512,18 @@
         "PIR exists but has `completeness_score < 70` or open_questions that need targeted follow-up",
         "User needs to interview a subject matter expert and wants a prepared question set",
         "User is planning a process discovery workshop and needs a facilitator guide",
-        "You need to fill elicitation gaps before proceeding to `process-narrative-authoring`"
+        "You need to fill elicitation gaps before proceeding to `okhp3-process-narrative-authoring`"
       ],
       "avoid": [
-        "PIR is already complete (score ≥ 70, no open_questions) — proceed directly to `process-narrative-authoring`",
-        "User has no access to process owners — document the gap and proceed with assumptions flagged",
-        "Do not fabricate answers from the question plan — only record what participants confirm"
+        "PIR is already complete (score ≥ 70, no open_questions): proceed directly to `okhp3-process-narrative-authoring`",
+        "User has no access to process owners: document the gap and proceed with assumptions flagged",
+        "Do not fabricate answers from the question plan: only record what participants confirm"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-process-narrative-authoring",
+        "okhp3-process-intake-and-scope",
+        "okhp3-stakeholder-and-role-mapping"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -12168,17 +12532,17 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-elicitation-interviews/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-elicitation-interviews/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-analysis",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/elicitation-and-interview-facilitation",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-elicitation-interviews",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "Structured interview and workshop question plans for filling known gaps in an existing process intake.",
+        "outOfScope": "First-pass process discovery without a PIR, invented stakeholder answers, unauthorized recording, or unrelated facilitation.",
         "publicArtifact": false
       },
       "evidence": {
@@ -12200,18 +12564,18 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
-      "name": "okhp3-future-state-strategy",
-      "displayName": "Future State Strategy",
+      "name": "okhp3-future-state-change-strategy",
+      "displayName": "Future State Change Strategy",
       "family": "process-capture",
-      "skillDir": "okhp3-future-state-strategy",
-      "path": "process-capture/okhp3-future-state-strategy/SKILL.md",
-      "description": "Design a target-state process and a structured change strategy from a gap analysis. Use this skill when the user wants to redesign a process after gaps have been identified; when they ask \"what should the process look like\", \"how do we fix this\", \"design the to-be process\", or \"build a change plan\". Produces a future-state process artifact and a change strategy document. This is a recommended extension skill — use after process-gap-and-exception-analysis has produced a gap analysis. Scope firewall applies: never include employer-proprietary constraints without explicit user authorisation.",
-      "version": "0.1.0",
+      "skillDir": "okhp3-future-state-change-strategy",
+      "path": "process-capture/okhp3-future-state-change-strategy/SKILL.md",
+      "description": "Design a target-state process and a structured change strategy from a gap analysis. Use this skill when the user wants to redesign a process after gaps have been identified; when they ask \\\\\\\"what should the process look like\\\\\\\", \\\\\\\"how do we fix this\\\\\\\", \\\\\\\"design the to-be process\\\\\\\", or \\\\\\\"build a change plan\\\\\\\". This is a recommended extension skill — use after okhp3-process-gap-exception-analysis has produced a gap analysis. Do not use it to document only the current state — that is okhp3-as-is-process-capture; this skill designs what should change, not what exists today. Scope firewall applies: never include employer-proprietary constraints without explicit user authorisation. Produces a future-state process artifact and a change strategy document.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-improvement",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/future-state-and-change-strategy",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-future-state-change-strategy",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -12233,24 +12597,29 @@
         "`gap-analysis.yaml` exists with at least one `critical` or `major` gap",
         "User wants to redesign a process based on identified gaps",
         "User needs a change management plan to accompany process redesign",
-        "Preparing the target-state PNS input for `process-narrative-authoring`"
+        "Preparing the target-state PNS input for `okhp3-process-narrative-authoring`"
       ],
       "avoid": [
-        "No gap analysis exists — run `process-gap-and-exception-analysis` first",
-        "User wants to document only the current state — use `as-is-process-capture`",
+        "No gap analysis exists: run `okhp3-process-gap-exception-analysis` first",
+        "User wants to document only the current state: use `okhp3-as-is-process-capture`",
         "Scope firewall: do not include confidential employer constraints, proprietary system names, or commercially sensitive process details without explicit user instruction"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-process-narrative-authoring",
+        "okhp3-process-gap-exception-analysis",
+        "okhp3-as-is-process-capture",
+        "okhp3-process-intake-and-scope"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [
-        "`process_id` — matches PIR `process_id`",
-        "`future_state_version` — \"0.1-draft\" initially",
+        "`process_id`: matches PIR `process_id`",
+        "`future_state_version`: \"0.1-draft\" initially",
         "`design_date`, `designed_by_role`",
-        "`resolved_gaps[]` — each gap from `gap-analysis.yaml` with its resolution",
-        "`to_be_steps[]` — `id`, `description`, `actor_role_id`, `systems[]`, `confidence`",
-        "`open_assumptions[]` — assumed constraints flagged for user confirmation",
-        "`change_items[]` — each with `change_type`, `effort`, `risk`, `dependencies[]`, `owner_role`"
+        "`resolved_gaps[]`: each gap from `gap-analysis.yaml` with its resolution",
+        "`to_be_steps[]`: `id`, `description`, `actor_role_id`, `systems[]`, `confidence`",
+        "`open_assumptions[]`: assumed constraints flagged for user confirmation",
+        "`change_items[]`: each with `change_type`, `effort`, `risk`, `dependencies[]`, `owner_role`"
       ],
       "tools": [],
       "runtimes": [],
@@ -12260,19 +12629,19 @@
         "Flag all assumed constraints with `confidence: assumed` in the future-state YAML",
         "Do not include employer-identifying details in any generated artifact"
       ],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-future-state-strategy/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-future-state-strategy/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-22T23:13:05-05:00",
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-future-state-change-strategy/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-future-state-change-strategy/SKILL.md",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
+      "createdAt": "2026-08-28T23:44:26-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-improvement",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/future-state-and-change-strategy",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-future-state-change-strategy",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "Future-state process design and change strategy grounded in an as-is process and documented gap analysis.",
+        "outOfScope": "Current-state documentation only, unapproved implementation, unsupported organizational claims, or autonomous change execution.",
         "publicArtifact": false
       },
       "evidence": {
@@ -12294,18 +12663,445 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
-      "name": "okhp3-handoff-packaging",
-      "displayName": "Handoff Packaging",
+      "name": "okhp3-process-gap-exception-analysis",
+      "displayName": "Process Gap Exception Analysis",
       "family": "process-capture",
-      "skillDir": "okhp3-handoff-packaging",
-      "path": "process-capture/okhp3-handoff-packaging/SKILL.md",
-      "description": "Assemble all validated BP-SKILL process artifacts into a publication-ready bundle with a manifest, approvals record, and completeness check. Use this skill when the user is ready to publish or hand off a complete process documentation set; when they ask to package the process docs, create a handoff bundle, publish the process artifacts, or generate a release package. Requires a passing validation report (Band A or B) before bundling. Produces a MANIFEST.yaml, APPROVALS.yaml, and a ZIP-ready directory structure.",
-      "version": "0.1.0",
+      "skillDir": "okhp3-process-gap-exception-analysis",
+      "path": "process-capture/okhp3-process-gap-exception-analysis/SKILL.md",
+      "description": "Identify deviations, gaps, and exception paths between an as-is process capture and its intended design. Use this skill when the user wants to find where a process breaks down, where steps are missing or inconsistent, where exception handling is undefined, or where current execution differs from documented procedure. Use when they say \\\\\\\"what's wrong with the current process\\\\\\\", \\\\\\\"find the gaps\\\\\\\", \\\\\\\"where does this break\\\\\\\", or \\\\\\\"analyze exceptions\\\\\\\". Records gaps only — it does not propose solutions or redesign; for that, hand off to okhp3-future-state-change-strategy. Produces a gap analysis report and exception catalog.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "process-analysis",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
+      "author": "OverKill Hill P³",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-gap-exception-analysis",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [
+        "gap-analysis",
+        "exception-analysis",
+        "process-improvement",
+        "root-cause",
+        "nonconformity",
+        "BPM-CBOK",
+        "six-sigma"
+      ],
+      "topics": [
+        "process-analysis"
+      ],
+      "triggers": [
+        "You have an `as-is-process.yaml` and want to identify improvement opportunities",
+        "User asks where the current process fails, slows down, or creates risk",
+        "Preparing the input for `okhp3-future-state-change-strategy`",
+        "User needs a root cause analysis of a known process failure"
+      ],
+      "avoid": [
+        "No as-is capture exists: run `okhp3-as-is-process-capture` first",
+        "User wants to design the future state immediately: note the gap analysis is needed first, then run `okhp3-future-state-change-strategy`",
+        "Do not propose solutions here: record gaps only; solutions belong in the future-state skill"
+      ],
+      "companions": [
+        "okhp3-future-state-change-strategy",
+        "okhp3-as-is-process-capture",
+        "okhp3-process-narrative-authoring"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-gap-exception-analysis/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-gap-exception-analysis/SKILL.md",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
+      "createdAt": "2026-08-28T23:44:26-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-analysis",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-gap-exception-analysis",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-based identification of process gaps, deviations, and undefined exception paths.",
+        "outOfScope": "Solution design, future-state planning, invented causes, unauthorized remediation, or unsupported performance claims.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-process-intake-and-scope",
+      "displayName": "Process Intake And Scope",
+      "family": "process-capture",
+      "skillDir": "okhp3-process-intake-and-scope",
+      "path": "process-capture/okhp3-process-intake-and-scope/SKILL.md",
+      "description": "Conduct structured process intake and scope definition using BABOK v3 elicitation techniques. Use this skill when the user wants to document a business process from scratch; when they describe a workflow, procedure, or set of steps and need it structured; when they ask to scope a process, define process boundaries, or capture business rules; when they say \\\\\\\"help me document this process\\\\\\\", \\\\\\\"let's scope out this workflow\\\\\\\", or \\\\\\\"what are the inputs and outputs\\\\\\\"; when you need a Process Intake Record (PIR) as input for downstream narrative, modeling, or SOP skills. This is the first-pass discovery skill; once a PIR exists, use okhp3-elicitation-interviews to fill remaining gaps rather than restarting intake.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "process-analysis",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
+      "author": "OverKill Hill P³",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-intake-and-scope",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [
+        "process-intake",
+        "scope-definition",
+        "elicitation",
+        "BABOK",
+        "PIR",
+        "business-analysis",
+        "intake",
+        "process-boundary"
+      ],
+      "topics": [
+        "process-analysis"
+      ],
+      "triggers": [
+        "User wants to document a process they describe in natural language, bullet points, or prose",
+        "User says \"help me scope this,\" \"let's map this process,\" or \"define the boundaries\"",
+        "You need a structured PIR before calling `okhp3-stakeholder-and-role-mapping` or `okhp3-process-narrative-authoring`",
+        "User wants to capture business rules, exception paths, or system touchpoints for a workflow"
+      ],
+      "avoid": [
+        "A validated PIR with `ready_for_narrative: true` already exists: proceed to `okhp3-process-narrative-authoring`",
+        "A PIR exists but has gaps to fill through targeted follow-up: use `okhp3-elicitation-interviews` instead of restarting intake",
+        "User wants a diagram without prior discovery: use `okhp3-visual-process-modeling` with their description",
+        "Do not invent process details the user has not provided: record gaps as `open_questions`"
+      ],
+      "companions": [
+        "okhp3-stakeholder-and-role-mapping",
+        "okhp3-process-narrative-authoring",
+        "okhp3-elicitation-interviews",
+        "okhp3-visual-process-modeling"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-analysis",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-intake-and-scope",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "First-pass process intake, boundary definition, business-rule capture, and Process Intake Record creation.",
+        "outOfScope": "Detailed current-state validation, future-state redesign, implementation, or invented process facts.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 4,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-process-measures-controls",
+      "displayName": "Process Measures Controls",
+      "family": "process-capture",
+      "skillDir": "okhp3-process-measures-controls",
+      "path": "process-capture/okhp3-process-measures-controls/SKILL.md",
+      "description": "Define process performance measures, KPIs, and compliance controls for a validated PNS. Use this skill when the user needs to add measurability and governance to a documented process; when they ask to define KPIs, set performance targets, add compliance controls, or map the process to a control framework. This is a recommended extension skill — use after okhp3-process-narrative-authoring when governance and measurement rigour beyond the PNS's own kpis section is required. Produces a measures register and a controls register.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "process-governance",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
+      "author": "OverKill Hill P³",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-measures-controls",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [
+        "KPIs",
+        "measures",
+        "controls",
+        "governance",
+        "ISO9001",
+        "COSO",
+        "performance-management",
+        "compliance",
+        "process-controls"
+      ],
+      "topics": [
+        "process-governance"
+      ],
+      "triggers": [
+        "PNS quality score ≥ 75 and user needs additional governance structure",
+        "User needs to map process activities to a control framework",
+        "Preparing process documentation for audit or certification",
+        "PNS `kpis[]` or `controls_and_compliance[]` sections are sparse and need enrichment"
+      ],
+      "avoid": [
+        "PNS does not exist or is below quality threshold: complete `okhp3-process-narrative-authoring` first",
+        "User only needs basic KPIs: use the KPI authoring in `okhp3-process-narrative-authoring` directly",
+        "Do not invent performance targets without user confirmation: record as `target: TBD` with an open question"
+      ],
+      "companions": [
+        "okhp3-process-narrative-authoring",
+        "okhp3-process-validation-scoring"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-measures-controls/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-measures-controls/SKILL.md",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
+      "createdAt": "2026-08-28T23:44:26-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-governance",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-measures-controls",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Process performance measures, KPIs, targets, and compliance controls derived from a validated process narrative.",
+        "outOfScope": "Unvalidated process redesign, operational control execution, legal certification, or unsupported target claims.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-process-narrative-authoring",
+      "displayName": "Process Narrative Authoring",
+      "family": "process-capture",
+      "skillDir": "okhp3-process-narrative-authoring",
+      "path": "process-capture/okhp3-process-narrative-authoring/SKILL.md",
+      "description": "Author and validate a Process Narrative Specification (PNS) from a PIR and stakeholder register. Use this skill when you have a completed Process Intake Record from okhp3-process-intake-and-scope and need to produce a structured narrative document that anchors ISO 9001 §4.4.1 process-box semantics, BABOK Core Concept Model, RACI matrix, SIPOC table, business rules, decision points, KPIs, and controls. Do not use it when only a quick diagram is needed without governance structure — go directly to okhp3-visual-process-modeling for that. The PNS is the authoritative handoff input for okhp3-visual-process-modeling, okhp3-sop-work-instructions, okhp3-raci-governance-matrix, and okhp3-sipoc-generation.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "process-documentation",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
+      "author": "OverKill Hill P³",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-narrative-authoring",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [
+        "process-narrative",
+        "pns",
+        "iso9001",
+        "babok",
+        "raci",
+        "sipoc",
+        "business-rules",
+        "kpis",
+        "process-documentation"
+      ],
+      "topics": [
+        "process-documentation"
+      ],
+      "triggers": [
+        "PIR has `completeness_score ≥ 70` and `ready_for_narrative: true`",
+        "User needs a formal process document (ISO 9001 §4.4.1, BABOK §7)",
+        "You need to produce SIPOC, RACI, or business rules as standalone artifacts",
+        "Preparing input for `okhp3-visual-process-modeling`"
+      ],
+      "avoid": [
+        "PIR has not been validated: complete `okhp3-process-intake-and-scope` first",
+        "User only needs a quick diagram without governance structure: go directly to `okhp3-visual-process-modeling`",
+        "Process is exploratory and roles/rules are completely unknown: return to `okhp3-process-intake-and-scope`"
+      ],
+      "companions": [
+        "okhp3-visual-process-modeling",
+        "okhp3-process-intake-and-scope",
+        "okhp3-sop-work-instructions",
+        "okhp3-raci-governance-matrix",
+        "okhp3-sipoc-generation"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-documentation",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-narrative-authoring",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Authoring a Process Narrative Specification from a completed intake and stakeholder register.",
+        "outOfScope": "Authoring without the required source evidence, unrelated document production, certification claims, or autonomous publication.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 3,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-process-validation-scoring",
+      "displayName": "Process Validation Scoring",
+      "family": "process-capture",
+      "skillDir": "okhp3-process-validation-scoring",
+      "path": "process-capture/okhp3-process-validation-scoring/SKILL.md",
+      "description": "Orchestrate the full V1–V9 validation suite across all BP-SKILL process artifacts and produce a 0-100 quality score with band classification. Use this skill when the user wants to validate a complete process documentation set before publication; when they ask \\\\\\\"is this ready to publish\\\\\\\", \\\\\\\"validate the process docs\\\\\\\", \\\\\\\"run the quality check\\\\\\\", or \\\\\\\"what is the quality score\\\\\\\". Do not use it to validate a single artifact in isolation — run that artifact's own validate script directly instead. Produces a validation report with per-artifact scores, rule-level findings, band classification (A–D), and a publication gate verdict.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "process-quality",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
+      "author": "OverKill Hill P³",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-validation-scoring",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [
+        "validation",
+        "quality-scoring",
+        "V1-V9",
+        "publication-gate",
+        "process-quality",
+        "ISO9001",
+        "BPM-CBOK"
+      ],
+      "topics": [
+        "process-quality"
+      ],
+      "triggers": [
+        "All process artifacts exist (pir.yaml + pns.yaml minimum) and user wants a publication readiness check",
+        "You need a single quality score before passing artifacts to `okhp3-publication-handoff-packaging`",
+        "User asks for a validation report or quality audit of a process documentation set"
+      ],
+      "avoid": [
+        "PNS has not been authored: run `okhp3-process-narrative-authoring` first",
+        "User only wants to validate a single artifact: use the artifact's own validate script directly",
+        "Do not suppress V1–V3 errors: these are hard gates that must be resolved before publication"
+      ],
+      "companions": [
+        "okhp3-publication-handoff-packaging",
+        "okhp3-process-narrative-authoring",
+        "okhp3-process-intake-and-scope"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-validation-scoring/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-validation-scoring/SKILL.md",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
+      "createdAt": "2026-08-28T23:44:26-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-quality",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-process-validation-scoring",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "V1 to V9 validation and quality scoring across a complete process documentation set.",
+        "outOfScope": "Single-artifact validation, fabricated evidence, production certification, or publication without the required gate.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-publication-handoff-packaging",
+      "displayName": "Publication Handoff Packaging",
+      "family": "process-capture",
+      "skillDir": "okhp3-publication-handoff-packaging",
+      "path": "process-capture/okhp3-publication-handoff-packaging/SKILL.md",
+      "description": "Assemble all validated BP-SKILL process artifacts into a publication-ready bundle with a manifest, approvals record, and completeness check. Use this skill when the user is ready to publish or hand off a complete process documentation set; when they ask to package the process docs, create a handoff bundle, publish the process artifacts, or generate a release package. Requires a passing validation report (Band A or B) before bundling — this is the terminal, all-artifacts step; for a single-artifact quality check use okhp3-process-validation-scoring instead. Produces a MANIFEST.yaml, APPROVALS.yaml, and a ZIP-ready directory structure.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-publication",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/publication-and-handoff-packaging",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-publication-handoff-packaging",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -12329,29 +13125,31 @@
         "User wants to create a release package for audit, certification, or onboarding"
       ],
       "avoid": [
-        "Validation report is missing or `ready_for_publication: false` — run `process-validation-and-quality-scoring` first",
-        "Only a subset of artifacts is ready — wait until all required artifacts pass validation"
+        "Validation report is missing or `ready_for_publication: false`: run `okhp3-process-validation-scoring` first",
+        "Only a subset of artifacts is ready: wait until all required artifacts pass validation"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-process-validation-scoring"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-handoff-packaging/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-handoff-packaging/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-22T23:13:05-05:00",
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-publication-handoff-packaging/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-publication-handoff-packaging/SKILL.md",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
+      "createdAt": "2026-08-28T23:44:26-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-publication",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/publication-and-handoff-packaging",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-publication-handoff-packaging",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "Packaging validated process artifacts with manifests, approvals records, and completeness checks.",
+        "outOfScope": "Packaging without a passing validation report, autonomous publication, secret handling, or release authorization.",
         "publicArtifact": false
       },
       "evidence": {
@@ -12373,13 +13171,96 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
-      "name": "okhp3-process-capture",
-      "displayName": "Process Capture",
+      "name": "okhp3-raci-governance-matrix",
+      "displayName": "Raci Governance Matrix",
       "family": "process-capture",
-      "skillDir": "okhp3-process-capture",
-      "path": "process-capture/okhp3-process-capture/SKILL.md",
+      "skillDir": "okhp3-raci-governance-matrix",
+      "path": "process-capture/okhp3-raci-governance-matrix/SKILL.md",
+      "description": "Generate and validate a RACI matrix and governance responsibility document from a validated PNS. Use this skill when the user needs a standalone RACI chart, a governance matrix, or a responsibility assignment document for a process; when they ask to produce a RACI table, document who is responsible for what, or generate a governance framework for a process. Do not use it when the RACI table embedded in the SOP's Responsibilities section is sufficient — use okhp3-sop-work-instructions directly for that. Derives directly from PNS roles_and_raci and activity_sequence sections. Produces raci.md and governance-matrix.md.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "process-governance",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
+      "author": "OverKill Hill P³",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-raci-governance-matrix",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [
+        "RACI",
+        "governance-matrix",
+        "responsibility-assignment",
+        "roles",
+        "accountability",
+        "PMI",
+        "ISO9001"
+      ],
+      "topics": [
+        "process-governance"
+      ],
+      "triggers": [
+        "PNS quality score ≥ 75 and user needs a standalone RACI document",
+        "User needs to communicate role assignments to a wider stakeholder audience",
+        "Preparing governance documentation for audit or onboarding",
+        "Supplementing the SOP with a responsibility reference table"
+      ],
+      "avoid": [
+        "PNS does not exist or `roles_and_raci` is empty: complete `okhp3-process-narrative-authoring` first",
+        "RACI is only needed embedded in the SOP: use `okhp3-sop-work-instructions` instead"
+      ],
+      "companions": [
+        "okhp3-process-narrative-authoring",
+        "okhp3-sop-work-instructions",
+        "okhp3-publication-handoff-packaging"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-raci-governance-matrix/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-raci-governance-matrix/SKILL.md",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
+      "createdAt": "2026-06-22T23:13:05-05:00",
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "process-governance",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-raci-governance-matrix",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Standalone RACI and governance responsibility documents derived from a validated process narrative.",
+        "outOfScope": "Unvalidated role assignments, unrelated organizational design, authorization decisions, or unsupported accountability claims.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-recurring-task-capture",
+      "displayName": "Recurring Task Capture",
+      "family": "process-capture",
+      "skillDir": "okhp3-recurring-task-capture",
+      "path": "process-capture/okhp3-recurring-task-capture/SKILL.md",
       "description": "Capture a recurring task as either a backlog entry or a new skill skeleton. Use when the user says \"I keep doing X\", \"this is the third time\", \"make this a skill\", \"let's capture this\", or at the natural end of a work session when a repeatable pattern just occurred. Extracts the pattern from conversation context (tools used, sequence of steps, input/output formats, corrections made) and produces either a BACKLOG.md line or a SKILL.md skeleton following this repo's conventions — not full skill authoring (that's skill-creator's job once a skeleton exists).",
-      "version": "1.1.1",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "meta-tooling",
       "origin": "okhp3/skillz",
@@ -12402,11 +13283,11 @@
       "tools": [],
       "runtimes": [],
       "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-capture/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-capture/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-recurring-task-capture/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-recurring-task-capture/SKILL.md",
+      "lastModified": "2026-08-28T23:44:26-05:00",
+      "commitSha": "967052e2",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -12436,501 +13317,18 @@
       "releaseReadiness": "needs-contract-work"
     },
     {
-      "name": "okhp3-process-controls-metrics",
-      "displayName": "Process Controls Metrics",
-      "family": "process-capture",
-      "skillDir": "okhp3-process-controls-metrics",
-      "path": "process-capture/okhp3-process-controls-metrics/SKILL.md",
-      "description": "Define process performance measures, KPIs, and compliance controls for a validated PNS. Use this skill when the user needs to add measurability and governance to a documented process; when they ask to define KPIs, set performance targets, add compliance controls, or map the process to a control framework. This is a recommended extension skill — use after process-narrative-authoring when governance and measurement rigour is required. Produces a measures register and a controls register.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "category": "process-governance",
-      "origin": "okhp3/skillz",
-      "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-measures-and-controls-definition",
-      "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
-      "status": null,
-      "tags": [
-        "KPIs",
-        "measures",
-        "controls",
-        "governance",
-        "ISO9001",
-        "COSO",
-        "performance-management",
-        "compliance",
-        "process-controls"
-      ],
-      "topics": [
-        "process-governance"
-      ],
-      "triggers": [
-        "PNS quality score ≥ 75 and user needs additional governance structure",
-        "User needs to map process activities to a control framework",
-        "Preparing process documentation for audit or certification",
-        "PNS `kpis[]` or `controls_and_compliance[]` sections are sparse and need enrichment"
-      ],
-      "avoid": [
-        "PNS does not exist or is below quality threshold — complete `process-narrative-authoring` first",
-        "User only needs basic KPIs — use the KPI authoring in `process-narrative-authoring` directly",
-        "Do not invent performance targets without user confirmation — record as `target: TBD` with an open question"
-      ],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-controls-metrics/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-controls-metrics/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-22T23:13:05-05:00",
-      "packageMetadata": {
-        "author": "OverKill Hill P³",
-        "category": "process-governance",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-measures-and-controls-definition",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 1,
-        "referenceCount": 1,
-        "scriptCount": 1,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-process-gap-analysis",
-      "displayName": "Process Gap Analysis",
-      "family": "process-capture",
-      "skillDir": "okhp3-process-gap-analysis",
-      "path": "process-capture/okhp3-process-gap-analysis/SKILL.md",
-      "description": "Identify deviations, gaps, and exception paths between an as-is process capture and its intended design. Use this skill when the user wants to find where a process breaks down, where steps are missing or inconsistent, where exception handling is undefined, or where current execution differs from documented procedure. Use when they say \"what's wrong with the current process\", \"find the gaps\", \"where does this break\", or \"analyze exceptions\". Produces a gap analysis report and exception catalog.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "category": "process-analysis",
-      "origin": "okhp3/skillz",
-      "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-gap-and-exception-analysis",
-      "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
-      "status": null,
-      "tags": [
-        "gap-analysis",
-        "exception-analysis",
-        "process-improvement",
-        "root-cause",
-        "nonconformity",
-        "BPM-CBOK",
-        "six-sigma"
-      ],
-      "topics": [
-        "process-analysis"
-      ],
-      "triggers": [
-        "You have an `as-is-process.yaml` and want to identify improvement opportunities",
-        "User asks where the current process fails, slows down, or creates risk",
-        "Preparing the input for `future-state-and-change-strategy`",
-        "User needs a root cause analysis of a known process failure"
-      ],
-      "avoid": [
-        "No as-is capture exists — run `as-is-process-capture` first",
-        "User wants to design the future state immediately — note the gap analysis is needed first, then run `future-state-and-change-strategy`",
-        "Do not propose solutions here — record gaps only; solutions belong in the future-state skill"
-      ],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-gap-analysis/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-gap-analysis/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-22T23:13:05-05:00",
-      "packageMetadata": {
-        "author": "OverKill Hill P³",
-        "category": "process-analysis",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-gap-and-exception-analysis",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 1,
-        "referenceCount": 1,
-        "scriptCount": 1,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-process-intake-and-scope",
-      "displayName": "Process Intake And Scope",
-      "family": "process-capture",
-      "skillDir": "okhp3-process-intake-and-scope",
-      "path": "process-capture/okhp3-process-intake-and-scope/SKILL.md",
-      "description": "Conduct structured process intake and scope definition using BABOK v3 elicitation techniques. Use this skill when the user wants to document a business process from scratch; when they describe a workflow, procedure, or set of steps and need it structured; when they ask to scope a process, define process boundaries, or capture business rules; when they say \"help me document this process\", \"let's scope out this workflow\", or \"what are the inputs and outputs\"; when you need a Process Intake Record (PIR) as input for downstream narrative, modeling, or SOP skills.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "category": "process-analysis",
-      "origin": "okhp3/skillz",
-      "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-intake-and-scope",
-      "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
-      "status": null,
-      "tags": [
-        "process-intake",
-        "scope-definition",
-        "elicitation",
-        "BABOK",
-        "PIR",
-        "business-analysis",
-        "intake",
-        "process-boundary"
-      ],
-      "topics": [
-        "process-analysis"
-      ],
-      "triggers": [
-        "User wants to document a process they describe in natural language, bullet points, or prose",
-        "User says \"help me scope this,\" \"let's map this process,\" or \"define the boundaries\"",
-        "You need a structured PIR before calling `stakeholder-and-role-mapping` or `process-narrative-authoring`",
-        "User wants to capture business rules, exception paths, or system touchpoints for a workflow"
-      ],
-      "avoid": [
-        "A validated PIR with `ready_for_narrative: true` already exists — proceed to `process-narrative-authoring`",
-        "User wants a diagram without prior discovery — use `visual-process-modeling` with their description",
-        "Do not invent process details the user has not provided — record gaps as `open_questions`"
-      ],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-intake-and-scope/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-22T23:13:05-05:00",
-      "packageMetadata": {
-        "author": "OverKill Hill P³",
-        "category": "process-analysis",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-intake-and-scope",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 1,
-        "referenceCount": 1,
-        "scriptCount": 4,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-process-narrative-authoring",
-      "displayName": "Process Narrative Authoring",
-      "family": "process-capture",
-      "skillDir": "okhp3-process-narrative-authoring",
-      "path": "process-capture/okhp3-process-narrative-authoring/SKILL.md",
-      "description": "Author and validate a Process Narrative Specification (PNS) from a PIR and stakeholder register. Use this skill when you have a completed Process Intake Record from process-intake-and-scope and need to produce a structured narrative document that anchors ISO 9001 §4.4.1 process-box semantics, BABOK Core Concept Model, RACI matrix, SIPOC table, business rules, decision points, KPIs, and controls. The PNS is the authoritative handoff input for visual-process-modeling, sop-and-work-instruction-generation, raci-and-governance-matrix-generation, and sipoc-generation.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "category": "process-documentation",
-      "origin": "okhp3/skillz",
-      "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-narrative-authoring",
-      "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
-      "status": null,
-      "tags": [
-        "process-narrative",
-        "pns",
-        "iso9001",
-        "babok",
-        "raci",
-        "sipoc",
-        "business-rules",
-        "kpis",
-        "process-documentation"
-      ],
-      "topics": [
-        "process-documentation"
-      ],
-      "triggers": [
-        "PIR has `completeness_score ≥ 70` and `ready_for_narrative: true`",
-        "User needs a formal process document (ISO 9001 §4.4.1, BABOK §7)",
-        "You need to produce SIPOC, RACI, or business rules as standalone artifacts",
-        "Preparing input for `visual-process-modeling`"
-      ],
-      "avoid": [
-        "PIR has not been validated — complete `process-intake-and-scope` first",
-        "User only needs a quick diagram without governance structure — go directly to `visual-process-modeling`",
-        "Process is exploratory and roles/rules are completely unknown — return to `process-intake-and-scope`"
-      ],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-narrative-authoring/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-22T23:13:05-05:00",
-      "packageMetadata": {
-        "author": "OverKill Hill P³",
-        "category": "process-documentation",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-narrative-authoring",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 1,
-        "referenceCount": 1,
-        "scriptCount": 3,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-process-quality-validation",
-      "displayName": "Process Quality Validation",
-      "family": "process-capture",
-      "skillDir": "okhp3-process-quality-validation",
-      "path": "process-capture/okhp3-process-quality-validation/SKILL.md",
-      "description": "Orchestrate the full V1–V9 validation suite across all BP-SKILL process artifacts and produce a 0-100 quality score with band classification. Use this skill when the user wants to validate a complete process documentation set before publication; when they ask \"is this ready to publish\", \"validate the process docs\", \"run the quality check\", or \"what is the quality score\". Produces a validation report with per-artifact scores, rule-level findings, band classification (A–D), and a publication gate verdict.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "category": "process-quality",
-      "origin": "okhp3/skillz",
-      "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-validation-and-quality-scoring",
-      "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
-      "status": null,
-      "tags": [
-        "validation",
-        "quality-scoring",
-        "V1-V9",
-        "publication-gate",
-        "process-quality",
-        "ISO9001",
-        "BPM-CBOK"
-      ],
-      "topics": [
-        "process-quality"
-      ],
-      "triggers": [
-        "All process artifacts exist (pir.yaml + pns.yaml minimum) and user wants a publication readiness check",
-        "You need a single quality score before passing artifacts to `publication-and-handoff-packaging`",
-        "User asks for a validation report or quality audit of a process documentation set"
-      ],
-      "avoid": [
-        "PNS has not been authored — run `process-narrative-authoring` first",
-        "User only wants to validate a single artifact — use the artifact's own validate script directly",
-        "Do not suppress V1–V3 errors — these are hard gates that must be resolved before publication"
-      ],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-process-quality-validation/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-process-quality-validation/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-22T23:13:05-05:00",
-      "packageMetadata": {
-        "author": "OverKill Hill P³",
-        "category": "process-quality",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/process-validation-and-quality-scoring",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 1,
-        "referenceCount": 1,
-        "scriptCount": 1,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-raci-governance-matrix",
-      "displayName": "Raci Governance Matrix",
-      "family": "process-capture",
-      "skillDir": "okhp3-raci-governance-matrix",
-      "path": "process-capture/okhp3-raci-governance-matrix/SKILL.md",
-      "description": "Generate and validate a RACI matrix and governance responsibility document from a validated PNS. Use this skill when the user needs a standalone RACI chart, a governance matrix, or a responsibility assignment document for a process; when they ask to produce a RACI table, document who is responsible for what, or generate a governance framework for a process. Derives directly from PNS roles_and_raci and activity_sequence sections. Produces raci.md and governance-matrix.md.",
-      "version": "0.1.0",
-      "license": "MIT",
-      "category": "process-governance",
-      "origin": "okhp3/skillz",
-      "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/raci-and-governance-matrix-generation",
-      "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
-      "status": null,
-      "tags": [
-        "RACI",
-        "governance-matrix",
-        "responsibility-assignment",
-        "roles",
-        "accountability",
-        "PMI",
-        "ISO9001"
-      ],
-      "topics": [
-        "process-governance"
-      ],
-      "triggers": [
-        "PNS quality score ≥ 75 and user needs a standalone RACI document",
-        "User needs to communicate role assignments to a wider stakeholder audience",
-        "Preparing governance documentation for audit or onboarding",
-        "Supplementing the SOP with a responsibility reference table"
-      ],
-      "avoid": [
-        "PNS does not exist or `roles_and_raci` is empty — complete `process-narrative-authoring` first",
-        "RACI is only needed embedded in the SOP — use `sop-and-work-instruction-generation` instead"
-      ],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-raci-governance-matrix/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-raci-governance-matrix/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-22T23:13:05-05:00",
-      "packageMetadata": {
-        "author": "OverKill Hill P³",
-        "category": "process-governance",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/raci-and-governance-matrix-generation",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
-        "benchmarkCount": 0,
-        "testCount": 1,
-        "referenceCount": 1,
-        "scriptCount": 2,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
       "name": "okhp3-sipoc-generation",
       "displayName": "Sipoc Generation",
       "family": "process-capture",
       "skillDir": "okhp3-sipoc-generation",
       "path": "process-capture/okhp3-sipoc-generation/SKILL.md",
-      "description": "Generate a SIPOC table from a validated PNS. Use this skill when the user needs a high-level process summary showing Suppliers, Inputs, Process steps, Outputs, and Customers; when they ask to produce a SIPOC, create a process summary table, or generate a one-page process overview. Derives directly from PNS process_box and activity_sequence. Produces a sipoc.md Markdown table suitable for presentations, kickoff documents, and governance packs.",
-      "version": "0.1.0",
+      "description": "Generate a SIPOC table from a validated PNS. Use this skill when the user needs a high-level process summary showing Suppliers, Inputs, Process steps, Outputs, and Customers; when they ask to produce a SIPOC, create a process summary table, or generate a one-page process overview. This is a process-level input/output summary, not a stakeholder engagement register — for who is involved and how to engage them, use okhp3-stakeholder-and-role-mapping instead. Derives directly from PNS process_box and activity_sequence. Produces a sipoc.md Markdown table suitable for presentations, kickoff documents, and governance packs.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-documentation",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sipoc-generation",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-sipoc-generation",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -12955,10 +13353,16 @@
         "Supplementing a governance pack with a process summary"
       ],
       "avoid": [
-        "PNS does not exist or `process_box` is empty — complete `process-narrative-authoring` first",
-        "User needs the full process detail — provide the PNS or SOP instead"
+        "PNS does not exist or `process_box` is empty: complete `okhp3-process-narrative-authoring` first",
+        "User needs the full process detail: provide the PNS or SOP instead",
+        "User wants a stakeholder engagement register rather than a process-level summary: use `okhp3-stakeholder-and-role-mapping`"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-process-narrative-authoring",
+        "okhp3-stakeholder-and-role-mapping",
+        "okhp3-publication-handoff-packaging",
+        "okhp3-elicitation-interviews"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -12967,17 +13371,17 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sipoc-generation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sipoc-generation/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-documentation",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sipoc-generation",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-sipoc-generation",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "SIPOC process summaries derived from a validated process narrative.",
+        "outOfScope": "Detailed stakeholder engagement planning, unvalidated process claims, implementation, or unrelated presentation work.",
         "publicArtifact": false
       },
       "evidence": {
@@ -13004,13 +13408,13 @@
       "family": "process-capture",
       "skillDir": "okhp3-sop-work-instructions",
       "path": "process-capture/okhp3-sop-work-instructions/SKILL.md",
-      "description": "Generate Standard Operating Procedures (SOPs) and work instructions from a validated PNS. Use this skill when the user needs to produce a human-readable procedure document from a process narrative; when they ask to write an SOP, create work instructions, generate a procedure, or produce an ISO 9001-compliant process document. The generated SOP follows ISO 9001 §4.4.2 documented information requirements. Produces sop.md and optional work-instructions.md for each role.",
-      "version": "0.1.0",
+      "description": "Generate Standard Operating Procedures (SOPs) and work instructions from a validated PNS. Use this skill when the user needs to produce a human-readable procedure document from a process narrative; when they ask to write an SOP, create work instructions, generate a procedure, or produce an ISO 9001-compliant process document. The generated SOP follows ISO 9001 §4.4.2 documented information requirements and embeds its own RACI summary — use okhp3-raci-governance-matrix instead only when a standalone, wider-audience RACI document is needed. Produces sop.md and optional work-instructions.md for each role.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-documentation",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sop-and-work-instruction-generation",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-sop-work-instructions",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -13034,11 +13438,16 @@
         "User wants role-specific work instructions for each lane in the RACI"
       ],
       "avoid": [
-        "PNS does not exist or is below quality threshold — complete `process-narrative-authoring` first",
-        "User only wants the BPMN diagram — use `visual-process-modeling` directly",
+        "PNS does not exist or is below quality threshold: complete `okhp3-process-narrative-authoring` first",
+        "User only wants the BPMN diagram: use `okhp3-visual-process-modeling` directly",
         "Do not generate SOPs from incomplete or unvalidated process descriptions"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-process-narrative-authoring",
+        "okhp3-visual-process-modeling",
+        "okhp3-publication-handoff-packaging",
+        "okhp3-raci-governance-matrix"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -13047,17 +13456,17 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-sop-work-instructions/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-sop-work-instructions/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-documentation",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/sop-and-work-instruction-generation",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-sop-work-instructions",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "SOPs and role-specific work instructions derived from a validated process narrative.",
+        "outOfScope": "Unvalidated procedures, legal or regulatory certification, unrelated training content, or autonomous operational change.",
         "publicArtifact": false
       },
       "evidence": {
@@ -13084,13 +13493,13 @@
       "family": "process-capture",
       "skillDir": "okhp3-stakeholder-and-role-mapping",
       "path": "process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
-      "description": "Derive and validate a structured stakeholder register from a completed Process Intake Record. Use this skill when you have a PIR from process-intake-and-scope and need to identify all affected parties, classify their roles, assess influence and interest, and define engagement strategies. Use when the user asks who is involved in a process, needs a RACI-ready role list, wants to understand stakeholder impact, or needs an engagement plan before narrative authoring begins.",
-      "version": "0.1.0",
+      "description": "Derive and validate a structured stakeholder register from a completed Process Intake Record. Use this skill when you have a PIR from okhp3-process-intake-and-scope and need to identify all affected parties, classify their roles, assess influence and interest, and define engagement strategies. Use when the user asks who is involved in a process, needs a RACI-ready role list, wants to understand stakeholder impact, or needs an engagement plan before narrative authoring begins. Produces a stakeholder engagement register, not a one-page process summary — for that, use okhp3-sipoc-generation instead.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-analysis",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/stakeholder-and-role-mapping",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-stakeholder-and-role-mapping",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -13113,11 +13522,16 @@
         "You need engagement strategies for each role before drafting governance content"
       ],
       "avoid": [
-        "PIR has not been validated (score < 70) — return to `process-intake-and-scope`",
-        "User only needs a quick list of names without structured classification — ask if a full register is needed",
+        "PIR has not been validated (score < 70): return to `okhp3-process-intake-and-scope`",
+        "User only needs a quick list of names without structured classification: ask if a full register is needed",
+        "User wants a one-page process summary rather than an engagement register: use `okhp3-sipoc-generation`",
         "Do not invent stakeholders not present in the PIR actors array"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-process-intake-and-scope",
+        "okhp3-sipoc-generation",
+        "okhp3-process-narrative-authoring"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -13126,17 +13540,17 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-stakeholder-and-role-mapping/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-analysis",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/stakeholder-and-role-mapping",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-stakeholder-and-role-mapping",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "Stakeholder identification, role classification, influence and interest assessment, and engagement planning from a completed intake.",
+        "outOfScope": "Invented stakeholder data, employment decisions, unauthorized outreach, or unrelated organizational restructuring.",
         "publicArtifact": false
       },
       "evidence": {
@@ -13163,13 +13577,13 @@
       "family": "process-capture",
       "skillDir": "okhp3-visual-process-modeling",
       "path": "process-capture/okhp3-visual-process-modeling/SKILL.md",
-      "description": "Generate, validate, normalise, and explain Mermaid-native bpmn-beta diagrams from a Process Narrative Specification. Use this skill when the user wants to convert a PNS or process notes into a visual diagram; when they ask for BPMN, a process flow, a swimlane diagram, or a workflow diagram; when they want to validate or repair existing bpmn-beta code; when they mention pools, lanes, gateways, tasks, events, or BPMN 2.0; when they want a Mermaid-native process model they can commit to a repo; when the PNS has three or more gateway decision points and a DMN decision table is warranted.",
-      "version": "0.1.0",
+      "description": "Generate, validate, normalise, and explain Mermaid-native bpmn-beta diagrams from a Process Narrative Specification. Use this skill when the user wants to convert a PNS or process notes into a visual diagram; when they ask for BPMN, a process flow, a swimlane diagram, or a workflow diagram; when they want to validate or repair existing bpmn-beta code; when they mention pools, lanes, gateways, tasks, events, or BPMN 2.0; when they want a Mermaid-native process model they can commit to a repo; when the PNS has three or more gateway decision points and a DMN decision table is warranted. Do not use it for a non-BPMN diagram type (flowchart, sequence, ER) — use standard Mermaid syntax for those instead. Produces bpmn-beta.mmd and, optionally, a rendered process-model.svg.",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "process-diagramming",
-      "origin": "okhp3/skillz",
+      "origin": "OKHP3/mermaid-diagram-bpmn",
       "author": "OverKill Hill P³",
-      "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/visual-process-modeling",
+      "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-visual-process-modeling",
       "maturity": "draftable",
       "evidenceStatus": "local-checks",
       "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
@@ -13193,14 +13607,19 @@
         "PNS has `validation.ready_for_bpmn_modeling: true`",
         "User wants a visual process diagram in Mermaid syntax",
         "User wants to validate or normalise existing `bpmn-beta` code",
-        "PNS contains ≥3 decision_points → also trigger `decision-model-authoring` for a DMN table"
+        "PNS contains ≥3 decision_points → also trigger `okhp3-decision-model-authoring` for a DMN table"
       ],
       "avoid": [
-        "PNS has not been validated (score < 75) — complete `process-narrative-authoring` first",
-        "User wants a non-BPMN diagram (flowchart, sequence diagram) — use standard Mermaid syntax",
-        "Do not claim full BPMN 2.0 XML conformance — this is a descriptive subset for human-readable process modeling"
+        "PNS has not been validated (score < 75): complete `okhp3-process-narrative-authoring` first",
+        "User wants a non-BPMN diagram (flowchart, sequence diagram): use standard Mermaid syntax",
+        "Do not claim full BPMN 2.0 XML conformance: this is a descriptive subset for human-readable process modeling"
       ],
-      "companions": [],
+      "companions": [
+        "okhp3-decision-model-authoring",
+        "okhp3-process-narrative-authoring",
+        "okhp3-publication-handoff-packaging",
+        "okhp3-process-intake-and-scope"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -13209,17 +13628,17 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-visual-process-modeling/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-visual-process-modeling/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-08-29T16:27:32-05:00",
+      "commitSha": "f3f82dd2",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
         "category": "process-diagramming",
-        "origin": "okhp3/skillz",
-        "homepage": "https://github.com/overkillhill/mermaid-diagram-bpmn/tree/main/skills/visual-process-modeling",
+        "origin": "OKHP3/mermaid-diagram-bpmn",
+        "homepage": "https://github.com/OKHP3/mermaid-diagram-bpmn/tree/main/skills/okhp3-visual-process-modeling",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "The named stage of the governed business-process documentation lifecycle and its stated input-output handoff.",
-        "outOfScope": "Inventing process facts, bypassing required upstream artifacts, or publishing without authorization.",
+        "inScope": "Mermaid-native bpmn-beta process models derived from a Process Narrative Specification.",
+        "outOfScope": "Non-BPMN diagram authoring, unsupported renderer guarantees, production system changes, or unauthorized publication.",
         "publicArtifact": false
       },
       "evidence": {
@@ -14771,7 +15190,7 @@
       "family": "refolddec",
       "skillDir": "okhp3-refolddec-core",
       "path": "refolddec/okhp3-refolddec-core/SKILL.md",
-      "description": "Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifact from one representation type to another — folding an idea or process into a compact form, unfolding an artifact into its primitives, or refolding across representation types (diagram to documentation, documentation to SKILL.md, SKILL.md to procedure). Also use when semantic loss across a transformation needs to be tracked or compared. This is not a general writing or diagramming skill — it is a representation-change skill. Load domain skills (okhp3-mermaid-core, okhp3-process-capture) alongside this skill when the transformation target is a diagram or a skill skeleton.",
+      "description": "Core ReFolDec transformation skill. Use when the task is explicitly about transforming an artifact from one representation type to another — folding an idea or process into a compact form, unfolding an artifact into its primitives, or refolding across representation types (diagram to documentation, documentation to SKILL.md, SKILL.md to procedure). Also use when semantic loss across a transformation needs to be tracked or compared. This is not a general writing or diagramming skill — it is a representation-change skill. Load domain skills (okhp3-mermaid-core, okhp3-recurring-task-capture) alongside this skill when the transformation target is a diagram or a skill skeleton.",
       "version": "1.1.0",
       "license": "MIT",
       "category": "meta-tooling",
@@ -14790,7 +15209,7 @@
       "avoid": [],
       "companions": [
         "okhp3-mermaid-core",
-        "okhp3-process-capture",
+        "okhp3-recurring-task-capture",
         "okhp3-mermaid-update",
         "okhp3-mermaid-repair"
       ],
@@ -14802,8 +15221,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/refolddec/okhp3-refolddec-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/refolddec/okhp3-refolddec-core/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-08-28T23:44:51-05:00",
+      "commitSha": "0a171756",
       "createdAt": "2026-06-20T05:54:56Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -15821,7 +16240,7 @@
       "avoid": [],
       "companions": [
         "okhp3-linkedin-post",
-        "okhp3-process-capture"
+        "okhp3-recurring-task-capture"
       ],
       "examples": [],
       "inputs": [],
@@ -15831,9 +16250,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "lastModified": "2026-08-28T23:44:51-05:00",
+      "commitSha": "0a171756",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -15965,7 +16384,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -16031,7 +16450,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
