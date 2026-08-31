@@ -39,6 +39,7 @@ const root = resolve(fileURLToPath(new URL('../../../', import.meta.url)));
 const REPO = process.env.GITHUB_REPOSITORY || 'OKHP3/skillz';
 const WORKFLOW_FILE = process.env.PUBLISH_WORKFLOW_FILE || 'deploy-pages.yml';
 const baseUrl = (process.env.FORGE_PUBLISHED_URL || 'https://okhp3.github.io/skillz/').replace(/\/?$/, '/');
+const githubToken = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 
 const jsonIndex = process.argv.indexOf('--json');
 const reportPath = jsonIndex === -1 ? null : process.argv[jsonIndex + 1];
@@ -58,11 +59,13 @@ class StageError extends Error {
 async function fetchJson(url, label) {
   let response;
   try {
+    const headers = {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'skillz-publish-health-check',
+    };
+    if (githubToken) headers.Authorization = `Bearer ${githubToken}`;
     response = await fetch(url, {
-      headers: {
-        Accept: 'application/vnd.github+json',
-        'User-Agent': 'skillz-publish-health-check',
-      },
+      headers,
     });
   } catch (error) {
     throw new StageError('unreachable', `Could not reach ${label} (${url}): ${error.message}`);
