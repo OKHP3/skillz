@@ -3,7 +3,7 @@ family: copilot
 display_name: Copilot Agent Skills
 skill_count: 40
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-01T04:58:05Z
+generated_at: 2026-09-01T05:46:39Z
 ---
 
 # copilot
@@ -139,11 +139,11 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 ## Skills (40)
 
 <!-- FAMILY_INVENTORY_START -->
-*40 skills &nbsp;·&nbsp; inventory last updated: **September 1, 2026 at 04:58 UTC***
+*40 skills &nbsp;·&nbsp; inventory last updated: **September 1, 2026 at 05:46 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-copilot-studio-skill-foundry](okhp3-copilot-studio-skill-foundry/SKILL.md) | Design, author, evaluate, and package a reusable Microsoft Copilot Studio agent skill. Use when a... | 1.0.0 |
+| [okhp3-copilot-studio-skill-foundry](okhp3-copilot-studio-skill-foundry/SKILL.md) | Design, author, evaluate, and package a reusable Microsoft Copilot Studio agent skill. Use when a... | 1.1.0 |
 | [okhp3-cowork-commitment-tracker](okhp3-cowork-commitment-tracker/SKILL.md) | Find and reconcile the user's commitments across an agreed set of email and meeting sources. Use ... | 1.0.0 |
 | [okhp3-cowork-daily-execution-brief](okhp3-cowork-daily-execution-brief/SKILL.md) | Build a realistic personal execution brief from an agreed day's priorities, calendar, and commitm... | 1.0.0 |
 | [okhp3-cowork-decision-record](okhp3-cowork-decision-record/SKILL.md) | Draft a durable decision record from an agreed discussion or source set. Use when capturing a dec... | 1.0.0 |
@@ -154,10 +154,10 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 | [okhp3-cowork-meeting-prep](okhp3-cowork-meeting-prep/SKILL.md) | Prepare a concise meeting brief from an agreed calendar event and relevant Microsoft 365 context.... | 1.0.0 |
 | [okhp3-cowork-project-context-pack](okhp3-cowork-project-context-pack/SKILL.md) | Create a current, source-linked project context pack from selected Microsoft 365 material. Use wh... | 1.0.0 |
 | [okhp3-cowork-research-evidence-log](okhp3-cowork-research-evidence-log/SKILL.md) | Build a source-linked research evidence log with confirmed, inferred, and unknown claims. Use whe... | 1.0.0 |
-| [okhp3-cowork-skill-foundry](okhp3-cowork-skill-foundry/SKILL.md) | Design, author, evaluate, and package a task-focused Microsoft Copilot Cowork skill. Use when con... | 1.0.0 |
+| [okhp3-cowork-skill-foundry](okhp3-cowork-skill-foundry/SKILL.md) | Design, author, evaluate, and package a task-focused Microsoft Copilot Cowork skill. Use when con... | 1.1.0 |
 | [okhp3-cowork-stakeholder-update](okhp3-cowork-stakeholder-update/SKILL.md) | Draft a source-grounded stakeholder update for review from an agreed project, time window, and au... | 1.0.0 |
 | [okhp3-cowork-weekly-review](okhp3-cowork-weekly-review/SKILL.md) | Create a personal weekly review from an agreed Microsoft 365 work window. Use when summarizing co... | 1.0.0 |
-| [okhp3-github-skill-foundry](okhp3-github-skill-foundry/SKILL.md) | Design, author, evaluate, and install-plan a task-focused GitHub Copilot Agent Skill. Use when cr... | 1.0.0 |
+| [okhp3-github-skill-foundry](okhp3-github-skill-foundry/SKILL.md) | Design, author, evaluate, and install-plan a task-focused GitHub Copilot Agent Skill. Use when cr... | 1.1.0 |
 | [okhp3-sharepoint-library-accessibility-review](okhp3-sharepoint-library-accessibility-review/SKILL.md) | Review selected SharePoint library documents for supplied accessibility and structure checks, the... | 1.0.0 |
 | [okhp3-sharepoint-library-article-curator](okhp3-sharepoint-library-article-curator/SKILL.md) | Curate selected SharePoint document-library articles into a reviewable collection with titles, su... | 1.0.0 |
 | [okhp3-sharepoint-library-canonical-source-finder](okhp3-sharepoint-library-canonical-source-finder/SKILL.md) | Find likely canonical SharePoint library documents among selected related files and report stale ... | 1.0.0 |
@@ -182,5 +182,5 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 | [okhp3-sharepoint-list-schema-view-review](okhp3-sharepoint-list-schema-view-review/SKILL.md) | Review a SharePoint List schema, views, indexes, and visible configuration against supplied desig... | 1.0.0 |
 | [okhp3-sharepoint-list-sla-breach-watchlist](okhp3-sharepoint-list-sla-breach-watchlist/SKILL.md) | Produce a SharePoint List SLA exception watchlist from supplied status, due-date, and service-tar... | 1.0.0 |
 | [okhp3-sharepoint-list-vendor-obligation-review](okhp3-sharepoint-list-vendor-obligation-review/SKILL.md) | Review a SharePoint List of vendors or obligations for supplied expiry, ownership, and compliance... | 1.0.0 |
-| [okhp3-sharepoint-skill-foundry](okhp3-sharepoint-skill-foundry/SKILL.md) | Design, author, evaluate, and deploy-plan a native Copilot in SharePoint skill for a named site. ... | 1.0.0 |
+| [okhp3-sharepoint-skill-foundry](okhp3-sharepoint-skill-foundry/SKILL.md) | Design, author, evaluate, and deploy-plan a native Copilot in SharePoint skill for a named site. ... | 1.1.0 |
 <!-- FAMILY_INVENTORY_END -->

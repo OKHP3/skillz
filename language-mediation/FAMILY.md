@@ -3,7 +3,7 @@ family: language-mediation
 display_name: Language Mediation
 skill_count: 5
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-01T04:58:05Z
+generated_at: 2026-09-01T05:46:39Z
 ---
 
 # language-mediation
@@ -79,7 +79,7 @@ authority, technical meaning, or uncertainty.
 ## Skills (5)
 
 <!-- FAMILY_INVENTORY_START -->
-*5 skills &nbsp;·&nbsp; inventory last updated: **September 1, 2026 at 04:58 UTC***
+*5 skills &nbsp;·&nbsp; inventory last updated: **September 1, 2026 at 05:46 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
