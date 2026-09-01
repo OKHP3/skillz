@@ -79,7 +79,7 @@ using only supplied ranking and escalation rules plus accessible item fields.
 ## Validation
 
 Use `evals/evals.json` to validate rule-led ranking, missing-rule handling, and
-the unconfirmed-write boundary. No live host evidence exists for version 1.0.0.
+the unconfirmed-write boundary. No live host evidence exists for version 1.1.0.
 
 ## References
 

@@ -44,6 +44,23 @@ and open questions should be visible in one short brief.
 - **Cowork-specific behavior:** retrieve only the event and work context the
   user selected or the host makes available for the session.
 
+## Activation boundary and handoff
+
+- **Interactive and automation boundary:** Use interactively by default. A
+  scheduled or event-driven run may produce a draft only; it must not send,
+  post, schedule, share, create, modify, move, rename, or delete anything.
+- **Approval policy:** Require a current-session, target- and content-specific
+  confirmation before an external action. This is this skill's policy, not a
+  claim that Cowork enforces the same granularity.
+- **Portable fallback:** Outside verified Cowork retrieval, use only material
+  supplied or attached by the user. Otherwise return `NEEDS INPUT`; do not
+  search local, tenant, or connector context.
+- **Host availability:** Cowork custom skills are not supported on mobile.
+  Return `NOT SUPPORTED` on an unavailable surface. A handoff guides work after
+  activation; it cannot prove exclusive host skill selection.
+- **Handoff:** Use daily execution brief only for the day's plan and project
+  context pack for broader multi-source orientation.
+
 ## Required input
 
 Confirm the calendar event or provide its date, title, and participant context.

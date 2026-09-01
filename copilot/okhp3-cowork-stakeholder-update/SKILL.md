@@ -43,6 +43,23 @@ easy to see—without turning a draft into a message.
 - **Cowork-specific behavior:** use only project sources, people, email, files,
   or Teams context that the user selected or can legitimately access.
 
+## Activation boundary and handoff
+
+- **Interactive and automation boundary:** Use interactively by default. A
+  scheduled or event-driven run may produce a draft only; it must not send,
+  post, schedule, share, create, modify, move, rename, or delete anything.
+- **Approval policy:** Require a current-session, recipient- and
+  content-specific confirmation before an external action. This is this skill's
+  policy, not a claim that Cowork enforces the same granularity.
+- **Portable fallback:** Outside verified Cowork retrieval, use only material
+  supplied or attached by the user. Otherwise return `NEEDS INPUT`; do not
+  search local, tenant, or connector context.
+- **Host availability:** Cowork custom skills are not supported on mobile.
+  Return `NOT SUPPORTED` on an unavailable surface. A handoff guides work after
+  activation; it cannot prove exclusive host skill selection.
+- **Handoff:** Use project context pack to assemble selected sources and
+  meeting closeout to verify decisions and action items before drafting.
+
 ## Required input
 
 Confirm:

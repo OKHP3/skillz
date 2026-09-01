@@ -56,8 +56,10 @@ and make missing authority or date explicit.
 ## Safe outcomes
 
 - `NEEDS INPUT`: source, authority, date, target List, or required field is absent.
-- `NOT SUPPORTED`: the host cannot read required source or List detail.
-- `INSUFFICIENT PERMISSION`: the current user cannot access the record or List.
+- `NOT EXPOSED IN THIS RUN`: required source or List detail was not visible.
+- `NOT SUPPORTED`: an explicit host rejection prevents the requested reading.
+- `INSUFFICIENT PERMISSION`: an observed access denial blocks the record or
+  List.
 
 ## Boundaries
 

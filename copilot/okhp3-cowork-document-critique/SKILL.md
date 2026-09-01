@@ -38,6 +38,24 @@ Review the artifact against its job, not against generic prose preferences.
   the user's permissions and session context.
 - **Evidence:** documented Cowork file-context behavior; no live package run.
 
+## Activation boundary and handoff
+
+- **Interactive and automation boundary:** Use interactively by default. A
+  scheduled or event-driven run may produce a draft only; it must not send,
+  post, schedule, share, create, modify, move, rename, or delete anything.
+- **Approval policy:** Require a current-session, target- and content-specific
+  confirmation before an external action. This is this skill's policy, not a
+  claim that Cowork enforces the same granularity.
+- **Portable fallback:** Outside verified Cowork retrieval, use only material
+  supplied or attached by the user. Otherwise return `NEEDS INPUT`; do not
+  search local, tenant, or connector context.
+- **Host availability:** Cowork custom skills are not supported on mobile.
+  Return `NOT SUPPORTED` on an unavailable surface. A handoff guides work after
+  activation; it cannot prove exclusive host skill selection.
+- **Handoff:** Use research evidence log when source-backed claims need review.
+  Use an equilibrium review for a release-level independent assessment, not for
+  this normal draft critique.
+
 ## Required input and safe outcomes
 
 Confirm the draft, audience, intended decision or action, quality criteria, and

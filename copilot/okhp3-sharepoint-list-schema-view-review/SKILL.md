@@ -40,8 +40,9 @@ configuration change.
 ## Procedure
 
 1. Confirm the List, supplied design rules, expected views, and review scope.
-2. Capture only visible schema and configuration facts. Mark hidden or
-   unsupported details `NOT SUPPORTED`, never as compliant or noncompliant.
+2. Capture only user-supplied or host-visible schema and configuration facts.
+   Mark an absent detail `NOT EXPOSED IN THIS RUN`, never as compliant,
+   noncompliant, or unsupported without an explicit host rejection.
 3. Compare field type, requiredness, internal-name evidence, views, indexes,
    and settings to the supplied rule. Do not invent a best-practice rule.
 4. Return:
@@ -55,8 +56,12 @@ configuration change.
 ## Safe outcomes
 
 - `NEEDS INPUT`: List identity, expected design, or rule source is absent.
-- `NOT SUPPORTED`: the host cannot inspect the requested schema or setting.
-- `INSUFFICIENT PERMISSION`: the current user cannot access the List detail.
+- `NOT EXPOSED IN THIS RUN`: the requested schema or setting was not visible
+  to this run.
+- `NOT SUPPORTED`: an explicit host rejection establishes that the surface
+  cannot inspect the requested schema or setting.
+- `INSUFFICIENT PERMISSION`: an observed access denial prevents List detail
+  inspection.
 
 ## Boundaries
 

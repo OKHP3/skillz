@@ -44,6 +44,23 @@ mailbox state.
 - **Cowork-specific behavior:** use mailbox context only when it is available
   to the current user and explicitly in scope for the session.
 
+## Activation boundary and handoff
+
+- **Interactive and automation boundary:** Use interactively by default. A
+  scheduled or event-driven run may produce a draft only; it must not send,
+  post, schedule, share, create, modify, move, rename, or delete anything.
+- **Approval policy:** Require a current-session, mailbox-, message-, and
+  action-specific confirmation before an external action. This is this skill's
+  policy, not a claim that Cowork enforces the same granularity.
+- **Portable fallback:** Outside verified Cowork retrieval, use only material
+  supplied or attached by the user. Otherwise return `NEEDS INPUT`; do not
+  search local, tenant, or connector context.
+- **Host availability:** Cowork custom skills are not supported on mobile.
+  Return `NOT SUPPORTED` on an unavailable surface. A handoff guides work after
+  activation; it cannot prove exclusive host skill selection.
+- **Handoff:** Use commitment tracker for promises found in messages and daily
+  execution brief to turn approved action items into a day plan.
+
 ## Required input
 
 Establish the review scope before reading messages:

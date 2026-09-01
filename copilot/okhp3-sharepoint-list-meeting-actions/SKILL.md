@@ -74,9 +74,12 @@ reminders, or unreviewed list items.
 
 - `NEEDS INPUT`: notes, list identity, a required commitment field, or a
   confirmation owner is missing.
-- `NOT SUPPORTED`: the host cannot read the needed List schema or perform the
-  requested create or update operation.
-- `INSUFFICIENT PERMISSION`: the current user cannot access or update the List.
+- `NOT EXPOSED IN THIS RUN`: needed List schema or a requested action was not
+  visible to this run.
+- `NOT SUPPORTED`: an explicit host rejection prevents the requested reading
+  or action.
+- `INSUFFICIENT PERMISSION`: an observed access denial blocks List access or
+  update.
 
 ## Boundaries
 
@@ -101,7 +104,7 @@ reminders, or unreviewed list items.
 ## Validation
 
 Read `evals/evals.json` for analytical normal, ambiguous-commitment, and
-write-boundary cases. Version 1.0.0 has no live host evidence.
+write-boundary cases. Version 1.1.0 has no live host evidence.
 
 ## References
 

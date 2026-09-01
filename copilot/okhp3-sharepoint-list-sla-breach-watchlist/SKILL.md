@@ -53,8 +53,9 @@ time zone, status mapping, due-date rule, and service-target definition.
 ## Safe outcomes
 
 - `NEEDS INPUT`: clock, time zone, status mapping, SLA rule, or due date is missing.
-- `NOT SUPPORTED`: the host cannot read necessary List fields.
-- `INSUFFICIENT PERMISSION`: the user cannot access required items.
+- `NOT EXPOSED IN THIS RUN`: necessary List fields were not visible.
+- `NOT SUPPORTED`: an explicit host rejection prevents the requested reading.
+- `INSUFFICIENT PERMISSION`: an observed access denial blocks required items.
 
 ## Boundaries
 

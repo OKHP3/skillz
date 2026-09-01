@@ -78,8 +78,11 @@ exceptions and cleanup proposals, not automated remediation.
 
 - `NEEDS INPUT`: no authoritative quality rules, scope, or list identity is
   available.
-- `NOT SUPPORTED`: the host cannot inspect the required list data or fields.
-- `INSUFFICIENT PERMISSION`: the user cannot access the required list content.
+- `NOT EXPOSED IN THIS RUN`: the required List data or fields were not visible.
+- `NOT SUPPORTED`: an explicit host rejection establishes the requested
+  inspection cannot run.
+- `INSUFFICIENT PERMISSION`: an observed access denial blocks the required
+  List content.
 
 ## Boundaries
 
@@ -104,7 +107,7 @@ exceptions and cleanup proposals, not automated remediation.
 ## Validation
 
 Read `evals/evals.json` for analytical cases. Live discovery, data access, and
-write capability remain unverified for version 1.0.0.
+write capability remain unverified for version 1.1.0.
 
 ## References
 

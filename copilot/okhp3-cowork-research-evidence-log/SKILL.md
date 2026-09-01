@@ -36,9 +36,26 @@ uncertainty without rereading every document.
 - **Portable core:** classify claims from supplied sources as confirmed,
   inferred, contradicted, or unknown.
 - **Cowork adaptation:** use selected organizational context or files only when
-  available within the user's permissions; any external research capability is
-  host-dependent and must be declared by the user or host.
+  available within the user's permissions. Cowork documents a built-in Deep
+  Research skill; use it only within an explicit source boundary.
 - **Evidence:** documented Cowork context behavior; no live package run.
+
+## Activation boundary and handoff
+
+- **Interactive and automation boundary:** Use interactively by default. A
+  scheduled or event-driven run may produce a draft only; it must not send,
+  post, schedule, share, create, modify, move, rename, or delete anything.
+- **Approval policy:** Require a current-session, target- and content-specific
+  confirmation before an external action. This is this skill's policy, not a
+  claim that Cowork enforces the same granularity.
+- **Portable fallback:** Outside verified Cowork retrieval, use only material
+  supplied or attached by the user. Otherwise return `NEEDS INPUT`; do not
+  search local, tenant, or connector context.
+- **Host availability:** Cowork custom skills are not supported on mobile.
+  Return `NOT SUPPORTED` on an unavailable surface. A handoff guides work after
+  activation; it cannot prove exclusive host skill selection.
+- **Handoff:** Use project context pack for orientation and decision record
+  when a supported decision must be captured as a durable draft.
 
 ## Required input and safe outcomes
 

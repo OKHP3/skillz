@@ -57,8 +57,10 @@ signal, impact, owner question, and proposed next source visible.
 
 - `NEEDS INPUT`: target List, source signal, impact scale, owner rule, or
   research boundary is missing.
-- `NOT SUPPORTED`: the host cannot inspect required List data.
-- `INSUFFICIENT PERMISSION`: the user cannot access the target List or source.
+- `NOT EXPOSED IN THIS RUN`: required List data was not visible to this run.
+- `NOT SUPPORTED`: an explicit host rejection prevents the requested review.
+- `INSUFFICIENT PERMISSION`: an observed access denial blocks the target List
+  or source.
 
 ## Boundaries
 

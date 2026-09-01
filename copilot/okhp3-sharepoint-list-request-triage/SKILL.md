@@ -96,7 +96,7 @@ or update records by default.
 ## Validation
 
 Read `evals/evals.json` for analytical normal, missing-rule, and update-boundary
-cases. No version 1.0.0 run has validated host discovery or execution.
+cases. No version 1.1.0 run has validated host discovery or execution.
 
 ## References
 
