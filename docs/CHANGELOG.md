@@ -8,6 +8,14 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Added
 
+- Added the `copilot/` family scaffold for host-oriented Agent Skills targeting
+  GitHub Copilot, Copilot Cowork, SharePoint Copilot, Copilot Studio, and future
+  verified Copilot runtimes. The family is intentionally empty at creation;
+  its package naming, host-support, portability, permission, evidence, and
+  agent-versus-skill boundaries are documented in `copilot/FAMILY.md` and
+  `copilot/README.md`. No runtime support or task-quality evidence is claimed
+  until individual packages are added and tested.
+
 - Added the `software-reclamation/` family as a candidate set of 15 fully
   remastered OKHP3 editions for reclaiming undocumented software. The family
   covers authority and intake, platform and code archaeology, runtime and
