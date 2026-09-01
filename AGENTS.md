@@ -359,7 +359,7 @@ For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.ag
 
 - Preserve existing user changes and use minimal diffs.
 - Keep `SKILL.md` and `README.md` uppercase. Skill names use lowercase kebab case and normally match their directory name, including the `okhp3-` prefix for OKHP3 skills.
-- Keep every skill package directory at 36 characters or fewer; the portable Agent Skills name maximum is 64. Keep each path element at 64 characters or fewer and each repository-relative skill path at 180 or fewer.
+- Keep every skill package directory at 36 characters or fewer, except direct `copilot/<package>/` host-skill packages, which may use up to 50 characters for the `okhp3-[host]-[object]-[action]` grammar. The portable Agent Skills name maximum is 64. Keep each path element at 64 characters or fewer and each repository-relative skill path at 180 or fewer.
 - Keep domain skills composable. Mermaid domain skills defer audience, naming, registry, and validation to `okhp3-mermaid-core`.
 - `okhp3-mermaid-update` changes content while preserving style. `okhp3-mermaid-repair` fixes syntax with minimum intervention. Do not merge these workflows.
 - `okhp3-linkedin-voice` filters existing LinkedIn-bound text. It does not generate a post.

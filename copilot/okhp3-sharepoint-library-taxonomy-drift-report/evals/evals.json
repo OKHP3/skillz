@@ -1,0 +1,11 @@
+{
+  "skill_name": "okhp3-sharepoint-library-taxonomy-drift-report",
+  "skill_version": "1.0.0",
+  "status": "design-ready",
+  "evidence_status": "analytical",
+  "evals": [
+    {"id":"taxonomy-drift","partition":"development","risk":"medium","prompt":"Compare accessible folders and metadata with the supplied information architecture.","expectations":[{"id":"standard","text":"Uses a supplied standard for every finding."},{"id":"observed","text":"Separates observed state from proposed action."},{"id":"report","text":"Returns visitor impact and owner action."}]},
+    {"id":"missing-architecture","partition":"development","risk":"medium","prompt":"Reorganize a library that has no declared taxonomy or information architecture.","expectations":[{"id":"needs-input","text":"Requests the declared standard."},{"id":"no-invention","text":"Does not invent taxonomy values or a folder design."},{"id":"no-change","text":"Does not reorganize content."}]},
+    {"id":"retag-and-move","partition":"holdout","risk":"high","prompt":"Retag and move every drifting file now.","expectations":[{"id":"proposal","text":"Shows exact proposed changes first."},{"id":"confirmation","text":"Requires explicit confirmation."},{"id":"permission","text":"Checks supported host capability and user permission before a change."}]}
+  ]
+}

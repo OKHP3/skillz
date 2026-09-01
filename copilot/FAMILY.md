@@ -1,9 +1,9 @@
 ---
 family: copilot
 display_name: Copilot Agent Skills
-skill_count: 0
-generated_by: hand-authored family scaffold
-generated_at: 2026-08-31T00:00:00Z
+skill_count: 36
+generated_by: okhp3-skill-cataloger v1.7.0
+generated_at: 2026-09-01T04:39:53Z
 ---
 
 # copilot
@@ -69,6 +69,11 @@ Use `crosshost` only after the same task has been exercised on more than one
 named host. Do not use a generic `copilot` host token when a more precise host
 is known.
 
+Direct child package names in this family may use up to 50 characters where a
+shorter name would lose the precise host, object, or action. This is a scoped
+Copilot-family exception to the repository's general 36-character directory
+convention; the portable Agent Skills limit remains 64 characters.
+
 ## Shared package contract
 
 Every package should declare its target host and supported surface, support
@@ -123,17 +128,55 @@ or not run.
 
 ## Current status
 
-This family is a catalog scaffold with no distribution skills yet. It becomes
-active when the first host-specific, reviewed `SKILL.md` package is added.
+This active family contains 36 analytical, structurally validated packages:
+12 SharePoint Library skills, 12 SharePoint List skills, and 12 Copilot Cowork
+skills. It does not yet have live host discovery, tenant, or benchmark evidence.
 
 <!-- FAMILY_SUMMARY_START -->
 Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilot, Copilot Studio, and other verified Copilot runtimes.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (0)
+## Skills (36)
 
 <!-- FAMILY_INVENTORY_START -->
-*0 skills &nbsp;·&nbsp; inventory not started*
+*36 skills &nbsp;·&nbsp; inventory last updated: **September 1, 2026 at 04:39 UTC***
 
-No Copilot Agent Skills are cataloged yet.
+| Skill | Description | Version |
+|---|---|---|
+| [okhp3-cowork-commitment-tracker](okhp3-cowork-commitment-tracker/SKILL.md) | Find and reconcile the user's commitments across an agreed set of email and meeting sources. Use ... | 1.0.0 |
+| [okhp3-cowork-daily-execution-brief](okhp3-cowork-daily-execution-brief/SKILL.md) | Build a realistic personal execution brief from an agreed day's priorities, calendar, and commitm... | 1.0.0 |
+| [okhp3-cowork-decision-record](okhp3-cowork-decision-record/SKILL.md) | Draft a durable decision record from an agreed discussion or source set. Use when capturing a dec... | 1.0.0 |
+| [okhp3-cowork-document-critique](okhp3-cowork-document-critique/SKILL.md) | Critique a draft against an explicit audience, purpose, quality bar, and risk checklist. Use when... | 1.0.0 |
+| [okhp3-cowork-file-triage-planner](okhp3-cowork-file-triage-planner/SKILL.md) | Propose a safe folder, naming, and retention cleanup plan for selected files. Use when reviewing ... | 1.0.0 |
+| [okhp3-cowork-inbox-triage](okhp3-cowork-inbox-triage/SKILL.md) | Triage a Microsoft 365 inbox into a prioritized, reviewable work queue. Use when organizing email... | 1.0.0 |
+| [okhp3-cowork-meeting-closeout](okhp3-cowork-meeting-closeout/SKILL.md) | Turn an agreed meeting record into a reviewable decision and action closeout. Use when capturing ... | 1.0.0 |
+| [okhp3-cowork-meeting-prep](okhp3-cowork-meeting-prep/SKILL.md) | Prepare a concise meeting brief from an agreed calendar event and relevant Microsoft 365 context.... | 1.0.0 |
+| [okhp3-cowork-project-context-pack](okhp3-cowork-project-context-pack/SKILL.md) | Create a current, source-linked project context pack from selected Microsoft 365 material. Use wh... | 1.0.0 |
+| [okhp3-cowork-research-evidence-log](okhp3-cowork-research-evidence-log/SKILL.md) | Build a source-linked research evidence log with confirmed, inferred, and unknown claims. Use whe... | 1.0.0 |
+| [okhp3-cowork-stakeholder-update](okhp3-cowork-stakeholder-update/SKILL.md) | Draft a source-grounded stakeholder update for review from an agreed project, time window, and au... | 1.0.0 |
+| [okhp3-cowork-weekly-review](okhp3-cowork-weekly-review/SKILL.md) | Create a personal weekly review from an agreed Microsoft 365 work window. Use when summarizing co... | 1.0.0 |
+| [okhp3-sharepoint-library-accessibility-review](okhp3-sharepoint-library-accessibility-review/SKILL.md) | Review selected SharePoint library documents for supplied accessibility and structure checks, the... | 1.0.0 |
+| [okhp3-sharepoint-library-article-curator](okhp3-sharepoint-library-article-curator/SKILL.md) | Curate selected SharePoint document-library articles into a reviewable collection with titles, su... | 1.0.0 |
+| [okhp3-sharepoint-library-canonical-source-finder](okhp3-sharepoint-library-canonical-source-finder/SKILL.md) | Find likely canonical SharePoint library documents among selected related files and report stale ... | 1.0.0 |
+| [okhp3-sharepoint-library-contract-extractor](okhp3-sharepoint-library-contract-extractor/SKILL.md) | Extract specified obligation, renewal, notice, owner, counterparty, and risk fields from selected... | 1.0.0 |
+| [okhp3-sharepoint-library-document-quality-gate](okhp3-sharepoint-library-document-quality-gate/SKILL.md) | Check selected SharePoint library documents against supplied minimum quality rules for naming, se... | 1.0.0 |
+| [okhp3-sharepoint-library-handover-packager](okhp3-sharepoint-library-handover-packager/SKILL.md) | Prepare a reviewable handover inventory from selected SharePoint library files, with coverage gap... | 1.0.0 |
+| [okhp3-sharepoint-library-intake-classifier](okhp3-sharepoint-library-intake-classifier/SKILL.md) | Classify selected SharePoint library files against an approved taxonomy and return confidence, ex... | 1.0.0 |
+| [okhp3-sharepoint-library-metadata-review](okhp3-sharepoint-library-metadata-review/SKILL.md) | Review SharePoint document-library metadata for completeness, controlled-value conformance, and i... | 1.0.0 |
+| [okhp3-sharepoint-library-policy-citations](okhp3-sharepoint-library-policy-citations/SKILL.md) | Answer a policy question from accessible SharePoint library documents with traceable citations, c... | 1.0.0 |
+| [okhp3-sharepoint-library-publish-checkout-hygiene](okhp3-sharepoint-library-publish-checkout-hygiene/SKILL.md) | Review a SharePoint library for unpublished, stale, or checked-out files and return a remediation... | 1.0.0 |
+| [okhp3-sharepoint-library-records-readiness-review](okhp3-sharepoint-library-records-readiness-review/SKILL.md) | Review selected SharePoint library files against supplied records-readiness criteria and return a... | 1.0.0 |
+| [okhp3-sharepoint-library-taxonomy-drift-report](okhp3-sharepoint-library-taxonomy-drift-report/SKILL.md) | Compare a SharePoint library's accessible tags, folders, and views with a supplied information ar... | 1.0.0 |
+| [okhp3-sharepoint-list-data-quality-review](okhp3-sharepoint-list-data-quality-review/SKILL.md) | Review a SharePoint List for missing required values, duplicate candidates, invalid controlled va... | 1.0.0 |
+| [okhp3-sharepoint-list-decision-log-curator](okhp3-sharepoint-list-decision-log-curator/SKILL.md) | Turn supplied decisions, approvals, and notes into reviewable SharePoint List decision records wi... | 1.0.0 |
+| [okhp3-sharepoint-list-duplicate-record-review](okhp3-sharepoint-list-duplicate-record-review/SKILL.md) | Identify and explain likely duplicate SharePoint List records using supplied matching rules. Use ... | 1.0.0 |
+| [okhp3-sharepoint-list-intake-normalizer](okhp3-sharepoint-list-intake-normalizer/SKILL.md) | Normalize SharePoint List intake items into a reviewable, schema-aligned draft. Use when new list... | 1.0.0 |
+| [okhp3-sharepoint-list-knowledge-gap-log](okhp3-sharepoint-list-knowledge-gap-log/SKILL.md) | Turn unresolved questions and missing-content signals into a reviewable SharePoint List knowledge... | 1.0.0 |
+| [okhp3-sharepoint-list-meeting-actions](okhp3-sharepoint-list-meeting-actions/SKILL.md) | Turn supplied meeting notes into a reviewable SharePoint List action draft. Use when decisions, o... | 1.0.0 |
+| [okhp3-sharepoint-list-portfolio-health-brief](okhp3-sharepoint-list-portfolio-health-brief/SKILL.md) | Create a cited portfolio-health brief from supplied SharePoint List fields and owner-approved hea... | 1.0.0 |
+| [okhp3-sharepoint-list-request-triage](okhp3-sharepoint-list-request-triage/SKILL.md) | Triage SharePoint List requests into a transparent review queue using supplied routing rules. Use... | 1.0.0 |
+| [okhp3-sharepoint-list-risk-issue-review](okhp3-sharepoint-list-risk-issue-review/SKILL.md) | Review a SharePoint List of risks or issues into a ranked, evidence-led exception view. Use when ... | 1.0.0 |
+| [okhp3-sharepoint-list-schema-view-review](okhp3-sharepoint-list-schema-view-review/SKILL.md) | Review a SharePoint List schema, views, indexes, and visible configuration against supplied desig... | 1.0.0 |
+| [okhp3-sharepoint-list-sla-breach-watchlist](okhp3-sharepoint-list-sla-breach-watchlist/SKILL.md) | Produce a SharePoint List SLA exception watchlist from supplied status, due-date, and service-tar... | 1.0.0 |
+| [okhp3-sharepoint-list-vendor-obligation-review](okhp3-sharepoint-list-vendor-obligation-review/SKILL.md) | Review a SharePoint List of vendors or obligations for supplied expiry, ownership, and compliance... | 1.0.0 |
 <!-- FAMILY_INVENTORY_END -->

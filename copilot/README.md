@@ -66,6 +66,11 @@ Use `crosshost` only when the same task has been exercised on more than one
 named host. Do not use the generic token `copilot` when a more precise host is
 known.
 
+Direct child package names in this family may use up to 50 characters when
+needed to retain a precise host, object, and action. This is a Copilot-family
+exception to the repository's general 36-character directory convention; the
+portable Agent Skills limit remains 64 characters.
+
 ## Shared package contract
 
 Every package should declare, in frontmatter or its supporting documentation:
@@ -137,9 +142,10 @@ and whether the evidence is live, analytical, historical, or not run.
 
 ## Current status
 
-This family is a planned distribution surface. No Copilot packages are
-cataloged yet. The family will become active as the first host-specific,
-reviewed `SKILL.md` packages are added.
+This active family currently contains 36 analytically validated packages: 12
+SharePoint Library skills, 12 SharePoint List skills, and 12 Copilot Cowork
+skills. Structural validation does not establish live host discovery, tenant
+permissions, or task-quality performance.
 
 ## Further reading
 
@@ -147,4 +153,3 @@ reviewed `SKILL.md` packages are added.
 - [Microsoft Learn: Extend Copilot in SharePoint with skills](https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-skills)
 - [Microsoft Learn: Skills overview for Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/skills-overview)
 - [GitHub Docs: About agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
-

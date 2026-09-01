@@ -38,9 +38,11 @@ metadata:
 | `metadata.version` | Quoted semantic version. |
 | `in_scope` / `out_of_scope` | Short string boundaries that prevent accidental scope expansion. |
 
-In this repository, also keep the package directory at 36 characters or fewer,
-each path element at 64 or fewer, and every repository-relative skill path at
-180 or fewer.
+In this repository, keep package directories at 36 characters or fewer,
+except direct `copilot/<package>/` host-skill packages, which may use up to 50
+characters for the `okhp3-[host]-[object]-[action]` grammar. Keep each path
+element at 64 or fewer and every repository-relative skill path at 180 or
+fewer.
 
 ## Write a description for discovery
 

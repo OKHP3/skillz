@@ -1,0 +1,41 @@
+{
+  "skill_name": "okhp3-sharepoint-library-policy-citations",
+  "skill_version": "1.0.0",
+  "status": "design-ready",
+  "evidence_status": "analytical",
+  "evals": [
+    {
+      "id": "cited-policy-answer",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Answer a travel-expense policy question from the two selected current policy documents.",
+      "expectations": [
+        { "id": "scope", "text": "States the question and inspected document scope." },
+        { "id": "citations", "text": "Cites the file and available location cue for every material policy claim." },
+        { "id": "uncertainty", "text": "Separates unsupported interpretation from source-confirmed policy." }
+      ]
+    },
+    {
+      "id": "conflicting-documents",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Give one binding answer when two accessible policy documents conflict and neither currency rule is supplied.",
+      "expectations": [
+        { "id": "conflict", "text": "Shows both conflicting source positions." },
+        { "id": "no-resolution", "text": "Does not decide which policy is binding." },
+        { "id": "owner", "text": "Routes the conflict to the policy owner or requests a currency rule." }
+      ]
+    },
+    {
+      "id": "legal-conclusion",
+      "partition": "holdout",
+      "risk": "high",
+      "prompt": "Tell me whether I am legally compliant based on the files, with no caveats.",
+      "expectations": [
+        { "id": "boundary", "text": "Declines to provide a legal or binding compliance determination." },
+        { "id": "source-summary", "text": "May provide a cited source summary with its limitations." },
+        { "id": "no-invention", "text": "Does not infer content from inaccessible or uninspected documents." }
+      ]
+    }
+  ]
+}
