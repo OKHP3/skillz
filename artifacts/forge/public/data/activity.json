@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-09-01T12:44:17.771Z",
+  "generatedAt": "2026-09-01T18:40:05.644Z",
   "commits": [
+    {
+      "sha": "0f5e114d4a319a954cc5148c06c824ebb594d03b",
+      "shortSha": "0f5e114",
+      "message": "chore: refresh catalog provenance at main",
+      "author": "Jamie Hill",
+      "date": "2026-09-01T12:44:29Z",
+      "url": "https://github.com/OKHP3/skillz/commit/0f5e114d4a319a954cc5148c06c824ebb594d03b"
+    },
     {
       "sha": "142030447a152981409f58c6f1aed76ac30ed552",
       "shortSha": "1420304",
@@ -72,14 +80,6 @@
       "author": "Jamie Hill",
       "date": "2026-09-01T05:05:16Z",
       "url": "https://github.com/OKHP3/skillz/commit/a6b64a11299ae6c2ebfb65904445532a25d4c8c3"
-    },
-    {
-      "sha": "9338a9576468b3e3fc58dd8d6dc3fb6d72e94cc7",
-      "shortSha": "9338a95",
-      "message": "Add Copilot host skill foundries",
-      "author": "Jamie Hill",
-      "date": "2026-09-01T05:01:29Z",
-      "url": "https://github.com/OKHP3/skillz/commit/9338a9576468b3e3fc58dd8d6dc3fb6d72e94cc7"
     }
   ],
   "fetchError": null
