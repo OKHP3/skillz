@@ -142,10 +142,22 @@ and whether the evidence is live, analytical, historical, or not run.
 
 ## Current status
 
-This active family currently contains 36 analytically validated packages: 12
-SharePoint Library skills, 12 SharePoint List skills, and 12 Copilot Cowork
-skills. Structural validation does not establish live host discovery, tenant
-permissions, or task-quality performance.
+This active family contains 40 analytically validated packages: 12 SharePoint
+Library skills, 12 SharePoint List skills, 12 Copilot Cowork skills, and four
+host-specific pattern masters. Structural validation does not establish live
+host discovery, tenant permissions, or task-quality performance.
+
+## Host-specific Skill Foundries
+
+The portable `okhp3-skill-foundry` remains the baseline. These packages are
+deliberately separate host adapters, because matching `SKILL.md` syntax does
+not make discovery, context, governance, tools, or permission behavior the
+same:
+
+- `okhp3-cowork-skill-foundry` — Cowork M365 app-package and personal-workflow patterns.
+- `okhp3-sharepoint-skill-foundry` — native SharePoint skill patterns, with distinct Library and List references.
+- `okhp3-github-skill-foundry` — GitHub Copilot project/personal skill and repository-safety patterns.
+- `okhp3-copilot-studio-skill-foundry` — Copilot Studio reusable-capability and agent-component patterns.
 
 ## Further reading
 
