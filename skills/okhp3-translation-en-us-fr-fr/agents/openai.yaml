@@ -1,6 +1,0 @@
-interface:
-  display_name: "US English to France French Translator"
-  short_description: "Translate plainspoken en-US artifacts into controlled fr-FR drafts"
-  default_prompt: "Use $okhp3-translation-en-us-fr-fr to create or update one France French text-artifact draft from a plainspoken en-US source."
-policy:
-  allow_implicit_invocation: true
