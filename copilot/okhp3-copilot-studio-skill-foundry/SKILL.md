@@ -9,7 +9,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P3)
-  version: "1.0.0"
+  version: "1.1.0"
   category: copilot-studio
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -40,6 +40,10 @@ from agent identity/instructions, knowledge sources, and tools.
   harness.
 - **Skill shape:** name, description, YAML frontmatter, Markdown instructions,
   and optionally a ZIP package with supporting files.
+- **Authoring route:** use Build > Skills > Create from blank for an
+  agent-local draft, upload a Markdown skill file, or upload a ZIP whose root
+  contains `SKILL.md`. The route changes acceptance and revision behavior, not
+  the component boundary.
 - **Activation:** the orchestration runtime decides relevance using the request
   and skill description. Therefore descriptions need concrete trigger language
   and one coherent job.
@@ -57,18 +61,22 @@ from agent identity/instructions, knowledge sources, and tools.
 2. Classify every requirement: **skill instruction**, **agent instruction**,
    **knowledge source**, **tool/action/connector**, or **human approval**. If a
    requirement crosses categories, record the dependency and integration point.
-3. Design the skill's activation description. It should identify the task,
+3. Select the authoring route and test boundary. Record whether the package is
+   an agent-local Build draft, one uploaded Markdown file, or a rooted ZIP.
+   Require a Preview-tab test after creation or replacement; do not call upload
+   validation successful task execution.
+4. Design the skill's activation description. It should identify the task,
    inputs, desired result, and exclusion terms that prevent it from absorbing a
    neighboring skill.
-4. Put the normal procedure and output template in `SKILL.md`. Put detailed
+5. Put the normal procedure and output template in `SKILL.md`. Put detailed
    taxonomies, examples, or schemas in `references/` only when the workflow
    explicitly tells the agent when to load them. Bundle scripts only when their
    execution contract and environment have been validated.
-5. Default to advice, analysis, and draft output. If a skill directs an agent
+6. Default to advice, analysis, and draft output. If a skill directs an agent
    to a tool or knowledge source, disclose the required component, permission
    assumption, input/output contract, and user approval point. The skill itself
    neither creates the tool nor expands its authority.
-6. Create normal, activation-collision/missing-dependency, and tool-action or
+7. Create normal, activation-collision/missing-dependency, and tool-action or
    prompt-injection evaluations. Test through a named Studio agent before
    claiming that an orchestrator selects or executes the skill correctly.
 
@@ -89,6 +97,14 @@ from agent identity/instructions, knowledge sources, and tools.
 The component contract must say what remains in agent instructions, knowledge,
 or tools. It must not duplicate an entire agent configuration in the skill.
 
+## Authoring and test record
+
+For each Studio skill candidate, record the selected authoring route, agent
+identity/environment, package root or file identity, validation result, and a
+Preview-tab test prompt. An accepted upload or saved Build draft proves only
+that the artifact entered the agent configuration; it does not prove activation
+quality, tool availability, or an approved deployment.
+
 ## Copilot Studio-specific gotchas
 
 - A skill is not a tool. Never write a tool/API call as if Markdown itself can
@@ -100,6 +116,9 @@ or tools. It must not duplicate an entire agent configuration in the skill.
   general conversation behavior out unless they are essential to this one task.
 - A ZIP package carries the skill and optional files; it does not prove that an
   environment has approved or published it.
+- A direct Markdown upload and a ZIP upload have different package acceptance
+  conditions. Keep `SKILL.md` at the ZIP root and do not treat a folder wrapper
+  as a portable success without a host validation result.
 - Usage, build, test, and evaluation may have environment and cost controls.
   Record those as deployment assumptions rather than hiding them.
 
@@ -107,7 +126,8 @@ or tools. It must not duplicate an entire agent configuration in the skill.
 
 Return a Foundry handoff with the reusable-task definition, component map,
 activation description, SKILL.md skeleton, dependency and approval ledger,
-three-case evaluation plan, and an agent-level test/deployment plan. Do not add
+three-case evaluation plan, authoring/test record, and an agent-level
+test/deployment plan. Do not add
 the package to an agent, change a tool, or publish an environment without a
 separate authorization.
 
@@ -115,6 +135,8 @@ separate authorization.
 
 - Folder/frontmatter name match and clear trigger phrases.
 - One coherent task distinct from identity, knowledge, and tools.
+- Authoring route, package root/file identity, and Preview-tab test are
+  recorded independently of structural validity.
 - Explicit dependency contract for every external action or knowledge source.
 - Draft/approval behavior for any effectful tool use.
 - Evaluations cover normal activation, a collision or missing dependency, and
@@ -125,6 +147,7 @@ separate authorization.
 ## References
 
 - [references/copilot-studio-host-contract.md](references/copilot-studio-host-contract.md) — Studio skill, package, and component evidence.
+- [benchmarks/maturation-2026-09-01.md](benchmarks/maturation-2026-09-01.md) — v1.1.0 evidence, review, and limits.
 - [Agent Skills creation best practices](https://agentskills.io/skill-creation/best-practices) — portable baseline used by this host adapter.
 
 ## About

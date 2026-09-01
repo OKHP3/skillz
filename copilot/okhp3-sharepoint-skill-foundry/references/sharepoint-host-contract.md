@@ -14,8 +14,14 @@ capabilities and only the current user's existing permissions. It cannot run
 custom code or connect to external systems. Therefore a SharePoint skill must
 not claim connector, API, script, or permission-escalation behavior.
 
-Direct Markdown edits are possible, but authors should preserve the format and
-validate the skill from the native chat. `SHAREPOINT.md` is not documented here
-as a required runtime artifact.
+The native authoring route matters. Microsoft documents a chat-created draft
+that the author reviews and confirms before saving. Direct Markdown edits are
+also possible, but authors should preserve the format and validate the revised
+skill from the native chat. A saved `.md` file or structural check therefore
+proves neither host discovery nor supported mutation behavior.
+
+Record the exact Agent Assets path, target site object, selected test input,
+current-user permission, and observed loaded-skill indicator for a live result.
+`SHAREPOINT.md` is not documented here as a required runtime artifact.
 
 Primary source: [Extend Copilot in SharePoint with skills](https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-skills).

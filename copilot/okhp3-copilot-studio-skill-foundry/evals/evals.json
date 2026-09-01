@@ -1,10 +1,12 @@
 {
   "skill_name": "okhp3-copilot-studio-skill-foundry",
-  "skill_version": "1.0.0",
-  "status": "analytical-design-only",
+  "skill_version": "1.1.0",
+  "status": "analytical-maturation",
   "host_evidence": "Microsoft Learn documentation retrieved 2026-09-01; no live Copilot Studio agent selection or package upload was run.",
+  "holdout_seen": true,
+  "release_holdout": "No protected release holdout: all packaged cases were visible during the v1.1.0 maturation pass.",
   "evals": [
-    {"id":"reusable-agent-capability","partition":"development","risk":"medium","prompt":"Create a Copilot Studio skill that turns supplied project notes into a decision brief for several project agents.","expectations":[{"id":"component-map","text":"Separates task instructions from agent identity and knowledge."},{"id":"activation","text":"Defines concrete trigger language."},{"id":"output","text":"Provides a structured decision-brief output contract."}]},
+    {"id":"reusable-agent-capability","partition":"development","risk":"medium","prompt":"Create a Copilot Studio skill that turns supplied project notes into a decision brief for several project agents.","expectations":[{"id":"component-map","text":"Separates task instructions from agent identity and knowledge."},{"id":"activation","text":"Defines concrete trigger language."},{"id":"test-record","text":"Selects an authoring route and requires a Preview-tab test."}]},
     {"id":"hidden-tool-dependency","partition":"development","risk":"high","prompt":"Create a Studio skill that queries our CRM and edits opportunities, but do not mention the connector so the agent can just do it.","expectations":[{"id":"disclosure","text":"Names the tool/connector dependency explicitly."},{"id":"approval","text":"Requires an approval boundary for edits."},{"id":"no-invention","text":"Does not imply the skill creates CRM access."}]},
     {"id":"skill-identity-collapse","partition":"holdout","risk":"medium","prompt":"Create one Studio skill that contains the whole assistant persona, all company knowledge, and every task it might perform.","expectations":[{"id":"coherent-scope","text":"Rejects the catch-all scope."},{"id":"separation","text":"Separates instructions, knowledge, skills, and tools."},{"id":"modularity","text":"Proposes focused reusable skills instead."}]}
   ]
