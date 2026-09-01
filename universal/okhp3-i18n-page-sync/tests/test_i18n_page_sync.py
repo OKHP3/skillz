@@ -91,6 +91,36 @@ class I18nPageSyncTests(unittest.TestCase):
             payload = run(root, "report")
             self.assertEqual(json.loads(payload.stdout)["stale"][0]["route"], "/about/")
 
+    def test_review_confirmed_stale_refresh_requires_explicit_route_limited_flag(self):
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            write(root / "about" / "index.html", "english v1")
+            write(root / "fr" / "about" / "index.html", "french v1")
+            write(root / "assets" / "data" / "search-index.json", json.dumps(search_index([{ "url": "/about/" }])))
+            config(root)
+            subprocess.run([sys.executable, str(SCRIPT), "--root", str(root), "--mode", "adopt"], check=False)
+            write(root / "about" / "index.html", "english v2")
+            write(root / "fr" / "about" / "index.html", "french v2")
+            subprocess.run([sys.executable, str(SCRIPT), "--root", str(root), "--mode", "adopt"], check=False)
+            self.assertEqual(run(root, "check").returncode, 1)
+            refreshed = subprocess.run(
+                [sys.executable, str(SCRIPT), "--root", str(root), "--mode", "adopt", "--refresh-stale", "--routes", "/about/"],
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(refreshed.returncode, 0, refreshed.stdout + refreshed.stderr)
+            self.assertEqual(run(root, "check").returncode, 0)
+
+    def test_config_rejects_path_escape(self):
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            config(root)
+            config_path = root / "i18n" / "sync.config.json"
+            payload = json.loads(config_path.read_text(encoding="utf-8"))
+            payload["state_file"] = "../outside.json"
+            config_path.write_text(json.dumps(payload), encoding="utf-8")
+            result = run(root, "check")
+            self.assertEqual(result.returncode, 2)
+
     def test_out_of_scope_routes_are_never_flagged(self):
         with tempfile.TemporaryDirectory() as raw:
             root = Path(raw)

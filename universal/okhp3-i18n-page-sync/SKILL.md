@@ -16,7 +16,7 @@ compatibility: >
   index and compares file hashes.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.2.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -65,10 +65,10 @@ never one compounded skill.
 1. Load `i18n/sync.config.json`. If it does not exist, stop here and report "not configured" with exit code 0. This is not an error state.
 2. Load the site's search index and take its `entries[].url` values as the candidate page list, excluding any URL containing `#` (a fragment, not a page) and any URL already under a configured target locale's root.
 3. If `in_scope_routes` is set, narrow the candidate list to exactly those routes. A route never listed there can never appear in a drift report, no matter how long its translation has lagged. This is what makes a partial pilot rollout safe to run in CI without failing the build over content nobody has committed to translating.
-4. For each in-scope English page and each configured target locale, compare the target file's presence and the ledger's recorded `synced_source_sha256` against the page's current source hash to classify it `missing`, `stale`, `needs_baseline` (a translation exists but was never confirmed in the ledger), or `in_sync`.
+4. For each in-scope English page and each configured target locale, compare the target file's presence and the ledger's recorded `synced_source_sha256` against the current source-page bytes to classify it `missing`, `stale`, `needs_baseline` (a translation exists but was never confirmed in the ledger), or `in_sync`.
 5. Also report `orphan`: a ledger entry whose English source page no longer appears in the search index at all. This is a warning, not build-breaking drift; a page can be legitimately retired.
 6. In `--check` mode (the one wired into CI), exit 1 only when `missing` or `stale` routes exist. `needs_baseline` and `orphan` are surfaced but never fail the build; they need a one-time `--adopt` or a human decision, not an emergency.
-7. Never translate. For every `missing` or `stale` route, name the exact `okhp3-translation-en-us-<pair>` skill from the config and stop. Handing that route to the named translation skill, and then confirming the result with `--adopt --routes "<route>"`, is a separate step for a human or a subsequent agent turn — never folded into this skill's own output.
+7. Never translate. For every `missing` or `stale` route, name the exact `okhp3-translation-en-us-<pair>` skill from the config and stop. Handing that route to the named translation skill is a separate step. A first baseline uses `--adopt`; replacing a stale baseline requires the deliberate `--adopt --refresh-stale --routes "<route>"` acknowledgement after review-confirmed content lands.
 
 ## Format-adapter boundary
 
@@ -80,21 +80,33 @@ The GitHub Action built around this skill (see `templates/`) runs `--check` on e
 
 ## Quality and review gates
 
-This skill has nothing to say about translation quality; it only proves that a translated file exists and was confirmed against the current English source. Passing `--check` is not evidence that a translation is accurate, current in tone, or reviewed. Those claims belong entirely to whichever `okhp3-translation-en-us-<pair>` skill produced the page.
+This skill has nothing to say about translation quality; it only proves source-byte freshness for a translated file. Passing `--check` is not evidence that a translation is accurate, current in tone, reviewed, structurally release-ready, indexed, or published. Those claims belong to separate review and release stages.
+
+## Companion release boundary
+
+Once the matching exact-pair skill has a reviewed HTML candidate, hand it to
+`okhp3-i18n-page-release` for static-page release validation. That separate
+stage verifies the declared BCP-47 `html lang`, self-canonical URL, public
+alternate cluster, staging state, and optional rendered-language evidence. Do
+not add those checks here: this package's source-hash result must remain a
+small, deterministic answer to a different question, "has the declared source
+changed since this target was confirmed?"
 
 ## Output contract
 
-Return `Configured` (yes/no), `Missing routes` (route, locale, skill to run), `Stale routes` (route, locale, skill to run), `Needs-baseline routes`, `Orphaned routes`, and `Check result`. When routes are flagged, name the next action explicitly: which translation skill, for which route, followed by `--adopt --routes "<route>"` once that translation lands.
+Return `Configured` (yes/no), `Missing routes` (route, locale, skill to run), `Stale routes` (route, locale, skill to run), `Needs-baseline routes`, `Orphaned routes`, and `Check result`. Describe `in_sync` as source-byte freshness. When routes are flagged, name the next action explicitly: which translation skill, then `--adopt` for a first baseline or `--adopt --refresh-stale --routes "<route>"` for a reviewed stale refresh.
 
 ## Resource routing
 
 - Read `references/config-schema.md` before writing or editing a consuming site's `i18n/sync.config.json`.
 - Copy `templates/i18n-page-sync-workflow.yml` into a consuming repository's `.github/workflows/` to wire this into CI. It requires no secrets and calls no external service.
-- Run `scripts/i18n-page-sync.py --help` before using it directly. Use `--mode report` to preview drift, `--mode check` to verify a repository the way CI does, and `--mode adopt` only once a translation is actually confirmed.
+- Run `scripts/i18n-page-sync.py --help` before using it directly. Use `--mode report` to preview drift, `--mode check` to verify a repository the way CI does, and `--mode adopt` only for a baseline or an explicit `--refresh-stale --routes` review-confirmed refresh.
+- Route a reviewed localized HTML target to `okhp3-i18n-page-release` before
+  classifying it as indexable or treating technical metadata as release-ready.
 
 ## Evaluation and release
 
-`evals/evals.json` covers missing/stale detection, the never-translates-itself boundary, out-of-scope routes never failing a build, and an unconfigured site being a clean no-op. This is a fully deterministic script over structured JSON and file hashes; its eight-test local suite plus the Foundry structural validator are sufficient evidence for this package. There is no language-quality dimension here requiring a native-review holdout.
+`evals/evals.json` covers missing/stale detection, the never-translates-itself boundary, out-of-scope routes never failing a build, an explicit route-limited stale refresh, and an unconfigured site being a clean no-op. Version `1.2.0` additionally distinguishes source-byte freshness from release readiness and routes reviewed HTML candidates to the distinct release stage. This is a fully deterministic script over structured JSON and file hashes; its ten-test local suite plus the Foundry structural validator are structural evidence only. There is no language-quality dimension here requiring a native-review holdout.
 
 ## About
 

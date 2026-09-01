@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-01T01:19:41.877Z",
+  "generatedAt": "2026-09-01T03:25:33.678Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "ee219bd4",
-  "skillCount": 288,
+  "sourceCommit": "1194fa4",
+  "skillCount": 289,
   "familyCount": 19,
   "families": [
     {
@@ -815,7 +815,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 19,
+      "skillCount": 20,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -824,6 +824,7 @@
         "okhp3-foundry-repo-creator",
         "okhp3-github-notification-maintainer",
         "okhp3-google-gis-client-auth",
+        "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
         "okhp3-overkill-hill-brand",
         "okhp3-repl-repo-janitor",
@@ -859,7 +860,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-brand-style-registry pairs with okhp3-overkill-hill-brand; okhp3-repl-repo-janitor pairs with okhp3-repository-janitor; okhp3-repl-repo-janitor pairs with okhp3-repository-organizer; okhp3-skill-promotion pairs with okhp3-skill-foundry",
+          "value": "okhp3-brand-style-registry pairs with okhp3-overkill-hill-brand; okhp3-i18n-page-release pairs with okhp3-i18n-page-sync; okhp3-repl-repo-janitor pairs with okhp3-repository-janitor; okhp3-repl-repo-janitor pairs with okhp3-repository-organizer; okhp3-skill-promotion pairs with okhp3-skill-foundry",
           "source": "generated"
         }
       }
@@ -10815,7 +10816,7 @@
       "skillDir": "okhp3-translation-en-us-de-de",
       "path": "language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
       "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Germany German (de-DE), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "language-mediation",
       "origin": "okhp3/skillz",
@@ -10831,7 +10832,9 @@
       ],
       "triggers": [],
       "avoid": [],
-      "companions": [],
+      "companions": [
+        "okhp3-i18n-page-release"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -10856,11 +10859,11 @@
       "evidence": {
         "status": "analytical",
         "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 4,
+        "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -10878,7 +10881,7 @@
       "skillDir": "okhp3-translation-en-us-en-uk",
       "path": "language-mediation/okhp3-translation-en-us-en-uk/SKILL.md",
       "description": "Adapt owned plainspoken text artifacts one way from United States English (en-US) to British English (en-GB), preserving source voice, meaning, protected tokens, and structure while changing spelling, vocabulary, and locale conventions that genuinely differ. This is a same-language regional adaptation, not a bilingual translation. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another English locale (en-AU, en-CA, en-IE), a bilingual language pair, a register conversion, reverse adaptation, generic copyediting, or machine-only publication.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "language-mediation",
       "origin": "okhp3/skillz",
@@ -10895,6 +10898,7 @@
       "triggers": [],
       "avoid": [],
       "companions": [
+        "okhp3-i18n-page-release",
         "okhp3-translation-en-us-fr-fr"
       ],
       "examples": [],
@@ -10921,11 +10925,11 @@
       "evidence": {
         "status": "analytical",
         "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 4,
+        "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -10943,7 +10947,7 @@
       "skillDir": "okhp3-translation-en-us-es-es",
       "path": "language-mediation/okhp3-translation-en-us-es-es/SKILL.md",
       "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Spain Spanish (es-ES), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "language-mediation",
       "origin": "okhp3/skillz",
@@ -10959,7 +10963,9 @@
       ],
       "triggers": [],
       "avoid": [],
-      "companions": [],
+      "companions": [
+        "okhp3-i18n-page-release"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -10984,11 +10990,11 @@
       "evidence": {
         "status": "analytical",
         "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 4,
+        "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -11006,7 +11012,7 @@
       "skillDir": "okhp3-translation-en-us-es-mx",
       "path": "language-mediation/okhp3-translation-en-us-es-mx/SKILL.md",
       "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to Mexican Spanish (es-MX), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair (including es-ES or es-419), a register conversion, reverse translation, generic copyediting, or machine-only publication.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "language-mediation",
       "origin": "okhp3/skillz",
@@ -11023,6 +11029,7 @@
       "triggers": [],
       "avoid": [],
       "companions": [
+        "okhp3-i18n-page-release",
         "okhp3-translation-en-us-fr-fr"
       ],
       "examples": [],
@@ -11049,11 +11056,11 @@
       "evidence": {
         "status": "analytical",
         "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 4,
+        "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -11071,7 +11078,7 @@
       "skillDir": "okhp3-translation-en-us-fr-fr",
       "path": "language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
       "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to France French (fr-FR), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
-      "version": "1.1.0",
+      "version": "1.3.0",
       "license": "MIT",
       "category": "language-mediation",
       "origin": "okhp3/skillz",
@@ -11087,7 +11094,9 @@
       ],
       "triggers": [],
       "avoid": [],
-      "companions": [],
+      "companions": [
+        "okhp3-i18n-page-release"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -11112,11 +11121,11 @@
       "evidence": {
         "status": "analytical",
         "evaluatedSkillVersion": "1.1.0",
-        "evalCount": 4,
+        "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -11285,7 +11294,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -11350,7 +11359,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -11415,7 +11424,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -11480,7 +11489,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -11614,7 +11623,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -13288,7 +13297,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-recurring-task-capture/SKILL.md",
       "lastModified": "2026-08-28T23:44:26-05:00",
       "commitSha": "967052e2",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -16253,7 +16262,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-08-28T23:44:51-05:00",
       "commitSha": "0a171756",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -16385,7 +16394,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -16451,7 +16460,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -19194,13 +19203,13 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
-      "name": "okhp3-i18n-page-sync",
-      "displayName": "I18n Page Sync",
+      "name": "okhp3-i18n-page-release",
+      "displayName": "I18n Page Release",
       "family": "universal",
-      "skillDir": "okhp3-i18n-page-sync",
-      "path": "universal/okhp3-i18n-page-sync/SKILL.md",
-      "description": "Detect which pages on a static site are missing a translation, or have a translation that has fallen behind a changed English source, by reusing the site's own generated search index as the page inventory. Reports drift and names the exact-pair okhp3-translation-en-us-<pair> skill that owns each flagged route. Never drafts, edits, or publishes a translated page itself, and never fails a build over a page the site has not declared in scope for translation.",
-      "version": "1.0.0",
+      "skillDir": "okhp3-i18n-page-release",
+      "path": "universal/okhp3-i18n-page-release/SKILL.md",
+      "description": "Validate and prepare a localized static-web page set for release after its exact-pair translation is reviewed. Use when checking locale URLs, BCP-47 html lang values, self-canonicals, hreflang alternates, noindex staging, or rendered-language evidence. It does not translate prose, publish a site, or replace source-drift detection.",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -19216,7 +19225,74 @@
       ],
       "triggers": [],
       "avoid": [],
-      "companions": [],
+      "companions": [
+        "okhp3-i18n-page-sync"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-i18n-page-release/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-i18n-page-release/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Release-readiness verification for localized static HTML routes, locale metadata, alternate graphs, and declared-versus-rendered language evidence.",
+        "outOfScope": "Translating content, certifying native fluency, creating an i18n architecture without an owner-approved registry, automatic publication, or source-drift detection.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 1,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-i18n-page-sync",
+      "displayName": "I18n Page Sync",
+      "family": "universal",
+      "skillDir": "okhp3-i18n-page-sync",
+      "path": "universal/okhp3-i18n-page-sync/SKILL.md",
+      "description": "Detect which pages on a static site are missing a translation, or have a translation that has fallen behind a changed English source, by reusing the site's own generated search index as the page inventory. Reports drift and names the exact-pair okhp3-translation-en-us-<pair> skill that owns each flagged route. Never drafts, edits, or publishes a translated page itself, and never fails a build over a page the site has not declared in scope for translation.",
+      "version": "1.2.0",
+      "license": "MIT",
+      "category": "universal",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "universal"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-i18n-page-release"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -19240,10 +19316,10 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 4,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 1,
         "scriptCount": 1,
         "lastEvidenceDate": null,

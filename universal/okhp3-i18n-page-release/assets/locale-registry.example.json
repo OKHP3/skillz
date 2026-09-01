@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "site_origin": "https://example.com",
+  "check_open_graph_url": false,
+  "release_policy": {
+    "require_x_default": true,
+    "html_lang": "exact-locale"
+  },
+  "default_locale": {
+    "tag": "en-US",
+    "x_default_url": "/"
+  },
+  "locales": {
+    "fr-FR": {
+      "root": "fr",
+      "direction": "ltr",
+      "label": "Français",
+      "translation_skill": "okhp3-translation-en-us-fr-fr"
+    },
+    "de-DE": {
+      "root": "de",
+      "direction": "ltr",
+      "label": "Deutsch",
+      "translation_skill": "okhp3-translation-en-us-de-de"
+    }
+  },
+  "routes": [
+    {
+      "source": {"path": "about/index.html", "url": "/about/"},
+      "targets": {
+        "fr-FR": {"path": "fr/about/index.html", "url": "/fr/about/", "state": "indexable"},
+        "de-DE": {"path": "de/about/index.html", "url": "/de/about/", "state": "draft-noindex"}
+      }
+    }
+  ]
+}

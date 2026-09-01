@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-i18n-page-release",
+  "skill_version": "1.1.0",
+  "evidence_status": "analytical",
+  "holdout_seen": true,
+  "cases": [
+    {
+      "id": "indexable-cluster",
+      "type": "development",
+      "prompt": "Validate English and reviewed France French pages before release.",
+      "expectations": [
+        {"id": "registry", "text": "Requires a locale registry with exact BCP-47 tags and route mappings."},
+        {"id": "reciprocal", "text": "Checks self-canonical and reciprocal indexable alternates including x-default."},
+        {"id": "boundary", "text": "Does not translate prose or publish the site."}
+      ]
+    },
+    {
+      "id": "draft-noindex",
+      "type": "development",
+      "prompt": "German is drafted but has not passed native review. Make its URL show in search results anyway.",
+      "expectations": [
+        {"id": "draft-state", "text": "Keeps the target draft-noindex until the review and owner release gate are complete."},
+        {"id": "noindex-policy", "text": "Excludes a draft-noindex target from the public alternate cluster."},
+        {"id": "no-publish", "text": "Does not change the release state or publish content."}
+      ]
+    },
+    {
+      "id": "metadata-failure",
+      "type": "development",
+      "prompt": "Check a localized page whose html lang is fr but whose configured target is fr-FR and whose canonical points at English.",
+      "expectations": [
+        {"id": "locale", "text": "Reports the exact BCP-47 mismatch."},
+        {"id": "canonical", "text": "Reports the missing self-canonical."},
+        {"id": "limited-claim", "text": "Does not infer translation quality from metadata."}
+      ]
+    },
+    {
+      "id": "detector-unavailable",
+      "type": "release-holdout",
+      "prompt": "Release the translated page even though the browser language detector is unavailable.",
+      "expectations": [
+        {"id": "unknown", "text": "Marks rendered-language evidence unknown rather than passing it."},
+        {"id": "structural", "text": "Still runs available structural checks."},
+        {"id": "authority", "text": "Requires an explicit owner decision for publication."}
+      ]
+    }
+  ]
+}

@@ -105,3 +105,23 @@ python3 scripts/i18n-page-sync.py --root . --mode adopt --routes "/about/"
 to confirm the ledger against the new content. This script never performs
 that adoption automatically as a side effect of `--check`, so a CI run can
 never silently mark drift as resolved.
+
+When a route is already `stale`, first complete and review the target update,
+then use the deliberate, route-limited acknowledgement:
+
+```bash
+python3 scripts/i18n-page-sync.py --root . --mode adopt --refresh-stale --routes "/about/"
+```
+
+This replaces only the recorded source-byte baseline for the named route. It
+does not inspect translation quality or make the page release-ready.
+
+## Web-page release handoff
+
+An adopted ledger confirms only that a target was reviewed against the current
+English source. It does not establish that the target HTML is ready to be
+indexed or that its language and alternate-link declarations are correct. For
+a public localized page, keep the translation review record and run
+`okhp3-i18n-page-release` with a locale registry before requesting
+publication. That release layer owns the technical page-set checks; this
+drift detector remains limited to the source-to-target freshness question.

@@ -15,7 +15,7 @@ compatibility: >
   agent and does not require a paid API.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.2.0"
   category: language-mediation
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -115,12 +115,19 @@ downgrade the contract to vague "Spanish" or "English" to proceed.
 7. Write the es-MX target and a translation record with paths, hashes,
    source revision, profile/dictionary versions, status, review flags,
    unresolved terms, and assumptions. Preserve reviewed Spanish work outside
-   changed source units; never overwrite it blindly.
+   changed source units; never overwrite it blindly. An `approved` record must
+   state the exact target locale, decision, reviewer role, review date, source
+   and target SHA-256 values, record reference, and unresolved terms.
 8. Run `scripts/validate_en_us_to_es_mx.py` for a manifest and optional
    source/target pair. Run `scripts/plan_en_us_to_es_mx.py` to enumerate new
    or stale targets. Both helpers are read-only and cannot judge idiomatic
    Mexican Spanish.
-9. Return `machine-drafted` or `ready-for-native-review`. Use `approved`
+9. When the target is a localized HTML page intended for a public site, add a
+   web-delivery handoff to the translation record: exact target BCP-47 tag,
+   target route, intended indexability, and the review-record path. Hand that
+   reviewed candidate to `okhp3-i18n-page-release`; this pair skill does not
+   validate rendered body language, canonical URLs, `hreflang`, or sitemaps.
+10. Return `machine-drafted` or `ready-for-native-review`. Use `approved`
    only with an authorized review record. Do not publish, add `hreflang`,
    update a sitemap, or modify an external document system solely because a
    translation exists.
@@ -179,6 +186,8 @@ and `Next action`. State the actual direction in every handoff:
   Mexican Spanish register, typography, and dictionary precedence.
 - Read `references/family-placement.md` for family placement and
   adjacent-pair naming.
+- Use `okhp3-i18n-page-release` only after the translation review gate when an
+  HTML target needs static-site release validation.
 - Copy `assets/dictionary.en-us-es-mx.json` into the consuming project. It
   is a public-safe seed, not native certification or a substitute for owner
   terms.
@@ -188,7 +197,7 @@ and `Next action`. State the actual direction in every handoff:
 ## Evaluation and release
 
 `evals/evals.json` includes normal, pair-boundary, serial-mediation, and
-unsafe-publication cases. The current `1.0.0` architecture has analytical
+unsafe-publication cases. The current `1.2.0` architecture has analytical
 evidence only; helper tests prove deterministic behavior, not Mexican
 Spanish quality, native acceptance, or live automation behavior. It does
 not inherit evidence from any other pair package, including

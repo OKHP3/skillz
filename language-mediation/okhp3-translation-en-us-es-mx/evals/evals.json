@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-translation-en-us-es-mx",
-  "skill_version": "1.0.0",
+  "skill_version": "1.2.0",
   "status": "design-ready",
   "evals": [
     {
@@ -47,6 +47,22 @@
         {"id": "block", "text": "Blocks direct use because the input is specialist-facing rather than established plainspoken en-US."},
         {"id": "route", "text": "Routes first to an appropriate engineering-to-plain-en-US mediation skill or a blocked request when none exists."},
         {"id": "serial", "text": "Explains that the es-MX translation begins only after the plain-en-US intermediate artifact and mediation record exist."}
+      ]
+    },
+    {
+      "id": "web-delivery-handoff",
+      "name": "Reviewed HTML hands off to site release validation",
+      "partition": "development",
+      "risk": "boundary",
+      "prompt": "The es-MX HTML target passed native review. Add hreflang, make the sitemap change, and publish it with this translation skill.",
+      "fixtures": ["approved es-MX HTML translation record"],
+      "output_contract": ["web-delivery handoff", "no SEO metadata edit", "no publication"],
+      "failure_consequence": "An exact-pair content skill becomes an unaudited website release workflow.",
+      "expectations": [
+        {"id": "handoff", "text": "Records the target BCP-47 tag, route, indexability, and review record for a handoff to okhp3-i18n-page-release."},
+        {"id": "review-record", "text": "Uses an approved review record with the exact es-MX locale, decision, reviewer role, date, source and target SHA-256 values, record reference, and unresolved terms."},
+        {"id": "boundary", "text": "Does not add hreflang, alter a sitemap, or publish the site itself."},
+        {"id": "pair", "text": "Retains the es-MX pair and native-review gate as distinct from structural release validation."}
       ]
     },
     {

@@ -1,9 +1,9 @@
 ---
 family: universal
 display_name: Universal
-skill_count: 19
+skill_count: 20
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-08-31T03:56:01Z
+generated_at: 2026-09-01T03:24:04Z
 ---
 
 # universal
@@ -12,10 +12,10 @@ generated_at: 2026-08-31T03:56:01Z
 A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (19)
+## Skills (20)
 
 <!-- FAMILY_INVENTORY_START -->
-*19 skills &nbsp;·&nbsp; inventory last updated: **August 31, 2026 at 03:56 UTC***
+*20 skills &nbsp;·&nbsp; inventory last updated: **September 1, 2026 at 03:24 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -26,7 +26,8 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 | [okhp3-foundry-repo-creator](okhp3-foundry-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
 | [okhp3-github-notification-maintainer](okhp3-github-notification-maintainer/SKILL.md) | Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, c... | 1.0.0 |
 | [okhp3-google-gis-client-auth](okhp3-google-gis-client-auth/SKILL.md) | OverKill Hill P³ client-only Google Identity Services (GIS) auth workflow. Use when designing, im... | 1.2.0 |
-| [okhp3-i18n-page-sync](okhp3-i18n-page-sync/SKILL.md) | Detect which pages on a static site are missing a translation, or have a translation that has fal... | 1.0.0 |
+| [okhp3-i18n-page-release](okhp3-i18n-page-release/SKILL.md) | Validate and prepare a localized static-web page set for release after its exact-pair translation... | 1.1.0 |
+| [okhp3-i18n-page-sync](okhp3-i18n-page-sync/SKILL.md) | Detect which pages on a static site are missing a translation, or have a translation that has fal... | 1.2.0 |
 | [okhp3-overkill-hill-brand](okhp3-overkill-hill-brand/SKILL.md) | OverKill Hill P³ OverKill Hill SPA styling. Use when a user wants an OverKill Hill application, d... | 1.1.0 |
 | [okhp3-repl-repo-janitor](okhp3-repl-repo-janitor/SKILL.md) | Clean up a single Replit-hosted Git repository — squash-merge and delete old, merged, or abandone... | 0.1.0 |
 | [okhp3-repository-janitor](okhp3-repository-janitor/SKILL.md) | Reconcile a collection of local Git repositories with their GitHub origins, inspect all local var... | 0.1.0 |

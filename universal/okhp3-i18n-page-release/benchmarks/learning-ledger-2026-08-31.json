@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "artifact": "universal/okhp3-i18n-page-release",
+  "version": "1.0.0",
+  "status": "analytical",
+  "hypothesis": "A dedicated release-stage skill can enforce localized static-page metadata and evidence without weakening exact-pair translation or source-drift boundaries.",
+  "evidence": [
+    {
+      "id": "E-01",
+      "source": "Google Search Central: Localized versions of your pages",
+      "url": "https://developers.google.com/search/docs/advanced/crawling/localized-versions",
+      "retrieved": "2026-08-31",
+      "accepted": "Use explicit alternate-language URLs, reciprocal links where equivalents exist, self-canonical pages, and an x-default route without inventing a missing equivalent."
+    },
+    {
+      "id": "E-02",
+      "source": "Adobe page-langs Agent Skill",
+      "url": "https://github.com/adobe/skills/blob/main/plugins/web/skills/page-langs/SKILL.md",
+      "retrieved": "2026-08-31",
+      "accepted": "Keep declared language signals distinct from rendered-body detection and record their reconciliation and reliability limits."
+    }
+  ],
+  "rejected_alternatives": [
+    {
+      "alternative": "Add SEO and rendered-language checks to every exact-pair translation skill.",
+      "reason": "Would repeat web-delivery rules across language pairs and blur translation with publication validation."
+    },
+    {
+      "alternative": "Expand okhp3-i18n-page-sync to validate HTML release metadata.",
+      "reason": "Would weaken its intentionally narrow, deterministic source-drift contract."
+    }
+  ],
+  "limitations": [
+    "No native-language quality benchmark was run.",
+    "No live browser or production-search validation was run.",
+    "The optional rendered-language adapter is not bundled."
+  ]
+}

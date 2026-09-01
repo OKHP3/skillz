@@ -21,7 +21,9 @@ Three modes:
              confirmed baseline. Run this once to bootstrap an existing
              locale, and again after a human or agent completes a real
              translation update for specific routes (pass --routes to limit
-             it). Never invents or edits page content.
+             it). `--refresh-stale --routes` is required to replace an existing
+             stale baseline after an explicit review-confirmed update. Never
+             invents or edits page content.
 
 A route flagged ``missing`` or ``stale`` should be handed to the matching
 ``okhp3-translation-en-us-<pair>`` skill to produce or update the draft, then
@@ -43,6 +45,17 @@ DEFAULT_CONFIG = "i18n/sync.config.json"
 SCHEMA_VERSION = "1.0"
 
 
+def valid_relative_path(value: object) -> bool:
+    if not isinstance(value, str) or not value or "\\" in value:
+        return False
+    path = Path(value)
+    return not path.is_absolute() and ".." not in path.parts
+
+
+def valid_route(value: object) -> bool:
+    return isinstance(value, str) and value.startswith("/") and not value.startswith("//") and "\\" not in value and ".." not in value.split("/")
+
+
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -52,6 +65,8 @@ def sha256_file(path: Path) -> str:
 
 
 def route_to_source_path(route: str) -> str:
+    if not valid_route(route):
+        raise ValueError(f"route must be an absolute in-site route: {route!r}")
     trimmed = route.strip("/")
     return f"{trimmed}/index.html" if trimmed else "index.html"
 
@@ -72,11 +87,18 @@ def load_config(root: Path, config_path: Path) -> Optional[Dict[str, Any]]:
         for field in ("locale", "root", "skill"):
             if not isinstance(entry.get(field), str) or not entry[field].strip():
                 raise ValueError(f"{config_path}: target_locales.{key}.{field} must be a non-empty string")
+        if not valid_relative_path(entry["root"]):
+            raise ValueError(f"{config_path}: target_locales.{key}.root must be a relative in-site path")
+    for field, default in (("search_index", "assets/data/search-index.json"), ("state_file", "i18n/sync-state.json")):
+        if not valid_relative_path(config.get(field, default)):
+            raise ValueError(f"{config_path}: {field} must be a relative in-site path")
     in_scope_routes = config.get("in_scope_routes")
     if in_scope_routes is not None and (
         not isinstance(in_scope_routes, list) or not all(isinstance(r, str) for r in in_scope_routes)
     ):
         raise ValueError(f"{config_path}: in_scope_routes must be a list of route strings, or omitted for full-site scope")
+    if in_scope_routes is not None and not all(valid_route(route) for route in in_scope_routes):
+        raise ValueError(f"{config_path}: in_scope_routes must contain only absolute in-site routes")
     return config
 
 
@@ -102,6 +124,8 @@ def discover_english_pages(
         url = entry.get("url")
         if not isinstance(url, str) or "#" in url:
             continue
+        if not valid_route(url):
+            raise ValueError(f"{search_index_path}: entry url must be an absolute in-site route: {url!r}")
         if url.startswith(locale_prefixes):
             continue
         if scope is not None and url not in scope:
@@ -203,11 +227,12 @@ def scan(root: Path, config: Dict[str, Any], ledger: Dict[str, Any], only_routes
     return results
 
 
-def adopt(root: Path, config: Dict[str, Any], ledger: Dict[str, Any], only_routes: Optional[List[str]]) -> Dict[str, Any]:
+def adopt(root: Path, config: Dict[str, Any], ledger: Dict[str, Any], only_routes: Optional[List[str]], refresh_stale: bool) -> Dict[str, Any]:
     results = scan(root, config, ledger, only_routes)
     adopted: List[Dict[str, Any]] = []
     pages_ledger = ledger["pages"]
-    for item in results["needs_baseline"]:
+    candidates = results["needs_baseline"] + (results["stale"] if refresh_stale else [])
+    for item in candidates:
         route = item["route"]
         locale_key = item["locale"]
         source_path = root / item["source_path"]
@@ -220,7 +245,7 @@ def adopt(root: Path, config: Dict[str, Any], ledger: Dict[str, Any], only_route
             "target_sha256": target_hash,
         }
         adopted.append(item)
-    return {"adopted": adopted}
+    return {"adopted": adopted, "refreshed_stale": refresh_stale}
 
 
 def report(results: Dict[str, Any], output_format: str) -> None:
@@ -250,11 +275,15 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--config", type=Path, default=None, help=f"path to sync config (default: <root>/{DEFAULT_CONFIG})")
     parser.add_argument("--mode", choices=("report", "check", "adopt"), default="report")
     parser.add_argument("--routes", nargs="*", default=None, help="limit to these routes (adopt mode: only adopt these)")
+    parser.add_argument("--refresh-stale", action="store_true", help="with --adopt --routes, explicitly replace stale source-byte baselines after review")
     parser.add_argument("--format", choices=("text", "json"), default="text")
     args = parser.parse_args(argv)
 
     root = args.root.resolve()
     config_path = args.config.resolve() if args.config else root / DEFAULT_CONFIG
+
+    if args.refresh_stale and (args.mode != "adopt" or not args.routes):
+        parser.error("--refresh-stale requires --mode adopt and at least one --routes value")
 
     try:
         config = load_config(root, config_path)
@@ -279,7 +308,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     try:
         if args.mode == "adopt":
-            outcome = adopt(root, config, ledger, args.routes)
+            outcome = adopt(root, config, ledger, args.routes, args.refresh_stale)
             save_ledger(state_path, ledger)
             if args.format == "json":
                 print(json.dumps(outcome, indent=2, ensure_ascii=False))

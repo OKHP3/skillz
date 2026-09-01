@@ -9,6 +9,7 @@ protected tokens; it cannot certify idiomatic French or native review.
 from __future__ import annotations
 
 import argparse
+from datetime import date
 import json
 import re
 import sys
@@ -29,10 +30,35 @@ INLINE_CODE_RE = re.compile(r"(?<!`)`([^`\n]+)`(?!`)")
 HEADING_RE = re.compile(r"^\s{0,3}(#{1,6})\s+.+$", re.MULTILINE)
 TARGET_STATUSES = {"draft", "ready-for-native-review", "approved"}
 ENTRY_HANDLING = {"translate", "adapt", "preserve"}
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 def add_error(errors: List[str], message: str) -> None:
     errors.append(message)
+
+
+def validate_review_record(record: Any, errors: List[str]) -> None:
+    if not isinstance(record, dict):
+        add_error(errors, "target.review_record is required for approved output")
+        return
+    if record.get("target_locale") != TARGET_LOCALE:
+        add_error(errors, f"target.review_record.target_locale must be {TARGET_LOCALE}")
+    if record.get("decision") != "approved":
+        add_error(errors, "target.review_record.decision must be approved")
+    require_nonempty_string(record.get("reviewer_role"), "target.review_record.reviewer_role", errors)
+    require_nonempty_string(record.get("record_ref"), "target.review_record.record_ref", errors)
+    if not isinstance(record.get("reviewed_at"), str):
+        add_error(errors, "target.review_record.reviewed_at must be an ISO date")
+    else:
+        try:
+            date.fromisoformat(record["reviewed_at"])
+        except ValueError:
+            add_error(errors, "target.review_record.reviewed_at must be an ISO date")
+    for key in ("source_sha256", "target_sha256"):
+        if not isinstance(record.get(key), str) or not SHA256_RE.fullmatch(record[key]):
+            add_error(errors, f"target.review_record.{key} must be a lowercase SHA-256")
+    if not isinstance(record.get("unresolved_terms"), list) or not all(isinstance(item, str) for item in record["unresolved_terms"]):
+        add_error(errors, "target.review_record.unresolved_terms must be a list of strings")
 
 
 def load_json(path: Path, errors: List[str]) -> Any:
@@ -186,8 +212,8 @@ def validate_manifest(project: Any, path: Path) -> List[str]:
             add_error(errors, "target.status must be draft, ready-for-native-review, or approved")
         if not isinstance(target.get("needs_native_review"), bool):
             add_error(errors, "target.needs_native_review must be boolean")
-        if target.get("status") == "approved" and not isinstance(target.get("review_record"), dict):
-            add_error(errors, "target.review_record is required for approved output")
+        if target.get("status") == "approved":
+            validate_review_record(target.get("review_record"), errors)
     if "targets" in project:
         add_error(errors, "targets is not allowed; this package permits exactly one fr-FR output")
     rules = project.get("rules")

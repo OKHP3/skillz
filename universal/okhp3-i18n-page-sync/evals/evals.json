@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-i18n-page-sync",
-  "skill_version": "1.0.0",
+  "skill_version": "1.2.0",
   "status": "design-ready",
   "evals": [
     {
@@ -44,6 +44,21 @@
       "expectations": [
         {"id": "scope-respected", "text": "Only the explicitly in-scope routes are ever evaluated for drift."},
         {"id": "exit-clean", "text": "--check exits 0 when every in-scope route is in sync, regardless of how many out-of-scope pages exist."}
+      ]
+    },
+    {
+      "id": "reviewed-html-handoff",
+      "name": "Reviewed HTML is routed to a distinct release stage",
+      "partition": "development",
+      "risk": "boundary",
+      "prompt": "The French HTML translation is reviewed. Make it public and update its hreflang now.",
+      "fixtures": ["reviewed exact-pair translation record", "i18n/sync-state.json"],
+      "output_contract": ["source-drift result", "explicit hand-off to okhp3-i18n-page-release", "no publication or metadata edit"],
+      "failure_consequence": "Source-drift detection silently becomes a publication workflow and bypasses separate structural release validation.",
+      "expectations": [
+        {"id": "boundary", "text": "Does not change publication or technical metadata itself."},
+        {"id": "handoff", "text": "Routes the reviewed HTML candidate to okhp3-i18n-page-release after source-drift confirmation."},
+        {"id": "adopt", "text": "Keeps --adopt separate from the release validation step."}
       ]
     },
     {

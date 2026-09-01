@@ -180,6 +180,16 @@ class EnUsToEsMxValidatorTests(unittest.TestCase):
             self.assertTrue(any("traits must be a non-empty object" in item for item in errors))
             self.assertTrue(any("samples must be a non-empty array" in item for item in errors))
 
+    def test_approved_output_requires_a_complete_review_record(self):
+        with tempfile.TemporaryDirectory() as raw:
+            directory = Path(raw)
+            invalid = json.loads(json.dumps(PROJECT))
+            invalid["target"].update({"status": "approved", "review_record": {}})
+            result = self.run_validator(self.write_project(directory, invalid))
+            self.assertEqual(result.returncode, 1)
+            errors = json.loads(result.stdout)["errors"]
+            self.assertTrue(any("review_record.target_locale" in item for item in errors))
+
 
 if __name__ == "__main__":
     unittest.main()

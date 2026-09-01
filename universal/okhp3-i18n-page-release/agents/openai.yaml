@@ -1,0 +1,6 @@
+interface:
+  display_name: "i18n Page Release"
+  short_description: "Check localized static pages for release without translating or publishing"
+  default_prompt: "Use $okhp3-i18n-page-release to verify localized static pages, locale metadata, and release readiness after translation review."
+policy:
+  allow_implicit_invocation: true
