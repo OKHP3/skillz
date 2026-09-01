@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-01T04:49:12.759Z",
+  "generatedAt": "2026-09-01T05:03:25.232Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "8cf8a41",
-  "skillCount": 325,
+  "sourceCommit": "9338a95",
+  "skillCount": 329,
   "familyCount": 20,
   "families": [
     {
@@ -291,8 +291,9 @@
     {
       "name": "copilot",
       "displayName": "Copilot Agent Skills",
-      "skillCount": 36,
+      "skillCount": 40,
       "skills": [
+        "okhp3-copilot-studio-skill-foundry",
         "okhp3-cowork-commitment-tracker",
         "okhp3-cowork-daily-execution-brief",
         "okhp3-cowork-decision-record",
@@ -303,8 +304,10 @@
         "okhp3-cowork-meeting-prep",
         "okhp3-cowork-project-context-pack",
         "okhp3-cowork-research-evidence-log",
+        "okhp3-cowork-skill-foundry",
         "okhp3-cowork-stakeholder-update",
         "okhp3-cowork-weekly-review",
+        "okhp3-github-skill-foundry",
         "okhp3-sharepoint-library-accessibility-review",
         "okhp3-sharepoint-library-article-curator",
         "okhp3-sharepoint-library-canonical-source-finder",
@@ -328,7 +331,8 @@
         "okhp3-sharepoint-list-risk-issue-review",
         "okhp3-sharepoint-list-schema-view-review",
         "okhp3-sharepoint-list-sla-breach-watchlist",
-        "okhp3-sharepoint-list-vendor-obligation-review"
+        "okhp3-sharepoint-list-vendor-obligation-review",
+        "okhp3-sharepoint-skill-foundry"
       ],
       "narrativeBody": "The copilot family is the host-oriented distribution surface for task-focused\nAgent Skills targeting Copilot-branded runtimes. It provides one catalog home\nfor GitHub Copilot, Copilot Cowork, SharePoint Copilot, Copilot Studio, and\nfuture Copilot hosts whose skill support is verified.\n\nThe family is intentionally broader than one vendor product, but compatibility\nis never implied by family membership. Every package must identify its target\nhost, discovery path, native capabilities, knowledge boundary, permission\nmodel, and evidence status.",
       "orientation": {
@@ -338,13 +342,16 @@
         },
         "commonOutcomes": {
           "value": [
+            "copilot-studio",
             "copilot-cowork",
-            "copilot"
+            "github-copilot",
+            "copilot",
+            "sharepoint-copilot"
           ],
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-cowork-commitment-tracker",
+          "value": "okhp3-copilot-studio-skill-foundry",
           "note": null,
           "source": "generated"
         },
@@ -9620,6 +9627,69 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-copilot-studio-skill-foundry",
+      "displayName": "Copilot Studio Skill Foundry",
+      "family": "copilot",
+      "skillDir": "okhp3-copilot-studio-skill-foundry",
+      "path": "copilot/okhp3-copilot-studio-skill-foundry/SKILL.md",
+      "description": "Design, author, evaluate, and package a reusable Microsoft Copilot Studio agent skill. Use when a task-specific capability must be created or shared across Copilot Studio agents powered by the GitHub Copilot harness. Do not use for Cowork packages, SharePoint site skills, GitHub repository skills, agent identity, knowledge-source design, or tool/connector implementation alone.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "copilot-studio",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P3)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "copilot-studio"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/copilot/okhp3-copilot-studio-skill-foundry/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/copilot/okhp3-copilot-studio-skill-foundry/SKILL.md",
+      "lastModified": "2026-09-01T00:01:29-05:00",
+      "commitSha": "9338a957",
+      "createdAt": "2026-09-01T00:01:29-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "copilot-studio",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Copilot Studio reusable skill patterns, agent-component separation, package handoffs, and evaluation design.",
+        "outOfScope": "Cowork, SharePoint, and GitHub Copilot host contracts; agent identity, knowledge-source, connector, or autonomous publication work.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-cowork-commitment-tracker",
       "displayName": "Cowork Commitment Tracker",
       "family": "copilot",
@@ -10254,6 +10324,69 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-cowork-skill-foundry",
+      "displayName": "Cowork Skill Foundry",
+      "family": "copilot",
+      "skillDir": "okhp3-cowork-skill-foundry",
+      "path": "copilot/okhp3-cowork-skill-foundry/SKILL.md",
+      "description": "Design, author, evaluate, and package a task-focused Microsoft Copilot Cowork skill. Use when converting a recurring personal Microsoft 365 workflow into a Cowork SKILL.md or M365 app-package skill. Do not use for SharePoint site skills, Copilot Studio agent skills, GitHub Copilot repository skills, or connector development alone.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "copilot-cowork",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P3)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "copilot-cowork"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/copilot/okhp3-cowork-skill-foundry/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/copilot/okhp3-cowork-skill-foundry/SKILL.md",
+      "lastModified": "2026-09-01T00:01:29-05:00",
+      "commitSha": "9338a957",
+      "createdAt": "2026-09-01T00:01:29-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "copilot-cowork",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Cowork-specific task-skill patterns, evaluations, and skill-only or M365 app-package handoffs.",
+        "outOfScope": "SharePoint, GitHub Copilot, or Copilot Studio host contracts; autonomous communication; connector implementation.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-cowork-stakeholder-update",
       "displayName": "Cowork Stakeholder Update",
       "family": "copilot",
@@ -10368,6 +10501,69 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-github-skill-foundry",
+      "displayName": "GitHub Skill Foundry",
+      "family": "copilot",
+      "skillDir": "okhp3-github-skill-foundry",
+      "path": "copilot/okhp3-github-skill-foundry/SKILL.md",
+      "description": "Design, author, evaluate, and install-plan a task-focused GitHub Copilot Agent Skill. Use when creating a repository or personal GitHub Copilot SKILL.md for coding, review, maintenance, or repository workflows. Do not use for Cowork, SharePoint, Copilot Studio, or general agent instructions.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "github-copilot",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P3)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "github-copilot"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/copilot/okhp3-github-skill-foundry/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/copilot/okhp3-github-skill-foundry/SKILL.md",
+      "lastModified": "2026-09-01T00:01:29-05:00",
+      "commitSha": "9338a957",
+      "createdAt": "2026-09-01T00:01:29-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "github-copilot",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "GitHub Copilot repository and personal Agent Skill patterns, repository safety, and evaluation design.",
+        "outOfScope": "Cowork/M365 packaging, SharePoint site skills, Copilot Studio skills, autonomous remote writes, and generic custom instructions.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -12092,6 +12288,69 @@
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-sharepoint-skill-foundry",
+      "displayName": "Sharepoint Skill Foundry",
+      "family": "copilot",
+      "skillDir": "okhp3-sharepoint-skill-foundry",
+      "path": "copilot/okhp3-sharepoint-skill-foundry/SKILL.md",
+      "description": "Design, author, evaluate, and deploy-plan a native Copilot in SharePoint skill for a named site. Use when creating a task-focused SharePoint Library or List SKILL.md. Do not use for Cowork, Copilot Studio, GitHub Copilot, external-system, or custom-code workflows.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "sharepoint-copilot",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P3)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "sharepoint-copilot"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/copilot/okhp3-sharepoint-skill-foundry/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/copilot/okhp3-sharepoint-skill-foundry/SKILL.md",
+      "lastModified": "2026-09-01T00:01:29-05:00",
+      "commitSha": "9338a957",
+      "createdAt": "2026-09-01T00:01:29-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P3)",
+        "category": "sharepoint-copilot",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Native Copilot in SharePoint Library and List skill patterns, safety boundaries, and site-test plans.",
+        "outOfScope": "Cowork packages, GitHub repository skills, Copilot Studio agent components, external systems, and custom code.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "glee-fully-repo-standardizer",
