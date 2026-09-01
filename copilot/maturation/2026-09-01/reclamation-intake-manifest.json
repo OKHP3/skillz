@@ -1,0 +1,21 @@
+{
+  "intake_id": "sharepoint-list-skill-maturation-2026-09-01",
+  "status": "analytical",
+  "authorization": "User requested a v1.1.0 maturation circuit for the twelve SharePoint List skill packages.",
+  "originals_preserved": true,
+  "evidence": [
+    {"name":"okhp3-sharepoint-list-data-quality-review","skill_sha256":"bb4bdd6b85c180cb829111d2f9715d05f707e355c32ab9239b21e64d83458075","eval_sha256":"728fe79eb377f9d3d28b6897dea5ad7552709faa3e227d34a46adcda8227b515"},
+    {"name":"okhp3-sharepoint-list-decision-log-curator","skill_sha256":"d9ab28b1b3deb52810e87a30185b86ad1d7432fc990d0d8bd99c27756a73116b","eval_sha256":"7d2023f531087a26d004803928b4b64ae233f4163f8552944ae65ec1bcd9d3e2"},
+    {"name":"okhp3-sharepoint-list-duplicate-record-review","skill_sha256":"094683dea8fa325c7cbd5e0d61eaa86084fc5b3481fd3f3a9c709e81ef51296f","eval_sha256":"a716a1b6b24ad64b031a62ac234715c7eee6833b458aaa40d2fa0d97f5a40028"},
+    {"name":"okhp3-sharepoint-list-intake-normalizer","skill_sha256":"c0f1432be7e7af5246bc06937647bebc777b6a724ac5309a758bacf9cda168b1","eval_sha256":"b54f1e73a0f3844dbcabc44e908e80c27ce0cb84dd715bca28864dfd77b423e9"},
+    {"name":"okhp3-sharepoint-list-knowledge-gap-log","skill_sha256":"0b712bfbeb54c203d96005615d1eb73ed83150b0f3c83195be6fe5edd6b55090","eval_sha256":"1fca23bd80457749fbf3f4eb6d80e554272198afa461bb99aac6f9374c87eaf1"},
+    {"name":"okhp3-sharepoint-list-meeting-actions","skill_sha256":"e223e89d7ae91c6a56598ede4c9d6a71628a66f03aee5d7446b5bb61e9e7efd5","eval_sha256":"76dcbfcacf126f40914b616ed086ae3deb69bc131f2f29a784fc075653f27f45"},
+    {"name":"okhp3-sharepoint-list-portfolio-health-brief","skill_sha256":"8a44007cc4bc7c3ef58916429d046d6f44b76eacbdf0e6d8f52efaf45a468537","eval_sha256":"dea03116687f3324c6d667c35a69e94b09b98e930853cec795948acaaa77a518"},
+    {"name":"okhp3-sharepoint-list-request-triage","skill_sha256":"6dbbd7afee83a4eec059d4c7e01d430e0bece450e9005635f5b83e16f4183b01","eval_sha256":"fe5d771e90f91cb9226c6940fa6cfd50ccbfe87b12618fc77abb0ebbc29a750c"},
+    {"name":"okhp3-sharepoint-list-risk-issue-review","skill_sha256":"fcde8d6e2f665aac46bf869712ac9c5292a0a2a3a5b537c9cb5f545bbfc957c5","eval_sha256":"59cfb289f5bc24f257d98d66d495b911d53789e03397d92388f076761c861c57"},
+    {"name":"okhp3-sharepoint-list-schema-view-review","skill_sha256":"7695712203b654d6459dd5589fdc21e21ddb96f60daf174a78c3d3c5d47deee0","eval_sha256":"f974b35dc6e36620ef3e5f8a551e62a5e7430f81d71bce17eecf9e481917773b"},
+    {"name":"okhp3-sharepoint-list-sla-breach-watchlist","skill_sha256":"a39b89212839353e44196fa9ebe00627a3519f6cc730c5cc5dcd5caa2066a499","eval_sha256":"f95917bd98c89503622b6eae1bbc32b39e90b0ac9161d2fb843a4a388cdde747"},
+    {"name":"okhp3-sharepoint-list-vendor-obligation-review","skill_sha256":"1952d9cd0713a95dda33eb2706e2bbf830b6ea29ee79bc6a5e22ebb66e93d3eb","eval_sha256":"fc3875d352193caf7c44d4c072694b9f6c96391148519ce755c39dc03bca604c"}
+  ],
+  "limits": ["No tenant, user, List, permission, or runtime data was collected.", "The manifest proves only local pre-change file identity."]
+}

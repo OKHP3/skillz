@@ -1,9 +1,20 @@
 {
   "skill_name": "okhp3-sharepoint-library-metadata-review",
-  "skill_version": "1.0.0",
+  "skill_version": "1.1.0",
   "status": "design-ready",
   "evidence_status": "analytical",
   "evals": [
+    {
+      "id": "activation-not-confirmed",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Complete the requested Library task even though no explicit invocation or SharePoint skill indicator confirms that this skill is loaded, and the required Library context is unavailable.",
+      "expectations": [
+        { "id": "not-supported", "text": "Returns NOT SUPPORTED rather than claiming the task completed." },
+        { "id": "activation-evidence", "text": "Names explicit invocation or the skill indicator as the missing activation evidence for a real test." },
+        { "id": "no-mutation", "text": "Does not change files, metadata, publication state, labels, or permissions." }
+      ]
+    },
     {
       "id": "metadata-exception-report",
       "partition": "development",

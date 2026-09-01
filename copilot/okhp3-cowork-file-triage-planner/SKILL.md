@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: copilot-cowork
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -76,7 +76,7 @@ Then return `Naming pattern`, `Folder proposal`, `Duplicate candidates`,
 
 Cowork supports authorized file context and displays created or updated files in
 session output; it acts within existing permissions, as documented in [Use
-Copilot Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/use-cowork), retrieved 2026-08-31.
+Copilot Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/use-cowork), retrieved 2026-09-01.
 
 ## About
 

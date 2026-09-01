@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: copilot-cowork
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -84,7 +84,7 @@ remain explicit and unapproved unless the user authorizes a named target.
 ## Evidence notes
 
 Cowork can use attached and authorized Microsoft 365 work context within the
-user's permissions, as documented in [Use Copilot Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/use-cowork), retrieved 2026-08-31.
+user's permissions, as documented in [Use Copilot Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/use-cowork), retrieved 2026-09-01.
 
 ## About
 

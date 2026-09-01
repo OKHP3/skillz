@@ -1,0 +1,11 @@
+{
+  "record_id": "sp-lib-policy-citations-20260901",
+  "date": "2026-09-01",
+  "baseline": {"version": "1.0.0", "skill_sha256": "4c78783c65398740f5a199ff95ba0f0d7d07e8f733f835782e242d1d8c93953b"},
+  "evidence": [{"id": "S-01", "type": "primary-product-documentation", "status": "analytical"}],
+  "elicitation_requirement": "Question, library or selected-file scope, currency rule, and policy owner are required.",
+  "equilibrium_decision": "approve-with-limits",
+  "disruptor_concern": "Activation does not resolve conflicting policy sources or authorize legal, HR, or regulatory advice.",
+  "revision": {"version": "1.1.0", "change": "Added activation-evidence preflight and negative activation evaluation."},
+  "limits": ["No live tenant test", "No advice beyond cited sources", "No source or policy changes"]
+}

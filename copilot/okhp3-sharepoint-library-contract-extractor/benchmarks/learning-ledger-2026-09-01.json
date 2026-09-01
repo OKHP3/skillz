@@ -1,0 +1,11 @@
+{
+  "record_id": "sp-lib-contract-extractor-20260901",
+  "date": "2026-09-01",
+  "baseline": {"version": "1.0.0", "skill_sha256": "1f4eb722ad4f5b3c9d065ac81f196d4f07cc5aaae1a60fa13e022a8ce49c2a44"},
+  "evidence": [{"id": "S-01", "type": "primary-product-documentation", "status": "analytical"}],
+  "elicitation_requirement": "Selected contracts, extraction schema, date convention, and responsible reviewer are required.",
+  "equilibrium_decision": "approve-with-limits",
+  "disruptor_concern": "Activation cannot turn ambiguous wording into a legal conclusion or authorize notices.",
+  "revision": {"version": "1.1.0", "change": "Added activation-evidence preflight and negative activation evaluation."},
+  "limits": ["No live tenant test", "No legal advice", "No notices or record updates"]
+}

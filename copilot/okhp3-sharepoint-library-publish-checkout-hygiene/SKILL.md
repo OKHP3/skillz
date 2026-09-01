@@ -7,7 +7,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: copilot
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -42,6 +42,19 @@ in content.
 | Mutation | Always draft first; explicit confirmation, capability, and permission required for a supported state change |
 | Evidence | Analytical design only; no live hygiene run has occurred |
 
+## Activation evidence preflight
+
+1. Confirm the named Library and the selected files or inspection scope required
+   by this task.
+2. In a real SharePoint test, confirm either explicit invocation of this skill
+   or the SharePoint skill indicator card. The presence of this package alone
+   is not evidence that the host discovered or loaded it.
+3. If the host cannot load the skill or expose the required Library context,
+   return `NOT SUPPORTED`, identify the missing capability, and do not claim
+   that the review or draft was completed.
+4. Keep the result analytical until a test records the site, user role, input
+   scope, and observed host behavior.
+
 ## Procedure
 
 1. Confirm the target library, inspection scope, freshness rule, and who owns
@@ -73,11 +86,17 @@ in content.
 ## Validation
 
 Read `evals/evals.json` for analytical signal, rule-gap, and state-change
-boundary cases. No live host evidence exists for version 1.0.0.
+boundary cases. No live host evidence exists for version 1.1.0.
 
 ## References
 
 - [Extend Copilot in SharePoint with skills](https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-skills)
+
+## v1.1 maturation record
+
+The analytical [learning ledger](benchmarks/learning-ledger-2026-09-01.json)
+preserves the frozen v1.0 input, official-source constraint, review limits, and
+the concrete activation-evidence revision. It is not a live tenant test.
 
 ## About
 

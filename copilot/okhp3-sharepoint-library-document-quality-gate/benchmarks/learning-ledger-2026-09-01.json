@@ -1,0 +1,11 @@
+{
+  "record_id": "sp-lib-document-quality-gate-20260901",
+  "date": "2026-09-01",
+  "baseline": {"version": "1.0.0", "skill_sha256": "98ae5063e230744a676103cc7db0b0879f9268b8c93317c6b860fbe180ce4407"},
+  "evidence": [{"id": "S-01", "type": "primary-product-documentation", "status": "analytical"}],
+  "elicitation_requirement": "Selected documents, authoritative quality standard, intended audience, and decision owner are required.",
+  "equilibrium_decision": "approve-with-limits",
+  "disruptor_concern": "Activation does not prove that an unstated or inaccessible rule was applied.",
+  "revision": {"version": "1.1.0", "change": "Added activation-evidence preflight and negative activation evaluation."},
+  "limits": ["No live tenant test", "No compliance assertion beyond supplied rules", "No fixing or publishing"]
+}

@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: copilot-cowork
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -97,7 +97,7 @@ approval` section when the user asks to change a calendar item or communicate.
 
 Cowork's calendar, meeting, work-context, permission, and action-approval
 boundaries are documented in [Use Copilot Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/use-cowork)
-and [the Cowork application card](https://learn.microsoft.com/en-us/microsoft-365/copilot/responsible-ai/copilot-cowork-application-card), retrieved 2026-08-31.
+and [the Cowork application card](https://learn.microsoft.com/en-us/microsoft-365/copilot/responsible-ai/copilot-cowork-application-card), retrieved 2026-09-01.
 
 ## About
 

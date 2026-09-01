@@ -1,0 +1,11 @@
+{
+  "record_id": "sp-lib-taxonomy-drift-report-20260901",
+  "date": "2026-09-01",
+  "baseline": {"version": "1.0.0", "skill_sha256": "22c17323232295f4b167bb960f45a9cc0b12445eb852548ff988809b78bb23b9"},
+  "evidence": [{"id": "S-01", "type": "primary-product-documentation", "status": "analytical"}],
+  "elicitation_requirement": "Target library, declared information architecture, scope, and owner are required.",
+  "equilibrium_decision": "approve-with-limits",
+  "disruptor_concern": "Activation does not make an absent architecture discoverable or authorize retagging and moves.",
+  "revision": {"version": "1.1.0", "change": "Added activation-evidence preflight and negative activation evaluation."},
+  "limits": ["No live tenant test", "No architecture invention", "No retagging or relocation"]
+}

@@ -1,0 +1,11 @@
+{
+  "record_id": "sp-lib-canonical-source-finder-20260901",
+  "date": "2026-09-01",
+  "baseline": {"version": "1.0.0", "skill_sha256": "262025d5716d34f81ec35759bb74f6d855f6c1c3546fbd805c842346b34f1526"},
+  "evidence": [{"id": "S-01", "type": "primary-product-documentation", "status": "analytical"}],
+  "elicitation_requirement": "Subject, selected related files, and authoritative canonical signals are required.",
+  "equilibrium_decision": "approve-with-limits",
+  "disruptor_concern": "Activation does not make similarity, recency, or a folder signal authoritative.",
+  "revision": {"version": "1.1.0", "change": "Added activation-evidence preflight and negative activation evaluation."},
+  "limits": ["No live tenant test", "No canonical-source decision", "No deletion or replacement"]
+}

@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: copilot-cowork
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -105,7 +105,7 @@ substitute for showing the user the exact action this skill proposes.
 Microsoft documents Cowork's permission-scoped email work, sensitive-action
 approval, custom-skill storage, and new-session discovery in [Use Copilot
 Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/use-cowork)
-and [its application card](https://learn.microsoft.com/en-us/microsoft-365/copilot/responsible-ai/copilot-cowork-application-card), retrieved 2026-08-31.
+and [its application card](https://learn.microsoft.com/en-us/microsoft-365/copilot/responsible-ai/copilot-cowork-application-card), retrieved 2026-09-01.
 
 ## About
 
