@@ -1,6 +1,30 @@
 {
-  "generatedAt": "2026-08-31T12:39:45.385Z",
+  "generatedAt": "2026-09-01T01:19:42.124Z",
   "commits": [
+    {
+      "sha": "ee219bd42d80086b5f989cfd04886d08bd610a2e",
+      "shortSha": "ee219bd",
+      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
+      "author": "Jamie Hill",
+      "date": "2026-08-31T13:49:10Z",
+      "url": "https://github.com/OKHP3/skillz/commit/ee219bd42d80086b5f989cfd04886d08bd610a2e"
+    },
+    {
+      "sha": "eb3e97bcc1fc0352c1d4a907c705f4333595898d",
+      "shortSha": "eb3e97b",
+      "message": "\tmodified:   .catalog-meta.json\n\tmodified:   abrahamic/FAMILY.md\n\tmodified:   agent-foundry/FAMILY.md\n\tmodified:   askjamie/FAMILY.md\n\tmodified:   community/FAMILY.md\n\tmodified:   context-extraction/FAMILY.md\n\tmodified:   glee-fully/FAMILY.md\n\tmodified:   knowledge-operations/FAMILY.md\n\tmodified:   language-mediation/FAMILY.md\n\tmodified:   lifetrkr/FAMILY.md\n\tmodified:   mermaid/FAMILY.md\n\tmodified:   notion/FAMILY.md\n\tmodified:   outcome-modeling/FAMILY.md\n\tmodified:   process-capture/FAMILY.md\n\tmodified:   red-teaming/FAMILY.md\n\tmodified:   refolddec/FAMILY.md\n\tmodified:   replit/FAMILY.md\n\tmodified:   social-posting/FAMILY.md\n\tmodified:   software-reclamation/FAMILY.md",
+      "author": "Jamie Hill",
+      "date": "2026-08-31T13:49:02Z",
+      "url": "https://github.com/OKHP3/skillz/commit/eb3e97bcc1fc0352c1d4a907c705f4333595898d"
+    },
+    {
+      "sha": "ff8f5c3f522cffcaf3286cec74a6fc070092b56f",
+      "shortSha": "ff8f5c3",
+      "message": "chore: record reconciled catalog outputs",
+      "author": "OverKill Hill P³",
+      "date": "2026-08-31T12:40:06Z",
+      "url": "https://github.com/OKHP3/skillz/commit/ff8f5c3f522cffcaf3286cec74a6fc070092b56f"
+    },
     {
       "sha": "75d919fc802e63d03d7a6b73858a712fbf931055",
       "shortSha": "75d919f",
@@ -26,6 +50,14 @@
       "url": "https://github.com/OKHP3/skillz/commit/09d3aedaec178d23e030dc5e3a106dc5e693961d"
     },
     {
+      "sha": "670f3416ae251a5ee3b1e823ebc37f99cf570344",
+      "shortSha": "670f341",
+      "message": "Add okhp3-i18n-page-sync: detect translation drift via the site search index\n\nIntroduces a lean, deterministic detection skill (universal family) that\nreuses a static site's own generated search index as its page inventory,\ncompares each in-scope English page against its configured target-locale\ncounterparts using a persisted ledger, and reports missing or stale\ntranslations without ever drafting or publishing content itself. Ships\nwith a copy-in GitHub Actions workflow template that requires no secrets\nand calls no external API.",
+      "author": "Jamie Hill",
+      "date": "2026-08-31T03:58:18Z",
+      "url": "https://github.com/OKHP3/skillz/commit/670f3416ae251a5ee3b1e823ebc37f99cf570344"
+    },
+    {
       "sha": "ba83ce41621161254304cc2bec42c1f54a022c5c",
       "shortSha": "ba83ce4",
       "message": "fix: authenticate publish health API checks",
@@ -48,38 +80,6 @@
       "author": "Jamie Hill",
       "date": "2026-08-31T01:21:45Z",
       "url": "https://github.com/OKHP3/skillz/commit/cce659dae258d8102b546669bee1d6603dc012c8"
-    },
-    {
-      "sha": "06ae777ddc9c6f029cd174fa6020c7ff71eb8b46",
-      "shortSha": "06ae777",
-      "message": "feat: add language mediation skill family",
-      "author": "Jamie Hill",
-      "date": "2026-08-31T01:18:35Z",
-      "url": "https://github.com/OKHP3/skillz/commit/06ae777ddc9c6f029cd174fa6020c7ff71eb8b46"
-    },
-    {
-      "sha": "aeef9a2b3e146ed5e2db3a094a57832413365344",
-      "shortSha": "aeef9a2",
-      "message": "Fix language-mediation catalog metadata",
-      "author": "Jamie Hill",
-      "date": "2026-08-31T01:11:16Z",
-      "url": "https://github.com/OKHP3/skillz/commit/aeef9a2b3e146ed5e2db3a094a57832413365344"
-    },
-    {
-      "sha": "d64f3a817e84bcc18ae26a3978e61b061b2e142c",
-      "shortSha": "d64f3a8",
-      "message": "\tmodified:   .catalog-meta.json\n\tmodified:   AGENTS.md\n\tmodified:   README.md\n\tmodified:   abrahamic/FAMILY.md\n\tmodified:   agent-foundry/FAMILY.md\n\tmodified:   artifacts/forge/public/data/catalog.json\n\tmodified:   artifacts/forge/public/data/project-summary.json\n\tmodified:   artifacts/forge/public/data/search-index.json\n\tnew file:   artifacts/forge/public/data/skills/language-mediation/okhp3-translation-en-us-fr-fr.json\n\tdeleted:    artifacts/forge/public/data/skills/universal/okhp3-translation-en-us-fr-fr.json\n\tmodified:   askjamie/FAMILY.md\n\tmodified:   community/FAMILY.md\n\tmodified:   context-extraction/FAMILY.md\n\tmodified:   docs/promotion/okhp3-translation-en-us-fr-fr-2026-08-30.json\n\tmodified:   glee-fully/FAMILY.md\n\tmodified:   knowledge-operations/FAMILY.md\n\tnew file:   language-mediation/FAMILY.md\n\tnew file:   language-mediation/README.md\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/SKILL.md -> language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/agents/openai.yaml -> language-mediation/okhp3-translation-en-us-fr-fr/agents/openai.yaml\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/assets/dictionary.en-us-fr-fr.json -> language-mediation/okhp3-translation-en-us-fr-fr/assets/dictionary.en-us-fr-fr.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/assets/translation-project.en-us-fr-fr.example.json -> language-mediation/okhp3-translation-en-us-fr-fr/assets/translation-project.en-us-fr-fr.example.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/assets/voice-profile.en-us.example.json -> language-mediation/okhp3-translation-en-us-fr-fr/assets/voice-profile.en-us.example.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/benchmarks/benchmark.json -> language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/benchmark.json\n\tnew file:   language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30-v1.1.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30-v1.json -> language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30-v1.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30.json -> language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/SUMMARY.md -> language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/SUMMARY.md\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/claim-ledger.json -> language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/claim-ledger.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/equilibrium-review-record.json -> language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/equilibrium-review-record.json\n\tnew file:   language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/learning-ledger-2026-08-30-v1.1.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/benchmarks/learning-ledger-2026-08-30.json -> language-mediation/okhp3-translation-en-us-fr-fr/benchmarks/learning-ledger-2026-08-30.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/evals/evals.json -> language-mediation/okhp3-translation-en-us-fr-fr/evals/evals.json\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/references/en-us-to-fr-fr-contract.md -> language-mediation/okhp3-translation-en-us-fr-fr/references/en-us-to-fr-fr-contract.md\n\tnew file:   language-mediation/okhp3-translation-en-us-fr-fr/references/family-placement.md\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/references/voice-and-french.md -> language-mediation/okhp3-translation-en-us-fr-fr/references/voice-and-french.md\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/scripts/plan_en_us_to_fr_fr.py -> language-mediation/okhp3-translation-en-us-fr-fr/scripts/plan_en_us_to_fr_fr.py\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/scripts/validate_en_us_to_fr_fr.py -> language-mediation/okhp3-translation-en-us-fr-fr/scripts/validate_en_us_to_fr_fr.py\n\trenamed:    universal/okhp3-translation-en-us-fr-fr/tests/test_en_us_to_fr_fr.py -> language-mediation/okhp3-translation-en-us-fr-fr/tests/test_en_us_to_fr_fr.py\n\tmodified:   lifetrkr/FAMILY.md\n\tmodified:   mermaid/FAMILY.md\n\tmodified:   notion/FAMILY.md\n\tmodified:   outcome-modeling/FAMILY.md\n\tmodified:   process-capture/FAMILY.md\n\tmodified:   red-teaming/FAMILY.md\n\tmodified:   refolddec/FAMILY.md\n\tmodified:   replit/FAMILY.md\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/SKILL.md\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/agents/openai.yaml\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/assets/translation-project.en-us-fr-fr.example.json\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/benchmarks/benchmark.json\n\tnew file:   skills/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30-v1.1.json\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30-v1.json\n\tnew file:   skills/okhp3-translation-en-us-fr-fr/benchmarks/learning-ledger-2026-08-30-v1.1.json\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/evals/evals.json\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/references/en-us-to-fr-fr-contract.md\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/references/family-placement.md\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/scripts/plan_en_us_to_fr_fr.py\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/scripts/validate_en_us_to_fr_fr.py\n\tmodified:   skills/okhp3-translation-en-us-fr-fr/tests/test_en_us_to_fr_fr.py\n\tmodified:   skillz.manifest.json\n\tmodified:   social-posting/FAMILY.md\n\tmodified:   software-reclamation/FAMILY.md\n\tmodified:   universal/FAMILY.md\n\tdeleted:    universal/okhp3-translation-en-us-fr-fr/references/family-placement.md",
-      "author": "Jamie Hill",
-      "date": "2026-08-30T23:45:34Z",
-      "url": "https://github.com/OKHP3/skillz/commit/d64f3a817e84bcc18ae26a3978e61b061b2e142c"
-    },
-    {
-      "sha": "abc52110c277bcaf0e01dd5bbf9e79d683dc9408",
-      "shortSha": "abc5211",
-      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
-      "author": "Jamie Hill",
-      "date": "2026-08-30T23:30:49Z",
-      "url": "https://github.com/OKHP3/skillz/commit/abc52110c277bcaf0e01dd5bbf9e79d683dc9408"
     }
   ],
   "fetchError": null

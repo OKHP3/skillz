@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-31T12:39:45.274Z",
+  "generatedAt": "2026-09-01T01:19:41.877Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "75d919fc",
-  "skillCount": 287,
+  "sourceCommit": "ee219bd4",
+  "skillCount": 288,
   "familyCount": 19,
   "families": [
     {
@@ -815,7 +815,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 18,
+      "skillCount": 19,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -824,6 +824,7 @@
         "okhp3-foundry-repo-creator",
         "okhp3-github-notification-maintainer",
         "okhp3-google-gis-client-auth",
+        "okhp3-i18n-page-sync",
         "okhp3-overkill-hill-brand",
         "okhp3-repl-repo-janitor",
         "okhp3-repository-janitor",
@@ -19186,6 +19187,69 @@
         "reviewDecision": null,
         "blockers": [
           "Evidence evaluates version 1.1.0, not the current 1.2.0 package."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-i18n-page-sync",
+      "displayName": "I18n Page Sync",
+      "family": "universal",
+      "skillDir": "okhp3-i18n-page-sync",
+      "path": "universal/okhp3-i18n-page-sync/SKILL.md",
+      "description": "Detect which pages on a static site are missing a translation, or have a translation that has fallen behind a changed English source, by reusing the site's own generated search index as the page inventory. Reports drift and names the exact-pair okhp3-translation-en-us-<pair> skill that owns each flagged route. Never drafts, edits, or publishes a translated page itself, and never fails a build over a page the site has not declared in scope for translation.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "universal",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "universal"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-i18n-page-sync/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-i18n-page-sync/SKILL.md",
+      "lastModified": "2026-08-31T03:58:18Z",
+      "commitSha": "670f3416",
+      "createdAt": "2026-08-31T03:58:18Z",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Deterministic drift detection between an English source page inventory and its configured target-locale counterparts; CI gating; hand-off routing to the correct translation-pair skill.",
+        "outOfScope": "Performing translation or register mediation itself, discovering pages outside the site's own search index, auto-publishing, or any behavior beyond reporting and an explicit --adopt baseline write.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
