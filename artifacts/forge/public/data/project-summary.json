@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-09-01T05:49:42.624Z",
+  "generatedAt": "2026-09-01T12:31:48.122Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/foundry-catalog-maturation",
-  "sourceCommit": "d84a0c5",
+  "sourceRef": "main",
+  "sourceCommit": "a02fef7",
   "skillCount": 329,
   "familyCount": 20,
   "maturityCounts": {
-    "draftable": 236,
-    "skeleton": 88,
+    "draftable": 250,
+    "skeleton": 74,
     "usable": 5
   },
   "evidenceStatusCounts": {
