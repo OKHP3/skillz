@@ -43,6 +43,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `process-capture/` | Process-analysis and documentation pipeline plus the recurring-task capture skill |
 | `refolddec/` | ReFolDec fold, unfold, and refold transformations |
 | `agent-foundry/` | AI-agent creation, readiness, platform comparison, portability, and lifecycle skills |
+| `copilot/` | Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilot, Copilot Studio, and verified Copilot runtimes |
 | `universal/` | Cross-project builders, repository organization, cataloging, database cartography, API proxy, OAuth, and deployment skills |
 | `context-extraction/` | Source-agnostic and platform-specific AI-thread extraction, project migration, provenance preservation, and handoff skills |
 | `outcome-modeling/` | Shared event-to-state forecasting core plus sports, NFL fantasy, business-sales, and prediction-market decision adapters |
@@ -220,6 +221,20 @@ These are general-purpose or imported skills. Prefer the narrower OKHP3 family s
 | `okhp3-gpt-skill-conversion-plan` | Assess an existing Custom GPT for conversion into a portable Agent Skill, map semantic coverage and loss, and prepare a Skill Foundry handoff. |
 
 The family is intended to expand to Gemini Gems, Copilot declarative agents, OpenClaw agents, and other agent runtimes when their creation or lifecycle methods become concrete skills.
+
+### Copilot family
+
+The `copilot/` family is the host-oriented distribution surface for
+task-focused Agent Skills targeting Copilot-branded runtimes. It keeps GitHub
+Copilot, Copilot Cowork, SharePoint Copilot, Copilot Studio, and future verified
+Copilot hosts in one catalog family while requiring each skill to declare its
+exact host, packaging, capability, permission, and evidence boundary.
+
+Use the host token in the package name, such as `github`, `cowork`,
+`sharepoint`, `copilot-studio`, `scout`, or `crosshost`. Do not infer support
+for one Copilot surface from support on another. Use `agent-foundry/` for the
+creation or migration of an entire Copilot agent; use `copilot/` for the
+task-focused skill layer.
 
 ### Glee-fully family
 
