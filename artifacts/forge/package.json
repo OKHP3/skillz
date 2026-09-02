@@ -4,14 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "ALLOW_SHALLOW_CATALOG_BUILD=1 node scripts/build-catalog.js && node scripts/build-activity.mjs",
-    "dev": "vite --config vite.config.ts --host 0.0.0.0",
+    "predev": "FORGE_PUBLIC_DIR=.cache/forge-preview FORGE_SKIP_MANIFEST_SYNC=1 ALLOW_SHALLOW_CATALOG_BUILD=1 node scripts/build-catalog.js && FORGE_PUBLIC_DIR=.cache/forge-preview node scripts/build-activity.mjs",
+    "dev": "FORGE_PUBLIC_DIR=.cache/forge-preview vite --config vite.config.ts --host 0.0.0.0",
     "prebuild": "ALLOW_SHALLOW_CATALOG_BUILD=1 node scripts/build-catalog.js && node scripts/build-activity.mjs",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test:review-browser": "node scripts/test-review-surface-browser.mjs",
-    "test:review-published": "node scripts/test-review-surface-published.mjs"
+    "test:review-published": "node scripts/test-review-surface-published.mjs",
+    "test:preview-generation": "node scripts/test-preview-generation.mjs"
   },
   "devDependencies": {
     "@replit/vite-plugin-cartographer": "catalog:",

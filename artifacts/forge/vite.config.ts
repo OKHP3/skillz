@@ -26,8 +26,13 @@ if (!basePath) {
   );
 }
 
+const publicDir = process.env.FORGE_PUBLIC_DIR
+  ? path.resolve(import.meta.dirname, process.env.FORGE_PUBLIC_DIR)
+  : path.resolve(import.meta.dirname, 'public');
+
 export default defineConfig({
   base: basePath,
+  publicDir,
   plugins: [
     react(),
     runtimeErrorOverlay(),

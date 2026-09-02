@@ -13,8 +13,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const source = path.resolve(here, '..', '..', 'forge', 'public', 'data', 'catalog.json');
-const destDir = path.resolve(here, '..', 'public', 'data');
+const forgePublicDir = process.env.FORGE_PUBLIC_DIR
+  ? path.resolve(here, '..', '..', 'forge', process.env.FORGE_PUBLIC_DIR)
+  : path.resolve(here, '..', '..', 'forge', 'public');
+const reviewDeskPublicDir = process.env.FORGE_PUBLIC_DIR
+  ? path.resolve(here, '..', process.env.FORGE_PUBLIC_DIR)
+  : path.resolve(here, '..', 'public');
+const source = path.join(forgePublicDir, 'data', 'catalog.json');
+const destDir = path.join(reviewDeskPublicDir, 'data');
 const dest = path.join(destDir, 'catalog.json');
 
 if (!existsSync(source)) {

@@ -11,7 +11,7 @@
  */
 
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync, realpathSync } from 'fs';
-import { join, dirname, relative } from 'path';
+import { join, dirname, relative, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { computeCapabilities } from './capabilities.mjs';
@@ -29,7 +29,13 @@ const REPO_ROOT = join(__dirname, '..', '..', '..');
 // from app code; fetching it lets the browser cache it independently and lets
 // `artifacts/forge/scripts/verify-deploy-trigger.mjs` and Phase D checks validate the
 // exact bytes that ship, not a TS-transpiled copy.
-const OUTPUT = join(__dirname, '..', 'public', 'data', 'catalog.json');
+// Preview runs use an ignored output directory so refreshing the app never
+// mutates the tracked release artifacts. Published builds leave this unset and
+// continue writing to the tracked `public/` directory.
+const PUBLIC_DIR = process.env.FORGE_PUBLIC_DIR
+  ? resolve(__dirname, '..', process.env.FORGE_PUBLIC_DIR)
+  : join(__dirname, '..', 'public');
+const OUTPUT = join(PUBLIC_DIR, 'data', 'catalog.json');
 // Release 1 fix: the compact index above no longer carries each skill's full
 // body text — that alone was the largest contributor to first-load payload
 // size, and Home/Compare/family pages never needed it. Full body text now
@@ -40,8 +46,8 @@ const OUTPUT = join(__dirname, '..', 'public', 'data', 'catalog.json');
 //     the *unstripped* markdown body (headings, links, code fences intact)
 //     so SkillDetail's Full Contract renderer has real structure to work
 //     with, not the plain-text search blob.
-const SEARCH_INDEX_OUTPUT = join(__dirname, '..', 'public', 'data', 'search-index.json');
-const SKILL_DETAIL_DIR = join(__dirname, '..', 'public', 'data', 'skills');
+const SEARCH_INDEX_OUTPUT = join(PUBLIC_DIR, 'data', 'search-index.json');
+const SKILL_DETAIL_DIR = join(PUBLIC_DIR, 'data', 'skills');
 const MANIFEST_PATH = join(REPO_ROOT, 'skillz.manifest.json');
 
 const GITHUB_REPO = 'OKHP3/skillz';
@@ -1166,7 +1172,11 @@ function buildFamilyOrientation(familySlug, familySkills) {
     process.exit(1);
   }
 
-  syncManifestCounts(catalog);
+  if (process.env.FORGE_SKIP_MANIFEST_SYNC === '1') {
+    console.log('Skipping manifest count sync for non-release output.');
+  } else {
+    syncManifestCounts(catalog);
+  }
 }
 
 // A2 fix: `skillz.manifest.json`'s maturityCounts/evidenceStatusCounts and
@@ -1249,7 +1259,7 @@ function syncManifestCounts(catalog) {
 //     }
 //   }
 function writeProjectSummary(catalog) {
-  const SUMMARY_OUTPUT = join(__dirname, '..', 'public', 'data', 'project-summary.json');
+  const SUMMARY_OUTPUT = join(PUBLIC_DIR, 'data', 'project-summary.json');
 
   const maturityCounts = {};
   const evidenceStatusCounts = {};

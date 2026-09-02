@@ -16,11 +16,16 @@
  * Activity.tsx renders a graceful fallback linking to GitHub directly.
  */
 import { writeFileSync, mkdirSync } from 'fs';
-import { join, dirname } from 'path';
+import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUTPUT = join(__dirname, '..', 'public', 'data', 'activity.json');
+// Preview runs set FORGE_PUBLIC_DIR to an ignored output directory. Release
+// builds leave it unset and keep writing the tracked public asset.
+const PUBLIC_DIR = process.env.FORGE_PUBLIC_DIR
+  ? resolve(__dirname, '..', process.env.FORGE_PUBLIC_DIR)
+  : join(__dirname, '..', 'public');
+const OUTPUT = join(PUBLIC_DIR, 'data', 'activity.json');
 const GITHUB_REPO = 'OKHP3/skillz';
 
 async function buildActivity() {

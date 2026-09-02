@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node scripts/sync-catalog-data.mjs",
-    "dev": "vite --config vite.config.ts --host 0.0.0.0",
+    "predev": "FORGE_PUBLIC_DIR=.cache/forge-preview node scripts/sync-catalog-data.mjs",
+    "dev": "FORGE_PUBLIC_DIR=.cache/forge-preview vite --config vite.config.ts --host 0.0.0.0",
     "prebuild": "node scripts/sync-catalog-data.mjs",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
