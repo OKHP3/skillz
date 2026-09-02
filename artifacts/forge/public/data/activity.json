@@ -1,6 +1,14 @@
 {
-  "generatedAt": "2026-09-01T18:40:05.644Z",
+  "generatedAt": "2026-09-02T18:38:44.380Z",
   "commits": [
+    {
+      "sha": "8cde2102dfd3c3119308fca4741b7c6df58eb4d2",
+      "shortSha": "8cde210",
+      "message": "chore: refresh catalog provenance after copilot updates",
+      "author": "OverKill Hill P³",
+      "date": "2026-09-01T18:40:38Z",
+      "url": "https://github.com/OKHP3/skillz/commit/8cde2102dfd3c3119308fca4741b7c6df58eb4d2"
+    },
     {
       "sha": "0f5e114d4a319a954cc5148c06c824ebb594d03b",
       "shortSha": "0f5e114",
@@ -72,14 +80,6 @@
       "author": "Jamie Hill",
       "date": "2026-09-01T05:37:43Z",
       "url": "https://github.com/OKHP3/skillz/commit/5205b0b9bad0dac254450293d638111053435567"
-    },
-    {
-      "sha": "a6b64a11299ae6c2ebfb65904445532a25d4c8c3",
-      "shortSha": "a6b64a1",
-      "message": "Refresh Copilot foundry catalog provenance",
-      "author": "Jamie Hill",
-      "date": "2026-09-01T05:05:16Z",
-      "url": "https://github.com/OKHP3/skillz/commit/a6b64a11299ae6c2ebfb65904445532a25d4c8c3"
     }
   ],
   "fetchError": null
