@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T02:08:22.696Z",
+  "generatedAt": "2026-09-03T02:14:30.364Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
   "sourceCommit": "cbc87b99",
@@ -18329,8 +18329,8 @@
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "not-run",
-      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "evidenceStatus": "live",
+      "evidenceNote": "Version-matched executor evidence is recorded in the package benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -18361,22 +18361,20 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "not-run",
+        "status": "live",
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 4,
-        "benchmarkCount": 0,
+        "benchmarkCount": 8,
         "testCount": 0,
         "referenceCount": 2,
         "scriptCount": 0,
-        "lastEvidenceDate": null,
+        "lastEvidenceDate": "2026-09-03T00:00:00Z",
         "reviewDecision": null,
-        "blockers": [
-          "No executed evaluation exists for the current package version."
-        ]
+        "blockers": []
       },
       "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-replit-github-sync",

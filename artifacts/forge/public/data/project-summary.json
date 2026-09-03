@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T02:08:22.696Z",
+  "generatedAt": "2026-09-03T02:14:30.364Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
   "sourceCommit": "cbc87b99",
@@ -12,11 +12,11 @@
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 166,
+    "not-run": 165,
     "none": 119,
     "local-checks": 27,
     "analytical": 5,
-    "live": 7
+    "live": 8
   },
   "capabilities": {
     "familyOrientationPages": true,
