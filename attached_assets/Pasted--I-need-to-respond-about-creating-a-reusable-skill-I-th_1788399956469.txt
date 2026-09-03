@@ -1,0 +1,18 @@
+
+I need to respond about creating a reusable skill. I think it involves inspecting skill authoring and routines. The user wants to develop a method for maximizing free mode across projects. I need to clarify what's possible since I can't auto-accept approvals or suppress upgrade prompts on the platform. However, perhaps I can set workflow preferences. They already have a profile indicating they can continue free without approval pauses. Maybe creating a skill in the workspace is the way to go!
+You’re aiming for a “keep working autonomously in Free Mode” operating rule across projects. I can package the safe parts as a reusable skill and routine, but I can’t bypass Replit’s usage limits, suppress platform billing prompts, or auto-approve external side effects without your consent; I’ll make the agent retry only after a reset window and continue with non-blocking work in the meantime.
+I’m going to make this as two reusable pieces: a discoverable skill for future agents, plus a copy-paste prompt you can drop into projects that don’t load the skill automatically. The retry behavior will checkpoint work and use a 6-hour routine only for quota-blocked retries; approval handling will explicitly avoid risky auto-acceptance and instead use “Always allow” only when you choose it in Replit’s approval UI.
+Created both reusable pieces:
+
+Skill: /.agents/skills/free-mode-autonomy/SKILL.md
+Automatically guides future agents toward Free-Mode-first execution, checkpointing, and safe quota retries. 
+Copy-paste prompt: /free-mode-autonomy-prompt.md
+Use this in projects where the skill is not installed.
+The method:
+
+Avoids repeated Power/Max recommendations unless you ask.
+Stops wasteful retries when the 5-hour or weekly limit is reached.
+Saves a checkpoint describing what happened and the exact next operation.
+Uses a 6-hour-or-longer retry routine as an opportunity to test whether the quota reset.
+Verifies success before continuing and avoids duplicate writes.
+One platform boundary remains: approval cards cannot be automatically accepted or bypassed. If Replit offers Always allow, you can select it for a trusted, low-risk connector, but the agent cannot choose that permission for you. Also, a routine is tied to the conversation/project where it is created, so there isn’t one global timer that can independently resume every project.

@@ -1,0 +1,60 @@
+# Free Mode Autonomy Prompt
+
+Paste this into a project when you want the agent to work with a
+Free-Mode-first operating style.
+
+```text
+Operate this project in Replit Free Mode unless I explicitly ask otherwise.
+
+Execution:
+- Start doing the work instead of pausing for unnecessary confirmation.
+- Work in dependency order and make coherent, bounded changes.
+- Prefer local inspection, deterministic edits, and focused validation.
+- If one part is blocked, continue with independent work.
+- Do not repeatedly suggest Power or Max. Mention an upgrade only if I ask
+  about plans or the platform explicitly says the requested operation cannot
+  continue without one.
+
+When Free Mode reports that a 5-hour or weekly usage limit has been reached:
+- Do not burn more attempts repeating the same expensive operation.
+- Checkpoint the current state in the project's existing task memory or
+  .agents/memory/MEMORY.md, including completed work, changed files, the exact
+  blocked operation, and the next safe action.
+- State that the checkpoint is ready and that Replit controls the actual reset.
+- If unattended recovery is useful, schedule or propose a routine at least
+  6 hours apart. On each run, read the checkpoint, attempt the blocked
+  operation once, verify the result, and stop if the limit remains active.
+- Never duplicate a non-idempotent write and never claim that a reset occurred
+  until the operation actually succeeds.
+
+Approvals:
+- Never fake, intercept, or automatically accept approval requests.
+- For external, destructive, paid, or privileged actions, show the exact
+  action and stop at Replit's approval boundary.
+- If Replit offers an "Always allow" permission mode, tell me that I can
+  choose it for a trusted low-risk connector. Do not choose it for me.
+
+At every interruption, use this compact status:
+Status: <completed | checkpointed | waiting for approval | quota blocked>
+Completed: <files, changes, or checks>
+Next retry: <one safe operation>
+User action: <only if genuinely required>
+```
+
+## What this can and cannot do
+
+This method can reduce upgrade nagging, avoid wasteful retries, and preserve a
+safe checkpoint for a later run. It cannot alter Replit's Free Mode limits,
+force a quota reset, hide Replit's platform UI, or approve safety-sensitive
+actions without the user's choice.
+
+## Installing it across projects
+
+The skill version belongs at:
+
+```text
+.agents/skills/free-mode-autonomy/SKILL.md
+```
+
+Copy that directory into each project where you want automatic discovery. Use
+the prompt above in projects where you prefer a one-time instruction instead.
