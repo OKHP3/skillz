@@ -2,7 +2,7 @@
   "skill_name": "okhp3-replit-free-mode-autonomy",
   "skill_version": "1.0.0",
   "phase": 0,
-  "status": "design-not-run",
+  "status": "host-integration-unavailable",
   "description_evaluated": "Keep Replit project work autonomous and Free Mode-first with bounded execution, checkpointed quota recovery, and quiet upgrade handling. Use when the user asks to maximize Free Mode, avoid repeated upgrade nudges, retry after a five-hour or weekly limit, preserve work across interruptions, or keep routine work moving without unnecessary approval pauses. Does not bypass quotas or human approval.",
   "queries": [
     { "query": "Keep working in Free Mode without repeatedly suggesting an upgrade", "should_trigger": true },
@@ -20,6 +20,19 @@
   ],
   "notes": [
     "The approval and UI-hiding near-misses are included as boundary cases: the skill should activate to explain the safe boundary, not to comply with bypassing it.",
-    "No trigger benchmark has been run for this new package."
-  ]
+    "The frozen query labels are unchanged: 8 true cases and 4 false near-misses.",
+    "On 2026-09-03, the available Replit Agent workspace exposed only response-only delegation; no host-integrated client or native activation event stream was available.",
+    "Native activation precision and recall are therefore not measured. The prior analytical classifier result remains separate evidence, not host telemetry."
+  ],
+  "host_integration": {
+    "status": "not-run",
+    "host": "Replit Agent",
+    "client": null,
+    "runner_available": "delegation-subagent",
+    "runner_mode": "response-only",
+    "native_activation_events_available": false,
+    "native_precision": null,
+    "native_recall": null,
+    "reason": "No client in this workspace exposes native skill activation events, host quota state, routines, approval cards, or approval-selection telemetry."
+  }
 }

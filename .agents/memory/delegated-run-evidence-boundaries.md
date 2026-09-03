@@ -17,3 +17,16 @@ behavior check into an unsupported platform claim.
 runs actually occurred, record native-trigger checks as `analytical` unless
 host activation is observable, and list unavailable host events as explicit
 limitations or not-run checks.
+
+In the Replit Agent workspace, the available delegated runner remains
+response-only: it does not expose native skill activation, quota state, routine
+creation, approval cards, or approval-selection events. Native precision and
+recall must remain null when that is the only runner available.
+
+**Why:** A fresh bounded fixture response can confirm safe wording without
+establishing that the host activated a skill or enforced the corresponding UI
+boundary.
+
+**How to apply:** Keep response-only fixture evidence separate from host
+telemetry, and mark host-integrated trigger or approval checks not run until a
+client exposes those events.
