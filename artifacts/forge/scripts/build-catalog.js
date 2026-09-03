@@ -10,7 +10,7 @@
  *   All other paths in SKIP_DIRS
  */
 
-import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync, realpathSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync, rmdirSync, unlinkSync, realpathSync } from 'fs';
 import { join, dirname, relative, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -214,6 +214,34 @@ function writeSkillDetailFile(family, name, rawBody) {
   mkdirSync(dir, { recursive: true });
   const outPath = join(dir, `${name}.json`);
   writeFileSync(outPath, JSON.stringify({ name, family, rawBody }, null, 2), 'utf-8');
+}
+
+// Repeated builds can otherwise leave detail files for removed or renamed
+// skills behind. Only JSON files directly inside generated family directories
+// are eligible for removal; unrelated files and nested directories are left
+// untouched.
+function pruneSkillDetailFiles(expectedDetailPaths, detailDir = SKILL_DETAIL_DIR) {
+  if (!existsSync(detailDir) || !statSync(detailDir).isDirectory()) return 0;
+
+  let removed = 0;
+  for (const familyEntry of readdirSync(detailDir, { withFileTypes: true })) {
+    if (!familyEntry.isDirectory() || familyEntry.name.startsWith('.')) continue;
+
+    const familyDir = join(detailDir, familyEntry.name);
+    for (const detailEntry of readdirSync(familyDir, { withFileTypes: true })) {
+      if (!detailEntry.isFile() || !detailEntry.name.endsWith('.json')) continue;
+
+      const relativePath = `${familyEntry.name}/${detailEntry.name}`;
+      if (!expectedDetailPaths.has(relativePath)) {
+        unlinkSync(join(familyDir, detailEntry.name));
+        removed++;
+      }
+    }
+
+    if (readdirSync(familyDir).length === 0) rmdirSync(familyDir);
+  }
+
+  return removed;
 }
 
 function countDirFiles(dirPath) {
@@ -744,6 +772,7 @@ function buildCatalog() {
   // (see SEARCH_INDEX_OUTPUT / SKILL_DETAIL_DIR above) rather than embedded
   // in catalog.json.
   const searchIndexEntries = [];
+  const expectedDetailPaths = new Set();
 
   for (const filePath of skillFiles) {
     const relPath = relative(REPO_ROOT, filePath).replace(/\\/g, '/');
@@ -921,6 +950,7 @@ function buildCatalog() {
 
     searchIndexEntries.push({ name, family, bodyText: stripMarkdownToPlainText(body) });
     writeSkillDetailFile(family, name, body);
+    expectedDetailPaths.add(`${family}/${name}.json`);
   }
 
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
@@ -1162,7 +1192,11 @@ function buildFamilyOrientation(familySlug, familySkills) {
   mkdirSync(dirname(SEARCH_INDEX_OUTPUT), { recursive: true });
   writeFileSync(SEARCH_INDEX_OUTPUT, JSON.stringify(searchIndexEntries, null, 2), 'utf-8');
   console.log(`✓ Written: ${SEARCH_INDEX_OUTPUT} (${searchIndexEntries.length} entries)`);
+  const removedDetailCount = pruneSkillDetailFiles(expectedDetailPaths);
   console.log(`✓ Written ${skills.length} per-skill detail file(s) under ${SKILL_DETAIL_DIR}`);
+  if (removedDetailCount > 0) {
+    console.log(`✓ Pruned ${removedDetailCount} obsolete per-skill detail file(s)`);
+  }
 
   writeProjectSummary(catalog);
 
@@ -1300,7 +1334,14 @@ if (process.argv[1] && realpathSync(fileURLToPath(import.meta.url)) === realpath
   buildCatalog();
 }
 
-// Exported for artifacts/forge/scripts/test-catalog.mjs — pure functions only, no I/O
-// or process.exit side effects, safe to call directly against synthetic
-// fixtures without re-running the full repo walk.
-export { applyEvidencePolicy, hasAnyEvidenceArtifact, hasSubstantiveEvidenceArtifact, deriveMaturity, deriveMaturitySource };
+// Exported for artifacts/forge/scripts/test-catalog.mjs — importing this file
+// has no build or process.exit side effects, so helpers can be tested without
+// re-running the full repo walk.
+export {
+  applyEvidencePolicy,
+  hasAnyEvidenceArtifact,
+  hasSubstantiveEvidenceArtifact,
+  deriveMaturity,
+  deriveMaturitySource,
+  pruneSkillDetailFiles,
+};

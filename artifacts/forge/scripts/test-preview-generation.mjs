@@ -6,7 +6,7 @@
  * mutating the tracked release catalog, activity feed, or root manifest. The
  * same alternate output must be consumable by Review Desk's build-time sync.
  */
-import { readFileSync, existsSync, rmSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -82,6 +82,32 @@ try {
   );
   assert(existsSync(join(forgePreviewDir, 'data', 'catalog.json')), 'Preview catalog was not generated in the alternate output.');
   assert(existsSync(join(forgePreviewDir, 'data', 'search-index.json')), 'Preview search index was not generated in the alternate output.');
+  const previewCatalog = JSON.parse(readFileSync(join(forgePreviewDir, 'data', 'catalog.json'), 'utf8'));
+  const sampleSkill = previewCatalog.skills[0];
+  const skillDetailsDir = join(forgePreviewDir, 'data', 'skills');
+  const staleDetailPath = join(skillDetailsDir, sampleSkill.family, `${sampleSkill.name}-renamed-away.json`);
+  const staleFamilyDir = join(skillDetailsDir, 'removed-family');
+  const unrelatedDetailPath = join(skillDetailsDir, sampleSkill.family, 'README.txt');
+  mkdirSync(dirname(staleDetailPath), { recursive: true });
+  mkdirSync(staleFamilyDir, { recursive: true });
+  writeFileSync(staleDetailPath, '{}');
+  writeFileSync(join(staleFamilyDir, 'removed-skill.json'), '{}');
+  writeFileSync(unrelatedDetailPath, 'keep this unrelated file');
+
+  runNode(
+    join(forgeRoot, 'scripts', 'build-catalog.js'),
+    workspaceRoot,
+    {
+      FORGE_PUBLIC_DIR: previewDirName,
+      FORGE_SKIP_MANIFEST_SYNC: '1',
+      ALLOW_SHALLOW_CATALOG_BUILD: '1',
+      GITHUB_ACTIONS: '',
+      CI: '',
+    },
+  );
+  assert(!existsSync(staleDetailPath), 'Preview generation left behind a stale renamed-skill detail file.');
+  assert(!existsSync(staleFamilyDir), 'Preview generation left behind an empty family directory for a removed skill.');
+  assert(existsSync(unrelatedDetailPath), 'Preview generation removed an unrelated file from the detail output.');
   assertUnchanged(before, 'Forge preview generation');
 
   runNode(

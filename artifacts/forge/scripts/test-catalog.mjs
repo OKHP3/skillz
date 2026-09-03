@@ -12,12 +12,12 @@
  * No test here promotes or fabricates evidence — see the non-goals in the
  * PRD this implements.
  */
-import { readFileSync, existsSync, mkdtempSync, rmSync } from 'fs';
+import { readFileSync, existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'fs';
 import { join, dirname, relative } from 'path';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { execSync, spawnSync } from 'child_process';
-import { applyEvidencePolicy, hasSubstantiveEvidenceArtifact } from './build-catalog.js';
+import { applyEvidencePolicy, hasSubstantiveEvidenceArtifact, pruneSkillDetailFiles } from './build-catalog.js';
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -477,6 +477,34 @@ test('every skill has a per-skill detail JSON file with its raw (unstripped) mar
     // not the markdown-stripped plain text used for search.
     assert(/^#{1,6}\s/m.test(detail.rawBody) || detail.rawBody.includes('#'),
       `detail file for "${s.name}" rawBody looks stripped of markdown structure`);
+  }
+});
+
+test('detail pruning removes obsolete release assets without removing unrelated files', () => {
+  const detailRoot = mkdtempSync(join(tmpdir(), 'catalog-detail-prune-test-'));
+  const currentFamilyDir = join(detailRoot, 'current-family');
+  const removedFamilyDir = join(detailRoot, 'removed-family');
+  const unrelatedPath = join(currentFamilyDir, 'README.txt');
+  const activePath = join(currentFamilyDir, 'active-skill.json');
+  const stalePath = join(currentFamilyDir, 'renamed-away-skill.json');
+  const removedFamilyStalePath = join(removedFamilyDir, 'removed-skill.json');
+
+  try {
+    mkdirSync(currentFamilyDir, { recursive: true });
+    mkdirSync(removedFamilyDir, { recursive: true });
+    writeFileSync(unrelatedPath, 'keep this unrelated file');
+    writeFileSync(activePath, '{}');
+    writeFileSync(stalePath, '{}');
+    writeFileSync(removedFamilyStalePath, '{}');
+
+    const removed = pruneSkillDetailFiles(new Set(['current-family/active-skill.json']), detailRoot);
+    assert(removed === 2, `expected 2 obsolete detail files to be removed, got ${removed}`);
+    assert(existsSync(activePath), 'detail pruning removed an active release asset');
+    assert(existsSync(unrelatedPath), 'detail pruning removed an unrelated release file');
+    assert(!existsSync(stalePath), 'detail pruning left behind a renamed release asset');
+    assert(!existsSync(removedFamilyDir), 'detail pruning left behind an empty removed family directory');
+  } finally {
+    rmSync(detailRoot, { recursive: true, force: true });
   }
 });
 
