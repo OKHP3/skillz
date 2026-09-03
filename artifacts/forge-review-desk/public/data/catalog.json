@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-01T18:40:05.498Z",
+  "generatedAt": "2026-09-03T02:08:22.696Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "0f5e114d",
-  "skillCount": 329,
+  "sourceCommit": "cbc87b99",
+  "skillCount": 330,
   "familyCount": 20,
   "families": [
     {
@@ -748,12 +748,13 @@
     {
       "name": "replit",
       "displayName": "Replit",
-      "skillCount": 7,
+      "skillCount": 8,
       "skills": [
         "okhp3-replit-build-in-public",
         "okhp3-replit-canvas-board",
         "okhp3-replit-contest-score-keeper",
         "okhp3-replit-design-pipeline",
+        "okhp3-replit-free-mode-autonomy",
         "okhp3-replit-github-sync",
         "okhp3-replit-multi-artifact",
         "okhp3-replit-repl-janitor"
@@ -18313,6 +18314,69 @@
       "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "ready-for-supervised-use"
+    },
+    {
+      "name": "okhp3-replit-free-mode-autonomy",
+      "displayName": "Replit Free Mode Autonomy",
+      "family": "replit",
+      "skillDir": "okhp3-replit-free-mode-autonomy",
+      "path": "replit/okhp3-replit-free-mode-autonomy/SKILL.md",
+      "description": "Keep Replit project work autonomous and Free Mode-first with bounded execution, checkpointed quota recovery, and quiet upgrade handling. Use when the user asks to maximize Free Mode, avoid repeated upgrade nudges, retry after a five-hour or weekly limit, preserve work across interruptions, or keep routine work moving without unnecessary approval pauses. Does not bypass quotas or human approval.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "developer-tooling",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "developer-tooling"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-free-mode-autonomy/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-free-mode-autonomy/SKILL.md",
+      "lastModified": "2026-09-03T02:06:46Z",
+      "commitSha": "cbc87b99",
+      "createdAt": "2026-09-03T02:06:46Z",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "developer-tooling",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Free Mode-first execution, interruption checkpoints, safe quota retry opportunities, and concise status reporting.",
+        "outOfScope": "Changing quotas, hiding platform UI, auto-accepting approvals, paid escalation, or unattended cross-project scheduling.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-replit-github-sync",

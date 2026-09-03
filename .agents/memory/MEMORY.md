@@ -21,3 +21,4 @@
 - [Cross-artifact data sharing](cross-artifact-data-sync.md) — copy generated JSON at build time via a predev/prebuild script rather than a live cross-origin fetch between two independently deployed artifacts.
 - [Review Desk browser fixtures](review-desk-browser-fixtures.md) — phase-gate catalog mocks so data-wide assertions stay real, and normalize labels because CSS uppercases action text.
 - [Archived document link audit](archive-link-audit.md) — preserve historical Markdown paths with an explicit archive exception while keeping active link checks fail-closed.
+- [Replit Free Mode boundaries](replit-free-mode-boundaries.md) — quota retries are opportunities inside one conversation; resets and sensitive approvals remain host/user-controlled
