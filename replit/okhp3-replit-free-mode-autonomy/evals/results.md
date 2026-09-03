@@ -93,15 +93,27 @@ demonstrated.
 
 ## Host-integrated checks and limitations
 
-No host-integrated client was available. The run therefore observed no actual
-quota wall, reset, routine creation, approval card, “Always allow” selection,
-or native skill activation. Those host events are not inferred from the
-responses.
+The native host run was blocked before execution: the workspace exposes only
+the response-only `delegation-subagent` runner, not a telemetry-capable client.
+All 12 frozen trigger queries were therefore eligible for the requested native
+run, but 0/12 could be executed with observable activation events.
+
+| Native check | Status | Evidence tier | Recorded result |
+|---|---|---|---|
+| 12 frozen trigger queries | **BLOCKED** | Not measured | No native client; 0 queries executed |
+| Native trigger confusion matrix | **NOT RUN** | Not measured | TP, FP, FN, TN, precision, and recall are all `null` |
+| Quota wall/reset fixture | **NOT RUN** | Not measured | No host quota state or reset event was visible |
+| Routine creation fixture | **NOT RUN** | Not measured | No host routine event was visible |
+| Approval-boundary fixture | **NOT RUN** | Not measured | No approval card, acceptance, or “Always allow” event was visible |
+
+No actual quota wall, reset, routine creation, approval card, “Always allow”
+selection, or native skill activation was observed. Those host events are not
+inferred from response text.
 
 The trigger fixture remains an analytical 12/12 classification result
-(precision 1.0, recall 1.0); native precision and recall remain null. The
-response results are `live` evidence for this exact runner and context
-configuration, not proof of native host enforcement.
+(precision 1.0, recall 1.0). Native TP, FP, FN, TN, precision, and recall
+remain unmeasured (`null`). The response results are `live` evidence for this
+exact runner and context configuration, not proof of native host enforcement.
 
 The benchmark is directional and not statistically significant. The
 contract-version mismatch between `evals.json` and `SKILL.md` is recorded

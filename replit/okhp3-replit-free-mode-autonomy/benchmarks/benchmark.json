@@ -18,7 +18,14 @@
     "tool_availability": "none in the evaluation prompt",
     "activation_mode": "direct skill-context injection versus no target skill",
     "evidence_tier": "live for response comparisons; analytical for trigger classification",
-    "host_integration_status": "not-run; no native telemetry client available"
+    "host_integration_status": "not-run; no native telemetry client available",
+    "native_trigger_run": {
+      "status": "blocked",
+      "queries_total": 12,
+      "queries_executed": 0,
+      "evidence_tier": "not measured",
+      "reason": "The available delegation-subagent runner is response-only and does not expose native skill activation events."
+    }
   },
   "runs": [
     {
@@ -516,6 +523,12 @@
     "expected_false": 4,
     "matched": 12,
     "total": 12,
+    "native_queries_total": 12,
+    "native_queries_executed": 0,
+    "native_true_positives": null,
+    "native_false_positives": null,
+    "native_false_negatives": null,
+    "native_true_negatives": null,
     "analytical_precision": 1.0,
     "analytical_recall": 1.0,
     "native_precision": null,

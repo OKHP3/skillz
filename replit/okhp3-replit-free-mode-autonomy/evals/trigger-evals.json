@@ -31,6 +31,12 @@
     "runner_available": "delegation-subagent",
     "runner_mode": "response-only",
     "native_activation_events_available": false,
+    "native_queries_total": 12,
+    "native_queries_executed": 0,
+    "native_true_positives": null,
+    "native_false_positives": null,
+    "native_false_negatives": null,
+    "native_true_negatives": null,
     "native_precision": null,
     "native_recall": null,
     "reason": "No client in this workspace exposes native skill activation events, host quota state, routines, approval cards, or approval-selection telemetry."
