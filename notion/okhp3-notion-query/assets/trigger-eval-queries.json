@@ -1,0 +1,12 @@
+[
+  { "query": "Show me every row in my tasks database where status is not done.", "should_trigger": true },
+  { "query": "Run the sprint board view and tell me what's in it.", "should_trigger": true },
+  { "query": "What's due for me this week across all my task rows, grouped by priority?", "should_trigger": true },
+  { "query": "Get the in-progress rows from the specs data source, keep the links intact.", "should_trigger": true },
+  { "query": "Join my projects and tasks databases to show project totals.", "should_trigger": true },
+  { "query": "Find any Notion page that mentions the vendor contract.", "should_trigger": false },
+  { "query": "Read the full content of this project page.", "should_trigger": false },
+  { "query": "Add a new task row for the Q3 review.", "should_trigger": false },
+  { "query": "Delete all the completed rows in my tasks database.", "should_trigger": false },
+  { "query": "List every database in my workspace.", "should_trigger": false }
+]

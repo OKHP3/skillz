@@ -1,0 +1,12 @@
+[
+  { "query": "Should this weekly report be a Notion Custom Agent or something else?", "should_trigger": true },
+  { "query": "I want a recurring workflow, is that a Notion Agent thing or a Custom Agent thing?", "should_trigger": true },
+  { "query": "Where should I build this repeatable process, as a Notion skill or a file-based agent skill?", "should_trigger": true },
+  { "query": "Can Notion's built-in agent run on a schedule automatically?", "should_trigger": true },
+  { "query": "I made a Custom Agent but it can't see the page I linked in its instructions, why not?", "should_trigger": true },
+  { "query": "Add a new row to my tasks database.", "should_trigger": false },
+  { "query": "Build me a Notion Custom Agent that posts a weekly report to Slack.", "should_trigger": false },
+  { "query": "Convert this SKILL.md file into a Notion page.", "should_trigger": false },
+  { "query": "Read this page and summarize it.", "should_trigger": false },
+  { "query": "Delete this old draft page.", "should_trigger": false }
+]

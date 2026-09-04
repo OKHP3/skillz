@@ -3,7 +3,7 @@ family: copilot
 display_name: Copilot Agent Skills
 skill_count: 40
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-03T02:07:20Z
+generated_at: 2026-09-04T03:48:45Z
 ---
 
 # copilot
@@ -139,7 +139,7 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 ## Skills (40)
 
 <!-- FAMILY_INVENTORY_START -->
-*40 skills &nbsp;·&nbsp; inventory last updated: **September 3, 2026 at 02:07 UTC***
+*40 skills &nbsp;·&nbsp; inventory last updated: **September 4, 2026 at 03:48 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

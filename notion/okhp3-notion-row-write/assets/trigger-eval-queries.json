@@ -1,0 +1,12 @@
+[
+  { "query": "Add a new row to my tasks database for the Q3 review.", "should_trigger": true },
+  { "query": "Update the status of this task from in progress to complete.", "should_trigger": true },
+  { "query": "Upsert this contact into my CRM database by email address.", "should_trigger": true },
+  { "query": "Set the priority and due date on this row in my project tracker.", "should_trigger": true },
+  { "query": "Create a new bug report row using the urgent bug template.", "should_trigger": true },
+  { "query": "Add a status field to my tasks database.", "should_trigger": false },
+  { "query": "Show me all overdue rows in my tasks database.", "should_trigger": false },
+  { "query": "Import this 5,000-row CSV into my Notion database.", "should_trigger": false },
+  { "query": "Delete this row, it was created by mistake.", "should_trigger": false },
+  { "query": "Create a new standalone page under my wiki.", "should_trigger": false }
+]

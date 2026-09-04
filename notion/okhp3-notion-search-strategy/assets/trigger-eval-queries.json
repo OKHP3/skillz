@@ -1,0 +1,12 @@
+[
+  { "query": "Find that Notion page about the Q3 budget, I don't remember where it lives.", "should_trigger": true },
+  { "query": "Search my Notion workspace and Slack for anything about the vendor contract.", "should_trigger": true },
+  { "query": "Is there already a page in Notion about onboarding checklists?", "should_trigger": true },
+  { "query": "Look up pages I created last week in Notion.", "should_trigger": true },
+  { "query": "Find the Notion database that tracks customer feedback.", "should_trigger": true },
+  { "query": "Show me all the overdue rows in my tasks database.", "should_trigger": false },
+  { "query": "Read the content of this specific Notion page.", "should_trigger": false },
+  { "query": "List every database and page in my Notion workspace.", "should_trigger": false },
+  { "query": "Create a new page for this week's meeting notes.", "should_trigger": false },
+  { "query": "Filter my project database by status equals in progress.", "should_trigger": false }
+]
