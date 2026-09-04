@@ -1,0 +1,27 @@
+{
+  "schema": "okhp3.compass.state/1",
+  "project_key": "widget-forge",
+  "human_artifacts": {
+    "charter": "docs/CHARTER.md",
+    "backlog": "docs/BACKLOG.md",
+    "open_questions": ".compass/OPEN-QUESTIONS.md",
+    "run_history": ".compass/RUN-HISTORY.md"
+  },
+  "thresholds": {
+    "stale_objective_days": 60,
+    "abandoned_objective_days": 180,
+    "stale_doc_days": 120
+  },
+  "scope_firewall": {
+    "deny_terms_file": ".compass/deny-terms.local.txt",
+    "note": "Local and gitignored. Built-in generic detectors always run."
+  },
+  "sinks": [
+    { "id": "files", "type": "files", "enabled": true },
+    { "id": "github-issues", "type": "github-issues", "enabled": false,
+      "config": { "repo": "", "label": "compass", "id_marker": true } },
+    { "id": "notion", "type": "notion", "enabled": false,
+      "config": { "database_id": "", "id_property": "Compass ID" } }
+  ],
+  "ignore": ["**/node_modules/**", "**/dist/**", "**/.venv/**"]
+}
