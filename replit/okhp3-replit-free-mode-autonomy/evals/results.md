@@ -93,14 +93,13 @@ demonstrated.
 
 ## Host-integrated checks and limitations
 
-The native host run was blocked before execution: the workspace exposes only
-the response-only `delegation-subagent` runner, not a telemetry-capable client.
-All 12 frozen trigger queries were therefore eligible for the requested native
-run, but 0/12 could be executed with observable activation events.
+The telemetry-capable `native-telemetry-export` runner is available, but this
+iteration received an empty host event export. All 12 frozen trigger queries
+were eligible for the native run, but 0/12 had an explicit activation event.
 
 | Native check | Status | Evidence tier | Recorded result |
 |---|---|---|---|
-| 12 frozen trigger queries | **BLOCKED** | Not measured | No native client; 0 queries executed |
+| 12 frozen trigger queries | **NOT RUN** | Not measured | Empty host event export; 0 queries executed |
 | Native trigger confusion matrix | **NOT RUN** | Not measured | TP, FP, FN, TN, precision, and recall are all `null` |
 | Quota wall/reset fixture | **NOT RUN** | Not measured | No host quota state or reset event was visible |
 | Routine creation fixture | **NOT RUN** | Not measured | No host routine event was visible |
@@ -113,7 +112,8 @@ inferred from response text.
 The trigger fixture remains an analytical 12/12 classification result
 (precision 1.0, recall 1.0). Native TP, FP, FN, TN, precision, and recall
 remain unmeasured (`null`). The response results are `live` evidence for this
-exact runner and context configuration, not proof of native host enforcement.
+exact response-only runner and context configuration, not proof of native host
+enforcement. The native runner is ready for a future host export.
 
 The benchmark is directional and not statistically significant. The
 contract-version mismatch between `evals.json` and `SKILL.md` is recorded
@@ -127,3 +127,45 @@ or skill-uplift threshold (`+0.429 < +0.50`). The quota checkpoint is materially
 more complete than the prior run, but the six-hour wording and Always allow
 distinction remain unproven or absent in the fresh responses. Native trigger
 and approval checks remain not run pending host telemetry.
+
+<!-- native-telemetry:start -->
+## Native telemetry export
+
+- Runner: `native-telemetry-export` (`host-event-export`)
+- Host: `Replit Agent`
+- Export schema: `v1.0`
+- Evidence tier: `not measured`
+- Events ingested: **0**
+
+The runner records host events directly. It does not infer skill activation, quota state, routine creation, approval presentation, approval acceptance, or “Always allow” selection from response text.
+
+### Native trigger measurement
+
+| Metric | Value |
+|---|---:|
+| Status | `not-run` |
+| Queries executed | 0/12 |
+| True positives | `null` |
+| False positives | `null` |
+| False negatives | `null` |
+| True negatives | `null` |
+| Native precision | `null` |
+| Native recall | `null` |
+
+A partial export keeps precision and recall `null` until every frozen query has an explicit activation event; missing telemetry is not treated as a negative.
+
+### Host event counts
+
+| Event | Count |
+|---|---:|
+| `always_allow_selected` | 0 |
+| `approval_accepted` | 0 |
+| `approval_card_presented` | 0 |
+| `quota_state` | 0 |
+| `routine_created` | 0 |
+| `skill_activation` | 0 |
+
+### Evidence boundary
+
+Only events with `source: host-event-export` and `evidence_tier: native` are included. Response comparisons remain separate `live` evidence; analytical trigger classifications are not promoted to native measurements.
+<!-- native-telemetry:end -->

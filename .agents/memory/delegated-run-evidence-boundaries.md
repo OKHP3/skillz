@@ -30,3 +30,14 @@ boundary.
 **How to apply:** Keep response-only fixture evidence separate from host
 telemetry, and mark host-integrated trigger or approval checks not run until a
 client exposes those events.
+
+A host-event export can supply the missing native evidence lane only when each
+event is host-generated, typed, and marked with the native evidence tier. A
+partial export must report coverage and leave precision/recall unmeasured rather
+than treating missing activation events as false.
+
+**Why:** An ingestion boundary makes a future host client useful without
+silently upgrading response text or incomplete exports into platform evidence.
+
+**How to apply:** Use the benchmark's event schema and importer for host
+exports; preserve response and analytical results as separate evidence tiers.
