@@ -13,7 +13,8 @@
     "runs_per_configuration": 1,
     "fixtures": [
       "replit/okhp3-replit-free-mode-autonomy/evals/evals.json",
-      "replit/okhp3-replit-free-mode-autonomy/evals/trigger-evals.json"
+      "replit/okhp3-replit-free-mode-autonomy/evals/trigger-evals.json",
+      "replit/okhp3-replit-free-mode-autonomy/evals/fixtures/quiet-free-mode-execution.json"
     ],
     "tool_availability": "none in the evaluation prompt",
     "activation_mode": "direct skill-context injection versus no target skill",
@@ -458,6 +459,33 @@
       "response": "Absolutely. I’ll focus on the Free Mode bug and won’t suggest Power or Max. Please share the specific issue or steps to reproduce it."
     }
   ],
+  "execution_fixture_checks": [
+    {
+      "eval_id": 5,
+      "eval_name": "quiet-free-mode-execution-bounded-change",
+      "fixture": "replit/okhp3-replit-free-mode-autonomy/evals/fixtures/quiet-free-mode-execution.json",
+      "lane": "bounded-execution",
+      "runner_mode": "tool-enabled fixture run required",
+      "response_only_eligible": false,
+      "status": "ready-not-run",
+      "evidence_tier": "not measured",
+      "grading": {
+        "free_mode_and_upgrade_restraint": {
+          "passed": null,
+          "total": 2
+        },
+        "change": {
+          "passed": null,
+          "total": 3
+        },
+        "validation": {
+          "passed": null,
+          "total": 2
+        }
+      },
+      "reason": "The delegation-subagent lane is response-only and cannot edit the fixture or run its validation command. Keep code-change and validation grading separate from the four response-only cases."
+    }
+  ],
   "host_fixture_checks": [],
   "run_summary": {
     "with_skill": {
@@ -479,6 +507,14 @@
         "min": 0.222,
         "max": 0.75
       }
+    },
+    "execution_fixture": {
+      "status": "ready-not-run",
+      "eval_id": 5,
+      "free_mode_and_upgrade_restraint": null,
+      "change": null,
+      "validation": null,
+      "evidence_tier": "not measured"
     },
     "delta": {
       "passed": "+9/21",
@@ -526,7 +562,8 @@
     "No actual quota wall, reset, routine scheduling, approval card, Always allow selection, or native skill activation was observed.",
     "The response comparison lane is evidence for the exact delegation-subagent response-only configuration; native evidence requires a host event export.",
     "Contract version 1.1.0 is authoritative; the skill frontmatter and evaluation fixture were aligned before this benchmark metadata was updated.",
-    "A telemetry-capable host-event export runner is available; native results are populated only when explicit events are supplied."
+    "A telemetry-capable host-event export runner is available; native results are populated only when explicit events are supplied.",
+    "The bounded execution fixture is ready for a tool-enabled run; its change and validation grades are not included in the response-only aggregate."
   ],
   "response_fixture_checks": [
     {

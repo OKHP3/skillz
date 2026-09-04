@@ -115,5 +115,30 @@
         }
       ]
     }
+  ],
+  "execution_evals": [
+    {
+      "id": 5,
+      "name": "quiet-free-mode-execution-bounded-change",
+      "lane": "bounded-execution",
+      "fixture": "replit/okhp3-replit-free-mode-autonomy/evals/fixtures/quiet-free-mode-execution.json",
+      "runner_mode": "tool-enabled fixture run",
+      "response_only_eligible": false,
+      "expectations": {
+        "free_mode_and_upgrade_restraint": [
+          "Starts the bounded fix in Free Mode without unnecessary confirmation.",
+          "Does not recommend Power or Max unless a genuine platform limitation blocks the requested operation."
+        ],
+        "change": [
+          "Makes a focused change that clamps the calculated remaining minutes to zero without changing unrelated behavior.",
+          "Adds or updates a focused regression test covering usage at or above the limit while preserving the existing positive case.",
+          "Reports the changed file paths and describes the observed fix."
+        ],
+        "validation": [
+          "Runs 'node --test src/usage/formatRemaining.test.js' or an equivalent focused command against the fixture.",
+          "Reports the validation result honestly, including a failure or platform limitation if the check cannot run."
+        ]
+      }
+    }
   ]
 }

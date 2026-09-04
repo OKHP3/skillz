@@ -33,7 +33,7 @@ privileged actions.
 | Tool availability | None; response-only runs |
 | Sample | One matched run per configuration and case |
 | Activation mode | Direct skill-context injection versus no target skill |
-| Fixtures | `evals/evals.json` and `evals/trigger-evals.json`, unchanged before the run |
+| Fixtures | `evals/evals.json` and `evals/trigger-evals.json` for the historical response-only run; the bounded execution fixture was added afterward |
 | Evidence status | `live` for response comparisons; `analytical` for trigger classification |
 | Contract/version note | Current `evals.json` and `SKILL.md` frontmatter both declare authoritative version `1.1.0`; this Iteration 2 run predates the alignment |
 
@@ -100,6 +100,27 @@ change or validation and did not count as execution.
 missing reproduction information; no bounded change or validation could be
 demonstrated.
 
+## Bounded execution fixture
+
+The historical response-only score above remains a four-case comparison. A
+separate, tool-enabled fixture is now ready at
+`evals/fixtures/quiet-free-mode-execution.json`. It supplies a two-file
+JavaScript repository, a reproducible negative-remaining-minutes bug, an
+expected bounded fix, and a focused Node test command.
+
+The fixture deliberately separates its grading lanes:
+
+| Lane | Status | Expectations | Evidence tier |
+|---|---|---:|---|
+| Free Mode and upgrade restraint | **NOT RUN** | 2 | Not measured |
+| Code change | **NOT RUN** | 3 | Not measured |
+| Validation | **NOT RUN** | 2 | Not measured |
+
+No code change or test result is claimed here. The available
+`delegation-subagent` runner is response-only, so it cannot edit the fixture or
+run `node --test`. The fixture must be evaluated with a tool-enabled runner;
+its results must not be folded into the historical response-only aggregate.
+
 ## Host-integrated checks and limitations
 
 The telemetry-capable `native-telemetry-export` runner is available, but this
@@ -138,7 +159,9 @@ benchmark does not meet the predeclared task-quality threshold (`0.810 < 0.90`)
 or skill-uplift threshold (`+0.429 < +0.50`). The quota checkpoint is materially
 more complete than the prior run, but the six-hour wording and Always allow
 distinction remain unproven or absent in the fresh responses. Native trigger
-and approval checks remain not run pending host telemetry.
+and approval checks remain not run pending host telemetry. The bounded execution
+fixture is ready but remains unmeasured until a tool-enabled runner can perform
+and validate the change.
 
 <!-- native-telemetry:start -->
 ## Native telemetry export
