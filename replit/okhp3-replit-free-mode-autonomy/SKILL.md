@@ -13,7 +13,7 @@ compatibility: >
   optional host support for scheduled retry opportunities and are conversation-bound.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: developer-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com

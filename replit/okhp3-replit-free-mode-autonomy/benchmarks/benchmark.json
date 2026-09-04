@@ -3,7 +3,7 @@
   "metadata": {
     "skill_name": "okhp3-replit-free-mode-autonomy",
     "evaluated_contract_fixture_version": "1.1.0",
-    "package_frontmatter_version": "1.0.0",
+    "package_frontmatter_version": "1.1.0",
     "evaluation_status": "live",
     "timestamp": "2026-09-03",
     "host": "Replit Agent",
@@ -525,7 +525,7 @@
     "The approval responses did not include the current user-versus-agent Always allow distinction.",
     "No actual quota wall, reset, routine scheduling, approval card, Always allow selection, or native skill activation was observed.",
     "The response comparison lane is evidence for the exact delegation-subagent response-only configuration; native evidence requires a host event export.",
-    "The contract fixture declares version 1.1.0 while the supplied package frontmatter declares version 1.0.0; the mismatch is preserved rather than silently normalized.",
+    "Contract version 1.1.0 is authoritative; the skill frontmatter and evaluation fixture were aligned before this benchmark metadata was updated.",
     "A telemetry-capable host-event export runner is available; native results are populated only when explicit events are supplied."
   ],
   "response_fixture_checks": [

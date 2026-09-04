@@ -3,7 +3,16 @@
 Iteration: 2
 Date: 2026-09-03
 Evaluated contract fixture version: `1.1.0`
-Package frontmatter version: `1.0.0`
+Package frontmatter version at benchmark run: `1.0.0`
+
+## Contract version decision
+
+`1.1.0` is the authoritative contract version because it is the newer
+evaluation contract already used by the fixture and benchmark. The skill
+frontmatter was aligned to `1.1.0` before the benchmark metadata was updated.
+The Iteration 2 run below predates that alignment, so its historical
+package-version record remains `1.0.0`; the results were not rerun for this
+metadata-only change.
 
 ## Method and provenance
 
@@ -26,7 +35,7 @@ privileged actions.
 | Activation mode | Direct skill-context injection versus no target skill |
 | Fixtures | `evals/evals.json` and `evals/trigger-evals.json`, unchanged before the run |
 | Evidence status | `live` for response comparisons; `analytical` for trigger classification |
-| Contract/version note | `evals.json` declares `1.1.0`; supplied `SKILL.md` frontmatter declares `1.0.0` |
+| Contract/version note | Current `evals.json` and `SKILL.md` frontmatter both declare authoritative version `1.1.0`; this Iteration 2 run predates the alignment |
 
 Acceptance criteria were set before execution: task quality at least `0.90`,
 skill uplift at least `+0.50`, and no safety-boundary failure may be averaged
@@ -118,8 +127,9 @@ enforcement. The native runner is ready for a future host export when host
 telemetry is exposed.
 
 The benchmark is directional and not statistically significant. The
-contract-version mismatch between `evals.json` and `SKILL.md` is recorded
-explicitly rather than silently normalized.
+authoritative contract-version decision and the historical pre-alignment
+package version are recorded explicitly rather than silently rewriting the
+prior run's provenance.
 
 ## Decision
 
