@@ -1,85 +1,85 @@
 {
-  "generatedAt": "2026-09-02T18:38:44.380Z",
+  "generatedAt": "2026-09-04T17:20:33.496Z",
   "commits": [
     {
-      "sha": "8cde2102dfd3c3119308fca4741b7c6df58eb4d2",
-      "shortSha": "8cde210",
-      "message": "chore: refresh catalog provenance after copilot updates",
+      "sha": "7343e19680bcc9dc67f8c6f1d6e857a9ccde3d21",
+      "shortSha": "7343e19",
+      "message": "Align Free Mode autonomy catalog versions at 1.1.0\n\nReplit-Commit-Author: Agent",
+      "author": "Replit Agent",
+      "date": "2026-09-04T15:44:25Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7343e19680bcc9dc67f8c6f1d6e857a9ccde3d21"
+    },
+    {
+      "sha": "5734966ed4c9e7565eae3cee45a6c236fcdcdaf2",
+      "shortSha": "5734966",
+      "message": "Add bounded Free Mode execution bug fixture\n\nReplit-Task-Id: 78b07ff3-9af3-448e-bc38-c96caf93a639\nReplit-Merge-Attempt: MergeTask:78b07ff3-9af3-448e-bc38-c96caf93a639:1:5a52d627",
+      "author": "overkillhillp3",
+      "date": "2026-09-04T15:40:03Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5734966ed4c9e7565eae3cee45a6c236fcdcdaf2"
+    },
+    {
+      "sha": "5abb9955316fac41e30b11317e8ec738c80a1f64",
+      "shortSha": "5abb995",
+      "message": "Align Free Mode autonomy skill and benchmark versions at 1.1.0\n\nReplit-Task-Id: 48c9b367-bac3-4ae8-ac8a-bf6f10af5f12\nReplit-Merge-Attempt: MergeTask:48c9b367-bac3-4ae8-ac8a-bf6f10af5f12:1:54e4c578",
+      "author": "overkillhillp3",
+      "date": "2026-09-04T12:55:34Z",
+      "url": "https://github.com/OKHP3/skillz/commit/5abb9955316fac41e30b11317e8ec738c80a1f64"
+    },
+    {
+      "sha": "1e1a6367584dd7a5142ef572310aca2f2af4a88d",
+      "shortSha": "1e1a636",
+      "message": "Keep native telemetry writeback aligned across benchmark artifacts\n\nReplit-Task-Id: 282740b0-3b43-436f-a152-464e6e8631b3\nReplit-Merge-Attempt: MergeTask:282740b0-3b43-436f-a152-464e6e8631b3:1:d306d9a6",
+      "author": "overkillhillp3",
+      "date": "2026-09-04T12:51:24Z",
+      "url": "https://github.com/OKHP3/skillz/commit/1e1a6367584dd7a5142ef572310aca2f2af4a88d"
+    },
+    {
+      "sha": "3a65959b331c2ab2ddd95d3a2c22bf96caa12ba2",
+      "shortSha": "3a65959",
+      "message": "Add host-independent native telemetry import regression tests\n\nReplit-Task-Id: f0e793c6-f1a8-4eb2-aea9-4a36c1016400\nReplit-Merge-Attempt: MergeTask:f0e793c6-f1a8-4eb2-aea9-4a36c1016400:1:5e9e833c",
+      "author": "overkillhillp3",
+      "date": "2026-09-04T05:45:11Z",
+      "url": "https://github.com/OKHP3/skillz/commit/3a65959b331c2ab2ddd95d3a2c22bf96caa12ba2"
+    },
+    {
+      "sha": "0ff6e207255e71033e2d959291a64128893c7ed0",
+      "shortSha": "0ff6e20",
+      "message": "Harden native telemetry ingestion and preserve unavailable-host evidence status\n\nReplit-Task-Id: d2a1f1da-2c9f-497b-a724-29a9036bd23e\nReplit-Merge-Attempt: MergeTask:d2a1f1da-2c9f-497b-a724-29a9036bd23e:1:e4878bde",
+      "author": "overkillhillp3",
+      "date": "2026-09-04T05:40:15Z",
+      "url": "https://github.com/OKHP3/skillz/commit/0ff6e207255e71033e2d959291a64128893c7ed0"
+    },
+    {
+      "sha": "089e3bb5b7cc843377c59e2f9eb44ecca8862f9b",
+      "shortSha": "089e3bb",
+      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
       "author": "OverKill Hill P³",
-      "date": "2026-09-01T18:40:38Z",
-      "url": "https://github.com/OKHP3/skillz/commit/8cde2102dfd3c3119308fca4741b7c6df58eb4d2"
+      "date": "2026-09-04T05:26:03Z",
+      "url": "https://github.com/OKHP3/skillz/commit/089e3bb5b7cc843377c59e2f9eb44ecca8862f9b"
     },
     {
-      "sha": "0f5e114d4a319a954cc5148c06c824ebb594d03b",
-      "shortSha": "0f5e114",
-      "message": "chore: refresh catalog provenance at main",
+      "sha": "02865229b27ddd8d3b118e858632fb9000d214ff",
+      "shortSha": "0286522",
+      "message": "Add native host telemetry export runner and benchmark writeback\n\nReplit-Task-Id: 51119074-5e2b-4928-a1a4-2d87dd2bed80\nReplit-Merge-Attempt: MergeTask:51119074-5e2b-4928-a1a4-2d87dd2bed80:1:65483b13",
+      "author": "overkillhillp3",
+      "date": "2026-09-04T05:25:42Z",
+      "url": "https://github.com/OKHP3/skillz/commit/02865229b27ddd8d3b118e858632fb9000d214ff"
+    },
+    {
+      "sha": "235b321065807f878af34d8dbe505de854dc6c33",
+      "shortSha": "235b321",
+      "message": "\tnew file:   .agents/skills/okhp3-replit-build-in-public/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-build-in-public/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-build-in-public/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-build-in-public/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-canvas-board/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-canvas-board/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-canvas-board/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-canvas-board/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-design-pipeline/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-design-pipeline/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-design-pipeline/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-design-pipeline/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/evals/results.md\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/references/free-mode-autonomy-prompt.md\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/references/platform-facts.md\n\tnew file:   .agents/skills/okhp3-replit-github-sync/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-github-sync/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-replit-github-sync/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-github-sync/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-github-sync/references/connector-contract.md\n\tnew file:   .agents/skills/okhp3-replit-multi-artifact/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-multi-artifact/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-multi-artifact/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-multi-artifact/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/references/foundry-architecture.md\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/references/naming-conventions.md\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/scripts/audit-repo.py\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/tests/test_audit_repo.py",
       "author": "Jamie Hill",
-      "date": "2026-09-01T12:44:29Z",
-      "url": "https://github.com/OKHP3/skillz/commit/0f5e114d4a319a954cc5148c06c824ebb594d03b"
+      "date": "2026-09-04T05:09:33Z",
+      "url": "https://github.com/OKHP3/skillz/commit/235b321065807f878af34d8dbe505de854dc6c33"
     },
     {
-      "sha": "142030447a152981409f58c6f1aed76ac30ed552",
-      "shortSha": "1420304",
-      "message": "merge: integrate remote Copilot catalog refresh",
+      "sha": "a798d4d7b559edb7e6a7bd0928365c44e8f8c481",
+      "shortSha": "a798d4d",
+      "message": "\tmodified:   AGENTS.md\n\tnew file:   universal/.write-test\n\tnew file:   universal/okhp3-project-compass/LEARNING-RECORD.md\n\tnew file:   universal/okhp3-project-compass/SKILL.md\n\tnew file:   universal/okhp3-project-compass/assets/charter.template.md\n\tnew file:   universal/okhp3-project-compass/assets/config.example.json\n\tnew file:   universal/okhp3-project-compass/assets/objectives.schema.json\n\tnew file:   universal/okhp3-project-compass/evals/benchmark.json\n\tnew file:   universal/okhp3-project-compass/evals/equilibrium-review-1.2.0.json\n\tnew file:   universal/okhp3-project-compass/evals/evals.json\n\tnew file:   universal/okhp3-project-compass/references/delta-report-spec.md\n\tnew file:   universal/okhp3-project-compass/references/evidence-taxonomy.md\n\tnew file:   universal/okhp3-project-compass/references/file-mode.md\n\tnew file:   universal/okhp3-project-compass/references/github-mode.md\n\tnew file:   universal/okhp3-project-compass/references/mode-detection-and-promotion.md\n\tnew file:   universal/okhp3-project-compass/references/quality-rubric.md\n\tnew file:   universal/okhp3-project-compass/references/repo-shapes.md\n\tnew file:   universal/okhp3-project-compass/references/sink-adapters.md\n\tnew file:   universal/okhp3-project-compass/references/tracking-schema.md\n\tnew file:   universal/okhp3-project-compass/references/unattended-and-scheduling.md\n\tnew file:   universal/okhp3-project-compass/scripts/compass_ids.py\n\tnew file:   universal/okhp3-project-compass/scripts/compass_state.py\n\tnew file:   universal/okhp3-project-compass/scripts/detect_mode.py\n\tnew file:   universal/okhp3-project-compass/scripts/github_sync.py\n\tnew file:   universal/okhp3-project-compass/scripts/scan_repo.py\n\tnew file:   universal/okhp3-project-compass/scripts/selftest.py\n\tnew file:   universal/okhp3-project-compass/scripts/validate_compass.py",
       "author": "Jamie Hill",
-      "date": "2026-09-01T12:33:27Z",
-      "url": "https://github.com/OKHP3/skillz/commit/142030447a152981409f58c6f1aed76ac30ed552"
-    },
-    {
-      "sha": "a02fef7529765a41bee558316f014d17354f2da1",
-      "shortSha": "a02fef7",
-      "message": "\tmodified:   copilot/maturation/2026-09-01/equilibrium-review.md\n\tnew file:   copilot/maturation/2026-09-01/maturation-results.md\n\tmodified:   copilot/okhp3-cowork-commitment-tracker/SKILL.md\n\tnew file:   copilot/okhp3-cowork-commitment-tracker/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-commitment-tracker/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-daily-execution-brief/SKILL.md\n\tnew file:   copilot/okhp3-cowork-daily-execution-brief/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-daily-execution-brief/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-decision-record/SKILL.md\n\tnew file:   copilot/okhp3-cowork-decision-record/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-decision-record/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-document-critique/SKILL.md\n\tnew file:   copilot/okhp3-cowork-document-critique/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-document-critique/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-file-triage-planner/SKILL.md\n\tnew file:   copilot/okhp3-cowork-file-triage-planner/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-file-triage-planner/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-inbox-triage/SKILL.md\n\tnew file:   copilot/okhp3-cowork-inbox-triage/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-inbox-triage/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-meeting-closeout/SKILL.md\n\tnew file:   copilot/okhp3-cowork-meeting-closeout/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-meeting-closeout/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-meeting-prep/SKILL.md\n\tnew file:   copilot/okhp3-cowork-meeting-prep/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-meeting-prep/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-project-context-pack/SKILL.md\n\tnew file:   copilot/okhp3-cowork-project-context-pack/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-project-context-pack/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-research-evidence-log/SKILL.md\n\tnew file:   copilot/okhp3-cowork-research-evidence-log/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-research-evidence-log/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-stakeholder-update/SKILL.md\n\tnew file:   copilot/okhp3-cowork-stakeholder-update/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-stakeholder-update/evals/evals.json\n\tmodified:   copilot/okhp3-cowork-weekly-review/SKILL.md\n\tnew file:   copilot/okhp3-cowork-weekly-review/benchmarks/maturation-2026-09-01.md\n\tmodified:   copilot/okhp3-cowork-weekly-review/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-data-quality-review/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-list-data-quality-review/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-data-quality-review/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-decision-log-curator/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-list-decision-log-curator/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-decision-log-curator/evals/evals.json\n\tnew file:   copilot/okhp3-sharepoint-list-duplicate-record-review/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-duplicate-record-review/evals/evals.json\n\tnew file:   copilot/okhp3-sharepoint-list-intake-normalizer/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-intake-normalizer/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-knowledge-gap-log/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-list-knowledge-gap-log/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-knowledge-gap-log/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-meeting-actions/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-list-meeting-actions/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-meeting-actions/evals/evals.json\n\tnew file:   copilot/okhp3-sharepoint-list-portfolio-health-brief/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-portfolio-health-brief/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-request-triage/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-list-request-triage/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-request-triage/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-risk-issue-review/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-list-risk-issue-review/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-risk-issue-review/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-schema-view-review/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-list-schema-view-review/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-schema-view-review/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-sla-breach-watchlist/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-list-sla-breach-watchlist/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-sla-breach-watchlist/evals/evals.json\n\tnew file:   copilot/okhp3-sharepoint-list-vendor-obligation-review/assets/v1.1.0-adversarial-regression.json\n\tmodified:   copilot/okhp3-sharepoint-list-vendor-obligation-review/evals/evals.json",
-      "author": "Jamie Hill",
-      "date": "2026-09-01T12:07:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/a02fef7529765a41bee558316f014d17354f2da1"
-    },
-    {
-      "sha": "601d7211028650fe2a072f4eeca85f7a8b8a21e7",
-      "shortSha": "601d721",
-      "message": "Refresh Copilot foundry catalog",
-      "author": "Jamie Hill",
-      "date": "2026-09-01T05:54:23Z",
-      "url": "https://github.com/OKHP3/skillz/commit/601d7211028650fe2a072f4eeca85f7a8b8a21e7"
-    },
-    {
-      "sha": "0b68b7f0a2b6c65218c24d51af3f0f9b41e077da",
-      "shortSha": "0b68b7f",
-      "message": "\tnew file:   copilot/SHAREPOINT-LIBRARY-EQUILIBRIUM-REVIEW-2026-09-01.md\n\tnew file:   copilot/SHAREPOINT-LIBRARY-MATURATION-REVIEW-2026-09-01.md\n\tnew file:   copilot/maturation/2026-09-01/elicitation-question-plan.md\n\tnew file:   copilot/maturation/2026-09-01/equilibrium-review.md\n\tnew file:   copilot/maturation/2026-09-01/reclamation-intake-manifest.json\n\tnew file:   copilot/maturation/2026-09-01/source-ledger.md\n\tmodified:   copilot/okhp3-cowork-commitment-tracker/SKILL.md\n\tmodified:   copilot/okhp3-cowork-daily-execution-brief/SKILL.md\n\tmodified:   copilot/okhp3-cowork-decision-record/SKILL.md\n\tmodified:   copilot/okhp3-cowork-document-critique/SKILL.md\n\tmodified:   copilot/okhp3-cowork-file-triage-planner/SKILL.md\n\tmodified:   copilot/okhp3-cowork-inbox-triage/SKILL.md\n\tmodified:   copilot/okhp3-cowork-meeting-closeout/SKILL.md\n\tmodified:   copilot/okhp3-cowork-meeting-prep/SKILL.md\n\tmodified:   copilot/okhp3-cowork-project-context-pack/SKILL.md\n\tmodified:   copilot/okhp3-cowork-research-evidence-log/SKILL.md\n\tmodified:   copilot/okhp3-cowork-stakeholder-update/SKILL.md\n\tmodified:   copilot/okhp3-cowork-weekly-review/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-library-accessibility-review/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-accessibility-review/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-accessibility-review/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-article-curator/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-article-curator/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-article-curator/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-canonical-source-finder/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-canonical-source-finder/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-canonical-source-finder/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-contract-extractor/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-contract-extractor/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-contract-extractor/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-document-quality-gate/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-document-quality-gate/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-document-quality-gate/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-handover-packager/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-handover-packager/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-handover-packager/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-intake-classifier/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-intake-classifier/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-intake-classifier/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-metadata-review/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-metadata-review/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-metadata-review/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-policy-citations/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-policy-citations/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-policy-citations/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-publish-checkout-hygiene/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-publish-checkout-hygiene/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-publish-checkout-hygiene/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-records-readiness-review/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-records-readiness-review/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-records-readiness-review/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-library-taxonomy-drift-report/SKILL.md\n\tnew file:   copilot/okhp3-sharepoint-library-taxonomy-drift-report/benchmarks/learning-ledger-2026-09-01.json\n\tmodified:   copilot/okhp3-sharepoint-library-taxonomy-drift-report/evals/evals.json\n\tmodified:   copilot/okhp3-sharepoint-list-data-quality-review/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-decision-log-curator/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-duplicate-record-review/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-intake-normalizer/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-knowledge-gap-log/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-meeting-actions/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-portfolio-health-brief/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-request-triage/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-risk-issue-review/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-schema-view-review/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-sla-breach-watchlist/SKILL.md\n\tmodified:   copilot/okhp3-sharepoint-list-vendor-obligation-review/SKILL.md",
-      "author": "Jamie Hill",
-      "date": "2026-09-01T05:49:07Z",
-      "url": "https://github.com/OKHP3/skillz/commit/0b68b7f0a2b6c65218c24d51af3f0f9b41e077da"
-    },
-    {
-      "sha": "13bb357525eb80b93537e9b05052c7859bf31bb3",
-      "shortSha": "13bb357",
-      "message": "chore: refresh catalog after copilot family update",
-      "author": "OverKill Hill P³",
-      "date": "2026-09-01T05:46:54Z",
-      "url": "https://github.com/OKHP3/skillz/commit/13bb357525eb80b93537e9b05052c7859bf31bb3"
-    },
-    {
-      "sha": "d84a0c51cdf6463124015f9d848f073dcd4b351e",
-      "shortSha": "d84a0c5",
-      "message": "Mature Copilot host skill foundries",
-      "author": "Jamie Hill",
-      "date": "2026-09-01T05:44:11Z",
-      "url": "https://github.com/OKHP3/skillz/commit/d84a0c51cdf6463124015f9d848f073dcd4b351e"
-    },
-    {
-      "sha": "e9c402d459f5d85a6898ecf0b0c417029140f5f9",
-      "shortSha": "e9c402d",
-      "message": "\tnew file:   copilot/HOST-FOUNDRY-MATURATION-INTAKE-2026-09-01.md\n\tnew file:   copilot/SHAREPOINT-LIBRARY-MATURATION-INTAKE-2026-09-01.md",
-      "author": "Jamie Hill",
-      "date": "2026-09-01T05:37:57Z",
-      "url": "https://github.com/OKHP3/skillz/commit/e9c402d459f5d85a6898ecf0b0c417029140f5f9"
-    },
-    {
-      "sha": "5205b0b9bad0dac254450293d638111053435567",
-      "shortSha": "5205b0b",
-      "message": "\tdeleted:    skills/okhp3-translation-en-us-de-de/SKILL.md\n\tdeleted:    skills/okhp3-translation-en-us-de-de/agents/openai.yaml\n\tdeleted:    skills/okhp3-translation-en-us-de-de/assets/dictionary.en-us-de-de.json\n\tdeleted:    skills/okhp3-translation-en-us-de-de/assets/translation-project.en-us-de-de.example.json\n\tdeleted:    skills/okhp3-translation-en-us-de-de/assets/voice-profile.en-us.example.json\n\tdeleted:    skills/okhp3-translation-en-us-de-de/benchmarks/benchmark.json\n\tdeleted:    skills/okhp3-translation-en-us-de-de/benchmarks/equilibrium-review-2026-08-30.json\n\tdeleted:    skills/okhp3-translation-en-us-de-de/benchmarks/learning-ledger-2026-08-30.json\n\tdeleted:    skills/okhp3-translation-en-us-de-de/evals/evals.json\n\tdeleted:    skills/okhp3-translation-en-us-de-de/references/en-us-to-de-de-contract.md\n\tdeleted:    skills/okhp3-translation-en-us-de-de/references/family-placement.md\n\tdeleted:    skills/okhp3-translation-en-us-de-de/references/voice-and-german.md\n\tdeleted:    skills/okhp3-translation-en-us-de-de/scripts/plan_en_us_to_de_de.py\n\tdeleted:    skills/okhp3-translation-en-us-de-de/scripts/validate_en_us_to_de_de.py\n\tdeleted:    skills/okhp3-translation-en-us-de-de/tests/test_en_us_to_de_de.py\n\tdeleted:    skills/okhp3-translation-en-us-es-es/SKILL.md\n\tdeleted:    skills/okhp3-translation-en-us-es-es/agents/openai.yaml\n\tdeleted:    skills/okhp3-translation-en-us-es-es/assets/dictionary.en-us-es-es.json\n\tdeleted:    skills/okhp3-translation-en-us-es-es/assets/translation-project.en-us-es-es.example.json\n\tdeleted:    skills/okhp3-translation-en-us-es-es/assets/voice-profile.en-us.example.json\n\tdeleted:    skills/okhp3-translation-en-us-es-es/benchmarks/benchmark.json\n\tdeleted:    skills/okhp3-translation-en-us-es-es/benchmarks/equilibrium-review-2026-08-30.json\n\tdeleted:    skills/okhp3-translation-en-us-es-es/benchmarks/learning-ledger-2026-08-30.json\n\tdeleted:    skills/okhp3-translation-en-us-es-es/evals/evals.json\n\tdeleted:    skills/okhp3-translation-en-us-es-es/references/en-us-to-es-es-contract.md\n\tdeleted:    skills/okhp3-translation-en-us-es-es/references/family-placement.md\n\tdeleted:    skills/okhp3-translation-en-us-es-es/references/voice-and-spanish.md\n\tdeleted:    skills/okhp3-translation-en-us-es-es/scripts/plan_en_us_to_es_es.py\n\tdeleted:    skills/okhp3-translation-en-us-es-es/scripts/validate_en_us_to_es_es.py\n\tdeleted:    skills/okhp3-translation-en-us-es-es/tests/test_en_us_to_es_es.py\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/SKILL.md\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/agents/openai.yaml\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/assets/dictionary.en-us-fr-fr.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/assets/translation-project.en-us-fr-fr.example.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/assets/voice-profile.en-us.example.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/benchmark.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30-v1.1.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30-v1.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/equilibrium-review-2026-08-30.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/SUMMARY.md\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/claim-ledger.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/historical-webpage-v0.3.0/equilibrium-v0.3.0/equilibrium-review-record.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/learning-ledger-2026-08-30-v1.1.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/benchmarks/learning-ledger-2026-08-30.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/evals/evals.json\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/references/en-us-to-fr-fr-contract.md\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/references/family-placement.md\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/references/voice-and-french.md\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/scripts/plan_en_us_to_fr_fr.py\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/scripts/validate_en_us_to_fr_fr.py\n\tdeleted:    skills/okhp3-translation-en-us-fr-fr/tests/test_en_us_to_fr_fr.py\n\tcopilot/HOST-FOUNDRY-MATURATION-INTAKE-2026-09-01.md",
-      "author": "Jamie Hill",
-      "date": "2026-09-01T05:37:43Z",
-      "url": "https://github.com/OKHP3/skillz/commit/5205b0b9bad0dac254450293d638111053435567"
+      "date": "2026-09-04T04:30:47Z",
+      "url": "https://github.com/OKHP3/skillz/commit/a798d4d7b559edb7e6a7bd0928365c44e8f8c481"
     }
   ],
   "fetchError": null

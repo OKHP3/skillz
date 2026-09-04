@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-03T02:14:30.364Z",
+  "generatedAt": "2026-09-04T17:20:33.389Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "cbc87b99",
-  "skillCount": 330,
+  "sourceCommit": "b449af06",
+  "skillCount": 341,
   "familyCount": 20,
   "families": [
     {
@@ -548,9 +548,19 @@
     {
       "name": "notion",
       "displayName": "Notion",
-      "skillCount": 1,
+      "skillCount": 11,
       "skills": [
-        "okhp3-notion-capture-router"
+        "okhp3-notion-agent-boundary",
+        "okhp3-notion-capture-router",
+        "okhp3-notion-core",
+        "okhp3-notion-destructive-ops",
+        "okhp3-notion-identity-resolution",
+        "okhp3-notion-limits-and-retry",
+        "okhp3-notion-page-read",
+        "okhp3-notion-page-write",
+        "okhp3-notion-query",
+        "okhp3-notion-row-write",
+        "okhp3-notion-search-strategy"
       ],
       "narrativeBody": "This family covers Notion-centered knowledge operations for OKHP3.\n\nCurrent skill:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |",
       "orientation": {
@@ -565,12 +575,12 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-notion-capture-router",
+          "value": "okhp3-notion-agent-boundary",
           "note": null,
           "source": "generated"
         },
         "compositionNotes": {
-          "value": null,
+          "value": "okhp3-notion-agent-boundary pairs with okhp3-notion-core; okhp3-notion-capture-router pairs with okhp3-notion-core; okhp3-notion-capture-router pairs with okhp3-notion-identity-resolution; okhp3-notion-capture-router pairs with okhp3-notion-limits-and-retry; okhp3-notion-capture-router pairs with okhp3-notion-destructive-ops",
           "source": "generated"
         }
       }
@@ -889,7 +899,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 20,
+      "skillCount": 21,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -901,6 +911,7 @@
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
         "okhp3-overkill-hill-brand",
+        "okhp3-project-compass",
         "okhp3-repl-repo-janitor",
         "okhp3-repository-janitor",
         "okhp3-repository-organizer",
@@ -924,7 +935,7 @@
             "universal",
             "evaluation-and-governance",
             "repository-maintenance",
-            "meta-tooling"
+            "knowledge-operations"
           ],
           "source": "generated"
         },
@@ -934,7 +945,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-brand-style-registry pairs with okhp3-overkill-hill-brand; okhp3-i18n-page-release pairs with okhp3-i18n-page-sync; okhp3-repl-repo-janitor pairs with okhp3-repository-janitor; okhp3-repl-repo-janitor pairs with okhp3-repository-organizer; okhp3-skill-promotion pairs with okhp3-skill-foundry",
+          "value": "okhp3-brand-style-registry pairs with okhp3-overkill-hill-brand; okhp3-i18n-page-release pairs with okhp3-i18n-page-sync; okhp3-project-compass pairs with okhp3-repository-organizer; okhp3-project-compass pairs with okhp3-repository-janitor; okhp3-project-compass pairs with okhp3-skill-foundry",
           "source": "generated"
         }
       }
@@ -14668,21 +14679,21 @@
       "releaseReadiness": "ready-for-supervised-use"
     },
     {
-      "name": "okhp3-notion-capture-router",
-      "displayName": "Notion Capture Router",
+      "name": "okhp3-notion-agent-boundary",
+      "displayName": "Notion Agent Boundary",
       "family": "notion",
-      "skillDir": "okhp3-notion-capture-router",
-      "path": "notion/okhp3-notion-capture-router/SKILL.md",
-      "description": "Use this skill whenever an agent needs to export, capture, ingest, summarize, route, deduplicate, or reconcile a conversation or content artifact into Notion. It guides connector-enabled agents through choosing a Notion page versus database destination, resolving a workspace-specific URL or ID, inspecting page content or data-source schema before writing, mapping thread metadata and reusable extracts, creating or updating records safely, and verifying the result. Trigger for ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF, Markdown, transcript, knowledge-base, Notion API, Notion connector, page, database, data source, or thread-export requests, even when the user does not name this skill.",
-      "version": "0.3.0",
+      "skillDir": "okhp3-notion-agent-boundary",
+      "path": "notion/okhp3-notion-agent-boundary/SKILL.md",
+      "description": "Decide where a repeatable Notion-related workflow should live: the in-app Notion Agent, a Notion Custom Agent, a Notion Skill page, a database automation, or an external file-based Agent Skill. Use when the user asks whether something should be a Notion agent, a Notion skill, a Custom Agent, or a portable skill, or describes a recurring workflow and is unsure where to build it. Decides only; does not build or run a Custom Agent and does not convert an artifact between formats.",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "notion",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
       "topics": [
@@ -14690,7 +14701,77 @@
       ],
       "triggers": [],
       "avoid": [],
-      "companions": [],
+      "companions": [
+        "okhp3-notion-core"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-agent-boundary/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-agent-boundary/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Venue selection among Notion Agent, Custom Agents, Notion Skill pages, database automations, and file-based Agent Skills, with plan and portability tradeoffs.",
+        "outOfScope": "Building, configuring, or running a Custom Agent (a future custom-agent-ops skill). Converting an artifact between a Notion Skill page and a SKILL.md file (a future skill-bridge skill).",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-capture-router",
+      "displayName": "Notion Capture Router",
+      "family": "notion",
+      "skillDir": "okhp3-notion-capture-router",
+      "path": "notion/okhp3-notion-capture-router/SKILL.md",
+      "description": "Use this skill whenever an agent needs to export, capture, ingest, summarize, route, deduplicate, or reconcile a conversation or content artifact into Notion. It guides connector-enabled agents through choosing a Notion page versus database destination, resolving a workspace-specific URL or ID, inspecting page content or data-source schema before writing, mapping thread metadata and reusable extracts, creating or updating records safely, and verifying the result. Trigger for ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF, Markdown, transcript, knowledge-base, Notion API, Notion connector, page, database, data source, or thread-export requests, even when the user does not name this skill.",
+      "version": "0.4.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-identity-resolution",
+        "okhp3-notion-limits-and-retry",
+        "okhp3-notion-destructive-ops"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [],
@@ -14699,8 +14780,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-capture-router/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-capture-router/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
       "createdAt": "2026-06-20T09:09:24-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -14713,20 +14794,633 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "none",
+        "status": "analytical",
         "evaluatedSkillVersion": null,
         "evalCount": 0,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 4,
-        "scriptCount": 0,
+        "scriptCount": 1,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "No evaluation design or executable check exists for this package."
+          "Only design or structural review exists; no graded live run has been executed."
         ]
       },
       "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-core",
+      "displayName": "Notion Core",
+      "family": "notion",
+      "skillDir": "okhp3-notion-core",
+      "path": "notion/okhp3-notion-core/SKILL.md",
+      "description": "Load first for any Notion task. Negotiates which Notion surface and tools are actually available (hosted MCP, REST API, or the ntn CLI), pins the API version, enforces the mandatory database-to-data-source resolution rule, and applies Notion's error taxonomy before any other Notion skill runs. Use when a task involves Notion pages, databases, data sources, blocks, or the Notion API or MCP in any way. Performs no read, write, or delete of its own; it is never the final answer to a user request.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-mermaid-core",
+        "okhp3-notion-limits-and-retry",
+        "okhp3-notion-capture-router",
+        "okhp3-notion-agent-boundary"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-core/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-core/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Surface negotiation, capability-map reading, API version pinning, database/data-source resolution rule, error taxonomy, and routing to sibling skills.",
+        "outOfScope": "Performing any Notion read, write, query, or delete operation directly. That belongs to a Tier 1+ sibling skill.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-destructive-ops",
+      "displayName": "Notion Destructive Ops",
+      "family": "notion",
+      "skillDir": "okhp3-notion-destructive-ops",
+      "path": "notion/okhp3-notion-destructive-ops/SKILL.md",
+      "description": "The only okhp3-notion-* skill authorized to remove Notion content. Archive, trash, restore, or permanently delete pages, blocks, databases, data sources, and rows, with blast-radius estimation and an explicit confirmation gate before any irreversible step. Use when the user asks to delete, trash, archive, remove, or restore a Notion page, block, database, or row. Does not decide what should be deleted (that is workspace hygiene analysis) and does not remove a schema property from a live data source (use a wave-2 schema-migration skill).",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-identity-resolution"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-destructive-ops/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-destructive-ops/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Archive, trash, restore, and permanent delete of pages, blocks, databases, data sources, and rows, with confirmation and blast-radius estimation.",
+        "outOfScope": "Deciding what should be deleted (a governance/hygiene skill's job). Removing a property definition from a live schema (a schema-migration skill). Any create, read, or update operation.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-identity-resolution",
+      "displayName": "Notion Identity Resolution",
+      "family": "notion",
+      "skillDir": "okhp3-notion-identity-resolution",
+      "path": "notion/okhp3-notion-identity-resolution/SKILL.md",
+      "description": "Dependency-loaded by other okhp3-notion-* skills. Resolves any Notion reference format (full URL, notion.site URL, bare UUID with or without dashes, collection:// data-source URL, view:// saved-view URL, discussion:// comment-thread URL, or a plain page/database title) to the correct entity type and ID, and disambiguates database versus data source versus page versus block. Not intended to be selected directly from a user prompt; always loaded by okhp3-notion-core or a sibling that needs an ID resolved before it can act.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-page-read",
+        "okhp3-notion-query",
+        "okhp3-notion-comments-and-discussions",
+        "okhp3-notion-search-strategy"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-identity-resolution/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-identity-resolution/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Reference-format detection and entity-type disambiguation for pages, blocks, databases, data sources, views, and discussions.",
+        "outOfScope": "Fetching or returning entity content. That is okhp3-notion-page-read or okhp3-notion-query. Never user-triggered directly.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-limits-and-retry",
+      "displayName": "Notion Limits And Retry",
+      "family": "notion",
+      "skillDir": "okhp3-notion-limits-and-retry",
+      "path": "notion/okhp3-notion-limits-and-retry/SKILL.md",
+      "description": "Dependency-loaded by other okhp3-notion-* skills. Applies Notion's rate limits, payload size limits, the Free-workspace block limit, backoff policy, chunking strategy, and idempotency discipline to any sequence of Notion API or MCP calls. Not intended to be selected directly from a user prompt; always loaded by a sibling skill that is about to make more than one call or a call at risk of hitting a limit.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-limits-and-retry/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-limits-and-retry/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Pacing, chunking, retry, backoff, and idempotency for Notion calls. Detecting and reporting the block-creation limit.",
+        "outOfScope": "Deciding what to call. That is always the calling skill's job. Never user-triggered directly. High-volume multi-thousand-row jobs with checkpointing belong to a wave-3 bulk-data-ops skill, not here.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-page-read",
+      "displayName": "Notion Page Read",
+      "family": "notion",
+      "skillDir": "okhp3-notion-page-read",
+      "path": "notion/okhp3-notion-page-read/SKILL.md",
+      "description": "Read Notion page and document content: fetch a page, traverse block children, paginate long pages, recover truncated subtrees, and extract the page body as faithful markdown. Use when the user asks to read, open, summarize, or extract the content of a Notion page, doc, wiki page, subpage, or block. Does not read database rows or filtered lists (use okhp3-notion-query) and does not produce an external file (use a wave-3 egress skill).",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-query",
+        "okhp3-notion-search-strategy",
+        "okhp3-notion-page-write",
+        "okhp3-notion-identity-resolution"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-page-read/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-page-read/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Fetching page properties and content, block-children traversal and pagination, truncation recovery, markdown extraction.",
+        "outOfScope": "Database row retrieval (okhp3-notion-query), workspace-wide keyword search (okhp3-notion-search-strategy), writing content (okhp3-notion-page-write), or producing an external file artifact.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-page-write",
+      "displayName": "Notion Page Write",
+      "family": "notion",
+      "skillDir": "okhp3-notion-page-write",
+      "path": "notion/okhp3-notion-page-write/SKILL.md",
+      "description": "Create or update Notion pages and document content: page creation, content append, targeted search-and-replace, icons and covers, and async handling for large writes. Use when the user asks to create, edit, update, append to, or restructure a Notion page, doc, wiki page, or subpage. Does not write pages whose parent is a database or data source (use okhp3-notion-row-write) and does not delete or archive anything (use okhp3-notion-destructive-ops).",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-limits-and-retry",
+        "okhp3-notion-row-write",
+        "okhp3-notion-destructive-ops",
+        "okhp3-notion-page-read",
+        "okhp3-notion-block-composition"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-page-write/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-page-write/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Standalone page creation, content append, targeted content replacement, icon/cover updates, async writes for large content.",
+        "outOfScope": "Pages with database/data-source parents (okhp3-notion-row-write). Archiving, trashing, or permanent deletion (okhp3-notion-destructive-ops). Comment threads (deferred to wave 2).",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-query",
+      "displayName": "Notion Query",
+      "family": "notion",
+      "skillDir": "okhp3-notion-query",
+      "path": "notion/okhp3-notion-query/SKILL.md",
+      "description": "Query Notion database rows and filtered lists from a known data source: SQL mode, rows mode, saved-view mode, filter and sort syntax, plan metering, mention-resolution limits, and rich-text fidelity caveats. Use when the user wants rows, records, or a filtered/sorted list from a Notion database, or to run a saved view. Does not find content by keyword across the workspace (use okhp3-notion-search-strategy), does not read page body content (use okhp3-notion-page-read), and does not write anything.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-identity-resolution",
+        "okhp3-notion-search-strategy",
+        "okhp3-notion-page-read",
+        "okhp3-notion-row-write"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-query/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-query/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Reading database rows via SQL mode, rows mode, or a saved view's own filters and sorts, against a resolved data source.",
+        "outOfScope": "Workspace-wide keyword discovery (okhp3-notion-search-strategy). Page body content (okhp3-notion-page-read). Any write, update, or delete.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-row-write",
+      "displayName": "Notion Row Write",
+      "family": "notion",
+      "skillDir": "okhp3-notion-row-write",
+      "path": "notion/okhp3-notion-row-write/SKILL.md",
+      "description": "Create or update Notion database rows: schema-first property mapping, select and status option handling, relation and people writes, and idempotent upsert against a stable key. Use when the user wants to add, update, or upsert a record, entry, or row in a Notion database. Does not change the schema to fit new data (use a wave-2 schema-migration skill) and is not for high-volume bulk loads of thousands of rows.",
+      "version": "1.1.1",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-identity-resolution",
+        "okhp3-notion-destructive-ops",
+        "okhp3-notion-query",
+        "okhp3-notion-limits-and-retry"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-row-write/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-row-write/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Single-row and small-batch row create/update against a resolved data source's actual schema, idempotent upsert.",
+        "outOfScope": "Changing schema to accommodate new data (a wave-2 schema-migration skill). Multi-thousand-row bulk loads (a wave-3 bulk-data-ops skill). Deleting or archiving rows (okhp3-notion-destructive-ops).",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-search-strategy",
+      "displayName": "Notion Search Strategy",
+      "family": "notion",
+      "skillDir": "okhp3-notion-search-strategy",
+      "path": "notion/okhp3-notion-search-strategy/SKILL.md",
+      "description": "Find content across a Notion workspace and its connected apps by keyword. Chooses between workspace search and AI search, applies creator, date, teamspace, title-only, and content-status filters, respects the search-specific rate limit, and routes around plan-gated filters. Use when the user wants to find, locate, or look up a page, database, or piece of content by name or topic without already knowing where it lives. Does not query structured rows from a known database (use okhp3-notion-query) and does not enumerate everything that exists (use a wave-2/3 workspace-inventory skill).",
+      "version": "1.1.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-query",
+        "okhp3-notion-limits-and-retry",
+        "okhp3-notion-page-read"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-search-strategy/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-search-strategy/SKILL.md",
+      "lastModified": "2026-09-03T23:00:18-05:00",
+      "commitSha": "82860078",
+      "createdAt": "2026-09-03T23:00:18-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Keyword and semantic search across Notion and connected apps, filter selection, plan-gate awareness, result triage.",
+        "outOfScope": "Querying a known data source with filters and sorts (okhp3-notion-query). Full workspace enumeration regardless of a query (a later governance skill).",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
@@ -18347,8 +19041,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-free-mode-autonomy/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-free-mode-autonomy/SKILL.md",
-      "lastModified": "2026-09-03T02:06:46Z",
-      "commitSha": "cbc87b99",
+      "lastModified": "2026-09-04T12:55:34Z",
+      "commitSha": "5abb9955",
       "createdAt": "2026-09-03T02:06:46Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -18362,13 +19056,13 @@
       },
       "evidence": {
         "status": "live",
-        "evaluatedSkillVersion": "1.0.0",
+        "evaluatedSkillVersion": "1.1.0",
         "evalCount": 4,
         "benchmarkCount": 8,
         "testCount": 0,
         "referenceCount": 2,
         "scriptCount": 0,
-        "lastEvidenceDate": "2026-09-03T00:00:00Z",
+        "lastEvidenceDate": "2026-09-03",
         "reviewDecision": null,
         "blockers": []
       },
@@ -22255,6 +22949,76 @@
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-project-compass",
+      "displayName": "Project Compass",
+      "family": "universal",
+      "skillDir": "okhp3-project-compass",
+      "path": "universal/okhp3-project-compass/SKILL.md",
+      "description": "Point at a project folder, git clone, or repository and establish or refresh its purpose, vision, mission, goals, and task tracking from evidence. Starts with a detection phase choosing Mode A, a GitHub-backed repo tracked through milestones, issues, sub-issues, labels, and releases via the gh CLI, or Mode B, a plain folder tracked entirely in files. First run infers intent from README, docs, ADRs, commits, TODO markers, and structure, then scaffolds a charter, an objectives-to-tasks decomposition, and machine-readable tracking with stable IDs. Later runs reassess progress, mark work done, blocked, or abandoned with evidence, surface new or changed goals as scope drift, flag orphaned and stale work, and emit a delta report. Also activate for \"what is this repo even for\", \"is this project still on track\", \"did anything change since last time\", scheduled or unattended check-ins, and projects with no tracking artifacts. Handles monorepos, content-first repos, and folders with no git history.",
+      "version": "1.2.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-repository-organizer",
+        "okhp3-repository-janitor",
+        "okhp3-process-capture",
+        "okhp3-artifact-validation",
+        "okhp3-project-promotion",
+        "okhp3-skill-foundry"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-project-compass/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-project-compass/SKILL.md",
+      "lastModified": "2026-09-03T23:30:47-05:00",
+      "commitSha": "a798d4d7",
+      "createdAt": "2026-09-03T23:30:47-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Tracking-mode detection, evidence-based project intent discovery, charter and tracking scaffolding with stable identifiers across GitHub-backed and file-only projects, and repeatable reassessment producing a delta report and run history.",
+        "outOfScope": "Writing application code, rewriting human-authored prose, reorganizing repositories, destructive or unauthorized GitHub writes, and asserting an intent the evidence does not support.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 5,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 10,
+        "scriptCount": 7,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-repl-repo-janitor",

@@ -234,7 +234,13 @@ test('tags/topics are arrays (A7: not a hardcoded dead field)', () => {
 // cross-repo companion reference should be added to KNOWN_UNRESOLVED_COMPANIONS
 // below with a comment explaining why, rather than passing silently.
 const KNOWN_UNRESOLVED_COMPANIONS = new Set([
-  // e.g. 'skill-path::companion-name' — none currently documented.
+  // Forward-looking Notion wave-2 skills are named in current contracts so
+  // callers can report the deferred capability precisely until they ship.
+  'notion/okhp3-notion-identity-resolution/SKILL.md::okhp3-notion-comments-and-discussions',
+  'notion/okhp3-notion-page-write/SKILL.md::okhp3-notion-block-composition',
+  // Project Compass can hand a recurring pattern to the project-local capture
+  // skill even though that support skill is not part of the public distribution.
+  'universal/okhp3-project-compass/SKILL.md::okhp3-process-capture',
 ]);
 test('every companion reference resolves to a real skill (or is an explicitly documented exception)', () => {
   const knownSkillNames = new Set(catalog.skills.map(s => s.name));

@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-09-03T02:14:30.364Z",
+  "generatedAt": "2026-09-04T17:20:33.389Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "cbc87b99",
-  "skillCount": 330,
+  "sourceCommit": "b449af06",
+  "skillCount": 341,
   "familyCount": 20,
   "maturityCounts": {
-    "draftable": 251,
+    "draftable": 262,
     "skeleton": 74,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 165,
-    "none": 119,
-    "local-checks": 27,
+    "not-run": 166,
+    "none": 118,
+    "local-checks": 38,
     "analytical": 5,
     "live": 8
   },
