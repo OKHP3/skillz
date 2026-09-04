@@ -465,25 +465,54 @@
       "eval_name": "quiet-free-mode-execution-bounded-change",
       "fixture": "replit/okhp3-replit-free-mode-autonomy/evals/fixtures/quiet-free-mode-execution.json",
       "lane": "bounded-execution",
-      "runner_mode": "tool-enabled fixture run required",
+      "runner": "delegation-subagent",
+      "runner_mode": "tool-enabled fixture run",
       "response_only_eligible": false,
-      "status": "ready-not-run",
-      "evidence_tier": "not measured",
+      "status": "completed",
+      "run_date": "2026-09-04",
+      "execution_mode": "Free Mode",
+      "evidence_tier": "live",
+      "evidence_note": "Tool-backed isolated fixture execution with filesystem inspection and test-process result; no native host telemetry claimed.",
+      "isolated_workspace": "/tmp/free-mode-fixture.buEMpo",
+      "changed_files": [
+        "src/usage/formatRemaining.js",
+        "src/usage/formatRemaining.test.js"
+      ],
+      "unrelated_files_changed": false,
+      "change_summary": "Clamped computed remaining minutes to zero with Math.max(0, ...); preserved the positive case and added coverage for usage at the limit and above it.",
+      "validation": {
+        "command": "node --test src/usage/formatRemaining.test.js",
+        "exit_status": 0,
+        "passed": 2,
+        "failed": 0,
+        "output": [
+          "✔ reports remaining minutes while the allowance is available (1.700776ms)",
+          "✔ reports zero remaining minutes at or above the limit (0.174619ms)",
+          "ℹ tests 2",
+          "ℹ suites 0",
+          "ℹ pass 2",
+          "ℹ fail 0",
+          "ℹ cancelled 0",
+          "ℹ skipped 0",
+          "ℹ todo 0",
+          "ℹ duration_ms 91.89945"
+        ]
+      },
       "grading": {
         "free_mode_and_upgrade_restraint": {
-          "passed": null,
+          "passed": 2,
           "total": 2
         },
         "change": {
-          "passed": null,
+          "passed": 3,
           "total": 3
         },
         "validation": {
-          "passed": null,
+          "passed": 2,
           "total": 2
         }
       },
-      "reason": "The delegation-subagent lane is response-only and cannot edit the fixture or run its validation command. Keep code-change and validation grading separate from the four response-only cases."
+      "reason": "A tool-enabled delegation-subagent run edited and inspected a fresh isolated fixture workspace, then ran the focused validation command. Keep these grades separate from the four response-only cases."
     }
   ],
   "host_fixture_checks": [],
@@ -509,12 +538,26 @@
       }
     },
     "execution_fixture": {
-      "status": "ready-not-run",
+      "status": "completed",
       "eval_id": 5,
-      "free_mode_and_upgrade_restraint": null,
-      "change": null,
-      "validation": null,
-      "evidence_tier": "not measured"
+      "run_date": "2026-09-04",
+      "runner": "delegation-subagent",
+      "runner_mode": "tool-enabled fixture run",
+      "execution_mode": "Free Mode",
+      "free_mode_and_upgrade_restraint": {
+        "passed": 2,
+        "total": 2
+      },
+      "change": {
+        "passed": 3,
+        "total": 3
+      },
+      "validation": {
+        "passed": 2,
+        "total": 2
+      },
+      "evidence_tier": "live",
+      "unrelated_files_changed": false
     },
     "delta": {
       "passed": "+9/21",
@@ -563,7 +606,7 @@
     "The response comparison lane is evidence for the exact delegation-subagent response-only configuration; native evidence requires a host event export.",
     "Contract version 1.1.0 is authoritative; the skill frontmatter and evaluation fixture were aligned before this benchmark metadata was updated.",
     "A telemetry-capable host-event export runner is available; native results are populated only when explicit events are supplied.",
-    "The bounded execution fixture is ready for a tool-enabled run; its change and validation grades are not included in the response-only aggregate."
+    "The bounded execution fixture completed in a separate tool-enabled isolated run with Free Mode restraint, focused code change, and validation lanes graded independently; these results are not included in the response-only aggregate."
   ],
   "response_fixture_checks": [
     {
