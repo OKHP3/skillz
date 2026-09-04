@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -19,6 +22,8 @@ QUERIES = [
     {"id": "trigger-01", "should_trigger": True},
     {"id": "trigger-02", "should_trigger": False},
 ]
+BENCHMARK_FIXTURE = SCRIPT.with_name("benchmark.json")
+RESULTS_FIXTURE = SCRIPT.parent.parent / "evals" / "results.md"
 
 
 def event(
@@ -153,6 +158,185 @@ class NativeTelemetryImportTests(unittest.TestCase):
 
         with self.assertRaisesRegex(native_telemetry.TelemetryError, "Invalid JSONL"):
             native_telemetry.read_event_export(path)
+
+
+class NativeTelemetryWritebackTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temporary_directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary_directory.cleanup)
+        self.directory = Path(self.temporary_directory.name)
+        self.events_path = self.directory / "events.json"
+        self.trigger_fixture_path = self.directory / "trigger-evals.json"
+        self.benchmark_path = self.directory / "benchmark.json"
+        self.results_path = self.directory / "results.md"
+        self.trigger_fixture_path.write_text(
+            json.dumps({"queries": QUERIES}),
+            encoding="utf-8",
+        )
+        self.benchmark_path.write_text(
+            json.dumps({"metadata": {}, "trigger_check": {}, "notes": []}),
+            encoding="utf-8",
+        )
+        self.results_path.write_text("# Temporary evaluation results\n", encoding="utf-8")
+
+    def run_cli(self, events: list[dict[str, Any]]) -> dict[str, Any]:
+        self.events_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": "1.0",
+                    "source": native_telemetry.SOURCE,
+                    "host": "test-host",
+                    "events": events,
+                }
+            ),
+            encoding="utf-8",
+        )
+        completed = subprocess.run(
+            [
+                sys.executable,
+                str(SCRIPT),
+                "--events",
+                str(self.events_path),
+                "--trigger-fixture",
+                str(self.trigger_fixture_path),
+                "--benchmark",
+                str(self.benchmark_path),
+                "--results",
+                str(self.results_path),
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        return json.loads(completed.stdout)
+
+    def read_written_metrics(self) -> dict[str, Any]:
+        benchmark = json.loads(self.benchmark_path.read_text(encoding="utf-8"))
+        results = self.results_path.read_text(encoding="utf-8")
+        native_block = results.split(native_telemetry.RESULTS_START, 1)[1].split(
+            native_telemetry.RESULTS_END, 1
+        )[0]
+
+        def markdown_value(label: str) -> str:
+            match = re.search(rf"^\| {re.escape(label)} \| (.+) \|$", native_block, re.MULTILINE)
+            self.assertIsNotNone(match, f"Missing Markdown metric: {label}")
+            assert match
+            return match.group(1)
+
+        def parse_value(value: str) -> Any:
+            value = value.strip().strip("`")
+            return None if value == "null" else value
+
+        def parse_number(value: str) -> Any:
+            parsed = parse_value(value)
+            return None if parsed is None else float(parsed)
+
+        return {
+            "benchmark": benchmark["trigger_check"],
+            "status": parse_value(markdown_value("Status")),
+            "coverage": parse_number(markdown_value("Coverage")),
+            "queries_executed": markdown_value("Queries executed"),
+            "true_positives": parse_number(markdown_value("True positives")),
+            "false_positives": parse_number(markdown_value("False positives")),
+            "false_negatives": parse_number(markdown_value("False negatives")),
+            "true_negatives": parse_number(markdown_value("True negatives")),
+            "precision": parse_number(markdown_value("Native precision")),
+            "recall": parse_number(markdown_value("Native recall")),
+        }
+
+    def assert_writeback_matches(
+        self,
+        expected: dict[str, Any],
+        events: list[dict[str, Any]],
+    ) -> None:
+        cli_summary = self.run_cli(events)
+        metrics = self.read_written_metrics()
+        benchmark = metrics["benchmark"]
+        self.assertEqual(cli_summary["status"], expected["status"])
+        self.assertEqual(cli_summary["queries_executed"], expected["queries_executed"])
+        self.assertEqual(cli_summary["queries_total"], expected["queries_total"])
+        self.assertEqual(cli_summary["native_precision"], expected["precision"])
+        self.assertEqual(cli_summary["native_recall"], expected["recall"])
+        self.assertEqual(metrics["status"], expected["status"])
+        self.assertEqual(metrics["queries_executed"], f"{expected['queries_executed']}/2")
+        self.assertEqual(metrics["coverage"], expected["coverage"])
+        for metric in (
+            "true_positives",
+            "false_positives",
+            "false_negatives",
+            "true_negatives",
+            "precision",
+            "recall",
+        ):
+            self.assertEqual(metrics[metric], expected[metric])
+            self.assertEqual(benchmark[f"native_{metric}"], expected[metric])
+        self.assertEqual(benchmark["evaluation_status"], expected["benchmark_status"])
+        self.assertEqual(benchmark["native_queries_executed"], expected["queries_executed"])
+        self.assertEqual(benchmark["native_coverage"], expected["coverage"])
+        self.assertEqual(
+            json.loads(self.benchmark_path.read_text(encoding="utf-8"))["metadata"][
+                "native_trigger_run"
+            ],
+            {
+                "status": expected["status"],
+                "queries_total": expected["queries_total"],
+                "queries_executed": expected["queries_executed"],
+                "coverage": expected["coverage"],
+                "evidence_tier": "native",
+                "reason": "Native activation events were imported from a host event export.",
+            }
+            if expected["queries_executed"]
+            else {},
+        )
+
+    def test_complete_cli_writeback_matches_between_benchmark_and_results(self) -> None:
+        self.assert_writeback_matches(
+            {
+                "status": "measured",
+                "benchmark_status": "native",
+                "queries_total": 2,
+                "queries_executed": 2,
+                "coverage": 1.0,
+                "true_positives": 1.0,
+                "false_positives": 0.0,
+                "false_negatives": 0.0,
+                "true_negatives": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+            },
+            [
+                event("event-1", query_id="trigger-01", data={"activated": True}),
+                event("event-2", query_id="trigger-02", data={"activated": False}),
+            ],
+        )
+
+    def test_partial_cli_writeback_matches_between_benchmark_and_results(self) -> None:
+        self.assert_writeback_matches(
+            {
+                "status": "partial",
+                "benchmark_status": "partial",
+                "queries_total": 2,
+                "queries_executed": 1,
+                "coverage": 0.5,
+                "true_positives": 1.0,
+                "false_positives": 0.0,
+                "false_negatives": 0.0,
+                "true_negatives": 0.0,
+                "precision": None,
+                "recall": None,
+            },
+            [event("event-1", query_id="trigger-01", data={"activated": True})],
+        )
+
+    def test_cli_writeback_does_not_modify_repository_artifacts(self) -> None:
+        benchmark_before = BENCHMARK_FIXTURE.read_bytes()
+        results_before = RESULTS_FIXTURE.read_bytes()
+
+        self.run_cli([event("event-1", query_id="trigger-01", data={"activated": True})])
+
+        self.assertEqual(BENCHMARK_FIXTURE.read_bytes(), benchmark_before)
+        self.assertEqual(RESULTS_FIXTURE.read_bytes(), results_before)
 
 
 if __name__ == "__main__":

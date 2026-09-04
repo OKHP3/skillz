@@ -381,6 +381,7 @@ def update_results(path: Path, summary: dict[str, Any], metadata: dict[str, Any]
             "|---|---:|",
             f"| Status | `{summary['trigger']['status']}` |",
             f"| Queries executed | {summary['trigger']['queries_executed']}/{summary['trigger']['queries_total']} |",
+            f"| Coverage | {summary['trigger']['coverage']} |",
             f"| True positives | {display(summary['trigger']['true_positives'])} |",
             f"| False positives | {display(summary['trigger']['false_positives'])} |",
             f"| False negatives | {display(summary['trigger']['false_negatives'])} |",
@@ -446,6 +447,7 @@ def update_benchmark(
                 "status": summary["trigger"]["status"],
                 "queries_total": summary["trigger"]["queries_total"],
                 "queries_executed": summary["trigger"]["queries_executed"],
+                "coverage": summary["trigger"]["coverage"],
                 "evidence_tier": summary["trigger"]["evidence_tier"],
                 "reason": (
                     "Native activation events were imported from a host event export."
@@ -471,6 +473,7 @@ def update_benchmark(
         "fixture": fixture_reference,
         "native_queries_total": summary["trigger"]["queries_total"],
         "native_queries_executed": summary["trigger"]["queries_executed"],
+        "native_coverage": summary["trigger"]["coverage"],
         "native_true_positives": summary["trigger"]["true_positives"],
         "native_false_positives": summary["trigger"]["false_positives"],
         "native_false_negatives": summary["trigger"]["false_negatives"],
