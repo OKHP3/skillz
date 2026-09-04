@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional",
+  "evaluation_status": "analytical",
+  "artifact": {
+    "path": "okhp3-project-compass/",
+    "sha256_skillmd": "0eceef05c3dc5b811b3cfa547c717f8f978b055f0192b17e5a4a6d42c585f6ea",
+    "version": "1.2.0-candidate (post Foundry pass 1, pre Foundry pass 2)"
+  },
+  "decision_question": "Is okhp3-project-compass 1.2.0-candidate ready to release into skillz/universal for unattended use across every clone in the fleet?",
+  "acceptance_criteria": [
+    "SKILL.md and its references do not claim tooling behavior the bundled scripts do not actually perform",
+    "The bundled validator (validate_compass.py) enforces exactly the data model documented in tracking-schema.md, no stricter and no looser",
+    "No script performs an unauthorized or scheduled GitHub write",
+    "scripts/selftest.py passes and its assertions cover the claims above",
+    "Frontmatter, line limits, and eval design conform to okhp3-skill-foundry v3.1.0 Phase 0 and Phase 3"
+  ],
+  "independence": {
+    "reviewer_contexts_separated": false,
+    "shared_model_or_source_limits": [
+      "All three initial-review roles and the disruptor role were performed by the same model instance in the same session, reading the same files. This is a correlated-agreement limitation: convergence across roles here is weaker evidence than convergence from genuinely separated reviewers, and should not be read as equivalent to a live multi-agent review.",
+      "No external agent, second model family, or blinded grader was available in this environment."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence reviewer",
+      "method": "Read every claim in SKILL.md and references/*.md against the actual behavior of scripts/*.py, executed via scripts/selftest.py and direct invocation.",
+      "claims_checked": 9,
+      "findings": [
+        {
+          "id": "CLM-01",
+          "claim": "SKILL.md and references/github-mode.md state that `github_sync.py push --apply --authorized` performs the GitHub write once a human has authorized it.",
+          "claim_type": "fact",
+          "evidence_ids": ["scripts/github_sync.py:245-271 cmd_push"],
+          "status": "disputed",
+          "consequence": "An operator who reads SKILL.md and runs push with both flags set will expect an issue or milestone to actually change on GitHub. Instead cmd_push unconditionally prints a JSON object with refused: true and example gh commands, and performs no write, regardless of the flags.",
+          "severity": "high",
+          "next_test": "Read cmd_push source directly (done); confirmed by inspection, not simulation."
+        },
+        {
+          "id": "CLM-02",
+          "claim": "references/file-mode.md 'Trend data' section documents RUN-HISTORY.md carrying columns for objectives, done, in progress, blocked, drift open, and score, computed each run.",
+          "claim_type": "fact",
+          "evidence_ids": ["scripts/compass_state.py:203-206 cmd_init header", "scripts/compass_state.py:276-293 cmd_record_run"],
+          "status": "disputed",
+          "consequence": "RUN-HISTORY.md is initialized with a 4-column header (run, mode, summary, report) and cmd_record_run only ever appends those 4 fields. The --counts JSON argument is stored in the per-run JSON record but never rendered into the human-readable trend table. The Mode B claim that the file layer reproduces GitHub's trend visibility is not met by the shipped tooling.",
+          "severity": "medium",
+          "next_test": "Ran compass_state.py record-run with --counts and inspected the resulting RUN-HISTORY.md row; confirmed only 4 columns were written."
+        },
+        {
+          "id": "CLM-03",
+          "claim": "PROJECT-COMPASS-STANDALONE-PROMPT.md's V9 rubric row states the check covers 'nothing pushed on a schedule.'",
+          "claim_type": "fact",
+          "evidence_ids": ["scripts/validate_compass.py V9 implementation"],
+          "status": "disputed",
+          "consequence": "Minor. V9 is a static file-state check; it cannot observe runtime scheduling behavior. The claim overstates what the validator proves. references/quality-rubric.md's own V9 row does not make this claim, so the two documents disagree with each other.",
+          "severity": "low",
+          "next_test": "Compared the V9 row text in both documents against the validator's actual checks (open-questions file, run-history rows, blocking questions)."
+        },
+        {
+          "id": "CLM-04",
+          "claim": "tracking-schema.md and file-mode.md state a task's parent_id can nest it under another task at any depth, with the objective inherited transitively through the parent chain.",
+          "claim_type": "design choice",
+          "evidence_ids": ["scripts/validate_compass.py V3 referential-integrity check"],
+          "status": "disputed",
+          "consequence": "V3 requires every task to carry either a resolving objective_id or orphan: true, with no exception for a task whose parent_id resolves to another task that itself has a valid objective_id. A legitimate nested subtask with only parent_id set fails V3 as if it were an orphan, which contradicts the documented hierarchy model and would produce a false validator failure on exactly the structure Mode B is supposed to support.",
+          "severity": "medium",
+          "next_test": "Traced the V3 code path for a task record with parent_id set and objective_id unset; confirmed it hits the objective_id branch and fails."
+        }
+      ]
+    },
+    {
+      "role": "outcome reviewer",
+      "method": "Read the package as a first-time operator would, asking whether following SKILL.md literally produces the behavior a reasonable reader would expect.",
+      "findings": [
+        {
+          "id": "CLM-01-outcome",
+          "claim": "An operator following the documented push workflow can act on the result.",
+          "status": "disputed",
+          "consequence": "Same defect as CLM-01, from the reader's side: the documented path does not do what the reader would conclude it does. This is not a safety failure (it errs toward doing less than documented, not more) but it is a genuine outcome failure: the artifact does not fulfill its stated purpose of letting an authorized operator complete a GitHub sync through the tooling.",
+          "severity": "high"
+        },
+        {
+          "id": "CLM-05",
+          "claim": "The Mode A vs Mode B split, the promotion and demotion paths, and the identifier-stability guarantee are each independently followable from SKILL.md plus exactly one references file.",
+          "status": "supported",
+          "evidence_ids": ["SKILL.md Phase 0/Mode A/Mode B sections", "references/mode-detection-and-promotion.md"],
+          "consequence": "No defect. Progressive disclosure holds: every reference is reachable in one step and the loading condition is stated.",
+          "severity": "none"
+        }
+      ]
+    },
+    {
+      "role": "safety and portability reviewer",
+      "method": "Checked untrusted-input handling, script side effects, secret handling, and the destructive-action boundary against the OKHP3 scope firewall and the Agent Skills adapter checklist.",
+      "findings": [
+        {
+          "id": "CLM-06",
+          "claim": "scan_repo.py and detect_mode.py bound their reads and do not execute or evaluate scanned content.",
+          "status": "supported",
+          "evidence_ids": ["scripts/scan_repo.py MAX_BYTES/MAX_TODOS/MAX_FIREWALL caps", "scripts/detect_mode.py 200_000-byte cap on .git/config reads"],
+          "consequence": "No defect found. All file reads are size-capped, all pattern matching is regex-based with no eval/exec, and configparser is used in non-strict read-only mode.",
+          "severity": "none"
+        },
+        {
+          "id": "CLM-07",
+          "claim": "No script performs a destructive or unauthorized write; every mutating path requires --apply, and GitHub writes require a second --authorized flag.",
+          "status": "supported",
+          "evidence_ids": ["compass_ids.py has no writes", "compass_state.py every writer gated on a.apply", "github_sync.py cmd_push gated on both flags and, per CLM-01, never actually writes in this build", "validate_compass.py is read-only"],
+          "consequence": "No defect. If anything this is stricter than documented (CLM-01), which is the safe direction of the error.",
+          "severity": "none"
+        },
+        {
+          "id": "CLM-08",
+          "claim": "Repository and issue text is documented as untrusted data that cannot grant authority.",
+          "status": "supported",
+          "evidence_ids": ["SKILL.md Operating contract item 2", "evals/evals.json adversarial-prompt-injection-in-scanned-content case"],
+          "consequence": "No defect. The claim is stated in the instructions and covered by a frozen, non-compensatory eval case, though that case has not been executed live (see benchmark.json evaluation_status: not-run).",
+          "severity": "none"
+        }
+      ]
+    }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "authority": "advisory",
+    "falsification_hypotheses": [
+      "CLM-01 might be a misreading: perhaps SKILL.md already discloses the plan-only behavior clearly enough elsewhere, making the evidence and outcome reviewers' 'disputed' status too harsh.",
+      "CLM-02 might be intentional: perhaps the trend columns are meant to be hand-authored by the calling agent after record-run, not generated by the script itself, in which case the claim is about the file's eventual state, not the script's output.",
+      "CLM-04 might be a non-issue in practice: perhaps no evaluated workflow ever actually produces a task with parent_id set and objective_id unset, making the gap theoretical."
+    ],
+    "test_results": [
+      "Rejected: SKILL.md's Write discipline paragraph reads as a capability statement ('push requires --apply and --authorized... never push on a schedule'), not a disclosure that push never executes. No sentence in SKILL.md, github-mode.md, or the standalone prompt says push always refuses regardless of flags. CLM-01 stands.",
+      "Rejected: RUN-HISTORY.md is append-only by script design with no managed-block mechanism for a later edit, and the block command only rewrites HTML-comment-delimited regions, not table rows. There is no supported path for the calling agent to add the documented columns without hand-editing an audit log outside the script's own writer, which the package's own additive-only principle discourages. CLM-02 stands.",
+      "Rejected: tracking-schema.md's Hierarchy and rollup section states parent_id nesting works 'at any depth' as the mechanism Mode B uses in place of GitHub sub-issues, and file-mode.md's rollup computation explicitly walks parent-to-child without requiring every intermediate node to also carry objective_id. A workflow that decomposes a task into subtasks (exactly what the schema advertises) will produce this shape routinely, not as an edge case. CLM-04 stands."
+    ]
+  },
+  "negotiator": {
+    "triggered": false,
+    "decision": "approve-with-limits",
+    "decisive_evidence": ["CLM-01", "CLM-02", "CLM-03", "CLM-04", "CLM-06", "CLM-07", "CLM-08"],
+    "unresolved_items": [
+      "No live with/without-skill benchmark has been run (evals/benchmark.json: not-run). This review cannot and does not claim task-quality or uplift evidence; it only claims internal consistency between documentation and shipped behavior.",
+      "The two adversarial eval cases (prompt injection, tempting blanket pre-authorization) are frozen and non-compensatory but have not been executed against a live agent in this environment."
+    ]
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": [
+    "This is an analytical, single-model self-review. Concordance across three role lenses in a single session is weaker evidence than convergence across genuinely independent reviewers; treat 'material-agreement' accordingly.",
+    "No live task-quality or uplift benchmark exists for this version. See evals/benchmark.json.",
+    "Approval is conditioned on fixing CLM-01 through CLM-04 in the immediate Foundry pass 2 that follows this review, not on the artifact as it stood at review time."
+  ],
+  "follow_up": [
+    { "item": "Fix CLM-01: make SKILL.md, references/github-mode.md, and the standalone prompt accurately describe github_sync.py push as plan-only in this build; it prints the exact gh commands for a human to run by hand and never executes a write itself.", "owner": "okhp3-skill-foundry pass 2", "severity": "high" },
+    { "item": "Fix CLM-02: either implement the documented trend columns in compass_state.py's RUN-HISTORY writer, or rewrite file-mode.md's Trend data section to match the 4-column reality and move the richer counts into the per-run JSON record where they already live.", "owner": "okhp3-skill-foundry pass 2", "severity": "medium" },
+    { "item": "Fix CLM-03: align the standalone prompt's V9 rubric row with references/quality-rubric.md's accurate wording.", "owner": "okhp3-skill-foundry pass 2", "severity": "low" },
+    { "item": "Fix CLM-04: loosen V3 in validate_compass.py so a task with a valid parent_id chain that eventually resolves to an objective is not required to also carry its own objective_id or orphan flag.", "owner": "okhp3-skill-foundry pass 2", "severity": "medium" },
+    { "item": "Before this package is relied on for unattended, consequential use, run a live with/without-skill benchmark per evals/evals.json and update benchmark.json's evaluation_status from not-run to live.", "owner": "Jamie Hill, next time an isolated executor is available", "severity": "medium" }
+  ]
+}

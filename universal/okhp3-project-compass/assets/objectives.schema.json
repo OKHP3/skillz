@@ -1,0 +1,526 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://overkillhill.com/schemas/okhp3.compass.objectives-1.json",
+  "title": "OKHP3 Project Compass objectives state",
+  "type": "object",
+  "required": [
+    "schema",
+    "project_key",
+    "objectives",
+    "tasks"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "const": "okhp3.compass.objectives/1"
+    },
+    "project_key": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "runs": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_run_id": {
+      "type": "string"
+    },
+    "charter_ref": {
+      "type": "string"
+    },
+    "intent": {
+      "$ref": "#/$defs/intent"
+    },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/objective"
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/task"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/question"
+      }
+    },
+    "drift": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/drift"
+      }
+    },
+    "mode": {
+      "$ref": "#/$defs/mode"
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/label"
+      }
+    }
+  },
+  "$defs": {
+    "confidence": {
+      "enum": [
+        "declared",
+        "inferred-strong",
+        "inferred-weak",
+        "unknown"
+      ]
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "active",
+        "in_progress",
+        "blocked",
+        "done",
+        "abandoned",
+        "superseded"
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "type",
+        "ref",
+        "observed_at"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "commit",
+            "pr",
+            "issue",
+            "file_added",
+            "file_changed",
+            "file_removed",
+            "doc_change",
+            "test_signal",
+            "dep_change",
+            "release",
+            "manual",
+            "absence"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_at": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "intent": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "vision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mission": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}-[0-9A-F]{8}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title_hash": {
+          "type": "string",
+          "pattern": "^[0-9A-F]{8}$"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "source": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "last_evidence_at": {
+          "type": "string"
+        },
+        "flagged_stale": {
+          "type": "boolean"
+        },
+        "flagged_abandoned": {
+          "type": "boolean"
+        },
+        "renamed_from": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parent_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z]{3}-[0-9A-F]{8}$"
+        },
+        "percent_complete": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "percent_source": {
+          "enum": [
+            "github-milestone",
+            "computed-children",
+            "manual",
+            "none"
+          ]
+        },
+        "github": {
+          "$ref": "#/$defs/github_ref"
+        }
+      }
+    },
+    "objective": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/item"
+        }
+      ],
+      "properties": {
+        "non_goal": {
+          "type": "boolean"
+        },
+        "success_criteria": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "due": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "task": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/item"
+        }
+      ],
+      "properties": {
+        "objective_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^OBJ-[0-9A-F]{8}$"
+        },
+        "orphan": {
+          "type": "boolean"
+        },
+        "blocked_by": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^QST-[0-9A-F]{8}$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "answered",
+            "withdrawn"
+          ]
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "asked_at": {
+          "type": "string"
+        },
+        "answer": {
+          "type": "string"
+        },
+        "why_it_matters": {
+          "type": "string"
+        }
+      }
+    },
+    "drift": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "summary"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^DRF-[0-9A-F]{8}$"
+        },
+        "kind": {
+          "enum": [
+            "new_goal",
+            "changed_goal",
+            "scope_expansion",
+            "scope_contraction",
+            "orphaned_work",
+            "stale_objective",
+            "abandoned_work",
+            "contradiction",
+            "sink_divergence",
+            "mode_change"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "first_seen_run": {
+          "type": "string"
+        },
+        "resolution": {
+          "enum": [
+            "open",
+            "accepted",
+            "rejected",
+            "deferred"
+          ]
+        }
+      }
+    },
+    "mode": {
+      "type": "object",
+      "required": [
+        "detected"
+      ],
+      "properties": {
+        "detected": {
+          "enum": [
+            "A",
+            "B"
+          ]
+        },
+        "sub_case": {
+          "enum": [
+            "github-origin",
+            "github-non-origin",
+            "git-non-github",
+            "git-no-remote",
+            "github-artifacts",
+            "plain-folder"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "at",
+              "to"
+            ],
+            "properties": {
+              "at": {
+                "type": "string"
+              },
+              "from": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "to": {
+                "enum": [
+                  "A",
+                  "B"
+                ]
+              },
+              "run": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "label": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "github_synced": {
+          "type": "boolean"
+        }
+      }
+    },
+    "github_ref": {
+      "type": "object",
+      "properties": {
+        "issue_number": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "milestone_number": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_synced_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

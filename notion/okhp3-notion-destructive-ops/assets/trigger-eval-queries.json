@@ -1,0 +1,12 @@
+[
+  { "query": "Delete this old Notion page, I don't need it anymore.", "should_trigger": true },
+  { "query": "Trash this row, it was a duplicate entry.", "should_trigger": true },
+  { "query": "Permanently delete this database, not just archive it.", "should_trigger": true },
+  { "query": "Restore that page I accidentally trashed yesterday.", "should_trigger": true },
+  { "query": "Remove this data source from the database, we don't use it anymore.", "should_trigger": true },
+  { "query": "What pages in my workspace look like duplicates or are stale?", "should_trigger": false },
+  { "query": "Remove the old priority field from my tasks database schema.", "should_trigger": false },
+  { "query": "Read the content of this page before I decide what to do with it.", "should_trigger": false },
+  { "query": "Create a new page under my wiki.", "should_trigger": false },
+  { "query": "Clean up my workspace.", "should_trigger": false }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "query": "Connect to my Notion workspace and check what's actually available on this plan before we start.",
+    "should_trigger": true
+  },
+  {
+    "query": "Why did my Notion database query stop working after I added a second table to it?",
+    "should_trigger": true
+  },
+  {
+    "query": "What Notion surfaces do I have access to right now, MCP, REST, or the CLI?",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm getting a restricted_resource error from the Notion API, what does that mean?",
+    "should_trigger": true
+  },
+  {
+    "query": "Set up rate limit handling before we run a bunch of Notion API calls.",
+    "should_trigger": true
+  },
+  {
+    "query": "Read the content of this Notion page for me.",
+    "should_trigger": false
+  },
+  {
+    "query": "Add a new row to my tasks database in Notion.",
+    "should_trigger": false
+  },
+  {
+    "query": "Search my Notion workspace for anything about the Q3 budget.",
+    "should_trigger": false
+  },
+  {
+    "query": "Delete this old Notion page, I don't need it anymore.",
+    "should_trigger": false
+  },
+  {
+    "query": "Should this recurring report be a Notion Custom Agent or a file-based skill?",
+    "should_trigger": false
+  },
+  {
+    "query": "Make a Mermaid diagram of my project timeline.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a LinkedIn post about our new feature launch.",
+    "should_trigger": false
+  }
+]

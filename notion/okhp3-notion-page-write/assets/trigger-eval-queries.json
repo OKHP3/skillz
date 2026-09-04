@@ -1,0 +1,13 @@
+[
+  { "query": "Create a new Notion page under my Projects hub with an agenda and team info.", "should_trigger": true },
+  { "query": "Add a section about risks to the bottom of this Notion page.", "should_trigger": true },
+  { "query": "Fix the typo in the second paragraph of this Notion doc.", "should_trigger": true },
+  { "query": "Change the icon and cover image on this Notion page.", "should_trigger": true },
+  { "query": "Replace the whole content of this page with the updated draft.", "should_trigger": true },
+  { "query": "Add a new entry to my tasks database for the Q3 review.", "should_trigger": false },
+  { "query": "Read this Notion page and tell me what it says.", "should_trigger": false },
+  { "query": "Permanently delete this old Notion page.", "should_trigger": false },
+  { "query": "Search Notion for pages about onboarding.", "should_trigger": false },
+  { "query": "Query my tasks database for anything overdue.", "should_trigger": false },
+  { "query": "Leave a comment on this page asking for feedback.", "should_trigger": false }
+]

@@ -5,7 +5,7 @@ license: MIT
 compatibility: Requires a Notion connector or API-capable integration for writes. Read-only report mode works without write access. Do not commit account-specific Notion URLs, IDs, tokens, or workspace structure.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.3.0"
+  version: "0.4.0"
   category: notion
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -20,6 +20,8 @@ metadata:
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Turn conversations and other content artifacts into useful Notion pages or database records. The skill teaches an agent-enabled platform how to use Notion as a destination without assuming a particular user's account, workspace taxonomy, page hierarchy, or database schema.
+
+**Family note:** this skill predates the `okhp3-notion-core` foundation and its siblings, and still carries its own connector-operation-map and resolution logic below for platforms that only have this skill installed. When the rest of the `okhp3-notion-*` family is available, prefer their versions of the same concerns instead of this file's: `okhp3-notion-core` for surface detection, capability-map reading, and the error taxonomy; `okhp3-notion-identity-resolution` for reference-format parsing; `okhp3-notion-limits-and-retry` for rate/chunking/backoff; `okhp3-notion-destructive-ops` for any archive or permanent-delete decision this skill's deduplication step surfaces as a candidate. This file's own logic is the fallback, not the preferred path, when those siblings are present.
 
 The source may be a live conversation, an exported transcript, a PDF, Markdown, research notes, or another structured artifact. The destination may be:
 
@@ -216,6 +218,17 @@ Load only what the request needs:
 - `references/final-check.md`: verification checklist before reporting completion.
 - `assets/report-template.md`: reusable report scaffold.
 - `assets/trigger-eval-queries.json`: trigger and non-trigger examples for description testing.
+
+## Tooling
+
+`scripts/dedupe_key.py` computes the "stable matching key" described in `references/destination-contract.md`'s Idempotency key section deterministically - normalized title, source link or file identifier, source date, and destination scope, hashed to a short stable key. Two runs against the same source produce the same key, so the source-level and extract-level duplicate check in Step 5 is not re-derived by hand each time.
+
+```
+python3 scripts/dedupe_key.py --title "Q3 Planning Notes" --source-date 2026-07-01 --destination-scope "Thread Index" --source-link "https://chat.openai.com/share/abc123"
+python3 scripts/dedupe_key.py --self-test
+```
+
+If no source link or file identifier is available, the script reports `has_stable_source: false` - per `destination-contract.md`, fall back to a title-plus-source-date search and present candidate matches rather than trusting a weak key as a unique match.
 
 ## Output contract
 

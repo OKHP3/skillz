@@ -1,0 +1,13 @@
+[
+  { "query": "Read the content of this Notion page and summarize it for me.", "should_trigger": true },
+  { "query": "Open this Notion doc and pull out the full text as markdown.", "should_trigger": true },
+  { "query": "What does this Notion wiki page currently say under the Risks section?", "should_trigger": true },
+  { "query": "This Notion page looks cut off when I fetch it, can you get the rest?", "should_trigger": true },
+  { "query": "Get the content of this page including all the nested toggles.", "should_trigger": true },
+  { "query": "Show me all the rows in my Notion tasks database that are overdue.", "should_trigger": false },
+  { "query": "Search my whole Notion workspace for anything about the Q3 budget.", "should_trigger": false },
+  { "query": "Add a new section to this Notion page about next steps.", "should_trigger": false },
+  { "query": "Export this Notion page as a PDF I can send to a client.", "should_trigger": false },
+  { "query": "Delete this old draft page, I don't need it.", "should_trigger": false },
+  { "query": "Create a new row in my CRM database for this contact.", "should_trigger": false }
+]
