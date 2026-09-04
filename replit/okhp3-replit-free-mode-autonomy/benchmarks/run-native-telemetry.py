@@ -92,12 +92,17 @@ def read_event_export(path: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]
                 ) from exc
         return {"schema_version": "1.0", "source": SOURCE, "host": "unknown"}, events
 
-    if isinstance(parsed, dict) and "events" in parsed:
-        envelope = dict(parsed)
-        events = envelope.pop("events")
-        if not isinstance(events, list):
-            raise TelemetryError("The export's events property must be an array.")
-        return envelope, events
+    if isinstance(parsed, dict):
+        if "events" in parsed:
+            envelope = dict(parsed)
+            events = envelope.pop("events")
+            if not isinstance(events, list):
+                raise TelemetryError("The export's events property must be an array.")
+            return envelope, events
+        # A one-line JSONL export is also valid JSON. Treat a JSON object
+        # without an envelope's events property as its one event so the
+        # documented JSONL format works for a single host event.
+        return {"schema_version": "1.0", "source": SOURCE, "host": "unknown"}, [parsed]
     if isinstance(parsed, list):
         return {"schema_version": "1.0", "source": SOURCE, "host": "unknown"}, parsed
     raise TelemetryError("The export must be an envelope object, an event array, or JSONL.")

@@ -18,18 +18,20 @@
     "tool_availability": "none in the evaluation prompt",
     "activation_mode": "direct skill-context injection versus no target skill",
     "evidence_tier": "native for host events; live for response comparisons; analytical for prior trigger classification",
-    "host_integration_status": "runner available; awaiting complete host event export",
+    "host_integration_status": "runner available; no supported host event export or capture path exposed",
     "native_trigger_run": {
       "status": "not-run",
       "queries_total": 12,
       "queries_executed": 0,
       "evidence_tier": "not measured",
-      "reason": "No native activation events were supplied in the host event export."
+      "reason": "No supported host event export was available in this workspace."
     },
     "telemetry_export": {
       "source": "host-event-export",
       "schema_version": "1.0",
       "host": "Replit Agent",
+      "status": "not-available",
+      "reason": "No supported host event export or capture path was exposed in this workspace.",
       "events_total": 0,
       "events_by_type": {
         "always_allow_selected": 0,

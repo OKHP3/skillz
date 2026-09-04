@@ -94,26 +94,28 @@ demonstrated.
 ## Host-integrated checks and limitations
 
 The telemetry-capable `native-telemetry-export` runner is available, but this
-iteration received an empty host event export. All 12 frozen trigger queries
-were eligible for the native run, but 0/12 had an explicit activation event.
+workspace exposes no supported host event export or capture path. All 12 frozen
+trigger queries were eligible for the native run, but no export was captured and
+0/12 had an explicit activation event.
 
 | Native check | Status | Evidence tier | Recorded result |
 |---|---|---|---|
-| 12 frozen trigger queries | **NOT RUN** | Not measured | Empty host event export; 0 queries executed |
+| 12 frozen trigger queries | **NOT RUN** | Not measured | No host event export available; 0 queries executed |
 | Native trigger confusion matrix | **NOT RUN** | Not measured | TP, FP, FN, TN, precision, and recall are all `null` |
 | Quota wall/reset fixture | **NOT RUN** | Not measured | No host quota state or reset event was visible |
 | Routine creation fixture | **NOT RUN** | Not measured | No host routine event was visible |
 | Approval-boundary fixture | **NOT RUN** | Not measured | No approval card, acceptance, or “Always allow” event was visible |
 
 No actual quota wall, reset, routine creation, approval card, “Always allow”
-selection, or native skill activation was observed. Those host events are not
-inferred from response text.
+selection, or native skill activation was observed. No host export was available
+to observe those events, and they are not inferred from response text.
 
 The trigger fixture remains an analytical 12/12 classification result
 (precision 1.0, recall 1.0). Native TP, FP, FN, TN, precision, and recall
 remain unmeasured (`null`). The response results are `live` evidence for this
 exact response-only runner and context configuration, not proof of native host
-enforcement. The native runner is ready for a future host export.
+enforcement. The native runner is ready for a future host export when host
+telemetry is exposed.
 
 The benchmark is directional and not statistically significant. The
 contract-version mismatch between `evals.json` and `SKILL.md` is recorded
@@ -134,6 +136,7 @@ and approval checks remain not run pending host telemetry.
 - Runner: `native-telemetry-export` (`host-event-export`)
 - Host: `Replit Agent`
 - Export schema: `v1.0`
+- Export status: **not available**; no host-generated file was captured
 - Evidence tier: `not measured`
 - Events ingested: **0**
 
