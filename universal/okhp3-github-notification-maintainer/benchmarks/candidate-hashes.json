@@ -1,0 +1,21 @@
+{
+  "algorithm": "sha256",
+  "path_root": "repository",
+  "versions": {
+    "maintainer": "1.1.0",
+    "janitor": "0.2.0"
+  },
+  "files": {
+    "universal/okhp3-github-notification-maintainer/SKILL.md": "eb15e4ba16e39f8a3fdd11459e00a56b96e348d2ea350f3f47974ef05910d2f6",
+    "universal/okhp3-github-notification-maintainer/scripts/collect_github.py": "1168a62d0a4e2a135768906568674bc761bb7334f7ee155e119dea2db1c02f5e",
+    "universal/okhp3-github-notification-maintainer/scripts/incident_gate.py": "b1d007b232c083bb878412254f931bb5e1a25bbc88756d4cb819ba4cf4630171",
+    "universal/okhp3-github-notification-maintainer/tests/test_collect_github.py": "3fcd430bf27ff9f82a1eef71daf6af784e76f7377ef1ddb421f7064acb7216ec",
+    "universal/okhp3-github-notification-maintainer/tests/test_incident_gate.py": "254b9da27f9fded593a5ef589b7418c73f1c2a594d566af2fe2c328eb6ec2ac9",
+    "universal/okhp3-github-notification-maintainer/references/maintenance-design.md": "0a755a3a535c8574446186b1fd67eb9470b990b46bfec30e13b4b9fdfdf49fe7",
+    "universal/okhp3-github-notification-maintainer/references/scheduled-maintenance.md": "84e0e9e862ed4de1237f6c1c33a1fae6bc6213c3ae792597615e8fed9ee389f2",
+    "universal/okhp3-repository-janitor/SKILL.md": "050c27558cf4faf2e4887f2a313f08911122c1f32b27f71c0dc304499974ca03",
+    "universal/okhp3-repository-janitor/scripts/audit_mirrors.py": "eb7f767b868f1c5eea937a758952758606a0871ab8b065f3bab3fc344aa0a7f5",
+    "universal/okhp3-repository-janitor/tests/test_audit_mirrors.py": "d10893d5fb0dabaa6e8e4e103f7144cee306a206c8875a7496056521a0a4383d",
+    ".github/workflows/release-validation.yml": "2c031b6c11765924d8538715c2440a3d20aeca6e76c81309de1b20d79112f54b"
+  }
+}

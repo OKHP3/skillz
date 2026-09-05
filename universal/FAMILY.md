@@ -1,9 +1,9 @@
 ---
 family: universal
 display_name: Universal
-skill_count: 20
+skill_count: 21
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-04T03:48:45Z
+generated_at: 2026-09-05T02:31:01Z
 ---
 
 # universal
@@ -12,10 +12,10 @@ generated_at: 2026-09-04T03:48:45Z
 A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping .
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (20)
+## Skills (21)
 
 <!-- FAMILY_INVENTORY_START -->
-*20 skills &nbsp;·&nbsp; inventory last updated: **September 4, 2026 at 03:48 UTC***
+*21 skills &nbsp;·&nbsp; inventory last updated: **September 5, 2026 at 02:31 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -24,13 +24,14 @@ A family of 11 skills. Create a Cloudflare Worker that proxies API calls from a 
 | [okhp3-database-cartographer](okhp3-database-cartographer/SKILL.md) | OverKill Hill P³ database cartographer. Reverse-engineers and documents the live structure of Pos... | 1.1.0 |
 | [okhp3-equilibrium-review](okhp3-equilibrium-review/SKILL.md) | Evaluate a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independ... | 1.0.0 |
 | [okhp3-foundry-repo-creator](okhp3-foundry-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
-| [okhp3-github-notification-maintainer](okhp3-github-notification-maintainer/SKILL.md) | Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, c... | 1.0.0 |
+| [okhp3-github-notification-maintainer](okhp3-github-notification-maintainer/SKILL.md) | Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, c... | 1.1.0 |
 | [okhp3-google-gis-client-auth](okhp3-google-gis-client-auth/SKILL.md) | OverKill Hill P³ client-only Google Identity Services (GIS) auth workflow. Use when designing, im... | 1.2.0 |
 | [okhp3-i18n-page-release](okhp3-i18n-page-release/SKILL.md) | Validate and prepare a localized static-web page set for release after its exact-pair translation... | 1.1.0 |
 | [okhp3-i18n-page-sync](okhp3-i18n-page-sync/SKILL.md) | Detect which pages on a static site are missing a translation, or have a translation that has fal... | 1.2.0 |
 | [okhp3-overkill-hill-brand](okhp3-overkill-hill-brand/SKILL.md) | OverKill Hill P³ OverKill Hill SPA styling. Use when a user wants an OverKill Hill application, d... | 1.1.0 |
+| [okhp3-project-compass](okhp3-project-compass/SKILL.md) | Point at a project folder, git clone, or repository and establish or refresh its purpose, vision,... | 1.2.0 |
 | [okhp3-repl-repo-janitor](okhp3-repl-repo-janitor/SKILL.md) | Clean up a single Replit-hosted Git repository — squash-merge and delete old, merged, or abandone... | 0.1.0 |
-| [okhp3-repository-janitor](okhp3-repository-janitor/SKILL.md) | Reconcile a collection of local Git repositories with their GitHub origins, inspect all local var... | 0.1.0 |
+| [okhp3-repository-janitor](okhp3-repository-janitor/SKILL.md) | Reconcile a collection of local Git repositories with their GitHub origins, inspect all local var... | 0.2.0 |
 | [okhp3-repository-organizer](okhp3-repository-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.1.1 |
 | [okhp3-skill-cataloger](okhp3-skill-cataloger/SKILL.md) | OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safe... | 1.7.0 |
 | [okhp3-skill-discovery](okhp3-skill-discovery/SKILL.md) | Find, verify, compare, and route to project-local, installed, runtime, or plugin-provided agent s... | 0.1.0 |

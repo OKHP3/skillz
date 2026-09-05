@@ -9,13 +9,9 @@ description: >
   repository maintenance, or safe branch-pruning review. Do not use for blind
   bulk deletion, unreviewed merges, or autonomous publication.
 license: MIT
-compatibility: >
-  A GitHub connector or gh CLI is needed for live GitHub state. Local Git is
-  needed for source changes and validation. Browser or desktop Git clients are
-  optional adapters, not prerequisites.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: "1.1.0"
   category: repository-maintenance
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -35,6 +31,14 @@ The skill connects each notification to the real work item, groups duplicates,
 diagnoses the causal defect, routes bounded work to the safest available worker,
 validates the replacement state, and records whether the exact thread is safe to
 mark done.
+
+## Requirements
+
+Use a GitHub connector or authenticated `gh` CLI for live state, local Git for
+source work, and Python 3.9+ for the bundled helpers. Browser and desktop clients
+are optional. Email acknowledgement requires an authenticated adapter supporting
+exact-message update and readback. Recurrence needs a scheduler and private
+persistent state. Missing adapters are coverage gaps, not empty successful queues.
 
 ## Scope
 
@@ -57,6 +61,13 @@ Use one of these modes, stating it at the start of the run:
 Never infer authorization from an old prompt, an old notification, a branch age,
 or the presence of a desktop application.
 
+A currently active, owner-approved schedule can supply its recorded action
+allowlist. Read it on every run; revocation or changed scope invalidates it.
+Preparing a local patch, pushing a branch, creating a PR, merging, deploying,
+and acknowledging notifications are separate permissions. Audit schedules do
+not inherit an interactive repair grant. Load
+`references/scheduled-maintenance.md` before any recurring execution.
+
 ## Inputs and outputs
 
 Collect, when available:
@@ -72,7 +83,8 @@ Return a ledger with one row per exact notification:
 
 ```text
 thread_id | repository | item | grouped_cause | disposition | owner_or_worker |
-repair_or_handoff | validation | done_result | remaining_decision
+repair_or_handoff | base_sha | candidate_sha | replacement_run | validation |
+github_done_result | mailbox_message_id | email_read_result | remaining_decision
 ```
 
 Use these dispositions:
@@ -115,6 +127,19 @@ or complete a notification.
    deployments, remote branches, and local branches.
 6. Protect dirty worktrees, unique commits, detached or conflicted states,
    deployment branches, and ambiguous ownership.
+7. Use Repository Janitor for stashes, recovery refs, unreachable work and linked
+   worktree coverage. Clean checkout parity does not prove all saved work is
+   published. Never change an unowned or actively edited checkout.
+8. Record per-source coverage, pagination, time bounds, errors and unresolved
+   targets. Failed retrieval is not an empty queue. The GET-only
+   `scripts/collect_github.py --owner OWNER --output PRIVATE_STATE/github.json`
+   inventories GitHub; its bounded Actions window is not an all-workflow health
+   assertion. Follow up on missing workflow histories and ambiguous PR matches.
+   Check `has_pull_requests` and creation policy before attributing a denied PR
+   operation to bad credentials. Do not change those settings without authority.
+9. Reconcile GitHub repositories with local origin identities, not directory
+   names alone. Report remote-only, local-only, renamed and forked repositories.
+   Never claim coverage of another computer or Replit workspace not inspected.
 
 ### 2. Normalize and group
 
@@ -141,6 +166,12 @@ For each group, identify the first failing boundary and classify the cause:
 
 Record the decisive evidence, rejected hypotheses, first failing command or
 check, and the smallest repair that could falsify the diagnosis.
+
+Load `references/maintenance-design.md` for mechanism-specific diagnostic tests.
+A successful push followed by failed CI is not a push failure. Never attribute
+a defect to Replit or another agent without evidence of the failing boundary.
+Keep genuine translation, security, and freshness failures visible. Do not
+refresh a hash, remove a test, or weaken a gate simply to obtain green status.
 
 ### 4. Delegate bounded work
 
@@ -181,6 +212,13 @@ closing, deleting, publishing, or marking a thread done. Record worker status as
 For local repairs, inspect the diff before commit and preserve unrelated work.
 For native-agent PRs, inspect changed files, commit ancestry, reviews, and checks.
 
+A worktree is not a security sandbox. Review repository-controlled install,
+test and hook commands before execution. For unfamiliar or untrusted code,
+require a restricted execution environment without unrelated credentials,
+outside-workspace write access or unrestricted outbound access. If that boundary
+cannot be verified, inspect statically and use an approved restricted runner;
+report tests not run. Never pass mail/GitHub credentials into dependency hooks.
+
 Run proportionate validation:
 
 1. Structural or syntax checks.
@@ -191,6 +229,16 @@ Run proportionate validation:
 
 Passing a unit test or check alone does not prove deployment or live behavior.
 Record checks not run and why.
+
+Track `repair-prepared`, `pr-validated`, `published-awaiting-verification`, and
+`publication-verified` separately from the incident disposition. Immediately
+before a merge, reread base/head, changed scope, required reviews and checks.
+A moved head invalidates earlier approval. Never bypass protection.
+Bind merges to the reviewed head using an expected-head conditional operation
+where supported. If a destructive operation cannot be made conditional on the
+reviewed target, hold it for a supervised, explicitly coordinated action.
+Independently confirmed unrelated baseline failures may remain active during a scoped repair
+only when required checks pass and the current grant permits that merge.
 
 ### 6. Branch and PR lifecycle
 
@@ -212,6 +260,33 @@ thread or the current maintain run explicitly includes it. Use the exact thread
 ID, verify the API result, and record failures. Marking a thread read is not the
 same as resolving it.
 
+For a failed workflow, require a newer successful replacement for that exact
+repository, workflow identity, branch and full current published SHA. A green PR,
+pending deployment, unrelated check, or old-main success does not qualify. Verify
+the failed run's identity, successful run time and attempt, and any required live
+artifact. Recheck the thread's update time immediately before completion; a
+changed thread is held for new triage.
+
+Aggregate success is insufficient: verify the originally failing job, event,
+inputs, matrix target and deployment environment actually executed successfully.
+A manual run that skipped the failing job is not a replacement. Record a reviewed
+coverage-equivalence rationale when the workflow legitimately changed.
+Notification acknowledgement APIs may lack atomic timestamp preconditions. That
+race remains a limitation: default schedules propose acknowledgement instead of
+performing it unless an approved adapter provides an adequate conditional guard.
+An interactive exact-thread action requires fresh verification and post-write
+readback; report the non-atomic limitation, not a guarantee against concurrency.
+
+Outlook acknowledgement is independent: use the connected mailbox and exact
+message ID, confirm sender and matching repository/run or PR, then set read only
+after the same incident passes its completion gate and email-read authorization
+exists. Read back the result. Never mark unrelated mail, follow tracking links,
+delete mail, unsubscribe, or infer email completion from GitHub completion.
+If a filtered empty result conflicts with recent mail, verify with a second
+supported query and report incomplete coverage until reconciled.
+Use explicit `adapter-unavailable` or `not-requested` mail status when applicable;
+this does not prevent unrelated authorized GitHub work from proceeding.
+
 Re-audit after completion. A repair can create a newer notification; include it
 as a new ledger row rather than silently treating it as complete.
 
@@ -225,6 +300,15 @@ force-push, reset, stash, or overwrite unreviewed work.
 Never use `git reset --hard`, `git clean`, force deletion, broad remote pruning,
 implicit stashing, unattended pushes, or hidden credential handling.
 
+An explicitly authorized scheduled push is not implicit: it must satisfy the
+schedule's bounded allowlist, current-source checks and recorded PR handoff.
+No scheduled merge or deletion is enabled by this package's default policy.
+Before any authorized push or PR creation, inspect downstream Actions and native
+agent triggers. If the write would deploy or trigger another consequential action
+outside the grant, hold it for a nondeploying route or expanded authorization.
+Private run state, raw mail, credentials, tracking URLs and host-specific paths
+must never be included in distributable skill files or public repair PRs.
+
 ## Quality and handoff
 
 Before handoff, report totals, grouped causes, exact repaired items, delegated
@@ -236,6 +320,15 @@ The package's evaluation design is in `evals/evals.json`. Load
 `references/decision-rubric.md` for ambiguous branch or notification actions,
 `references/delegation-contract.md` for native-agent handoffs, and
 `references/validation-matrix.md` for release or deployment evidence.
+
+Run package tests with `python3 -m unittest discover -s tests -v` from this
+package directory. Development tests and analytical review do not establish
+unattended repair reliability or measured skill uplift; external holdouts remain
+required. See the versioned review record in `benchmarks/` for release limits.
+`scripts/incident_gate.py` is an optional pure policy check for normalized
+evidence. It performs no API actions and cannot authenticate supplied observations.
+The Skillz release workflow runs both packages' offline regression suites on
+relevant pushes and pull requests; it is validation, not an event-driven repair bot.
 
 ---
 

@@ -3,7 +3,7 @@ family: outcome-modeling
 display_name: Outcome Modeling
 skill_count: 5
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-04T03:48:45Z
+generated_at: 2026-09-05T02:31:01Z
 ---
 
 # outcome-modeling
@@ -15,7 +15,7 @@ A family of 5 skills. OverKill Hill P³ NFL fantasy picks. Use when selecting NF
 ## Skills (5)
 
 <!-- FAMILY_INVENTORY_START -->
-*5 skills &nbsp;·&nbsp; inventory last updated: **September 4, 2026 at 03:48 UTC***
+*5 skills &nbsp;·&nbsp; inventory last updated: **September 5, 2026 at 02:31 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
