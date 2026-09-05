@@ -4,7 +4,7 @@ description: Reconcile a collection of local Git repositories with their GitHub 
 license: MIT
 metadata:
   author: "Jamie Hill (OverKill Hill P³)"
-  version: "0.2.0"
+  version: "0.2.1"
   category: "universal"
   origin: "okhp3/skillz"
   homepage: "https://overkillhill.com"
@@ -102,6 +102,11 @@ identity; abbreviated display hashes are not adequate for mutation gates. Saved
 stashes and archive refs remain exceptions even when every checkout is clean
 and HEAD equals origin/main. A local-only historical commit may already be
 patch-equivalent to published work; inspect before claiming loss or redundancy.
+
+Both `archive_refs` and `archive_ref_shas` use full `refs/archive/...` names.
+Version 0.2.0 shortened names in `archive_refs`; consumers of those earlier
+snapshots must normalize that display list before joining it to the SHA map.
+The exception comparison uses the unchanged full-name SHA map.
 
 Run the package's temporary-repository regression suite with
 `python3 -m unittest discover -s tests -v`. Passing it verifies tested inventory

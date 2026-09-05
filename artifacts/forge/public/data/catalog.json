@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-05T02:36:24.402Z",
+  "generatedAt": "2026-09-05T02:49:40.873Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "maintenance/notification-recovery-20260904",
-  "sourceCommit": "c2a3620",
+  "sourceRef": "maintenance/audit-review-followup-20260904",
+  "sourceCommit": "85bd34a",
   "skillCount": 341,
   "familyCount": 20,
   "families": [
@@ -22657,8 +22657,8 @@
       ],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-github-notification-maintainer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-github-notification-maintainer/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-09-04T21:44:46-05:00",
+      "commitSha": "85bd34af",
       "createdAt": "2026-08-19T15:26:58-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -23093,7 +23093,7 @@
       "skillDir": "okhp3-repository-janitor",
       "path": "universal/okhp3-repository-janitor/SKILL.md",
       "description": "Reconcile a collection of local Git repositories with their GitHub origins, inspect all local variations against origin/main, preserve uncommitted or unreachable work, and manage branch lifecycle. Use when a user has multiple clones or computers, needs to find differences from origin/main, recover forgotten work, review agent/Copilot/Dependabot branches, merge completed pull requests, prune verified redundant branches, or establish a repeatable daily or weekly repository-maintenance routine.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -23127,8 +23127,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repository-janitor/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repository-janitor/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-09-04T21:44:46-05:00",
+      "commitSha": "85bd34af",
       "createdAt": "2026-07-30T08:34:48-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",

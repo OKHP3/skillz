@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "skill_version": "0.2.1",
+  "date": "2026-09-05",
+  "review_source": "https://github.com/OKHP3/skillz/pull/74",
+  "change": "Use full archive refnames in both archive_refs and archive_ref_shas; add a join-consistency regression assertion and document compatibility.",
+  "validation": {"temporary_git_tests": 12, "result": "passed"},
+  "sha256": {
+    "SKILL.md": "96c7ec13c72a8ac2944d3a23eae915ecc612e1c4e7151e985829aacf7be3e681",
+    "scripts/audit_mirrors.py": "0ca9db9af4d0f959d96e12a36b834bdfe6803498070c45b5966d8da19983f969",
+    "tests/test_audit_mirrors.py": "86c00f7eb3329e77a5ceb6d9976c53ffa0c123a7f9abef3c7004106e1042a894"
+  },
+  "limitations": [
+    "The companion maintainer's 1.1.0 Equilibrium record remains a historical review of janitor 0.2.0, not a new review of 0.2.1.",
+    "This patch does not expand authority or enable unattended writes.",
+    "No new live outcome or unseen cross-host benchmark was run."
+  ]
+}
