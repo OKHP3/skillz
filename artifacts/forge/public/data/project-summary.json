@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-05T02:36:24.402Z",
+  "generatedAt": "2026-09-05T02:49:40.873Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "maintenance/notification-recovery-20260904",
-  "sourceCommit": "c2a3620",
+  "sourceRef": "maintenance/audit-review-followup-20260904",
+  "sourceCommit": "85bd34a",
   "skillCount": 341,
   "familyCount": 20,
   "maturityCounts": {

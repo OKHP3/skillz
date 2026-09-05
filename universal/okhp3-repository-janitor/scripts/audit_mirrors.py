@@ -111,7 +111,7 @@ def audit_repo(repo: Path, fetch=False, include_unreachable=False, root=None, ti
     record['local_only_commits'] = git.lines('log', '--branches', '--tags', 'HEAD', '--not', '--remotes', '--format=%H')
     refs = git.lines('for-each-ref', '--format=%(refname) %(objectname)', 'refs/heads', 'refs/remotes/origin', 'refs/archive')
     refs = dict(line.split(' ', 1) for line in refs) if refs is not None else None
-    record['archive_refs'] = [ref.removeprefix('refs/') for ref in refs if ref.startswith('refs/archive/')] if refs is not None else None
+    record['archive_refs'] = [ref for ref in refs if ref.startswith('refs/archive/')] if refs is not None else None
     record['archive_ref_shas'] = {ref: sha for ref, sha in refs.items() if ref.startswith('refs/archive/')} if refs is not None else None
     baseline = 'refs/remotes/origin/main'
     has_main = baseline in refs if refs is not None else None

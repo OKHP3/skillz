@@ -48,6 +48,8 @@ class AuditTests(unittest.TestCase):
         self.assertIn('?? new', record['working_tree'])
         self.assertEqual(record['head'], sha)
         self.assertEqual(record['archive_ref_shas']['refs/archive/keep'], sha)
+        self.assertEqual(record['archive_refs'], ['refs/archive/keep'])
+        self.assertEqual(set(record['archive_refs']), set(record['archive_ref_shas']))
         self.assertEqual(record['unreachable_commits'], [])
         self.git(self.repo, 'commit', '--allow-empty', '-m', 'orphan')
         orphan = self.git(self.repo, 'rev-parse', 'HEAD')
