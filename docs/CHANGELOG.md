@@ -6,6 +6,15 @@ This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
 
+### Changed
+
+- Refined Repository Janitor 0.2.0 and GitHub Notification Maintainer 1.1.0
+  after the September estate-recovery investigation. Added fail-closed local
+  and GitHub collectors, preservation/coverage reporting, exact incident gates,
+  independent Outlook acknowledgement, and a scoped scheduling contract.
+  Equilibrium and Foundry evidence supports supervised use and constrained
+  audits only; unattended mutation and measured uplift remain deferred.
+
 ### Added
 
 - Added the `copilot/` family scaffold for host-oriented Agent Skills targeting

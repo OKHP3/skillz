@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-04T17:20:33.389Z",
+  "generatedAt": "2026-09-05T02:36:24.402Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "main",
-  "sourceCommit": "b449af06",
+  "sourceRef": "maintenance/notification-recovery-20260904",
+  "sourceCommit": "c2a3620",
   "skillCount": 341,
   "familyCount": 20,
   "families": [
@@ -14105,7 +14105,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14170,7 +14170,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14235,7 +14235,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14300,7 +14300,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14434,7 +14434,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -16791,7 +16791,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-recurring-task-capture/SKILL.md",
       "lastModified": "2026-08-28T23:44:26-05:00",
       "commitSha": "967052e2",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -19817,7 +19817,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-08-28T23:44:51-05:00",
       "commitSha": "0a171756",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -19949,7 +19949,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -20015,7 +20015,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -22612,7 +22612,7 @@
       "skillDir": "okhp3-github-notification-maintainer",
       "path": "universal/okhp3-github-notification-maintainer/SKILL.md",
       "description": "Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, check, deployment, or branch problem; group duplicate failures; delegate bounded repairs to Dependabot, GitHub Copilot, or Actions when appropriate; verify the result; and mark only verified threads done. Use for GitHub notification cleanup, recurring CI loose ends, PR follow-up, repository maintenance, or safe branch-pruning review. Do not use for blind bulk deletion, unreviewed merges, or autonomous publication.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "repository-maintenance",
       "origin": "okhp3/skillz",
@@ -22673,11 +22673,11 @@
       "evidence": {
         "status": "not-run",
         "evaluatedSkillVersion": null,
-        "evalCount": 5,
+        "evalCount": 10,
         "benchmarkCount": 0,
-        "testCount": 0,
-        "referenceCount": 4,
-        "scriptCount": 0,
+        "testCount": 3,
+        "referenceCount": 7,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -23093,7 +23093,7 @@
       "skillDir": "okhp3-repository-janitor",
       "path": "universal/okhp3-repository-janitor/SKILL.md",
       "description": "Reconcile a collection of local Git repositories with their GitHub origins, inspect all local variations against origin/main, preserve uncommitted or unreachable work, and manage branch lifecycle. Use when a user has multiple clones or computers, needs to find differences from origin/main, recover forgotten work, review agent/Copilot/Dependabot branches, merge completed pull requests, prune verified redundant branches, or establish a repeatable daily or weekly repository-maintenance routine.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -23109,11 +23109,13 @@
       ],
       "triggers": [],
       "avoid": [],
-      "companions": [],
+      "companions": [
+        "okhp3-github-notification-maintainer"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [
-        "coverage: discovered repositories, fetch failures, and repositories without `origin/main`;",
+        "coverage: discovered repositories, skipped paths, linked-worktree boundaries, Git command/fetch failures, missing `origin/main`, and snapshot compatibility;",
         "preservation holds: dirty files, stashes, local-only commits, unreachable commits, and archive refs;",
         "variants: per-repository commit divergence and changed file paths versus `origin/main`;",
         "branch lifecycle: each non-main branch, PR state, reachability, recommendation, and rationale;",
@@ -23143,9 +23145,9 @@
         "evaluatedSkillVersion": null,
         "evalCount": 0,
         "benchmarkCount": 0,
-        "testCount": 0,
+        "testCount": 2,
         "referenceCount": 1,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [

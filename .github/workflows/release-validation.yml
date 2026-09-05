@@ -17,6 +17,8 @@ on:
       - ".github/workflows/publish-health-check.yml"
       - ".github/workflows/release-validation.yml"
       - ".github/node-version"
+      - "universal/okhp3-repository-janitor/**"
+      - "universal/okhp3-github-notification-maintainer/**"
   push:
     branches:
       - main
@@ -35,12 +37,32 @@ on:
       - ".github/workflows/publish-health-check.yml"
       - ".github/workflows/release-validation.yml"
       - ".github/node-version"
+      - "universal/okhp3-repository-janitor/**"
+      - "universal/okhp3-github-notification-maintainer/**"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
+  repository-maintenance-contracts:
+    name: Check repository maintenance safety contracts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Verify Python runtime
+        run: python3 -c 'import sys; assert sys.version_info >= (3, 9)'
+
+      - name: Exercise temporary repository preservation and coverage
+        run: python3 -m unittest discover -s universal/okhp3-repository-janitor/tests -v
+
+      - name: Exercise offline GitHub inventory and incident gates
+        run: python3 -m unittest discover -s universal/okhp3-github-notification-maintainer/tests -v
+
   archive-links:
     name: Check archived link integrity
     runs-on: ubuntu-latest
