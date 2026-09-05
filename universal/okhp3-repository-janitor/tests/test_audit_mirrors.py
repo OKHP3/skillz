@@ -193,6 +193,19 @@ class AuditTests(unittest.TestCase):
         (self.repo / 'changed').write_text('preserve')
         self.assertTrue(audit.compare(self.report(), previous)['changed'])
 
+    def test_orphan_deployment_history_is_not_command_failure(self):
+        self.git(self.repo, 'checkout', '--orphan', 'pages-build')
+        self.git(self.repo, 'commit', '-m', 'independent deployment history')
+        tip = self.git(self.repo, 'rev-parse', 'HEAD')
+        self.git(self.repo, 'checkout', 'main')
+        self.git(self.repo, 'update-ref', 'refs/remotes/origin/gh-pages', tip)
+        report = self.report()
+        self.assertTrue(report['complete'])
+        branch = report['repositories'][0]['non_main_remote_branches'][0]
+        self.assertTrue(branch['vs_origin_main']['unrelated_history'])
+        self.assertFalse(branch['merged_into_origin_main'])
+        self.assertIsNone(branch['vs_origin_main']['changed_files'])
+
 
 if __name__ == '__main__':
     unittest.main()

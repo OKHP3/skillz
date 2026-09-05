@@ -135,7 +135,15 @@ def audit_repo(repo: Path, fetch=False, include_unreachable=False, root=None, ti
                 continue
             item = {'name': name, 'tip': sha, 'vs_origin_main': git.divergence(ref, baseline) if has_main else None}
             if item['vs_origin_main'] is not None:
-                item['vs_origin_main']['changed_files'] = git.lines('diff', '--name-status', f'{baseline}...{ref}')
+                base = git.run('merge-base', baseline, ref, accepted=(0, 1))
+                if base is not None and base.returncode == 1:
+                    # Orphan deployment branches are a distinct history, not
+                    # corruption or a failed shared-base file comparison.
+                    item['vs_origin_main']['unrelated_history'] = True
+                    item['vs_origin_main']['changed_files'] = None
+                    item['vs_origin_main']['direct_changed_files'] = git.lines('diff', '--name-status', baseline, ref)
+                else:
+                    item['vs_origin_main']['changed_files'] = git.lines('diff', '--name-status', f'{baseline}...{ref}') if base is not None else None
             if key == 'non_main_remote_branches':
                 result = git.run('merge-base', '--is-ancestor', ref, baseline, accepted=(0, 1)) if has_main else None
                 item['merged_into_origin_main'] = result.returncode == 0 if result is not None else None
