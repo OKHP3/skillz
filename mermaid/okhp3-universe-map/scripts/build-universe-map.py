@@ -54,6 +54,22 @@ def safe_url(raw, origin):
                            path=parsed.path or "/").geturl()
 
 
+def resolve_index_path(config_path, site):
+    value = site.get("index")
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("Site index must be a nonempty local file path")
+    value = value.strip()
+    network = value.replace("\\", "/").startswith("//")
+    scheme = re.match(r"^[A-Za-z][A-Za-z0-9+.-]*:", value)
+    drive = re.match(r"^[A-Za-z]:[/\\]", value)
+    if network or (scheme and not drive):
+        raise ValueError("Site index must be a nonempty local file path; remote inputs are rejected")
+    path = (config_path.parent / value).resolve()
+    if path.as_posix().startswith("//"):
+        raise ValueError("Site index resolves to a remote network path")
+    return path
+
+
 def build(config_path):
     config = read_json(config_path)
     if not isinstance(config, dict) or config.get("schema") != 1 or not isinstance(config.get("sites"), list) or not config["sites"]:
@@ -69,10 +85,7 @@ def build(config_path):
         if origin in origins:
             raise ValueError("Duplicate site origin")
         origins.add(origin)
-        index_path = site.get("index")
-        if not isinstance(index_path, str) or not index_path.strip() or "://" in index_path:
-            raise ValueError("Site index must be a nonempty local file path")
-        source_path = (config_path.parent / index_path).resolve()
+        source_path = resolve_index_path(config_path, site)
         data = read_json(source_path)
         if not isinstance(data, dict):
             raise ValueError("Index must be a JSON object")
@@ -249,7 +262,7 @@ def main():
             if not args.output:
                 raise ValueError("--output required for --write or --check")
             target = args.output.resolve()
-            sources = [(args.config.resolve().parent / s["index"]).resolve()
+            sources = [resolve_index_path(args.config.resolve(), s)
                        for s in read_json(args.config)["sites"]]
             package = Path(__file__).resolve().parents[1]
             if target == package or package in target.parents or target == Path(target.anchor) or any(p == target or target in p.parents for p in sources + [args.config.resolve(), Path(__file__).resolve()]):

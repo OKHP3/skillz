@@ -136,14 +136,14 @@ class UniverseTests(unittest.TestCase):
 
     def test_explicit_local_index_paths(self):
         self.generate()
-        for reference in [str(self.root / 'index.json'), '../index.json']:
+        for reference in [str(self.root / 'index.json'), '../index.json', ' ../index.json ']:
             folder = self.root / 'config'
             folder.mkdir(exist_ok=True)
             self.settings['sites'][0]['index'] = reference
             config = folder / 'map.json'
             config.write_text(json.dumps(self.settings), encoding='utf-8')
             module.build(config)
-        for reference in ['', 42, 'https://example.com/index.json']:
+        for reference in ['', 42, 'https://example.com/index.json', '//server/share/index.json', r'\\server\share\index.json', 'file:/index.json']:
             self.settings['sites'][0]['index'] = reference
             with self.assertRaisesRegex(ValueError, 'index must be a nonempty local file path'):
                 self.generate()

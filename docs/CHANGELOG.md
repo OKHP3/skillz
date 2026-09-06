@@ -334,4 +334,4 @@ Normalize homepage URLs consistently across index, overlay keys, page parents, a
 
 ### Universe map 0.1.4 loose-end review
 
-Fix slashless ancestor inference and require explicit parents for ambiguous slash aliases. Clarify trusted local index file selection, including absolute and parent-relative paths; reject malformed paths and remote URLs. All 18 regression tests pass. Closes remaining PR76 review findings.
+Fix slashless ancestor inference and require explicit parents for ambiguous slash aliases. Clarify trusted local index file selection, including absolute and parent-relative paths; reject malformed paths and remote URLs. All 19 regression tests pass, including repeated-slash ancestors, trimmed inputs, and rejected UNC/network paths. Closes remaining PR76 review findings.

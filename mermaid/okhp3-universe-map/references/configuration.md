@@ -8,7 +8,8 @@ display `title`, and an explicitly selected local `index` file path. Relative pa
 `..`) resolve from the configuration file; absolute local paths are supported.
 This is a trusted local build configuration, not a filesystem sandbox. Select
 only approved public search indexes; never run an untrusted configuration.
-Remote URL inputs are rejected and index data must pass schema validation.
+Surrounding path whitespace is trimmed consistently. Remote URL and UNC/network
+path inputs are rejected; index data must pass schema validation.
 Each index contains either `entries` (OverKill Hill and AskJamie) or `pages`
 (Glee-fully Tools). Each record needs `url` and nonempty `title`.
 `description` and `parent` are optional. Extra search fields are ignored.
