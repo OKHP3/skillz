@@ -1,0 +1,9 @@
+%% NEGATIVE EXAMPLE: valid syntax does not mean truthful navigation.
+flowchart LR
+  home["Everything is complete"]
+  idea["Unbuilt idea (Live)"]
+  orphan["Removed page"]
+  home --> idea
+  click idea "https://example.com/does-not-exist/" "Invented destination" _self
+  classDef unreadable fill:#ffffff,stroke:#ffffff,color:#ffffff
+  class orphan unreadable
