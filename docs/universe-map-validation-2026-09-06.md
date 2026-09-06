@@ -58,3 +58,5 @@ is a subsequent reviewed patch. Site integration proceeds in separate PRs.
 ### Universe map 0.1.2 regression fixes
 
 Canonicalize origin-only homepage URLs and reject output directories anywhere inside the skill package. All 13 regression tests pass, including duplicate homepage detection and nested package output rejection in write/check modes. All 12 core files synchronized to the three site repositories.
+
+This is a chronological validation record: the initial 0.1.0 results above are followed by the 0.1.1 and current 0.1.2 validation addenda.
