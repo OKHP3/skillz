@@ -128,6 +128,12 @@ class UniverseTests(unittest.TestCase):
         self.entries[2]['parent'] = '/tools/'
         self.generate()
 
+    def test_consecutive_slash_ancestor_depth(self):
+        self.entries = [{'url': '/', 'title': 'Home'}, {'url': '/tools/', 'title': 'Tools'},
+                        {'url': '/tools//', 'title': 'Nested'}, {'url': '/tools//one', 'title': 'One'}]
+        nodes = {n['id']: n for n in json.loads(self.generate()['universe-map.json'])['nodes']}
+        self.assertEqual(nodes['https://example.com/tools//one']['parent'], 'https://example.com/tools//')
+
     def test_explicit_local_index_paths(self):
         self.generate()
         for reference in [str(self.root / 'index.json'), '../index.json']:

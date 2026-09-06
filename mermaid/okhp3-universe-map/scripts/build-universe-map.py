@@ -171,7 +171,8 @@ def build(config_path):
                 parts = path.path.strip("/").split("/")
                 for count in range(len(parts) - 1, 0, -1):
                     possible = node["origin"] + "/" + "/".join(parts[:count])
-                    matches = [url for url in (possible, possible + "/") if url in nodes]
+                    variants = (possible + "/",) if possible.endswith("/") else (possible, possible + "/")
+                    matches = [url for url in variants if url in nodes]
                     if len(matches) > 1:
                         raise ValueError(f"Ambiguous indexed ancestors for {key}; set an explicit parent")
                     if matches:
