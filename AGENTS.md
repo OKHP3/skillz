@@ -71,6 +71,7 @@ Load the narrowest matching skill. If several apply, load the foundation or upst
 | `okhp3-mermaid-update` | Change content in an existing working `.mmd` file or Mermaid block while preserving style, class definitions, and init configuration. Load after core. |
 | `okhp3-mermaid-repair` | Repair a parse failure or malformed Mermaid render with the minimum syntax change. Load after core. Do not use for intentional content changes. |
 | `okhp3-mermaid-theme-builder` | Apply or generate a palette, theme, renderer profile, classDef bundle, or renderer-safe Mermaid styling. Load after core. |
+| `okhp3-universe-map` | Generate Mermaid visual sitemaps from search indexes with deterministic coverage, lifecycle overlays, and portable local copies. Load core for diagram governance. |
 | `okhp3-mermaid-governance` | Declare a project diagram standard, check conformance, or audit cross-diagram style and behavior drift. Load after core. |
 
 Mermaid cross-cutting rules: preserve style during updates, repair syntax minimally, keep source local unless the user authorizes publication, use stable short IDs, quote labels with spaces or special characters, avoid semicolons, and never invent classDef names or renderer capabilities.

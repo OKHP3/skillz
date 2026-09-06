@@ -1,0 +1,45 @@
+# Universe map skill validation, 2026-09-06
+
+Version: 0.1.0. Evidence: local generator checks and independent source review.
+No matched agent benchmark, unseen holdout, deployment, or GitHub publication.
+
+## Delivered
+
+Canonical package: `mermaid/okhp3-universe-map/`. Eleven core files copied and
+SHA-256 verified in OverKill Hill, Glee-fully Tools, and AskJamie under
+`.agents/skills/okhp3-universe-map/`. Site-owned `universe-map.config.json` and
+`assets/docs/universe-map-skill.md` provide independent invocation instructions.
+The promotion manifest records the package hashes and pre-sync state.
+
+## Checks
+
+- 11 Python regression tests passed, including both index formats, optional
+  sections, planned nodes, missing parents, cycles, duplicates, hostile labels,
+  unsafe URLs, dense splitting, deterministic output, removal, and read-only checks.
+- Package structural validator passed with an advisory for no explicit Scope heading.
+- Real indexes: OverKill Hill 31 page nodes and 129 excluded section records;
+  Glee-fully Tools 60 page nodes; AskJamie 25 page nodes. Exact node coverage passed.
+- All 17 generated diagrams rendered to SVG using the installed Chromium and
+  local vendored Mermaid runtime. A real Glee-fully diagram was also displayed
+  through the available Mermaid Chart tool.
+- All three existing index freshness checks passed after staging fragments were
+  named `.html-fragment`, preventing accidental indexing of generated previews.
+- Generated output freshness and byte equality across all three copies passed.
+- Independent reviewer reproduced two defects: orphan section parent fallback
+  and malformed object handling. Both were corrected and regression-tested.
+
+## Catalogs and limitations
+
+Skillz distribution catalog and Forge catalog rebuilt: 342 skills, 20 families.
+Existing catalog warnings remain for imported skills missing versions and three
+unresolved companion references. OverKill Hill and Glee-fully local catalogs
+refreshed. AskJamie catalog generation is blocked by its existing
+`okhp3-repl-repo-janitor copy` folder, whose skill name duplicates
+`okhp3-repl-repo-janitor`. That unrelated folder was preserved.
+
+The package generates staged Mermaid, linked HTML fragments, data, and a draft
+registry. Published universe pages and CI workflows have not been replaced.
+The integration reference covers after-index invocation, avoiding search feedback,
+page-source insertion, safe link rendering, and peer-refresh triggers. Those
+site adapters remain the next integration step. Render checks establish syntax,
+not final site layout, theme contrast, or keyboard navigation acceptance.

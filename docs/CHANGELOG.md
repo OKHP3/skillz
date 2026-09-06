@@ -308,3 +308,10 @@ this tag covers.
 - Mermaid Core + BPMN + Publish promoted from skeleton/draftable to usable maturity (see promotion priority in `BACKLOG.md`); `update`, `repair`, `architecture`, `data` remain.
 - Add worked examples and validation checklists.
 - Tag `v0.2.0` after the first `usable`-maturity skill path is complete (see `v0.1.0` above for the infrastructure/documentation bar already met).
+
+## 2026-09-06: Universe map skill candidate
+
+Added `mermaid/okhp3-universe-map` 0.1.0 with an index-driven Python generator,
+Mermaid templates, quality examples, regression tests, and integration guidance.
+Installed verified local copies in all three public site repositories.
+See `universe-map-validation-2026-09-06.md` for actual checks and limitations.

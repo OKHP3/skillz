@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "max_children": 18,
+  "include_sections": false,
+  "sites": [
+    {"origin": "https://example.com", "title": "Example site", "index": "search-index.json"}
+  ],
+  "overlay": {"pages": {}, "concepts": []}
+}
