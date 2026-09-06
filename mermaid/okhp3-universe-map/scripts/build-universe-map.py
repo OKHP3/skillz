@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 ASSETS = Path(__file__).resolve().parents[1] / "assets"
 
 
@@ -26,6 +26,20 @@ def label(value):
                    for c in " ".join(str(value).split()))
 
 
+def canonical_origin(raw):
+    if not isinstance(raw, str) or any(c.isspace() for c in raw):
+        raise ValueError(f"Invalid site origin: {raw!r}")
+    parsed = urlsplit(raw)
+    if (parsed.scheme != "https" or not parsed.hostname or parsed.path
+            or parsed.query or parsed.fragment or parsed.username or parsed.password):
+        raise ValueError("Site origin must be an HTTPS origin without a path")
+    # URL schemes and hostnames are case-insensitive; 443 is HTTPS's default port.
+    authority = parsed.netloc.lower()
+    if parsed.port == 443:
+        authority = authority.rsplit(":", 1)[0]
+    return "https://" + authority
+
+
 def safe_url(raw, origin):
     if not isinstance(raw, str) or not raw or any(c.isspace() for c in raw):
         raise ValueError(f"Invalid URL: {raw!r}")
@@ -33,10 +47,11 @@ def safe_url(raw, origin):
         raise ValueError(f"Unsafe URL: {raw!r}")
     result = urljoin(origin + "/", raw)
     parsed = urlsplit(result)
-    if (parsed.scheme != "https" or parsed.netloc != urlsplit(origin).netloc
+    if (parsed.scheme != "https" or canonical_origin(f"{parsed.scheme}://{parsed.netloc}") != origin
             or parsed.username or parsed.password or parsed.query):
         raise ValueError(f"URL outside configured origin or contains query: {raw!r}")
-    return parsed._replace(path=parsed.path or "/").geturl()
+    return parsed._replace(scheme="https", netloc=urlsplit(origin).netloc,
+                           path=parsed.path or "/").geturl()
 
 
 def build(config_path):
@@ -50,11 +65,7 @@ def build(config_path):
     for site in config["sites"]:
         if not isinstance(site, dict) or not isinstance(site.get("origin"), str) or not isinstance(site.get("title"), str) or not site["title"].strip():
             raise ValueError("Each site requires string origin and nonempty title")
-        origin = site["origin"].rstrip("/")
-        parsed = urlsplit(origin)
-        if (parsed.scheme != "https" or not parsed.netloc or parsed.path
-                or parsed.query or parsed.fragment or parsed.username or parsed.password):
-            raise ValueError("Site origin must be an HTTPS origin without a path")
+        origin = canonical_origin(site["origin"].rstrip("/"))
         if origin in origins:
             raise ValueError("Duplicate site origin")
         origins.add(origin)
@@ -90,17 +101,43 @@ def build(config_path):
     overlay = config.get("overlay", {})
     if not isinstance(overlay, dict) or not isinstance(overlay.get("pages", {}), dict) or not isinstance(overlay.get("concepts", []), list):
         raise ValueError("Overlay requires pages object and concepts array")
+    def normalize_reference(reference):
+        if not isinstance(reference, str) or not reference:
+            raise ValueError("Overlay references must be nonempty strings")
+        if any(c.isspace() for c in reference):
+            raise ValueError(f"Invalid overlay reference: {reference!r}")
+        if reference.startswith("concept:"):
+            if not re.fullmatch(r"concept:[a-z0-9]+(?:-[a-z0-9]+)*", reference):
+                raise ValueError(f"Invalid concept reference: {reference!r}")
+            return reference
+        parsed = urlsplit(reference)
+        origin = canonical_origin(f"{parsed.scheme}://{parsed.netloc}")
+        if origin not in origins:
+            raise ValueError(f"Overlay URL requires a configured absolute origin: {reference}")
+        return safe_url(reference, origin)
+
+    overlay_keys = set()
     for key, values in overlay.get("pages", {}).items():
+        key = normalize_reference(key)
+        if key in overlay_keys:
+            raise ValueError(f"Duplicate canonical overlay URL: {key}")
+        overlay_keys.add(key)
         if not isinstance(values, dict) or any(not isinstance(v, str) or not v.strip() for v in values.values()):
             raise ValueError("Page overlay values must be nonempty strings")
         if key not in nodes or not nodes[key]["indexed"]:
             raise ValueError(f"Overlay page is absent from index: {key}")
         if set(values) - {"parent", "status"}:
             raise ValueError("Page overlays support only parent and status; titles stay index-owned")
+        values = dict(values)
+        if "parent" in values:
+            values["parent"] = normalize_reference(values["parent"])
         nodes[key].update(values)
     for concept in overlay.get("concepts", []):
         if not isinstance(concept, dict):
             raise ValueError("Concept must be an object")
+        concept = dict(concept)
+        if "origin" in concept:
+            concept["origin"] = canonical_origin(concept["origin"])
         key = concept["id"]
         if not re.fullmatch(r"concept:[a-z0-9]+(?:-[a-z0-9]+)*", key) or key in nodes:
             raise ValueError("Concept IDs must be unique concept:kebab-case identifiers")
@@ -110,6 +147,9 @@ def build(config_path):
             raise ValueError("Unpublished concepts cannot have links")
         if not concept.get("title") or concept.get("origin") not in origins:
             raise ValueError("Concept requires title and configured origin")
+        concept = dict(concept)
+        if concept.get("parent"):
+            concept["parent"] = normalize_reference(concept["parent"])
         nodes[key] = {**concept, "url": None, "indexed": False,
                       "description": concept.get("description", "")}
     for key, node in nodes.items():

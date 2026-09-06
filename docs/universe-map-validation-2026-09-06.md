@@ -60,3 +60,8 @@ is a subsequent reviewed patch. Site integration proceeds in separate PRs.
 Canonicalize origin-only homepage URLs and reject output directories anywhere inside the skill package. All 13 regression tests pass, including duplicate homepage detection and nested package output rejection in write/check modes. All 12 core files synchronized to the three site repositories.
 
 This is a chronological validation record: the initial 0.1.0 results above are followed by the 0.1.1 and current 0.1.2 validation addenda.
+
+
+### Universe map 0.1.3 overlay normalization
+
+Normalize homepage URLs consistently across index, overlay keys, page parents, and concept parents. Reject duplicate canonical overlay keys and foreign-origin references. All 15 regression tests pass, including uppercase HTTPS origins and default-port normalization. Canonical origins are applied consistently to indexes and overlays; whitespace remains explicitly rejected. Site copies synchronize after review.
