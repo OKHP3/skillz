@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-06T14:16:43.709Z",
+  "generatedAt": "2026-09-06T14:23:33.053Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/universe-map-portability",
-  "sourceCommit": "4624da4",
+  "sourceCommit": "8e508c1",
   "skillCount": 342,
   "familyCount": 20,
   "families": [
@@ -14686,7 +14686,7 @@
       "skillDir": "okhp3-universe-map",
       "path": "mermaid/okhp3-universe-map/SKILL.md",
       "description": "Generate and refresh Mermaid visual sitemaps from search indexes. Use when a site's universe map drifts after crawling, indexing, or adding pages, or when multiple sibling sites need consistent navigation diagrams. Includes a Python generator, templates, good and bad examples, and Mermaid tool guidance. Does not infer project completion from page existence or deploy sites.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "license": "MIT",
       "category": "diagramming",
       "origin": "okhp3/skillz",
@@ -14715,8 +14715,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-universe-map/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-universe-map/SKILL.md",
-      "lastModified": "2026-09-06T09:12:12-05:00",
-      "commitSha": "4624da43",
+      "lastModified": "2026-09-06T09:19:54-05:00",
+      "commitSha": "8e508c19",
       "createdAt": "2026-09-06T09:12:12-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -14730,7 +14730,7 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.1",
+        "evaluatedSkillVersion": "0.1.2",
         "evalCount": 5,
         "benchmarkCount": 0,
         "testCount": 1,

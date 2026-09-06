@@ -1,6 +1,6 @@
 {
   "skill": "okhp3-universe-map",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "canonical": "OKHP3/skillz/mermaid/okhp3-universe-map",
   "authorization": "User requested canonical creation and three local copies in this task.",
   "evidence": "Local generator tests and real-index render checks; no agent benchmark or protected holdout.",
@@ -12,17 +12,17 @@
   },
   "files": {
     ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "SKILL.md": "7eacc6562b21c8fccb7aad4f93e252f4b489ea2579d96860a599ab2d31b13ea7",
     "assets/bad-map.mmd": "d7f3d08d8fb756e8cebf189a3b54a62a583fb8dcba335a2f7ae84636890d067c",
     "assets/good-map.mmd": "e903bbe3bedb0626949f25e1027c61b4b005ade3374367a69f2f412b1aa913c9",
     "assets/map-template.mmd": "38207d60bad0d298985f8b90aa2722876127321a64b3ef6c6a3e6f6a6ad17a84",
     "assets/site-config.example.json": "42079b900a748e9dcc7cf6f32bd47494f12a91778fe59721167bf2144153245e",
-    "evals/evals.json": "840bd9edf623a9004106fcef0ae2eacd1401df2dff071f4561e65e77a3dfdee4",
+    "evals/evals.json": "5b42cf851e48db691594e8307ecc65524560346ec9e3acbf700130dc16804400",
     "references/configuration.md": "ad67a364beceed68954f918a130d78bb934b0dc512ce62c033ab9dfacaf6d854",
     "references/integration.md": "1d4f5a8814022b820fa78e6897a917859823e02a44264c174f877a1a12d97976",
-    "references/quality.md": "6e413b5f8d72c87175205db617d037f0340c16e9b8d7bc652ce37f4824933ada",
-    "scripts/build-universe-map.py": "e1057378092a852b8890a5721c2dce5bc01f4dfed27f33af6d134be4f185a04a",
-    "SKILL.md": "95d89a4ffb7c79cd52ec15b52b1fcc1654589abd1e65ae71aad1056a93f203f6",
-    "tests/test-universe-map.py": "f98b8f50feb185aefdfd703263a6aef17f2a3ce2e81871ceab91f4e8b8d3d3a4"
+    "references/quality.md": "55d537a5f6635c4fa8fb44b0b05a97a7dc4f95c82173cd47ac61d12f961dd06f",
+    "scripts/build-universe-map.py": "f335e3293f425ad4060837f4d2274f3425952ba3660f389d49e82e400c6c4e00",
+    "tests/test-universe-map.py": "a679cd14a578edf53150c431010fab6de6d97f4fe18ff7a9716c48a1439cd9be"
   },
   "mirrors": [
     {
@@ -41,5 +41,5 @@
       "core_equal": true
     }
   ],
-  "recovery": "Version 0.1.0 remains preserved in merged PR76. Version 0.1.1 adds LF checkout rules; no behavioral changes."
+  "recovery": "PR76 preserves initial release. Version 0.1.2 adds LF checkout rules, canonical homepage URLs, and package output protection."
 }

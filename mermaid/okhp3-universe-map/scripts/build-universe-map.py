@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 ASSETS = Path(__file__).resolve().parents[1] / "assets"
 
 
@@ -36,7 +36,7 @@ def safe_url(raw, origin):
     if (parsed.scheme != "https" or parsed.netloc != urlsplit(origin).netloc
             or parsed.username or parsed.password or parsed.query):
         raise ValueError(f"URL outside configured origin or contains query: {raw!r}")
-    return result
+    return parsed._replace(path=parsed.path or "/").geturl()
 
 
 def build(config_path):
@@ -45,7 +45,7 @@ def build(config_path):
         raise ValueError("Config requires schema: 1 and a nonempty sites array")
     maximum = config.get("max_children", 18)
     if not isinstance(maximum, int) or not 1 <= maximum <= 18:
-        raise ValueError("max_children must be 1..18 (at most 20 nodes per diagram)")
+        raise ValueError("max_children must be 1..18 (at most 19 nodes per diagram)")
     nodes, sources, excluded, origins = {}, [], [], set()
     for site in config["sites"]:
         if not isinstance(site, dict) or not isinstance(site.get("origin"), str) or not isinstance(site.get("title"), str) or not site["title"].strip():
@@ -204,7 +204,8 @@ def main():
             target = args.output.resolve()
             sources = [(args.config.resolve().parent / s["index"]).resolve()
                        for s in read_json(args.config)["sites"]]
-            if target == Path(target.anchor) or any(p == target or target in p.parents for p in sources + [args.config.resolve(), Path(__file__).resolve()]):
+            package = Path(__file__).resolve().parents[1]
+            if target == package or package in target.parents or target == Path(target.anchor) or any(p == target or target in p.parents for p in sources + [args.config.resolve(), Path(__file__).resolve()]):
                 raise ValueError("Output must be a dedicated directory outside source/config/package paths")
             extra = {p.relative_to(target).as_posix() for p in target.rglob('*') if p.is_file()} - set(outputs) if target.exists() else set()
             if extra:

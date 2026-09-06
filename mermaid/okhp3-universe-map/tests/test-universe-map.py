@@ -2,6 +2,7 @@
 import importlib.util
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -39,6 +40,31 @@ class UniverseTests(unittest.TestCase):
         self.assertEqual(len(report["excluded"]), 1)
         represented = {n for d in report["diagrams"] for n in d["nodes"]}
         self.assertEqual(represented, {n["id"] for n in report["nodes"]})
+
+    def test_origin_only_homepage_is_canonical(self):
+        self.entries[0]['url'] = 'https://example.com'
+        report = json.loads(self.generate()['universe-map.json'])
+        homes = [n for n in report['nodes'] if n['id'] == 'https://example.com/']
+        self.assertEqual(len(homes), 1)
+        self.assertTrue(homes[0]['indexed'])
+        self.assertEqual(len(report['nodes']), 3)
+        self.entries.append({'url': '/', 'title': 'Duplicate home'})
+        with self.assertRaises(ValueError):
+            self.generate()
+
+    def test_output_cannot_be_inside_package(self):
+        self.generate()
+        package = self.root / 'package'
+        shutil.copytree(SCRIPT.parents[1], package)
+        script = package / 'scripts' / SCRIPT.name
+        for dest in [package, package / 'generated', package / 'assets' / 'generated']:
+            for mode in ['--write', '--check']:
+                result = subprocess.run([sys.executable, '-B', str(script), '--config',
+                    str(self.config), '--output', str(dest), mode], capture_output=True, text=True)
+                self.assertEqual(result.returncode, 1)
+                self.assertIn('outside source/config/package paths', result.stdout)
+        self.assertFalse((package / 'generated').exists())
+        self.assertFalse((package / 'assets' / 'generated').exists())
 
     def test_sections_and_parent(self):
         self.settings["include_sections"] = True

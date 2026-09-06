@@ -320,3 +320,8 @@ See `universe-map-validation-2026-09-06.md` for actual checks and limitations.
 
 Version 0.1.1 enforces LF within the package so Git checkout preserves exact
 core-file equality across the canonical and three installed copies.
+
+
+### Universe map 0.1.2 regression fixes
+
+Canonicalize origin-only homepage URLs and reject output directories anywhere inside the skill package. All 13 regression tests pass, including duplicate homepage detection and nested package output rejection in write/check modes. All 12 core files synchronized to the three site repositories.
