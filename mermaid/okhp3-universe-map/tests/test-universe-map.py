@@ -52,6 +52,28 @@ class UniverseTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.generate()
 
+    def test_overlay_homepage_references_are_canonical(self):
+        self.entries[0]['url'] = 'https://example.com'
+        self.settings['overlay'] = {
+            'pages': {'https://example.com': {'status': 'Live'},
+                      'https://example.com/tools/': {'parent': 'https://example.com'}},
+            'concepts': [{'id': 'concept:future', 'title': 'Future', 'status': 'Planned',
+                          'origin': 'https://example.com', 'parent': 'https://example.com'}]}
+        report = json.loads(self.generate()['universe-map.json'])
+        nodes = {n['id']: n for n in report['nodes']}
+        self.assertEqual(nodes['https://example.com/']['status'], 'Live')
+        self.assertEqual(nodes['https://example.com/tools/']['parent'], 'https://example.com/')
+        self.assertEqual(nodes['concept:future']['parent'], 'https://example.com/')
+        self.settings['overlay']['pages']['https://example.com/'] = {'status': 'Duplicate'}
+        with self.assertRaises(ValueError):
+            self.generate()
+        self.settings['overlay']['pages'].pop('https://example.com/')
+        self.settings['overlay']['pages']['https://example.com/tools/']['parent'] = 'concept:future'
+        self.generate()
+        self.settings['overlay']['pages']['https://example.com/tools/']['parent'] = 'https://foreign.test/'
+        with self.assertRaises(ValueError):
+            self.generate()
+
     def test_output_cannot_be_inside_package(self):
         self.generate()
         package = self.root / 'package'

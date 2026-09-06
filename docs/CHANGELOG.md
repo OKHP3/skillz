@@ -325,3 +325,8 @@ core-file equality across the canonical and three installed copies.
 ### Universe map 0.1.2 regression fixes
 
 Canonicalize origin-only homepage URLs and reject output directories anywhere inside the skill package. All 13 regression tests pass, including duplicate homepage detection and nested package output rejection in write/check modes. All 12 core files synchronized to the three site repositories.
+
+
+### Universe map 0.1.3 overlay normalization
+
+Normalize homepage URLs consistently across index, overlay keys, page parents, and concept parents. Reject duplicate canonical overlay keys and foreign-origin references. All 14 regression tests pass; all 12 core files synchronized to the sites.

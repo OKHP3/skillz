@@ -17,7 +17,9 @@ Page titles and descriptions stay index-owned. A synthetic site root is an
 unlinked grouping if the home page is absent from the index.
 
 `overlay.pages` maps absolute indexed URLs to optional `parent` and `status`.
-Parents must be another included URL or concept ID. Root pages cannot have
+Origin-only homepage URLs normalize to a trailing slash in both indexes and
+overlay references. Duplicate normalized overlay keys are rejected.
+Parents must be another included absolute URL or concept ID. Root pages cannot have
 parents. Missing parents and cycles fail. For an existing status registry,
 derive this map from the registry through a site adapter before generation.
 Do not hand-copy changing status values into competing maintained files.

@@ -24,4 +24,4 @@ Acceptance gates:
 Run `py -3 -B tests/test-universe-map.py` from this package on Windows, or
 `python3 -B tests/test-universe-map.py` elsewhere. Fixture checks establish
 generator behavior, not agent uplift. No unseen holdout or matched agent
-benchmark has been run for version 0.1.2.
+benchmark has been run for version 0.1.3.

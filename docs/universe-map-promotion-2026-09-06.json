@@ -1,6 +1,6 @@
 {
   "skill": "okhp3-universe-map",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "canonical": "OKHP3/skillz/mermaid/okhp3-universe-map",
   "authorization": "User requested canonical creation and three local copies in this task.",
   "evidence": "Local generator tests and real-index render checks; no agent benchmark or protected holdout.",
@@ -12,17 +12,17 @@
   },
   "files": {
     ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
-    "SKILL.md": "7eacc6562b21c8fccb7aad4f93e252f4b489ea2579d96860a599ab2d31b13ea7",
+    "SKILL.md": "cfcfc4f63d3580219aae490ec191576e1746d68fdb1d5735a8d9050eb3deaf57",
     "assets/bad-map.mmd": "d7f3d08d8fb756e8cebf189a3b54a62a583fb8dcba335a2f7ae84636890d067c",
     "assets/good-map.mmd": "e903bbe3bedb0626949f25e1027c61b4b005ade3374367a69f2f412b1aa913c9",
     "assets/map-template.mmd": "38207d60bad0d298985f8b90aa2722876127321a64b3ef6c6a3e6f6a6ad17a84",
     "assets/site-config.example.json": "42079b900a748e9dcc7cf6f32bd47494f12a91778fe59721167bf2144153245e",
-    "evals/evals.json": "5b42cf851e48db691594e8307ecc65524560346ec9e3acbf700130dc16804400",
-    "references/configuration.md": "ad67a364beceed68954f918a130d78bb934b0dc512ce62c033ab9dfacaf6d854",
+    "evals/evals.json": "aec9d64991d01ec2617572a7b96f55a08ce3d3889added6a9ad39ea207c9292e",
+    "references/configuration.md": "aa896e0f44ce9b7121830eb6430bf5530515a64545df30531d0ed023dbc1b8fa",
     "references/integration.md": "1d4f5a8814022b820fa78e6897a917859823e02a44264c174f877a1a12d97976",
-    "references/quality.md": "55d537a5f6635c4fa8fb44b0b05a97a7dc4f95c82173cd47ac61d12f961dd06f",
-    "scripts/build-universe-map.py": "f335e3293f425ad4060837f4d2274f3425952ba3660f389d49e82e400c6c4e00",
-    "tests/test-universe-map.py": "a679cd14a578edf53150c431010fab6de6d97f4fe18ff7a9716c48a1439cd9be"
+    "references/quality.md": "9acdfd66ab0ab4fff87784dd3eaff052e48488d638e64044d34e0d7e5e631bcf",
+    "scripts/build-universe-map.py": "3d15cb4193f2988572a9586bee078045a1a0f149433121186386e1d182c6101f",
+    "tests/test-universe-map.py": "2f86e2ab19801847922fa820e2c143ce0e30e3de02ac58db1847d2e18641f007"
   },
   "mirrors": [
     {
@@ -41,5 +41,5 @@
       "core_equal": true
     }
   ],
-  "recovery": "PR76 preserves initial release. Version 0.1.2 adds LF checkout rules, canonical homepage URLs, and package output protection."
+  "recovery": "PR76 and PR77 preserve prior versions. Version 0.1.3 also normalizes overlay homepage references."
 }

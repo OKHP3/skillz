@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 ASSETS = Path(__file__).resolve().parents[1] / "assets"
 
 
@@ -90,13 +90,32 @@ def build(config_path):
     overlay = config.get("overlay", {})
     if not isinstance(overlay, dict) or not isinstance(overlay.get("pages", {}), dict) or not isinstance(overlay.get("concepts", []), list):
         raise ValueError("Overlay requires pages object and concepts array")
+    def normalize_reference(reference):
+        if not isinstance(reference, str) or not reference:
+            raise ValueError("Overlay references must be nonempty strings")
+        if reference.startswith("concept:"):
+            return reference
+        parsed = urlsplit(reference)
+        origin = f"{parsed.scheme}://{parsed.netloc}"
+        if origin not in origins:
+            raise ValueError(f"Overlay URL requires a configured absolute origin: {reference}")
+        return safe_url(reference, origin)
+
+    overlay_keys = set()
     for key, values in overlay.get("pages", {}).items():
+        key = normalize_reference(key)
+        if key in overlay_keys:
+            raise ValueError(f"Duplicate canonical overlay URL: {key}")
+        overlay_keys.add(key)
         if not isinstance(values, dict) or any(not isinstance(v, str) or not v.strip() for v in values.values()):
             raise ValueError("Page overlay values must be nonempty strings")
         if key not in nodes or not nodes[key]["indexed"]:
             raise ValueError(f"Overlay page is absent from index: {key}")
         if set(values) - {"parent", "status"}:
             raise ValueError("Page overlays support only parent and status; titles stay index-owned")
+        values = dict(values)
+        if "parent" in values:
+            values["parent"] = normalize_reference(values["parent"])
         nodes[key].update(values)
     for concept in overlay.get("concepts", []):
         if not isinstance(concept, dict):
@@ -110,6 +129,9 @@ def build(config_path):
             raise ValueError("Unpublished concepts cannot have links")
         if not concept.get("title") or concept.get("origin") not in origins:
             raise ValueError("Concept requires title and configured origin")
+        concept = dict(concept)
+        if concept.get("parent"):
+            concept["parent"] = normalize_reference(concept["parent"])
         nodes[key] = {**concept, "url": None, "indexed": False,
                       "description": concept.get("description", "")}
     for key, node in nodes.items():
