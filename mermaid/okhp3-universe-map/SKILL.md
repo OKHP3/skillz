@@ -10,7 +10,7 @@ license: MIT
 compatibility: Python 3.9+ for generation. Mermaid rendering requires a host tool or an existing local Mermaid runtime. No Python dependencies or network access required.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.0"
+  version: "0.1.1"
   maturity: draftable
   category: diagramming
   origin: okhp3/skillz

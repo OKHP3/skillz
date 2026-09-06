@@ -1,6 +1,6 @@
 {
   "skill": "okhp3-universe-map",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "canonical": "OKHP3/skillz/mermaid/okhp3-universe-map",
   "authorization": "User requested canonical creation and three local copies in this task.",
   "evidence": "Local generator tests and real-index render checks; no agent benchmark or protected holdout.",
@@ -11,17 +11,18 @@
     "overkill-hill": "Two unrelated untracked MurderBird files preserved."
   },
   "files": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
     "assets/bad-map.mmd": "d7f3d08d8fb756e8cebf189a3b54a62a583fb8dcba335a2f7ae84636890d067c",
     "assets/good-map.mmd": "e903bbe3bedb0626949f25e1027c61b4b005ade3374367a69f2f412b1aa913c9",
     "assets/map-template.mmd": "38207d60bad0d298985f8b90aa2722876127321a64b3ef6c6a3e6f6a6ad17a84",
     "assets/site-config.example.json": "42079b900a748e9dcc7cf6f32bd47494f12a91778fe59721167bf2144153245e",
-    "evals/evals.json": "7a622a999949830e606f70532b2a29b69e2eba723a724ed7bb41732e25ef5e3d",
-    "references/configuration.md": "1da3d3ecc47997135919284faefb9449b149fc009aedc762018551bc9527924a",
+    "evals/evals.json": "840bd9edf623a9004106fcef0ae2eacd1401df2dff071f4561e65e77a3dfdee4",
+    "references/configuration.md": "ad67a364beceed68954f918a130d78bb934b0dc512ce62c033ab9dfacaf6d854",
     "references/integration.md": "1d4f5a8814022b820fa78e6897a917859823e02a44264c174f877a1a12d97976",
-    "references/quality.md": "986da8fc94e7cb913039e4552817cdf74981457902420d0676d86f1525b6473f",
-    "scripts/build-universe-map.py": "430c193c5c45d0fe67d70c2012dd1d990282c19cfe9bdc9e3085ef340d26e903",
-    "SKILL.md": "e5fee483b774ce75896482ce41bf3e737e3a948c233192bd203afac49116b0b3",
-    "tests/test-universe-map.py": "2904b5a8262ad697b852969ca652e32b64aeaece7082e46af594cb9ec39daf7a"
+    "references/quality.md": "6e413b5f8d72c87175205db617d037f0340c16e9b8d7bc652ce37f4824933ada",
+    "scripts/build-universe-map.py": "e1057378092a852b8890a5721c2dce5bc01f4dfed27f33af6d134be4f185a04a",
+    "SKILL.md": "95d89a4ffb7c79cd52ec15b52b1fcc1654589abd1e65ae71aad1056a93f203f6",
+    "tests/test-universe-map.py": "f98b8f50feb185aefdfd703263a6aef17f2a3ce2e81871ceab91f4e8b8d3d3a4"
   },
   "mirrors": [
     {
@@ -40,5 +41,5 @@
       "core_equal": true
     }
   ],
-  "recovery": "New package directories only; preserve user work. No Git commits or remote publication performed."
+  "recovery": "Version 0.1.0 remains preserved in merged PR76. Version 0.1.1 adds LF checkout rules; no behavioral changes."
 }
