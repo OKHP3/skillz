@@ -1,6 +1,6 @@
 {
   "skill": "okhp3-universe-map",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "canonical": "OKHP3/skillz/mermaid/okhp3-universe-map",
   "authorization": "User requested canonical creation and three local copies in this task.",
   "evidence": "Local generator tests and real-index render checks; no agent benchmark or protected holdout.",
@@ -11,17 +11,18 @@
     "overkill-hill": "Two unrelated untracked MurderBird files preserved."
   },
   "files": {
+    ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+    "SKILL.md": "7eacc6562b21c8fccb7aad4f93e252f4b489ea2579d96860a599ab2d31b13ea7",
     "assets/bad-map.mmd": "d7f3d08d8fb756e8cebf189a3b54a62a583fb8dcba335a2f7ae84636890d067c",
     "assets/good-map.mmd": "e903bbe3bedb0626949f25e1027c61b4b005ade3374367a69f2f412b1aa913c9",
     "assets/map-template.mmd": "38207d60bad0d298985f8b90aa2722876127321a64b3ef6c6a3e6f6a6ad17a84",
     "assets/site-config.example.json": "42079b900a748e9dcc7cf6f32bd47494f12a91778fe59721167bf2144153245e",
-    "evals/evals.json": "7a622a999949830e606f70532b2a29b69e2eba723a724ed7bb41732e25ef5e3d",
-    "references/configuration.md": "1da3d3ecc47997135919284faefb9449b149fc009aedc762018551bc9527924a",
+    "evals/evals.json": "5b42cf851e48db691594e8307ecc65524560346ec9e3acbf700130dc16804400",
+    "references/configuration.md": "ad67a364beceed68954f918a130d78bb934b0dc512ce62c033ab9dfacaf6d854",
     "references/integration.md": "1d4f5a8814022b820fa78e6897a917859823e02a44264c174f877a1a12d97976",
-    "references/quality.md": "986da8fc94e7cb913039e4552817cdf74981457902420d0676d86f1525b6473f",
-    "scripts/build-universe-map.py": "430c193c5c45d0fe67d70c2012dd1d990282c19cfe9bdc9e3085ef340d26e903",
-    "SKILL.md": "e5fee483b774ce75896482ce41bf3e737e3a948c233192bd203afac49116b0b3",
-    "tests/test-universe-map.py": "2904b5a8262ad697b852969ca652e32b64aeaece7082e46af594cb9ec39daf7a"
+    "references/quality.md": "55d537a5f6635c4fa8fb44b0b05a97a7dc4f95c82173cd47ac61d12f961dd06f",
+    "scripts/build-universe-map.py": "f335e3293f425ad4060837f4d2274f3425952ba3660f389d49e82e400c6c4e00",
+    "tests/test-universe-map.py": "a679cd14a578edf53150c431010fab6de6d97f4fe18ff7a9716c48a1439cd9be"
   },
   "mirrors": [
     {
@@ -40,5 +41,5 @@
       "core_equal": true
     }
   ],
-  "recovery": "New package directories only; preserve user work. No Git commits or remote publication performed."
+  "recovery": "PR76 preserves initial release. Version 0.1.2 adds LF checkout rules, canonical homepage URLs, and package output protection."
 }

@@ -43,3 +43,20 @@ The integration reference covers after-index invocation, avoiding search feedbac
 page-source insertion, safe link rendering, and peer-refresh triggers. Those
 site adapters remain the next integration step. Render checks establish syntax,
 not final site layout, theme contrast, or keyboard navigation acceptance.
+
+## Version 0.1.1 portability follow-up
+
+Git checkout converted some text files to CRLF after version 0.1.0 publication.
+The package now contains `.gitattributes` with `* text eol=lf`; all 12 core
+files were normalized and raw SHA-256 equality verified across four locations.
+The 11 regression tests passed again. Generator API and diagram behavior are
+unchanged; package version and matching evaluation version are 0.1.1.
+The canonical package is published through PR76; this portability correction
+is a subsequent reviewed patch. Site integration proceeds in separate PRs.
+
+
+### Universe map 0.1.2 regression fixes
+
+Canonicalize origin-only homepage URLs and reject output directories anywhere inside the skill package. All 13 regression tests pass, including duplicate homepage detection and nested package output rejection in write/check modes. All 12 core files synchronized to the three site repositories.
+
+This is a chronological validation record: the initial 0.1.0 results above are followed by the 0.1.1 and current 0.1.2 validation addenda.

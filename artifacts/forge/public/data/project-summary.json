@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-06T05:40:43.601Z",
+  "generatedAt": "2026-09-06T14:23:33.053Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "main",
-  "sourceCommit": "bf69ed2",
+  "sourceRef": "codex/universe-map-portability",
+  "sourceCommit": "8e508c1",
   "skillCount": 342,
   "familyCount": 20,
   "maturityCounts": {

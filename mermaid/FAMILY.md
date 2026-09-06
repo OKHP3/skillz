@@ -3,7 +3,7 @@ family: mermaid
 display_name: Mermaid
 skill_count: 10
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-06T05:38:37Z
+generated_at: 2026-09-06T14:21:29Z
 ---
 
 # mermaid
@@ -156,7 +156,7 @@ Ten skills. One foundation, four domain skills, one publish layer, one update sk
 ## Skills (10)
 
 <!-- FAMILY_INVENTORY_START -->
-*10 skills &nbsp;·&nbsp; inventory last updated: **September 6, 2026 at 05:38 UTC***
+*10 skills &nbsp;·&nbsp; inventory last updated: **September 6, 2026 at 14:21 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -169,5 +169,5 @@ Ten skills. One foundation, four domain skills, one publish layer, one update sk
 | [okhp3-mermaid-repair](okhp3-mermaid-repair/SKILL.md) | Syntax repair for broken Mermaid diagrams. Use when a .mmd file or fenced Mermaid block fails to ... | 0.2.0 |
 | [okhp3-mermaid-theme-builder](okhp3-mermaid-theme-builder/SKILL.md) | Apply reusable color palettes and visual governance to Mermaid diagram code. Use this skill when ... | 0.5.1 |
 | [okhp3-mermaid-update](okhp3-mermaid-update/SKILL.md) | Style-preserving update of an existing Mermaid diagram. Use when the user provides an existing .m... | 0.2.0 |
-| [okhp3-universe-map](okhp3-universe-map/SKILL.md) | Generate and refresh Mermaid visual sitemaps from search indexes. Use when a site's universe map ... | 0.1.0 |
+| [okhp3-universe-map](okhp3-universe-map/SKILL.md) | Generate and refresh Mermaid visual sitemaps from search indexes. Use when a site's universe map ... | 0.1.2 |
 <!-- FAMILY_INVENTORY_END -->
