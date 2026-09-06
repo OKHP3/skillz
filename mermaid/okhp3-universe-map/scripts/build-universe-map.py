@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 ASSETS = Path(__file__).resolve().parents[1] / "assets"
 
 
@@ -54,6 +54,22 @@ def safe_url(raw, origin):
                            path=parsed.path or "/").geturl()
 
 
+def resolve_index_path(config_path, site):
+    value = site.get("index")
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("Site index must be a nonempty local file path")
+    value = value.strip()
+    network = value.replace("\\", "/").startswith("//")
+    scheme = re.match(r"^[A-Za-z][A-Za-z0-9+.-]*:", value)
+    drive = re.match(r"^[A-Za-z]:[/\\]", value)
+    if network or (scheme and not drive):
+        raise ValueError("Site index must be a nonempty local file path; remote inputs are rejected")
+    path = (config_path.parent / value).resolve()
+    if path.as_posix().startswith("//"):
+        raise ValueError("Site index resolves to a remote network path")
+    return path
+
+
 def build(config_path):
     config = read_json(config_path)
     if not isinstance(config, dict) or config.get("schema") != 1 or not isinstance(config.get("sites"), list) or not config["sites"]:
@@ -69,7 +85,7 @@ def build(config_path):
         if origin in origins:
             raise ValueError("Duplicate site origin")
         origins.add(origin)
-        source_path = (config_path.parent / site["index"]).resolve()
+        source_path = resolve_index_path(config_path, site)
         data = read_json(source_path)
         if not isinstance(data, dict):
             raise ValueError("Index must be a JSON object")
@@ -167,9 +183,13 @@ def build(config_path):
                 candidate = None
                 parts = path.path.strip("/").split("/")
                 for count in range(len(parts) - 1, 0, -1):
-                    possible = node["origin"] + "/" + "/".join(parts[:count]) + "/"
-                    if possible in nodes:
-                        candidate = possible
+                    possible = node["origin"] + "/" + "/".join(parts[:count])
+                    variants = (possible + "/",) if possible.endswith("/") else (possible, possible + "/")
+                    matches = [url for url in variants if url in nodes]
+                    if len(matches) > 1:
+                        raise ValueError(f"Ambiguous indexed ancestors for {key}; set an explicit parent")
+                    if matches:
+                        candidate = matches[0]
                         break
             node["parent"] = candidate or root
         if node["parent"] not in nodes:
@@ -242,7 +262,7 @@ def main():
             if not args.output:
                 raise ValueError("--output required for --write or --check")
             target = args.output.resolve()
-            sources = [(args.config.resolve().parent / s["index"]).resolve()
+            sources = [resolve_index_path(args.config.resolve(), s)
                        for s in read_json(args.config)["sites"]]
             package = Path(__file__).resolve().parents[1]
             if target == package or package in target.parents or target == Path(target.anchor) or any(p == target or target in p.parents for p in sources + [args.config.resolve(), Path(__file__).resolve()]):

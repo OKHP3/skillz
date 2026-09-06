@@ -65,3 +65,8 @@ This is a chronological validation record: the initial 0.1.0 results above are f
 ### Universe map 0.1.3 overlay normalization
 
 Normalize homepage URLs consistently across index, overlay keys, page parents, and concept parents. Reject duplicate canonical overlay keys and foreign-origin references. All 15 regression tests pass, including uppercase HTTPS origins and default-port normalization. Canonical origins are applied consistently to indexes and overlays; whitespace remains explicitly rejected. Site copies synchronize after review.
+
+
+### Universe map 0.1.4 loose-end review
+
+Fix slashless ancestor inference and require explicit parents for ambiguous slash aliases. Clarify trusted local index file selection, including absolute and parent-relative paths; reject malformed paths and remote URLs. All 19 regression tests pass, including repeated-slash ancestors, trimmed inputs, and rejected UNC/network paths. Closes remaining PR76 review findings.
