@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 ASSETS = Path(__file__).resolve().parents[1] / "assets"
 
 
@@ -69,7 +69,10 @@ def build(config_path):
         if origin in origins:
             raise ValueError("Duplicate site origin")
         origins.add(origin)
-        source_path = (config_path.parent / site["index"]).resolve()
+        index_path = site.get("index")
+        if not isinstance(index_path, str) or not index_path.strip() or "://" in index_path:
+            raise ValueError("Site index must be a nonempty local file path")
+        source_path = (config_path.parent / index_path).resolve()
         data = read_json(source_path)
         if not isinstance(data, dict):
             raise ValueError("Index must be a JSON object")
@@ -167,9 +170,12 @@ def build(config_path):
                 candidate = None
                 parts = path.path.strip("/").split("/")
                 for count in range(len(parts) - 1, 0, -1):
-                    possible = node["origin"] + "/" + "/".join(parts[:count]) + "/"
-                    if possible in nodes:
-                        candidate = possible
+                    possible = node["origin"] + "/" + "/".join(parts[:count])
+                    matches = [url for url in (possible, possible + "/") if url in nodes]
+                    if len(matches) > 1:
+                        raise ValueError(f"Ambiguous indexed ancestors for {key}; set an explicit parent")
+                    if matches:
+                        candidate = matches[0]
                         break
             node["parent"] = candidate or root
         if node["parent"] not in nodes:

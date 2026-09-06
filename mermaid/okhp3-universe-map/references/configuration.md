@@ -4,7 +4,11 @@ Requires Python 3.9+, standard library only. There are no HTTP requests, package
 installs, Git commands, or external writes hidden in the script.
 
 `schema` is 1. `sites` is a nonempty array with unique HTTPS `origin` values,
-display `title`, and local `index` path relative to the configuration file.
+display `title`, and an explicitly selected local `index` file path. Relative paths (including
+`..`) resolve from the configuration file; absolute local paths are supported.
+This is a trusted local build configuration, not a filesystem sandbox. Select
+only approved public search indexes; never run an untrusted configuration.
+Remote URL inputs are rejected and index data must pass schema validation.
 Each index contains either `entries` (OverKill Hill and AskJamie) or `pages`
 (Glee-fully Tools). Each record needs `url` and nonempty `title`.
 `description` and `parent` are optional. Extra search fields are ignored.
@@ -47,3 +51,5 @@ provenance even when the map content stays identical.
 Use a fresh staging directory when pagination or routes shrink; let an approved
 site adapter replace its owned generated block after successful validation.
 `--check` does not write and fails if any expected file differs or extras exist.
+
+Ancestor inference accepts indexed URLs with or without a trailing slash. If both forms exist at the same depth, supply an explicit parent instead of guessing which page owns the child.

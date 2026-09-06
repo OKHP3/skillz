@@ -117,6 +117,31 @@ class UniverseTests(unittest.TestCase):
         self.assertFalse((package / 'generated').exists())
         self.assertFalse((package / 'assets' / 'generated').exists())
 
+    def test_slashless_ancestors_and_ambiguity(self):
+        self.entries = [{'url': '/', 'title': 'Home'}, {'url': '/tools', 'title': 'Tools'},
+                        {'url': '/tools/one', 'title': 'One'}]
+        nodes = {n['id']: n for n in json.loads(self.generate()['universe-map.json'])['nodes']}
+        self.assertEqual(nodes['https://example.com/tools/one']['parent'], 'https://example.com/tools')
+        self.entries.append({'url': '/tools/', 'title': 'Other tools'})
+        with self.assertRaisesRegex(ValueError, 'Ambiguous indexed ancestors'):
+            self.generate()
+        self.entries[2]['parent'] = '/tools/'
+        self.generate()
+
+    def test_explicit_local_index_paths(self):
+        self.generate()
+        for reference in [str(self.root / 'index.json'), '../index.json']:
+            folder = self.root / 'config'
+            folder.mkdir(exist_ok=True)
+            self.settings['sites'][0]['index'] = reference
+            config = folder / 'map.json'
+            config.write_text(json.dumps(self.settings), encoding='utf-8')
+            module.build(config)
+        for reference in ['', 42, 'https://example.com/index.json']:
+            self.settings['sites'][0]['index'] = reference
+            with self.assertRaisesRegex(ValueError, 'index must be a nonempty local file path'):
+                self.generate()
+
     def test_sections_and_parent(self):
         self.settings["include_sections"] = True
         report = json.loads(self.generate()["universe-map.json"])
