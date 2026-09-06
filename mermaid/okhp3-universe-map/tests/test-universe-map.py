@@ -74,6 +74,21 @@ class UniverseTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.generate()
 
+    def test_origin_case_and_default_port_are_canonical(self):
+        self.settings['sites'][0]['origin'] = 'HTTPS://EXAMPLE.COM:443'
+        self.entries[0]['url'] = 'HTTPS://EXAMPLE.COM:443'
+        self.settings['overlay'] = {
+            'pages': {'HTTPS://EXAMPLE.COM:443': {'status': 'Live'},
+                      'https://example.com/tools/': {'parent': 'HTTPS://EXAMPLE.COM'}},
+            'concepts': [{'id': 'concept:future', 'title': 'Future', 'status': 'Planned',
+                          'origin': 'HTTPS://EXAMPLE.COM:443', 'parent': 'HTTPS://EXAMPLE.COM'}]}
+        nodes = json.loads(self.generate()['universe-map.json'])['nodes']
+        self.assertTrue(all(n['origin'] == 'https://example.com' for n in nodes))
+        self.assertEqual(next(n for n in nodes if n['id'] == 'https://example.com/')['status'], 'Live')
+        self.settings['overlay']['pages']['https://example.com/tools/']['parent'] = 'https://example.com '
+        with self.assertRaisesRegex(ValueError, 'Invalid overlay reference'):
+            self.generate()
+
     def test_output_cannot_be_inside_package(self):
         self.generate()
         package = self.root / 'package'

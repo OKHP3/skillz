@@ -26,6 +26,20 @@ def label(value):
                    for c in " ".join(str(value).split()))
 
 
+def canonical_origin(raw):
+    if not isinstance(raw, str) or any(c.isspace() for c in raw):
+        raise ValueError(f"Invalid site origin: {raw!r}")
+    parsed = urlsplit(raw)
+    if (parsed.scheme != "https" or not parsed.hostname or parsed.path
+            or parsed.query or parsed.fragment or parsed.username or parsed.password):
+        raise ValueError("Site origin must be an HTTPS origin without a path")
+    # URL schemes and hostnames are case-insensitive; 443 is HTTPS's default port.
+    authority = parsed.netloc.lower()
+    if parsed.port == 443:
+        authority = authority.rsplit(":", 1)[0]
+    return "https://" + authority
+
+
 def safe_url(raw, origin):
     if not isinstance(raw, str) or not raw or any(c.isspace() for c in raw):
         raise ValueError(f"Invalid URL: {raw!r}")
@@ -33,10 +47,11 @@ def safe_url(raw, origin):
         raise ValueError(f"Unsafe URL: {raw!r}")
     result = urljoin(origin + "/", raw)
     parsed = urlsplit(result)
-    if (parsed.scheme != "https" or parsed.netloc != urlsplit(origin).netloc
+    if (parsed.scheme != "https" or canonical_origin(f"{parsed.scheme}://{parsed.netloc}") != origin
             or parsed.username or parsed.password or parsed.query):
         raise ValueError(f"URL outside configured origin or contains query: {raw!r}")
-    return parsed._replace(path=parsed.path or "/").geturl()
+    return parsed._replace(scheme="https", netloc=urlsplit(origin).netloc,
+                           path=parsed.path or "/").geturl()
 
 
 def build(config_path):
@@ -50,11 +65,7 @@ def build(config_path):
     for site in config["sites"]:
         if not isinstance(site, dict) or not isinstance(site.get("origin"), str) or not isinstance(site.get("title"), str) or not site["title"].strip():
             raise ValueError("Each site requires string origin and nonempty title")
-        origin = site["origin"].rstrip("/")
-        parsed = urlsplit(origin)
-        if (parsed.scheme != "https" or not parsed.netloc or parsed.path
-                or parsed.query or parsed.fragment or parsed.username or parsed.password):
-            raise ValueError("Site origin must be an HTTPS origin without a path")
+        origin = canonical_origin(site["origin"].rstrip("/"))
         if origin in origins:
             raise ValueError("Duplicate site origin")
         origins.add(origin)
@@ -95,8 +106,10 @@ def build(config_path):
             raise ValueError("Overlay references must be nonempty strings")
         if reference.startswith("concept:"):
             return reference
+        if any(c.isspace() for c in reference):
+            raise ValueError(f"Invalid overlay reference: {reference!r}")
         parsed = urlsplit(reference)
-        origin = f"{parsed.scheme}://{parsed.netloc}"
+        origin = canonical_origin(f"{parsed.scheme}://{parsed.netloc}")
         if origin not in origins:
             raise ValueError(f"Overlay URL requires a configured absolute origin: {reference}")
         return safe_url(reference, origin)
@@ -120,6 +133,9 @@ def build(config_path):
     for concept in overlay.get("concepts", []):
         if not isinstance(concept, dict):
             raise ValueError("Concept must be an object")
+        concept = dict(concept)
+        if "origin" in concept:
+            concept["origin"] = canonical_origin(concept["origin"].rstrip("/"))
         key = concept["id"]
         if not re.fullmatch(r"concept:[a-z0-9]+(?:-[a-z0-9]+)*", key) or key in nodes:
             raise ValueError("Concept IDs must be unique concept:kebab-case identifiers")

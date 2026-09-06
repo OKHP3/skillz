@@ -329,4 +329,4 @@ Canonicalize origin-only homepage URLs and reject output directories anywhere in
 
 ### Universe map 0.1.3 overlay normalization
 
-Normalize homepage URLs consistently across index, overlay keys, page parents, and concept parents. Reject duplicate canonical overlay keys and foreign-origin references. All 14 regression tests pass; all 12 core files synchronized to the sites.
+Normalize homepage URLs consistently across index, overlay keys, page parents, and concept parents. Reject duplicate canonical overlay keys and foreign-origin references. All 15 regression tests pass, including uppercase HTTPS origins and default-port normalization. Canonical origins are applied consistently to indexes and overlays; whitespace remains explicitly rejected. Site copies synchronize after review.
