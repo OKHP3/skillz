@@ -89,6 +89,20 @@ class UniverseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Invalid overlay reference'):
             self.generate()
 
+    def test_malformed_overlay_references_fail_cleanly(self):
+        for parent in ['concept:bad name', 'concept:BAD', 'concept:']:
+            self.settings['overlay'] = {'pages': {'https://example.com/tools/': {'parent': parent}}}
+            with self.assertRaisesRegex(ValueError, 'Invalid .*reference'):
+                self.generate()
+        self.settings['overlay'] = {'concepts': [{'id': 'concept:future', 'title': 'Future',
+            'status': 'Planned', 'origin': 42}]}
+        self.config.write_text(json.dumps(self.settings), encoding='utf-8')
+        result = subprocess.run([sys.executable, '-B', str(SCRIPT), '--config', str(self.config)],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('ERROR: Invalid site origin', result.stdout)
+        self.assertNotIn('Traceback', result.stderr)
+
     def test_output_cannot_be_inside_package(self):
         self.generate()
         package = self.root / 'package'

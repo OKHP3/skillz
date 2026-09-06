@@ -20,9 +20,9 @@
     "references/configuration.md": "aa896e0f44ce9b7121830eb6430bf5530515a64545df30531d0ed023dbc1b8fa",
     "references/integration.md": "1d4f5a8814022b820fa78e6897a917859823e02a44264c174f877a1a12d97976",
     "references/quality.md": "9acdfd66ab0ab4fff87784dd3eaff052e48488d638e64044d34e0d7e5e631bcf",
-    "scripts/build-universe-map.py": "0b06d89e73b44b1f8f9a7e04830fe96f20675933c3e9ac0e88f28d138a608bf2",
+    "scripts/build-universe-map.py": "72d55ce8234b151e82cabc4177879ad0a82352bc52f04a3111072bdbad931e5e",
     "SKILL.md": "cfcfc4f63d3580219aae490ec191576e1746d68fdb1d5735a8d9050eb3deaf57",
-    "tests/test-universe-map.py": "4ac9005728c09ca29192c6c1ea4a07c7191b5c7195f6d2b6a61a7815b1350934"
+    "tests/test-universe-map.py": "fcd7107010d803be1ca0e371236cb9ed346565a112410ad4b26731a51dfb6d55"
   },
   "mirrors": [
     {

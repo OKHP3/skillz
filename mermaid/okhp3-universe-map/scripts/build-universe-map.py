@@ -104,10 +104,12 @@ def build(config_path):
     def normalize_reference(reference):
         if not isinstance(reference, str) or not reference:
             raise ValueError("Overlay references must be nonempty strings")
-        if reference.startswith("concept:"):
-            return reference
         if any(c.isspace() for c in reference):
             raise ValueError(f"Invalid overlay reference: {reference!r}")
+        if reference.startswith("concept:"):
+            if not re.fullmatch(r"concept:[a-z0-9]+(?:-[a-z0-9]+)*", reference):
+                raise ValueError(f"Invalid concept reference: {reference!r}")
+            return reference
         parsed = urlsplit(reference)
         origin = canonical_origin(f"{parsed.scheme}://{parsed.netloc}")
         if origin not in origins:
@@ -135,7 +137,7 @@ def build(config_path):
             raise ValueError("Concept must be an object")
         concept = dict(concept)
         if "origin" in concept:
-            concept["origin"] = canonical_origin(concept["origin"].rstrip("/"))
+            concept["origin"] = canonical_origin(concept["origin"])
         key = concept["id"]
         if not re.fullmatch(r"concept:[a-z0-9]+(?:-[a-z0-9]+)*", key) or key in nodes:
             raise ValueError("Concept IDs must be unique concept:kebab-case identifiers")
