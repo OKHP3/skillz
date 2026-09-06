@@ -6,12 +6,13 @@ description: >
   failures; delegate bounded repairs to Dependabot, GitHub Copilot, or Actions
   when appropriate; verify the result; and mark only verified threads done.
   Use for GitHub notification cleanup, recurring CI loose ends, PR follow-up,
-  repository maintenance, or safe branch-pruning review. Do not use for blind
+  repository maintenance, scheduled notification cleanup that appears stopped,
+  or safe branch-pruning review. Do not use for blind
   bulk deletion, unreviewed merges, or autonomous publication.
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.0"
+  version: "1.2.0"
   category: repository-maintenance
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -51,7 +52,10 @@ persistent state. Missing adapters are coverage gaps, not empty successful queue
 Use one of these modes, stating it at the start of the run:
 
 - **Audit:** inspect all requested notification pages, PRs, issues, checks,
-  deployments, branches, and local mirrors. Do not mutate anything.
+  deployments, branches, and local mirrors. Do not change repositories,
+  notifications, mail or settings. Private run records and owned run locks are
+  allowed only when the current request or saved grant permits that bookkeeping;
+  without it, return findings without persisting state.
 - **Reconcile:** investigate a named repository or grouped failure and prepare
   an evidence-backed repair plan. Local edits are allowed only when the user
   requested repair; external GitHub writes remain gated.
@@ -67,6 +71,13 @@ Preparing a local patch, pushing a branch, creating a PR, merging, deploying,
 and acknowledging notifications are separate permissions. Audit schedules do
 not inherit an interactive repair grant. Load
 `references/scheduled-maintenance.md` before any recurring execution.
+
+When a user reports that scheduled cleanup stopped or timed out, load that
+reference's schedule-health diagnostic before collecting the whole estate.
+Distinguish scheduler delivery, run completion, coverage, repair outcome, and
+acknowledgement permission. An active schedule is not proof of a completed run;
+a completed audit is not proof of a cleared inbox. Improving this skill does
+not change the saved grant or authorize external actions.
 
 ## Inputs and outputs
 

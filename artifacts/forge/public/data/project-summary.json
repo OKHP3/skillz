@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-05T02:49:40.873Z",
+  "generatedAt": "2026-09-06T03:01:09.235Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "maintenance/audit-review-followup-20260904",
-  "sourceCommit": "85bd34a",
+  "sourceRef": "main",
+  "sourceCommit": "05ffb69",
   "skillCount": 341,
   "familyCount": 20,
   "maturityCounts": {

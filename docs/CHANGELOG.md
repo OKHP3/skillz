@@ -8,6 +8,13 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Changed
 
+- Refined GitHub Notification Maintainer to 1.2.0 with a schedule-health
+  diagnostic that separates delivery, execution, coverage, repair and
+  acknowledgement authority. Added four development evaluation cases for
+  completed restricted audits, missing execution evidence, interrupted writes
+  and notification injection. No schedule permissions or live-service state
+  changed; behavioral benchmarks and unseen holdout evaluation remain not run.
+
 - Refined Repository Janitor 0.2.0 and GitHub Notification Maintainer 1.1.0
   after the September estate-recovery investigation. Added fail-closed local
   and GitHub collectors, preservation/coverage reporting, exact incident gates,
