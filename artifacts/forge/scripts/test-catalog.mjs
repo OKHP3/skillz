@@ -17,7 +17,13 @@ import { join, dirname, relative } from 'path';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { execSync, spawnSync } from 'child_process';
-import { applyEvidencePolicy, hasSubstantiveEvidenceArtifact, pruneSkillDetailFiles } from './build-catalog.js';
+import {
+  applyEvidencePolicy,
+  getUnresolvedCompanionReferences,
+  hasSubstantiveEvidenceArtifact,
+  KNOWN_UNRESOLVED_COMPANIONS,
+  pruneSkillDetailFiles,
+} from './build-catalog.js';
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -232,29 +238,40 @@ test('tags/topics are arrays (A7: not a hardcoded dead field)', () => {
 // silently — the pathway view just drops the link with no build signal.
 // This is a hard failure, not a warning: any legitimate forward-looking or
 // cross-repo companion reference should be added to KNOWN_UNRESOLVED_COMPANIONS
-// below with a comment explaining why, rather than passing silently.
-const KNOWN_UNRESOLVED_COMPANIONS = new Set([
-  // Forward-looking Notion wave-2 skills are named in current contracts so
-  // callers can report the deferred capability precisely until they ship.
-  'notion/okhp3-notion-identity-resolution/SKILL.md::okhp3-notion-comments-and-discussions',
-  'notion/okhp3-notion-page-write/SKILL.md::okhp3-notion-block-composition',
-  // Project Compass can hand a recurring pattern to the project-local capture
-  // skill even though that support skill is not part of the public distribution.
-  'universal/okhp3-project-compass/SKILL.md::okhp3-process-capture',
-]);
+// in build-catalog.js with a comment explaining why, rather than passing silently.
 test('every companion reference resolves to a real skill (or is an explicitly documented exception)', () => {
-  const knownSkillNames = new Set(catalog.skills.map(s => s.name));
-  const unresolved = [];
-  for (const s of catalog.skills) {
-    for (const cName of s.companions || []) {
-      if (!knownSkillNames.has(cName) && !KNOWN_UNRESOLVED_COMPANIONS.has(`${s.path}::${cName}`)) {
-        unresolved.push(`${s.path} -> "${cName}"`);
-      }
-    }
-  }
+  const unresolved = getUnresolvedCompanionReferences(catalog.skills)
+    .map(({ skill, companionName }) => `${skill.path} -> "${companionName}"`);
   assert(unresolved.length === 0,
     `${unresolved.length} unresolved companion reference(s) found (misspelled/renamed skill, or a missing ` +
     `KNOWN_UNRESOLVED_COMPANIONS entry if intentional): ${unresolved.join(', ')}`);
+});
+
+test('approved unresolved companion references are excluded from build warnings', () => {
+  const unresolved = getUnresolvedCompanionReferences([...KNOWN_UNRESOLVED_COMPANIONS].map(reference => {
+    const separator = reference.indexOf('::');
+    return {
+      name: 'fixture-skill',
+      path: reference.slice(0, separator),
+      companions: [reference.slice(separator + 2)],
+    };
+  }));
+  assert(unresolved.length === 0,
+    `approved companions should not be reported as unresolved: ${unresolved.map(
+      ({ companionName }) => companionName
+    ).join(', ')}`);
+});
+
+test('a genuinely broken companion reference remains unresolved', () => {
+  const unresolved = getUnresolvedCompanionReferences([{
+    name: 'fixture-skill',
+    path: 'fixture/SKILL.md',
+    companions: ['okhp3-companion-that-does-not-exist'],
+  }]);
+  assert(unresolved.length === 1,
+    'a companion name missing from the catalog must remain unresolved');
+  assert(unresolved[0].companionName === 'okhp3-companion-that-does-not-exist',
+    `unexpected unresolved companion: ${unresolved[0].companionName}`);
 });
 
 // 11c. Governance guard: every family must declare an explicit display_name

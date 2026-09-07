@@ -54,6 +54,20 @@ const GITHUB_REPO = 'OKHP3/skillz';
 const GITHUB_BASE = `https://github.com/${GITHUB_REPO}`;
 const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main`;
 
+// These references are intentional: they point to forward-looking capabilities
+// or project-local support skills that are named in current contracts but are
+// not part of the public distribution yet. Keep the source of truth here so
+// the builder and its integrity checks agree about what is an exception.
+const KNOWN_UNRESOLVED_COMPANIONS = new Set([
+  // Forward-looking Notion wave-2 skills are named in current contracts so
+  // callers can report the deferred capability precisely until they ship.
+  'notion/okhp3-notion-identity-resolution/SKILL.md::okhp3-notion-comments-and-discussions',
+  'notion/okhp3-notion-page-write/SKILL.md::okhp3-notion-block-composition',
+  // Project Compass can hand a recurring pattern to the project-local capture
+  // skill even though that support skill is not part of the public distribution.
+  'universal/okhp3-project-compass/SKILL.md::okhp3-process-capture',
+]);
+
 const SKIP_DIRS = new Set([
   '.git', '.github', '.agents', '.claude', '.vscode', 'node_modules',
   '__pycache__', '.venv', 'venv', 'dist', 'build', 'coverage',
@@ -667,6 +681,22 @@ function extractCompanions(body) {
   return [...new Set(lines)].slice(0, 8);
 }
 
+function getUnresolvedCompanionReferences(skills) {
+  const knownSkillNames = new Set(skills.map(s => s.name));
+  const unresolved = [];
+  for (const skill of skills) {
+    for (const companionName of skill.companions || []) {
+      if (
+        !knownSkillNames.has(companionName) &&
+        !KNOWN_UNRESOLVED_COMPANIONS.has(`${skill.path}::${companionName}`)
+      ) {
+        unresolved.push({ skill, companionName });
+      }
+    }
+  }
+  return unresolved;
+}
+
 function extractExamples(body) {
   const section = extractSection(body, [
     'Examples', 'Example', 'Sample invocations', 'Sample', 'Worked example',
@@ -966,22 +996,19 @@ function buildCatalog() {
   // time (not throw — a dangling reference isn't a build-breaking evidence
   // violation like rules 7/8 above) so the gap surfaces in CI/build logs
   // where an author will actually see it.
-  const knownSkillNames = new Set(skills.map(s => s.name));
-  let unresolvedCompanionCount = 0;
-  for (const s of skills) {
-    for (const cName of s.companions) {
-      if (!knownSkillNames.has(cName)) {
-        unresolvedCompanionCount++;
-        process.stderr.write(
-          `[catalog warn] ${s.path}: companion "${cName}" does not match any skill in ` +
-          `the catalog (misspelled or renamed?). The pathway view will show it as ` +
-          `unresolved rather than silently dropping it.\n`
-        );
-      }
-    }
+  // Intentional exceptions are omitted from this warning count; they are
+  // documented in KNOWN_UNRESOLVED_COMPANIONS above and remain visible in the
+  // skill detail data for callers that understand deferred/project-local links.
+  const unresolvedCompanionReferences = getUnresolvedCompanionReferences(skills);
+  for (const { skill, companionName } of unresolvedCompanionReferences) {
+    process.stderr.write(
+      `[catalog warn] ${skill.path}: companion "${companionName}" does not match any skill in ` +
+      `the catalog (misspelled or renamed?). The pathway view will show it as ` +
+      `unresolved rather than silently dropping it.\n`
+    );
   }
-  if (unresolvedCompanionCount > 0) {
-    console.log(`  ⚠ ${unresolvedCompanionCount} unresolved companion reference(s) — see warnings above.`);
+  if (unresolvedCompanionReferences.length > 0) {
+    console.log(`  ⚠ ${unresolvedCompanionReferences.length} unresolved companion reference(s) — see warnings above.`);
   }
 
 // ─── Family display name resolution ──────────────────────────────────────────
@@ -1339,8 +1366,10 @@ if (process.argv[1] && realpathSync(fileURLToPath(import.meta.url)) === realpath
 // re-running the full repo walk.
 export {
   applyEvidencePolicy,
+  getUnresolvedCompanionReferences,
   hasAnyEvidenceArtifact,
   hasSubstantiveEvidenceArtifact,
+  KNOWN_UNRESOLVED_COMPANIONS,
   deriveMaturity,
   deriveMaturitySource,
   pruneSkillDetailFiles,
