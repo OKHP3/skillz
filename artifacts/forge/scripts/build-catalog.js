@@ -697,6 +697,24 @@ function getUnresolvedCompanionReferences(skills) {
   return unresolved;
 }
 
+function reportUnresolvedCompanionReferences(skills, {
+  writeWarning = (message) => process.stderr.write(message),
+  writeSummary = (message) => console.log(message),
+} = {}) {
+  const unresolvedCompanionReferences = getUnresolvedCompanionReferences(skills);
+  for (const { skill, companionName } of unresolvedCompanionReferences) {
+    writeWarning(
+      `[catalog warn] ${skill.path}: companion "${companionName}" does not match any skill in ` +
+      `the catalog (misspelled or renamed?). The pathway view will show it as ` +
+      `unresolved rather than silently dropping it.\n`
+    );
+  }
+  if (unresolvedCompanionReferences.length > 0) {
+    writeSummary(`  ⚠ ${unresolvedCompanionReferences.length} unresolved companion reference(s) — see warnings above.`);
+  }
+  return unresolvedCompanionReferences;
+}
+
 function extractExamples(body) {
   const section = extractSection(body, [
     'Examples', 'Example', 'Sample invocations', 'Sample', 'Worked example',
@@ -999,17 +1017,7 @@ function buildCatalog() {
   // Intentional exceptions are omitted from this warning count; they are
   // documented in KNOWN_UNRESOLVED_COMPANIONS above and remain visible in the
   // skill detail data for callers that understand deferred/project-local links.
-  const unresolvedCompanionReferences = getUnresolvedCompanionReferences(skills);
-  for (const { skill, companionName } of unresolvedCompanionReferences) {
-    process.stderr.write(
-      `[catalog warn] ${skill.path}: companion "${companionName}" does not match any skill in ` +
-      `the catalog (misspelled or renamed?). The pathway view will show it as ` +
-      `unresolved rather than silently dropping it.\n`
-    );
-  }
-  if (unresolvedCompanionReferences.length > 0) {
-    console.log(`  ⚠ ${unresolvedCompanionReferences.length} unresolved companion reference(s) — see warnings above.`);
-  }
+  const unresolvedCompanionReferences = reportUnresolvedCompanionReferences(skills);
 
 // ─── Family display name resolution ──────────────────────────────────────────
 // Reads display_name from FAMILY.md frontmatter when present.
@@ -1367,6 +1375,7 @@ if (process.argv[1] && realpathSync(fileURLToPath(import.meta.url)) === realpath
 export {
   applyEvidencePolicy,
   getUnresolvedCompanionReferences,
+  reportUnresolvedCompanionReferences,
   hasAnyEvidenceArtifact,
   hasSubstantiveEvidenceArtifact,
   KNOWN_UNRESOLVED_COMPANIONS,
