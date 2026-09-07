@@ -275,7 +275,7 @@ test('a genuinely broken companion reference remains unresolved', () => {
     `unexpected unresolved companion: ${unresolved[0].companionName}`);
 });
 
-test('builder companion diagnostics omit approved references and report broken ones', () => {
+test('builder companion diagnostics omit approved references and report every broken one', () => {
   const approvedFixtures = [...KNOWN_UNRESOLVED_COMPANIONS].map(reference => {
     const separator = reference.indexOf('::');
     return {
@@ -297,26 +297,41 @@ test('builder companion diagnostics omit approved references and report broken o
   assert(approvedSummaries.length === 0,
     `approved companions emitted an unresolved warning count: ${approvedSummaries.join('')}`);
 
-  const brokenPath = 'fixture/broken-companion/SKILL.md';
-  const brokenName = 'okhp3-companion-that-does-not-exist';
+  const brokenFixtures = [
+    {
+      path: 'fixture/broken-companion/first/SKILL.md',
+      name: 'okhp3-first-companion-that-does-not-exist',
+    },
+    {
+      path: 'fixture/broken-companion/second/SKILL.md',
+      name: 'okhp3-second-companion-that-does-not-exist',
+    },
+  ];
   const brokenWarnings = [];
   const brokenSummaries = [];
-  const brokenUnresolved = reportUnresolvedCompanionReferences([{
+  const brokenUnresolved = reportUnresolvedCompanionReferences(brokenFixtures.map(({ path, name }) => ({
     name: 'fixture-skill',
-    path: brokenPath,
-    companions: [brokenName],
-  }], {
+    path,
+    companions: [name],
+  })), {
     writeWarning: (message) => brokenWarnings.push(message),
     writeSummary: (message) => brokenSummaries.push(message),
   });
-  assert(brokenUnresolved.length === 1,
-    `expected one broken companion in the builder diagnostic path, got ${brokenUnresolved.length}`);
-  assert(brokenWarnings.length === 1,
-    `expected one builder warning for the broken companion, got ${brokenWarnings.length}`);
-  assert(brokenWarnings[0].includes(brokenPath) && brokenWarnings[0].includes(brokenName),
-    `builder warning should contain the source path and companion name: ${brokenWarnings[0]}`);
-  assert(brokenSummaries.length === 1 && brokenSummaries[0].includes('1 unresolved companion reference(s)'),
-    `builder summary should report one unresolved companion: ${brokenSummaries.join('')}`);
+  assert(brokenUnresolved.length === brokenFixtures.length,
+    `expected ${brokenFixtures.length} broken companions in the builder diagnostic path, got ${brokenUnresolved.length}`);
+  assert(brokenWarnings.length === brokenFixtures.length,
+    `expected one builder warning per broken companion, got ${brokenWarnings.length}`);
+  for (const { path, name } of brokenFixtures) {
+    assert(
+      brokenWarnings.some(message => message.includes(path) && message.includes(name)),
+      `builder warning should contain source path "${path}" and companion name "${name}": ${brokenWarnings.join('')}`
+    );
+  }
+  assert(
+    brokenSummaries.length === 1 &&
+      brokenSummaries[0] === '  ⚠ 2 unresolved companion reference(s) — see warnings above.',
+    `builder summary should report exactly two unresolved companions: ${brokenSummaries.join('')}`
+  );
 });
 
 // 11c. Governance guard: every family must declare an explicit display_name
