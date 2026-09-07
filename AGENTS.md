@@ -71,6 +71,7 @@ Load the narrowest matching skill. If several apply, load the foundation or upst
 | `okhp3-mermaid-update` | Change content in an existing working `.mmd` file or Mermaid block while preserving style, class definitions, and init configuration. Load after core. |
 | `okhp3-mermaid-repair` | Repair a parse failure or malformed Mermaid render with the minimum syntax change. Load after core. Do not use for intentional content changes. |
 | `okhp3-mermaid-theme-builder` | Apply or generate a palette, theme, renderer profile, classDef bundle, or renderer-safe Mermaid styling. Load after core. |
+| `okhp3-universe-map` | Generate Mermaid visual sitemaps from search indexes with deterministic coverage, lifecycle overlays, and portable local copies. Load core for diagram governance. |
 | `okhp3-mermaid-governance` | Declare a project diagram standard, check conformance, or audit cross-diagram style and behavior drift. Load after core. |
 
 Mermaid cross-cutting rules: preserve style during updates, repair syntax minimally, keep source local unless the user authorizes publication, use stable short IDs, quote labels with spaces or special characters, avoid semicolons, and never invent classDef names or renderer capabilities.
@@ -294,6 +295,7 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-equilibrium-review` | Evaluate documents, reports, spreadsheets, hypotheses, decision memos, or Agent Skills with independent evidence review, conditional disruption, and evidence-based adjudication. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
+| `okhp3-github-notification-maintainer` | Diagnose GitHub notification causes and apparent schedule failures; prepare bounded repairs and complete only authorized, verified notifications. Scheduled grant and run health are separate from inbox state. |
 | `okhp3-i18n-page-sync` | Detect which pages on a static site are missing a translation or have drifted from a changed English source, by reusing the site's own search index as the page inventory. Reports drift and names the exact-pair translation skill for each flagged route; never translates or writes a page itself. |
 | `okhp3-project-compass` | Detect whether a project folder is GitHub-backed or plain, then establish or refresh its purpose, goals, and task tracking from evidence. Mode A tracks through milestones, issues, and releases via `gh`; Mode B tracks entirely in files. Reassessment runs emit an evidence-backed delta report and surface scope drift instead of absorbing it. |
 | `okhp3-repository-janitor` | Reconcile local Git mirrors against GitHub, preserve local variations, review branch lifecycle, and prepare safe merge or pruning actions. |

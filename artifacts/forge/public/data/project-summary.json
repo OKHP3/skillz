@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-09-04T17:20:33.389Z",
+  "generatedAt": "2026-09-06T17:23:40.705Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "main",
-  "sourceCommit": "b449af06",
-  "skillCount": 341,
+  "sourceRef": "codex/universe-loose-ends",
+  "sourceCommit": "e3f4559",
+  "skillCount": 342,
   "familyCount": 20,
   "maturityCounts": {
-    "draftable": 262,
+    "draftable": 263,
     "skeleton": 74,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 166,
+    "not-run": 167,
     "none": 118,
     "local-checks": 38,
     "analytical": 5,

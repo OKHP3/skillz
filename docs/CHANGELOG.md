@@ -6,6 +6,22 @@ This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
 
+### Changed
+
+- Refined GitHub Notification Maintainer to 1.2.0 with a schedule-health
+  diagnostic that separates delivery, execution, coverage, repair and
+  acknowledgement authority. Added four development evaluation cases for
+  completed restricted audits, missing execution evidence, interrupted writes
+  and notification injection. No schedule permissions or live-service state
+  changed; behavioral benchmarks and unseen holdout evaluation remain not run.
+
+- Refined Repository Janitor 0.2.0 and GitHub Notification Maintainer 1.1.0
+  after the September estate-recovery investigation. Added fail-closed local
+  and GitHub collectors, preservation/coverage reporting, exact incident gates,
+  independent Outlook acknowledgement, and a scoped scheduling contract.
+  Equilibrium and Foundry evidence supports supervised use and constrained
+  audits only; unattended mutation and measured uplift remain deferred.
+
 ### Added
 
 - Added the `copilot/` family scaffold for host-oriented Agent Skills targeting
@@ -292,3 +308,30 @@ this tag covers.
 - Mermaid Core + BPMN + Publish promoted from skeleton/draftable to usable maturity (see promotion priority in `BACKLOG.md`); `update`, `repair`, `architecture`, `data` remain.
 - Add worked examples and validation checklists.
 - Tag `v0.2.0` after the first `usable`-maturity skill path is complete (see `v0.1.0` above for the infrastructure/documentation bar already met).
+
+## 2026-09-06: Universe map skill candidate
+
+Added `mermaid/okhp3-universe-map` 0.1.0 with an index-driven Python generator,
+Mermaid templates, quality examples, regression tests, and integration guidance.
+Installed verified local copies in all three public site repositories.
+See `universe-map-validation-2026-09-06.md` for actual checks and limitations.
+
+## 2026-09-06: Universe skill checkout portability
+
+Version 0.1.1 enforces LF within the package so Git checkout preserves exact
+core-file equality across the canonical and three installed copies.
+
+
+### Universe map 0.1.2 regression fixes
+
+Canonicalize origin-only homepage URLs and reject output directories anywhere inside the skill package. All 13 regression tests pass, including duplicate homepage detection and nested package output rejection in write/check modes. All 12 core files synchronized to the three site repositories.
+
+
+### Universe map 0.1.3 overlay normalization
+
+Normalize homepage URLs consistently across index, overlay keys, page parents, and concept parents. Reject duplicate canonical overlay keys and foreign-origin references. All 15 regression tests pass, including uppercase HTTPS origins and default-port normalization. Canonical origins are applied consistently to indexes and overlays; whitespace remains explicitly rejected. Site copies synchronize after review.
+
+
+### Universe map 0.1.4 loose-end review
+
+Fix slashless ancestor inference and require explicit parents for ambiguous slash aliases. Clarify trusted local index file selection, including absolute and parent-relative paths; reject malformed paths and remote URLs. All 19 regression tests pass, including repeated-slash ancestors, trimmed inputs, and rejected UNC/network paths. Closes remaining PR76 review findings.

@@ -1,0 +1,45 @@
+{
+  "skill": "okhp3-universe-map",
+  "version": "0.1.4",
+  "canonical": "OKHP3/skillz/mermaid/okhp3-universe-map",
+  "authorization": "User requested canonical creation and three local copies in this task.",
+  "evidence": "Local generator tests and real-index render checks; no agent benchmark or protected holdout.",
+  "pre_sync_status": {
+    "skillz": "clean",
+    "glee-fullytools": "clean",
+    "askjamie": "clean",
+    "overkill-hill": "Two unrelated untracked MurderBird files preserved."
+  },
+  "files": {
+    ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+    "assets/bad-map.mmd": "d7f3d08d8fb756e8cebf189a3b54a62a583fb8dcba335a2f7ae84636890d067c",
+    "assets/good-map.mmd": "e903bbe3bedb0626949f25e1027c61b4b005ade3374367a69f2f412b1aa913c9",
+    "assets/map-template.mmd": "38207d60bad0d298985f8b90aa2722876127321a64b3ef6c6a3e6f6a6ad17a84",
+    "assets/site-config.example.json": "42079b900a748e9dcc7cf6f32bd47494f12a91778fe59721167bf2144153245e",
+    "evals/evals.json": "5e66ebc5e7c73e35c7834897611f6a242c080eb870c6d42326e2c1bf31bb83d1",
+    "references/configuration.md": "438a5849b784c4d96aee4f40a596398e92c73d36d0b9b4228bf5e609ca13e689",
+    "references/integration.md": "1d4f5a8814022b820fa78e6897a917859823e02a44264c174f877a1a12d97976",
+    "references/quality.md": "5b20ab2b91ce6c6e05b1d26cd189177817ef29257513095b52f76eb995e123f5",
+    "scripts/build-universe-map.py": "441ae6ab04edad06cb21ffab7b61fd4435a3a8110668a018d1d2efd0189f8d61",
+    "SKILL.md": "2849064a2fbaafb0c693b0199355a205668cb199d80e18108e9e2629b3e6f6bf",
+    "tests/test-universe-map.py": "3d350766f970a95b2510cfa70ce3bb186c33aefd16fb109e56dcb718b11ebf1c"
+  },
+  "mirrors": [
+    {
+      "repository": "overkill-hill",
+      "path": ".agents/skills/okhp3-universe-map",
+      "core_equal": true
+    },
+    {
+      "repository": "glee-fullytools",
+      "path": ".agents/skills/okhp3-universe-map",
+      "core_equal": true
+    },
+    {
+      "repository": "askjamie",
+      "path": ".agents/skills/okhp3-universe-map",
+      "core_equal": true
+    }
+  ],
+  "recovery": "PR76 and PR77 preserve prior versions. Version 0.1.3 also normalizes overlay homepage references."
+}

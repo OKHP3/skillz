@@ -1,14 +1,14 @@
 ---
 family: mermaid
 display_name: Mermaid
-skill_count: 9
+skill_count: 10
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-04T03:48:45Z
+generated_at: 2026-09-06T17:21:35Z
 ---
 
 # mermaid
 
-Nine skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer.
+Ten skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer, and one index-driven universe-map generator.
 
 `okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.
 
@@ -150,13 +150,13 @@ All skills in this family follow the shared output rules in `okhp3-mermaid-core/
 | `okhp3-mermaid-governance` | Declare a project diagram standard (GOVERNANCE.md), check conformance, audit cross-diagram coherence | core |
 
 <!-- FAMILY_SUMMARY_START -->
-Nine skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer.
+Ten skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer, and one index-driven universe-map generator.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (9)
+## Skills (10)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **September 4, 2026 at 03:48 UTC***
+*10 skills &nbsp;·&nbsp; inventory last updated: **September 6, 2026 at 17:21 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -169,4 +169,5 @@ Nine skills. One foundation, four domain skills, one publish layer, one update s
 | [okhp3-mermaid-repair](okhp3-mermaid-repair/SKILL.md) | Syntax repair for broken Mermaid diagrams. Use when a .mmd file or fenced Mermaid block fails to ... | 0.2.0 |
 | [okhp3-mermaid-theme-builder](okhp3-mermaid-theme-builder/SKILL.md) | Apply reusable color palettes and visual governance to Mermaid diagram code. Use this skill when ... | 0.5.1 |
 | [okhp3-mermaid-update](okhp3-mermaid-update/SKILL.md) | Style-preserving update of an existing Mermaid diagram. Use when the user provides an existing .m... | 0.2.0 |
+| [okhp3-universe-map](okhp3-universe-map/SKILL.md) | Generate and refresh Mermaid visual sitemaps from search indexes. Use when a site's universe map ... | 0.1.4 |
 <!-- FAMILY_INVENTORY_END -->

@@ -1,0 +1,16 @@
+{
+  "schema_version": "2.0",
+  "evaluation_status": "analytical",
+  "evaluated_skill_version": "1.1.0",
+  "expectations": [
+    {"text": "Wrong repository, workflow, branch or published SHA cannot pass acknowledgement gate", "passed": true, "evidence": "tests/test_incident_gate.py::test_each_identity_mismatch_holds"},
+    {"text": "A green PR or pending publication cannot complete an incident", "passed": true, "evidence": "tests/test_incident_gate.py::test_green_pr_or_pending_deploy_holds"},
+    {"text": "Missing coverage, changed thread and skipped failing boundary are holds", "passed": true, "evidence": "tests/test_incident_gate.py::test_failed_unknown_or_partial_coverage_holds, test_changed_thread_holds, test_green_manual_run_skipping_failing_job_holds"},
+    {"text": "Mail identity, matching incident and authorization are independent", "passed": true, "evidence": "tests/test_incident_gate.py::test_mail_requires_separate_identity_match_and_grant"},
+    {"text": "Untrusted comment cannot grant authority", "passed": true, "evidence": "tests/test_incident_gate.py::test_untrusted_text_cannot_grant_authority"}
+  ],
+  "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0},
+  "execution_metrics": {"tokens": null, "tool_calls": null, "errors": 0},
+  "provenance": {"runner": "Python unittest", "model": "not applicable to deterministic unit tests", "configuration": "policy fixtures only", "fixtures": "tests/test_incident_gate.py version 1.1.0"},
+  "user_notes_summary": {"uncertainties": ["These unit tests do not authenticate real adapter evidence", "No live outcome, uplift, cross-host race or unseen holdout benchmark"], "needs_review": ["Mutation-enabled unattended release deferred"], "workarounds": []}
+}

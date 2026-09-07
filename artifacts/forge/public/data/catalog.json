@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-04T17:20:33.389Z",
+  "generatedAt": "2026-09-06T17:23:40.705Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "main",
-  "sourceCommit": "b449af06",
-  "skillCount": 341,
+  "sourceRef": "codex/universe-loose-ends",
+  "sourceCommit": "e3f4559",
+  "skillCount": 342,
   "familyCount": 20,
   "families": [
     {
@@ -508,7 +508,7 @@
     {
       "name": "mermaid",
       "displayName": "Mermaid",
-      "skillCount": 9,
+      "skillCount": 10,
       "skills": [
         "okhp3-mermaid-architecture",
         "okhp3-mermaid-bpmn",
@@ -518,12 +518,13 @@
         "okhp3-mermaid-publish",
         "okhp3-mermaid-repair",
         "okhp3-mermaid-theme-builder",
-        "okhp3-mermaid-update"
+        "okhp3-mermaid-update",
+        "okhp3-universe-map"
       ],
-      "narrativeBody": "Nine skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer.\n\n`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.\n\nSee repo-root `AGENTS.md` for trigger conditions.\n\n---",
+      "narrativeBody": "Ten skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer, and one index-driven universe-map generator.\n\n`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.\n\nSee repo-root `AGENTS.md` for trigger conditions.\n\n---",
       "orientation": {
         "purpose": {
-          "value": "Nine skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer.\n\n`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.\n\nSee repo-root `AGENTS.md` for trigger conditions.\n\n---",
+          "value": "Ten skills. One foundation, four domain skills, one publish layer, one update skill, one repair skill, one governance layer, and one index-driven universe-map generator.\n\n`okhp3-mermaid-core` loads first on every Mermaid task. It owns audience declaration, type selection, the OKHP3 design system, naming/registry, and the three validation gates. The domain skills (`bpmn`, `architecture`, `data`) are vocabulary and pattern libraries that core routes into. `publish` handles render and MCP output. `update` applies changes to existing diagrams while preserving style. `repair` fixes broken syntax with minimum intervention. `governance` declares and enforces the visual and behavioral standard across a diagram project.\n\nSee repo-root `AGENTS.md` for trigger conditions.\n\n---",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -14105,7 +14106,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14170,7 +14171,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14235,7 +14236,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14300,7 +14301,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14434,7 +14435,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14677,6 +14678,73 @@
       "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "ready-for-supervised-use"
+    },
+    {
+      "name": "okhp3-universe-map",
+      "displayName": "Universe Map",
+      "family": "mermaid",
+      "skillDir": "okhp3-universe-map",
+      "path": "mermaid/okhp3-universe-map/SKILL.md",
+      "description": "Generate and refresh Mermaid visual sitemaps from search indexes. Use when a site's universe map drifts after crawling, indexing, or adding pages, or when multiple sibling sites need consistent navigation diagrams. Includes a Python generator, templates, good and bad examples, and Mermaid tool guidance. Does not infer project completion from page existence or deploy sites.",
+      "version": "0.1.4",
+      "license": "MIT",
+      "category": "diagramming",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "diagramming"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-mermaid-core",
+        "okhp3-mermaid-publish",
+        "okhp3-mermaid-repair"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-universe-map/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-universe-map/SKILL.md",
+      "lastModified": "2026-09-06T09:43:03-05:00",
+      "commitSha": "e3f4559b",
+      "createdAt": "2026-09-06T09:12:12-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "diagramming",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Index normalization, visual sitemap generation, coverage checks, lifecycle overlays, and consistent local skill distribution.",
+        "outOfScope": "Crawling private sources, inventing project status, autonomous deployment, or replacing unrelated diagrams.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.4",
+        "evalCount": 5,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 3,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-notion-agent-boundary",
@@ -16791,7 +16859,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-recurring-task-capture/SKILL.md",
       "lastModified": "2026-08-28T23:44:26-05:00",
       "commitSha": "967052e2",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -19817,7 +19885,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-08-28T23:44:51-05:00",
       "commitSha": "0a171756",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -19949,7 +20017,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -20015,7 +20083,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -22611,8 +22679,8 @@
       "family": "universal",
       "skillDir": "okhp3-github-notification-maintainer",
       "path": "universal/okhp3-github-notification-maintainer/SKILL.md",
-      "description": "Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, check, deployment, or branch problem; group duplicate failures; delegate bounded repairs to Dependabot, GitHub Copilot, or Actions when appropriate; verify the result; and mark only verified threads done. Use for GitHub notification cleanup, recurring CI loose ends, PR follow-up, repository maintenance, or safe branch-pruning review. Do not use for blind bulk deletion, unreviewed merges, or autonomous publication.",
-      "version": "1.0.0",
+      "description": "Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, check, deployment, or branch problem; group duplicate failures; delegate bounded repairs to Dependabot, GitHub Copilot, or Actions when appropriate; verify the result; and mark only verified threads done. Use for GitHub notification cleanup, recurring CI loose ends, PR follow-up, repository maintenance, scheduled notification cleanup that appears stopped, or safe branch-pruning review. Do not use for blind bulk deletion, unreviewed merges, or autonomous publication.",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "repository-maintenance",
       "origin": "okhp3/skillz",
@@ -22657,8 +22725,8 @@
       ],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-github-notification-maintainer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-github-notification-maintainer/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-09-05T22:55:09-05:00",
+      "commitSha": "bf69ed29",
       "createdAt": "2026-08-19T15:26:58-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -22673,11 +22741,11 @@
       "evidence": {
         "status": "not-run",
         "evaluatedSkillVersion": null,
-        "evalCount": 5,
+        "evalCount": 14,
         "benchmarkCount": 0,
-        "testCount": 0,
-        "referenceCount": 4,
-        "scriptCount": 0,
+        "testCount": 2,
+        "referenceCount": 7,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -23093,7 +23161,7 @@
       "skillDir": "okhp3-repository-janitor",
       "path": "universal/okhp3-repository-janitor/SKILL.md",
       "description": "Reconcile a collection of local Git repositories with their GitHub origins, inspect all local variations against origin/main, preserve uncommitted or unreachable work, and manage branch lifecycle. Use when a user has multiple clones or computers, needs to find differences from origin/main, recover forgotten work, review agent/Copilot/Dependabot branches, merge completed pull requests, prune verified redundant branches, or establish a repeatable daily or weekly repository-maintenance routine.",
-      "version": "0.1.0",
+      "version": "0.2.1",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -23109,11 +23177,13 @@
       ],
       "triggers": [],
       "avoid": [],
-      "companions": [],
+      "companions": [
+        "okhp3-github-notification-maintainer"
+      ],
       "examples": [],
       "inputs": [],
       "outputs": [
-        "coverage: discovered repositories, fetch failures, and repositories without `origin/main`;",
+        "coverage: discovered repositories, skipped paths, linked-worktree boundaries, Git command/fetch failures, missing `origin/main`, and snapshot compatibility;",
         "preservation holds: dirty files, stashes, local-only commits, unreachable commits, and archive refs;",
         "variants: per-repository commit divergence and changed file paths versus `origin/main`;",
         "branch lifecycle: each non-main branch, PR state, reachability, recommendation, and rationale;",
@@ -23125,8 +23195,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repository-janitor/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repository-janitor/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-09-04T21:54:42-05:00",
+      "commitSha": "05ffb696",
       "createdAt": "2026-07-30T08:34:48-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -23143,7 +23213,7 @@
         "evaluatedSkillVersion": null,
         "evalCount": 0,
         "benchmarkCount": 0,
-        "testCount": 0,
+        "testCount": 1,
         "referenceCount": 1,
         "scriptCount": 1,
         "lastEvidenceDate": null,

@@ -1,0 +1,13 @@
+flowchart LR
+  home["Example site (Published page)"]
+  projects["Projects (Published page)"]
+  tool["Useful tool (Published page)"]
+  idea["Future idea (Planned)"]
+  home --> projects
+  projects --> tool
+  projects --> idea
+  click home "https://example.com/" "Home" _self
+  click projects "https://example.com/projects/" "Projects" _self
+  click tool "https://example.com/projects/tool/" "A useful tool" _self
+  class idea concept
+  classDef concept fill:#f3f4f6,stroke:#4b5563,color:#111827,stroke-dasharray:5 5

@@ -2,6 +2,11 @@
 
 Use these categories after refreshing the remote and checking GitHub pull-request state.
 
+All actions below are proposals during audit. Creating archive refs, merging,
+and exact-target deletion require the separate current grants in SKILL.md.
+Before remote deletion, require an expected-tip conditional operation; if the
+adapter cannot prevent deleting a concurrently advanced branch, do not delete.
+
 | Evidence | Decision | Action |
 |---|---|---|
 | Dirty checkout, stash, local-only commit, or unreachable commit | Preserve | Do not merge or prune; create or retain a recovery ref and review the content. |

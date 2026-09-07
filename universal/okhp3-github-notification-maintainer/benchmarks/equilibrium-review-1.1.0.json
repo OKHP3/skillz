@@ -1,0 +1,46 @@
+{
+  "schema_version": "2.0",
+  "review_protocol": "equilibrium-v1",
+  "evaluation_status": "analytical",
+  "evaluated_skill_version": "1.1.0",
+  "companion": {"skill": "okhp3-repository-janitor", "version": "0.2.0"},
+  "date": "2026-09-05",
+  "decision_question": "Release the supervised maintenance contract and read-only collectors, with initial schedules restricted to audit and local preparation?",
+  "criteria": "references/maintenance-design.md C1-C8, frozen before instruction refinement",
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "shared_model_or_source_limits": ["Parent-inherited model across roles", "Shared frozen design and package sources", "Negotiator intentionally received earlier findings", "No independent live executor or unseen cross-host holdout"],
+    "tools_permissions": "Read-only files and allowed structural/unit checks; no reviewer external mutations"
+  },
+  "initial_reviews": [
+    {"role": "evidence-and-architecture", "context_id": "01a06f57-5598-7fd2-86c1-3291882bfae2", "decision": "defer-for-evidence", "findings": ["Separate inventory from ref mutations", "Explicit partial coverage", "Versioned state and separate mail acknowledgement", "Version-bound evidence"]},
+    {"role": "outcome-quality", "context_id": "01a06f57-55eb-7561-b269-83d5441b6bc0", "decision": "defer-for-evidence", "findings": ["Exact publication-boundary replacement", "Stable incident identity and bounded retries", "Preservation handoff", "No fixture or uplift overclaims"]},
+    {"role": "safety-and-portability", "context_id": "01a06f57-5634-7412-bbe5-4908070bd2e1", "decision": "defer-for-evidence", "findings": ["Current schedule grant", "Worktree is not sandbox", "Optional mail adapter", "Atomic state and partial failure semantics"]}
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "context_id": "01a06f5b-1bf2-79e2-b698-3c0dd59fbae9",
+    "falsification_hypotheses": ["Target changes between reread and mutation", "Authorized push triggers unauthorized deployment", "Same-SHA manual success skipped the failing job"],
+    "test_results": [
+      {"hypothesis": "target race", "status": "not-run", "disposition": "Unattended mutations deferred; destructive operations require expected-tip guards"},
+      {"hypothesis": "downstream deployment", "status": "not-run", "disposition": "Unattended pushes deferred; explicit downstream-trigger review required"},
+      {"hypothesis": "skipped boundary", "status": "analytical", "disposition": "Pure policy test rejects false coverage flag; deriving that flag from real adapters remains untested"}
+    ]
+  },
+  "negotiator": {
+    "triggered": true,
+    "context_id": "01a06f5e-ba48-7c01-a45a-ad298faf04a7",
+    "decision": "approve-with-limits",
+    "scope": "Supervised package; scheduled audit/triage and explicitly authorized isolated local preparation only",
+    "required_before_finalization": "Add this missing versioned evidence record and rerun package checks"
+  },
+  "release_decision": "approve-with-limits",
+  "mutation_enabled_unattended_release": "defer-for-evidence",
+  "structural_tests": "Run package validators and version-matched tests; see grading.json",
+  "outcome_benchmark": "not-run",
+  "skill_uplift": null,
+  "holdout_seen": true,
+  "external_holdout": "external-required",
+  "limitations": ["No automatic merge, prune, push, PR creation, deployment or acknowledgement in initial schedule", "Lock/crash/revocation/notification deduplication are operating contracts, not an executed scheduling-engine benchmark", "Pure gates validate supplied observations, not authenticity or completeness of provider evidence", "Live estate repairs are incident evidence, not a controlled with-skill/without-skill evaluation"]
+}
