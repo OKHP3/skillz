@@ -63,6 +63,10 @@ Many SKILL.md files use the skill slug as their H1 — the equality check detect
 
 Displays: displayName (h1), slug (secondary mono), family, maturity (with tooltip), version, license, path, install URL, description, triggers, avoid, inputs/outputs (side-by-side grid), boundaries, tools chips, runtimes chips, maturity explanation, examples, companions (linked), related skills (filtered to exclude companions), provenance panel (author, origin, path, lastModified, commitSha), contribute section.
 
+Approved companion diagnostics must still use the pathway component when a skill's
+path contains only the current node; otherwise SkillDetail's flat companion-list
+fallback hides the diagnostic presentation.
+
 ## Catalog skill fields
 
 All 67 skills have: name, displayName, family, skillDir, path, description, version, license, category, origin, author, homepage, maturity, status, tags, topics, triggers, avoid, companions, examples, inputs, outputs, tools, runtimes, boundaries, rawUrl, githubUrl, lastModified (ISO 8601, from per-file git log), commitSha (per-file short SHA).

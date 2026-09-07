@@ -159,4 +159,24 @@ describe('buildWorkflowPath', () => {
     expect((nodes[0] as ResolvedPathNode).unresolvedCompanions).toEqual(['okhp3-does-not-exist']);
     expect(nodes[1]).toEqual({ kind: 'unresolved', name: 'okhp3-does-not-exist' });
   });
+
+  it('keeps approved deferred and project-local companions visible without marking them unresolved', () => {
+    const source = makeSkill({
+      name: 'source',
+      companions: ['okhp3-future-skill', 'okhp3-local-capture'],
+      companionDiagnostics: {
+        deferred: ['okhp3-future-skill'],
+        projectLocal: ['okhp3-local-capture'],
+      },
+    });
+
+    const nodes = buildWorkflowPath(source, [source]);
+
+    expect(nodes).toHaveLength(1);
+    expect(nodes[0].kind).toBe('resolved');
+    const node = nodes[0] as ResolvedPathNode;
+    expect(node.unresolvedCompanions).toEqual([]);
+    expect(node.deferredCompanions).toEqual(['okhp3-future-skill']);
+    expect(node.projectLocalCompanions).toEqual(['okhp3-local-capture']);
+  });
 });

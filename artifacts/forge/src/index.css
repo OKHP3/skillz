@@ -919,6 +919,17 @@
   border-color: var(--color-ember);
 }
 
+/* Approved non-catalog references are informational, not errors. */
+.skill-pathway__branch--deferred {
+  color: var(--color-amber);
+  border-color: var(--color-amber);
+}
+
+.skill-pathway__branch--project-local {
+  color: var(--color-steel-light);
+  border-color: var(--color-steel);
+}
+
 /* Unresolved companion node — a "not found" terminal stop. Greyed out and
    dashed to read as absent/broken rather than as a real, navigable skill. */
 .skill-pathway__node--unresolved {

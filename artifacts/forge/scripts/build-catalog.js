@@ -57,16 +57,21 @@ const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main`;
 // These references are intentional: they point to forward-looking capabilities
 // or project-local support skills that are named in current contracts but are
 // not part of the public distribution yet. Keep the source of truth here so
-// the builder and its integrity checks agree about what is an exception.
-const KNOWN_UNRESOLVED_COMPANIONS = new Set([
+// the builder, its integrity checks, and the pathway UI agree about what is an
+// exception and why it is not a broken link.
+const APPROVED_COMPANION_REFERENCES = new Map([
   // Forward-looking Notion wave-2 skills are named in current contracts so
   // callers can report the deferred capability precisely until they ship.
-  'notion/okhp3-notion-identity-resolution/SKILL.md::okhp3-notion-comments-and-discussions',
-  'notion/okhp3-notion-page-write/SKILL.md::okhp3-notion-block-composition',
+  ['notion/okhp3-notion-identity-resolution/SKILL.md::okhp3-notion-comments-and-discussions', 'deferred'],
+  ['notion/okhp3-notion-page-write/SKILL.md::okhp3-notion-block-composition', 'deferred'],
   // Project Compass can hand a recurring pattern to the project-local capture
   // skill even though that support skill is not part of the public distribution.
-  'universal/okhp3-project-compass/SKILL.md::okhp3-process-capture',
+  ['universal/okhp3-project-compass/SKILL.md::okhp3-process-capture', 'project-local'],
 ]);
+
+// Kept as a Set because catalog integrity checks use it as the allow-list of
+// intentionally unresolved references.
+const KNOWN_UNRESOLVED_COMPANIONS = new Set(APPROVED_COMPANION_REFERENCES.keys());
 
 const SKIP_DIRS = new Set([
   '.git', '.github', '.agents', '.claude', '.vscode', 'node_modules',
@@ -697,6 +702,16 @@ function getUnresolvedCompanionReferences(skills) {
   return unresolved;
 }
 
+function getCompanionDiagnostics(skill) {
+  const diagnostics = { deferred: [], projectLocal: [] };
+  for (const companionName of skill.companions || []) {
+    const kind = APPROVED_COMPANION_REFERENCES.get(`${skill.path}::${companionName}`);
+    if (kind === 'deferred') diagnostics.deferred.push(companionName);
+    if (kind === 'project-local') diagnostics.projectLocal.push(companionName);
+  }
+  return diagnostics;
+}
+
 function reportUnresolvedCompanionReferences(skills, {
   writeWarning = (message) => process.stderr.write(message),
   writeSummary = (message) => console.log(message),
@@ -913,6 +928,7 @@ function buildCatalog() {
 
     const releaseReadiness = deriveReleaseReadiness(maturity, evidenceV2.status);
     const packageMetadata = { author, category, origin, homepage, authorGithub, inScope, outOfScope, publicArtifact };
+    const companionDiagnostics = getCompanionDiagnostics({ path: relPath, companions });
 
     // Rule 8: every cataloged non-Community package must expose the completed
     // Foundry baseline. A declared context-agnostic social-posting package is
@@ -969,6 +985,9 @@ function buildCatalog() {
       triggers,
       avoid,
       companions,
+      ...(companionDiagnostics.deferred.length > 0 || companionDiagnostics.projectLocal.length > 0
+        ? { companionDiagnostics }
+        : {}),
       examples,
       inputs,
       outputs,
@@ -1375,6 +1394,7 @@ if (process.argv[1] && realpathSync(fileURLToPath(import.meta.url)) === realpath
 export {
   applyEvidencePolicy,
   getUnresolvedCompanionReferences,
+  getCompanionDiagnostics,
   reportUnresolvedCompanionReferences,
   hasAnyEvidenceArtifact,
   hasSubstantiveEvidenceArtifact,

@@ -42,6 +42,13 @@ export interface SkillPackageMetadata {
   publicArtifact?: boolean;
 }
 
+export interface CompanionDiagnostics {
+  /** Approved references to capabilities that are named but not shipped yet. */
+  deferred: string[];
+  /** Approved references to project-local support skills outside the public catalog. */
+  projectLocal: string[];
+}
+
 export type MaturitySource = 'explicit-frontmatter' | 'evidence-policy' | 'fallback-structure';
 
 // Derived UI convenience field, not a stored maturity value. Computed from
@@ -77,6 +84,8 @@ export interface Skill {
   triggers: string[];
   avoid: string[];
   companions: string[];
+  /** Builder-classified companion references that do not resolve to catalog skills. */
+  companionDiagnostics?: CompanionDiagnostics;
   examples: string[];
   inputs: string[];
   outputs: string[];

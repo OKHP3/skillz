@@ -111,6 +111,10 @@ export default function SkillPathway({ nodes, allSkills }: SkillPathwayProps) {
     n => n.kind === 'unresolved' ||
          (n.kind === 'resolved' && n.unresolvedCompanions.length > 0)
   );
+  const hasIntentionalCompanions = nodes.some(
+    n => n.kind === 'resolved' &&
+      (n.deferredCompanions.length > 0 || n.projectLocalCompanions.length > 0)
+  );
   const hasBranches = nodes.some(
     n => n.kind === 'resolved' && (n.branchSkills.length > 0 || n.incomingBranches > 0)
   );
@@ -217,6 +221,28 @@ export default function SkillPathway({ nodes, allSkills }: SkillPathwayProps) {
                   </span>
                 )}
 
+                {/* Approved non-catalog companions: visible, but not errors. */}
+                {node.deferredCompanions.length > 0 && (
+                  <span
+                    className="skill-pathway__branch skill-pathway__branch--deferred"
+                    data-companion-kind="deferred"
+                    title={`Deferred companion reference${node.deferredCompanions.length > 1 ? 's' : ''}: ${node.deferredCompanions.join(', ')}`}
+                    aria-label={`${node.deferredCompanions.length} deferred companion reference${node.deferredCompanions.length > 1 ? 's' : ''}: ${node.deferredCompanions.join(', ')}`}
+                  >
+                    Deferred {node.deferredCompanions.length}
+                  </span>
+                )}
+                {node.projectLocalCompanions.length > 0 && (
+                  <span
+                    className="skill-pathway__branch skill-pathway__branch--project-local"
+                    data-companion-kind="project-local"
+                    title={`Project-local companion reference${node.projectLocalCompanions.length > 1 ? 's' : ''}: ${node.projectLocalCompanions.join(', ')}`}
+                    aria-label={`${node.projectLocalCompanions.length} project-local companion reference${node.projectLocalCompanions.length > 1 ? 's' : ''}: ${node.projectLocalCompanions.join(', ')}`}
+                  >
+                    Project-local {node.projectLocalCompanions.length}
+                  </span>
+                )}
+
                 {/* Arrow connector — not rendered after last node */}
                 {!isLast && (
                   <span className="skill-pathway__arrow" aria-hidden>→</span>
@@ -269,6 +295,7 @@ export default function SkillPathway({ nodes, allSkills }: SkillPathwayProps) {
         Steps follow each skill's declared companion sequence.
         {hasBranches && <> Forked steps (↳) show alternate companion paths — use ▸ to preview where a branch leads.</>}
         {hasUnresolved && <> A greyed-out or ⚠ marked stop means a declared companion name doesn't match any skill in the catalog.</>}
+        {hasIntentionalCompanions && <> Deferred and project-local labels are approved references that are visible but not yet navigable catalog skills.</>}
       </p>
     </div>
   );

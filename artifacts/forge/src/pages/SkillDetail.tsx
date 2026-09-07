@@ -394,7 +394,10 @@ export default function SkillDetail() {
           {(skill.companions.length > 0 || pathwayNodes.length > 1) && (
             <div>
               <h2>Workflow pathway</h2>
-              {pathwayNodes.length > 1 ? (
+              {pathwayNodes.length > 1 ||
+              (pathwayNodes[0]?.kind === 'resolved' &&
+                (pathwayNodes[0].deferredCompanions.length > 0 ||
+                  pathwayNodes[0].projectLocalCompanions.length > 0)) ? (
                 <SkillPathway nodes={pathwayNodes} allSkills={catalog.skills} />
               ) : (
                 /* Single skill with companions but no traversable chain — keep flat list */

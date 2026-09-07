@@ -224,6 +224,10 @@ export interface ResolvedPathNode {
    *  surfaced here so the UI can flag the break instead of silently
    *  omitting it, the way the old `.filter(c => skillMap.has(c))` did. */
   unresolvedCompanions: string[];
+  /** Approved forward-looking companion references, shown as deferred rather than broken. */
+  deferredCompanions: string[];
+  /** Approved project-local companion references, shown as local rather than broken. */
+  projectLocalCompanions: string[];
   /** The actual alternate companion skills diverging from this node (companions[1..]) */
   branchSkills: Skill[];
 }
@@ -285,7 +289,10 @@ export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] 
     // Unresolved: declared on this skill but not a real catalog entry at
     // all (typo/rename) — distinct from a resolved companion that just
     // happens to already be `visited` (a cycle/merge, not a break).
-    const unresolvedCompanions = s.companions.filter(c => !skillMap.has(c));
+    const deferredCompanions = s.companionDiagnostics?.deferred ?? [];
+    const projectLocalCompanions = s.companionDiagnostics?.projectLocal ?? [];
+    const intentionalCompanions = new Set([...deferredCompanions, ...projectLocalCompanions]);
+    const unresolvedCompanions = s.companions.filter(c => !skillMap.has(c) && !intentionalCompanions.has(c));
     const validCompanions = s.companions.filter(c => skillMap.has(c) && !visited.has(c));
     const totalPreds = (predecessors.get(name) ?? []).length;
 
@@ -296,6 +303,8 @@ export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] 
       incomingBranches: Math.max(0, totalPreds - 1),
       outgoingBranches: Math.max(0, validCompanions.length - 1),
       unresolvedCompanions,
+      deferredCompanions,
+      projectLocalCompanions,
       branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
     });
 
@@ -318,7 +327,10 @@ export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] 
   // Safety: if the current skill ended up outside the chain, return it alone
   if (!nodes.some(n => n.kind === 'resolved' && n.isCurrent)) {
     const validCompanions = skill.companions.filter(c => skillMap.has(c));
-    const unresolvedCompanions = skill.companions.filter(c => !skillMap.has(c));
+    const deferredCompanions = skill.companionDiagnostics?.deferred ?? [];
+    const projectLocalCompanions = skill.companionDiagnostics?.projectLocal ?? [];
+    const intentionalCompanions = new Set([...deferredCompanions, ...projectLocalCompanions]);
+    const unresolvedCompanions = skill.companions.filter(c => !skillMap.has(c) && !intentionalCompanions.has(c));
     return [{
       kind: 'resolved',
       skill,
@@ -326,6 +338,8 @@ export function buildWorkflowPath(skill: Skill, allSkills: Skill[]): PathNode[] 
       incomingBranches: 0,
       outgoingBranches: Math.max(0, validCompanions.length - 1),
       unresolvedCompanions,
+      deferredCompanions,
+      projectLocalCompanions,
       branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
     }];
   }
@@ -360,7 +374,10 @@ export function buildForwardPath(skill: Skill, allSkills: Skill[], maxSteps = 5)
     const s = skillMap.get(name);
     if (!s) return;
 
-    const unresolvedCompanions = s.companions.filter(c => !skillMap.has(c));
+    const deferredCompanions = s.companionDiagnostics?.deferred ?? [];
+    const projectLocalCompanions = s.companionDiagnostics?.projectLocal ?? [];
+    const intentionalCompanions = new Set([...deferredCompanions, ...projectLocalCompanions]);
+    const unresolvedCompanions = s.companions.filter(c => !skillMap.has(c) && !intentionalCompanions.has(c));
     const validCompanions = s.companions.filter(c => skillMap.has(c) && !visited.has(c));
     const totalPreds = (predecessors.get(name) ?? []).length;
 
@@ -371,6 +388,8 @@ export function buildForwardPath(skill: Skill, allSkills: Skill[], maxSteps = 5)
       incomingBranches: Math.max(0, totalPreds - 1),
       outgoingBranches: Math.max(0, validCompanions.length - 1),
       unresolvedCompanions,
+      deferredCompanions,
+      projectLocalCompanions,
       branchSkills: validCompanions.slice(1).map(c => skillMap.get(c)!),
     });
 

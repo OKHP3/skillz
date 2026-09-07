@@ -86,7 +86,11 @@ async function main() {
     const blocked = skills.find(s => s.evidence.status === 'none' && s.evidence.blockers.length > 0 && s.companions.length > 0)
       || skills.find(s => s.evidence.status === 'none' && s.evidence.blockers.length > 0);
     const unlocked = skills.find(s => s.evidence.status === 'live' && s.evidence.blockers.length === 0);
-    assert(stale && blocked && unlocked, 'Catalog must contain historical, blocked, and locally unlockable skills.');
+    const approvedCompanion = skills.find(s =>
+      s.companionDiagnostics?.deferred?.length || s.companionDiagnostics?.projectLocal?.length
+    );
+    assert(stale && blocked && unlocked && approvedCompanion,
+      'Catalog must contain historical, blocked, locally unlockable, and approved-companion skills.');
 
     browser = await chromium.launch({ headless: true, executablePath: chromiumExecutable() });
     const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -104,6 +108,16 @@ async function main() {
     await desktop.getByRole('tabpanel').waitFor();
     assert((await text(desktop, '.skill-validation-list')).includes('Contract body loaded'), 'Validation tab did not render its checks.');
     await expectNoHorizontalOverflow(desktop, 'desktop review surface');
+
+    await desktop.goto(route(approvedCompanion), { waitUntil: 'domcontentloaded' });
+    const pathway = desktop.locator('.skill-pathway');
+    await pathway.waitFor();
+    const deferredLabel = pathway.locator('[data-companion-kind="deferred"]');
+    const projectLocalLabel = pathway.locator('[data-companion-kind="project-local"]');
+    assert(await deferredLabel.count() + await projectLocalLabel.count() > 0,
+      `Approved companion diagnostics are not visible for ${approvedCompanion.name}.`);
+    assert(await pathway.locator('.skill-pathway__branch--broken').count() === 0,
+      'Approved companion diagnostics must not use the unresolved warning presentation.');
 
     const missing = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await missing.route('**/*.json', requestRoute => (
