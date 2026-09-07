@@ -334,6 +334,72 @@ test('builder companion diagnostics omit approved references and report every br
   );
 });
 
+test('a real catalog build preserves companion diagnostics across the subprocess boundary', () => {
+  const outputRoot = mkdtempSync(join(tmpdir(), 'catalog-companion-build-output-'));
+  const brokenCompanion = 'okhp3-catalog-subprocess-broken-companion';
+  const buildScript = join(FORGE_ROOT, 'scripts', 'build-catalog.js');
+  let fixtureRoot;
+
+  const runBuild = () => spawnSync(process.execPath, [buildScript], {
+    cwd: WORKSPACE_ROOT,
+    env: {
+      ...process.env,
+      FORGE_PUBLIC_DIR: outputRoot,
+      FORGE_SKIP_MANIFEST_SYNC: '1',
+      ALLOW_SHALLOW_CATALOG_BUILD: '1',
+    },
+    encoding: 'utf8',
+  });
+
+  try {
+    const approvedResult = runBuild();
+    const approvedStdout = approvedResult.stdout || '';
+    const approvedStderr = approvedResult.stderr || '';
+    const approvedOutput = `${approvedStdout}\n${approvedStderr}`;
+    assert(approvedResult.status === 0,
+      `expected the catalog build with approved exceptions to succeed, got exit code ` +
+      `${approvedResult.status}\nstdout:\n${approvedStdout}\nstderr:\n${approvedStderr}`);
+    assert(!approvedOutput.includes('unresolved companion reference(s)'),
+      `approved companion exceptions produced an unresolved warning count:\n${approvedOutput}`);
+
+    fixtureRoot = mkdtempSync(join(REPO_ROOT, 'community', 'catalog-companion-smoke-'));
+    const fixtureSkillPath = join(fixtureRoot, 'SKILL.md');
+    writeFileSync(fixtureSkillPath, `---
+name: okhp3-catalog-subprocess-fixture
+description: "Temporary catalog build fixture."
+---
+
+# Catalog subprocess fixture
+
+This fixture references the broken companion \`${brokenCompanion}\`.
+`, 'utf8');
+
+    const result = runBuild();
+    const stdout = result.stdout || '';
+    const stderr = result.stderr || '';
+    const fixturePath = relative(REPO_ROOT, fixtureSkillPath).replace(/\\/g, '/');
+
+    assert(result.status === 0,
+      `expected the isolated catalog build to succeed, got exit code ${result.status}\n` +
+      `stdout:\n${stdout}\nstderr:\n${stderr}`);
+    assert(
+      stderr.includes(`[catalog warn] ${fixturePath}: companion "${brokenCompanion}"`) &&
+        stderr.includes('does not match any skill in the catalog'),
+      `broken companion warning should contain source path "${fixturePath}" and name ` +
+      `"${brokenCompanion}":\n${stderr}`
+    );
+    assert(
+      stdout.includes('⚠ 1 unresolved companion reference(s) — see warnings above.'),
+      `the subprocess summary should report exactly one broken companion:\n${stdout}`
+    );
+    assert(existsSync(join(outputRoot, 'data', 'catalog.json')),
+      'isolated build did not write its catalog output');
+  } finally {
+    if (fixtureRoot) rmSync(fixtureRoot, { recursive: true, force: true });
+    rmSync(outputRoot, { recursive: true, force: true });
+  }
+});
+
 // 11c. Governance guard: every family must declare an explicit display_name
 // in its FAMILY.md frontmatter — no family should rely on the auto-titlecase
 // fallback in readFamilyDisplayName(), which exists only so a brand-new
