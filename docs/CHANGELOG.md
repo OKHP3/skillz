@@ -6,6 +6,14 @@ This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
 
+### Fixed
+
+- Repository Janitor 0.2.1 now emits full `refs/archive/...` names in
+  `archive_refs`, matching the keys in `archive_ref_shas`. Consumers of 0.2.0
+  snapshots must normalize the shortened `archive_refs` names before joining
+  them to the SHA map. The full-name SHA map and exception comparison are
+  unchanged; this fix does not expand authority or enable unattended writes.
+
 ### Changed
 
 - Refined GitHub Notification Maintainer to 1.2.0 with a schedule-health
