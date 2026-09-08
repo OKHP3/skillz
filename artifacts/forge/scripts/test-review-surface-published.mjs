@@ -67,6 +67,25 @@ async function text(page, selector) {
   return (await page.locator(selector).innerText()).trim();
 }
 
+async function expectNoHorizontalOverflow(page, label) {
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  assert(overflow <= 1, `${label} has horizontal overflow (${overflow}px).`);
+}
+
+async function expectVisibleWithinViewport(locator, label) {
+  assert(await locator.count() > 0, `${label} is missing.`);
+  for (let index = 0; index < await locator.count(); index += 1) {
+    const item = locator.nth(index);
+    assert(await item.isVisible(), `${label} is not visible.`);
+    await item.scrollIntoViewIfNeeded();
+    const bounds = await item.boundingBox();
+    const viewport = await item.page().evaluate(() => ({ width: window.innerWidth, height: window.innerHeight }));
+    assert(bounds && bounds.x >= 0 && bounds.x + bounds.width <= viewport.width
+      && bounds.y >= 0 && bounds.y + bounds.height <= viewport.height,
+    `${label} is clipped outside the viewport.`);
+  }
+}
+
 async function main() {
   // 1. Deployment stage: the published site and its catalog must be publicly
   // reachable at all -- no auth, no repository access, just a plain GET.
@@ -80,6 +99,13 @@ async function main() {
   }
   const skill = catalog.skills?.[0];
   if (!skill) throw new DeploymentError('Published catalog.json has no skills to exercise the review surface with.');
+  const deferredSkill = catalog.skills.find(s => s.companionDiagnostics?.deferred?.length);
+  const projectLocalSkill = catalog.skills.find(s => s.companionDiagnostics?.projectLocal?.length);
+  if (!deferredSkill || !projectLocalSkill) {
+    throw new DeploymentError(
+      'Published catalog.json must contain representative deferred and project-local companion diagnostics.',
+    );
+  }
 
   const expected = expectedSourceCommit();
   if (expected && catalog.sourceCommit && !expected.startsWith(catalog.sourceCommit) && !catalog.sourceCommit.startsWith(expected.slice(0, catalog.sourceCommit.length))) {
@@ -150,7 +176,29 @@ async function main() {
     });
     assert(focusOutline, 'Raw-markdown fallback link has no visible focus indicator on the published site.');
 
-    console.log(`✓ published review surface at ${baseUrl} preserves failed-contract keyboard recovery (${skill.family}/${skill.name})`);
+    for (const [approvedSkill, kind, label] of [
+      [deferredSkill, 'deferred', 'Deferred companion diagnostic'],
+      [projectLocalSkill, 'project-local', 'Project-local companion diagnostic'],
+    ]) {
+      await page.goto(
+        `${baseUrl}#/skills/${encodeURIComponent(approvedSkill.family)}/${encodeURIComponent(approvedSkill.name)}`,
+        { waitUntil: 'domcontentloaded', timeout: 20_000 },
+      );
+      const pathway = page.locator('.skill-pathway');
+      await pathway.waitFor({ timeout: 20_000 });
+      const notice = pathway.locator(`[data-companion-kind="${kind}"]`);
+      await expectVisibleWithinViewport(notice, `${label} for ${approvedSkill.name}`);
+      assert(
+        await pathway.locator('.skill-pathway__branch--broken').count() === 0,
+        `${label} for ${approvedSkill.name} must not use the unresolved warning presentation.`,
+      );
+      await expectNoHorizontalOverflow(page, `published ${label.toLowerCase()} pathway for ${approvedSkill.name}`);
+    }
+
+    console.log(
+      `✓ published review surface at ${baseUrl} preserves failed-contract keyboard recovery and approved companion notices `
+      + `(${deferredSkill.family}/${deferredSkill.name}, ${projectLocalSkill.family}/${projectLocalSkill.name})`,
+    );
   } finally {
     await browser.close();
   }
