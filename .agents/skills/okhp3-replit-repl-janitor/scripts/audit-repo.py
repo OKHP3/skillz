@@ -71,6 +71,53 @@ def ensure_base(root: Path, base: str) -> None:
     run(["git", "rev-parse", "--verify", f"{base}^{{commit}}"], root)
 
 
+def classify_branch_for_cleanup(
+    branch: dict[str, object],
+    *,
+    expected_head: str | None = None,
+    hosted_pr: dict[str, object] | None = None,
+) -> dict[str, str]:
+    """Classify a branch without treating incomplete evidence as disposable.
+
+    ``hosted_pr`` is deliberately supplied by the caller after a separate
+    pull-request lookup.  The supported evidence keys are ``state`` (``open``
+    or ``closed``), ``merged``, ``head_sha``, and
+    ``merge_commit_reachable``.  A missing or contradictory safety fact holds
+    the branch for review rather than inferring that it can be deleted.
+    """
+    name = str(branch.get("branch", ""))
+    if branch.get("is_current") or name == "main":
+        return {"bucket": "keep", "reason": "current or protected main branch"}
+
+    head_sha = str(branch.get("head_sha", ""))
+    if not head_sha:
+        return {"bucket": "review", "reason": "branch tip is unavailable"}
+    if expected_head and head_sha != expected_head:
+        return {"bucket": "review", "reason": "branch tip changed since review"}
+
+    if hosted_pr is not None:
+        hosted_head = hosted_pr.get("head_sha")
+        if hosted_head and hosted_head != head_sha:
+            return {"bucket": "review", "reason": "hosted PR head does not match branch tip"}
+
+        state = hosted_pr.get("state")
+        merged = hosted_pr.get("merged") is True
+        if state == "open":
+            return {"bucket": "keep", "reason": "open pull request"}
+        if state == "closed" and not merged:
+            return {"bucket": "review", "reason": "closed pull request was not merged"}
+        if merged and hosted_pr.get("merge_commit_reachable") is not True:
+            return {"bucket": "review", "reason": "merged commit is not reachable from the base"}
+        if state not in {"closed", "merged"}:
+            return {"bucket": "review", "reason": "hosted pull-request state is unknown"}
+        if merged:
+            return {"bucket": "delete", "reason": "merged pull request and reachable merge commit"}
+
+    if branch.get("merged_into_base"):
+        return {"bucket": "delete", "reason": "branch tip is reachable from the base"}
+    return {"bucket": "review", "reason": "branch has not been proven disposable"}
+
+
 def audit_branches(root: Path, base: str) -> tuple[list[dict[str, object]], str]:
     current = run(["git", "branch", "--show-current"], root)
     branches = run(
@@ -91,11 +138,13 @@ def audit_branches(root: Path, base: str) -> tuple[list[dict[str, object]], str]
             ["git", "log", "-1", "--format=%ci%x00%an%x00%s", branch],
             root,
         )
+        head_sha = run(["git", "rev-parse", branch], root)
         date, author, subject = (last.split("\0", 2) + ["", "", ""])[:3]
         ledger.append({
             "branch": branch,
             "is_current": bool(current) and branch == current,
             "merged_into_base": branch in merged,
+            "head_sha": head_sha,
             "last_commit_date": date,
             "last_commit_author": author,
             "last_commit_subject": subject,

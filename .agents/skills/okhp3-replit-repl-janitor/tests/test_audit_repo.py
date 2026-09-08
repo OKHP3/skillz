@@ -5,6 +5,7 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 SCRIPT = Path(__file__).parents[1] / "scripts" / "audit-repo.py"
@@ -15,6 +16,100 @@ SPEC.loader.exec_module(audit_repo)
 
 
 class AuditRepoTests(unittest.TestCase):
+    def test_unsafe_cleanup_evidence_is_held_for_review(self) -> None:
+        unsafe_fixtures = [
+            (
+                "exact-head-mismatch",
+                {"expected_head": "reviewed-head"},
+                {
+                    "state": "closed",
+                    "merged": True,
+                    "head_sha": "reviewed-head",
+                    "merge_commit_reachable": True,
+                },
+            ),
+            (
+                "closed-but-unmerged-pr",
+                {},
+                {
+                    "state": "closed",
+                    "merged": False,
+                    "head_sha": "branch-head",
+                    "merge_commit_reachable": False,
+                },
+            ),
+            (
+                "unreachable-merge-commit",
+                {},
+                {
+                    "state": "closed",
+                    "merged": True,
+                    "head_sha": "branch-head",
+                    "merge_commit_reachable": False,
+                },
+            ),
+        ]
+        for name, options, hosted_pr in unsafe_fixtures:
+            with self.subTest(name=name):
+                decision = audit_repo.classify_branch_for_cleanup(
+                    {
+                        "branch": f"feature/{name}",
+                        "is_current": False,
+                        "merged_into_base": True,
+                        "head_sha": "branch-head",
+                    },
+                    hosted_pr=hosted_pr,
+                    **options,
+                )
+                self.assertEqual(decision["bucket"], "review")
+                self.assertNotEqual(decision["bucket"], "delete")
+
+    def test_active_branches_stashes_and_archive_refs_are_protected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "branch", "active-work")
+            (root / "draft.txt").write_text("keep me\n", encoding="utf-8")
+            self._git(root, "stash", "push", "--include-untracked", "-m", "recovery")
+            self._git(root, "update-ref", "refs/archive/recovery", "HEAD")
+
+            branches, _ = audit_repo.audit_branches(root, "main")
+            names = {str(item["branch"]) for item in branches}
+            self.assertIn("main", names)
+            self.assertIn("active-work", names)
+            self.assertNotIn("refs/stash", names)
+            self.assertNotIn("refs/archive/recovery", names)
+            self.assertEqual(
+                audit_repo.classify_branch_for_cleanup(
+                    {
+                        "branch": "active-work",
+                        "is_current": False,
+                        "merged_into_base": True,
+                        "head_sha": "branch-head",
+                    },
+                    hosted_pr={"state": "open", "merged": False, "head_sha": "branch-head"},
+                )["bucket"],
+                "keep",
+            )
+            self.assertEqual(
+                self._git(root, "show-ref", "--verify", "refs/stash").split()[0],
+                self._git(root, "rev-parse", "refs/stash").strip(),
+            )
+            self.assertEqual(
+                self._git(root, "show-ref", "--verify", "refs/archive/recovery").split()[0],
+                self._git(root, "rev-parse", "refs/archive/recovery").strip(),
+            )
+
+    def test_discovery_does_not_prune_refs(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            with patch.object(audit_repo, "run", wraps=audit_repo.run) as run:
+                audit_repo.audit_branches(root, "main")
+            commands = [" ".join(call.args[0]) for call in run.call_args_list]
+            self.assertTrue(commands)
+            self.assertTrue(all("prune" not in command for command in commands))
+
     def test_naming_exceptions_and_violations(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -53,6 +148,25 @@ class AuditRepoTests(unittest.TestCase):
             subprocess.run(["git", "init", "-q", str(root)], check=True)
             with self.assertRaises(audit_repo.AuditError):
                 audit_repo.ensure_base(root, "origin/main")
+
+    @staticmethod
+    def _git(root: Path, *args: str) -> str:
+        result = subprocess.run(
+            ["git", *args],
+            cwd=root,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        return result.stdout
+
+    def _init_repo(self, root: Path) -> None:
+        self._git(root, "init", "-q", "-b", "main")
+        self._git(root, "config", "user.email", "test@example.com")
+        self._git(root, "config", "user.name", "Audit Test")
+        (root / "README.md").write_text("fixture\n", encoding="utf-8")
+        self._git(root, "add", "README.md")
+        self._git(root, "commit", "-qm", "initial")
 
 
 if __name__ == "__main__":
