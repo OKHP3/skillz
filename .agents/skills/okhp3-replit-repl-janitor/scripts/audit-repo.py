@@ -71,19 +71,25 @@ def ensure_base(root: Path, base: str) -> None:
     run(["git", "rev-parse", "--verify", f"{base}^{{commit}}"], root)
 
 
+_HOSTED_PR_NOT_CHECKED = object()
+
+
 def classify_branch_for_cleanup(
     branch: dict[str, object],
     *,
     expected_head: str | None = None,
-    hosted_pr: dict[str, object] | None = None,
+    hosted_pr: dict[str, object] | None | object = _HOSTED_PR_NOT_CHECKED,
 ) -> dict[str, str]:
     """Classify a branch without treating incomplete evidence as disposable.
 
     ``hosted_pr`` is deliberately supplied by the caller after a separate
     pull-request lookup.  The supported evidence keys are ``state`` (``open``
     or ``closed``), ``merged``, ``head_sha``, and
-    ``merge_commit_reachable``.  A missing or contradictory safety fact holds
-    the branch for review rather than inferring that it can be deleted.
+    ``merge_commit_reachable``.  Passing ``None`` records an unavailable
+    lookup; a lookup status of ``unknown`` or ``failed`` is also incomplete
+    evidence.  Each holds the branch for review rather than inferring that it
+    can be deleted.  Omitting ``hosted_pr`` retains local-only classification
+    for callers that have not requested a hosted lookup.
     """
     name = str(branch.get("branch", ""))
     if branch.get("is_current") or name == "main":
@@ -95,7 +101,23 @@ def classify_branch_for_cleanup(
     if expected_head and head_sha != expected_head:
         return {"bucket": "review", "reason": "branch tip changed since review"}
 
-    if hosted_pr is not None:
+    if hosted_pr is None:
+        return {
+            "bucket": "review",
+            "reason": "hosted pull-request lookup is unavailable; hosted evidence is missing",
+        }
+
+    if hosted_pr is not _HOSTED_PR_NOT_CHECKED:
+        lookup_status = hosted_pr.get("lookup_status", hosted_pr.get("lookup"))
+        if lookup_status in {"unknown", "failed"}:
+            return {
+                "bucket": "review",
+                "reason": (
+                    f"hosted pull-request lookup is {lookup_status}; "
+                    "hosted evidence is missing"
+                ),
+            }
+
         hosted_head = hosted_pr.get("head_sha")
         if hosted_head and hosted_head != head_sha:
             return {"bucket": "review", "reason": "hosted PR head does not match branch tip"}
@@ -109,7 +131,10 @@ def classify_branch_for_cleanup(
         if merged and hosted_pr.get("merge_commit_reachable") is not True:
             return {"bucket": "review", "reason": "merged commit is not reachable from the base"}
         if state not in {"closed", "merged"}:
-            return {"bucket": "review", "reason": "hosted pull-request state is unknown"}
+            return {
+                "bucket": "review",
+                "reason": "hosted pull-request state is unknown; hosted evidence is missing",
+            }
         if merged:
             return {"bucket": "delete", "reason": "merged pull request and reachable merge commit"}
 

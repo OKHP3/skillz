@@ -19,6 +19,21 @@ class AuditRepoTests(unittest.TestCase):
     def test_unsafe_cleanup_evidence_is_held_for_review(self) -> None:
         unsafe_fixtures = [
             (
+                "unknown-hosted-lookup",
+                {},
+                {"lookup_status": "unknown"},
+            ),
+            (
+                "failed-hosted-lookup",
+                {},
+                {"lookup_status": "failed", "error": "host unavailable"},
+            ),
+            (
+                "unavailable-hosted-lookup",
+                {},
+                None,
+            ),
+            (
                 "exact-head-mismatch",
                 {"expected_head": "reviewed-head"},
                 {
@@ -63,6 +78,28 @@ class AuditRepoTests(unittest.TestCase):
                 )
                 self.assertEqual(decision["bucket"], "review")
                 self.assertNotEqual(decision["bucket"], "delete")
+                if "lookup" in name:
+                    self.assertIn("hosted evidence is missing", decision["reason"])
+
+    def test_merged_hosted_pull_request_is_deletable(self) -> None:
+        decision = audit_repo.classify_branch_for_cleanup(
+            {
+                "branch": "feature/merged-work",
+                "is_current": False,
+                "merged_into_base": False,
+                "head_sha": "branch-head",
+            },
+            hosted_pr={
+                "state": "closed",
+                "merged": True,
+                "head_sha": "branch-head",
+                "merge_commit_reachable": True,
+            },
+        )
+        self.assertEqual(decision, {
+            "bucket": "delete",
+            "reason": "merged pull request and reachable merge commit",
+        })
 
     def test_active_branches_stashes_and_archive_refs_are_protected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
