@@ -714,6 +714,48 @@ function getUnresolvedCompanionReferences(skills) {
   return unresolved;
 }
 
+function getStaleApprovedCompanionReferences(skills, approvedReferences = APPROVED_COMPANION_REFERENCES) {
+  const skillsByPath = new Map(skills.map(skill => [skill.path, skill]));
+  const stale = [];
+
+  for (const reference of approvedReferences.keys()) {
+    const separator = reference.indexOf('::');
+    const sourcePath = separator >= 0 ? reference.slice(0, separator) : reference;
+    const companionName = separator >= 0 ? reference.slice(separator + 2) : '';
+    const sourceSkill = skillsByPath.get(sourcePath);
+
+    if (!sourceSkill) {
+      stale.push({
+        reference,
+        reason: `source contract "${sourcePath}" no longer exists`,
+      });
+      continue;
+    }
+
+    if (!companionName || !(sourceSkill.companions || []).includes(companionName)) {
+      stale.push({
+        reference,
+        reason: `source contract "${sourcePath}" no longer declares companion "${companionName}"`,
+      });
+    }
+  }
+
+  return stale;
+}
+
+function validateApprovedCompanionReferences(skills, approvedReferences = APPROVED_COMPANION_REFERENCES) {
+  const stale = getStaleApprovedCompanionReferences(skills, approvedReferences);
+  if (stale.length === 0) return stale;
+
+  const details = stale
+    .map(({ reference, reason }) => `${reference} (${reason})`)
+    .join('; ');
+  throw new Error(
+    `Catalog integrity violation: stale approved companion registry entr${stale.length === 1 ? 'y' : 'ies'}: ` +
+    `${details}. Remove the stale registry key or update it to match an existing source contract and companion declaration.`
+  );
+}
+
 function getCompanionDiagnostics(skill) {
   const diagnostics = { deferred: [], projectLocal: [], approved: [] };
   for (const companionName of skill.companions || []) {
@@ -1041,6 +1083,12 @@ function buildCatalog() {
   skills.sort((a, b) => a.family.localeCompare(b.family) || a.name.localeCompare(b.name));
 
   // ─── Companion resolution check ─────────────────────────────────────────────
+  // The approved registry is an intentional exception list, but it must not
+  // become a tomb for removed or renamed source contracts. Validate each entry
+  // against the collected source skills and their declarations before allowing
+  // the registry to suppress the normal unresolved-reference warning.
+  validateApprovedCompanionReferences(skills);
+
   // extractCompanions() pulls companion names straight from `okhp3-...`
   // back-tick references in the SKILL.md body — it has no way to know
   // whether that name actually exists in the catalog. A typo or a rename
@@ -1412,6 +1460,8 @@ if (process.argv[1] && realpathSync(fileURLToPath(import.meta.url)) === realpath
 export {
   applyEvidencePolicy,
   getUnresolvedCompanionReferences,
+  getStaleApprovedCompanionReferences,
+  validateApprovedCompanionReferences,
   getCompanionDiagnostics,
   reportUnresolvedCompanionReferences,
   hasAnyEvidenceArtifact,

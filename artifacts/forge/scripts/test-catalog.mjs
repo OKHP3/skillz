@@ -19,11 +19,13 @@ import { fileURLToPath } from 'url';
 import { execSync, spawnSync } from 'child_process';
 import {
   applyEvidencePolicy,
+  getStaleApprovedCompanionReferences,
   getUnresolvedCompanionReferences,
   hasSubstantiveEvidenceArtifact,
   KNOWN_UNRESOLVED_COMPANIONS,
   pruneSkillDetailFiles,
   reportUnresolvedCompanionReferences,
+  validateApprovedCompanionReferences,
 } from './build-catalog.js';
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 
@@ -261,6 +263,61 @@ test('approved unresolved companion references are excluded from build warnings'
     `approved companions should not be reported as unresolved: ${unresolved.map(
       ({ companionName }) => companionName
     ).join(', ')}`);
+});
+
+test('the shipped catalog has no stale approved companion registry entries', () => {
+  let error;
+  try {
+    validateApprovedCompanionReferences(catalog.skills);
+  } catch (err) {
+    error = err;
+  }
+  assert(!error, error?.message || 'approved companion registry contains stale entries');
+});
+
+test('approved companion registry entries must match a source contract and declaration', () => {
+  const approvedReferences = new Map([
+    ['future/missing/SKILL.md::okhp3-deferred-capability', { kind: 'deferred' }],
+    ['future/existing/SKILL.md::okhp3-renamed-capability', { kind: 'deferred' }],
+    ['future/existing/SKILL.md::okhp3-still-declared', { kind: 'deferred' }],
+  ]);
+  const skills = [
+    {
+      path: 'future/existing/SKILL.md',
+      companions: ['okhp3-old-capability', 'okhp3-still-declared'],
+    },
+  ];
+
+  const stale = getStaleApprovedCompanionReferences(skills, approvedReferences);
+  assert(stale.length === 2, `expected two stale approved entries, got ${stale.length}`);
+  assert(
+    stale[0].reference === 'future/missing/SKILL.md::okhp3-deferred-capability' &&
+      stale[0].reason.includes('source contract "future/missing/SKILL.md" no longer exists'),
+    `missing source contract was not identified precisely: ${JSON.stringify(stale[0])}`
+  );
+  assert(
+    stale[1].reference === 'future/existing/SKILL.md::okhp3-renamed-capability' &&
+      stale[1].reason.includes('no longer declares companion "okhp3-renamed-capability"'),
+    `removed companion declaration was not identified precisely: ${JSON.stringify(stale[1])}`
+  );
+  assert(
+    !stale.some(({ reference }) => reference.endsWith('::okhp3-still-declared')),
+    'an approved entry whose source declaration still exists must remain valid'
+  );
+
+  let error;
+  try {
+    validateApprovedCompanionReferences(skills, approvedReferences);
+  } catch (err) {
+    error = err;
+  }
+  assert(error, 'stale approved entries must fail catalog validation');
+  assert(
+    error.message.includes('future/missing/SKILL.md::okhp3-deferred-capability') &&
+      error.message.includes('future/existing/SKILL.md::okhp3-renamed-capability') &&
+      error.message.includes('Remove the stale registry key or update it'),
+    `validation failure did not identify stale keys and cleanup guidance: ${error.message}`
+  );
 });
 
 test('a genuinely broken companion reference remains unresolved', () => {
