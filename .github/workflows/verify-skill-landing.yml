@@ -1,56 +1,25 @@
-# GitHub Actions workflow for the OKHP3/skillz repository
+# Explicit promotion verification, not a notification for every Skillz push.
+# Copy this self-contained file to OKHP3/skillz:
+#   .github/workflows/verify-skill-landing.yml
 #
-# SETUP INSTRUCTIONS
-# ------------------
-# 1. Copy this file to OKHP3/skillz at:
-#      .github/workflows/verify-skill-landing.yml
+# First merge the skill, then record its full accepted SHA in a promotion
+# manifest on glee-fully-chai-chasers/main. That manifest push automatically
+# runs the receiver's landing checks. Use this workflow for an explicit
+# exact-commit verification or retry after the manifest is available.
+# Ordinary maintenance commits are not new promotion records.
 #
-# 2. In the OKHP3/skillz repository settings, optionally add a secret named:
-#      VERIFY_LANDING_PAT
-#    Set it to a GitHub personal access token that can dispatch the workflow
-#    to glee-fully-chai-chasers. Without this optional secret, the workflow
-#    records a warning and exits successfully without dispatching.
-#
-# 3. After each skill PR merges to main in OKHP3/skillz, this workflow fires
-#    and sends a repository_dispatch event to glee-fully-chai-chasers, passing
-#    the merge commit SHA.  The receiving workflow
-#    (.github/workflows/verify-skill-landing.yml in glee-fully-chai-chasers)
-#    locates the matching promotion manifest and runs verify_skill_landing.py.
-#
-# HOW IT WORKS
-# ------------
-# - Triggers on every push to main (covers both direct pushes and PR merges).
-# - Sends a repository_dispatch event of type "skillz-push" to the incubator
-#   repo (glee-fully-chai-chasers) with the push commit SHA in the payload.
-# - The incubator workflow matches that SHA against
-#   canonical_target.accepted_commit_or_hash in each promotion manifest and
-#   runs verify_skill_landing.py for any matches.
-#
-# ALTERNATIVE: run-in-place
-# If you prefer to run the verification directly inside OKHP3/skillz without
-# dispatching to the incubator, replace the "Dispatch" step with:
-#
-#   - name: Check out incubator (for verify script and manifests)
-#     uses: actions/checkout@v4
-#     with:
-#       repository: OKHP3/glee-fully-chai-chasers   # adjust if repo name differs
-#       token: ${{ secrets.VERIFY_LANDING_PAT }}
-#       path: incubator
-#
-#   - name: Run landing verification
-#     env:
-#       GITHUB_PAT: ${{ secrets.VERIFY_LANDING_PAT }}
-#     run: |
-#       python3 incubator/skills/promotion-handoff/verify_skill_landing.py \
-#         --manifest incubator/skills/promotion-handoff/promotion-manifest-<skill>.json \
-#         --ref ${{ github.sha }} \
-#         --token-env GITHUB_PAT
-
+# VERIFY_LANDING_PAT must permit repository_dispatch to the incubator.
+# A requested verification without that credential must fail, not claim success.
+# The receiver still rejects an explicit SHA with no matching manifest.
 name: Notify landing verification
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Full accepted Skillz commit SHA already recorded in the incubator manifest
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -59,25 +28,35 @@ jobs:
   dispatch-verify:
     name: Dispatch landing verification to incubator
     runs-on: ubuntu-latest
-
+    timeout-minutes: 5
     steps:
       - name: Dispatch repository_dispatch to glee-fully-chai-chasers
+        shell: bash
         env:
+          PROMOTION_SHA: ${{ inputs.commit_sha }}
           VERIFY_LANDING_PAT: ${{ secrets.VERIFY_LANDING_PAT }}
         run: |
           set -euo pipefail
-          if [ -z "${VERIFY_LANDING_PAT:-}" ]; then
-            echo "::warning title=Landing verification skipped::VERIFY_LANDING_PAT is not configured; no cross-repository dispatch was sent."
-            exit 0
+          if [[ "${GITHUB_REF}" != "refs/heads/main" ]]; then
+            echo "::error::Run this workflow from main."
+            exit 1
+          fi
+          if [[ ! "${PROMOTION_SHA:-}" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::commit_sha must be a full lowercase 40-character Git commit SHA."
+            exit 1
+          fi
+          if [[ -z "${VERIFY_LANDING_PAT:-}" ]]; then
+            echo "::error::VERIFY_LANDING_PAT is not configured; requested verification was not dispatched."
+            exit 1
           fi
 
           payload="$(node <<'NODE'
           const payload = {
             event_type: 'skillz-push',
             client_payload: {
-              commit_sha: process.env.GITHUB_SHA,
-              ref: process.env.GITHUB_REF,
-              triggered_by: `${process.env.GITHUB_REPOSITORY} push to main`,
+              commit_sha: process.env.PROMOTION_SHA,
+              ref: 'refs/heads/main',
+              triggered_by: 'OKHP3/skillz explicit promotion verification',
             },
           };
           process.stdout.write(JSON.stringify(payload));
@@ -85,6 +64,7 @@ jobs:
           )"
 
           curl --fail-with-body --silent --show-error \
+            --connect-timeout 10 --max-time 30 \
             --request POST \
             --header "Accept: application/vnd.github+json" \
             --header "Authorization: Bearer ${VERIFY_LANDING_PAT}" \
@@ -92,4 +72,4 @@ jobs:
             --data "$payload" \
             "https://api.github.com/repos/OKHP3/glee-fully-chai-chasers/dispatches"
 
-          echo "Dispatched skillz-push for ${GITHUB_SHA} to OKHP3/glee-fully-chai-chasers"
+          echo "Dispatched skillz-push for ${PROMOTION_SHA}; inspect the receiver run for the verification result."
