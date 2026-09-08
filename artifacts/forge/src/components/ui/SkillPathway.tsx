@@ -210,38 +210,40 @@ export default function SkillPathway({ nodes, allSkills }: SkillPathwayProps) {
                   )}
                 </div>
 
-                {/* Broken-companion indicator */}
-                {node.unresolvedCompanions.length > 0 && (
-                  <span
-                    className="skill-pathway__branch skill-pathway__branch--broken"
-                    title={`Unresolved companion reference${node.unresolvedCompanions.length > 1 ? 's' : ''}: ${node.unresolvedCompanions.join(', ')}`}
-                    aria-label={`${node.unresolvedCompanions.length} unresolved companion reference${node.unresolvedCompanions.length > 1 ? 's' : ''} on this skill: ${node.unresolvedCompanions.join(', ')}`}
-                  >
-                    ⚠ {node.unresolvedCompanions.length}
-                  </span>
-                )}
+                <div className="skill-pathway__companion-notices">
+                  {/* Broken-companion indicator */}
+                  {node.unresolvedCompanions.length > 0 && (
+                    <span
+                      className="skill-pathway__branch skill-pathway__branch--broken"
+                      title={`Unresolved companion reference${node.unresolvedCompanions.length > 1 ? 's' : ''}: ${node.unresolvedCompanions.join(', ')}`}
+                      aria-label={`${node.unresolvedCompanions.length} unresolved companion reference${node.unresolvedCompanions.length > 1 ? 's' : ''} on this skill: ${node.unresolvedCompanions.join(', ')}`}
+                    >
+                      ⚠ {node.unresolvedCompanions.length}
+                    </span>
+                  )}
 
-                {/* Approved non-catalog companions: visible, but not errors. */}
-                {node.deferredCompanions.length > 0 && (
-                  <span
-                    className="skill-pathway__branch skill-pathway__branch--deferred"
-                    data-companion-kind="deferred"
-                    title={`Deferred companion reference${node.deferredCompanions.length > 1 ? 's' : ''}: ${node.deferredCompanions.join(', ')}`}
-                    aria-label={`${node.deferredCompanions.length} deferred companion reference${node.deferredCompanions.length > 1 ? 's' : ''}: ${node.deferredCompanions.join(', ')}`}
-                  >
-                    Deferred {node.deferredCompanions.length}
-                  </span>
-                )}
-                {node.projectLocalCompanions.length > 0 && (
-                  <span
-                    className="skill-pathway__branch skill-pathway__branch--project-local"
-                    data-companion-kind="project-local"
-                    title={`Project-local companion reference${node.projectLocalCompanions.length > 1 ? 's' : ''}: ${node.projectLocalCompanions.join(', ')}`}
-                    aria-label={`${node.projectLocalCompanions.length} project-local companion reference${node.projectLocalCompanions.length > 1 ? 's' : ''}: ${node.projectLocalCompanions.join(', ')}`}
-                  >
-                    Project-local {node.projectLocalCompanions.length}
-                  </span>
-                )}
+                  {/* Approved non-catalog companions: visible, but not errors. */}
+                  {node.deferredCompanions.length > 0 && (
+                    <span
+                      className="skill-pathway__branch skill-pathway__branch--deferred"
+                      data-companion-kind="deferred"
+                      title={`Deferred companion reference${node.deferredCompanions.length > 1 ? 's' : ''}: ${node.deferredCompanions.join(', ')}`}
+                      aria-label={`${node.deferredCompanions.length} deferred companion reference${node.deferredCompanions.length > 1 ? 's' : ''}: ${node.deferredCompanions.join(', ')}`}
+                    >
+                      Deferred {node.deferredCompanions.length}
+                    </span>
+                  )}
+                  {node.projectLocalCompanions.length > 0 && (
+                    <span
+                      className="skill-pathway__branch skill-pathway__branch--project-local"
+                      data-companion-kind="project-local"
+                      title={`Project-local companion reference${node.projectLocalCompanions.length > 1 ? 's' : ''}: ${node.projectLocalCompanions.join(', ')}`}
+                      aria-label={`${node.projectLocalCompanions.length} project-local companion reference${node.projectLocalCompanions.length > 1 ? 's' : ''}: ${node.projectLocalCompanions.join(', ')}`}
+                    >
+                      Project-local {node.projectLocalCompanions.length}
+                    </span>
+                  )}
+                </div>
 
                 {/* Arrow connector — not rendered after last node */}
                 {!isLast && (

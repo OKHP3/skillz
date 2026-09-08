@@ -728,6 +728,12 @@
   gap: var(--space-2);
 }
 
+/* Keep status pills in the main row on wide layouts, while giving the
+   responsive layout one container to move below the node card. */
+.skill-pathway__companion-notices {
+  display: contents;
+}
+
 /* ── Fork lane ─────────────────────────────────────────────────────────────── */
 
 /* Container that hangs below a forked step */
@@ -1080,16 +1086,32 @@
 
   .skill-pathway__step-main {
     align-items: center;
+    flex-wrap: wrap;
+    min-width: 0;
   }
 
   .skill-pathway__node {
-    width: 100%;
+    width: auto;
     min-height: unset;
-    flex: 1;
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .skill-pathway__companion-notices {
+    display: flex;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .skill-pathway__companion-notices .skill-pathway__branch {
+    margin-top: 0;
   }
 
   .skill-pathway__arrow {
     margin-top: 0;
+    flex-basis: 100%;
     transform: rotate(90deg);
     align-self: flex-start;
     margin-left: var(--space-8);

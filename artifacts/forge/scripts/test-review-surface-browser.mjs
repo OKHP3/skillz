@@ -39,6 +39,20 @@ async function expectNoHorizontalOverflow(page, label) {
   assert(overflow <= 1, `${label} has horizontal overflow (${overflow}px).`);
 }
 
+async function expectVisibleWithinViewport(locator, label) {
+  assert(await locator.count() > 0, `${label} is missing.`);
+  for (let index = 0; index < await locator.count(); index += 1) {
+    const item = locator.nth(index);
+    assert(await item.isVisible(), `${label} is not visible.`);
+    await item.scrollIntoViewIfNeeded();
+    const bounds = await item.boundingBox();
+    const viewport = await item.page().evaluate(() => ({ width: window.innerWidth, height: window.innerHeight }));
+    assert(bounds && bounds.x >= 0 && bounds.x + bounds.width <= viewport.width
+      && bounds.y >= 0 && bounds.y + bounds.height <= viewport.height,
+      `${label} is clipped outside the viewport.`);
+  }
+}
+
 async function expectKeyboardFocus(page, locator, label) {
   await locator.scrollIntoViewIfNeeded();
   await locator.focus();
@@ -86,11 +100,13 @@ async function main() {
     const blocked = skills.find(s => s.evidence.status === 'none' && s.evidence.blockers.length > 0 && s.companions.length > 0)
       || skills.find(s => s.evidence.status === 'none' && s.evidence.blockers.length > 0);
     const unlocked = skills.find(s => s.evidence.status === 'live' && s.evidence.blockers.length === 0);
-    const approvedCompanion = skills.find(s =>
-      s.companionDiagnostics?.deferred?.length || s.companionDiagnostics?.projectLocal?.length
-    );
-    assert(stale && blocked && unlocked && approvedCompanion,
-      'Catalog must contain historical, blocked, locally unlockable, and approved-companion skills.');
+    const approvedCompanions = [
+      skills.find(s => s.companionDiagnostics?.deferred?.length),
+      skills.find(s => s.companionDiagnostics?.projectLocal?.length),
+    ].filter(Boolean);
+    const approvedCompanion = approvedCompanions[0];
+    assert(stale && blocked && unlocked && approvedCompanions.length === 2,
+      'Catalog must contain historical, blocked, locally unlockable, deferred, and project-local companion skills.');
 
     browser = await chromium.launch({ headless: true, executablePath: chromiumExecutable() });
     const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -118,6 +134,19 @@ async function main() {
       `Approved companion diagnostics are not visible for ${approvedCompanion.name}.`);
     assert(await pathway.locator('.skill-pathway__branch--broken').count() === 0,
       'Approved companion diagnostics must not use the unresolved warning presentation.');
+
+    for (const approved of approvedCompanions) {
+      const narrowApproved = await browser.newPage({ viewport: { width: 390, height: 844 } });
+      await narrowApproved.goto(route(approved), { waitUntil: 'domcontentloaded' });
+      const narrowPathway = narrowApproved.locator('.skill-pathway');
+      await narrowPathway.waitFor();
+      const narrowLabels = narrowPathway.locator('[data-companion-kind="deferred"], [data-companion-kind="project-local"]');
+      await expectVisibleWithinViewport(narrowLabels, `Approved companion diagnostics for ${approved.name}`);
+      assert(await narrowPathway.locator('.skill-pathway__branch--broken').count() === 0,
+        'Narrow approved companion diagnostics must not use the unresolved warning presentation.');
+      await expectNoHorizontalOverflow(narrowApproved, `narrow approved-companion pathway for ${approved.name}`);
+      await narrowApproved.close();
+    }
 
     const missing = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await missing.route('**/*.json', requestRoute => (
