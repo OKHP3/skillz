@@ -6,9 +6,9 @@
  * mutating the tracked release catalog, activity feed, or root manifest. The
  * same alternate output must be consumable by Review Desk's build-time sync.
  */
-import { readFileSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { dirname, join } from 'node:path';
+import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const forgeRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -53,8 +53,10 @@ function runNode(scriptPath, cwd, env) {
     result.status === 0,
     `${scriptPath} failed with exit code ${result.status}\nstdout:\n${result.stdout}\nstderr:\n${result.stderr}`,
   );
+  return result;
 }
 
+let companionFixtureRoot;
 try {
   assert(
     forgePackage.scripts.predev.includes('FORGE_PUBLIC_DIR=.cache/forge-preview') &&
@@ -69,7 +71,7 @@ try {
   );
 
   const before = snapshot(trackedPaths);
-  runNode(
+  const approvedPreviewBuild = runNode(
     join(forgeRoot, 'scripts', 'build-catalog.js'),
     workspaceRoot,
     {
@@ -80,8 +82,56 @@ try {
       CI: '',
     },
   );
+  const approvedPreviewOutput = `${approvedPreviewBuild.stdout || ''}\n${approvedPreviewBuild.stderr || ''}`;
+  assert(
+    !approvedPreviewOutput.includes('unresolved companion reference(s)'),
+    `Approved companion exceptions produced a preview-build warning:\n${approvedPreviewOutput}`,
+  );
   assert(existsSync(join(forgePreviewDir, 'data', 'catalog.json')), 'Preview catalog was not generated in the alternate output.');
   assert(existsSync(join(forgePreviewDir, 'data', 'search-index.json')), 'Preview search index was not generated in the alternate output.');
+
+  const brokenCompanion = 'okhp3-preview-broken-companion';
+  companionFixtureRoot = mkdtempSync(join(workspaceRoot, 'community', 'preview-companion-smoke-'));
+  const companionFixturePath = join(companionFixtureRoot, 'SKILL.md');
+  writeFileSync(companionFixturePath, `---
+name: okhp3-preview-companion-fixture
+description: "Temporary preview catalog fixture."
+---
+
+# Preview companion fixture
+
+This fixture references the broken companion \`${brokenCompanion}\`.
+`, 'utf8');
+
+  const brokenPreviewBuild = runNode(
+    join(forgeRoot, 'scripts', 'build-catalog.js'),
+    workspaceRoot,
+    {
+      FORGE_PUBLIC_DIR: previewDirName,
+      FORGE_SKIP_MANIFEST_SYNC: '1',
+      ALLOW_SHALLOW_CATALOG_BUILD: '1',
+      GITHUB_ACTIONS: '',
+      CI: '',
+    },
+  );
+  const brokenPreviewStdout = brokenPreviewBuild.stdout || '';
+  const brokenPreviewStderr = brokenPreviewBuild.stderr || '';
+  const companionFixtureRelativePath = relative(workspaceRoot, companionFixturePath).replace(/\\/g, '/');
+  assert(
+    brokenPreviewStderr.includes(
+      `[catalog warn] ${companionFixtureRelativePath}: companion "${brokenCompanion}"`,
+    ) &&
+      brokenPreviewStderr.includes('does not match any skill in the catalog'),
+    `Broken preview companion warning should contain source path "${companionFixtureRelativePath}" and name ` +
+      `"${brokenCompanion}":\n${brokenPreviewStderr}`,
+  );
+  assert(
+    brokenPreviewStdout.includes('⚠ 1 unresolved companion reference(s) — see warnings above.'),
+    `Preview build should summarize exactly one broken companion:\n${brokenPreviewStdout}`,
+  );
+  rmSync(companionFixtureRoot, { recursive: true, force: true });
+  companionFixtureRoot = undefined;
+
   const previewCatalog = JSON.parse(readFileSync(join(forgePreviewDir, 'data', 'catalog.json'), 'utf8'));
   const sampleSkill = previewCatalog.skills[0];
   const skillDetailsDir = join(forgePreviewDir, 'data', 'skills');
@@ -134,6 +184,9 @@ try {
 
   console.log('Preview generation regression passed.');
 } finally {
+  if (companionFixtureRoot) {
+    rmSync(companionFixtureRoot, { recursive: true, force: true });
+  }
   rmSync(forgePreviewDir, { recursive: true, force: true });
   rmSync(reviewDeskPreviewDir, { recursive: true, force: true });
 }
