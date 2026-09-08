@@ -134,6 +134,12 @@ async function main() {
       `Approved companion diagnostics are not visible for ${approvedCompanion.name}.`);
     assert(await pathway.locator('.skill-pathway__branch--broken').count() === 0,
       'Approved companion diagnostics must not use the unresolved warning presentation.');
+    const companionContext = desktop.locator('[data-section="approved-companion-context"]');
+    await companionContext.waitFor();
+    assert((await companionContext.innerText()).includes('Why these companions are not navigable'),
+      'Approved companion context is not visible on the skill detail page.');
+    assert((await companionContext.getByRole('link', { name: /Review the source contract/ }).count()) === 1,
+      'Approved companion context must link reviewers to the declaring source contract.');
 
     for (const approved of approvedCompanions) {
       const narrowApproved = await browser.newPage({ viewport: { width: 390, height: 844 } });

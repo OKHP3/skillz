@@ -421,6 +421,43 @@ export default function SkillDetail() {
                   })}
                 </ul>
               )}
+              {skill.companionDiagnostics?.approved && skill.companionDiagnostics.approved.length > 0 && (
+                <section
+                  className="detail-companion-context"
+                  aria-labelledby="approved-companion-context-heading"
+                  data-section="approved-companion-context"
+                >
+                  <h3 id="approved-companion-context-heading">Why these companions are not navigable</h3>
+                  <p>
+                    These companion labels are approved exceptions in the catalog contract, not unresolved
+                    references. Their status is recorded by the catalog builder so reviewers can distinguish
+                    intentional boundaries from broken links.
+                  </p>
+                  <ul className="detail-companion-context-list">
+                    {skill.companionDiagnostics.approved.map(diagnostic => (
+                      <li
+                        key={`${diagnostic.kind}-${diagnostic.name}`}
+                        className={`detail-companion-context-item detail-companion-context-item--${diagnostic.kind}`}
+                        data-companion-kind={diagnostic.kind}
+                      >
+                        <div className="detail-companion-context-label">
+                          <span className="detail-companion-context-status">{diagnostic.label}</span>
+                          <code>{diagnostic.name}</code>
+                        </div>
+                        <p>{diagnostic.explanation}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={skillGitHubUrl(skill.path)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="detail-companion-context-source"
+                  >
+                    Review the source contract that declares these references &rarr;
+                  </a>
+                </section>
+              )}
             </div>
           )}
 

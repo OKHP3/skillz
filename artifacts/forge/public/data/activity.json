@@ -1,85 +1,85 @@
 {
-  "generatedAt": "2026-09-04T17:20:33.496Z",
+  "generatedAt": "2026-09-08T03:18:35.370Z",
   "commits": [
     {
-      "sha": "7343e19680bcc9dc67f8c6f1d6e857a9ccde3d21",
-      "shortSha": "7343e19",
-      "message": "Align Free Mode autonomy catalog versions at 1.1.0\n\nReplit-Commit-Author: Agent",
-      "author": "Replit Agent",
-      "date": "2026-09-04T15:44:25Z",
-      "url": "https://github.com/OKHP3/skillz/commit/7343e19680bcc9dc67f8c6f1d6e857a9ccde3d21"
-    },
-    {
-      "sha": "5734966ed4c9e7565eae3cee45a6c236fcdcdaf2",
-      "shortSha": "5734966",
-      "message": "Add bounded Free Mode execution bug fixture\n\nReplit-Task-Id: 78b07ff3-9af3-448e-bc38-c96caf93a639\nReplit-Merge-Attempt: MergeTask:78b07ff3-9af3-448e-bc38-c96caf93a639:1:5a52d627",
-      "author": "overkillhillp3",
-      "date": "2026-09-04T15:40:03Z",
-      "url": "https://github.com/OKHP3/skillz/commit/5734966ed4c9e7565eae3cee45a6c236fcdcdaf2"
-    },
-    {
-      "sha": "5abb9955316fac41e30b11317e8ec738c80a1f64",
-      "shortSha": "5abb995",
-      "message": "Align Free Mode autonomy skill and benchmark versions at 1.1.0\n\nReplit-Task-Id: 48c9b367-bac3-4ae8-ac8a-bf6f10af5f12\nReplit-Merge-Attempt: MergeTask:48c9b367-bac3-4ae8-ac8a-bf6f10af5f12:1:54e4c578",
-      "author": "overkillhillp3",
-      "date": "2026-09-04T12:55:34Z",
-      "url": "https://github.com/OKHP3/skillz/commit/5abb9955316fac41e30b11317e8ec738c80a1f64"
-    },
-    {
-      "sha": "1e1a6367584dd7a5142ef572310aca2f2af4a88d",
-      "shortSha": "1e1a636",
-      "message": "Keep native telemetry writeback aligned across benchmark artifacts\n\nReplit-Task-Id: 282740b0-3b43-436f-a152-464e6e8631b3\nReplit-Merge-Attempt: MergeTask:282740b0-3b43-436f-a152-464e6e8631b3:1:d306d9a6",
-      "author": "overkillhillp3",
-      "date": "2026-09-04T12:51:24Z",
-      "url": "https://github.com/OKHP3/skillz/commit/1e1a6367584dd7a5142ef572310aca2f2af4a88d"
-    },
-    {
-      "sha": "3a65959b331c2ab2ddd95d3a2c22bf96caa12ba2",
-      "shortSha": "3a65959",
-      "message": "Add host-independent native telemetry import regression tests\n\nReplit-Task-Id: f0e793c6-f1a8-4eb2-aea9-4a36c1016400\nReplit-Merge-Attempt: MergeTask:f0e793c6-f1a8-4eb2-aea9-4a36c1016400:1:5e9e833c",
-      "author": "overkillhillp3",
-      "date": "2026-09-04T05:45:11Z",
-      "url": "https://github.com/OKHP3/skillz/commit/3a65959b331c2ab2ddd95d3a2c22bf96caa12ba2"
-    },
-    {
-      "sha": "0ff6e207255e71033e2d959291a64128893c7ed0",
-      "shortSha": "0ff6e20",
-      "message": "Harden native telemetry ingestion and preserve unavailable-host evidence status\n\nReplit-Task-Id: d2a1f1da-2c9f-497b-a724-29a9036bd23e\nReplit-Merge-Attempt: MergeTask:d2a1f1da-2c9f-497b-a724-29a9036bd23e:1:e4878bde",
-      "author": "overkillhillp3",
-      "date": "2026-09-04T05:40:15Z",
-      "url": "https://github.com/OKHP3/skillz/commit/0ff6e207255e71033e2d959291a64128893c7ed0"
-    },
-    {
-      "sha": "089e3bb5b7cc843377c59e2f9eb44ecca8862f9b",
-      "shortSha": "089e3bb",
-      "message": "Merge branch 'main' of https://github.com/OKHP3/skillz",
+      "sha": "ee7406cbd820f9b33ef1954ff25fa0372d6cb72c",
+      "shortSha": "ee7406c",
+      "message": "Merge remote-tracking branch 'origin/main'",
       "author": "OverKill Hill P³",
-      "date": "2026-09-04T05:26:03Z",
-      "url": "https://github.com/OKHP3/skillz/commit/089e3bb5b7cc843377c59e2f9eb44ecca8862f9b"
+      "date": "2026-09-08T02:59:46Z",
+      "url": "https://github.com/OKHP3/skillz/commit/ee7406cbd820f9b33ef1954ff25fa0372d6cb72c"
     },
     {
-      "sha": "02865229b27ddd8d3b118e858632fb9000d214ff",
-      "shortSha": "0286522",
-      "message": "Add native host telemetry export runner and benchmark writeback\n\nReplit-Task-Id: 51119074-5e2b-4928-a1a4-2d87dd2bed80\nReplit-Merge-Attempt: MergeTask:51119074-5e2b-4928-a1a4-2d87dd2bed80:1:65483b13",
+      "sha": "40e8dd814aaba0d1bf225d0c8820c23038a9dd82",
+      "shortSha": "40e8dd8",
+      "message": "Add subprocess coverage for catalog companion diagnostics\n\nReplit-Task-Id: 32ce40a5-e6f2-4a7e-9743-b2a790d7c9ac\nReplit-Merge-Attempt: MergeTask:32ce40a5-e6f2-4a7e-9743-b2a790d7c9ac:1:2f5dcc9d",
       "author": "overkillhillp3",
-      "date": "2026-09-04T05:25:42Z",
-      "url": "https://github.com/OKHP3/skillz/commit/02865229b27ddd8d3b118e858632fb9000d214ff"
+      "date": "2026-09-07T21:35:41Z",
+      "url": "https://github.com/OKHP3/skillz/commit/40e8dd814aaba0d1bf225d0c8820c23038a9dd82"
     },
     {
-      "sha": "235b321065807f878af34d8dbe505de854dc6c33",
-      "shortSha": "235b321",
-      "message": "\tnew file:   .agents/skills/okhp3-replit-build-in-public/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-build-in-public/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-build-in-public/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-build-in-public/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-canvas-board/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-canvas-board/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-canvas-board/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-canvas-board/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-design-pipeline/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-design-pipeline/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-design-pipeline/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-design-pipeline/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/evals/results.md\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/references/free-mode-autonomy-prompt.md\n\tnew file:   .agents/skills/okhp3-replit-free-mode-autonomy/references/platform-facts.md\n\tnew file:   .agents/skills/okhp3-replit-github-sync/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-github-sync/agents/openai.yaml\n\tnew file:   .agents/skills/okhp3-replit-github-sync/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-github-sync/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-github-sync/references/connector-contract.md\n\tnew file:   .agents/skills/okhp3-replit-multi-artifact/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-multi-artifact/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-multi-artifact/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-multi-artifact/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/SKILL.md\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/benchmarks/benchmark.json\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/evals/evals.json\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/evals/trigger-evals.json\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/references/foundry-architecture.md\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/references/naming-conventions.md\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/scripts/audit-repo.py\n\tnew file:   .agents/skills/okhp3-replit-repl-janitor/tests/test_audit_repo.py",
-      "author": "Jamie Hill",
-      "date": "2026-09-04T05:09:33Z",
-      "url": "https://github.com/OKHP3/skillz/commit/235b321065807f878af34d8dbe505de854dc6c33"
+      "sha": "a33592024117741bd2175a80fe85e700f5d74e24",
+      "shortSha": "a335920",
+      "message": "Add regression coverage for multiple broken companion warnings\n\nReplit-Task-Id: 8b618150-686d-41cb-ad13-19f259d3bc8f\nReplit-Merge-Attempt: MergeTask:8b618150-686d-41cb-ad13-19f259d3bc8f:1:bf1125fa",
+      "author": "overkillhillp3",
+      "date": "2026-09-07T14:47:49Z",
+      "url": "https://github.com/OKHP3/skillz/commit/a33592024117741bd2175a80fe85e700f5d74e24"
     },
     {
-      "sha": "a798d4d7b559edb7e6a7bd0928365c44e8f8c481",
-      "shortSha": "a798d4d",
-      "message": "\tmodified:   AGENTS.md\n\tnew file:   universal/.write-test\n\tnew file:   universal/okhp3-project-compass/LEARNING-RECORD.md\n\tnew file:   universal/okhp3-project-compass/SKILL.md\n\tnew file:   universal/okhp3-project-compass/assets/charter.template.md\n\tnew file:   universal/okhp3-project-compass/assets/config.example.json\n\tnew file:   universal/okhp3-project-compass/assets/objectives.schema.json\n\tnew file:   universal/okhp3-project-compass/evals/benchmark.json\n\tnew file:   universal/okhp3-project-compass/evals/equilibrium-review-1.2.0.json\n\tnew file:   universal/okhp3-project-compass/evals/evals.json\n\tnew file:   universal/okhp3-project-compass/references/delta-report-spec.md\n\tnew file:   universal/okhp3-project-compass/references/evidence-taxonomy.md\n\tnew file:   universal/okhp3-project-compass/references/file-mode.md\n\tnew file:   universal/okhp3-project-compass/references/github-mode.md\n\tnew file:   universal/okhp3-project-compass/references/mode-detection-and-promotion.md\n\tnew file:   universal/okhp3-project-compass/references/quality-rubric.md\n\tnew file:   universal/okhp3-project-compass/references/repo-shapes.md\n\tnew file:   universal/okhp3-project-compass/references/sink-adapters.md\n\tnew file:   universal/okhp3-project-compass/references/tracking-schema.md\n\tnew file:   universal/okhp3-project-compass/references/unattended-and-scheduling.md\n\tnew file:   universal/okhp3-project-compass/scripts/compass_ids.py\n\tnew file:   universal/okhp3-project-compass/scripts/compass_state.py\n\tnew file:   universal/okhp3-project-compass/scripts/detect_mode.py\n\tnew file:   universal/okhp3-project-compass/scripts/github_sync.py\n\tnew file:   universal/okhp3-project-compass/scripts/scan_repo.py\n\tnew file:   universal/okhp3-project-compass/scripts/selftest.py\n\tnew file:   universal/okhp3-project-compass/scripts/validate_compass.py",
-      "author": "Jamie Hill",
-      "date": "2026-09-04T04:30:47Z",
-      "url": "https://github.com/OKHP3/skillz/commit/a798d4d7b559edb7e6a7bd0928365c44e8f8c481"
+      "sha": "7616ccd7c92b65dafc936f744208ba62507b3c5c",
+      "shortSha": "7616ccd",
+      "message": "test: verify landing dispatch",
+      "author": "OverKill Hill P³",
+      "date": "2026-09-07T14:05:46Z",
+      "url": "https://github.com/OKHP3/skillz/commit/7616ccd7c92b65dafc936f744208ba62507b3c5c"
+    },
+    {
+      "sha": "f830ade161593cfaff0f468027b3ce72e26a6da6",
+      "shortSha": "f830ade",
+      "message": "Show approved companion exceptions distinctly in Forge pathways\n\nReplit-Task-Id: abb012bb-6684-42a0-aa5e-ed05505bdd7c\nReplit-Merge-Attempt: MergeTask:abb012bb-6684-42a0-aa5e-ed05505bdd7c:1:1ba978da",
+      "author": "overkillhillp3",
+      "date": "2026-09-07T13:55:20Z",
+      "url": "https://github.com/OKHP3/skillz/commit/f830ade161593cfaff0f468027b3ce72e26a6da6"
+    },
+    {
+      "sha": "b71b5919259d6c5d83d2abd992c2bbf31e98ce1f",
+      "shortSha": "b71b591",
+      "message": "Add builder-level companion warning regression coverage\n\nReplit-Task-Id: 44678460-8aa5-46ab-b202-6ab8ffa4a246\nReplit-Merge-Attempt: MergeTask:44678460-8aa5-46ab-b202-6ab8ffa4a246:1:726b46ab",
+      "author": "overkillhillp3",
+      "date": "2026-09-07T04:49:48Z",
+      "url": "https://github.com/OKHP3/skillz/commit/b71b5919259d6c5d83d2abd992c2bbf31e98ce1f"
+    },
+    {
+      "sha": "1a8686ce386928cccef04b53ac6bb98e0ab40b61",
+      "shortSha": "1a8686c",
+      "message": "Merge remote-tracking branch 'origin/main'",
+      "author": "OverKill Hill P³",
+      "date": "2026-09-07T04:47:12Z",
+      "url": "https://github.com/OKHP3/skillz/commit/1a8686ce386928cccef04b53ac6bb98e0ab40b61"
+    },
+    {
+      "sha": "fcd9bd30a7b4d3db80af4c7cfdb5c8a01a35a4f4",
+      "shortSha": "fcd9bd3",
+      "message": "Share approved companion exceptions between catalog build and validation\n\nReplit-Task-Id: 50359dec-15e1-4b19-9605-92b0b1c53ce9\nReplit-Merge-Attempt: MergeTask:50359dec-15e1-4b19-9605-92b0b1c53ce9:1:038036b2",
+      "author": "overkillhillp3",
+      "date": "2026-09-07T03:50:15Z",
+      "url": "https://github.com/OKHP3/skillz/commit/fcd9bd30a7b4d3db80af4c7cfdb5c8a01a35a4f4"
+    },
+    {
+      "sha": "9d3677ad89f51d68ec946174f9ddff1c1f3f5b53",
+      "shortSha": "9d3677a",
+      "message": "Finish universe map hierarchy and local input contract review (#79)\n\n* fix: finish universe map hierarchy and input contract review\n\n* fix: preserve consecutive slash ancestor depth\n\n* fix: normalize local index paths and reject network inputs",
+      "author": "OverKill Hill P³",
+      "date": "2026-09-06T17:31:32Z",
+      "url": "https://github.com/OKHP3/skillz/commit/9d3677ad89f51d68ec946174f9ddff1c1f3f5b53"
+    },
+    {
+      "sha": "e3f4559b923472ce52d3dd88984cf8bb9fee01dd",
+      "shortSha": "e3f4559",
+      "message": "Normalize universe overlay URLs and HTTPS origins consistently (#78)\n\n* fix: normalize universe map overlays consistently\n\n* fix: canonicalize HTTPS origin case and default port\n\n* fix: report malformed concept inputs without traceback",
+      "author": "OverKill Hill P³",
+      "date": "2026-09-06T14:43:03Z",
+      "url": "https://github.com/OKHP3/skillz/commit/e3f4559b923472ce52d3dd88984cf8bb9fee01dd"
     }
   ],
   "fetchError": null

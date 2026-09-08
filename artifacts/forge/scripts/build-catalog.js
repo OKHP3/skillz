@@ -57,16 +57,28 @@ const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/main`;
 // These references are intentional: they point to forward-looking capabilities
 // or project-local support skills that are named in current contracts but are
 // not part of the public distribution yet. Keep the source of truth here so
-// the builder, its integrity checks, and the pathway UI agree about what is an
-// exception and why it is not a broken link.
+// the builder, its integrity checks, and the pathway/detail UI agree about
+// what is an exception and why it is not a broken link.
 const APPROVED_COMPANION_REFERENCES = new Map([
   // Forward-looking Notion wave-2 skills are named in current contracts so
   // callers can report the deferred capability precisely until they ship.
-  ['notion/okhp3-notion-identity-resolution/SKILL.md::okhp3-notion-comments-and-discussions', 'deferred'],
-  ['notion/okhp3-notion-page-write/SKILL.md::okhp3-notion-block-composition', 'deferred'],
+  ['notion/okhp3-notion-identity-resolution/SKILL.md::okhp3-notion-comments-and-discussions', {
+    kind: 'deferred',
+    label: 'Deferred',
+    explanation: 'This companion is an approved future capability named in the source contract, but it has not shipped in the public catalog yet.',
+  }],
+  ['notion/okhp3-notion-page-write/SKILL.md::okhp3-notion-block-composition', {
+    kind: 'deferred',
+    label: 'Deferred',
+    explanation: 'This companion is an approved future capability named in the source contract, but it has not shipped in the public catalog yet.',
+  }],
   // Project Compass can hand a recurring pattern to the project-local capture
   // skill even though that support skill is not part of the public distribution.
-  ['universal/okhp3-project-compass/SKILL.md::okhp3-process-capture', 'project-local'],
+  ['universal/okhp3-project-compass/SKILL.md::okhp3-process-capture', {
+    kind: 'project-local',
+    label: 'Project-local',
+    explanation: 'This companion is an approved project-local support skill under .agents/skills/, so it is intentionally outside the public catalog.',
+  }],
 ]);
 
 // Kept as a Set because catalog integrity checks use it as the allow-list of
@@ -703,11 +715,17 @@ function getUnresolvedCompanionReferences(skills) {
 }
 
 function getCompanionDiagnostics(skill) {
-  const diagnostics = { deferred: [], projectLocal: [] };
+  const diagnostics = { deferred: [], projectLocal: [], approved: [] };
   for (const companionName of skill.companions || []) {
-    const kind = APPROVED_COMPANION_REFERENCES.get(`${skill.path}::${companionName}`);
-    if (kind === 'deferred') diagnostics.deferred.push(companionName);
-    if (kind === 'project-local') diagnostics.projectLocal.push(companionName);
+    const approval = APPROVED_COMPANION_REFERENCES.get(`${skill.path}::${companionName}`);
+    if (!approval) continue;
+    diagnostics[approval.kind === 'deferred' ? 'deferred' : 'projectLocal'].push(companionName);
+    diagnostics.approved.push({
+      name: companionName,
+      kind: approval.kind,
+      label: approval.label,
+      explanation: approval.explanation,
+    });
   }
   return diagnostics;
 }

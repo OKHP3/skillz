@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-07T04:59:29.928Z",
+  "generatedAt": "2026-09-08T03:18:35.281Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "b71b5919",
+  "sourceCommit": "c647ce38",
   "skillCount": 342,
   "familyCount": 20,
   "families": [
@@ -15047,7 +15047,15 @@
         "deferred": [
           "okhp3-notion-comments-and-discussions"
         ],
-        "projectLocal": []
+        "projectLocal": [],
+        "approved": [
+          {
+            "name": "okhp3-notion-comments-and-discussions",
+            "kind": "deferred",
+            "label": "Deferred",
+            "explanation": "This companion is an approved future capability named in the source contract, but it has not shipped in the public catalog yet."
+          }
+        ]
       },
       "examples": [],
       "inputs": [],
@@ -15257,7 +15265,15 @@
         "deferred": [
           "okhp3-notion-block-composition"
         ],
-        "projectLocal": []
+        "projectLocal": [],
+        "approved": [
+          {
+            "name": "okhp3-notion-block-composition",
+            "kind": "deferred",
+            "label": "Deferred",
+            "explanation": "This companion is an approved future capability named in the source contract, but it has not shipped in the public catalog yet."
+          }
+        ]
       },
       "examples": [],
       "inputs": [],
@@ -23065,6 +23081,14 @@
         "deferred": [],
         "projectLocal": [
           "okhp3-process-capture"
+        ],
+        "approved": [
+          {
+            "name": "okhp3-process-capture",
+            "kind": "project-local",
+            "label": "Project-local",
+            "explanation": "This companion is an approved project-local support skill under .agents/skills/, so it is intentionally outside the public catalog."
+          }
         ]
       },
       "examples": [],

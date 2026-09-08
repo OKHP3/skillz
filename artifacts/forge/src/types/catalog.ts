@@ -42,11 +42,22 @@ export interface SkillPackageMetadata {
   publicArtifact?: boolean;
 }
 
+export type CompanionDiagnosticKind = 'deferred' | 'project-local';
+
+export interface CompanionDiagnostic {
+  name: string;
+  kind: CompanionDiagnosticKind;
+  label: string;
+  explanation: string;
+}
+
 export interface CompanionDiagnostics {
   /** Approved references to capabilities that are named but not shipped yet. */
   deferred: string[];
   /** Approved references to project-local support skills outside the public catalog. */
   projectLocal: string[];
+  /** Review-facing context emitted from the builder's approved-reference registry. */
+  approved?: CompanionDiagnostic[];
 }
 
 export type MaturitySource = 'explicit-frontmatter' | 'evidence-policy' | 'fallback-structure';
