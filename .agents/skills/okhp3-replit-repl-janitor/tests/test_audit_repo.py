@@ -16,6 +16,57 @@ SPEC.loader.exec_module(audit_repo)
 
 
 class AuditRepoTests(unittest.TestCase):
+    def test_pre_delete_tip_change_holds_and_emits_no_deletion_commands(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "switch", "-q", "-c", "feature/cleanup")
+            (root / "reviewed.txt").write_text("reviewed\n", encoding="utf-8")
+            self._git(root, "add", "reviewed.txt")
+            self._git(root, "commit", "-qm", "reviewed work")
+            reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
+
+            (root / "moved.txt").write_text("changed\n", encoding="utf-8")
+            self._git(root, "add", "moved.txt")
+            self._git(root, "commit", "-qm", "moved branch tip")
+
+            check = audit_repo.prepare_branch_deletion(
+                root,
+                "feature/cleanup",
+                reviewed_head,
+            )
+            self.assertEqual(check["bucket"], "review")
+            self.assertEqual(check["reviewed_head"], reviewed_head)
+            self.assertEqual(
+                check["current_head"],
+                self._git(root, "rev-parse", "HEAD").strip(),
+            )
+            self.assertEqual(check["deletion_commands"], [])
+
+    def test_pre_delete_matching_tip_keeps_remote_first_sequence(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "switch", "-q", "-c", "feature/cleanup")
+            (root / "reviewed.txt").write_text("reviewed\n", encoding="utf-8")
+            self._git(root, "add", "reviewed.txt")
+            self._git(root, "commit", "-qm", "reviewed work")
+            reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
+
+            check = audit_repo.prepare_branch_deletion(
+                root,
+                "feature/cleanup",
+                reviewed_head,
+                remote="upstream",
+            )
+            self.assertEqual(check["bucket"], "delete")
+            self.assertEqual(check["reviewed_head"], reviewed_head)
+            self.assertEqual(check["current_head"], reviewed_head)
+            self.assertEqual(check["deletion_commands"], [
+                ["git", "push", "upstream", "--delete", "feature/cleanup"],
+                ["git", "branch", "-d", "feature/cleanup"],
+            ])
+
     def test_unsafe_cleanup_evidence_is_held_for_review(self) -> None:
         unsafe_fixtures = [
             (
