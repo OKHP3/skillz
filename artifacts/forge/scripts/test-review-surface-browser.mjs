@@ -85,6 +85,35 @@ async function expectReviewSurface(page, skill) {
   assert(await page.getByRole('button', { name: 'Supervised run: attach evidence' }).isEnabled(), 'Blocked gate must leave supervised check available.');
 }
 
+async function expectApprovedCompanionDetail(page, skill, kind) {
+  const diagnostic = skill.companionDiagnostics?.approved?.find(entry => entry.kind === kind);
+  assert(diagnostic, `${kind} approved companion diagnostic is missing for ${skill.name}.`);
+
+  await page.goto(route(skill), { waitUntil: 'domcontentloaded' });
+  const pathway = page.locator('.skill-pathway');
+  await pathway.waitFor();
+  const context = page.locator('[data-section="approved-companion-context"]');
+  await context.waitFor();
+  const item = context.locator(`[data-companion-kind="${kind}"]`);
+  await item.waitFor();
+
+  assert((await item.locator('.detail-companion-context-status').textContent()).trim() === diagnostic.label,
+    `${skill.name} must render the ${kind} approved companion status label.`);
+  assert((await item.locator('code').innerText()).trim() === diagnostic.name,
+    `${skill.name} must render the ${kind} approved companion name.`);
+  assert((await item.locator('p').innerText()).trim() === diagnostic.explanation,
+    `${skill.name} must render the builder-provided ${kind} explanation.`);
+
+  const sourceLink = context.getByRole('link', { name: /Review the source contract/ });
+  assert(await sourceLink.count() === 1,
+    `${skill.name} must link reviewers to the declaring source contract.`);
+  assert(await sourceLink.getAttribute('href') === `https://github.com/OKHP3/skillz/blob/main/${skill.path}`,
+    `${skill.name} source-contract link must target its declaring SKILL.md.`);
+
+  assert(await pathway.locator('.skill-pathway__branch--broken').count() === 0,
+    `${skill.name} approved companion context must not use unresolved-warning presentation.`);
+}
+
 async function main() {
   const server = spawn('pnpm', ['exec', 'vite', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], {
     cwd: forgeDir,
@@ -101,10 +130,9 @@ async function main() {
       || skills.find(s => s.evidence.status === 'none' && s.evidence.blockers.length > 0);
     const unlocked = skills.find(s => s.evidence.status === 'live' && s.evidence.blockers.length === 0);
     const approvedCompanions = [
-      skills.find(s => s.companionDiagnostics?.deferred?.length),
-      skills.find(s => s.companionDiagnostics?.projectLocal?.length),
-    ].filter(Boolean);
-    const approvedCompanion = approvedCompanions[0];
+      { skill: skills.find(s => s.companionDiagnostics?.deferred?.length), kind: 'deferred' },
+      { skill: skills.find(s => s.companionDiagnostics?.projectLocal?.length), kind: 'project-local' },
+    ].filter(({ skill }) => skill);
     assert(stale && blocked && unlocked && approvedCompanions.length === 2,
       'Catalog must contain historical, blocked, locally unlockable, deferred, and project-local companion skills.');
 
@@ -125,23 +153,11 @@ async function main() {
     assert((await text(desktop, '.skill-validation-list')).includes('Contract body loaded'), 'Validation tab did not render its checks.');
     await expectNoHorizontalOverflow(desktop, 'desktop review surface');
 
-    await desktop.goto(route(approvedCompanion), { waitUntil: 'domcontentloaded' });
-    const pathway = desktop.locator('.skill-pathway');
-    await pathway.waitFor();
-    const deferredLabel = pathway.locator('[data-companion-kind="deferred"]');
-    const projectLocalLabel = pathway.locator('[data-companion-kind="project-local"]');
-    assert(await deferredLabel.count() + await projectLocalLabel.count() > 0,
-      `Approved companion diagnostics are not visible for ${approvedCompanion.name}.`);
-    assert(await pathway.locator('.skill-pathway__branch--broken').count() === 0,
-      'Approved companion diagnostics must not use the unresolved warning presentation.');
-    const companionContext = desktop.locator('[data-section="approved-companion-context"]');
-    await companionContext.waitFor();
-    assert((await companionContext.innerText()).includes('Why these companions are not navigable'),
-      'Approved companion context is not visible on the skill detail page.');
-    assert((await companionContext.getByRole('link', { name: /Review the source contract/ }).count()) === 1,
-      'Approved companion context must link reviewers to the declaring source contract.');
+    for (const { skill, kind } of approvedCompanions) {
+      await expectApprovedCompanionDetail(desktop, skill, kind);
+    }
 
-    for (const approved of approvedCompanions) {
+    for (const { skill: approved } of approvedCompanions) {
       const narrowApproved = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await narrowApproved.goto(route(approved), { waitUntil: 'domcontentloaded' });
       const narrowPathway = narrowApproved.locator('.skill-pathway');
