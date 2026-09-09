@@ -4,7 +4,7 @@
   "release_status": "partially-evaluated",
   "review_decision": "retain-with-focused-evidence",
   "blockers": [
-    "The other four scenarios still need live evaluation."
+    "The other three scenarios still need live evaluation."
   ],
   "evals": [
     {
@@ -132,7 +132,28 @@
           "id": 4,
           "text": "Response proves the final local-to-remote relationship with an exact ref comparison or ahead/behind count and explicitly refuses reset, stash drop/clear, history rewriting, and force-push."
         }
-      ]
+      ],
+      "live_result": {
+        "status": "partial",
+        "method": "live response evaluation",
+        "evidence_tier": "live",
+        "expectations_passed": 3,
+        "expectations_total": 4,
+        "pass_rate": 0.75,
+        "evidence": [
+          "PASS: The response uses a disposable repository and local bare remote, records refs/stash's exact object ID and every local-only commit SHA before fetch or merge.",
+          "FAIL: The response fetches without pruning and describes an ordinary merge, but its fixture clones the target checkout after the remote-only commit, so the measured state is two commits ahead and zero behind rather than the claimed two-sided divergence.",
+          "PASS: The response compares the pre- and post-sync stash object IDs and checks every captured local commit with git merge-base --is-ancestor.",
+          "PASS: The response proves HEAD and origin/main converge with a 0 0 ahead/behind count and exact SHA comparison, and explicitly refuses reset, stash deletion, history rewriting, and force-push."
+        ],
+        "weak_boundaries": [
+          "The remote-only commit is created before cloning the target checkout, so origin/main is not advanced independently after the checkout's local commits; the intended diverged fixture is not actually constructed.",
+          "Because the divergence is wrong, the claim that the merge path was selected from a measured two-sided relationship is unsupported, even though the preservation and final-ref checks are present."
+        ],
+        "limitations": [
+          "This was a response-only delegation-subagent run; no host telemetry or actual Git process execution was observed."
+        ]
+      }
     }
   ]
 }
