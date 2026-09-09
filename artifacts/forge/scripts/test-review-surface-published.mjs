@@ -4,8 +4,8 @@
  *
  * Post-deploy check: confirms the *published* Skillz Forge review surface
  * (the live GitHub Pages site, not a local dev server) still preserves the
- * failed-contract keyboard recovery path validated locally by
- * test-review-surface-browser.mjs.
+ * failed-contract keyboard recovery path and approved companion context
+ * validated locally by test-review-surface-browser.mjs.
  *
  * This intentionally uses only public, unauthenticated HTTP(S) requests and
  * a headless browser pointed at the live URL -- no production credentials,
@@ -168,6 +168,84 @@ async function expectVisibleWithinViewport(locator, label) {
   }
 }
 
+async function expectKeyboardFocus(page, locator, label) {
+  await locator.scrollIntoViewIfNeeded();
+  await locator.focus();
+  assert(
+    await locator.evaluate(element => document.activeElement === element),
+    `${label} could not receive keyboard focus on the published site.`,
+  );
+  const focus = await locator.evaluate(element => {
+    const style = getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    return {
+      outline: style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) > 0,
+      withinViewport: rect.left >= 0
+        && rect.right <= window.innerWidth
+        && rect.top >= 0
+        && rect.bottom <= window.innerHeight,
+    };
+  });
+  assert(focus.outline, `${label} has no visible focus indicator on the published site.`);
+  assert(focus.withinViewport, `${label} is clipped outside the viewport on the published site.`);
+}
+
+async function expectApprovedCompanionDetail(page, skill, kind, label) {
+  const diagnostic = skill.companionDiagnostics?.approved?.find(entry => entry.kind === kind);
+  assert(diagnostic, `${kind} approved companion diagnostic is missing for ${skill.name}.`);
+
+  await page.goto(
+    `${baseUrl}#/skills/${encodeURIComponent(skill.family)}/${encodeURIComponent(skill.name)}`,
+    { waitUntil: 'domcontentloaded', timeout: 20_000 },
+  );
+  await page.locator('[data-page="skill-detail"]').waitFor({ timeout: 20_000 });
+
+  const pathway = page.locator('.skill-pathway');
+  await pathway.waitFor({ timeout: 20_000 });
+  const context = page.locator('[data-section="approved-companion-context"]');
+  await context.waitFor({ timeout: 20_000 });
+  const item = context.locator(`[data-companion-kind="${kind}"]`);
+  await item.waitFor({ timeout: 20_000 });
+
+  assert(
+    (await item.locator('.detail-companion-context-status').textContent()).trim() === diagnostic.label,
+    `${skill.name} must render the ${kind} approved companion status label on the published site.`,
+  );
+  assert(
+    (await item.locator('code').innerText()).trim() === diagnostic.name,
+    `${skill.name} must render the ${kind} approved companion name on the published site.`,
+  );
+  assert(
+    (await item.locator('p').innerText()).trim() === diagnostic.explanation,
+    `${skill.name} must render the builder-provided ${kind} explanation on the published site.`,
+  );
+
+  const sourceLink = context.getByRole('link', { name: /Review the source contract/ });
+  assert(
+    await sourceLink.count() === 1,
+    `${skill.name} must link reviewers to the declaring source contract on the published site.`,
+  );
+  assert(
+    await sourceLink.getAttribute('href') === `https://github.com/OKHP3/skillz/blob/main/${skill.path}`,
+    `${skill.name} source-contract link must target its declaring SKILL.md on the published site.`,
+  );
+
+  await expectVisibleWithinViewport(
+    item.locator('.detail-companion-context-status'),
+    `${label} status for ${skill.name}`,
+  );
+  await expectVisibleWithinViewport(
+    item.locator('p'),
+    `${label} explanation for ${skill.name}`,
+  );
+  await expectKeyboardFocus(page, sourceLink, `${label} source-contract link for ${skill.name}`);
+  assert(
+    await pathway.locator('.skill-pathway__branch--broken').count() === 0,
+    `${label} for ${skill.name} must not use the unresolved warning presentation on the published site.`,
+  );
+  await expectNoHorizontalOverflow(page, `published ${label.toLowerCase()} detail for ${skill.name}`);
+}
+
 async function expectUnresolvedCompanionWarning(page, skill, unresolvedName) {
   const pathway = page.locator('.skill-pathway');
   await pathway.waitFor({ timeout: 20_000 });
@@ -210,8 +288,12 @@ async function main() {
   const catalog = await waitForPublishedCatalog(expected);
   const skill = catalog.skills?.[0];
   if (!skill) throw new DeploymentError('Published catalog.json has no skills to exercise the review surface with.');
-  const deferredSkill = catalog.skills.find(s => s.companionDiagnostics?.deferred?.length);
-  const projectLocalSkill = catalog.skills.find(s => s.companionDiagnostics?.projectLocal?.length);
+  const deferredSkill = catalog.skills.find(
+    s => s.companionDiagnostics?.approved?.some(diagnostic => diagnostic.kind === 'deferred'),
+  );
+  const projectLocalSkill = catalog.skills.find(
+    s => s.companionDiagnostics?.approved?.some(diagnostic => diagnostic.kind === 'project-local'),
+  );
   const unresolvedFixture = catalog.skills.find(s => s.companions?.length > 0) || skill;
   if (!deferredSkill || !projectLocalSkill) {
     throw new DeploymentError(
@@ -291,19 +373,7 @@ async function main() {
       [deferredSkill, 'deferred', 'Deferred companion diagnostic'],
       [projectLocalSkill, 'project-local', 'Project-local companion diagnostic'],
     ]) {
-      await page.goto(
-        `${baseUrl}#/skills/${encodeURIComponent(approvedSkill.family)}/${encodeURIComponent(approvedSkill.name)}`,
-        { waitUntil: 'domcontentloaded', timeout: 20_000 },
-      );
-      const pathway = page.locator('.skill-pathway');
-      await pathway.waitFor({ timeout: 20_000 });
-      const notice = pathway.locator(`[data-companion-kind="${kind}"]`);
-      await expectVisibleWithinViewport(notice, `${label} for ${approvedSkill.name}`);
-      assert(
-        await pathway.locator('.skill-pathway__branch--broken').count() === 0,
-        `${label} for ${approvedSkill.name} must not use the unresolved warning presentation.`,
-      );
-      await expectNoHorizontalOverflow(page, `published ${label.toLowerCase()} pathway for ${approvedSkill.name}`);
+      await expectApprovedCompanionDetail(page, approvedSkill, kind, label);
     }
 
     const unresolvedName = 'okhp3-published-regression-unresolved-companion';

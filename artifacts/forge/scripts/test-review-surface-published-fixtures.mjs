@@ -32,12 +32,34 @@ function catalog(sourceCommit) {
       {
         family: 'fixture',
         name: 'fixture-skill',
-        companionDiagnostics: { deferred: [{ name: 'fixture-deferred' }] },
+        path: 'fixture/fixture-skill/SKILL.md',
+        companionDiagnostics: {
+          deferred: ['fixture-deferred'],
+          projectLocal: [],
+          approved: [{
+            name: 'fixture-deferred',
+            kind: 'deferred',
+            label: 'Deferred',
+            explanation: 'Fixture deferred companion explanation.',
+          }],
+        },
       },
       {
         family: 'fixture',
         name: 'fixture-project-local',
-        companionDiagnostics: { projectLocal: [{ name: 'fixture-project-local-companion' }] },
+        // The fixture server serves one static document for hash-only route
+        // changes, so both representative skills share its declaring path.
+        path: 'fixture/fixture-skill/SKILL.md',
+        companionDiagnostics: {
+          deferred: [],
+          projectLocal: ['fixture-project-local-companion'],
+          approved: [{
+            name: 'fixture-project-local-companion',
+            kind: 'project-local',
+            label: 'Project-local',
+            explanation: 'Fixture project-local companion explanation.',
+          }],
+        },
       },
     ],
   };
@@ -65,8 +87,28 @@ function reviewSurfaceHtml({ assertionFailure, unresolved = false }) {
           <span class="skill-pathway__node-name skill-pathway__node-name--unresolved">${unresolvedName}</span>
           <span class="skill-pathway__node-unresolved-label">Not found — check for a typo or renamed skill</span>
         </div>` : `
-        <div data-companion-kind="deferred">Deferred companion</div>
-        <div data-companion-kind="project-local">Project-local companion</div>`}
+        <section
+          data-section="approved-companion-context"
+          aria-labelledby="approved-companion-context-heading"
+        >
+          <h3 id="approved-companion-context-heading">Why these companions are not navigable</h3>
+          <ul>
+            <li data-companion-kind="deferred">
+              <span class="detail-companion-context-status">Deferred</span>
+              <code>fixture-deferred</code>
+              <p>Fixture deferred companion explanation.</p>
+            </li>
+            <li data-companion-kind="project-local">
+              <span class="detail-companion-context-status">Project-local</span>
+              <code>fixture-project-local-companion</code>
+              <p>Fixture project-local companion explanation.</p>
+            </li>
+          </ul>
+          <a
+            id="fixture-source-contract"
+            href="https://github.com/OKHP3/skillz/blob/main/fixture/fixture-skill/SKILL.md"
+          >Review the source contract that declares these references →</a>
+        </section>`}
       </div>
       ${assertionFailure ? '' : `
       <div role="tabpanel" aria-label="Raw markdown" tabindex="-1">
