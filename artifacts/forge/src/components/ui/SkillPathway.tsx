@@ -215,6 +215,7 @@ export default function SkillPathway({ nodes, allSkills }: SkillPathwayProps) {
                   {node.unresolvedCompanions.length > 0 && (
                     <span
                       className="skill-pathway__branch skill-pathway__branch--broken"
+                      data-companion-kind="unresolved"
                       title={`Unresolved companion reference${node.unresolvedCompanions.length > 1 ? 's' : ''}: ${node.unresolvedCompanions.join(', ')}`}
                       aria-label={`${node.unresolvedCompanions.length} unresolved companion reference${node.unresolvedCompanions.length > 1 ? 's' : ''} on this skill: ${node.unresolvedCompanions.join(', ')}`}
                     >

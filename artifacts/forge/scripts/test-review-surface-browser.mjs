@@ -114,6 +114,38 @@ async function expectApprovedCompanionDetail(page, skill, kind) {
     `${skill.name} approved companion context must not use unresolved-warning presentation.`);
 }
 
+async function expectUnresolvedCompanionDetail(page, skill, unresolvedName) {
+  await page.goto(route(skill), { waitUntil: 'domcontentloaded' });
+  const pathway = page.locator('.skill-pathway');
+  await pathway.waitFor();
+
+  const warning = pathway.locator('[data-companion-kind="unresolved"]');
+  await warning.waitFor();
+  assert(await warning.count() === 1,
+    `${skill.name} must render exactly one unresolved companion warning.`);
+  assert((await warning.innerText()).trim() === '⚠ 1',
+    `${skill.name} unresolved companion warning must show the warning count.`);
+  assert(await warning.getAttribute('title') === `Unresolved companion reference: ${unresolvedName}`,
+    `${skill.name} unresolved companion warning must identify the missing reference in its title.`);
+  assert(await warning.getAttribute('aria-label') === `1 unresolved companion reference on this skill: ${unresolvedName}`,
+    `${skill.name} unresolved companion warning must expose the missing reference to assistive technology.`);
+
+  const unresolvedNode = pathway.locator('.skill-pathway__node--unresolved');
+  await unresolvedNode.waitFor();
+  const unresolvedCopy = await unresolvedNode.innerText();
+  assert(unresolvedCopy.includes(unresolvedName),
+    `${skill.name} unresolved pathway stop must show the missing companion name.`);
+  assert(unresolvedCopy.includes('Not found — check for a typo or renamed skill'),
+    `${skill.name} unresolved pathway stop must explain how to interpret the warning.`);
+  assert((await unresolvedNode.getAttribute('title')).includes(
+    "does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere.",
+  ), `${skill.name} unresolved pathway stop must explain the broken-reference cause.`);
+  assert(await pathway.locator('.skill-pathway__branch--broken').count() === 1,
+    `${skill.name} genuine unresolved companion must use unresolved-warning presentation.`);
+  assert(await pathway.locator('[data-section="approved-companion-context"]').count() === 0,
+    `${skill.name} genuine unresolved companion must not render approved-exception context.`);
+}
+
 async function main() {
   const server = spawn('pnpm', ['exec', 'vite', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], {
     cwd: forgeDir,
@@ -129,12 +161,15 @@ async function main() {
     const blocked = skills.find(s => s.evidence.status === 'none' && s.evidence.blockers.length > 0 && s.companions.length > 0)
       || skills.find(s => s.evidence.status === 'none' && s.evidence.blockers.length > 0);
     const unlocked = skills.find(s => s.evidence.status === 'live' && s.evidence.blockers.length === 0);
+    const predecessorNames = new Set(skills.flatMap(s => s.companions));
+    const unresolvedFixture = skills.find(s => s.companions.length > 0 && !predecessorNames.has(s.name));
+    const unresolvedName = 'okhp3-browser-regression-unresolved-companion';
     const approvedCompanions = [
       { skill: skills.find(s => s.companionDiagnostics?.deferred?.length), kind: 'deferred' },
       { skill: skills.find(s => s.companionDiagnostics?.projectLocal?.length), kind: 'project-local' },
     ].filter(({ skill }) => skill);
-    assert(stale && blocked && unlocked && approvedCompanions.length === 2,
-      'Catalog must contain historical, blocked, locally unlockable, deferred, and project-local companion skills.');
+    assert(stale && blocked && unlocked && unresolvedFixture && approvedCompanions.length === 2,
+      'Catalog must contain historical, blocked, locally unlockable, unresolved, deferred, and project-local companion skills.');
 
     browser = await chromium.launch({ headless: true, executablePath: chromiumExecutable() });
     const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -156,6 +191,23 @@ async function main() {
     for (const { skill, kind } of approvedCompanions) {
       await expectApprovedCompanionDetail(desktop, skill, kind);
     }
+
+    const unresolved = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+    await unresolved.route('**/data/catalog.json', async requestRoute => {
+      const response = await requestRoute.fetch();
+      const fixtureCatalog = await response.json();
+      const fixtureSkill = fixtureCatalog.skills.find(candidate => candidate.name === unresolvedFixture.name);
+      assert(fixtureSkill, `Could not create unresolved companion fixture for ${unresolvedFixture.name}.`);
+      fixtureSkill.companions = [unresolvedName];
+      delete fixtureSkill.companionDiagnostics;
+      await requestRoute.fulfill({
+        status: response.status(),
+        headers: { ...response.headers(), 'content-type': 'application/json' },
+        body: JSON.stringify(fixtureCatalog),
+      });
+    });
+    await expectUnresolvedCompanionDetail(unresolved, unresolvedFixture, unresolvedName);
+    await unresolved.close();
 
     for (const { skill: approved } of approvedCompanions) {
       const narrowApproved = await browser.newPage({ viewport: { width: 390, height: 844 } });
