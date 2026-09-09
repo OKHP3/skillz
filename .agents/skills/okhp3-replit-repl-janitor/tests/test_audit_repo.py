@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -248,6 +249,51 @@ class AuditRepoTests(unittest.TestCase):
             )
             self.assertEqual(unknown["bucket"], "review")
             self.assertEqual(before, after)
+
+    def test_cli_report_keeps_failed_hosted_lookup_in_review(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "branch", "feature/failed")
+            lookup_file = root / "lookups.json"
+            lookup_file.write_text(
+                json.dumps({
+                    "feature/failed": {
+                        "lookup_status": "failed",
+                        "error": "host unavailable",
+                    },
+                }),
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "--root",
+                    str(root),
+                    "--base",
+                    "main",
+                    "--hosted-lookups",
+                    str(lookup_file),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            report = json.loads(result.stdout)
+            failed = next(
+                item for item in report["branches"]
+                if item["branch"] == "feature/failed"
+            )
+
+            self.assertEqual(failed["bucket"], "review")
+            self.assertEqual(
+                failed["hosted_lookup"],
+                {"status": "failed", "error": "host unavailable"},
+            )
+            self.assertIn("hosted evidence is missing", failed["reason"])
+            self.assertNotEqual(failed["bucket"], "delete")
 
     def test_active_branches_stashes_and_archive_refs_are_protected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
