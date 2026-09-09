@@ -32,6 +32,21 @@ branch history, GitHub notification state, pull-request and check status, and
 cleanup candidates. It can guide a later authorized action, but audit mode
 never performs repository or GitHub mutations.
 
+## Scope
+
+Apply this package for:
+
+- periodic mirror health sweeps;
+- branch lifecycle validation with PR/review/check context;
+- notification reconciliation that is tied to repository branches, PRs, or workflow
+  outcomes.
+
+Do not apply this package for:
+
+- project-wide platform migration planning;
+- standalone PR code review without branch evidence;
+- autonomous production publication, branch merging, or deletion.
+
 In scope:
 
 - recursively auditing local clones against each repository's
@@ -179,6 +194,20 @@ pruning, implicit stashing, unattended commits, or unattended pushes. Never
 expose credentials. Never claim that a notification is done without the exact
 thread-done result. Never call the current package benchmarked or production
 ready from structural inspection alone.
+
+## Scope compatibility
+
+This package is a sibling to `okhp3-repository-janitor`.
+
+- `okhp3-repository-janitor` handles broad mirror lifecycle reconciliation and
+  branch/PR lifecycle across many repositories.
+- `okhp3-github-mirror-janitor` adds explicit notification triage, per-thread
+  disposition routing, and a shared mirror+notification evidence ledger for
+  recurring audit-to-janitor workflows.
+- Both packages are additive and must preserve exact branch/PR/notification
+  evidence and explicit owner authorization before any mutation.
+- `okhp3-github-notification-maintainer` remains the canonical notification-only
+  refinement path for deep incident repairs and long-running delegated workers.
 
 ## About
 

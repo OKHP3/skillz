@@ -1,0 +1,31 @@
+{
+  "package": "okhp3-github-mirror-janitor",
+  "compatibility": "additive with repository-janitor + notification-maintainer",
+  "source": {
+    "path": "Codex/.agents/skills/okhp3-github-mirror-janitor",
+    "mode": "local-project-authoritative",
+    "hashes": {
+      "scripts/audit-notifications.ps1": "747ba9f2d5860a5d68ac661342d6d73bf5f68ea763c695ea2bff2bb22b25d7ce",
+      "agents/openai.yaml": "da046cb7e4ad78c104bb4b65f9969f21e86a9b26e6effa2d7c6030b67f7c16ad",
+      "evals/evals.json": "ef60fcdb60c43dcdd5c15ab69d14895083bddf60646c61434a9368f71397d206",
+      "references/decision-rubric.md": "b1496d870ac5e1fd945bd2c74c7d494fa7efaed50c920e28ac504988cbd60acf",
+      "scripts/audit-mirrors.ps1": "38f8f37a52eabfcfb40e544aba16a8cd8e5a30b28e330efb477057c583d01f35",
+      "SKILL.md": "c4e0d4a9a473a4b31865092581564e319ead97b2e8579c81245d9c918633b550",
+      "evals/learning-record.md": "228547c66cb84909daad3eda048c31d2e0e6a8d4c8a4c26af3c126aade22eaa8"
+    }
+  },
+  "destination": {
+    "path": "04_GitHub_Mirrors/skillz/universal/okhp3-github-mirror-janitor",
+    "mode": "canonical",
+    "hashes": {
+      "scripts/audit-notifications.ps1": "747ba9f2d5860a5d68ac661342d6d73bf5f68ea763c695ea2bff2bb22b25d7ce",
+      "agents/openai.yaml": "da046cb7e4ad78c104bb4b65f9969f21e86a9b26e6effa2d7c6030b67f7c16ad",
+      "evals/evals.json": "ef60fcdb60c43dcdd5c15ab69d14895083bddf60646c61434a9368f71397d206",
+      "references/decision-rubric.md": "b1496d870ac5e1fd945bd2c74c7d494fa7efaed50c920e28ac504988cbd60acf",
+      "scripts/audit-mirrors.ps1": "38f8f37a52eabfcfb40e544aba16a8cd8e5a30b28e330efb477057c583d01f35",
+      "SKILL.md": "474a29d4c7e1b6b4a08c6026c32782d3b75ce530a19145d061a4c2dd0b903705",
+      "evals/learning-record.md": "228547c66cb84909daad3eda048c31d2e0e6a8d4c8a4c26af3c126aade22eaa8"
+    }
+  },
+  "created": "2026-09-08T20:53:00.0186472-05:00"
+}
