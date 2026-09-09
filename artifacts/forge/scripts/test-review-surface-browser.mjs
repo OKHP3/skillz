@@ -85,7 +85,7 @@ async function expectReviewSurface(page, skill) {
   assert(await page.getByRole('button', { name: 'Supervised run: attach evidence' }).isEnabled(), 'Blocked gate must leave supervised check available.');
 }
 
-async function expectApprovedCompanionDetail(page, skill, kind) {
+async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false } = {}) {
   const diagnostic = skill.companionDiagnostics?.approved?.find(entry => entry.kind === kind);
   assert(diagnostic, `${kind} approved companion diagnostic is missing for ${skill.name}.`);
 
@@ -109,6 +109,19 @@ async function expectApprovedCompanionDetail(page, skill, kind) {
     `${skill.name} must link reviewers to the declaring source contract.`);
   assert(await sourceLink.getAttribute('href') === `https://github.com/OKHP3/skillz/blob/main/${skill.path}`,
     `${skill.name} source-contract link must target its declaring SKILL.md.`);
+
+  if (narrow) {
+    await expectVisibleWithinViewport(
+      item.locator('.detail-companion-context-status'),
+      `${skill.name} ${kind} approved companion status`,
+    );
+    await expectVisibleWithinViewport(
+      item.locator('p'),
+      `${skill.name} ${kind} approved companion explanation`,
+    );
+    await expectKeyboardFocus(page, sourceLink, `${skill.name} ${kind} source-contract link`);
+    await expectNoHorizontalOverflow(page, `narrow approved companion context for ${skill.name}`);
+  }
 
   assert(await pathway.locator('.skill-pathway__branch--broken').count() === 0,
     `${skill.name} approved companion context must not use unresolved-warning presentation.`);
@@ -209,11 +222,10 @@ async function main() {
     await expectUnresolvedCompanionDetail(unresolved, unresolvedFixture, unresolvedName);
     await unresolved.close();
 
-    for (const { skill: approved } of approvedCompanions) {
+    for (const { skill: approved, kind } of approvedCompanions) {
       const narrowApproved = await browser.newPage({ viewport: { width: 390, height: 844 } });
-      await narrowApproved.goto(route(approved), { waitUntil: 'domcontentloaded' });
+      await expectApprovedCompanionDetail(narrowApproved, approved, kind, { narrow: true });
       const narrowPathway = narrowApproved.locator('.skill-pathway');
-      await narrowPathway.waitFor();
       const narrowLabels = narrowPathway.locator('[data-companion-kind="deferred"], [data-companion-kind="project-local"]');
       await expectVisibleWithinViewport(narrowLabels, `Approved companion diagnostics for ${approved.name}`);
       assert(await narrowPathway.locator('.skill-pathway__branch--broken').count() === 0,
