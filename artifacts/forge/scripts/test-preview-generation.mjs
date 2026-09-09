@@ -70,15 +70,37 @@ function proveFailureCleanup() {
   const failureReviewDeskOutputDir = join(reviewDeskRoot, basename(failureForgeOutputDir));
 
   try {
-    failureFixtureRoot = mkdtempSync(join(workspaceRoot, 'community', 'preview-companion-failure-'));
+    failureFixtureRoot = mkdtempSync(join(workspaceRoot, 'universal', 'preview-companion-failure-'));
     writeFileSync(join(failureFixtureRoot, 'SKILL.md'), '# Preview failure fixture\n', 'utf8');
     mkdirSync(join(failureReviewDeskOutputDir, 'data'), { recursive: true });
     writeFileSync(join(failureForgeOutputDir, 'generated.txt'), 'generated output\n', 'utf8');
     writeFileSync(join(failureReviewDeskOutputDir, 'data', 'catalog.json'), '{}\n', 'utf8');
 
-    assert(false, 'Injected preview diagnostic failure.');
-  } catch (error) {
-    assert(error instanceof Error && error.message === 'Injected preview diagnostic failure.', 'Failure injection did not fail as expected.');
+    const failureBuild = spawnSync(
+      process.execPath,
+      [join(forgeRoot, 'scripts', 'build-catalog.js')],
+      {
+        cwd: workspaceRoot,
+        env: {
+          ...process.env,
+          FORGE_PUBLIC_DIR: failureForgeOutputDir,
+          FORGE_SKIP_MANIFEST_SYNC: '1',
+          ALLOW_SHALLOW_CATALOG_BUILD: '1',
+          GITHUB_ACTIONS: '',
+          CI: '',
+        },
+        encoding: 'utf8',
+      },
+    );
+    const failureOutput = `${failureBuild.stdout || ''}\n${failureBuild.stderr || ''}`;
+    assert(
+      failureBuild.status !== 0,
+      `Deliberately invalid preview fixture unexpectedly passed catalog build:\n${failureOutput}`,
+    );
+    assert(
+      failureOutput.includes('Evidence contract violation'),
+      `Catalog build did not fail for the deliberately invalid preview fixture:\n${failureOutput}`,
+    );
   } finally {
     cleanupPreviewArtifacts(failureFixtureRoot, failureForgeOutputDir, failureReviewDeskOutputDir);
   }
