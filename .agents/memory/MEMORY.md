@@ -25,3 +25,4 @@
 - [Replit Free Mode boundaries](replit-free-mode-boundaries.md) — quota retries are opportunities inside one conversation; resets and sensitive approvals remain host/user-controlled
 - [Delegated-run evidence boundaries](delegated-run-evidence-boundaries.md) — response-only subagent runs validate behavior but cannot prove native host activation or host-side events
 - [Git sync fixture remotes](github-sync-fixture.md) — disposable bare remotes need an explicit default branch before working clones are created
+- [GitHub sync package parity](github-sync-package-parity.md) — `.agents/skills` is canonical; promote reviewed safety fixtures into the `replit` shipping mirror
