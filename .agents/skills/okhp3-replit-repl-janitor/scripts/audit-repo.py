@@ -4,8 +4,8 @@
 Reports local branch facts, naming violations, and nested detritus folders as
 JSON. The script never deletes, renames, prunes, merges, or force-pushes.
 Network fetch is opt-in with --fetch and still never prunes. Its pre-delete
-check only emits deletion commands after the reviewed branch tip matches the
-freshly read tip.
+check only emits deletion commands after the reviewed local and remote branch
+tips match their freshly read tips.
 """
 
 from __future__ import annotations
@@ -79,27 +79,47 @@ def prepare_branch_deletion(
     reviewed_head: str,
     *,
     remote: str = "origin",
+    reviewed_remote_head: str | None = None,
 ) -> dict[str, object]:
     """Refresh a branch tip and prepare, but never execute, its deletion.
 
-    The reviewed SHA is the approval boundary.  A changed tip produces a
-    review hold with no deletion commands; a missing branch or other Git
-    failure raises visibly.  When the tip matches, the returned commands
-    preserve the required remote-first order.
+    The reviewed SHAs are the approval boundary.  The remote tip is read
+    directly from the configured remote rather than from a possibly stale
+    remote-tracking ref.  A changed local or remote tip produces a review hold
+    with no deletion commands; a missing branch or other Git failure raises
+    visibly.  When both tips match, the returned commands preserve the
+    required remote-first order.
     """
     if not branch:
         raise AuditError("branch is required for the pre-delete check")
     if not reviewed_head:
         raise AuditError("reviewed branch head is required for the pre-delete check")
+    if not remote:
+        raise AuditError("remote is required for the pre-delete check")
+    reviewed_remote_head = reviewed_remote_head or reviewed_head
 
     current_head = run(
         ["git", "rev-parse", "--verify", f"refs/heads/{branch}^{{commit}}"],
         root,
     )
+    remote_output = run(
+        ["git", "ls-remote", "--exit-code", remote, f"refs/heads/{branch}"],
+        root,
+    )
+    remote_lines = remote_output.splitlines()
+    remote_fields = remote_lines[0].split() if remote_lines else []
+    if len(remote_fields) != 2 or remote_fields[1] != f"refs/heads/{branch}":
+        raise AuditError(
+            f"could not read the exact remote branch tip for {remote}/{branch}"
+        )
+    current_remote_head = remote_fields[0]
     result: dict[str, object] = {
         "branch": branch,
         "reviewed_head": reviewed_head,
         "current_head": current_head,
+        "remote": remote,
+        "reviewed_remote_head": reviewed_remote_head,
+        "current_remote_head": current_remote_head,
     }
     if current_head != reviewed_head:
         result.update({
@@ -108,10 +128,17 @@ def prepare_branch_deletion(
             "deletion_commands": [],
         })
         return result
+    if current_remote_head != reviewed_remote_head:
+        result.update({
+            "bucket": "review",
+            "reason": "remote branch tip changed since review",
+            "deletion_commands": [],
+        })
+        return result
 
     result.update({
         "bucket": "delete",
-        "reason": "branch tip matches reviewed head",
+        "reason": "local and remote branch tips match reviewed heads",
         "deletion_commands": [
             ["git", "push", remote, "--delete", branch],
             ["git", "branch", "-d", branch],
@@ -371,6 +398,13 @@ def parse_args() -> argparse.Namespace:
         help="branch SHA recorded during review with --check-delete",
     )
     parser.add_argument(
+        "--reviewed-remote-head",
+        help=(
+            "remote branch SHA recorded during review; defaults to "
+            "--reviewed-head with --check-delete"
+        ),
+    )
+    parser.add_argument(
         "--remote",
         default="origin",
         help="remote to use in the remote-first deletion plan (default: origin)",
@@ -407,6 +441,7 @@ def main() -> int:
                     args.branch,
                     args.reviewed_head,
                     remote=args.remote,
+                    reviewed_remote_head=args.reviewed_remote_head,
                 ),
                 indent=2,
             ))

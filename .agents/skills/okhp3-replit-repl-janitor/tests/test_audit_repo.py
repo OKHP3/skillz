@@ -22,10 +22,12 @@ class AuditRepoTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._init_repo(root)
+            remote = self._add_remote(root, Path(directory))
             self._git(root, "switch", "-q", "-c", "feature/cleanup")
             (root / "reviewed.txt").write_text("reviewed\n", encoding="utf-8")
             self._git(root, "add", "reviewed.txt")
             self._git(root, "commit", "-qm", "reviewed work")
+            self._git(root, "push", "-qu", "origin", "feature/cleanup")
             reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
 
             (root / "moved.txt").write_text("changed\n", encoding="utf-8")
@@ -45,14 +47,66 @@ class AuditRepoTests(unittest.TestCase):
             )
             self.assertEqual(check["deletion_commands"], [])
 
-    def test_pre_delete_matching_tip_keeps_remote_first_sequence(self) -> None:
+    def test_pre_delete_remote_tip_change_holds_after_independent_remote_advance(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._init_repo(root)
+            remote = self._add_remote(root, Path(directory))
             self._git(root, "switch", "-q", "-c", "feature/cleanup")
             (root / "reviewed.txt").write_text("reviewed\n", encoding="utf-8")
             self._git(root, "add", "reviewed.txt")
             self._git(root, "commit", "-qm", "reviewed work")
+            self._git(root, "push", "-qu", "origin", "feature/cleanup")
+            reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
+
+            writer = Path(directory) / "remote-writer"
+            subprocess.run(
+                [
+                    "git",
+                    "clone",
+                    "-q",
+                    "--branch",
+                    "feature/cleanup",
+                    str(remote),
+                    str(writer),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            self._git(writer, "config", "user.email", "writer@example.com")
+            self._git(writer, "config", "user.name", "Remote Writer")
+            (writer / "remote-change.txt").write_text("advanced\n", encoding="utf-8")
+            self._git(writer, "add", "remote-change.txt")
+            self._git(writer, "commit", "-qm", "advance remote branch")
+            refreshed_remote_head = self._git(writer, "rev-parse", "HEAD").strip()
+            self._git(writer, "push", "-q", "origin", "feature/cleanup")
+
+            check = audit_repo.prepare_branch_deletion(
+                root,
+                "feature/cleanup",
+                reviewed_head,
+            )
+
+            self.assertEqual(check["bucket"], "review")
+            self.assertEqual(check["reviewed_head"], reviewed_head)
+            self.assertEqual(check["current_head"], reviewed_head)
+            self.assertEqual(check["reviewed_remote_head"], reviewed_head)
+            self.assertEqual(check["current_remote_head"], refreshed_remote_head)
+            self.assertEqual(check["reason"], "remote branch tip changed since review")
+            self.assertEqual(check["deletion_commands"], [])
+
+    def test_pre_delete_matching_tip_keeps_remote_first_sequence(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            remote = self._add_remote(root, Path(directory))
+            self._git(root, "remote", "add", "upstream", str(remote))
+            self._git(root, "switch", "-q", "-c", "feature/cleanup")
+            (root / "reviewed.txt").write_text("reviewed\n", encoding="utf-8")
+            self._git(root, "add", "reviewed.txt")
+            self._git(root, "commit", "-qm", "reviewed work")
+            self._git(root, "push", "-qu", "origin", "feature/cleanup")
             reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
 
             check = audit_repo.prepare_branch_deletion(
@@ -64,6 +118,8 @@ class AuditRepoTests(unittest.TestCase):
             self.assertEqual(check["bucket"], "delete")
             self.assertEqual(check["reviewed_head"], reviewed_head)
             self.assertEqual(check["current_head"], reviewed_head)
+            self.assertEqual(check["reviewed_remote_head"], reviewed_head)
+            self.assertEqual(check["current_remote_head"], reviewed_head)
             self.assertEqual(check["deletion_commands"], [
                 ["git", "push", "upstream", "--delete", "feature/cleanup"],
                 ["git", "branch", "-d", "feature/cleanup"],
@@ -398,6 +454,18 @@ class AuditRepoTests(unittest.TestCase):
         (root / "README.md").write_text("fixture\n", encoding="utf-8")
         self._git(root, "add", "README.md")
         self._git(root, "commit", "-qm", "initial")
+
+    def _add_remote(self, root: Path, directory: Path) -> Path:
+        remote = directory / "remote.git"
+        subprocess.run(
+            ["git", "init", "-q", "--bare", str(remote)],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        self._git(root, "remote", "add", "origin", str(remote))
+        self._git(root, "push", "-q", "origin", "main")
+        return remote
 
 
 if __name__ == "__main__":

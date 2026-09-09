@@ -190,16 +190,20 @@ python3 .agents/skills/okhp3-replit-repl-janitor/scripts/audit-repo.py \
   --root . \
   --check-delete \
   --branch '<branch>' \
-  --reviewed-head '<reviewed SHA>'
+  --reviewed-head '<reviewed local SHA>' \
+  --reviewed-remote-head '<reviewed remote SHA>'
 ```
 
-The JSON result records both `reviewed_head` and the freshly read
-`current_head`. If the bucket is `review`, stop, record the hold, and run no
-deletion command. Only a `delete` result may be executed, and its
+The JSON result records the reviewed and freshly read local tips in
+`reviewed_head` and `current_head`, plus the reviewed and freshly read
+authoritative remote tips in `reviewed_remote_head` and `current_remote_head`.
+If either tip differs, the bucket is `review`; stop, record the hold, and run
+no deletion command. Only a `delete` result may be executed, and its
 `deletion_commands` must be run in the emitted order. The sequence is
 remote-first (`git push origin --delete <branch>`) and local second
-(`git branch -d <branch>`). The check is read-only and never executes either
-command.
+(`git branch -d <branch>`). The check reads the remote directly and is
+read-only; it never executes either deletion command. If
+`--reviewed-remote-head` is omitted, it defaults to `--reviewed-head`.
 
 For an approved merge:
 
