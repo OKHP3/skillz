@@ -2,7 +2,8 @@
 import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 
 const root = resolve(fileURLToPath(new URL('../../../', import.meta.url)));
 const forge = resolve(root, 'artifacts/forge');
@@ -25,11 +26,34 @@ function run(script, env = {}) {
   return result.status ?? 1;
 }
 
-console.log('== catalog integrity: build ==');
-const buildStatus = run('build-catalog.js', { ALLOW_SHALLOW_CATALOG_BUILD: '1' });
-console.log('== catalog integrity: test ==');
-const testStatus = buildStatus === 0 ? run('test-catalog.mjs') : 1;
-const status = buildStatus === 0 && testStatus === 0 ? 'passed' : 'failed';
+// Local validation must inspect a fresh catalog, summary, and synchronized
+// manifest without turning a read-only check into a release-metadata refresh.
+// The publishing workflow intentionally invokes build-catalog.js directly,
+// with no isolated paths, so its authoritative tracked-output behavior stays
+// unchanged.
+const validationRoot = mkdtempSync(resolve(tmpdir(), 'catalog-integrity-'));
+const validationPublicDir = resolve(validationRoot, 'public');
+const validationManifestPath = resolve(validationRoot, 'skillz.manifest.json');
+copyFileSync(resolve(root, 'skillz.manifest.json'), validationManifestPath);
+const validationEnv = {
+  ALLOW_SHALLOW_CATALOG_BUILD: '1',
+  FORGE_PUBLIC_DIR: validationPublicDir,
+  FORGE_MANIFEST_PATH: validationManifestPath,
+};
+
+let buildStatus = 1;
+let testStatus = 1;
+let status = 'failed';
+try {
+  console.log(`== catalog integrity: build (isolated output: ${validationRoot}) ==`);
+  buildStatus = run('build-catalog.js', validationEnv);
+  console.log('== catalog integrity: test ==');
+  testStatus = buildStatus === 0 ? run('test-catalog.mjs', validationEnv) : 1;
+  status = buildStatus === 0 && testStatus === 0 ? 'passed' : 'failed';
+} finally {
+  rmSync(validationRoot, { recursive: true, force: true });
+}
+
 if (reportFile) {
   mkdirSync(dirname(reportFile), { recursive: true });
   writeFileSync(reportFile, `${JSON.stringify({
@@ -42,6 +66,7 @@ if (reportFile) {
       'artifacts/forge/scripts/build-catalog.js',
       'artifacts/forge/scripts/test-catalog.mjs',
       'artifacts/forge/public/data/',
+      'skillz.manifest.json',
     ],
     checks: [
       { name: 'catalog build', status: buildStatus === 0 ? 'passed' : 'failed', severity: 'release-blocking' },

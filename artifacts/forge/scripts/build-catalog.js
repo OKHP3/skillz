@@ -48,7 +48,13 @@ const OUTPUT = join(PUBLIC_DIR, 'data', 'catalog.json');
 //     with, not the plain-text search blob.
 const SEARCH_INDEX_OUTPUT = join(PUBLIC_DIR, 'data', 'search-index.json');
 const SKILL_DETAIL_DIR = join(PUBLIC_DIR, 'data', 'skills');
-const MANIFEST_PATH = join(REPO_ROOT, 'skillz.manifest.json');
+// Release builds leave this unset and update the tracked manifest alongside
+// the published catalog. Validation runners may point it at an isolated copy
+// so they can exercise manifest synchronization without rewriting release
+// metadata in the working tree.
+const MANIFEST_PATH = process.env.FORGE_MANIFEST_PATH
+  ? resolve(REPO_ROOT, process.env.FORGE_MANIFEST_PATH)
+  : join(REPO_ROOT, 'skillz.manifest.json');
 
 const GITHUB_REPO = 'OKHP3/skillz';
 const GITHUB_BASE = `https://github.com/${GITHUB_REPO}`;

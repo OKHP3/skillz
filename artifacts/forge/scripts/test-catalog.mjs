@@ -13,7 +13,7 @@
  * PRD this implements.
  */
 import { readFileSync, existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'fs';
-import { join, dirname, relative } from 'path';
+import { join, dirname, relative, resolve } from 'path';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { execSync, spawnSync } from 'child_process';
@@ -36,9 +36,18 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, '..', '..', '..');
 const WORKSPACE_ROOT = REPO_ROOT;
 const FORGE_ROOT = join(__dirname, '..');
-const CATALOG_PATH = join(__dirname, '..', 'public', 'data', 'catalog.json');
-const SUMMARY_PATH = join(__dirname, '..', 'public', 'data', 'project-summary.json');
-const MANIFEST_PATH = join(REPO_ROOT, 'skillz.manifest.json');
+// The release workflow leaves these unset and tests the tracked generated
+// assets. Local integrity validation supplies isolated paths so it can test a
+// fresh build, including manifest synchronization, without changing release
+// metadata in the checkout.
+const GENERATED_PUBLIC_DIR = process.env.FORGE_PUBLIC_DIR
+  ? resolve(FORGE_ROOT, process.env.FORGE_PUBLIC_DIR)
+  : join(FORGE_ROOT, 'public');
+const CATALOG_PATH = join(GENERATED_PUBLIC_DIR, 'data', 'catalog.json');
+const SUMMARY_PATH = join(GENERATED_PUBLIC_DIR, 'data', 'project-summary.json');
+const MANIFEST_PATH = process.env.FORGE_MANIFEST_PATH
+  ? resolve(REPO_ROOT, process.env.FORGE_MANIFEST_PATH)
+  : join(REPO_ROOT, 'skillz.manifest.json');
 
 let catalog, manifest;
 try {
