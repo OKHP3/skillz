@@ -8,7 +8,7 @@
  */
 import { readFileSync, existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { dirname, join, relative } from 'node:path';
+import { basename, dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const forgeRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -56,6 +56,38 @@ function runNode(scriptPath, cwd, env) {
   return result;
 }
 
+function cleanupPreviewArtifacts(fixtureRoot, forgeOutputDir, reviewDeskOutputDir) {
+  if (fixtureRoot) {
+    rmSync(fixtureRoot, { recursive: true, force: true });
+  }
+  rmSync(forgeOutputDir, { recursive: true, force: true });
+  rmSync(reviewDeskOutputDir, { recursive: true, force: true });
+}
+
+function proveFailureCleanup() {
+  let failureFixtureRoot;
+  const failureForgeOutputDir = mkdtempSync(join(forgeRoot, '.preview-generation-failure-'));
+  const failureReviewDeskOutputDir = join(reviewDeskRoot, basename(failureForgeOutputDir));
+
+  try {
+    failureFixtureRoot = mkdtempSync(join(workspaceRoot, 'community', 'preview-companion-failure-'));
+    writeFileSync(join(failureFixtureRoot, 'SKILL.md'), '# Preview failure fixture\n', 'utf8');
+    mkdirSync(join(failureReviewDeskOutputDir, 'data'), { recursive: true });
+    writeFileSync(join(failureForgeOutputDir, 'generated.txt'), 'generated output\n', 'utf8');
+    writeFileSync(join(failureReviewDeskOutputDir, 'data', 'catalog.json'), '{}\n', 'utf8');
+
+    assert(false, 'Injected preview diagnostic failure.');
+  } catch (error) {
+    assert(error instanceof Error && error.message === 'Injected preview diagnostic failure.', 'Failure injection did not fail as expected.');
+  } finally {
+    cleanupPreviewArtifacts(failureFixtureRoot, failureForgeOutputDir, failureReviewDeskOutputDir);
+  }
+
+  assert(!existsSync(failureFixtureRoot), 'Failed preview checks left behind their fixture directory.');
+  assert(!existsSync(failureForgeOutputDir), 'Failed preview checks left behind the Forge alternate output directory.');
+  assert(!existsSync(failureReviewDeskOutputDir), 'Failed preview checks left behind the Review Desk alternate output directory.');
+}
+
 let companionFixtureRoot;
 try {
   assert(
@@ -69,6 +101,7 @@ try {
       reviewDeskPackage.scripts.dev.includes('FORGE_PUBLIC_DIR=.cache/forge-preview'),
     'Review Desk preview scripts must use ignored output.',
   );
+  proveFailureCleanup();
 
   const before = snapshot(trackedPaths);
   const approvedPreviewBuild = runNode(
@@ -184,9 +217,5 @@ This fixture references the broken companion \`${brokenCompanion}\`.
 
   console.log('Preview generation regression passed.');
 } finally {
-  if (companionFixtureRoot) {
-    rmSync(companionFixtureRoot, { recursive: true, force: true });
-  }
-  rmSync(forgePreviewDir, { recursive: true, force: true });
-  rmSync(reviewDeskPreviewDir, { recursive: true, force: true });
+  cleanupPreviewArtifacts(companionFixtureRoot, forgePreviewDir, reviewDeskPreviewDir);
 }
