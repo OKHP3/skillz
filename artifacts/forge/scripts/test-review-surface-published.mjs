@@ -20,6 +20,8 @@ import { execFileSync } from 'node:child_process';
 import { chromium } from 'playwright';
 
 const baseUrl = (process.env.FORGE_PUBLISHED_URL || 'https://okhp3.github.io/skillz/').replace(/\/?$/, '/');
+const catalogWaitTimeoutMs = Number(process.env.PUBLISHED_CATALOG_WAIT_TIMEOUT_MS || 180_000);
+const catalogPollIntervalMs = Number(process.env.PUBLISHED_CATALOG_POLL_INTERVAL_MS || 5_000);
 
 // The commit the published artifact is expected to reflect. A post-deploy CI
 // job should pass the commit it just deployed (e.g. `${{ github.sha }}`); a
@@ -63,6 +65,63 @@ async function fetchPublic(url, label) {
   return response;
 }
 
+function sourceCommitMatches(expected, actual) {
+  return Boolean(
+    expected
+    && actual
+    && (expected.startsWith(actual) || actual.startsWith(expected.slice(0, actual.length))),
+  );
+}
+
+function delay(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+async function waitForPublishedCatalog(expected) {
+  const catalogUrl = `${baseUrl}data/catalog.json`;
+  const shouldWaitForCommit = Boolean(process.env.EXPECTED_SOURCE_COMMIT);
+  const deadline = Date.now() + catalogWaitTimeoutMs;
+  let latestCatalog = null;
+  let latestError = null;
+
+  while (true) {
+    try {
+      const catalogResponse = await fetchPublic(catalogUrl, 'published catalog.json');
+      try {
+        latestCatalog = await catalogResponse.json();
+      } catch (error) {
+        throw new DeploymentError(`Published catalog.json is not valid JSON: ${error.message}`);
+      }
+
+      if (!expected || sourceCommitMatches(expected, latestCatalog.sourceCommit)) {
+        return latestCatalog;
+      }
+
+      latestError = new DeploymentError(
+        `Published catalog.json reports sourceCommit ${latestCatalog.sourceCommit || '<missing>'}, `
+        + `but expected it to reflect ${expected}.`,
+      );
+    } catch (error) {
+      latestError = error;
+    }
+
+    if (!shouldWaitForCommit || Date.now() >= deadline) {
+      if (latestError instanceof DeploymentError) {
+        if (latestCatalog && !sourceCommitMatches(expected, latestCatalog.sourceCommit)) {
+          throw new DeploymentError(
+            `${latestError.message} The GitHub Pages artifact is still stale relative to the deployed commit `
+            + `after waiting ${catalogWaitTimeoutMs}ms -- this is a hosting/deploy problem, not an application regression.`,
+          );
+        }
+        throw latestError;
+      }
+      throw new DeploymentError(`Could not verify the published catalog: ${latestError.message}`);
+    }
+
+    await delay(Math.min(catalogPollIntervalMs, Math.max(0, deadline - Date.now())));
+  }
+}
+
 async function text(page, selector) {
   return (await page.locator(selector).innerText()).trim();
 }
@@ -90,13 +149,8 @@ async function main() {
   // 1. Deployment stage: the published site and its catalog must be publicly
   // reachable at all -- no auth, no repository access, just a plain GET.
   await fetchPublic(baseUrl, 'published Forge site');
-  const catalogResponse = await fetchPublic(`${baseUrl}data/catalog.json`, 'published catalog.json');
-  let catalog;
-  try {
-    catalog = await catalogResponse.json();
-  } catch (error) {
-    throw new DeploymentError(`Published catalog.json is not valid JSON: ${error.message}`);
-  }
+  const expected = expectedSourceCommit();
+  const catalog = await waitForPublishedCatalog(expected);
   const skill = catalog.skills?.[0];
   if (!skill) throw new DeploymentError('Published catalog.json has no skills to exercise the review surface with.');
   const deferredSkill = catalog.skills.find(s => s.companionDiagnostics?.deferred?.length);
@@ -107,10 +161,9 @@ async function main() {
     );
   }
 
-  const expected = expectedSourceCommit();
-  if (expected && catalog.sourceCommit && !expected.startsWith(catalog.sourceCommit) && !catalog.sourceCommit.startsWith(expected.slice(0, catalog.sourceCommit.length))) {
+  if (expected && !sourceCommitMatches(expected, catalog.sourceCommit)) {
     throw new DeploymentError(
-      `Published catalog.json reports sourceCommit ${catalog.sourceCommit}, but expected it to reflect ${expected}. `
+      `Published catalog.json reports sourceCommit ${catalog.sourceCommit || '<missing>'}, but expected it to reflect ${expected}. `
       + 'The GitHub Pages artifact is stale relative to this checkout -- a hosting/deploy problem, not an application regression.',
     );
   }

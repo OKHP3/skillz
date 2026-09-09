@@ -123,8 +123,8 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
 
-  verify-keyboard-recovery:
-    name: Confirm published pages preserve keyboard recovery
+  verify-review-surface:
+    name: Confirm published pages preserve the review surface
     needs: deploy
     runs-on: ubuntu-latest
     permissions:
@@ -151,12 +151,13 @@ jobs:
       - name: Install Chromium for browser validation
         run: pnpm --filter @workspace/forge exec playwright install --with-deps chromium
 
-      - name: Run post-deploy keyboard recovery check
+      - name: Run post-deploy published review surface check
         # This is deliberately credential-free: it only issues public HTTPS
-        # requests against the just-deployed Pages URL. A deployment-stage
-        # failure (unreachable site, stale artifact) exits 2; an application
-        # assertion failure (keyboard recovery itself regressed) exits 1.
+        # requests against the just-deployed Pages URL. The script waits for
+        # the catalog to report github.sha before opening a browser. A
+        # deployment-stage failure (unreachable site, stale artifact) exits 2;
+        # an application assertion failure exits 1.
         env:
           FORGE_PUBLISHED_URL: ${{ needs.deploy.outputs.page_url }}
           EXPECTED_SOURCE_COMMIT: ${{ github.sha }}
-        run: node .agents/skills/published-keyboard-recovery-check/run.mjs
+        run: node artifacts/forge/scripts/test-review-surface-published.mjs
