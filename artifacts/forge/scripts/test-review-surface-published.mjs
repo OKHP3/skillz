@@ -168,6 +168,40 @@ async function expectVisibleWithinViewport(locator, label) {
   }
 }
 
+async function expectUnresolvedCompanionWarning(page, skill, unresolvedName) {
+  const pathway = page.locator('.skill-pathway');
+  await pathway.waitFor({ timeout: 20_000 });
+
+  const warning = pathway.locator('[data-companion-kind="unresolved"]');
+  await warning.waitFor({ timeout: 20_000 });
+  assert(await warning.count() === 1,
+    `${skill.name} must render exactly one unresolved companion warning on the published site.`);
+  const warningCopy = (await warning.innerText()).replace(/\s+/g, ' ').trim();
+  assert(warningCopy === '⚠ 1',
+    `${skill.name} unresolved companion warning must show the warning count on the published site (received ${JSON.stringify(warningCopy)}).`);
+  assert(await warning.getAttribute('title') === `Unresolved companion reference: ${unresolvedName}`,
+    `${skill.name} published unresolved companion warning must identify the missing reference in its title.`);
+  assert(await warning.getAttribute('aria-label') === `1 unresolved companion reference on this skill: ${unresolvedName}`,
+    `${skill.name} published unresolved companion warning must expose the missing reference to assistive technology.`);
+
+  const unresolvedNode = pathway.locator('.skill-pathway__node--unresolved');
+  await unresolvedNode.waitFor({ timeout: 20_000 });
+  const unresolvedCopy = await unresolvedNode.innerText();
+  assert(unresolvedCopy.includes(unresolvedName),
+    `${skill.name} published unresolved pathway stop must show the missing companion name.`);
+  assert(unresolvedCopy.includes('Not found — check for a typo or renamed skill'),
+    `${skill.name} published unresolved pathway stop must explain how to interpret the warning.`);
+  assert((await unresolvedNode.getAttribute('title')).includes(
+    "does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere.",
+  ), `${skill.name} published unresolved pathway stop must explain the broken-reference cause.`);
+  assert(await pathway.locator('.skill-pathway__branch--broken').count() === 1,
+    `${skill.name} genuine unresolved companion must use unresolved-warning presentation on the published site.`);
+  assert(await pathway.locator('[data-section="approved-companion-context"]').count() === 0,
+    `${skill.name} genuine unresolved companion must not render approved-exception context on the published site.`);
+  await expectVisibleWithinViewport(warning, `Unresolved companion warning for ${skill.name}`);
+  await expectNoHorizontalOverflow(page, `published unresolved companion pathway for ${skill.name}`);
+}
+
 async function main() {
   // 1. Deployment stage: the published site and its catalog must be publicly
   // reachable at all -- no auth, no repository access, just a plain GET.
@@ -178,6 +212,7 @@ async function main() {
   if (!skill) throw new DeploymentError('Published catalog.json has no skills to exercise the review surface with.');
   const deferredSkill = catalog.skills.find(s => s.companionDiagnostics?.deferred?.length);
   const projectLocalSkill = catalog.skills.find(s => s.companionDiagnostics?.projectLocal?.length);
+  const unresolvedFixture = catalog.skills.find(s => s.companions?.length > 0) || skill;
   if (!deferredSkill || !projectLocalSkill) {
     throw new DeploymentError(
       'Published catalog.json must contain representative deferred and project-local companion diagnostics.',
@@ -271,9 +306,33 @@ async function main() {
       await expectNoHorizontalOverflow(page, `published ${label.toLowerCase()} pathway for ${approvedSkill.name}`);
     }
 
+    const unresolvedName = 'okhp3-published-regression-unresolved-companion';
+    const unresolved = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await unresolved.route('**/data/catalog.json', async requestRoute => {
+      const response = await requestRoute.fetch();
+      const fixtureCatalog = await response.json();
+      const fixtureSkill = fixtureCatalog.skills.find(candidate => candidate.name === unresolvedFixture.name);
+      assert(fixtureSkill, `Could not create unresolved companion fixture for ${unresolvedFixture.name}.`);
+      fixtureSkill.companions = [unresolvedName];
+      delete fixtureSkill.companionDiagnostics;
+      await requestRoute.fulfill({
+        status: response.status(),
+        headers: { ...response.headers(), 'content-type': 'application/json' },
+        body: JSON.stringify(fixtureCatalog),
+      });
+    });
+    await unresolved.goto(
+      `${baseUrl}?publishedFixture=unresolved#/skills/${encodeURIComponent(unresolvedFixture.family)}/${encodeURIComponent(unresolvedFixture.name)}`,
+      { waitUntil: 'domcontentloaded', timeout: 20_000 },
+    );
+    await unresolved.locator('[data-page="skill-detail"]').waitFor({ timeout: 20_000 });
+    await expectUnresolvedCompanionWarning(unresolved, unresolvedFixture, unresolvedName);
+    await unresolved.close();
+
     console.log(
-      `✓ published review surface at ${baseUrl} preserves failed-contract keyboard recovery and approved companion notices `
-      + `(${deferredSkill.family}/${deferredSkill.name}, ${projectLocalSkill.family}/${projectLocalSkill.name})`,
+      `✓ published review surface at ${baseUrl} preserves failed-contract keyboard recovery, unresolved warnings, `
+      + `and approved companion notices (${deferredSkill.family}/${deferredSkill.name}, `
+      + `${projectLocalSkill.family}/${projectLocalSkill.name}, ${unresolvedFixture.family}/${unresolvedFixture.name})`,
     );
   } finally {
     await browser.close();

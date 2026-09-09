@@ -19,6 +19,7 @@ import { fileURLToPath } from 'node:url';
 const checkScript = fileURLToPath(new URL('./test-review-surface-published.mjs', import.meta.url));
 const expectedCommit = 'expected-commit-abcdef123456';
 const staleCommit = 'old-commit-000000000000';
+const unresolvedName = 'okhp3-published-regression-unresolved-companion';
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -42,7 +43,7 @@ function catalog(sourceCommit) {
   };
 }
 
-function reviewSurfaceHtml({ assertionFailure }) {
+function reviewSurfaceHtml({ assertionFailure, unresolved = false }) {
   return `<!doctype html>
 <html>
   <body>
@@ -50,8 +51,22 @@ function reviewSurfaceHtml({ assertionFailure }) {
       <h1>Fixture skill</h1>
       <h2>Trust summary</h2>
       <div class="skill-pathway">
+        ${unresolved ? `
+        <span
+          class="skill-pathway__branch skill-pathway__branch--broken"
+          data-companion-kind="unresolved"
+          title="Unresolved companion reference: ${unresolvedName}"
+          aria-label="1 unresolved companion reference on this skill: ${unresolvedName}"
+        >⚠ 1</span>
+        <div
+          class="skill-pathway__node skill-pathway__node--unresolved"
+          title="&quot;${unresolvedName}&quot; is referenced as a companion but does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere."
+        >
+          <span class="skill-pathway__node-name skill-pathway__node-name--unresolved">${unresolvedName}</span>
+          <span class="skill-pathway__node-unresolved-label">Not found — check for a typo or renamed skill</span>
+        </div>` : `
         <div data-companion-kind="deferred">Deferred companion</div>
-        <div data-companion-kind="project-local">Project-local companion</div>
+        <div data-companion-kind="project-local">Project-local companion</div>`}
       </div>
       ${assertionFailure ? '' : `
       <div role="tabpanel" aria-label="Raw markdown" tabindex="-1">
@@ -75,7 +90,8 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
     browserStarts: [],
   };
   const server = createServer((request, response) => {
-    const requestPath = new URL(request.url, 'http://fixture.local').pathname;
+    const requestUrl = new URL(request.url, 'http://fixture.local');
+    const requestPath = requestUrl.pathname;
 
     if (requestPath === '/data/catalog.json') {
       const responseIndex = Math.min(state.catalogRequests, catalogResponses.length - 1);
@@ -104,8 +120,11 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
       return;
     }
 
-    response.writeHead(200, { 'content-type': 'text/html' });
-    response.end(reviewSurfaceHtml({ assertionFailure }));
+    response.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    response.end(reviewSurfaceHtml({
+      assertionFailure,
+      unresolved: requestUrl.searchParams.get('publishedFixture') === 'unresolved',
+    }));
   });
 
   server.listen(0, '127.0.0.1');
