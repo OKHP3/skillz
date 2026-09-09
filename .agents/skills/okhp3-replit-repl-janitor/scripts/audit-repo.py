@@ -16,7 +16,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Mapping
 
 
 ROOT_GOVERNANCE_FILES = {
@@ -192,7 +192,34 @@ def classify_branch_for_cleanup(
     return {"bucket": "review", "reason": "branch has not been proven disposable"}
 
 
-def audit_branches(root: Path, base: str) -> tuple[list[dict[str, object]], str]:
+def hosted_lookup_summary(
+    hosted_pr: dict[str, object] | None,
+) -> dict[str, object]:
+    """Return the report-safe outcome of a hosted pull-request lookup."""
+    if hosted_pr is None:
+        return {"status": "unavailable"}
+
+    status = hosted_pr.get("lookup_status", hosted_pr.get("lookup", "available"))
+    summary: dict[str, object] = {"status": status}
+    if "error" in hosted_pr:
+        summary["error"] = hosted_pr["error"]
+    return summary
+
+
+def audit_branches(
+    root: Path,
+    base: str,
+    *,
+    hosted_prs: Mapping[str, dict[str, object] | None] | None = None,
+) -> tuple[list[dict[str, object]], str]:
+    """Collect branch facts and, when supplied, hosted cleanup evidence.
+
+    ``hosted_prs`` is an explicit lookup result keyed by local branch name.
+    Supplying it means every non-protected branch is classified with hosted
+    evidence; an omitted branch is treated as an unavailable lookup.  Leaving
+    it unset preserves the local-only audit for callers that have not made
+    hosted lookups.
+    """
     current = run(["git", "branch", "--show-current"], root)
     branches = run(
         ["git", "for-each-ref", "--format=%(refname:short)", "refs/heads/"],
@@ -214,7 +241,7 @@ def audit_branches(root: Path, base: str) -> tuple[list[dict[str, object]], str]
         )
         head_sha = run(["git", "rev-parse", branch], root)
         date, author, subject = (last.split("\0", 2) + ["", "", ""])[:3]
-        ledger.append({
+        item: dict[str, object] = {
             "branch": branch,
             "is_current": bool(current) and branch == current,
             "merged_into_base": branch in merged,
@@ -223,7 +250,14 @@ def audit_branches(root: Path, base: str) -> tuple[list[dict[str, object]], str]
             "last_commit_author": author,
             "last_commit_subject": subject,
             "replit_generated_pattern": bool(REPLIT_BRANCH_PATTERNS.match(branch)),
-        })
+        }
+        if hosted_prs is not None:
+            hosted_pr = hosted_prs.get(branch)
+            item["hosted_lookup"] = hosted_lookup_summary(hosted_pr)
+            decision = classify_branch_for_cleanup(item, hosted_pr=hosted_pr)
+            item["bucket"] = decision["bucket"]
+            item["reason"] = decision["reason"]
+        ledger.append(item)
     return ledger, current
 
 
@@ -298,6 +332,27 @@ def audit_detritus(root: Path) -> list[dict[str, object]]:
     return sorted(found, key=lambda item: str(item["folder"]))
 
 
+def load_hosted_prs(path: Path) -> dict[str, dict[str, object] | None]:
+    """Load explicit hosted lookup results without making any network calls."""
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AuditError(f"could not read hosted lookup report {path}: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise AuditError(f"hosted lookup report must be a JSON object: {path}")
+
+    hosted_prs: dict[str, dict[str, object] | None] = {}
+    for branch, result in payload.items():
+        if not isinstance(branch, str):
+            raise AuditError(f"hosted lookup branch names must be strings: {path}")
+        if result is not None and not isinstance(result, dict):
+            raise AuditError(
+                f"hosted lookup result for {branch!r} must be an object or null: {path}"
+            )
+        hosted_prs[branch] = result
+    return hosted_prs
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", default=".")
@@ -325,6 +380,14 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="run `git fetch --all` before auditing; never prunes",
     )
+    parser.add_argument(
+        "--hosted-lookups",
+        type=Path,
+        help=(
+            "read a JSON object of branch names to hosted pull-request lookup "
+            "results; null means unavailable and no network call is made"
+        ),
+    )
     return parser.parse_args()
 
 
@@ -349,13 +412,23 @@ def main() -> int:
             ))
             return 0
         ensure_base(root, args.base)
-        branches, current = audit_branches(root, args.base)
+        hosted_prs = (
+            load_hosted_prs(args.hosted_lookups)
+            if args.hosted_lookups is not None
+            else None
+        )
+        branches, current = audit_branches(
+            root,
+            args.base,
+            hosted_prs=hosted_prs,
+        )
         report = {
             "root": str(root),
             "base": args.base,
             "fetch_performed": args.fetch,
             "current_branch": current or None,
             "detached_head": not bool(current),
+            "hosted_lookups_provided": hosted_prs is not None,
             "branches": branches,
             "naming_violations": audit_naming(root),
             "detritus_folders": audit_detritus(root),

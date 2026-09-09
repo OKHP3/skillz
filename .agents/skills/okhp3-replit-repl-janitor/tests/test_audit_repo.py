@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import subprocess
 import tempfile
 import unittest
@@ -151,6 +152,102 @@ class AuditRepoTests(unittest.TestCase):
             "bucket": "delete",
             "reason": "merged pull request and reachable merge commit",
         })
+
+    def test_audit_report_surfaces_missing_hosted_evidence_as_review(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            for branch in [
+                "feature/unknown",
+                "feature/failed",
+                "feature/unavailable",
+            ]:
+                self._git(root, "branch", branch)
+
+            branches, _ = audit_repo.audit_branches(
+                root,
+                "main",
+                hosted_prs={
+                    "feature/unknown": {"lookup_status": "unknown"},
+                    "feature/failed": {
+                        "lookup_status": "failed",
+                        "error": "host unavailable",
+                    },
+                    "feature/unavailable": None,
+                },
+            )
+            by_name = {str(item["branch"]): item for item in branches}
+
+            self.assertEqual(by_name["feature/unknown"]["bucket"], "review")
+            self.assertEqual(
+                by_name["feature/unknown"]["hosted_lookup"],
+                {"status": "unknown"},
+            )
+            self.assertIn(
+                "hosted evidence is missing",
+                str(by_name["feature/unknown"]["reason"]),
+            )
+
+            self.assertEqual(by_name["feature/failed"]["bucket"], "review")
+            self.assertEqual(
+                by_name["feature/failed"]["hosted_lookup"],
+                {"status": "failed", "error": "host unavailable"},
+            )
+            self.assertIn(
+                "hosted evidence is missing",
+                str(by_name["feature/failed"]["reason"]),
+            )
+
+            self.assertEqual(by_name["feature/unavailable"]["bucket"], "review")
+            self.assertEqual(
+                by_name["feature/unavailable"]["hosted_lookup"],
+                {"status": "unavailable"},
+            )
+            self.assertIn(
+                "hosted evidence is missing",
+                str(by_name["feature/unavailable"]["reason"]),
+            )
+            self.assertNotIn(
+                "delete",
+                {
+                    str(by_name[name]["bucket"])
+                    for name in [
+                        "feature/unknown",
+                        "feature/failed",
+                        "feature/unavailable",
+                    ]
+                },
+            )
+
+    def test_hosted_lookup_file_is_read_only_report_input(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "branch", "feature/unknown")
+            lookup_file = root / "lookups.json"
+            lookup_file.write_text(
+                json.dumps({"feature/unknown": {"lookup_status": "unknown"}}),
+                encoding="utf-8",
+            )
+
+            loaded = audit_repo.load_hosted_prs(lookup_file)
+            self.assertEqual(
+                loaded,
+                {"feature/unknown": {"lookup_status": "unknown"}},
+            )
+            before = self._git(root, "status", "--short")
+            branches, _ = audit_repo.audit_branches(
+                root,
+                "main",
+                hosted_prs=loaded,
+            )
+            after = self._git(root, "status", "--short")
+
+            unknown = next(
+                item for item in branches if item["branch"] == "feature/unknown"
+            )
+            self.assertEqual(unknown["bucket"], "review")
+            self.assertEqual(before, after)
 
     def test_active_branches_stashes_and_archive_refs_are_protected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
