@@ -80,11 +80,21 @@ function delay(milliseconds) {
 async function waitForPublishedCatalog(expected) {
   const catalogUrl = `${baseUrl}data/catalog.json`;
   const shouldWaitForCommit = Boolean(process.env.EXPECTED_SOURCE_COMMIT);
+  const startedAt = Date.now();
   const deadline = Date.now() + catalogWaitTimeoutMs;
   let latestCatalog = null;
   let latestError = null;
+  let attempts = 0;
+
+  if (shouldWaitForCommit) {
+    console.log(
+      `[deployment] Waiting for published catalog sourceCommit ${expected} `
+      + `(poll every ${catalogPollIntervalMs}ms, timeout ${catalogWaitTimeoutMs}ms).`,
+    );
+  }
 
   while (true) {
+    attempts += 1;
     try {
       const catalogResponse = await fetchPublic(catalogUrl, 'published catalog.json');
       try {
@@ -105,19 +115,32 @@ async function waitForPublishedCatalog(expected) {
       latestError = error;
     }
 
-    if (!shouldWaitForCommit || Date.now() >= deadline) {
+    const elapsedMs = Date.now() - startedAt;
+    if (!shouldWaitForCommit || elapsedMs >= catalogWaitTimeoutMs) {
       if (latestError instanceof DeploymentError) {
         if (latestCatalog && !sourceCommitMatches(expected, latestCatalog.sourceCommit)) {
           throw new DeploymentError(
             `${latestError.message} The GitHub Pages artifact is still stale relative to the deployed commit `
-            + `after waiting ${catalogWaitTimeoutMs}ms -- this is a hosting/deploy problem, not an application regression.`,
+            + `after waiting ${elapsedMs}ms (last observed sourceCommit `
+            + `${latestCatalog.sourceCommit || '<missing>'}) -- this is a hosting/deploy problem, `
+            + 'not an application regression.',
           );
         }
-        throw latestError;
+        throw new DeploymentError(
+          `${latestError.message} after waiting ${elapsedMs}ms (last observed sourceCommit `
+          + `${latestCatalog?.sourceCommit || '<none>'}).`,
+        );
       }
-      throw new DeploymentError(`Could not verify the published catalog: ${latestError.message}`);
+      throw new DeploymentError(
+        `Could not verify the published catalog after waiting ${elapsedMs}ms `
+        + `(last observed sourceCommit ${latestCatalog?.sourceCommit || '<none>'}): ${latestError.message}`,
+      );
     }
 
+    console.log(
+      `[deployment] Catalog propagation retry ${attempts}: expected sourceCommit ${expected}; `
+      + `last observed sourceCommit ${latestCatalog?.sourceCommit || '<missing>'}; elapsed ${elapsedMs}ms.`,
+    );
     await delay(Math.min(catalogPollIntervalMs, Math.max(0, deadline - Date.now())));
   }
 }

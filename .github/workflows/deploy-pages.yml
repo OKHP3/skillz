@@ -154,9 +154,10 @@ jobs:
       - name: Run post-deploy published review surface check
         # This is deliberately credential-free: it only issues public HTTPS
         # requests against the just-deployed Pages URL. The script waits for
-        # the catalog to report github.sha before opening a browser. A
-        # deployment-stage failure (unreachable site, stale artifact) exits 2;
-        # an application assertion failure exits 1.
+        # the catalog to report github.sha before opening a browser and logs
+        # propagation retries while Pages catches up. A deployment-stage
+        # failure (unreachable site, stale artifact) exits 2; an application
+        # assertion failure exits 1.
         env:
           FORGE_PUBLISHED_URL: ${{ needs.deploy.outputs.page_url }}
           EXPECTED_SOURCE_COMMIT: ${{ github.sha }}

@@ -166,6 +166,12 @@ async function main() {
       const expectedResponse = state.catalogResponses.find(entry => entry.sourceCommit === expectedCommit);
       assert(expectedResponse, 'Propagation fixture never served the expected source commit.');
       assert(state.browserStarts.length > 0, 'Propagation fixture never reached the browser assertion stage.');
+      assert(result.stdout.includes(`Waiting for published catalog sourceCommit ${expectedCommit}`),
+        `Propagation fixture should report the expected source commit:\n${result.stdout}`);
+      assert(/Catalog propagation retry 1:.*elapsed \d+ms/.test(result.stdout),
+        `Propagation fixture should report its retry and elapsed wait:\n${result.stdout}`);
+      assert(result.stdout.split('\n').filter(line => line.includes('[deployment]')).length === 2,
+        `Successful propagation should keep deployment progress concise:\n${result.stdout}`);
       assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
         'Browser assertions started before the expected catalog response completed.');
     },
@@ -180,6 +186,10 @@ async function main() {
       assert(result.stderr.includes('✗ [deployment]'), 'Permanent staleness must use the deployment failure prefix.');
       assert(result.stderr.includes('still stale relative to the deployed commit'),
         `Permanent staleness must explain that the artifact is stale:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${staleCommit}`),
+        `Permanent staleness must report the last observed source commit:\n${result.stderr}`);
+      assert(/after waiting \d+ms/.test(result.stderr),
+        `Permanent staleness must report the total wait duration:\n${result.stderr}`);
       assert(state.browserStarts.length === 0,
         'Permanent staleness must stop before opening the browser assertion stage.');
     },
