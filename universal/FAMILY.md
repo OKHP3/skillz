@@ -25,6 +25,7 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 | [okhp3-equilibrium-review](okhp3-equilibrium-review/SKILL.md) | Evaluate a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independ... | 1.0.0 |
 | [okhp3-foundry-repo-creator](okhp3-foundry-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
 | [okhp3-github-notification-maintainer](okhp3-github-notification-maintainer/SKILL.md) | Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, c... | 1.2.0 |
+| [okhp3-github-mirror-janitor](okhp3-github-mirror-janitor/SKILL.md) | Audit and safely maintain local GitHub clones, compare files and branches with origin/main, review GitHub notifications, and prepare evidence-backed branch lifecycle actions. | 0.1.0 |
 | [okhp3-google-gis-client-auth](okhp3-google-gis-client-auth/SKILL.md) | OverKill Hill P³ client-only Google Identity Services (GIS) auth workflow. Use when designing, im... | 1.2.0 |
 | [okhp3-i18n-page-release](okhp3-i18n-page-release/SKILL.md) | Validate and prepare a localized static-web page set for release after its exact-pair translation... | 1.1.0 |
 | [okhp3-i18n-page-sync](okhp3-i18n-page-sync/SKILL.md) | Detect which pages on a static site are missing a translation, or have a translation that has fal... | 1.2.0 |
