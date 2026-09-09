@@ -16,7 +16,7 @@ import { readFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, 
 import { join, dirname, relative, resolve } from 'path';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
-import { execSync, spawnSync } from 'child_process';
+import { execFileSync, execSync, spawnSync } from 'child_process';
 import {
   applyEvidencePolicy,
   getStaleApprovedCompanionReferences,
@@ -992,6 +992,118 @@ test('build-catalog.js hard-fails in CI against a genuinely shallow checkout (no
 function mktempCloneDir() {
   return mkdtempSync(join(tmpdir(), 'catalog-shallow-clone-test-'));
 }
+
+// Release builds deliberately leave the output and manifest paths at their
+// defaults and allow the builder to synchronize the tracked manifest. This
+// fixture starts from a clean, local git repository with deliberately stale
+// count metadata, then invokes the builder with every validation-only override
+// removed. It proves that the release boundary still refreshes the authoritative
+// catalog, project summary, and manifest without contacting a live service.
+test('release-mode catalog build refreshes manifest counts and shared provenance', () => {
+  const fixtureParent = mkdtempSync(join(tmpdir(), 'catalog-release-mode-'));
+  const fixtureRoot = join(fixtureParent, 'fixture');
+  mkdirSync(fixtureRoot, { recursive: true });
+
+  try {
+    const archive = execFileSync('git', ['archive', '--format=tar', 'HEAD'], {
+      cwd: WORKSPACE_ROOT,
+      maxBuffer: 128 * 1024 * 1024,
+    });
+    execFileSync('tar', ['-xf', '-', '-C', fixtureRoot], { input: archive });
+
+    execFileSync('git', ['init', '--quiet'], { cwd: fixtureRoot });
+    execFileSync('git', ['config', 'user.email', 'catalog-fixture@example.invalid'], { cwd: fixtureRoot });
+    execFileSync('git', ['config', 'user.name', 'Catalog Fixture'], { cwd: fixtureRoot });
+    execFileSync('git', ['add', '.'], { cwd: fixtureRoot });
+    execFileSync('git', ['commit', '--quiet', '-m', 'catalog release fixture'], { cwd: fixtureRoot });
+    execFileSync('git', ['branch', '-M', 'main'], { cwd: fixtureRoot });
+
+    const manifestPath = join(fixtureRoot, 'skillz.manifest.json');
+    const staleManifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    staleManifest.distributionSkillCount = 0;
+    staleManifest.activeFamilyCount = 0;
+    staleManifest.distributionFamilyCount = 0;
+    staleManifest.maturityCounts = { stale: 1 };
+    staleManifest.evidenceStatusCounts = { stale: 1 };
+    staleManifest.countsGeneratedAt = 'stale-fixture-metadata';
+    writeFileSync(manifestPath, JSON.stringify(staleManifest, null, 2) + '\n', 'utf8');
+
+    const releaseEnv = { ...process.env, GITHUB_REF_NAME: 'main' };
+    for (const variable of [
+      'FORGE_PUBLIC_DIR',
+      'FORGE_MANIFEST_PATH',
+      'FORGE_SKIP_MANIFEST_SYNC',
+      'ALLOW_SHALLOW_CATALOG_BUILD',
+    ]) {
+      delete releaseEnv[variable];
+    }
+
+    const buildScript = join(fixtureRoot, 'artifacts', 'forge', 'scripts', 'build-catalog.js');
+    const result = spawnSync(process.execPath, [buildScript], {
+      cwd: fixtureRoot,
+      env: releaseEnv,
+      encoding: 'utf8',
+    });
+    const output = `${result.stdout || ''}\n${result.stderr || ''}`;
+    assert(result.status === 0,
+      `release-mode catalog build failed with exit code ${result.status}\n${output}`);
+
+    const catalog = JSON.parse(readFileSync(
+      join(fixtureRoot, 'artifacts', 'forge', 'public', 'data', 'catalog.json'),
+      'utf8',
+    ));
+    const summary = JSON.parse(readFileSync(
+      join(fixtureRoot, 'artifacts', 'forge', 'public', 'data', 'project-summary.json'),
+      'utf8',
+    ));
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    const expectedCommit = execFileSync('git', ['rev-parse', '--short', 'HEAD'], {
+      cwd: fixtureRoot,
+      encoding: 'utf8',
+    }).trim();
+    const countBy = (items, key) => items.reduce((counts, item) => {
+      counts[item[key]] = (counts[item[key]] || 0) + 1;
+      return counts;
+    }, {});
+    const expectedMaturityCounts = countBy(catalog.skills, 'maturity');
+    const expectedEvidenceStatusCounts = countBy(catalog.skills, 'evidenceStatus');
+
+    assert(catalog.skillCount > 0, 'release-mode fixture produced an empty catalog');
+    assert(catalog.sourceRepository === manifest.repository,
+      'catalog sourceRepository does not match manifest repository');
+    assert(catalog.sourceCommit === expectedCommit,
+      `catalog sourceCommit=${catalog.sourceCommit} does not match fixture HEAD=${expectedCommit}`);
+    assert(catalog.sourceRef === 'main', `catalog sourceRef=${catalog.sourceRef} is not the release ref`);
+    assert(summary.generatedAt === catalog.generatedAt,
+      'project-summary.json generatedAt does not match catalog.json');
+    assert(summary.sourceRepository === catalog.sourceRepository &&
+      summary.sourceRef === catalog.sourceRef &&
+      summary.sourceCommit === catalog.sourceCommit,
+    'project-summary.json provenance does not match catalog.json');
+    assert(summary.skillCount === catalog.skillCount &&
+      summary.familyCount === catalog.familyCount,
+    'project-summary.json counts do not match catalog.json');
+    assert(JSON.stringify(summary.maturityCounts) === JSON.stringify(manifest.maturityCounts) &&
+      JSON.stringify(summary.evidenceStatusCounts) === JSON.stringify(manifest.evidenceStatusCounts),
+    'project-summary.json count maps do not match the synchronized manifest');
+    assert(manifest.distributionSkillCount === catalog.skillCount,
+      'release-mode manifest distributionSkillCount was not refreshed from catalog.json');
+    assert(manifest.activeFamilyCount === catalog.familyCount &&
+      manifest.distributionFamilyCount === catalog.familyCount,
+    'release-mode manifest family counts were not refreshed from catalog.json');
+    assert(JSON.stringify(manifest.maturityCounts) === JSON.stringify(expectedMaturityCounts),
+      'release-mode manifest maturityCounts do not match catalog.json');
+    assert(JSON.stringify(manifest.evidenceStatusCounts) === JSON.stringify(expectedEvidenceStatusCounts),
+      'release-mode manifest evidenceStatusCounts do not match catalog.json');
+    assert(manifest.countsGeneratedAt === catalog.generatedAt,
+      'release-mode manifest countsGeneratedAt does not identify this catalog build');
+    assert(manifest.countsGeneratedFrom ===
+      'artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)',
+    'release-mode manifest countsGeneratedFrom does not identify the authoritative builder');
+  } finally {
+    rmSync(fixtureParent, { recursive: true, force: true });
+  }
+});
 
 // The integrity runner invokes this file after building into a temporary
 // directory. Skip this outer regression in that child process so the test
