@@ -12,7 +12,7 @@
  * No test here promotes or fabricates evidence — see the non-goals in the
  * PRD this implements.
  */
-import { readFileSync, existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'fs';
+import { readFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'fs';
 import { join, dirname, relative, resolve } from 'path';
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
@@ -61,6 +61,20 @@ try {
 } catch (err) {
   console.error(`FATAL: could not read ${MANIFEST_PATH}.\n${err.message}`);
   process.exit(1);
+}
+
+// The local integrity-runner regression only needs the child process to prove
+// that the isolated build outputs can be loaded, and to provide a controlled
+// validation failure. Keep that subprocess smoke mode separate from the full
+// catalog suite so the suite does not recursively run itself for several
+// minutes.
+if (process.env.CATALOG_INTEGRITY_RUNNER_SMOKE === '1') {
+  if (process.env.CATALOG_INTEGRITY_FORCE_TEST_FAILURE === '1') {
+    console.error('controlled catalog validation failure fixture');
+    process.exit(1);
+  }
+  console.log('Catalog integrity runner smoke validation passed.');
+  process.exit(0);
 }
 
 let passed = 0;
@@ -978,6 +992,72 @@ test('build-catalog.js hard-fails in CI against a genuinely shallow checkout (no
 function mktempCloneDir() {
   return mkdtempSync(join(tmpdir(), 'catalog-shallow-clone-test-'));
 }
+
+// The integrity runner invokes this file after building into a temporary
+// directory. Skip this outer regression in that child process so the test
+// cannot recurse back into the runner it is currently exercising.
+const isCatalogIntegrityChild = process.env.CATALOG_INTEGRITY_RUNNER_CHILD === '1';
+
+test('local catalog integrity leaves release metadata unchanged and cleans temporary output', () => {
+  if (isCatalogIntegrityChild) return;
+
+  const runnerPath = join(REPO_ROOT, '.agents', 'skills', 'catalog-integrity', 'run.mjs');
+  const releasePaths = [
+    join(FORGE_ROOT, 'public', 'data', 'catalog.json'),
+    join(FORGE_ROOT, 'public', 'data', 'project-summary.json'),
+    join(REPO_ROOT, 'skillz.manifest.json'),
+  ];
+  const before = new Map(releasePaths.map((filePath) => [filePath, readFileSync(filePath)]));
+  const temporaryRootNames = () => new Set(
+    readdirSync(tmpdir(), { withFileTypes: true })
+      .filter((entry) => entry.isDirectory() && entry.name.startsWith('catalog-integrity-'))
+      .map((entry) => entry.name),
+  );
+  const beforeTemporaryRoots = temporaryRootNames();
+
+  const runIntegrity = (env = {}) => spawnSync(process.execPath, [runnerPath], {
+    cwd: REPO_ROOT,
+    env: {
+      ...process.env,
+      ...env,
+      CATALOG_INTEGRITY_RUNNER_CHILD: '1',
+      CATALOG_INTEGRITY_RUNNER_SMOKE: '1',
+    },
+    encoding: 'utf8',
+  });
+  const assertReleaseSnapshotUnchanged = (label) => {
+    for (const [filePath, previous] of before) {
+      assert(
+        readFileSync(filePath).equals(previous),
+        `${label} changed release file ${filePath}`,
+      );
+    }
+  };
+  const assertTemporaryRootsClean = (label) => {
+    const leakedRoots = [...temporaryRootNames()]
+      .filter((name) => !beforeTemporaryRoots.has(name));
+    assert(
+      leakedRoots.length === 0,
+      `${label} left temporary catalog output behind: ${leakedRoots.join(', ')}`,
+    );
+  };
+
+  const passingRun = runIntegrity();
+  assert(
+    passingRun.status === 0,
+    `catalog integrity runner should pass:\nstdout:\n${passingRun.stdout}\nstderr:\n${passingRun.stderr}`,
+  );
+  assertReleaseSnapshotUnchanged('Successful catalog integrity run');
+  assertTemporaryRootsClean('Successful catalog integrity run');
+
+  const failingRun = runIntegrity({ CATALOG_INTEGRITY_FORCE_TEST_FAILURE: '1' });
+  assert(
+    failingRun.status !== 0,
+    `catalog integrity runner should fail when validation fails:\nstdout:\n${failingRun.stdout}\nstderr:\n${failingRun.stderr}`,
+  );
+  assertReleaseSnapshotUnchanged('Failed catalog integrity run');
+  assertTemporaryRootsClean('Failed catalog integrity run');
+});
 
 console.log(`\n${passed} passed, ${failed} failed`);
 if (failed > 0) {
