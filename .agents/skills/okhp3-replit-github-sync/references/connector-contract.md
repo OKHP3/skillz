@@ -22,5 +22,29 @@ claim convergence. If the connector cannot perform an operation, use the
 smallest supported alternative or report UNKNOWN; do not fabricate an API call
 or fall back to a force-push.
 
+## Saved local work regression fixture
+
+Any sync recovery that may reconcile a checkout containing local commits must
+preserve an existing stash as well as the active branch history. The regression
+fixture should use a temporary repository and a local bare `origin`, so it
+cannot alter the user's checkout or hosted repository:
+
+1. Create a shared base, advance `origin/main`, create local-only commits, and
+   create an existing stash.
+2. Before fetching or reconciling, record the exact `refs/stash` object ID and
+   the object IDs of all commits in the local-only range
+   (`origin/main..HEAD`).
+3. Fetch without pruning and use only the normal fast-forward path for a
+   behind-only checkout or an explicit normal merge path when both sides have
+   advanced. Do not reset, drop or clear the stash, rewrite history, or
+   force-push.
+4. After synchronization, verify that `refs/stash` still resolves to the
+   recorded object, every captured local commit remains reachable, and the
+   final `HEAD`/remote relationship is shown with exact refs or an
+   ahead/behind comparison.
+
+A clean working tree is not sufficient evidence: the fixture must retain the
+pre-sync object IDs and check those same objects after reconciliation.
+
 Never print or persist credentials. Redact access tokens, cookies, signed URLs,
 and private connector metadata from reports and commits.

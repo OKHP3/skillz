@@ -24,3 +24,4 @@
 - [Archived document link audit](archive-link-audit.md) — preserve historical Markdown paths with an explicit archive exception while keeping active link checks fail-closed.
 - [Replit Free Mode boundaries](replit-free-mode-boundaries.md) — quota retries are opportunities inside one conversation; resets and sensitive approvals remain host/user-controlled
 - [Delegated-run evidence boundaries](delegated-run-evidence-boundaries.md) — response-only subagent runs validate behavior but cannot prove native host activation or host-side events
+- [Git sync fixture remotes](github-sync-fixture.md) — disposable bare remotes need an explicit default branch before working clones are created

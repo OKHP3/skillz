@@ -98,6 +98,29 @@
           "text": "Response recommends a safe next path such as moving the local work to a feature branch and using a pull request, without treating branch deletion or cleanup as part of this divergence case."
         }
       ]
+    },
+    {
+      "id": 5,
+      "name": "saved-local-work-survives-safe-sync",
+      "prompt": "In an isolated temporary Git repository, origin/main has advanced while my checkout has two local-only commits and an existing stash. Reconcile the checkout with the remote using the normal fast-forward or merge-based path that fits the verified relationship. Before changing refs, record the exact stash ref and local-only commit SHAs. After synchronization, prove that the recorded stash ref and every local-only commit are still reachable, and prove the final relationship against origin/main. Do not use reset, stash drop/clear, history rewriting, or force-push.",
+      "expectations": [
+        {
+          "id": 1,
+          "text": "Response creates or describes a safe isolated fixture and records the exact existing stash ref (for example, refs/stash plus its SHA) and every local-only commit SHA before fetching or reconciling."
+        },
+        {
+          "id": 2,
+          "text": "Response fetches the verified remote without pruning and selects an explicit normal fast-forward or merge-based synchronization path from the measured ahead/behind relationship, preserving the working tree and captured refs."
+        },
+        {
+          "id": 3,
+          "text": "Response verifies after synchronization that the recorded stash ref still resolves to the same object and that every captured local commit remains reachable, rather than relying only on a clean status."
+        },
+        {
+          "id": 4,
+          "text": "Response proves the final local-to-remote relationship with an exact ref comparison or ahead/behind count and explicitly refuses reset, stash drop/clear, history rewriting, and force-push."
+        }
+      ]
     }
   ]
 }
