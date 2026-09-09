@@ -457,6 +457,85 @@ This fixture references the broken companion \`${brokenCompanion}\`.
   }
 });
 
+test('a real catalog build fails on a stale approved companion registry entry without mutating the checkout', () => {
+  const passingOutputRoot = mkdtempSync(join(tmpdir(), 'catalog-stale-companion-passing-output-'));
+  const failingOutputRoot = mkdtempSync(join(tmpdir(), 'catalog-stale-companion-failing-output-'));
+  const cloneParent = mkdtempSync(join(tmpdir(), 'catalog-stale-companion-clone-'));
+  const staleReference = 'universal/okhp3-project-compass/SKILL.md::okhp3-process-capture';
+  const [staleSourcePath] = staleReference.split('::');
+  const buildScript = join(FORGE_ROOT, 'scripts', 'build-catalog.js');
+  const sourcePathInWorkspace = join(WORKSPACE_ROOT, staleSourcePath);
+  let clonePath;
+
+  const runBuild = (cwd, outputRoot) => spawnSync(
+    process.execPath,
+    [join(cwd, 'artifacts', 'forge', 'scripts', 'build-catalog.js')],
+    {
+      cwd,
+      env: {
+        ...process.env,
+        FORGE_PUBLIC_DIR: outputRoot,
+        FORGE_SKIP_MANIFEST_SYNC: '1',
+        ALLOW_SHALLOW_CATALOG_BUILD: '1',
+      },
+      encoding: 'utf8',
+    }
+  );
+
+  try {
+    assert(existsSync(sourcePathInWorkspace),
+      `stale-companion fixture source contract is missing from the working tree: ${staleSourcePath}`);
+
+    const passingResult = spawnSync(process.execPath, [buildScript], {
+      cwd: WORKSPACE_ROOT,
+      env: {
+        ...process.env,
+        FORGE_PUBLIC_DIR: passingOutputRoot,
+        FORGE_SKIP_MANIFEST_SYNC: '1',
+        ALLOW_SHALLOW_CATALOG_BUILD: '1',
+      },
+      encoding: 'utf8',
+    });
+    assert(passingResult.status === 0,
+      `expected the unmodified catalog build to succeed, got exit code ${passingResult.status}\n` +
+      `stdout:\n${passingResult.stdout}\nstderr:\n${passingResult.stderr}`);
+    assert(existsSync(join(passingOutputRoot, 'data', 'catalog.json')),
+      'the passing fixture build did not write its catalog output');
+
+    clonePath = join(cloneParent, 'fixture-clone');
+    execSync(`git clone --no-local --quiet file://${WORKSPACE_ROOT} ${JSON.stringify(clonePath)}`, {
+      encoding: 'utf8',
+      stdio: ['pipe', 'pipe', 'pipe'],
+    });
+    const clonedSourcePath = join(clonePath, staleSourcePath);
+    assert(existsSync(clonedSourcePath),
+      `isolated clone is missing the approved source contract: ${staleSourcePath}`);
+    rmSync(clonedSourcePath);
+    assert(existsSync(sourcePathInWorkspace),
+      `the stale-companion fixture mutated the working tree: ${staleSourcePath}`);
+
+    const failingResult = runBuild(clonePath, failingOutputRoot);
+    const output = `${failingResult.stdout || ''}\n${failingResult.stderr || ''}`;
+    assert(failingResult.status !== 0,
+      `expected the stale approved companion build to fail, got exit code ${failingResult.status}\n` +
+      `stdout:\n${failingResult.stdout}\nstderr:\n${failingResult.stderr}`);
+    assert(
+      output.includes(staleReference) &&
+        output.includes(`source contract "${staleSourcePath}" no longer exists`) &&
+        output.includes('Remove the stale registry key or update it'),
+      `stale approved companion failure did not include the exact registry key, reason, and cleanup guidance:\n${output}`
+    );
+  } finally {
+    rmSync(cloneParent, { recursive: true, force: true });
+    rmSync(passingOutputRoot, { recursive: true, force: true });
+    rmSync(failingOutputRoot, { recursive: true, force: true });
+  }
+
+  assert(!existsSync(cloneParent), 'isolated stale-companion clone was not cleaned up');
+  assert(!existsSync(passingOutputRoot), 'passing catalog build output was not cleaned up');
+  assert(!existsSync(failingOutputRoot), 'failing catalog build output was not cleaned up');
+});
+
 // 11c. Governance guard: every family must declare an explicit display_name
 // in its FAMILY.md frontmatter — no family should rely on the auto-titlecase
 // fallback in readFamilyDisplayName(), which exists only so a brand-new
