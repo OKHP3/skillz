@@ -52,6 +52,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Run preview generation regression
+        working-directory: artifacts/forge
+        run: node scripts/test-preview-generation.mjs
+
       - name: Generate skill catalog
         working-directory: artifacts/forge
         run: node scripts/build-catalog.js
