@@ -12,6 +12,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test:review-browser": "node scripts/test-review-surface-browser.mjs",
     "test:review-published": "node scripts/test-review-surface-published.mjs",
+    "test:review-published-fixtures": "node scripts/test-review-surface-published-fixtures.mjs",
     "test:preview-generation": "node scripts/test-preview-generation.mjs"
   },
   "devDependencies": {

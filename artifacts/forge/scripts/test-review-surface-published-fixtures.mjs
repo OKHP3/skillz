@@ -1,0 +1,209 @@
+#!/usr/bin/env node
+/**
+ * Deterministic fixture coverage for the published review-surface check.
+ *
+ * The live check has two failure stages:
+ *   - deployment (exit 2): the published artifact is unreachable or stale;
+ *   - assertion (exit 1): the current artifact fails a UI behavior check.
+ *
+ * These fixtures keep those outcomes separate and prove that browser
+ * assertions do not begin until catalog propagation has reached the expected
+ * source commit.
+ */
+import { spawn } from 'node:child_process';
+import { createServer } from 'node:http';
+import { once } from 'node:events';
+import { setTimeout as delay } from 'node:timers/promises';
+import { fileURLToPath } from 'node:url';
+
+const checkScript = fileURLToPath(new URL('./test-review-surface-published.mjs', import.meta.url));
+const expectedCommit = 'expected-commit-abcdef123456';
+const staleCommit = 'old-commit-000000000000';
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+function catalog(sourceCommit) {
+  return {
+    sourceCommit,
+    skills: [
+      {
+        family: 'fixture',
+        name: 'fixture-skill',
+        companionDiagnostics: { deferred: [{ name: 'fixture-deferred' }] },
+      },
+      {
+        family: 'fixture',
+        name: 'fixture-project-local',
+        companionDiagnostics: { projectLocal: [{ name: 'fixture-project-local-companion' }] },
+      },
+    ],
+  };
+}
+
+function reviewSurfaceHtml({ assertionFailure }) {
+  return `<!doctype html>
+<html>
+  <body>
+    <main data-page="skill-detail">
+      <h1>Fixture skill</h1>
+      <h2>Trust summary</h2>
+      <div class="skill-pathway">
+        <div data-companion-kind="deferred">Deferred companion</div>
+        <div data-companion-kind="project-local">Project-local companion</div>
+      </div>
+      ${assertionFailure ? '' : `
+      <div role="tabpanel" aria-label="Raw markdown" tabindex="-1">
+        <div role="alert">
+          Could not load the full contract.
+          <a href="/raw/SKILL.md">View raw SKILL.md instead</a>
+        </div>
+      </div>`}
+    </main>
+    <script>
+      fetch('/fixture-browser-start', { method: 'POST', keepalive: true });
+    </script>
+  </body>
+</html>`;
+}
+
+async function startFixture({ catalogResponses, assertionFailure = false }) {
+  const state = {
+    catalogRequests: 0,
+    catalogResponses: [],
+    browserStarts: [],
+  };
+  const server = createServer((request, response) => {
+    const requestPath = new URL(request.url, 'http://fixture.local').pathname;
+
+    if (requestPath === '/data/catalog.json') {
+      const responseIndex = Math.min(state.catalogRequests, catalogResponses.length - 1);
+      const body = JSON.stringify(catalogResponses[responseIndex]);
+      state.catalogRequests += 1;
+      state.catalogResponses.push({
+        sourceCommit: catalogResponses[responseIndex].sourceCommit,
+        completedAt: Date.now(),
+      });
+      response.writeHead(200, { 'content-type': 'application/json' });
+      response.end(body);
+      return;
+    }
+
+    if (requestPath === '/fixture-browser-start') {
+      state.browserStarts.push(Date.now());
+      response.writeHead(204);
+      response.end();
+      return;
+    }
+
+    if (requestPath === '/data/skills/fixture/fixture-skill.json'
+      || requestPath === '/data/skills/fixture/fixture-project-local.json') {
+      response.writeHead(200, { 'content-type': 'application/json' });
+      response.end('{}');
+      return;
+    }
+
+    response.writeHead(200, { 'content-type': 'text/html' });
+    response.end(reviewSurfaceHtml({ assertionFailure }));
+  });
+
+  server.listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  const { port } = server.address();
+  return {
+    baseUrl: `http://127.0.0.1:${port}/`,
+    state,
+    close: () => new Promise((resolve, reject) => {
+      server.close(error => (error ? reject(error) : resolve()));
+    }),
+  };
+}
+
+function runPublishedCheck(baseUrl) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, [checkScript], {
+      cwd: fileURLToPath(new URL('../..', import.meta.url)),
+      env: {
+        ...process.env,
+        FORGE_PUBLISHED_URL: baseUrl,
+        EXPECTED_SOURCE_COMMIT: expectedCommit,
+        PUBLISHED_CATALOG_WAIT_TIMEOUT_MS: '180',
+        PUBLISHED_CATALOG_POLL_INTERVAL_MS: '20',
+      },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    let stdout = '';
+    let stderr = '';
+    child.stdout.on('data', chunk => { stdout += chunk; });
+    child.stderr.on('data', chunk => { stderr += chunk; });
+    child.on('error', reject);
+    child.on('close', (status, signal) => resolve({ status, signal, stdout, stderr }));
+  });
+}
+
+async function runCase(name, fixtureOptions, validate) {
+  const fixture = await startFixture(fixtureOptions);
+  try {
+    const result = await runPublishedCheck(fixture.baseUrl);
+    validate(result, fixture.state);
+    console.log(`✓ ${name}`);
+  } finally {
+    await fixture.close();
+  }
+}
+
+async function main() {
+  await runCase(
+    'waits for the expected catalog before browser assertions',
+    { catalogResponses: [catalog(staleCommit), catalog(expectedCommit)] },
+    async (result, state) => {
+      await delay(10);
+      assert(result.status === 0,
+        `Propagation fixture should pass after freshness arrives (exit ${result.status}).\n${result.stderr}`);
+      assert(state.catalogResponses.length >= 2,
+        'Propagation fixture should serve the old catalog before the expected catalog.');
+      const expectedResponse = state.catalogResponses.find(entry => entry.sourceCommit === expectedCommit);
+      assert(expectedResponse, 'Propagation fixture never served the expected source commit.');
+      assert(state.browserStarts.length > 0, 'Propagation fixture never reached the browser assertion stage.');
+      assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
+        'Browser assertions started before the expected catalog response completed.');
+    },
+  );
+
+  await runCase(
+    'reports permanent staleness as a deployment failure',
+    { catalogResponses: [catalog(staleCommit)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Permanent-stale fixture should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'), 'Permanent staleness must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Permanent staleness must explain that the artifact is stale:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Permanent staleness must stop before opening the browser assertion stage.');
+    },
+  );
+
+  await runCase(
+    'reports a current-catalog UI failure as an assertion failure',
+    { catalogResponses: [catalog(expectedCommit)], assertionFailure: true },
+    (result, state) => {
+      assert(result.status === 1,
+        `Current-catalog UI failure should exit with assertion status 1 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [assertion]'), 'UI regression must use the assertion failure prefix.');
+      assert(result.stderr.includes('Published surface did not render the failed-contract fallback panel.'),
+        `UI regression should identify the failed assertion:\n${result.stderr}`);
+      assert(!result.stderr.includes('still stale relative to the deployed commit'),
+        'Current-catalog UI failure must not be reported as a stale deployment.');
+      assert(state.browserStarts.length > 0, 'Current-catalog UI failure should reach the browser assertion stage.');
+    },
+  );
+
+  console.log('Published review-surface stage separation fixtures passed.');
+}
+
+main().catch(error => {
+  console.error(`✗ ${error.stack || error.message}`);
+  process.exit(1);
+});
