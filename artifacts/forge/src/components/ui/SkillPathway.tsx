@@ -25,9 +25,13 @@ function SubPathway({ skill, allSkills }: { skill: Skill; allSkills: Skill[] }) 
               <div key={`sub-unresolved-${node.name}-${idx}`} className="skill-pathway__sub-step">
                 <div
                   className="skill-pathway__sub-node skill-pathway__sub-node--unresolved"
-                  title={`"${node.name}" is not in the catalog`}
+                  data-companion-kind="unresolved"
+                  role="note"
+                  title={`"${node.name}" is referenced as a downstream companion but does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere.`}
+                  aria-label={`Unresolved downstream companion reference: ${node.name}. This branch stops because the companion is not in the catalog.`}
                 >
                   <span className="skill-pathway__node-name skill-pathway__node-name--unresolved">{node.name}</span>
+                  <span className="skill-pathway__sub-node-unresolved-label">Not found — check for a typo or renamed skill</span>
                 </div>
               </div>
             );

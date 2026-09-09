@@ -1112,8 +1112,16 @@
 .skill-pathway__sub-node--unresolved {
   border-style: dashed;
   border-color: var(--color-ember);
-  background: transparent;
+  background: color-mix(in srgb, var(--color-ember) 8%, transparent);
   cursor: default;
+  opacity: 0.85;
+}
+
+.skill-pathway__sub-node-unresolved-label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  color: var(--color-ember);
+  line-height: 1.3;
 }
 
 /* Arrow between sub-pathway steps */
