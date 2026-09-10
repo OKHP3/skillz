@@ -392,6 +392,45 @@ class AuditRepoTests(unittest.TestCase):
             self.assertIn("hosted evidence is missing", missing["reason"])
             self.assertNotEqual(missing["bucket"], "delete")
 
+    def test_cli_rejects_invalid_hosted_lookup_reports_without_branch_decisions(self) -> None:
+        invalid_reports = [
+            ("malformed-json", '{"feature/candidate":'),
+            ("non-object-payload", json.dumps(["feature/candidate"])),
+        ]
+        for name, contents in invalid_reports:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                self._init_repo(root)
+                self._git(root, "branch", "feature/candidate")
+                lookup_file = root / "lookups.json"
+                lookup_file.write_text(contents, encoding="utf-8")
+
+                result = subprocess.run(
+                    [
+                        sys.executable,
+                        str(SCRIPT),
+                        "--root",
+                        str(root),
+                        "--base",
+                        "main",
+                        "--hosted-lookups",
+                        str(lookup_file),
+                    ],
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                )
+
+                self.assertNotEqual(result.returncode, 0)
+                error_report = json.loads(result.stdout)
+                self.assertIn("error", error_report)
+                self.assertNotIn("branches", error_report)
+                self.assertNotIn('"bucket": "delete"', result.stdout)
+                if name == "malformed-json":
+                    self.assertIn("could not read hosted lookup report", error_report["error"])
+                else:
+                    self.assertIn("must be a JSON object", error_report["error"])
+
     def test_active_branches_stashes_and_archive_refs_are_protected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
