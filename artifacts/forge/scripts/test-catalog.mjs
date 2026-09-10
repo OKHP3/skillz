@@ -19,6 +19,8 @@ import { fileURLToPath } from 'url';
 import { execFileSync, execSync, spawnSync } from 'child_process';
 import {
   applyEvidencePolicy,
+  formatApprovedCompanionRegistryReport,
+  getApprovedCompanionRegistryReport,
   getStaleApprovedCompanionReferences,
   getUnresolvedCompanionReferences,
   hasSubstantiveEvidenceArtifact,
@@ -340,6 +342,83 @@ test('approved companion registry entries must match a source contract and decla
       error.message.includes('future/existing/SKILL.md::okhp3-renamed-capability') &&
       error.message.includes('Remove the stale registry key or update it'),
     `validation failure did not identify stale keys and cleanup guidance: ${error.message}`
+  );
+});
+
+test('approved companion registry report is deterministic and identifies stale edits', () => {
+  const approvedReferences = new Map([
+    ['z/source/SKILL.md::okhp3-valid-companion', {
+      kind: 'project-local',
+      label: 'Project-local',
+      explanation: 'A valid project-local companion.',
+    }],
+    ['a/missing/SKILL.md::okhp3-missing-companion', {
+      kind: 'deferred',
+      label: 'Deferred',
+      explanation: 'A deferred companion whose source was removed.',
+    }],
+    ['m/source/SKILL.md::okhp3-removed-companion', {
+      kind: 'deferred',
+      label: 'Deferred',
+      explanation: 'A deferred companion whose declaration was renamed.',
+    }],
+  ]);
+  const skills = [
+    {
+      path: 'z/source/SKILL.md',
+      companions: ['okhp3-valid-companion'],
+    },
+    {
+      path: 'm/source/SKILL.md',
+      companions: ['okhp3-renamed-companion'],
+    },
+  ];
+
+  const report = getApprovedCompanionRegistryReport(skills, approvedReferences);
+  assert(
+    report.map(entry => entry.registryKey).join('|') ===
+      'a/missing/SKILL.md::okhp3-missing-companion|m/source/SKILL.md::okhp3-removed-companion|z/source/SKILL.md::okhp3-valid-companion',
+    `approved companion registry report was not sorted deterministically: ${JSON.stringify(report)}`,
+  );
+
+  const missing = report[0];
+  assert(
+    missing.status === 'stale' &&
+      missing.sourcePath === 'a/missing/SKILL.md' &&
+      missing.companionName === 'okhp3-missing-companion' &&
+      missing.kind === 'deferred' &&
+      missing.explanation === 'A deferred companion whose source was removed.' &&
+      missing.reason === 'source contract "a/missing/SKILL.md" no longer exists',
+    `missing-source registry entry was not fully reported: ${JSON.stringify(missing)}`,
+  );
+
+  const renamed = report[1];
+  assert(
+    renamed.status === 'stale' &&
+      renamed.reason ===
+        'source contract "m/source/SKILL.md" no longer declares companion "okhp3-removed-companion"',
+    `renamed declaration registry entry was not flagged: ${JSON.stringify(renamed)}`,
+  );
+
+  const valid = report[2];
+  assert(
+    valid.status === 'valid' &&
+      valid.kind === 'project-local' &&
+      valid.explanation === 'A valid project-local companion.' &&
+      valid.reason === null,
+    `valid registry entry was not reported as valid: ${JSON.stringify(valid)}`,
+  );
+
+  const formatted = formatApprovedCompanionRegistryReport(skills, approvedReferences);
+  assert(
+    formatted.indexOf('a/missing/SKILL.md::okhp3-missing-companion') <
+      formatted.indexOf('m/source/SKILL.md::okhp3-removed-companion') &&
+      formatted.indexOf('m/source/SKILL.md::okhp3-removed-companion') <
+      formatted.indexOf('z/source/SKILL.md::okhp3-valid-companion') &&
+      formatted.includes('STALE: a/missing/SKILL.md::okhp3-missing-companion') &&
+      formatted.includes('source contract "m/source/SKILL.md" no longer declares companion "okhp3-removed-companion"') &&
+      formatted.includes('VALID: z/source/SKILL.md::okhp3-valid-companion'),
+    `formatted approved companion registry report was incomplete:\n${formatted}`,
   );
 });
 

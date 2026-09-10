@@ -749,6 +749,57 @@ function getStaleApprovedCompanionReferences(skills, approvedReferences = APPROV
   return stale;
 }
 
+function getApprovedCompanionRegistryReport(
+  skills,
+  approvedReferences = APPROVED_COMPANION_REFERENCES,
+) {
+  const staleByReference = new Map(
+    getStaleApprovedCompanionReferences(skills, approvedReferences)
+      .map(entry => [entry.reference, entry]),
+  );
+
+  return [...approvedReferences.entries()]
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([reference, approval]) => {
+      const separator = reference.indexOf('::');
+      const sourcePath = separator >= 0 ? reference.slice(0, separator) : reference;
+      const companionName = separator >= 0 ? reference.slice(separator + 2) : '';
+      const stale = staleByReference.get(reference);
+
+      return {
+        registryKey: reference,
+        sourcePath,
+        companionName,
+        kind: approval?.kind ?? null,
+        label: approval?.label ?? null,
+        explanation: approval?.explanation ?? null,
+        status: stale ? 'stale' : 'valid',
+        reason: stale?.reason ?? null,
+      };
+    });
+}
+
+function formatApprovedCompanionRegistryReport(
+  skills,
+  approvedReferences = APPROVED_COMPANION_REFERENCES,
+) {
+  const entries = getApprovedCompanionRegistryReport(skills, approvedReferences);
+  const lines = [`Approved companion registry (${entries.length} entr${entries.length === 1 ? 'y' : 'ies'})`];
+
+  for (const entry of entries) {
+    lines.push(
+      `- ${entry.status.toUpperCase()}: ${entry.registryKey}`,
+      `  source: ${entry.sourcePath}`,
+      `  companion: ${entry.companionName || '(missing)'}`,
+      `  kind: ${entry.kind || '(missing)'}`,
+      `  explanation: ${entry.explanation || '(missing)'}`,
+    );
+    if (entry.reason) lines.push(`  issue: ${entry.reason}`);
+  }
+
+  return lines.join('\n');
+}
+
 function validateApprovedCompanionReferences(skills, approvedReferences = APPROVED_COMPANION_REFERENCES) {
   const stale = getStaleApprovedCompanionReferences(skills, approvedReferences);
   if (stale.length === 0) return stale;
@@ -1093,6 +1144,7 @@ function buildCatalog() {
   // become a tomb for removed or renamed source contracts. Validate each entry
   // against the collected source skills and their declarations before allowing
   // the registry to suppress the normal unresolved-reference warning.
+  console.log(formatApprovedCompanionRegistryReport(skills));
   validateApprovedCompanionReferences(skills);
 
   // extractCompanions() pulls companion names straight from `okhp3-...`
@@ -1467,6 +1519,8 @@ export {
   applyEvidencePolicy,
   getUnresolvedCompanionReferences,
   getStaleApprovedCompanionReferences,
+  getApprovedCompanionRegistryReport,
+  formatApprovedCompanionRegistryReport,
   validateApprovedCompanionReferences,
   getCompanionDiagnostics,
   reportUnresolvedCompanionReferences,
