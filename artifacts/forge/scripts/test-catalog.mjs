@@ -648,6 +648,104 @@ test('a real catalog build fails when an approved companion declaration is renam
   assert(!existsSync(failingOutputRoot), 'failing catalog build output was not cleaned up');
 });
 
+test('a real catalog build reports every stale approved companion entry in one disposable checkout', () => {
+  const passingOutputRoot = mkdtempSync(join(tmpdir(), 'catalog-multi-stale-passing-output-'));
+  const failingOutputRoot = mkdtempSync(join(tmpdir(), 'catalog-multi-stale-failing-output-'));
+  const cloneParent = mkdtempSync(join(tmpdir(), 'catalog-multi-stale-clone-'));
+  const missingReference = 'universal/okhp3-project-compass/SKILL.md::okhp3-process-capture';
+  const renamedCompanion = 'okhp3-notion-comments-and-discussions';
+  const renamedReference = `notion/okhp3-notion-identity-resolution/SKILL.md::${renamedCompanion}`;
+  const [missingSourcePath] = missingReference.split('::');
+  const [renamedSourcePath] = renamedReference.split('::');
+  const buildScript = join(FORGE_ROOT, 'scripts', 'build-catalog.js');
+  let clonePath;
+
+  const runBuild = (cwd, outputRoot) => spawnSync(
+    process.execPath,
+    [join(cwd, 'artifacts', 'forge', 'scripts', 'build-catalog.js')],
+    {
+      cwd,
+      env: {
+        ...process.env,
+        FORGE_PUBLIC_DIR: outputRoot,
+        FORGE_SKIP_MANIFEST_SYNC: '1',
+        ALLOW_SHALLOW_CATALOG_BUILD: '1',
+      },
+      encoding: 'utf8',
+    }
+  );
+
+  try {
+    for (const sourcePath of [missingSourcePath, renamedSourcePath]) {
+      assert(existsSync(join(WORKSPACE_ROOT, sourcePath)),
+        `multi-stale fixture source contract is missing from the working tree: ${sourcePath}`);
+    }
+
+    const passingResult = spawnSync(process.execPath, [buildScript], {
+      cwd: WORKSPACE_ROOT,
+      env: {
+        ...process.env,
+        FORGE_PUBLIC_DIR: passingOutputRoot,
+        FORGE_SKIP_MANIFEST_SYNC: '1',
+        ALLOW_SHALLOW_CATALOG_BUILD: '1',
+      },
+      encoding: 'utf8',
+    });
+    assert(passingResult.status === 0,
+      `expected the unmodified catalog build to succeed, got exit code ${passingResult.status}\n` +
+      `stdout:\n${passingResult.stdout}\nstderr:\n${passingResult.stderr}`);
+    assert(existsSync(join(passingOutputRoot, 'data', 'catalog.json')),
+      'the passing multi-stale fixture build did not write its catalog output');
+
+    clonePath = join(cloneParent, 'fixture-clone');
+    execSync(`git clone --no-local --quiet file://${WORKSPACE_ROOT} ${JSON.stringify(clonePath)}`, {
+      encoding: 'utf8',
+      stdio: ['pipe', 'pipe', 'pipe'],
+    });
+
+    const clonedMissingSourcePath = join(clonePath, missingSourcePath);
+    assert(existsSync(clonedMissingSourcePath),
+      `isolated clone is missing the source contract to remove: ${missingSourcePath}`);
+    rmSync(clonedMissingSourcePath);
+
+    const clonedRenamedSourcePath = join(clonePath, renamedSourcePath);
+    assert(existsSync(clonedRenamedSourcePath),
+      `isolated clone is missing the source contract to rename: ${renamedSourcePath}`);
+    const sourceText = readFileSync(clonedRenamedSourcePath, 'utf8');
+    const renamedSourceText = sourceText.replaceAll(
+      `\`${renamedCompanion}\``,
+      `\`${renamedCompanion}-renamed\``
+    );
+    assert(renamedSourceText !== sourceText,
+      `isolated clone source contract does not declare the approved companion "${renamedCompanion}"`);
+    writeFileSync(clonedRenamedSourcePath, renamedSourceText, 'utf8');
+
+    const failingResult = runBuild(clonePath, failingOutputRoot);
+    const output = `${failingResult.stdout || ''}\n${failingResult.stderr || ''}`;
+    assert(failingResult.status !== 0,
+      `expected the multi-stale approved companion build to fail, got exit code ${failingResult.status}\n` +
+      `stdout:\n${failingResult.stdout}\nstderr:\n${failingResult.stderr}`);
+    assert(
+      output.includes(missingReference) &&
+        output.includes(`source contract "${missingSourcePath}" no longer exists`) &&
+        output.includes(renamedReference) &&
+        output.includes(
+          `source contract "${renamedSourcePath}" no longer declares companion "${renamedCompanion}"`
+        ) &&
+        output.includes('Remove the stale registry key or update it'),
+      `multi-stale approved companion failure did not include every registry key, reason, and cleanup guidance:\n${output}`
+    );
+  } finally {
+    rmSync(cloneParent, { recursive: true, force: true });
+    rmSync(passingOutputRoot, { recursive: true, force: true });
+    rmSync(failingOutputRoot, { recursive: true, force: true });
+  }
+
+  assert(!existsSync(cloneParent), 'isolated multi-stale companion clone was not cleaned up');
+  assert(!existsSync(passingOutputRoot), 'passing multi-stale catalog build output was not cleaned up');
+  assert(!existsSync(failingOutputRoot), 'failing multi-stale catalog build output was not cleaned up');
+});
+
 // 11c. Governance guard: every family must declare an explicit display_name
 // in its FAMILY.md frontmatter — no family should rely on the auto-titlecase
 // fallback in readFamilyDisplayName(), which exists only so a brand-new
