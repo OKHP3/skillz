@@ -351,6 +351,47 @@ class AuditRepoTests(unittest.TestCase):
             self.assertIn("hosted evidence is missing", failed["reason"])
             self.assertNotEqual(failed["bucket"], "delete")
 
+    def test_cli_report_keeps_missing_hosted_result_in_review(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "branch", "feature/missing")
+            lookup_file = root / "lookups.json"
+            lookup_file.write_text(
+                json.dumps({
+                    "feature/other": {
+                        "lookup_status": "not_found",
+                    },
+                }),
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "--root",
+                    str(root),
+                    "--base",
+                    "main",
+                    "--hosted-lookups",
+                    str(lookup_file),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            report = json.loads(result.stdout)
+            missing = next(
+                item for item in report["branches"]
+                if item["branch"] == "feature/missing"
+            )
+
+            self.assertEqual(missing["bucket"], "review")
+            self.assertEqual(missing["hosted_lookup"], {"status": "unavailable"})
+            self.assertIn("hosted evidence is missing", missing["reason"])
+            self.assertNotEqual(missing["bucket"], "delete")
+
     def test_active_branches_stashes_and_archive_refs_are_protected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
