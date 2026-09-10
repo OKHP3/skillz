@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -65,6 +67,36 @@ class AuditRepoTests(unittest.TestCase):
                 ["git", "push", "upstream", "--delete", "feature/cleanup"],
                 ["git", "branch", "-d", "feature/cleanup"],
             ])
+
+    def test_cli_rejects_missing_deletion_approval_details(self) -> None:
+        invalid_invocations = [
+            (["--reviewed-head", "reviewed-sha"], "--check-delete requires --branch"),
+            (["--branch", "feature/cleanup"], "--check-delete requires --reviewed-head"),
+        ]
+        for arguments, expected_error in invalid_invocations:
+            with self.subTest(arguments=arguments), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                self._init_repo(root)
+
+                result = subprocess.run(
+                    [
+                        sys.executable,
+                        str(SCRIPT),
+                        "--root",
+                        str(root),
+                        "--check-delete",
+                        *arguments,
+                    ],
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                )
+
+                self.assertNotEqual(result.returncode, 0)
+                error_report = json.loads(result.stdout)
+                self.assertEqual(error_report["error"], expected_error)
+                self.assertNotIn("deletion_commands", error_report)
+                self.assertNotIn('"bucket": "delete"', result.stdout)
 
     def test_naming_exceptions_and_violations(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

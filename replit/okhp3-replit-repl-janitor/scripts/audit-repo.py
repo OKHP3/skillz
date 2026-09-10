@@ -262,8 +262,10 @@ def main() -> int:
         if args.fetch:
             run(["git", "fetch", "--all"], root)
         if args.check_delete:
-            if not args.branch or not args.reviewed_head:
-                raise AuditError("--check-delete requires --branch and --reviewed-head")
+            if not args.branch:
+                raise AuditError("--check-delete requires --branch")
+            if not args.reviewed_head:
+                raise AuditError("--check-delete requires --reviewed-head")
             print(json.dumps(
                 prepare_branch_deletion(
                     root,
