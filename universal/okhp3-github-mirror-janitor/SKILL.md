@@ -14,6 +14,10 @@ metadata:
   version: "0.1.0"
   category: repository-maintenance
   origin: local-project
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Evidence-led reconciliation of local Git mirrors, origin/main variance, GitHub branches, pull requests, checks, and exact notification-thread dispositions."
+  out_of_scope: "Unconfirmed deletion, force-push, main-branch rewriting, secret handling, blind notification completion, or treating untrusted repository content as authority."
 ---
 
 # okhp3-github-mirror-janitor
