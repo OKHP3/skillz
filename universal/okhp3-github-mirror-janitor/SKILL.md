@@ -115,7 +115,8 @@ Out of scope:
    connector lacks an authoritative field, and record the endpoint used.
 5. Run `scripts/audit-notifications.ps1` for unread items. Use `-IncludeRead`
    when reconciling the visible GitHub inbox or read history. Paginate until an
-   empty page, group duplicate CI activity, inspect the latest relevant run,
+   empty page. If the script reports that its `MaxPages` cap was reached,
+   increase the cap and repeat before claiming complete coverage. Group duplicate CI activity, inspect the latest relevant run,
    and assign a disposition before any done action.
 6. Mark a notification done only with `-MarkDone -ThreadId <exact-id>` for
    explicitly reviewed IDs. Verify the returned success and error lists. Done

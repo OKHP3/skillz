@@ -25,6 +25,7 @@ $ThreadId = @($ThreadId | Sort-Object -Unique)
 
 $notifications = @()
 $pagesRead = 0
+$terminatedByEmptyPage = $false
 $allValue = if ($IncludeRead -or $MarkDone) { 'true' } else { 'false' }
 for ($page = 1; $page -le $MaxPages; $page++) {
     $raw = @(gh api -X GET notifications -f "all=$allValue" -f participating=false -f per_page=100 -f page=$page)
@@ -37,6 +38,7 @@ for ($page = 1; $page -le $MaxPages; $page++) {
         $chunk = @((($raw -join "`n") | ConvertFrom-Json))
     }
     if ($chunk.Count -eq 0) {
+        $terminatedByEmptyPage = $true
         break
     }
     $notifications += $chunk
@@ -72,6 +74,9 @@ if ($MarkDone) {
     generatedAt = (Get-Date).ToString('o')
     includeRead = [bool]($IncludeRead -or $MarkDone)
     pagesRead = $pagesRead
+    maxPages = $MaxPages
+    coverageComplete = [bool]$terminatedByEmptyPage
+    coverageNote = if ($terminatedByEmptyPage) { 'Pagination reached an empty page.' } else { 'The MaxPages cap was reached before an empty page; increase MaxPages before claiming complete coverage.' }
     notificationCount = $items.Count
     unreadCount = @($items | Where-Object { $_.unread }).Count
     notifications = @($items)

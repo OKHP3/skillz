@@ -25,6 +25,9 @@
   authored skill. It conflicts with the project naming and location contract.
 - **Evidence status:** analytical structural review only. No new live benchmark,
   isolated with/without-skill run, or unseen release holdout was available.
+- **Promotion clarification:** the evaluation design is published with skill
+  version `0.1.0`; `1.1.0` is retained only as the legacy source label and is
+  not a claim of a live benchmark result.
 - **Limit:** the legacy profile copy is retained until the project package is
   validated and the active profile path can be archived without losing a
   recoverable copy.

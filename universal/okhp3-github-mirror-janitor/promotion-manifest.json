@@ -5,26 +5,26 @@
     "path": "Codex/.agents/skills/okhp3-github-mirror-janitor",
     "mode": "local-project-authoritative",
     "hashes": {
-      "scripts/audit-notifications.ps1": "747ba9f2d5860a5d68ac661342d6d73bf5f68ea763c695ea2bff2bb22b25d7ce",
+      "scripts/audit-notifications.ps1": "a875fabf5aa5496d465fc4a9c1ea1a7ab2ab710a639f4a0ff048cf16680c01c9",
       "agents/openai.yaml": "da046cb7e4ad78c104bb4b65f9969f21e86a9b26e6effa2d7c6030b67f7c16ad",
-      "evals/evals.json": "ef60fcdb60c43dcdd5c15ab69d14895083bddf60646c61434a9368f71397d206",
+      "evals/evals.json": "a06d33dcff4d47994b94f66f30d50d2a87cb565cbe128f746d6ccccabfdc1e93",
       "references/decision-rubric.md": "b1496d870ac5e1fd945bd2c74c7d494fa7efaed50c920e28ac504988cbd60acf",
       "scripts/audit-mirrors.ps1": "38f8f37a52eabfcfb40e544aba16a8cd8e5a30b28e330efb477057c583d01f35",
-      "SKILL.md": "c4e0d4a9a473a4b31865092581564e319ead97b2e8579c81245d9c918633b550",
-      "evals/learning-record.md": "228547c66cb84909daad3eda048c31d2e0e6a8d4c8a4c26af3c126aade22eaa8"
+      "SKILL.md": "9ed7782a9d663da5d8aba448ebeee32ac01d4d9a6f28c0011583900ac9ccf701",
+      "evals/learning-record.md": "24ff16a0188bc43ead1705b081468d511b8e2b43f61a30b8425b55bee9389d27"
     }
   },
   "destination": {
     "path": "04_GitHub_Mirrors/skillz/universal/okhp3-github-mirror-janitor",
     "mode": "canonical",
     "hashes": {
-      "scripts/audit-notifications.ps1": "747ba9f2d5860a5d68ac661342d6d73bf5f68ea763c695ea2bff2bb22b25d7ce",
+      "scripts/audit-notifications.ps1": "be342748218c18b76e88ebeedf4c86bc1676625c6689c49e12b279d261e86afa",
       "agents/openai.yaml": "da046cb7e4ad78c104bb4b65f9969f21e86a9b26e6effa2d7c6030b67f7c16ad",
-      "evals/evals.json": "ef60fcdb60c43dcdd5c15ab69d14895083bddf60646c61434a9368f71397d206",
-      "references/decision-rubric.md": "b1496d870ac5e1fd945bd2c74c7d494fa7efaed50c920e28ac504988cbd60acf",
-      "scripts/audit-mirrors.ps1": "38f8f37a52eabfcfb40e544aba16a8cd8e5a30b28e330efb477057c583d01f35",
-      "SKILL.md": "474a29d4c7e1b6b4a08c6026c32782d3b75ce530a19145d061a4c2dd0b903705",
-      "evals/learning-record.md": "228547c66cb84909daad3eda048c31d2e0e6a8d4c8a4c26af3c126aade22eaa8"
+      "evals/evals.json": "e026aac1270c2e9085eb51b032a3a07d44fce18e6729aaf6b1a6b005b63cb00a",
+      "references/decision-rubric.md": "8eb646605a3b0635010d6a45ce3cd17ac488a6096905f1e46e704c778fdcea91",
+      "scripts/audit-mirrors.ps1": "caad3f43b924e16c8a8229b2c862192e46f1e5e6eeb46bc3d962165f7d77a213",
+      "SKILL.md": "0211b765ba054dbc4d1e88298d8487c0971b8aae6ac72ff69dba9c160279dc90",
+      "evals/learning-record.md": "60060f598479f7e91200a8629be1310114db3249388f131f18cf3afd0242d88b"
     }
   },
   "created": "2026-09-08T20:53:00.0186472-05:00"
