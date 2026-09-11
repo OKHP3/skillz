@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "inventory": {
+    "SKILL.md": "bcef72b88892ae73451631edeeb2177ace3c597971cfabb93c0d70129db76a72",
+    "assets/settings-record.json": "926c30852947b0f979d99a5004c4031a25d55771fef4b28d1352a94240076074",
+    "evals/evals.json": "08311959cb076fe509b1c9326ad5eb45fec890df3d3381b41b68ad79c6076fc2",
+    "references/creator-handoff.md": "31ffdfc86cad51006d2d61c9df743a51731c8d6da3e182838061895fd0e01313",
+    "references/settings-profile.md": "d6f7ba1c2012db95dc49b54511aa365ece174d272ed069a2cbd726fbcdb3f4c0",
+    "references/sources.md": "6895d3e5d9e99c6fc942a4b5dab675922a44a8428440b3fce0b1e19f121cd9d5",
+    "references/worked-example.md": "282957e60c052b4f88144892fa9ab60398d9958f6e9145bac2eae924e6029e8a"
+  },
+  "note": "Existing candidate preserved in historical review records; v2 owner-authorized update. Destination previously staged; preserve index."
+}

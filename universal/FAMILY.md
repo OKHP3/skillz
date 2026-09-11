@@ -1,9 +1,9 @@
 ---
 family: universal
 display_name: Universal
-skill_count: 21
+skill_count: 22
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-06T02:57:45Z
+generated_at: 2026-09-11T01:33:29Z
 ---
 
 # universal
@@ -12,10 +12,10 @@ generated_at: 2026-09-06T02:57:45Z
 Cross-project skills for repository maintenance, evidence-led review, integrations, and reusable agent workflows.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (21)
+## Skills (22)
 
 <!-- FAMILY_INVENTORY_START -->
-*21 skills &nbsp;·&nbsp; inventory last updated: **September 6, 2026 at 02:57 UTC***
+*22 skills &nbsp;·&nbsp; inventory last updated: **September 11, 2026 at 01:33 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -31,6 +31,7 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 | [okhp3-overkill-hill-brand](okhp3-overkill-hill-brand/SKILL.md) | OverKill Hill P³ OverKill Hill SPA styling. Use when a user wants an OverKill Hill application, d... | 1.1.0 |
 | [okhp3-project-compass](okhp3-project-compass/SKILL.md) | Point at a project folder, git clone, or repository and establish or refresh its purpose, vision,... | 1.2.0 |
 | [okhp3-repl-repo-janitor](okhp3-repl-repo-janitor/SKILL.md) | Clean up a single Replit-hosted Git repository — squash-merge and delete old, merged, or abandone... | 0.1.0 |
+| [okhp3-repo-settings](okhp3-repo-settings/SKILL.md) | Audit and configure GitHub repository settings for one owner working with AI agents. Use for bran... | 2.0.0 |
 | [okhp3-repository-janitor](okhp3-repository-janitor/SKILL.md) | Reconcile a collection of local Git repositories with their GitHub origins, inspect all local var... | 0.2.1 |
 | [okhp3-repository-organizer](okhp3-repository-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.1.1 |
 | [okhp3-skill-cataloger](okhp3-skill-cataloger/SKILL.md) | OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safe... | 1.7.0 |

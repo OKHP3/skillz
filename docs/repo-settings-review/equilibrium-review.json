@@ -1,0 +1,485 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional",
+  "evaluation_status": "analytical",
+  "artifact": {
+    "name": "okhp3-repo-settings",
+    "version": "0.1.0",
+    "revision": "candidate-2",
+    "aggregate_sha256": "140dbc59fe4b8f8c46bc5d6ed5a2bc74548c161a0f834e619024d45c65225307",
+    "hash_verification": {
+      "matched_files": 7,
+      "missing_files": [],
+      "extra_files": [],
+      "mismatches": [],
+      "aggregate_verified": true,
+      "ordering": "Case-insensitive sorted relative paths, matching inventory order."
+    }
+  },
+  "decision_question": "Fit for authorized local candidate promotion to Skillz universal?",
+  "acceptance_criteria": [
+    "Portable and valid package",
+    "No material unresolved safety/evidence defect",
+    "No performance/publication overclaim",
+    "Complete destination hash verification"
+  ],
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "shared_model_or_source_limits": [
+      "Shared model family and package sources; not cross-model evidence."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence-reviewer",
+      "evidence_status": "analytical",
+      "artifact": "okhp3-repo-settings v0.1.0",
+      "decision": "approve-with-limits",
+      "decision_scope": "LOCAL candidate promotion to Skillz universal only. No production readiness, successful execution, publication, or live outcome uplift is established.",
+      "evidence_base": "origin-worktree",
+      "claim_ledger": [
+        {
+          "claim_id": "E01",
+          "claim": "Platform recommendations are conditional and distinguish documented behavior from observed interface differences.",
+          "claim_type": "interpretation",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:39-41,107-110",
+            ".agents/skills/okhp3-repo-settings/references/sources.md:3-17,30-36",
+            "[Official Copilot configuration](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review)"
+          ],
+          "status": "supported",
+          "consequence": "Unbounded claims could produce incorrect approval or consumption expectations.",
+          "next_test": "Recheck relevant official documentation and actual target controls before execution."
+        },
+        {
+          "claim_id": "E02",
+          "claim": "Solo-owner recommendations do not independently authorize weakening mandatory protections.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:67-89,114-129",
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:10,21"
+          ],
+          "status": "supported",
+          "consequence": "Confusing a profile with authorization could remove required independent approval.",
+          "next_test": "Before operational qualification, exercise explicit solo authorization and inherited-policy conflict cases."
+        },
+        {
+          "claim_id": "E03",
+          "claim": "The instructions exclude implicit billing, credential, and integration expansion.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:84-85,114-134",
+            ".agents/skills/okhp3-repo-settings/references/settings-profile.md",
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:19",
+            "[Separate ChatGPT and API billing](https://help.openai.com/en/articles/9039756-chatgpt-search)"
+          ],
+          "status": "supported",
+          "consequence": "An invented subscription bridge could incur charges or expand access.",
+          "next_test": "Exercise the paid-bridge refusal case before claiming demonstrated compliance."
+        },
+        {
+          "claim_id": "E04",
+          "claim": "Review composition is provider-independent despite this owner's preferred host.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/references/settings-profile.md#Review allocation contract",
+            ".agents/skills/okhp3-repo-settings/SKILL.md:147-150"
+          ],
+          "status": "supported",
+          "consequence": "Provider preference could otherwise become a fabricated GitHub approval or mandatory paid dependency.",
+          "next_test": "Demonstrate the same review record using another host without changing its contract."
+        },
+        {
+          "claim_id": "E05",
+          "claim": "Required-check guidance addresses identity, source, trigger coverage, default-branch presence, and concurrent configuration changes.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:93-105",
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:11,20",
+            "docs/repo-settings-recap.md:31,48-52,91-94"
+          ],
+          "status": "supported",
+          "consequence": "Unsafe requirements could block valid PRs or imply application coverage that does not exist.",
+          "next_test": "Exercise filtered-check and concurrent-protection cases; verify target coverage separately."
+        },
+        {
+          "claim_id": "E06",
+          "claim": "Creator composition preserves separate scaffold, remote-creation, settings, merge, and deployment authority.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/references/creator-handoff.md",
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:19"
+          ],
+          "status": "supported",
+          "consequence": "Composition could otherwise silently authorize publication.",
+          "next_test": "At promotion, verify the destination creator version and contract; its asserted v1.1.0 identity was not independently inspected here."
+        },
+        {
+          "claim_id": "E07",
+          "claim": "The package provides portable, evidence-aware output without requiring a companion runtime.",
+          "claim_type": "fact",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:10-12,33-43",
+            ".agents/skills/okhp3-repo-settings/assets/settings-record.json:1-31",
+            ".agents/skills/okhp3-repo-settings/references/creator-handoff.md#Placement"
+          ],
+          "status": "supported",
+          "consequence": "Host-specific dependencies or ambiguous records would undermine universal reuse.",
+          "next_test": "Compare complete package hashes and validate destination links/catalog during authorized promotion."
+        },
+        {
+          "claim_id": "E08",
+          "claim": "The package establishes evaluation design, not demonstrated behavioral success or uplift.",
+          "claim_type": "fact",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:3-8",
+            ".agents/skills/okhp3-repo-settings/SKILL.md:154-161",
+            "docs/repo-settings-recap.md:109-110"
+          ],
+          "status": "supported",
+          "consequence": "Treating historical configuration work or visible fixtures as benchmark results would overstate readiness.",
+          "next_test": "Run version-bound behavioral evaluations and an unseen external holdout before performance claims."
+        }
+      ],
+      "material_defects": [],
+      "limitations": [
+        "Approval concerns documented design and evidence boundaries only; evaluation expectations have not been demonstrated.",
+        "Historical saved-state claims in docs/repo-settings-recap.md:24-50 lack independently inspected raw receipts in this review and remain provisional historical reports.",
+        "The requested resources/evals directory is absent. The actual development suite is evals/evals.json, which was reviewed.",
+        "Official Copilot, protected-branch, and OpenAI billing pages were checked; the complete external source ledger was not independently revalidated.",
+        "Separate reviewer context, shared model and source package; no cross-model independence claimed. No other reviewer result was read.",
+        "No benchmark execution, file writes, external settings changes, destination promotion, or final multi-role adjudication was performed."
+      ]
+    },
+    {
+      "role": "outcome",
+      "evidence_status": "analytical",
+      "decision": "approve-with-limits",
+      "scope": "v0.1.0 is suitable for LOCAL candidate promotion to Skillz universal, subject to destination validation. This does not authorize publication or establish production readiness.",
+      "evidence_base": "origin-worktree/",
+      "claim_ledger": [
+        {
+          "claim_id": "OUT-01",
+          "claim": "The workflow supports a solo owner without imposing a paid provider or second-person approval dependency.",
+          "claim_type": "interpretation",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md#2",
+            ".agents/skills/okhp3-repo-settings/references/settings-profile.md"
+          ],
+          "status": "supported",
+          "consequence": "Unnecessary approval dependencies could prevent the owner completing work.",
+          "next_test": "Exercise solo-owner and inherited-team-rule cases before operational readiness claims."
+        },
+        {
+          "claim_id": "OUT-02",
+          "claim": "Instructions distinguish configuration authority from billing, access, deployment and publication authority.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md#4",
+            ".agents/skills/okhp3-repo-settings/evals/evals.json"
+          ],
+          "status": "supported",
+          "consequence": "Conflated authority could create unintended costs or exposure.",
+          "next_test": "Exercise creator-and-paid-bridge and missing-access cases."
+        },
+        {
+          "claim_id": "OUT-03",
+          "claim": "Check coverage and saved-state verification are explicit prerequisites for claiming useful configuration outcomes.",
+          "claim_type": "interpretation",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md#3",
+            ".agents/skills/okhp3-repo-settings/SKILL.md#5",
+            "docs/repo-settings-recap.md"
+          ],
+          "status": "supported",
+          "consequence": "Blindly requiring checks could block merges or overstate protection.",
+          "next_test": "Exercise filtered-check and concurrent-protection cases with observable state."
+        },
+        {
+          "claim_id": "OUT-04",
+          "claim": "Creator composition and portable records provide an actionable handoff without requiring another provider or companion installation.",
+          "claim_type": "interpretation",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/references/creator-handoff.md",
+            ".agents/skills/okhp3-repo-settings/assets/settings-record.json"
+          ],
+          "status": "supported",
+          "consequence": "Ambiguous ownership or incomplete records would undermine reuse.",
+          "next_test": "Populate and independently consume one proposed-only record and one verified-change record."
+        },
+        {
+          "claim_id": "OUT-05",
+          "claim": "The package establishes candidate design suitability, not demonstrated operational improvement.",
+          "claim_type": "fact",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:5",
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:7",
+            "docs/repo-settings-recap.md"
+          ],
+          "status": "supported",
+          "consequence": "Treating historical motivation or authored cases as results would mislead adoption decisions.",
+          "next_test": "Run version-specific development evaluations and an unseen external holdout before performance claims."
+        }
+      ],
+      "material_defects": [],
+      "limitations": [
+        "Outcome review only; platform behavior and linked official sources were not independently verified.",
+        "No benchmarks executed. Packaged evaluations are author-visible development designs, not passing evidence.",
+        "resources/evals does not exist; the available evaluation artifact is evals/evals.json.",
+        "SKILL.md:166 uses generic 'Published at' wording despite candidate status. Clarify before public distribution; creator-handoff.md explicitly states publication has not been established.",
+        "Destination guidance, existing copies, package hashes and catalog validation remain promotion-workflow gates.",
+        "Separate reviewer context, shared model and source package; no cross-model independence claimed. No other reviewer results read.",
+        "No files written or external settings changed."
+      ]
+    },
+    {
+      "role": "safety-portability",
+      "evidence_status": "analytical",
+      "decision": "approve-with-limits",
+      "scope": "v0.1.0 is fit for LOCAL candidate promotion to Skillz universal; this does not authorize promotion execution or establish production readiness.",
+      "evidence_base": "origin-worktree/",
+      "claim_ledger": [
+        {
+          "claim_id": "SP-01",
+          "claim": "Solo-owner preferences do not independently authorize weakening protections.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:67-89",
+            ".agents/skills/okhp3-repo-settings/SKILL.md:114-129"
+          ],
+          "status": "supported",
+          "consequence": "Misapplication could remove mandatory independent approval.",
+          "next_test": "Run the inherited-team-rule and solo-owner development cases before operational acceptance."
+        },
+        {
+          "claim_id": "SP-02",
+          "claim": "The package prohibits implicit billing, credential, access, and publication expansion.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:114-134",
+            ".agents/skills/okhp3-repo-settings/references/settings-profile.md:49-57"
+          ],
+          "status": "supported",
+          "consequence": "Failure could cause charges or unauthorized disclosure.",
+          "next_test": "Run creator-and-paid-bridge and untrusted-instructions cases. The OpenAI billing distinction was independently checked against [official billing guidance](https://help.openai.com/en/articles/9039756-chatgpt-search)."
+        },
+        {
+          "claim_id": "SP-03",
+          "claim": "Review composition is provider-independent and preserves creator, settings, merge, and deployment authority boundaries.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/references/settings-profile.md:38-47",
+            ".agents/skills/okhp3-repo-settings/references/creator-handoff.md:8-19"
+          ],
+          "status": "supported",
+          "consequence": "Failure could manufacture approval authority or expand scaffold authorization.",
+          "next_test": "Exercise the handoff with another review provider and with no remote repository."
+        },
+        {
+          "claim_id": "SP-04",
+          "claim": "Required-check coverage, concurrent changes, and optional-review auto-merge races have explicit safeguards.",
+          "claim_type": "design choice",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:93-105",
+            ".agents/skills/okhp3-repo-settings/references/settings-profile.md:15-19",
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:11-21"
+          ],
+          "status": "supported",
+          "consequence": "Failure could block legitimate merges, overwrite protection, or merge before review.",
+          "next_test": "Run filtered-check, concurrent-protection, and auto-merge-race cases."
+        },
+        {
+          "claim_id": "SP-05",
+          "claim": "The core output is portable and distinguishes unknown, proposed, and verified settings without recording credentials.",
+          "claim_type": "interpretation",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/assets/settings-record.json:1-30",
+            ".agents/skills/okhp3-repo-settings/references/creator-handoff.md:28-40"
+          ],
+          "status": "supported",
+          "consequence": "Failure could leak secrets or misrepresent an unapplied proposal.",
+          "next_test": "Populate and inspect a redacted record on a second host; verify destination package hashes during promotion."
+        },
+        {
+          "claim_id": "SP-06",
+          "claim": "Platform and performance claims are appropriately bounded for a local candidate.",
+          "claim_type": "interpretation",
+          "evidence_ids": [
+            ".agents/skills/okhp3-repo-settings/SKILL.md:107-110",
+            ".agents/skills/okhp3-repo-settings/references/sources.md:3-6",
+            ".agents/skills/okhp3-repo-settings/evals/evals.json:4-8",
+            "docs/repo-settings-recap.md:89-110"
+          ],
+          "status": "supported",
+          "consequence": "Overclaiming could turn historical observations into false operational assurance.",
+          "next_test": "Refresh relevant platform documentation before mutation; require fresh behavioral evidence and an unseen holdout before performance claims."
+        }
+      ],
+      "material_defects": [],
+      "limitations": [
+        "Approval covers documented safety-portability design only; behavioral effectiveness remains unverified.",
+        "Development evaluations were inspected, not executed. No production-readiness or live outcome uplift claim is supported.",
+        "The package contains evals/evals.json; no resources/evals directory exists.",
+        "Recap operations were not independently reverified. Most platform references were inspected as supplied source records, not refreshed live.",
+        "Separate reviewer context shares the model and source package with other reviewers; no cross-model independence is claimed. No other reviewer result was read.",
+        "No files or external settings were changed. Re-review if candidate bytes change."
+      ]
+    }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "authority": "conditional",
+    "role": "conditional-disruptor",
+    "artifact": "okhp3-repo-settings v0.1.0 and docs/repo-settings-recap.md",
+    "evidence_status": "analytical",
+    "execution": "Read-only inspection of all six package files and recap; no writes, paid reviews, or runtime benchmark.",
+    "independence_limit": "New reviewer context; shared model and sources. Initial reviewer conclusions supplied by coordinator, not independently reverified.",
+    "hypotheses": [
+      {
+        "id": "D1",
+        "counterexample": "Classic protection requires zero approvals, but inherited policy requires two. A combined Copilot approval/counting toggle is enabled as supposedly optional, while an empty repository ruleset list is reported as proof of no automatic spending.",
+        "falsifying_test": "Check whether instructions require effective inherited-policy inspection, prevent accidental approval counting, and preserve unknown automation scopes.",
+        "observed_evidence": [
+          "SKILL.md:53-63 requires effective and inherited rules inspection and distinguishes personal, organization, workflow and app automation.",
+          "SKILL.md:107-110 explicitly addresses combined controls and prohibits accidental counting when policy requires approvals.",
+          "assets/settings-record.json:26 initializes all four automation scopes as unknown.",
+          "evals/evals.json includes combined-copilot-control, automation-scope and inherited-team-rule cases; these are unexecuted development cases.",
+          "Recap limits its automation observation and acknowledges the combined control."
+        ],
+        "survives": false,
+        "decision": "Counterexample contradicted by explicit design controls; operational compliance remains untested.",
+        "minimal_correction": null
+      },
+      {
+        "id": "D2",
+        "counterexample": "A successful check on a pending PR is treated as proof of default-branch coverage. A path-filtered verify job becomes mandatory, blocking documentation-only PRs, or an existing gate is removed to hide the prerequisite failure.",
+        "falsifying_test": "Check whether the package distinguishes PR success from default-branch availability, requires trigger and source verification, and separates workflow repair from settings changes.",
+        "observed_evidence": [
+          "SKILL.md:57-59 requires exact names, source apps and branch/path/event filters.",
+          "SKILL.md:99-105 explicitly rejects both assumptions and prohibits silently removing the gate.",
+          "references/settings-profile.md:19 excludes filtered-out and scheduled-only workflows from blind requirement.",
+          "Recap explicitly records the manifest workflow as absent from main at inspection and application verify as path-filtered; both remain follow-up work."
+        ],
+        "survives": false,
+        "decision": "The package reports the unresolved prerequisite rather than claiming settings completion repaired it.",
+        "minimal_correction": null
+      },
+      {
+        "id": "D3",
+        "counterexample": "Creator scaffold approval or a local candidate review is treated as authority to create a remote, publish the skill, overwrite divergent mirrors, or claim demonstrated performance.",
+        "falsifying_test": "Inspect creator ownership, destination and copy reconciliation requirements, publication authority, and evaluation-status language for any automatic escalation.",
+        "observed_evidence": [
+          "SKILL.md:114-125 and 151-152 separate existing authorization from publication, unrelated repositories and file-supplied instructions.",
+          "references/creator-handoff.md:10-19 requires separately authorized remote creation and leaves merge and deployment to their respective workflows.",
+          "references/creator-handoff.md:30-40 labels distribution as intended, requires destination guidance/status and existing-copy inspection, full package hash comparison, and authorized creator changes.",
+          "evals/evals.json:4-8 labels evaluation not-run and requires an unseen external holdout for performance claims.",
+          "Recap explicitly rejects treating the originating session as a live benchmark of the new skill."
+        ],
+        "survives": false,
+        "decision": "No authority escalation or performance-promotion defect established within the requested local candidate scope.",
+        "minimal_correction": null
+      }
+    ],
+    "decision": "approve-with-limits",
+    "approved_scope": "LOCAL candidate promotion only, based on analytical design inspection.",
+    "material_defects_found": 0,
+    "minimal_correction": "Add the expected explicit Scope heading before final freeze. Existing scope restrictions are substantive; this is editorial.",
+    "limits": [
+      "Failed counterexamples do not establish runtime reliability or performance.",
+      "No publication, mirror synchronization, external settings application or live platform verification is approved by this review.",
+      "Final adjudication remains with the negotiator."
+    ]
+  },
+  "negotiator": {
+    "triggered": true,
+    "role": "final-negotiator",
+    "evidence_status": "analytical",
+    "artifact": {
+      "name": "okhp3-repo-settings",
+      "version": "0.1.0",
+      "revision": "candidate-2",
+      "aggregate_sha256": "140dbc59fe4b8f8c46bc5d6ed5a2bc74548c161a0f834e619024d45c65225307",
+      "hash_verification": {
+        "matched_files": 7,
+        "missing_files": [],
+        "extra_files": [],
+        "mismatches": [],
+        "aggregate_verified": true,
+        "ordering": "Case-insensitive sorted relative paths, matching inventory order."
+      }
+    },
+    "decision": "approve-with-limits",
+    "summary": "Fit for the explicitly authorized LOCAL candidate promotion to Skillz universal, subject to destination validation. No credible material defect survives.",
+    "approved_scope": "Local candidate routing to universal/okhp3-repo-settings only.",
+    "decisive_evidence": [
+      {
+        "finding": "Editorial delta verified.",
+        "detail": "Removing the added Scope section and worked-example link reproduces the recorded initial SKILL.md SHA-256: 8864f66a5c2e075caf58e0c7593c2b4e4d8293d0dce1a579aa96ba7ea0dd8e4e."
+      },
+      {
+        "finding": "Candidate attribution and example are appropriately bounded.",
+        "detail": "Scope explicitly disclaims publication. The synthetic example records plan-only authority, blocked mutation, null after-state, and no live verification. Its checklist and link are present."
+      },
+      {
+        "finding": "D1 does not survive.",
+        "detail": "Effective inherited rules, combined approval controls, and separately unknown automation scopes are explicit controls."
+      },
+      {
+        "finding": "D2 does not survive.",
+        "detail": "Check identity, source, trigger coverage and default-branch presence must be verified; workflow repair is separate and existing gates cannot be silently removed."
+      },
+      {
+        "finding": "D3 does not survive.",
+        "detail": "Creator, settings, merge, publication and billing authority remain separate. Destination reconciliation and performance-evidence limits are explicit."
+      },
+      {
+        "finding": "Structural checks passed.",
+        "detail": "Package JSON parses and all inspected relative Markdown links resolve."
+      }
+    ],
+    "unresolved_items": [
+      "Destination guidance, working state, existing copies, creator compatibility and catalog validation remain promotion execution gates.",
+      "Behavioral evaluations remain not-run; packaged cases are author-visible, with an unseen external holdout required before performance claims.",
+      "Recap operations remain historical reports, not independently verified current settings.",
+      "The manifest workflow, application check coverage and wider automation inspection remain separate originating-repository follow-up."
+    ],
+    "role_context_limits": {
+      "initial_reviews": "All three supplied analytical reviews materially converge; shared model and sources limit independence.",
+      "disruptor": "Three falsifiable objections inspected against current controls; failed counterexamples do not establish operational reliability.",
+      "negotiator": "Read-only adjudication of supplied reviews, current package, hash inventory and recap. No fresh behavioral benchmark or external platform verification.",
+      "authority": "User authorization supports local routing. No commit, push, PR, publication or external settings authority is inferred.",
+      "execution": "No files written, promotion performed, or external settings changed."
+    },
+    "follow_up": [
+      {
+        "owner": "Local promotion coordinator",
+        "action": "Inspect destination guidance and existing copies, preserve divergent work, validate catalog integration, and verify the complete destination package against this frozen inventory."
+      },
+      {
+        "owner": "Evaluation owner",
+        "action": "Run version-bound behavioral cases and an unseen external holdout before operational or performance qualification."
+      }
+    ],
+    "reopen": false,
+    "review_expiry_trigger": "Changed package bytes, a conflicting destination contract, expanded requested scope, or a credible material counterexample requires renewed adjudication."
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": [
+    "Destination guidance, working state, existing copies, creator compatibility and catalog validation remain promotion execution gates.",
+    "Behavioral evaluations remain not-run; packaged cases are author-visible, with an unseen external holdout required before performance claims.",
+    "Recap operations remain historical reports, not independently verified current settings.",
+    "The manifest workflow, application check coverage and wider automation inspection remain separate originating-repository follow-up."
+  ],
+  "follow_up": [
+    {
+      "owner": "Local promotion coordinator",
+      "action": "Inspect destination guidance and existing copies, preserve divergent work, validate catalog integration, and verify the complete destination package against this frozen inventory."
+    },
+    {
+      "owner": "Evaluation owner",
+      "action": "Run version-bound behavioral cases and an unseen external holdout before operational or performance qualification."
+    }
+  ]
+}

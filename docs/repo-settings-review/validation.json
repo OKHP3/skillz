@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-09-11T00:54:10.162480+00:00",
+  "checks_passed": [
+    "Final catalog build passed: 343 skills across 20 families",
+    "New skill present in catalog, search index and detail record",
+    "Manifest count agrees with generated catalog",
+    "All seven package files byte-identical across three surfaces",
+    "No temporary regression fixture in catalog"
+  ],
+  "limitations": [
+    "Full catalog regression suite stopped before completion; no full-suite pass claimed",
+    "Live behavioral trials and unseen holdout not run",
+    "Generated catalog also refreshes pre-existing Replit janitor detail drift to match its current source",
+    "Local uncommitted candidate; generated source commit describes base revision, not published package"
+  ]
+}

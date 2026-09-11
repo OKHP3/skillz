@@ -6,6 +6,29 @@ This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
 
+### Changed
+
+- Evolved `universal/okhp3-repo-settings` to owner-requested v2 (`2.0.0`), a
+  local candidate with a 20-area coverage matrix, read-only Python helpers,
+  synthetic profile and inactive manual/weekly/PR Actions adapter. Account/profile
+  URLs and credentials are excluded from the portable package. Added strict input,
+  identity, output-size, timeout and public-sharing regression checks. See
+  [v2 evidence and handoff](repo-settings-v2/README.md). Hosted execution and
+  unseen-holdout performance remain unverified; no workflow is activated by routing.
+
+
+### Added
+
+- Added `universal/okhp3-repo-settings` 0.1.0 as a local candidate companion to
+  `okhp3-foundry-repo-creator`. Covers one-owner AI-assisted GitHub settings,
+  check coverage, manual provider-independent review, auto-merge ordering,
+  Copilot interface drift, Pages boundaries, and scoped MCP decisions. Includes
+  a settings record, worked example, checklist, 12 development cases and 20
+  discovery queries. Equilibrium review is analytical and approved with limits;
+  live behavior, uplift, unseen holdout and publication are not established.
+  See [configuration recap](repo-settings-recap.md) and
+  [review and promotion evidence](repo-settings-review/README.md).
+
 ### Fixed
 
 - Repository Janitor 0.2.1 now emits full `refs/archive/...` names in
