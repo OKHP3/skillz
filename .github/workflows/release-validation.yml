@@ -19,6 +19,7 @@ on:
       - ".github/node-version"
       - "mermaid/okhp3-universe-map/**"
       - "universal/okhp3-repository-janitor/**"
+      - "universal/okhp3-repo-settings/**"
       - "universal/okhp3-github-notification-maintainer/**"
   push:
     branches:
@@ -40,6 +41,7 @@ on:
       - ".github/node-version"
       - "mermaid/okhp3-universe-map/**"
       - "universal/okhp3-repository-janitor/**"
+      - "universal/okhp3-repo-settings/**"
       - "universal/okhp3-github-notification-maintainer/**"
   workflow_dispatch:
 
@@ -47,6 +49,27 @@ permissions:
   contents: read
 
 jobs:
+  repo-settings-contract:
+    name: Check repository settings package and catalog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version-file: .github/node-version
+      - name: Validate portable package and Python safety checks
+        run: |
+          python3 -c 'import sys; assert sys.version_info >= (3, 12)'
+          python3 -B -m unittest discover -s universal/okhp3-repo-settings/tests -v
+          node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root universal/okhp3-repo-settings
+      - name: Build and test catalog contracts
+        run: |
+          node artifacts/forge/scripts/build-catalog.js
+          node artifacts/forge/scripts/test-catalog.mjs
+
   universe-map-contract:
     name: Check universe-map skill contract
     runs-on: ubuntu-latest

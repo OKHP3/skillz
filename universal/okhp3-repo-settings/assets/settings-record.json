@@ -1,10 +1,19 @@
 {
   "schema_version": "1.0",
-  "skill_version": "0.1.0",
+  "skill_version": "2.0.0",
   "repository": null,
   "observed_at": null,
-  "profile": {"owner_count": null, "default_reviewer": null, "runtime": null, "deployment_intent": null},
-  "authorization": {"source": null, "scope": [], "exclusions": []},
+  "profile": {
+    "owner_count": null,
+    "default_reviewer": null,
+    "runtime": null,
+    "deployment_intent": null
+  },
+  "authorization": {
+    "source": null,
+    "scope": [],
+    "exclusions": []
+  },
   "evidence": [],
   "settings": [],
   "setting_entry_contract": {
@@ -18,12 +27,21 @@
     "reason": "",
     "authority": "",
     "prerequisites": [],
-    "verification": {"method": null, "observed_at": null, "evidence_id": null},
+    "verification": {
+      "method": null,
+      "observed_at": null,
+      "evidence_id": null
+    },
     "recovery": ""
   },
   "effective_rules": [],
   "check_coverage": [],
-  "review_automation_scopes": {"repository": "unknown", "personal": "unknown", "inherited": "unknown", "workflow_or_app": "unknown"},
+  "review_automation_scopes": {
+    "repository": "unknown",
+    "personal": "unknown",
+    "inherited": "unknown",
+    "workflow_or_app": "unknown"
+  },
   "blockers": [],
   "not_inspected": [],
   "follow_up": [],

@@ -6,6 +6,17 @@ This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
 
+### Changed
+
+- Evolved `universal/okhp3-repo-settings` to owner-requested v2 (`2.0.0`), a
+  local candidate with a 20-area coverage matrix, read-only Python helpers,
+  synthetic profile and inactive manual/weekly/PR Actions adapter. Account/profile
+  URLs and credentials are excluded from the portable package. Added strict input,
+  identity, output-size, timeout and public-sharing regression checks. See
+  [v2 evidence and handoff](repo-settings-v2/README.md). Hosted execution and
+  unseen-holdout performance remain unverified; no workflow is activated by routing.
+
+
 ### Added
 
 - Added `universal/okhp3-repo-settings` 0.1.0 as a local candidate companion to

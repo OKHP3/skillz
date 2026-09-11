@@ -1,0 +1,64 @@
+name: Repository settings audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 9 * * 2'
+  pull_request:
+    paths:
+      - '.github/repo-settings/**'
+      - '.github/workflows/repo-settings.yml'
+permissions:
+  contents: read
+concurrency:
+  group: repo-settings-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  tests:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, verified 2026-09-10
+        with:
+          persist-credentials: false
+      - name: Test helpers without audit credentials
+        run: python3 -B -m unittest discover -s .github/repo-settings/tests -v
+      - name: Validate bound repository profile
+        env:
+          TARGET_REPOSITORY: ${{ github.repository }}
+        run: python3 -B .github/repo-settings/scripts/repo_settings.py validate-profile --profile .github/repo-settings/profile.json --repo "$TARGET_REPOSITORY"
+  audit:
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Read selected settings and compare profile
+        id: audit
+        env:
+          GH_TOKEN: ${{ secrets.REPO_SETTINGS_READ_TOKEN || github.token }}
+          TARGET_REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/repo-settings"
+          set +e
+          python3 -B .github/repo-settings/scripts/repo_settings.py audit --repo "$TARGET_REPOSITORY" --output "$RUNNER_TEMP/repo-settings/snapshot.json"
+          audit_code=$?
+          if [ "$audit_code" -ne 0 ] && [ "$audit_code" -ne 2 ]; then
+            exit "$audit_code"
+          fi
+          python3 -B .github/repo-settings/scripts/repo_settings.py compare --snapshot "$RUNNER_TEMP/repo-settings/snapshot.json" --profile .github/repo-settings/profile.json --output "$RUNNER_TEMP/repo-settings/comparison.json"
+          compare_code=$?
+          echo "Selected-profile comparison exit code: $compare_code (0 pass, 1 drift, 2 unknown/error)." >> "$GITHUB_STEP_SUMMARY"
+          echo "Manual coverage remains required; this is not whole-repository compliance." >> "$GITHUB_STEP_SUMMARY"
+          exit "$compare_code"
+      - name: Preserve bounded evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4, verified 2026-09-10
+        with:
+          name: repo-settings-${{ github.run_id }}
+          path: ${{ runner.temp }}/repo-settings/*.json
+          retention-days: 7
+          if-no-files-found: warn

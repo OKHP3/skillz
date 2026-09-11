@@ -1,0 +1,8 @@
+{
+  "status": {
+    "01a08e17-7c01-7fd3-a390-42d65a7c5af5": {
+      "completed": "**Addendum: approve-with-limits remains valid** for local candidate routing.\n\n- **14/14 refreshed hashes match.** Only `SKILL.md` changed; removing the attribution declaration exactly restores its previously approved hash. Runtime files are unchanged.\n- The builder accepts only exact `omitted-by-author`; absent declarations retain requirements and invalid values fail. The exception preserves version, author, category, origin, and scope requirements.\n- For this non-Community candidate, declaring omission while supplying homepage/author-GitHub metadata fails. No account URLs are injected.\n- Attribution-policy tests and all four package-contract tests pass; the new test is imported by the main suite.\n\n**Limitation:** Community’s existing exemption also bypasses the conflicting-link check. This does not block this universal candidate, but the policy is not a catalog-wide URL sanitizer.\n\nNo edits, full build, or saved-review rewrite performed. Prior operational and performance limits remain.\n\n```json\n{\n  \"decision\": \"approve-with-limits\",\n  \"scope\": \"local-candidate-routing\",\n  \"hashes_matched\": 14,\n  \"inventory_sha256\": \"72f387ed0d3ba0ecb9c5efcb7ba0a0767dd5568905510d2d179a0f0198b63fff\",\n  \"candidate_blockers\": [],\n  \"evidence_status\": \"analytical\"\n}\n```"
+    }
+  },
+  "timed_out": false
+}

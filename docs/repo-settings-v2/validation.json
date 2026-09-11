@@ -1,0 +1,76 @@
+{
+  "version": "2.0.0",
+  "evidence_status": "local-checks",
+  "checked_at": "2026-09-11T01:28:44.332207+00:00",
+  "checks": [
+    {
+      "name": "Python unittest including subprocess fixtures",
+      "status": "PASS",
+      "result": "23 tests passed, including bounded output floods/timeouts"
+    },
+    {
+      "name": "Workflow YAML parse and trust-boundary assertions",
+      "status": "PASS"
+    },
+    {
+      "name": "Portable structural validator",
+      "status": "PASS",
+      "result": "one package validated"
+    },
+    {
+      "name": "Public text scan, counterexamples, manual inspection",
+      "status": "PASS",
+      "limit": "Pattern scan and manual review do not guarantee absence of every possible secret format"
+    },
+    {
+      "name": "Markdown resource links and JSON parsing",
+      "status": "PASS"
+    },
+    {
+      "name": "GitHub Actions hosted run",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "Live GitHub helper audit",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "Actionlint",
+      "status": "NOT RUN",
+      "reason": "not installed"
+    },
+    {
+      "name": "Unseen holdout and with/without skill outcome benchmark",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "Full Skillz regression suite",
+      "status": "NOT RUN",
+      "reason": "Use scoped package/catalog verification; prior v0 broad run incomplete"
+    },
+    {
+      "name": "Exact author-omitted attribution policy and package contract",
+      "status": "PASS",
+      "result": "Declaration regression checks passed; final addendum approved"
+    },
+    {
+      "name": "Minimum Python 3.12 and non-Windows execution",
+      "status": "NOT RUN"
+    },
+    {
+      "name": "Final three-surface package equality",
+      "status": "PASS",
+      "result": "14 files each"
+    },
+    {
+      "name": "Final catalog metadata and entry coverage",
+      "status": "PASS"
+    }
+  ],
+  "runtime": "Windows Python 3.14.0rc1",
+  "catalog_integration": {
+    "initial_build": "FAIL: catalog required personal attribution links",
+    "resolution": "Explicit omitted-by-author marker, narrow builder/test change, reviewed addendum",
+    "retry": "PASS: 343 skills, 20 families; v2 entry and all non-Community required fields verified"
+  }
+}

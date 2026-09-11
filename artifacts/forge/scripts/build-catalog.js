@@ -16,6 +16,13 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { computeCapabilities } from './capabilities.mjs';
 
+// An explicit author choice omits only attribution links, never provenance/scope.
+export function attributionLinksOmitted(value) {
+  if (value === undefined || value === null) return false;
+  if (value === 'omitted-by-author') return true;
+  throw new Error('Invalid attribution-links declaration; expected omitted-by-author');
+}
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // In the monorepo, this script lives at artifacts/forge/scripts/.
 // Distribution families live at the workspace root, alongside AGENTS.md and
@@ -979,6 +986,7 @@ function buildCatalog() {
     const author = fm.author || (fm.metadata?.author) || null;
     const homepage = fm.homepage || (fm.metadata?.homepage) || null;
     const authorGithub = fm['author-github'] || fm.authorGithub || (fm.metadata?.['author-github']) || (fm.metadata?.authorGithub) || null;
+    const omitAttributionLinks = attributionLinksOmitted(fm.metadata?.['attribution-links']);
     const publicArtifactValue = fm['public-artifact'] ?? fm.publicArtifact ??
       fm.public_artifact ?? fm.metadata?.['public-artifact'] ??
       fm.metadata?.publicArtifact ?? fm.metadata?.public_artifact;
@@ -1045,13 +1053,15 @@ function buildCatalog() {
 
     const releaseReadiness = deriveReleaseReadiness(maturity, evidenceV2.status);
     const packageMetadata = { author, category, origin, homepage, authorGithub, inScope, outOfScope, publicArtifact };
+    if (omitAttributionLinks) packageMetadata.attributionLinks = 'omitted-by-author';
     const companionDiagnostics = getCompanionDiagnostics({ path: relPath, companions });
 
     // Rule 8: every cataloged non-Community package must expose the completed
     // Foundry baseline. A declared context-agnostic social-posting package is
     // the narrowly scoped exception: it retains source, version, category, and
     // scope metadata but must not be forced to embed a personal homepage or
-    // account handle. Community packages may leave these fields null.
+    // account handle. An explicit attribution-links omission grants the same
+    // two-field exception to other families. Community may leave these null.
     if (publicArtifact && family !== 'social-posting') {
       throw new Error(
         `Evidence contract violation: public_artifact is reserved for context-agnostic ` +
@@ -1059,7 +1069,7 @@ function buildCatalog() {
       );
     }
     if (family !== 'community') {
-      const requiredMetadata = publicArtifact
+      const requiredMetadata = publicArtifact || omitAttributionLinks
         ? { version, author, category, origin, inScope, outOfScope }
         : { version, ...packageMetadata };
       const missing = Object.entries(requiredMetadata)
@@ -1072,9 +1082,9 @@ function buildCatalog() {
           `${missing.join(', ')}. Build failed per rule 8.`
         );
       }
-      if (publicArtifact && (homepage || authorGithub)) {
+      if ((publicArtifact || omitAttributionLinks) && (homepage || authorGithub)) {
         throw new Error(
-          `Evidence contract violation: public-artifact package ${relPath} must not ` +
+          `Evidence contract violation: attribution-free package ${relPath} must not ` +
           `embed homepage or author-github metadata.`
         );
       }

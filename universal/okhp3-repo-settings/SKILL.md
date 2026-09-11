@@ -3,27 +3,29 @@ name: okhp3-repo-settings
 description: >
   Audit and configure GitHub repository settings for one owner working with AI
   agents. Use for branch protection, merge options, Actions, Pages, environments,
-  Copilot review, or MCP configuration, including post-scaffold FoundRy setup.
+  Copilot review, MCP configuration, or repeatable read-only drift audits, including
+  post-scaffold FoundRy setup.
   Distinguish owner preferences from platform requirements and verify each write.
   Do not use for repository creation, code review itself, fleet cleanup, or deployment.
 license: MIT
 compatibility: >
   Portable reasoning and file outputs. Live inspection and changes require an
   authorized GitHub API, CLI, connector, or browser session with suitable access.
+  Optional deterministic helpers require Python 3.12+; live audit also requires gh.
+  The bundled Actions template targets GitHub.com hosted Ubuntu runners.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.0"
+  version: "2.0.0"
   category: universal
   origin: okhp3/skillz
-  homepage: https://overkillhill.com
-  author-github: https://github.com/OKHP3
+  attribution-links: "omitted-by-author"
   in_scope: "Single-repository configuration assessment, authorized settings changes, evidence, and creator handoff."
   out_of_scope: "Remote creation, automatic merges, deployment, billing changes, credential grants, fleet mutation, or claiming AI review guarantees."
 ---
 
 # okhp3-repo-settings
 
-**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
+**OverKill Hill P³**
 
 Configure a repository around its actual owner, purpose, checks, and operating
 constraints. Prefer useful verified safeguards over a copied checklist.
@@ -33,7 +35,9 @@ constraints. Prefer useful verified safeguards over a copied checklist.
 Assess and change only settings for the identified repository within the user's
 authority. Repository creation, code review, merge execution, deployment, account
 billing, and global policy are separate workflows. This is a local candidate
-package; the standard About attribution is not a claim that this version is published.
+package; author attribution is not a claim that this version is published.
+Supply repository identity at runtime. Never embed an owner account URL, credentials,
+or local machine path. References contain vendor documentation, not account wiring.
 
 ## Inputs and outputs
 
@@ -158,6 +162,26 @@ credits solely to validate a settings toggle without that authority.
 5. Save the record only to the authorized output path. Skill creation does not
    authorize applying settings to another repository or publishing the package.
 
+## 6. Repeatable coverage and automation
+
+Read [references/coverage-matrix.md](references/coverage-matrix.md) for every
+assessment. Give each row a disposition, evidence, owner and next action. No finite
+checklist proves every GitHub best practice; this is a maintained solo-owner scope.
+Do not count a manual item as automated coverage.
+
+Use [references/automation.md](references/automation.md) when audits should be
+repeatable locally or in Actions. The Python helper performs only reads and local
+reports. Its narrow comparison is not effective-policy compliance. Keep incomplete
+manual controls visible even when all profile assertions pass.
+
+Use the bundled profile and workflow templates only after binding them to the
+verified repository and chosen package path. Keep credentials away from PR code.
+Prefer manual and weekly audits plus unprivileged PR tests for this owner, who
+has confirmed available Actions capacity and limited Copilot tokens. Reconfirm this
+preference for each adopting owner. No helper calls AI.
+Template installation, remote activation and credential provisioning are separate
+states. Record each explicitly; do not claim a template ran.
+
 ## Evaluation and limits
 
 [evals/evals.json](evals/evals.json) defines development cases and discovery queries.
@@ -166,12 +190,12 @@ instructions, missing permissions, auto-merge races, and inherited automation.
 Read [references/worked-example.md](references/worked-example.md) for a synthetic
 record and the validation checklist; it is an illustration, not executed evidence.
 Use [references/creator-handoff.md](references/creator-handoff.md) for portable
-placement and invocation. Version 0.1.0 is a candidate; consult the separate
+placement and invocation. Version 2.0.0 is a candidate; consult the separate
 review evidence before making any performance or release claim.
 
 ## About
 
-Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
-Published at [github.com/OKHP3](https://github.com/OKHP3)
-Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+Built by Jamie Hill · OverKill Hill P³
+Part of the portable Agent Skill library.
+Account and profile links omitted by the author for public portability.
 MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

@@ -18,6 +18,7 @@ import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { execFileSync, execSync, spawnSync } from 'child_process';
 import {
+  attributionLinksOmitted,
   applyEvidencePolicy,
   formatApprovedCompanionRegistryReport,
   getApprovedCompanionRegistryReport,
@@ -30,6 +31,7 @@ import {
   validateApprovedCompanionReferences,
 } from './build-catalog.js';
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
+import './test-attribution-policy.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // Distribution families and the manifest live at the workspace root. Keep
@@ -184,7 +186,8 @@ test('every non-community skill has required package metadata (rule 8)', () => {
   for (const s of catalog.skills) {
     if (s.family === 'community') continue;
     assert(!!s.version, `skill "${s.name}" (family ${s.family}) is missing version`);
-    const fields = s.packageMetadata.publicArtifact
+    const omitted = attributionLinksOmitted(s.packageMetadata.attributionLinks);
+    const fields = s.packageMetadata.publicArtifact || omitted
       ? ['author', 'category', 'origin', 'inScope', 'outOfScope']
       : ['author', 'category', 'origin', 'homepage', 'authorGithub', 'inScope', 'outOfScope'];
     for (const field of fields) {
@@ -194,6 +197,10 @@ test('every non-community skill has required package metadata (rule 8)', () => {
       assert(s.family === 'social-posting', `skill "${s.name}" uses publicArtifact outside social-posting`);
       assert(!s.packageMetadata.homepage, `skill "${s.name}" publicArtifact metadata must not include homepage`);
       assert(!s.packageMetadata.authorGithub, `skill "${s.name}" publicArtifact metadata must not include authorGithub`);
+    }
+    if (omitted) {
+      assert(!s.packageMetadata.homepage && !s.packageMetadata.authorGithub,
+        `skill "${s.name}" declares omitted attribution but retains links`);
     }
   }
 });

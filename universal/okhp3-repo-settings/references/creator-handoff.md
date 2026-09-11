@@ -1,7 +1,7 @@
 # Composition with okhp3-foundry-repo-creator
 
 The inspected companion is `universal/okhp3-foundry-repo-creator/SKILL.md`, version
-1.1.0 in OKHP3/skillz. It owns source provenance, parent selection, naming,
+1.1.0 in the originating skill catalog. It owns source provenance, parent selection, naming,
 scaffolding, manifest, and graduation. Its current contract excludes autonomous
 remote creation and publication. This package does not expand that authority.
 
@@ -29,7 +29,7 @@ Example invocation:
 
 The authored candidate lives in the originating project's
 `.agents/skills/okhp3-repo-settings/`. Intended canonical distribution placement
-is `OKHP3/skillz:universal/okhp3-repo-settings/`, adjacent to the creator. This is
+is `universal/okhp3-repo-settings/`, adjacent to the creator. This is
 a promotion destination, not a claim that publication or synchronization occurred.
 The core uses no cross-repository relative imports or machine-specific paths.
 

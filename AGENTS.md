@@ -294,7 +294,7 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-database-cartographer` | Reverse-engineer a live SQL database into a schema inventory, severity-classified diff, and Mermaid ER handoff without writing to the target. |
 | `okhp3-equilibrium-review` | Evaluate documents, reports, spreadsheets, hypotheses, decision memos, or Agent Skills with independent evidence review, conditional disruption, and evidence-based adjudication. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
-| `okhp3-repo-settings` | Audit and configure one-owner GitHub repository settings after scaffolding; preserve check coverage, provider-independent review, deployment boundaries, and verified authorized writes. Candidate with analytical review; no live behavioral benchmark. |
+| `okhp3-repo-settings` | Audit and configure one-owner GitHub repository settings after scaffolding; preserve check coverage, provider-independent review, deployment boundaries, and verified authorized writes. V2 includes read-only Python drift helpers and an inactive Actions adapter; keep repository identity and credentials runtime-supplied. Local candidate; no live behavioral benchmark. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
 | `okhp3-github-notification-maintainer` | Diagnose GitHub notification causes and apparent schedule failures; prepare bounded repairs and complete only authorized, verified notifications. Scheduled grant and run health are separate from inbox state. |
 | `okhp3-i18n-page-sync` | Detect which pages on a static site are missing a translation or have drifted from a changed English source, by reusing the site's own search index as the page inventory. Reports drift and names the exact-pair translation skill for each flagged route; never translates or writes a page itself. |
@@ -395,3 +395,11 @@ Read only when relevant:
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
 Updated: 2026-08-27
+
+### Author-omitted attribution links
+
+An explicit string metadata field `attribution-links: "omitted-by-author"`
+permits a public package to omit homepage and author-github links. All other
+Foundry baseline fields remain required. Such a package must not retain either
+link field. This is distinct from the existing social-posting public-artifact
+exception; it does not change that exception or imply any release evidence.

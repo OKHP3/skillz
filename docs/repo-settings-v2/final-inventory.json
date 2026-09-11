@@ -1,0 +1,16 @@
+{
+  "SKILL.md": "e1f7ab50b9d469ec4371eef0f4362e97be35360196b7fce552375167dfa581bb",
+  "assets/repo-settings.yml.template": "a4fe4c8484e8602ba10784531e5b92347f1c351f5cec9d1eea8ecb8a9a598fb1",
+  "assets/settings-record.json": "171afba3e817ca50c65ac0b04c4b340981b70a884952bd4072e4609dfd016a18",
+  "assets/solo-profile.json": "653cc8647a8b8bb685759e093405d65bf28015b7ebde1d96b339cad533d3f69f",
+  "evals/evals.json": "78f3f4ec7966a750ca35bde687198a8c1a577dcc3fc6ca420544f724c70c2e05",
+  "references/automation.md": "a9b064f48ba7a5aa5a419ce58bc7793e97d1fabedc7ca995dc27b4e01dd5b926",
+  "references/coverage-matrix.md": "47b2e727aa555ba3f71c803dba6be96f03973ccde61d94c4e06e1ee724b75e35",
+  "references/creator-handoff.md": "063603ba77bb7b24966e74ab41d5cd15eda15a7011bf3d64b6df6723f3b4ccaa",
+  "references/settings-profile.md": "d6f7ba1c2012db95dc49b54511aa365ece174d272ed069a2cbd726fbcdb3f4c0",
+  "references/sources.md": "05237f9819501cc6d0c2cba158b1a5485ed3cf01d02c9eea91462f45da3d8ca1",
+  "references/worked-example.md": "282957e60c052b4f88144892fa9ab60398d9958f6e9145bac2eae924e6029e8a",
+  "scripts/repo_settings.py": "7624c55393f734a247961caa461ad11e0fea7e55eacfec04176163e7be87407b",
+  "tests/test_package_contract.py": "9849908feb1de919ff65c0865233539ec654f96e8d79aa49eb7df4c8829e5db2",
+  "tests/test_repo_settings.py": "9e9a16e6ed64394eda3371219c65744fc1611cc45f325a019e799aa70fe95f46"
+}
