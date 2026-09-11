@@ -1,0 +1,4 @@
+interface:
+  display_name: "OKHP3 GitHub Mirror Janitor"
+  short_description: "Audit GitHub mirrors and prune only with evidence"
+  default_prompt: "Use $okhp3-github-mirror-janitor in Audit mode to inventory local mirrors and GitHub notifications, compare against origin/main, verify current PR and CI state, and report exact safe or ambiguous actions."
