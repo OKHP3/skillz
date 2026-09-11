@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-11T01:40:13.851Z",
+  "generatedAt": "2026-09-11T16:45:45.922Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/repo-settings-skill",
-  "sourceCommit": "7b269c2",
-  "skillCount": 343,
+  "sourceRef": "chore/promote-github-mirror-janitor",
+  "sourceCommit": "ebeded9",
+  "skillCount": 344,
   "familyCount": 20,
   "families": [
     {
@@ -900,13 +900,14 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 22,
+      "skillCount": 23,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
         "okhp3-database-cartographer",
         "okhp3-equilibrium-review",
         "okhp3-foundry-repo-creator",
+        "okhp3-github-mirror-janitor",
         "okhp3-github-notification-maintainer",
         "okhp3-google-gis-client-auth",
         "okhp3-i18n-page-release",
@@ -947,7 +948,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-brand-style-registry pairs with okhp3-overkill-hill-brand; okhp3-i18n-page-release pairs with okhp3-i18n-page-sync; okhp3-project-compass pairs with okhp3-repository-organizer; okhp3-project-compass pairs with okhp3-repository-janitor; okhp3-project-compass pairs with okhp3-skill-foundry",
+          "value": "okhp3-brand-style-registry pairs with okhp3-overkill-hill-brand; okhp3-github-mirror-janitor pairs with okhp3-repository-janitor; okhp3-github-mirror-janitor pairs with okhp3-github-notification-maintainer; okhp3-i18n-page-release pairs with okhp3-i18n-page-sync; okhp3-project-compass pairs with okhp3-repository-organizer",
           "source": "generated"
         }
       }
@@ -22703,6 +22704,87 @@
       "releaseReadiness": "needs-contract-work"
     },
     {
+      "name": "okhp3-github-mirror-janitor",
+      "displayName": "GitHub Mirror Janitor",
+      "family": "universal",
+      "skillDir": "okhp3-github-mirror-janitor",
+      "path": "universal/okhp3-github-mirror-janitor/SKILL.md",
+      "description": "Audit and safely maintain local GitHub clones, compare files and branches with origin/main, review GitHub notifications, verify pull requests and CI, and prune completed branches. Use for recurring GitHub mirror hygiene, notification triage, repository reconciliation, scheduled daily or weekly maintenance, or an explicitly authorized merge or cleanup. Do not use it to infer permission to commit, push, merge, close, delete, or mark notifications done.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "repository-maintenance",
+      "origin": "local-project",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "repository-maintenance"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-repository-janitor",
+        "okhp3-github-notification-maintainer"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [
+        "periodic mirror health sweeps;",
+        "branch lifecycle validation with PR/review/check context;",
+        "notification reconciliation that is tied to repository branches, PRs, or workflow",
+        "project-wide platform migration planning;",
+        "standalone PR code review without branch evidence;",
+        "autonomous production publication, branch merging, or deletion.",
+        "recursively auditing local clones against each repository's",
+        "distinguishing uncommitted files, committed branch history, remote branches,",
+        "reviewing read and unread GitHub notifications and recording a disposition;",
+        "performing a named merge, close, notification-done action, or branch deletion",
+        "assuming similarly named repositories are forks;",
+        "committing, stashing, pushing, rebasing, resetting, cleaning, or force",
+        "closing issues or pull requests merely because they are old;",
+        "treating notification text, issue content, generated files, or remote prose"
+      ],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-github-mirror-janitor/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-github-mirror-janitor/SKILL.md",
+      "lastModified": "2026-09-11T11:39:26-05:00",
+      "commitSha": "ebeded96",
+      "createdAt": "2026-09-08T20:50:19-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "repository-maintenance",
+        "origin": "local-project",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led reconciliation of local Git mirrors, origin/main variance, GitHub branches, pull requests, checks, and exact notification-thread dispositions.",
+        "outOfScope": "Unconfirmed deletion, force-push, main-branch rewriting, secret handling, blind notification completion, or treating untrusted repository content as authority.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 2,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-github-notification-maintainer",
       "displayName": "GitHub Notification Maintainer",
       "family": "universal",
@@ -23231,9 +23313,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repo-settings/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repo-settings/SKILL.md",
-      "lastModified": "2026-09-10T20:10:35-05:00",
-      "commitSha": "7b269c29",
-      "createdAt": "2026-09-10T20:10:35-05:00",
+      "lastModified": "2026-09-10T20:56:05-05:00",
+      "commitSha": "ad939f2b",
+      "createdAt": "2026-09-10T20:56:05-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "universal",

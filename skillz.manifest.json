@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 343,
+  "distributionSkillCount": 344,
   "activeFamilyCount": 20,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 53,
   "maturityCounts": {
-    "draftable": 264,
+    "draftable": 265,
     "skeleton": 74,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 168,
+    "not-run": 169,
     "none": 118,
     "local-checks": 38,
     "analytical": 5,
@@ -277,6 +277,6 @@
     ]
   },
   "distributionFamilyCount": 20,
-  "countsGeneratedAt": "2026-09-11T01:40:13.851Z",
+  "countsGeneratedAt": "2026-09-11T16:45:45.922Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
