@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 283 distribution skills in 19 active families, and 46 project-local support skills under `.agents/skills/`
+- **Current inventory:** 343 distribution skills in 20 active families, and 53 project-local support skills under `.agents/skills/` (local candidate inventory, 2026-09-10)
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -294,6 +294,7 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-database-cartographer` | Reverse-engineer a live SQL database into a schema inventory, severity-classified diff, and Mermaid ER handoff without writing to the target. |
 | `okhp3-equilibrium-review` | Evaluate documents, reports, spreadsheets, hypotheses, decision memos, or Agent Skills with independent evidence review, conditional disruption, and evidence-based adjudication. |
 | `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
+| `okhp3-repo-settings` | Audit and configure one-owner GitHub repository settings after scaffolding; preserve check coverage, provider-independent review, deployment boundaries, and verified authorized writes. Candidate with analytical review; no live behavioral benchmark. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
 | `okhp3-github-notification-maintainer` | Diagnose GitHub notification causes and apparent schedule failures; prepare bounded repairs and complete only authorized, verified notifications. Scheduled grant and run health are separate from inbox state. |
 | `okhp3-i18n-page-sync` | Detect which pages on a static site are missing a translation or have drifted from a changed English source, by reusing the site's own search index as the page inventory. Reports drift and names the exact-pair translation skill for each flagged route; never translates or writes a page itself. |

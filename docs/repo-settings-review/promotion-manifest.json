@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "skill": {
+    "name": "okhp3-repo-settings",
+    "version": "0.1.0",
+    "maturity": "candidate",
+    "evidence_status": "analytical"
+  },
+  "source": {
+    "repository": "OKHP3/Glee-fullyTools-FoundRy",
+    "branch": "codex/solo-ai-repo-settings",
+    "base_commit": "fdf2c32",
+    "package_path": ".agents/skills/okhp3-repo-settings",
+    "selected_as_canonical_incubator": true,
+    "selection_reason": "Only authored candidate; portable domain workflow reviewed in separate contexts, with synthetic examples and scoped authority."
+  },
+  "mirrors": [
+    {
+      "path": "skills/okhp3-repo-settings",
+      "role": "publication-mirror",
+      "authorized": true,
+      "aggregate_sha256": "96f22325f84e4c1b8b2c2cc24f07ee3ade9848d2af030df49ee66ccc7e7ca25a"
+    }
+  ],
+  "canonical_target": {
+    "repository": "OKHP3/skillz",
+    "branch": "codex/repo-settings-skill",
+    "family": "universal",
+    "package_path": "universal/okhp3-repo-settings",
+    "accepted_commit_or_hash": null,
+    "local_candidate_sha256": "96f22325f84e4c1b8b2c2cc24f07ee3ade9848d2af030df49ee66ccc7e7ca25a"
+  },
+  "inventory": [
+    {
+      "path": "SKILL.md",
+      "sha256": "bcef72b88892ae73451631edeeb2177ace3c597971cfabb93c0d70129db76a72"
+    },
+    {
+      "path": "assets/settings-record.json",
+      "sha256": "926c30852947b0f979d99a5004c4031a25d55771fef4b28d1352a94240076074"
+    },
+    {
+      "path": "evals/evals.json",
+      "sha256": "08311959cb076fe509b1c9326ad5eb45fec890df3d3381b41b68ad79c6076fc2"
+    },
+    {
+      "path": "references/creator-handoff.md",
+      "sha256": "31ffdfc86cad51006d2d61c9df743a51731c8d6da3e182838061895fd0e01313"
+    },
+    {
+      "path": "references/settings-profile.md",
+      "sha256": "d6f7ba1c2012db95dc49b54511aa365ece174d272ed069a2cbd726fbcdb3f4c0"
+    },
+    {
+      "path": "references/sources.md",
+      "sha256": "6895d3e5d9e99c6fc942a4b5dab675922a44a8428440b3fce0b1e19f121cd9d5"
+    },
+    {
+      "path": "references/worked-example.md",
+      "sha256": "282957e60c052b4f88144892fa9ab60398d9958f6e9145bac2eae924e6029e8a"
+    }
+  ],
+  "aggregate_method": "SHA256 of case-sensitive sorted relative path + NUL + file SHA256 + newline; sync_skill_mirror.py standard",
+  "decision": {
+    "status": "shareable",
+    "routing_status": "mirrored",
+    "alternatives_considered": [
+      "Universal companion selected because configuration spans repository types; creator scaffold contract remains unchanged",
+      "No Copilot-only family because execution is provider-independent"
+    ],
+    "unresolved_items": [
+      "No remote publication or canonical commit",
+      "Live behavioral evaluation, discovery measurement and unseen holdout not run"
+    ]
+  },
+  "safety": {
+    "license": "MIT",
+    "public_safety": "Reviewed for local candidate sharing; public-safe synthetic example and public repository identity only",
+    "private_material_found": false,
+    "external_writes": "No external settings changed by package creation or promotion; core requires user authority for future changes",
+    "adapter_differences": []
+  },
+  "authorization": {
+    "requested_actions": [
+      "Create skill and recap",
+      "Use Foundry and Equilibrium Review",
+      "Route through skill-promotion to Skillz universal"
+    ],
+    "approved_actions": [
+      "Local authoring",
+      "Local publication mirror",
+      "Local Skillz candidate and catalog integration"
+    ],
+    "withheld_actions": [
+      "commit",
+      "push",
+      "pull-request",
+      "external-publication"
+    ]
+  },
+  "verification": {
+    "checks": [
+      "Source and destination structural validators passed",
+      "JSON and relative link checks passed",
+      "All 7 package files equal in source, publication mirror and Skillz",
+      "Equilibrium: 3 separate analytical reviews, conditional disruptor and final negotiator; approve-with-limits",
+      "Final catalog build passed: 343 skills across 20 families",
+      "New skill present in catalog, search index and detail record",
+      "Manifest count agrees with generated catalog",
+      "All seven package files byte-identical across three surfaces",
+      "No temporary regression fixture in catalog"
+    ],
+    "review_record": "equilibrium-review.json",
+    "verified_at": "2026-09-11T00:50:09.907042+00:00",
+    "limitations": [
+      "Broad catalog regression run stopped before completion; test-created fixture inspected and removed",
+      "Final review hash uses case-insensitive inventory order; per-file hashes identical to promotion helper inventory"
+    ]
+  },
+  "recovery": {
+    "path": "Inspect only this task branch diff and new package paths; preserve any subsequent edits. No source files were overwritten during package copy. No destination-only files existed.",
+    "pre_sync_git_status_recorded": true,
+    "pre_sync_states": {
+      "origin": "clean main before isolated worktree creation",
+      "skillz": "clean main before branch codex/repo-settings-skill and new package creation"
+    }
+  }
+}

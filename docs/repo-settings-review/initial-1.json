@@ -1,0 +1,121 @@
+{
+  "role": "evidence-reviewer",
+  "evidence_status": "analytical",
+  "artifact": "okhp3-repo-settings v0.1.0",
+  "decision": "approve-with-limits",
+  "decision_scope": "LOCAL candidate promotion to Skillz universal only. No production readiness, successful execution, publication, or live outcome uplift is established.",
+  "evidence_base": "origin-worktree",
+  "claim_ledger": [
+    {
+      "claim_id": "E01",
+      "claim": "Platform recommendations are conditional and distinguish documented behavior from observed interface differences.",
+      "claim_type": "interpretation",
+      "evidence_ids": [
+        ".agents/skills/okhp3-repo-settings/SKILL.md:39-41,107-110",
+        ".agents/skills/okhp3-repo-settings/references/sources.md:3-17,30-36",
+        "[Official Copilot configuration](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review)"
+      ],
+      "status": "supported",
+      "consequence": "Unbounded claims could produce incorrect approval or consumption expectations.",
+      "next_test": "Recheck relevant official documentation and actual target controls before execution."
+    },
+    {
+      "claim_id": "E02",
+      "claim": "Solo-owner recommendations do not independently authorize weakening mandatory protections.",
+      "claim_type": "design choice",
+      "evidence_ids": [
+        ".agents/skills/okhp3-repo-settings/SKILL.md:67-89,114-129",
+        ".agents/skills/okhp3-repo-settings/evals/evals.json:10,21"
+      ],
+      "status": "supported",
+      "consequence": "Confusing a profile with authorization could remove required independent approval.",
+      "next_test": "Before operational qualification, exercise explicit solo authorization and inherited-policy conflict cases."
+    },
+    {
+      "claim_id": "E03",
+      "claim": "The instructions exclude implicit billing, credential, and integration expansion.",
+      "claim_type": "design choice",
+      "evidence_ids": [
+        ".agents/skills/okhp3-repo-settings/SKILL.md:84-85,114-134",
+        ".agents/skills/okhp3-repo-settings/references/settings-profile.md",
+        ".agents/skills/okhp3-repo-settings/evals/evals.json:19",
+        "[Separate ChatGPT and API billing](https://help.openai.com/en/articles/9039756-chatgpt-search)"
+      ],
+      "status": "supported",
+      "consequence": "An invented subscription bridge could incur charges or expand access.",
+      "next_test": "Exercise the paid-bridge refusal case before claiming demonstrated compliance."
+    },
+    {
+      "claim_id": "E04",
+      "claim": "Review composition is provider-independent despite this owner's preferred host.",
+      "claim_type": "design choice",
+      "evidence_ids": [
+        ".agents/skills/okhp3-repo-settings/references/settings-profile.md#Review allocation contract",
+        ".agents/skills/okhp3-repo-settings/SKILL.md:147-150"
+      ],
+      "status": "supported",
+      "consequence": "Provider preference could otherwise become a fabricated GitHub approval or mandatory paid dependency.",
+      "next_test": "Demonstrate the same review record using another host without changing its contract."
+    },
+    {
+      "claim_id": "E05",
+      "claim": "Required-check guidance addresses identity, source, trigger coverage, default-branch presence, and concurrent configuration changes.",
+      "claim_type": "design choice",
+      "evidence_ids": [
+        ".agents/skills/okhp3-repo-settings/SKILL.md:93-105",
+        ".agents/skills/okhp3-repo-settings/evals/evals.json:11,20",
+        "docs/repo-settings-recap.md:31,48-52,91-94"
+      ],
+      "status": "supported",
+      "consequence": "Unsafe requirements could block valid PRs or imply application coverage that does not exist.",
+      "next_test": "Exercise filtered-check and concurrent-protection cases; verify target coverage separately."
+    },
+    {
+      "claim_id": "E06",
+      "claim": "Creator composition preserves separate scaffold, remote-creation, settings, merge, and deployment authority.",
+      "claim_type": "design choice",
+      "evidence_ids": [
+        ".agents/skills/okhp3-repo-settings/references/creator-handoff.md",
+        ".agents/skills/okhp3-repo-settings/evals/evals.json:19"
+      ],
+      "status": "supported",
+      "consequence": "Composition could otherwise silently authorize publication.",
+      "next_test": "At promotion, verify the destination creator version and contract; its asserted v1.1.0 identity was not independently inspected here."
+    },
+    {
+      "claim_id": "E07",
+      "claim": "The package provides portable, evidence-aware output without requiring a companion runtime.",
+      "claim_type": "fact",
+      "evidence_ids": [
+        ".agents/skills/okhp3-repo-settings/SKILL.md:10-12,33-43",
+        ".agents/skills/okhp3-repo-settings/assets/settings-record.json:1-31",
+        ".agents/skills/okhp3-repo-settings/references/creator-handoff.md#Placement"
+      ],
+      "status": "supported",
+      "consequence": "Host-specific dependencies or ambiguous records would undermine universal reuse.",
+      "next_test": "Compare complete package hashes and validate destination links/catalog during authorized promotion."
+    },
+    {
+      "claim_id": "E08",
+      "claim": "The package establishes evaluation design, not demonstrated behavioral success or uplift.",
+      "claim_type": "fact",
+      "evidence_ids": [
+        ".agents/skills/okhp3-repo-settings/evals/evals.json:3-8",
+        ".agents/skills/okhp3-repo-settings/SKILL.md:154-161",
+        "docs/repo-settings-recap.md:109-110"
+      ],
+      "status": "supported",
+      "consequence": "Treating historical configuration work or visible fixtures as benchmark results would overstate readiness.",
+      "next_test": "Run version-bound behavioral evaluations and an unseen external holdout before performance claims."
+    }
+  ],
+  "material_defects": [],
+  "limitations": [
+    "Approval concerns documented design and evidence boundaries only; evaluation expectations have not been demonstrated.",
+    "Historical saved-state claims in docs/repo-settings-recap.md:24-50 lack independently inspected raw receipts in this review and remain provisional historical reports.",
+    "The requested resources/evals directory is absent. The actual development suite is evals/evals.json, which was reviewed.",
+    "Official Copilot, protected-branch, and OpenAI billing pages were checked; the complete external source ledger was not independently revalidated.",
+    "Separate reviewer context, shared model and source package; no cross-model independence claimed. No other reviewer result was read.",
+    "No benchmark execution, file writes, external settings changes, destination promotion, or final multi-role adjudication was performed."
+  ]
+}

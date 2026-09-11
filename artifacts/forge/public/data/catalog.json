@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-08T03:18:35.281Z",
+  "generatedAt": "2026-09-11T00:51:10.207Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "main",
-  "sourceCommit": "c647ce38",
-  "skillCount": 342,
+  "sourceRef": "codex/repo-settings-skill",
+  "sourceCommit": "7a5d8d8",
+  "skillCount": 343,
   "familyCount": 20,
   "families": [
     {
@@ -900,7 +900,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 21,
+      "skillCount": 22,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -914,6 +914,7 @@
         "okhp3-overkill-hill-brand",
         "okhp3-project-compass",
         "okhp3-repl-repo-janitor",
+        "okhp3-repo-settings",
         "okhp3-repository-janitor",
         "okhp3-repository-organizer",
         "okhp3-skill-cataloger",
@@ -13673,9 +13674,9 @@
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13739,9 +13740,9 @@
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13804,9 +13805,9 @@
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13870,9 +13871,9 @@
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13935,9 +13936,9 @@
         "evaluatedSkillVersion": "1.1.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -14106,7 +14107,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14171,7 +14172,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14236,7 +14237,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14301,7 +14302,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -14435,7 +14436,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -16887,7 +16888,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-recurring-task-capture/SKILL.md",
       "lastModified": "2026-08-28T23:44:26-05:00",
       "commitSha": "967052e2",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -19221,7 +19222,7 @@
       "evidence": {
         "status": "not-run",
         "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
+        "evalCount": 4,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
@@ -19339,8 +19340,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-repl-janitor/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-repl-janitor/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-09-09T12:16:29Z",
+      "commitSha": "64c1a458",
       "createdAt": "2026-08-11T15:23:45Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -19913,7 +19914,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-08-28T23:44:51-05:00",
       "commitSha": "0a171756",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -20045,7 +20046,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -20111,7 +20112,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "lastModified": "2026-08-26T17:48:37Z",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-13T16:29:07-05:00",
+      "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -22771,9 +22772,9 @@
         "evaluatedSkillVersion": null,
         "evalCount": 14,
         "benchmarkCount": 0,
-        "testCount": 3,
+        "testCount": 2,
         "referenceCount": 7,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -22905,9 +22906,9 @@
         "evaluatedSkillVersion": "1.1.0",
         "evalCount": 4,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 1,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -22970,7 +22971,7 @@
         "evaluatedSkillVersion": "1.2.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 1,
         "scriptCount": 1,
         "lastEvidenceDate": null,
@@ -23197,6 +23198,71 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-repo-settings",
+      "displayName": "Repo Settings",
+      "family": "universal",
+      "skillDir": "okhp3-repo-settings",
+      "path": "universal/okhp3-repo-settings/SKILL.md",
+      "description": "Audit and configure GitHub repository settings for one owner working with AI agents. Use for branch protection, merge options, Actions, Pages, environments, Copilot review, or MCP configuration, including post-scaffold FoundRy setup. Distinguish owner preferences from platform requirements and verify each write. Do not use for repository creation, code review itself, fleet cleanup, or deployment.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "universal",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "universal"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-foundry-repo-creator"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repo-settings/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repo-settings/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Single-repository configuration assessment, authorized settings changes, evidence, and creator handoff.",
+        "outOfScope": "Remote creation, automatic merges, deployment, billing changes, credential grants, fleet mutation, or claiming AI review guarantees.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 12,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 4,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-repository-janitor",
       "displayName": "Repository Janitor",
       "family": "universal",
@@ -23255,9 +23321,9 @@
         "evaluatedSkillVersion": null,
         "evalCount": 0,
         "benchmarkCount": 0,
-        "testCount": 2,
+        "testCount": 1,
         "referenceCount": 1,
-        "scriptCount": 2,
+        "scriptCount": 1,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [

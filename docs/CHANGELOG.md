@@ -6,6 +6,18 @@ This project's release history follows Keep a Changelog conventions.
 
 ## Unreleased
 
+### Added
+
+- Added `universal/okhp3-repo-settings` 0.1.0 as a local candidate companion to
+  `okhp3-foundry-repo-creator`. Covers one-owner AI-assisted GitHub settings,
+  check coverage, manual provider-independent review, auto-merge ordering,
+  Copilot interface drift, Pages boundaries, and scoped MCP decisions. Includes
+  a settings record, worked example, checklist, 12 development cases and 20
+  discovery queries. Equilibrium review is analytical and approved with limits;
+  live behavior, uplift, unseen holdout and publication are not established.
+  See [configuration recap](repo-settings-recap.md) and
+  [review and promotion evidence](repo-settings-review/README.md).
+
 ### Fixed
 
 - Repository Janitor 0.2.1 now emits full `refs/archive/...` names in
