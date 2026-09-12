@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-09-11T01:40:13.851Z",
+  "generatedAt": "2026-09-11T16:45:45.922Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/repo-settings-skill",
-  "sourceCommit": "7b269c2",
-  "skillCount": 343,
+  "sourceRef": "chore/promote-github-mirror-janitor",
+  "sourceCommit": "ebeded9",
+  "skillCount": 344,
   "familyCount": 20,
   "maturityCounts": {
-    "draftable": 264,
+    "draftable": 265,
     "skeleton": 74,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 168,
+    "not-run": 169,
     "none": 118,
     "local-checks": 38,
     "analytical": 5,

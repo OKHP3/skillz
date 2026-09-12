@@ -63,6 +63,11 @@ This project's release history follows Keep a Changelog conventions.
   `copilot/README.md`. No runtime support or task-quality evidence is claimed
   until individual packages are added and tested.
 
+- Added `okhp3-github-mirror-janitor` to `universal/` as an additive, scoped
+  package that complements `okhp3-repository-janitor` and `okhp3-github-
+  notification-maintainer` with notification-aware branch/PR triage and explicit
+  mutation authorization boundaries.
+
 - Added the `software-reclamation/` family as a candidate set of 15 fully
   remastered OKHP3 editions for reclaiming undocumented software. The family
   covers authority and intake, platform and code archaeology, runtime and
