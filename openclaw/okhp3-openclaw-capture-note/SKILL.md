@@ -1,12 +1,23 @@
 ---
 name: okhp3-openclaw-capture-note
 description: Append a quick capture note to a dated local inbox file, for later triage into Notion. Use when Jamie says "capture this", "note this down", or "remind me to look at this later" and it doesn't need an immediate answer.
+license: MIT
 metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "0.1.0"
+  category: openclaw
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Append user-supplied notes to the local OpenClaw inbox."
+  out_of_scope: "Task execution, automatic Notion publication, and external posting."
   openclaw:
     requires: {}
 ---
 
 # Capture Note
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 A zero-friction way to get a thought out of Jamie's head and into a durable
 place without derailing the current conversation into a full task.
@@ -43,3 +54,10 @@ later.
 Never treats a captured note as a task to execute now. If what Jamie said
 actually needs action right away, say so and ask whether he wants that
 instead of a capture.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

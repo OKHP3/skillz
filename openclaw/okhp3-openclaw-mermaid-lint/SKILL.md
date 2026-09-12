@@ -1,12 +1,23 @@
 ---
 name: okhp3-openclaw-mermaid-lint
 description: Check a Mermaid file against documented renderer gotchas before it goes into a repo or gets published. Use when asked to "check this diagram", "lint this mermaid file", or before committing a .mmd/.mermaid file.
+license: MIT
 metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "0.1.0"
+  category: openclaw
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Inspect supplied Mermaid text and report renderer compatibility concerns."
+  out_of_scope: "Unrequested diagram rewrites or publication."
   openclaw:
     requires: {}
 ---
 
 # Mermaid Lint
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 A pre-flight check against the renderer gotchas already documented in the
 OKHP3 ReFolDec/mermaid-diagram-bpmn work, so a diagram doesn't get committed
@@ -49,3 +60,10 @@ exact line and what's wrong with it, not a vague "this might be an issue."
 
 Never silently rewrites the diagram and calls it fixed. Show what's wrong;
 let Jamie or a follow-up request make the edit.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

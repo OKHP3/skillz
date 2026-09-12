@@ -10,7 +10,7 @@
  *   All other paths in SKIP_DIRS
  */
 
-import { readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync, rmdirSync, unlinkSync, realpathSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, lstatSync, existsSync, mkdirSync, rmdirSync, unlinkSync, realpathSync } from 'fs';
 import { join, dirname, relative, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -915,7 +915,7 @@ function deriveMaturity(meta, body) {
 
 // ─── Walk repo ────────────────────────────────────────────────────────────────
 
-function findSkillFiles(dir, depth = 0) {
+export function findSkillFiles(dir, depth = 0) {
   if (depth > 3) return [];
   const skills = [];
   let entries;
@@ -927,7 +927,10 @@ function findSkillFiles(dir, depth = 0) {
     if (entry.startsWith('.')) continue;
     const fullPath = join(dir, entry);
     let stat;
-    try { stat = statSync(fullPath); } catch { continue; }
+    try { stat = lstatSync(fullPath); } catch { continue; }
+    // Host installation links are not distribution source. Never follow them
+    // into another checkout, a duplicate family, or a cycle.
+    if (stat.isSymbolicLink()) continue;
 
     if (stat.isDirectory()) {
       if (depth === 0) {
