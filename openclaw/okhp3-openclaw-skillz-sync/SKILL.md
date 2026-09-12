@@ -4,7 +4,7 @@ description: Run the skillz repo's own cataloger/integrity scripts on demand and
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.0"
+  version: "0.1.1"
   category: openclaw
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -13,7 +13,7 @@ metadata:
   out_of_scope: "Automatic commits, pushes, and hand-edited skill repairs."
   openclaw:
     requires:
-      bins: [git, node]
+      bins: [git, node, python3]
 ---
 
 # Skillz Catalog Sync

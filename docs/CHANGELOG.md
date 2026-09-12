@@ -8,6 +8,13 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Changed
 
+- Closed publication-repair review findings: preserve single tildes in catalog
+  search text, declare Python and jq command dependencies in the two
+  affected OpenClaw packages (0.1.1), and generate catalog metadata with the
+  canonical repository label. Added home-path and strikethrough regression tests.
+  Host memory reporting is optional, with a Windows capacity fallback, so a
+  missing macOS-only command cannot block portable service checks.
+
 - Repaired the six OpenClaw packages' missing Foundry catalog metadata using
   their existing scope and owner-authored source provenance (`f670bd3`). Initial
   package version is `0.1.0`; runtime instructions and dependency gates are

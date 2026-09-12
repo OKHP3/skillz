@@ -4,7 +4,7 @@ description: One-shot health report on the local AI stack -- Ollama, LM Studio, 
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.0"
+  version: "0.1.1"
   category: openclaw
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -13,7 +13,7 @@ metadata:
   out_of_scope: "Restarting, stopping, or reconfiguring services without an explicit request."
   openclaw:
     requires:
-      bins: [curl, docker]
+      bins: [curl, docker, jq]
 ---
 
 # Stack Status
@@ -37,10 +37,15 @@ without opening five different apps.
    or equivalent, to confirm the VM's memory cap is still in place (should be
    a fixed number, not unbounded). This is a known guardrail from an earlier
    review; if it's gone, flag it.
-4. **Memory pressure signal**: run `vm_stat` and report Compressed Memory
-   pages converted to GB, not raw free-page count. Free pages near zero is
-   normal on macOS and not itself a problem; rising Compressed relative to
-   physical RAM is the real signal.
+4. **Optional host memory signal**: on macOS, if `vm_stat` is available,
+   report compressed pages converted using its reported page size, not a
+   hard-coded size. Free pages near zero alone do not establish pressure.
+   On Windows, if PowerShell CIM is available, use
+   `Get-CimInstance Win32_OperatingSystem` to report `FreePhysicalMemory`
+   and `TotalVisibleMemorySize` (both KiB). These are capacity figures, not
+   equivalent to macOS compression or proof of memory pressure. If neither
+   probe is available, report memory status as unknown and continue the
+   Ollama and Docker checks. Never gate this portable skill on `vm_stat`.
 
 ## Output
 

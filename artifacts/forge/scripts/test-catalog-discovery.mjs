@@ -2,7 +2,10 @@ import { mkdtempSync, mkdirSync, writeFileSync, symlinkSync, rmSync } from 'node
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import assert from 'node:assert/strict';
-import { findSkillFiles } from './build-catalog.js';
+import { findSkillFiles, stripMarkdownToPlainText } from './build-catalog.js';
+
+assert.equal(stripMarkdownToPlainText('Use `~/.openclaw/inbox`'), 'Use ~/.openclaw/inbox');
+assert.equal(stripMarkdownToPlainText('~~retired~~ **current** ~user'), 'retired current ~user');
 
 const root = mkdtempSync(join(tmpdir(), 'catalog-discovery-'));
 try {
