@@ -1,12 +1,23 @@
 ---
 name: okhp3-openclaw-linkedin-drop
 description: Turn a rough brain-dump into a reviewable LinkedIn draft file in a drop folder, using the OKHP3 brand-voice rules. Use when Jamie pastes a raw idea, a finished piece of work, or a rant and says "turn this into a LinkedIn post" or "draft this up".
+license: MIT
 metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "0.1.0"
+  category: openclaw
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Create local LinkedIn draft files for owner review."
+  out_of_scope: "Posting, LinkedIn API calls, and automatic publication."
   openclaw:
     requires: {}
 ---
 
 # LinkedIn Drop
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 Turning finished work into posts is the documented bottleneck in the OKHP3
 LinkedIn pipeline. This skill exists to shrink the gap between "I did a
@@ -45,3 +56,10 @@ Never posts anything anywhere. This produces a file for Jamie to read,
 edit, and post himself (or hand to whichever tool in the Council of AIs
 does final polish). No LinkedIn API call, no browser automation to LinkedIn,
 ever, from this skill.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

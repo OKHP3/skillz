@@ -1,13 +1,24 @@
 ---
 name: okhp3-openclaw-stack-status
 description: One-shot health report on the local AI stack -- Ollama, LM Studio, and the Docker-hosted Open WebUI/SearXNG/Qdrant containers. Use when asked "how's my local AI stack", "is Ollama running", "check Docker containers", or before loading a big model.
+license: MIT
 metadata:
+  author: Jamie Hill (OverKill Hill P³)
+  version: "0.1.0"
+  category: openclaw
+  origin: okhp3/skillz
+  homepage: https://overkillhill.com
+  author-github: https://github.com/OKHP3
+  in_scope: "Report local AI service and container health."
+  out_of_scope: "Restarting, stopping, or reconfiguring services without an explicit request."
   openclaw:
     requires:
       bins: [curl, docker]
 ---
 
 # Stack Status
+
+**OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
 A single command that answers "is my local-first AI lab healthy right now,"
 without opening five different apps.
@@ -43,3 +54,10 @@ components involved. Don't pad a healthy result with reassurance; a one-line
 Never restarts, stops, or reconfigures a container or the Ollama service.
 Report, don't remediate, unless explicitly asked to fix something after
 seeing the report.
+
+## About
+
+Built by [Jamie Hill](https://overkillhill.com) · [OverKill Hill P³](https://overkillhill.com)
+Published at [github.com/OKHP3](https://github.com/OKHP3)
+Part of the [OKHP3/skillz](https://github.com/OKHP3/skillz) Agent Skill library.
+MIT License -- free to use, fork, and adapt. A nod to the source is appreciated.

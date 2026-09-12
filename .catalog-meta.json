@@ -1,10 +1,10 @@
 {
-  "last_indexed": "2026-09-11T01:33:29Z",
-  "skill_count": 343,
+  "last_indexed": "2026-09-12T23:33:29Z",
+  "skill_count": 350,
   "mode": "library",
   "surface": "distribution",
   "indexed_by": "okhp3-skill-cataloger v1.7.0",
-  "repo": "skillz",
+  "repo": "skillz-metadata-20260912",
   "homepage": "https://overkillhill.com",
   "github": "https://github.com/OKHP3"
 }

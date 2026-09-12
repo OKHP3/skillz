@@ -8,6 +8,15 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Changed
 
+- Repaired the six OpenClaw packages' missing Foundry catalog metadata using
+  their existing scope and owner-authored source provenance (`f670bd3`). Initial
+  package version is `0.1.0`; runtime instructions and dependency gates are
+  unchanged. These remain unbenchmarked OpenClaw candidates, not live-validated
+  releases. Catalog discovery now ignores symlinks, with regression coverage for
+  regular source, directory cycles, linked skills, and dangling links. This
+  preserves host installation links without importing other checkouts into the
+  published catalog. Motivated by failed deployment run `34667062094`.
+
 - Evolved `universal/okhp3-repo-settings` to owner-requested v2 (`2.0.0`), a
   local candidate with a 20-area coverage matrix, read-only Python helpers,
   synthetic profile and inactive manual/weekly/PR Actions adapter. Account/profile

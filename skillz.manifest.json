@@ -20,19 +20,19 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 344,
-  "activeFamilyCount": 20,
+  "distributionSkillCount": 350,
+  "activeFamilyCount": 21,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 53,
   "maturityCounts": {
     "draftable": 265,
-    "skeleton": 74,
+    "skeleton": 80,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
     "not-run": 169,
-    "none": 118,
+    "none": 124,
     "local-checks": 38,
     "analytical": 5,
     "live": 8
@@ -276,7 +276,7 @@
       "AskJamie Lens System"
     ]
   },
-  "distributionFamilyCount": 20,
-  "countsGeneratedAt": "2026-09-11T16:45:45.922Z",
+  "distributionFamilyCount": 21,
+  "countsGeneratedAt": "2026-09-12T23:33:15.679Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

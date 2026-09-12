@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 343 distribution skills in 20 active families, and 53 project-local support skills under `.agents/skills/` (local candidate inventory, 2026-09-10)
+- **Current inventory:** 350 distribution skills in 21 active families (catalog repair, 2026-09-12). OpenClaw packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed

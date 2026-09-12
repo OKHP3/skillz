@@ -32,6 +32,7 @@ import {
 } from './build-catalog.js';
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 import './test-attribution-policy.mjs';
+import './test-catalog-discovery.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // Distribution families and the manifest live at the workspace root. Keep
