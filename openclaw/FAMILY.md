@@ -3,7 +3,7 @@ family: openclaw
 display_name: OpenClaw Agent Skills
 skill_count: 6
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-12T23:33:29Z
+generated_at: 2026-09-12T23:43:28Z
 ---
 
 # openclaw
@@ -113,7 +113,7 @@ Host-oriented Agent Skills for OpenClaw-branded runtimes (Larry on Mac Studio, G
 ## Skills (6)
 
 <!-- FAMILY_INVENTORY_START -->
-*6 skills &nbsp;·&nbsp; inventory last updated: **September 12, 2026 at 23:33 UTC***
+*6 skills &nbsp;·&nbsp; inventory last updated: **September 12, 2026 at 23:43 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -121,6 +121,6 @@ Host-oriented Agent Skills for OpenClaw-branded runtimes (Larry on Mac Studio, G
 | [okhp3-openclaw-linkedin-drop](okhp3-openclaw-linkedin-drop/SKILL.md) | Turn a rough brain-dump into a reviewable LinkedIn draft file in a drop folder, using the OKHP3 b... | 0.1.0 |
 | [okhp3-openclaw-mermaid-lint](okhp3-openclaw-mermaid-lint/SKILL.md) | Check a Mermaid file against documented renderer gotchas before it goes into a repo or gets publi... | 0.1.0 |
 | [okhp3-openclaw-repo-pulse](okhp3-openclaw-repo-pulse/SKILL.md) | Sweep the OKHP3 GitHub mirrors for uncommitted changes, unpushed commits, and stale .git locks; s... | 0.1.0 |
-| [okhp3-openclaw-skillz-sync](okhp3-openclaw-skillz-sync/SKILL.md) | Run the skillz repo's own cataloger/integrity scripts on demand and summarize what changed. Use w... | 0.1.0 |
-| [okhp3-openclaw-stack-status](okhp3-openclaw-stack-status/SKILL.md) | One-shot health report on the local AI stack -- Ollama, LM Studio, and the Docker-hosted Open Web... | 0.1.0 |
+| [okhp3-openclaw-skillz-sync](okhp3-openclaw-skillz-sync/SKILL.md) | Run the skillz repo's own cataloger/integrity scripts on demand and summarize what changed. Use w... | 0.1.1 |
+| [okhp3-openclaw-stack-status](okhp3-openclaw-stack-status/SKILL.md) | One-shot health report on the local AI stack -- Ollama, LM Studio, and the Docker-hosted Open Web... | 0.1.1 |
 <!-- FAMILY_INVENTORY_END -->

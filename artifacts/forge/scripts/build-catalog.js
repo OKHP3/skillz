@@ -877,7 +877,7 @@ function extractCapability(body, frontmatter, key, headings) {
 // full-text index of the SKILL.md body (not just frontmatter-derived fields)
 // so a word buried in prose — not just a trigger phrase or input/output list —
 // is still findable from the search box.
-function stripMarkdownToPlainText(body) {
+export function stripMarkdownToPlainText(body) {
   return body
     .replace(/```[\s\S]*?```/g, ' ')       // fenced code blocks
     .replace(/`([^`]*)`/g, '$1')            // inline code
@@ -886,7 +886,8 @@ function stripMarkdownToPlainText(body) {
     .replace(/^#{1,6}\s+/gm, '')            // heading markers
     .replace(/^[-*+]\s+/gm, '')             // list bullets
     .replace(/^>\s?/gm, '')                 // blockquote markers
-    .replace(/[*~]{1,3}/g, '')             // emphasis markers (asterisks and tildes)
+    .replace(/\*{1,3}/g, '')              // emphasis markers
+    .replace(/~~/g, '')                   // strikethrough; preserve home-path tildes
     .replace(/(?<![a-zA-Z0-9_])_{1,3}(?![a-zA-Z0-9_])/g, '') // underscore emphasis (not in identifiers)
     .replace(/\|/g, ' ')                    // table pipes
     .replace(/---+/g, ' ')                  // rules/frontmatter fences

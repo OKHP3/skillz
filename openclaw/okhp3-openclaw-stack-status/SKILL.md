@@ -4,7 +4,7 @@ description: One-shot health report on the local AI stack -- Ollama, LM Studio, 
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.0"
+  version: "0.1.1"
   category: openclaw
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -13,7 +13,7 @@ metadata:
   out_of_scope: "Restarting, stopping, or reconfiguring services without an explicit request."
   openclaw:
     requires:
-      bins: [curl, docker]
+      bins: [curl, docker, jq, vm_stat]
 ---
 
 # Stack Status

@@ -3,7 +3,7 @@ family: agent-foundry
 display_name: Agent Foundry
 skill_count: 3
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-12T23:33:29Z
+generated_at: 2026-09-12T23:43:28Z
 ---
 
 # agent-foundry
@@ -27,7 +27,7 @@ The agent-foundry family covers the creation, readiness assessment, and portabil
 ## Skills (3)
 
 <!-- FAMILY_INVENTORY_START -->
-*3 skills &nbsp;·&nbsp; inventory last updated: **September 12, 2026 at 23:33 UTC***
+*3 skills &nbsp;·&nbsp; inventory last updated: **September 12, 2026 at 23:43 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
