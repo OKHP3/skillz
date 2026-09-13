@@ -1,13 +1,18 @@
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, symlinkSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import { findSkillFiles, stripMarkdownToPlainText } from './build-catalog.js';
 
 assert.equal(stripMarkdownToPlainText('Use `~/.openclaw/inbox`'), 'Use ~/.openclaw/inbox');
 assert.equal(stripMarkdownToPlainText('~~retired~~ **current** ~user'), 'retired current ~user');
 
-const catalog = JSON.parse(readFileSync(new URL('../public/data/catalog.json', import.meta.url), 'utf8'));
+const forgeRoot = fileURLToPath(new URL('../', import.meta.url));
+const publicDir = process.env.FORGE_PUBLIC_DIR
+  ? resolve(forgeRoot, process.env.FORGE_PUBLIC_DIR)
+  : join(forgeRoot, 'public');
+const catalog = JSON.parse(readFileSync(join(publicDir, 'data', 'catalog.json'), 'utf8'));
 const janitor = catalog.skills.find(skill => skill.name === 'okhp3-github-mirror-janitor');
 assert.ok(janitor, 'Catalog must contain okhp3-github-mirror-janitor');
 assert.ok(Array.isArray(janitor.boundaries), 'Mirror janitor boundaries must be an array');
