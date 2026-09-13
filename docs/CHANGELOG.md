@@ -8,6 +8,10 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Changed
 
+- Preserved complete mirror-janitor scope bullets in the generated Forge catalog
+  by keeping each source bullet on one physical line (0.1.1). This addresses
+  PR #88's truncated-boundaries finding without changing authorization or behavior.
+
 - Closed publication-repair review findings: preserve single tildes in catalog
   search text, declare Python and jq command dependencies in the two
   affected OpenClaw packages (0.1.1), and generate catalog metadata with the
