@@ -21,6 +21,7 @@ on:
       - "universal/okhp3-repository-janitor/**"
       - "universal/okhp3-repo-settings/**"
       - "universal/okhp3-github-notification-maintainer/**"
+      - "universal/okhp3-github-mirror-janitor/**"
   push:
     branches:
       - main
@@ -43,6 +44,7 @@ on:
       - "universal/okhp3-repository-janitor/**"
       - "universal/okhp3-repo-settings/**"
       - "universal/okhp3-github-notification-maintainer/**"
+      - "universal/okhp3-github-mirror-janitor/**"
   workflow_dispatch:
 
 permissions:
@@ -102,6 +104,9 @@ jobs:
 
       - name: Exercise offline GitHub inventory and incident gates
         run: python3 -m unittest discover -s universal/okhp3-github-notification-maintainer/tests -v
+
+      - name: Exercise mirror-janitor remote ref verification
+        run: python3 -B -m unittest discover -s universal/okhp3-github-mirror-janitor/tests -v
 
   archive-links:
     name: Check archived link integrity

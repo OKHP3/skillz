@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-13T00:03:43.493Z",
+  "generatedAt": "2026-09-13T03:58:15.007Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/mirror-janitor-scope-20260912",
-  "sourceCommit": "9a2c63a",
+  "sourceRef": "codex/skill-promotion-closeout-20260912",
+  "sourceCommit": "b7e44b1",
   "skillCount": 350,
   "familyCount": 21,
   "maturityCounts": {
