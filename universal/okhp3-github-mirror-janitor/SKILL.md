@@ -11,7 +11,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.1"
+  version: "0.1.2"
   category: repository-maintenance
   origin: local-project
   homepage: https://overkillhill.com
@@ -177,7 +177,9 @@ recommendations, and unknowns.
 ## Bundled scripts
 
 - `scripts/audit-mirrors.ps1` emits JSON for recursive local inspection. It
-  never commits, pushes, merges, closes, deletes, or prunes.
+  never commits, pushes, merges, closes, deletes, or prunes. When `origin/main`
+  cannot be resolved to a commit, its SHA and comparison counts are `null`
+  (unknown), not evidence that a branch is merged or safe to remove.
 - `scripts/audit-notifications.ps1` emits paginated JSON inventory and accepts
   only exact IDs for the GitHub thread-done operation. It never closes issues,
   merges PRs, or deletes branches.

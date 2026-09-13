@@ -51,7 +51,8 @@ $repositories = foreach ($repository in $repoPaths) {
     $branch = (Invoke-GitText $repository @('branch', '--show-current')) -join ''
     if (-not $branch) { $branch = '(detached)' }
     $head = (Invoke-GitText $repository @('rev-parse', 'HEAD')) -join ''
-    $originMain = (Invoke-GitText $repository @('rev-parse', 'refs/remotes/origin/main')) -join ''
+    $originMain = (Invoke-GitText $repository @('rev-parse', '--verify', '--quiet', 'refs/remotes/origin/main^{commit}')) -join ''
+    if (-not $originMain) { $originMain = $null }
     $status = @(Invoke-GitText $repository @('status', '--short', '--untracked-files=all'))
     $localBranches = @(Invoke-GitText $repository @('for-each-ref', '--format=%(refname:short)', 'refs/heads') | Where-Object { $_ })
     $upstream = (Invoke-GitText $repository @('rev-parse', '--abbrev-ref', '--symbolic-full-name', '@{u}')) -join ''

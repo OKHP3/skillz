@@ -8,6 +8,12 @@ This project's release history follows Keep a Changelog conventions.
 
 ### Changed
 
+- Fixed mirror-janitor 0.1.2 to report an unresolved or non-commit `origin/main`
+  as unknown, closing the remaining PR #86 ref-verification finding. Added
+  offline regression cases for missing, valid, and non-commit refs, and wired
+  them into the repository maintenance checks. Refreshed package provenance
+  and retained the evaluation design without claiming live benchmark evidence.
+
 - Preserved complete mirror-janitor scope bullets in the generated Forge catalog
   by keeping each source bullet on one physical line (0.1.1). This addresses
   PR #88's truncated-boundaries finding without changing authorization or behavior.

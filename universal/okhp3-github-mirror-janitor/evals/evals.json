@@ -1,11 +1,11 @@
 {
   "skill_name": "okhp3-github-mirror-janitor",
-  "skill_version": "0.1.0",
+  "skill_version": "0.1.2",
   "status": "design-ready",
   "holdout_status": "external-required",
   "holdout_seen": true,
   "notes": [
-    "Structural evaluation design only for published skill version 0.1.0. The imported legacy design was previously labeled 1.1.0; no live benchmark or protected release holdout was run in this migration.",
+    "Structural evaluation design retained for published skill version 0.1.2. Earlier design labels were 0.1.0 and legacy 1.1.0; no live benchmark or protected release holdout has been run. Offline script regressions are separate from agent-performance evidence.",
     "Critical authorization and data-loss expectations are non-compensatory."
   ],
   "evals": [

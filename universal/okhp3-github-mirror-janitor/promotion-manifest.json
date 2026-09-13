@@ -18,14 +18,17 @@
     "path": "04_GitHub_Mirrors/skillz/universal/okhp3-github-mirror-janitor",
     "mode": "canonical",
     "hashes": {
-      "scripts/audit-notifications.ps1": "be342748218c18b76e88ebeedf4c86bc1676625c6689c49e12b279d261e86afa",
+      "scripts/audit-notifications.ps1": "a875fabf5aa5496d465fc4a9c1ea1a7ab2ab710a639f4a0ff048cf16680c01c9",
       "agents/openai.yaml": "da046cb7e4ad78c104bb4b65f9969f21e86a9b26e6effa2d7c6030b67f7c16ad",
-      "evals/evals.json": "e026aac1270c2e9085eb51b032a3a07d44fce18e6729aaf6b1a6b005b63cb00a",
-      "references/decision-rubric.md": "8eb646605a3b0635010d6a45ce3cd17ac488a6096905f1e46e704c778fdcea91",
-      "scripts/audit-mirrors.ps1": "caad3f43b924e16c8a8229b2c862192e46f1e5e6eeb46bc3d962165f7d77a213",
-      "SKILL.md": "0211b765ba054dbc4d1e88298d8487c0971b8aae6ac72ff69dba9c160279dc90",
-      "evals/learning-record.md": "60060f598479f7e91200a8629be1310114db3249388f131f18cf3afd0242d88b"
-    }
+      "evals/evals.json": "65f563a52063f303dc811bb292975a6bcffd856b3d9f334ae154a338d81863d3",
+      "references/decision-rubric.md": "b1496d870ac5e1fd945bd2c74c7d494fa7efaed50c920e28ac504988cbd60acf",
+      "scripts/audit-mirrors.ps1": "ace973a366af4fbd921b54ccedc2dd479945335393e3c2445ea9182a6e841228",
+      "SKILL.md": "f375a7ede9c0cf218e1263c9e4b12916bce9318b7f30a64e4b51f5b456ae026e",
+      "evals/learning-record.md": "9f2ac8b72ba2586db31ce4abf2dc990c4611dfd2bc8d6dbb1f828ee89fcb8ec8",
+      "tests/test_audit_mirrors.py": "42ff903f267d25d6caf9d75a7b8f1f5d0a2416f81bb6e1b5f16361c1f38ed33a"
+    },
+    "version": "0.1.2",
+    "hashNormalization": "UTF-8 with LF line endings"
   },
   "created": "2026-09-08T20:53:00.0186472-05:00"
 }
