@@ -702,6 +702,8 @@
   border: 1px solid var(--color-border-light);
   border-left: 3px solid var(--color-copper);
   background: color-mix(in srgb, var(--color-copper) 7%, var(--color-surface));
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .detail-companion-context h3 {
   margin: 0 0 var(--space-2);
@@ -724,6 +726,7 @@
   padding: var(--space-3);
   border: 1px solid var(--color-border-light);
   background: var(--color-surface);
+  min-width: 0;
 }
 .detail-companion-context-item--deferred {
   border-left: 3px solid var(--color-amber);
@@ -758,11 +761,17 @@
   margin: 0;
   color: var(--color-text-muted-light);
   font-size: var(--text-sm);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 .detail-companion-context-source {
+  display: inline-block;
+  max-width: 100%;
   color: var(--color-text-light);
   font-size: var(--text-sm);
   font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 /* ─── Skill Pathway ─────────────────────────────────────────────────────────── */

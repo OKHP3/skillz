@@ -53,6 +53,25 @@ async function expectVisibleWithinViewport(locator, label) {
   }
 }
 
+async function expectReflowedWithinViewport(locator, label) {
+  assert(await locator.count() > 0, `${label} is missing.`);
+  for (let index = 0; index < await locator.count(); index += 1) {
+    const item = locator.nth(index);
+    await item.scrollIntoViewIfNeeded();
+    const layout = await item.evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      return {
+        visible: rect.width > 0 && rect.height > 0,
+        withinHorizontalViewport: rect.left >= 0 && rect.right <= window.innerWidth,
+        hasHorizontalOverflow: element.scrollWidth > element.clientWidth + 1,
+      };
+    });
+    assert(layout.visible, `${label} is not visible.`);
+    assert(layout.withinHorizontalViewport, `${label} is clipped outside the viewport.`);
+    assert(!layout.hasHorizontalOverflow, `${label} has horizontal overflow.`);
+  }
+}
+
 async function expectKeyboardFocus(page, locator, label) {
   await locator.scrollIntoViewIfNeeded();
   await locator.focus();
@@ -85,7 +104,7 @@ async function expectReviewSurface(page, skill) {
   assert(await page.getByRole('button', { name: 'Supervised run: attach evidence' }).isEnabled(), 'Blocked gate must leave supervised check available.');
 }
 
-async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false } = {}) {
+async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false, largeText = false } = {}) {
   const diagnostic = skill.companionDiagnostics?.approved?.find(entry => entry.kind === kind);
   assert(diagnostic, `${kind} approved companion diagnostic is missing for ${skill.name}.`);
 
@@ -96,6 +115,12 @@ async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false
   await context.waitFor();
   const item = context.locator(`[data-companion-kind="${kind}"]`);
   await item.waitFor();
+
+  if (largeText) {
+    await page.evaluate(() => {
+      document.documentElement.style.fontSize = '200%';
+    });
+  }
 
   assert((await item.locator('.detail-companion-context-status').textContent()).trim() === diagnostic.label,
     `${skill.name} must render the ${kind} approved companion status label.`);
@@ -110,17 +135,24 @@ async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false
   assert(await sourceLink.getAttribute('href') === `https://github.com/OKHP3/skillz/blob/main/${skill.path}`,
     `${skill.name} source-contract link must target its declaring SKILL.md.`);
 
-  if (narrow) {
+  if (narrow || largeText) {
     await expectVisibleWithinViewport(
       item.locator('.detail-companion-context-status'),
       `${skill.name} ${kind} approved companion status`,
     );
-    await expectVisibleWithinViewport(
+    await expectReflowedWithinViewport(
       item.locator('p'),
       `${skill.name} ${kind} approved companion explanation`,
     );
+    await expectVisibleWithinViewport(
+      sourceLink,
+      `${skill.name} ${kind} source-contract link`,
+    );
     await expectKeyboardFocus(page, sourceLink, `${skill.name} ${kind} source-contract link`);
-    await expectNoHorizontalOverflow(page, `narrow approved companion context for ${skill.name}`);
+    await expectNoHorizontalOverflow(
+      page,
+      `${largeText ? 'large-text' : 'narrow'} approved companion context for ${skill.name}`,
+    );
   }
 
   assert(await pathway.locator('.skill-pathway__branch--broken').count() === 0,
@@ -307,7 +339,7 @@ async function main() {
 
     for (const { skill: approved, kind } of approvedCompanions) {
       const narrowApproved = await browser.newPage({ viewport: { width: 390, height: 844 } });
-      await expectApprovedCompanionDetail(narrowApproved, approved, kind, { narrow: true });
+      await expectApprovedCompanionDetail(narrowApproved, approved, kind, { narrow: true, largeText: true });
       const narrowPathway = narrowApproved.locator('.skill-pathway');
       const narrowLabels = narrowPathway.locator('[data-companion-kind="deferred"], [data-companion-kind="project-local"]');
       await expectVisibleWithinViewport(narrowLabels, `Approved companion diagnostics for ${approved.name}`);
