@@ -217,21 +217,35 @@ async function runCase(name, fixtureOptions, validate) {
 async function main() {
   await runCase(
     'waits for the expected catalog before browser assertions',
-    { catalogResponses: [catalog(staleCommit), catalog(expectedCommit)] },
+    {
+      catalogResponses: [
+        catalog(staleCommit),
+        catalog(staleCommit),
+        catalog(staleCommit),
+        catalog(expectedCommit),
+      ],
+    },
     async (result, state) => {
       await delay(10);
       assert(result.status === 0,
         `Propagation fixture should pass after freshness arrives (exit ${result.status}).\n${result.stderr}`);
-      assert(state.catalogResponses.length >= 2,
-        'Propagation fixture should serve the old catalog before the expected catalog.');
+      assert(state.catalogResponses.length >= 4,
+        'Propagation fixture should serve multiple stale catalogs before the expected catalog.');
       const expectedResponse = state.catalogResponses.find(entry => entry.sourceCommit === expectedCommit);
       assert(expectedResponse, 'Propagation fixture never served the expected source commit.');
       assert(state.browserStarts.length > 0, 'Propagation fixture never reached the browser assertion stage.');
       assert(result.stdout.includes(`Waiting for published catalog sourceCommit ${expectedCommit}`),
         `Propagation fixture should report the expected source commit:\n${result.stdout}`);
-      assert(/Catalog propagation retry 1:.*elapsed \d+ms/.test(result.stdout),
-        `Propagation fixture should report its retry and elapsed wait:\n${result.stdout}`);
-      assert(result.stdout.split('\n').filter(line => line.includes('[deployment]')).length === 2,
+      const retryLines = result.stdout
+        .split('\n')
+        .filter(line => line.includes('Catalog propagation retry'));
+      assert(retryLines.length === 3,
+        `Propagation fixture should report all three stale retries:\n${result.stdout}`);
+      assert(retryLines.every((line, index) =>
+        line.includes(`Catalog propagation retry ${index + 1}:`)
+        && /elapsed \d+ms/.test(line)),
+      `Propagation fixture should keep retry numbering sequential and report elapsed timing:\n${result.stdout}`);
+      assert(result.stdout.split('\n').filter(line => line.includes('[deployment]')).length === 4,
         `Successful propagation should keep deployment progress concise:\n${result.stdout}`);
       assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
         'Browser assertions started before the expected catalog response completed.');
