@@ -4,3 +4,6 @@
 *.py text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+
+# Keep the portable Replit executor mirror byte-identical across hosts.
+replit/okhp3-replit-task-executor/** text eol=lf

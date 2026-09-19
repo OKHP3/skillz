@@ -257,6 +257,21 @@
         "okhp3-askjamie-style-registry",
         "okhp3-askjamie-thread-context"
       ]
+    },
+    {
+      "name": "replit",
+      "status": "draftable",
+      "skills": [
+        "okhp3-replit-build-in-public",
+        "okhp3-replit-canvas-board",
+        "okhp3-replit-contest-score-keeper",
+        "okhp3-replit-design-pipeline",
+        "okhp3-replit-free-mode-autonomy",
+        "okhp3-replit-github-sync",
+        "okhp3-replit-multi-artifact",
+        "okhp3-replit-repl-janitor",
+        "okhp3-replit-task-executor"
+      ]
     }
   ],
   "maturityLevels": {
