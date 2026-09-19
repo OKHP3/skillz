@@ -20,22 +20,22 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 351,
+  "distributionSkillCount": 326,
   "activeFamilyCount": 21,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 53,
+  "projectLocalSupportSkillCount": 52,
   "maturityCounts": {
-    "draftable": 266,
-    "skeleton": 80,
+    "draftable": 248,
+    "skeleton": 73,
     "usable": 5
   },
   "evidenceStatusCounts": {
-    "historical": 6,
-    "not-run": 169,
-    "none": 124,
-    "local-checks": 38,
+    "historical": 7,
+    "not-run": 159,
+    "none": 110,
+    "local-checks": 37,
     "analytical": 6,
-    "live": 8
+    "live": 7
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
@@ -59,30 +59,115 @@
       ]
     },
     {
+      "name": "askjamie",
+      "status": "draftable",
+      "skills": [
+        "okhp3-askjamie-brand",
+        "okhp3-askjamie-gpt-builder",
+        "okhp3-askjamie-gpt-readiness"
+      ]
+    },
+    {
       "name": "community",
       "status": "draftable",
       "skills": [
         "acquire-codebase-knowledge",
+        "agent-governance",
+        "agent-owasp-compliance",
+        "agent-supply-chain",
         "ai-social-media-content",
+        "api-design",
+        "api-documentation",
+        "appinsights-instrumentation",
+        "architecture-blueprint-generator",
         "architecture-decision-records",
+        "audit-integrity",
+        "auth-design",
         "brand-guidelines",
+        "breakdown-test",
+        "browser-testing",
+        "build-evidence-map",
         "c4-codebase-architecture",
+        "code-analysis",
+        "code-exemplars-blueprint-generator",
+        "code-linting",
+        "code-review",
+        "code-tour",
         "codebase-architecture",
         "codebase-discovery",
+        "codebase-memory-mcp",
+        "containerize-aspnet-framework",
+        "containerize-aspnetcore",
+        "context-map",
+        "copilot-instructions-blueprint",
+        "create-tldr-page",
+        "csharp-docs",
+        "csharp-mstest",
+        "csharp-nunit",
+        "csharp-xunit",
+        "custom-instructions-from-codebase",
+        "data-breach-blast-radius",
+        "data-migration-best-practices",
+        "ddd-best-practices",
+        "dependency-audit",
+        "deployment-strategies",
+        "devops-rollout-plan",
+        "diagramming",
         "doc-and-modernize",
+        "documentation-writer",
         "dotnet-best-practices",
+        "dotnet-design-pattern-review",
+        "dotnet-upgrade",
+        "ef-core",
+        "efcore-d2-db-diagram",
         "find-skills",
+        "folder-structure-blueprint-generator",
         "frontend-design",
+        "incident-postmortem",
+        "integration-testing",
+        "load-testing",
+        "log-analysis",
+        "lsp-architecture",
+        "lsp-dead-code",
+        "lsp-docs",
+        "lsp-refactor",
+        "lsp-test-correlation",
+        "markdown-docs",
         "mcp-builder",
         "mermaid-diagrams",
+        "multi-stage-dockerfile",
+        "nuget-manager",
+        "oo-component-documentation",
+        "openapi-to-application-code",
+        "premium-frontend-ui",
+        "refactor-plan",
+        "refactoring-best-practices",
+        "rest-api-best-practices",
+        "scoutqa-test",
+        "secret-scanning",
+        "secrets-management",
+        "security-analysis",
+        "security-review",
         "skill-creator",
         "software-architecture-analysis",
-        "theme-factory",
+        "specification-authoring",
+        "sql-code-review",
+        "sql-optimization",
+        "sql-server-table-reconciliation",
+        "tdd-best-practices",
         "technology-stack-blueprint-generator",
+        "theme-factory",
+        "threat-model-analyst",
+        "threat-modeling",
+        "tm7-threat-model",
+        "unit-testing",
         "vercel-react-best-practices",
         "vercel-react-native-skills",
         "web-artifacts-builder",
-        "web-design-guidelines"
+        "web-design-guidelines",
+        "web-design-reviewer",
+        "workflow-analysis-blueprint",
+        "write-coding-standards-from-file"
       ]
     },
     {
@@ -96,9 +181,67 @@
         "okhp3-thread-extract-claude",
         "okhp3-thread-extract-copilot-m365",
         "okhp3-thread-extract-gemini",
-        "okhp3-thread-context-extraction-grok",
+        "okhp3-thread-extract-grok",
         "okhp3-thread-extract-mistral-vibe",
         "okhp3-thread-extract-perplexity"
+      ]
+    },
+    {
+      "name": "copilot",
+      "skills": [
+        "okhp3-copilot-studio-skill-foundry",
+        "okhp3-cowork-commitment-tracker",
+        "okhp3-cowork-daily-execution-brief",
+        "okhp3-cowork-decision-record",
+        "okhp3-cowork-document-critique",
+        "okhp3-cowork-file-triage-planner",
+        "okhp3-cowork-inbox-triage",
+        "okhp3-cowork-meeting-closeout",
+        "okhp3-cowork-meeting-prep",
+        "okhp3-cowork-project-context-pack",
+        "okhp3-cowork-research-evidence-log",
+        "okhp3-cowork-skill-foundry",
+        "okhp3-cowork-stakeholder-update",
+        "okhp3-cowork-weekly-review",
+        "okhp3-github-skill-foundry",
+        "okhp3-sharepoint-content-auditor",
+        "okhp3-sharepoint-library-accessibility-review",
+        "okhp3-sharepoint-library-article-curator",
+        "okhp3-sharepoint-library-canonical-source-finder",
+        "okhp3-sharepoint-library-contract-extractor",
+        "okhp3-sharepoint-library-document-quality-gate",
+        "okhp3-sharepoint-library-handover-packager",
+        "okhp3-sharepoint-library-intake-classifier",
+        "okhp3-sharepoint-library-metadata-review",
+        "okhp3-sharepoint-library-policy-citations",
+        "okhp3-sharepoint-library-publish-checkout-hygiene",
+        "okhp3-sharepoint-library-records-readiness-review",
+        "okhp3-sharepoint-library-taxonomy-drift-report",
+        "okhp3-sharepoint-list-data-quality-review",
+        "okhp3-sharepoint-list-decision-log-curator",
+        "okhp3-sharepoint-list-duplicate-record-review",
+        "okhp3-sharepoint-list-intake-normalizer",
+        "okhp3-sharepoint-list-knowledge-gap-log",
+        "okhp3-sharepoint-list-meeting-actions",
+        "okhp3-sharepoint-list-portfolio-health-brief",
+        "okhp3-sharepoint-list-request-triage",
+        "okhp3-sharepoint-list-risk-issue-review",
+        "okhp3-sharepoint-list-schema-design",
+        "okhp3-sharepoint-list-schema-view-review",
+        "okhp3-sharepoint-list-sla-breach-watchlist",
+        "okhp3-sharepoint-list-vendor-obligation-review",
+        "okhp3-sharepoint-skill-foundry"
+      ]
+    },
+    {
+      "name": "glee-fully",
+      "status": "draftable",
+      "skills": [
+        "glee-fully-repo-standardizer",
+        "okhp3-glee-fully-brand",
+        "okhp3-glee-fully-foundry",
+        "okhp3-glee-fully-gpt-builder",
+        "okhp3-glee-fully-gpt-readiness"
       ]
     },
     {
@@ -115,27 +258,21 @@
       ]
     },
     {
+      "name": "language-mediation",
+      "skills": [
+        "okhp3-translation-en-us-de-de",
+        "okhp3-translation-en-us-en-uk",
+        "okhp3-translation-en-us-es-es",
+        "okhp3-translation-en-us-es-mx",
+        "okhp3-translation-en-us-fr-fr"
+      ]
+    },
+    {
       "name": "lifetrkr",
       "status": "draftable",
       "skills": [
         "okhp3-celestial-data",
         "okhp3-daily-oracle"
-      ]
-    },
-    {
-      "name": "social-posting",
-      "status": "draftable",
-      "skills": [
-        "okhp3-discord-comment",
-        "okhp3-discord-post",
-        "okhp3-facebook-comment",
-        "okhp3-facebook-post",
-        "okhp3-linkedin-angles",
-        "okhp3-linkedin-comment",
-        "okhp3-linkedin-post",
-        "okhp3-linkedin-voice",
-        "okhp3-twitter-comment",
-        "okhp3-twitter-post"
       ]
     },
     {
@@ -150,14 +287,36 @@
         "okhp3-mermaid-publish",
         "okhp3-mermaid-repair",
         "okhp3-mermaid-theme-builder",
-        "okhp3-mermaid-update"
+        "okhp3-mermaid-update",
+        "okhp3-universe-map"
       ]
     },
     {
       "name": "notion",
       "status": "draftable",
       "skills": [
-        "okhp3-notion-capture-router"
+        "okhp3-notion-agent-boundary",
+        "okhp3-notion-capture-router",
+        "okhp3-notion-core",
+        "okhp3-notion-destructive-ops",
+        "okhp3-notion-identity-resolution",
+        "okhp3-notion-limits-and-retry",
+        "okhp3-notion-page-read",
+        "okhp3-notion-page-write",
+        "okhp3-notion-query",
+        "okhp3-notion-row-write",
+        "okhp3-notion-search-strategy"
+      ]
+    },
+    {
+      "name": "openclaw",
+      "skills": [
+        "okhp3-openclaw-capture-note",
+        "okhp3-openclaw-linkedin-drop",
+        "okhp3-openclaw-mermaid-lint",
+        "okhp3-openclaw-repo-pulse",
+        "okhp3-openclaw-skillz-sync",
+        "okhp3-openclaw-stack-status"
       ]
     },
     {
@@ -179,7 +338,6 @@
         "okhp3-decision-model-authoring",
         "okhp3-elicitation-interviews",
         "okhp3-future-state-change-strategy",
-        "okhp3-recurring-task-capture",
         "okhp3-process-gap-exception-analysis",
         "okhp3-process-intake-and-scope",
         "okhp3-process-measures-controls",
@@ -187,6 +345,7 @@
         "okhp3-process-validation-scoring",
         "okhp3-publication-handoff-packaging",
         "okhp3-raci-governance-matrix",
+        "okhp3-recurring-task-capture",
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
@@ -194,68 +353,39 @@
       ]
     },
     {
+      "name": "red-teaming",
+      "skills": [
+        "okhp3-adversary-forecasting",
+        "okhp3-agent-capability-inventory",
+        "okhp3-agentic-attack-patterns",
+        "okhp3-agentic-credential-assessment",
+        "okhp3-agentic-data-exposure",
+        "okhp3-agentic-exploitation-testing",
+        "okhp3-agentic-lateral-assessment",
+        "okhp3-agentic-pattern-observatory",
+        "okhp3-agentic-persistence-assessment",
+        "okhp3-attack-economics",
+        "okhp3-authorization-governance",
+        "okhp3-behavioral-baselining",
+        "okhp3-decision-chain-audit-trail",
+        "okhp3-emerging-threat-lab",
+        "okhp3-lateral-movement-tracking",
+        "okhp3-model-anomaly-detection",
+        "okhp3-post-breach-forensics",
+        "okhp3-precursor-detection",
+        "okhp3-proportional-response",
+        "okhp3-response-cost-benefit",
+        "okhp3-safe-intelligence-amplifier",
+        "okhp3-supply-chain-agent-provenance",
+        "okhp3-threat-intelligence-synthesis",
+        "okhp3-threat-pattern-validator"
+      ]
+    },
+    {
       "name": "refolddec",
       "status": "draftable",
       "skills": [
         "okhp3-refolddec-core"
-      ]
-    },
-    {
-      "name": "universal",
-      "status": "draftable",
-      "skills": [
-        "okhp3-brand-style-registry",
-        "okhp3-cloudflare-worker-api-proxy",
-        "okhp3-database-cartographer",
-        "okhp3-equilibrium-review",
-        "okhp3-foundry-repo-creator",
-        "okhp3-github-mirror-janitor",
-        "okhp3-google-gis-client-auth",
-        "okhp3-repository-janitor",
-        "okhp3-repository-organizer",
-        "okhp3-overkill-hill-brand",
-        "okhp3-repl-repo-janitor",
-        "okhp3-skill-cataloger",
-        "okhp3-skill-discovery",
-        "okhp3-skill-foundry",
-        "okhp3-skill-promotion",
-        "sp-build-auditor",
-        "sp-list-architect",
-        "okhp3-vite-github-pages"
-      ]
-    },
-    {
-      "name": "glee-fully",
-      "status": "draftable",
-      "skills": [
-        "okhp3-glee-fully-chatgpt-migrate",
-        "okhp3-glee-fully-extract-chatgpt",
-        "okhp3-glee-fully-extract-claude",
-        "okhp3-glee-fully-foundry",
-        "okhp3-glee-fully-gpt-builder",
-        "okhp3-glee-fully-gpt-readiness",
-        "glee-fully-repo-standardizer",
-        "okhp3-glee-fully-brand",
-        "okhp3-glee-fully-repo-creator",
-        "okhp3-glee-fully-repo-organizer",
-        "okhp3-glee-fully-style-registry",
-        "okhp3-glee-fully-thread-context"
-      ]
-    },
-    {
-      "name": "askjamie",
-      "status": "draftable",
-      "skills": [
-        "okhp3-askjamie-chatgpt-migrate",
-        "okhp3-askjamie-extract-chatgpt",
-        "okhp3-askjamie-extract-claude",
-        "okhp3-askjamie-gpt-builder",
-        "okhp3-askjamie-gpt-readiness",
-        "okhp3-askjamie-brand",
-        "okhp3-askjamie-repo-creator",
-        "okhp3-askjamie-repo-organizer",
-        "okhp3-askjamie-style-registry",
-        "okhp3-askjamie-thread-context"
       ]
     },
     {
@@ -269,8 +399,91 @@
         "okhp3-replit-free-mode-autonomy",
         "okhp3-replit-github-sync",
         "okhp3-replit-multi-artifact",
-        "okhp3-replit-repl-janitor",
+        "okhp3-replit-repository-janitor",
         "okhp3-replit-task-executor"
+      ]
+    },
+    {
+      "name": "social-posting",
+      "status": "draftable",
+      "skills": [
+        "okhp3-discord-comment",
+        "okhp3-discord-post",
+        "okhp3-facebook-comment",
+        "okhp3-facebook-post",
+        "okhp3-instagram-comment",
+        "okhp3-instagram-post",
+        "okhp3-kofi-post",
+        "okhp3-kofi-supporter-reply",
+        "okhp3-linkedin-angles",
+        "okhp3-linkedin-comment",
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-voice",
+        "okhp3-patreon-comment",
+        "okhp3-patreon-post",
+        "okhp3-pinterest-comment",
+        "okhp3-pinterest-pin",
+        "okhp3-reddit-comment",
+        "okhp3-reddit-post",
+        "okhp3-slack-channel-message",
+        "okhp3-slack-thread-reply",
+        "okhp3-teams-channel-post",
+        "okhp3-teams-thread-reply",
+        "okhp3-telegram-channel-post",
+        "okhp3-telegram-group-reply",
+        "okhp3-tiktok-comment",
+        "okhp3-tiktok-post",
+        "okhp3-twitter-comment",
+        "okhp3-twitter-post",
+        "okhp3-youtube-comment",
+        "okhp3-youtube-community-post",
+        "okhp3-youtube-video"
+      ]
+    },
+    {
+      "name": "software-reclamation",
+      "skills": [
+        "okhp3-reclamation-char-tests",
+        "okhp3-reclamation-code-archaeology",
+        "okhp3-reclamation-intake",
+        "okhp3-reclamation-migration-cutover",
+        "okhp3-reclamation-platform",
+        "okhp3-reclamation-rbac-tracing",
+        "okhp3-reclamation-replacement-build",
+        "okhp3-reclamation-replacement-spec",
+        "okhp3-reclamation-runtime-reconcile",
+        "okhp3-reclamation-scope",
+        "okhp3-reclamation-security-review",
+        "okhp3-reclamation-target-design",
+        "okhp3-reclamation-technical-docs",
+        "okhp3-reclamation-transaction-flow",
+        "okhp3-reclamation-validation-handoff"
+      ]
+    },
+    {
+      "name": "universal",
+      "status": "draftable",
+      "skills": [
+        "okhp3-brand-style-registry",
+        "okhp3-cloudflare-worker-api-proxy",
+        "okhp3-database-cartographer",
+        "okhp3-equilibrium-review",
+        "okhp3-github-mirror-janitor",
+        "okhp3-github-notification-maintainer",
+        "okhp3-google-gis-client-auth",
+        "okhp3-i18n-page-release",
+        "okhp3-i18n-page-sync",
+        "okhp3-overkill-hill-brand",
+        "okhp3-project-compass",
+        "okhp3-repository-creator",
+        "okhp3-repository-janitor",
+        "okhp3-repository-organizer",
+        "okhp3-repository-settings",
+        "okhp3-skill-cataloger",
+        "okhp3-skill-discovery",
+        "okhp3-skill-foundry",
+        "okhp3-skill-promotion",
+        "okhp3-vite-github-pages"
       ]
     }
   ],
@@ -292,6 +505,6 @@
     ]
   },
   "distributionFamilyCount": 21,
-  "countsGeneratedAt": "2026-09-19T18:43:06.694Z",
+  "countsGeneratedAt": "2026-09-19T23:35:13.065Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

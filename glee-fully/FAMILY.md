@@ -1,9 +1,9 @@
 ---
 family: glee-fully
 display_name: Glee-fully
-skill_count: 12
+skill_count: 5
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-13T00:03:20Z
+generated_at: 2026-09-19T23:26:42Z
 ---
 
 # glee-fully
@@ -28,27 +28,47 @@ does not count as a converted consumer Tool or Tool-ette.
 
 Do not scaffold 7 evenly-sized sub-directories as a default. The count is a discovery, not a target.
 
+
+## Shared workflows and Glee-fully profiles
+
+The seven former Glee-fully workflow copies were consolidated on 2026-09-19.
+Use the shared skill with its bundled Glee-fully profile only for a confirmed
+Glee-fully target. Each profile ships inside its shared package, so standalone
+installation preserves the brand guidance without maintaining a second workflow.
+
+| Task | Shared skill | Optional profile |
+|---|---|---|
+| General thread extraction | [okhp3-thread-context-extraction](../context-extraction/okhp3-thread-context-extraction/SKILL.md) | [Glee-fully profile](../context-extraction/okhp3-thread-context-extraction/references/brand-profiles/glee-fully.md) |
+| ChatGPT extraction | [okhp3-thread-extract-chatgpt](../context-extraction/okhp3-thread-extract-chatgpt/SKILL.md) | [Glee-fully profile](../context-extraction/okhp3-thread-extract-chatgpt/references/brand-profiles/glee-fully.md) |
+| Claude extraction | [okhp3-thread-extract-claude](../context-extraction/okhp3-thread-extract-claude/SKILL.md) | [Glee-fully profile](../context-extraction/okhp3-thread-extract-claude/references/brand-profiles/glee-fully.md) |
+| ChatGPT project migration | [okhp3-chatgpt-project-migration](../context-extraction/okhp3-chatgpt-project-migration/SKILL.md) | [Glee-fully profile](../context-extraction/okhp3-chatgpt-project-migration/references/brand-profiles/glee-fully.md) |
+| Repository organization | [okhp3-repository-organizer](../universal/okhp3-repository-organizer/SKILL.md) | [Glee-fully profile](../universal/okhp3-repository-organizer/references/brand-profiles/glee-fully.md) |
+| Repository creation | [okhp3-repository-creator](../universal/okhp3-repository-creator/SKILL.md) | [Glee-fully profile](../universal/okhp3-repository-creator/references/brand-profiles/glee-fully.md) |
+| Style registration and application | [okhp3-brand-style-registry](../universal/okhp3-brand-style-registry/SKILL.md) | [Glee-fully profile](../universal/okhp3-brand-style-registry/references/brand-profiles/glee-fully.md) |
+
+The brand-specific GPT readiness and builder packages remain active because
+they add distinct domain gates and evaluation cases. The brand styling package
+also remains active with its approved profile and accessibility requirements.
+The Glee-fully Foundry and repository standardizer remain active for hierarchy,
+Persona Density, canon review, and tier-specific executable scaffolding.
+
+See the [archived originals and recovery record](../docs/archive/skill-redundancy-2026-09-19/brands/README.md).
+The README-only old locations are compatibility pointers, not additional skills.
+
 <!-- FAMILY_SUMMARY_START -->
 Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee-fullyTools-FoundRy` inventory). Earlier analysis concluded the right packaging is neither 1 family nor a fixed 7 — cohesion (shared tool/MCP affinity, workflow proximity) should determine the cluster count, working estimate 4-6 sub-families.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (12)
+## Skills (5)
 
 <!-- FAMILY_INVENTORY_START -->
-*12 skills &nbsp;·&nbsp; inventory last updated: **September 13, 2026 at 00:03 UTC***
+*5 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [glee-fully-repo-standardizer](glee-fully-repo-standardizer/SKILL.md) | Scaffold and standardize any Glee-fully child repository (Toolbox, Tool, or Tool-ette tier). When... | 1.1.0 |
 | [okhp3-glee-fully-brand](okhp3-glee-fully-brand/SKILL.md) | OverKill Hill P³ Glee-fully SPA styling. Use when a user wants a Glee-fully application, document... | 1.1.0 |
-| [okhp3-glee-fully-chatgpt-migrate](okhp3-glee-fully-chatgpt-migrate/SKILL.md) | OverKill Hill P³ ChatGPT project migration. Use when migrating, preserving, extracting, inventory... | 1.0.0 |
-| [okhp3-glee-fully-extract-chatgpt](okhp3-glee-fully-extract-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.0.0 |
-| [okhp3-glee-fully-extract-claude](okhp3-glee-fully-extract-claude/SKILL.md) | Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the... | 2.0.0 |
 | [okhp3-glee-fully-foundry](okhp3-glee-fully-foundry/SKILL.md) | Design, author, audit, and canon-seal portable Glee-fully Agent Skills across the Trunk, Branch, ... | 1.0.0 |
 | [okhp3-glee-fully-gpt-builder](okhp3-glee-fully-gpt-builder/SKILL.md) | >- | 1.0.0 |
 | [okhp3-glee-fully-gpt-readiness](okhp3-glee-fully-gpt-readiness/SKILL.md) | >- | 1.0.0 |
-| [okhp3-glee-fully-repo-creator](okhp3-glee-fully-repo-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.1.0 |
-| [okhp3-glee-fully-repo-organizer](okhp3-glee-fully-repo-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.1.1 |
-| [okhp3-glee-fully-style-registry](okhp3-glee-fully-style-registry/SKILL.md) | OverKill Hill P³ visual style registry and application workflow. Use when a user wants to extract... | 1.1.0 |
-| [okhp3-glee-fully-thread-context](okhp3-glee-fully-thread-context/SKILL.md) | Extract pasted or uploaded AI chat threads into standalone, actionable Markdown. Use when the use... | 2.0.0 |
 <!-- FAMILY_INVENTORY_END -->

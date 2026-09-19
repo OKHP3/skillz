@@ -1,0 +1,5 @@
+# Preserve historical snapshot bytes across Windows, macOS and Linux.
+# CRLF is intentional in archived Windows working copies.
+** -text whitespace=cr-at-eol
+# Three original trailing-space lines are immutable historical payload.
+red-teaming-import/skillz_restore.py -whitespace

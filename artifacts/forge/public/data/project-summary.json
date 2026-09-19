@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-09-19T18:43:06.694Z",
+  "generatedAt": "2026-09-19T23:35:13.065Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/replit-task-evolution-20260919",
-  "sourceCommit": "a28f9a3",
-  "skillCount": 351,
+  "sourceRef": "codex/skill-taxonomy-cleanup",
+  "sourceCommit": "b8e278d",
+  "skillCount": 326,
   "familyCount": 21,
   "maturityCounts": {
-    "draftable": 266,
-    "skeleton": 80,
+    "draftable": 248,
+    "skeleton": 73,
     "usable": 5
   },
   "evidenceStatusCounts": {
-    "historical": 6,
-    "not-run": 169,
-    "none": 124,
-    "local-checks": 38,
+    "historical": 7,
+    "not-run": 159,
+    "none": 110,
+    "local-checks": 37,
     "analytical": 6,
-    "live": 8
+    "live": 7
   },
   "capabilities": {
     "familyOrientationPages": true,

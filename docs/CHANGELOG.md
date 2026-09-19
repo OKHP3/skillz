@@ -1,5 +1,38 @@
 # Changelog
 
+## 2026-09-19: capability-led duplicate consolidation
+
+- Reduce the active catalog from 350 to 326 skills while retaining all 21 families.
+- Replace fourteen branded workflow copies with shared packages and bundled,
+  conditionally loaded brand profiles. Preserve profile context in old web
+  routes and saved composer notes.
+- Consolidate overlapping browser, refactoring, README, and data-migration
+  prompts into fuller contracts; combine the duplicate specification template
+  under explicit create/update modes with update-identity preservation.
+- Archive complete originals and retain unique useful safeguards and attribution.
+  Preserve distinct platform, language, testing, security, and lifecycle methods.
+- Add an archive-byte integrity check. Historical benchmarks remain historical;
+  no live performance uplift is claimed. See the
+  [redundancy audit](skill-redundancy-audit-2026-09-19.md).
+
+## 2026-09-19: skill naming, family placement, and archival cleanup
+
+- Apply the owner-requested repository creator and SharePoint names, and move
+  the SharePoint workflows to Copilot with explicit unverified host support.
+- Consolidate the retired Universal and current Replit janitors under
+  `okhp3-replit-repository-janitor`; preserve both predecessor versions and the
+  distinct local support implementation. Rename repository settings and the
+  Grok extraction adapter consistently with their siblings.
+- Preserve old directory links and web routes using move notices and an alias
+  registry, without duplicate installable packages or transferred approvals.
+- Derive complete manifest family membership from the catalog and refresh
+  the 350-skill, 21-family distribution and 52-package support indexes.
+- Archive 38 payload files with original paths and verified hashes; no source
+  content is deleted. Retain current evaluation evidence and runtime inputs.
+- See [the migration ledger](../MIGRATION.md#skill-organization-2026-09-19),
+  [taxonomy audit](skill-taxonomy-audit-2026-09-19.md), and
+  [archive](archive/skill-organization-2026-09-19/README.md).
+
 ## 2026-09-19: Replit task executor 1.2.0
 
 - Retain Replit planning, design, and UI/UX acceptance while external coding
@@ -83,8 +116,8 @@ This project's release history follows Keep a Changelog conventions.
   a settings record, worked example, checklist, 12 development cases and 20
   discovery queries. Equilibrium review is analytical and approved with limits;
   live behavior, uplift, unseen holdout and publication are not established.
-  See [configuration recap](repo-settings-recap.md) and
-  [review and promotion evidence](repo-settings-review/README.md).
+  See [configuration recap](archive/skill-organization-2026-09-19/repo-settings-0.1.0/repo-settings-recap.md) and
+  [review and promotion evidence](archive/skill-organization-2026-09-19/repo-settings-0.1.0/repo-settings-review/README.md).
 
 ### Fixed
 

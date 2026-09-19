@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, symlinkSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, symlinkSync, rmSync, readdirSync, lstatSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -27,12 +27,30 @@ try {
   writeFileSync(join(family, 'FAMILY.md'), '# Family');
   writeFileSync(join(skill, 'SKILL.md'), '# Skill');
   assert.deepEqual(findSkillFiles(root), [join(skill, 'SKILL.md')]);
-  symlinkSync(family, join(family, 'openclaw'), 'dir');
+  symlinkSync(family, join(family, 'openclaw'), process.platform === 'win32' ? 'junction' : 'dir');
   assert.deepEqual(findSkillFiles(root), [join(skill, 'SKILL.md')]);
-  symlinkSync(join(skill, 'SKILL.md'), join(family, 'SKILL.md'));
-  assert.deepEqual(findSkillFiles(root), [join(skill, 'SKILL.md')]);
-  symlinkSync(join(root, 'missing'), join(family, 'missing'), 'dir');
-  assert.deepEqual(findSkillFiles(root), [join(skill, 'SKILL.md')]);
+  const fileLink = join(family, 'SKILL.md');
+  let sourceFs;
+  try {
+    symlinkSync(join(skill, 'SKILL.md'), fileLink);
+  } catch (error) {
+    if (process.platform !== 'win32' || !['EPERM', 'EACCES'].includes(error.code)) throw error;
+    // Windows may permit junctions but deny file symlinks. Exercise the same
+    // lstat boundary deterministically; native links remain covered on Linux.
+    writeFileSync(fileLink, '# file-link fixture');
+    sourceFs = {
+      readdirSync, existsSync,
+      lstatSync: path => path === fileLink ? { isSymbolicLink: () => true } : lstatSync(path),
+    };
+    console.log('Windows file-symlink privilege unavailable: testing its lstat boundary with an adapter.');
+  }
+  assert.deepEqual(findSkillFiles(root, 0, sourceFs), [join(skill, 'SKILL.md')]);
+  symlinkSync(join(root, 'missing'), join(family, 'missing'), process.platform === 'win32' ? 'junction' : 'dir');
+  assert.deepEqual(findSkillFiles(root, 0, sourceFs), [join(skill, 'SKILL.md')]);
+  mkdirSync(join(root, 'docs/archive/retired'), { recursive: true });
+  writeFileSync(join(root, 'docs/FAMILY.md'), '# Not a distribution family');
+  writeFileSync(join(root, 'docs/archive/retired/SKILL.md'), '# Preserved archive');
+  assert.deepEqual(findSkillFiles(root, 0, sourceFs), [join(skill, 'SKILL.md')]);
   console.log('PASS: regular source, cyclic directory link, linked skill, dangling link');
 } finally {
   rmSync(root, { recursive: true, force: true });

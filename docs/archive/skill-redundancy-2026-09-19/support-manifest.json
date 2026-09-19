@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "archivedAt": "2026-09-19",
+  "sourceCommit": "ff61152eeda6d7985805c9049840964ca781394b",
+  "purpose": "Preserve six project-local support contracts before synchronizing the additive canonical brand-profile capability. Every preconsolidation support package was content-equivalent to its canonical package after line-ending normalization; no local-specific content was overwritten.",
+  "hashAlgorithm": "SHA-256 of raw original working-tree bytes; original Git blob identity, mode, SHA-256 and length also retained.",
+  "fileCount": 6,
+  "totalBytes": 85839,
+  "files": [
+    {
+      "originalPath": ".agents/skills/okhp3-chatgpt-project-migration/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/support/.agents/skills/okhp3-chatgpt-project-migration/SKILL.md",
+      "sha256": "661463e1d19ed5e66ad759cf0bcca3267d1893ac8b462fe3e3d47fab7a505a35",
+      "bytes": 8424,
+      "operation": "snapshot",
+      "originalGitMode": "100644",
+      "originalGitBlob": "6cf1be31532873c50633561ca326b7dabebd11c2",
+      "originalGitBlobSha256": "7e0a34b3f0f65af08ac2feb7d0a906739fedea6d51b06f3e7d171b88654ec2bb",
+      "originalGitBlobBytes": 8230,
+      "reason": "Preserve the equivalent project-local contract before additive synchronization of bundled brand profiles and version-specific evidence notes.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": ".agents/skills/okhp3-thread-context-extraction/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/support/.agents/skills/okhp3-thread-context-extraction/SKILL.md",
+      "sha256": "b61207a6db4f89f202f25be2ab3cee5f56e0b2b2eca473ad693651254a9837a2",
+      "bytes": 15491,
+      "operation": "snapshot",
+      "originalGitMode": "100644",
+      "originalGitBlob": "f6eaa820c9176f6e88fcb05d10e785fd80b928b3",
+      "originalGitBlobSha256": "770317e0ffc0d1642359bd783bf4d836f7ddac9fb83f6796b704086602b02c02",
+      "originalGitBlobBytes": 15181,
+      "reason": "Preserve the equivalent project-local contract before additive synchronization of bundled brand profiles and version-specific evidence notes.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": ".agents/skills/okhp3-thread-extract-chatgpt/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/support/.agents/skills/okhp3-thread-extract-chatgpt/SKILL.md",
+      "sha256": "b182b8a432a5eaaf35e537b4cbf109b6c4e605e96cd663fc59754544b9ee4356",
+      "bytes": 17224,
+      "operation": "snapshot",
+      "originalGitMode": "100644",
+      "originalGitBlob": "4c6170add37111d028b9407778b054ee1199bc5c",
+      "originalGitBlobSha256": "b4c7e7519dc8ea4518a3deda334f8bce853d328401b46afdf826031d24a851ed",
+      "originalGitBlobBytes": 16887,
+      "reason": "Preserve the equivalent project-local contract before additive synchronization of bundled brand profiles and version-specific evidence notes.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": ".agents/skills/okhp3-thread-extract-claude/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/support/.agents/skills/okhp3-thread-extract-claude/SKILL.md",
+      "sha256": "45a920a23b2aa0a30a1180449d93640be7bd2b8285ee0f8e18d32b5442e0b1b7",
+      "bytes": 16930,
+      "operation": "snapshot",
+      "originalGitMode": "100644",
+      "originalGitBlob": "34e375d373efc93636332e00048a7e59a8580f90",
+      "originalGitBlobSha256": "3d835f52d116323b1a7a28130f6732e06229369ab77767cf47f4fb063b7a7481",
+      "originalGitBlobBytes": 16596,
+      "reason": "Preserve the equivalent project-local contract before additive synchronization of bundled brand profiles and version-specific evidence notes.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": ".agents/skills/okhp3-brand-style-registry/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/support/.agents/skills/okhp3-brand-style-registry/SKILL.md",
+      "sha256": "e432fce3ec98f3608651eab7b622f4bfcf201bddee26dd21e5054db1b92f89f7",
+      "bytes": 11629,
+      "operation": "snapshot",
+      "originalGitMode": "100644",
+      "originalGitBlob": "7dadd4d6d160a2b5e813d8d827a1d23c0b0bfce5",
+      "originalGitBlobSha256": "0cef4be8d04dc4dcce8ab2a63384e4c4f3209e6b644ae8c0a0664f336d319563",
+      "originalGitBlobBytes": 11454,
+      "reason": "Preserve the equivalent project-local contract before additive synchronization of bundled brand profiles and version-specific evidence notes.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": ".agents/skills/okhp3-repository-organizer/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/support/.agents/skills/okhp3-repository-organizer/SKILL.md",
+      "sha256": "04612ec74ff06f9adac87721a9f174c30572c98ae1cb11605f5f2de6896a01d6",
+      "bytes": 16141,
+      "operation": "snapshot",
+      "originalGitMode": "100644",
+      "originalGitBlob": "a4197f79a1b0015ec4d102ee8d0d8b13ba6c8de7",
+      "originalGitBlobSha256": "d68df0bae40471424511594d48ab5b46165c6b01871b4b92297671b302988e1e",
+      "originalGitBlobBytes": 15946,
+      "reason": "Preserve the equivalent project-local contract before additive synchronization of bundled brand profiles and version-specific evidence notes.",
+      "preservationVerified": true
+    }
+  ]
+}

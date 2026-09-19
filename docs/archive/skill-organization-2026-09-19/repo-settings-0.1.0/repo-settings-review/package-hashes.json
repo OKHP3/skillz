@@ -1,0 +1,43 @@
+{
+  "version": "0.1.0",
+  "revision": "candidate-2",
+  "frozen_at": "2026-09-11T00:45:09.650684+00:00",
+  "aggregate_sha256": "140dbc59fe4b8f8c46bc5d6ed5a2bc74548c161a0f834e619024d45c65225307",
+  "aggregate_method": "sha256 of sorted relative path + NUL + file sha256 + newline",
+  "files": [
+    {
+      "path": "assets/settings-record.json",
+      "sha256": "926c30852947b0f979d99a5004c4031a25d55771fef4b28d1352a94240076074"
+    },
+    {
+      "path": "evals/evals.json",
+      "sha256": "08311959cb076fe509b1c9326ad5eb45fec890df3d3381b41b68ad79c6076fc2"
+    },
+    {
+      "path": "references/creator-handoff.md",
+      "sha256": "31ffdfc86cad51006d2d61c9df743a51731c8d6da3e182838061895fd0e01313"
+    },
+    {
+      "path": "references/settings-profile.md",
+      "sha256": "d6f7ba1c2012db95dc49b54511aa365ece174d272ed069a2cbd726fbcdb3f4c0"
+    },
+    {
+      "path": "references/sources.md",
+      "sha256": "6895d3e5d9e99c6fc942a4b5dab675922a44a8428440b3fce0b1e19f121cd9d5"
+    },
+    {
+      "path": "references/worked-example.md",
+      "sha256": "282957e60c052b4f88144892fa9ab60398d9958f6e9145bac2eae924e6029e8a"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "bcef72b88892ae73451631edeeb2177ace3c597971cfabb93c0d70129db76a72"
+    }
+  ],
+  "initial_review_skill_sha256": "8864f66a5c2e075caf58e0c7593c2b4e4d8293d0dce1a579aa96ba7ea0dd8e4e",
+  "delta_since_initial_review": [
+    "Explicit Scope section clarifies candidate attribution",
+    "Synthetic worked example and validation checklist",
+    "Link to worked example"
+  ]
+}

@@ -1,8 +1,10 @@
+import { canonicalSkillName } from './skillMigrations';
+
 export const COMPARE_MAX_ITEMS = 4;
 const COMPARE_STORAGE_KEY = 'skillz-forge-compare';
 
 export function normalizeCompareSelection(names: string[]): string[] {
-  return [...new Set(names.map(name => name.trim()).filter(Boolean))].slice(0, COMPARE_MAX_ITEMS);
+  return [...new Set(names.map(name => canonicalSkillName(name.trim())).filter(Boolean))].slice(0, COMPARE_MAX_ITEMS);
 }
 
 export function parseCompareSelection(value: string | null): string[] {

@@ -1,4 +1,5 @@
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
+import { canonicalSkillIdentity, skillMigration } from '../utils/skillMigrations';
 import { useState, useEffect } from 'react';
 import { useCatalog } from '../contexts/CatalogContext';
 import { getRelatedSkills, buildWorkflowPath } from '../utils/search';
@@ -66,12 +67,17 @@ function buildTrustSummary(skill: Skill, isStale: boolean): string {
 export default function SkillDetail() {
   const catalog = useCatalog();
   const { family, skillName } = useParams();
-  const skill = catalog.skills.find(s => s.family === family && s.name === skillName);
+  const canonical = canonicalSkillIdentity(family ?? '', skillName ?? '');
+  const skill = catalog.skills.find(s => s.family === canonical.family && s.name === canonical.name);
   const [copied, setCopied] = useState<'install' | 'url' | null>(null);
   const { isFavorite, toggleFavorite } = useFavorites();
   const { announce } = useComposer();
   const [, forceUpdate] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
+  const migratedFrom = new URLSearchParams(location.search).get('from') ?? skillName ?? '';
+  const migration = skillMigration(migratedFrom);
+  const migrationContext = migration?.to.family === canonical.family && migration.to.name === canonical.name ? migration : undefined;
   const [activeContractTab, setActiveContractTab] = useState<'contract' | 'validation'>('contract');
   const [liveEvidenceAttached, setLiveEvidenceAttached] = useState(false);
   const [supervisedCheckRunning, setSupervisedCheckRunning] = useState(false);
@@ -83,6 +89,15 @@ export default function SkillDetail() {
   const [contractState, setContractState] = useState<
     { status: 'loading' } | { status: 'ready'; body: string } | { status: 'error' }
   >({ status: 'loading' });
+
+  useEffect(() => {
+    if (skill && (skill.family !== family || skill.name !== skillName)) {
+      const params = new URLSearchParams(location.search);
+      if (skillMigration(skillName ?? '')?.context) params.set('from', skillName!);
+      const search = params.size ? `?${params}` : '';
+      navigate(`/skills/${skill.family}/${skill.name}${search}${location.hash}`, { replace: true });
+    }
+  }, [skill?.family, skill?.name, family, skillName, location.search, location.hash, navigate]);
 
   useEffect(() => {
     if (skill) document.title = `${skill.displayName || skill.name} | Skillz Forge`;
@@ -136,7 +151,7 @@ export default function SkillDetail() {
   }
 
   async function handleShare() {
-    announce(shareFeedback(displayName, await shareSkill(skill!)));
+    announce(shareFeedback(displayName, await shareSkill(skill!, migrationContext?.from.name)));
   }
 
   function handleFavorite() {
@@ -187,6 +202,12 @@ export default function SkillDetail() {
               <span>{skill.name} / canonical</span>
             </div>
             <h1>{displayName}</h1>
+            {migrationContext?.context && (
+              <aside aria-label="Consolidated skill guidance">
+                <p>{migrationContext.context}</p>
+                {migrationContext.profile && <a href={skill.rawUrl.replace(/SKILL\.md$/, migrationContext.profile.path)} target="_blank" rel="noopener noreferrer">Read the {migrationContext.profile.label} profile</a>}
+              </aside>
+            )}
             {showSlugSecondary && (
               <p className="detail-slug">{skill.name}</p>
             )}
@@ -259,7 +280,7 @@ export default function SkillDetail() {
             >
               {isFavorite(skill.name) ? 'Saved' : 'Save'}
             </button>
-            <AddToStackButton skillName={skill.name} />
+            <AddToStackButton skillName={skill.name} context={migrationContext?.context} />
           </div>
 
           <div className="detail-install">

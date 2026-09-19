@@ -1,21 +1,21 @@
 ---
 family: community
 display_name: Community
-skill_count: 107
+skill_count: 97
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-13T00:03:20Z
+generated_at: 2026-09-19T23:26:42Z
 ---
 
 # community
 
 <!-- FAMILY_SUMMARY_START -->
-A family of 107 community-originated skills spanning codebase discovery, architecture, modernization, security, testing, documentation, deployment, frontend, authoring, and general agent tooling.
+A family of 97 community-originated skills spanning codebase discovery, architecture, modernization, security, testing, documentation, deployment, frontend, authoring, and general agent tooling.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (107)
+## Skills (97)
 
 <!-- FAMILY_INVENTORY_START -->
-*107 skills &nbsp;·&nbsp; inventory last updated: **September 13, 2026 at 00:03 UTC***
+*97 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -33,7 +33,7 @@ A family of 107 community-originated skills spanning codebase discovery, archite
 | [auth-design](auth-design/SKILL.md) | Designs how a system knows who someone is and what they may do — login, sessions, tokens, roles, ... | — |
 | [brand-guidelines](brand-guidelines/SKILL.md) | Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit... | — |
 | [breakdown-test](breakdown-test/SKILL.md) | Test Planning and Quality Assurance prompt that generates comprehensive test strategies, task bre... | — |
-| [browser-testing](browser-testing/SKILL.md) | Writes and debugs end-to-end browser tests — Playwright, Cypress, Selenium — covering selector st... | — |
+| [browser-testing](browser-testing/SKILL.md) | Explores and tests web applications, prepares forms for review, and writes or debugs end-to-end b... | 1.0.0 |
 | [build-evidence-map](build-evidence-map/SKILL.md) | Build an auditable evidence map for a contested technical choice, research synthesis, proposal re... | — |
 | [c4-codebase-architecture](c4-codebase-architecture/SKILL.md) | Helps an agent inspect a repository and produce C4 architecture documentation. Use this when reve... | — |
 | [code-analysis](code-analysis/SKILL.md) | Builds an understanding of a whole codebase or subsystem — what it does, how it is structured, wh... | — |
@@ -48,8 +48,6 @@ A family of 107 community-originated skills spanning codebase discovery, archite
 | [containerize-aspnetcore](containerize-aspnetcore/SKILL.md) | Containerize an ASP.NET Core project by creating Dockerfile and .dockerfile files customized for ... | — |
 | [context-map](context-map/SKILL.md) | Generate a map of all files relevant to a task before making changes | — |
 | [copilot-instructions-blueprint](copilot-instructions-blueprint/SKILL.md) | Technology-agnostic blueprint generator for creating comprehensive copilot-instructions.md files ... | — |
-| [create-readme](create-readme/SKILL.md) | Create a README.md file for the project | — |
-| [create-specification](create-specification/SKILL.md) | Create a new specification file for the solution, optimized for Generative AI consumption. | — |
 | [create-tldr-page](create-tldr-page/SKILL.md) | Create a tldr page from documentation URLs and command examples, requiring both URL and command n... | — |
 | [csharp-docs](csharp-docs/SKILL.md) | Ensure that C# types are documented with XML comments and follow best practices for documentation. | — |
 | [csharp-mstest](csharp-mstest/SKILL.md) | Get best practices for MSTest 3.x/4.x unit testing, including modern assertion APIs and data-driv... | — |
@@ -57,7 +55,6 @@ A family of 107 community-originated skills spanning codebase discovery, archite
 | [csharp-xunit](csharp-xunit/SKILL.md) | Get best practices for XUnit unit testing, including data-driven tests | — |
 | [custom-instructions-from-codebase](custom-instructions-from-codebase/SKILL.md) | Migration and code evolution instructions generator for GitHub Copilot. Analyzes differences betw... | — |
 | [data-breach-blast-radius](data-breach-blast-radius/SKILL.md) | Pre-breach impact analysis: inventories sensitive data (PII, PHI, PCI-DSS, credentials), traces d... | — |
-| [data-migration](data-migration/SKILL.md) | Changes a schema or moves data in production without downtime or loss — column changes, backfills... | — |
 | [data-migration-best-practices](data-migration-best-practices/SKILL.md) | Operational data migration guidance. Use when moving or transforming persisted data between schem... | — |
 | [ddd-best-practices](ddd-best-practices/SKILL.md) | Domain-Driven Design guidance for modeling complex domains. Use when designing Bounded Contexts o... | 1.0.0 |
 | [dependency-audit](dependency-audit/SKILL.md) | Assesses what a project depends on — known vulnerabilities, licence obligations, abandoned packag... | — |
@@ -90,16 +87,10 @@ A family of 107 community-originated skills spanning codebase discovery, archite
 | [nuget-manager](nuget-manager/SKILL.md) | Manage NuGet packages in .NET projects/solutions. Use this skill when adding, removing, or updati... | — |
 | [oo-component-documentation](oo-component-documentation/SKILL.md) | Create or update standardized object-oriented component documentation using a shared template plu... | — |
 | [openapi-to-application-code](openapi-to-application-code/SKILL.md) | Generate a complete, production-ready application from an OpenAPI specification | — |
-| [playwright-automation-fill-in-form](playwright-automation-fill-in-form/SKILL.md) | Automate filling in a form using Playwright MCP | — |
-| [playwright-explore-website](playwright-explore-website/SKILL.md) | Website exploration for testing using Playwright MCP | — |
-| [playwright-generate-test](playwright-generate-test/SKILL.md) | Generate a Playwright test based on a scenario using Playwright MCP | — |
 | [premium-frontend-ui](premium-frontend-ui/SKILL.md) | A comprehensive guide for GitHub Copilot to craft immersive, high-performance web experiences wit... | — |
-| [readme-blueprint-generator](readme-blueprint-generator/SKILL.md) | Intelligent README.md generation prompt that analyzes project documentation structure and creates... | — |
-| [refactor](refactor/SKILL.md) | Surgical code refactoring to improve maintainability without changing behavior. Covers extracting... | — |
 | [refactor-plan](refactor-plan/SKILL.md) | Create a concrete plan before starting a multi-file refactor. Use when the user asks to plan, seq... | — |
-| [refactoring-best-practices](refactoring-best-practices/SKILL.md) | Safe refactoring guidance for legacy and existing codebases. Use when improving design without ch... | 1.0.0 |
+| [refactoring-best-practices](refactoring-best-practices/SKILL.md) | Safe refactoring guidance for legacy and existing codebases. Use when improving design without ch... | 1.1.0 |
 | [rest-api-best-practices](rest-api-best-practices/SKILL.md) | REST API design guidance. Use when designing or reviewing REST endpoints, choosing HTTP methods a... | 1.0.0 |
-| [review-and-refactor](review-and-refactor/SKILL.md) | Review and refactor code in your project according to defined instructions | — |
 | [scoutqa-test](scoutqa-test/SKILL.md) | This skill should be used when the user asks to "test this website", "run exploratory testing", "... | — |
 | [secret-scanning](secret-scanning/SKILL.md) | Guide for configuring and managing GitHub secret scanning, push protection, custom patterns, and ... | — |
 | [secrets-management](secrets-management/SKILL.md) | Handles credentials safely through their whole life — where they live, how code gets them, how th... | — |
@@ -107,6 +98,7 @@ A family of 107 community-originated skills spanning codebase discovery, archite
 | [security-review](security-review/SKILL.md) | AI-powered codebase security scanner that reasons about code like a security researcher — tracing... | — |
 | [skill-creator](skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill performance. Use when us... | — |
 | [software-architecture-analysis](software-architecture-analysis/SKILL.md) | Use this skill to reverse-engineer an existing software system, map its | — |
+| [specification-authoring](specification-authoring/SKILL.md) | Create or update a structured solution specification with explicit requirements, interfaces, acce... | 1.0.0 |
 | [sql-code-review](sql-code-review/SKILL.md) | Universal SQL code review assistant that performs comprehensive security, maintainability, and co... | — |
 | [sql-optimization](sql-optimization/SKILL.md) | Universal SQL performance optimization assistant for comprehensive query tuning, indexing strateg... | — |
 | [sql-server-table-reconciliation](sql-server-table-reconciliation/SKILL.md) | Use when: comparing SQL Server tables across instances, data migration validation, ETL verificati... | — |
@@ -117,13 +109,11 @@ A family of 107 community-originated skills spanning codebase discovery, archite
 | [threat-modeling](threat-modeling/SKILL.md) | Works out what could go wrong in a system's design before it is built — who would attack it, how,... | — |
 | [tm7-threat-model](tm7-threat-model/SKILL.md) | Creates valid Microsoft Threat Modeling Tool (.tm7) files compatible with the Microsoft Threat Mo... | — |
 | [unit-testing](unit-testing/SKILL.md) | Writes unit tests for code that already exists — choosing what deserves a test, what the cases ar... | — |
-| [update-specification](update-specification/SKILL.md) | Update an existing specification file for the solution, optimized for Generative AI consumption b... | — |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | React and Next.js performance optimization guidelines from Vercel Engineering. This skill should ... | 1.0.0 |
 | [vercel-react-native-skills](vercel-react-native-skills/SKILL.md) | React Native and Expo best practices for building performant mobile apps. Use when building React... | 1.0.0 |
 | [web-artifacts-builder](web-artifacts-builder/SKILL.md) | Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern fron... | — |
 | [web-design-guidelines](web-design-guidelines/SKILL.md) | Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check ... | 1.0.0 |
 | [web-design-reviewer](web-design-reviewer/SKILL.md) | This skill enables visual inspection of websites running locally or remotely to identify and fix ... | — |
-| [webapp-testing](webapp-testing/SKILL.md) | Toolkit for interacting with and testing local web applications using Playwright. Supports verify... | — |
 | [workflow-analysis-blueprint](workflow-analysis-blueprint/SKILL.md) | Comprehensive technology-agnostic prompt generator for documenting end-to-end application workflo... | — |
 | [write-coding-standards-from-file](write-coding-standards-from-file/SKILL.md) | Write a coding standards document for a project using the coding styles from the file(s) and/or f... | — |
 <!-- FAMILY_INVENTORY_END -->

@@ -1,5 +1,10 @@
 # Community skill sources
 
+This ledger preserves acquisition identities. For packages subsequently consolidated,
+use [the redundancy audit](../docs/skill-redundancy-audit-2026-09-19.md) and
+[migration registry](../docs/skill-migrations.json) for current replacements;
+the original upstream files remain archived with their attribution and hashes.
+
 This manifest records public community skill packages imported into this
 repository for study and composition. Imported packages are preserved as
 upstream material unless a separate, reviewable adaptation is created. Their

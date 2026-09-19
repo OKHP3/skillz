@@ -15,6 +15,7 @@ import { join, dirname, relative, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { computeCapabilities } from './capabilities.mjs';
+import { readSkillMigrations, validateMigrationCatalog } from '../../../scripts/skill-migrations.mjs';
 
 // An explicit author choice omits only attribution links, never provenance/scope.
 export function attributionLinksOmitted(value) {
@@ -186,7 +187,12 @@ function getGitRef() {
 // HEAD. Git log cannot follow that index-only rename yet, so consult the
 // staged rename source as a provenance-preserving fallback. This is only used
 // when the current path has no history; it never substitutes the deploy commit.
+// Capture one index snapshot per process. Recomputing the complete rename diff
+// for both dates of every skill is expensive during a large archive migration.
+let stagedRenameSources;
 function getStagedRenameSource(relPath) {
+  if (stagedRenameSources) return stagedRenameSources.get(relPath) ?? null;
+  stagedRenameSources = new Map();
   try {
     const lines = execSync(
       'git diff --cached --name-status --find-renames=50% --',
@@ -194,14 +200,14 @@ function getStagedRenameSource(relPath) {
     ).trim().split('\n').filter(Boolean);
     for (const line of lines) {
       const fields = line.split('\t');
-      if (fields.length >= 3 && fields[0].startsWith('R') && fields[2] === relPath) {
-        return fields[1];
+      if (fields.length >= 3 && fields[0].startsWith('R')) {
+        stagedRenameSources.set(fields[2], fields[1]);
       }
     }
   } catch {
     // A clean checkout or non-Git export has no staged rename to inspect.
   }
-  return null;
+  return stagedRenameSources.get(relPath) ?? null;
 }
 
 function gitPathCandidates(relPath) {
@@ -916,19 +922,19 @@ function deriveMaturity(meta, body) {
 
 // ─── Walk repo ────────────────────────────────────────────────────────────────
 
-export function findSkillFiles(dir, depth = 0) {
+export function findSkillFiles(dir, depth = 0, sourceFs = { readdirSync, lstatSync, existsSync }) {
   if (depth > 3) return [];
   const skills = [];
   let entries;
   try {
-    entries = readdirSync(dir);
+    entries = sourceFs.readdirSync(dir);
   } catch { return []; }
 
   for (const entry of entries) {
     if (entry.startsWith('.')) continue;
     const fullPath = join(dir, entry);
     let stat;
-    try { stat = lstatSync(fullPath); } catch { continue; }
+    try { stat = sourceFs.lstatSync(fullPath); } catch { continue; }
     // Host installation links are not distribution source. Never follow them
     // into another checkout, a duplicate family, or a cycle.
     if (stat.isSymbolicLink()) continue;
@@ -938,9 +944,9 @@ export function findSkillFiles(dir, depth = 0) {
         // A top-level directory is only a real "family" if it declares itself
         // as one with a FAMILY.md. This keeps stray/staging folders (e.g. a
         // loose "skills/" scratch dir) from leaking into the family filter.
-        if (SKIP_DIRS.has(entry) || !existsSync(join(fullPath, 'FAMILY.md'))) continue;
+        if (SKIP_DIRS.has(entry) || !sourceFs.existsSync(join(fullPath, 'FAMILY.md'))) continue;
       }
-      skills.push(...findSkillFiles(fullPath, depth + 1));
+      skills.push(...findSkillFiles(fullPath, depth + 1, sourceFs));
     } else if (entry === 'SKILL.md') {
       skills.push(fullPath);
     }
@@ -1375,6 +1381,14 @@ function buildFamilyOrientation(familySlug, familySkills) {
     skills,
   };
 
+  const migrations = readSkillMigrations(REPO_ROOT);
+  validateMigrationCatalog(migrations, skills);
+  for (const migration of migrations) {
+    if (migration.profile && !existsSync(join(REPO_ROOT, migration.to.family, migration.to.name, migration.profile.path))) {
+      throw new Error(`Missing bundled migration profile: ${migration.from.name}`);
+    }
+  }
+
   mkdirSync(dirname(OUTPUT), { recursive: true });
   writeFileSync(OUTPUT, JSON.stringify(catalog, null, 2), 'utf-8');
   console.log(`✓ Written: ${OUTPUT}`);
@@ -1410,6 +1424,15 @@ function buildFamilyOrientation(familySlug, familySkills) {
 // they were hand-edited. Regenerate them here, from the same `catalog`
 // object just written, every build — so the manifest can never again claim
 // a count the catalog doesn't back.
+export function syncManifestFamilies(manifest, catalog) {
+  const prior = new Map((manifest.families ?? []).map(family => [family.name, family]));
+  return catalog.families.map(family => ({
+    ...prior.get(family.name),
+    name: family.name,
+    skills: catalog.skills.filter(skill => skill.family === family.name).map(skill => skill.name).sort(),
+  }));
+}
+
 function syncManifestCounts(catalog) {
   if (!existsSync(MANIFEST_PATH)) {
     console.warn(`[catalog warn] ${MANIFEST_PATH} not found — skipping manifest count sync.`);
@@ -1430,6 +1453,8 @@ function syncManifestCounts(catalog) {
   // from the same catalog so it cannot contradict `distributionFamilyCount`.
   manifest.activeFamilyCount = catalog.familyCount;
   manifest.distributionFamilyCount = catalog.familyCount;
+  manifest.families = syncManifestFamilies(manifest, catalog);
+  manifest.placeholderFamilyCount = 0;
   manifest.maturityCounts = maturityCounts;
   manifest.evidenceStatusCounts = evidenceStatusCounts;
   const supportRoot = join(REPO_ROOT, '.agents', 'skills');

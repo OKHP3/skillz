@@ -1,0 +1,2 @@
+# Historical source bytes are preserved without line-ending conversion.
+** -text whitespace=cr-at-eol

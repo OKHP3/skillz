@@ -222,7 +222,7 @@ export const STACKS: Stack[] = [
           'okhp3-thread-extract-claude',
           'okhp3-thread-extract-copilot-m365',
           'okhp3-thread-extract-gemini',
-          'okhp3-thread-context-extraction-grok',
+          'okhp3-thread-extract-grok',
           'okhp3-thread-extract-mistral-vibe',
           'okhp3-thread-extract-perplexity',
         ],
@@ -233,7 +233,7 @@ export const STACKS: Stack[] = [
       },
       {
         label: 'Route and Reconcile',
-        skillNames: ['okhp3-notion-capture-router', 'okhp3-foundry-repo-creator'],
+        skillNames: ['okhp3-notion-capture-router', 'okhp3-repository-creator'],
         purpose: 'Classify and deduplicate the extract, route reusable knowledge into Notion, and migrate durable capabilities into governed GitHub repositories when appropriate.',
         inputs: 'Validated context extract, destination anchors, and repository context',
         outputs: 'Routed knowledge, duplicate/new assessment, or a governed child-repository handoff',

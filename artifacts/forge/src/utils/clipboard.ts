@@ -1,5 +1,6 @@
 import type { Skill } from '../types/catalog';
 import type { FavoriteOutcome, ShareOutcome } from './feedback';
+import { canonicalSkillNames, skillMigration } from './skillMigrations';
 
 /** Canonical public base for share URLs — always points to the live site */
 const FORGE_CANONICAL = 'https://okhp3.github.io/skillz';
@@ -58,8 +59,11 @@ export async function copyRawUrl(skill: Skill): Promise<boolean> {
   return copyToClipboard(skill.rawUrl);
 }
 
-export async function shareSkill(skill: Skill): Promise<ShareOutcome> {
-  const url = buildShareUrl(`/skills/${skill.family}/${skill.name}`);
+export async function shareSkill(skill: Skill, migratedFrom?: string): Promise<ShareOutcome> {
+  const migration = migratedFrom ? skillMigration(migratedFrom) : undefined;
+  const preserveContext = migration?.context && migration.to.family === skill.family && migration.to.name === skill.name;
+  const search = preserveContext ? `?${new URLSearchParams({ from: migratedFrom! })}` : '';
+  const url = buildShareUrl(`/skills/${skill.family}/${skill.name}${search}`);
   const shareData = {
     title: `${skill.name} — Skillz Forge`,
     text: skill.description || `${skill.name} — reusable agent skill`,
@@ -121,7 +125,10 @@ export function useFavorites() {
   function getFavorites(): string[] {
     try {
       const raw = localStorage.getItem(FAVORITES_KEY);
-      return raw ? JSON.parse(raw) : [];
+      const parsed: unknown = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed)
+        ? canonicalSkillNames(parsed.filter((item): item is string => typeof item === 'string'))
+        : [];
     } catch {
       return [];
     }

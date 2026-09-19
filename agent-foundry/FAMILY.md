@@ -3,7 +3,7 @@ family: agent-foundry
 display_name: Agent Foundry
 skill_count: 3
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-13T00:03:20Z
+generated_at: 2026-09-19T23:26:42Z
 ---
 
 # agent-foundry
@@ -16,7 +16,7 @@ The family keeps platform-specific behavior explicit while preserving reusable p
 
 - `okhp3-custom-gpt-readiness`: assess whether an incomplete Custom GPT concept is ready for build.
 - `okhp3-custom-gpt-builder`: design, build, test, and maintain production-quality Custom GPTs.
-- `okhp3-custom-gpt-skill-conversion-planner`: plan conversion of a configured Custom GPT into a portable Agent Skill.
+- `okhp3-gpt-skill-conversion-plan`: plan conversion of a configured Custom GPT into a portable Agent Skill.
 
 Future agent-platform skills should join this family when they govern the creation, assessment, migration, or lifecycle management of an AI agent rather than a general integration or downstream artifact.
 
@@ -27,7 +27,7 @@ The agent-foundry family covers the creation, readiness assessment, and portabil
 ## Skills (3)
 
 <!-- FAMILY_INVENTORY_START -->
-*3 skills &nbsp;·&nbsp; inventory last updated: **September 13, 2026 at 00:03 UTC***
+*3 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

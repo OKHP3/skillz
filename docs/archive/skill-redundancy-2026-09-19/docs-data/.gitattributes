@@ -1,0 +1,2 @@
+# Historical Windows working-copy bytes are deliberately preserved.
+originals/** -text whitespace=cr-at-eol

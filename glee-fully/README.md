@@ -19,3 +19,29 @@ does not count as a converted consumer Tool or Tool-ette.
 ## Do not
 
 Do not scaffold 7 evenly-sized sub-directories as a default. The count is a discovery, not a target.
+
+## Shared workflows and Glee-fully profiles
+
+The seven former Glee-fully workflow copies were consolidated on 2026-09-19.
+Use the shared skill with its bundled Glee-fully profile only for a confirmed
+Glee-fully target. Each profile ships inside its shared package, so standalone
+installation preserves the brand guidance without maintaining a second workflow.
+
+| Task | Shared skill | Optional profile |
+|---|---|---|
+| General thread extraction | [okhp3-thread-context-extraction](../context-extraction/okhp3-thread-context-extraction/SKILL.md) | [Glee-fully profile](../context-extraction/okhp3-thread-context-extraction/references/brand-profiles/glee-fully.md) |
+| ChatGPT extraction | [okhp3-thread-extract-chatgpt](../context-extraction/okhp3-thread-extract-chatgpt/SKILL.md) | [Glee-fully profile](../context-extraction/okhp3-thread-extract-chatgpt/references/brand-profiles/glee-fully.md) |
+| Claude extraction | [okhp3-thread-extract-claude](../context-extraction/okhp3-thread-extract-claude/SKILL.md) | [Glee-fully profile](../context-extraction/okhp3-thread-extract-claude/references/brand-profiles/glee-fully.md) |
+| ChatGPT project migration | [okhp3-chatgpt-project-migration](../context-extraction/okhp3-chatgpt-project-migration/SKILL.md) | [Glee-fully profile](../context-extraction/okhp3-chatgpt-project-migration/references/brand-profiles/glee-fully.md) |
+| Repository organization | [okhp3-repository-organizer](../universal/okhp3-repository-organizer/SKILL.md) | [Glee-fully profile](../universal/okhp3-repository-organizer/references/brand-profiles/glee-fully.md) |
+| Repository creation | [okhp3-repository-creator](../universal/okhp3-repository-creator/SKILL.md) | [Glee-fully profile](../universal/okhp3-repository-creator/references/brand-profiles/glee-fully.md) |
+| Style registration and application | [okhp3-brand-style-registry](../universal/okhp3-brand-style-registry/SKILL.md) | [Glee-fully profile](../universal/okhp3-brand-style-registry/references/brand-profiles/glee-fully.md) |
+
+The brand-specific GPT readiness and builder packages remain active because
+they add distinct domain gates and evaluation cases. The brand styling package
+also remains active with its approved profile and accessibility requirements.
+The Glee-fully Foundry and repository standardizer remain active for hierarchy,
+Persona Density, canon review, and tier-specific executable scaffolding.
+
+See the [archived originals and recovery record](../docs/archive/skill-redundancy-2026-09-19/brands/README.md).
+The README-only old locations are compatibility pointers, not additional skills.

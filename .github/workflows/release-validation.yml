@@ -11,6 +11,11 @@ on:
       - "LICENSE"
       - "scripts/verify-archive-links.mjs"
       - "scripts/verify-archive-links.test.mjs"
+      - "scripts/verify-skill-archives.py"
+      - "scripts/test_skill_archives.py"
+      - "docs/skill-migrations.json"
+      - "scripts/skill-migrations.mjs"
+      - "scripts/skill-migrations.test.mjs"
       - ".agents/skills/publish-health-check/**"
       - "package.json"
       - "pnpm-lock.yaml"
@@ -25,7 +30,7 @@ on:
       - ".github/node-version"
       - "mermaid/okhp3-universe-map/**"
       - "universal/okhp3-repository-janitor/**"
-      - "universal/okhp3-repo-settings/**"
+      - "universal/okhp3-repository-settings/**"
       - "universal/okhp3-github-notification-maintainer/**"
       - "universal/okhp3-github-mirror-janitor/**"
   push:
@@ -40,6 +45,11 @@ on:
       - "LICENSE"
       - "scripts/verify-archive-links.mjs"
       - "scripts/verify-archive-links.test.mjs"
+      - "scripts/verify-skill-archives.py"
+      - "scripts/test_skill_archives.py"
+      - "docs/skill-migrations.json"
+      - "scripts/skill-migrations.mjs"
+      - "scripts/skill-migrations.test.mjs"
       - ".agents/skills/publish-health-check/**"
       - "package.json"
       - "pnpm-lock.yaml"
@@ -54,7 +64,7 @@ on:
       - ".github/node-version"
       - "mermaid/okhp3-universe-map/**"
       - "universal/okhp3-repository-janitor/**"
-      - "universal/okhp3-repo-settings/**"
+      - "universal/okhp3-repository-settings/**"
       - "universal/okhp3-github-notification-maintainer/**"
       - "universal/okhp3-github-mirror-janitor/**"
   workflow_dispatch:
@@ -77,8 +87,8 @@ jobs:
       - name: Validate portable package and Python safety checks
         run: |
           python3 -c 'import sys; assert sys.version_info >= (3, 12)'
-          python3 -B -m unittest discover -s universal/okhp3-repo-settings/tests -v
-          node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root universal/okhp3-repo-settings
+          python3 -B -m unittest discover -s universal/okhp3-repository-settings/tests -v
+          node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root universal/okhp3-repository-settings
       - name: Build and test catalog contracts
         run: |
           node artifacts/forge/scripts/build-catalog.js
@@ -135,8 +145,13 @@ jobs:
       - name: Verify archived README destinations
         run: node scripts/verify-archive-links.mjs
 
+      - name: Verify preserved cleanup payloads
+        run: |
+          python3 scripts/verify-skill-archives.py
+          python3 -m unittest discover -s scripts -p test_skill_archives.py
+
       - name: Exercise archive-link failure boundaries
-        run: node --test scripts/verify-archive-links.test.mjs
+        run: node --test scripts/verify-archive-links.test.mjs scripts/skill-migrations.test.mjs
 
   publish-health-debounce:
     name: Check publish-health debounce contract

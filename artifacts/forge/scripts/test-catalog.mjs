@@ -29,7 +29,9 @@ import {
   pruneSkillDetailFiles,
   reportUnresolvedCompanionReferences,
   validateApprovedCompanionReferences,
+  syncManifestFamilies,
 } from './build-catalog.js';
+import { readSkillMigrations, validateMigrationCatalog } from '../../../scripts/skill-migrations.mjs';
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 import './test-attribution-policy.mjs';
 import './test-catalog-discovery.mjs';
@@ -155,6 +157,29 @@ test('manifest distributionFamilyCount matches catalog family count', () => {
 test('manifest activeFamilyCount matches catalog family count', () => {
   assert(manifest.activeFamilyCount === catalog.families.length,
     `manifest.activeFamilyCount=${manifest.activeFamilyCount} !== ${catalog.families.length}`);
+});
+
+test('manifest family membership matches every canonical catalog skill', () => {
+  assert(JSON.stringify(manifest.families) === JSON.stringify(syncManifestFamilies(manifest, catalog)),
+    'Manifest family membership differs from the generated canonical catalog');
+});
+
+test('manifest family synchronization removes stale members and preserves authored metadata', () => {
+  const result = syncManifestFamilies({ families: [
+    { name: 'universal', status: 'draftable', note: 'Retain this note', skills: ['old'] },
+    { name: 'retired-family', skills: ['retired'] },
+  ] }, {
+    families: [{ name: 'universal' }, { name: 'replit' }],
+    skills: [{ family: 'universal', name: 'current' }, { family: 'replit', name: 'janitor' }],
+  });
+  assert(JSON.stringify(result) === JSON.stringify([
+    { name: 'universal', status: 'draftable', note: 'Retain this note', skills: ['current'] },
+    { name: 'replit', skills: ['janitor'] },
+  ]), 'Family sync must derive membership and preserve existing family metadata');
+});
+
+test('every migration resolves to one current skill and creates no installable alias', () => {
+  validateMigrationCatalog(readSkillMigrations(REPO_ROOT), catalog.skills);
 });
 
 // 5. Vocabulary reconciliation: v1 evidenceStatus and v2 evidence.status use

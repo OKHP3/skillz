@@ -1,0 +1,429 @@
+{
+  "schemaVersion": 1,
+  "migrations": [
+    {
+      "from": {
+        "family": "context-extraction",
+        "name": "okhp3-thread-context-extraction-grok"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-thread-extract-grok"
+      },
+      "reason": "Use the common platform thread-extraction naming pattern."
+    },
+    {
+      "from": {
+        "family": "universal",
+        "name": "okhp3-repo-settings"
+      },
+      "to": {
+        "family": "universal",
+        "name": "okhp3-repository-settings"
+      },
+      "reason": "Use the full repository term consistently across maintenance skills."
+    },
+    {
+      "from": {
+        "family": "universal",
+        "name": "okhp3-foundry-repo-creator"
+      },
+      "to": {
+        "family": "universal",
+        "name": "okhp3-repository-creator"
+      },
+      "reason": "Use the full repository term in the portable package name."
+    },
+    {
+      "from": {
+        "family": "universal",
+        "name": "okhp3-repl-repo-janitor"
+      },
+      "to": {
+        "family": "replit",
+        "name": "okhp3-replit-repository-janitor"
+      },
+      "reason": "Use the Replit host family and the full repository term."
+    },
+    {
+      "from": {
+        "family": "replit",
+        "name": "okhp3-replit-repl-janitor"
+      },
+      "to": {
+        "family": "replit",
+        "name": "okhp3-replit-repository-janitor"
+      },
+      "reason": "Consolidate the successor janitor under the canonical repository name."
+    },
+    {
+      "from": {
+        "family": "universal",
+        "name": "sp-build-auditor"
+      },
+      "to": {
+        "family": "copilot",
+        "name": "okhp3-sharepoint-content-auditor"
+      },
+      "reason": "Identify the SharePoint host and place its audit workflow in the host family."
+    },
+    {
+      "from": {
+        "family": "universal",
+        "name": "sp-list-architect"
+      },
+      "to": {
+        "family": "copilot",
+        "name": "okhp3-sharepoint-list-schema-design"
+      },
+      "reason": "Identify the SharePoint list schema workflow in the host family."
+    },
+    {
+      "from": {
+        "family": "askjamie",
+        "name": "okhp3-askjamie-thread-context"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-thread-context-extraction"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "AskJamie",
+        "path": "references/brand-profiles/askjamie.md"
+      },
+      "context": "Use the AskJamie profile bundled at references/brand-profiles/askjamie.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "askjamie",
+        "name": "okhp3-askjamie-extract-chatgpt"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-thread-extract-chatgpt"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "AskJamie",
+        "path": "references/brand-profiles/askjamie.md"
+      },
+      "context": "Use the AskJamie profile bundled at references/brand-profiles/askjamie.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "askjamie",
+        "name": "okhp3-askjamie-extract-claude"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-thread-extract-claude"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "AskJamie",
+        "path": "references/brand-profiles/askjamie.md"
+      },
+      "context": "Use the AskJamie profile bundled at references/brand-profiles/askjamie.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "askjamie",
+        "name": "okhp3-askjamie-chatgpt-migrate"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-chatgpt-project-migration"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "AskJamie",
+        "path": "references/brand-profiles/askjamie.md"
+      },
+      "context": "Use the AskJamie profile bundled at references/brand-profiles/askjamie.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "askjamie",
+        "name": "okhp3-askjamie-repo-organizer"
+      },
+      "to": {
+        "family": "universal",
+        "name": "okhp3-repository-organizer"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "AskJamie",
+        "path": "references/brand-profiles/askjamie.md"
+      },
+      "context": "Use the AskJamie profile bundled at references/brand-profiles/askjamie.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "askjamie",
+        "name": "okhp3-askjamie-repo-creator"
+      },
+      "to": {
+        "family": "universal",
+        "name": "okhp3-repository-creator"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "AskJamie",
+        "path": "references/brand-profiles/askjamie.md"
+      },
+      "context": "Use the AskJamie profile bundled at references/brand-profiles/askjamie.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "askjamie",
+        "name": "okhp3-askjamie-style-registry"
+      },
+      "to": {
+        "family": "universal",
+        "name": "okhp3-brand-style-registry"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "AskJamie",
+        "path": "references/brand-profiles/askjamie.md"
+      },
+      "context": "Use the AskJamie profile bundled at references/brand-profiles/askjamie.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "glee-fully",
+        "name": "okhp3-glee-fully-thread-context"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-thread-context-extraction"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "Glee-fully",
+        "path": "references/brand-profiles/glee-fully.md"
+      },
+      "context": "Use the Glee-fully profile bundled at references/brand-profiles/glee-fully.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "glee-fully",
+        "name": "okhp3-glee-fully-extract-chatgpt"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-thread-extract-chatgpt"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "Glee-fully",
+        "path": "references/brand-profiles/glee-fully.md"
+      },
+      "context": "Use the Glee-fully profile bundled at references/brand-profiles/glee-fully.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "glee-fully",
+        "name": "okhp3-glee-fully-extract-claude"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-thread-extract-claude"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "Glee-fully",
+        "path": "references/brand-profiles/glee-fully.md"
+      },
+      "context": "Use the Glee-fully profile bundled at references/brand-profiles/glee-fully.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "glee-fully",
+        "name": "okhp3-glee-fully-chatgpt-migrate"
+      },
+      "to": {
+        "family": "context-extraction",
+        "name": "okhp3-chatgpt-project-migration"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "Glee-fully",
+        "path": "references/brand-profiles/glee-fully.md"
+      },
+      "context": "Use the Glee-fully profile bundled at references/brand-profiles/glee-fully.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "glee-fully",
+        "name": "okhp3-glee-fully-repo-organizer"
+      },
+      "to": {
+        "family": "universal",
+        "name": "okhp3-repository-organizer"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "Glee-fully",
+        "path": "references/brand-profiles/glee-fully.md"
+      },
+      "context": "Use the Glee-fully profile bundled at references/brand-profiles/glee-fully.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "glee-fully",
+        "name": "okhp3-glee-fully-repo-creator"
+      },
+      "to": {
+        "family": "universal",
+        "name": "okhp3-repository-creator"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "Glee-fully",
+        "path": "references/brand-profiles/glee-fully.md"
+      },
+      "context": "Use the Glee-fully profile bundled at references/brand-profiles/glee-fully.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "glee-fully",
+        "name": "okhp3-glee-fully-style-registry"
+      },
+      "to": {
+        "family": "universal",
+        "name": "okhp3-brand-style-registry"
+      },
+      "reason": "Replace duplicated workflow with the shared contract and bundled optional brand profile.",
+      "profile": {
+        "label": "Glee-fully",
+        "path": "references/brand-profiles/glee-fully.md"
+      },
+      "context": "Use the Glee-fully profile bundled at references/brand-profiles/glee-fully.md. Do not apply it to unrelated brands."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "review-and-refactor"
+      },
+      "to": {
+        "family": "community",
+        "name": "refactoring-best-practices"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "refactor"
+      },
+      "to": {
+        "family": "community",
+        "name": "refactoring-best-practices"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "playwright-explore-website"
+      },
+      "to": {
+        "family": "community",
+        "name": "browser-testing"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "playwright-generate-test"
+      },
+      "to": {
+        "family": "community",
+        "name": "browser-testing"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "playwright-automation-fill-in-form"
+      },
+      "to": {
+        "family": "community",
+        "name": "browser-testing"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "webapp-testing"
+      },
+      "to": {
+        "family": "community",
+        "name": "browser-testing"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "create-readme"
+      },
+      "to": {
+        "family": "community",
+        "name": "markdown-docs"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "readme-blueprint-generator"
+      },
+      "to": {
+        "family": "community",
+        "name": "markdown-docs"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "data-migration"
+      },
+      "to": {
+        "family": "community",
+        "name": "data-migration-best-practices"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "create-specification"
+      },
+      "to": {
+        "family": "community",
+        "name": "specification-authoring"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package.",
+      "context": "Use create mode; preserve existing specification identity in update mode."
+    },
+    {
+      "from": {
+        "family": "community",
+        "name": "update-specification"
+      },
+      "to": {
+        "family": "community",
+        "name": "specification-authoring"
+      },
+      "reason": "Consolidate overlapping instructions while retaining distinct useful guidance in the canonical package.",
+      "context": "Use update mode; preserve existing specification identity in update mode."
+    }
+  ]
+}

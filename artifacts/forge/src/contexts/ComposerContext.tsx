@@ -5,7 +5,7 @@ interface ComposerContextValue {
   items: ComposerItem[];
   isInStack: (name: string) => boolean;
   canAdd: boolean;
-  addItem: (name: string) => void;
+  addItem: (name: string, context?: string) => void;
   removeItem: (name: string) => void;
   toggleOptional: (name: string) => void;
   setNote: (name: string, note: string) => void;
@@ -22,6 +22,24 @@ interface ComposerContextValue {
 
 const ComposerContext = createContext<ComposerContextValue | null>(null);
 
+export function hasComposerContext(note: string, context: string): boolean {
+  return note.split(/\r?\n\s*\r?\n/).some(paragraph => paragraph.trim() === context.trim());
+}
+
+/** Add guidance without replacing a visitor's notes, flags, or item order. */
+export function addComposerItem(items: ComposerItem[], name: string, context = ''): ComposerItem[] {
+  const guidance = context.trim();
+  const existing = items.find(item => item.name === name);
+  if (existing) {
+    if (!guidance || hasComposerContext(existing.note, guidance)) return items;
+    return items.map(item => item === existing
+      ? { ...item, note: item.note ? `${item.note}\n\n${guidance}` : guidance }
+      : item);
+  }
+  if (items.length >= COMPOSER_MAX_ITEMS) return items;
+  return [...items, { name, optional: false, note: guidance }];
+}
+
 export function ComposerProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<ComposerItem[]>(() => loadComposerState());
   const [announcement, setAnnouncement] = useState('');
@@ -30,14 +48,14 @@ export function ComposerProvider({ children }: { children: ReactNode }) {
   const canAdd = items.length < COMPOSER_MAX_ITEMS;
   const announce = useCallback((message: string) => setAnnouncement(message), []);
 
-  const addItem = useCallback((name: string) => {
+  const addItem = useCallback((name: string, context?: string) => {
     setItems(prev => {
-      if (prev.some(i => i.name === name) || prev.length >= COMPOSER_MAX_ITEMS) return prev;
-      const next = [...prev, { name, optional: false, note: '' }];
+      const next = addComposerItem(prev, name, context);
+      if (next === prev) return prev;
       saveComposerState(next);
       return next;
     });
-    setAnnouncement(`${name} added to stack.`);
+    setAnnouncement(context ? `${name} and its guidance are in your stack.` : `${name} added to stack.`);
   }, []);
 
   const removeItem = useCallback((name: string) => {

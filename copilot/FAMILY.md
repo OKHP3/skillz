@@ -1,9 +1,9 @@
 ---
 family: copilot
 display_name: Copilot Agent Skills
-skill_count: 40
+skill_count: 42
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-13T00:03:20Z
+generated_at: 2026-09-19T23:26:42Z
 ---
 
 # copilot
@@ -136,10 +136,10 @@ skills. It does not yet have live host discovery, tenant, or benchmark evidence.
 Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilot, Copilot Studio, and other verified Copilot runtimes.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (40)
+## Skills (42)
 
 <!-- FAMILY_INVENTORY_START -->
-*40 skills &nbsp;·&nbsp; inventory last updated: **September 13, 2026 at 00:03 UTC***
+*42 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -158,6 +158,7 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 | [okhp3-cowork-stakeholder-update](okhp3-cowork-stakeholder-update/SKILL.md) | Draft a source-grounded stakeholder update for review from an agreed project, time window, and au... | 1.1.0 |
 | [okhp3-cowork-weekly-review](okhp3-cowork-weekly-review/SKILL.md) | Create a personal weekly review from an agreed Microsoft 365 work window. Use when summarizing co... | 1.1.0 |
 | [okhp3-github-skill-foundry](okhp3-github-skill-foundry/SKILL.md) | Design, author, evaluate, and install-plan a task-focused GitHub Copilot Agent Skill. Use when cr... | 1.1.0 |
+| [okhp3-sharepoint-content-auditor](okhp3-sharepoint-content-auditor/SKILL.md) | OverKill Hill P³ SharePoint List build screenshot auditor. Use when reviewing screenshots of Shar... | 1.1.0 |
 | [okhp3-sharepoint-library-accessibility-review](okhp3-sharepoint-library-accessibility-review/SKILL.md) | Review selected SharePoint library documents for supplied accessibility and structure checks, the... | 1.1.0 |
 | [okhp3-sharepoint-library-article-curator](okhp3-sharepoint-library-article-curator/SKILL.md) | Curate selected SharePoint document-library articles into a reviewable collection with titles, su... | 1.1.0 |
 | [okhp3-sharepoint-library-canonical-source-finder](okhp3-sharepoint-library-canonical-source-finder/SKILL.md) | Find likely canonical SharePoint library documents among selected related files and report stale ... | 1.1.0 |
@@ -179,6 +180,7 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 | [okhp3-sharepoint-list-portfolio-health-brief](okhp3-sharepoint-list-portfolio-health-brief/SKILL.md) | Create a cited portfolio-health brief from supplied SharePoint List fields and owner-approved hea... | 1.1.0 |
 | [okhp3-sharepoint-list-request-triage](okhp3-sharepoint-list-request-triage/SKILL.md) | Triage SharePoint List requests into a transparent review queue using supplied routing rules. Use... | 1.1.0 |
 | [okhp3-sharepoint-list-risk-issue-review](okhp3-sharepoint-list-risk-issue-review/SKILL.md) | Review a SharePoint List of risks or issues into a ranked, evidence-led exception view. Use when ... | 1.1.0 |
+| [okhp3-sharepoint-list-schema-design](okhp3-sharepoint-list-schema-design/SKILL.md) | OverKill Hill P³ SharePoint List database architecture reviewer. Use when designing, reviewing, o... | 1.1.0 |
 | [okhp3-sharepoint-list-schema-view-review](okhp3-sharepoint-list-schema-view-review/SKILL.md) | Review a SharePoint List schema, views, indexes, and visible configuration against supplied desig... | 1.1.0 |
 | [okhp3-sharepoint-list-sla-breach-watchlist](okhp3-sharepoint-list-sla-breach-watchlist/SKILL.md) | Produce a SharePoint List SLA exception watchlist from supplied status, due-date, and service-tar... | 1.1.0 |
 | [okhp3-sharepoint-list-vendor-obligation-review](okhp3-sharepoint-list-vendor-obligation-review/SKILL.md) | Review a SharePoint List of vendors or obligations for supplied expiry, ownership, and compliance... | 1.1.0 |
