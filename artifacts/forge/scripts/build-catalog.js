@@ -766,7 +766,7 @@ function getApprovedCompanionRegistryReport(
   );
 
   return [...approvedReferences.entries()]
-    .sort(([left], [right]) => left.localeCompare(right))
+    .sort(([left], [right]) => (left < right ? -1 : left > right ? 1 : 0))
     .map(([reference, approval]) => {
       const separator = reference.indexOf('::');
       const sourcePath = separator >= 0 ? reference.slice(0, separator) : reference;
