@@ -5,11 +5,12 @@
   "decision_question": "Publish the external-executor workflow as draftable v0.1.0 with explicit analytical limits?",
   "candidate": {
     "skill_version": "0.1.0",
-    "package_hash": "fda5a9833885f2e30508d6c4355fbc527c77783175643da26f8b55f67f9f41f4",
+    "package_hash": "dd9fdd5c0b8832bc1ff2b531917fe0fe26391eb0b23a812fd7be0af11ebf68ac",
     "hash_algorithm": "SHA-256 of sorted relative POSIX path + NUL + lowercase file SHA-256 + LF",
     "source_ledger": "../replit/okhp3-replit-task-executor/references/replit-semantics.md",
     "original_skill_sha256": "f7b6089b061179768811e9fa0b69ecee8c0c28a6f570c54da094908269a37738",
-    "revised_skill_sha256": "2d0bacb0141fa19a1346b70bece0720a5fcc91bed6a2d7f9d0628b10305526d8"
+    "revised_skill_sha256": "2bbc937c48e6c455cbbe82da4b765610c79ba12860e2cbe57de26ceca519f149",
+    "intermediate_reviewed_skill_sha256": "2d0bacb0141fa19a1346b70bece0720a5fcc91bed6a2d7f9d0628b10305526d8"
   },
   "independence": {
     "reviewer_contexts_separated": true,
@@ -110,7 +111,8 @@
     "Require whole-project publication scope and add multi-artifact-publish, bringing the visible development set to eight.",
     "Clarify that raw private UI observations are undistributed and replace unsupported chronology with conflicting documentation.",
     "Follow-up GitHub review: preserve binary resources with text=auto and LF for detected text.",
-    "Follow-up GitHub review: normal-draft now supplies complete synthetic facts and explicitly expects proposed actions with not-run delivery."
+    "Follow-up GitHub review: normal-draft now supplies complete synthetic facts and explicitly expects proposed actions with not-run delivery.",
+    "Clarify that a board URL identifies a target and confers no permission; use existing user inspection authority without repeated consent."
   ],
   "negotiator": {
     "triggered": true,
@@ -184,7 +186,7 @@
   ],
   "post_review_followup": {
     "decision": "approve-with-limits",
-    "scope": "Normal-draft decision-only fixture, binary-safe text attributes, and exact five-file mirror hash.",
+    "scope": "Normal-draft decision-only fixture, binary-safe text attributes, and exact five-file mirror hash. Final authority-bullet clarification received another narrow independent static check, with approve-with-limits retained.",
     "evidence": "Separate adjudicator context confirmed unchanged SKILL.md, resolved fixture contradiction, and matching final package hash.",
     "limitations": "Static narrow review; no live task execution."
   }
