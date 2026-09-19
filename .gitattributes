@@ -6,4 +6,4 @@
 *.yaml text eol=lf
 
 # Keep the portable Replit executor mirror byte-identical across hosts.
-replit/okhp3-replit-task-executor/** text eol=lf
+replit/okhp3-replit-task-executor/** text=auto eol=lf

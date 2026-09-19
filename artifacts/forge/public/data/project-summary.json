@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-09-13T03:58:15.007Z",
+  "generatedAt": "2026-09-19T16:13:29.001Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/skill-promotion-closeout-20260912",
-  "sourceCommit": "b7e44b1",
-  "skillCount": 350,
+  "sourceRef": "codex/replit-task-executor",
+  "sourceCommit": "5330998",
+  "skillCount": 351,
   "familyCount": 21,
   "maturityCounts": {
-    "draftable": 265,
+    "draftable": 266,
     "skeleton": 80,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 169,
+    "not-run": 170,
     "none": 124,
     "local-checks": 38,
     "analytical": 5,

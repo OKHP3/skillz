@@ -5,7 +5,7 @@
   "decision_question": "Publish the external-executor workflow as draftable v0.1.0 with explicit analytical limits?",
   "candidate": {
     "skill_version": "0.1.0",
-    "package_hash": "7c567ce441aa9ca6af9c07bfc82eabddfeea1a943ac97d1486a28cc4c68b7c30",
+    "package_hash": "fda5a9833885f2e30508d6c4355fbc527c77783175643da26f8b55f67f9f41f4",
     "hash_algorithm": "SHA-256 of sorted relative POSIX path + NUL + lowercase file SHA-256 + LF",
     "source_ledger": "../replit/okhp3-replit-task-executor/references/replit-semantics.md",
     "original_skill_sha256": "f7b6089b061179768811e9fa0b69ecee8c0c28a6f570c54da094908269a37738",
@@ -108,7 +108,9 @@
     "Require an atomic reviewed-head merge condition or verified serialization; reject moved heads and re-review.",
     "Expand the deployment-race case to the interval after verification and before merge submission.",
     "Require whole-project publication scope and add multi-artifact-publish, bringing the visible development set to eight.",
-    "Clarify that raw private UI observations are undistributed and replace unsupported chronology with conflicting documentation."
+    "Clarify that raw private UI observations are undistributed and replace unsupported chronology with conflicting documentation.",
+    "Follow-up GitHub review: preserve binary resources with text=auto and LF for detected text.",
+    "Follow-up GitHub review: normal-draft now supplies complete synthetic facts and explicitly expects proposed actions with not-run delivery."
   ],
   "negotiator": {
     "triggered": true,
@@ -164,7 +166,9 @@
     "package_mirror": "PASS; five files, byte-identical",
     "official_sources": "Reviewed on 2026-09-19",
     "live_executor_benchmark": "NOT RUN",
-    "unseen_holdout": "NOT RUN"
+    "unseen_holdout": "NOT RUN",
+    "catalog_build": "PASS; clean tracked source; 351 skills in 21 active families",
+    "windows_catalog_suite": "BLOCKED by existing symlink fixture EPERM; Linux CI remains the acceptance gate."
   },
   "limitations": [
     "Draftable only; no validated portability, production readiness, behavioral uplift, or measured savings claim.",
@@ -177,5 +181,11 @@
     "Run an authorized controlled task pilot with actual ownership and cost telemetry before efficiency claims.",
     "Exercise interruption/resumption, changed evidence, repeated failures, and successful authorized closeout on intended hosts.",
     "Use an unseen release holdout before stronger maturity claims."
-  ]
+  ],
+  "post_review_followup": {
+    "decision": "approve-with-limits",
+    "scope": "Normal-draft decision-only fixture, binary-safe text attributes, and exact five-file mirror hash.",
+    "evidence": "Separate adjudicator context confirmed unchanged SKILL.md, resolved fixture contradiction, and matching final package hash.",
+    "limitations": "Static narrow review; no live task execution."
+  }
 }
