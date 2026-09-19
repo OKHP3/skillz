@@ -73,3 +73,23 @@ This candidate is not a measured token/cost improvement. A production pilot
 needs authorized task ownership, a real implementation, and actual telemetry.
 Cross-host runs and a fresh unseen holdout are still required before claiming
 validated portability or behavioral uplift.
+
+## Version 1.2.0 improvement basis
+
+The owner's clarified role split keeps Replit as project manager, planner,
+designer, and reviewer of style/UI/UX. External agents own architecture and
+production code. A historical v0.1.0 exercise recovered already-completed
+source and preserved unfinished plans, but stopped at an unresolved ownership
+and native-board return boundary. Subsequent read-only investigation found
+native completion history without a supported external Shell or file route.
+
+The revised method therefore adds a completion receipt, explicit design
+acceptance, finite-batch intake, and a conditional administrative return. It
+does not remove Replit from the workflow or pretend that canceling cards is
+successful task completion. The core remains one package so ownership and
+return gates travel together; no daemon, dependency, or hidden API was added.
+
+Read `benchmarks/evolution-review-2026-09-19.md` for the three-pass decisions,
+version-specific hashes, development evidence, rejected alternatives, and
+remaining limits. The old exercise is historical evidence for this revision;
+it does not establish a successful end-to-end v1.2.0 pilot or measured savings.

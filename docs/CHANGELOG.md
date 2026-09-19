@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-19: Replit task executor 1.2.0
+
+- Retain Replit planning, design, and UI/UX acceptance while external coding
+  agents own architecture, implementation, tests, and Git integration.
+- Add finite-batch intake, completion receipts, rendered-revision evidence,
+  bounded administrative return, and protection against head/base and queue races.
+- Record three Foundry/Equilibrium review passes, visible development scenarios,
+  discovery decisions, and an isolated Git counterexample. Evidence remains
+  analytical and maturity draftable; no native-return or cost benchmark is claimed.
+- Synchronize the OverKill-Hill package and refresh the generated catalogs.
+
 ## 2026-09-19: external execution of Replit plans
 
 - Add `replit/okhp3-replit-task-executor` 0.1.0 with one-task intake, shared

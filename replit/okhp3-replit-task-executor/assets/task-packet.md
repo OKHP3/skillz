@@ -11,6 +11,10 @@ not a distributed lock or permission grant.
 - Title, parent, and dependency IDs:
 - Board state and observation time:
 - Plan and acceptance criteria:
+- Approved design references, interaction intent, and design-review applicability:
+- External architecture decisions needed; Replit technical suggestions to assess:
+- Original criteria and separately approved scope amendments:
+- Finite batch ID, captured task IDs/time, and per-task dependency/overlap map:
 - Relevant paths and overlapping tasks/PRs:
 - Intended outcome: assess / implement / PR / integrate / deploy:
 - Existing user authority and any pending decision:
@@ -47,16 +51,20 @@ not a distributed lock or permission grant.
 | GitHub PR/integration | not-run | |
 | Replit source synchronization | not-run | |
 | Replit connector authentication | not-run | |
+| Design acceptance at the delivered revision | not-run | |
 | Board disposition and dependencies | not-run | |
 | CI | not-run | |
 | Deployment | not-run | |
 | Live behavior | not-run | |
 
 - Criteria-to-evidence mapping:
-- PR head, merge SHA, and canonical base:
-- Expected-head merge condition or verified serialized handoff:
+- Reviewed PR head, tested base, validated integration result, and merge SHA:
+- Supported head and current-base protection or verified serialized handoff:
 - Complete publication scope and authority, including other project artifacts:
 - Actual board disposition; receipt location if board update is pending:
+- Completion receipt identity and confirmed receiving-operator access:
+- Native action effects, including implicit commit/apply and dependent queue starts:
+- Missing administrative action, responsible operator, and resumption condition:
 - Ownership released, retained, or transferred, and observed confirmation:
 - Recovery point and preserved work:
 - Remaining limitations:

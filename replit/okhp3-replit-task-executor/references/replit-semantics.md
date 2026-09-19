@@ -9,6 +9,9 @@ ownership and evidence rules are package policy, not Replit features.
 | [Task board](https://docs.replit.com/features/agent/task-board) | Drafts contain plans. Start initiates Replit execution. Ready work has not yet entered the main version. Review its diff, logs, tests, and preview before applying. Documentation lists per-task auto-approve and auto-apply actions, not an external-agent assignment control. |
 | [Task lifecycle](https://docs.replit.com/features/agent/task-lifecycle) | Queued work starts when prerequisites and capacity permit. Applying integrates isolated work. Done groups applied, archived, and canceled tasks. Archive preserves an unstarted planning session; cancellation of building-stage tasks discards work and cannot be restored. |
 | [Plan mode](https://docs.replit.com/features/agent/plan-mode) | Planning avoids code/data implementation until approval. Build here and Build in background begin execution. Planning, questions, and task generation still consume billable Agent work. |
+| [replit.md](https://docs.replit.com/features/project-setup/replit-dot-md) | Root `replit.md` supplies Agent context and project preferences. It is not documented as a Task Board status database. Manual changes inform future conversations. |
+| [Agent customization](https://docs.replit.com/features/agent/agent-customization) | Project context and workspace-wide instructions have different scopes. Instructions guide Agent behavior; they do not guarantee strict enforcement or stop existing queued work. |
+| [Shell](https://docs.replit.com/features/workspace-tools/shell) | Ordinary terminal access supports files, scripts, and Git. The reviewed documentation did not establish an external task-completion command. |
 | [Follow-up tasks](https://docs.replit.com/features/agent/follow-up-tasks) | Applied tasks can generate new suggestions. View plan inspects; Start dispatches. Bulk selection can start or cancel many tasks. The suggested-next-tasks dialog has dismissal behavior that can cancel suggestions, so do not assume every Close is harmless. |
 | [Replit MCP server](https://docs.replit.com/platforms/mcp-server) | The documented tools find, inspect, create, update, and publish apps. The tool list reviewed does not document board claims, external assignees, or marking an externally completed task Done. Discover available capabilities each session rather than guessing endpoints. |
 | [Replit in ChatGPT](https://docs.replit.com/features/platforms/chatgpt) | Work delegated through this integration is billed to Replit Agent usage. An external chat surface does not by itself move implementation out of Replit. |
@@ -44,8 +47,35 @@ executor. Replit natural-language Agent prompts run a different executor.
 No supported external-task completion or claim API was established in this
 review. That absence is an evidence limit, not proof no such API can exist.
 When a host lacks a non-executing board write, use the agreed receipt and an
-explicit pending board disposition instead of a paid prompt or hidden API.
+explicit pending board disposition. A bounded Replit administrative return may
+be assessed under `references/completion-return.md`; existing authorization must
+cover its actual effects and usage. This does not authorize a coding prompt,
+hidden API, additional purchase, or automatic task cancellation.
 
 Do not hardcode a subscription tier, concurrency limit, reset interval, or
 price. Record the live account notice when it blocks a task. A displayed Free
 label is not evidence that all planning or connector activity costs nothing.
+
+## Post-creation observations, September 19, 2026
+
+Authority: authenticated owner-session observations, summarized without private
+plans, task links, transcripts, or machine paths. These observations informed
+the method; they are not public API documentation or current-version benchmarks.
+
+- Root `replit.md` stayed byte-identical across sampled native completions.
+  Completed task history exposed `markTaskComplete(...)`; an internal transcript
+  also recorded `mark_task_complete`. No supported external invocation was
+  established. Git task/merge trailers supplied provenance, not board control.
+- The inspected Shell CLI exposed no task-completion command. `.replit`
+  workflow tasks were run commands. Internal state files were inspected
+  read-only; no supported editable status ledger was established.
+- The v0.1.0 live exercise preserved a finite backlog and recovered completed
+  but unpublished source. It did not move unfinished work through an external
+  implementation and native completion cycle. Retain this as historical partial
+  evidence, not proof of v1.2.0 completion, cost savings, or cross-host behavior.
+
+Accepted implication: supply a verified receipt and investigate a supported
+bounded return. Rejected implication: changing a file, forging provenance,
+cancellation, or a Git merge can stand in for native completion. Capability
+availability and the exact backend storage remain unknown beyond the inspected
+surfaces. Recheck when the UI, tools, documentation, or account state changes.

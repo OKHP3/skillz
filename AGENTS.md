@@ -289,7 +289,7 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 
 | Skill | Trigger |
 |---|---|
-| `okhp3-replit-task-executor` | Execute one selected Replit plan with an external coding agent after resolving ownership, preserving local work, and recording separate integration, board, and deployment evidence. Draftable candidate; no measured cost savings or cross-host benchmark. See `replit/FAMILY.md` for the complete family inventory. |
+| `okhp3-replit-task-executor` | Retain Replit as planner and designer while external agents own architecture, code, tests, and Git. Use finite intake, verified ownership, revision-bound receipts, and a supported, authorized administrative return. Draftable 1.2.0 with analytical review; no completed native-return pilot, measured savings, or cross-host benchmark. See `replit/FAMILY.md` for the complete family inventory. |
 
 ### Universal family
 
