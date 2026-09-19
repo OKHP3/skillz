@@ -20,6 +20,7 @@ const checkScript = fileURLToPath(new URL('./test-review-surface-published.mjs',
 const expectedCommit = 'expected-commit-abcdef123456';
 const staleCommit = 'old-commit-000000000000';
 const unresolvedName = 'okhp3-published-regression-unresolved-companion';
+const expandedBranchName = 'fixture-project-local';
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -61,11 +62,27 @@ function catalog(sourceCommit) {
           }],
         },
       },
+      {
+        family: 'fixture',
+        name: 'fixture-main-path',
+        path: 'fixture/fixture-main-path/SKILL.md',
+        companions: [],
+        companionDiagnostics: {
+          deferred: [],
+          projectLocal: [],
+          approved: [],
+        },
+      },
     ],
   };
 }
 
-function reviewSurfaceHtml({ assertionFailure, unresolved = false }) {
+function reviewSurfaceHtml({
+  assertionFailure,
+  unresolved = false,
+  expandedBranch = false,
+  branchName = expandedBranchName,
+}) {
   return `<!doctype html>
 <html>
   <body>
@@ -73,7 +90,45 @@ function reviewSurfaceHtml({ assertionFailure, unresolved = false }) {
       <h1>Fixture skill</h1>
       <h2>Trust summary</h2>
       <div class="skill-pathway">
-        ${unresolved ? `
+        ${expandedBranch ? `
+        <div class="skill-pathway__fork">
+          <div class="skill-pathway__fork-branch">
+            <div class="skill-pathway__fork-branch-row">
+              <span class="skill-pathway__fork-arm" aria-hidden>↳</span>
+              <a
+                class="skill-pathway__fork-node"
+                href="#/skills/fixture/${branchName}"
+              >${branchName}</a>
+              <button
+                class="skill-pathway__fork-expand"
+                aria-expanded="false"
+                aria-label="Expand downstream pathway from ${branchName}"
+              >▸</button>
+            </div>
+            <div class="skill-pathway__sub-pathway" hidden aria-label="Downstream pathway from ${branchName}">
+              <div class="skill-pathway__sub-track">
+                <div class="skill-pathway__sub-step">
+                  <a class="skill-pathway__sub-node" href="#/skills/fixture/${branchName}">
+                    <span class="skill-pathway__node-name">${branchName}</span>
+                  </a>
+                </div>
+                <div class="skill-pathway__sub-step">
+                  <div
+                    class="skill-pathway__sub-node skill-pathway__sub-node--unresolved"
+                    data-companion-kind="unresolved"
+                    role="note"
+                    title="&quot;${unresolvedName}&quot; is referenced as a downstream companion but does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere."
+                    aria-label="Unresolved downstream companion reference: ${unresolvedName}. This branch stops because the companion is not in the catalog."
+                  >
+                    <span class="skill-pathway__node-name skill-pathway__node-name--unresolved">${unresolvedName}</span>
+                    <span class="skill-pathway__sub-node-unresolved-label">Not found — check for a typo or renamed skill</span>
+                  </div>
+                </div>
+              </div>
+              <p class="skill-pathway__sub-hint">Downstream chain from this branch (up to 5 steps)</p>
+            </div>
+          </div>
+        </div>` : unresolved ? `
         <span
           class="skill-pathway__branch skill-pathway__branch--broken"
           data-companion-kind="unresolved"
@@ -119,6 +174,13 @@ function reviewSurfaceHtml({ assertionFailure, unresolved = false }) {
       </div>`}
     </main>
     <script>
+      const expand = document.querySelector('.skill-pathway__fork-expand');
+      const subPathway = document.querySelector('.skill-pathway__sub-pathway');
+      expand?.addEventListener('click', () => {
+        expand.setAttribute('aria-expanded', 'true');
+        expand.textContent = '▾';
+        if (subPathway) subPathway.hidden = false;
+      });
       fetch('/fixture-browser-start', { method: 'POST', keepalive: true });
     </script>
   </body>
@@ -156,7 +218,8 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
     }
 
     if (requestPath === '/data/skills/fixture/fixture-skill.json'
-      || requestPath === '/data/skills/fixture/fixture-project-local.json') {
+      || requestPath === '/data/skills/fixture/fixture-project-local.json'
+      || requestPath === '/data/skills/fixture/fixture-main-path.json') {
       response.writeHead(200, { 'content-type': 'application/json' });
       response.end('{}');
       return;
@@ -166,6 +229,8 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
     response.end(reviewSurfaceHtml({
       assertionFailure,
       unresolved: requestUrl.searchParams.get('publishedFixture') === 'unresolved',
+      expandedBranch: requestUrl.searchParams.get('publishedFixture') === 'expanded-unresolved',
+      branchName: requestUrl.searchParams.get('branchSkill') || expandedBranchName,
     }));
   });
 

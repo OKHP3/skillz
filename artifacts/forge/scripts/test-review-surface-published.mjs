@@ -280,6 +280,76 @@ async function expectUnresolvedCompanionWarning(page, skill, unresolvedName) {
   await expectNoHorizontalOverflow(page, `published unresolved companion pathway for ${skill.name}`);
 }
 
+async function expectExpandedBranchUnresolvedWarning(page, skill, branchSkill, unresolvedName) {
+  const pathway = page.locator('.skill-pathway');
+  await pathway.waitFor({ timeout: 20_000 });
+
+  const branchName = branchSkill.displayName || branchSkill.name;
+  const branchNode = pathway.locator('.skill-pathway__fork-node').filter({ hasText: branchName });
+  await branchNode.waitFor({ timeout: 20_000 });
+  assert(
+    await branchNode.getAttribute('href') === `#/skills/${branchSkill.family}/${branchSkill.name}`,
+    `${skill.name} resolved branch must remain a navigable link on the published site.`,
+  );
+
+  const expand = pathway.getByRole('button', {
+    name: `Expand downstream pathway from ${branchName}`,
+  });
+  await expand.click();
+
+  const subPathway = pathway.locator('.skill-pathway__sub-pathway');
+  await subPathway.waitFor({ timeout: 20_000 });
+  const resolvedSubNode = subPathway.locator('a.skill-pathway__sub-node');
+  assert(
+    await resolvedSubNode.count() === 1,
+    `${skill.name} published expanded branch must retain its resolved downstream link.`,
+  );
+  assert(
+    await resolvedSubNode.getAttribute('href') === `#/skills/${branchSkill.family}/${branchSkill.name}`,
+    `${skill.name} published expanded branch must link to the resolved branch skill.`,
+  );
+
+  const unresolvedNode = subPathway.locator('[data-companion-kind="unresolved"]');
+  await unresolvedNode.waitFor({ timeout: 20_000 });
+  assert(
+    await unresolvedNode.count() === 1,
+    `${skill.name} published expanded branch must render exactly one unresolved stop.`,
+  );
+  assert(
+    await unresolvedNode.evaluate(element => element.classList.contains('skill-pathway__sub-node--unresolved')),
+    `${skill.name} published expanded unresolved stop must use distinct warning styling.`,
+  );
+  const unresolvedCopy = await unresolvedNode.innerText();
+  assert(
+    unresolvedCopy.includes(unresolvedName),
+    `${skill.name} published expanded unresolved stop must show the missing companion name.`,
+  );
+  assert(
+    unresolvedCopy.includes('Not found — check for a typo or renamed skill'),
+    `${skill.name} published expanded unresolved stop must explain how to interpret the warning.`,
+  );
+  assert(
+    await unresolvedNode.getAttribute('aria-label')
+      === `Unresolved downstream companion reference: ${unresolvedName}. This branch stops because the companion is not in the catalog.`,
+    `${skill.name} published expanded unresolved stop must expose explanatory copy to assistive technology.`,
+  );
+  assert(
+    (await unresolvedNode.getAttribute('title')).includes(
+      "does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere.",
+    ),
+    `${skill.name} published expanded unresolved stop must explain the broken-reference cause.`,
+  );
+  assert(
+    await pathway.locator('[data-section="approved-companion-context"]').count() === 0,
+    `${skill.name} published expanded unresolved fixture must not render approved-exception context.`,
+  );
+  await expectVisibleWithinViewport(
+    unresolvedNode,
+    `Expanded unresolved warning for ${skill.name}`,
+  );
+  await expectNoHorizontalOverflow(page, `published expanded unresolved pathway for ${skill.name}`);
+}
+
 async function main() {
   // 1. Deployment stage: the published site and its catalog must be publicly
   // reachable at all -- no auth, no repository access, just a plain GET.
@@ -399,10 +469,62 @@ async function main() {
     await expectUnresolvedCompanionWarning(unresolved, unresolvedFixture, unresolvedName);
     await unresolved.close();
 
+    const branchSkill = catalog.skills.find(candidate =>
+      candidate.name !== unresolvedFixture.name && candidate.companions?.length === 0,
+    );
+    const mainSkill = catalog.skills.find(candidate =>
+      candidate.name !== unresolvedFixture.name && candidate.name !== branchSkill?.name,
+    );
+    if (!branchSkill || !mainSkill) {
+      throw new DeploymentError(
+        'Published catalog.json must contain enough resolved skills to exercise an expanded unresolved branch.',
+      );
+    }
+
+    const expandedBranch = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await expandedBranch.route('**/data/catalog.json', async requestRoute => {
+      const response = await requestRoute.fetch();
+      const fixtureCatalog = await response.json();
+      const fixtureSkill = fixtureCatalog.skills.find(candidate => candidate.name === unresolvedFixture.name);
+      const fixtureBranch = fixtureCatalog.skills.find(candidate => candidate.name === branchSkill.name);
+      const fixtureMain = fixtureCatalog.skills.find(candidate => candidate.name === mainSkill.name);
+      assert(
+        fixtureSkill && fixtureBranch && fixtureMain,
+        `Could not create expanded unresolved branch fixture for ${unresolvedFixture.name}.`,
+      );
+
+      fixtureSkill.companions = [fixtureMain.name, fixtureBranch.name];
+      fixtureBranch.companions = [unresolvedName];
+      fixtureMain.companions = [];
+      delete fixtureSkill.companionDiagnostics;
+      delete fixtureBranch.companionDiagnostics;
+      delete fixtureMain.companionDiagnostics;
+
+      await requestRoute.fulfill({
+        status: response.status(),
+        headers: { ...response.headers(), 'content-type': 'application/json' },
+        body: JSON.stringify(fixtureCatalog),
+      });
+    });
+    await expandedBranch.goto(
+      `${baseUrl}?publishedFixture=expanded-unresolved&branchSkill=${encodeURIComponent(branchSkill.name)}`
+      + `#/skills/${encodeURIComponent(unresolvedFixture.family)}/${encodeURIComponent(unresolvedFixture.name)}`,
+      { waitUntil: 'domcontentloaded', timeout: 20_000 },
+    );
+    await expandedBranch.locator('[data-page="skill-detail"]').waitFor({ timeout: 20_000 });
+    await expectExpandedBranchUnresolvedWarning(
+      expandedBranch,
+      unresolvedFixture,
+      branchSkill,
+      unresolvedName,
+    );
+    await expandedBranch.close();
+
     console.log(
       `✓ published review surface at ${baseUrl} preserves failed-contract keyboard recovery, unresolved warnings, `
       + `and approved companion notices (${deferredSkill.family}/${deferredSkill.name}, `
-      + `${projectLocalSkill.family}/${projectLocalSkill.name}, ${unresolvedFixture.family}/${unresolvedFixture.name})`,
+      + `${projectLocalSkill.family}/${projectLocalSkill.name}, ${unresolvedFixture.family}/${unresolvedFixture.name}, `
+      + `${branchSkill.family}/${branchSkill.name})`,
     );
   } finally {
     await browser.close();
