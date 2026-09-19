@@ -5,7 +5,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.1.1"
+  version: "1.2.0"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -186,6 +186,31 @@ Use neutral names and synthetic examples in reusable documentation. Keep reposit
 - `references/cross-platform-naming.md` -- portable filename, casing, Unicode, URL, reserved-name, and path-length rules.
 - `references/github-baseline.md` -- current official GitHub guidance relevant to README, community health, templates, limits, and non-code files.
 - `references/agent-skills-quality.md` -- Agent Skills specification alignment, evaluation posture, and source audit.
+
+
+## Optional brand profiles
+
+When the user or verified target repository identifies an AskJamie or Glee-fully
+workflow, load only its bundled profile before applying this shared procedure:
+
+- AskJamie: [workflow profile](references/brand-profiles/askjamie.md).
+- Glee-fully: [workflow profile](references/brand-profiles/glee-fully.md).
+
+For a neutral or unidentified target, use the shared procedure without a brand
+profile. An alias or previous package name alone does not establish the target
+brand. If the requested brand conflicts with the target evidence, resolve that
+conflict before applying a profile. Do not blend profiles or treat positioning
+as approved product canon. Profiles cannot weaken evidence, privacy, scope, or
+authorization requirements. Record the selected profile in the handoff.
+
+### Consolidation evidence
+
+Version 1.2.0 bundles the former brand overlays as optional profiles as of
+2026-09-19. Earlier evaluation designs and benchmark/results files retain their
+original versions and bytes as historical records; they do not validate this
+version or its profile selection. Profile regression cases are defined in
+[the evaluation design](evals/brand-profile-cases.json) and are not live runs.
+Structural validation is separate from behavioral or performance evidence.
 
 ## About
 

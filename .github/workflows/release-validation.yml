@@ -11,6 +11,8 @@ on:
       - "LICENSE"
       - "scripts/verify-archive-links.mjs"
       - "scripts/verify-archive-links.test.mjs"
+      - "scripts/verify-skill-archives.py"
+      - "scripts/test_skill_archives.py"
       - "docs/skill-migrations.json"
       - "scripts/skill-migrations.mjs"
       - "scripts/skill-migrations.test.mjs"
@@ -43,6 +45,8 @@ on:
       - "LICENSE"
       - "scripts/verify-archive-links.mjs"
       - "scripts/verify-archive-links.test.mjs"
+      - "scripts/verify-skill-archives.py"
+      - "scripts/test_skill_archives.py"
       - "docs/skill-migrations.json"
       - "scripts/skill-migrations.mjs"
       - "scripts/skill-migrations.test.mjs"
@@ -140,6 +144,11 @@ jobs:
 
       - name: Verify archived README destinations
         run: node scripts/verify-archive-links.mjs
+
+      - name: Verify preserved cleanup payloads
+        run: |
+          python3 scripts/verify-skill-archives.py
+          python3 -m unittest discover -s scripts -p test_skill_archives.py
 
       - name: Exercise archive-link failure boundaries
         run: node --test scripts/verify-archive-links.test.mjs scripts/skill-migrations.test.mjs

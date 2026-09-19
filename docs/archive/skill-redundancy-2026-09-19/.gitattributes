@@ -1,0 +1,2 @@
+# Historical payloads retain their original working-tree bytes, including CRLF.
+** -text -whitespace

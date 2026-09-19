@@ -5,7 +5,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.2.0"
+  version: "1.3.0"
   category: developer-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -166,6 +166,31 @@ These are examples and specialization seeds, not a universal default visual iden
 - `evals/evals.json` - three draft evaluation cases for the public workflow.
 
 ---
+
+
+## Optional brand profiles
+
+When the user or verified target repository identifies an AskJamie or Glee-fully
+workflow, load only its bundled profile before applying this shared procedure:
+
+- AskJamie: [workflow profile](references/brand-profiles/askjamie.md).
+- Glee-fully: [workflow profile](references/brand-profiles/glee-fully.md).
+
+For a neutral or unidentified target, use the shared procedure without a brand
+profile. An alias or previous package name alone does not establish the target
+brand. If the requested brand conflicts with the target evidence, resolve that
+conflict before applying a profile. Do not blend profiles or treat positioning
+as approved product canon. Profiles cannot weaken evidence, privacy, scope, or
+authorization requirements. Record the selected profile in the handoff.
+
+### Consolidation evidence
+
+Version 1.3.0 bundles the former brand overlays as optional profiles as of
+2026-09-19. Earlier evaluation designs and benchmark/results files retain their
+original versions and bytes as historical records; they do not validate this
+version or its profile selection. Profile regression cases are defined in
+[the evaluation design](evals/brand-profile-cases.json) and are not live runs.
+Structural validation is separate from behavioral or performance evidence.
 
 ## About
 

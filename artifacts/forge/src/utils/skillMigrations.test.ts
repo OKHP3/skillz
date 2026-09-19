@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { canonicalSkillIdentity, canonicalSkillName } from './skillMigrations';
+import { canonicalSkillIdentity, canonicalSkillName, skillMigration } from './skillMigrations';
 import { parseCompareSelection } from './compare';
 import { loadComposerState, migrateComposerItems } from './composer';
 import { useFavorites } from './clipboard';
@@ -46,5 +46,28 @@ describe('skill migration compatibility', () => {
     expect(useFavorites().getFavorites()).toEqual(['okhp3-sharepoint-content-auditor']);
     vi.stubGlobal('localStorage', { getItem: () => '{"wrong":"shape"}' });
     expect(useFavorites().getFavorites()).toEqual([]);
+  });
+
+  it('retains separate brand context when two branded copies converge on a shared workflow', () => {
+    const items = [
+      { name: 'okhp3-askjamie-extract-chatgpt', optional: true, note: 'Use the supplied chat.' },
+      { name: 'okhp3-glee-fully-extract-chatgpt', optional: false, note: 'Keep product context.' },
+    ];
+    const result = migrateComposerItems(items);
+    expect(result).toHaveLength(1);
+    expect(result[0].name).toBe('okhp3-thread-extract-chatgpt');
+    expect(result[0].optional).toBe(false);
+    expect(result[0].note).toContain('Use the supplied chat.');
+    expect(result[0].note).toContain('Keep product context.');
+    expect(result[0].note).toContain('references/brand-profiles/askjamie.md');
+    expect(result[0].note).toContain('references/brand-profiles/glee-fully.md');
+    expect(migrateComposerItems(result)).toEqual(result);
+    expect(skillMigration(items[0].name)?.profile?.label).toBe('AskJamie');
+  });
+
+  it('preserves update mode when a specification shortcut is consolidated', () => {
+    const result = migrateComposerItems([{ name: 'update-specification', optional: false, note: '' }]);
+    expect(result[0].name).toBe('specification-authoring');
+    expect(result[0].note).toContain('Use update mode');
   });
 });

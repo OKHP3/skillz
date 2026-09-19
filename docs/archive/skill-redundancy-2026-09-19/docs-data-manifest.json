@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-19",
+  "sourceCommit": "ff61152eeda6d7985805c9049840964ca781394b",
+  "scope": "Community documentation and data-migration consolidation",
+  "evidenceBoundary": "Local full-body method comparison; no live behavioral benchmark",
+  "fileCount": 7,
+  "totalBytes": 27473,
+  "files": [
+    {
+      "originalPath": "community/create-readme/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/docs-data/originals/community/create-readme/SKILL.md",
+      "operation": "move",
+      "sha256": "ef296dee6b68396dfb45d0ef1befb04d159fcccb286527ce1c4285499e68b0a0",
+      "bytes": 1352,
+      "originalGitMode": "100644",
+      "originalGitBlob": "686e10d517b319520049a485c87cffea23ee6b9f",
+      "originalGitBlobSha256": "a93f9161bef324e3a1550fc79d4f01b660a3fb7eadc4455677d9ace4da2965ac",
+      "originalGitBlobBytes": 1331,
+      "preservationVerified": true,
+      "reason": "Retired overlapping package after preserving distinct methods in its canonical replacement."
+    },
+    {
+      "originalPath": "community/readme-blueprint-generator/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/docs-data/originals/community/readme-blueprint-generator/SKILL.md",
+      "operation": "move",
+      "sha256": "36e884a75284399b01d6dd06937c4a907fa19d043ce3658a41741c89efe4b1b8",
+      "bytes": 2992,
+      "originalGitMode": "100644",
+      "originalGitBlob": "76982e2b9b3c2de35a00dbb06087be43051a60c2",
+      "originalGitBlobSha256": "571094038e74bd3de56356f67d1e73af69afc4ce63f886c2b047f351b85a3183",
+      "originalGitBlobBytes": 2914,
+      "preservationVerified": true,
+      "reason": "Retired overlapping package after preserving distinct methods in its canonical replacement."
+    },
+    {
+      "originalPath": "community/data-migration/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/docs-data/originals/community/data-migration/SKILL.md",
+      "operation": "move",
+      "sha256": "88d399579183204413a6ff7e66387d45a46cabfac984de12f2addcf7283bb156",
+      "bytes": 5333,
+      "originalGitMode": "100644",
+      "originalGitBlob": "bb602ec30f19c15c44b23ecfab48c028c6fb5bfe",
+      "originalGitBlobSha256": "2a33c8fae2b6dfae60a579f83bb326b783f0052f325f55604c7b8ae8aa700fd1",
+      "originalGitBlobBytes": 5217,
+      "preservationVerified": true,
+      "reason": "Retired overlapping package after preserving distinct methods in its canonical replacement."
+    },
+    {
+      "originalPath": "community/markdown-docs/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/docs-data/originals/community/markdown-docs/SKILL.md",
+      "operation": "snapshot",
+      "sha256": "bea2b7a6c79045db8e2af1ca54be599cd621de41854e74fcfa4c994f49cbb4e8",
+      "bytes": 5617,
+      "originalGitMode": "100644",
+      "originalGitBlob": "0af748288a8db3489e9aa0d378c4f83bbd2c6f91",
+      "originalGitBlobSha256": "e0a21dbb1f5e43ce7020a9911040a1125b9c23d2b76667e630bc305350681fa3",
+      "originalGitBlobBytes": 5508,
+      "preservationVerified": true,
+      "reason": "Preserve original upstream-captured canonical package before local attributed consolidation."
+    },
+    {
+      "originalPath": "community/data-migration-best-practices/references/migration-testing.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/docs-data/originals/community/data-migration-best-practices/references/migration-testing.md",
+      "operation": "snapshot",
+      "sha256": "0f01bc4f72c52aff752e633a2ff5d1085c74debb9909f41f5ffb1301e84ce9ca",
+      "bytes": 2675,
+      "originalGitMode": "100644",
+      "originalGitBlob": "b0d160253ae6c47c918d47d089fab729ee4c4e9e",
+      "originalGitBlobSha256": "4fc1aee98aa9fc44135927ea1ff4d6078718317cfaf1f02861c32310f802f495",
+      "originalGitBlobBytes": 2641,
+      "preservationVerified": true,
+      "reason": "Preserve original upstream-captured canonical package before local attributed consolidation."
+    },
+    {
+      "originalPath": "community/data-migration-best-practices/references/operational-migrations.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/docs-data/originals/community/data-migration-best-practices/references/operational-migrations.md",
+      "operation": "snapshot",
+      "sha256": "91541558aad5a65b98128bb62e0f2c631be3a95e4e824e5618f5ff9aec81cebd",
+      "bytes": 4983,
+      "originalGitMode": "100644",
+      "originalGitBlob": "2c662ed53d36c3ac3aeb5a0aede71b36d72989f2",
+      "originalGitBlobSha256": "aa01d53ce3d5b796ad0656719544779f380161fd0f9cb062fc8de327366d35aa",
+      "originalGitBlobBytes": 4915,
+      "preservationVerified": true,
+      "reason": "Preserve original upstream-captured canonical package before local attributed consolidation."
+    },
+    {
+      "originalPath": "community/data-migration-best-practices/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/docs-data/originals/community/data-migration-best-practices/SKILL.md",
+      "operation": "snapshot",
+      "sha256": "539305dfa707f63343b3b9503253f3747474f23bcd36878d0859093099e5ff3e",
+      "bytes": 4521,
+      "originalGitMode": "100644",
+      "originalGitBlob": "447f46d857836c37f92c959a956366d2ee7ef5ba",
+      "originalGitBlobSha256": "3df0130041c774bc6feafe291a3c6dece9a3d20907015b165b1da9f7552a69fc",
+      "originalGitBlobBytes": 4459,
+      "preservationVerified": true,
+      "reason": "Preserve original upstream-captured canonical package before local attributed consolidation."
+    }
+  ]
+}

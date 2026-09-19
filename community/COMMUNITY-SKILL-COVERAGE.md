@@ -54,10 +54,10 @@ downloaded community material.
 | `legacy-webapp-code-archaeology` | `code-analysis`, `architecture-blueprint-generator`, `codebase-memory-mcp` | Direct |
 | `call-graph-and-dependency-analysis` | `codebase-memory-mcp`, `lsp-architecture`, `lsp-test-correlation` | Direct |
 | `data-flow-and-control-flow-analysis` | `code-analysis`, `security-analysis`, `codebase-memory-mcp` | Direct |
-| `configuration-and-feature-flag-analysis` | `code-analysis`, `review-and-refactor` | Adjacent |
+| `configuration-and-feature-flag-analysis` | `code-analysis`, `refactoring-best-practices` | Adjacent |
 | `background-job-and-scheduled-process-analysis` | `architecture-blueprint-generator`, `appinsights-instrumentation`, `log-analysis` | Adjacent |
 | `integration-and-interface-discovery` | `api-design`, `rest-api-best-practices`, `openapi-to-application-code` | Adjacent |
-| `dead-code-and-duplicate-path-analysis` | `lsp-dead-code`, `refactor`, `code-analysis` | Direct |
+| `dead-code-and-duplicate-path-analysis` | `lsp-dead-code`, `refactoring-best-practices`, `code-analysis` | Direct |
 | `static-security-analysis` | `security-review`, `security-analysis`, `agent-owasp-compliance` | Direct |
 
 ## 5. Identity and security boundary
@@ -78,8 +78,8 @@ downloaded community material.
 | Requested capability | Captured package(s) | Coverage |
 |---|---|---|
 | `business-actor-and-relationship-modeling` | `context-map`, `ddd-best-practices` | Direct |
-| `edi-and-structured-document-domain-modeling` | `api-design`, `rest-api-best-practices`, `create-specification` | Adjacent; EDI-specific gap |
-| `document-type-and-lifecycle-modeling` | `workflow-analysis-blueprint`, `context-map`, `create-specification` | Adjacent |
+| `edi-and-structured-document-domain-modeling` | `api-design`, `rest-api-best-practices`, `specification-authoring` | Adjacent; EDI-specific gap |
+| `document-type-and-lifecycle-modeling` | `workflow-analysis-blueprint`, `context-map`, `specification-authoring` | Adjacent |
 | `purchase-order-and-invoice-workflow-modeling` | `workflow-analysis-blueprint`, `context-map` | Adjacent |
 | `quotation-and-request-workflow-modeling` | `workflow-analysis-blueprint` | Adjacent |
 | `partner-specific-rule-analysis` | `context-map`, `ddd-best-practices`, `code-analysis` | Adjacent |
@@ -92,11 +92,11 @@ downloaded community material.
 
 | Requested capability | Captured package(s) | Coverage |
 |---|---|---|
-| `passive-web-surface-observation` | None specific; `playwright-explore-website` is active exploration | Gap |
-| `authorized-webapp-exploration` | `playwright-explore-website`, `webapp-testing`, `scoutqa-test` | Direct |
-| `black-box-behavioral-analysis` | `playwright-explore-website`, `scoutqa-test`, `browser-testing` | Adjacent |
-| `characterization-test-generation` | `playwright-generate-test`, `browser-testing`, `integration-testing`, `tdd-best-practices` | Direct |
-| `golden-workflow-capture` | `playwright-generate-test`, `breakdown-test`, `integration-testing` | Adjacent |
+| `passive-web-surface-observation` | None specific; `browser-testing` is active exploration | Gap |
+| `authorized-webapp-exploration` | `browser-testing`, `scoutqa-test` | Direct |
+| `black-box-behavioral-analysis` | `browser-testing`, `scoutqa-test`, `browser-testing` | Adjacent |
+| `characterization-test-generation` | `browser-testing`, `integration-testing`, `tdd-best-practices` | Direct |
+| `golden-workflow-capture` | `browser-testing`, `breakdown-test`, `integration-testing` | Adjacent |
 | `source-to-runtime-reconciliation` | `code-analysis`, `architecture-blueprint-generator`, `appinsights-instrumentation` | Adjacent |
 | `runtime-configuration-reconciliation` | `appinsights-instrumentation`, `deployment-strategies`, `devops-rollout-plan` | Adjacent |
 | `log-and-telemetry-analysis` | `log-analysis`, `appinsights-instrumentation`, `incident-postmortem` | Direct |
@@ -107,15 +107,15 @@ downloaded community material.
 | Requested capability | Captured package(s) | Coverage |
 |---|---|---|
 | `evidence-led-technical-documentation` | `build-evidence-map`, `documentation-writer`, `code-analysis` | Direct |
-| `application-overview-generation` | `architecture-blueprint-generator`, `create-readme`, `create-tldr-page` | Direct |
+| `application-overview-generation` | `architecture-blueprint-generator`, `markdown-docs`, `create-tldr-page` | Direct |
 | `architecture-model-generation` | `architecture-blueprint-generator`, `lsp-architecture`, `efcore-d2-db-diagram`, `diagramming` | Direct |
-| `functional-inventory-generation` | `code-analysis`, `workflow-analysis-blueprint`, `create-readme` | Adjacent |
+| `functional-inventory-generation` | `code-analysis`, `workflow-analysis-blueprint`, `markdown-docs` | Adjacent |
 | `workflow-card-generation` | `workflow-analysis-blueprint`, `documentation-writer` | Adjacent |
 | `authentication-authorization-documentation` | `api-documentation`, `csharp-docs`, `documentation-writer` | Adjacent |
 | `database-and-data-model-documentation` | `efcore-d2-db-diagram`, `sql-code-review`, `documentation-writer` | Direct |
 | `operations-runbook-generation` | `devops-rollout-plan`, `deployment-strategies`, `incident-postmortem` | Direct |
 | `security-findings-documentation` | `security-review`, `threat-model-analyst`, `data-breach-blast-radius` | Direct |
-| `requirements-traceability` | `create-specification`, `update-specification`, `breakdown-test` | Adjacent |
+| `requirements-traceability` | `specification-authoring`, `breakdown-test` | Adjacent |
 | `unknowns-and-questions-management` | `build-evidence-map`, `audit-integrity`, `documentation-writer` | Adjacent |
 | `documentation-quality-validation` | `documentation-writer`, `markdown-docs`, `code-review` | Direct |
 
@@ -123,7 +123,7 @@ downloaded community material.
 
 | Requested capability | Captured package(s) | Coverage |
 |---|---|---|
-| `as-is-to-to-be-separation` | `refactor-plan`, `create-specification`, `dotnet-upgrade` | Adjacent |
+| `as-is-to-to-be-separation` | `refactor-plan`, `specification-authoring`, `dotnet-upgrade` | Adjacent |
 | `modern-web-application-target-architecture` | `architecture-blueprint-generator`, `premium-frontend-ui`, `rest-api-best-practices` | Direct |
 | `modern-dotnet-application-architecture` | `dotnet-upgrade`, `dotnet-design-pattern-review`, `containerize-aspnetcore` | Direct |
 | `modern-frontend-architecture` | `premium-frontend-ui`, `web-design-reviewer`, `refactoring-best-practices` | Adjacent |
@@ -132,11 +132,11 @@ downloaded community material.
 | `document-and-file-storage-design` | `agent-owasp-compliance`, `security-review`, `api-design` | Adjacent |
 | `integration-and-edi-interface-design` | `api-design`, `openapi-to-application-code`, `rest-api-best-practices` | Adjacent; EDI-specific gap |
 | `threat-model-and-security-requirements` | `threat-model-analyst`, `security-analysis`, `agent-owasp-compliance` | Direct |
-| `replacement-specification-generation` | `create-specification`, `update-specification`, `documentation-writer` | Direct |
-| `migration-and-data-mapping` | `data-migration-best-practices`, `data-migration`, `sql-server-table-reconciliation` | Direct |
+| `replacement-specification-generation` | `specification-authoring`, `documentation-writer` | Direct |
+| `migration-and-data-mapping` | `data-migration-best-practices`, `sql-server-table-reconciliation` | Direct |
 | `cutover-and-rollback-planning` | `devops-rollout-plan`, `deployment-strategies`, `data-migration-best-practices` | Direct |
 | `replacement-acceptance-test-generation` | `breakdown-test`, `browser-testing`, `integration-testing`, `unit-testing` | Direct |
-| `modern-implementation-planning` | `refactor-plan`, `create-specification`, `devops-rollout-plan` | Adjacent |
+| `modern-implementation-planning` | `refactor-plan`, `specification-authoring`, `devops-rollout-plan` | Adjacent |
 | `modern-application-implementation` | `openapi-to-application-code`, `containerize-aspnetcore`, `premium-frontend-ui` | Direct |
 | `replacement-validation-and-regression` | `tdd-best-practices`, `browser-testing`, `integration-testing`, `scoutqa-test`, `attest` not captured | Adjacent |
 

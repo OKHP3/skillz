@@ -1,5 +1,5 @@
 import type { Skill } from '../types/catalog';
-import { canonicalSkillName } from './skillMigrations';
+import { canonicalSkillName, skillMigration } from './skillMigrations';
 
 // ─── Local stack composer (Release 2) ──────────────────────────────────────
 // Browser-only, versioned localStorage. No account, no server, no write-scoped
@@ -37,12 +37,14 @@ export function migrateComposerItems(items: ComposerItem[]): ComposerItem[] {
   const migrated = new Map<string, ComposerItem>();
   for (const item of items) {
     const name = canonicalSkillName(item.name);
+    const context = skillMigration(item.name)?.context;
+    const note = [...new Set([item.note, context].filter(Boolean))].join('\n\n');
     const previous = migrated.get(name);
     if (!previous) {
-      migrated.set(name, { ...item, name });
+      migrated.set(name, { ...item, name, note });
       continue;
     }
-    const notes = [...new Set([previous.note, item.note].filter(Boolean))];
+    const notes = [...new Set([previous.note, note].filter(Boolean))];
     migrated.set(name, { name, optional: previous.optional && item.optional, note: notes.join('\n\n') });
   }
   return [...migrated.values()];

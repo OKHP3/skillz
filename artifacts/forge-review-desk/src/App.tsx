@@ -30,7 +30,8 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
-import { Link, Route, Router as WouterRouter, Switch, useLocation, useParams } from 'wouter';
+import { Link, Route, Router as WouterRouter, Switch, useLocation, useParams, useSearch } from 'wouter';
+import { skillMigration } from '../../forge/src/utils/skillMigrations';
 import { fetchCatalog, findLikelyReplacements, findSkill, type SkillReplacement } from '@/lib/catalog';
 import { buildEvidenceItems, buildRelatedSkills } from '@/lib/reviewEvidence';
 import type { Catalog, EvidenceStatusV2, Maturity, Skill } from '@/types/catalog';
@@ -281,7 +282,7 @@ function EvidenceRow({ item, selected, onSelect }: { item: ReturnType<typeof bui
   );
 }
 
-function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
+function ReviewDesk({ skill, catalog, migration }: { skill: Skill; catalog: Catalog; migration?: ReturnType<typeof skillMigration> }) {
   const [, navigate] = useLocation();
   const [activeSection, setActiveSection] = useState('Review desk');
   const [selectedEvidence, setSelectedEvidence] = useState('runtime');
@@ -425,6 +426,12 @@ function ReviewDesk({ skill, catalog }: { skill: Skill; catalog: Catalog }) {
                 {skill.version && <span className="mb-0.5 border px-2 py-1 font-mono text-[10px]" style={{ borderColor: '#62745e', color: colors.lime }}>v{skill.version}</span>}
               </div>
               <p className="mt-3 max-w-[680px] text-[13px]" style={{ color: '#afbeb6' }}>{skill.description || 'A decision surface for deciding whether this portable contract is ready to leave the library.'}</p>
+              {migration?.context && (
+                <aside aria-label="Consolidated skill guidance" className="mt-3 max-w-[680px] border-l-2 pl-3 text-[13px]" style={{ borderColor: colors.rust, color: colors.ink }}>
+                  <p>{migration.context}</p>
+                  {migration.profile && <a href={skill.rawUrl.replace(/SKILL\.md$/, migration.profile.path)} target="_blank" rel="noopener noreferrer" className="underline">Read the {migration.profile.label} profile</a>}
+                </aside>
+              )}
             </div>
             <div className="flex w-full shrink-0 flex-wrap items-center gap-2 pt-1 sm:w-auto sm:pt-8">
               <button type="button" data-testid="button-copy-review-command" onClick={copyCommand} className="inline-flex h-9 items-center gap-2 border border-[#586965] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#ced9d2] transition-colors hover:bg-[#303a3a]">
@@ -702,11 +709,18 @@ function SkillRoute({ catalog }: { catalog: Catalog }) {
   const { family, name } = useParams<{ family: string; name: string }>();
   const skill = findSkill(catalog, family ?? '', name ?? '');
   const [, navigate] = useLocation();
+  const search = useSearch();
+  const migratedFrom = new URLSearchParams(search).get('from') ?? name ?? '';
+  const migration = skillMigration(migratedFrom);
+  const migrationContext = migration?.to.family === skill?.family && migration?.to.name === skill?.name ? migration : undefined;
   useEffect(() => {
     if (skill && (skill.family !== family || skill.name !== name)) {
-      navigate(`/${skill.family}/${skill.name}${window.location.search}${window.location.hash}`, { replace: true });
+      const params = new URLSearchParams(search);
+      if (skillMigration(name ?? '')?.context) params.set('from', name!);
+      const query = params.size ? `?${params}` : '';
+      navigate(`/${skill.family}/${skill.name}${query}${window.location.hash}`, { replace: true });
     }
-  }, [skill?.family, skill?.name, family, name, navigate]);
+  }, [skill?.family, skill?.name, family, name, search, navigate]);
   // Review state stays keyed to the current identity. A rename resolves a
   // bookmark but does not transfer an approval from the former contract.
   if (!skill) {
@@ -725,7 +739,7 @@ function SkillRoute({ catalog }: { catalog: Catalog }) {
       />
     );
   }
-  return <ReviewDesk skill={skill} catalog={catalog} />;
+  return <ReviewDesk skill={skill} catalog={catalog} migration={migrationContext} />;
 }
 
 function Router() {

@@ -2,6 +2,8 @@
 name: markdown-docs
 description: Writes or restructures project documentation in Markdown — READMEs, guides, references, runbooks, architecture notes — organised around what the reader is trying to do. Use this whenever the user asks for a README, docs, a guide, a runbook, or says their documentation is out of date, missing, or unhelpful, and also after building something substantial that nobody else could pick up without a written explanation.
 license: MIT
+metadata:
+  adaptation: "OKHP3 consolidation, 2026-09-19; README methods from create-readme and readme-blueprint-generator."
 ---
 
 # Markdown docs
@@ -13,6 +15,11 @@ decision follows from that.
 The most common failure is not absence — it is documentation organised around the system's
 structure instead of the reader's task. A page-per-module reference is easy to generate and
 answers almost no real question.
+
+For a repository README, also read [the README workflow](references/readme-workflow.md).
+It covers repository evidence, optional Copilot documentation blueprints, and project-specific
+presentation conventions. This local adaptation preserves the two retired README prompts;
+it does not claim a live quality benchmark or change ownership of the upstream methods.
 
 ## 1. Identify the reader and their moment
 

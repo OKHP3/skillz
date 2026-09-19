@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-19: capability-led duplicate consolidation
+
+- Reduce the active catalog from 350 to 326 skills while retaining all 21 families.
+- Replace fourteen branded workflow copies with shared packages and bundled,
+  conditionally loaded brand profiles. Preserve profile context in old web
+  routes and saved composer notes.
+- Consolidate overlapping browser, refactoring, README, and data-migration
+  prompts into fuller contracts; combine the duplicate specification template
+  under explicit create/update modes with update-identity preservation.
+- Archive complete originals and retain unique useful safeguards and attribution.
+  Preserve distinct platform, language, testing, security, and lifecycle methods.
+- Add an archive-byte integrity check. Historical benchmarks remain historical;
+  no live performance uplift is claimed. See the
+  [redundancy audit](skill-redundancy-audit-2026-09-19.md).
+
 ## 2026-09-19: skill naming, family placement, and archival cleanup
 
 - Apply the owner-requested repository creator and SharePoint names, and move

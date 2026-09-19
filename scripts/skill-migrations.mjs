@@ -27,6 +27,14 @@ export function validateSkillMigrations(registry) {
     }
     fromPaths.add(from);
     nameTargets.set(migration.from.name, migration.to.name);
+    if (migration.context !== undefined && (typeof migration.context !== 'string' || !migration.context.trim())) {
+      throw new Error(`Invalid migration context: ${from}`);
+    }
+    if (migration.profile !== undefined && (typeof migration.profile?.label !== 'string' ||
+        !migration.profile.label.trim() || typeof migration.profile.path !== 'string' ||
+        !/^references\/brand-profiles\/[a-z0-9-]+\.md$/.test(migration.profile.path))) {
+      throw new Error(`Unsafe migration profile: ${from}`);
+    }
   }
   for (const migration of registry.migrations) {
     if (fromPaths.has(key(migration.to))) throw new Error(`Chained or cyclic migration: ${key(migration.from)}`);

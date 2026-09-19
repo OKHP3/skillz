@@ -1,5 +1,9 @@
 # Skill taxonomy audit: 2026-09-19
 
+This is the first-phase baseline record. The subsequent
+[redundancy audit](skill-redundancy-audit-2026-09-19.md) supersedes its retain
+decisions for the listed duplicates and establishes the final 326-skill target.
+
 ## Scope and evidence
 
 The baseline contains **351 canonical distribution packages across 21 active

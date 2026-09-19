@@ -30,3 +30,11 @@ test('fails closed on a missing canonical target or retained installable alias',
   assert.throws(() => validateMigrationCatalog([migration], []), /Missing migration target/);
   assert.throws(() => validateMigrationCatalog([migration], [migration.from, migration.to]), /remains installable/);
 });
+
+test('rejects unsafe profile paths and nontext migration context', () => {
+  assert.doesNotThrow(() => validateSkillMigrations(registry([{ ...migration, profile: { label: 'Brand', path: 'references/brand-profiles/brand.md' }, context: 'Use this profile.' }])));
+  for (const path of ['../secret.md', 'https://example.com/profile.md', 'references/brand-profiles/../../secret.md']) {
+    assert.throws(() => validateSkillMigrations(registry([{ ...migration, profile: { label: 'Brand', path } }])), /Unsafe migration profile/);
+  }
+  assert.throws(() => validateSkillMigrations(registry([{ ...migration, context: 42 }])), /Invalid migration context/);
+});

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "archivedAt": "2026-09-19",
+  "reason": "Consolidate redundant browser and refactoring entry points into stronger maintained packages while preserving useful behavior and complete originals.",
+  "preservation": "SHA256 and bytes describe original working-tree bytes, including line endings; Git blob and mode describe the baseline commit. All original files were moved without byte edits.",
+  "packages": [
+    {
+      "originalPath": "community/review-and-refactor",
+      "replacementPath": "community/refactoring-best-practices",
+      "archivePath": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/review-and-refactor"
+    },
+    {
+      "originalPath": "community/refactor",
+      "replacementPath": "community/refactoring-best-practices",
+      "archivePath": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/refactor"
+    },
+    {
+      "originalPath": "community/playwright-explore-website",
+      "replacementPath": "community/browser-testing",
+      "archivePath": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/playwright-explore-website"
+    },
+    {
+      "originalPath": "community/playwright-generate-test",
+      "replacementPath": "community/browser-testing",
+      "archivePath": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/playwright-generate-test"
+    },
+    {
+      "originalPath": "community/playwright-automation-fill-in-form",
+      "replacementPath": "community/browser-testing",
+      "archivePath": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/playwright-automation-fill-in-form"
+    },
+    {
+      "originalPath": "community/webapp-testing",
+      "replacementPath": "community/browser-testing",
+      "archivePath": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/webapp-testing"
+    }
+  ],
+  "files": [
+    {
+      "originalPath": "community/review-and-refactor/SKILL.md",
+      "bytes": 785,
+      "sha256": "6ddd526ec2b024feb908d96fcdeaf87dea8f1c8e3ae39d0ba68b6df1d6128624",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/review-and-refactor/SKILL.md",
+      "operation": "archive-unchanged",
+      "originalGitMode": "100644",
+      "originalGitBlob": "b43226f903dc2a6b061465fd26217cbfa5904058",
+      "originalGitBlobSha256": "95b48ed4b137777ddc87b77cb0873ed7f485141a517825e71af1a984cf5a6cd6",
+      "originalGitBlobBytes": 770,
+      "reason": "Retired duplicate entry point; useful behavior retained in the named replacement package.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": "community/refactor/SKILL.md",
+      "bytes": 17488,
+      "sha256": "5280a739d1a55b2dd573251c00ebe1fe02d8da994f28a920be6c7e52cc6ae4f9",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/refactor/SKILL.md",
+      "operation": "archive-unchanged",
+      "originalGitMode": "100644",
+      "originalGitBlob": "ba8313b0c1b95c50d648f0b384c008b65ae0b00b",
+      "originalGitBlobSha256": "58a38edd230cdcdd866939906321c8ba6f47c98a70d0cda373360196ee2ca1a7",
+      "originalGitBlobBytes": 16843,
+      "reason": "Retired duplicate entry point; useful behavior retained in the named replacement package.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": "community/playwright-explore-website/SKILL.md",
+      "bytes": 698,
+      "sha256": "ad1ca3f9e2b81b82c4f411a6829766d8a09902173e97766810b34ab97a59e6fc",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/playwright-explore-website/SKILL.md",
+      "operation": "archive-unchanged",
+      "originalGitMode": "100644",
+      "originalGitBlob": "626c378e118bb81ad83fe08b5d17f2cc5a759ba1",
+      "originalGitBlobSha256": "1496280e250b5b79c2c3081f093fa1fea22ac19a2fdc05074589875cdd9f55d3",
+      "originalGitBlobBytes": 681,
+      "reason": "Retired duplicate entry point; useful behavior retained in the named replacement package.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": "community/playwright-generate-test/SKILL.md",
+      "bytes": 894,
+      "sha256": "7bcb03d6339ecc5ca26a23407a89408f67dcf8bbd4b629a1b6979b3036a5e877",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/playwright-generate-test/SKILL.md",
+      "operation": "archive-unchanged",
+      "originalGitMode": "100644",
+      "originalGitBlob": "5d80435fe1697ca3d572bc653df877e503643b85",
+      "originalGitBlobSha256": "79dbb1a49fc5a6502788ccba1a4bd30769a017a1cc31d9db329d1326ea3d898f",
+      "originalGitBlobBytes": 877,
+      "reason": "Retired duplicate entry point; useful behavior retained in the named replacement package.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": "community/playwright-automation-fill-in-form/SKILL.md",
+      "bytes": 678,
+      "sha256": "8a4fb86b517a6d1c41250c381cd4774a7e6600ec2a698ababdc1580ac6103461",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/playwright-automation-fill-in-form/SKILL.md",
+      "operation": "archive-unchanged",
+      "originalGitMode": "100644",
+      "originalGitBlob": "b67d3aab56775c495e47c66c5c06351fb5374534",
+      "originalGitBlobSha256": "ed10ea649ed942b29707738ceb78de7f1a5bfddafe348d23b2ef81e8e3a4b80b",
+      "originalGitBlobBytes": 650,
+      "reason": "Retired duplicate entry point; useful behavior retained in the named replacement package.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": "community/webapp-testing/SKILL.md",
+      "bytes": 3947,
+      "sha256": "c3385d5b940e0c11b580549b488c68bc12a8d945af372b96354bd4b5600ef50e",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/webapp-testing/SKILL.md",
+      "operation": "archive-unchanged",
+      "originalGitMode": "100644",
+      "originalGitBlob": "281fff4e9d0b10cccb695f283ea6d8136a75ba56",
+      "originalGitBlobSha256": "c4629221463d79c84555721ae2a30a6c345dd4d16c38cf6dbe735126e2426044",
+      "originalGitBlobBytes": 3814,
+      "reason": "Retired duplicate entry point; useful behavior retained in the named replacement package.",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": "community/webapp-testing/assets/test-helper.js",
+      "bytes": 1577,
+      "sha256": "e57bae72c4f3ed5b6c196e4bac0dc6e304497f30107bdc136cc2b79a1d92d09c",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/browser-refactor/webapp-testing/assets/test-helper.js",
+      "operation": "archive-unchanged",
+      "originalGitMode": "100644",
+      "originalGitBlob": "df73d9fd16abb37a8995b864c135c0e98ff8c622",
+      "originalGitBlobSha256": "4a9b5c0f27cfe63ad5b4c781d4c96d7149870d8ac3d5ef32fd51b0f90f78766f",
+      "originalGitBlobBytes": 1521,
+      "reason": "Retired duplicate entry point; useful behavior retained in the named replacement package.",
+      "preservationVerified": true
+    }
+  ],
+  "fileCount": 7,
+  "totalBytes": 26067,
+  "sourceCommit": "ff61152eeda6d7985805c9049840964ca781394b"
+}

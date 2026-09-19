@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "archivedAt": "2026-09-19",
+  "sourceCommit": "ff61152eeda6d7985805c9049840964ca781394b",
+  "purpose": "Preserve both specification predecessors before consolidating their equivalent template",
+  "hashAlgorithm": "SHA-256 of raw original working-tree bytes; original Git blob identity and SHA-256 also retained",
+  "fileCount": 2,
+  "totalBytes": 11369,
+  "files": [
+    {
+      "originalPath": "community/create-specification/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/specifications/community/create-specification/SKILL.md",
+      "sha256": "22c9cec24ac4aa8676bb93be9f2e66c2022fb754e7c1418357efe645e0c61399",
+      "bytes": 5637,
+      "operation": "move",
+      "originalGitMode": "100644",
+      "originalGitBlob": "89d998c7af65ed9b7bd06548a9a0ecc969174cbb",
+      "originalGitBlobSha256": "0de8583934fbcb7afa0aa4c2569c75d74cad1a711664bb57b6aa5e0fcf6d92ae",
+      "originalGitBlobBytes": 5510,
+      "reason": "Consolidate identical specification template into explicit create and update modes",
+      "preservationVerified": true
+    },
+    {
+      "originalPath": "community/update-specification/SKILL.md",
+      "destination": "docs/archive/skill-redundancy-2026-09-19/specifications/community/update-specification/SKILL.md",
+      "sha256": "880fe0638940050b4792772591932911dbb94b72d047f4d946598c17cf154933",
+      "bytes": 5732,
+      "operation": "move",
+      "originalGitMode": "100644",
+      "originalGitBlob": "3ef5340671b9b6ca6b7a8e8f6fc7f0c933224980",
+      "originalGitBlobSha256": "2d6df53ebd1d50e5a69a4425bc579d5c8a15e0102c6bff685c3fa3ac70e920a6",
+      "originalGitBlobBytes": 5605,
+      "reason": "Consolidate identical specification template into explicit create and update modes",
+      "preservationVerified": true
+    }
+  ]
+}

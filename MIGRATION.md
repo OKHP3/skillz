@@ -173,3 +173,33 @@ the catalogs, and run the same checks. For individual artifact recovery, use
 the archive manifest's exact reverse mapping and verify its hash before
 restoring; never overwrite a current destination. The baseline commit and
 unaltered predecessor snapshots provide independent recovery points.
+
+## Skill redundancy consolidation 2026-09-19
+
+After the first phase, the owner explicitly prioritized capability over package
+count and authorized retirement of redundant or clearly superseded workflows.
+The [redundancy audit](docs/skill-redundancy-audit-2026-09-19.md) records the
+full-catalog screen, exact comparisons, replacements, and retained distinctions.
+
+Fourteen branded copies now compose shared workflows with bundled optional
+profiles. Eleven Community entry points become five maintained workflows, including
+one new specification-authoring package with create and update modes. Together
+these remove 24 active entries from the first-phase inventory: **326 skills in
+21 families**, down from the original 351. Project support remains 52 packages.
+
+The migration registry now records 32 old identities, including the first-phase
+renames. Old website links resolve to current packages; branded aliases preserve
+the relevant profile through route guidance and composer notes. Reviews and
+approvals are never transferred from retired identities. Raw-file consumers must
+update their URLs.
+
+The [redundancy archive](docs/archive/skill-redundancy-2026-09-19/README.md) retains
+complete originals and pre-adaptation support snapshots with per-file hashes and
+Git provenance. Run `python scripts/verify-skill-archives.py` to check both cleanup
+archives, adding `--index` before committing to prove staged bytes and modes.
+Archive-only attributes preserve original line endings without normalization.
+
+Historical benchmark data stays unchanged and is not current-version evidence.
+The changed packages carry structural/analytical limits and new profile evaluation
+designs where applicable. Rollback uses the original source commits and manifests;
+restore in a review branch, reconcile aliases, and regenerate all catalog surfaces.

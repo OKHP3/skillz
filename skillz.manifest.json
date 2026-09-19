@@ -20,19 +20,19 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 350,
+  "distributionSkillCount": 326,
   "activeFamilyCount": 21,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 52,
   "maturityCounts": {
-    "draftable": 265,
-    "skeleton": 80,
+    "draftable": 248,
+    "skeleton": 73,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 169,
-    "none": 124,
+    "not-run": 159,
+    "none": 110,
     "local-checks": 37,
     "analytical": 6,
     "live": 7
@@ -63,15 +63,8 @@
       "status": "draftable",
       "skills": [
         "okhp3-askjamie-brand",
-        "okhp3-askjamie-chatgpt-migrate",
-        "okhp3-askjamie-extract-chatgpt",
-        "okhp3-askjamie-extract-claude",
         "okhp3-askjamie-gpt-builder",
-        "okhp3-askjamie-gpt-readiness",
-        "okhp3-askjamie-repo-creator",
-        "okhp3-askjamie-repo-organizer",
-        "okhp3-askjamie-style-registry",
-        "okhp3-askjamie-thread-context"
+        "okhp3-askjamie-gpt-readiness"
       ]
     },
     {
@@ -107,8 +100,6 @@
         "containerize-aspnetcore",
         "context-map",
         "copilot-instructions-blueprint",
-        "create-readme",
-        "create-specification",
         "create-tldr-page",
         "csharp-docs",
         "csharp-mstest",
@@ -116,7 +107,6 @@
         "csharp-xunit",
         "custom-instructions-from-codebase",
         "data-breach-blast-radius",
-        "data-migration",
         "data-migration-best-practices",
         "ddd-best-practices",
         "dependency-audit",
@@ -149,16 +139,10 @@
         "nuget-manager",
         "oo-component-documentation",
         "openapi-to-application-code",
-        "playwright-automation-fill-in-form",
-        "playwright-explore-website",
-        "playwright-generate-test",
         "premium-frontend-ui",
-        "readme-blueprint-generator",
-        "refactor",
         "refactor-plan",
         "refactoring-best-practices",
         "rest-api-best-practices",
-        "review-and-refactor",
         "scoutqa-test",
         "secret-scanning",
         "secrets-management",
@@ -166,6 +150,7 @@
         "security-review",
         "skill-creator",
         "software-architecture-analysis",
+        "specification-authoring",
         "sql-code-review",
         "sql-optimization",
         "sql-server-table-reconciliation",
@@ -176,13 +161,11 @@
         "threat-modeling",
         "tm7-threat-model",
         "unit-testing",
-        "update-specification",
         "vercel-react-best-practices",
         "vercel-react-native-skills",
         "web-artifacts-builder",
         "web-design-guidelines",
         "web-design-reviewer",
-        "webapp-testing",
         "workflow-analysis-blueprint",
         "write-coding-standards-from-file"
       ]
@@ -256,16 +239,9 @@
       "skills": [
         "glee-fully-repo-standardizer",
         "okhp3-glee-fully-brand",
-        "okhp3-glee-fully-chatgpt-migrate",
-        "okhp3-glee-fully-extract-chatgpt",
-        "okhp3-glee-fully-extract-claude",
         "okhp3-glee-fully-foundry",
         "okhp3-glee-fully-gpt-builder",
-        "okhp3-glee-fully-gpt-readiness",
-        "okhp3-glee-fully-repo-creator",
-        "okhp3-glee-fully-repo-organizer",
-        "okhp3-glee-fully-style-registry",
-        "okhp3-glee-fully-thread-context"
+        "okhp3-glee-fully-gpt-readiness"
       ]
     },
     {
@@ -529,6 +505,6 @@
     ]
   },
   "distributionFamilyCount": 21,
-  "countsGeneratedAt": "2026-09-19T23:04:34.477Z",
+  "countsGeneratedAt": "2026-09-19T23:30:09.263Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

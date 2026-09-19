@@ -1381,7 +1381,13 @@ function buildFamilyOrientation(familySlug, familySkills) {
     skills,
   };
 
-  validateMigrationCatalog(readSkillMigrations(REPO_ROOT), skills);
+  const migrations = readSkillMigrations(REPO_ROOT);
+  validateMigrationCatalog(migrations, skills);
+  for (const migration of migrations) {
+    if (migration.profile && !existsSync(join(REPO_ROOT, migration.to.family, migration.to.name, migration.profile.path))) {
+      throw new Error(`Missing bundled migration profile: ${migration.from.name}`);
+    }
+  }
 
   mkdirSync(dirname(OUTPUT), { recursive: true });
   writeFileSync(OUTPUT, JSON.stringify(catalog, null, 2), 'utf-8');

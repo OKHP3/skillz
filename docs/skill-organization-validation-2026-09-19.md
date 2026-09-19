@@ -3,7 +3,7 @@
 Date: 2026-09-19. Baseline: `c63c438b596a69887be8455589535db0a3daeaf7`.
 Scope and reverse mapping: [MIGRATION.md](../MIGRATION.md#skill-organization-2026-09-19).
 
-## Local checks
+## First-phase local checks
 
 | Check | Result |
 |---|---|
@@ -30,7 +30,38 @@ Scope and reverse mapping: [MIGRATION.md](../MIGRATION.md#skill-organization-202
 The full local catalog suite began successfully (first 23 assertions) but was
 stopped before the source commit: its subprocess and Git-HEAD archive scenarios
 need the committed migration. This partial local run is not a full-suite pass.
-The committed change must pass the complete Linux release and deployment checks.
+The first-phase commit `ff61152` subsequently passed the complete Linux release
+suite, including catalog contracts, both browser checks, archive links,
+maintenance safeguards, workflow syntax, and technology validation.
+
+## Redundancy consolidation checks
+
+- Complete re-index: 326 canonical skills across 21 families; 52 support packages.
+  Community has 97, AskJamie 3, and Glee-fully 5 active skills.
+- Fourteen branded duplicates have README-only locators. All fourteen bundled
+  profiles match their original bytes, and six equivalent project-local support
+  packages carry the same additive profiles without overwriting unique content.
+- Seven canonical brand packages, six support counterparts, and their extraction
+  validators pass. Community replacements pass their applicable structural checks.
+- Archive verification covers 218 payloads and 3,765,529 original bytes across six
+  manifests, including staged Git object bytes and modes. Tampering, missing
+  payload, and path-escape failure checks pass.
+- Migration and legacy-link regressions pass 12 tests. UI verification passes
+  58 tests across 9 files and both TypeScript projects. This includes actual
+  add-to-stack callbacks, existing-note/flag/order preservation at the item cap,
+  idempotent profile guidance, and native/clipboard sharing of migrated context.
+- Five deterministic refactoring example tests pass. Exact upstream MIT notices
+  are retained in the adapted Community packages, with immutable source lineage.
+- All 241 source paths removed from their baseline locations are accounted for
+  by archived originals or mapped current files; regenerated detail JSON is
+  handled separately by the catalog builder.
+- Original evaluations remain historical. New profile and consolidation cases
+  are explicitly not run; deterministic code examples are not agent benchmarks.
+
+The repository package manager attempted a Windows-incompatible `sh` preinstall
+during invocation. Checks use the existing locked local executables directly;
+no tracked dependency or lockfile changes were made. Hosted Linux validation
+remains required for the complete catalog and release suite at the final head.
 
 ## Environment and evidence limits
 

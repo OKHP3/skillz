@@ -1,6 +1,8 @@
 ---
 name: data-migration-best-practices
 description: Operational data migration guidance. Use when moving or transforming persisted data between schemas, databases, services, or storage technologies; running large backfills; applying expand-and-contract schema changes; combining snapshots with live CDC/events; designing resumable batches and checkpoints; reconciling source and target; or planning cutover, rollback, and repair.
+metadata:
+  adaptation: "OKHP3 consolidation, 2026-09-19; schema-lock and recovery planning methods from data-migration."
 ---
 
 # Data Migration Best Practices
@@ -60,3 +62,9 @@ Do not cut over on row-count equality alone. Require:
 ## Reference
 
 Read `references/operational-migrations.md` for snapshot/delta handoff, batching, reconciliation, observability, cutover, repair, and course caveats.
+
+Read `references/schema-and-recovery.md` before changing a live schema or
+planning execution. It adds engine-specific lock checks, restored-backup
+rehearsal, separate deployable stages, and a named operator handoff from the
+retired `data-migration` package. This is a local adaptation with preserved
+source provenance, not evidence of a live migration or benchmark.

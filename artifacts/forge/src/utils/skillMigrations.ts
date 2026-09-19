@@ -5,6 +5,18 @@ export interface SkillIdentity {
   name: string;
 }
 
+interface SkillMigration {
+  from: SkillIdentity;
+  to: SkillIdentity;
+  context?: string;
+  profile?: { label: string; path: string };
+}
+
+const migrations: SkillMigration[] = registry.migrations;
+export function skillMigration(name: string): SkillMigration | undefined {
+  return migrations.find(migration => migration.from.name === name);
+}
+
 const byIdentity = new Map(registry.migrations.map(({ from, to }) => [`${from.family}/${from.name}`, to]));
 const byName = new Map(registry.migrations.map(({ from, to }) => [from.name, to.name]));
 
