@@ -191,7 +191,7 @@ async function expectUnresolvedCompanionDetail(page, skill, unresolvedName) {
     `${skill.name} genuine unresolved companion must not render approved-exception context.`);
 }
 
-async function expectExpandedBranchUnresolvedDetail(page, skill, branchSkill, unresolvedName) {
+async function expectExpandedBranchUnresolvedDetail(page, skill, branchSkill, unresolvedName, { narrow = false } = {}) {
   await page.goto(route(skill), { waitUntil: 'domcontentloaded' });
   const pathway = page.locator('.skill-pathway');
   await pathway.waitFor();
@@ -233,6 +233,25 @@ async function expectExpandedBranchUnresolvedDetail(page, skill, branchSkill, un
   assert((await unresolvedNode.getAttribute('title')).includes(
     "does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere.",
   ), `${skill.name} expanded unresolved stop must explain the broken-reference cause.`);
+
+  if (narrow) {
+    await expectReflowedWithinViewport(
+      unresolvedNode,
+      `${skill.name} expanded unresolved stop`,
+    );
+    await expectVisibleWithinViewport(
+      unresolvedNode.locator('.skill-pathway__node-name--unresolved'),
+      `${skill.name} expanded unresolved warning name`,
+    );
+    await expectVisibleWithinViewport(
+      unresolvedNode.locator('.skill-pathway__sub-node-unresolved-label'),
+      `${skill.name} expanded unresolved warning explanation`,
+    );
+    await expectNoHorizontalOverflow(
+      page,
+      `narrow expanded unresolved pathway for ${skill.name}`,
+    );
+  }
 }
 
 async function main() {
@@ -336,6 +355,42 @@ async function main() {
       unresolvedName,
     );
     await expandedBranch.close();
+
+    const narrowExpandedBranch = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await narrowExpandedBranch.route('**/data/catalog.json', async requestRoute => {
+      const response = await requestRoute.fetch();
+      const fixtureCatalog = await response.json();
+      const fixtureSkill = fixtureCatalog.skills.find(candidate => candidate.name === unresolvedFixture.name);
+      const branchSkill = fixtureCatalog.skills.find(candidate =>
+        candidate.name !== unresolvedFixture.name && candidate.companions.length === 0,
+      );
+      const mainSkill = fixtureCatalog.skills.find(candidate =>
+        candidate.name !== unresolvedFixture.name && candidate.name !== branchSkill?.name,
+      );
+      assert(fixtureSkill && branchSkill && mainSkill,
+        `Could not create narrow expanded unresolved branch fixture for ${unresolvedFixture.name}.`);
+
+      fixtureSkill.companions = [mainSkill.name, branchSkill.name];
+      branchSkill.companions = [unresolvedName];
+      mainSkill.companions = [];
+      delete fixtureSkill.companionDiagnostics;
+      delete branchSkill.companionDiagnostics;
+      delete mainSkill.companionDiagnostics;
+
+      await requestRoute.fulfill({
+        status: response.status(),
+        headers: { ...response.headers(), 'content-type': 'application/json' },
+        body: JSON.stringify(fixtureCatalog),
+      });
+    });
+    await expectExpandedBranchUnresolvedDetail(
+      narrowExpandedBranch,
+      unresolvedFixture,
+      expandedBranchSkill,
+      unresolvedName,
+      { narrow: true },
+    );
+    await narrowExpandedBranch.close();
 
     for (const { skill: approved, kind } of approvedCompanions) {
       const narrowApproved = await browser.newPage({ viewport: { width: 390, height: 844 } });
