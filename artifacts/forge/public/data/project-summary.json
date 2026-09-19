@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-19T23:30:09.263Z",
+  "generatedAt": "2026-09-19T23:35:13.065Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/skill-taxonomy-cleanup",
-  "sourceCommit": "ff61152",
+  "sourceCommit": "b8e278d",
   "skillCount": 326,
   "familyCount": 21,
   "maturityCounts": {

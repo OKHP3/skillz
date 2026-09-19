@@ -55,6 +55,14 @@ maintenance safeguards, workflow syntax, and technology validation.
 - All 241 source paths removed from their baseline locations are accounted for
   by archived originals or mapped current files; regenerated detail JSON is
   handled separately by the catalog builder.
+- Production builds pass for Forge and Review Desk. All 25 additional retired
+  routes resolve to canonical raw contracts in the built Forge preview; all 14
+  brand aliases display the correct bundled profile, and specification aliases
+  retain their mode. Together with the first-phase routes, all 32 aliases were
+  exercised. A real add-to-stack click preserved the AskJamie note; its temporary
+  selection was removed afterward. Review Desk preserved the same brand context.
+- An independent baseline-object audit verified all 218 original Git blob IDs,
+  modes, SHA-256 values, and byte lengths against their stated source commits.
 - Original evaluations remain historical. New profile and consolidation cases
   are explicitly not run; deterministic code examples are not agent benchmarks.
 
