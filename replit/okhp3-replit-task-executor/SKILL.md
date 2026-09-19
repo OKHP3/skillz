@@ -36,8 +36,10 @@ can prepare the handoff but cannot claim implementation.
 
 ## Scope and authority
 
-- Start with one selected task or an explicitly bounded set. A board URL alone
-  authorizes inspection, not execution of every card.
+- Start with one selected task or an explicitly bounded set. A board URL
+  identifies a target; it grants no permission by itself. Use the user's
+  existing authorization to inspect it, including private task details.
+  Board inspection does not authorize execution of every card.
 - Honor existing user authorization for implementation, board updates, PRs,
   merge, and deployment. Ask only for a missing consequential decision.
   Approval of a Replit plan is not automatically approval for a different
