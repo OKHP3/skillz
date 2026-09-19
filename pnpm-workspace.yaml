@@ -47,8 +47,8 @@ catalog:
   '@tailwindcss/vite': ^4.1.14
   '@tanstack/react-query': ^5.90.21
   '@types/node': ^25.3.3
-  '@types/react': ^19.2.0
-  '@types/react-dom': ^19.2.0
+  '@types/react': ^19.3.0
+  '@types/react-dom': ^19.3.0
   '@vitejs/plugin-react': ^5.0.4
   class-variance-authority: ^0.7.1
   clsx: ^2.1.1
@@ -56,9 +56,9 @@ catalog:
   framer-motion: ^12.23.24
   lucide-react: ^0.545.0
   # Must be this exact version because expo requires it
-  react: 19.1.0
+  react: 19.3.0
   # Must be this exact version because expo requires it
-  react-dom: 19.1.0
+  react-dom: 19.3.0
   tailwind-merge: ^3.3.1
   tailwindcss: ^4.1.14
   tsx: ^4.21.0
