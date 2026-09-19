@@ -2,6 +2,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readSkillMigrations, resolveMigratedSkillPath, SKILL_MIGRATIONS_PATH } from './skill-migrations.mjs';
 
 export const ARCHIVE_README =
   "docs/archive/migration-backup-20260826/legacy-distribution-README.md";
@@ -54,6 +55,12 @@ export function extractLocalDestinations(markdown) {
 
 export function validateArchiveLinks(root) {
   const failures = [];
+  let migrations = [];
+  try {
+    migrations = readSkillMigrations(root);
+  } catch (error) {
+    failures.push(`invalid skill migration registry: ${error.message}`);
+  }
   const archivePath = resolve(root, ARCHIVE_README);
   const migrationPath = resolve(root, MIGRATION_LEDGER);
 
@@ -104,13 +111,17 @@ export function validateArchiveLinks(root) {
       !targetPath.startsWith("../") && !targetPath.startsWith("./");
     if (isFormerRootReference && existsSync(formerRootTarget)) continue;
 
+    const historicalPath = (isFormerRootReference ? targetPath : relativeTarget).replace(/\\/g, '/');
+    const migratedPath = resolveMigratedSkillPath(historicalPath, migrations);
+    if (migratedPath !== historicalPath && existsSync(resolve(root, migratedPath))) continue;
+
     failures.push(`missing archive link target: ${destination}`);
   }
 
   return {
     failures,
     localLinkCount: destinations.length,
-    sourcePaths: [ARCHIVE_README, MIGRATION_LEDGER],
+    sourcePaths: [ARCHIVE_README, MIGRATION_LEDGER, SKILL_MIGRATIONS_PATH],
   };
 }
 

@@ -1,5 +1,6 @@
 import type { Skill } from '../types/catalog';
 import type { FavoriteOutcome, ShareOutcome } from './feedback';
+import { canonicalSkillNames } from './skillMigrations';
 
 /** Canonical public base for share URLs — always points to the live site */
 const FORGE_CANONICAL = 'https://okhp3.github.io/skillz';
@@ -121,7 +122,10 @@ export function useFavorites() {
   function getFavorites(): string[] {
     try {
       const raw = localStorage.getItem(FAVORITES_KEY);
-      return raw ? JSON.parse(raw) : [];
+      const parsed: unknown = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed)
+        ? canonicalSkillNames(parsed.filter((item): item is string => typeof item === 'string'))
+        : [];
     } catch {
       return [];
     }

@@ -1,0 +1,72 @@
+{
+  "role": "safety-portability",
+  "evidence_status": "analytical",
+  "decision": "approve-with-limits",
+  "scope": "v0.1.0 is fit for LOCAL candidate promotion to Skillz universal; this does not authorize promotion execution or establish production readiness.",
+  "evidence_base": "origin-worktree/",
+  "claim_ledger": [
+    {
+      "claim_id": "SP-01",
+      "claim": "Solo-owner preferences do not independently authorize weakening protections.",
+      "claim_type": "design choice",
+      "evidence_ids": [".agents/skills/okhp3-repo-settings/SKILL.md:67-89", ".agents/skills/okhp3-repo-settings/SKILL.md:114-129"],
+      "status": "supported",
+      "consequence": "Misapplication could remove mandatory independent approval.",
+      "next_test": "Run the inherited-team-rule and solo-owner development cases before operational acceptance."
+    },
+    {
+      "claim_id": "SP-02",
+      "claim": "The package prohibits implicit billing, credential, access, and publication expansion.",
+      "claim_type": "design choice",
+      "evidence_ids": [".agents/skills/okhp3-repo-settings/SKILL.md:114-134", ".agents/skills/okhp3-repo-settings/references/settings-profile.md:49-57"],
+      "status": "supported",
+      "consequence": "Failure could cause charges or unauthorized disclosure.",
+      "next_test": "Run creator-and-paid-bridge and untrusted-instructions cases. The OpenAI billing distinction was independently checked against [official billing guidance](https://help.openai.com/en/articles/9039756-chatgpt-search)."
+    },
+    {
+      "claim_id": "SP-03",
+      "claim": "Review composition is provider-independent and preserves creator, settings, merge, and deployment authority boundaries.",
+      "claim_type": "design choice",
+      "evidence_ids": [".agents/skills/okhp3-repo-settings/references/settings-profile.md:38-47", ".agents/skills/okhp3-repo-settings/references/creator-handoff.md:8-19"],
+      "status": "supported",
+      "consequence": "Failure could manufacture approval authority or expand scaffold authorization.",
+      "next_test": "Exercise the handoff with another review provider and with no remote repository."
+    },
+    {
+      "claim_id": "SP-04",
+      "claim": "Required-check coverage, concurrent changes, and optional-review auto-merge races have explicit safeguards.",
+      "claim_type": "design choice",
+      "evidence_ids": [".agents/skills/okhp3-repo-settings/SKILL.md:93-105", ".agents/skills/okhp3-repo-settings/references/settings-profile.md:15-19", ".agents/skills/okhp3-repo-settings/evals/evals.json:11-21"],
+      "status": "supported",
+      "consequence": "Failure could block legitimate merges, overwrite protection, or merge before review.",
+      "next_test": "Run filtered-check, concurrent-protection, and auto-merge-race cases."
+    },
+    {
+      "claim_id": "SP-05",
+      "claim": "The core output is portable and distinguishes unknown, proposed, and verified settings without recording credentials.",
+      "claim_type": "interpretation",
+      "evidence_ids": [".agents/skills/okhp3-repo-settings/assets/settings-record.json:1-30", ".agents/skills/okhp3-repo-settings/references/creator-handoff.md:28-40"],
+      "status": "supported",
+      "consequence": "Failure could leak secrets or misrepresent an unapplied proposal.",
+      "next_test": "Populate and inspect a redacted record on a second host; verify destination package hashes during promotion."
+    },
+    {
+      "claim_id": "SP-06",
+      "claim": "Platform and performance claims are appropriately bounded for a local candidate.",
+      "claim_type": "interpretation",
+      "evidence_ids": [".agents/skills/okhp3-repo-settings/SKILL.md:107-110", ".agents/skills/okhp3-repo-settings/references/sources.md:3-6", ".agents/skills/okhp3-repo-settings/evals/evals.json:4-8", "docs/repo-settings-recap.md:89-110"],
+      "status": "supported",
+      "consequence": "Overclaiming could turn historical observations into false operational assurance.",
+      "next_test": "Refresh relevant platform documentation before mutation; require fresh behavioral evidence and an unseen holdout before performance claims."
+    }
+  ],
+  "material_defects": [],
+  "limitations": [
+    "Approval covers documented safety-portability design only; behavioral effectiveness remains unverified.",
+    "Development evaluations were inspected, not executed. No production-readiness or live outcome uplift claim is supported.",
+    "The package contains evals/evals.json; no resources/evals directory exists.",
+    "Recap operations were not independently reverified. Most platform references were inspected as supplied source records, not refreshed live.",
+    "Separate reviewer context shares the model and source package with other reviewers; no cross-model independence is claimed. No other reviewer result was read.",
+    "No files or external settings were changed. Re-review if candidate bytes change."
+  ]
+}

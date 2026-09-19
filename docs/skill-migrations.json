@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "migrations": [
+    {
+      "from": { "family": "context-extraction", "name": "okhp3-thread-context-extraction-grok" },
+      "to": { "family": "context-extraction", "name": "okhp3-thread-extract-grok" },
+      "reason": "Use the common platform thread-extraction naming pattern."
+    },
+    {
+      "from": { "family": "universal", "name": "okhp3-repo-settings" },
+      "to": { "family": "universal", "name": "okhp3-repository-settings" },
+      "reason": "Use the full repository term consistently across maintenance skills."
+    },
+    {
+      "from": { "family": "universal", "name": "okhp3-foundry-repo-creator" },
+      "to": { "family": "universal", "name": "okhp3-repository-creator" },
+      "reason": "Use the full repository term in the portable package name."
+    },
+    {
+      "from": { "family": "universal", "name": "okhp3-repl-repo-janitor" },
+      "to": { "family": "replit", "name": "okhp3-replit-repository-janitor" },
+      "reason": "Use the Replit host family and the full repository term."
+    },
+    {
+      "from": { "family": "replit", "name": "okhp3-replit-repl-janitor" },
+      "to": { "family": "replit", "name": "okhp3-replit-repository-janitor" },
+      "reason": "Consolidate the successor janitor under the canonical repository name."
+    },
+    {
+      "from": { "family": "universal", "name": "sp-build-auditor" },
+      "to": { "family": "copilot", "name": "okhp3-sharepoint-content-auditor" },
+      "reason": "Identify the SharePoint host and place its audit workflow in the host family."
+    },
+    {
+      "from": { "family": "universal", "name": "sp-list-architect" },
+      "to": { "family": "copilot", "name": "okhp3-sharepoint-list-schema-design" },
+      "reason": "Identify the SharePoint list schema workflow in the host family."
+    }
+  ]
+}

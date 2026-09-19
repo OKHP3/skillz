@@ -7,3 +7,7 @@
 
 # Keep the portable Replit executor mirror byte-identical across hosts.
 replit/okhp3-replit-task-executor/** text=auto eol=lf
+
+# These existing mixed-ending files retain their bytes during identity edits.
+artifacts/forge/src/data/stacks.ts whitespace=cr-at-eol
+context-extraction/okhp3-thread-extract-grok/evals/evals.json whitespace=cr-at-eol

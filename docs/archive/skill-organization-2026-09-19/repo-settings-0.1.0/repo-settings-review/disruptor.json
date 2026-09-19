@@ -1,0 +1,62 @@
+{
+  "role": "conditional-disruptor",
+  "artifact": "okhp3-repo-settings v0.1.0 and docs/repo-settings-recap.md",
+  "evidence_status": "analytical",
+  "execution": "Read-only inspection of all six package files and recap; no writes, paid reviews, or runtime benchmark.",
+  "independence_limit": "New reviewer context; shared model and sources. Initial reviewer conclusions supplied by coordinator, not independently reverified.",
+  "hypotheses": [
+    {
+      "id": "D1",
+      "counterexample": "Classic protection requires zero approvals, but inherited policy requires two. A combined Copilot approval/counting toggle is enabled as supposedly optional, while an empty repository ruleset list is reported as proof of no automatic spending.",
+      "falsifying_test": "Check whether instructions require effective inherited-policy inspection, prevent accidental approval counting, and preserve unknown automation scopes.",
+      "observed_evidence": [
+        "SKILL.md:53-63 requires effective and inherited rules inspection and distinguishes personal, organization, workflow and app automation.",
+        "SKILL.md:107-110 explicitly addresses combined controls and prohibits accidental counting when policy requires approvals.",
+        "assets/settings-record.json:26 initializes all four automation scopes as unknown.",
+        "evals/evals.json includes combined-copilot-control, automation-scope and inherited-team-rule cases; these are unexecuted development cases.",
+        "Recap limits its automation observation and acknowledges the combined control."
+      ],
+      "survives": false,
+      "decision": "Counterexample contradicted by explicit design controls; operational compliance remains untested.",
+      "minimal_correction": null
+    },
+    {
+      "id": "D2",
+      "counterexample": "A successful check on a pending PR is treated as proof of default-branch coverage. A path-filtered verify job becomes mandatory, blocking documentation-only PRs, or an existing gate is removed to hide the prerequisite failure.",
+      "falsifying_test": "Check whether the package distinguishes PR success from default-branch availability, requires trigger and source verification, and separates workflow repair from settings changes.",
+      "observed_evidence": [
+        "SKILL.md:57-59 requires exact names, source apps and branch/path/event filters.",
+        "SKILL.md:99-105 explicitly rejects both assumptions and prohibits silently removing the gate.",
+        "references/settings-profile.md:19 excludes filtered-out and scheduled-only workflows from blind requirement.",
+        "Recap explicitly records the manifest workflow as absent from main at inspection and application verify as path-filtered; both remain follow-up work."
+      ],
+      "survives": false,
+      "decision": "The package reports the unresolved prerequisite rather than claiming settings completion repaired it.",
+      "minimal_correction": null
+    },
+    {
+      "id": "D3",
+      "counterexample": "Creator scaffold approval or a local candidate review is treated as authority to create a remote, publish the skill, overwrite divergent mirrors, or claim demonstrated performance.",
+      "falsifying_test": "Inspect creator ownership, destination and copy reconciliation requirements, publication authority, and evaluation-status language for any automatic escalation.",
+      "observed_evidence": [
+        "SKILL.md:114-125 and 151-152 separate existing authorization from publication, unrelated repositories and file-supplied instructions.",
+        "references/creator-handoff.md:10-19 requires separately authorized remote creation and leaves merge and deployment to their respective workflows.",
+        "references/creator-handoff.md:30-40 labels distribution as intended, requires destination guidance/status and existing-copy inspection, full package hash comparison, and authorized creator changes.",
+        "evals/evals.json:4-8 labels evaluation not-run and requires an unseen external holdout for performance claims.",
+        "Recap explicitly rejects treating the originating session as a live benchmark of the new skill."
+      ],
+      "survives": false,
+      "decision": "No authority escalation or performance-promotion defect established within the requested local candidate scope.",
+      "minimal_correction": null
+    }
+  ],
+  "decision": "approve-with-limits",
+  "approved_scope": "LOCAL candidate promotion only, based on analytical design inspection.",
+  "material_defects_found": 0,
+  "minimal_correction": "Add the expected explicit Scope heading before final freeze. Existing scope restrictions are substantive; this is editorial.",
+  "limits": [
+    "Failed counterexamples do not establish runtime reliability or performance.",
+    "No publication, mirror synchronization, external settings application or live platform verification is approved by this review.",
+    "Final adjudication remains with the negotiator."
+  ]
+}

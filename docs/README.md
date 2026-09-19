@@ -26,6 +26,8 @@ at the top level:
 | `TECHNOLOGY-INVENTORY.md` | Technology inventory for the repository. |
 | `SECURITY.md` | Skill supply-chain and employer-data safety posture. |
 | `2026-equilibrium-skills-thesis.md` | Background conceptual thesis; not a delivery directive. |
+| [Skill taxonomy audit](skill-taxonomy-audit-2026-09-19.md) | Complete inventory and naming/family decisions for the September 19 cleanup. |
+| [Migration registry](skill-migrations.json) | Old identities mapped to canonical packages for saved selections, routes, and historical link resolution. |
 
 ## Archive
 
@@ -33,3 +35,4 @@ at the top level:
 |---|---|
 | `archive/planning-2026-08/` | Superseded PRDs, audits, and product evaluations for Skillz Forge (2026-07-28 through 2026-08-06). |
 | `archive/root-scaffold/` | Superseded repository root-scaffold files. |
+| [archive/skill-organization-2026-09-19/](archive/skill-organization-2026-09-19/README.md) | Obsolete work artifacts and janitor predecessors, with original paths, hashes, and rollback records. |

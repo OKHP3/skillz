@@ -6,7 +6,7 @@ metadata:
   author: "Jamie Hill (OverKill Hill P³)"
   version: "1.1.0"
   category: "askjamie"
-  derived_from: okhp3-foundry-repo-creator
+  derived_from: okhp3-repository-creator
   brand: AskJamie
   origin: "okhp3/skillz"
   homepage: "https://overkillhill.com"

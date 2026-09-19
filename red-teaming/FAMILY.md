@@ -3,7 +3,7 @@ family: red-teaming
 display_name: Red Teaming
 skill_count: 24
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-13T00:03:20Z
+generated_at: 2026-09-19T23:01:37Z
 ---
 
 # red-teaming
@@ -98,7 +98,7 @@ A family of 24 skills. Forecast adoption of emerging agentic attack patterns fro
 ## Skills (24)
 
 <!-- FAMILY_INVENTORY_START -->
-*24 skills &nbsp;·&nbsp; inventory last updated: **September 13, 2026 at 00:03 UTC***
+*24 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:01 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

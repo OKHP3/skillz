@@ -1,4 +1,5 @@
 import type { Skill } from '../types/catalog';
+import { canonicalSkillName } from './skillMigrations';
 
 // ─── Local stack composer (Release 2) ──────────────────────────────────────
 // Browser-only, versioned localStorage. No account, no server, no write-scoped
@@ -31,6 +32,22 @@ function isValidState(v: unknown): v is ComposerStateV1 {
   );
 }
 
+/** Merge old and current identities without discarding a visitor's notes. */
+export function migrateComposerItems(items: ComposerItem[]): ComposerItem[] {
+  const migrated = new Map<string, ComposerItem>();
+  for (const item of items) {
+    const name = canonicalSkillName(item.name);
+    const previous = migrated.get(name);
+    if (!previous) {
+      migrated.set(name, { ...item, name });
+      continue;
+    }
+    const notes = [...new Set([previous.note, item.note].filter(Boolean))];
+    migrated.set(name, { name, optional: previous.optional && item.optional, note: notes.join('\n\n') });
+  }
+  return [...migrated.values()];
+}
+
 /** Loads the composer's saved items. An unrecognized or corrupt shape (e.g.
  *  from a future schema version) resets to empty rather than guess-migrating
  *  — this is local, non-authoritative scratch data the visitor can trivially
@@ -42,7 +59,7 @@ export function loadComposerState(): ComposerItem[] {
     const raw = localStorage.getItem(COMPOSER_STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
-    return isValidState(parsed) ? parsed.items : [];
+    return isValidState(parsed) ? migrateComposerItems(parsed.items) : [];
   } catch {
     return [];
   }

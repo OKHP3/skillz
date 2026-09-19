@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 351 distribution skills in 21 active families (catalog refresh, 2026-09-19). OpenClaw packages remain unbenchmarked candidates.
+- **Current inventory:** 350 distribution skills in 21 active families (taxonomy cleanup, 2026-09-19). OpenClaw packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -53,7 +53,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata synchronized to the current 258-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 350-skill distribution inventory |
 
 ## Routing index
 
@@ -172,7 +172,7 @@ The `context-extraction/` family contains ten distribution skills for extracting
 | `okhp3-thread-extract-claude` | Manually supplied Claude chats, Projects, Artifacts, Research, or export excerpts. |
 | `okhp3-thread-extract-copilot-m365` | Manually supplied Microsoft Copilot or Microsoft 365 Copilot captures. |
 | `okhp3-thread-extract-gemini` | Manually supplied Gemini chats, Canvas, Deep Research, or Workspace-grounded captures. |
-| `okhp3-thread-context-extraction-grok` | Manually supplied Grok or X-grounded captures. |
+| `okhp3-thread-extract-grok` | Manually supplied Grok or X-grounded captures. |
 | `okhp3-thread-extract-mistral-vibe` | Manually supplied Mistral Vibe or former Le Chat captures. |
 | `okhp3-thread-extract-perplexity` | Manually supplied Perplexity threads, Research, or source-rich captures. |
 | `okhp3-chatgpt-project-migration` | ChatGPT project migration, lossless archives, provenance ledgers, and repository reconciliation. |
@@ -237,6 +237,11 @@ for one Copilot surface from support on another. Use `agent-foundry/` for the
 creation or migration of an entire Copilot agent; use `copilot/` for the
 task-focused skill layer.
 
+The portable SharePoint review contracts `okhp3-sharepoint-content-auditor`
+and `okhp3-sharepoint-list-schema-design` also live here. Their native Copilot
+packaging and execution remain unverified; family placement is not a host
+compatibility claim.
+
 ### Glee-fully family
 
 | Skill | Trigger |
@@ -289,6 +294,7 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 
 | Skill | Trigger |
 |---|---|
+| `okhp3-replit-repository-janitor` | Audit and tidy one Replit checkout using exact branch/PR evidence and owner-approved cleanup actions. Replaces both former janitor names; archived predecessors are not installable skills. |
 | `okhp3-replit-task-executor` | Retain Replit as planner and designer while external agents own architecture, code, tests, and Git. Use finite intake, verified ownership, revision-bound receipts, and a supported, authorized administrative return. Draftable 1.2.0 with analytical review; no completed native-return pilot, measured savings, or cross-host benchmark. See `replit/FAMILY.md` for the complete family inventory. |
 
 ### Universal family
@@ -299,8 +305,8 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-brand-style-registry` | Extract named, evidence-backed visual style profiles from approved sources and apply one primary profile with explicitly scoped supporting profiles to SPAs and other artifacts. |
 | `okhp3-database-cartographer` | Reverse-engineer a live SQL database into a schema inventory, severity-classified diff, and Mermaid ER handoff without writing to the target. |
 | `okhp3-equilibrium-review` | Evaluate documents, reports, spreadsheets, hypotheses, decision memos, or Agent Skills with independent evidence review, conditional disruption, and evidence-based adjudication. |
-| `okhp3-foundry-repo-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
-| `okhp3-repo-settings` | Audit and configure one-owner GitHub repository settings after scaffolding; preserve check coverage, provider-independent review, deployment boundaries, and verified authorized writes. V2 includes read-only Python drift helpers and an inactive Actions adapter; keep repository identity and credentials runtime-supplied. Local candidate; no live behavioral benchmark. |
+| `okhp3-repository-creator` | Convert a GPT, Gem, Copilot agent, prompt bundle, Notion concept, or prototype into a governed FoundRy child repository. |
+| `okhp3-repository-settings` | Audit and configure one-owner GitHub repository settings after scaffolding; preserve check coverage, provider-independent review, deployment boundaries, and verified authorized writes. V2 includes read-only Python drift helpers and an inactive Actions adapter; keep repository identity and credentials runtime-supplied. Local candidate; no live behavioral benchmark. |
 | `okhp3-google-gis-client-auth` | Implement client-only Google Identity Services OAuth for a static React SPA with Calendar or Tasks access. |
 | `okhp3-github-notification-maintainer` | Diagnose GitHub notification causes and apparent schedule failures; prepare bounded repairs and complete only authorized, verified notifications. Scheduled grant and run health are separate from inbox state. |
 | `okhp3-github-mirror-janitor` | Reconcile local GitHub mirrors and branch/notification state, group duplicate inbox signals, and prepare exact, evidence-backed branch, PR, or notification actions. |
@@ -331,7 +337,7 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 
 ### Project-local support skills
 
-`.agents/skills/` contains 53 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
+`.agents/skills/` contains 52 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
 
 ## Technology and runtime
 
@@ -393,7 +399,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 351 distribution skills in 21 active families, and `.agents/skills/README.md` reports 53 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
+- Generated catalogs reflect the current filesystem: `README.md` reports 350 distribution skills in 21 active families, and `.agents/skills/README.md` reports 52 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

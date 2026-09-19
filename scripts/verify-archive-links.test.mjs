@@ -21,6 +21,7 @@ function fixture({
   });
   writeFileSync(archivePath, archiveBody);
   writeFileSync(join(root, MIGRATION_LEDGER), migrationBody);
+  writeFileSync(join(root, 'docs/skill-migrations.json'), JSON.stringify({ schemaVersion: 1, migrations: [] }));
   return root;
 }
 
@@ -65,6 +66,30 @@ test("rejects a missing local destination", () => {
   });
   const result = validateArchiveLinks(root);
   assert.match(result.failures.join("\n"), /missing archive link target/);
+  rmSync(root, { recursive: true, force: true });
+});
+
+test('resolves an exact historical package migration without editing the archive', () => {
+  const root = fixture({
+    archiveBody: '> **Historical archive notice:** preserved snapshot\n[old](universal/old-skill/SKILL.md)',
+  });
+  mkdirSync(join(root, 'replit/new-skill'), { recursive: true });
+  writeFileSync(join(root, 'replit/new-skill/SKILL.md'), '# Current');
+  writeFileSync(join(root, 'docs/skill-migrations.json'), JSON.stringify({
+    schemaVersion: 1,
+    migrations: [{ from: { family: 'universal', name: 'old-skill' }, to: { family: 'replit', name: 'new-skill' } }],
+  }));
+  assert.deepEqual(validateArchiveLinks(root).failures, []);
+  rmSync(root, { recursive: true, force: true });
+});
+
+test('rejects an unsafe migration destination', () => {
+  const root = fixture({ archiveBody: '> **Historical archive notice:** preserved snapshot' });
+  writeFileSync(join(root, 'docs/skill-migrations.json'), JSON.stringify({
+    schemaVersion: 1,
+    migrations: [{ from: { family: 'universal', name: 'old-skill' }, to: { family: '..', name: 'outside' } }],
+  }));
+  assert.match(validateArchiveLinks(root).failures.join('\n'), /invalid skill migration registry/);
   rmSync(root, { recursive: true, force: true });
 });
 

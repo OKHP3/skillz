@@ -1,5 +1,11 @@
 # Repository settings v2
 
+Current locator: [okhp3-repository-settings](../../universal/okhp3-repository-settings/SKILL.md).
+The versioned records below retain their original `okhp3-repo-settings` identity
+and hashes. The earlier recap and 0.1.0 review now live in the
+[September 19 archive](../archive/skill-organization-2026-09-19/README.md).
+These historical records are not a new benchmark for the renamed package.
+
 `okhp3-repo-settings` 2.0.0 is a local public-safe candidate, routed to the
 universal family. Version 2 is the owner's requested iteration label; the previous
 0.1.0 candidate was not a public v1 release.

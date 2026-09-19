@@ -1,4 +1,5 @@
 import type { Catalog, Skill } from '@/types/catalog';
+import { canonicalSkillIdentity } from '../../../forge/src/utils/skillMigrations';
 
 /**
  * Fetches the Forge catalog snapshot that scripts/sync-catalog-data.mjs
@@ -15,7 +16,8 @@ export async function fetchCatalog(): Promise<Catalog> {
 }
 
 export function findSkill(catalog: Catalog, family: string, name: string): Skill | undefined {
-  return catalog.skills.find((s) => s.family === family && s.name === name);
+  const canonical = canonicalSkillIdentity(family, name);
+  return catalog.skills.find((s) => s.family === canonical.family && s.name === canonical.name);
 }
 
 export type SkillReplacement = {

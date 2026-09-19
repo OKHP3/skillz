@@ -701,6 +701,14 @@ function CatalogList({ catalog }: { catalog: Catalog }) {
 function SkillRoute({ catalog }: { catalog: Catalog }) {
   const { family, name } = useParams<{ family: string; name: string }>();
   const skill = findSkill(catalog, family ?? '', name ?? '');
+  const [, navigate] = useLocation();
+  useEffect(() => {
+    if (skill && (skill.family !== family || skill.name !== name)) {
+      navigate(`/${skill.family}/${skill.name}${window.location.search}${window.location.hash}`, { replace: true });
+    }
+  }, [skill?.family, skill?.name, family, name, navigate]);
+  // Review state stays keyed to the current identity. A rename resolves a
+  // bookmark but does not transfer an approval from the former contract.
   if (!skill) {
     const replacements = findLikelyReplacements(name ?? '', family ?? '', catalog.skills);
     return (
