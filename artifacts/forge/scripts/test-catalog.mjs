@@ -1356,6 +1356,57 @@ test('local catalog integrity leaves release metadata unchanged and cleans tempo
   assertTemporaryRootsClean('Failed catalog integrity run');
 });
 
+test('local catalog integrity reports cleanup failures separately from validation', () => {
+  if (isCatalogIntegrityChild) return;
+
+  const runnerPath = join(REPO_ROOT, '.agents', 'skills', 'catalog-integrity', 'run.mjs');
+  const reportRoot = mkdtempSync(join(tmpdir(), 'catalog-integrity-report-'));
+  const reportPath = join(reportRoot, 'integrity.json');
+
+  try {
+    const result = spawnSync(process.execPath, [runnerPath, '--json', reportPath], {
+      cwd: REPO_ROOT,
+      env: {
+        ...process.env,
+        CATALOG_INTEGRITY_RUNNER_CHILD: '1',
+        CATALOG_INTEGRITY_RUNNER_SMOKE: '1',
+        CATALOG_INTEGRITY_FORCE_CLEANUP_FAILURE: '1',
+      },
+      encoding: 'utf8',
+    });
+
+    assert(
+      result.status === 0,
+      `cleanup failure should preserve the successful validation exit status:\nstdout:\n${result.stdout}\nstderr:\n${result.stderr}`,
+    );
+    assert(
+      result.stderr.includes('catalog integrity: cleanup failed'),
+      `cleanup failure should be visible on stderr:\n${result.stderr}`,
+    );
+
+    const report = JSON.parse(readFileSync(reportPath, 'utf8'));
+    assert(report.status === 'passed', 'cleanup failure should not replace the validation report status');
+    assert(report.cleanup?.status === 'failed', 'JSON report should identify cleanup as failed');
+    assert(
+      report.cleanup?.error === 'controlled catalog cleanup failure fixture',
+      `JSON report should preserve the cleanup error: ${JSON.stringify(report.cleanup)}`,
+    );
+    const cleanupCheck = report.checks.find(({ name }) => name === 'temporary validation output cleanup');
+    assert(cleanupCheck?.status === 'failed', 'JSON checks should report cleanup failure distinctly');
+    assert(
+      cleanupCheck?.severity === 'operational',
+      'cleanup failure should not be classified as catalog validation failure',
+    );
+    assert(
+      report.checks.find(({ name }) => name === 'catalog build')?.status === 'passed' &&
+        report.checks.find(({ name }) => name === 'catalog test')?.status === 'passed',
+      'JSON report should preserve the successful build and test results',
+    );
+  } finally {
+    rmSync(reportRoot, { recursive: true, force: true });
+  }
+});
+
 console.log(`\n${passed} passed, ${failed} failed`);
 if (failed > 0) {
   console.error('\nFAILED TESTS:');
