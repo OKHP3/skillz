@@ -331,7 +331,7 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 
 - Markdown, JSON, YAML, Mermaid, and SKILL.md are the primary artifact formats.
 - Node.js runs the 15 process-capture package test suites and JavaScript utilities. The tracked CI LTS pin is `.github/node-version`.
-- Python runs the cataloger, skill-authoring utilities, MCP examples, and technology inventory script. The tracked CI pin is `.github/python-version`; `.replit` requests Python 3.11.
+- Python runs the cataloger, skill-authoring utilities, MCP examples, and technology inventory script. The tracked CI pin is `.github/python-version`; `.replit` requests Python 3.13.
 - `process-capture/*/package.json` files are private, standalone ESM packages at version `0.1.0` with no npm dependencies and the test script `node --test tests/*.test.mjs`.
 - `artifacts/forge/package.json` is the private Vite/React frontend package for Skillz Forge; its build is deployed to GitHub Pages by `.github/workflows/deploy-pages.yml`.
 - `mermaid/okhp3-mermaid-publish/package.json` is a private ESM package with Mermaid CLI `11.16.0` as a dev dependency. The root package is a workspace coordinator; application runtime packages live under `artifacts/`.
@@ -358,7 +358,7 @@ node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root 
 
 The full-index check discovers the root distribution skills in 17 active families. The project cataloger indexes the project-local support skills separately. Structural validators establish package integrity only, not task-quality uplift or production readiness; preserve their warnings and known test gaps in validation reports rather than treating them as release evidence.
 
-For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. Do not run the technology refresh script casually because it makes network requests and writes the generated technology section and runtime pins.
+For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. The technology refresh script is read-only by default and makes official metadata requests. Use `--discover-only` for a local-only inventory, `--write` for report output, and `--write --update-runtimes` for bounded runtime proposals in a review branch. See `docs/TECHNOLOGY-UPDATE-PLAN.md`.
 
 ## Change safety and conventions
 
