@@ -31,10 +31,10 @@
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 170,
+    "not-run": 169,
     "none": 124,
     "local-checks": 38,
-    "analytical": 5,
+    "analytical": 6,
     "live": 8
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
@@ -292,6 +292,6 @@
     ]
   },
   "distributionFamilyCount": 21,
-  "countsGeneratedAt": "2026-09-19T16:23:25.630Z",
+  "countsGeneratedAt": "2026-09-19T18:43:06.694Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

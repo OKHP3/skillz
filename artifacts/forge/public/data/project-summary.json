@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-19T16:23:25.630Z",
+  "generatedAt": "2026-09-19T18:43:06.694Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/replit-task-executor",
-  "sourceCommit": "e02f1b1",
+  "sourceRef": "codex/replit-task-evolution-20260919",
+  "sourceCommit": "a28f9a3",
   "skillCount": 351,
   "familyCount": 21,
   "maturityCounts": {
@@ -12,10 +12,10 @@
   },
   "evidenceStatusCounts": {
     "historical": 6,
-    "not-run": 170,
+    "not-run": 169,
     "none": 124,
     "local-checks": 38,
-    "analytical": 5,
+    "analytical": 6,
     "live": 8
   },
   "capabilities": {
