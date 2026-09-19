@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "recorded_at": "2026-09-19",
+  "skill": {
+    "name": "okhp3-replit-task-executor",
+    "version": "0.1.0",
+    "maturity": "draftable",
+    "evidence_status": "analytical",
+    "executor_benchmark": "not-run"
+  },
+  "source": {
+    "repository": "OKHP3/OverKill-Hill",
+    "package_path": ".agents/skills/okhp3-replit-task-executor",
+    "selected_as_canonical_incubator": true,
+    "selection_reason": "Created against the actual project board and five requested source skills, then reviewed and mirrored without host-specific dependencies.",
+    "source_commit": "61a0bb95492551d391675a5c9c9b461447a93d63",
+    "baseline": "6c5e35a7d0064b9d3749077a2ba5fd610fdf30f6"
+  },
+  "mirrors": [
+    {
+      "repository": "OKHP3/OverKill-Hill",
+      "path": ".agents/skills/okhp3-replit-task-executor",
+      "role": "project-local-consumer",
+      "authorized": true,
+      "aggregate_sha256": "dd9fdd5c0b8832bc1ff2b531917fe0fe26391eb0b23a812fd7be0af11ebf68ac"
+    },
+    {
+      "repository": "OKHP3/skillz",
+      "path": "replit/okhp3-replit-task-executor",
+      "role": "canonical-distribution-candidate",
+      "authorized": true,
+      "aggregate_sha256": "dd9fdd5c0b8832bc1ff2b531917fe0fe26391eb0b23a812fd7be0af11ebf68ac"
+    }
+  ],
+  "canonical_target": {
+    "repository": "OKHP3/skillz",
+    "family": "replit",
+    "package_path": "replit/okhp3-replit-task-executor",
+    "accepted_commit_or_hash": "sha256:dd9fdd5c0b8832bc1ff2b531917fe0fe26391eb0b23a812fd7be0af11ebf68ac",
+    "acceptance_scope": "Reviewed package hash for this promotion; remote main integration is verified separately after the PR."
+  },
+  "inventory": [
+    {
+      "path": "SKILL.md",
+      "sha256": "2bbc937c48e6c455cbbe82da4b765610c79ba12860e2cbe57de26ceca519f149"
+    },
+    {
+      "path": "assets/task-packet.md",
+      "sha256": "715d61acf99161ea7b5adfa0200acdb4ef2bf391bb30e5c11a6221ccf6d8882c"
+    },
+    {
+      "path": "evals/evals.json",
+      "sha256": "fe42796ccb91dfef8db3f43366fd7d7eeb60262027c2d6866fa531a50fb48b1c"
+    },
+    {
+      "path": "references/design-and-provenance.md",
+      "sha256": "06b8bd31d0531b7b368f93decbea99053276491fdca233751e9af4fa59b17942"
+    },
+    {
+      "path": "references/replit-semantics.md",
+      "sha256": "234674b03eaddd7184e7f511ca1efc98dcbac51fe2a2eb5c8dc2f82b4f9740ac"
+    }
+  ],
+  "decision": {
+    "status": "mirrored",
+    "alternatives_considered": [
+      "One unified executor package selected to keep ownership mandatory throughout the workflow.",
+      "Separate intake/execution/closeout packages rejected as redundant context with easier omission of ownership.",
+      "Replit prompt connector execution rejected as inconsistent with external execution."
+    ],
+    "unresolved_items": [
+      "No supported non-executing board claim/completion API established.",
+      "Controlled live pilot, host benchmarks, and unseen holdout have not run."
+    ]
+  },
+  "safety": {
+    "license": "MIT",
+    "public_safety": "reviewed; synthetic task examples and public official sources only",
+    "private_material_found": false,
+    "external_writes": "Authorized scoped repository commits and protected-path publication. Skill instructions require task-specific authority for runtime writes.",
+    "adapter_differences": [],
+    "line_endings": "LF for text resources; text=auto preserves future binary resources in both scoped .gitattributes rules."
+  },
+  "authorization": {
+    "requested_actions": [
+      "Create an external-agent skill from the five existing workflows.",
+      "Inspect the live board and official documentation for collision-free handoffs.",
+      "Store matching copies in the OverKill-Hill project and OKHP3/skillz/replit, including the requested GitHub destination."
+    ],
+    "approved_actions": [
+      "Local authoring, validation, mirroring, catalog updates, and GitHub publication through reviewable PRs."
+    ],
+    "withheld_actions": [
+      "Execute the live Replit backlog, send Replit Agent prompts, cancel tasks, modify billing, publish Replit apps, or prune unrelated work."
+    ]
+  },
+  "verification": {
+    "checks": [
+      "Strict package validator PASS in both repositories.",
+      "Host skill quick validator PASS.",
+      "Five-file mirror inventory and SHA-256 equality PASS.",
+      "Catalog metadata checks PASS.",
+      "Public-safety and official-source review PASS with explicit limitations.",
+      "Analytical adjudication and bounded falsification approve-with-limits."
+    ],
+    "review_record": "replit-task-executor-review.json",
+    "verified_at": "2026-09-19",
+    "limitations": [
+      "No measured token or monetary savings.",
+      "No fresh live executor benchmark or unseen holdout.",
+      "Browser observations are author-only and raw private records are not published.",
+      "The broader local catalog suite encounters Windows EPERM creating its existing symlink fixture; complete it in Linux CI."
+    ]
+  },
+  "recovery": {
+    "path": "Use normal revert/review of the scoped commits; preserve destination-only and unrelated work.",
+    "pre_sync_git_status_recorded": true,
+    "pre_sync_state": "Both primary repositories clean at verified origin/main baselines; separate codex/replit-task-executor branches created before edits.",
+    "target_baseline": "6e61a92553b61534ac10c0872c8b84de6f129a2c"
+  }
+}

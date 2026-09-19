@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-09-19: external execution of Replit plans
+
+- Add `replit/okhp3-replit-task-executor` 0.1.0 with one-task intake, shared
+  ownership, bounded external implementation, protected integration, and
+  separate board/source/deployment evidence.
+- Ground task and billing semantics in official Replit documentation. Require
+  an atomic reviewed-head merge guard and review every artifact before Replit
+  publication. Preserve private board observations outside the public package.
+- Publish the task packet, eight development scenarios, provenance, and a
+  review/promotion record. Maturity remains draftable: no live executor
+  benchmark, unseen holdout, cross-host validation, or measured savings.
+- Synchronize the project copy in OverKill-Hill and refresh catalog membership.
+
 ## 2026-09-19: technology inventory and update coverage
 
 - Discover executable manifests, workspace catalog/overrides, Python imports, CI actions and the complete pnpm dependency graph; compare against official stable-release metadata.

@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 350 distribution skills in 21 active families (catalog repair, 2026-09-12). OpenClaw packages remain unbenchmarked candidates.
+- **Current inventory:** 351 distribution skills in 21 active families (catalog refresh, 2026-09-19). OpenClaw packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -285,6 +285,12 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-reclamation-replacement-build` | Implement an approved replacement in small, testable increments with secure defaults. |
 | `okhp3-reclamation-validation-handoff` | Validate and hand off documentation, tests, risks, and support or replacement next actions. |
 
+### Replit family
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-replit-task-executor` | Execute one selected Replit plan with an external coding agent after resolving ownership, preserving local work, and recording separate integration, board, and deployment evidence. Draftable candidate; no measured cost savings or cross-host benchmark. See `replit/FAMILY.md` for the complete family inventory. |
+
 ### Universal family
 
 | Skill | Trigger |
@@ -325,7 +331,7 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 
 ### Project-local support skills
 
-`.agents/skills/` contains 46 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
+`.agents/skills/` contains 53 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
 
 ## Technology and runtime
 
@@ -356,7 +362,7 @@ node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root 
 (cd mermaid/okhp3-mermaid-theme-builder && node --test tests/*.test.mjs)
 ```
 
-The full-index check discovers the root distribution skills in 17 active families. The project cataloger indexes the project-local support skills separately. Structural validators establish package integrity only, not task-quality uplift or production readiness; preserve their warnings and known test gaps in validation reports rather than treating them as release evidence.
+The full-index check discovers the root distribution skills in 21 active families. The project cataloger indexes the project-local support skills separately. Structural validators establish package integrity only, not task-quality uplift or production readiness; preserve their warnings and known test gaps in validation reports rather than treating them as release evidence.
 
 For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. The technology refresh script is read-only by default and makes official metadata requests. Use `--discover-only` for a local-only inventory, `--write` for report output, and `--write --update-runtimes` for bounded runtime proposals in a review branch. See `docs/TECHNOLOGY-UPDATE-PLAN.md`.
 
@@ -387,7 +393,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 258 distribution skills in 17 active families, and `.agents/skills/README.md` reports 46 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
+- Generated catalogs reflect the current filesystem: `README.md` reports 351 distribution skills in 21 active families, and `.agents/skills/README.md` reports 53 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

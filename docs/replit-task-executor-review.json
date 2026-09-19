@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "reviewed_at": "2026-09-19",
+  "decision_question": "Publish the external-executor workflow as draftable v0.1.0 with explicit analytical limits?",
+  "candidate": {
+    "skill_version": "0.1.0",
+    "package_hash": "dd9fdd5c0b8832bc1ff2b531917fe0fe26391eb0b23a812fd7be0af11ebf68ac",
+    "hash_algorithm": "SHA-256 of sorted relative POSIX path + NUL + lowercase file SHA-256 + LF",
+    "source_ledger": "../replit/okhp3-replit-task-executor/references/replit-semantics.md",
+    "original_skill_sha256": "f7b6089b061179768811e9fa0b69ecee8c0c28a6f570c54da094908269a37738",
+    "revised_skill_sha256": "2bbc937c48e6c455cbbe82da4b765610c79ba12860e2cbe57de26ceca519f149",
+    "intermediate_reviewed_skill_sha256": "2d0bacb0141fa19a1346b70bece0720a5fcc91bed6a2d7f9d0628b10305526d8"
+  },
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "shared_model_or_source_limits": [
+      "Three initial reviewers used separate contexts with the same model family and supplied package.",
+      "Official source set was shared; private author UI observations were not independently reproduced.",
+      "A fourth context handled adjudication, bounded falsification, and release review; these were not three independent reviewers."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence-reviewer",
+      "decision": "approve-with-limits",
+      "claims": [
+        {
+          "claim": "Board states, irreversible cancellation, and planning/connector billing match official documentation.",
+          "evidence_ids": [
+            "references/replit-semantics.md"
+          ],
+          "confidence": "high",
+          "consequence": "Duplicate work or unintended charges if misinterpreted.",
+          "assumptions": [
+            "Vendor behavior may change."
+          ]
+        },
+        {
+          "claim": "Publishing scope must explicitly include all project artifacts.",
+          "evidence_ids": [
+            "https://docs.replit.com/features/publishing/after-you-publish"
+          ],
+          "confidence": "high",
+          "consequence": "Unapproved publication of another artifact.",
+          "assumptions": []
+        }
+      ]
+    },
+    {
+      "role": "outcome-reviewer",
+      "decision": "approve-with-limits",
+      "claims": [
+        {
+          "claim": "The packet and one-owner workflow support bounded execution, but savings are unmeasured.",
+          "evidence_ids": [
+            "assets/task-packet.md",
+            "SKILL.md"
+          ],
+          "confidence": "medium",
+          "consequence": "An unsupported efficiency claim would mislead users.",
+          "assumptions": [
+            "Operators honor coordination records."
+          ]
+        },
+        {
+          "claim": "Seven initial visible development scenarios were coherent; no executor benchmark ran.",
+          "evidence_ids": [
+            "evals/evals.json (pre-revision)"
+          ],
+          "confidence": "high",
+          "consequence": "Static review cannot establish task quality.",
+          "assumptions": []
+        }
+      ]
+    },
+    {
+      "role": "portability-security-reviewer",
+      "decision": "defer-for-evidence",
+      "claims": [
+        {
+          "claim": "A last-second PR head read does not prevent a competing push before merge.",
+          "evidence_ids": [
+            "SKILL.md (original integration section)",
+            "GitHub expected_head_sha tool contract"
+          ],
+          "confidence": "high",
+          "consequence": "Unreviewed head B could merge after review of A.",
+          "assumptions": [
+            "Another writer can update the branch."
+          ]
+        },
+        {
+          "claim": "The remaining ownership, authority, privacy, and host capability boundaries are explicit.",
+          "evidence_ids": [
+            "SKILL.md"
+          ],
+          "confidence": "high",
+          "consequence": "A supported method still requires actual tools and cooperation.",
+          "assumptions": [
+            "No live cross-host behavior was tested."
+          ]
+        }
+      ]
+    }
+  ],
+  "concordance": "material-disagreement",
+  "development_changes": [
+    "Require an atomic reviewed-head merge condition or verified serialization; reject moved heads and re-review.",
+    "Expand the deployment-race case to the interval after verification and before merge submission.",
+    "Require whole-project publication scope and add multi-artifact-publish, bringing the visible development set to eight.",
+    "Clarify that raw private UI observations are undistributed and replace unsupported chronology with conflicting documentation.",
+    "Follow-up GitHub review: preserve binary resources with text=auto and LF for detected text.",
+    "Follow-up GitHub review: normal-draft now supplies complete synthetic facts and explicitly expects proposed actions with not-run delivery.",
+    "Clarify that a board URL identifies a target and confers no permission; use existing user inspection authority without repeated consent."
+  ],
+  "negotiator": {
+    "triggered": true,
+    "decision": "The original portability objection was valid and the revision resolves the specified head race.",
+    "decisive_evidence_or_test": {
+      "source": "https://docs.github.com/en/rest/pulls/pulls#merge-a-pull-request",
+      "tool_contract": "expected_head_sha",
+      "test_kind": "Executed in-memory transition model; not actual GitHub execution",
+      "assertions": [
+        {
+          "case": "Original read-A then push-B route",
+          "result": "Merged unreviewed B, reproducing the model defect."
+        },
+        {
+          "case": "Revised merge expected A after push B",
+          "result": "Rejected with modeled 409."
+        },
+        {
+          "case": "Drift detected before submission",
+          "result": "Routed to re-review."
+        },
+        {
+          "case": "Stable head A",
+          "result": "Merge permitted."
+        }
+      ],
+      "passed": 4
+    },
+    "unresolved_items": []
+  },
+  "disruptor": {
+    "triggered": true,
+    "trigger_reason": "The revised control resolved the material disagreement; bounded falsification followed.",
+    "falsification_hypotheses": [
+      "Exhausted quota releases a queued/active overlapping writer.",
+      "Missing atomic guard permits an unguarded merge.",
+      "App-only approval publishes an unrelated document.",
+      "GitHub merge and Agent-only board writes imply complete delivery."
+    ],
+    "test_results": [
+      "Rejected by ownership section.",
+      "Rejected by conditional merge/serialization requirement.",
+      "Publication remains pending under whole-project scope rule.",
+      "Board remains board-update-pending; absent live checks remain not-run."
+    ],
+    "evidence_kind": "Manual analytical walkthroughs; no automated executor or host runs.",
+    "surviving_defects": []
+  },
+  "release_decision": "approve-with-limits",
+  "validation": {
+    "structural_validator": "PASS",
+    "host_quick_validator": "PASS",
+    "package_mirror": "PASS; five files, byte-identical",
+    "official_sources": "Reviewed on 2026-09-19",
+    "live_executor_benchmark": "NOT RUN",
+    "unseen_holdout": "NOT RUN",
+    "catalog_build": "PASS; clean tracked source; 351 skills in 21 active families",
+    "windows_catalog_suite": "BLOCKED by existing symlink fixture EPERM; Linux CI remains the acceptance gate."
+  },
+  "limitations": [
+    "Draftable only; no validated portability, production readiness, behavioral uplift, or measured savings claim.",
+    "All packaged development cases are author-visible; release holdout is external-required.",
+    "Coordination records are not distributed locks.",
+    "No actual Replit task was started, canceled, applied, or published for this review.",
+    "No Replit prompts, credential extraction, hidden APIs, or paid-agent dispatch were used."
+  ],
+  "follow_up_conditions": [
+    "Run an authorized controlled task pilot with actual ownership and cost telemetry before efficiency claims.",
+    "Exercise interruption/resumption, changed evidence, repeated failures, and successful authorized closeout on intended hosts.",
+    "Use an unseen release holdout before stronger maturity claims."
+  ],
+  "post_review_followup": {
+    "decision": "approve-with-limits",
+    "scope": "Normal-draft decision-only fixture, binary-safe text attributes, and exact five-file mirror hash. Final authority-bullet clarification received another narrow independent static check, with approve-with-limits retained.",
+    "evidence": "Separate adjudicator context confirmed unchanged SKILL.md, resolved fixture contradiction, and matching final package hash.",
+    "limitations": "Static narrow review; no live task execution."
+  }
+}

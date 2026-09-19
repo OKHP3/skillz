@@ -1,9 +1,9 @@
 ---
 family: replit
 display_name: Replit
-skill_count: 8
+skill_count: 9
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-13T00:03:20Z
+generated_at: 2026-09-19T16:05:08Z
 ---
 
 # replit
@@ -17,10 +17,10 @@ non-obvious rules and workflows that save multiple debugging turns on any seriou
 project.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (8)
+## Skills (9)
 
 <!-- FAMILY_INVENTORY_START -->
-*8 skills &nbsp;·&nbsp; inventory last updated: **September 13, 2026 at 00:03 UTC***
+*9 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 16:05 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -32,4 +32,5 @@ project.
 | [okhp3-replit-github-sync](okhp3-replit-github-sync/SKILL.md) | Recover and maintain safe GitHub synchronization for a Replit project. Use when Replit reports PU... | 1.0.0 |
 | [okhp3-replit-multi-artifact](okhp3-replit-multi-artifact/SKILL.md) | Navigate and build in a Replit pnpm multi-artifact monorepo without silent failures. Covers the n... | 1.0.0 |
 | [okhp3-replit-repl-janitor](okhp3-replit-repl-janitor/SKILL.md) | OverKill Hill P³ one-Repl repository cleanup workflow for safely auditing and tidying a single Re... | 1.0.1 |
+| [okhp3-replit-task-executor](okhp3-replit-task-executor/SKILL.md) | Execute a Replit-planned task with Codex, Claude Code, GitHub Copilot, or another external coding... | 0.1.0 |
 <!-- FAMILY_INVENTORY_END -->
