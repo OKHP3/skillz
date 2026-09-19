@@ -1,38 +1,95 @@
+# Daily proposals; major updates remain separate reviewable PRs.
+# Preserve pnpm minimumReleaseAge and catalog constraints. Never auto-merge.
 version: 2
 updates:
-  # Covers the root package.json, pnpm-lock.yaml, and the pnpm-workspace
-  # catalog that every artifacts/* app depends on.
-  - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: weekly
-      day: monday
-    open-pull-requests-limit: 5
-
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: weekly
-      day: monday
-    open-pull-requests-limit: 5
-
-  - package-ecosystem: npm
-    directory: /mermaid/okhp3-mermaid-publish
-    schedule:
-      interval: weekly
-      day: monday
-    open-pull-requests-limit: 5
-
-  - package-ecosystem: pip
-    directory: /community/mcp-builder/scripts
-    schedule:
-      interval: weekly
-      day: monday
-    open-pull-requests-limit: 5
-
-  - package-ecosystem: pip
-    directory: /community/skill-creator
-    schedule:
-      interval: weekly
-      day: monday
-    open-pull-requests-limit: 5
+- package-ecosystem: npm
+  directory: /
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  cooldown:
+    default-days: 3
+  groups:
+    react-runtime:
+      patterns:
+      - react
+      - react-dom
+      update-types:
+      - minor
+      - patch
+    compatible-updates:
+      patterns:
+      - '*'
+      exclude-patterns:
+      - react
+      - react-dom
+      update-types:
+      - minor
+      - patch
+  versioning-strategy: increase
+  exclude-paths:
+  - docs/archive/**
+- package-ecosystem: github-actions
+  directory: /
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: /mermaid/okhp3-mermaid-publish
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  cooldown:
+    default-days: 3
+  groups:
+    compatible-updates:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch
+  versioning-strategy: increase
+- package-ecosystem: pip
+  directory: /community/mcp-builder/scripts
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  cooldown:
+    default-days: 3
+  groups:
+    compatible-updates:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch
+  versioning-strategy: increase
+- package-ecosystem: pip
+  directory: /community/skill-creator
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  cooldown:
+    default-days: 3
+  groups:
+    compatible-updates:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch
+  versioning-strategy: increase
+- package-ecosystem: pip
+  directory: /.github/scripts
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 3
+  cooldown:
+    default-days: 3
+  groups:
+    inventory-tooling:
+      patterns:
+      - '*'
+      update-types:
+      - minor
+      - patch

@@ -1,69 +1,651 @@
 # Technology Inventory
 
-Audit date: 2026-07-13. Updated 2026-08-24 for the pnpm-workspace monorepo migration.
+Audited 2026-09-18 America/Chicago (2026-09-19 UTC). Repository baseline:
+`957167d7f2e8ad54cba9c6ebd83dd0f08694143c`.
 
-## Scope and method
+## Scope and evidence
 
-This repository is a pnpm workspace monorepo. It hosts deployed applications under `artifacts/` (the Skillz Forge review surface at `artifacts/forge`, its review desk at `artifacts/forge-review-desk`, an API server, and a mockup sandbox) alongside the root distribution families and project-local support packages. The inventory below distinguishes technology required to run the deployed apps and repository scripts from technology shown only in examples, templates, or reference snippets inside individual skills. Version evidence comes from committed manifests (`package.json`, `pnpm-workspace.yaml`), CI workflow files, runtime configuration, source imports, and the latest official registry metadata.
+This audit covers all 33 active package manifests, the workspace catalog and overrides,
+the complete pnpm lock graph, every requirements file, Python source imports, actual
+GitHub Actions, runtime configuration, and the four application artifacts plus shared
+libraries. Executable standalone skill utilities are included; archived scaffold manifests
+and technology names mentioned only in instructional prose are excluded from application
+upgrade decisions. The JSON ledger lists excluded archive paths and internal workspace links.
 
-## Executable technology
+**Confirmed:** the Windows checkout and GitHub main matched the baseline. Replit's shell
+reported the same commit and no uncommitted files. Local and Replit runtime versions were
+read independently; neither establishes the versions in an existing deployed container.
+**Unknown:** deployed Replit runtime and database server versions, installed standalone
+Python packages, and exact hosted runner tool patches without a run-specific image manifest.
+The Replit connector required reauthentication, but its existing browser shell was readable.
 
-| Technology | Current repository state | Version in place | Update path |
+Declared ranges such as `^7.3.2` are not installed versions. The actual Vite lock resolution
+is `7.3.6`. Python requirements are mostly minimums without a lock; their precise installed
+versions cannot be reconstructed from those minimums. A package in a devDependencies section
+can still be bundled into the frontend, so that label is not used to exclude runtime UI code.
+
+## Main application stack
+
+| Technology | In-place declaration / locked version | Latest stable verified | Decision |
 | --- | --- | --- | --- |
-| Node.js | Runs the pnpm-workspace build/dev tooling and every deployed artifact (`artifacts/forge`, `artifacts/forge-review-desk`, `artifacts/api-server`, `artifacts/mockup-sandbox`), plus standalone ESM skill scripts and Mermaid tooling. | `.github/node-version` (`24.19.0`) is the single authoritative pin. `deploy-pages.yml` and `release-validation.yml` read it via `actions/setup-node`'s `node-version-file` input, so both workflows follow it directly. | The weekly "Refresh technology inventory" PR updates this one file; once merged, the app CI workflows run on the new version on their next trigger. |
-| pnpm | Workspace package manager; the root `package.json` `preinstall` script refuses non-pnpm installs. | Pinned via `packageManager`/lockfile in the workspace; local runtime observed at install time. | Dependabot / manual bump; not currently tracked by this inventory script. |
-| TypeScript | Direct root and per-artifact dependency; `pnpm run typecheck` builds project references across the workspace. | `~5.9.3` (root), workspace catalog version for artifacts. | Dependabot reviews updates weekly. |
-| Vite / React / Tailwind CSS | Real, deployed dependencies of `artifacts/forge` (and sibling web artifacts) via the pnpm workspace catalog — no longer reference-only. | Vite `^7.3.2`, React `19.1.0`, Tailwind CSS `^4.1.14` per `pnpm-workspace.yaml`. | Dependabot reviews updates weekly; a major bump still needs manual template review before merging. |
-| npm | Package registry client for Node tooling metadata lookups. | No repository pin or lockfile (the workspace uses pnpm exclusively). | Installed with the selected Node release. |
-| JavaScript | `.mjs`, `.cjs`, and `.js` scripts use Node built-ins and native ESM. | No ECMAScript edition is declared. | Governed by the Node LTS pin. |
-| Python | Cataloger requires Python 3.9+; Replit config requests `python-base-3.13`; other utilities (including this inventory script) use Python. | CI tracks the latest stable release via `.github/python-version` (`3.14.7`). | Weekly inventory PR updates the CI pin. |
-| Anthropic Python SDK | Direct dependency of `community/mcp-builder/scripts/evaluation.py`. | `>=0.39.0` | Dependabot reviews updates weekly. |
-| MCP Python SDK | Direct dependency of `community/mcp-builder/scripts/connections.py`. | `>=1.1.0` | Dependabot reviews updates weekly. |
-| PyYAML | Direct import in `community/skill-creator/scripts/quick_validate.py`. | `>=6.0.3` | Added explicit requirements file; Dependabot reviews updates weekly. |
-| Mermaid CLI | Local Mermaid publish pipeline. | Exact dev dependency: 11.16.0. | Dependabot reviews updates weekly. |
-| Bash | Shell utilities, including the Mermaid render pipeline. | No Bash version is pinned. | Runner supplied. Scripts use `#!/bin/bash`. |
-| Mermaid diagram syntax | `.mmd` files plus generator and validator scripts. | No language or renderer version was previously pinned. Mermaid CLI is now pinned above. | Mermaid CLI Dependabot PRs. |
-| Markdown, JSON, YAML | Repository content, manifests, fixtures, and SKILL.md files. | No parser or format version is declared. YAML fixtures use local minimal parsers where applicable. | No package update applies. |
-| Agent Skills / SKILL.md | Repository's primary capability-package format. | No repository-declared spec version. | Review compatibility claims when runtime support changes. |
+| TypeScript | `~5.9.3` / 5.9.3 | 7.0.2 | Compiler migration and typecheck review |
+| Vite | catalog `^7.3.2` / 7.3.6 | 8.3.0 | Build-tool migration with plugin and browser validation |
+| React and React DOM | catalog exact 19.1.0 / 19.1.0 | 19.3.0 | Update together; investigate retained Expo constraint comment |
+| Tailwind CSS and Vite plugin | catalog `^4.1.14` / 4.3.3 | 4.3.3 | Current |
+| Vitest | `^3.2.0` / 3.2.7 | 5.0.1 | Coordinate with Vite migration |
+| Playwright | `^1.55.0` / 1.62.1 | 1.63.0 | Update library and its browser binaries together |
+| Express | `^5.2.1` / 5.2.1 | 5.2.1 | Current |
+| Drizzle ORM | catalog `^0.45.2` / 0.45.2 | 0.45.2 | Current; database migrations remain separately reviewed |
+| Zod | catalog `^3.25.76` / 3.25.76 | 4.6.5 | Schema/code generation and resolver migration |
 
-## Reference-only technologies
+These summary values are the initial audit snapshot. The generated tables below are the
+refreshable authority, with an official registry/release link for every entry. They also
+cover Radix UI, TanStack Query, React Router, Wouter, Framer Motion, Lucide, Recharts,
+React Hook Form, date utilities, Pino, PostgreSQL drivers, Orval, esbuild, Rollup, Prettier,
+Replit SDK/plugins, Mermaid CLI, SDKs, type packages, and all transitive libraries.
 
-These technologies appear only in instructional material or reusable starter scripts belonging to individual skills (not the deployed `artifacts/` apps). They are not installed dependencies of those skills and are deliberately not auto-upgraded, because a major version change could make the guidance incorrect.
+## Runtimes and host-provided technologies
 
-| Technology | Repository reference | Current reference | Automated handling |
+Observed host versions are a dated snapshot, not automatically collected by GitHub Actions.
+No workstation, Replit module, database, or deployment was upgraded during this audit.
+
+| Technology | In place / evidence | Latest stable or channel | Maintenance boundary |
 | --- | --- | --- | --- |
-| Vite (skill guidance) | Vite GitHub Pages guide and web-artifact bootstrap script content inside individual skills. | References Node 18-era generated projects; independent of the real `artifacts/forge` Vite dependency above. | Latest version is reported below. Major upgrades require template review. |
-| pnpm (skill guidance) | Web-artifact bootstrap script content inside individual skills. | Unpinned global installation in generated-project guidance. | Latest version is reported below. |
+| Node.js | CI pin 24.19.0; Windows 24.11.1; Replit 24.13.0; `.replit` nodejs-24 | 26.9.0 Current; 24.21.0 LTS ([Node](https://nodejs.org/dist/index.json)) | Track approved LTS major through tested PRs; align each host after acceptance |
+| Python | CI pin 3.14.7; Windows launcher 3.14.0rc1; Replit 3.13.11; module python-base-3.13 | 3.14.7; 3.13 line 3.13.15 ([Python](https://www.python.org/downloads/)) | CI patch proposals within minor; replace local prerelease and reconcile Replit separately |
+| pnpm | CI formerly floating 10; now pinned 10.26.1 to match observed Replit; Windows 11.19.0 | 12.4.2; tracked 10.x latest 10.34.5 ([npm registry](https://registry.npmjs.org/pnpm)) | Same-major pin proposals; pnpm 11/12 migration requires lock/catalog and Dependabot support review |
+| npm | Replit 11.6.2; standalone Mermaid installer; not the workspace manager | 12.0.2 ([npm registry](https://registry.npmjs.org/npm)) | Follow Node distribution or reviewed standalone tooling |
+| Bash | Replit 5.2.37(1); shell scripts and Actions; Windows default shell lacks `sh` on PATH | 5.3 release series ([GNU](https://www.gnu.org/software/bash/)) | OS/distribution patch level, not npm; do not replace host shells from CI |
+| PowerShell | Windows 7.6.5, local administration only | 7.6.6 ([Microsoft](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.6)) | Workstation update |
+| Git | Windows 2.55.0.windows.5; Replit 2.50.1 | upstream 2.55.0 ([Git](https://git-scm.com/)) | Host-specific distribution updates |
+| GitHub CLI | Windows 2.96.0; workflow-provided gh for integration tools | 2.101.0 ([GitHub CLI](https://github.com/cli/cli/releases/tag/v2.101.0)) | Host tools; verify before running administrative scripts |
+| Go | Runner-provided, no exact runtime pin; installs actionlint | 1.27.1 ([Go](https://go.dev/dl/)) | Pin when tool compatibility requires it; actionlint itself is inventoried below |
+| PostgreSQL / SQL | `lib/db` declares PostgreSQL; Replit psql client 16.10; server UNKNOWN | 18.6 latest; 16.15 latest in 16.x ([PostgreSQL](https://www.postgresql.org/support/versioning/)) | Read server version before planning; backup and migration rehearsal before major updates |
+| Chromium | Replit Nix package and Playwright test browser; actual browser build UNKNOWN | Linux Stable 153.0.8010.52 ([Chromium release API](https://chromiumdash.appspot.com/fetch_releases?channel=Stable&platform=Linux&num=1)) | Playwright uses its matching browser revision; Nix Chromium follows host channel |
+| Nix package channel | `.replit`: stable-25_05 | NixOS 26.05 upstream ([release](https://nixos.org/blog/announcements/2026/nixos-2605/)) | Upstream availability does not prove a supported Replit module/channel; verify in Replit |
+| Ubuntu runner image | GitHub Actions `ubuntu-latest`; exact image patch varies by run | Rolling hosted image ([image manifests](https://github.com/actions/runner-images)) | Record image manifest in run logs; provider-managed |
 
-## Latest stable releases
+## Languages, formats, services and contracts
 
-This section is generated by `.github/scripts/refresh_technology_inventory.py`. It reads only official Node.js, Python, PyPI, and npm metadata endpoints. A scheduled workflow opens a pull request if any observed version or CI runtime pin changes.
+| Technology | In-place evidence | Current specification / version model | Update handling |
+| --- | --- | --- | --- |
+| JavaScript / ECMAScript | ESM/CJS; TypeScript target and lib ES2022 in tsconfig.base.json | ECMAScript 2026, edition 17 ([Ecma](https://ecma-international.org/publications-and-standards/standards/ecma-262/)) | Language target follows browser/runtime support, not automatic yearly target changes |
+| HTML / CSS / SVG | Three frontend entry documents, styles and icons | HTML Living Standard; CSS module-specific; SVG renderer support ([WHATWG](https://html.spec.whatwg.org/), [W3C CSS](https://www.w3.org/Style/CSS/)) | Browser tests, accessibility and visual review |
+| Markdown / GFM | SKILL.md, docs, catalog content; no explicit dialect pin | CommonMark 0.31.2 ([spec](https://spec.commonmark.org/)); GitHub extensions vary | Validate rendered documents and links |
+| YAML | Workflows, catalogs, fixtures; no repository dialect pin | 1.2.2 ([spec](https://yaml.org/spec/1.2.2/)) | Parser versions in package table; preserve Actions-specific semantics |
+| JSON / JSON Schema | Manifests, generated data and schema fixtures; schema dialects declared per file | JSON [RFC 8259](https://www.rfc-editor.org/rfc/rfc8259); JSON Schema [2020-12](https://json-schema.org/specification), with dialect declared per `$schema` | Preserve each declared dialect and validate fixtures |
+| TOML | `.replit`; no specification version declared | 1.1.0; interpreted by Replit ([TOML](https://toml.io/en/)) | Replit compatibility review |
+| OpenAPI | `lib/api-spec/openapi.yaml` 3.1.0 | 3.2.1 ([OpenAPI](https://spec.openapis.org/oas/v3.2.1.html)) | Review Orval and schema generator support before migration |
+| Mermaid | `.mmd`, diagram utilities; CLI exact 11.16.0 | Engine follows Mermaid/CLI releases | Update CLI, then parse/render representative fixtures |
+| Agent Skills / SKILL.md | Repository delegation contracts; package versions are not platform versions | Living compatibility contract ([Agent Skills](https://agentskills.io/specification)) | Revalidate host behavior and package structural contracts |
+| GitHub Actions / Pages / Dependabot | `.github/workflows`, Pages publication, dependency PRs | Hosted services, no installable service version | Actions themselves use SHA pins and are listed below |
+| Replit | Four artifacts, host modules, integrations, autoscale configuration | Hosted service, no repository-controlled product version | Module, build, connector and deployment checks are separate |
+| Google Fonts | Frontend HTML loads named font families via CSS API | Provider-managed responses; no pinned font binary versions | Check availability and rendering; self-hosting would be a separate change |
+| Google Analytics 4 / gtag | Forge entry document loads gtag.js | Provider-managed script; no exact version exposed | Preserve existing configuration; verify analytics behavior after UI changes |
+
+The SQL Server reconciliation utility also imports **pandas, PyArrow, and mssql-python**
+without a requirements file. They appear below as unversioned imports with current upstream
+versions. SQL Server itself is a runtime-supplied external target of that portable skill,
+not an established Skillz database deployment. No target server was accessed.
+
+## Refreshable package inventory
+
+The script sends only public package names to official npm/PyPI registries, Node/Python
+release endpoints, and GitHub release/tag APIs. No repository content is uploaded. A stable
+npm `latest` tag is used rather than the highest arbitrary tag; PyPI excludes prereleases
+and fully yanked releases. `gensync` currently has no stable release, and is reported as
+such rather than inventing one. The JSON records input hashes normalized for line endings.
 
 <!-- technology-latest:start -->
-Last checked: 2026-08-24 (UTC).
+Last successful verification: 2026-09-19 (UTC).
 
-| Technology | Latest stable | Basis |
-| --- | --- | --- |
-| Node.js | 26.7.0 | latest stable Current release |
-| Node.js LTS | 24.19.0 | recommended tracked runtime |
-| Python | 3.14.7 | latest stable release |
-| npm | 12.0.2 | npm registry latest tag |
-| Anthropic Python SDK | 1.0.0 | PyPI latest release |
-| MCP Python SDK | 2.0.0 | PyPI latest release |
-| PyYAML | 6.0.3 | PyPI latest release |
-| Mermaid CLI | 11.16.0 | npm latest tag |
-| TypeScript | 7.0.2 | reference-only technology |
-| Vite | 8.2.2 | reference-only technology |
-| React | 19.2.8 | reference-only technology |
-| Tailwind CSS | 4.3.3 | reference-only technology |
-| pnpm | 11.23.0 | template bootstrap tool |
+Coverage: **110 direct, catalog, script, CI and tool entries**, **411 additional transitive package names**, **515 lockfile package/version entries**, **33 active package manifests**.
+
+All npm lockfile entries are inventoried, including optional platform packages. Resolution does not prove installation or runtime use. Python requirements and action SHAs are declarations, not installed version claims.
+
+### CI runtime pins
+
+| Technology | In place | Latest stable | Bounded update target | Source |
+| --- | --- | --- | --- | --- |
+| Node.js | 24.19.0 | 26.9.0; LTS 24.21.0 | 24.21.0 | [official releases](https://nodejs.org/dist/index.json) |
+| Python | 3.14.7 | 3.14.7 | 3.14.7 | [official releases](https://www.python.org/downloads/) |
+
+### Direct dependencies, scripts, CI and tools
+
+| Technology | Declared | Locked / referenced | Latest stable | Assessment |
+| --- | --- | --- | --- | --- |
+| github / actions/checkout | 3d3c42e5aac5ba805825da76410c181273ba90b1 | v7, v7.0.1 | [7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1) | current release |
+| github / actions/deploy-pages | cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 | v5.0.0 | [5.0.1](https://github.com/actions/deploy-pages/releases/tag/v5.0.1) | Dependabot SHA update; review release |
+| github / actions/setup-node | 820762786026740c76f36085b0efc47a31fe5020 | v7, v7.0.0 | [7.0.0](https://github.com/actions/setup-node/releases/tag/v7.0.0) | current release |
+| github / actions/setup-python | 5fda3b95a4ea91299a34e894583c3862153e4b97 | v7, v7.0.0 | [7.0.0](https://github.com/actions/setup-python/releases/tag/v7.0.0) | current release |
+| github / actions/upload-artifact | ea165f8d65b6e75b540449e92b4886f43607fa02 | v4, v4.6.2 | [7.0.1](https://github.com/actions/upload-artifact/releases/tag/v7.0.1) | Dependabot SHA update; review release |
+| github / actions/upload-pages-artifact | fc324d3547104276b827a68afc52ff2a11cc49c9 | v5, v5.0.0 | [5.0.0](https://github.com/actions/upload-pages-artifact/releases/tag/v5.0.0) | current release |
+| github / peter-evans/create-pull-request | 5f6978faf089d4d20b00c7766989d076bb2fc7f1 | v8, v8.1.1 | [8.1.1](https://github.com/peter-evans/create-pull-request/releases/tag/v8.1.1) | current release |
+| github / pnpm/action-setup | 0977fd99725f1db4007ccb2928dbb4e90d06cc86 | v6, v6.0.10 | [6.1.0](https://github.com/pnpm/action-setup/releases/tag/v6.1.0) | Dependabot SHA update; review release |
+| github / rhysd/actionlint | v1.7.7 | v1.7.7 | [1.7.12](https://github.com/rhysd/actionlint/releases/tag/v1.7.12) | manual tool-pin PR; not managed by Dependabot |
+| npm / @hookform/resolvers | ^3.10.0 | 3.10.0 | [5.9.1](https://registry.npmjs.org/%40hookform%2Fresolvers) | major upgrade review |
+| npm / @mermaid-js/mermaid-cli | 11.16.0 | not locked | [11.17.0](https://registry.npmjs.org/%40mermaid-js%2Fmermaid-cli) | declared only; installed version unknown |
+| npm / @radix-ui/react-accordion | ^1.2.20; ^1.2.4 | 1.2.20 | [1.2.20](https://registry.npmjs.org/%40radix-ui%2Freact-accordion) | current |
+| npm / @radix-ui/react-alert-dialog | ^1.1.23; ^1.1.7 | 1.1.23 | [1.1.23](https://registry.npmjs.org/%40radix-ui%2Freact-alert-dialog) | current |
+| npm / @radix-ui/react-aspect-ratio | ^1.1.15; ^1.1.3 | 1.1.15 | [1.1.15](https://registry.npmjs.org/%40radix-ui%2Freact-aspect-ratio) | current |
+| npm / @radix-ui/react-avatar | ^1.1.4; ^1.2.6 | 1.2.6 | [1.2.6](https://registry.npmjs.org/%40radix-ui%2Freact-avatar) | current |
+| npm / @radix-ui/react-checkbox | ^1.1.5; ^1.3.11 | 1.3.11 | [1.3.11](https://registry.npmjs.org/%40radix-ui%2Freact-checkbox) | current |
+| npm / @radix-ui/react-collapsible | ^1.1.20; ^1.1.4 | 1.1.20 | [1.1.20](https://registry.npmjs.org/%40radix-ui%2Freact-collapsible) | current |
+| npm / @radix-ui/react-context-menu | ^2.2.7; ^2.3.7 | 2.3.7 | [2.3.7](https://registry.npmjs.org/%40radix-ui%2Freact-context-menu) | current |
+| npm / @radix-ui/react-dialog | ^1.1.23; ^1.1.7 | 1.1.23 | [1.1.23](https://registry.npmjs.org/%40radix-ui%2Freact-dialog) | current |
+| npm / @radix-ui/react-dropdown-menu | ^2.1.24; ^2.1.7 | 2.1.24 | [2.1.24](https://registry.npmjs.org/%40radix-ui%2Freact-dropdown-menu) | current |
+| npm / @radix-ui/react-hover-card | ^1.1.23; ^1.1.7 | 1.1.23 | [1.1.23](https://registry.npmjs.org/%40radix-ui%2Freact-hover-card) | current |
+| npm / @radix-ui/react-label | ^2.1.15; ^2.1.3 | 2.1.15 | [2.1.15](https://registry.npmjs.org/%40radix-ui%2Freact-label) | current |
+| npm / @radix-ui/react-menubar | ^1.1.24; ^1.1.7 | 1.1.24 | [1.1.24](https://registry.npmjs.org/%40radix-ui%2Freact-menubar) | current |
+| npm / @radix-ui/react-navigation-menu | ^1.2.22; ^1.2.6 | 1.2.22 | [1.2.22](https://registry.npmjs.org/%40radix-ui%2Freact-navigation-menu) | current |
+| npm / @radix-ui/react-popover | ^1.1.23; ^1.1.7 | 1.1.23 | [1.1.23](https://registry.npmjs.org/%40radix-ui%2Freact-popover) | current |
+| npm / @radix-ui/react-progress | ^1.1.16; ^1.1.3 | 1.1.16 | [1.1.16](https://registry.npmjs.org/%40radix-ui%2Freact-progress) | current |
+| npm / @radix-ui/react-radio-group | ^1.2.4; ^1.4.7 | 1.4.7 | [1.4.7](https://registry.npmjs.org/%40radix-ui%2Freact-radio-group) | current |
+| npm / @radix-ui/react-scroll-area | ^1.2.18; ^1.2.4 | 1.2.18 | [1.2.18](https://registry.npmjs.org/%40radix-ui%2Freact-scroll-area) | current |
+| npm / @radix-ui/react-select | ^2.1.7; ^2.3.7 | 2.3.7 | [2.3.7](https://registry.npmjs.org/%40radix-ui%2Freact-select) | current |
+| npm / @radix-ui/react-separator | ^1.1.15; ^1.1.3 | 1.1.15 | [1.1.15](https://registry.npmjs.org/%40radix-ui%2Freact-separator) | current |
+| npm / @radix-ui/react-slider | ^1.2.4; ^1.4.7 | 1.4.7 | [1.4.7](https://registry.npmjs.org/%40radix-ui%2Freact-slider) | current |
+| npm / @radix-ui/react-slot | ^1.2.0; ^1.3.3 | 1.3.3 | [1.3.3](https://registry.npmjs.org/%40radix-ui%2Freact-slot) | current |
+| npm / @radix-ui/react-switch | ^1.1.4; ^1.3.7 | 1.3.7 | [1.3.7](https://registry.npmjs.org/%40radix-ui%2Freact-switch) | current |
+| npm / @radix-ui/react-tabs | ^1.1.21; ^1.1.4 | 1.1.21 | [1.1.21](https://registry.npmjs.org/%40radix-ui%2Freact-tabs) | current |
+| npm / @radix-ui/react-toast | ^1.2.23; ^1.2.7 | 1.2.23 | [1.2.23](https://registry.npmjs.org/%40radix-ui%2Freact-toast) | current |
+| npm / @radix-ui/react-toggle | ^1.1.18; ^1.1.3 | 1.1.18 | [1.1.18](https://registry.npmjs.org/%40radix-ui%2Freact-toggle) | current |
+| npm / @radix-ui/react-toggle-group | ^1.1.19; ^1.1.3 | 1.1.19 | [1.1.19](https://registry.npmjs.org/%40radix-ui%2Freact-toggle-group) | current |
+| npm / @radix-ui/react-tooltip | ^1.2.0; ^1.2.16 | 1.2.16 | [1.2.16](https://registry.npmjs.org/%40radix-ui%2Freact-tooltip) | current |
+| npm / @replit/connectors-sdk | ^0.4.1 | 0.4.1 | [0.4.3](https://registry.npmjs.org/%40replit%2Fconnectors-sdk) | update available |
+| npm / @replit/vite-plugin-cartographer | ^0.5.21 | 0.5.21 | [0.6.1](https://registry.npmjs.org/%40replit%2Fvite-plugin-cartographer) | update available |
+| npm / @replit/vite-plugin-dev-banner | ^0.1.1 | 0.1.2 | [0.1.2](https://registry.npmjs.org/%40replit%2Fvite-plugin-dev-banner) | current |
+| npm / @replit/vite-plugin-runtime-error-modal | ^0.0.6 | 0.0.6 | [0.0.6](https://registry.npmjs.org/%40replit%2Fvite-plugin-runtime-error-modal) | current |
+| npm / @tailwindcss/typography | ^0.5.15 | 0.5.20 | [0.5.20](https://registry.npmjs.org/%40tailwindcss%2Ftypography) | current |
+| npm / @tailwindcss/vite | ^4.1.14 | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Fvite) | current |
+| npm / @tanstack/react-query | ^5.90.21 | 5.101.4 | [5.103.1](https://registry.npmjs.org/%40tanstack%2Freact-query) | update available |
+| npm / @types/cookie-parser | ^1.4.10 | 1.4.10 | [1.4.10](https://registry.npmjs.org/%40types%2Fcookie-parser) | current |
+| npm / @types/cors | ^2.8.19 | 2.8.19 | [2.8.19](https://registry.npmjs.org/%40types%2Fcors) | current |
+| npm / @types/express | ^5.0.6 | 5.0.6 | [5.0.6](https://registry.npmjs.org/%40types%2Fexpress) | current |
+| npm / @types/node | ^25.3.3 | 25.9.5 | [26.6.2](https://registry.npmjs.org/%40types%2Fnode) | major upgrade review |
+| npm / @types/pg | ^8.20.0 | 8.20.0 | [8.23.1](https://registry.npmjs.org/%40types%2Fpg) | update available |
+| npm / @types/react | ^19.2.0 | 19.2.17 | [19.3.0](https://registry.npmjs.org/%40types%2Freact) | update available |
+| npm / @types/react-dom | ^19.2.0 | 19.2.3 | [19.3.0](https://registry.npmjs.org/%40types%2Freact-dom) | update available |
+| npm / @vitejs/plugin-react | ^5.0.4 | 5.2.0 | [6.1.1](https://registry.npmjs.org/%40vitejs%2Fplugin-react) | major upgrade review |
+| npm / chokidar | ^4.0.3 | 4.0.3, 5.0.0 | [5.0.0](https://registry.npmjs.org/chokidar) | major upgrade review |
+| npm / class-variance-authority | ^0.7.1 | 0.7.1 | [0.7.1](https://registry.npmjs.org/class-variance-authority) | current |
+| npm / clsx | ^2.1.1 | 2.1.1 | [2.1.1](https://registry.npmjs.org/clsx) | current |
+| npm / cmdk | ^1.1.1 | 1.1.1 | [1.1.1](https://registry.npmjs.org/cmdk) | current |
+| npm / cookie-parser | ^1.4.7 | 1.4.7 | [1.4.7](https://registry.npmjs.org/cookie-parser) | current |
+| npm / cors | ^2.8.6 | 2.8.6 | [2.8.6](https://registry.npmjs.org/cors) | current |
+| npm / date-fns | ^3.6.0 | 3.6.0, 4.4.0 | [4.4.0](https://registry.npmjs.org/date-fns) | major upgrade review |
+| npm / drizzle-kit | ^0.31.10 | 0.31.10 | [0.31.10](https://registry.npmjs.org/drizzle-kit) | current |
+| npm / drizzle-orm | ^0.45.2 | 0.45.2 | [0.45.2](https://registry.npmjs.org/drizzle-orm) | current |
+| npm / drizzle-zod | ^0.8.3 | 0.8.3 | [0.8.3](https://registry.npmjs.org/drizzle-zod) | current |
+| npm / embla-carousel-react | ^8.6.0 | 8.6.0 | [8.6.0](https://registry.npmjs.org/embla-carousel-react) | current |
+| npm / esbuild | 0.27.3 | 0.27.3 | [0.28.2](https://registry.npmjs.org/esbuild) | update available |
+| npm / esbuild-plugin-pino | ^2.3.3 | 2.3.3 | [2.3.3](https://registry.npmjs.org/esbuild-plugin-pino) | current |
+| npm / express | ^5.2.1 | 5.2.1 | [5.2.1](https://registry.npmjs.org/express) | current |
+| npm / fast-glob | ^3.3.3 | 3.3.3 | [3.3.3](https://registry.npmjs.org/fast-glob) | current |
+| npm / framer-motion | ^12.23.24 | 12.42.2 | [13.4.0](https://registry.npmjs.org/framer-motion) | major upgrade review |
+| npm / fuse.js | ^7.5.0 | 7.5.0 | [7.5.0](https://registry.npmjs.org/fuse.js) | current |
+| npm / input-otp | ^1.4.2 | 1.4.2 | [1.5.0](https://registry.npmjs.org/input-otp) | update available |
+| npm / lucide-react | ^0.545.0 | 0.545.0 | [1.47.0](https://registry.npmjs.org/lucide-react) | major upgrade review |
+| npm / next-themes | ^0.4.6 | 0.4.6 | [0.4.6](https://registry.npmjs.org/next-themes) | current |
+| npm / npm | transitive | not locked | [12.0.2](https://registry.npmjs.org/npm) | declared only; installed version unknown |
+| npm / orval | ^8.23.0 | 8.23.0 | [8.34.0](https://registry.npmjs.org/orval) | update available |
+| npm / pg | ^8.22.0 | 8.22.0 | [8.23.0](https://registry.npmjs.org/pg) | update available |
+| npm / pino | ^9.14.0 | 9.14.0 | [10.3.1](https://registry.npmjs.org/pino) | major upgrade review |
+| npm / pino-http | ^10.5.0 | 10.5.0 | [11.0.0](https://registry.npmjs.org/pino-http) | major upgrade review |
+| npm / pino-pretty | ^13.1.3 | 13.1.3 | [13.1.3](https://registry.npmjs.org/pino-pretty) | current |
+| npm / playwright | ^1.55.0 | 1.62.1 | [1.63.0](https://registry.npmjs.org/playwright) | update available |
+| npm / pnpm | pnpm@10.26.1 | not locked | [12.4.2](https://registry.npmjs.org/pnpm) | track 10.x (10.34.5); latest major requires migration |
+| npm / prettier | ^3.9.6 | 3.9.6 | [3.9.8](https://registry.npmjs.org/prettier) | update available |
+| npm / react | 19.1.0; >=18 | 19.1.0 | [19.3.0](https://registry.npmjs.org/react) | update available |
+| npm / react-day-picker | ^9.11.1; ^9.14.0 | 9.14.0 | [10.0.1](https://registry.npmjs.org/react-day-picker) | major upgrade review |
+| npm / react-dom | 19.1.0 | 19.1.0 | [19.3.0](https://registry.npmjs.org/react-dom) | update available |
+| npm / react-hook-form | ^7.55.0; ^7.83.0 | 7.83.0 | [7.88.0](https://registry.npmjs.org/react-hook-form) | update available |
+| npm / react-icons | ^5.4.0 | 5.7.0 | [5.7.0](https://registry.npmjs.org/react-icons) | current |
+| npm / react-resizable-panels | ^2.1.7; ^2.1.9 | 2.1.9 | [4.12.4](https://registry.npmjs.org/react-resizable-panels) | major upgrade review |
+| npm / react-router-dom | ^7.18.1 | 7.18.2 | [7.18.4](https://registry.npmjs.org/react-router-dom) | update available |
+| npm / recharts | ^2.15.2; ^2.15.4 | 2.15.4 | [3.10.1](https://registry.npmjs.org/recharts) | major upgrade review |
+| npm / sonner | ^2.0.7 | 2.0.7 | [2.0.8](https://registry.npmjs.org/sonner) | update available |
+| npm / tailwind-merge | ^3.3.1 | 3.6.0 | [3.7.0](https://registry.npmjs.org/tailwind-merge) | update available |
+| npm / tailwindcss | ^4.1.14 | 4.3.3 | [4.3.3](https://registry.npmjs.org/tailwindcss) | current |
+| npm / tailwindcss-animate | ^1.0.7 | 1.0.7 | [1.0.7](https://registry.npmjs.org/tailwindcss-animate) | current |
+| npm / thread-stream | 3.1.0 | 3.1.0 | [4.2.0](https://registry.npmjs.org/thread-stream) | major upgrade review |
+| npm / tsx | ^4.21.0 | 4.23.1 | [4.23.13](https://registry.npmjs.org/tsx) | update available |
+| npm / tw-animate-css | ^1.4.0 | 1.4.0 | [1.4.0](https://registry.npmjs.org/tw-animate-css) | current |
+| npm / typescript | ~5.9.3 | 5.9.3 | [7.0.2](https://registry.npmjs.org/typescript) | major upgrade review |
+| npm / vaul | ^1.1.2 | 1.1.2 | [1.1.2](https://registry.npmjs.org/vaul) | current |
+| npm / vite | ^7.3.2 | 7.3.6 | [8.3.0](https://registry.npmjs.org/vite) | major upgrade review |
+| npm / vitest | ^3.2.0 | 3.2.7 | [5.0.1](https://registry.npmjs.org/vitest) | major upgrade review |
+| npm / wouter | ^3.3.5 | 3.10.0 | [3.11.0](https://registry.npmjs.org/wouter) | update available |
+| npm / zod | ^3.25.76 | 3.25.76 | [4.6.5](https://registry.npmjs.org/zod) | major upgrade review |
+| pypi / PyYAML | ==6.0.3; >=6.0.3; unversioned import | not locked | [6.0.3](https://pypi.org/pypi/PyYAML/json) | declared only; installed version unknown |
+| pypi / anthropic | >=0.122.0; unversioned import | not locked | [1.7.0](https://pypi.org/pypi/anthropic/json) | declared only; installed version unknown |
+| pypi / mcp | >=2.0.0; unversioned import | not locked | [2.2.0](https://pypi.org/pypi/mcp/json) | declared only; installed version unknown |
+| pypi / mssql-python | unversioned import | not locked | [1.15.0](https://pypi.org/pypi/mssql-python/json) | declared only; installed version unknown |
+| pypi / packaging | ==26.3; unversioned import | not locked | [26.3](https://pypi.org/pypi/packaging/json) | declared only; installed version unknown |
+| pypi / pandas | unversioned import | not locked | [3.0.6](https://pypi.org/pypi/pandas/json) | declared only; installed version unknown |
+| pypi / pyarrow | unversioned import | not locked | [25.0.1](https://pypi.org/pypi/pyarrow/json) | declared only; installed version unknown |
+
+### Transitive dependency appendix
+
+| Technology | Declared | Locked / referenced | Latest stable | Assessment |
+| --- | --- | --- | --- | --- |
+| npm / @babel/code-frame | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Fcode-frame) | major upgrade review |
+| npm / @babel/compat-data | transitive | 7.29.7 | [8.0.5](https://registry.npmjs.org/%40babel%2Fcompat-data) | major upgrade review |
+| npm / @babel/core | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Fcore) | major upgrade review |
+| npm / @babel/generator | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Fgenerator) | major upgrade review |
+| npm / @babel/helper-compilation-targets | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Fhelper-compilation-targets) | major upgrade review |
+| npm / @babel/helper-globals | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Fhelper-globals) | major upgrade review |
+| npm / @babel/helper-module-imports | transitive | 7.29.7 | [8.0.0](https://registry.npmjs.org/%40babel%2Fhelper-module-imports) | major upgrade review |
+| npm / @babel/helper-module-transforms | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Fhelper-module-transforms) | major upgrade review |
+| npm / @babel/helper-plugin-utils | transitive | 7.29.7 | [8.0.1](https://registry.npmjs.org/%40babel%2Fhelper-plugin-utils) | major upgrade review |
+| npm / @babel/helper-string-parser | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Fhelper-string-parser) | major upgrade review |
+| npm / @babel/helper-validator-identifier | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Fhelper-validator-identifier) | major upgrade review |
+| npm / @babel/helper-validator-option | transitive | 7.29.7 | [8.0.0](https://registry.npmjs.org/%40babel%2Fhelper-validator-option) | major upgrade review |
+| npm / @babel/helpers | transitive | 7.29.7 | [8.0.5](https://registry.npmjs.org/%40babel%2Fhelpers) | major upgrade review |
+| npm / @babel/parser | transitive | 7.29.7 | [7.29.9](https://registry.npmjs.org/%40babel%2Fparser) | update available |
+| npm / @babel/plugin-transform-react-jsx-self | transitive | 7.29.7 | [7.29.7](https://registry.npmjs.org/%40babel%2Fplugin-transform-react-jsx-self) | current |
+| npm / @babel/plugin-transform-react-jsx-source | transitive | 7.29.7 | [7.29.7](https://registry.npmjs.org/%40babel%2Fplugin-transform-react-jsx-source) | current |
+| npm / @babel/runtime | transitive | 7.29.7 | [8.0.5](https://registry.npmjs.org/%40babel%2Fruntime) | major upgrade review |
+| npm / @babel/template | transitive | 7.29.7 | [8.0.0](https://registry.npmjs.org/%40babel%2Ftemplate) | major upgrade review |
+| npm / @babel/traverse | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Ftraverse) | major upgrade review |
+| npm / @babel/types | transitive | 7.29.7 | [8.0.6](https://registry.npmjs.org/%40babel%2Ftypes) | major upgrade review |
+| npm / @commander-js/extra-typings | transitive | 15.0.0 | [15.0.0](https://registry.npmjs.org/%40commander-js%2Fextra-typings) | current |
+| npm / @date-fns/tz | transitive | 1.5.0 | [1.5.0](https://registry.npmjs.org/%40date-fns%2Ftz) | current |
+| npm / @drizzle-team/brocli | transitive | 0.10.2 | [0.12.1](https://registry.npmjs.org/%40drizzle-team%2Fbrocli) | update available |
+| npm / @esbuild/linux-x64 | transitive | 0.27.3 | [0.28.2](https://registry.npmjs.org/%40esbuild%2Flinux-x64) | update available |
+| npm / @floating-ui/core | transitive | 1.8.0 | [1.8.0](https://registry.npmjs.org/%40floating-ui%2Fcore) | current |
+| npm / @floating-ui/dom | transitive | 1.8.0 | [1.8.0](https://registry.npmjs.org/%40floating-ui%2Fdom) | current |
+| npm / @floating-ui/react-dom | transitive | 2.1.9 | [2.1.9](https://registry.npmjs.org/%40floating-ui%2Freact-dom) | current |
+| npm / @floating-ui/utils | transitive | 0.2.12 | [0.2.12](https://registry.npmjs.org/%40floating-ui%2Futils) | current |
+| npm / @gerrit0/mini-shiki | transitive | 3.23.0 | [3.23.0](https://registry.npmjs.org/%40gerrit0%2Fmini-shiki) | current |
+| npm / @jridgewell/gen-mapping | transitive | 0.3.13 | [0.3.13](https://registry.npmjs.org/%40jridgewell%2Fgen-mapping) | current |
+| npm / @jridgewell/remapping | transitive | 2.3.5 | [2.3.5](https://registry.npmjs.org/%40jridgewell%2Fremapping) | current |
+| npm / @jridgewell/resolve-uri | transitive | 3.1.2 | [3.1.2](https://registry.npmjs.org/%40jridgewell%2Fresolve-uri) | current |
+| npm / @jridgewell/sourcemap-codec | transitive | 1.5.5 | [1.6.0](https://registry.npmjs.org/%40jridgewell%2Fsourcemap-codec) | update available |
+| npm / @jridgewell/trace-mapping | transitive | 0.3.31 | [0.3.31](https://registry.npmjs.org/%40jridgewell%2Ftrace-mapping) | current |
+| npm / @nodelib/fs.scandir | transitive | 2.1.5 | [4.0.1](https://registry.npmjs.org/%40nodelib%2Ffs.scandir) | major upgrade review |
+| npm / @nodelib/fs.stat | transitive | 2.0.5 | [4.0.0](https://registry.npmjs.org/%40nodelib%2Ffs.stat) | major upgrade review |
+| npm / @nodelib/fs.walk | transitive | 1.2.8 | [3.0.1](https://registry.npmjs.org/%40nodelib%2Ffs.walk) | major upgrade review |
+| npm / @orval/angular | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fangular) | update available |
+| npm / @orval/axios | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Faxios) | update available |
+| npm / @orval/core | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fcore) | update available |
+| npm / @orval/effect | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Feffect) | update available |
+| npm / @orval/fetch | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Ffetch) | update available |
+| npm / @orval/hono | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fhono) | update available |
+| npm / @orval/mcp | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fmcp) | update available |
+| npm / @orval/mock | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fmock) | update available |
+| npm / @orval/query | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fquery) | update available |
+| npm / @orval/solid-start | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fsolid-start) | update available |
+| npm / @orval/swr | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fswr) | update available |
+| npm / @orval/zod | transitive | 8.23.0 | [8.34.0](https://registry.npmjs.org/%40orval%2Fzod) | update available |
+| npm / @pinojs/redact | transitive | 0.4.0 | [0.4.0](https://registry.npmjs.org/%40pinojs%2Fredact) | current |
+| npm / @radix-ui/number | transitive | 1.1.3 | [1.1.3](https://registry.npmjs.org/%40radix-ui%2Fnumber) | current |
+| npm / @radix-ui/primitive | transitive | 1.1.7 | [1.1.7](https://registry.npmjs.org/%40radix-ui%2Fprimitive) | current |
+| npm / @radix-ui/react-arrow | transitive | 1.1.15 | [1.1.15](https://registry.npmjs.org/%40radix-ui%2Freact-arrow) | current |
+| npm / @radix-ui/react-collection | transitive | 1.1.15 | [1.1.15](https://registry.npmjs.org/%40radix-ui%2Freact-collection) | current |
+| npm / @radix-ui/react-compose-refs | transitive | 1.1.5 | [1.1.5](https://registry.npmjs.org/%40radix-ui%2Freact-compose-refs) | current |
+| npm / @radix-ui/react-context | transitive | 1.2.2 | [1.2.2](https://registry.npmjs.org/%40radix-ui%2Freact-context) | current |
+| npm / @radix-ui/react-direction | transitive | 1.1.4 | [1.1.4](https://registry.npmjs.org/%40radix-ui%2Freact-direction) | current |
+| npm / @radix-ui/react-dismissable-layer | transitive | 1.1.19 | [1.1.19](https://registry.npmjs.org/%40radix-ui%2Freact-dismissable-layer) | current |
+| npm / @radix-ui/react-focus-guards | transitive | 1.1.6 | [1.1.6](https://registry.npmjs.org/%40radix-ui%2Freact-focus-guards) | current |
+| npm / @radix-ui/react-focus-scope | transitive | 1.1.16 | [1.1.16](https://registry.npmjs.org/%40radix-ui%2Freact-focus-scope) | current |
+| npm / @radix-ui/react-id | transitive | 1.1.4 | [1.1.4](https://registry.npmjs.org/%40radix-ui%2Freact-id) | current |
+| npm / @radix-ui/react-menu | transitive | 2.1.24 | [2.1.24](https://registry.npmjs.org/%40radix-ui%2Freact-menu) | current |
+| npm / @radix-ui/react-popper | transitive | 1.3.7 | [1.3.7](https://registry.npmjs.org/%40radix-ui%2Freact-popper) | current |
+| npm / @radix-ui/react-portal | transitive | 1.1.17 | [1.1.17](https://registry.npmjs.org/%40radix-ui%2Freact-portal) | current |
+| npm / @radix-ui/react-presence | transitive | 1.1.10 | [1.1.10](https://registry.npmjs.org/%40radix-ui%2Freact-presence) | current |
+| npm / @radix-ui/react-primitive | transitive | 2.1.10 | [2.1.10](https://registry.npmjs.org/%40radix-ui%2Freact-primitive) | current |
+| npm / @radix-ui/react-roving-focus | transitive | 1.1.19 | [1.1.19](https://registry.npmjs.org/%40radix-ui%2Freact-roving-focus) | current |
+| npm / @radix-ui/react-use-callback-ref | transitive | 1.1.4 | [1.1.4](https://registry.npmjs.org/%40radix-ui%2Freact-use-callback-ref) | current |
+| npm / @radix-ui/react-use-controllable-state | transitive | 1.2.6 | [1.2.6](https://registry.npmjs.org/%40radix-ui%2Freact-use-controllable-state) | current |
+| npm / @radix-ui/react-use-effect-event | transitive | 0.0.5 | [0.0.5](https://registry.npmjs.org/%40radix-ui%2Freact-use-effect-event) | current |
+| npm / @radix-ui/react-use-is-hydrated | transitive | 0.1.3 | [0.1.3](https://registry.npmjs.org/%40radix-ui%2Freact-use-is-hydrated) | current |
+| npm / @radix-ui/react-use-layout-effect | transitive | 1.1.4 | [1.1.4](https://registry.npmjs.org/%40radix-ui%2Freact-use-layout-effect) | current |
+| npm / @radix-ui/react-use-previous | transitive | 1.1.4 | [1.1.4](https://registry.npmjs.org/%40radix-ui%2Freact-use-previous) | current |
+| npm / @radix-ui/react-use-rect | transitive | 1.1.4 | [1.1.4](https://registry.npmjs.org/%40radix-ui%2Freact-use-rect) | current |
+| npm / @radix-ui/react-use-size | transitive | 1.1.4 | [1.1.4](https://registry.npmjs.org/%40radix-ui%2Freact-use-size) | current |
+| npm / @radix-ui/react-visually-hidden | transitive | 1.2.11 | [1.2.11](https://registry.npmjs.org/%40radix-ui%2Freact-visually-hidden) | current |
+| npm / @radix-ui/rect | transitive | 1.1.3 | [1.1.3](https://registry.npmjs.org/%40radix-ui%2Frect) | current |
+| npm / @rolldown/pluginutils | transitive | 1.0.0-rc.3 | [1.0.1](https://registry.npmjs.org/%40rolldown%2Fpluginutils) | non-stable or non-semver lock entry; review |
+| npm / @rollup/rollup-linux-x64-gnu | transitive | 4.62.3 | [4.63.3](https://registry.npmjs.org/%40rollup%2Frollup-linux-x64-gnu) | update available |
+| npm / @scalar/helpers | transitive | 0.9.2 | [0.12.0](https://registry.npmjs.org/%40scalar%2Fhelpers) | update available |
+| npm / @scalar/json-magic | transitive | 0.12.19 | [0.14.0](https://registry.npmjs.org/%40scalar%2Fjson-magic) | update available |
+| npm / @scalar/openapi-parser | transitive | 0.28.10 | [0.29.3](https://registry.npmjs.org/%40scalar%2Fopenapi-parser) | update available |
+| npm / @scalar/openapi-types | transitive | 0.8.0, 0.9.3 | [0.9.6](https://registry.npmjs.org/%40scalar%2Fopenapi-types) | update available |
+| npm / @scalar/openapi-upgrader | transitive | 0.2.11 | [0.2.17](https://registry.npmjs.org/%40scalar%2Fopenapi-upgrader) | update available |
+| npm / @sec-ant/readable-stream | transitive | 0.4.1 | [0.7.0](https://registry.npmjs.org/%40sec-ant%2Freadable-stream) | update available |
+| npm / @shikijs/engine-oniguruma | transitive | 3.23.0 | [4.4.3](https://registry.npmjs.org/%40shikijs%2Fengine-oniguruma) | major upgrade review |
+| npm / @shikijs/langs | transitive | 3.23.0 | [4.4.3](https://registry.npmjs.org/%40shikijs%2Flangs) | major upgrade review |
+| npm / @shikijs/themes | transitive | 3.23.0 | [4.4.3](https://registry.npmjs.org/%40shikijs%2Fthemes) | major upgrade review |
+| npm / @shikijs/types | transitive | 3.23.0 | [4.4.3](https://registry.npmjs.org/%40shikijs%2Ftypes) | major upgrade review |
+| npm / @shikijs/vscode-textmate | transitive | 10.0.2 | [10.0.2](https://registry.npmjs.org/%40shikijs%2Fvscode-textmate) | current |
+| npm / @sindresorhus/merge-streams | transitive | 4.0.0 | [4.0.0](https://registry.npmjs.org/%40sindresorhus%2Fmerge-streams) | current |
+| npm / @tabby_ai/hijri-converter | transitive | 1.0.5 | [1.0.5](https://registry.npmjs.org/%40tabby_ai%2Fhijri-converter) | current |
+| npm / @tailwindcss/node | transitive | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Fnode) | current |
+| npm / @tailwindcss/oxide | transitive | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Foxide) | current |
+| npm / @tailwindcss/oxide-linux-x64-gnu | transitive | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Foxide-linux-x64-gnu) | current |
+| npm / @tailwindcss/oxide-wasm32-wasi | transitive | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Foxide-wasm32-wasi) | current |
+| npm / @tanstack/query-core | transitive | 5.101.4 | [5.103.1](https://registry.npmjs.org/%40tanstack%2Fquery-core) | update available |
+| npm / @types/babel__core | transitive | 7.20.5 | [7.20.5](https://registry.npmjs.org/%40types%2Fbabel__core) | current |
+| npm / @types/babel__generator | transitive | 7.27.0 | [7.27.0](https://registry.npmjs.org/%40types%2Fbabel__generator) | current |
+| npm / @types/babel__template | transitive | 7.4.4 | [7.4.4](https://registry.npmjs.org/%40types%2Fbabel__template) | current |
+| npm / @types/babel__traverse | transitive | 7.28.0 | [7.28.0](https://registry.npmjs.org/%40types%2Fbabel__traverse) | current |
+| npm / @types/body-parser | transitive | 1.19.6 | [1.19.6](https://registry.npmjs.org/%40types%2Fbody-parser) | current |
+| npm / @types/chai | transitive | 5.2.3 | [5.2.3](https://registry.npmjs.org/%40types%2Fchai) | current |
+| npm / @types/connect | transitive | 3.4.38 | [3.4.38](https://registry.npmjs.org/%40types%2Fconnect) | current |
+| npm / @types/d3-array | transitive | 3.2.2 | [3.2.2](https://registry.npmjs.org/%40types%2Fd3-array) | current |
+| npm / @types/d3-color | transitive | 3.1.3 | [3.1.3](https://registry.npmjs.org/%40types%2Fd3-color) | current |
+| npm / @types/d3-ease | transitive | 3.0.2 | [3.0.2](https://registry.npmjs.org/%40types%2Fd3-ease) | current |
+| npm / @types/d3-interpolate | transitive | 3.0.4 | [3.0.4](https://registry.npmjs.org/%40types%2Fd3-interpolate) | current |
+| npm / @types/d3-path | transitive | 3.1.1 | [3.1.1](https://registry.npmjs.org/%40types%2Fd3-path) | current |
+| npm / @types/d3-scale | transitive | 4.0.9 | [4.0.9](https://registry.npmjs.org/%40types%2Fd3-scale) | current |
+| npm / @types/d3-shape | transitive | 3.1.8 | [3.2.0](https://registry.npmjs.org/%40types%2Fd3-shape) | update available |
+| npm / @types/d3-time | transitive | 3.0.4 | [3.0.4](https://registry.npmjs.org/%40types%2Fd3-time) | current |
+| npm / @types/d3-timer | transitive | 3.0.2 | [3.0.2](https://registry.npmjs.org/%40types%2Fd3-timer) | current |
+| npm / @types/deep-eql | transitive | 4.0.2 | [4.0.2](https://registry.npmjs.org/%40types%2Fdeep-eql) | current |
+| npm / @types/estree | transitive | 1.0.9 | [1.0.9](https://registry.npmjs.org/%40types%2Festree) | current |
+| npm / @types/express-serve-static-core | transitive | 5.1.2 | [5.1.3](https://registry.npmjs.org/%40types%2Fexpress-serve-static-core) | update available |
+| npm / @types/hast | transitive | 3.0.5 | [3.0.5](https://registry.npmjs.org/%40types%2Fhast) | current |
+| npm / @types/http-errors | transitive | 2.0.5 | [2.0.5](https://registry.npmjs.org/%40types%2Fhttp-errors) | current |
+| npm / @types/qs | transitive | 6.15.1 | [6.15.1](https://registry.npmjs.org/%40types%2Fqs) | current |
+| npm / @types/range-parser | transitive | 1.2.7 | [1.2.7](https://registry.npmjs.org/%40types%2Frange-parser) | current |
+| npm / @types/send | transitive | 1.2.1 | [1.2.1](https://registry.npmjs.org/%40types%2Fsend) | current |
+| npm / @types/serve-static | transitive | 2.2.0 | [2.2.0](https://registry.npmjs.org/%40types%2Fserve-static) | current |
+| npm / @types/unist | transitive | 3.0.3 | [3.0.3](https://registry.npmjs.org/%40types%2Funist) | current |
+| npm / @vitest/expect | transitive | 3.2.7 | [5.0.1](https://registry.npmjs.org/%40vitest%2Fexpect) | major upgrade review |
+| npm / @vitest/mocker | transitive | 3.2.7 | [5.0.1](https://registry.npmjs.org/%40vitest%2Fmocker) | major upgrade review |
+| npm / @vitest/pretty-format | transitive | 3.2.7 | [5.0.1](https://registry.npmjs.org/%40vitest%2Fpretty-format) | major upgrade review |
+| npm / @vitest/runner | transitive | 3.2.7 | [4.1.11](https://registry.npmjs.org/%40vitest%2Frunner) | major upgrade review |
+| npm / @vitest/snapshot | transitive | 3.2.7 | [5.0.1](https://registry.npmjs.org/%40vitest%2Fsnapshot) | major upgrade review |
+| npm / @vitest/spy | transitive | 3.2.7 | [5.0.1](https://registry.npmjs.org/%40vitest%2Fspy) | major upgrade review |
+| npm / @vitest/utils | transitive | 3.2.7 | [5.0.1](https://registry.npmjs.org/%40vitest%2Futils) | major upgrade review |
+| npm / accepts | transitive | 2.0.0 | [1.3.8](https://registry.npmjs.org/accepts) | ahead of latest tag; review (never downgrade) |
+| npm / acorn | transitive | 8.17.0 | [8.18.0](https://registry.npmjs.org/acorn) | update available |
+| npm / ajv | transitive | 8.20.0 | [8.20.0](https://registry.npmjs.org/ajv) | current |
+| npm / ajv-draft-04 | transitive | 1.0.0 | [1.0.0](https://registry.npmjs.org/ajv-draft-04) | current |
+| npm / ajv-formats | transitive | 3.0.1 | [3.0.1](https://registry.npmjs.org/ajv-formats) | current |
+| npm / argparse | transitive | 2.0.1 | [3.0.2](https://registry.npmjs.org/argparse) | major upgrade review |
+| npm / aria-hidden | transitive | 1.2.6 | [1.2.6](https://registry.npmjs.org/aria-hidden) | current |
+| npm / assertion-error | transitive | 2.0.1 | [2.0.1](https://registry.npmjs.org/assertion-error) | current |
+| npm / atomic-sleep | transitive | 1.0.0 | [1.0.0](https://registry.npmjs.org/atomic-sleep) | current |
+| npm / balanced-match | transitive | 4.0.4 | [4.0.4](https://registry.npmjs.org/balanced-match) | current |
+| npm / baseline-browser-mapping | transitive | 2.11.3 | [2.11.25](https://registry.npmjs.org/baseline-browser-mapping) | update available |
+| npm / body-parser | transitive | 2.3.0 | [2.3.0](https://registry.npmjs.org/body-parser) | current |
+| npm / brace-expansion | transitive | 5.0.8 | [5.0.12](https://registry.npmjs.org/brace-expansion) | update available |
+| npm / braces | transitive | 3.0.3 | [3.0.3](https://registry.npmjs.org/braces) | current |
+| npm / browserslist | transitive | 4.28.7 | [4.29.0](https://registry.npmjs.org/browserslist) | update available |
+| npm / bytes | transitive | 3.1.2 | [3.1.2](https://registry.npmjs.org/bytes) | current |
+| npm / cac | transitive | 6.7.14 | [7.0.0](https://registry.npmjs.org/cac) | major upgrade review |
+| npm / call-bind-apply-helpers | transitive | 1.0.2 | [1.0.2](https://registry.npmjs.org/call-bind-apply-helpers) | current |
+| npm / call-bound | transitive | 1.0.4 | [1.0.4](https://registry.npmjs.org/call-bound) | current |
+| npm / caniuse-lite | transitive | 1.0.30001806 | [1.0.30001810](https://registry.npmjs.org/caniuse-lite) | update available |
+| npm / chai | transitive | 5.3.3 | [6.2.2](https://registry.npmjs.org/chai) | major upgrade review |
+| npm / check-error | transitive | 2.1.3 | [2.1.3](https://registry.npmjs.org/check-error) | current |
+| npm / colorette | transitive | 2.0.20 | [2.0.20](https://registry.npmjs.org/colorette) | current |
+| npm / commander | transitive | 15.0.0 | [15.0.0](https://registry.npmjs.org/commander) | current |
+| npm / compare-versions | transitive | 6.1.1 | [6.1.1](https://registry.npmjs.org/compare-versions) | current |
+| npm / content-disposition | transitive | 1.1.0 | [3.0.0](https://registry.npmjs.org/content-disposition) | major upgrade review |
+| npm / content-type | transitive | 1.0.5, 2.0.0 | [3.1.1](https://registry.npmjs.org/content-type) | major upgrade review |
+| npm / convert-source-map | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/convert-source-map) | current |
+| npm / cookie | transitive | 0.7.2, 1.1.1 | [2.0.1](https://registry.npmjs.org/cookie) | major upgrade review |
+| npm / cookie-signature | transitive | 1.0.6, 1.2.2 | [1.2.2](https://registry.npmjs.org/cookie-signature) | update available |
+| npm / cross-spawn | transitive | 7.0.6 | [7.0.6](https://registry.npmjs.org/cross-spawn) | current |
+| npm / cssesc | transitive | 3.0.0 | [3.0.0](https://registry.npmjs.org/cssesc) | current |
+| npm / csstype | transitive | 3.2.3 | [3.2.3](https://registry.npmjs.org/csstype) | current |
+| npm / d3-array | transitive | 3.2.4 | [3.2.4](https://registry.npmjs.org/d3-array) | current |
+| npm / d3-color | transitive | 3.1.0 | [3.1.0](https://registry.npmjs.org/d3-color) | current |
+| npm / d3-ease | transitive | 3.0.1 | [3.0.1](https://registry.npmjs.org/d3-ease) | current |
+| npm / d3-format | transitive | 3.1.2 | [3.1.2](https://registry.npmjs.org/d3-format) | current |
+| npm / d3-interpolate | transitive | 3.0.1 | [3.0.1](https://registry.npmjs.org/d3-interpolate) | current |
+| npm / d3-path | transitive | 3.1.0 | [3.1.0](https://registry.npmjs.org/d3-path) | current |
+| npm / d3-scale | transitive | 4.0.2 | [4.0.2](https://registry.npmjs.org/d3-scale) | current |
+| npm / d3-shape | transitive | 3.2.0 | [3.2.0](https://registry.npmjs.org/d3-shape) | current |
+| npm / d3-time | transitive | 3.1.0 | [3.1.0](https://registry.npmjs.org/d3-time) | current |
+| npm / d3-time-format | transitive | 4.1.0 | [4.1.0](https://registry.npmjs.org/d3-time-format) | current |
+| npm / d3-timer | transitive | 3.0.1 | [3.0.1](https://registry.npmjs.org/d3-timer) | current |
+| npm / date-fns-jalali | transitive | 4.1.0-0 | [4.4.0-0](https://registry.npmjs.org/date-fns-jalali) | update available |
+| npm / dateformat | transitive | 4.6.3 | [5.0.3](https://registry.npmjs.org/dateformat) | major upgrade review |
+| npm / debug | transitive | 4.4.3 | [4.4.3](https://registry.npmjs.org/debug) | current |
+| npm / decimal.js-light | transitive | 2.5.1 | [2.5.1](https://registry.npmjs.org/decimal.js-light) | current |
+| npm / deep-eql | transitive | 5.0.2 | [5.0.2](https://registry.npmjs.org/deep-eql) | current |
+| npm / depd | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/depd) | current |
+| npm / detect-libc | transitive | 2.1.2 | [2.1.2](https://registry.npmjs.org/detect-libc) | current |
+| npm / detect-node-es | transitive | 1.1.0 | [1.1.0](https://registry.npmjs.org/detect-node-es) | current |
+| npm / dom-helpers | transitive | 5.2.1 | [6.0.1](https://registry.npmjs.org/dom-helpers) | major upgrade review |
+| npm / dunder-proto | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/dunder-proto) | current |
+| npm / ee-first | transitive | 1.1.1 | [1.1.1](https://registry.npmjs.org/ee-first) | current |
+| npm / electron-to-chromium | transitive | 1.5.396 | [1.5.433](https://registry.npmjs.org/electron-to-chromium) | update available |
+| npm / embla-carousel | transitive | 8.6.0 | [8.6.0](https://registry.npmjs.org/embla-carousel) | current |
+| npm / embla-carousel-reactive-utils | transitive | 8.6.0 | [8.6.0](https://registry.npmjs.org/embla-carousel-reactive-utils) | current |
+| npm / encodeurl | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/encodeurl) | current |
+| npm / end-of-stream | transitive | 1.4.5 | [1.4.5](https://registry.npmjs.org/end-of-stream) | current |
+| npm / enhanced-resolve | transitive | 5.24.3 | [5.25.1](https://registry.npmjs.org/enhanced-resolve) | update available |
+| npm / entities | transitive | 4.5.0 | [8.1.0](https://registry.npmjs.org/entities) | major upgrade review |
+| npm / es-define-property | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/es-define-property) | current |
+| npm / es-errors | transitive | 1.3.0 | [1.3.0](https://registry.npmjs.org/es-errors) | current |
+| npm / es-module-lexer | transitive | 1.7.0 | [3.0.2](https://registry.npmjs.org/es-module-lexer) | major upgrade review |
+| npm / es-object-atoms | transitive | 1.1.2 | [1.1.2](https://registry.npmjs.org/es-object-atoms) | current |
+| npm / escalade | transitive | 3.2.0 | [3.2.0](https://registry.npmjs.org/escalade) | current |
+| npm / escape-html | transitive | 1.0.3 | [1.0.3](https://registry.npmjs.org/escape-html) | current |
+| npm / estree-walker | transitive | 3.0.3 | [3.0.3](https://registry.npmjs.org/estree-walker) | current |
+| npm / esutils | transitive | 2.0.3 | [2.0.3](https://registry.npmjs.org/esutils) | current |
+| npm / etag | transitive | 1.8.1 | [1.8.1](https://registry.npmjs.org/etag) | current |
+| npm / eventemitter3 | transitive | 4.0.7 | [5.0.4](https://registry.npmjs.org/eventemitter3) | major upgrade review |
+| npm / execa | transitive | 9.6.1 | [10.0.1](https://registry.npmjs.org/execa) | major upgrade review |
+| npm / expect-type | transitive | 1.4.0 | [1.4.0](https://registry.npmjs.org/expect-type) | current |
+| npm / fast-copy | transitive | 4.0.4 | [4.1.1](https://registry.npmjs.org/fast-copy) | update available |
+| npm / fast-deep-equal | transitive | 3.1.3 | [3.1.3](https://registry.npmjs.org/fast-deep-equal) | current |
+| npm / fast-equals | transitive | 5.4.1 | [6.0.3](https://registry.npmjs.org/fast-equals) | major upgrade review |
+| npm / fast-safe-stringify | transitive | 2.1.1 | [2.1.1](https://registry.npmjs.org/fast-safe-stringify) | current |
+| npm / fast-uri | transitive | 3.1.4 | [4.2.1](https://registry.npmjs.org/fast-uri) | major upgrade review |
+| npm / fastq | transitive | 1.20.1 | [1.20.3](https://registry.npmjs.org/fastq) | update available |
+| npm / fdir | transitive | 6.5.0 | [6.5.0](https://registry.npmjs.org/fdir) | current |
+| npm / figures | transitive | 6.1.0 | [6.1.0](https://registry.npmjs.org/figures) | current |
+| npm / fill-range | transitive | 7.1.1 | [7.1.1](https://registry.npmjs.org/fill-range) | current |
+| npm / finalhandler | transitive | 2.1.1 | [2.1.1](https://registry.npmjs.org/finalhandler) | current |
+| npm / find-up | transitive | 8.0.0 | [8.0.0](https://registry.npmjs.org/find-up) | current |
+| npm / forwarded | transitive | 0.2.0 | [0.2.0](https://registry.npmjs.org/forwarded) | current |
+| npm / fresh | transitive | 2.0.0 | [0.5.2](https://registry.npmjs.org/fresh) | ahead of latest tag; review (never downgrade) |
+| npm / fs-extra | transitive | 11.4.0 | [11.4.0](https://registry.npmjs.org/fs-extra) | current |
+| npm / fsevents | transitive | 2.3.2, 2.3.3 | [2.3.3](https://registry.npmjs.org/fsevents) | update available |
+| npm / function-bind | transitive | 1.1.2 | [1.1.2](https://registry.npmjs.org/function-bind) | current |
+| npm / gensync | transitive | 1.0.0-beta.2 | [0.1.0](https://registry.npmjs.org/gensync) | non-stable or non-semver lock entry; review |
+| npm / get-caller-file | transitive | 2.0.5 | [2.0.5](https://registry.npmjs.org/get-caller-file) | current |
+| npm / get-intrinsic | transitive | 1.3.0 | [1.3.0](https://registry.npmjs.org/get-intrinsic) | current |
+| npm / get-nonce | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/get-nonce) | current |
+| npm / get-proto | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/get-proto) | current |
+| npm / get-stream | transitive | 9.0.1 | [9.0.1](https://registry.npmjs.org/get-stream) | current |
+| npm / get-tsconfig | transitive | 4.14.0 | [4.14.3](https://registry.npmjs.org/get-tsconfig) | update available |
+| npm / glob-parent | transitive | 5.1.2 | [6.0.2](https://registry.npmjs.org/glob-parent) | major upgrade review |
+| npm / gopd | transitive | 1.2.0 | [1.2.0](https://registry.npmjs.org/gopd) | current |
+| npm / graceful-fs | transitive | 4.2.11 | [4.2.11](https://registry.npmjs.org/graceful-fs) | current |
+| npm / has-symbols | transitive | 1.1.0 | [1.1.0](https://registry.npmjs.org/has-symbols) | current |
+| npm / hasown | transitive | 2.0.4 | [2.0.4](https://registry.npmjs.org/hasown) | current |
+| npm / help-me | transitive | 5.0.0 | [5.0.0](https://registry.npmjs.org/help-me) | current |
+| npm / http-errors | transitive | 2.0.1 | [2.0.1](https://registry.npmjs.org/http-errors) | current |
+| npm / human-signals | transitive | 8.0.1 | [8.0.1](https://registry.npmjs.org/human-signals) | current |
+| npm / iconv-lite | transitive | 0.7.3 | [0.7.3](https://registry.npmjs.org/iconv-lite) | current |
+| npm / inherits | transitive | 2.0.4 | [2.0.4](https://registry.npmjs.org/inherits) | current |
+| npm / internmap | transitive | 2.0.3 | [2.0.3](https://registry.npmjs.org/internmap) | current |
+| npm / ipaddr.js | transitive | 1.9.1 | [2.5.0](https://registry.npmjs.org/ipaddr.js) | major upgrade review |
+| npm / is-extglob | transitive | 2.1.1 | [2.1.1](https://registry.npmjs.org/is-extglob) | current |
+| npm / is-glob | transitive | 4.0.3 | [4.0.3](https://registry.npmjs.org/is-glob) | current |
+| npm / is-number | transitive | 7.0.0 | [7.0.0](https://registry.npmjs.org/is-number) | current |
+| npm / is-plain-obj | transitive | 4.1.0 | [4.1.0](https://registry.npmjs.org/is-plain-obj) | current |
+| npm / is-promise | transitive | 4.0.0 | [4.0.0](https://registry.npmjs.org/is-promise) | current |
+| npm / is-stream | transitive | 4.0.1 | [4.0.1](https://registry.npmjs.org/is-stream) | current |
+| npm / is-unicode-supported | transitive | 2.1.0 | [2.1.0](https://registry.npmjs.org/is-unicode-supported) | current |
+| npm / isexe | transitive | 2.0.0 | [4.0.0](https://registry.npmjs.org/isexe) | major upgrade review |
+| npm / jiti | transitive | 2.7.0 | [2.7.0](https://registry.npmjs.org/jiti) | current |
+| npm / joycon | transitive | 3.1.1 | [3.1.1](https://registry.npmjs.org/joycon) | current |
+| npm / js-tokens | transitive | 4.0.0, 9.0.1 | [10.0.0](https://registry.npmjs.org/js-tokens) | major upgrade review |
+| npm / js-yaml | transitive | 4.3.0 | [5.4.2](https://registry.npmjs.org/js-yaml) | major upgrade review |
+| npm / jsesc | transitive | 3.1.0 | [3.1.0](https://registry.npmjs.org/jsesc) | current |
+| npm / json-schema-traverse | transitive | 1.0.0 | [1.0.0](https://registry.npmjs.org/json-schema-traverse) | current |
+| npm / json5 | transitive | 2.2.3 | [2.2.3](https://registry.npmjs.org/json5) | current |
+| npm / jsonfile | transitive | 6.2.1 | [6.2.1](https://registry.npmjs.org/jsonfile) | current |
+| npm / jsonpointer | transitive | 5.0.1 | [5.0.1](https://registry.npmjs.org/jsonpointer) | current |
+| npm / leven | transitive | 4.1.0 | [4.1.0](https://registry.npmjs.org/leven) | current |
+| npm / lightningcss | transitive | 1.32.0 | [1.33.0](https://registry.npmjs.org/lightningcss) | update available |
+| npm / lightningcss-linux-x64-gnu | transitive | 1.32.0 | [1.33.0](https://registry.npmjs.org/lightningcss-linux-x64-gnu) | update available |
+| npm / linkify-it | transitive | 5.0.2 | [6.1.0](https://registry.npmjs.org/linkify-it) | major upgrade review |
+| npm / locate-path | transitive | 8.0.0 | [8.0.0](https://registry.npmjs.org/locate-path) | current |
+| npm / lodash | transitive | 4.18.1 | [4.18.1](https://registry.npmjs.org/lodash) | current |
+| npm / loose-envify | transitive | 1.4.0 | [1.4.0](https://registry.npmjs.org/loose-envify) | current |
+| npm / loupe | transitive | 3.2.1 | [3.2.1](https://registry.npmjs.org/loupe) | current |
+| npm / lru-cache | transitive | 5.1.1 | [11.5.3](https://registry.npmjs.org/lru-cache) | major upgrade review |
+| npm / lunr | transitive | 2.3.9 | [2.3.9](https://registry.npmjs.org/lunr) | current |
+| npm / magic-string | transitive | 0.30.21 | [1.4.1](https://registry.npmjs.org/magic-string) | major upgrade review |
+| npm / markdown-it | transitive | 14.3.0 | [15.0.2](https://registry.npmjs.org/markdown-it) | major upgrade review |
+| npm / math-intrinsics | transitive | 1.1.0 | [1.1.0](https://registry.npmjs.org/math-intrinsics) | current |
+| npm / mdurl | transitive | 2.1.0 | [2.1.0](https://registry.npmjs.org/mdurl) | current |
+| npm / media-typer | transitive | 1.1.1 | [2.0.0](https://registry.npmjs.org/media-typer) | major upgrade review |
+| npm / merge-descriptors | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/merge-descriptors) | current |
+| npm / merge2 | transitive | 1.4.1 | [1.4.1](https://registry.npmjs.org/merge2) | current |
+| npm / micromatch | transitive | 4.0.8 | [4.0.8](https://registry.npmjs.org/micromatch) | current |
+| npm / mime-db | transitive | 1.54.0 | [1.54.0](https://registry.npmjs.org/mime-db) | current |
+| npm / mime-types | transitive | 3.0.2 | [3.0.2](https://registry.npmjs.org/mime-types) | current |
+| npm / minimatch | transitive | 10.2.5 | [10.2.6](https://registry.npmjs.org/minimatch) | update available |
+| npm / minimist | transitive | 1.2.8 | [1.2.8](https://registry.npmjs.org/minimist) | current |
+| npm / mitt | transitive | 3.0.1 | [3.0.1](https://registry.npmjs.org/mitt) | current |
+| npm / modern-screenshot | transitive | 4.7.0 | [4.7.0](https://registry.npmjs.org/modern-screenshot) | current |
+| npm / motion-dom | transitive | 12.42.2 | [13.3.0](https://registry.npmjs.org/motion-dom) | major upgrade review |
+| npm / motion-utils | transitive | 12.39.0 | [13.3.0](https://registry.npmjs.org/motion-utils) | major upgrade review |
+| npm / ms | transitive | 2.1.3 | [2.1.3](https://registry.npmjs.org/ms) | current |
+| npm / nanoid | transitive | 3.3.16 | [6.0.1](https://registry.npmjs.org/nanoid) | major upgrade review |
+| npm / negotiator | transitive | 1.0.0 | [1.1.0](https://registry.npmjs.org/negotiator) | update available |
+| npm / node-releases | transitive | 2.0.51 | [2.0.56](https://registry.npmjs.org/node-releases) | update available |
+| npm / npm-run-path | transitive | 6.0.0 | [6.0.0](https://registry.npmjs.org/npm-run-path) | current |
+| npm / object-assign | transitive | 4.1.1 | [4.1.1](https://registry.npmjs.org/object-assign) | current |
+| npm / object-inspect | transitive | 1.13.4 | [1.13.4](https://registry.npmjs.org/object-inspect) | current |
+| npm / on-exit-leak-free | transitive | 2.1.2 | [2.1.2](https://registry.npmjs.org/on-exit-leak-free) | current |
+| npm / on-finished | transitive | 2.4.1 | [2.4.1](https://registry.npmjs.org/on-finished) | current |
+| npm / once | transitive | 1.4.0 | [1.4.0](https://registry.npmjs.org/once) | current |
+| npm / p-limit | transitive | 4.0.0 | [7.3.3](https://registry.npmjs.org/p-limit) | major upgrade review |
+| npm / p-locate | transitive | 6.0.0 | [7.0.0](https://registry.npmjs.org/p-locate) | major upgrade review |
+| npm / parse-ms | transitive | 4.0.0 | [4.0.0](https://registry.npmjs.org/parse-ms) | current |
+| npm / parseurl | transitive | 1.3.3 | [1.3.3](https://registry.npmjs.org/parseurl) | current |
+| npm / path-key | transitive | 3.1.1, 4.0.0 | [4.0.0](https://registry.npmjs.org/path-key) | major upgrade review |
+| npm / path-to-regexp | transitive | 8.4.2 | [8.4.2](https://registry.npmjs.org/path-to-regexp) | current |
+| npm / pathe | transitive | 2.0.3 | [2.0.3](https://registry.npmjs.org/pathe) | current |
+| npm / pathval | transitive | 2.0.1 | [2.0.1](https://registry.npmjs.org/pathval) | current |
+| npm / pg-cloudflare | transitive | 1.4.0 | [1.4.0](https://registry.npmjs.org/pg-cloudflare) | current |
+| npm / pg-connection-string | transitive | 2.14.0 | [2.14.0](https://registry.npmjs.org/pg-connection-string) | current |
+| npm / pg-int8 | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/pg-int8) | current |
+| npm / pg-pool | transitive | 3.14.0 | [3.14.0](https://registry.npmjs.org/pg-pool) | current |
+| npm / pg-protocol | transitive | 1.15.0 | [1.16.0](https://registry.npmjs.org/pg-protocol) | update available |
+| npm / pg-types | transitive | 2.2.0 | [4.1.0](https://registry.npmjs.org/pg-types) | major upgrade review |
+| npm / pgpass | transitive | 1.0.5 | [1.0.6](https://registry.npmjs.org/pgpass) | update available |
+| npm / picocolors | transitive | 1.1.1 | [1.1.1](https://registry.npmjs.org/picocolors) | current |
+| npm / picomatch | transitive | 2.3.2, 4.0.5 | [4.0.7](https://registry.npmjs.org/picomatch) | major upgrade review |
+| npm / pino-abstract-transport | transitive | 2.0.0, 3.0.0 | [3.0.0](https://registry.npmjs.org/pino-abstract-transport) | major upgrade review |
+| npm / pino-std-serializers | transitive | 7.1.0 | [7.1.0](https://registry.npmjs.org/pino-std-serializers) | current |
+| npm / playwright-core | transitive | 1.62.1 | [1.63.0](https://registry.npmjs.org/playwright-core) | update available |
+| npm / postcss | transitive | 8.5.23 | [8.5.28](https://registry.npmjs.org/postcss) | update available |
+| npm / postcss-selector-parser | transitive | 6.0.10 | [7.1.6](https://registry.npmjs.org/postcss-selector-parser) | major upgrade review |
+| npm / postgres-array | transitive | 2.0.0 | [3.0.4](https://registry.npmjs.org/postgres-array) | major upgrade review |
+| npm / postgres-bytea | transitive | 1.0.1 | [3.0.0](https://registry.npmjs.org/postgres-bytea) | major upgrade review |
+| npm / postgres-date | transitive | 1.0.7 | [2.1.0](https://registry.npmjs.org/postgres-date) | major upgrade review |
+| npm / postgres-interval | transitive | 1.2.0 | [4.1.0](https://registry.npmjs.org/postgres-interval) | major upgrade review |
+| npm / pretty-ms | transitive | 9.3.0 | [9.3.1](https://registry.npmjs.org/pretty-ms) | update available |
+| npm / process-warning | transitive | 5.0.0 | [5.1.0](https://registry.npmjs.org/process-warning) | update available |
+| npm / prop-types | transitive | 15.8.1 | [15.8.1](https://registry.npmjs.org/prop-types) | current |
+| npm / proxy-addr | transitive | 2.0.7 | [2.0.8](https://registry.npmjs.org/proxy-addr) | update available |
+| npm / pump | transitive | 3.0.4 | [3.0.4](https://registry.npmjs.org/pump) | current |
+| npm / punycode.js | transitive | 2.3.1 | [2.3.1](https://registry.npmjs.org/punycode.js) | current |
+| npm / qs | transitive | 6.15.3 | [6.16.0](https://registry.npmjs.org/qs) | update available |
+| npm / queue-microtask | transitive | 1.2.3 | [1.2.3](https://registry.npmjs.org/queue-microtask) | current |
+| npm / quick-format-unescaped | transitive | 4.0.4 | [4.0.4](https://registry.npmjs.org/quick-format-unescaped) | current |
+| npm / range-parser | transitive | 1.3.0 | [1.3.0](https://registry.npmjs.org/range-parser) | current |
+| npm / raw-body | transitive | 3.0.2 | [4.0.0](https://registry.npmjs.org/raw-body) | major upgrade review |
+| npm / react-is | transitive | 16.13.1, 18.3.1 | [19.3.0](https://registry.npmjs.org/react-is) | major upgrade review |
+| npm / react-refresh | transitive | 0.18.0 | [0.19.0](https://registry.npmjs.org/react-refresh) | update available |
+| npm / react-remove-scroll | transitive | 2.7.2 | [2.7.2](https://registry.npmjs.org/react-remove-scroll) | current |
+| npm / react-remove-scroll-bar | transitive | 2.3.8 | [2.3.8](https://registry.npmjs.org/react-remove-scroll-bar) | current |
+| npm / react-router | transitive | 7.18.2 | [8.4.0](https://registry.npmjs.org/react-router) | major upgrade review |
+| npm / react-smooth | transitive | 4.0.4 | [4.0.4](https://registry.npmjs.org/react-smooth) | current |
+| npm / react-style-singleton | transitive | 2.2.3 | [2.2.3](https://registry.npmjs.org/react-style-singleton) | current |
+| npm / react-transition-group | transitive | 4.4.5 | [4.4.5](https://registry.npmjs.org/react-transition-group) | current |
+| npm / readdirp | transitive | 4.1.2, 5.0.0 | [5.1.1](https://registry.npmjs.org/readdirp) | major upgrade review |
+| npm / real-require | transitive | 0.2.0 | [1.0.0](https://registry.npmjs.org/real-require) | major upgrade review |
+| npm / recharts-scale | transitive | 0.4.5 | [0.4.5](https://registry.npmjs.org/recharts-scale) | current |
+| npm / regexparam | transitive | 3.0.0 | [3.0.0](https://registry.npmjs.org/regexparam) | current |
+| npm / remeda | transitive | 2.39.0 | [2.50.0](https://registry.npmjs.org/remeda) | update available |
+| npm / require-from-string | transitive | 2.0.2 | [2.0.2](https://registry.npmjs.org/require-from-string) | current |
+| npm / resolve-pkg-maps | transitive | 1.0.0 | [1.0.0](https://registry.npmjs.org/resolve-pkg-maps) | current |
+| npm / reusify | transitive | 1.1.0 | [1.1.0](https://registry.npmjs.org/reusify) | current |
+| npm / rollup | transitive | 4.62.3 | [4.63.3](https://registry.npmjs.org/rollup) | update available |
+| npm / router | transitive | 2.2.0 | [2.2.0](https://registry.npmjs.org/router) | current |
+| npm / run-parallel | transitive | 1.2.0 | [1.2.0](https://registry.npmjs.org/run-parallel) | current |
+| npm / safe-stable-stringify | transitive | 2.5.0 | [2.5.0](https://registry.npmjs.org/safe-stable-stringify) | current |
+| npm / safer-buffer | transitive | 2.1.2 | [2.1.2](https://registry.npmjs.org/safer-buffer) | current |
+| npm / scheduler | transitive | 0.26.0 | [0.28.0](https://registry.npmjs.org/scheduler) | update available |
+| npm / secure-json-parse | transitive | 4.1.0 | [4.1.0](https://registry.npmjs.org/secure-json-parse) | current |
+| npm / semver | transitive | 6.3.1 | [7.8.5](https://registry.npmjs.org/semver) | major upgrade review |
+| npm / send | transitive | 1.2.1 | [1.2.1](https://registry.npmjs.org/send) | current |
+| npm / serve-static | transitive | 2.2.1 | [2.2.1](https://registry.npmjs.org/serve-static) | current |
+| npm / set-cookie-parser | transitive | 2.7.2 | [3.1.2](https://registry.npmjs.org/set-cookie-parser) | major upgrade review |
+| npm / setprototypeof | transitive | 1.2.0 | [1.2.0](https://registry.npmjs.org/setprototypeof) | current |
+| npm / shebang-command | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/shebang-command) | current |
+| npm / shebang-regex | transitive | 3.0.0 | [4.0.0](https://registry.npmjs.org/shebang-regex) | major upgrade review |
+| npm / side-channel | transitive | 1.1.1 | [1.1.1](https://registry.npmjs.org/side-channel) | current |
+| npm / side-channel-list | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/side-channel-list) | current |
+| npm / side-channel-map | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/side-channel-map) | current |
+| npm / side-channel-weakmap | transitive | 1.0.2 | [1.0.2](https://registry.npmjs.org/side-channel-weakmap) | current |
+| npm / siginfo | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/siginfo) | current |
+| npm / signal-exit | transitive | 4.1.0 | [4.1.0](https://registry.npmjs.org/signal-exit) | current |
+| npm / sonic-boom | transitive | 4.2.1 | [5.0.1](https://registry.npmjs.org/sonic-boom) | major upgrade review |
+| npm / source-map-js | transitive | 1.2.1 | [1.2.1](https://registry.npmjs.org/source-map-js) | current |
+| npm / split2 | transitive | 4.2.0 | [4.2.0](https://registry.npmjs.org/split2) | current |
+| npm / stackback | transitive | 0.0.2 | [0.0.2](https://registry.npmjs.org/stackback) | current |
+| npm / statuses | transitive | 2.0.2 | [2.0.2](https://registry.npmjs.org/statuses) | current |
+| npm / std-env | transitive | 3.10.0 | [4.2.0](https://registry.npmjs.org/std-env) | major upgrade review |
+| npm / string-argv | transitive | 0.3.2 | [0.3.2](https://registry.npmjs.org/string-argv) | current |
+| npm / strip-final-newline | transitive | 4.0.0 | [4.0.0](https://registry.npmjs.org/strip-final-newline) | current |
+| npm / strip-json-comments | transitive | 5.0.3 | [5.0.3](https://registry.npmjs.org/strip-json-comments) | current |
+| npm / strip-literal | transitive | 3.1.0 | [4.0.0](https://registry.npmjs.org/strip-literal) | major upgrade review |
+| npm / tapable | transitive | 2.3.3 | [2.3.3](https://registry.npmjs.org/tapable) | current |
+| npm / tiny-invariant | transitive | 1.3.3 | [1.3.3](https://registry.npmjs.org/tiny-invariant) | current |
+| npm / tinybench | transitive | 2.9.0 | [6.2.0](https://registry.npmjs.org/tinybench) | major upgrade review |
+| npm / tinyexec | transitive | 0.3.2 | [1.3.1](https://registry.npmjs.org/tinyexec) | major upgrade review |
+| npm / tinyglobby | transitive | 0.2.17 | [0.2.17](https://registry.npmjs.org/tinyglobby) | current |
+| npm / tinypool | transitive | 1.1.1 | [2.2.0](https://registry.npmjs.org/tinypool) | major upgrade review |
+| npm / tinyrainbow | transitive | 2.0.0 | [3.1.1](https://registry.npmjs.org/tinyrainbow) | major upgrade review |
+| npm / tinyspy | transitive | 4.0.4 | [4.0.6](https://registry.npmjs.org/tinyspy) | update available |
+| npm / to-regex-range | transitive | 5.0.1 | [5.0.1](https://registry.npmjs.org/to-regex-range) | current |
+| npm / toidentifier | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/toidentifier) | current |
+| npm / tslib | transitive | 2.8.1 | [2.8.1](https://registry.npmjs.org/tslib) | current |
+| npm / type-is | transitive | 2.1.0 | [2.1.0](https://registry.npmjs.org/type-is) | current |
+| npm / typedoc | transitive | 0.28.20 | [0.28.20](https://registry.npmjs.org/typedoc) | current |
+| npm / typedoc-plugin-coverage | transitive | 4.0.3 | [4.0.3](https://registry.npmjs.org/typedoc-plugin-coverage) | current |
+| npm / typedoc-plugin-markdown | transitive | 4.12.0 | [4.13.1](https://registry.npmjs.org/typedoc-plugin-markdown) | update available |
+| npm / uc.micro | transitive | 2.1.0 | [3.0.0](https://registry.npmjs.org/uc.micro) | major upgrade review |
+| npm / undici-types | transitive | 7.24.6 | [8.10.2](https://registry.npmjs.org/undici-types) | major upgrade review |
+| npm / unicorn-magic | transitive | 0.3.0 | [0.4.0](https://registry.npmjs.org/unicorn-magic) | update available |
+| npm / universalify | transitive | 2.0.1 | [2.0.1](https://registry.npmjs.org/universalify) | current |
+| npm / unpipe | transitive | 1.0.0 | [1.0.0](https://registry.npmjs.org/unpipe) | current |
+| npm / update-browserslist-db | transitive | 1.2.3 | [1.3.3](https://registry.npmjs.org/update-browserslist-db) | update available |
+| npm / use-callback-ref | transitive | 1.3.3 | [1.3.3](https://registry.npmjs.org/use-callback-ref) | current |
+| npm / use-sidecar | transitive | 1.1.3 | [1.1.3](https://registry.npmjs.org/use-sidecar) | current |
+| npm / use-sync-external-store | transitive | 1.6.0 | [1.7.0](https://registry.npmjs.org/use-sync-external-store) | update available |
+| npm / util-deprecate | transitive | 1.0.2 | [1.0.2](https://registry.npmjs.org/util-deprecate) | current |
+| npm / vary | transitive | 1.1.2 | [1.1.2](https://registry.npmjs.org/vary) | current |
+| npm / victory-vendor | transitive | 36.9.2 | [37.3.6](https://registry.npmjs.org/victory-vendor) | major upgrade review |
+| npm / vite-node | transitive | 3.2.4 | [6.0.0](https://registry.npmjs.org/vite-node) | major upgrade review |
+| npm / which | transitive | 2.0.2 | [7.0.0](https://registry.npmjs.org/which) | major upgrade review |
+| npm / why-is-node-running | transitive | 2.3.0 | [3.2.2](https://registry.npmjs.org/why-is-node-running) | major upgrade review |
+| npm / wrappy | transitive | 1.0.2 | [1.0.2](https://registry.npmjs.org/wrappy) | current |
+| npm / xtend | transitive | 4.0.2 | [4.0.2](https://registry.npmjs.org/xtend) | current |
+| npm / yallist | transitive | 3.1.1 | [5.0.0](https://registry.npmjs.org/yallist) | major upgrade review |
+| npm / yaml | transitive | 2.9.0 | [2.9.1](https://registry.npmjs.org/yaml) | update available |
+| npm / yocto-queue | transitive | 1.2.2 | [1.2.2](https://registry.npmjs.org/yocto-queue) | current |
+| npm / yoctocolors | transitive | 2.2.0 | [2.2.0](https://registry.npmjs.org/yoctocolors) | current |
+
+Declaration paths, source URLs, engine requirements, and input hashes are in [technology-inventory.json](technology-inventory.json).
 <!-- technology-latest:end -->
 
-## Maintenance plan
+## Maintenance and limitations
 
-1. Dependabot (`.github/dependabot.yml`) opens weekly pull requests for the root npm workspace, the Mermaid package, the two Python package locations, and GitHub Actions dependencies.
-2. The `Refresh technology inventory` workflow runs every Monday and creates one pull request when Node LTS, Python, or any observed latest release changes.
-3. Review generated-project/skill guidance separately before changing Vite, React, or Tailwind versions there. Those are examples inside individual skills, not the live `artifacts/forge` dependencies, and Tailwind 4 requires template changes.
-4. Merge only after normal repository validation passes. The automation has no auto-merge permission.
-
-For scheduled pull requests to work, the repository's Actions settings must allow `GITHUB_TOKEN` to create pull requests.
+See [Technology Update Plan](TECHNOLOGY-UPDATE-PLAN.md) for schedules, commands, migration order,
+validation gates, activation, rollback, and host reconciliation. Generated metadata proves
+version availability; it does not prove compatibility, security, performance, or live deployment.

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-19: technology inventory and update coverage
+
+- Discover executable manifests, workspace catalog/overrides, Python imports, CI actions and the complete pnpm dependency graph; compare against official stable-release metadata.
+- Add a source-linked inventory, JSON evidence ledger, host observations and a staged upgrade plan.
+- Expand Dependabot coverage and dependency validation, share the pnpm/Node pins across application workflows, and rebuild Pages for dependency changes.
+- Test failure, prerelease, yanked-release, downgrade, release-line and report-write boundaries. Updates remain reviewable PRs with separate host/deployment acceptance.
+
 All notable changes to `OKHP3/skillz` will be documented in this file.
 
 This project's release history follows Keep a Changelog conventions.

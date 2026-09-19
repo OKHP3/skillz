@@ -1,0 +1,105 @@
+name: Validate technology updates
+
+on:
+  pull_request:
+    paths:
+      - '**/package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '**/requirements*.txt'
+      - '.github/node-version'
+      - '.github/python-version'
+      - '.github/scripts/**'
+      - '.github/workflows/**'
+      - '.github/dependabot.yml'
+      - '.replit'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version-file: .github/python-version
+      - run: python -m pip install -r .github/scripts/requirements.txt
+      - run: python -m unittest discover -s .github/scripts/tests -v
+      - run: python .github/scripts/refresh_technology_inventory.py --discover-only
+
+  workspace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .github/node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - name: Build all four artifacts
+        run: pnpm -r --filter './artifacts/**' run build
+        env:
+          PORT: '5000'
+          BASE_PATH: '/skillz/'
+      - name: Run Forge unit tests
+        run: pnpm --filter @workspace/forge exec vitest run
+        env:
+          PORT: '5000'
+          BASE_PATH: '/skillz/'
+      - name: Exercise Node process contracts
+        run: |
+          for manifest in process-capture/*/package.json; do
+            (cd "$(dirname "$manifest")" && node --test tests/*.test.mjs)
+          done
+
+  python-packages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        requirements:
+          - community/mcp-builder/scripts/requirements.txt
+          - community/skill-creator/requirements.txt
+          - .github/scripts/requirements.txt
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version-file: .github/python-version
+      - name: Verify installation and declared Python compatibility
+        env:
+          REQUIREMENTS: ${{ matrix.requirements }}
+        run: |
+          python -m venv /tmp/technology-check
+          /tmp/technology-check/bin/python -m pip install -r "$REQUIREMENTS"
+          /tmp/technology-check/bin/python -m pip check
+          /tmp/technology-check/bin/python -m compileall -q "$(dirname "$REQUIREMENTS")"
+
+  mermaid-tooling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .github/node-version
+      - name: Verify standalone Mermaid CLI starts
+        working-directory: mermaid/okhp3-mermaid-publish
+        run: |
+          npm install --ignore-scripts --package-lock=false
+          npm exec --no -- mmdc --version

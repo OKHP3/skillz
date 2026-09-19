@@ -6,23 +6,65 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+concurrency:
+  group: technology-inventory
+  cancel-in-progress: false
 
 jobs:
   refresh:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version-file: .github/python-version
 
-      - name: Refresh latest-version inventory
-        run: python .github/scripts/refresh_technology_inventory.py
+      - name: Install inventory dependencies
+        run: python -m pip install -r .github/scripts/requirements.txt
+
+      - name: Test inventory failure boundaries
+        run: python -m unittest discover -s .github/scripts/tests -v
+
+      - name: Refresh inventory and propose runtime updates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python .github/scripts/refresh_technology_inventory.py --write --update-runtimes
+
+      - name: Set up proposed Python runtime
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version-file: .github/python-version
+
+      - name: Validate inventory under proposed Python
+        run: |
+          python -m pip install -r .github/scripts/requirements.txt
+          python -m unittest discover -s .github/scripts/tests -v
+
+      - name: Set up proposed pnpm
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
+
+      - name: Set up proposed Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .github/node-version
+          cache: pnpm
+
+      - name: Validate proposed runtime with locked workspace
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run typecheck
 
       - name: Create update pull request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
@@ -30,9 +72,23 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: automation/technology-inventory
           delete-branch: true
-          commit-message: "chore: refresh technology inventory"
+          add-paths: |
+            docs/TECHNOLOGY-INVENTORY.md
+            docs/technology-inventory.json
+            .github/node-version
+            .github/python-version
+            package.json
+          commit-message: "chore: refresh technology inventory and runtime proposals"
           title: "chore: refresh technology inventory"
           body: |
-            Automated update of the technology inventory and CI runtime pins.
+            Refreshes every declared package, the full pnpm lock graph, CI actions,
+            and official Node/Python release metadata. Runtime changes are bounded
+            to the current Node LTS major, Python minor, and pnpm 10.x.
 
-            Review the runtime changes and let normal pull-request checks validate them before merging.
+            Inventory tests and the workspace typecheck ran on the proposed runtimes.
+            Review the version differences and require dependency validation and
+            release/browser checks before merging. GitHub may show an "Approve
+            workflows to run" banner for this GITHUB_TOKEN-created PR.
+            This workflow never merges or deploys updates. Replit and local runtime
+            reconciliation, major migrations, and provider-managed tools follow
+            docs/TECHNOLOGY-UPDATE-PLAN.md.
