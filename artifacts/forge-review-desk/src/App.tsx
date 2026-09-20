@@ -15,7 +15,7 @@ import {
   Copy,
   FileCheck2,
   Filter,
-  Github,
+  GitFork,
   Hash,
   Layers3,
   LockKeyhole,
@@ -438,7 +438,7 @@ function ReviewDesk({ skill, catalog, migration }: { skill: Skill; catalog: Cata
                 {copied ? <Check size={14} style={{ color: colors.green }} /> : <Copy size={14} />} {copied ? 'Copied' : 'Copy review command'}
               </button>
               <button type="button" data-testid="button-open-source" onClick={() => window.open(skill.githubUrl, '_blank', 'noopener,noreferrer')} className="inline-flex h-9 items-center gap-2 border border-[#586965] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#ced9d2] transition-colors hover:bg-[#303a3a]">
-                <Github size={14} /> Source <ArrowUpRight size={11} />
+                <GitFork size={14} /> Source <ArrowUpRight size={11} />
               </button>
             </div>
           </div>

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-20: dependency reconciliation and preserved local work
+
+- Integrate the sixteen outstanding dependency and runtime proposals with one
+  resolved workspace lockfile and compatible calendar, chart, and icon APIs.
+- Preserve the unique historical Replit build directive under `docs/archive/`
+  with its byte-level provenance; the current social preview already contains
+  the image from the older local stash.
+- Pin reviewed Skillz Shield coverage diagnostics. Incomplete analysis and
+  security findings remain unresolved review outcomes, not passing verdicts.
+
 ## 2026-09-19: concise skill guidance and upstream sources
 
 - Keep the public introduction brief and route skill-authoring guidance to
