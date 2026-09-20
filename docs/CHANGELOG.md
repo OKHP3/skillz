@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-09-19: external skill security infrastructure
+
+- Add a separate, SHA-pinned Cisco Skill Scanner and NVIDIA SkillSpector
+  integration for committed skill packages and their supporting files.
+- Skip scanner setup and execution for application-only changes. Accept
+  unfinished skill contracts without authoring-quality or maturity gates.
+- Adopt compatible stable vendor releases automatically using immutable source,
+  wheel, and dependency-lock hashes; trigger scheduled full skill rescans on
+  vendor changes and weekly vulnerability-data refreshes.
+- Keep incomplete analysis distinct from security findings, retain sanitized
+  report artifacts, and leave Pages deployment independent of this workflow.
+- See [skill security infrastructure](SKILL-SECURITY-INFRASTRUCTURE.md).
+
 ## 2026-09-19: capability-led duplicate consolidation
 
 - Reduce the active catalog from 350 to 326 skills while retaining all 21 families.
