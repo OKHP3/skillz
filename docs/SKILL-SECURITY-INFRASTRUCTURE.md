@@ -1,10 +1,16 @@
-# Skill package security
+# Skillz Shield security integration
 
-Skillz uses the separate [OKHP3/skill-security-pipeline](https://github.com/OKHP3/skill-security-pipeline)
-action to plan and run Cisco Skill Scanner and NVIDIA SkillSpector security checks.
+Skillz uses [Skillz Shield](https://github.com/OKHP3/skillz-shield), its separate
+security companion, to plan and run Cisco Skill Scanner and NVIDIA SkillSpector checks.
 The consumer workflow is `.github/workflows/skill-security.yml`. This integration does not add
 skill-quality, maturity, metadata-completeness, or SkillEvaluator gates. It does not change
 branch protection or the Pages deployment dependency graph.
+
+The companion repository was renamed from `skill-security-pipeline` to `skillz-shield`.
+GitHub Action references must use the new name explicitly; repository web redirects
+do not redirect Action calls. The consumer's allowed-action policy must include
+`OKHP3/skillz-shield@*`. The repository and its history remain the same, with an
+immutable commit pin in each workflow step.
 
 ## Scope
 

@@ -45,7 +45,7 @@ Prefer local-only validation where possible.
 
 The dedicated skill-security workflow scans new or changed skill packages with
 Cisco Skill Scanner and NVIDIA SkillSpector through the external, SHA-pinned
-`OKHP3/skill-security-pipeline` action. Application-only changes skip scanner
+`OKHP3/skillz-shield` action. Application-only changes skip scanner
 installation and execution. Supporting files inside a skill remain in scope.
 
 Drafts do not need complete metadata or a completed skill contract. These checks

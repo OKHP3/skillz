@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-19: Skillz Shield identity
+
+- Rename the external security companion to `OKHP3/skillz-shield` and update
+  the consumer workflow and allowed-action policy to the new repository name.
+- Link the companion's own README, contribution guidance, security reporting,
+  changelog, and agent guide from the Forge documentation.
+- Preserve package-only scan scope, draft support, immutable orchestration pins,
+  automatic vendor release adoption, and independent Pages publishing.
+
 ## 2026-09-19: external skill security infrastructure
 
 - Add a separate, SHA-pinned Cisco Skill Scanner and NVIDIA SkillSpector
