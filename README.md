@@ -8,6 +8,12 @@ verifies that skill catalog data, accessibility affordances, and release
 gates stay trustworthy as the root distribution families and the wider Skillz
 project evolve.
 
+[Skillz Shield](https://github.com/OKHP3/skillz-shield) is the Forge's security
+companion. It screens committed skill packages with Cisco Skill Scanner and
+NVIDIA SkillSpector while application-only changes skip scanner setup and execution.
+See [the security integration](docs/SKILL-SECURITY-INFRASTRUCTURE.md) for scope,
+automatic vendor updates, and report limitations.
+
 ## Artifacts in this monorepo
 
 | Artifact | Directory | Purpose |
