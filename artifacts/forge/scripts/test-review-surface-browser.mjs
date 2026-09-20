@@ -53,6 +53,25 @@ async function expectVisibleWithinViewport(locator, label) {
   }
 }
 
+async function expectReflowedWithinViewport(locator, label) {
+  assert(await locator.count() > 0, `${label} is missing.`);
+  for (let index = 0; index < await locator.count(); index += 1) {
+    const item = locator.nth(index);
+    await item.scrollIntoViewIfNeeded();
+    const layout = await item.evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      return {
+        visible: rect.width > 0 && rect.height > 0,
+        withinHorizontalViewport: rect.left >= 0 && rect.right <= window.innerWidth,
+        hasHorizontalOverflow: element.scrollWidth > element.clientWidth + 1,
+      };
+    });
+    assert(layout.visible, `${label} is not visible.`);
+    assert(layout.withinHorizontalViewport, `${label} is clipped outside the viewport.`);
+    assert(!layout.hasHorizontalOverflow, `${label} has horizontal overflow.`);
+  }
+}
+
 async function expectKeyboardFocus(page, locator, label) {
   await locator.scrollIntoViewIfNeeded();
   await locator.focus();
@@ -85,7 +104,7 @@ async function expectReviewSurface(page, skill) {
   assert(await page.getByRole('button', { name: 'Supervised run: attach evidence' }).isEnabled(), 'Blocked gate must leave supervised check available.');
 }
 
-async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false } = {}) {
+async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false, largeText = false } = {}) {
   const diagnostic = skill.companionDiagnostics?.approved?.find(entry => entry.kind === kind);
   assert(diagnostic, `${kind} approved companion diagnostic is missing for ${skill.name}.`);
 
@@ -96,6 +115,12 @@ async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false
   await context.waitFor();
   const item = context.locator(`[data-companion-kind="${kind}"]`);
   await item.waitFor();
+
+  if (largeText) {
+    await page.evaluate(() => {
+      document.documentElement.style.fontSize = '200%';
+    });
+  }
 
   assert((await item.locator('.detail-companion-context-status').textContent()).trim() === diagnostic.label,
     `${skill.name} must render the ${kind} approved companion status label.`);
@@ -110,17 +135,24 @@ async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false
   assert(await sourceLink.getAttribute('href') === `https://github.com/OKHP3/skillz/blob/main/${skill.path}`,
     `${skill.name} source-contract link must target its declaring SKILL.md.`);
 
-  if (narrow) {
+  if (narrow || largeText) {
     await expectVisibleWithinViewport(
       item.locator('.detail-companion-context-status'),
       `${skill.name} ${kind} approved companion status`,
     );
-    await expectVisibleWithinViewport(
+    await expectReflowedWithinViewport(
       item.locator('p'),
       `${skill.name} ${kind} approved companion explanation`,
     );
+    await expectVisibleWithinViewport(
+      sourceLink,
+      `${skill.name} ${kind} source-contract link`,
+    );
     await expectKeyboardFocus(page, sourceLink, `${skill.name} ${kind} source-contract link`);
-    await expectNoHorizontalOverflow(page, `narrow approved companion context for ${skill.name}`);
+    await expectNoHorizontalOverflow(
+      page,
+      `${largeText ? 'large-text' : 'narrow'} approved companion context for ${skill.name}`,
+    );
   }
 
   assert(await pathway.locator('.skill-pathway__branch--broken').count() === 0,
@@ -159,7 +191,7 @@ async function expectUnresolvedCompanionDetail(page, skill, unresolvedName) {
     `${skill.name} genuine unresolved companion must not render approved-exception context.`);
 }
 
-async function expectExpandedBranchUnresolvedDetail(page, skill, branchSkill, unresolvedName) {
+async function expectExpandedBranchUnresolvedDetail(page, skill, branchSkill, unresolvedName, { narrow = false } = {}) {
   await page.goto(route(skill), { waitUntil: 'domcontentloaded' });
   const pathway = page.locator('.skill-pathway');
   await pathway.waitFor();
@@ -201,6 +233,25 @@ async function expectExpandedBranchUnresolvedDetail(page, skill, branchSkill, un
   assert((await unresolvedNode.getAttribute('title')).includes(
     "does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere.",
   ), `${skill.name} expanded unresolved stop must explain the broken-reference cause.`);
+
+  if (narrow) {
+    await expectReflowedWithinViewport(
+      unresolvedNode,
+      `${skill.name} expanded unresolved stop`,
+    );
+    await expectVisibleWithinViewport(
+      unresolvedNode.locator('.skill-pathway__node-name--unresolved'),
+      `${skill.name} expanded unresolved warning name`,
+    );
+    await expectVisibleWithinViewport(
+      unresolvedNode.locator('.skill-pathway__sub-node-unresolved-label'),
+      `${skill.name} expanded unresolved warning explanation`,
+    );
+    await expectNoHorizontalOverflow(
+      page,
+      `narrow expanded unresolved pathway for ${skill.name}`,
+    );
+  }
 }
 
 async function main() {
@@ -305,9 +356,45 @@ async function main() {
     );
     await expandedBranch.close();
 
+    const narrowExpandedBranch = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await narrowExpandedBranch.route('**/data/catalog.json', async requestRoute => {
+      const response = await requestRoute.fetch();
+      const fixtureCatalog = await response.json();
+      const fixtureSkill = fixtureCatalog.skills.find(candidate => candidate.name === unresolvedFixture.name);
+      const branchSkill = fixtureCatalog.skills.find(candidate =>
+        candidate.name !== unresolvedFixture.name && candidate.companions.length === 0,
+      );
+      const mainSkill = fixtureCatalog.skills.find(candidate =>
+        candidate.name !== unresolvedFixture.name && candidate.name !== branchSkill?.name,
+      );
+      assert(fixtureSkill && branchSkill && mainSkill,
+        `Could not create narrow expanded unresolved branch fixture for ${unresolvedFixture.name}.`);
+
+      fixtureSkill.companions = [mainSkill.name, branchSkill.name];
+      branchSkill.companions = [unresolvedName];
+      mainSkill.companions = [];
+      delete fixtureSkill.companionDiagnostics;
+      delete branchSkill.companionDiagnostics;
+      delete mainSkill.companionDiagnostics;
+
+      await requestRoute.fulfill({
+        status: response.status(),
+        headers: { ...response.headers(), 'content-type': 'application/json' },
+        body: JSON.stringify(fixtureCatalog),
+      });
+    });
+    await expectExpandedBranchUnresolvedDetail(
+      narrowExpandedBranch,
+      unresolvedFixture,
+      expandedBranchSkill,
+      unresolvedName,
+      { narrow: true },
+    );
+    await narrowExpandedBranch.close();
+
     for (const { skill: approved, kind } of approvedCompanions) {
       const narrowApproved = await browser.newPage({ viewport: { width: 390, height: 844 } });
-      await expectApprovedCompanionDetail(narrowApproved, approved, kind, { narrow: true });
+      await expectApprovedCompanionDetail(narrowApproved, approved, kind, { narrow: true, largeText: true });
       const narrowPathway = narrowApproved.locator('.skill-pathway');
       const narrowLabels = narrowPathway.locator('[data-companion-kind="deferred"], [data-companion-kind="project-local"]');
       await expectVisibleWithinViewport(narrowLabels, `Approved companion diagnostics for ${approved.name}`);
