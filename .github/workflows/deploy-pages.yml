@@ -107,6 +107,10 @@ jobs:
           BASE_PATH: /skillz/
         run: pnpm run build
 
+      - name: Verify uploaded Pages artifact metadata
+        working-directory: artifacts/forge
+        run: node scripts/test-pages-artifact.mjs
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:

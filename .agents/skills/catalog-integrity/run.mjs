@@ -44,6 +44,8 @@ const validationEnv = {
 let buildStatus = 1;
 let testStatus = 1;
 let status = 'failed';
+let cleanupStatus = 'passed';
+let cleanupError = null;
 try {
   console.log(`== catalog integrity: build (isolated output: ${validationRoot}) ==`);
   buildStatus = run('build-catalog.js', validationEnv);
@@ -51,7 +53,18 @@ try {
   testStatus = buildStatus === 0 ? run('test-catalog.mjs', validationEnv) : 1;
   status = buildStatus === 0 && testStatus === 0 ? 'passed' : 'failed';
 } finally {
-  rmSync(validationRoot, { recursive: true, force: true });
+  try {
+    // Do not use force here: a cleanup error is operationally significant and
+    // must not leave generated release-like files behind without a report.
+    rmSync(validationRoot, { recursive: true });
+    if (process.env.CATALOG_INTEGRITY_FORCE_CLEANUP_FAILURE === '1') {
+      throw new Error('controlled catalog cleanup failure fixture');
+    }
+  } catch (error) {
+    cleanupStatus = 'failed';
+    cleanupError = error;
+    console.error(`!! catalog integrity: cleanup failed for ${validationRoot}: ${error.message}`);
+  }
 }
 
 if (reportFile) {
@@ -61,6 +74,10 @@ if (reportFile) {
     check: 'catalog-integrity',
     status,
     severity: 'release-blocking',
+    cleanup: {
+      status: cleanupStatus,
+      ...(cleanupError ? { error: cleanupError.message } : {}),
+    },
     sourcePaths: [
       '.agents/skills/catalog-integrity/run.mjs',
       'artifacts/forge/scripts/build-catalog.js',
@@ -71,6 +88,12 @@ if (reportFile) {
     checks: [
       { name: 'catalog build', status: buildStatus === 0 ? 'passed' : 'failed', severity: 'release-blocking' },
       { name: 'catalog test', status: testStatus === 0 ? 'passed' : 'failed', severity: 'release-blocking' },
+      {
+        name: 'temporary validation output cleanup',
+        status: cleanupStatus,
+        severity: 'operational',
+        ...(cleanupError ? { error: cleanupError.message } : {}),
+      },
     ],
   }, null, 2)}\n`);
 }

@@ -20,6 +20,7 @@ const checkScript = fileURLToPath(new URL('./test-review-surface-published.mjs',
 const expectedCommit = 'expected-commit-abcdef123456';
 const staleCommit = 'old-commit-000000000000';
 const unresolvedName = 'okhp3-published-regression-unresolved-companion';
+const expandedBranchName = 'fixture-project-local';
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -61,11 +62,27 @@ function catalog(sourceCommit) {
           }],
         },
       },
+      {
+        family: 'fixture',
+        name: 'fixture-main-path',
+        path: 'fixture/fixture-main-path/SKILL.md',
+        companions: [],
+        companionDiagnostics: {
+          deferred: [],
+          projectLocal: [],
+          approved: [],
+        },
+      },
     ],
   };
 }
 
-function reviewSurfaceHtml({ assertionFailure, unresolved = false }) {
+function reviewSurfaceHtml({
+  assertionFailure,
+  unresolved = false,
+  expandedBranch = false,
+  branchName = expandedBranchName,
+}) {
   return `<!doctype html>
 <html>
   <body>
@@ -73,7 +90,45 @@ function reviewSurfaceHtml({ assertionFailure, unresolved = false }) {
       <h1>Fixture skill</h1>
       <h2>Trust summary</h2>
       <div class="skill-pathway">
-        ${unresolved ? `
+        ${expandedBranch ? `
+        <div class="skill-pathway__fork">
+          <div class="skill-pathway__fork-branch">
+            <div class="skill-pathway__fork-branch-row">
+              <span class="skill-pathway__fork-arm" aria-hidden>↳</span>
+              <a
+                class="skill-pathway__fork-node"
+                href="#/skills/fixture/${branchName}"
+              >${branchName}</a>
+              <button
+                class="skill-pathway__fork-expand"
+                aria-expanded="false"
+                aria-label="Expand downstream pathway from ${branchName}"
+              >▸</button>
+            </div>
+            <div class="skill-pathway__sub-pathway" hidden aria-label="Downstream pathway from ${branchName}">
+              <div class="skill-pathway__sub-track">
+                <div class="skill-pathway__sub-step">
+                  <a class="skill-pathway__sub-node" href="#/skills/fixture/${branchName}">
+                    <span class="skill-pathway__node-name">${branchName}</span>
+                  </a>
+                </div>
+                <div class="skill-pathway__sub-step">
+                  <div
+                    class="skill-pathway__sub-node skill-pathway__sub-node--unresolved"
+                    data-companion-kind="unresolved"
+                    role="note"
+                    title="&quot;${unresolvedName}&quot; is referenced as a downstream companion but does not match any skill in the catalog — likely a misspelling or a rename that wasn't updated everywhere."
+                    aria-label="Unresolved downstream companion reference: ${unresolvedName}. This branch stops because the companion is not in the catalog."
+                  >
+                    <span class="skill-pathway__node-name skill-pathway__node-name--unresolved">${unresolvedName}</span>
+                    <span class="skill-pathway__sub-node-unresolved-label">Not found — check for a typo or renamed skill</span>
+                  </div>
+                </div>
+              </div>
+              <p class="skill-pathway__sub-hint">Downstream chain from this branch (up to 5 steps)</p>
+            </div>
+          </div>
+        </div>` : unresolved ? `
         <span
           class="skill-pathway__branch skill-pathway__branch--broken"
           data-companion-kind="unresolved"
@@ -119,6 +174,13 @@ function reviewSurfaceHtml({ assertionFailure, unresolved = false }) {
       </div>`}
     </main>
     <script>
+      const expand = document.querySelector('.skill-pathway__fork-expand');
+      const subPathway = document.querySelector('.skill-pathway__sub-pathway');
+      expand?.addEventListener('click', () => {
+        expand.setAttribute('aria-expanded', 'true');
+        expand.textContent = '▾';
+        if (subPathway) subPathway.hidden = false;
+      });
       fetch('/fixture-browser-start', { method: 'POST', keepalive: true });
     </script>
   </body>
@@ -156,7 +218,8 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
     }
 
     if (requestPath === '/data/skills/fixture/fixture-skill.json'
-      || requestPath === '/data/skills/fixture/fixture-project-local.json') {
+      || requestPath === '/data/skills/fixture/fixture-project-local.json'
+      || requestPath === '/data/skills/fixture/fixture-main-path.json') {
       response.writeHead(200, { 'content-type': 'application/json' });
       response.end('{}');
       return;
@@ -166,6 +229,8 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
     response.end(reviewSurfaceHtml({
       assertionFailure,
       unresolved: requestUrl.searchParams.get('publishedFixture') === 'unresolved',
+      expandedBranch: requestUrl.searchParams.get('publishedFixture') === 'expanded-unresolved',
+      branchName: requestUrl.searchParams.get('branchSkill') || expandedBranchName,
     }));
   });
 
@@ -217,21 +282,35 @@ async function runCase(name, fixtureOptions, validate) {
 async function main() {
   await runCase(
     'waits for the expected catalog before browser assertions',
-    { catalogResponses: [catalog(staleCommit), catalog(expectedCommit)] },
+    {
+      catalogResponses: [
+        catalog(staleCommit),
+        catalog(staleCommit),
+        catalog(staleCommit),
+        catalog(expectedCommit),
+      ],
+    },
     async (result, state) => {
       await delay(10);
       assert(result.status === 0,
         `Propagation fixture should pass after freshness arrives (exit ${result.status}).\n${result.stderr}`);
-      assert(state.catalogResponses.length >= 2,
-        'Propagation fixture should serve the old catalog before the expected catalog.');
+      assert(state.catalogResponses.length >= 4,
+        'Propagation fixture should serve multiple stale catalogs before the expected catalog.');
       const expectedResponse = state.catalogResponses.find(entry => entry.sourceCommit === expectedCommit);
       assert(expectedResponse, 'Propagation fixture never served the expected source commit.');
       assert(state.browserStarts.length > 0, 'Propagation fixture never reached the browser assertion stage.');
       assert(result.stdout.includes(`Waiting for published catalog sourceCommit ${expectedCommit}`),
         `Propagation fixture should report the expected source commit:\n${result.stdout}`);
-      assert(/Catalog propagation retry 1:.*elapsed \d+ms/.test(result.stdout),
-        `Propagation fixture should report its retry and elapsed wait:\n${result.stdout}`);
-      assert(result.stdout.split('\n').filter(line => line.includes('[deployment]')).length === 2,
+      const retryLines = result.stdout
+        .split('\n')
+        .filter(line => line.includes('Catalog propagation retry'));
+      assert(retryLines.length === 3,
+        `Propagation fixture should report all three stale retries:\n${result.stdout}`);
+      assert(retryLines.every((line, index) =>
+        line.includes(`Catalog propagation retry ${index + 1}:`)
+        && /elapsed \d+ms/.test(line)),
+      `Propagation fixture should keep retry numbering sequential and report elapsed timing:\n${result.stdout}`);
+      assert(result.stdout.split('\n').filter(line => line.includes('[deployment]')).length === 4,
         `Successful propagation should keep deployment progress concise:\n${result.stdout}`);
       assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
         'Browser assertions started before the expected catalog response completed.');
