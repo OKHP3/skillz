@@ -41,11 +41,11 @@ packages:
   - scripts
 
 catalog:
-  '@replit/vite-plugin-cartographer': ^0.5.21
+  '@replit/vite-plugin-cartographer': ^0.6.1
   '@replit/vite-plugin-dev-banner': ^0.1.1
   '@replit/vite-plugin-runtime-error-modal': ^0.0.6
   '@tailwindcss/vite': ^4.1.14
-  '@tanstack/react-query': ^5.90.21
+  '@tanstack/react-query': ^5.102.8
   '@types/node': ^25.3.3
   '@types/react': ^19.2.0
   '@types/react-dom': ^19.2.0
@@ -59,11 +59,11 @@ catalog:
   react: 19.1.0
   # Must be this exact version because expo requires it
   react-dom: 19.1.0
-  tailwind-merge: ^3.3.1
+  tailwind-merge: ^3.7.0
   tailwindcss: ^4.1.14
-  tsx: ^4.21.0
+  tsx: ^4.23.13
   vite: ^7.3.2
-  wouter: ^3.3.5
+  wouter: ^3.11.0
   zod: ^3.25.76
 
 autoInstallPeers: false
