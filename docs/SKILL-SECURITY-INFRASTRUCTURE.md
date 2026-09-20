@@ -60,6 +60,12 @@ remain uncached. The cache stores only a small marker, never scanner environment
 
 ## Results and access
 
+The reviewed Shield diagnostics revision also exposes bounded coverage reason
+counts and analyzer completion states. Unresolved references and parser limits
+remain incomplete analysis; these diagnostics do not waive findings or change
+the pass criteria. Raw snippets, paths, and arbitrary vendor messages remain
+excluded from the uploaded summary.
+
 Both engines must return usable, complete security-analysis evidence for the selected package
 set. High or critical findings produce `review-required`; incomplete security analysis produces
 `incomplete`. Both make the scan job fail after evidence upload. Missing descriptive metadata

@@ -350,7 +350,7 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 - Python runs the cataloger, skill-authoring utilities, MCP examples, and technology inventory script. The tracked CI pin is `.github/python-version`; `.replit` requests Python 3.13.
 - `process-capture/*/package.json` files are private, standalone ESM packages at version `0.1.0` with no npm dependencies and the test script `node --test tests/*.test.mjs`.
 - `artifacts/forge/package.json` is the private Vite/React frontend package for Skillz Forge; its build is deployed to GitHub Pages by `.github/workflows/deploy-pages.yml`.
-- `mermaid/okhp3-mermaid-publish/package.json` is a private ESM package with Mermaid CLI `11.16.0` as a dev dependency. The root package is a workspace coordinator; application runtime packages live under `artifacts/`.
+- `mermaid/okhp3-mermaid-publish/package.json` is a private ESM package with Mermaid CLI `11.17.0` as a dev dependency. The root package is a workspace coordinator; application runtime packages live under `artifacts/`.
 - Python requirements are local to `community/skill-creator` and `community/mcp-builder`. Do not assume a root virtual environment or dependency installation.
 - `.github/workflows/refresh-technology-inventory.yml` is scheduled automation for version inventory updates. It is not the repository's general CI test suite.
 
