@@ -393,6 +393,7 @@ Read only when relevant:
 - `docs/PUBLIC_SURFACES.md`: public information architecture and brand routing
 - `docs/PUBLISHING.md`: maturity, release, registry, and promotion gates
 - `docs/SECURITY.md`: skill supply-chain and data-safety rules
+- `docs/SKILL-SECURITY-INFRASTRUCTURE.md`: external Cisco/NVIDIA package scanning, automatic vendor updates, and report boundaries
 - `docs/CHANGELOG.md`: historical changes and release notes
 - `docs/BACKLOG.md`: maturity model and promotion priorities
 - `docs/TECHNOLOGY-INVENTORY.md`: runtime, dependency, and version posture

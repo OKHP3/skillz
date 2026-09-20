@@ -1,0 +1,136 @@
+name: Skill package security
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  security:
+    name: Scan changed skill packages
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out the source revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Plan package-only scope
+        id: plan
+        uses: OKHP3/skill-security-pipeline@dda5dcdceafbe68ff174f36b0622f1eb9764089d
+        with:
+          mode: plan
+          state: ${{ runner.temp }}/security-state
+          base: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event_name == 'push' && github.event.before || '' }}
+          full: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+
+      - name: Read the trusted plan scope
+        id: scope
+        shell: bash
+        env:
+          SECURITY_STATE: ${{ runner.temp }}/security-state
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          plan = json.loads((Path(os.environ['SECURITY_STATE']) / 'plan.json').read_text())
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as stream:
+              stream.write('full=' + str(plan['scope'] == 'full').lower() + '\n')
+          PY
+
+      - name: Resolve current stable vendors to immutable pins
+        id: resolve
+        if: steps.plan.outputs.scan == 'true'
+        uses: OKHP3/skill-security-pipeline@dda5dcdceafbe68ff174f36b0622f1eb9764089d
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          mode: resolve
+          state: ${{ runner.temp }}/security-state
+
+      - name: Check for an earlier full-scan attempt this week
+        id: attempted
+        if: steps.plan.outputs.scan == 'true' && steps.scope.outputs.full == 'true' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: ${{ runner.temp }}/security-state/full-scan-attempt.json
+          key: skill-security-v1-${{ steps.resolve.outputs.fingerprint }}-${{ steps.resolve.outputs.week }}
+          lookup-only: true
+
+      - name: Install the pinned vendor environments
+        if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
+        uses: OKHP3/skill-security-pipeline@dda5dcdceafbe68ff174f36b0622f1eb9764089d
+        with:
+          mode: install
+          state: ${{ runner.temp }}/security-state
+
+      - name: Scan selected packages
+        id: scan
+        if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
+        continue-on-error: true
+        uses: OKHP3/skill-security-pipeline@dda5dcdceafbe68ff174f36b0622f1eb9764089d
+        with:
+          mode: scan
+          state: ${{ runner.temp }}/security-state
+
+      - name: Record a terminal full-scan attempt, never a passing verdict
+        id: mark
+        if: always() && steps.scope.outputs.full == 'true' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && (steps.scan.outputs.decision == 'pass' || steps.scan.outputs.decision == 'review-required' || steps.scan.outputs.decision == 'incomplete')
+        shell: bash
+        env:
+          SECURITY_STATE: ${{ runner.temp }}/security-state
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          state = Path(os.environ['SECURITY_STATE'])
+          report = json.loads((state / 'report.json').read_text())
+          plan = json.loads((state / 'plan.json').read_text())
+          assert report['scope'] == plan['scope'] == 'full'
+          assert report['source_commit'] == plan['source_commit']
+          assert report['expected_packages'] == len(plan['packages']) == len(report['packages'])
+          assert report['decision'] in {'pass', 'review-required', 'incomplete'}
+          marker = {'meaning': 'attempted-not-passed', 'source_commit': report['source_commit'],
+                    'decision': report['decision'], 'complete': report['complete'],
+                    'workflow_run_id': os.environ['GITHUB_RUN_ID']}
+          (state / 'full-scan-attempt.json').write_text(json.dumps(marker) + '\n', encoding='utf-8')
+          PY
+
+      - name: Save only the trusted full-scan attempt marker
+        if: always() && steps.mark.outcome == 'success'
+        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: ${{ runner.temp }}/security-state/full-scan-attempt.json
+          key: skill-security-v1-${{ steps.resolve.outputs.fingerprint }}-${{ steps.resolve.outputs.week }}
+
+      - name: Explain a scheduled repeat skipped by the attempt marker
+        if: github.event_name == 'schedule' && steps.attempted.outputs.cache-hit == 'true'
+        shell: bash
+        run: |
+          printf '%s\n' '### Skill security: repeated full-scan attempt skipped' \
+            'A full scan already produced a report for these vendor pins this week. This marker is not a passing verdict. Review the earlier run for findings or incomplete coverage; manual runs always rescan.' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload only sanitized security evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: skill-security-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/security-state/plan.json
+            ${{ runner.temp }}/security-state/pins.json
+            ${{ runner.temp }}/security-state/report.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Preserve the scanner failure result
+        if: always() && steps.scan.outcome == 'failure'
+        shell: bash
+        run: exit 1
