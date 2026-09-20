@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-20: valid YAML descriptions
+
+- Quote the descriptions in the local future-state strategy skill and imported
+  LSP architecture skill so their colon-space text parses as a YAML scalar.
+  Preserve the exact description values, instructions, and upstream attribution.
+- These syntax repairs do not clear the outstanding Skillz Shield coverage gaps
+  or security findings; the full scan remains incomplete.
+
 ## 2026-09-20: dependency reconciliation and preserved local work
 
 - Integrate the sixteen outstanding dependency and runtime proposals with one
