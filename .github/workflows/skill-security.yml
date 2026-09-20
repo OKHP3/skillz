@@ -25,7 +25,7 @@ jobs:
 
       - name: Plan package-only scope
         id: plan
-        uses: OKHP3/skill-security-pipeline@dda5dcdceafbe68ff174f36b0622f1eb9764089d
+        uses: OKHP3/skill-security-pipeline@66dd153f62bde67235daea34c8d81985f5573561
         with:
           mode: plan
           state: ${{ runner.temp }}/security-state
@@ -49,7 +49,7 @@ jobs:
       - name: Resolve current stable vendors to immutable pins
         id: resolve
         if: steps.plan.outputs.scan == 'true'
-        uses: OKHP3/skill-security-pipeline@dda5dcdceafbe68ff174f36b0622f1eb9764089d
+        uses: OKHP3/skill-security-pipeline@66dd153f62bde67235daea34c8d81985f5573561
         env:
           GH_TOKEN: ${{ github.token }}
         with:
@@ -67,7 +67,7 @@ jobs:
 
       - name: Install the pinned vendor environments
         if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
-        uses: OKHP3/skill-security-pipeline@dda5dcdceafbe68ff174f36b0622f1eb9764089d
+        uses: OKHP3/skill-security-pipeline@66dd153f62bde67235daea34c8d81985f5573561
         with:
           mode: install
           state: ${{ runner.temp }}/security-state
@@ -76,7 +76,7 @@ jobs:
         id: scan
         if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
         continue-on-error: true
-        uses: OKHP3/skill-security-pipeline@dda5dcdceafbe68ff174f36b0622f1eb9764089d
+        uses: OKHP3/skill-security-pipeline@66dd153f62bde67235daea34c8d81985f5573561
         with:
           mode: scan
           state: ${{ runner.temp }}/security-state
