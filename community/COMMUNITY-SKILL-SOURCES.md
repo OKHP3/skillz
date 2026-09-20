@@ -72,6 +72,14 @@ incomplete packages.
 
 ## Validation snapshot
 
+### Local syntax adaptation, 2026-09-20
+
+`lsp-architecture/SKILL.md` quotes its description scalar to make the embedded
+colon-space valid YAML. Its description value and instruction body are unchanged.
+The imported source remains `blackwell-systems/agent-lsp` at
+`ca8b32d9d2a851b2cea0576eea36153e9a44962a`, as recorded above; this local
+syntax correction is not an upstream release or a security approval.
+
 - 107 community packages were checked for regular-file structure and symlinks.
 - No community package directory exceeds the 36-character local path limit.
 - The catalog check passed and `git diff --check` passed.
