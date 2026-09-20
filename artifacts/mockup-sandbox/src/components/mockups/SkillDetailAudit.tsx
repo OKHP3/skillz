@@ -11,7 +11,7 @@ import {
   Copy,
   ExternalLink,
   FileCheck2,
-  Github,
+  GitFork,
   Hash,
   History,
   LockKeyhole,
@@ -220,7 +220,7 @@ export function SkillDetailAudit() {
                 {copied ? 'Copied' : 'Copy URL'}
               </button>
               <button type="button" onClick={() => window.open('https://github.com/overkillhill/skills/tree/main/universal/okhp3-skill-cataloger', '_blank', 'noopener,noreferrer')} className="flex h-9 items-center gap-2 border px-3 font-mono text-[10px] uppercase tracking-[0.08em] transition-colors hover:bg-[#332a25]" style={{ borderColor: '#665448', color: '#d5c8bc' }}>
-                <Github size={14} /> GitHub <ExternalLink size={11} />
+                <GitFork size={14} /> GitHub <ExternalLink size={11} />
               </button>
               <button type="button" onClick={() => setStacked((value) => !value)} className="flex h-9 items-center gap-2 border px-3 font-mono text-[10px] uppercase tracking-[0.08em] transition-colors hover:brightness-110" style={{ borderColor: '#d27835', background: stacked ? amber : orange, color: '#211c19' }}>
                 {stacked ? <Check size={14} /> : <PackagePlus size={14} />}

@@ -10,7 +10,7 @@ import {
   Copy,
   ExternalLink,
   GitBranch,
-  Github,
+  GitFork,
   Hash,
   Layers3,
   LockKeyhole,
@@ -185,7 +185,7 @@ export function SkillDetailC() {
                 onClick={() => window.open('https://github.com/overkillhill/skills/tree/main/universal/okhp3-skill-cataloger', '_blank', 'noopener,noreferrer')}
                 className="h-9 rounded-[3px] border-[#665448] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#d5c8bc] hover:bg-[#332a25]"
               >
-                <Github size={14} /> GitHub <ExternalLink size={11} />
+                <GitFork size={14} /> GitHub <ExternalLink size={11} />
               </Button>
               <Button
                 type="button"

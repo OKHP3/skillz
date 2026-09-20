@@ -13,7 +13,7 @@ import {
   Code2,
   Copy,
   FileCheck2,
-  Github,
+  GitFork,
   Hash,
   Layers3,
   LockKeyhole,
@@ -218,7 +218,7 @@ export function SkillDetailD() {
                 {copied ? <Check size={14} style={{ color: colors.green }} /> : <Copy size={14} />} {copied ? 'Copied' : 'Copy review command'}
               </Button>
               <Button type="button" variant="outline" size="sm" onClick={() => window.open('https://github.com/overkillhill/skills/tree/main/universal/okhp3-skill-cataloger', '_blank', 'noopener,noreferrer')} className="h-9 rounded-[3px] border-[#586965] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#ced9d2] hover:bg-[#303a3a]">
-                <Github size={14} /> Source <ArrowUpRight size={11} />
+                <GitFork size={14} /> Source <ArrowUpRight size={11} />
               </Button>
               <Button type="button" size="sm" onClick={() => setStacked((value) => !value)} className="h-9 rounded-[3px] border px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#182022] hover:bg-[#d9de99]" style={{ background: stacked ? colors.lime : colors.green, borderColor: stacked ? '#d9de99' : '#b7d0ae' }}>
                 {stacked ? <Check size={14} /> : <Plus size={14} />} {stacked ? 'In your stack' : 'Add to stack'}

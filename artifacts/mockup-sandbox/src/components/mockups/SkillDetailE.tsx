@@ -11,7 +11,7 @@ import {
   Copy,
   ExternalLink,
   FileCheck2,
-  Github,
+  GitFork,
   Hash,
   Layers3,
   LockKeyhole,
@@ -123,7 +123,7 @@ export function SkillDetailE() {
             </div>
             <div className="flex shrink-0 flex-wrap items-center gap-2">
               <Button type="button" variant="outline" size="sm" onClick={copyUrl} className="h-9 rounded-[3px] border-[#665448] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#d5c8bc] hover:bg-[#332a25]">{copied ? <Check size={14} style={{ color: palette.softGreen }} /> : <Copy size={14} />}{copied ? 'Copied' : 'Copy URL'}</Button>
-              <Button type="button" variant="outline" size="sm" onClick={() => window.open('https://github.com/overkillhill/skills/tree/main/universal/okhp3-skill-cataloger', '_blank', 'noopener,noreferrer')} className="h-9 rounded-[3px] border-[#665448] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#d5c8bc] hover:bg-[#332a25]"><Github size={14} /> Source <ExternalLink size={11} /></Button>
+              <Button type="button" variant="outline" size="sm" onClick={() => window.open('https://github.com/overkillhill/skills/tree/main/universal/okhp3-skill-cataloger', '_blank', 'noopener,noreferrer')} className="h-9 rounded-[3px] border-[#665448] bg-transparent px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#d5c8bc] hover:bg-[#332a25]"><GitFork size={14} /> Source <ExternalLink size={11} /></Button>
               <Button type="button" size="sm" onClick={() => setInStack((value) => !value)} className="h-9 rounded-[3px] border border-[#d27835] px-3 font-mono text-[10px] uppercase tracking-[0.08em] text-[#211c19] hover:bg-[#e6a03c]" style={{ background: inStack ? palette.amber : palette.orange }}><PackagePlus size={14} />{inStack ? 'In your stack' : 'Add to stack'}</Button>
             </div>
           </div>

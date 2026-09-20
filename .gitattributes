@@ -11,3 +11,6 @@ replit/okhp3-replit-task-executor/** text=auto eol=lf
 # These existing mixed-ending files retain their bytes during identity edits.
 artifacts/forge/src/data/stacks.ts whitespace=cr-at-eol
 context-extraction/okhp3-thread-extract-grok/evals/evals.json whitespace=cr-at-eol
+
+# Preserve recovered historical source bytes.
+docs/archive/local-work-2026-09-20/SKILLZ-FORGE-REPLIT-BUILD-DIRECTIVE.md -text
