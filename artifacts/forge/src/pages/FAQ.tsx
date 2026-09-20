@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FAQ_GROUPS } from '../data/faq';
 import Nav from '../components/layout/Nav';
+import SkillSources from '../components/SkillSources';
 import { getRouteAnchorId } from '../utils/routeAnchors';
 
 function isExternalHref(href: string) {
@@ -54,7 +55,8 @@ export default function FAQ() {
       <main className="container page-main" id="main-content" tabIndex={-1}>
         <div className="page-header">
           <h1>Frequently asked questions</h1>
-          <p>Everything about Agent Skills, using Skillz, trust and safety, and contributing.</p>
+          <p>Using Forge, understanding its evidence, and contributing to the catalog.</p>
+          <Link to="/faq#skill-sources">Looking for skill guidance? Browse the source links &rarr;</Link>
         </div>
 
         <div className="faq-search">
@@ -120,6 +122,7 @@ export default function FAQ() {
             ))}
           </div>
         )}
+        <SkillSources />
       </main>
     </div>
   );

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-19: concise skill guidance and upstream sources
+
+- Keep the public introduction brief and route skill-authoring guidance to
+  Agent Skills best practices and the linked provider and project catalogs.
+- Add the requested source directory to the FAQ, with links from the homepage
+  and contribution page. Label Awesome Copilot as a community collection and
+  retain OpenAI's deprecated skills URL alongside its current plugins destination.
+- Keep Forge's own help focused on catalog use, evidence, and contributions.
+
 ## 2026-09-19: Skillz Shield identity
 
 - Rename the external security companion to `OKHP3/skillz-shield` and update
