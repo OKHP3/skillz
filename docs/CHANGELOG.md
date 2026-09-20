@@ -1,5 +1,36 @@
 # Changelog
 
+## 2026-09-19: concise skill guidance and upstream sources
+
+- Keep the public introduction brief and route skill-authoring guidance to
+  Agent Skills best practices and the linked provider and project catalogs.
+- Add the requested source directory to the FAQ, with links from the homepage
+  and contribution page. Label Awesome Copilot as a community collection and
+  retain OpenAI's deprecated skills URL alongside its current plugins destination.
+- Keep Forge's own help focused on catalog use, evidence, and contributions.
+
+## 2026-09-19: Skillz Shield identity
+
+- Rename the external security companion to `OKHP3/skillz-shield` and update
+  the consumer workflow and allowed-action policy to the new repository name.
+- Link the companion's own README, contribution guidance, security reporting,
+  changelog, and agent guide from the Forge documentation.
+- Preserve package-only scan scope, draft support, immutable orchestration pins,
+  automatic vendor release adoption, and independent Pages publishing.
+
+## 2026-09-19: external skill security infrastructure
+
+- Add a separate, SHA-pinned Cisco Skill Scanner and NVIDIA SkillSpector
+  integration for committed skill packages and their supporting files.
+- Skip scanner setup and execution for application-only changes. Accept
+  unfinished skill contracts without authoring-quality or maturity gates.
+- Adopt compatible stable vendor releases automatically using immutable source,
+  wheel, and dependency-lock hashes; trigger scheduled full skill rescans on
+  vendor changes and weekly vulnerability-data refreshes.
+- Keep incomplete analysis distinct from security findings, retain sanitized
+  report artifacts, and leave Pages deployment independent of this workflow.
+- See [skill security infrastructure](SKILL-SECURITY-INFRASTRUCTURE.md).
+
 ## 2026-09-19: capability-led duplicate consolidation
 
 - Reduce the active catalog from 350 to 326 skills while retaining all 21 families.

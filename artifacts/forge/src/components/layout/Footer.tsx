@@ -28,6 +28,7 @@ export default function Footer() {
           &copy; {year} OverKill&nbsp;Hill&nbsp;P&sup3;&trade;. All rights reserved.
         </p>
         <span className="site-footer-links">
+          <Link to="/faq#skill-sources" className="site-footer-privacy-link">Skill guidance</Link>
           <Link to="/privacy" className="site-footer-privacy-link">Privacy</Link>
         </span>
       </div>

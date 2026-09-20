@@ -702,6 +702,8 @@
   border: 1px solid var(--color-border-light);
   border-left: 3px solid var(--color-copper);
   background: color-mix(in srgb, var(--color-copper) 7%, var(--color-surface));
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .detail-companion-context h3 {
   margin: 0 0 var(--space-2);
@@ -724,6 +726,7 @@
   padding: var(--space-3);
   border: 1px solid var(--color-border-light);
   background: var(--color-surface);
+  min-width: 0;
 }
 .detail-companion-context-item--deferred {
   border-left: 3px solid var(--color-amber);
@@ -758,11 +761,17 @@
   margin: 0;
   color: var(--color-text-muted-light);
   font-size: var(--text-sm);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 .detail-companion-context-source {
+  display: inline-block;
+  max-width: 100%;
   color: var(--color-text-light);
   font-size: var(--text-sm);
   font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 /* ─── Skill Pathway ─────────────────────────────────────────────────────────── */
@@ -1122,6 +1131,7 @@
   font-size: 0.6rem;
   color: var(--color-ember);
   line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 /* Arrow between sub-pathway steps */
@@ -1204,9 +1214,53 @@
   }
 
   .skill-pathway__fork-node {
-    width: 100%;
-    flex: 1;
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
     min-height: unset;
+  }
+
+  /* Expanded branch previews reflow into a readable vertical warning lane
+     instead of hiding the terminal stop behind a horizontal scroller. */
+  .skill-pathway__fork-branch,
+  .skill-pathway__sub-pathway {
+    min-width: 0;
+  }
+
+  .skill-pathway__fork-branch-row {
+    min-width: 0;
+  }
+
+  .skill-pathway__sub-pathway {
+    margin-left: 0;
+    padding-inline: var(--space-3);
+    overflow-x: visible;
+  }
+
+  .skill-pathway__sub-track {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .skill-pathway__sub-step {
+    width: 100%;
+    min-width: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-1);
+  }
+
+  .skill-pathway__sub-node {
+    width: auto;
+    min-width: 0;
+    min-height: unset;
+  }
+
+  .skill-pathway__sub-arrow {
+    margin-top: 0;
+    margin-left: var(--space-2);
+    transform: rotate(90deg);
+    align-self: flex-start;
   }
 }
 
@@ -1489,6 +1543,7 @@ input, select, textarea {
   font-size: var(--text-xs);
   white-space: nowrap;
 }
+.site-footer-links > a + a { margin-inline-start: var(--space-4); }
 .site-footer-privacy-link {
   color: var(--color-text-muted-dark);
   text-decoration: underline;
@@ -3262,7 +3317,7 @@ input, select, textarea {
   margin: var(--space-8) auto 0;
 }
 
-/* ── "What is a SKILL.md?" — teal-topped card panel ─────────────────────── */
+/* ── Brief orientation and links to upstream skill guidance ───────────── */
 .home-explainer-panel {
   margin-top: var(--space-24);
   max-width: 800px;
@@ -3455,22 +3510,48 @@ input, select, textarea {
   height: auto;
   display: block;
   border-radius: var(--radius);
-  /* Dark mode: the vignette bg blends naturally into the teal-to-espresso body */
+  /* Face the hero content so the reaching talon leads toward search. */
+  transform: scaleX(-1);
   opacity: 0.95;
   filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));
   transition: opacity var(--transition-slow), filter var(--transition-slow);
 }
+.skill-guidance-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-8);
+}
+.skill-sources {
+  margin-top: var(--space-16);
+  padding-top: var(--space-8);
+  border-top: 3px solid var(--color-steel);
+}
+.skill-sources h2 { margin-bottom: var(--space-4); }
+.skill-sources h3 { margin-top: var(--space-8); margin-bottom: var(--space-4); }
+.skill-sources-standard {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4) 0;
+}
+.skill-sources-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-4) var(--space-8);
+  list-style: none;
+  padding: 0;
+}
+.skill-sources-list li { display: grid; gap: var(--space-2); }
+.skill-sources-list a { font-weight: 600; }
+.skill-sources-list span, .skill-sources-note { font-size: var(--text-sm); }
+.skill-sources-note { margin-top: var(--space-6); }
 
-/* Light mode: soften the square dark vignette against the paper bg */
+/* Light mode: retain the transparent cutout while softening its shadow. */
 [data-theme="light"] .hero-bird-img {
   opacity: 0.88;
   filter:
     drop-shadow(0 6px 24px rgba(0,0,0,0.2))
     contrast(1.05)
     saturate(0.95);
-  /* Fade bottom edge into the page — masks the hard dark square bottom */
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
 /* Clickability hint label — fades in on hover, always visible on touch */
@@ -3525,8 +3606,6 @@ input, select, textarea {
     contrast(1.05)
     saturate(1.0);
   opacity: 0.96;
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
 /* ── Hero forge mark: override earlier ::after since layout is now flex ───── */
@@ -3564,12 +3643,6 @@ input, select, textarea {
     order: 1; /* bird above content on mobile */
   }
 
-  /* Remove bottom mask on mobile — it's smaller and less jarring */
-  [data-theme="light"] .hero-bird-img,
-  [data-theme="light"] .hero-bird:hover .hero-bird-img {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
 }
 
 @media (max-width: 480px) {

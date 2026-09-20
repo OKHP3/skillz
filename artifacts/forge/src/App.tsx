@@ -132,7 +132,7 @@ function RouteAnchorFocus() {
       cancelAnimationFrame(frame);
       observer.disconnect();
     };
-  }, [location.pathname, location.hash]);
+  }, [location.pathname, location.hash, location.key]);
 
   return null;
 }

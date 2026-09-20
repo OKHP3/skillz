@@ -26,6 +26,10 @@ This repository contains SKILL.md contracts, references, examples, fixtures, and
 
 The root family directories are the distribution surface. `.agents/skills/` is a project-local support surface containing cataloging, skill-authoring, FoundRy tooling, and platform-specific context-extraction support. Do not count its packages as additional distribution skills or families.
 
+Public UI copy should give only a brief introduction to Agent Skills. Link to
+the open standard and upstream provider/project guidance for skill creation and
+package structure; keep Forge help focused on its catalog, evidence, and use.
+
 Do not add employer-specific confidential material, private credentials, tokens, cookies, customer or employee data, proprietary system names, hidden network calls, or destructive behavior. Public skills must use synthetic or public-safe examples. A skill must not instruct an agent to bypass permissions, conceal actions, or remove user consent.
 
 ## Repository map
@@ -393,6 +397,7 @@ Read only when relevant:
 - `docs/PUBLIC_SURFACES.md`: public information architecture and brand routing
 - `docs/PUBLISHING.md`: maturity, release, registry, and promotion gates
 - `docs/SECURITY.md`: skill supply-chain and data-safety rules
+- `docs/SKILL-SECURITY-INFRASTRUCTURE.md`: external Cisco/NVIDIA package scanning, automatic vendor updates, and report boundaries
 - `docs/CHANGELOG.md`: historical changes and release notes
 - `docs/BACKLOG.md`: maturity model and promotion priorities
 - `docs/TECHNOLOGY-INVENTORY.md`: runtime, dependency, and version posture

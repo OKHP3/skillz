@@ -3,15 +3,15 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useCatalog } from '../contexts/CatalogContext';
 import { buildSearchIndex } from '../utils/search';
 import Nav from '../components/layout/Nav';
-import heroAvif160 from '../assets/murderbird-sentinel-160.avif';
-import heroAvif320 from '../assets/murderbird-sentinel-320.avif';
-import heroAvif480 from '../assets/murderbird-sentinel-480.avif';
-import heroAvif640 from '../assets/murderbird-sentinel-640.avif';
-import heroWebp160 from '../assets/murderbird-sentinel-160.webp';
-import heroWebp320 from '../assets/murderbird-sentinel-320.webp';
-import heroWebp480 from '../assets/murderbird-sentinel-480.webp';
-import heroWebp640 from '../assets/murderbird-sentinel-640.webp';
-import heroFallback from '../assets/murderbird-sentinel-640.png';
+import heroAvif160 from '../assets/murderbird-contact-warning-160.avif';
+import heroAvif320 from '../assets/murderbird-contact-warning-320.avif';
+import heroAvif480 from '../assets/murderbird-contact-warning-480.avif';
+import heroAvif640 from '../assets/murderbird-contact-warning-640.avif';
+import heroWebp160 from '../assets/murderbird-contact-warning-160.webp';
+import heroWebp320 from '../assets/murderbird-contact-warning-320.webp';
+import heroWebp480 from '../assets/murderbird-contact-warning-480.webp';
+import heroWebp640 from '../assets/murderbird-contact-warning-640.webp';
+import heroFallback from '../assets/murderbird-contact-warning-640.png';
 
 // Matches the .hero-bird width breakpoints in index.css (300px desktop,
 // 160px <=768px, 120px <=480px) so the browser picks a derivative close to
@@ -119,11 +119,14 @@ export default function Home() {
         </section>
 
         <section data-section="what-is-skill" className="home-explainer-panel">
-          <h2>What is a SKILL.md?</h2>
+          <h2>Skill guidance, from the source</h2>
           <p>
-            A delegation contract for AI agents. Plain text, versioned, composable, and portable — copy the raw file into any agent's context. Each skill tells an agent exactly when to activate, what to do, and what not to do — so it behaves consistently without re-explaining.
+            Agent Skills bundle instructions and supporting files for reusable tasks. Forge helps you find and compare them; the standard and provider documentation cover how to create and use them.
           </p>
-          <Link to="/faq#what-is-skillmd">Learn more &rarr;</Link>
+          <div className="skill-guidance-links">
+            <a href="https://agentskills.io/skill-creation/best-practices" target="_blank" rel="noopener noreferrer">Agent Skills best practices ↗</a>
+            <Link to="/faq#skill-sources">Guidance &amp; skill catalogs &rarr;</Link>
+          </div>
         </section>
 
         <section data-section="families">

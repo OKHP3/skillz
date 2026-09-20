@@ -41,6 +41,24 @@ Any script added to a skill must be:
 
 Prefer local-only validation where possible.
 
+## Automated package scans
+
+The dedicated skill-security workflow scans new or changed skill packages with
+Cisco Skill Scanner and NVIDIA SkillSpector through the external, SHA-pinned
+`OKHP3/skillz-shield` action. Application-only changes skip scanner
+installation and execution. Supporting files inside a skill remain in scope.
+
+Drafts do not need complete metadata or a completed skill contract. These checks
+look for security risks, not authoring quality or maturity. High/critical findings
+need review; an incomplete scan is recorded separately from detected risks.
+No package instructions, scripts, installers, or dependencies are executed.
+
+Official stable engine releases are resolved to immutable source, wheel, and
+dependency-lock hashes at scan time. Scheduled update checks trigger a full
+skill-library rescan when that identity changes, with weekly vulnerability-data
+refreshes. See [Skill security infrastructure](SKILL-SECURITY-INFRASTRUCTURE.md)
+for scope, update behavior, evidence, and operational limits.
+
 If a public API fallback is introduced, the skill must disclose what content leaves the local environment.
 
 ## Review checklist for new skills
