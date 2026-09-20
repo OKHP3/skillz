@@ -3,15 +3,15 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useCatalog } from '../contexts/CatalogContext';
 import { buildSearchIndex } from '../utils/search';
 import Nav from '../components/layout/Nav';
-import heroAvif160 from '../assets/murderbird-sentinel-160.avif';
-import heroAvif320 from '../assets/murderbird-sentinel-320.avif';
-import heroAvif480 from '../assets/murderbird-sentinel-480.avif';
-import heroAvif640 from '../assets/murderbird-sentinel-640.avif';
-import heroWebp160 from '../assets/murderbird-sentinel-160.webp';
-import heroWebp320 from '../assets/murderbird-sentinel-320.webp';
-import heroWebp480 from '../assets/murderbird-sentinel-480.webp';
-import heroWebp640 from '../assets/murderbird-sentinel-640.webp';
-import heroFallback from '../assets/murderbird-sentinel-640.png';
+import heroAvif160 from '../assets/murderbird-contact-warning-160.avif';
+import heroAvif320 from '../assets/murderbird-contact-warning-320.avif';
+import heroAvif480 from '../assets/murderbird-contact-warning-480.avif';
+import heroAvif640 from '../assets/murderbird-contact-warning-640.avif';
+import heroWebp160 from '../assets/murderbird-contact-warning-160.webp';
+import heroWebp320 from '../assets/murderbird-contact-warning-320.webp';
+import heroWebp480 from '../assets/murderbird-contact-warning-480.webp';
+import heroWebp640 from '../assets/murderbird-contact-warning-640.webp';
+import heroFallback from '../assets/murderbird-contact-warning-640.png';
 
 // Matches the .hero-bird width breakpoints in index.css (300px desktop,
 // 160px <=768px, 120px <=480px) so the browser picks a derivative close to

@@ -3455,22 +3455,18 @@ input, select, textarea {
   height: auto;
   display: block;
   border-radius: var(--radius);
-  /* Dark mode: the vignette bg blends naturally into the teal-to-espresso body */
   opacity: 0.95;
   filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));
   transition: opacity var(--transition-slow), filter var(--transition-slow);
 }
 
-/* Light mode: soften the square dark vignette against the paper bg */
+/* Light mode: retain the transparent cutout while softening its shadow. */
 [data-theme="light"] .hero-bird-img {
   opacity: 0.88;
   filter:
     drop-shadow(0 6px 24px rgba(0,0,0,0.2))
     contrast(1.05)
     saturate(0.95);
-  /* Fade bottom edge into the page — masks the hard dark square bottom */
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
 /* Clickability hint label — fades in on hover, always visible on touch */
@@ -3525,8 +3521,6 @@ input, select, textarea {
     contrast(1.05)
     saturate(1.0);
   opacity: 0.96;
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
 /* ── Hero forge mark: override earlier ::after since layout is now flex ───── */
@@ -3564,12 +3558,6 @@ input, select, textarea {
     order: 1; /* bird above content on mobile */
   }
 
-  /* Remove bottom mask on mobile — it's smaller and less jarring */
-  [data-theme="light"] .hero-bird-img,
-  [data-theme="light"] .hero-bird:hover .hero-bird-img {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
 }
 
 @media (max-width: 480px) {
