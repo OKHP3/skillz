@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   bugReportUrl, newSkillUrl, prUrl, discussionsUrl, repoUrl,
   companionIssueUrl, securityAdvisoryUrl, composedStackIssueUrl,
@@ -27,7 +28,7 @@ const ACTIONS = [
     id: 'improve-trigger',
     label: 'Improve a description or trigger phrase',
     description: 'A skill does not activate when it should, or activates when it should not.',
-    how: 'Open a pull request with the specific description line changed and a note on why the current phrasing misses activations. The trigger description is the most impactful single line in a SKILL.md.',
+    how: 'Open a pull request with the proposed description and an example of the activation it improves.',
     href: () => prUrl(),
     linkLabel: 'Open a pull request',
   },
@@ -35,7 +36,7 @@ const ACTIONS = [
     id: 'add-example',
     label: 'Add a worked example',
     description: 'A skill is functional but lacks a concrete example for new users.',
-    how: 'Open a PR adding an "## Examples" section with a realistic input/output pair. Examples must use realistic task descriptions and show actual outputs, not idealized ones.',
+    how: 'Open a pull request with an input and its observed output, including the package version used.',
     href: () => prUrl(),
     linkLabel: 'Open a pull request',
   },
@@ -81,6 +82,7 @@ export default function Contribute() {
         <div className="page-header">
           <h1>Contribute</h1>
           <p>The catalog improves through pull requests, issues, and discussion. Every improvement — from a corrected trigger phrase to a new benchmarked skill — makes the catalog more useful for everyone.</p>
+          <Link to="/faq#skill-sources">Skill authoring guidance &amp; provider examples &rarr;</Link>
         </div>
 
         <ul className="contribute-list">

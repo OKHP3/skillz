@@ -3,31 +3,22 @@ import type { FaqGroup } from '../types/catalog';
 export const FAQ_GROUPS: FaqGroup[] = [
   {
     id: 'agent-skills',
-    title: 'Agent Skills',
+    title: 'Skill guidance',
     items: [
       {
         id: 'what-is-skillmd',
-        question: 'What is a SKILL.md?',
-        answer: 'A SKILL.md is a plain-text file that tells an AI agent exactly when to activate a capability, what to do with it, and what not to do. It combines a YAML frontmatter block (name, description, version, license) with a structured body — trigger phrases, step-by-step process, boundaries, examples, and companion skills. It is a delegation contract: precise enough to be followed consistently, open enough to be composed with other skills.',
+        question: 'Where should I start with Agent Skills?',
+        answer: 'Agent Skills bundle instructions and supporting files for reusable tasks. Use the open standard for authoring guidance and the relevant provider documentation for installation and compatibility.',
         links: [
-          { label: 'Browse all skills', href: '/explore' },
-          { label: 'View on GitHub', href: 'https://github.com/OKHP3/skillz' },
+          { label: 'Agent Skills best practices', href: 'https://agentskills.io/skill-creation/best-practices' },
+          { label: 'Guidance and skill catalogs', href: '/faq#skill-sources' },
         ],
-      },
-      {
-        id: 'skill-vs-prompt',
-        question: 'How is a skill different from a prompt?',
-        answer: 'A prompt is a one-time instruction. A skill is a reusable, versioned, governed capability. Skills have explicit trigger conditions (when to activate), scope boundaries (what they do and do not cover), structured process steps, and known companion relationships. They are installable, shareable, and comparable. A prompt lives in a conversation. A skill lives in a repository.',
-      },
-      {
-        id: 'skill-vs-mcp',
-        question: 'How is a skill different from an MCP server?',
-        answer: 'An MCP server exposes tools — callable functions with defined inputs and outputs. A SKILL.md is a behavioral contract — it governs how an agent reasons, what it checks before acting, and what it produces. Skills can load and route to MCP tools; the two are complementary. MCP is the API layer. Skills are the intelligence layer on top of it.',
       },
       {
         id: 'which-agents',
         question: 'Which agents can use these skills?',
-        answer: 'Any agent that can load a text file as context: Claude, Codex, GitHub Copilot, Cursor, Gemini, and similar systems. Skills are plain Markdown with structured YAML — no special runtime required. The agent reads the SKILL.md and follows its delegation contract. Compatibility varies by how well the agent follows structured instructions.',
+        answer: 'Check the package’s declared host and dependencies, then follow your agent provider’s current instructions. Catalog inclusion does not establish compatibility with every agent.',
+        links: [{ label: 'Provider and project catalogs', href: '/faq#skill-sources' }],
       },
       {
         id: 'composable-means',
@@ -46,12 +37,13 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         id: 'install-one-skill',
         question: 'How do I install one skill?',
-        answer: 'Copy the raw URL from the skill\'s detail page or catalog row. Paste it into your agent\'s context or instruction window. In Claude Projects, add it as a project file. In Cursor, add the raw content to your .cursorrules or agent context. In Replit Agent, reference it via the skills system. The install command on each skill page shows the exact format for the most common environments.',
+        answer: 'Open the skill’s source package from its detail page and follow your agent provider’s installation guidance. Include any supporting files the package needs; the raw SKILL.md link alone may not contain the complete package.',
+        links: [{ label: 'Provider and project catalogs', href: '/faq#skill-sources' }],
       },
       {
         id: 'install-partial-family',
         question: 'Can I install only part of a family?',
-        answer: 'Yes. Each skill is an independent file. The mermaid family\'s okhp3-mermaid-core is required for any Mermaid work, but the domain skills (bpmn, architecture, data) are optional — load only the ones relevant to your diagram types. For families without a required core skill, any skill can be loaded independently.',
+        answer: 'Yes. Select the packages relevant to your task and include their declared dependencies. A family groups related skills; it does not mean you must install every package in it.',
       },
       {
         id: 'maturity-label',
@@ -161,7 +153,8 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         id: 'improve-trigger',
         question: 'How do I improve a trigger description?',
-        answer: 'The trigger description is the most important line in a SKILL.md — it is what the agent uses to decide whether to load the skill. A good trigger includes specific action verbs, named patterns, and user-facing phrases that someone would actually say. Open a PR directly with the improved description line and a note on why the current phrasing misses some activations.',
+        answer: 'Open a pull request with the proposed description and an example of the activation it improves. Consult the upstream authoring guidance for wording and structure.',
+        links: [{ label: 'Agent Skills best practices', href: 'https://agentskills.io/skill-creation/best-practices' }],
       },
       {
         id: 'skill-becomes-published',
@@ -174,7 +167,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         id: 'add-worked-example',
         question: 'How can I add a worked example?',
-        answer: 'Open a PR adding a "## Examples" section to the SKILL.md with a concrete input/output pair. Examples should use realistic task descriptions and show what the skill actually produces — not idealized outputs. If the skill has a validation gate, your example should pass it.',
+        answer: 'Open a pull request with an input and its observed output, including the package version used. Follow the package’s contribution guidance.',
       },
     ],
   },
