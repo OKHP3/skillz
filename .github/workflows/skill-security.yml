@@ -59,7 +59,7 @@ jobs:
       - name: Check for an earlier full-scan attempt this week
         id: attempted
         if: steps.plan.outputs.scan == 'true' && steps.scope.outputs.full == 'true' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # v5
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ runner.temp }}/security-state/full-scan-attempt.json
           key: skill-security-v1-${{ steps.resolve.outputs.fingerprint }}-${{ steps.resolve.outputs.week }}
