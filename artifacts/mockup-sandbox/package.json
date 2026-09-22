@@ -61,7 +61,7 @@
     "react-dom": "catalog:",
     "react-hook-form": "^7.88.0",
     "react-is": "19.3.0",
-    "react-resizable-panels": "^2.1.9",
+    "react-resizable-panels": "^4.12.4",
     "recharts": "^3.10.1",
     "sonner": "^2.0.8",
     "tailwind-merge": "catalog:",
