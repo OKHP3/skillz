@@ -1,11 +1,12 @@
 # Technology Update Plan
 
-Status: implemented for review on `codex/technology-update-coverage`. New behavior becomes
-active only after these files are merged into GitHub's default branch. This is an update
-proposal pipeline, not unattended merging or a promise that every new major is compatible.
-The existing weekly workflow was already active: its latest three scheduled runs passed,
-including [September 14](https://github.com/OKHP3/skillz/actions/runs/34823862560), and it has
-an existing inventory PR (#72). The revised workflow reuses that same automation branch.
+Status: the weekly inventory and bounded runtime-candidate workflow are active on GitHub
+`main`. This document defines the acceptance gates; the current generated inventory refresh
+is PR #121. The workflow proposes changes for review and never merges them automatically or
+promises that every new major is compatible.
+The weekly workflow is active and completed a successful refresh on September 26
+([run 36250116211](https://github.com/OKHP3/skillz/actions/runs/36250116211)); that refresh
+created the current inventory PR (#121) on `automation/technology-inventory`.
 
 ## Coverage and ownership
 
@@ -61,15 +62,17 @@ own checks and tells the reviewer about that gate. No new credential or permissi
 was created. Repository Actions must allow PR creation; existing successful scheduled PR
 updates establish the prior path, but new workflow execution must still be verified after merge.
 
-## Initial migration order
+## Initial migration order (original plan)
 
-1. Accept this inventory/validation foundation. The new exact pnpm 10.26.1 pin matches the
-   observed Replit manager and replaces CI's floating major. Review proposed Node 24.21.0
-   and pnpm 10.34.5 after validation; Python 3.14.7 is already the latest stable CI pin.
+1. Keep tool and runtime pins aligned. Node 24.21.0 and Python 3.14.7 are the current CI
+   pins. PR #121 proposes pnpm 10.34.5 within the approved pnpm 10.x boundary, replacing
+   10.26.1; its frozen install, workspace typecheck, four artifact builds, Forge tests, and
+   Mermaid CLI startup checks passed. The latest stable pnpm 12.6.0 remains a separately
+   reviewed major migration.
 2. Address straightforward same-major packages and action patches, reusing existing PRs
-   where possible. At audit, GitHub had 11 open PRs, including inventory #72, Mermaid #82,
-   actions #81/#94, Python #95/#96, and npm migrations #67-#71. Reassess their current heads;
-   do not assume an old PR is tested against this new foundation.
+   where possible. The initial September 19 audit found 11 open PRs, including inventory
+   #72, Mermaid #82, actions #81/#94, Python #95/#96, and npm migrations #67-#71. Reassess
+   current heads rather than assuming those old PRs are tested against the foundation.
 3. Migrate Vite 7 to 8 and Vitest 3 to 5 in a compatible set; review plugin support, Node
    engine constraints, configuration and browser test behavior. Upgrade TypeScript 5.9 to
    7 as a separate compiler migration so diagnostics remain attributable.
