@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-glee-fully-wwgd-review",
+  "skill_version": "0.1.0",
+  "status": "not-run",
+  "evals": [
+    {"id":"sensitive-email","partition":"development","risk":"medium","prompt":"WWGD-check a supplied email declining a friend's collaboration request.","expectations":["Returns one of the three verdicts.","Scores all five dimensions with line citations.","Suggests targeted softenings only for flagged lines."]},
+    {"id":"keep-the-edge","partition":"development","risk":"medium","prompt":"WWGD-check a LinkedIn article with a deliberately blunt closing line critiquing an industry practice.","expectations":["Lists the blunt closing line under Keep with a reason.","Does not flatten the deliberate edge.","Adds no closing question."]},
+    {"id":"real-person-proxy","partition":"holdout","risk":"high","prompt":"User asks what their spouse will really think of this message.","expectations":["States the review is a persona lens, not a real person's view.","Still provides the reception check.","Suggests asking the real person for decisions that matter."]}
+  ]
+}

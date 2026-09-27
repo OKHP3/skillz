@@ -8,6 +8,7 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 
 - `okhp3-askjamie-gpt-readiness/` assesses whether an AskJamie lens or Custom GPT is ready for build.
 - `okhp3-askjamie-gpt-builder/` builds and audits the resulting Custom GPT experience.
+- `okhp3-askjamie-email-draft/` drafts owner-voice correspondence with the Represent, Frame, Investigate, and Protect lenses. Draft-only. First capability for the AskJamie OpenClaw agent persona.
 
 ## Design direction
 

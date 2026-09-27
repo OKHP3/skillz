@@ -1,9 +1,9 @@
 ---
 family: openclaw
 display_name: OpenClaw Agent Skills
-skill_count: 6
+skill_count: 8
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-19T23:26:42Z
+generated_at: 2026-09-27T14:03:29Z
 ---
 
 # openclaw
@@ -19,6 +19,22 @@ every skill here targets one runtime (OpenClaw) across multiple named
 deployments. A skill is portable across deployments unless it names a
 deployment-specific dependency (a local model tag, a mounted volume path, a
 paired device).
+
+## Persona ownership
+
+OpenClaw deployments can run several agent personas side by side (Larry,
+Glee-fully, AskJamie, MurderBird). This family holds host-runtime skills and
+the default agent's (Larry's) general capabilities, including routing work to
+the other personas. Persona-specific capabilities live in their own families:
+
+| Persona | Capability family |
+|---|---|
+| Larry (default agent, dispatch) | `openclaw/` |
+| Glee-fully (WWGD reception check) | `glee-fully/` |
+| AskJamie (correspondence voice) | `askjamie/` |
+| MurderBird (editorial red team) | `murderbird/` |
+
+Voice comes from each persona's soul files; skills stay voice-neutral.
 
 ## Family boundary
 
@@ -90,6 +106,10 @@ Every package's `SKILL.md` must:
   `askjamie`/OKHP3 LinkedIn skill family for linkedin-drop.
 - Depends on the Mermaid renderer gotchas documented in the OKHP3
   mermaid-diagram-bpmn project for mermaid-lint.
+- `okhp3-openclaw-research-packet` defers source-quality method to
+  `okhp3-source-backed-research` and claim tiers to `okhp3-evidence-standard`.
+- `okhp3-openclaw-persona-route` hands off to `askjamie/`, `murderbird/`, and
+  `glee-fully/` capability skills using a shared `[HANDOFF]` packet.
 
 ## Installation
 
@@ -110,17 +130,19 @@ confirm the exec calls it issues match what's described here.
 Host-oriented Agent Skills for OpenClaw-branded runtimes (Larry on Mac Studio, Glee-fully on GJS-LAPTOP).
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (6)
+## Skills (8)
 
 <!-- FAMILY_INVENTORY_START -->
-*6 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
+*8 skills &nbsp;·&nbsp; inventory last updated: **September 27, 2026 at 14:03 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-openclaw-capture-note](okhp3-openclaw-capture-note/SKILL.md) | Append a quick capture note to a dated local inbox file, for later triage into Notion. Use when J... | 0.1.0 |
 | [okhp3-openclaw-linkedin-drop](okhp3-openclaw-linkedin-drop/SKILL.md) | Turn a rough brain-dump into a reviewable LinkedIn draft file in a drop folder, using the OKHP3 b... | 0.1.0 |
 | [okhp3-openclaw-mermaid-lint](okhp3-openclaw-mermaid-lint/SKILL.md) | Check a Mermaid file against documented renderer gotchas before it goes into a repo or gets publi... | 0.1.0 |
+| [okhp3-openclaw-persona-route](okhp3-openclaw-persona-route/SKILL.md) | Decide which OpenClaw agent persona should own a request (Larry, AskJamie, MurderBird, or Glee-fu... | 0.1.0 |
 | [okhp3-openclaw-repo-pulse](okhp3-openclaw-repo-pulse/SKILL.md) | Sweep the OKHP3 GitHub mirrors for uncommitted changes, unpushed commits, and stale .git locks; s... | 0.1.0 |
+| [okhp3-openclaw-research-packet](okhp3-openclaw-research-packet/SKILL.md) | Run local-first web research on an OpenClaw agent and return a sourced research packet (findings,... | 0.1.0 |
 | [okhp3-openclaw-skillz-sync](okhp3-openclaw-skillz-sync/SKILL.md) | Run the skillz repo's own cataloger/integrity scripts on demand and summarize what changed. Use w... | 0.1.1 |
 | [okhp3-openclaw-stack-status](okhp3-openclaw-stack-status/SKILL.md) | One-shot health report on the local AI stack -- Ollama, LM Studio, and the Docker-hosted Open Web... | 0.1.1 |
 <!-- FAMILY_INVENTORY_END -->

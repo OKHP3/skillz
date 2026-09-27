@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-09-27: persona capability skills and the MurderBird family
+
+- Add the `murderbird/` family with `okhp3-murderbird-argument-audit` and
+  `okhp3-murderbird-thesis-forge`: editorial red-team and thesis-building
+  methods for the MurderBird agent persona. Security red teaming stays in
+  `red-teaming/`.
+- Add `okhp3-openclaw-persona-route` and `okhp3-openclaw-research-packet` to
+  `openclaw/` for the default agent's dispatch and research roles.
+- Add `okhp3-askjamie-email-draft` (draft-only owner-voice correspondence) and
+  `okhp3-glee-fully-wwgd-review` (persona-lens reception check).
+- All six packages are version 0.1.0 with `not-run` evals. Structural
+  validation passed; no live agent session or behavioral benchmark has run.
+
 ## 2026-09-20: valid YAML descriptions
 
 - Quote the descriptions in the local future-state strategy skill and imported

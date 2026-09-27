@@ -12,6 +12,10 @@ Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee
 2. For each cluster: shared MCP/tool dependencies, would a user want all-or-some, coherent workflow vs. thematically-adjacent-but-independent.
 3. Name each cluster, THEN create `glee-fully/<cluster-name>/` directories following the core+domain pattern used in `mermaid/` if a cluster is large enough to warrant it, or single-skill pattern (like `process-capture/`) if not.
 
+The WWGD review skill (`okhp3-glee-fully-wwgd-review`) is a second exception:
+it is the Glee-fully OpenClaw agent persona's reception-check capability, not a
+converted consumer Tool or Tool-ette.
+
 The family-level Foundry and GPT creation skills are exceptions to that deferred clustering
 rule: it governs how future Glee-fully skills are authored and reviewed, but it
 does not count as a converted consumer Tool or Tool-ette.

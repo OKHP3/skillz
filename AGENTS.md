@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 326 distribution skills in 21 active families (taxonomy and redundancy cleanup, 2026-09-19). OpenClaw packages remain unbenchmarked candidates.
+- **Current inventory:** 332 distribution skills in 22 active families (persona capability additions and the new `murderbird/` family, 2026-09-27). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -53,11 +53,13 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `outcome-modeling/` | Shared event-to-state forecasting core plus sports, NFL fantasy, business-sales, and prediction-market decision adapters |
 | `software-reclamation/` | Remastered software-reclamation workflow for reclaiming undocumented applications, documenting behavior, planning modernization, and handing off support or replacement |
 | `glee-fully/` | Glee-fully Tool and Tool-ette skill architecture, Persona Density, hierarchy, and future consumer-skill conversions |
-| `askjamie/` | AskJamie-specific Custom GPT creation skills and future professional-support capabilities |
+| `askjamie/` | AskJamie-specific Custom GPT creation skills and the AskJamie agent's correspondence capability |
+| `openclaw/` | Host-oriented OpenClaw skills and the default agent's (Larry's) research and persona-routing capabilities |
+| `murderbird/` | Editorial red-team and thesis-building capabilities for the MurderBird agent persona |
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 326-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 332-skill distribution inventory |
 
 ## Routing index
 
@@ -252,6 +254,22 @@ compatibility claim.
 |---|---|
 | `okhp3-glee-fully-foundry` | Design, author, audit, or canon-seal a Glee-fully Tool or Tool-ette Agent Skill. It governs hierarchy, Persona Density, Twig `Best for` boundaries, sibling awareness, leaf logic, and release readiness. |
 
+### Persona capability skills (OpenClaw agents)
+
+OpenClaw deployments may run several agent personas. Each persona's special
+capabilities live in its own family; voice comes from the persona's soul
+files, so these skills stay voice-neutral. Pipelines pass work between them
+with a shared `[HANDOFF]` packet.
+
+| Skill | Persona | Trigger |
+|---|---|---|
+| `okhp3-openclaw-persona-route` | Larry | A request reaches the default agent without a named persona, or work must move between agents. Routes only. |
+| `okhp3-openclaw-research-packet` | Larry | Research or source-gathering before an article, email, or decision. Returns a sourced packet; does not draft. |
+| `okhp3-askjamie-email-draft` | AskJamie | Draft or reply to correspondence the owner sends as themselves. Draft-only. |
+| `okhp3-murderbird-thesis-forge` | MurderBird | Build a thesis, outline, hooks, and hard ending from research or a rough idea. |
+| `okhp3-murderbird-argument-audit` | MurderBird | Red-team a draft argument before publication. Not security red teaming. |
+| `okhp3-glee-fully-wwgd-review` | Glee-fully | WWGD reception and warmth check before sending or publishing. A persona lens, not a real person's view. |
+
 The Glee-fully Foundry skill is the family-level authoring layer. Converted
 consumer Tools and Tool-ettes should be added only after the inventory and
 clustering work described in `glee-fully/README.md`.
@@ -372,7 +390,7 @@ node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root 
 (cd mermaid/okhp3-mermaid-theme-builder && node --test tests/*.test.mjs)
 ```
 
-The full-index check discovers the root distribution skills in 21 active families. The project cataloger indexes the project-local support skills separately. Structural validators establish package integrity only, not task-quality uplift or production readiness; preserve their warnings and known test gaps in validation reports rather than treating them as release evidence.
+The full-index check discovers the root distribution skills in 22 active families. The project cataloger indexes the project-local support skills separately. Structural validators establish package integrity only, not task-quality uplift or production readiness; preserve their warnings and known test gaps in validation reports rather than treating them as release evidence.
 
 For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.agents/skills/README.md` and full-index mode for root `README.md` plus family inventories. Do not hand-edit generated sections. The technology refresh script is read-only by default and makes official metadata requests. Use `--discover-only` for a local-only inventory, `--write` for report output, and `--write --update-runtimes` for bounded runtime proposals in a review branch. See `docs/TECHNOLOGY-UPDATE-PLAN.md`.
 
@@ -404,7 +422,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 326 distribution skills in 21 active families, and `.agents/skills/README.md` reports 52 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
+- Generated catalogs reflect the current filesystem: `README.md` reports 332 distribution skills in 22 active families, and `.agents/skills/README.md` reports 52 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.
@@ -412,7 +430,7 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-08-27
+Updated: 2026-09-27
 
 ### Author-omitted attribution links
 

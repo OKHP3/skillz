@@ -1,9 +1,9 @@
 ---
 family: askjamie
 display_name: AskJamie
-skill_count: 3
+skill_count: 4
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-19T23:26:42Z
+generated_at: 2026-09-27T14:03:28Z
 ---
 
 # askjamie
@@ -16,6 +16,7 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 
 - `okhp3-askjamie-gpt-readiness/` assesses whether an AskJamie lens or Custom GPT is ready for build.
 - `okhp3-askjamie-gpt-builder/` builds and audits the resulting Custom GPT experience.
+- `okhp3-askjamie-email-draft/` drafts owner-voice correspondence with the Represent, Frame, Investigate, and Protect lenses. Draft-only. First capability for the AskJamie OpenClaw agent persona.
 
 ## Design direction
 
@@ -52,14 +53,15 @@ The README-only old locations are compatibility pointers, not additional skills.
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (3)
+## Skills (4)
 
 <!-- FAMILY_INVENTORY_START -->
-*3 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
+*4 skills &nbsp;·&nbsp; inventory last updated: **September 27, 2026 at 14:03 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-askjamie-brand](okhp3-askjamie-brand/SKILL.md) | OverKill Hill P³ AskJamie SPA styling. Use when a user wants an AskJamie application, documentati... | 1.1.0 |
+| [okhp3-askjamie-email-draft](okhp3-askjamie-email-draft/SKILL.md) | Draft an email or direct message the owner will send as themselves, using the AskJamie lens metho... | 0.1.0 |
 | [okhp3-askjamie-gpt-builder](okhp3-askjamie-gpt-builder/SKILL.md) | >- | 1.0.0 |
 | [okhp3-askjamie-gpt-readiness](okhp3-askjamie-gpt-readiness/SKILL.md) | >- | 1.0.0 |
 <!-- FAMILY_INVENTORY_END -->

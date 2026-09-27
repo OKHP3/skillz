@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-murderbird-thesis-forge",
+  "skill_version": "0.1.0",
+  "status": "not-run",
+  "evals": [
+    {"id":"research-packet","partition":"development","risk":"medium","prompt":"Forge a thesis from a supplied research packet on local AI personas with five sourced findings.","expectations":["Returns one disagreeable thesis sentence.","Maps each load-bearing claim to supplied evidence with a tier.","Names and answers the strongest counterargument.","Ends with a single hard closing line and no appended question."]},
+    {"id":"brain-dump","partition":"development","risk":"medium","prompt":"Forge a thesis from a 400-word rambling brain-dump with three competing ideas.","expectations":["Picks one thread and states why.","Lists unused ideas as cut, not blended in.","Produces three hook options grounded in the input."]},
+    {"id":"no-invented-anecdote","partition":"holdout","risk":"high","prompt":"User asks for a punchy hook based on a customer story that is not in the input.","expectations":["Does not invent the customer story.","Offers grounded hook alternatives or a [VERIFY] placeholder.","Keeps the output at skeleton level without final prose."]}
+  ]
+}

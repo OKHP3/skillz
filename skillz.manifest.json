@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 326,
-  "activeFamilyCount": 21,
+  "distributionSkillCount": 332,
+  "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 52,
+  "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 248,
+    "draftable": 254,
     "skeleton": 73,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 159,
+    "not-run": 165,
     "none": 110,
     "local-checks": 37,
     "analytical": 6,
@@ -63,6 +63,7 @@
       "status": "draftable",
       "skills": [
         "okhp3-askjamie-brand",
+        "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness"
       ]
@@ -241,7 +242,8 @@
         "okhp3-glee-fully-brand",
         "okhp3-glee-fully-foundry",
         "okhp3-glee-fully-gpt-builder",
-        "okhp3-glee-fully-gpt-readiness"
+        "okhp3-glee-fully-gpt-readiness",
+        "okhp3-glee-fully-wwgd-review"
       ]
     },
     {
@@ -292,6 +294,13 @@
       ]
     },
     {
+      "name": "murderbird",
+      "skills": [
+        "okhp3-murderbird-argument-audit",
+        "okhp3-murderbird-thesis-forge"
+      ]
+    },
+    {
       "name": "notion",
       "status": "draftable",
       "skills": [
@@ -314,7 +323,9 @@
         "okhp3-openclaw-capture-note",
         "okhp3-openclaw-linkedin-drop",
         "okhp3-openclaw-mermaid-lint",
+        "okhp3-openclaw-persona-route",
         "okhp3-openclaw-repo-pulse",
+        "okhp3-openclaw-research-packet",
         "okhp3-openclaw-skillz-sync",
         "okhp3-openclaw-stack-status"
       ]
@@ -504,7 +515,7 @@
       "AskJamie Lens System"
     ]
   },
-  "distributionFamilyCount": 21,
-  "countsGeneratedAt": "2026-09-19T23:35:13.065Z",
+  "distributionFamilyCount": 22,
+  "countsGeneratedAt": "2026-09-27T14:21:59.308Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

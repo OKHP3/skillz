@@ -1,9 +1,9 @@
 ---
 family: glee-fully
 display_name: Glee-fully
-skill_count: 5
+skill_count: 6
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-19T23:26:42Z
+generated_at: 2026-09-27T14:03:29Z
 ---
 
 # glee-fully
@@ -19,6 +19,10 @@ Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee
 1. Run the clustering pass against the inventory (`inventory_of_toolbox_tools_and_tool-ettes.md` in `Glee-fullyTools-FoundRy`).
 2. For each cluster: shared MCP/tool dependencies, would a user want all-or-some, coherent workflow vs. thematically-adjacent-but-independent.
 3. Name each cluster, THEN create `glee-fully/<cluster-name>/` directories following the core+domain pattern used in `mermaid/` if a cluster is large enough to warrant it, or single-skill pattern (like `process-capture/`) if not.
+
+The WWGD review skill (`okhp3-glee-fully-wwgd-review`) is a second exception:
+it is the Glee-fully OpenClaw agent persona's reception-check capability, not a
+converted consumer Tool or Tool-ette.
 
 The family-level Foundry and GPT creation skills are exceptions to that deferred clustering
 rule: it governs how future Glee-fully skills are authored and reviewed, but it
@@ -59,10 +63,10 @@ The README-only old locations are compatibility pointers, not additional skills.
 Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee-fullyTools-FoundRy` inventory). Earlier analysis concluded the right packaging is neither 1 family nor a fixed 7 — cohesion (shared tool/MCP affinity, workflow proximity) should determine the cluster count, working estimate 4-6 sub-families.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (5)
+## Skills (6)
 
 <!-- FAMILY_INVENTORY_START -->
-*5 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
+*6 skills &nbsp;·&nbsp; inventory last updated: **September 27, 2026 at 14:03 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -71,4 +75,5 @@ Conversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee
 | [okhp3-glee-fully-foundry](okhp3-glee-fully-foundry/SKILL.md) | Design, author, audit, and canon-seal portable Glee-fully Agent Skills across the Trunk, Branch, ... | 1.0.0 |
 | [okhp3-glee-fully-gpt-builder](okhp3-glee-fully-gpt-builder/SKILL.md) | >- | 1.0.0 |
 | [okhp3-glee-fully-gpt-readiness](okhp3-glee-fully-gpt-readiness/SKILL.md) | >- | 1.0.0 |
+| [okhp3-glee-fully-wwgd-review](okhp3-glee-fully-wwgd-review/SKILL.md) | Run a WWGD (What Would Glee Do, Say, Think, Feel) reception check on a draft email, post, article... | 0.1.0 |
 <!-- FAMILY_INVENTORY_END -->
