@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-murderbird-hook-and-close",
+    "skill_version": "0.1.0",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-09-27T15:00:00Z",
+    "evals_run": [
+      "linkedin-normal"
+    ],
+    "runs_per_configuration": 1,
+    "note": "Analytical dry run: the contract was executed in a Claude Cowork session on a real article idea, not by an OpenClaw agent on its target model. Record: infusing-a-soul/article/drafts/2026-09-27-soul-vs-skills-pipeline-run.md"
+  },
+  "runs": [
+    {
+      "eval_id": "linkedin-normal",
+      "eval_name": "Hook and close for the companion short post",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "States the post's point in one sentence.",
+          "passed": true,
+          "evidence": "Point stated."
+        },
+        {
+          "text": "Returns three labeled hook options and three labeled close options, each scored.",
+          "passed": true,
+          "evidence": "Six scored options."
+        },
+        {
+          "text": "Picks one of each with a one-line reason.",
+          "passed": true,
+          "evidence": "Concrete hook, callback close."
+        },
+        {
+          "text": "No close ends in a question.",
+          "passed": true,
+          "evidence": "All closes declarative."
+        },
+        {
+          "text": "Discards options the post does not support.",
+          "passed": true,
+          "evidence": "Turn hook discarded."
+        }
+      ]
+    }
+  ]
+}

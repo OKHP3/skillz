@@ -2,16 +2,22 @@
 
 ## 2026-09-27: persona capability skills and the MurderBird family
 
-- Add the `murderbird/` family with `okhp3-murderbird-argument-audit` and
-  `okhp3-murderbird-thesis-forge`: editorial red-team and thesis-building
-  methods for the MurderBird agent persona. Security red teaming stays in
+- Add the `murderbird/` family with `okhp3-murderbird-argument-audit`,
+  `okhp3-murderbird-thesis-forge`, and `okhp3-murderbird-hook-and-close`:
+  editorial red-team, thesis-building, and short-post hook methods for the
+  MurderBird agent persona. Security red teaming stays in
   `red-teaming/`.
 - Add `okhp3-openclaw-persona-route` and `okhp3-openclaw-research-packet` to
   `openclaw/` for the default agent's dispatch and research roles.
 - Add `okhp3-askjamie-email-draft` (draft-only owner-voice correspondence) and
   `okhp3-glee-fully-wwgd-review` (persona-lens reception check).
-- All six packages are version 0.1.0 with `not-run` evals. Structural
-  validation passed; no live agent session or behavioral benchmark has run.
+- Structural validation passed for all seven packages. Six carry an
+  analytical benchmark from one dry run of the article pipeline, executed in a
+  Claude Cowork session rather than on OpenClaw. `okhp3-askjamie-email-draft`
+  remains `not-run`.
+- `okhp3-openclaw-research-packet` 0.1.1 adds an `applies-to` scope per
+  finding after the dry run showed a study's scope limit could be lost
+  downstream. Its benchmark records 0.1.0, so it reads as historical.
 
 ## 2026-09-20: valid YAML descriptions
 

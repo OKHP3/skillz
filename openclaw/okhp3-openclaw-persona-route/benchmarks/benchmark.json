@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-openclaw-persona-route",
+    "skill_version": "0.1.0",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-09-27T15:00:00Z",
+    "evals_run": [
+      "article-pipeline"
+    ],
+    "runs_per_configuration": 1,
+    "note": "Analytical dry run: the contract was executed in a Claude Cowork session on a real article idea, not by an OpenClaw agent on its target model. Record: infusing-a-soul/article/drafts/2026-09-27-soul-vs-skills-pipeline-run.md"
+  },
+  "runs": [
+    {
+      "eval_id": "article-pipeline",
+      "eval_name": "Route a from-scratch LinkedIn article",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Routes the first stage to Larry for research.",
+          "passed": true,
+          "evidence": "Stage 0 owner: larry."
+        },
+        {
+          "text": "Names the full article pipeline order.",
+          "passed": true,
+          "evidence": "Larry, MurderBird, voice pass, Glee-fully, owner."
+        },
+        {
+          "text": "States the routing reason in one line.",
+          "passed": true,
+          "evidence": "Classified as long-form argument starting from nothing."
+        },
+        {
+          "text": "Does not claim delivery without a messaging tool.",
+          "passed": true,
+          "evidence": "Packet carried in-session; reported as not delivered by tool."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-murderbird-thesis-forge",
+    "skill_version": "0.1.0",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-09-27T15:00:00Z",
+    "evals_run": [
+      "research-packet"
+    ],
+    "runs_per_configuration": 1,
+    "note": "Analytical dry run: the contract was executed in a Claude Cowork session on a real article idea, not by an OpenClaw agent on its target model. Record: infusing-a-soul/article/drafts/2026-09-27-soul-vs-skills-pipeline-run.md"
+  },
+  "runs": [
+    {
+      "eval_id": "research-packet",
+      "eval_name": "Forge a thesis from a five-finding packet",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Returns one disagreeable thesis sentence.",
+          "passed": true,
+          "evidence": "Souls set sound; skills, tools, model set capability."
+        },
+        {
+          "text": "Maps each load-bearing claim to supplied evidence with a tier.",
+          "passed": true,
+          "evidence": "Five-row claims table."
+        },
+        {
+          "text": "Names and answers the strongest counterargument.",
+          "passed": true,
+          "evidence": "Role prompts change output: conceded as tone, not capability."
+        },
+        {
+          "text": "Ends with a single hard closing line and no appended question.",
+          "passed": true,
+          "evidence": "Closing line with no question."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-openclaw-research-packet",
+    "skill_version": "0.1.1",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-09-27T15:00:00Z",
+    "evals_run": [
+      "normal"
+    ],
+    "runs_per_configuration": 1,
+    "note": "Analytical dry run: the contract was executed in a Claude Cowork session on a real article idea, not by an OpenClaw agent on its target model. Record: infusing-a-soul/article/drafts/2026-09-27-soul-vs-skills-pipeline-run.md"
+  },
+  "runs": [
+    {
+      "eval_id": "normal",
+      "eval_name": "Research persona-prompt evidence for an article",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Runs at least two differently phrased searches.",
+          "passed": true,
+          "evidence": "Two distinct queries."
+        },
+        {
+          "text": "Cites only fetched URLs with a retrieval date.",
+          "passed": true,
+          "evidence": "Four fetched URLs, retrieved 2026-09-27."
+        },
+        {
+          "text": "Classifies each finding with an evidence tier.",
+          "passed": true,
+          "evidence": "Five findings, all tiered."
+        },
+        {
+          "text": "Names a suggested next skill or persona.",
+          "passed": true,
+          "evidence": "okhp3-murderbird-thesis-forge."
+        },
+        {
+          "text": "Makes each finding's scope visible to downstream writers.",
+          "passed": false,
+          "evidence": "Scope limit appeared only as a gap; contract amended to v0.1.1 with applies-to."
+        }
+      ]
+    }
+  ]
+}

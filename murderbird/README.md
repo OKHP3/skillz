@@ -13,6 +13,8 @@ that can survive contact.
   verdict, load-bearing claims table, weakest point, and salvage list.
 - `okhp3-murderbird-thesis-forge/` turns a research packet or rough idea into
   a one-sentence thesis, structure, hooks, and a hard ending.
+- `okhp3-murderbird-hook-and-close/` forges and scores the opening and closing
+  lines of short posts so the hook earns attention honestly and the close lands.
 
 ## Not this family
 

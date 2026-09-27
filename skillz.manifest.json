@@ -20,21 +20,21 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 332,
+  "distributionSkillCount": 333,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 254,
+    "draftable": 255,
     "skeleton": 73,
     "usable": 5
   },
   "evidenceStatusCounts": {
-    "historical": 7,
-    "not-run": 165,
+    "historical": 8,
+    "not-run": 160,
     "none": 110,
     "local-checks": 37,
-    "analytical": 6,
+    "analytical": 11,
     "live": 7
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
@@ -297,6 +297,7 @@
       "name": "murderbird",
       "skills": [
         "okhp3-murderbird-argument-audit",
+        "okhp3-murderbird-hook-and-close",
         "okhp3-murderbird-thesis-forge"
       ]
     },
@@ -516,6 +517,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-09-27T14:21:59.308Z",
+  "countsGeneratedAt": "2026-09-27T21:25:31.158Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

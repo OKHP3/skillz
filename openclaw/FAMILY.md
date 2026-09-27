@@ -3,7 +3,7 @@ family: openclaw
 display_name: OpenClaw Agent Skills
 skill_count: 8
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-27T14:03:29Z
+generated_at: 2026-09-27T21:22:09Z
 ---
 
 # openclaw
@@ -133,7 +133,7 @@ Host-oriented Agent Skills for OpenClaw-branded runtimes (Larry on Mac Studio, G
 ## Skills (8)
 
 <!-- FAMILY_INVENTORY_START -->
-*8 skills &nbsp;·&nbsp; inventory last updated: **September 27, 2026 at 14:03 UTC***
+*8 skills &nbsp;·&nbsp; inventory last updated: **September 27, 2026 at 21:22 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -142,7 +142,7 @@ Host-oriented Agent Skills for OpenClaw-branded runtimes (Larry on Mac Studio, G
 | [okhp3-openclaw-mermaid-lint](okhp3-openclaw-mermaid-lint/SKILL.md) | Check a Mermaid file against documented renderer gotchas before it goes into a repo or gets publi... | 0.1.0 |
 | [okhp3-openclaw-persona-route](okhp3-openclaw-persona-route/SKILL.md) | Decide which OpenClaw agent persona should own a request (Larry, AskJamie, MurderBird, or Glee-fu... | 0.1.0 |
 | [okhp3-openclaw-repo-pulse](okhp3-openclaw-repo-pulse/SKILL.md) | Sweep the OKHP3 GitHub mirrors for uncommitted changes, unpushed commits, and stale .git locks; s... | 0.1.0 |
-| [okhp3-openclaw-research-packet](okhp3-openclaw-research-packet/SKILL.md) | Run local-first web research on an OpenClaw agent and return a sourced research packet (findings,... | 0.1.0 |
+| [okhp3-openclaw-research-packet](okhp3-openclaw-research-packet/SKILL.md) | Run local-first web research on an OpenClaw agent and return a sourced research packet (findings,... | 0.1.1 |
 | [okhp3-openclaw-skillz-sync](okhp3-openclaw-skillz-sync/SKILL.md) | Run the skillz repo's own cataloger/integrity scripts on demand and summarize what changed. Use w... | 0.1.1 |
 | [okhp3-openclaw-stack-status](okhp3-openclaw-stack-status/SKILL.md) | One-shot health report on the local AI stack -- Ollama, LM Studio, and the Docker-hosted Open Web... | 0.1.1 |
 <!-- FAMILY_INVENTORY_END -->

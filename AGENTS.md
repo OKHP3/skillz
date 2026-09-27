@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 332 distribution skills in 22 active families (persona capability additions and the new `murderbird/` family, 2026-09-27). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 333 distribution skills in 22 active families (persona capability additions and the new `murderbird/` family, 2026-09-27). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -59,7 +59,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 332-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 333-skill distribution inventory |
 
 ## Routing index
 
@@ -268,6 +268,7 @@ with a shared `[HANDOFF]` packet.
 | `okhp3-askjamie-email-draft` | AskJamie | Draft or reply to correspondence the owner sends as themselves. Draft-only. |
 | `okhp3-murderbird-thesis-forge` | MurderBird | Build a thesis, outline, hooks, and hard ending from research or a rough idea. |
 | `okhp3-murderbird-argument-audit` | MurderBird | Red-team a draft argument before publication. Not security red teaming. |
+| `okhp3-murderbird-hook-and-close` | MurderBird | Sharpen and score the opening and closing lines of a short post. Two lines only. |
 | `okhp3-glee-fully-wwgd-review` | Glee-fully | WWGD reception and warmth check before sending or publishing. A persona lens, not a real person's view. |
 
 The Glee-fully Foundry skill is the family-level authoring layer. Converted
@@ -422,7 +423,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 332 distribution skills in 22 active families, and `.agents/skills/README.md` reports 52 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
+- Generated catalogs reflect the current filesystem: `README.md` reports 333 distribution skills in 22 active families, and `.agents/skills/README.md` reports 52 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

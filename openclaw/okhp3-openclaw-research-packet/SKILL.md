@@ -4,7 +4,7 @@ description: Run local-first web research on an OpenClaw agent and return a sour
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.0"
+  version: "0.1.1"
   category: openclaw
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -49,6 +49,8 @@ silently.
    When they disagree, keep both.
 6. Record retrieval dates. Mark anything time-sensitive "as of <date>".
 7. Classify each finding: confirmed, inferred, proposal, or unknown.
+   Record what each finding applies to (population, task type, version, or
+   date range) so downstream writers can't stretch it past its evidence.
 8. Verify before returning: every finding cites a URL actually fetched this
    session; no statistic or quote appears without one.
 
@@ -61,6 +63,7 @@ retrieved: <YYYY-MM-DD>
 findings:
   - claim: <finding>
     tier: confirmed | inferred | proposal | unknown
+    applies-to: <scope the source actually covers>
     source: <URL fetched>
 conflicts:
   - <claim A (source) vs claim B (source); decisive next check>

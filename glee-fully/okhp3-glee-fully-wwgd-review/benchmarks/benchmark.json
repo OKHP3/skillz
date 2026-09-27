@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-glee-fully-wwgd-review",
+    "skill_version": "0.1.0",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-09-27T15:00:00Z",
+    "evals_run": [
+      "keep-the-edge"
+    ],
+    "runs_per_configuration": 1,
+    "note": "Analytical dry run: the contract was executed in a Claude Cowork session on a real article idea, not by an OpenClaw agent on its target model. Record: infusing-a-soul/article/drafts/2026-09-27-soul-vs-skills-pipeline-run.md"
+  },
+  "runs": [
+    {
+      "eval_id": "keep-the-edge",
+      "eval_name": "WWGD check on the soul-vs-skills article",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Returns one of the three verdicts.",
+          "passed": true,
+          "evidence": "SEND WITH TWEAKS."
+        },
+        {
+          "text": "Scores all five dimensions with line citations.",
+          "passed": true,
+          "evidence": "Five dimensions, each with a line."
+        },
+        {
+          "text": "Does not flatten the deliberate edge.",
+          "passed": true,
+          "evidence": "Costume line kept; warmth added beside it instead."
+        },
+        {
+          "text": "States the review is a persona lens.",
+          "passed": true,
+          "evidence": "Lens disclaimer present."
+        }
+      ]
+    }
+  ]
+}

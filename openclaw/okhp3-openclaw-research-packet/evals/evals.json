@@ -1,11 +1,43 @@
 {
   "schema_version": "1.0",
   "skill_name": "okhp3-openclaw-research-packet",
-  "skill_version": "0.1.0",
+  "skill_version": "0.1.1",
   "status": "not-run",
   "evals": [
-    {"id":"normal","partition":"development","risk":"medium","prompt":"Research the current OpenClaw multi-agent routing model for an upcoming article.","expectations":["Runs at least two differently phrased searches.","Cites only fetched URLs with a retrieval date.","Classifies each finding with an evidence tier.","Names a suggested next skill or persona."]},
-    {"id":"conflict","partition":"development","risk":"medium","prompt":"Two fetched sources give different release dates for the same software version.","expectations":["Lists both claims under conflicts with sources.","Does not silently pick one.","States the decisive next check."]},
-    {"id":"no-tools","partition":"holdout","risk":"high","prompt":"Run research when web_search and web_fetch are unavailable.","expectations":["States the tools are unavailable.","Returns a packet limited to supplied material with gaps listed.","Does not fabricate sources."]}
+    {
+      "id": "normal",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Research the current OpenClaw multi-agent routing model for an upcoming article.",
+      "expectations": [
+        "Runs at least two differently phrased searches.",
+        "Cites only fetched URLs with a retrieval date.",
+        "Classifies each finding with an evidence tier.",
+        "Names a suggested next skill or persona.",
+        "Records an applies-to scope for each finding."
+      ]
+    },
+    {
+      "id": "conflict",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Two fetched sources give different release dates for the same software version.",
+      "expectations": [
+        "Lists both claims under conflicts with sources.",
+        "Does not silently pick one.",
+        "States the decisive next check."
+      ]
+    },
+    {
+      "id": "no-tools",
+      "partition": "holdout",
+      "risk": "high",
+      "prompt": "Run research when web_search and web_fetch are unavailable.",
+      "expectations": [
+        "States the tools are unavailable.",
+        "Returns a packet limited to supplied material with gaps listed.",
+        "Does not fabricate sources."
+      ]
+    }
   ]
 }

@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "skill_name": "okhp3-murderbird-argument-audit",
+    "skill_version": "0.1.0",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-09-27T15:00:00Z",
+    "evals_run": [
+      "sentinel-normal"
+    ],
+    "runs_per_configuration": 1,
+    "note": "Analytical dry run: the contract was executed in a Claude Cowork session on a real article idea, not by an OpenClaw agent on its target model. Record: infusing-a-soul/article/drafts/2026-09-27-soul-vs-skills-pipeline-run.md"
+  },
+  "runs": [
+    {
+      "eval_id": "sentinel-normal",
+      "eval_name": "Audit the soul-vs-skills article draft",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": null,
+        "tokens": null,
+        "tool_calls": null,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Returns a verdict from the three allowed values.",
+          "passed": true,
+          "evidence": "HOLDS WITH REPAIRS."
+        },
+        {
+          "text": "States the thesis in one sentence.",
+          "passed": true,
+          "evidence": "Thesis stated."
+        },
+        {
+          "text": "Flags a claim that outruns its evidence.",
+          "passed": true,
+          "evidence": "Hook overclaim and study-generalization gap flagged."
+        },
+        {
+          "text": "Caps the claims table at five rows in Sentinel mode.",
+          "passed": true,
+          "evidence": "Five rows."
+        },
+        {
+          "text": "Marks deliberate rough edges keep with a reason.",
+          "passed": true,
+          "evidence": "Wrong-wrench and costume lines kept."
+        }
+      ]
+    }
+  ]
+}

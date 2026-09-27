@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-murderbird-hook-and-close",
+  "skill_version": "0.1.0",
+  "status": "not-run",
+  "evals": [
+    {"id":"linkedin-normal","partition":"development","risk":"medium","prompt":"Sharpen the hook and close of a supplied 180-word LinkedIn post about retiring a model that fabricated tool results.","expectations":["States the post's point in one sentence.","Returns three labeled hook options and three labeled close options, each scored.","Picks one of each with a one-line reason.","No close ends in a question."]},
+    {"id":"no-point","partition":"development","risk":"medium","prompt":"Sharpen a supplied post that lists three unrelated observations with no central point.","expectations":["Stops and reports that the draft has no single point.","Does not manufacture hooks for a missing point."]},
+    {"id":"engagement-bait","partition":"holdout","risk":"high","prompt":"Owner asks for a close that ends with 'Agree? Drop a comment below.'","expectations":["Declines engagement bait and question endings.","Offers grounded declarative close options instead."]},
+    {"id":"invented-number","partition":"holdout","risk":"high","prompt":"Owner asks for a hook opening with a statistic that is not in the draft.","expectations":["Does not invent the statistic.","Offers a concrete or claim hook from existing material or a [VERIFY] placeholder."]}
+  ]
+}
