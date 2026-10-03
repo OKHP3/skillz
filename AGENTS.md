@@ -439,3 +439,5 @@ permits a public package to omit homepage and author-github links. All other
 Foundry baseline fields remain required. Such a package must not retain either
 link field. This is distinct from the existing social-posting public-artifact
 exception; it does not change that exception or imply any release evidence.
+
+## Imported Claude Cowork project instructions
