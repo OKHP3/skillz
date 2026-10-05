@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-26",
+  "checked_at": "2026-10-05",
   "discovery": {
     "excluded_archives": [
       "docs/archive/root-scaffold/package-lock.json",
@@ -42,7 +42,7 @@
       "lib/api-zod/package.json": "07009861b2ba8decccb4e9d78d743cb7273bd91915231b5eb1463b296efca13e",
       "lib/db/package.json": "5fa6f5e31fb03587a024e73e7bd7c033b8775c21fe3e2d208f82b9d28e9ac731",
       "mermaid/okhp3-mermaid-publish/package.json": "3a9e52bf3d3356429114b2566460d76a94a20264387a626b126776bace885f98",
-      "package.json": "a1e034e5ca046763bf4d21e41b7c1558cb98260084993ede9821032664a0f077",
+      "package.json": "f41884a7cd2ee19a5dc9e24a06d04ce288447c133de42d84340cb3e9bb0f004a",
       "pnpm-lock.yaml": "b2c41f880f5036e04c53940a7f38f3baaff4045f0bd5b87e764df757ae814a6c",
       "pnpm-workspace.yaml": "31b1ca0ad9e904f8ce4315b5d208069417e3583fb16cdb46998768d5e16a5d54",
       "process-capture/okhp3-as-is-process-capture/package.json": "84b42ed6871f94e0fcacbdbf7b65b30f53938128c8ec5971ff3b45b8e7d7639d",
@@ -5166,7 +5166,7 @@
         "declarations": [
           {
             "path": "package.json",
-            "requirement": "pnpm@10.26.1"
+            "requirement": "pnpm@10.34.5"
           }
         ],
         "ecosystem": "npm",
@@ -6818,7 +6818,8 @@
     }
   },
   "proposed_runtime_updates": {
-    "package.json#packageManager": "pnpm@10.34.5"
+    ".github/python-version": "3.14.8",
+    "package.json#packageManager": "pnpm@10.34.6"
   },
   "runtimes": {
     "Node.js": {
@@ -6830,9 +6831,9 @@
     },
     "Python": {
       "current": "3.14.7",
-      "latest": "3.14.7",
+      "latest": "3.14.8",
       "source": "https://www.python.org/downloads/",
-      "target": "3.14.7"
+      "target": "3.14.8"
     }
   },
   "schema_version": 2,
@@ -7841,98 +7842,98 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fangular"
     },
     "npm:@orval/axios": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Faxios"
     },
     "npm:@orval/core": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fcore"
     },
     "npm:@orval/effect": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Feffect"
     },
     "npm:@orval/fetch": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Ffetch"
     },
     "npm:@orval/hono": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fhono"
     },
     "npm:@orval/mcp": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fmcp"
     },
     "npm:@orval/mock": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fmock"
     },
     "npm:@orval/pinia-colada": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fpinia-colada"
     },
     "npm:@orval/query": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fquery"
     },
     "npm:@orval/solid-start": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fsolid-start"
     },
     "npm:@orval/swr": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fswr"
     },
     "npm:@orval/zod": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/%40orval%2Fzod"
     },
     "npm:@oxc-project/types": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "0.151.0",
+      "latest": "0.152.0",
       "source": "https://registry.npmjs.org/%40oxc-project%2Ftypes"
     },
     "npm:@pinojs/redact": {
@@ -8324,7 +8325,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.12.0",
+      "latest": "2.13.0",
       "source": "https://registry.npmjs.org/%40reduxjs%2Ftoolkit"
     },
     "npm:@replit/connectors-sdk": {
@@ -8361,7 +8362,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm-eabi"
     },
     "npm:@rolldown/binding-android-arm64": {
@@ -8370,7 +8371,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm64"
     },
     "npm:@rolldown/binding-darwin-arm64": {
@@ -8379,7 +8380,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-arm64"
     },
     "npm:@rolldown/binding-darwin-x64": {
@@ -8388,7 +8389,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-x64"
     },
     "npm:@rolldown/binding-freebsd-x64": {
@@ -8397,7 +8398,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-freebsd-x64"
     },
     "npm:@rolldown/binding-linux-arm-gnueabihf": {
@@ -8406,7 +8407,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm-gnueabihf"
     },
     "npm:@rolldown/binding-linux-arm64-gnu": {
@@ -8415,7 +8416,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-gnu"
     },
     "npm:@rolldown/binding-linux-arm64-musl": {
@@ -8424,7 +8425,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-musl"
     },
     "npm:@rolldown/binding-linux-ppc64-gnu": {
@@ -8433,7 +8434,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-ppc64-gnu"
     },
     "npm:@rolldown/binding-linux-s390x-gnu": {
@@ -8442,7 +8443,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-s390x-gnu"
     },
     "npm:@rolldown/binding-linux-x64-gnu": {
@@ -8451,7 +8452,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-gnu"
     },
     "npm:@rolldown/binding-linux-x64-musl": {
@@ -8460,7 +8461,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-musl"
     },
     "npm:@rolldown/binding-openharmony-arm64": {
@@ -8469,7 +8470,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-openharmony-arm64"
     },
     "npm:@rolldown/binding-win32-arm64-msvc": {
@@ -8478,7 +8479,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-win32-arm64-msvc"
     },
     "npm:@rolldown/binding-win32-x64-msvc": {
@@ -8487,7 +8488,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-win32-x64-msvc"
     },
     "npm:@rolldown/pluginutils": {
@@ -8503,7 +8504,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.15.0",
+      "latest": "0.16.0",
       "source": "https://registry.npmjs.org/%40scalar%2Fhelpers"
     },
     "npm:@scalar/json-magic": {
@@ -8512,7 +8513,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.15.2",
+      "latest": "0.15.4",
       "source": "https://registry.npmjs.org/%40scalar%2Fjson-magic"
     },
     "npm:@scalar/json-schema-validator": {
@@ -8521,7 +8522,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.1.6",
+      "latest": "0.1.9",
       "source": "https://registry.npmjs.org/%40scalar%2Fjson-schema-validator"
     },
     "npm:@scalar/openapi-parser": {
@@ -8530,7 +8531,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.29.7",
+      "latest": "0.29.10",
       "source": "https://registry.npmjs.org/%40scalar%2Fopenapi-parser"
     },
     "npm:@scalar/openapi-types": {
@@ -8548,7 +8549,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.4.0",
+      "latest": "0.4.1",
       "source": "https://registry.npmjs.org/%40scalar%2Fopenapi-upgrader"
     },
     "npm:@scalar/openapi-validator": {
@@ -8557,7 +8558,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.1.6",
+      "latest": "0.1.9",
       "source": "https://registry.npmjs.org/%40scalar%2Fopenapi-validator"
     },
     "npm:@scalar/types": {
@@ -8566,7 +8567,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.22.1",
+      "latest": "0.22.4",
       "source": "https://registry.npmjs.org/%40scalar%2Ftypes"
     },
     "npm:@sec-ant/readable-stream": {
@@ -8651,14 +8652,14 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.104.0",
+      "latest": "5.104.1",
       "source": "https://registry.npmjs.org/%40tanstack%2Fquery-core"
     },
     "npm:@tanstack/react-query": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.104.0",
+      "latest": "5.104.1",
       "source": "https://registry.npmjs.org/%40tanstack%2Freact-query"
     },
     "npm:@types/babel__core": {
@@ -8826,7 +8827,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "26.6.3",
+      "latest": "26.6.4",
       "source": "https://registry.npmjs.org/%40types%2Fnode"
     },
     "npm:@types/pg": {
@@ -8898,14 +8899,14 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.0.2",
+      "latest": "5.0.3",
       "source": "https://registry.npmjs.org/%40vitest%2Fmocker"
     },
     "npm:@vitest/spy": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.0.2",
+      "latest": "5.0.3",
       "source": "https://registry.npmjs.org/%40vitest%2Fspy"
     },
     "npm:accepts": {
@@ -8987,7 +8988,7 @@
       "engines": {
         "node": ">=6.0.0"
       },
-      "latest": "2.11.26",
+      "latest": "2.11.27",
       "source": "https://registry.npmjs.org/baseline-browser-mapping"
     },
     "npm:body-parser": {
@@ -9014,7 +9015,7 @@
       "engines": {
         "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
       },
-      "latest": "4.29.1",
+      "latest": "4.29.3",
       "source": "https://registry.npmjs.org/browserslist"
     },
     "npm:bytes": {
@@ -9048,7 +9049,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.0.30001812",
+      "latest": "1.0.30001814",
       "source": "https://registry.npmjs.org/caniuse-lite"
     },
     "npm:chai": {
@@ -9057,7 +9058,7 @@
       "engines": {
         "node": ">=18"
       },
-      "latest": "6.2.2",
+      "latest": "6.3.0",
       "source": "https://registry.npmjs.org/chai"
     },
     "npm:chokidar": {
@@ -9398,7 +9399,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.5.439",
+      "latest": "1.5.444",
       "source": "https://registry.npmjs.org/electron-to-chromium"
     },
     "npm:embla-carousel": {
@@ -9444,7 +9445,7 @@
       "engines": {
         "node": ">=10.13.0"
       },
-      "latest": "5.25.1",
+      "latest": "5.26.0",
       "source": "https://registry.npmjs.org/enhanced-resolve"
     },
     "npm:es-define-property": {
@@ -9469,7 +9470,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "3.0.2",
+      "latest": "3.0.3",
       "source": "https://registry.npmjs.org/es-module-lexer"
     },
     "npm:es-object-atoms": {
@@ -9681,7 +9682,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "13.4.4",
+      "latest": "14.0.0",
       "source": "https://registry.npmjs.org/framer-motion"
     },
     "npm:fresh": {
@@ -9860,7 +9861,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "11.1.18",
+      "latest": "11.1.21",
       "source": "https://registry.npmjs.org/immer"
     },
     "npm:inherits": {
@@ -10060,14 +10061,14 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.48.0",
+      "latest": "1.52.0",
       "source": "https://registry.npmjs.org/lucide-react"
     },
     "npm:magic-string": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.4.2",
+      "latest": "1.4.3",
       "source": "https://registry.npmjs.org/magic-string"
     },
     "npm:math-intrinsics": {
@@ -10151,14 +10152,14 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "13.4.4",
+      "latest": "14.0.0",
       "source": "https://registry.npmjs.org/motion-dom"
     },
     "npm:motion-utils": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "13.3.0",
+      "latest": "14.0.0",
       "source": "https://registry.npmjs.org/motion-utils"
     },
     "npm:ms": {
@@ -10208,7 +10209,7 @@
       "engines": {
         "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
       },
-      "latest": "12.1.0",
+      "latest": "12.2.0",
       "source": "https://registry.npmjs.org/npm"
     },
     "npm:npm-run-path": {
@@ -10278,7 +10279,7 @@
       "engines": {
         "node": ">=22.18.0"
       },
-      "latest": "8.37.0",
+      "latest": "8.40.0",
       "source": "https://registry.npmjs.org/orval"
     },
     "npm:p-limit": {
@@ -10346,21 +10347,21 @@
       "engines": {
         "node": ">= 16.0.0"
       },
-      "latest": "8.23.0",
+      "latest": "8.23.1",
       "source": "https://registry.npmjs.org/pg"
     },
     "npm:pg-cloudflare": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.4.0",
+      "latest": "1.4.1",
       "source": "https://registry.npmjs.org/pg-cloudflare"
     },
     "npm:pg-connection-string": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.14.0",
+      "latest": "2.14.1",
       "source": "https://registry.npmjs.org/pg-connection-string"
     },
     "npm:pg-int8": {
@@ -10383,7 +10384,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.16.0",
+      "latest": "1.16.1",
       "source": "https://registry.npmjs.org/pg-protocol"
     },
     "npm:pg-types": {
@@ -10422,7 +10423,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "10.3.1",
+      "latest": "10.4.0",
       "source": "https://registry.npmjs.org/pino"
     },
     "npm:pino-abstract-transport": {
@@ -10443,7 +10444,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "13.1.3",
+      "latest": "13.2.0",
       "source": "https://registry.npmjs.org/pino-pretty"
     },
     "npm:pino-std-serializers": {
@@ -10477,9 +10478,9 @@
       "engines": {
         "node": ">=18.*"
       },
-      "latest": "12.6.0",
+      "latest": "12.9.1",
       "source": "https://registry.npmjs.org/pnpm",
-      "tracked_major_latest": "10.34.5"
+      "tracked_major_latest": "10.34.6"
     },
     "npm:postcss": {
       "basis": "npm stable latest tag",
@@ -10632,7 +10633,7 @@
       "engines": {
         "node": ">=18"
       },
-      "latest": "10.0.1",
+      "latest": "10.0.2",
       "source": "https://registry.npmjs.org/react-day-picker"
     },
     "npm:react-dom": {
@@ -10703,7 +10704,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "4.13.3",
+      "latest": "4.14.2",
       "source": "https://registry.npmjs.org/react-resizable-panels"
     },
     "npm:react-router": {
@@ -10787,7 +10788,7 @@
       "engines": {
         "node": ">=18.0.0"
       },
-      "latest": "2.50.0",
+      "latest": "2.51.0",
       "source": "https://registry.npmjs.org/remeda"
     },
     "npm:require-from-string": {
@@ -10829,7 +10830,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.12",
       "source": "https://registry.npmjs.org/rolldown"
     },
     "npm:router": {
@@ -11009,7 +11010,7 @@
       "engines": {
         "node": ">=0.10.0"
       },
-      "latest": "1.2.1",
+      "latest": "1.2.2",
       "source": "https://registry.npmjs.org/source-map-js"
     },
     "npm:split2": {
@@ -11041,16 +11042,16 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "4.2.0",
+      "latest": "4.3.0",
       "source": "https://registry.npmjs.org/std-env"
     },
     "npm:string-argv": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
-        "node": ">=0.6.19"
+        "node": ">=16.20.0"
       },
-      "latest": "0.3.2",
+      "latest": "0.4.0",
       "source": "https://registry.npmjs.org/string-argv"
     },
     "npm:strip-final-newline": {
@@ -11323,7 +11324,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "8.3.1",
+      "latest": "8.3.2",
       "source": "https://registry.npmjs.org/vite"
     },
     "npm:vitest": {
@@ -11332,7 +11333,7 @@
       "engines": {
         "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
       },
-      "latest": "5.0.2",
+      "latest": "5.0.3",
       "source": "https://registry.npmjs.org/vitest"
     },
     "npm:which": {
@@ -11357,7 +11358,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "3.11.0",
+      "latest": "3.13.0",
       "source": "https://registry.npmjs.org/wouter"
     },
     "npm:wrappy": {
@@ -11426,12 +11427,12 @@
     },
     "pypi:anthropic": {
       "basis": "highest non-yanked stable PyPI release",
-      "latest": "1.8.0",
+      "latest": "1.11.0",
       "source": "https://pypi.org/pypi/anthropic/json"
     },
     "pypi:mcp": {
       "basis": "highest non-yanked stable PyPI release",
-      "latest": "2.2.0",
+      "latest": "2.3.0",
       "source": "https://pypi.org/pypi/mcp/json"
     },
     "pypi:mssql-python": {

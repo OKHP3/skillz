@@ -97,7 +97,7 @@ and fully yanked releases. `gensync` currently has no stable release, and is rep
 such rather than inventing one. The JSON records input hashes normalized for line endings.
 
 <!-- technology-latest:start -->
-Last successful verification: 2026-09-26 (UTC).
+Last successful verification: 2026-10-05 (UTC).
 
 Coverage: **113 direct, catalog, script, CI and tool entries**, **390 additional transitive package names**, **499 lockfile package/version entries**, **33 active package manifests**.
 
@@ -108,7 +108,7 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | Technology | In place | Latest stable | Bounded update target | Source |
 | --- | --- | --- | --- | --- |
 | Node.js | 24.21.0 | 26.10.0; LTS 24.21.0 | 24.21.0 | [official releases](https://nodejs.org/dist/index.json) |
-| Python | 3.14.7 | 3.14.7 | 3.14.7 | [official releases](https://www.python.org/downloads/) |
+| Python | 3.14.7 | 3.14.8 | 3.14.8 | [official releases](https://www.python.org/downloads/) |
 
 ### Direct dependencies, scripts, CI and tools
 
@@ -160,11 +160,11 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / @replit/vite-plugin-runtime-error-modal | ^0.0.6 | 0.0.6 | [0.0.6](https://registry.npmjs.org/%40replit%2Fvite-plugin-runtime-error-modal) | current |
 | npm / @tailwindcss/typography | ^0.5.15 | 0.5.20 | [0.5.20](https://registry.npmjs.org/%40tailwindcss%2Ftypography) | current |
 | npm / @tailwindcss/vite | ^4.1.14 | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Fvite) | current |
-| npm / @tanstack/react-query | ^5.103.2 | 5.103.2 | [5.104.0](https://registry.npmjs.org/%40tanstack%2Freact-query) | update available |
+| npm / @tanstack/react-query | ^5.103.2 | 5.103.2 | [5.104.1](https://registry.npmjs.org/%40tanstack%2Freact-query) | update available |
 | npm / @types/cookie-parser | ^1.4.10 | 1.4.10 | [1.4.10](https://registry.npmjs.org/%40types%2Fcookie-parser) | current |
 | npm / @types/cors | ^2.8.19 | 2.8.19 | [2.8.19](https://registry.npmjs.org/%40types%2Fcors) | current |
 | npm / @types/express | ^5.0.6 | 5.0.6 | [5.0.6](https://registry.npmjs.org/%40types%2Fexpress) | current |
-| npm / @types/node | ^26.6.1 | 26.6.2 | [26.6.3](https://registry.npmjs.org/%40types%2Fnode) | update available |
+| npm / @types/node | ^26.6.1 | 26.6.2 | [26.6.4](https://registry.npmjs.org/%40types%2Fnode) | update available |
 | npm / @types/pg | ^8.23.1 | 8.23.1 | [8.23.1](https://registry.npmjs.org/%40types%2Fpg) | current |
 | npm / @types/react | ^19.3.0 | 19.3.0 | [19.3.0](https://registry.npmjs.org/%40types%2Freact) | current |
 | npm / @types/react-dom | ^19.3.0 | 19.3.0 | [19.3.0](https://registry.npmjs.org/%40types%2Freact-dom) | current |
@@ -184,27 +184,27 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / esbuild-plugin-pino | ^2.3.3 | 2.3.3 | [2.3.3](https://registry.npmjs.org/esbuild-plugin-pino) | current |
 | npm / express | ^5.2.1 | 5.2.1 | [5.2.1](https://registry.npmjs.org/express) | current |
 | npm / fast-glob | ^3.3.3 | 3.3.3 | [3.3.3](https://registry.npmjs.org/fast-glob) | current |
-| npm / framer-motion | ^13.4.1 | 13.4.1 | [13.4.4](https://registry.npmjs.org/framer-motion) | update available |
+| npm / framer-motion | ^13.4.1 | 13.4.1 | [14.0.0](https://registry.npmjs.org/framer-motion) | major upgrade review |
 | npm / fuse.js | ^7.5.0 | 7.5.0 | [7.5.0](https://registry.npmjs.org/fuse.js) | current |
 | npm / input-otp | ^1.5.0 | 1.5.0 | [1.5.0](https://registry.npmjs.org/input-otp) | current |
-| npm / lucide-react | ^1.47.0 | 1.47.0 | [1.48.0](https://registry.npmjs.org/lucide-react) | update available |
+| npm / lucide-react | ^1.47.0 | 1.47.0 | [1.52.0](https://registry.npmjs.org/lucide-react) | update available |
 | npm / next-themes | ^0.4.6 | 0.4.6 | [0.4.6](https://registry.npmjs.org/next-themes) | current |
-| npm / npm | transitive | not locked | [12.1.0](https://registry.npmjs.org/npm) | declared only; installed version unknown |
-| npm / orval | ^8.37.0 | 8.37.0 | [8.37.0](https://registry.npmjs.org/orval) | current |
-| npm / pg | ^8.23.0 | 8.23.0 | [8.23.0](https://registry.npmjs.org/pg) | current |
-| npm / pino | ^9.14.0 | 9.14.0 | [10.3.1](https://registry.npmjs.org/pino) | major upgrade review |
+| npm / npm | transitive | not locked | [12.2.0](https://registry.npmjs.org/npm) | declared only; installed version unknown |
+| npm / orval | ^8.37.0 | 8.37.0 | [8.40.0](https://registry.npmjs.org/orval) | update available |
+| npm / pg | ^8.23.0 | 8.23.0 | [8.23.1](https://registry.npmjs.org/pg) | update available |
+| npm / pino | ^9.14.0 | 9.14.0 | [10.4.0](https://registry.npmjs.org/pino) | major upgrade review |
 | npm / pino-http | ^10.5.0 | 10.5.0 | [11.0.0](https://registry.npmjs.org/pino-http) | major upgrade review |
-| npm / pino-pretty | ^13.1.3 | 13.1.3 | [13.1.3](https://registry.npmjs.org/pino-pretty) | current |
+| npm / pino-pretty | ^13.1.3 | 13.1.3 | [13.2.0](https://registry.npmjs.org/pino-pretty) | update available |
 | npm / playwright | ^1.63.0 | 1.63.0 | [1.63.0](https://registry.npmjs.org/playwright) | current |
-| npm / pnpm | pnpm@10.26.1 | not locked | [12.6.0](https://registry.npmjs.org/pnpm) | track 10.x (10.34.5); latest major requires migration |
+| npm / pnpm | pnpm@10.34.5 | not locked | [12.9.1](https://registry.npmjs.org/pnpm) | track 10.x (10.34.6); latest major requires migration |
 | npm / prettier | ^3.9.9 | 3.9.9 | [3.9.9](https://registry.npmjs.org/prettier) | current |
 | npm / react | 19.3.0; >=18 | 19.3.0 | [19.3.0](https://registry.npmjs.org/react) | current |
-| npm / react-day-picker | ^10.0.1 | 10.0.1 | [10.0.1](https://registry.npmjs.org/react-day-picker) | current |
+| npm / react-day-picker | ^10.0.1 | 10.0.1 | [10.0.2](https://registry.npmjs.org/react-day-picker) | update available |
 | npm / react-dom | 19.3.0 | 19.3.0 | [19.3.0](https://registry.npmjs.org/react-dom) | current |
 | npm / react-hook-form | ^7.88.0 | 7.88.0 | [7.89.0](https://registry.npmjs.org/react-hook-form) | update available |
 | npm / react-icons | ^5.4.0 | 5.7.0 | [5.7.0](https://registry.npmjs.org/react-icons) | current |
 | npm / react-is | 19.3.0 | 19.3.0 | [19.3.0](https://registry.npmjs.org/react-is) | current |
-| npm / react-resizable-panels | ^2.1.7; ^2.1.9 | 2.1.9 | [4.13.3](https://registry.npmjs.org/react-resizable-panels) | major upgrade review |
+| npm / react-resizable-panels | ^2.1.7; ^2.1.9 | 2.1.9 | [4.14.2](https://registry.npmjs.org/react-resizable-panels) | major upgrade review |
 | npm / react-router-dom | ^7.18.4 | 7.18.4 | [7.18.4](https://registry.npmjs.org/react-router-dom) | current |
 | npm / recharts | ^3.10.1 | 3.10.1 | [3.10.1](https://registry.npmjs.org/recharts) | current |
 | npm / sonner | ^2.0.8 | 2.0.8 | [2.0.8](https://registry.npmjs.org/sonner) | current |
@@ -216,13 +216,13 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / tw-animate-css | ^1.4.0 | 1.4.0 | [1.4.0](https://registry.npmjs.org/tw-animate-css) | current |
 | npm / typescript | ~6.0.3 | 6.0.3 | [7.0.2](https://registry.npmjs.org/typescript) | major upgrade review |
 | npm / vaul | ^1.1.2 | 1.1.2 | [1.1.2](https://registry.npmjs.org/vaul) | current |
-| npm / vite | ^8.3.0 | 8.3.0 | [8.3.1](https://registry.npmjs.org/vite) | update available |
-| npm / vitest | ^5.0.1 | 5.0.1 | [5.0.2](https://registry.npmjs.org/vitest) | update available |
-| npm / wouter | ^3.11.0 | 3.11.0 | [3.11.0](https://registry.npmjs.org/wouter) | current |
+| npm / vite | ^8.3.0 | 8.3.0 | [8.3.2](https://registry.npmjs.org/vite) | update available |
+| npm / vitest | ^5.0.1 | 5.0.1 | [5.0.3](https://registry.npmjs.org/vitest) | update available |
+| npm / wouter | ^3.11.0 | 3.11.0 | [3.13.0](https://registry.npmjs.org/wouter) | update available |
 | npm / zod | ^4.6.5 | 4.6.5 | [4.6.5](https://registry.npmjs.org/zod) | current |
 | pypi / PyYAML | ==6.0.3; >=6.0.3; unversioned import | not locked | [6.0.3](https://pypi.org/pypi/PyYAML/json) | declared only; installed version unknown |
-| pypi / anthropic | >=1.6.0; unversioned import | not locked | [1.8.0](https://pypi.org/pypi/anthropic/json) | declared only; installed version unknown |
-| pypi / mcp | >=2.2.0; unversioned import | not locked | [2.2.0](https://pypi.org/pypi/mcp/json) | declared only; installed version unknown |
+| pypi / anthropic | >=1.6.0; unversioned import | not locked | [1.11.0](https://pypi.org/pypi/anthropic/json) | declared only; installed version unknown |
+| pypi / mcp | >=2.2.0; unversioned import | not locked | [2.3.0](https://pypi.org/pypi/mcp/json) | declared only; installed version unknown |
 | pypi / mssql-python | unversioned import | not locked | [1.15.0](https://pypi.org/pypi/mssql-python/json) | declared only; installed version unknown |
 | pypi / packaging | ==26.3; unversioned import | not locked | [26.3](https://pypi.org/pypi/packaging/json) | declared only; installed version unknown |
 | pypi / pandas | unversioned import | not locked | [3.0.6](https://pypi.org/pypi/pandas/json) | declared only; installed version unknown |
@@ -267,20 +267,20 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / @nodelib/fs.scandir | transitive | 2.1.5 | [4.0.1](https://registry.npmjs.org/%40nodelib%2Ffs.scandir) | major upgrade review |
 | npm / @nodelib/fs.stat | transitive | 2.0.5 | [4.0.0](https://registry.npmjs.org/%40nodelib%2Ffs.stat) | major upgrade review |
 | npm / @nodelib/fs.walk | transitive | 1.2.8 | [3.0.1](https://registry.npmjs.org/%40nodelib%2Ffs.walk) | major upgrade review |
-| npm / @orval/angular | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fangular) | current |
-| npm / @orval/axios | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Faxios) | current |
-| npm / @orval/core | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fcore) | current |
-| npm / @orval/effect | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Feffect) | current |
-| npm / @orval/fetch | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Ffetch) | current |
-| npm / @orval/hono | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fhono) | current |
-| npm / @orval/mcp | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fmcp) | current |
-| npm / @orval/mock | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fmock) | current |
-| npm / @orval/pinia-colada | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fpinia-colada) | current |
-| npm / @orval/query | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fquery) | current |
-| npm / @orval/solid-start | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fsolid-start) | current |
-| npm / @orval/swr | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fswr) | current |
-| npm / @orval/zod | transitive | 8.37.0 | [8.37.0](https://registry.npmjs.org/%40orval%2Fzod) | current |
-| npm / @oxc-project/types | transitive | 0.150.0 | [0.151.0](https://registry.npmjs.org/%40oxc-project%2Ftypes) | update available |
+| npm / @orval/angular | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fangular) | update available |
+| npm / @orval/axios | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Faxios) | update available |
+| npm / @orval/core | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fcore) | update available |
+| npm / @orval/effect | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Feffect) | update available |
+| npm / @orval/fetch | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Ffetch) | update available |
+| npm / @orval/hono | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fhono) | update available |
+| npm / @orval/mcp | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fmcp) | update available |
+| npm / @orval/mock | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fmock) | update available |
+| npm / @orval/pinia-colada | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fpinia-colada) | update available |
+| npm / @orval/query | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fquery) | update available |
+| npm / @orval/solid-start | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fsolid-start) | update available |
+| npm / @orval/swr | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fswr) | update available |
+| npm / @orval/zod | transitive | 8.37.0 | [8.40.0](https://registry.npmjs.org/%40orval%2Fzod) | update available |
+| npm / @oxc-project/types | transitive | 0.150.0 | [0.152.0](https://registry.npmjs.org/%40oxc-project%2Ftypes) | update available |
 | npm / @pinojs/redact | transitive | 0.4.0 | [0.4.0](https://registry.npmjs.org/%40pinojs%2Fredact) | current |
 | npm / @radix-ui/number | transitive | 1.1.3 | [1.1.3](https://registry.npmjs.org/%40radix-ui%2Fnumber) | current |
 | npm / @radix-ui/primitive | transitive | 1.1.7 | [1.1.7](https://registry.npmjs.org/%40radix-ui%2Fprimitive) | current |
@@ -309,31 +309,31 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / @radix-ui/react-use-size | transitive | 1.1.4 | [1.1.4](https://registry.npmjs.org/%40radix-ui%2Freact-use-size) | current |
 | npm / @radix-ui/react-visually-hidden | transitive | 1.2.11 | [1.2.11](https://registry.npmjs.org/%40radix-ui%2Freact-visually-hidden) | current |
 | npm / @radix-ui/rect | transitive | 1.1.3 | [1.1.3](https://registry.npmjs.org/%40radix-ui%2Frect) | current |
-| npm / @reduxjs/toolkit | transitive | 2.12.0 | [2.12.0](https://registry.npmjs.org/%40reduxjs%2Ftoolkit) | current |
-| npm / @rolldown/binding-android-arm-eabi | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm-eabi) | update available |
-| npm / @rolldown/binding-android-arm64 | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm64) | update available |
-| npm / @rolldown/binding-darwin-arm64 | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-arm64) | update available |
-| npm / @rolldown/binding-darwin-x64 | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-x64) | update available |
-| npm / @rolldown/binding-freebsd-x64 | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-freebsd-x64) | update available |
-| npm / @rolldown/binding-linux-arm-gnueabihf | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm-gnueabihf) | update available |
-| npm / @rolldown/binding-linux-arm64-gnu | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-gnu) | update available |
-| npm / @rolldown/binding-linux-arm64-musl | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-musl) | update available |
-| npm / @rolldown/binding-linux-ppc64-gnu | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-ppc64-gnu) | update available |
-| npm / @rolldown/binding-linux-s390x-gnu | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-s390x-gnu) | update available |
-| npm / @rolldown/binding-linux-x64-gnu | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-gnu) | update available |
-| npm / @rolldown/binding-linux-x64-musl | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-musl) | update available |
-| npm / @rolldown/binding-openharmony-arm64 | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-openharmony-arm64) | update available |
-| npm / @rolldown/binding-win32-arm64-msvc | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-win32-arm64-msvc) | update available |
-| npm / @rolldown/binding-win32-x64-msvc | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/%40rolldown%2Fbinding-win32-x64-msvc) | update available |
+| npm / @reduxjs/toolkit | transitive | 2.12.0 | [2.13.0](https://registry.npmjs.org/%40reduxjs%2Ftoolkit) | update available |
+| npm / @rolldown/binding-android-arm-eabi | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm-eabi) | update available |
+| npm / @rolldown/binding-android-arm64 | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm64) | update available |
+| npm / @rolldown/binding-darwin-arm64 | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-arm64) | update available |
+| npm / @rolldown/binding-darwin-x64 | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-x64) | update available |
+| npm / @rolldown/binding-freebsd-x64 | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-freebsd-x64) | update available |
+| npm / @rolldown/binding-linux-arm-gnueabihf | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm-gnueabihf) | update available |
+| npm / @rolldown/binding-linux-arm64-gnu | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-gnu) | update available |
+| npm / @rolldown/binding-linux-arm64-musl | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-musl) | update available |
+| npm / @rolldown/binding-linux-ppc64-gnu | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-ppc64-gnu) | update available |
+| npm / @rolldown/binding-linux-s390x-gnu | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-s390x-gnu) | update available |
+| npm / @rolldown/binding-linux-x64-gnu | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-gnu) | update available |
+| npm / @rolldown/binding-linux-x64-musl | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-musl) | update available |
+| npm / @rolldown/binding-openharmony-arm64 | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-openharmony-arm64) | update available |
+| npm / @rolldown/binding-win32-arm64-msvc | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-win32-arm64-msvc) | update available |
+| npm / @rolldown/binding-win32-x64-msvc | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/%40rolldown%2Fbinding-win32-x64-msvc) | update available |
 | npm / @rolldown/pluginutils | transitive | 1.0.0-rc.3, 1.0.1 | [1.0.1](https://registry.npmjs.org/%40rolldown%2Fpluginutils) | non-stable or non-semver lock entry; review |
-| npm / @scalar/helpers | transitive | 0.12.0, 0.13.0 | [0.15.0](https://registry.npmjs.org/%40scalar%2Fhelpers) | update available |
-| npm / @scalar/json-magic | transitive | 0.13.5, 0.15.0 | [0.15.2](https://registry.npmjs.org/%40scalar%2Fjson-magic) | update available |
-| npm / @scalar/json-schema-validator | transitive | 0.1.4 | [0.1.6](https://registry.npmjs.org/%40scalar%2Fjson-schema-validator) | update available |
-| npm / @scalar/openapi-parser | transitive | 0.29.5 | [0.29.7](https://registry.npmjs.org/%40scalar%2Fopenapi-parser) | update available |
+| npm / @scalar/helpers | transitive | 0.12.0, 0.13.0 | [0.16.0](https://registry.npmjs.org/%40scalar%2Fhelpers) | update available |
+| npm / @scalar/json-magic | transitive | 0.13.5, 0.15.0 | [0.15.4](https://registry.npmjs.org/%40scalar%2Fjson-magic) | update available |
+| npm / @scalar/json-schema-validator | transitive | 0.1.4 | [0.1.9](https://registry.npmjs.org/%40scalar%2Fjson-schema-validator) | update available |
+| npm / @scalar/openapi-parser | transitive | 0.29.5 | [0.29.10](https://registry.npmjs.org/%40scalar%2Fopenapi-parser) | update available |
 | npm / @scalar/openapi-types | transitive | 0.9.6, 0.9.7 | [0.9.7](https://registry.npmjs.org/%40scalar%2Fopenapi-types) | update available |
-| npm / @scalar/openapi-upgrader | transitive | 0.3.0 | [0.4.0](https://registry.npmjs.org/%40scalar%2Fopenapi-upgrader) | update available |
-| npm / @scalar/openapi-validator | transitive | 0.1.4 | [0.1.6](https://registry.npmjs.org/%40scalar%2Fopenapi-validator) | update available |
-| npm / @scalar/types | transitive | 0.21.0 | [0.22.1](https://registry.npmjs.org/%40scalar%2Ftypes) | update available |
+| npm / @scalar/openapi-upgrader | transitive | 0.3.0 | [0.4.1](https://registry.npmjs.org/%40scalar%2Fopenapi-upgrader) | update available |
+| npm / @scalar/openapi-validator | transitive | 0.1.4 | [0.1.9](https://registry.npmjs.org/%40scalar%2Fopenapi-validator) | update available |
+| npm / @scalar/types | transitive | 0.21.0 | [0.22.4](https://registry.npmjs.org/%40scalar%2Ftypes) | update available |
 | npm / @sec-ant/readable-stream | transitive | 0.4.1 | [0.7.0](https://registry.npmjs.org/%40sec-ant%2Freadable-stream) | update available |
 | npm / @sindresorhus/merge-streams | transitive | 4.0.0 | [4.0.0](https://registry.npmjs.org/%40sindresorhus%2Fmerge-streams) | current |
 | npm / @standard-schema/spec | transitive | 1.1.0 | [1.1.0](https://registry.npmjs.org/%40standard-schema%2Fspec) | current |
@@ -342,7 +342,7 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / @tailwindcss/oxide | transitive | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Foxide) | current |
 | npm / @tailwindcss/oxide-linux-x64-gnu | transitive | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Foxide-linux-x64-gnu) | current |
 | npm / @tailwindcss/oxide-wasm32-wasi | transitive | 4.3.3 | [4.3.3](https://registry.npmjs.org/%40tailwindcss%2Foxide-wasm32-wasi) | current |
-| npm / @tanstack/query-core | transitive | 5.103.2 | [5.104.0](https://registry.npmjs.org/%40tanstack%2Fquery-core) | update available |
+| npm / @tanstack/query-core | transitive | 5.103.2 | [5.104.1](https://registry.npmjs.org/%40tanstack%2Fquery-core) | update available |
 | npm / @types/babel__core | transitive | 7.20.5 | [7.20.5](https://registry.npmjs.org/%40types%2Fbabel__core) | current |
 | npm / @types/babel__generator | transitive | 7.27.0 | [7.27.0](https://registry.npmjs.org/%40types%2Fbabel__generator) | current |
 | npm / @types/babel__template | transitive | 7.4.4 | [7.4.4](https://registry.npmjs.org/%40types%2Fbabel__template) | current |
@@ -368,8 +368,8 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / @types/send | transitive | 1.2.1 | [1.2.1](https://registry.npmjs.org/%40types%2Fsend) | current |
 | npm / @types/serve-static | transitive | 2.2.0 | [2.2.0](https://registry.npmjs.org/%40types%2Fserve-static) | current |
 | npm / @types/use-sync-external-store | transitive | 0.0.6 | [1.7.0](https://registry.npmjs.org/%40types%2Fuse-sync-external-store) | major upgrade review |
-| npm / @vitest/mocker | transitive | 5.0.1 | [5.0.2](https://registry.npmjs.org/%40vitest%2Fmocker) | update available |
-| npm / @vitest/spy | transitive | 5.0.1 | [5.0.2](https://registry.npmjs.org/%40vitest%2Fspy) | update available |
+| npm / @vitest/mocker | transitive | 5.0.1 | [5.0.3](https://registry.npmjs.org/%40vitest%2Fmocker) | update available |
+| npm / @vitest/spy | transitive | 5.0.1 | [5.0.3](https://registry.npmjs.org/%40vitest%2Fspy) | update available |
 | npm / accepts | transitive | 2.0.0 | [1.3.8](https://registry.npmjs.org/accepts) | ahead of latest tag; review (never downgrade) |
 | npm / acorn | transitive | 8.18.0 | [8.18.0](https://registry.npmjs.org/acorn) | current |
 | npm / ajv | transitive | 8.20.0 | [8.20.0](https://registry.npmjs.org/ajv) | current |
@@ -379,15 +379,15 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / aria-hidden | transitive | 1.2.6 | [1.2.6](https://registry.npmjs.org/aria-hidden) | current |
 | npm / assertion-error | transitive | 2.0.1 | [2.0.1](https://registry.npmjs.org/assertion-error) | current |
 | npm / atomic-sleep | transitive | 1.0.0 | [1.0.0](https://registry.npmjs.org/atomic-sleep) | current |
-| npm / baseline-browser-mapping | transitive | 2.11.3 | [2.11.26](https://registry.npmjs.org/baseline-browser-mapping) | update available |
+| npm / baseline-browser-mapping | transitive | 2.11.3 | [2.11.27](https://registry.npmjs.org/baseline-browser-mapping) | update available |
 | npm / body-parser | transitive | 2.3.0 | [2.3.0](https://registry.npmjs.org/body-parser) | current |
 | npm / braces | transitive | 3.0.3 | [3.0.3](https://registry.npmjs.org/braces) | current |
-| npm / browserslist | transitive | 4.28.7 | [4.29.1](https://registry.npmjs.org/browserslist) | update available |
+| npm / browserslist | transitive | 4.28.7 | [4.29.3](https://registry.npmjs.org/browserslist) | update available |
 | npm / bytes | transitive | 3.1.2 | [3.1.2](https://registry.npmjs.org/bytes) | current |
 | npm / call-bind-apply-helpers | transitive | 1.0.2 | [1.0.2](https://registry.npmjs.org/call-bind-apply-helpers) | current |
 | npm / call-bound | transitive | 1.0.4 | [1.0.4](https://registry.npmjs.org/call-bound) | current |
-| npm / caniuse-lite | transitive | 1.0.30001806 | [1.0.30001812](https://registry.npmjs.org/caniuse-lite) | update available |
-| npm / chai | transitive | 6.2.2 | [6.2.2](https://registry.npmjs.org/chai) | current |
+| npm / caniuse-lite | transitive | 1.0.30001806 | [1.0.30001814](https://registry.npmjs.org/caniuse-lite) | update available |
+| npm / chai | transitive | 6.2.2 | [6.3.0](https://registry.npmjs.org/chai) | update available |
 | npm / colorette | transitive | 2.0.20 | [2.0.20](https://registry.npmjs.org/colorette) | current |
 | npm / commander | transitive | 15.0.0 | [15.0.0](https://registry.npmjs.org/commander) | current |
 | npm / compare-versions | transitive | 6.1.1 | [6.1.1](https://registry.npmjs.org/compare-versions) | current |
@@ -418,15 +418,15 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / detect-node-es | transitive | 1.1.0 | [1.1.0](https://registry.npmjs.org/detect-node-es) | current |
 | npm / dunder-proto | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/dunder-proto) | current |
 | npm / ee-first | transitive | 1.1.1 | [1.1.1](https://registry.npmjs.org/ee-first) | current |
-| npm / electron-to-chromium | transitive | 1.5.396 | [1.5.439](https://registry.npmjs.org/electron-to-chromium) | update available |
+| npm / electron-to-chromium | transitive | 1.5.396 | [1.5.444](https://registry.npmjs.org/electron-to-chromium) | update available |
 | npm / embla-carousel | transitive | 8.6.0 | [8.6.0](https://registry.npmjs.org/embla-carousel) | current |
 | npm / embla-carousel-reactive-utils | transitive | 8.6.0 | [8.6.0](https://registry.npmjs.org/embla-carousel-reactive-utils) | current |
 | npm / encodeurl | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/encodeurl) | current |
 | npm / end-of-stream | transitive | 1.4.5 | [1.4.5](https://registry.npmjs.org/end-of-stream) | current |
-| npm / enhanced-resolve | transitive | 5.24.3 | [5.25.1](https://registry.npmjs.org/enhanced-resolve) | update available |
+| npm / enhanced-resolve | transitive | 5.24.3 | [5.26.0](https://registry.npmjs.org/enhanced-resolve) | update available |
 | npm / es-define-property | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/es-define-property) | current |
 | npm / es-errors | transitive | 1.3.0 | [1.3.0](https://registry.npmjs.org/es-errors) | current |
-| npm / es-module-lexer | transitive | 2.3.2 | [3.0.2](https://registry.npmjs.org/es-module-lexer) | major upgrade review |
+| npm / es-module-lexer | transitive | 2.3.2 | [3.0.3](https://registry.npmjs.org/es-module-lexer) | major upgrade review |
 | npm / es-object-atoms | transitive | 1.1.2 | [1.1.2](https://registry.npmjs.org/es-object-atoms) | current |
 | npm / es-toolkit | transitive | 1.52.0 | [1.52.0](https://registry.npmjs.org/es-toolkit) | current |
 | npm / escalade | transitive | 3.2.0 | [3.2.0](https://registry.npmjs.org/escalade) | current |
@@ -467,7 +467,7 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / http-errors | transitive | 2.0.1 | [2.0.1](https://registry.npmjs.org/http-errors) | current |
 | npm / human-signals | transitive | 8.0.1 | [8.0.1](https://registry.npmjs.org/human-signals) | current |
 | npm / iconv-lite | transitive | 0.7.3 | [0.7.3](https://registry.npmjs.org/iconv-lite) | current |
-| npm / immer | transitive | 11.1.18 | [11.1.18](https://registry.npmjs.org/immer) | current |
+| npm / immer | transitive | 11.1.18 | [11.1.21](https://registry.npmjs.org/immer) | update available |
 | npm / inherits | transitive | 2.0.4 | [2.0.4](https://registry.npmjs.org/inherits) | current |
 | npm / internmap | transitive | 2.0.3 | [2.0.3](https://registry.npmjs.org/internmap) | current |
 | npm / ipaddr.js | transitive | 1.9.1 | [2.5.0](https://registry.npmjs.org/ipaddr.js) | major upgrade review |
@@ -490,7 +490,7 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / lightningcss-linux-x64-gnu | transitive | 1.32.0, 1.33.0 | [1.33.0](https://registry.npmjs.org/lightningcss-linux-x64-gnu) | update available |
 | npm / locate-path | transitive | 8.0.0 | [8.0.0](https://registry.npmjs.org/locate-path) | current |
 | npm / lru-cache | transitive | 5.1.1 | [11.5.3](https://registry.npmjs.org/lru-cache) | major upgrade review |
-| npm / magic-string | transitive | 0.30.21, 1.4.1 | [1.4.2](https://registry.npmjs.org/magic-string) | major upgrade review |
+| npm / magic-string | transitive | 0.30.21, 1.4.1 | [1.4.3](https://registry.npmjs.org/magic-string) | major upgrade review |
 | npm / math-intrinsics | transitive | 1.1.0 | [1.1.0](https://registry.npmjs.org/math-intrinsics) | current |
 | npm / media-typer | transitive | 1.1.1 | [2.0.0](https://registry.npmjs.org/media-typer) | major upgrade review |
 | npm / merge-descriptors | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/merge-descriptors) | current |
@@ -500,8 +500,8 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / mime-types | transitive | 3.0.2 | [3.0.2](https://registry.npmjs.org/mime-types) | current |
 | npm / minimist | transitive | 1.2.8 | [1.2.8](https://registry.npmjs.org/minimist) | current |
 | npm / modern-screenshot | transitive | 4.7.0 | [4.7.0](https://registry.npmjs.org/modern-screenshot) | current |
-| npm / motion-dom | transitive | 13.4.1 | [13.4.4](https://registry.npmjs.org/motion-dom) | update available |
-| npm / motion-utils | transitive | 13.3.0 | [13.3.0](https://registry.npmjs.org/motion-utils) | current |
+| npm / motion-dom | transitive | 13.4.1 | [14.0.0](https://registry.npmjs.org/motion-dom) | major upgrade review |
+| npm / motion-utils | transitive | 13.3.0 | [14.0.0](https://registry.npmjs.org/motion-utils) | major upgrade review |
 | npm / ms | transitive | 2.1.3 | [2.1.3](https://registry.npmjs.org/ms) | current |
 | npm / nanoid | transitive | 3.3.19, 5.1.16 | [6.0.1](https://registry.npmjs.org/nanoid) | major upgrade review |
 | npm / negotiator | transitive | 1.0.0 | [1.1.0](https://registry.npmjs.org/negotiator) | update available |
@@ -520,11 +520,11 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / path-key | transitive | 3.1.1, 4.0.0 | [4.0.0](https://registry.npmjs.org/path-key) | major upgrade review |
 | npm / path-to-regexp | transitive | 8.4.2 | [8.4.2](https://registry.npmjs.org/path-to-regexp) | current |
 | npm / pathe | transitive | 2.0.3 | [2.0.3](https://registry.npmjs.org/pathe) | current |
-| npm / pg-cloudflare | transitive | 1.4.0 | [1.4.0](https://registry.npmjs.org/pg-cloudflare) | current |
-| npm / pg-connection-string | transitive | 2.14.0 | [2.14.0](https://registry.npmjs.org/pg-connection-string) | current |
+| npm / pg-cloudflare | transitive | 1.4.0 | [1.4.1](https://registry.npmjs.org/pg-cloudflare) | update available |
+| npm / pg-connection-string | transitive | 2.14.0 | [2.14.1](https://registry.npmjs.org/pg-connection-string) | update available |
 | npm / pg-int8 | transitive | 1.0.1 | [1.0.1](https://registry.npmjs.org/pg-int8) | current |
 | npm / pg-pool | transitive | 3.14.0 | [3.14.0](https://registry.npmjs.org/pg-pool) | current |
-| npm / pg-protocol | transitive | 1.16.0 | [1.16.0](https://registry.npmjs.org/pg-protocol) | current |
+| npm / pg-protocol | transitive | 1.16.0 | [1.16.1](https://registry.npmjs.org/pg-protocol) | update available |
 | npm / pg-types | transitive | 2.2.0 | [4.1.0](https://registry.npmjs.org/pg-types) | major upgrade review |
 | npm / pgpass | transitive | 1.0.5 | [1.0.6](https://registry.npmjs.org/pgpass) | update available |
 | npm / picocolors | transitive | 1.1.1 | [1.1.1](https://registry.npmjs.org/picocolors) | current |
@@ -558,12 +558,12 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / redux | transitive | 5.0.1 | [5.0.1](https://registry.npmjs.org/redux) | current |
 | npm / redux-thunk | transitive | 3.1.0 | [3.1.0](https://registry.npmjs.org/redux-thunk) | current |
 | npm / regexparam | transitive | 3.0.0 | [3.0.0](https://registry.npmjs.org/regexparam) | current |
-| npm / remeda | transitive | 2.50.0 | [2.50.0](https://registry.npmjs.org/remeda) | current |
+| npm / remeda | transitive | 2.50.0 | [2.51.0](https://registry.npmjs.org/remeda) | update available |
 | npm / require-from-string | transitive | 2.0.2 | [2.0.2](https://registry.npmjs.org/require-from-string) | current |
 | npm / reselect | transitive | 5.2.0 | [5.3.0](https://registry.npmjs.org/reselect) | update available |
 | npm / resolve-pkg-maps | transitive | 1.0.0 | [1.0.0](https://registry.npmjs.org/resolve-pkg-maps) | current |
 | npm / reusify | transitive | 1.1.0 | [1.1.0](https://registry.npmjs.org/reusify) | current |
-| npm / rolldown | transitive | 1.2.9 | [1.2.11](https://registry.npmjs.org/rolldown) | update available |
+| npm / rolldown | transitive | 1.2.9 | [1.2.12](https://registry.npmjs.org/rolldown) | update available |
 | npm / router | transitive | 2.2.0 | [2.2.0](https://registry.npmjs.org/router) | current |
 | npm / run-parallel | transitive | 1.2.0 | [1.2.0](https://registry.npmjs.org/run-parallel) | current |
 | npm / safe-stable-stringify | transitive | 2.5.0 | [2.5.0](https://registry.npmjs.org/safe-stable-stringify) | current |
@@ -584,12 +584,12 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 | npm / siginfo | transitive | 2.0.0 | [2.0.0](https://registry.npmjs.org/siginfo) | current |
 | npm / signal-exit | transitive | 4.1.0 | [4.1.0](https://registry.npmjs.org/signal-exit) | current |
 | npm / sonic-boom | transitive | 4.2.1 | [5.0.1](https://registry.npmjs.org/sonic-boom) | major upgrade review |
-| npm / source-map-js | transitive | 1.2.1 | [1.2.1](https://registry.npmjs.org/source-map-js) | current |
+| npm / source-map-js | transitive | 1.2.1 | [1.2.2](https://registry.npmjs.org/source-map-js) | update available |
 | npm / split2 | transitive | 4.2.0 | [4.2.0](https://registry.npmjs.org/split2) | current |
 | npm / stackback | transitive | 0.0.2 | [0.0.2](https://registry.npmjs.org/stackback) | current |
 | npm / statuses | transitive | 2.0.2 | [2.0.2](https://registry.npmjs.org/statuses) | current |
-| npm / std-env | transitive | 4.2.0 | [4.2.0](https://registry.npmjs.org/std-env) | current |
-| npm / string-argv | transitive | 0.3.2 | [0.3.2](https://registry.npmjs.org/string-argv) | current |
+| npm / std-env | transitive | 4.2.0 | [4.3.0](https://registry.npmjs.org/std-env) | update available |
+| npm / string-argv | transitive | 0.3.2 | [0.4.0](https://registry.npmjs.org/string-argv) | update available |
 | npm / strip-final-newline | transitive | 4.0.0 | [4.0.0](https://registry.npmjs.org/strip-final-newline) | current |
 | npm / strip-json-comments | transitive | 5.0.3 | [5.0.3](https://registry.npmjs.org/strip-json-comments) | current |
 | npm / tagged-tag | transitive | 1.0.0 | [1.0.0](https://registry.npmjs.org/tagged-tag) | current |
