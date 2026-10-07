@@ -124,6 +124,11 @@ gh pr view <number> --json state,mergeStateStatus,reviewDecision,statusCheckRoll
 Do not infer "no PR" from a failed network call. Record the lookup as unknown
 and place the branch in `review`.
 
+To include saved hosted-lookup results in the JSON audit without making a
+network call, pass `--hosted-lookups path/to/lookups.json`. The file maps branch
+names to PR evidence objects; use `null` for an unavailable lookup. Failed,
+unknown, missing, stale-head, or unreachable-merge evidence remains in `review`.
+
 ### 3. Classify every branch
 
 Every non-current, non-`main` branch belongs in exactly one bucket:
@@ -190,16 +195,18 @@ python3 .agents/skills/okhp3-replit-repl-janitor/scripts/audit-repo.py \
   --root . \
   --check-delete \
   --branch '<branch>' \
-  --reviewed-head '<reviewed SHA>'
+  --reviewed-head '<reviewed local SHA>' \
+  --reviewed-remote-head '<reviewed remote SHA>'
 ```
 
-The JSON result records both `reviewed_head` and the freshly read
-`current_head`. If the bucket is `review`, stop, record the hold, and run no
-deletion command. Only a `delete` result may be executed, and its
-`deletion_commands` must be run in the emitted order. The sequence is
-remote-first (`git push origin --delete <branch>`) and local second
-(`git branch -d <branch>`). The check is read-only and never executes either
-command.
+The JSON result records reviewed and freshly read local tips in `reviewed_head`
+and `current_head`, plus authoritative remote tips in `reviewed_remote_head`
+and `current_remote_head`. The remote is read directly, not from a potentially
+stale tracking ref. If either tip differs, the bucket is `review`; stop and run
+no deletion command. Only a `delete` result may be executed, and its
+`deletion_commands` must be run in the emitted order: remote first, local
+second. The check is read-only and never executes either command. If
+`--reviewed-remote-head` is omitted, it defaults to `--reviewed-head`.
 
 For an approved merge:
 
@@ -271,6 +278,16 @@ Return:
   expectations each.
 - `benchmarks/benchmark.json` — version-matched Foundry evidence after live
   execution.
+
+
+## Canonical and shipped package boundary
+
+`.agents/skills/okhp3-replit-repl-janitor` is the canonical working package;
+`replit/okhp3-replit-repl-janitor` is the shipped mirror. Their audit scripts
+must be byte-identical, and both test suites must cover the shared deletion
+and hosted-evidence safety fixtures. Package metadata and evaluation records
+may differ, but that divergence is outside this runtime boundary and must be
+reviewed separately.
 
 ---
 

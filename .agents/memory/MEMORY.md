@@ -27,3 +27,4 @@
 - [Git sync fixture remotes](github-sync-fixture.md) — disposable bare remotes need an explicit default branch before working clones are created
 - [GitHub sync package parity](github-sync-package-parity.md) — `.agents/skills` is canonical; promote reviewed safety fixtures into the `replit` shipping mirror
 - [Published fixture hash navigation](published-fixture-hash-navigation.md) — hash-only route changes reuse static fixture documents, so inline route setup does not rerun
+- [Janitor package parity](janitor-package-parity.md) — keep audit runtime and deletion-safety fixtures aligned without overwriting distribution-specific release evidence
