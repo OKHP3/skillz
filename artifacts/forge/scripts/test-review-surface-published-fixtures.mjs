@@ -22,6 +22,8 @@ import { fileURLToPath } from 'node:url';
 const checkScript = fileURLToPath(new URL('./test-review-surface-published.mjs', import.meta.url));
 const expectedCommit = 'abcdef1234567890abcdef1234567890abcdef12';
 const staleCommit = '1111111111111111111111111111111111111111';
+const fixtureWaitTimeoutMs = 180;
+const fixturePollIntervalMs = 20;
 const nearMissCommit = `${expectedCommit.slice(0, 12)}${'f'.repeat(28)}`;
 const overlongCommit = `${expectedCommit}abcdef12`;
 const unresolvedName = 'okhp3-published-regression-unresolved-companion';
@@ -287,8 +289,8 @@ async function runPublishedCheck(baseUrl, expectedSourceCommit = expectedCommit)
           FORGE_PUBLISHED_URL: baseUrl,
           EXPECTED_SOURCE_COMMIT: expectedSourceCommit,
           GITHUB_STEP_SUMMARY: summaryPath,
-          PUBLISHED_CATALOG_WAIT_TIMEOUT_MS: '180',
-          PUBLISHED_CATALOG_POLL_INTERVAL_MS: '20',
+          PUBLISHED_CATALOG_WAIT_TIMEOUT_MS: String(fixtureWaitTimeoutMs),
+          PUBLISHED_CATALOG_POLL_INTERVAL_MS: String(fixturePollIntervalMs),
         },
         stdio: ['ignore', 'pipe', 'pipe'],
       });
@@ -537,6 +539,42 @@ async function main() {
         `Permanent staleness must report the total wait duration:\n${result.stderr}`);
       assert(state.browserStarts.length === 0,
         'Permanent staleness must stop before opening the browser assertion stage.');
+    },
+  );
+
+  await runCase(
+    'stale catalogs through the full polling timeout stop before browser assertions',
+    {
+      catalogResponses: Array.from(
+        { length: Math.ceil(fixtureWaitTimeoutMs / fixturePollIntervalMs) + 2 },
+        () => catalog(staleCommit),
+      ),
+    },
+    (result, state) => {
+      assert(result.status === 2,
+        `Repeated stale catalogs should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Repeated stale catalogs must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Repeated stale catalogs must finish with a stale-deployment failure:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${staleCommit}`),
+        `Final timeout message must report the last stale source commit:\n${result.stderr}`);
+      const finalWait = result.stderr.match(/after waiting (\d+)ms/);
+      assert(finalWait && Number(finalWait[1]) >= fixtureWaitTimeoutMs,
+        `Final stale-deployment message must report waiting through the ${fixtureWaitTimeoutMs}ms timeout:\n${result.stderr}`);
+      assert(state.catalogResponses.length >= 2
+        && state.catalogResponses.every(entry => entry.sourceCommit === staleCommit),
+      `Fixture must serve repeated stale catalogs for the full timeout; saw ${state.catalogResponses.length} responses.`);
+      assert(state.browserStarts.length === 0,
+        'Repeated staleness must stop before opening the browser assertion stage.');
+      assert(result.summary.includes('**Artifact status:** Stale artifact'),
+        `Full-timeout staleness should be identified in the Actions summary:\n${result.summary}`);
+      assert(result.summary.includes(`**Final observed source commit:** \`${staleCommit}\``),
+        `Full-timeout summary must report the final stale source commit:\n${result.summary}`);
+      assert(/\*\*Catalog attempts:\*\* \d+/.test(result.summary),
+        `Full-timeout summary must report the number of catalog polls:\n${result.summary}`);
+      assert(/\*\*Elapsed wait:\*\* \d+ ms/.test(result.summary),
+        `Full-timeout summary must report the elapsed wait:\n${result.summary}`);
     },
   );
 
