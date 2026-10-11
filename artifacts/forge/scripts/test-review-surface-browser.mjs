@@ -64,11 +64,18 @@ async function expectReflowedWithinViewport(locator, label) {
         visible: rect.width > 0 && rect.height > 0,
         withinHorizontalViewport: rect.left >= 0 && rect.right <= window.innerWidth,
         hasHorizontalOverflow: element.scrollWidth > element.clientWidth + 1,
+        scrollWidth: element.scrollWidth,
+        clientWidth: element.clientWidth,
+        overflowingDescendants: [...element.querySelectorAll('*')]
+          .filter(child => child.scrollWidth > child.clientWidth + 1)
+          .slice(0, 8)
+          .map(child => `${child.tagName.toLowerCase()}.${String(child.className || '').trim().replaceAll(' ', '.')}:${child.scrollWidth}/${child.clientWidth}`),
       };
     });
     assert(layout.visible, `${label} is not visible.`);
     assert(layout.withinHorizontalViewport, `${label} is clipped outside the viewport.`);
-    assert(!layout.hasHorizontalOverflow, `${label} has horizontal overflow.`);
+    assert(!layout.hasHorizontalOverflow,
+      `${label} has horizontal overflow (${layout.scrollWidth}/${layout.clientWidth}px; descendants: ${layout.overflowingDescendants.join(', ') || 'none'}).`);
   }
 }
 
@@ -102,6 +109,38 @@ async function expectReviewSurface(page, skill) {
   assert((await text(page, '.skill-gate-panel h2')) === 'Blocked', `Expected blocked release gate for ${skill.name}.`);
   assert(await page.getByRole('button', { name: /Request final review/ }).isDisabled(), 'Blocked gate must disable final review.');
   assert(await page.getByRole('button', { name: 'Supervised run: attach evidence' }).isEnabled(), 'Blocked gate must leave supervised check available.');
+}
+
+async function expectEvidenceSummaryAtLargeText(page, skill) {
+  const summary = page.locator('.detail-evidence-release');
+  await summary.waitFor();
+  await page.evaluate(() => {
+    document.documentElement.style.fontSize = '200%';
+  });
+
+  const statusValue = summary.locator('dt').filter({ hasText: 'Evidence status (v2)' }).locator('xpath=following-sibling::dd[1]');
+  assert((await statusValue.innerText()).includes(skill.evidence.status),
+    `${skill.name} evidence status value is missing at 200% text.`);
+  await expectVisibleWithinViewport(statusValue, `${skill.name} evidence status value at 200% text`);
+
+  const blockers = summary.locator('.detail-evidence-blockers li');
+  assert(await blockers.count() > 0, `${skill.name} promotion blocker text is missing from the large-text fixture.`);
+  await expectReflowedWithinViewport(blockers, `${skill.name} promotion blocker text at 200% text`);
+
+  const rawLink = summary.getByRole('link', { name: 'View raw SKILL.md' });
+  const repositoryLink = summary.getByRole('link', { name: 'View in repository' });
+  assert(await rawLink.count() === 1 && await repositoryLink.count() === 1,
+    `${skill.name} evidence links are missing at 200% text.`);
+  await expectVisibleWithinViewport(rawLink, `${skill.name} raw SKILL.md evidence link at 200% text`);
+  await expectVisibleWithinViewport(repositoryLink, `${skill.name} repository evidence link at 200% text`);
+
+  await expectKeyboardFocus(page, rawLink, `${skill.name} raw SKILL.md evidence link at 200% text`);
+  await page.keyboard.press('Tab');
+  assert(await repositoryLink.evaluate(element => document.activeElement === element),
+    `${skill.name} keyboard navigation does not reach the repository evidence link at 200% text.`);
+  await expectKeyboardFocus(page, repositoryLink, `${skill.name} repository evidence link at 200% text`);
+  await expectReflowedWithinViewport(summary, `${skill.name} evidence/release summary at 200% text`);
+  await expectNoHorizontalOverflow(page, `${skill.name} evidence/release summary at 200% text`);
 }
 
 async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false, largeText = false } = {}) {
@@ -430,6 +469,11 @@ async function main() {
     await desktop.locator('.detail-evidence-stale-warning').waitFor();
     assert((await text(desktop, '.evidence-chip--warn')) === 'stale evidence', 'Stale evidence chip is missing.');
     await expectNoHorizontalOverflow(desktop, 'stale-evidence surface');
+
+    const largeEvidence = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await largeEvidence.goto(route(blocked), { waitUntil: 'domcontentloaded' });
+    await expectEvidenceSummaryAtLargeText(largeEvidence, blocked);
+    await largeEvidence.close();
 
     const narrow = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await narrow.goto(route(unlocked), { waitUntil: 'domcontentloaded' });

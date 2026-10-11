@@ -278,6 +278,7 @@
   padding: var(--space-6);
   border: 1px solid var(--color-border-light);
 }
+.detail-evidence-release h2 { overflow-wrap: anywhere; }
 .detail-evidence-release dl {
   display: grid;
   grid-template-columns: minmax(140px, auto) 1fr;
