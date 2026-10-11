@@ -11,8 +11,11 @@
  * source commit.
  */
 import { spawn } from 'node:child_process';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { once } from 'node:events';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
 
@@ -271,26 +274,35 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
   };
 }
 
-function runPublishedCheck(baseUrl, expectedSourceCommit = expectedCommit) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [checkScript], {
-      cwd: fileURLToPath(new URL('../..', import.meta.url)),
-      env: {
-        ...process.env,
-        FORGE_PUBLISHED_URL: baseUrl,
-        EXPECTED_SOURCE_COMMIT: expectedSourceCommit,
-        PUBLISHED_CATALOG_WAIT_TIMEOUT_MS: '180',
-        PUBLISHED_CATALOG_POLL_INTERVAL_MS: '20',
-      },
-      stdio: ['ignore', 'pipe', 'pipe'],
+async function runPublishedCheck(baseUrl, expectedSourceCommit = expectedCommit) {
+  const summaryDirectory = mkdtempSync(join(tmpdir(), 'forge-review-summary-'));
+  const summaryPath = join(summaryDirectory, 'summary.md');
+  writeFileSync(summaryPath, '');
+  try {
+    const result = await new Promise((resolve, reject) => {
+      const child = spawn(process.execPath, [checkScript], {
+        cwd: fileURLToPath(new URL('../..', import.meta.url)),
+        env: {
+          ...process.env,
+          FORGE_PUBLISHED_URL: baseUrl,
+          EXPECTED_SOURCE_COMMIT: expectedSourceCommit,
+          GITHUB_STEP_SUMMARY: summaryPath,
+          PUBLISHED_CATALOG_WAIT_TIMEOUT_MS: '180',
+          PUBLISHED_CATALOG_POLL_INTERVAL_MS: '20',
+        },
+        stdio: ['ignore', 'pipe', 'pipe'],
+      });
+      let stdout = '';
+      let stderr = '';
+      child.stdout.on('data', chunk => { stdout += chunk; });
+      child.stderr.on('data', chunk => { stderr += chunk; });
+      child.on('error', reject);
+      child.on('close', (status, signal) => resolve({ status, signal, stdout, stderr }));
     });
-    let stdout = '';
-    let stderr = '';
-    child.stdout.on('data', chunk => { stdout += chunk; });
-    child.stderr.on('data', chunk => { stderr += chunk; });
-    child.on('error', reject);
-    child.on('close', (status, signal) => resolve({ status, signal, stdout, stderr }));
-  });
+    return { ...result, summary: readFileSync(summaryPath, 'utf8') };
+  } finally {
+    rmSync(summaryDirectory, { recursive: true, force: true });
+  }
 }
 
 async function runCase(name, fixtureOptions, validate, expectedSourceCommit = expectedCommit) {
@@ -337,6 +349,16 @@ async function main() {
       `Propagation fixture should keep retry numbering sequential and report elapsed timing:\n${result.stdout}`);
       assert(result.stdout.split('\n').filter(line => line.includes('[deployment]')).length === 4,
         `Successful propagation should keep deployment progress concise:\n${result.stdout}`);
+      assert(result.summary.includes('**Artifact status:** Fresh artifact'),
+        `Successful propagation should be recorded as fresh in the Actions summary:\n${result.summary}`);
+      assert(result.summary.includes(`**Expected source commit:** \`${expectedCommit}\``),
+        `Actions summary should report the expected commit:\n${result.summary}`);
+      assert(result.summary.includes(`**Final observed source commit:** \`${expectedCommit}\``),
+        `Actions summary should report the final observed commit:\n${result.summary}`);
+      assert(result.summary.includes('**Catalog attempts:** 4'),
+        `Actions summary should report the propagation attempt count:\n${result.summary}`);
+      assert(/\*\*Elapsed wait:\*\* \d+ ms/.test(result.summary),
+        `Actions summary should report the elapsed wait:\n${result.summary}`);
       assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
         'Browser assertions started before the expected catalog response completed.');
     },
@@ -352,6 +374,8 @@ async function main() {
         'Abbreviated fixture should serve the expected commit prefix.');
       assert(state.browserStarts.length > 0,
         'Valid abbreviated catalog commit should reach browser assertions.');
+      assert(result.summary.includes(`**Final observed source commit:** \`${expectedCommit.slice(0, 7)}\``),
+        `Actions summary should retain the observed abbreviated commit:\n${result.summary}`);
     },
   );
 
@@ -466,6 +490,12 @@ async function main() {
         `Permanent HTTP failure should retain its status detail:\n${result.stderr}`);
       assert(state.browserStarts.length === 0,
         'Permanent HTTP failure must stop before browser assertions.');
+      assert(result.summary.includes('**Artifact status:** Artifact or catalog unreachable'),
+        `Permanent HTTP failure should be identified as unreachable in the Actions summary:\n${result.summary}`);
+      assert(result.summary.includes('**Catalog attempts:** 1'),
+        `Actions summary should report the failed catalog attempt:\n${result.summary}`);
+      assert(result.summary.includes('**Final observed source commit:** \`<none>\`'),
+        `Unreachable summary should show that no source commit was observed:\n${result.summary}`);
     },
   );
 
@@ -495,6 +525,14 @@ async function main() {
         `Permanent staleness must explain that the artifact is stale:\n${result.stderr}`);
       assert(result.stderr.includes(`last observed sourceCommit ${staleCommit}`),
         `Permanent staleness must report the last observed source commit:\n${result.stderr}`);
+      assert(result.summary.includes('**Artifact status:** Stale artifact'),
+        `Permanent staleness should be identified in the Actions summary:\n${result.summary}`);
+      assert(result.summary.includes(`**Final observed source commit:** \`${staleCommit}\``),
+        `Stale summary should report the final observed commit:\n${result.summary}`);
+      assert(/\*\*Catalog attempts:\*\* \d+/.test(result.summary),
+        `Stale summary should report the catalog attempt count:\n${result.summary}`);
+      assert(/\*\*Elapsed wait:\*\* \d+ ms/.test(result.summary),
+        `Stale summary should report the elapsed wait:\n${result.summary}`);
       assert(/after waiting \d+ms/.test(result.stderr),
         `Permanent staleness must report the total wait duration:\n${result.stderr}`);
       assert(state.browserStarts.length === 0,
@@ -514,6 +552,10 @@ async function main() {
       assert(!result.stderr.includes('still stale relative to the deployed commit'),
         'Current-catalog UI failure must not be reported as a stale deployment.');
       assert(state.browserStarts.length > 0, 'Current-catalog UI failure should reach the browser assertion stage.');
+      assert(result.summary.includes('**Artifact status:** Fresh artifact'),
+        `Assertion failures should still show that the deployed artifact was fresh:\n${result.summary}`);
+      assert(result.summary.includes('**Check result:** Assertion failure (exit 1)'),
+        `Actions summary should preserve the existing assertion result:\n${result.summary}`);
     },
   );
 
