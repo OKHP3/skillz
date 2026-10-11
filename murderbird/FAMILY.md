@@ -1,9 +1,9 @@
 ---
 family: murderbird
 display_name: MurderBird
-skill_count: 2
+skill_count: 3
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-27T14:03:29Z
+generated_at: 2026-09-27T21:22:09Z
 ---
 
 # murderbird
@@ -26,6 +26,7 @@ In scope:
 - Turning research packets and rough ideas into a defensible thesis,
   structure, hooks, and ending, ready for a separate voice pass.
 - Editorial judgment: separating real damage from honest rough edges.
+- Opening and closing lines for short posts, scored for honesty and landing.
 
 Out of scope:
 
@@ -74,22 +75,27 @@ Typical article pipeline: research packet, then `okhp3-murderbird-thesis-forge`,
 then a draft, then `okhp3-murderbird-argument-audit`, then the voice pass,
 then the WWGD check, then the owner publishes.
 
+Typical short-post pipeline: angle (`okhp3-linkedin-angles`), draft
+(`okhp3-linkedin-post`), then `okhp3-murderbird-hook-and-close`, then the voice
+pass, then the owner publishes.
+
 ## Maturity and validation
 
-Both packages are draftable candidates with `not-run` evals. Run each once
+All packages are draftable candidates with `not-run` evals. Run each once
 against a real draft before relying on it.
 
 <!-- FAMILY_SUMMARY_START -->
 Editorial red-team and thesis-building skills for the MurderBird agent: find what doesn't hold in an argument, then rebuild it so it does.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (2)
+## Skills (3)
 
 <!-- FAMILY_INVENTORY_START -->
-*2 skills &nbsp;·&nbsp; inventory last updated: **September 27, 2026 at 14:03 UTC***
+*3 skills &nbsp;·&nbsp; inventory last updated: **September 27, 2026 at 21:22 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-murderbird-argument-audit](okhp3-murderbird-argument-audit/SKILL.md) | Stress-test a draft article, post, essay, or position piece before publication and return a verdi... | 0.1.0 |
+| [okhp3-murderbird-hook-and-close](okhp3-murderbird-hook-and-close/SKILL.md) | Forge and stress-test the opening line and closing line of a short post (LinkedIn, X, Threads, Bl... | 0.1.0 |
 | [okhp3-murderbird-thesis-forge](okhp3-murderbird-thesis-forge/SKILL.md) | Turn a research packet, rough idea, or brain-dump into a defensible one-sentence thesis, load-bea... | 0.1.0 |
 <!-- FAMILY_INVENTORY_END -->
