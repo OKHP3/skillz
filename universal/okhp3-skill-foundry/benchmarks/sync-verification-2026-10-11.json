@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "verification_kind": "current-state-reconciliation",
+  "verification_date": "2026-10-11",
+  "canonical": {
+    "package": "OKHP3/skillz/universal/okhp3-skill-foundry",
+    "commit_or_hash": "sha256:badefe966f9942447f0b832fde78889742518f8d486210f5c80fdaa16bb2db86"
+  },
+  "authorization_for_this_verification": "Current owner request approves strict plain or quoted SemVer compatibility and synchronization of Skillz canonical and support packages only.",
+  "historical_limit": "Only the Skillz support mirror was verified locally for this change. No other repository is asserted current. Archived July receipt preserves prior evidence; no behavioral benchmark was rerun.",
+  "self_hash_exclusions": [
+    "benchmarks/sync-verification-2026-10-11.json"
+  ],
+  "core_file_hashes": {
+    "SKILL.md": "38337B1CDD7F6377EFDC7FBF060BD3C7665B924690D1151A702160612F3A6674",
+    "agents/openai.yaml": "6127B6365675DC366434B390D70722D518759DBF9476AFDA2A616BA5CF368429",
+    "assets/equilibrium-review-record.json": "6338A69910BC3A2C73482FD9F552C7FC87D7590F1D6AD3058C42B528FA7A7C40",
+    "assets/skill-template.md": "2BB2EE2E6E7DFC008A9B401A920A0A3C766AB14FD5CDFC4FB03F28063AB98AD9",
+    "assets/sync-manifest-template.json": "B422E038C8AF96EA756BC4C47C9428DA8D0CE373AB9A7FB47FA5E5B4BC5C92CF",
+    "benchmarks/benchmark.json": "54B6C79E3B4240BF134F91EA6DB3E34FBC57155CBF315D9BE1873CF659E1B564",
+    "benchmarks/equilibrium-review-2026-07-28.json": "ADB95AA970EEAA2C7CC5F7F50E616494EF1B0D7406D1044AF555A393147CC551",
+    "benchmarks/evolution-review-2026-07-27.md": "02687029BBAB673705F5A5FB95D288C5DDC1B1593990D80EE6B69B0296427C39",
+    "benchmarks/historical-sync-verification-2026-07-28.json": "6AB829AF91180D642FD0478EF529C350AEBFAFBCC6892E194C42BC7944332E63",
+    "benchmarks/learning-ledger-2026-07-27.json": "E96C7FC217839326AA9592C850EEE62AE6469EE36FB80242E39C95C71C0CD1FA",
+    "benchmarks/learning-ledger-2026-07-28.json": "4D00E96A7D170ABCB6A8519CB8ED84B67E4CECE515C4343D9A8AF372B71E47EE",
+    "benchmarks/learning-ledger-2026-10-11.json": "46CAF518C48F827ACBF83C84C54C822B8670415B1BF9547D1F484CADEB459C19",
+    "evals/evals.json": "3508B4C10636AA6AA2ABCE83D8682266AC0444530B2EB78DC3FA254D051D68ED",
+    "references/brand-standard.md": "A58202145F6FC4AA9AE5F0BB9401601CDA31B272B10B7A6E025792BB5A55BF84",
+    "references/equilibrium-review-protocol.md": "45CCD275E0725B9A48009A2594BEF64A566B4841B7AA4ED9C33ADB33887F739A",
+    "references/eval-patterns.md": "AD5AE7A0E53EA09184D64090C5881B1C284575A960593FACF14D29D58F39F6F3",
+    "references/grading-schema.md": "A1FD60950D0EE824C83A0FC395A7E4CCA18B64E5276A8516A577678A6911CEFE",
+    "scripts/validate-skill-suite.cjs": "874A6584F3CBE421492D1633EB3E96B49E5B24C72FDBCB4B765B86830B58CAA1",
+    "tests/validate-foundry-evidence.test.cjs": "647905F71C49087E461BD1D5D5AE8E043BBE9A2481EB4725C45279356B6098E0"
+  },
+  "mirrors": [
+    {
+      "repository": "OKHP3/skillz",
+      "package": ".agents/skills/okhp3-skill-foundry",
+      "core_files_match": true,
+      "observed_core_file_count": 19,
+      "adapter_semantic_review": "Byte-identical existing optional display and invocation adapter; no adapter changes.",
+      "validator_result": "Current package structural validation and deterministic evidence regressions; no behavioral performance claim."
+    }
+  ]
+}

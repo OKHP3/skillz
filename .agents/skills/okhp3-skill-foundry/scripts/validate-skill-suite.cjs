@@ -27,6 +27,8 @@ const recursive = rootIndex >= 0;
 const errors = [];
 const warnings = [];
 const NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+// Strict SemVer 2.0.0 grammar, independent of YAML quoting style.
+const SEMVER = /^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
 const SPEC_NAME_MAX = 64;
 const PACKAGE_NAME_MAX = 36;
 const COPILOT_PACKAGE_NAME_MAX = 50;
@@ -58,12 +60,24 @@ function scalar(frontmatter, key) {
   }
   return continuation.join(' ').trim();
 }
-function quotedMetadataValue(frontmatter, key) {
-  return new RegExp(`^\\s{2}${key}:\\s*(["']).*\\1\\s*$`, 'm').test(frontmatter);
-}
 function metadataScalar(frontmatter, key) {
   const match = frontmatter.match(new RegExp(`^\\s{2}${key}:\\s*(.+)$`, 'm'));
   return match ? match[1].trim().replace(/^['"]|['"]$/g, '') : '';
+}
+function validMetadataVersion(frontmatter) {
+  const lines = frontmatter.split('\n');
+  const start = lines.findIndex(line => /^metadata:\s*$/.test(line));
+  if (start < 0) return false;
+  const values = [];
+  for (const line of lines.slice(start + 1)) {
+    if (/^\S/.test(line)) break;
+    const match = line.match(/^ {2}version:\s*(.*?)\s*$/);
+    if (match) values.push(match[1]);
+  }
+  if (values.length !== 1) return false;
+  const raw = values[0];
+  const quoted = raw.match(/^(["'])(.*)\1$/);
+  return SEMVER.test(quoted ? quoted[2] : raw);
 }
 function references(body, skillDir) {
   const found = new Set();
@@ -248,7 +262,7 @@ function validateSkill(skillDir, rootDir) {
   if (!description || description.length > DESCRIPTION_MAX) fail(`${entry.name}: description must be 1-${DESCRIPTION_MAX} characters`);
   if (compatibility.length > COMPATIBILITY_MAX) fail(`${entry.name}: compatibility must be at most ${COMPATIBILITY_MAX} characters`);
   if (body.split('\n').length > BODY_LINE_MAX) fail(`${entry.name}: SKILL.md body exceeds the ${BODY_LINE_MAX}-line progressive-disclosure limit`);
-  if (entry.name.startsWith('okhp3-') && !quotedMetadataValue(frontmatter, 'version')) fail(`${entry.name}: OKHP3 metadata.version must be a quoted semver string`);
+  if (entry.name.startsWith('okhp3-') && !validMetadataVersion(frontmatter)) fail(`${entry.name}: OKHP3 metadata.version must be strict SemVer, plain or in matching quotes`);
   if (entry.name.startsWith('okhp3-') && !body.includes('## About')) fail(`${entry.name}: missing About footer`);
   if (!body.includes('Scope')) warn(`${entry.name}: consider an explicit Scope section`);
   if (!body.match(/plan|validate|verify/i)) warn(`${entry.name}: no obvious validation loop found`);

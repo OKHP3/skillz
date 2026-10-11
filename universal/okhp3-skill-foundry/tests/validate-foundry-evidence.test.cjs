@@ -6,8 +6,48 @@ const { spawnSync } = require('node:child_process');
 const test = require('node:test');
 
 const packageDir = path.resolve(__dirname, '..');
-const localMirror = path.resolve(packageDir, '..', '..', '.agents', 'skills', 'okhp3-skill-foundry');
+const repositoryRoot = path.basename(path.dirname(packageDir)) === 'skills'
+  ? path.resolve(packageDir, '..', '..', '..') : path.resolve(packageDir, '..', '..');
+const localMirror = path.join(repositoryRoot, '.agents', 'skills', 'okhp3-skill-foundry');
 const validator = path.join(packageDir, 'scripts', 'validate-skill-suite.cjs');
+
+function versionFixture(versionLine, body = '') {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'semver-validator-'));
+  const target = path.join(root, 'okhp3-semver-fixture');
+  fs.mkdirSync(target);
+  fs.writeFileSync(path.join(target, 'SKILL.md'),
+    ['---', 'name: okhp3-semver-fixture', 'description: Validate version syntax.',
+      'metadata:', versionLine, '---', '## Scope', 'Verify versions.', body, '## About', 'Test fixture.'].join('\n'));
+  try { return run(target); }
+  finally { fs.rmSync(root, { recursive: true, force: true }); }
+}
+
+for (const version of ['1.2.3', '"1.2.3"', "'1.2.3'", '1.2.3-alpha.1+build.01']) {
+  test(`accepts strict version ${version}`, () => {
+    const result = versionFixture(`  version: ${version}`);
+    assert.equal(result.status, 0, result.stderr);
+  });
+}
+for (const version of ['', 'true', '1.2', '01.2.3', '1.2.3-01', '1.2.3-', '1.2.3+',
+  'v1.2.3', '"garbage"', "'1.2.3\"", '1.2.3 trailing', '[1.2.3]']) {
+  test(`rejects invalid version ${version}`, () => {
+    const result = versionFixture(`  version: ${version}`);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /metadata.version must be strict SemVer/);
+  });
+}
+for (const reference of ['references/missing-guide.md', 'references/0.1.0.md']) {
+  test(`plain version does not exempt missing reference ${reference}`, () => {
+    const result = versionFixture('  version: 1.2.3', `Read \`${reference}\` before validation.`);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /missing referenced file/);
+  });
+}
+test('rejects absent and duplicate metadata versions', () => {
+  for (const versionLine of ['', '  version: 1.2.3\n  version: 1.2.3']) {
+    assert.notEqual(versionFixture(versionLine).status, 0);
+  }
+});
 
 function run(target) {
   return spawnSync(process.execPath, [validator, '--root', target], { encoding: 'utf8' });

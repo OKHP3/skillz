@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "skill_version": "3.1.1",
+  "date": "2026-10-11",
+  "evidence_status": "deterministic-regression-design",
+  "evidence_sources": [
+    "Owner-approved plain SemVer compatibility; pinned NVIDIA 2.12.0 hook-package reproduction identified quoted version as a missing path reference.",
+    "Historical benchmark retained; no behavioral benchmark run."
+  ],
+  "review_passes": [
+    "Scope review: metadata authoring and structural validator only; security policy and vendors unchanged."
+  ],
+  "changes": [
+    "Allow strict plain and matching-quoted SemVer; reject invalid scalars and duplicate/missing versions.",
+    "Retain missing real and numeric file-reference rejection.",
+    "Archive prior receipt; verify only the Skillz support mirror with stable LF core bytes."
+  ]
+}
