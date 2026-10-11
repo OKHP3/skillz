@@ -23,6 +23,7 @@ on:
       - "replit/okhp3-replit-github-sync/evals/evals.json"
       - "replit/okhp3-replit-github-sync/evals/trigger-evals.json"
       - ".agents/skills/publish-health-check/**"
+      - ".agents/skills/catalog-integrity/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
@@ -63,6 +64,7 @@ on:
       - "replit/okhp3-replit-github-sync/evals/evals.json"
       - "replit/okhp3-replit-github-sync/evals/trigger-evals.json"
       - ".agents/skills/publish-health-check/**"
+      - ".agents/skills/catalog-integrity/**"
       - "package.json"
       - "pnpm-lock.yaml"
       - "pnpm-workspace.yaml"
@@ -103,8 +105,15 @@ jobs:
           node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root universal/okhp3-repository-settings
       - name: Build and test catalog contracts
         run: |
-          node artifacts/forge/scripts/build-catalog.js
-          node artifacts/forge/scripts/test-catalog.mjs
+          mkdir -p validation-reports
+          node .agents/skills/catalog-integrity/run.mjs --json validation-reports/catalog-integrity.json
+      - name: Archive catalog integrity report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: catalog-integrity-report
+          path: validation-reports/catalog-integrity.json
+          if-no-files-found: warn
 
   universe-map-contract:
     name: Check universe-map skill contract

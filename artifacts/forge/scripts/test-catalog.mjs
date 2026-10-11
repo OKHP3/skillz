@@ -1408,11 +1408,13 @@ test('local catalog integrity reports cleanup failures separately from validatio
   try {
     const runScenario = ({ name, expectedExit, expectedValidationStatus }) => {
       const reportPath = join(reportRoot, `${name}.json`);
+      const summaryPath = join(reportRoot, `${name}-summary.md`);
       const env = {
         ...process.env,
         CATALOG_INTEGRITY_RUNNER_CHILD: '1',
         CATALOG_INTEGRITY_RUNNER_SMOKE: '1',
         CATALOG_INTEGRITY_REMOVE_OUTPUT_BEFORE_CLEANUP: '1',
+        GITHUB_STEP_SUMMARY: summaryPath,
       };
       delete env.CATALOG_INTEGRITY_FORCE_TEST_FAILURE;
       if (expectedValidationStatus === 'failed') env.CATALOG_INTEGRITY_FORCE_TEST_FAILURE = '1';
@@ -1431,6 +1433,14 @@ test('local catalog integrity reports cleanup failures separately from validatio
         result.stderr.includes('catalog integrity: cleanup failed') && result.stderr.includes('ENOENT'),
         `console output should identify the real rmSync failure separately:\n${result.stderr}`,
       );
+      const summary = readFileSync(summaryPath, 'utf8');
+      assert(summary.includes(`Build/test validation: **${expectedValidationStatus.toUpperCase()}**`),
+        `GitHub summary should preserve the build/test validation result:\n${summary}`);
+      assert(summary.includes(
+        'Temporary output cleanup: **FAILED** (operational; does not change the validation result)',
+      ), `GitHub summary should identify cleanup as operational and separate:\n${summary}`);
+      assert(summary.includes('Cleanup diagnostic:') && summary.includes('ENOENT'),
+        `GitHub summary should include the filesystem diagnostic:\n${summary}`);
       if (expectedValidationStatus === 'failed') {
         assert(
           result.stderr.includes('controlled catalog validation failure fixture'),
