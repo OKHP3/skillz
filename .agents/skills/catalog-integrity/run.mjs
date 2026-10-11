@@ -57,9 +57,6 @@ try {
     // Do not use force here: a cleanup error is operationally significant and
     // must not leave generated release-like files behind without a report.
     rmSync(validationRoot, { recursive: true });
-    if (process.env.CATALOG_INTEGRITY_FORCE_CLEANUP_FAILURE === '1') {
-      throw new Error('controlled catalog cleanup failure fixture');
-    }
   } catch (error) {
     cleanupStatus = 'failed';
     cleanupError = error;
