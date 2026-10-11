@@ -66,11 +66,14 @@ async function fetchPublic(url, label) {
 }
 
 function sourceCommitMatches(expected, actual) {
-  return Boolean(
-    expected
-    && actual
-    && (expected.startsWith(actual) || actual.startsWith(expected.slice(0, actual.length))),
-  );
+  // CI supplies the full deployed SHA. Only accept a catalog-side abbreviation,
+  // with Git's conventional seven-character minimum; never let a short expected
+  // value or an unrelated longer prefix weaken the comparison.
+  if (!/^[0-9a-f]{40}$/i.test(expected || '')
+    || !/^[0-9a-f]{7,40}$/i.test(actual || '')) {
+    return false;
+  }
+  return expected.toLowerCase().startsWith(actual.toLowerCase());
 }
 
 function delay(milliseconds) {

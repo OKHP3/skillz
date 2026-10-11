@@ -17,8 +17,10 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
 
 const checkScript = fileURLToPath(new URL('./test-review-surface-published.mjs', import.meta.url));
-const expectedCommit = 'expected-commit-abcdef123456';
-const staleCommit = 'old-commit-000000000000';
+const expectedCommit = 'abcdef1234567890abcdef1234567890abcdef12';
+const staleCommit = '1111111111111111111111111111111111111111';
+const nearMissCommit = `${expectedCommit.slice(0, 12)}${'f'.repeat(28)}`;
+const overlongCommit = `${expectedCommit}abcdef12`;
 const unresolvedName = 'okhp3-published-regression-unresolved-companion';
 const expandedBranchName = 'fixture-project-local';
 
@@ -269,14 +271,14 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
   };
 }
 
-function runPublishedCheck(baseUrl) {
+function runPublishedCheck(baseUrl, expectedSourceCommit = expectedCommit) {
   return new Promise((resolve, reject) => {
     const child = spawn(process.execPath, [checkScript], {
       cwd: fileURLToPath(new URL('../..', import.meta.url)),
       env: {
         ...process.env,
         FORGE_PUBLISHED_URL: baseUrl,
-        EXPECTED_SOURCE_COMMIT: expectedCommit,
+        EXPECTED_SOURCE_COMMIT: expectedSourceCommit,
         PUBLISHED_CATALOG_WAIT_TIMEOUT_MS: '180',
         PUBLISHED_CATALOG_POLL_INTERVAL_MS: '20',
       },
@@ -291,10 +293,10 @@ function runPublishedCheck(baseUrl) {
   });
 }
 
-async function runCase(name, fixtureOptions, validate) {
+async function runCase(name, fixtureOptions, validate, expectedSourceCommit = expectedCommit) {
   const fixture = await startFixture(fixtureOptions);
   try {
-    const result = await runPublishedCheck(fixture.baseUrl);
+    const result = await runPublishedCheck(fixture.baseUrl, expectedSourceCommit);
     validate(result, fixture.state);
     console.log(`✓ ${name}`);
   } finally {
@@ -338,6 +340,86 @@ async function main() {
       assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
         'Browser assertions started before the expected catalog response completed.');
     },
+  );
+
+  await runCase(
+    'accepts a valid abbreviated catalog commit before browser assertions',
+    { catalogResponses: [catalog(expectedCommit.slice(0, 7))] },
+    (result, state) => {
+      assert(result.status === 0,
+        `Valid abbreviated catalog commit should pass (exit ${result.status}).\n${result.stderr}`);
+      assert(state.catalogResponses[0]?.sourceCommit === expectedCommit.slice(0, 7),
+        'Abbreviated fixture should serve the expected commit prefix.');
+      assert(state.browserStarts.length > 0,
+        'Valid abbreviated catalog commit should reach browser assertions.');
+    },
+  );
+
+  await runCase(
+    'rejects an ambiguous abbreviated catalog commit as stale',
+    { catalogResponses: [catalog(expectedCommit.slice(0, 6))] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Ambiguous catalog prefix should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Ambiguous catalog prefix must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Ambiguous catalog prefix must be classified as stale deployment data:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${expectedCommit.slice(0, 6)}`),
+        `Ambiguous catalog prefix should be reported:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Ambiguous catalog prefix must stop before browser assertions.');
+    },
+  );
+
+  await runCase(
+    'rejects an unrelated near-miss commit as stale',
+    { catalogResponses: [catalog(nearMissCommit)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Unrelated near-miss commit should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Unrelated near-miss commit must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Unrelated near-miss commit must be classified as stale deployment data:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${nearMissCommit}`),
+        `Unrelated near-miss commit should be reported:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Unrelated near-miss commit must stop before browser assertions.');
+    },
+  );
+
+  await runCase(
+    'rejects an overlong value that merely starts with the expected SHA',
+    { catalogResponses: [catalog(overlongCommit)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Overlong sourceCommit should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Overlong sourceCommit must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Overlong sourceCommit must remain a stale deployment failure:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${overlongCommit}`),
+        `Overlong sourceCommit should be reported:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Overlong sourceCommit must stop before browser assertions.');
+    },
+  );
+
+  await runCase(
+    'rejects an ambiguous expected prefix against a full catalog SHA',
+    { catalogResponses: [catalog(expectedCommit)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Abbreviated expected SHA should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Abbreviated expected SHA must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Abbreviated expected SHA must not match a full catalog SHA:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Abbreviated expected SHA must stop before browser assertions.');
+    },
+    expectedCommit.slice(0, 6),
   );
 
   await runCase(
