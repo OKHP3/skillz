@@ -4,7 +4,7 @@
   "verification_date": "2026-10-11",
   "canonical": {
     "package": "OKHP3/skillz/universal/okhp3-skill-foundry",
-    "commit_or_hash": "sha256:badefe966f9942447f0b832fde78889742518f8d486210f5c80fdaa16bb2db86"
+    "commit_or_hash": "sha256:55d76cbb0bceea13d24ec6fce9bb9d970e66e635ce39bfb08dbc80f038933373"
   },
   "authorization_for_this_verification": "Current owner request approves strict plain or quoted SemVer compatibility and synchronization of Skillz canonical and support packages only.",
   "historical_limit": "Only the Skillz support mirror was verified locally for this change. No other repository is asserted current. Archived July receipt preserves prior evidence; no behavioral benchmark was rerun.",
@@ -29,8 +29,8 @@
     "references/equilibrium-review-protocol.md": "45CCD275E0725B9A48009A2594BEF64A566B4841B7AA4ED9C33ADB33887F739A",
     "references/eval-patterns.md": "AD5AE7A0E53EA09184D64090C5881B1C284575A960593FACF14D29D58F39F6F3",
     "references/grading-schema.md": "A1FD60950D0EE824C83A0FC395A7E4CCA18B64E5276A8516A577678A6911CEFE",
-    "scripts/validate-skill-suite.cjs": "874A6584F3CBE421492D1633EB3E96B49E5B24C72FDBCB4B765B86830B58CAA1",
-    "tests/validate-foundry-evidence.test.cjs": "647905F71C49087E461BD1D5D5AE8E043BBE9A2481EB4725C45279356B6098E0"
+    "scripts/validate-skill-suite.cjs": "074DBF7CEBCAAA5F5B52D9C207EE3C8589F37BE787A6623206053FAEAF14C34B",
+    "tests/validate-foundry-evidence.test.cjs": "343BB2FDBC2F523F9B26D2B8395F36183FD4F16BFEFDC1E16E41F3BB577D8E68"
   },
   "mirrors": [
     {
