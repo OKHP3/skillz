@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-11
+
+- Skill Foundry 3.1.1 accepts strict SemVer as plain, single-quoted, or
+  double-quoted YAML strings. Plain form is the default authoring template.
+- Added deterministic syntax and missing-reference regressions without changing
+  security workflows, scanner engines, severity, or incomplete-scan gates.
+- Archived the July 28 sync receipt unchanged and recorded only the currently
+  verified Skillz support mirror. Historical benchmarks remain historical;
+  current-version behavioral performance has not been evaluated.
+
 ## 2026-09-27: persona capability skills and the MurderBird family
 
 - Add the `murderbird/` family with `okhp3-murderbird-argument-audit` and
