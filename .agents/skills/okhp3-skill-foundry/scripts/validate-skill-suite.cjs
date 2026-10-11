@@ -66,6 +66,7 @@ function metadataScalar(frontmatter, key) {
 }
 function validMetadataVersion(frontmatter) {
   const lines = frontmatter.split('\n');
+  if (lines.filter(line => /^metadata:/.test(line)).length !== 1) return false;
   const start = lines.findIndex(line => /^metadata:\s*$/.test(line));
   if (start < 0) return false;
   const values = [];

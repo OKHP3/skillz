@@ -50,6 +50,15 @@ test('rejects absent and duplicate metadata versions', async () => {
   }
 });
 
+test('rejects duplicate top-level metadata blocks', async () => {
+  for (const overridingVersion of ['invalid', '1.2.3']) {
+    const result = await versionFixture(
+      '  version: 1.2.3\nmetadata:\n  version: ' + overridingVersion);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /metadata.version must be strict SemVer/);
+  }
+});
+
 async function run(target) {
   // Run the unchanged CLI entry point in an isolated thread, never package code.
   const worker = new Worker(validator, {
