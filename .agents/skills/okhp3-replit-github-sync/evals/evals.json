@@ -111,7 +111,47 @@
           "id": 4,
           "text": "Response does not hardcode a connector ID, token, or account name and explains that a connected GitHub capability is optional for hosted actions."
         }
-      ]
+      ],
+      "live_result": {
+        "evaluation_status": "live",
+        "evaluated_on": "2026-10-11",
+        "runner": "Replit CodeExecution general subagent",
+        "configuration": "response-only with the complete GitHub-sync skill and connector contract",
+        "hosted_writes_performed": false,
+        "model": null,
+        "expectations": [
+          {
+            "id": 1,
+            "passed": false,
+            "evidence": "“No inspection, staging, commit, fetch, merge, or conflict resolution has been performed.” The answer proposes inspecting the required state but does not actually inspect changes, conflict state, credential/.env files, generated output, or run `git diff --check`."
+          },
+          {
+            "id": 2,
+            "passed": true,
+            "evidence": "“Then identify the exact paths proposed for the commit and get approval for that scope. Do not use `git add -A` as a substitute for review. If a commit is authorized, stage only the approved paths.”"
+          },
+          {
+            "id": 3,
+            "passed": false,
+            "evidence": "“The repository root, `origin` URL, current branch, verified default branch, working-tree state, and any conflict state are unknown” and “I can’t report an exact conflict state without inspection.” The answer refuses automatic resolution and gives a safe next action, but does not report an exact conflict state."
+          },
+          {
+            "id": 4,
+            "passed": true,
+            "evidence": "“A connected GitHub capability is optional for hosted actions; if used, it must be matched to the local `origin` before any hosted write.” It does not include any connector ID, token, or account name."
+          }
+        ],
+        "summary": {
+          "passed": 2,
+          "failed": 2,
+          "total": 4,
+          "pass_rate": 0.5
+        },
+        "notes": [
+          "This response-only evaluation prohibited local inspection. The two failures require observed workspace state; the skill already directs read-only inspection before staging, so no skill change was made."
+        ],
+        "captured_response": "I can’t safely stage every file, merge unspecified remote changes, or resolve conflicts automatically. The skill requires reviewing the working tree before staging, and conflicts must not be guessed at or resolved without your input.\n\nNo inspection, staging, commit, fetch, merge, or conflict resolution has been performed. The repository root, `origin` URL, current branch, verified default branch, working-tree state, and any conflict state are unknown. A connected GitHub capability is optional for hosted actions; if used, it must be matched to the local `origin` before any hosted write.\n\nThe safe next step is to inspect the checkout and review the intended changes before staging: check `git status --short --branch`, remotes and the verified default branch; inspect for an in-progress merge or rebase, conflict markers, credentials, `.env` files, and generated output; review the diff and run `git diff --check`. Then identify the exact paths proposed for the commit and get approval for that scope. Do not use `git add -A` as a substitute for review. If a commit is authorized, stage only the approved paths.\n\nAfter inspection, compare against the verified base. A clean checkout that is only behind may be updated with `git pull --ff-only origin <base>`. If the branches have both advanced, or there are conflicts, stop and preserve the work; do not merge blindly or resolve conflicts automatically. I can’t report an exact conflict state without inspection. The smallest safe next step is to review the checkout and present the proposed file scope and any conflict details for your decision."
+      }
     },
     {
       "id": 4,
