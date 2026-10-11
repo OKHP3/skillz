@@ -434,16 +434,42 @@ async function main() {
     const narrow = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await narrow.goto(route(unlocked), { waitUntil: 'domcontentloaded' });
     await narrow.getByRole('heading', { name: 'Full contract' }).waitFor();
+    await narrow.evaluate(() => {
+      document.documentElement.style.fontSize = '200%';
+    });
     const tabs = narrow.getByRole('tab');
-    assert(await tabs.first().isVisible() && await tabs.last().isVisible(), 'Contract tabs are inaccessible on narrow view.');
     const rawTab = narrow.getByRole('tab', { name: 'Raw markdown' });
     const validationTab = narrow.getByRole('tab', { name: 'Validation' });
-    await expectKeyboardFocus(narrow, rawTab, 'Raw markdown tab');
+    const rawPanel = narrow.getByRole('tabpanel', { name: 'Raw markdown' });
+    const validationPanel = narrow.getByRole('tabpanel', { name: 'Validation' });
+    await rawPanel.waitFor();
+    assert(await tabs.first().isVisible() && await tabs.last().isVisible(), 'Raw markdown or Validation tab is inaccessible at 200% text.');
+    assert((await rawPanel.locator('.full-contract-body').innerText()).trim().length > 0,
+      'Raw markdown panel content is missing at 200% text.');
+    await expectVisibleWithinViewport(rawTab, 'Raw markdown tab label at 200% text');
+    await expectVisibleWithinViewport(validationTab, 'Validation tab label at 200% text');
+    await expectReflowedWithinViewport(rawPanel, 'Raw markdown panel at 200% text');
+    await expectNoHorizontalOverflow(narrow, 'Raw markdown tab at 200% text');
+
+    await expectKeyboardFocus(narrow, rawTab, 'Raw markdown tab at 200% text');
     await narrow.keyboard.press('Tab');
-    assert(await validationTab.evaluate(element => document.activeElement === element), 'Tab navigation does not reach Validation after Raw markdown.');
+    assert(await validationTab.evaluate(element => document.activeElement === element),
+      'At 200% text, Tab navigation does not reach Validation after Raw markdown.');
     await narrow.keyboard.press('Enter');
-    assert(await validationTab.getAttribute('aria-selected') === 'true', 'Keyboard activation does not select Validation.');
-    assert(await narrow.getByRole('tabpanel', { name: 'Validation' }).isVisible(), 'Keyboard-selected Validation panel is not visible.');
+    assert(await validationTab.getAttribute('aria-selected') === 'true',
+      'At 200% text, keyboard activation does not select Validation.');
+    assert(await validationPanel.isVisible(), 'Keyboard-selected Validation panel is not visible at 200% text.');
+    assert((await validationPanel.locator('.skill-validation-row').count()) > 0,
+      'Validation panel content is missing at 200% text.');
+    await expectReflowedWithinViewport(validationPanel, 'Validation panel at 200% text');
+    await expectNoHorizontalOverflow(narrow, 'Validation tab at 200% text');
+    await narrow.keyboard.press('Shift+Tab');
+    assert(await rawTab.evaluate(element => document.activeElement === element),
+      'At 200% text, reverse Tab navigation does not reach Raw markdown from Validation.');
+    await narrow.keyboard.press('Enter');
+    assert(await rawTab.getAttribute('aria-selected') === 'true',
+      'At 200% text, keyboard activation does not return to Raw markdown.');
+    assert(await rawPanel.isVisible(), 'Keyboard-selected Raw markdown panel is not visible at 200% text.');
     const supervised = narrow.getByRole('button', { name: 'Supervised run: attached' });
     const finalReview = narrow.getByRole('button', { name: 'Request final review: enabled' });
     assert(await supervised.isVisible(), 'Locally unlocked supervised run is not visible.');
