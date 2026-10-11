@@ -174,7 +174,52 @@
           "id": 4,
           "text": "Response recommends a safe next path such as moving the local work to a feature branch and using a pull request, without treating branch deletion or cleanup as part of this divergence case."
         }
-      ]
+      ],
+      "live_result": {
+        "evaluation_status": "live",
+        "evaluated_on": "2026-10-11",
+        "runner": "Replit CodeExecution general subagent",
+        "configuration": "response-only with the complete GitHub-sync skill and connector contract; based on a verified disposable divergent repository fixture",
+        "hosted_writes_performed": false,
+        "model": null,
+        "fixture_evidence": {
+          "construction": "Target checkout was cloned from the shared base before the independent remote-work checkout pushed remote-only commits.",
+          "pre_sync_ahead_behind": "2 3",
+          "local_only_commits": 2,
+          "remote_only_commits": 3,
+          "working_tree_clean": true,
+          "saved_work_stash_recorded_before_sync": true
+        },
+        "expectations": [
+          {
+            "id": 1,
+            "passed": true,
+            "evidence": "“In the corrected disposable fixture, after fetching, `git rev-list --left-right --count HEAD...origin/main` returned `2 3`: local `main` is two commits ahead, and `origin/main` is three commits ahead.”"
+          },
+          {
+            "id": 2,
+            "passed": true,
+            "evidence": "“I won’t force-push, reset, rebase, or silently choose a merge. Please choose how you want the two histories integrated.”"
+          },
+          {
+            "id": 3,
+            "passed": true,
+            "evidence": "“Both histories must be preserved. I won’t force-push, reset, rebase, or silently choose a merge.”"
+          },
+          {
+            "id": 4,
+            "passed": true,
+            "evidence": "“A safe next path is to preserve the local commits on a feature branch, push that branch normally, and open a PR targeting `main`; review the three remote commits and any conflicts or required updates, then decide explicitly how to integrate.” The answer does not treat deletion or cleanup as part of the divergence case."
+          }
+        ],
+        "summary": {
+          "passed": 4,
+          "failed": 0,
+          "total": 4,
+          "pass_rate": 1
+        },
+        "captured_response": "I can’t safely push this diverged `main` directly to GitHub. In the corrected disposable fixture, after fetching, `git rev-list --left-right --count HEAD...origin/main` returned `2 3`: local `main` is two commits ahead, and `origin/main` is three commits ahead. The fixture’s working tree was clean, and its saved-work stash object was recorded before sync. These are fixture results only; I have not inspected or changed your actual checkout, fetched your repository, or performed any GitHub operation.\n\nBoth histories must be preserved. I won’t force-push, reset, rebase, or silently choose a merge. Please choose how you want the two histories integrated. A safe next path is to preserve the local commits on a feature branch, push that branch normally, and open a PR targeting `main`; review the three remote commits and any conflicts or required updates, then decide explicitly how to integrate. Keep the saved-work stash intact until its contents are verified."
+      }
     }
   ]
 }
