@@ -4,7 +4,7 @@ description: Forge and stress-test the opening line and closing line of a short 
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.0"
+  version: 0.1.0
   category: murderbird
   origin: okhp3/skillz
   homepage: https://overkillhill.com
