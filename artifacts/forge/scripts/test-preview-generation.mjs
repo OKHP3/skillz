@@ -68,10 +68,13 @@ function proveFailureCleanup() {
   let failureFixtureRoot;
   const failureForgeOutputDir = mkdtempSync(join(forgeRoot, '.preview-generation-failure-'));
   const failureReviewDeskOutputDir = join(reviewDeskRoot, basename(failureForgeOutputDir));
+  const failureFixtureName = 'preview-generation-invalid-fixture';
 
   try {
     failureFixtureRoot = mkdtempSync(join(workspaceRoot, 'universal', 'preview-companion-failure-'));
-    writeFileSync(join(failureFixtureRoot, 'SKILL.md'), '# Preview failure fixture\n', 'utf8');
+    const failureSkillPath = join(failureFixtureRoot, failureFixtureName, 'SKILL.md');
+    mkdirSync(dirname(failureSkillPath), { recursive: true });
+    writeFileSync(failureSkillPath, '# Preview failure fixture\n', 'utf8');
     mkdirSync(join(failureReviewDeskOutputDir, 'data'), { recursive: true });
     writeFileSync(join(failureForgeOutputDir, 'generated.txt'), 'generated output\n', 'utf8');
     writeFileSync(join(failureReviewDeskOutputDir, 'data', 'catalog.json'), '{}\n', 'utf8');
@@ -93,13 +96,17 @@ function proveFailureCleanup() {
       },
     );
     const failureOutput = `${failureBuild.stdout || ''}\n${failureBuild.stderr || ''}`;
+    const failureFixtureRelativePath = relative(workspaceRoot, failureSkillPath).replace(/\\/g, '/');
     assert(
       failureBuild.status !== 0,
-      `Deliberately invalid preview fixture unexpectedly passed catalog build:\n${failureOutput}`,
+      `Deliberately invalid preview fixture "${failureFixtureRelativePath}" unexpectedly passed catalog build:\n${failureOutput}`,
     );
     assert(
-      failureOutput.includes('Evidence contract violation'),
-      `Catalog build did not fail for the deliberately invalid preview fixture:\n${failureOutput}`,
+      failureOutput.includes(
+        `Evidence contract violation: non-Community package ${failureFixtureRelativePath} is missing`,
+      ) &&
+        failureOutput.includes('Build failed per rule 8.'),
+      `Catalog build did not report the expected evidence-contract failure for fixture "${failureFixtureRelativePath}":\n${failureOutput}`,
     );
   } finally {
     cleanupPreviewArtifacts(failureFixtureRoot, failureForgeOutputDir, failureReviewDeskOutputDir);
