@@ -77,6 +77,10 @@ function catalog(sourceCommit) {
   };
 }
 
+function failedCatalogRequest(type, status) {
+  return { failure: { type, status } };
+}
+
 function reviewSurfaceHtml({
   assertionFailure,
   unresolved = false,
@@ -199,10 +203,29 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
 
     if (requestPath === '/data/catalog.json') {
       const responseIndex = Math.min(state.catalogRequests, catalogResponses.length - 1);
-      const body = JSON.stringify(catalogResponses[responseIndex]);
+      const catalogResponse = catalogResponses[responseIndex];
       state.catalogRequests += 1;
+      if (catalogResponse.failure?.type === 'network') {
+        state.catalogResponses.push({
+          failureType: 'network',
+          completedAt: Date.now(),
+        });
+        response.destroy();
+        return;
+      }
+      if (catalogResponse.failure?.type === 'http') {
+        state.catalogResponses.push({
+          failureType: 'http',
+          status: catalogResponse.failure.status,
+          completedAt: Date.now(),
+        });
+        response.writeHead(catalogResponse.failure.status, { 'content-type': 'text/plain' });
+        response.end('fixture catalog request failure');
+        return;
+      }
+      const body = JSON.stringify(catalogResponse);
       state.catalogResponses.push({
-        sourceCommit: catalogResponses[responseIndex].sourceCommit,
+        sourceCommit: catalogResponse.sourceCommit,
         completedAt: Date.now(),
       });
       response.writeHead(200, { 'content-type': 'application/json' });
@@ -314,6 +337,68 @@ async function main() {
         `Successful propagation should keep deployment progress concise:\n${result.stdout}`);
       assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
         'Browser assertions started before the expected catalog response completed.');
+    },
+  );
+
+  await runCase(
+    'retries one temporary catalog HTTP failure and reaches browser assertions',
+    {
+      catalogResponses: [
+        failedCatalogRequest('http', 503),
+        catalog(expectedCommit),
+      ],
+    },
+    (result, state) => {
+      assert(result.status === 0,
+        `Transient catalog failure should recover successfully (exit ${result.status}).\n${result.stderr}`);
+      const failedResponses = state.catalogResponses
+        .map((entry, index) => ({ ...entry, index }))
+        .filter(entry => entry.failureType === 'http');
+      const expectedResponse = state.catalogResponses
+        .map((entry, index) => ({ ...entry, index }))
+        .find(entry => entry.sourceCommit === expectedCommit);
+      assert(failedResponses.length === 1 && failedResponses[0].status === 503,
+        'Transient catalog fixture should record exactly one HTTP 503 response.');
+      assert(expectedResponse && expectedResponse.index > failedResponses[0].index,
+        'Transient catalog fixture should serve the expected source commit after the failure.');
+      assert(state.catalogRequests >= 2,
+        'Transient catalog failure should cause another catalog request.');
+      assert(result.stdout.includes('Catalog propagation retry 1:'),
+        `Transient catalog failure should be reported as a retry:\n${result.stdout}`);
+      assert(state.browserStarts.length > 0,
+        'Recovered catalog request should reach the browser assertion stage.');
+      assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
+        'Browser assertions started before the expected catalog response completed.');
+    },
+  );
+
+  await runCase(
+    'reports a permanent catalog HTTP failure as a deployment failure',
+    { catalogResponses: [failedCatalogRequest('http', 503)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Permanent HTTP failure should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Permanent HTTP failure must use the deployment failure prefix.');
+      assert(result.stderr.includes('HTTP 503'),
+        `Permanent HTTP failure should retain its status detail:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Permanent HTTP failure must stop before browser assertions.');
+    },
+  );
+
+  await runCase(
+    'reports a permanent catalog network failure as a deployment failure',
+    { catalogResponses: [failedCatalogRequest('network')] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Permanent network failure should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Permanent network failure must use the deployment failure prefix.');
+      assert(result.stderr.includes('Could not reach published catalog.json'),
+        `Permanent network failure should retain its reachability detail:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Permanent network failure must stop before browser assertions.');
     },
   );
 
