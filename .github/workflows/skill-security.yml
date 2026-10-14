@@ -25,7 +25,7 @@ jobs:
 
       - name: Plan package-only scope
         id: plan
-        uses: OKHP3/skillz-shield@f6bad80dfea521ea43b873881a83794a9fff5370 # reviewed NVIDIA ledger diagnostics (PR 22)
+        uses: OKHP3/skillz-shield@e73e58b95ea2c49f4c6ab0ab8d84d1db694f7a76 # reviewed NVIDIA ledger diagnostics (PR 22)
         with:
           mode: plan
           state: ${{ runner.temp }}/security-state
@@ -49,7 +49,7 @@ jobs:
       - name: Resolve current stable vendors to immutable pins
         id: resolve
         if: steps.plan.outputs.scan == 'true'
-        uses: OKHP3/skillz-shield@f6bad80dfea521ea43b873881a83794a9fff5370 # reviewed NVIDIA ledger diagnostics (PR 22)
+        uses: OKHP3/skillz-shield@e73e58b95ea2c49f4c6ab0ab8d84d1db694f7a76 # reviewed NVIDIA ledger diagnostics (PR 22)
         env:
           GH_TOKEN: ${{ github.token }}
         with:
@@ -67,7 +67,7 @@ jobs:
 
       - name: Install the pinned vendor environments
         if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
-        uses: OKHP3/skillz-shield@f6bad80dfea521ea43b873881a83794a9fff5370 # reviewed NVIDIA ledger diagnostics (PR 22)
+        uses: OKHP3/skillz-shield@e73e58b95ea2c49f4c6ab0ab8d84d1db694f7a76 # reviewed NVIDIA ledger diagnostics (PR 22)
         with:
           mode: install
           state: ${{ runner.temp }}/security-state
@@ -76,7 +76,7 @@ jobs:
         id: scan
         if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
         continue-on-error: true
-        uses: OKHP3/skillz-shield@f6bad80dfea521ea43b873881a83794a9fff5370 # reviewed NVIDIA ledger diagnostics (PR 22)
+        uses: OKHP3/skillz-shield@e73e58b95ea2c49f4c6ab0ab8d84d1db694f7a76 # reviewed NVIDIA ledger diagnostics (PR 22)
         with:
           mode: scan
           state: ${{ runner.temp }}/security-state
