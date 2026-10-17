@@ -3,6 +3,11 @@
 [![Deploy Skillz Forge to GitHub Pages](https://github.com/OKHP3/skillz/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/OKHP3/skillz/actions/workflows/deploy-pages.yml)
 [![Publish health check](https://github.com/OKHP3/skillz/actions/workflows/publish-health-check.yml/badge.svg)](https://github.com/OKHP3/skillz/actions/workflows/publish-health-check.yml)
 
+> 🚧 **Under construction. On purpose.**
+> Skillz is built in public. Custom GPTs, mega-prompts and meta-prompts are being
+> converted into portable Agent Skills, plugins and connectors, one commit at a time.
+> Families mature at different speeds. Check each skill's maturity before relying on it.
+
 Skillz Forge is a catalog and review platform for the Skillz ecosystem. It
 verifies that skill catalog data, accessibility affordances, and release
 gates stay trustworthy as the root distribution families and the wider Skillz
