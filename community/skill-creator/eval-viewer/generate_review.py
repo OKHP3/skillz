@@ -287,7 +287,8 @@ def bind_review_server(port: int, handler):
     try:
         return HTTPServer(("127.0.0.1", port), handler)
     except OSError as exc:
-        if exc.errno != errno.EADDRINUSE:
+        # Windows reports an exclusive listener or reserved port as WSAEACCES.
+        if exc.errno != errno.EADDRINUSE and getattr(exc, "winerror", None) != 10013:
             raise
         return HTTPServer(("127.0.0.1", 0), handler)
 
