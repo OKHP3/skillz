@@ -43,8 +43,9 @@
 ## 2026-10-21: SQL reconciliation TLS validation
 
 - Require encrypted, certificate-validated SQL Server connections by default.
-  A named CLI flag allows controlled self-signed development servers with a
-  visible warning. Connection parameters now use driver keyword arguments to
+  Endpoint-specific CLI flags allow controlled self-signed development servers
+  with visible warnings while the other endpoint remains validated. Connection
+  parameters now use driver keyword arguments to
   preserve special characters and prevent connection-string overrides.
 - No live database compatibility test has run. The wider Shield scan remains
   a separate security review.
