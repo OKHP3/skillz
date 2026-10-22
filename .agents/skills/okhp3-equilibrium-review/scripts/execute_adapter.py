@@ -3,13 +3,12 @@
 from __future__ import annotations
 
 import subprocess
-from typing import Sequence
 
 
-def execute_adapter(argv: Sequence[str], timeout_seconds: int) -> subprocess.CompletedProcess[str]:
+def execute_adapter(argv: list[str], timeout_seconds: int) -> subprocess.CompletedProcess:
     """Run one caller-supplied argument vector without shell interpretation."""
     return subprocess.run(
-        list(argv),
+        argv,
         check=False,
         capture_output=True,
         text=True,
