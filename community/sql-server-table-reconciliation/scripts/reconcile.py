@@ -23,13 +23,40 @@ Environment variables for credentials (when --auth sql):
 
 import argparse
 import os
+import re
 import sys
 from getpass import getpass
 
-import pandas as pd
-import pyarrow as pa
-import pyarrow.compute as pc
-from mssql_python import connect as mssql_connect
+
+_IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_]{0,127}\Z", re.ASCII)
+
+
+def quote_identifier(value):
+    """Accept ordinary SQL Server identifiers and quote them as identifiers."""
+    if not isinstance(value, str) or not _IDENTIFIER.fullmatch(value):
+        raise ValueError("Expected a simple SQL identifier (letters, digits, underscore; max 128 characters)")
+    return f"[{value}]"
+
+
+def table_parts(table):
+    parts = table.split(".") if isinstance(table, str) else []
+    if len(parts) != 2:
+        raise ValueError("Expected a schema.table name")
+    schema, name = parts
+    quote_identifier(schema)
+    quote_identifier(name)
+    return schema, name
+
+
+def quote_table(table):
+    schema, name = table_parts(table)
+    return f"{quote_identifier(schema)}.{quote_identifier(name)}"
+
+
+def quote_columns(columns):
+    if not columns:
+        raise ValueError("At least one column is required")
+    return ", ".join(quote_identifier(column) for column in columns)
 
 
 # --- Connection Setup ---
@@ -52,6 +79,8 @@ def connect(server, database, auth_mode, user=None, password=None):
             f"Authentication=ActiveDirectoryDefault;"
             f"TrustServerCertificate=yes;Encrypt=yes"
         )
+    from mssql_python import connect as mssql_connect
+
     return mssql_connect(conn_str)
 
 
@@ -60,10 +89,20 @@ def resolve_tables(conn, table_spec):
     """Resolve table spec to list of schema.table names.
 
     Accepts: 'dbo.*', 'dbo.Orders,dbo.Items', or 'dbo.Orders'."""
-    tables = []
+    parsed = []
     for spec in table_spec.split(","):
         spec = spec.strip()
-        schema, tbl = spec.split(".")
+        parts = spec.split(".")
+        if len(parts) != 2:
+            raise ValueError("Expected a schema.table name")
+        schema, tbl = parts
+        quote_identifier(schema)
+        if tbl != "*":
+            quote_identifier(tbl)
+        parsed.append((schema, tbl))
+
+    tables = []
+    for schema, tbl in parsed:
         if tbl == "*":
             query = """
             SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES
@@ -73,9 +112,11 @@ def resolve_tables(conn, table_spec):
             cur = conn.cursor()
             cur.execute(query, [schema])
             rows = cur.arrow().to_pandas()
-            tables.extend(f"{schema}.{t}" for t in rows["TABLE_NAME"])
+            for name in rows["TABLE_NAME"]:
+                quote_identifier(name)
+                tables.append(f"{schema}.{name}")
         else:
-            tables.append(spec)
+            tables.append(f"{schema}.{tbl}")
     return tables
 
 
@@ -90,7 +131,7 @@ def compare_schema(source_conn, target_conn, table):
       AND TABLE_NAME = ?
     ORDER BY ORDINAL_POSITION
     """
-    schema_name, table_name = table.split(".")
+    schema_name, table_name = table_parts(table)
 
     src_cur = source_conn.cursor()
     src_cur.execute(query, [schema_name, table_name])
@@ -131,7 +172,7 @@ def compare_schema(source_conn, target_conn, table):
 # --- Primary Key Detection ---
 def detect_primary_key(conn, table):
     """Auto-detect PK columns from sys.index_columns."""
-    schema, tbl = table.split(".")
+    schema, tbl = table_parts(table)
     query = """
     SELECT c.name
     FROM sys.indexes i
@@ -151,8 +192,7 @@ def detect_primary_key(conn, table):
 # --- Data Extraction (Arrow) ---
 def extract_table(conn, table, pk_cols, chunk_size=100000):
     """Extract table data as Arrow Table, using Arrow columnar transfer."""
-    pk_order = ", ".join(pk_cols)
-    query = f"SELECT * FROM {table} ORDER BY {pk_order}"
+    query = f"SELECT * FROM {quote_table(table)} ORDER BY {quote_columns(pk_cols)}"
     cur = conn.cursor()
     cur.execute(query)
     return cur.arrow()
@@ -161,12 +201,12 @@ def extract_table(conn, table, pk_cols, chunk_size=100000):
 # --- Hash Pre-check (for large tables) ---
 def extract_hashes(conn, table, pk_cols, compare_cols):
     """Extract PK + row hash for large table optimization."""
-    pk_select = ", ".join(pk_cols)
-    col_concat = ", ".join(compare_cols)
+    pk_select = quote_columns(pk_cols)
+    col_concat = quote_columns(compare_cols)
     query = f"""
     SELECT {pk_select},
            HASHBYTES('SHA2_256', CONCAT_WS('|', {col_concat})) AS row_hash
-    FROM {table}
+    FROM {quote_table(table)}
     ORDER BY {pk_select}
     """
     cur = conn.cursor()
@@ -270,6 +310,8 @@ def generate_report(all_results, output_format="console"):
 
     # Export if requested
     if output_format == "csv":
+        import pandas as pd
+
         rows = [
             {
                 "table": r["table"],
