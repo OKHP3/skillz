@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-09-19T23:35:13.065Z",
+  "generatedAt": "2026-10-22T03:34:00.764Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/skill-taxonomy-cleanup",
-  "sourceCommit": "b8e278d",
-  "skillCount": 326,
-  "familyCount": 21,
+  "sourceRef": "codex/copilot-foundry-completion",
+  "sourceCommit": "36e060ff",
+  "skillCount": 333,
+  "familyCount": 22,
   "maturityCounts": {
-    "draftable": 248,
+    "draftable": 255,
     "skeleton": 73,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 159,
+    "not-run": 165,
     "none": 110,
     "local-checks": 37,
-    "analytical": 6,
+    "analytical": 7,
     "live": 7
   },
   "capabilities": {

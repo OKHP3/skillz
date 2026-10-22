@@ -4,9 +4,11 @@ Status checked October 21, 2026: the weekly inventory and bounded runtime-candid
 workflow are active on GitHub `main`. The October 19 refresh succeeded
 ([run 39224893334](https://github.com/OKHP3/skillz/actions/runs/39224893334)); its
 updated proposal passed the full checks and merged as
-[PR #144](https://github.com/OKHP3/skillz/pull/144). Current CI pins are Node
-24.22.0, Python 3.14.8, and pnpm 10.34.7. Windows and Replit runtime installations
-must still be measured independently of these declarations.
+[PR #144](https://github.com/OKHP3/skillz/pull/144). This revision declares Node
+24.22.1, Python 3.14.9, and pnpm 10.34.7. The Node
+and Python patch candidates came from the same bounded updater used by the weekly
+workflow; acceptance requires the normal proposal checks and merge. October 21
+host observations are recorded separately in the technology inventory.
 
 The workflow proposes changes for review and never merges automatically. The
 daily compatible package proposal merged as
@@ -48,7 +50,7 @@ The report distinguishes npm `latest` from current LTS and approved update targe
    release cooldown. The existing pnpm minimum release age stays intact. Security update
    scheduling is a separate GitHub feature; this change does not claim to enable it.
 2. Every Monday at 08:17 UTC the inventory workflow discovers the current sources and
-   compares all 521 package/action/tool names against official registry and release metadata.
+   compares every discovered package/action/tool name against official registry and release metadata.
    Node and Python runtimes are compared separately. New matching manifests are discovered
    rather than relying on the old fixed list of 13 technologies.
 3. If a source request fails, the audit fails before writing the report or pins. A package
