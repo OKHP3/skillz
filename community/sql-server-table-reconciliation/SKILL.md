@@ -37,6 +37,14 @@ underscore, up to 128 characters. The script quotes accepted identifiers in
 generated SQL and rejects other input before executing a query. SQL Server
 names containing spaces or punctuation are not supported by this script.
 
+Connections require TLS and validate the SQL Server certificate by default.
+Use a trusted certificate on production and staging servers. For a controlled
+local development server with a self-signed certificate only, pass
+`--trust-source-self-signed-certificate` or
+`--trust-target-self-signed-certificate` for that endpoint only. Each option
+disables certificate validation for its named endpoint and prints a warning.
+Never use either option for production data.
+
 ## Bundled Script
 
 The reconciliation logic is provided as a standalone script at `scripts/reconcile.py`. Invoke it with the appropriate arguments based on user inputs:
@@ -59,6 +67,8 @@ python scripts/reconcile.py \
 |----------|-------------|
 | `--primary-key` | Comma-separated PK column(s). Omit to auto-detect. |
 | `--columns` | Comma-separated columns to compare. Omit to compare all non-PK columns. |
+| `--trust-source-self-signed-certificate` | Development only; skip source certificate validation for a controlled self-signed server. |
+| `--trust-target-self-signed-certificate` | Development only; skip target certificate validation for a controlled self-signed server. |
 
 ### Example invocations
 
@@ -156,7 +166,7 @@ When a single table is provided, include full detail (schema drift, sample rows,
 
 - Always use `mssql-python` driver (not pyodbc, pymssql)
 - Always use Apache Arrow via cursor (`cursor.arrow()`) for data extraction
-- Connection MUST use connection string format, not keyword arguments (kwargs like `encrypt=True` throw errors)
+- Use `mssql-python` connection keyword values as documented by Microsoft, for example `encrypt="yes"` and `trust_server_certificate="no"`; do not pass Boolean values such as `encrypt=True`. Keyword values keep SQL passwords containing semicolons out of an interpolated connection string. See [mssql-python connection strings](https://learn.microsoft.com/en-us/sql/connect/python/mssql-python/connection-strings).
 - Never compare without identifying PK first — ask user if auto-detect fails
 - Handle connection failures gracefully with retry logic
 - **Never hardcode credentials** in generated scripts — use `os.environ` / `getpass` (env vars: `MSSQL_USER`, `MSSQL_PASSWORD`)
