@@ -1396,12 +1396,12 @@ test('local catalog integrity reports cleanup failures separately from validatio
       .map((entry) => entry.name),
   );
   const beforeTemporaryRoots = temporaryRootNames();
-  const assertTemporaryRootsClean = () => {
+  const assertTemporaryRootsClean = (label) => {
     const leakedRoots = [...temporaryRootNames()]
       .filter((name) => !beforeTemporaryRoots.has(name));
     assert(
       leakedRoots.length === 0,
-      `Real filesystem cleanup failure fixture left temporary catalog output behind: ${leakedRoots.join(', ')}`,
+      `${label} left temporary catalog output behind: ${leakedRoots.join(', ')}`,
     );
   };
 
