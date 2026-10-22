@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T04:00:04.158Z",
+  "generatedAt": "2026-10-22T10:49:13.609Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/knowledge-operations-closeout",
-  "sourceCommit": "4e2836de",
+  "sourceRef": "codex/translation-thread-closeout",
+  "sourceCommit": "d4132c0",
   "skillCount": 333,
   "familyCount": 22,
   "families": [
@@ -5782,7 +5782,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 4,
-        "scriptCount": 4,
+        "scriptCount": 5,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -6766,7 +6766,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
-        "scriptCount": 9,
+        "scriptCount": 10,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -7074,8 +7074,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/sql-server-table-reconciliation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/sql-server-table-reconciliation/SKILL.md",
-      "lastModified": "2026-10-21T22:39:12-05:00",
-      "commitSha": "7ccba36d",
+      "lastModified": "2026-10-21T22:57:59-05:00",
+      "commitSha": "733ef20a",
       "createdAt": "2026-08-27T23:47:34-05:00",
       "packageMetadata": {
         "author": null,
@@ -7092,7 +7092,7 @@
         "evaluatedSkillVersion": null,
         "evalCount": 0,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 2,
         "referenceCount": 0,
         "scriptCount": 1,
         "lastEvidenceDate": null,
@@ -7263,8 +7263,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/theme-factory/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/theme-factory/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-22T00:02:07-05:00",
+      "commitSha": "bd4d98f8",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
         "author": null,
@@ -12402,7 +12402,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
       "lastModified": "2026-08-31T22:34:57-05:00",
       "commitSha": "93613e20",
-      "createdAt": "2026-08-30T18:11:10-05:00",
+      "createdAt": "2026-08-30T18:45:34-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
@@ -12635,7 +12635,7 @@
       "skillDir": "okhp3-translation-en-us-fr-fr",
       "path": "language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
       "description": "Translate owned plainspoken text artifacts one way from United States English (en-US) to France French (fr-FR), preserving source voice, meaning, protected tokens, structure, and the pair-specific dictionary. Use only after any specialist register has separately been mediated into plain en-US. Do not use for another pair, a register conversion, reverse translation, generic copyediting, or machine-only publication.",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "license": "MIT",
       "category": "language-mediation",
       "origin": "okhp3/skillz",
@@ -12652,6 +12652,7 @@
       "triggers": [],
       "avoid": [],
       "companions": [
+        "okhp3-i18n-page-sync",
         "okhp3-i18n-page-release"
       ],
       "examples": [],
@@ -12662,8 +12663,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "lastModified": "2026-08-31T22:34:57-05:00",
-      "commitSha": "93613e20",
+      "lastModified": "2026-10-22T05:47:19-05:00",
+      "commitSha": "3f1a368e",
       "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -12677,14 +12678,14 @@
       },
       "evidence": {
         "status": "analytical",
-        "evaluatedSkillVersion": "1.1.0",
+        "evaluatedSkillVersion": "1.3.1",
         "evalCount": 5,
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
         "scriptCount": 2,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
+        "lastEvidenceDate": "2026-10-22",
+        "reviewDecision": "approve-with-limits",
         "blockers": [
           "Only design or structural review exists; no graded live run has been executed."
         ]
@@ -13158,8 +13159,8 @@
       "author": "Jamie Hill (OverKill Hill P3)",
       "homepage": "https://overkillhill.com",
       "maturity": "usable",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
       "topics": [
@@ -13178,8 +13179,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T23:45:23-05:00",
+      "commitSha": "69a33f95",
       "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
@@ -13192,17 +13193,17 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "none",
+        "status": "analytical",
         "evaluatedSkillVersion": null,
         "evalCount": 0,
         "benchmarkCount": 0,
-        "testCount": 0,
+        "testCount": 1,
         "referenceCount": 3,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "No evaluation design or executable check exists for this package."
+          "Only design or structural review exists; no graded live run has been executed."
         ]
       },
       "maturitySource": "explicit-frontmatter",
@@ -16757,7 +16758,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-adversary-forecasting/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-intelligence",
@@ -16946,7 +16947,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-credential-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17009,7 +17010,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-data-exposure/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17148,7 +17149,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-lateral-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17274,7 +17275,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-persistence-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17400,7 +17401,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-authorization-governance/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-27T23:47:34-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-governance",
@@ -17715,7 +17716,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-model-anomaly-detection/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-detection",
@@ -17967,7 +17968,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-response-cost-benefit/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-measurement",
@@ -22826,7 +22827,7 @@
       "skillDir": "okhp3-repository-organizer",
       "path": "universal/okhp3-repository-organizer/SKILL.md",
       "description": "OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git repository grew organically from a folder and needs an evidence-based profile, purpose summary, classification, cross-platform naming cleanup, folder design, governance scaffolding, or a safe reorganization plan. Also activate when a repository contains prompts, AI conversations, research, Word documents, spreadsheets, PDFs, images, or mixed knowledge assets rather than a conventional application. This is the authoritative workflow for understanding and organizing an existing repository; use it instead of application-template advice, skill cataloging, or new-repository creation workflows.",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -22851,8 +22852,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-repository-organizer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-repository-organizer/SKILL.md",
-      "lastModified": "2026-09-19T18:33:10-05:00",
-      "commitSha": "b8e278d4",
+      "lastModified": "2026-10-21T23:07:23-05:00",
+      "commitSha": "9ff765c4",
       "createdAt": "2026-07-27T23:48:48-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -22869,7 +22870,7 @@
         "evaluatedSkillVersion": "1.1.1",
         "evalCount": 3,
         "benchmarkCount": 0,
-        "testCount": 0,
+        "testCount": 1,
         "referenceCount": 6,
         "scriptCount": 1,
         "lastEvidenceDate": null,
