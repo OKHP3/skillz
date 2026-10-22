@@ -27,7 +27,7 @@ jobs:
 
       - name: Plan package-only scope
         id: plan
-        uses: OKHP3/skillz-shield@d23b33889707ef994ba78dadc8350d9a640633e0 # exact-content review policy (PR 29)
+        uses: OKHP3/skillz-shield@a839c94b282f89fd6c5aa785d38964e1abb468de # reviewed occurrence accounting (PR 30)
         with:
           mode: plan
           state: ${{ runner.temp }}/security-state
@@ -51,7 +51,7 @@ jobs:
       - name: Resolve current stable vendors to immutable pins
         id: resolve
         if: steps.plan.outputs.scan == 'true'
-        uses: OKHP3/skillz-shield@d23b33889707ef994ba78dadc8350d9a640633e0 # exact-content review policy (PR 29)
+        uses: OKHP3/skillz-shield@a839c94b282f89fd6c5aa785d38964e1abb468de # reviewed occurrence accounting (PR 30)
         env:
           GH_TOKEN: ${{ github.token }}
         with:
@@ -69,7 +69,7 @@ jobs:
 
       - name: Install the pinned vendor environments
         if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
-        uses: OKHP3/skillz-shield@d23b33889707ef994ba78dadc8350d9a640633e0 # exact-content review policy (PR 29)
+        uses: OKHP3/skillz-shield@a839c94b282f89fd6c5aa785d38964e1abb468de # reviewed occurrence accounting (PR 30)
         with:
           mode: install
           state: ${{ runner.temp }}/security-state
@@ -78,7 +78,7 @@ jobs:
         id: scan
         if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
         continue-on-error: true
-        uses: OKHP3/skillz-shield@d23b33889707ef994ba78dadc8350d9a640633e0 # exact-content review policy (PR 29)
+        uses: OKHP3/skillz-shield@a839c94b282f89fd6c5aa785d38964e1abb468de # reviewed occurrence accounting (PR 30)
         with:
           mode: scan
           state: ${{ runner.temp }}/security-state
@@ -182,7 +182,7 @@ jobs:
 
       - name: Check exact reviewed scanner limitations
         if: steps.scope.outputs.scan == 'true'
-        uses: OKHP3/skillz-shield@d23b33889707ef994ba78dadc8350d9a640633e0 # exact-content review policy (PR 29)
+        uses: OKHP3/skillz-shield@a839c94b282f89fd6c5aa785d38964e1abb468de # reviewed occurrence accounting (PR 30)
         with:
           mode: review
           state: ${{ runner.temp }}/security-review
