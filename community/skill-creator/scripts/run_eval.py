@@ -76,6 +76,8 @@ def run_single_query(
             "--tools", "Skill",
             "--allowedTools", "Skill",
             "--disallowedTools", "mcp__*",
+            "--strict-mcp-config",
+            "--mcp-config", '{"mcpServers":{}}',
             "--permission-mode", "dontAsk",
             "--output-format", "stream-json",
             "--verbose",

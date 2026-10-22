@@ -40,6 +40,8 @@ class ClaudeToolBoundaryTests(unittest.TestCase):
             self.assertEqual(argv[argv.index("--tools") + 1], "Skill")
             self.assertEqual(argv[argv.index("--allowedTools") + 1], "Skill")
             self.assertEqual(argv[argv.index("--disallowedTools") + 1], "mcp__*")
+            self.assertIn("--strict-mcp-config", argv)
+            self.assertEqual(json.loads(argv[argv.index("--mcp-config") + 1]), {"mcpServers": {}})
             self.assertEqual(argv[argv.index("--permission-mode") + 1], "dontAsk")
             self.assertNotIn("--bare", argv)
             self.assertNotIn("--restricted", argv)
@@ -56,6 +58,8 @@ class ClaudeToolBoundaryTests(unittest.TestCase):
         argv = launch.call_args.args[0]
         self.assertEqual(argv[argv.index("--tools") + 1], "")
         self.assertEqual(argv[argv.index("--disallowedTools") + 1], "mcp__*")
+        self.assertIn("--strict-mcp-config", argv)
+        self.assertEqual(json.loads(argv[argv.index("--mcp-config") + 1]), {"mcpServers": {}})
         self.assertEqual(argv[argv.index("--permission-mode") + 1], "dontAsk")
         self.assertEqual(launch.call_args.kwargs["input"], "Review this description")
         self.assertNotIn("--bare", argv)

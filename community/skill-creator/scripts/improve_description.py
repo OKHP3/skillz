@@ -28,6 +28,8 @@ def _call_claude(prompt: str, model: str | None, timeout: int = 300) -> str:
         "claude", "-p",
         "--tools", "",
         "--disallowedTools", "mcp__*",
+        "--strict-mcp-config",
+        "--mcp-config", '{"mcpServers":{}}',
         "--permission-mode", "dontAsk",
         "--output-format", "text",
     ]
