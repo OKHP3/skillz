@@ -405,16 +405,16 @@ class AuditRepoTests(unittest.TestCase):
             self._init_repo(root)
             self._git(root, "branch", "feature/failed")
             self._git(root, "branch", "feature/invalid")
-            synthetic_token = "synthetic-token-do-not-log"
+            synthetic_marker = "synthetic-token-do-not-log"
             lookup_file = root / "lookups.json"
             lookup_file.write_text(
                 json.dumps({
                     "feature/failed": {
                         "lookup_status": "failed",
-                        "error": f"connector failed with {synthetic_token}",
+                        "error": f"connector failed with {synthetic_marker}",
                     },
                     "feature/invalid": {
-                        "lookup_status": synthetic_token,
+                        "lookup_status": synthetic_marker,
                         "state": "closed",
                         "merged": True,
                         "head_sha": self._git(root, "rev-parse", "feature/invalid"),
@@ -458,7 +458,7 @@ class AuditRepoTests(unittest.TestCase):
             )
             self.assertEqual(invalid["hosted_lookup"], {"status": "unknown"})
             self.assertEqual(invalid["bucket"], "review")
-            self.assertNotIn(synthetic_token, result.stdout)
+            self.assertNotIn(synthetic_marker, result.stdout)
 
     def test_cli_report_keeps_missing_hosted_result_in_review(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
