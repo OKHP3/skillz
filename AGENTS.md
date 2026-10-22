@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 332 distribution skills in 22 active families (persona capability additions and the new `murderbird/` family, 2026-09-27). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Inventory snapshot:** 333 distribution skills in 22 active families and 54 project-local support skills at source commit `3859c78e` (2026-10-21). Read the generated catalogs and manifest for the current count. OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -59,7 +59,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 332-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership; regenerate and validate against the current distribution tree |
 
 ## Routing index
 
@@ -359,7 +359,7 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 
 ### Project-local support skills
 
-`.agents/skills/` contains 52 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
+`.agents/skills/` contains project-local support skill packages, cataloged in `.agents/skills/README.md` (54 at the snapshot above). The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
 
 ## Technology and runtime
 
@@ -413,6 +413,7 @@ Read only when relevant:
 
 - `docs/STACK-POSITION.md`: stack architecture and ReFolDec relationship
 - `docs/PUBLIC_SURFACES.md`: public information architecture and brand routing
+- `docs/PRD-SKILLZ-FORGE-CURRENT.md`: current Skillz Forge public-surface handoff and acceptance evidence
 - `docs/PUBLISHING.md`: maturity, release, registry, and promotion gates
 - `docs/SECURITY.md`: skill supply-chain and data-safety rules
 - `docs/SKILL-SECURITY-INFRASTRUCTURE.md`: external Cisco/NVIDIA package scanning, automatic vendor updates, and report boundaries
@@ -422,7 +423,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs reflect the current filesystem: `README.md` reports 332 distribution skills in 22 active families, and `.agents/skills/README.md` reports 52 project-local support skills. The family `FAMILY.md` files are the inventory authority for their respective distribution directories.
+- Generated catalogs must reflect the current filesystem: root `README.md` and family `FAMILY.md` files enumerate distribution skills, while `.agents/skills/README.md` enumerates support skills separately. Compare those inventories with the manifest and Forge index before making a current-count claim.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.
@@ -430,7 +431,7 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-09-27
+Updated: 2026-10-21
 
 ### Author-omitted attribution links
 
