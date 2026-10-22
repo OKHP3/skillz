@@ -6,7 +6,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import stat
 import sys
 import unicodedata
 from collections import Counter, defaultdict
@@ -50,12 +52,14 @@ def sha256(path: Path, chunk_size: int = 1024 * 1024) -> str:
     return digest.hexdigest()
 
 
-def read_text_sample(path: Path, limit: int) -> dict[str, object] | None:
+def read_text_sample(path: Path, limit: int, scan_errors: list[str]) -> dict[str, object] | None:
     if path.suffix.lower() not in TEXT_EXTENSIONS:
         return None
     try:
-        text = path.read_text(encoding="utf-8", errors="replace")[:limit]
-    except OSError:
+        with path.open("rb") as handle:
+            text = handle.read(limit).decode("utf-8", errors="replace")
+    except OSError as error:
+        scan_errors.append(f"text sample {path}: {error}")
         return None
     headings = [line.strip() for line in text.splitlines() if line.lstrip().startswith("#")][:12]
     keywords = Counter(re.findall(r"\b[a-z][a-z0-9_-]{3,}\b", text.lower()))
@@ -119,6 +123,58 @@ def positive_int(value: str) -> int:
     return parsed
 
 
+def is_linklike(path: Path) -> bool:
+    """Treat symlinks and Windows reparse points as scan boundaries."""
+    if path.is_symlink():
+        return True
+    attributes = getattr(path.lstat(), "st_file_attributes", None)
+    if attributes is None:
+        if os.name == "nt":
+            raise OSError(f"cannot inspect Windows reparse attributes: {path}")
+        return False
+    return bool(attributes & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400))
+
+
+def walk_repository(root: Path, scan_errors: list[str]):
+    """Yield paths without following links or enumerating skipped subtrees."""
+    def record_error(error: OSError) -> None:
+        scan_errors.append(str(error))
+
+    for current, dirnames, filenames in os.walk(
+        root, topdown=True, followlinks=False, onerror=record_error
+    ):
+        parent = Path(current)
+        retained_dirs: list[str] = []
+        for name in sorted(dirnames):
+            if name in SKIP_DIRS:
+                continue
+            path = parent / name
+            try:
+                linklike = is_linklike(path)
+            except OSError as error:
+                scan_errors.append(f"directory metadata {path}: {error}")
+                continue
+            if linklike:
+                yield "symlink", path
+            else:
+                retained_dirs.append(name)
+                yield "directory", path
+        dirnames[:] = retained_dirs
+        for name in sorted(filenames):
+            path = parent / name
+            try:
+                linklike = is_linklike(path)
+            except OSError as error:
+                scan_errors.append(f"file metadata {path}: {error}")
+                continue
+            if linklike:
+                yield "symlink", path
+            elif path.is_file():
+                yield "file", path
+            else:
+                scan_errors.append(f"not a readable regular file: {path}")
+
+
 def main() -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -129,7 +185,16 @@ def main() -> int:
     parser.add_argument("--sample-bytes", type=positive_int, default=12000)
     args = parser.parse_args()
 
-    root = Path(args.root).expanduser().resolve()
+    unresolved_root = Path(os.path.abspath(os.path.expanduser(args.root)))
+    try:
+        for component in (unresolved_root, *unresolved_root.parents):
+            if is_linklike(component):
+                print(json.dumps({"error": f"linked repository root or ancestor: {component}"}), file=sys.stderr)
+                return 2
+    except OSError as error:
+        print(json.dumps({"error": f"cannot inspect repository root: {error}"}), file=sys.stderr)
+        return 2
+    root = unresolved_root.resolve()
     if not root.is_dir():
         print(json.dumps({"error": f"not a directory: {root}"}), file=sys.stderr)
         return 2
@@ -137,6 +202,8 @@ def main() -> int:
     records: list[dict[str, object]] = []
     extension_counts: Counter[str] = Counter()
     directories: set[str] = set()
+    symlinks_skipped: list[str] = []
+    scan_errors: list[str] = []
     size_groups: defaultdict[tuple[int, str], list[str]] = defaultdict(list)
     naming_paths: defaultdict[str, set[str]] = defaultdict(set)
     portability_violations: defaultdict[str, set[str]] = defaultdict(set)
@@ -149,37 +216,39 @@ def main() -> int:
         governance[special_dir] = (root / special_dir).is_dir()
 
     truncated = False
-    for path in sorted(root.rglob("*")):
-        if any(part in SKIP_DIRS for part in path.relative_to(root).parts):
-            continue
-        if path.is_dir():
-            relative = str(path.relative_to(root)).replace("\\", "/")
+    for kind, path in walk_repository(root, scan_errors):
+        relative = str(path.relative_to(root)).replace("\\", "/")
+        if len(relative) > 180:
+            naming_paths["long_relative_path"].add(relative)
+            portability_violations["long_relative_path"].add(relative)
+        if kind == "directory":
             directories.add(relative)
             for component in relative.split("/"):
                 inspect_name(relative, component, naming_paths, portability_violations)
             normalized_paths[unicodedata.normalize("NFC", relative).casefold()].append(relative)
             continue
-        if not path.is_file():
+        if kind == "symlink":
+            symlinks_skipped.append(relative)
+            for component in relative.split("/"):
+                inspect_name(relative, component, naming_paths, portability_violations)
+            normalized_paths[unicodedata.normalize("NFC", relative).casefold()].append(relative)
             continue
         if len(records) >= args.max_files:
             truncated = True
             break
-        relative = str(path.relative_to(root)).replace("\\", "/")
         for component in relative.split("/"):
             inspect_name(relative, component, naming_paths, portability_violations)
         normalized_paths[unicodedata.normalize("NFC", relative).casefold()].append(relative)
-        if len(relative) > 180:
-            naming_paths["long_relative_path"].add(relative)
-            portability_violations["long_relative_path"].add(relative)
         suffix = path.suffix.lower() or "[none]"
         try:
             size = path.stat().st_size
-        except OSError:
+        except OSError as error:
+            scan_errors.append(f"file size {path}: {error}")
             size = None
         extension_counts[suffix] += 1
         if VERSION_RE.search(path.name):
             naming_paths["version_tokens"].add(relative)
-        text_sample = read_text_sample(path, args.sample_bytes)
+        text_sample = read_text_sample(path, args.sample_bytes, scan_errors)
         record: dict[str, object] = {"path": relative, "size_bytes": size, "extension": suffix}
         if text_sample:
             record["text_sample"] = text_sample
@@ -188,7 +257,8 @@ def main() -> int:
                 digest = sha256(path)
                 record["sha256"] = digest
                 size_groups[(size, digest)].append(relative)
-            except OSError:
+            except OSError as error:
+                scan_errors.append(f"hash {path}: {error}")
                 record["hash_error"] = True
         records.append(record)
 
@@ -209,11 +279,15 @@ def main() -> int:
         "summary": {
             "file_count": len(records),
             "directory_count": len(directories),
+            "symlink_count": len(symlinks_skipped),
             "total_bytes": sum(item["size_bytes"] or 0 for item in records),
             "extensions": dict(extension_counts.most_common()),
             "naming_signals": naming_signals,
             "truncated": truncated,
+            "scan_incomplete": truncated or bool(scan_errors),
         },
+        "symlinks_skipped": sorted(symlinks_skipped),
+        "scan_errors": scan_errors,
         "portability_violations": {
             key: sorted(paths) for key, paths in sorted(portability_violations.items())
         },
@@ -221,6 +295,7 @@ def main() -> int:
         "files": records,
         "notes": [
             "Inventory excludes .git and common dependency/cache directories.",
+            "Symlink and junction targets are not followed; skipped paths are reported.",
             "Text headings and terms are samples for agent inspection, not a summary or classification.",
             "Duplicate candidates are exact size and SHA-256 matches only when --hash is used.",
         ],

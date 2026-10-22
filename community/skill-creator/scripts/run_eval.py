@@ -67,9 +67,18 @@ def run_single_query(
         )
         command_file.write_text(command_content)
 
+        # Trigger measurement needs Skill, but no shell, file, or MCP tools.
+        # --allowedTools approves Skill; --tools is what restricts built-ins.
+        # Keep project command discovery: --bare would hide this test command.
         cmd = [
             "claude",
             "-p", query,
+            "--tools", "Skill",
+            "--allowedTools", "Skill",
+            "--disallowedTools", "mcp__*",
+            "--strict-mcp-config",
+            "--mcp-config", '{"mcpServers":{}}',
+            "--permission-mode", "dontAsk",
             "--output-format", "stream-json",
             "--verbose",
             "--include-partial-messages",

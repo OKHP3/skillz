@@ -213,7 +213,7 @@ These are general-purpose or imported skills. Prefer the narrower OKHP3 family s
 | `mcp-builder` | Build MCP servers or tool integrations in Python, Node, or TypeScript. |
 | `mermaid-diagrams` | General Mermaid diagrams when the OKHP3 Mermaid family is not the intended specialized workflow. |
 | `skill-creator` | Create, edit, evaluate, benchmark, or optimize a skill. |
-| `sql-server-table-reconciliation` | Compare two SQL Server tables with a local script. Its SQL builder accepts simple schema, table, and column identifiers only; it rejects other names before query execution. |
+| `sql-server-table-reconciliation` | Compare two SQL Server tables with validated simple identifiers and certificate validation on by default; self-signed development servers need an explicit opt-in. |
 | `theme-factory` | Apply or create a reusable theme for slides, documents, reports, HTML, or other artifacts. |
 | `vercel-react-best-practices` | Write, review, or refactor React or Next.js for performance. Its nested `agents.md` is package-scoped guidance. |
 | `vercel-react-native-skills` | Write, review, or refactor React Native or Expo for performance. Its nested `agents.md` is package-scoped guidance. |
@@ -342,7 +342,7 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-i18n-page-sync` | Detect which pages on a static site are missing a translation or have drifted from a changed English source, by reusing the site's own search index as the page inventory. Reports drift and names the exact-pair translation skill for each flagged route; never translates or writes a page itself. |
 | `okhp3-project-compass` | Detect whether a project folder is GitHub-backed or plain, then establish or refresh its purpose, goals, and task tracking from evidence. Mode A tracks through milestones, issues, and releases via `gh`; Mode B tracks entirely in files. Reassessment runs emit an evidence-backed delta report and surface scope drift instead of absorbing it. |
 | `okhp3-repository-janitor` | Reconcile local Git mirrors against GitHub, preserve local variations, review branch lifecycle, and prepare safe merge or pruning actions. |
-| `okhp3-repository-organizer` | Profile and safely reorganize content-first Git repositories containing mixed knowledge, prompt, document, research, and media assets, with cross-platform naming safeguards. |
+| `okhp3-repository-organizer` | Profile and safely reorganize content-first Git repositories containing mixed knowledge, prompt, document, research, and media assets, with cross-platform naming and symlink-boundary safeguards. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |
 | `okhp3-skill-discovery` | Find, verify, compare, and route to currently available project-local, installed, runtime, or plugin-provided skills. |
 | `okhp3-skill-foundry` | Create, hone, evaluate, benchmark, brand, or polish a production-quality Agent Skill using the eight-phase Foundry method, evidence ledger, conditional dissent review, and enforced current-state evidence integrity for material releases. |

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T04:14:44.227Z",
+  "generatedAt": "2026-10-22T04:00:04.158Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/skillz-catalog-website-closeout",
-  "sourceCommit": "c77b13d5",
+  "sourceRef": "codex/knowledge-operations-closeout",
+  "sourceCommit": "4e2836de",
   "skillCount": 333,
   "familyCount": 22,
   "families": [
@@ -415,7 +415,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-project-promotion pairs with okhp3-graduation-gate; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard",
+          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard; okhp3-triage-and-file pairs with okhp3-graduation-gate",
           "source": "generated"
         }
       }
@@ -1808,8 +1808,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/agent-governance/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/agent-governance/SKILL.md",
-      "lastModified": "2026-10-21T22:39:08-05:00",
-      "commitSha": "f2570967",
+      "lastModified": "2026-08-27T23:47:34-05:00",
+      "commitSha": "866dec66",
       "createdAt": "2026-08-27T23:47:34-05:00",
       "packageMetadata": {
         "author": null,
@@ -1827,7 +1827,7 @@
         "evalCount": 0,
         "benchmarkCount": 0,
         "testCount": 0,
-        "referenceCount": 1,
+        "referenceCount": 0,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -2789,8 +2789,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/c4-codebase-architecture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/c4-codebase-architecture/SKILL.md",
-      "lastModified": "2026-10-21T22:39:08-05:00",
-      "commitSha": "f2570967",
+      "lastModified": "2026-08-27T23:47:34-05:00",
+      "commitSha": "866dec66",
       "createdAt": "2026-08-27T23:47:34-05:00",
       "packageMetadata": {
         "author": null,
@@ -2808,7 +2808,7 @@
         "evalCount": 0,
         "benchmarkCount": 0,
         "testCount": 0,
-        "referenceCount": 1,
+        "referenceCount": 0,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -4469,8 +4469,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/doc-and-modernize/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/doc-and-modernize/SKILL.md",
-      "lastModified": "2026-10-21T22:39:08-05:00",
-      "commitSha": "f2570967",
+      "lastModified": "2026-08-27T23:47:34-05:00",
+      "commitSha": "866dec66",
       "createdAt": "2026-08-27T23:47:34-05:00",
       "packageMetadata": {
         "author": null,
@@ -4488,7 +4488,7 @@
         "evalCount": 0,
         "benchmarkCount": 0,
         "testCount": 0,
-        "referenceCount": 3,
+        "referenceCount": 2,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -8075,13 +8075,13 @@
       "skillDir": "okhp3-session-handoff",
       "path": "context-extraction/okhp3-session-handoff/SKILL.md",
       "description": "Create a durable continuation record when work pauses, becomes blocked, crosses a machine, or crosses an agent host. Use after substantial work or when the owner asks for a handoff. Record changed files, reasoning, evidence tiers, validation, limitations, and the exact next action without relying on chat memory.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "context-extraction",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -8098,7 +8098,7 @@
       "inputs": [
         "source host and date;",
         "objective and current status;",
-        "changed files or artifact inventory;",
+        "changed files or artifact inventory, and preservation locators for any",
         "why non-obvious decisions were made;",
         "confirmed, inferred, proposed, and unknown conclusions where relevant;",
         "checks run, real results, and checks not run;",
@@ -8111,8 +8111,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-session-handoff/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-session-handoff/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:38:42-05:00",
+      "commitSha": "6d55a85c",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -8126,8 +8126,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 4,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -8138,9 +8138,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-thread-context-extraction",
@@ -11903,13 +11903,13 @@
       "skillDir": "okhp3-artifact-validation",
       "path": "knowledge-operations/okhp3-artifact-validation/SKILL.md",
       "description": "Validate a project change, draft, research packet, skill, promotion package, or handoff before it is treated as complete. Use after meaningful work and before handoff, graduation, publication review, or reliance on an artifact. Run the identified project validator when one exists, then add judgment checks the script cannot prove.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -11928,8 +11928,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-artifact-validation/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-artifact-validation/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:38:42-05:00",
+      "commitSha": "6d55a85c",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -11943,8 +11943,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 4,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -11955,9 +11955,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-capture-intake",
@@ -11966,13 +11966,13 @@
       "skillDir": "okhp3-capture-intake",
       "path": "knowledge-operations/okhp3-capture-intake/SKILL.md",
       "description": "Preserve one raw idea, file, link, transcript, or request in a project inbox with provenance and minimal handling. Use when material first arrives and must be captured before interpretation, grouping, scoping, or promotion. Do not use for batch triage or lifecycle decisions.",
-      "version": "0.1.0",
+      "version": "0.2.1",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -12001,8 +12001,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-capture-intake/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-capture-intake/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:47:30-05:00",
+      "commitSha": "4fe1aac8",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -12016,7 +12016,7 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
+        "evaluatedSkillVersion": "0.2.1",
         "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
@@ -12028,9 +12028,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-evidence-standard",
@@ -12039,13 +12039,13 @@
       "skillDir": "okhp3-evidence-standard",
       "path": "knowledge-operations/okhp3-evidence-standard/SKILL.md",
       "description": "Classify consequential claims as confirmed, inferred, proposal, or unknown and keep those tiers visible. Use for cross-machine or cross-agent comparisons, conflicting sources, handoffs, decision records, and recommendations from incomplete evidence. Do not substitute it for mechanical validation or source research.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -12064,8 +12064,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-evidence-standard/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-evidence-standard/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:38:42-05:00",
+      "commitSha": "6d55a85c",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -12079,8 +12079,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 4,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -12091,9 +12091,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-graduation-gate",
@@ -12102,13 +12102,13 @@
       "skillDir": "okhp3-graduation-gate",
       "path": "knowledge-operations/okhp3-graduation-gate/SKILL.md",
       "description": "Decide whether an active exploratory effort is ready to become formal, should remain active, should archive, or is blocked. Use when an effort feels ready, the owner asks for a go or no-go, or a promotion package needs a readiness decision. Score evidence rather than enthusiasm and do not create the destination.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -12122,20 +12122,15 @@
         "okhp3-artifact-validation"
       ],
       "examples": [],
-      "inputs": [
-        "**GO:** 10 to 12 with no zero. Prepare a promotion package.",
-        "**HOLD:** 7 to 9. Name the lowest criterion as the next action.",
-        "**ARCHIVE:** 0 to 6. Preserve provenance and a revival condition.",
-        "**BLOCKED:** any zero on Clean, regardless of total."
-      ],
+      "inputs": [],
       "outputs": [],
       "tools": [],
       "runtimes": [],
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-graduation-gate/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-graduation-gate/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:38:42-05:00",
+      "commitSha": "6d55a85c",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -12149,8 +12144,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -12161,9 +12156,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-project-promotion",
@@ -12172,13 +12167,13 @@
       "skillDir": "okhp3-project-promotion",
       "path": "knowledge-operations/okhp3-project-promotion/SKILL.md",
       "description": "Prepare an exploratory effort that cleared the graduation gate for owner-approved formalization. Use to assemble the destination brief, provenance, decisions, risks, artifact inventory, and first formal-project action. Do not create repositories, publish, push, or move work externally without separate authorization.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -12189,7 +12184,6 @@
       "triggers": [],
       "avoid": [],
       "companions": [
-        "okhp3-graduation-gate",
         "okhp3-artifact-validation"
       ],
       "examples": [],
@@ -12211,8 +12205,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-project-promotion/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-project-promotion/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:38:42-05:00",
+      "commitSha": "6d55a85c",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -12226,8 +12220,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 4,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -12238,9 +12232,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-source-backed-research",
@@ -12249,13 +12243,13 @@
       "skillDir": "okhp3-source-backed-research",
       "path": "knowledge-operations/okhp3-source-backed-research/SKILL.md",
       "description": "Produce research notes, comparisons, or recommendations with traceable sources, retrieval dates, and explicit uncertainty. Use when work depends on external facts, changing information, technical documentation, or claims that should be verified. Do not use when the needed evidence is already fully available in local files.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -12276,8 +12270,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-source-backed-research/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-source-backed-research/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:38:42-05:00",
+      "commitSha": "6d55a85c",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -12291,8 +12285,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 4,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -12303,9 +12297,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-triage-and-file",
@@ -12314,13 +12308,13 @@
       "skillDir": "okhp3-triage-and-file",
       "path": "knowledge-operations/okhp3-triage-and-file/SKILL.md",
       "description": "Review one or more project inbox items and assign a recorded lifecycle disposition. Use for inbox sweeps, duplicate resolution, grouping related captures, activating an effort, identifying a graduation candidate, archiving, or requesting owner input. Do not publish or move work outside the project.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -12341,8 +12335,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-triage-and-file/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-triage-and-file/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:38:42-05:00",
+      "commitSha": "6d55a85c",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -12356,7 +12350,7 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
+        "evaluatedSkillVersion": "0.2.0",
         "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
@@ -12368,9 +12362,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-translation-en-us-de-de",
@@ -22961,7 +22955,7 @@
       "skillDir": "okhp3-skill-cataloger",
       "path": "universal/okhp3-skill-cataloger/SKILL.md",
       "description": "OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safely regenerate a marked README catalog and machine-readable catalog metadata. Use when asked to list, audit, version-check, validate, or refresh skills under .agents/skills/, or to index a distribution repository’s root family folders. Choose catalog mode for a project surface and explicit --full mode for a distribution index; use --check or --dry-run when no file changes are authorized.",
-      "version": "1.7.1",
+      "version": "1.7.0",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -23004,9 +22998,9 @@
         "evaluatedSkillVersion": "1.7.0",
         "evalCount": 3,
         "benchmarkCount": 0,
-        "testCount": 3,
+        "testCount": 1,
         "referenceCount": 1,
-        "scriptCount": 2,
+        "scriptCount": 1,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -23024,13 +23018,13 @@
       "skillDir": "okhp3-skill-discovery",
       "path": "universal/okhp3-skill-discovery/SKILL.md",
       "description": "Find, verify, compare, and route to project-local, installed, runtime, or plugin-provided agent skills. Use when the user asks what skills exist, how to invoke one, or when the correct reusable workflow is unclear. Do not use it to install unavailable capabilities without an explicit request.",
-      "version": "0.1.0",
+      "version": "0.2.2",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -23049,8 +23043,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-discovery/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-discovery/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-21T22:51:10-05:00",
+      "commitSha": "7451ea0d",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -23064,8 +23058,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "0.2.2",
+        "evalCount": 4,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -23076,9 +23070,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-skill-foundry",
@@ -23087,7 +23081,7 @@
       "skillDir": "okhp3-skill-foundry",
       "path": "universal/okhp3-skill-foundry/SKILL.md",
       "description": "Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progressive disclosure, risk-based evaluations, and release checks. Use when authoring a new SKILL.md, improving an existing skill, designing or grading evaluations, diagnosing weak trigger behavior, or synchronizing a skill across repositories. Also activate when a workflow should become a reusable skill or a skill must improve itself without making unsupported quality claims. This is the authoritative OKHP3 authoring and skill-evolution workflow.",
-      "version": "3.1.2",
+      "version": "3.1.1",
       "license": "MIT",
       "category": "meta-tooling",
       "origin": "okhp3/skillz",
@@ -23095,7 +23089,7 @@
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
       "evidenceStatus": "historical",
-      "evidenceNote": "Benchmark evidence is for 1.0.0, not 3.1.2.",
+      "evidenceNote": "Benchmark evidence is for 1.0.0, not 3.1.1.",
       "status": null,
       "tags": [],
       "topics": [
@@ -23136,7 +23130,7 @@
         "lastEvidenceDate": "2026-06-26T00:00:00Z",
         "reviewDecision": null,
         "blockers": [
-          "Evidence evaluates version 1.0.0, not the current 3.1.2 package."
+          "Evidence evaluates version 1.0.0, not the current 3.1.1 package."
         ]
       },
       "maturitySource": "fallback-structure",
