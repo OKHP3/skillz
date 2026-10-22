@@ -118,5 +118,3 @@
   "closeout_condition": "Resolve OUT-01's narrow advertised-behavior mismatch. No website, Replit, sibling-language, native-quality, or uplift implementation is required to close the original scoped reusable-skill deliverable."
 }
 ```
-
-

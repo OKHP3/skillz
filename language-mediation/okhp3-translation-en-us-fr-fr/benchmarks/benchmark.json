@@ -2,15 +2,17 @@
   "schema_version": "2.0",
   "metadata": {
     "skill_name": "okhp3-translation-en-us-fr-fr",
-    "evaluated_skill_version": "1.1.0",
-    "evaluation_status": "historical",
-    "original_evaluation_status": "analytical",
-    "runner": "local unittest, Foundry validator, and analytical equilibrium review",
-    "model": "same-context reviewer; not independent",
-    "fixtures": "SKILL.md, pair dictionary, project manifest, helper scripts, and eight deterministic tests"
+    "evaluated_skill_version": "1.3.1",
+    "evaluation_status": "analytical",
+    "evaluated_at": "2026-10-22",
+    "review_decision": "approve-with-limits",
+    "runner": "local unittest and role-separated analytical Equilibrium review",
+    "model": "shared model family; separate initial reviewer contexts",
+    "fixtures": "ten deterministic helper tests and closeout-review-2026-10-22.json",
+    "historical_record": "historical-benchmark-v1.1.0.json"
   },
   "acceptance_criteria": {
-    "structural": "Current package and helper tests pass.",
+    "structural": "PASS: ten helper tests and current Foundry structure validation; see closeout review.",
     "behavioral": "France French quality, native acceptance, and live automation are not established by this record."
   },
   "runs": []

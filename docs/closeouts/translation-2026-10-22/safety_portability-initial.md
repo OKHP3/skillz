@@ -115,5 +115,3 @@
   "release_condition": "Correct SP-01 and pass the focused required-control regressions before declaring all scoped acceptance criteria satisfied."
 }
 ```
-
-
