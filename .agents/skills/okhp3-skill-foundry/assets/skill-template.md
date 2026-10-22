@@ -7,7 +7,7 @@ license: MIT
 compatibility: <Only real environment requirements, if any>
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: 1.0.0
   category: <category>
   origin: okhp3/skillz
   homepage: https://overkillhill.com

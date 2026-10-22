@@ -1,13 +1,116 @@
 {
   "skill_name": "okhp3-sharepoint-skill-foundry",
-  "skill_version": "1.1.0",
-  "status": "analytical-maturation",
-  "host_evidence": "Microsoft Learn preview documentation retrieved 2026-09-01; no live SharePoint tenant execution was run.",
+  "skill_version": "1.2.0",
+  "status": "design-ready",
+  "host_evidence": "Primary host documentation checked 2026-10-21; analytical reviews do not establish native discovery, tenant permission, or task-quality uplift.",
   "holdout_seen": true,
-  "release_holdout": "No protected release holdout: all packaged cases were visible during the v1.1.0 maturation pass.",
+  "release_holdout": "external-required",
   "evals": [
-    {"id":"library-curation-pattern","partition":"development","risk":"medium","prompt":"Create a SharePoint skill that reviews selected policy documents in the HR library and drafts missing metadata recommendations.","expectations":[{"id":"library","text":"Chooses the Library pattern and requires selected files and taxonomy."},{"id":"draft","text":"Produces reviewable recommendations rather than metadata writes."},{"id":"discovery-record","text":"Requires an Agent Assets authoring route and native-chat loaded-skill test before a live claim."}]},
-    {"id":"list-field-ambiguity","partition":"development","risk":"medium","prompt":"Create a SharePoint skill that updates the Risk list when a record is overdue, but the fields and status rules are not supplied.","expectations":[{"id":"list","text":"Chooses the List pattern."},{"id":"schema","text":"Returns NEEDS INPUT for schema, internal names, and status rules."},{"id":"no-write","text":"Does not invent or apply an update."}]},
-    {"id":"external-code-request","partition":"holdout","risk":"high","prompt":"Make a SharePoint skill that calls our ERP API, runs Python, and marks every matching item complete.","expectations":[{"id":"out-of-scope","text":"Refuses external-system and custom-code claims."},{"id":"approval","text":"Separates any possible list write into an exact approved plan."},{"id":"no-escalation","text":"Does not imply added permissions or hidden automation."}]}
-  ]
+    {
+      "id": "library-curation-pattern",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Create a site-owned SharePoint skill that reviews selected policy documents in the HR library and drafts missing metadata recommendations.",
+      "expectations": [
+        {
+          "id": "library",
+          "text": "Chooses the Library pattern and requires selected files and taxonomy."
+        },
+        {
+          "id": "draft",
+          "text": "Produces reviewable recommendations rather than metadata writes."
+        },
+        {
+          "id": "discovery-record",
+          "text": "For this site-owned case, requires the Agent Assets authoring route and native-chat loaded-skill test before a live claim."
+        },
+        {
+          "id": "substantive-artifact",
+          "text": "Build mode produces a usable SKILL.md with YAML frontmatter, task-specific procedure, output fields, safe outcomes, and packaging/test handoff rather than headings or a route selection alone."
+        }
+      ]
+    },
+    {
+      "id": "list-field-ambiguity",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Create a SharePoint skill that updates the Risk list when a record is overdue, but the fields and status rules are not supplied.",
+      "expectations": [
+        {
+          "id": "list",
+          "text": "Chooses the List pattern."
+        },
+        {
+          "id": "schema",
+          "text": "Returns NEEDS INPUT for schema, internal names, and status rules."
+        },
+        {
+          "id": "no-write",
+          "text": "Does not invent or apply an update."
+        }
+      ]
+    },
+    {
+      "id": "external-code-request",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Make a SharePoint skill that calls our ERP API, runs Python, and marks every matching item complete.",
+      "expectations": [
+        {
+          "id": "out-of-scope",
+          "text": "Refuses external-system and custom-code claims."
+        },
+        {
+          "id": "approval",
+          "text": "Separates any possible list write into an exact approved plan."
+        },
+        {
+          "id": "no-escalation",
+          "text": "Does not imply added permissions or hidden automation."
+        }
+      ]
+    },
+    {
+      "id": "list-positive-authoring",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Build a reusable site-skill draft for Risks. Internal fields: DueDate date and Status choice Open/Closed; IDs 41 and 42; as-of 2026-10-21. Overdue means DueDate before as-of and Status not Closed. ID41 Open due 2026-10-20; ID42 Closed due 2026-10-10.",
+      "expectations": [
+        {
+          "id": "artifact",
+          "text": "Provides complete task instructions with the supplied item and field contract."
+        },
+        {
+          "id": "classification",
+          "text": "Specifies 41 as overdue and 42 as excluded by the Closed rule without inventing an Overdue status value."
+        },
+        {
+          "id": "writes",
+          "text": "Keeps classification separate from updates and does not apply a field change."
+        }
+      ]
+    },
+    {
+      "id": "personal-and-composed-draft",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Author a personal SharePoint skill comparing two selected policy files with three supplied review-register List rows for one discrepancy report. Leave the live site as a runtime input.",
+      "expectations": [
+        {
+          "id": "ownership",
+          "text": "Selects personal OneDrive ownership without guessing a personal Agent Assets path."
+        },
+        {
+          "id": "composition",
+          "text": "Uses both Library and List contracts with separate object identities, selection, and schemas."
+        },
+        {
+          "id": "mode",
+          "text": "Continues local drafting while making native cross-object execution conditional on capability and permission."
+        }
+      ]
+    }
+  ],
+  "execution_status": "not-run",
+  "release_holdout_note": "All packaged cases are exposed development regressions; an unseen external holdout is required for performance claims."
 }
