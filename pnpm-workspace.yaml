@@ -49,16 +49,16 @@ catalog:
   '@types/node': ^26.6.5
   '@types/react': ^19.3.0
   '@types/react-dom': ^19.3.0
-  '@vitejs/plugin-react': ^5.0.4
+  '@vitejs/plugin-react': ^6.1.2
   class-variance-authority: ^0.7.1
   clsx: ^2.1.1
   drizzle-orm: ^0.45.4
   framer-motion: ^13.4.1
   lucide-react: ^1.59.0
   # Must be this exact version because expo requires it
-  react: 19.3.0
+  react: 19.3.1
   # Must be this exact version because expo requires it
-  react-dom: 19.3.0
+  react-dom: 19.3.1
   tailwind-merge: ^3.7.0
   tailwindcss: ^4.1.14
   tsx: ^4.23.15
