@@ -5,6 +5,7 @@ on:
     paths:
       - '**/package.json'
       - 'mermaid/okhp3-mermaid-publish/references/render-pipeline.sh'
+      - 'mermaid/okhp3-mermaid-publish/tests/**'
       - 'mermaid/okhp3-mermaid-bpmn/references/process-examples/skill-promotion-review-analyst-v1.mmd'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
@@ -105,6 +106,8 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .github/node-version
+      - name: Verify pinned command and default browser settings
+        run: bash mermaid/okhp3-mermaid-publish/tests/render-pipeline.test.sh
       - name: Install pinned standalone Mermaid CLI
         working-directory: mermaid/okhp3-mermaid-publish
         run: |
@@ -118,8 +121,10 @@ jobs:
           source=mermaid/okhp3-mermaid-bpmn/references/process-examples/skill-promotion-review-analyst-v1.mmd
           output_dir="$(mktemp -d)"
           trap 'rm -rf "$output_dir"' EXIT
-          bash mermaid/okhp3-mermaid-publish/references/render-pipeline.sh "$source" "$output_dir/diagram.svg"
-          bash mermaid/okhp3-mermaid-publish/references/render-pipeline.sh "$source" "$output_dir/diagram.png"
+          # Hosted Ubuntu disables the Chromium sandbox; scope this exception to the disposable CI runner.
+          printf '%s\n' '{"args":["--no-sandbox"]}' > "$output_dir/puppeteer-config.json"
+          bash mermaid/okhp3-mermaid-publish/references/render-pipeline.sh "$source" "$output_dir/diagram.svg" "$output_dir/puppeteer-config.json"
+          bash mermaid/okhp3-mermaid-publish/references/render-pipeline.sh "$source" "$output_dir/diagram.png" "$output_dir/puppeteer-config.json"
           python3 - "$output_dir" <<'PY'
           from pathlib import Path
           import sys

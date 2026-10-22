@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # OKHP3 Mermaid render pipeline
-# Usage: render-pipeline.sh <input.mmd> [output.png]
+# Usage: render-pipeline.sh <input.mmd> [output.png] [puppeteer-config.json]
 #
 # Design notes:
 #   - Never deletes input or output. The render is the deliverable.
@@ -15,15 +15,21 @@ set -euo pipefail
 
 INPUT="${1:-}"
 OUTPUT="${2:-}"
+PUPPETEER_CONFIG="${3:-}"
 
 if [[ -z "$INPUT" ]]; then
-  echo "Usage: render-pipeline.sh <input.mmd> [output.png]" >&2
+  echo "Usage: render-pipeline.sh <input.mmd> [output.png] [puppeteer-config.json]" >&2
   echo "  If output is omitted, defaults to <input-basename>.png in the same directory." >&2
   exit 1
 fi
 
 if [[ ! -f "$INPUT" ]]; then
   echo "ERROR: input file not found: $INPUT" >&2
+  exit 1
+fi
+
+if [[ -n "$PUPPETEER_CONFIG" && ! -f "$PUPPETEER_CONFIG" ]]; then
+  echo "ERROR: Puppeteer config file not found: $PUPPETEER_CONFIG" >&2
   exit 1
 fi
 
@@ -53,7 +59,12 @@ fi
 
 echo "Rendering $INPUT -> $OUTPUT with mermaid-cli $CLI_VERSION (first run may download it)..."
 
-if "${CLI_COMMAND[@]}" -i "$INPUT" -o "$OUTPUT"; then
+CLI_ARGS=(-i "$INPUT" -o "$OUTPUT")
+if [[ -n "$PUPPETEER_CONFIG" ]]; then
+  CLI_ARGS+=(-p "$PUPPETEER_CONFIG")
+fi
+
+if "${CLI_COMMAND[@]}" "${CLI_ARGS[@]}"; then
   echo "OK: $OUTPUT written. Input preserved at $INPUT."
   echo "Next: view $OUTPUT and check against the audience profile (Gate 3)."
   exit 0

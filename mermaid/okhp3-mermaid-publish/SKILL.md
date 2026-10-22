@@ -22,7 +22,7 @@ The output layer. Runs after core's Gate 1-3 validation.
 
 ## Local Render
 
-Use `references/render-pipeline.sh <path.mmd> [output.png]`. The script:
+Use `references/render-pipeline.sh <path.mmd> [output.png] [puppeteer-config.json]`. The optional third argument passes a local Puppeteer config to the CLI; leave it out for normal rendering. The script:
 
 - Checks for Node.js/npx and gives a clear, actionable error if missing - it does NOT fail silently or produce a confusing mmdc stack trace as the only signal
 - Reads the exact `@mermaid-js/mermaid-cli` version from this package's `package.json`, using a matching local install when present or downloading that version with `npx --package`
