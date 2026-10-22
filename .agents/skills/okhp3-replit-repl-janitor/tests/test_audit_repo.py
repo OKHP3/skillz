@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import importlib.util
 import json
 import subprocess
@@ -7,6 +8,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 SCRIPT = Path(__file__).parents[1] / "scripts" / "audit-repo.py"
@@ -17,14 +19,58 @@ SPEC.loader.exec_module(audit_repo)
 
 
 class AuditRepoTests(unittest.TestCase):
+    def test_shipped_runtime_and_safety_fixture_boundary_matches_canonical(self) -> None:
+        repository = SCRIPT.resolve().parents[4]
+        shipped_package = repository / "replit" / "okhp3-replit-repository-janitor"
+        shipped_script = shipped_package / "scripts" / "audit-repo.py"
+        shipped_tests = shipped_package / "tests" / "test_audit_repo.py"
+        self.assertTrue(shipped_script.is_file(), "shipped script mirror is missing")
+        self.assertTrue(shipped_tests.is_file(), "shipped safety fixtures are missing")
+        self.assertEqual(SCRIPT.read_bytes(), shipped_script.read_bytes())
+
+        def test_names(path: Path) -> set[str]:
+            tree = ast.parse(path.read_text(encoding="utf-8"))
+            test_class = next(
+                node for node in tree.body
+                if isinstance(node, ast.ClassDef) and node.name == "AuditRepoTests"
+            )
+            return {
+                node.name for node in test_class.body
+                if isinstance(node, ast.FunctionDef) and node.name.startswith("test_")
+            }
+
+        canonical_safety_fixtures = {
+            "test_pre_delete_remote_tip_change_holds_after_independent_remote_advance",
+            "test_missing_remote_branch_fails_pre_delete_visibly",
+            "test_pre_delete_matching_tip_keeps_remote_first_sequence",
+            "test_unsafe_cleanup_evidence_is_held_for_review",
+            "test_cli_rejects_invalid_hosted_lookup_reports_without_branch_decisions",
+            "test_active_branches_stashes_and_archive_refs_are_protected",
+            "test_discovery_does_not_prune_refs",
+        }
+        shipped_safety_fixtures = {
+            "test_pre_delete_remote_tip_change_holds_after_independent_remote_advance",
+            "test_missing_remote_branch_fails_pre_delete_visibly",
+            "test_pre_delete_matching_tip_keeps_remote_first_sequence",
+            "test_cli_rejects_missing_deletion_approval_details",
+            "test_unsafe_cleanup_evidence_is_held_for_review",
+            "test_hosted_lookup_file_is_read_only_report_input",
+            "test_hosted_lookup_reports_fail_closed_and_invalid_reports_fail_visibly",
+            "test_stashes_archive_refs_and_discovery_refs_are_preserved",
+        }
+        self.assertTrue(canonical_safety_fixtures <= test_names(SCRIPT.parent.parent / "tests" / "test_audit_repo.py"))
+        self.assertTrue(shipped_safety_fixtures <= test_names(shipped_tests))
+
     def test_pre_delete_tip_change_holds_and_emits_no_deletion_commands(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._init_repo(root)
+            remote = self._add_remote(root, Path(directory))
             self._git(root, "switch", "-q", "-c", "feature/cleanup")
             (root / "reviewed.txt").write_text("reviewed\n", encoding="utf-8")
             self._git(root, "add", "reviewed.txt")
             self._git(root, "commit", "-qm", "reviewed work")
+            self._git(root, "push", "-qu", "origin", "feature/cleanup")
             reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
 
             (root / "moved.txt").write_text("changed\n", encoding="utf-8")
@@ -44,14 +90,107 @@ class AuditRepoTests(unittest.TestCase):
             )
             self.assertEqual(check["deletion_commands"], [])
 
-    def test_pre_delete_matching_tip_keeps_remote_first_sequence(self) -> None:
+    def test_cli_rejects_missing_deletion_approval_details(self) -> None:
+        invalid_invocations = [
+            (["--reviewed-head", "reviewed-sha"], "--check-delete requires --branch and --reviewed-head"),
+            (["--branch", "feature/cleanup"], "--check-delete requires --branch and --reviewed-head"),
+        ]
+        for arguments, expected_error in invalid_invocations:
+            with self.subTest(arguments=arguments), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                self._init_repo(root)
+                result = subprocess.run(
+                    [
+                        sys.executable, str(SCRIPT), "--root", str(root),
+                        "--check-delete", *arguments,
+                    ],
+                    check=False,
+                    capture_output=True,
+                    text=True,
+                )
+                self.assertNotEqual(result.returncode, 0)
+                error_report = json.loads(result.stdout)
+                self.assertEqual(error_report["error"], expected_error)
+                self.assertNotIn("deletion_commands", error_report)
+                self.assertNotIn('"bucket": "delete"', result.stdout)
+
+    def test_pre_delete_remote_tip_change_holds_after_independent_remote_advance(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._init_repo(root)
+            remote = self._add_remote(root, Path(directory))
             self._git(root, "switch", "-q", "-c", "feature/cleanup")
             (root / "reviewed.txt").write_text("reviewed\n", encoding="utf-8")
             self._git(root, "add", "reviewed.txt")
             self._git(root, "commit", "-qm", "reviewed work")
+            self._git(root, "push", "-qu", "origin", "feature/cleanup")
+            reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
+
+            writer = Path(directory) / "remote-writer"
+            subprocess.run(
+                [
+                    "git",
+                    "clone",
+                    "-q",
+                    "--branch",
+                    "feature/cleanup",
+                    str(remote),
+                    str(writer),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            self._git(writer, "config", "user.email", "writer@example.com")
+            self._git(writer, "config", "user.name", "Remote Writer")
+            (writer / "remote-change.txt").write_text("advanced\n", encoding="utf-8")
+            self._git(writer, "add", "remote-change.txt")
+            self._git(writer, "commit", "-qm", "advance remote branch")
+            refreshed_remote_head = self._git(writer, "rev-parse", "HEAD").strip()
+            self._git(writer, "push", "-q", "origin", "feature/cleanup")
+
+            check = audit_repo.prepare_branch_deletion(
+                root,
+                "feature/cleanup",
+                reviewed_head,
+            )
+
+            self.assertEqual(check["bucket"], "review")
+            self.assertEqual(check["reviewed_head"], reviewed_head)
+            self.assertEqual(check["current_head"], reviewed_head)
+            self.assertEqual(check["reviewed_remote_head"], reviewed_head)
+            self.assertEqual(check["current_remote_head"], refreshed_remote_head)
+            self.assertEqual(check["reason"], "remote branch tip changed since review")
+            self.assertEqual(check["deletion_commands"], [])
+
+    def test_missing_remote_branch_fails_pre_delete_visibly(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._add_remote(root, Path(directory))
+            self._git(root, "switch", "-q", "-c", "feature/not-published")
+            reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
+
+            with self.assertRaises(audit_repo.AuditError) as error:
+                audit_repo.prepare_branch_deletion(
+                    root,
+                    "feature/not-published",
+                    reviewed_head,
+                )
+
+            self.assertIn("git ls-remote", str(error.exception))
+
+    def test_pre_delete_matching_tip_keeps_remote_first_sequence(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            remote = self._add_remote(root, Path(directory))
+            self._git(root, "remote", "add", "upstream", str(remote))
+            self._git(root, "switch", "-q", "-c", "feature/cleanup")
+            (root / "reviewed.txt").write_text("reviewed\n", encoding="utf-8")
+            self._git(root, "add", "reviewed.txt")
+            self._git(root, "commit", "-qm", "reviewed work")
+            self._git(root, "push", "-qu", "origin", "feature/cleanup")
             reviewed_head = self._git(root, "rev-parse", "HEAD").strip()
 
             check = audit_repo.prepare_branch_deletion(
@@ -63,20 +202,301 @@ class AuditRepoTests(unittest.TestCase):
             self.assertEqual(check["bucket"], "delete")
             self.assertEqual(check["reviewed_head"], reviewed_head)
             self.assertEqual(check["current_head"], reviewed_head)
+            self.assertEqual(check["reviewed_remote_head"], reviewed_head)
+            self.assertEqual(check["current_remote_head"], reviewed_head)
             self.assertEqual(check["deletion_commands"], [
                 ["git", "push", "upstream", "--delete", "feature/cleanup"],
                 ["git", "branch", "-d", "feature/cleanup"],
             ])
 
-    def test_cli_rejects_missing_deletion_approval_details(self) -> None:
-        invalid_invocations = [
-            (["--reviewed-head", "reviewed-sha"], "--check-delete requires --branch"),
-            (["--branch", "feature/cleanup"], "--check-delete requires --reviewed-head"),
+    def test_unsafe_cleanup_evidence_is_held_for_review(self) -> None:
+        unsafe_fixtures = [
+            (
+                "unknown-hosted-lookup",
+                {},
+                {"lookup_status": "unknown"},
+            ),
+            (
+                "failed-hosted-lookup",
+                {},
+                {"lookup_status": "failed", "error": "host unavailable"},
+            ),
+            (
+                "unavailable-hosted-lookup",
+                {},
+                None,
+            ),
+            (
+                "exact-head-mismatch",
+                {"expected_head": "reviewed-head"},
+                {
+                    "state": "closed",
+                    "merged": True,
+                    "head_sha": "reviewed-head",
+                    "merge_commit_reachable": True,
+                },
+            ),
+            (
+                "missing-hosted-head",
+                {},
+                {
+                    "state": "closed",
+                    "merged": True,
+                    "merge_commit_reachable": True,
+                },
+            ),
+            (
+                "closed-but-unmerged-pr",
+                {},
+                {
+                    "state": "closed",
+                    "merged": False,
+                    "head_sha": "branch-head",
+                    "merge_commit_reachable": False,
+                },
+            ),
+            (
+                "unreachable-merge-commit",
+                {},
+                {
+                    "state": "closed",
+                    "merged": True,
+                    "head_sha": "branch-head",
+                    "merge_commit_reachable": False,
+                },
+            ),
         ]
-        for arguments, expected_error in invalid_invocations:
-            with self.subTest(arguments=arguments), tempfile.TemporaryDirectory() as directory:
+        for name, options, hosted_pr in unsafe_fixtures:
+            with self.subTest(name=name):
+                decision = audit_repo.classify_branch_for_cleanup(
+                    {
+                        "branch": f"feature/{name}",
+                        "is_current": False,
+                        "merged_into_base": True,
+                        "head_sha": "branch-head",
+                    },
+                    hosted_pr=hosted_pr,
+                    **options,
+                )
+                self.assertEqual(decision["bucket"], "review")
+                self.assertNotEqual(decision["bucket"], "delete")
+                if "lookup" in name:
+                    self.assertIn("hosted evidence is missing", decision["reason"])
+
+    def test_merged_hosted_pull_request_is_deletable(self) -> None:
+        decision = audit_repo.classify_branch_for_cleanup(
+            {
+                "branch": "feature/merged-work",
+                "is_current": False,
+                "merged_into_base": False,
+                "head_sha": "branch-head",
+            },
+            hosted_pr={
+                "state": "closed",
+                "merged": True,
+                "head_sha": "branch-head",
+                "merge_commit_reachable": True,
+            },
+        )
+        self.assertEqual(decision, {
+            "bucket": "delete",
+            "reason": "merged pull request and reachable merge commit",
+        })
+
+    def test_audit_report_surfaces_missing_hosted_evidence_as_review(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            for branch in [
+                "feature/unknown",
+                "feature/failed",
+                "feature/unavailable",
+            ]:
+                self._git(root, "branch", branch)
+
+            branches, _ = audit_repo.audit_branches(
+                root,
+                "main",
+                hosted_prs={
+                    "feature/unknown": {"lookup_status": "unknown"},
+                    "feature/failed": {
+                        "lookup_status": "failed",
+                        "error": "host unavailable",
+                    },
+                    "feature/unavailable": None,
+                },
+            )
+            by_name = {str(item["branch"]): item for item in branches}
+
+            self.assertEqual(by_name["feature/unknown"]["bucket"], "review")
+            self.assertEqual(
+                by_name["feature/unknown"]["hosted_lookup"],
+                {"status": "unknown"},
+            )
+            self.assertIn(
+                "hosted evidence is missing",
+                str(by_name["feature/unknown"]["reason"]),
+            )
+
+            self.assertEqual(by_name["feature/failed"]["bucket"], "review")
+            self.assertEqual(
+                by_name["feature/failed"]["hosted_lookup"],
+                {"status": "failed", "error": "host unavailable"},
+            )
+            self.assertIn(
+                "hosted evidence is missing",
+                str(by_name["feature/failed"]["reason"]),
+            )
+
+            self.assertEqual(by_name["feature/unavailable"]["bucket"], "review")
+            self.assertEqual(
+                by_name["feature/unavailable"]["hosted_lookup"],
+                {"status": "unavailable"},
+            )
+            self.assertIn(
+                "hosted evidence is missing",
+                str(by_name["feature/unavailable"]["reason"]),
+            )
+            self.assertNotIn(
+                "delete",
+                {
+                    str(by_name[name]["bucket"])
+                    for name in [
+                        "feature/unknown",
+                        "feature/failed",
+                        "feature/unavailable",
+                    ]
+                },
+            )
+
+    def test_hosted_lookup_file_is_read_only_report_input(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "branch", "feature/unknown")
+            lookup_file = root / "lookups.json"
+            lookup_file.write_text(
+                json.dumps({"feature/unknown": {"lookup_status": "unknown"}}),
+                encoding="utf-8",
+            )
+
+            loaded = audit_repo.load_hosted_prs(lookup_file)
+            self.assertEqual(
+                loaded,
+                {"feature/unknown": {"lookup_status": "unknown"}},
+            )
+            before = self._git(root, "status", "--short")
+            branches, _ = audit_repo.audit_branches(
+                root,
+                "main",
+                hosted_prs=loaded,
+            )
+            after = self._git(root, "status", "--short")
+
+            unknown = next(
+                item for item in branches if item["branch"] == "feature/unknown"
+            )
+            self.assertEqual(unknown["bucket"], "review")
+            self.assertEqual(before, after)
+
+    def test_cli_report_keeps_failed_hosted_lookup_in_review(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "branch", "feature/failed")
+            lookup_file = root / "lookups.json"
+            lookup_file.write_text(
+                json.dumps({
+                    "feature/failed": {
+                        "lookup_status": "failed",
+                        "error": "host unavailable",
+                    },
+                }),
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "--root",
+                    str(root),
+                    "--base",
+                    "main",
+                    "--hosted-lookups",
+                    str(lookup_file),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            report = json.loads(result.stdout)
+            failed = next(
+                item for item in report["branches"]
+                if item["branch"] == "feature/failed"
+            )
+
+            self.assertEqual(failed["bucket"], "review")
+            self.assertEqual(
+                failed["hosted_lookup"],
+                {"status": "failed", "error": "host unavailable"},
+            )
+            self.assertIn("hosted evidence is missing", failed["reason"])
+            self.assertNotEqual(failed["bucket"], "delete")
+
+    def test_cli_report_keeps_missing_hosted_result_in_review(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "branch", "feature/missing")
+            lookup_file = root / "lookups.json"
+            lookup_file.write_text(
+                json.dumps({
+                    "feature/other": {
+                        "lookup_status": "not_found",
+                    },
+                }),
+                encoding="utf-8",
+            )
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "--root",
+                    str(root),
+                    "--base",
+                    "main",
+                    "--hosted-lookups",
+                    str(lookup_file),
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            report = json.loads(result.stdout)
+            missing = next(
+                item for item in report["branches"]
+                if item["branch"] == "feature/missing"
+            )
+
+            self.assertEqual(missing["bucket"], "review")
+            self.assertEqual(missing["hosted_lookup"], {"status": "unavailable"})
+            self.assertIn("hosted evidence is missing", missing["reason"])
+            self.assertNotEqual(missing["bucket"], "delete")
+
+    def test_cli_rejects_invalid_hosted_lookup_reports_without_branch_decisions(self) -> None:
+        invalid_reports = [
+            ("malformed-json", '{"feature/candidate":'),
+            ("non-object-payload", json.dumps(["feature/candidate"])),
+        ]
+        for name, contents in invalid_reports:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
                 root = Path(directory)
                 self._init_repo(root)
+                self._git(root, "branch", "feature/candidate")
+                lookup_file = root / "lookups.json"
+                lookup_file.write_text(contents, encoding="utf-8")
 
                 result = subprocess.run(
                     [
@@ -84,8 +504,10 @@ class AuditRepoTests(unittest.TestCase):
                         str(SCRIPT),
                         "--root",
                         str(root),
-                        "--check-delete",
-                        *arguments,
+                        "--base",
+                        "main",
+                        "--hosted-lookups",
+                        str(lookup_file),
                     ],
                     check=False,
                     capture_output=True,
@@ -94,9 +516,59 @@ class AuditRepoTests(unittest.TestCase):
 
                 self.assertNotEqual(result.returncode, 0)
                 error_report = json.loads(result.stdout)
-                self.assertEqual(error_report["error"], expected_error)
-                self.assertNotIn("deletion_commands", error_report)
+                self.assertIn("error", error_report)
+                self.assertNotIn("branches", error_report)
                 self.assertNotIn('"bucket": "delete"', result.stdout)
+                if name == "malformed-json":
+                    self.assertIn("could not read hosted lookup report", error_report["error"])
+                else:
+                    self.assertIn("must be a JSON object", error_report["error"])
+
+    def test_active_branches_stashes_and_archive_refs_are_protected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            self._git(root, "branch", "active-work")
+            (root / "draft.txt").write_text("keep me\n", encoding="utf-8")
+            self._git(root, "stash", "push", "--include-untracked", "-m", "recovery")
+            self._git(root, "update-ref", "refs/archive/recovery", "HEAD")
+
+            branches, _ = audit_repo.audit_branches(root, "main")
+            names = {str(item["branch"]) for item in branches}
+            self.assertIn("main", names)
+            self.assertIn("active-work", names)
+            self.assertNotIn("refs/stash", names)
+            self.assertNotIn("refs/archive/recovery", names)
+            self.assertEqual(
+                audit_repo.classify_branch_for_cleanup(
+                    {
+                        "branch": "active-work",
+                        "is_current": False,
+                        "merged_into_base": True,
+                        "head_sha": "branch-head",
+                    },
+                    hosted_pr={"state": "open", "merged": False, "head_sha": "branch-head"},
+                )["bucket"],
+                "keep",
+            )
+            self.assertEqual(
+                self._git(root, "show-ref", "--verify", "refs/stash").split()[0],
+                self._git(root, "rev-parse", "refs/stash").strip(),
+            )
+            self.assertEqual(
+                self._git(root, "show-ref", "--verify", "refs/archive/recovery").split()[0],
+                self._git(root, "rev-parse", "refs/archive/recovery").strip(),
+            )
+
+    def test_discovery_does_not_prune_refs(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._init_repo(root)
+            with patch.object(audit_repo, "run", wraps=audit_repo.run) as run:
+                audit_repo.audit_branches(root, "main")
+            commands = [" ".join(call.args[0]) for call in run.call_args_list]
+            self.assertTrue(commands)
+            self.assertTrue(all("prune" not in command for command in commands))
 
     def test_naming_exceptions_and_violations(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -155,6 +627,18 @@ class AuditRepoTests(unittest.TestCase):
         (root / "README.md").write_text("fixture\n", encoding="utf-8")
         self._git(root, "add", "README.md")
         self._git(root, "commit", "-qm", "initial")
+
+    def _add_remote(self, root: Path, directory: Path) -> Path:
+        remote = directory / "remote.git"
+        subprocess.run(
+            ["git", "init", "-q", "--bare", str(remote)],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        self._git(root, "remote", "add", "origin", str(remote))
+        self._git(root, "push", "-q", "origin", "main")
+        return remote
 
 
 if __name__ == "__main__":

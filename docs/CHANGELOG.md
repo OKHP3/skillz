@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-21: recover unpublished Replit validation work
+
+- Preserve and integrate eighteen unpublished Replit commits with GitHub main
+  through a merge that retains both histories, allowing a fast-forward back
+  to Replit after the reviewed PR lands.
+- Align canonical and distributed janitor safety checks, and exercise their
+  remote-tip and preservation regressions in release validation.
+- Add Pages artifact failure fixtures, GitHub-sync fixture parity checks,
+  catalog cleanup diagnostics, and published review-surface regressions.
+- Keep the archived predecessor contract unchanged. Package evaluation records
+  retain their original Replit provenance and are not new behavioral benchmarks
+  from this reconciliation.
+
 ## 2026-10-21: complete the Copilot host Foundry review circuit
 
 - Mature Cowork, SharePoint, GitHub Copilot, and Copilot Studio Foundries to

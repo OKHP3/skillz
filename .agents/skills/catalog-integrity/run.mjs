@@ -2,7 +2,7 @@
 import { spawnSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { copyFileSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { appendFileSync, copyFileSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 
 const root = resolve(fileURLToPath(new URL('../../../', import.meta.url)));
@@ -57,13 +57,27 @@ try {
     // Do not use force here: a cleanup error is operationally significant and
     // must not leave generated release-like files behind without a report.
     rmSync(validationRoot, { recursive: true });
-    if (process.env.CATALOG_INTEGRITY_FORCE_CLEANUP_FAILURE === '1') {
-      throw new Error('controlled catalog cleanup failure fixture');
-    }
   } catch (error) {
     cleanupStatus = 'failed';
     cleanupError = error;
     console.error(`!! catalog integrity: cleanup failed for ${validationRoot}: ${error.message}`);
+  }
+}
+
+if (process.env.GITHUB_STEP_SUMMARY) {
+  const summaryLines = [
+    '## Catalog integrity',
+    '',
+    `- Build/test validation: **${status.toUpperCase()}** (release-content checks)`,
+    `- Temporary output cleanup: **${cleanupStatus.toUpperCase()}** (operational; does not change the validation result)`,
+  ];
+  if (cleanupError) {
+    summaryLines.push(`- Cleanup diagnostic: \`${cleanupError.message.replace(/`/g, "'")}\``);
+  }
+  try {
+    appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summaryLines.join('\n')}\n\n`);
+  } catch (error) {
+    console.error(`!! catalog integrity: could not write GitHub step summary: ${error.message}`);
   }
 }
 

@@ -124,6 +124,11 @@ gh pr view <number> --json state,mergeStateStatus,reviewDecision,statusCheckRoll
 Do not infer "no PR" from a failed network call. Record the lookup as unknown
 and place the branch in `review`.
 
+To include saved hosted-lookup results in the JSON audit without making a
+network call, pass `--hosted-lookups path/to/lookups.json`. The file maps branch
+names to PR evidence objects; use `null` for an unavailable lookup. Failed,
+unknown, missing, stale-head, or unreachable-merge evidence remains in `review`.
+
 ### 3. Classify every branch
 
 Every non-current, non-`main` branch belongs in exactly one bucket:
@@ -271,6 +276,16 @@ Return:
   expectations each.
 - `benchmarks/benchmark.json` — version-matched Foundry evidence after live
   execution.
+
+
+## Canonical and shipped package boundary
+
+`.agents/skills/okhp3-replit-repl-janitor` is the canonical working package;
+`replit/okhp3-replit-repository-janitor` is the shipped mirror after the skill
+identity migration. Their audit scripts must be byte-identical, and both test
+suites must cover the shared deletion and hosted-evidence safety fixtures.
+Package metadata and evaluation records may differ, but that divergence is
+outside this runtime boundary and must be reviewed separately.
 
 ---
 

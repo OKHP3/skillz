@@ -4,8 +4,12 @@
 Reports local branch facts, naming violations, and nested detritus folders as
 JSON. The script never deletes, renames, prunes, merges, or force-pushes.
 Network fetch is opt-in with --fetch and still never prunes. Its pre-delete
-check only emits deletion commands after the reviewed branch tip matches the
-freshly read tip.
+check only emits deletion commands after the reviewed local and remote branch
+tips match their freshly read tips.
+
+The canonical .agents/skills copy and this shipped replit mirror intentionally
+share the complete deletion-safety and hosted-evidence implementation. Package
+metadata and evaluation records may diverge outside this runtime boundary.
 """
 
 from __future__ import annotations
@@ -16,7 +20,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Mapping
 
 
 ROOT_GOVERNANCE_FILES = {
@@ -79,27 +83,47 @@ def prepare_branch_deletion(
     reviewed_head: str,
     *,
     remote: str = "origin",
+    reviewed_remote_head: str | None = None,
 ) -> dict[str, object]:
     """Refresh a branch tip and prepare, but never execute, its deletion.
 
-    The reviewed SHA is the approval boundary.  A changed tip produces a
-    review hold with no deletion commands; a missing branch or other Git
-    failure raises visibly.  When the tip matches, the returned commands
-    preserve the required remote-first order.
+    The reviewed SHAs are the approval boundary.  The remote tip is read
+    directly from the configured remote rather than from a possibly stale
+    remote-tracking ref.  A changed local or remote tip produces a review hold
+    with no deletion commands; a missing branch or other Git failure raises
+    visibly.  When both tips match, the returned commands preserve the
+    required remote-first order.
     """
     if not branch:
         raise AuditError("branch is required for the pre-delete check")
     if not reviewed_head:
         raise AuditError("reviewed branch head is required for the pre-delete check")
+    if not remote:
+        raise AuditError("remote is required for the pre-delete check")
+    reviewed_remote_head = reviewed_remote_head or reviewed_head
 
     current_head = run(
         ["git", "rev-parse", "--verify", f"refs/heads/{branch}^{{commit}}"],
         root,
     )
+    remote_output = run(
+        ["git", "ls-remote", "--exit-code", remote, f"refs/heads/{branch}"],
+        root,
+    )
+    remote_lines = remote_output.splitlines()
+    remote_fields = remote_lines[0].split() if remote_lines else []
+    if len(remote_fields) != 2 or remote_fields[1] != f"refs/heads/{branch}":
+        raise AuditError(
+            f"could not read the exact remote branch tip for {remote}/{branch}"
+        )
+    current_remote_head = remote_fields[0]
     result: dict[str, object] = {
         "branch": branch,
         "reviewed_head": reviewed_head,
         "current_head": current_head,
+        "remote": remote,
+        "reviewed_remote_head": reviewed_remote_head,
+        "current_remote_head": current_remote_head,
     }
     if current_head != reviewed_head:
         result.update({
@@ -108,10 +132,17 @@ def prepare_branch_deletion(
             "deletion_commands": [],
         })
         return result
+    if current_remote_head != reviewed_remote_head:
+        result.update({
+            "bucket": "review",
+            "reason": "remote branch tip changed since review",
+            "deletion_commands": [],
+        })
+        return result
 
     result.update({
         "bucket": "delete",
-        "reason": "branch tip matches reviewed head",
+        "reason": "local and remote branch tips match reviewed heads",
         "deletion_commands": [
             ["git", "push", remote, "--delete", branch],
             ["git", "branch", "-d", branch],
@@ -120,7 +151,111 @@ def prepare_branch_deletion(
     return result
 
 
-def audit_branches(root: Path, base: str) -> tuple[list[dict[str, object]], str]:
+_HOSTED_PR_NOT_CHECKED = object()
+
+
+def classify_branch_for_cleanup(
+    branch: dict[str, object],
+    *,
+    expected_head: str | None = None,
+    hosted_pr: dict[str, object] | None | object = _HOSTED_PR_NOT_CHECKED,
+) -> dict[str, str]:
+    """Classify a branch without treating incomplete evidence as disposable.
+
+    ``hosted_pr`` is deliberately supplied by the caller after a separate
+    pull-request lookup.  The supported evidence keys are ``state`` (``open``
+    or ``closed``), ``merged``, ``head_sha``, and
+    ``merge_commit_reachable``.  Passing ``None`` records an unavailable
+    lookup; a lookup status of ``unknown`` or ``failed`` is also incomplete
+    evidence.  Each holds the branch for review rather than inferring that it
+    can be deleted.  Omitting ``hosted_pr`` retains local-only classification
+    for callers that have not requested a hosted lookup.
+    """
+    name = str(branch.get("branch", ""))
+    if branch.get("is_current") or name == "main":
+        return {"bucket": "keep", "reason": "current or protected main branch"}
+
+    head_sha = str(branch.get("head_sha", ""))
+    if not head_sha:
+        return {"bucket": "review", "reason": "branch tip is unavailable"}
+    if expected_head and head_sha != expected_head:
+        return {"bucket": "review", "reason": "branch tip changed since review"}
+
+    if hosted_pr is None:
+        return {
+            "bucket": "review",
+            "reason": "hosted pull-request lookup is unavailable; hosted evidence is missing",
+        }
+
+    if hosted_pr is not _HOSTED_PR_NOT_CHECKED:
+        lookup_status = hosted_pr.get("lookup_status", hosted_pr.get("lookup"))
+        if lookup_status in {"unknown", "failed"}:
+            return {
+                "bucket": "review",
+                "reason": (
+                    f"hosted pull-request lookup is {lookup_status}; "
+                    "hosted evidence is missing"
+                ),
+            }
+
+        hosted_head = hosted_pr.get("head_sha")
+        if hosted_head != head_sha:
+            reason = (
+                "hosted PR head does not match branch tip"
+                if hosted_head
+                else "hosted PR head is unavailable"
+            )
+            return {"bucket": "review", "reason": reason}
+
+        state = hosted_pr.get("state")
+        merged = hosted_pr.get("merged") is True
+        if state == "open":
+            return {"bucket": "keep", "reason": "open pull request"}
+        if state == "closed" and not merged:
+            return {"bucket": "review", "reason": "closed pull request was not merged"}
+        if merged and hosted_pr.get("merge_commit_reachable") is not True:
+            return {"bucket": "review", "reason": "merged commit is not reachable from the base"}
+        if state not in {"closed", "merged"}:
+            return {
+                "bucket": "review",
+                "reason": "hosted pull-request state is unknown; hosted evidence is missing",
+            }
+        if merged:
+            return {"bucket": "delete", "reason": "merged pull request and reachable merge commit"}
+
+    if branch.get("merged_into_base"):
+        return {"bucket": "delete", "reason": "branch tip is reachable from the base"}
+    return {"bucket": "review", "reason": "branch has not been proven disposable"}
+
+
+def hosted_lookup_summary(
+    hosted_pr: dict[str, object] | None,
+) -> dict[str, object]:
+    """Return the report-safe outcome of a hosted pull-request lookup."""
+    if hosted_pr is None:
+        return {"status": "unavailable"}
+
+    status = hosted_pr.get("lookup_status", hosted_pr.get("lookup", "available"))
+    summary: dict[str, object] = {"status": status}
+    if "error" in hosted_pr:
+        summary["error"] = hosted_pr["error"]
+    return summary
+
+
+def audit_branches(
+    root: Path,
+    base: str,
+    *,
+    hosted_prs: Mapping[str, dict[str, object] | None] | None = None,
+) -> tuple[list[dict[str, object]], str]:
+    """Collect branch facts and, when supplied, hosted cleanup evidence.
+
+    ``hosted_prs`` is an explicit lookup result keyed by local branch name.
+    Supplying it means every non-protected branch is classified with hosted
+    evidence; an omitted branch is treated as an unavailable lookup.  Leaving
+    it unset preserves the local-only audit for callers that have not made
+    hosted lookups.
+    """
     current = run(["git", "branch", "--show-current"], root)
     branches = run(
         ["git", "for-each-ref", "--format=%(refname:short)", "refs/heads/"],
@@ -140,16 +275,25 @@ def audit_branches(root: Path, base: str) -> tuple[list[dict[str, object]], str]
             ["git", "log", "-1", "--format=%ci%x00%an%x00%s", branch],
             root,
         )
+        head_sha = run(["git", "rev-parse", branch], root)
         date, author, subject = (last.split("\0", 2) + ["", "", ""])[:3]
-        ledger.append({
+        item: dict[str, object] = {
             "branch": branch,
             "is_current": bool(current) and branch == current,
             "merged_into_base": branch in merged,
+            "head_sha": head_sha,
             "last_commit_date": date,
             "last_commit_author": author,
             "last_commit_subject": subject,
             "replit_generated_pattern": bool(REPLIT_BRANCH_PATTERNS.match(branch)),
-        })
+        }
+        if hosted_prs is not None:
+            hosted_pr = hosted_prs.get(branch)
+            item["hosted_lookup"] = hosted_lookup_summary(hosted_pr)
+            decision = classify_branch_for_cleanup(item, hosted_pr=hosted_pr)
+            item["bucket"] = decision["bucket"]
+            item["reason"] = decision["reason"]
+        ledger.append(item)
     return ledger, current
 
 
@@ -224,6 +368,27 @@ def audit_detritus(root: Path) -> list[dict[str, object]]:
     return sorted(found, key=lambda item: str(item["folder"]))
 
 
+def load_hosted_prs(path: Path) -> dict[str, dict[str, object] | None]:
+    """Load explicit hosted lookup results without making any network calls."""
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AuditError(f"could not read hosted lookup report {path}: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise AuditError(f"hosted lookup report must be a JSON object: {path}")
+
+    hosted_prs: dict[str, dict[str, object] | None] = {}
+    for branch, result in payload.items():
+        if not isinstance(branch, str):
+            raise AuditError(f"hosted lookup branch names must be strings: {path}")
+        if result is not None and not isinstance(result, dict):
+            raise AuditError(
+                f"hosted lookup result for {branch!r} must be an object or null: {path}"
+            )
+        hosted_prs[branch] = result
+    return hosted_prs
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", default=".")
@@ -242,6 +407,13 @@ def parse_args() -> argparse.Namespace:
         help="branch SHA recorded during review with --check-delete",
     )
     parser.add_argument(
+        "--reviewed-remote-head",
+        help=(
+            "remote branch SHA recorded during review; defaults to "
+            "--reviewed-head with --check-delete"
+        ),
+    )
+    parser.add_argument(
         "--remote",
         default="origin",
         help="remote to use in the remote-first deletion plan (default: origin)",
@@ -250,6 +422,14 @@ def parse_args() -> argparse.Namespace:
         "--fetch",
         action="store_true",
         help="run `git fetch --all` before auditing; never prunes",
+    )
+    parser.add_argument(
+        "--hosted-lookups",
+        type=Path,
+        help=(
+            "read a JSON object of branch names to hosted pull-request lookup "
+            "results; null means unavailable and no network call is made"
+        ),
     )
     return parser.parse_args()
 
@@ -262,28 +442,37 @@ def main() -> int:
         if args.fetch:
             run(["git", "fetch", "--all"], root)
         if args.check_delete:
-            if not args.branch:
-                raise AuditError("--check-delete requires --branch")
-            if not args.reviewed_head:
-                raise AuditError("--check-delete requires --reviewed-head")
+            if not args.branch or not args.reviewed_head:
+                raise AuditError("--check-delete requires --branch and --reviewed-head")
             print(json.dumps(
                 prepare_branch_deletion(
                     root,
                     args.branch,
                     args.reviewed_head,
                     remote=args.remote,
+                    reviewed_remote_head=args.reviewed_remote_head,
                 ),
                 indent=2,
             ))
             return 0
         ensure_base(root, args.base)
-        branches, current = audit_branches(root, args.base)
+        hosted_prs = (
+            load_hosted_prs(args.hosted_lookups)
+            if args.hosted_lookups is not None
+            else None
+        )
+        branches, current = audit_branches(
+            root,
+            args.base,
+            hosted_prs=hosted_prs,
+        )
         report = {
             "root": str(root),
             "base": args.base,
             "fetch_performed": args.fetch,
             "current_branch": current or None,
             "detached_head": not bool(current),
+            "hosted_lookups_provided": hosted_prs is not None,
             "branches": branches,
             "naming_violations": audit_naming(root),
             "detritus_folders": audit_detritus(root),

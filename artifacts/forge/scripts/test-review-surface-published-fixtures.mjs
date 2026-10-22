@@ -11,14 +11,21 @@
  * source commit.
  */
 import { spawn } from 'node:child_process';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { once } from 'node:events';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
 
 const checkScript = fileURLToPath(new URL('./test-review-surface-published.mjs', import.meta.url));
-const expectedCommit = 'expected-commit-abcdef123456';
-const staleCommit = 'old-commit-000000000000';
+const expectedCommit = 'abcdef1234567890abcdef1234567890abcdef12';
+const staleCommit = '1111111111111111111111111111111111111111';
+const fixtureWaitTimeoutMs = 180;
+const fixturePollIntervalMs = 20;
+const nearMissCommit = `${expectedCommit.slice(0, 12)}${'f'.repeat(28)}`;
+const overlongCommit = `${expectedCommit}abcdef12`;
 const unresolvedName = 'okhp3-published-regression-unresolved-companion';
 const expandedBranchName = 'fixture-project-local';
 
@@ -75,6 +82,10 @@ function catalog(sourceCommit) {
       },
     ],
   };
+}
+
+function failedCatalogRequest(type, status) {
+  return { failure: { type, status } };
 }
 
 function reviewSurfaceHtml({
@@ -199,10 +210,29 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
 
     if (requestPath === '/data/catalog.json') {
       const responseIndex = Math.min(state.catalogRequests, catalogResponses.length - 1);
-      const body = JSON.stringify(catalogResponses[responseIndex]);
+      const catalogResponse = catalogResponses[responseIndex];
       state.catalogRequests += 1;
+      if (catalogResponse.failure?.type === 'network') {
+        state.catalogResponses.push({
+          failureType: 'network',
+          completedAt: Date.now(),
+        });
+        response.destroy();
+        return;
+      }
+      if (catalogResponse.failure?.type === 'http') {
+        state.catalogResponses.push({
+          failureType: 'http',
+          status: catalogResponse.failure.status,
+          completedAt: Date.now(),
+        });
+        response.writeHead(catalogResponse.failure.status, { 'content-type': 'text/plain' });
+        response.end('fixture catalog request failure');
+        return;
+      }
+      const body = JSON.stringify(catalogResponse);
       state.catalogResponses.push({
-        sourceCommit: catalogResponses[responseIndex].sourceCommit,
+        sourceCommit: catalogResponse.sourceCommit,
         completedAt: Date.now(),
       });
       response.writeHead(200, { 'content-type': 'application/json' });
@@ -246,32 +276,41 @@ async function startFixture({ catalogResponses, assertionFailure = false }) {
   };
 }
 
-function runPublishedCheck(baseUrl) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [checkScript], {
-      cwd: fileURLToPath(new URL('../..', import.meta.url)),
-      env: {
-        ...process.env,
-        FORGE_PUBLISHED_URL: baseUrl,
-        EXPECTED_SOURCE_COMMIT: expectedCommit,
-        PUBLISHED_CATALOG_WAIT_TIMEOUT_MS: '180',
-        PUBLISHED_CATALOG_POLL_INTERVAL_MS: '20',
-      },
-      stdio: ['ignore', 'pipe', 'pipe'],
+async function runPublishedCheck(baseUrl, expectedSourceCommit = expectedCommit) {
+  const summaryDirectory = mkdtempSync(join(tmpdir(), 'forge-review-summary-'));
+  const summaryPath = join(summaryDirectory, 'summary.md');
+  writeFileSync(summaryPath, '');
+  try {
+    const result = await new Promise((resolve, reject) => {
+      const child = spawn(process.execPath, [checkScript], {
+        cwd: fileURLToPath(new URL('../..', import.meta.url)),
+        env: {
+          ...process.env,
+          FORGE_PUBLISHED_URL: baseUrl,
+          EXPECTED_SOURCE_COMMIT: expectedSourceCommit,
+          GITHUB_STEP_SUMMARY: summaryPath,
+          PUBLISHED_CATALOG_WAIT_TIMEOUT_MS: String(fixtureWaitTimeoutMs),
+          PUBLISHED_CATALOG_POLL_INTERVAL_MS: String(fixturePollIntervalMs),
+        },
+        stdio: ['ignore', 'pipe', 'pipe'],
+      });
+      let stdout = '';
+      let stderr = '';
+      child.stdout.on('data', chunk => { stdout += chunk; });
+      child.stderr.on('data', chunk => { stderr += chunk; });
+      child.on('error', reject);
+      child.on('close', (status, signal) => resolve({ status, signal, stdout, stderr }));
     });
-    let stdout = '';
-    let stderr = '';
-    child.stdout.on('data', chunk => { stdout += chunk; });
-    child.stderr.on('data', chunk => { stderr += chunk; });
-    child.on('error', reject);
-    child.on('close', (status, signal) => resolve({ status, signal, stdout, stderr }));
-  });
+    return { ...result, summary: readFileSync(summaryPath, 'utf8') };
+  } finally {
+    rmSync(summaryDirectory, { recursive: true, force: true });
+  }
 }
 
-async function runCase(name, fixtureOptions, validate) {
+async function runCase(name, fixtureOptions, validate, expectedSourceCommit = expectedCommit) {
   const fixture = await startFixture(fixtureOptions);
   try {
-    const result = await runPublishedCheck(fixture.baseUrl);
+    const result = await runPublishedCheck(fixture.baseUrl, expectedSourceCommit);
     validate(result, fixture.state);
     console.log(`✓ ${name}`);
   } finally {
@@ -312,8 +351,168 @@ async function main() {
       `Propagation fixture should keep retry numbering sequential and report elapsed timing:\n${result.stdout}`);
       assert(result.stdout.split('\n').filter(line => line.includes('[deployment]')).length === 4,
         `Successful propagation should keep deployment progress concise:\n${result.stdout}`);
+      assert(result.summary.includes('**Artifact status:** Fresh artifact'),
+        `Successful propagation should be recorded as fresh in the Actions summary:\n${result.summary}`);
+      assert(result.summary.includes(`**Expected source commit:** \`${expectedCommit}\``),
+        `Actions summary should report the expected commit:\n${result.summary}`);
+      assert(result.summary.includes(`**Final observed source commit:** \`${expectedCommit}\``),
+        `Actions summary should report the final observed commit:\n${result.summary}`);
+      assert(result.summary.includes('**Catalog attempts:** 4'),
+        `Actions summary should report the propagation attempt count:\n${result.summary}`);
+      assert(/\*\*Elapsed wait:\*\* \d+ ms/.test(result.summary),
+        `Actions summary should report the elapsed wait:\n${result.summary}`);
       assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
         'Browser assertions started before the expected catalog response completed.');
+    },
+  );
+
+  await runCase(
+    'accepts a valid abbreviated catalog commit before browser assertions',
+    { catalogResponses: [catalog(expectedCommit.slice(0, 7))] },
+    (result, state) => {
+      assert(result.status === 0,
+        `Valid abbreviated catalog commit should pass (exit ${result.status}).\n${result.stderr}`);
+      assert(state.catalogResponses[0]?.sourceCommit === expectedCommit.slice(0, 7),
+        'Abbreviated fixture should serve the expected commit prefix.');
+      assert(state.browserStarts.length > 0,
+        'Valid abbreviated catalog commit should reach browser assertions.');
+      assert(result.summary.includes(`**Final observed source commit:** \`${expectedCommit.slice(0, 7)}\``),
+        `Actions summary should retain the observed abbreviated commit:\n${result.summary}`);
+    },
+  );
+
+  await runCase(
+    'rejects an ambiguous abbreviated catalog commit as stale',
+    { catalogResponses: [catalog(expectedCommit.slice(0, 6))] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Ambiguous catalog prefix should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Ambiguous catalog prefix must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Ambiguous catalog prefix must be classified as stale deployment data:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${expectedCommit.slice(0, 6)}`),
+        `Ambiguous catalog prefix should be reported:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Ambiguous catalog prefix must stop before browser assertions.');
+    },
+  );
+
+  await runCase(
+    'rejects an unrelated near-miss commit as stale',
+    { catalogResponses: [catalog(nearMissCommit)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Unrelated near-miss commit should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Unrelated near-miss commit must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Unrelated near-miss commit must be classified as stale deployment data:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${nearMissCommit}`),
+        `Unrelated near-miss commit should be reported:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Unrelated near-miss commit must stop before browser assertions.');
+    },
+  );
+
+  await runCase(
+    'rejects an overlong value that merely starts with the expected SHA',
+    { catalogResponses: [catalog(overlongCommit)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Overlong sourceCommit should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Overlong sourceCommit must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Overlong sourceCommit must remain a stale deployment failure:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${overlongCommit}`),
+        `Overlong sourceCommit should be reported:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Overlong sourceCommit must stop before browser assertions.');
+    },
+  );
+
+  await runCase(
+    'rejects an ambiguous expected prefix against a full catalog SHA',
+    { catalogResponses: [catalog(expectedCommit)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Abbreviated expected SHA should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Abbreviated expected SHA must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Abbreviated expected SHA must not match a full catalog SHA:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Abbreviated expected SHA must stop before browser assertions.');
+    },
+    expectedCommit.slice(0, 6),
+  );
+
+  await runCase(
+    'retries one temporary catalog HTTP failure and reaches browser assertions',
+    {
+      catalogResponses: [
+        failedCatalogRequest('http', 503),
+        catalog(expectedCommit),
+      ],
+    },
+    (result, state) => {
+      assert(result.status === 0,
+        `Transient catalog failure should recover successfully (exit ${result.status}).\n${result.stderr}`);
+      const failedResponses = state.catalogResponses
+        .map((entry, index) => ({ ...entry, index }))
+        .filter(entry => entry.failureType === 'http');
+      const expectedResponse = state.catalogResponses
+        .map((entry, index) => ({ ...entry, index }))
+        .find(entry => entry.sourceCommit === expectedCommit);
+      assert(failedResponses.length === 1 && failedResponses[0].status === 503,
+        'Transient catalog fixture should record exactly one HTTP 503 response.');
+      assert(expectedResponse && expectedResponse.index > failedResponses[0].index,
+        'Transient catalog fixture should serve the expected source commit after the failure.');
+      assert(state.catalogRequests >= 2,
+        'Transient catalog failure should cause another catalog request.');
+      assert(result.stdout.includes('Catalog propagation retry 1:'),
+        `Transient catalog failure should be reported as a retry:\n${result.stdout}`);
+      assert(state.browserStarts.length > 0,
+        'Recovered catalog request should reach the browser assertion stage.');
+      assert(state.browserStarts.every(startedAt => startedAt >= expectedResponse.completedAt),
+        'Browser assertions started before the expected catalog response completed.');
+    },
+  );
+
+  await runCase(
+    'reports a permanent catalog HTTP failure as a deployment failure',
+    { catalogResponses: [failedCatalogRequest('http', 503)] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Permanent HTTP failure should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Permanent HTTP failure must use the deployment failure prefix.');
+      assert(result.stderr.includes('HTTP 503'),
+        `Permanent HTTP failure should retain its status detail:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Permanent HTTP failure must stop before browser assertions.');
+      assert(result.summary.includes('**Artifact status:** Artifact or catalog unreachable'),
+        `Permanent HTTP failure should be identified as unreachable in the Actions summary:\n${result.summary}`);
+      assert(result.summary.includes('**Catalog attempts:** 1'),
+        `Actions summary should report the failed catalog attempt:\n${result.summary}`);
+      assert(result.summary.includes('**Final observed source commit:** \`<none>\`'),
+        `Unreachable summary should show that no source commit was observed:\n${result.summary}`);
+    },
+  );
+
+  await runCase(
+    'reports a permanent catalog network failure as a deployment failure',
+    { catalogResponses: [failedCatalogRequest('network')] },
+    (result, state) => {
+      assert(result.status === 2,
+        `Permanent network failure should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Permanent network failure must use the deployment failure prefix.');
+      assert(result.stderr.includes('Could not reach published catalog.json'),
+        `Permanent network failure should retain its reachability detail:\n${result.stderr}`);
+      assert(state.browserStarts.length === 0,
+        'Permanent network failure must stop before browser assertions.');
     },
   );
 
@@ -328,10 +527,54 @@ async function main() {
         `Permanent staleness must explain that the artifact is stale:\n${result.stderr}`);
       assert(result.stderr.includes(`last observed sourceCommit ${staleCommit}`),
         `Permanent staleness must report the last observed source commit:\n${result.stderr}`);
+      assert(result.summary.includes('**Artifact status:** Stale artifact'),
+        `Permanent staleness should be identified in the Actions summary:\n${result.summary}`);
+      assert(result.summary.includes(`**Final observed source commit:** \`${staleCommit}\``),
+        `Stale summary should report the final observed commit:\n${result.summary}`);
+      assert(/\*\*Catalog attempts:\*\* \d+/.test(result.summary),
+        `Stale summary should report the catalog attempt count:\n${result.summary}`);
+      assert(/\*\*Elapsed wait:\*\* \d+ ms/.test(result.summary),
+        `Stale summary should report the elapsed wait:\n${result.summary}`);
       assert(/after waiting \d+ms/.test(result.stderr),
         `Permanent staleness must report the total wait duration:\n${result.stderr}`);
       assert(state.browserStarts.length === 0,
         'Permanent staleness must stop before opening the browser assertion stage.');
+    },
+  );
+
+  await runCase(
+    'stale catalogs through the full polling timeout stop before browser assertions',
+    {
+      catalogResponses: Array.from(
+        { length: Math.ceil(fixtureWaitTimeoutMs / fixturePollIntervalMs) + 2 },
+        () => catalog(staleCommit),
+      ),
+    },
+    (result, state) => {
+      assert(result.status === 2,
+        `Repeated stale catalogs should exit with deployment status 2 (exit ${result.status}).\n${result.stderr}`);
+      assert(result.stderr.includes('✗ [deployment]'),
+        'Repeated stale catalogs must use the deployment failure prefix.');
+      assert(result.stderr.includes('still stale relative to the deployed commit'),
+        `Repeated stale catalogs must finish with a stale-deployment failure:\n${result.stderr}`);
+      assert(result.stderr.includes(`last observed sourceCommit ${staleCommit}`),
+        `Final timeout message must report the last stale source commit:\n${result.stderr}`);
+      const finalWait = result.stderr.match(/after waiting (\d+)ms/);
+      assert(finalWait && Number(finalWait[1]) >= fixtureWaitTimeoutMs,
+        `Final stale-deployment message must report waiting through the ${fixtureWaitTimeoutMs}ms timeout:\n${result.stderr}`);
+      assert(state.catalogResponses.length >= 2
+        && state.catalogResponses.every(entry => entry.sourceCommit === staleCommit),
+      `Fixture must serve repeated stale catalogs for the full timeout; saw ${state.catalogResponses.length} responses.`);
+      assert(state.browserStarts.length === 0,
+        'Repeated staleness must stop before opening the browser assertion stage.');
+      assert(result.summary.includes('**Artifact status:** Stale artifact'),
+        `Full-timeout staleness should be identified in the Actions summary:\n${result.summary}`);
+      assert(result.summary.includes(`**Final observed source commit:** \`${staleCommit}\``),
+        `Full-timeout summary must report the final stale source commit:\n${result.summary}`);
+      assert(/\*\*Catalog attempts:\*\* \d+/.test(result.summary),
+        `Full-timeout summary must report the number of catalog polls:\n${result.summary}`);
+      assert(/\*\*Elapsed wait:\*\* \d+ ms/.test(result.summary),
+        `Full-timeout summary must report the elapsed wait:\n${result.summary}`);
     },
   );
 
@@ -347,6 +590,10 @@ async function main() {
       assert(!result.stderr.includes('still stale relative to the deployed commit'),
         'Current-catalog UI failure must not be reported as a stale deployment.');
       assert(state.browserStarts.length > 0, 'Current-catalog UI failure should reach the browser assertion stage.');
+      assert(result.summary.includes('**Artifact status:** Fresh artifact'),
+        `Assertion failures should still show that the deployed artifact was fresh:\n${result.summary}`);
+      assert(result.summary.includes('**Check result:** Assertion failure (exit 1)'),
+        `Actions summary should preserve the existing assertion result:\n${result.summary}`);
     },
   );
 
