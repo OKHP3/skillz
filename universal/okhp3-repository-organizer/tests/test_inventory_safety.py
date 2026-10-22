@@ -129,6 +129,16 @@ class InventorySafetyTests(unittest.TestCase):
             self.assertEqual(module.main(), 2)
         self.assertIn("linked repository root", stderr.getvalue())
 
+    def test_linked_repository_ancestor_is_rejected_before_scan(self) -> None:
+        module = self.load_module()
+        stderr = io.StringIO()
+        with mock.patch.object(module, "is_linklike", side_effect=lambda path: path == self.base), \
+             mock.patch.object(module, "walk_repository", side_effect=AssertionError("ancestor traversed")), \
+             mock.patch.object(sys, "argv", [str(SCRIPT), "--root", str(self.repo)]), \
+             contextlib.redirect_stderr(stderr):
+            self.assertEqual(module.main(), 2)
+        self.assertIn("linked repository root or ancestor", stderr.getvalue())
+
     def test_long_skipped_link_path_is_reported(self) -> None:
         module = self.load_module()
         long_name = "a" * 181
