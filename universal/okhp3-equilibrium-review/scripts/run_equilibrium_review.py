@@ -232,6 +232,20 @@ def run_role(
     dry_run: bool,
 ) -> Dict[str, Any]:
     if dry_run or command is None:
+        output_path.write_text(
+            json.dumps(
+                {
+                    "role": role,
+                    "status": "not-run",
+                    "decision": "defer-for-evidence",
+                    "structured": False,
+                    "notes": "Prompt generated without an agent command; no reviewer result exists.",
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
         return {
             "role": role,
             "status": "not-run",

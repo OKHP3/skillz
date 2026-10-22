@@ -2,7 +2,7 @@
 
 **OverKill Hill P³** · Reusable evidence and decision-quality review
 
-`okhp3-equilibrium-review` evaluates documents, reports, spreadsheets,
+`okhp3-equilibrium-review` (1.0.1) evaluates documents, reports, spreadsheets,
 hypotheses, decision memos, and Agent Skills through independent reviewers,
 conditional disruption, and evidence-based adjudication.
 
