@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T04:00:04.158Z",
+  "generatedAt": "2026-10-22T04:24:41.597Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/knowledge-operations-closeout",
-  "sourceCommit": "4e2836de",
+  "sourceRef": "codex/skillz-catalog-website-closeout",
+  "sourceCommit": "a04b5cb6",
   "skillCount": 333,
   "familyCount": 22,
   "maturityCounts": {
