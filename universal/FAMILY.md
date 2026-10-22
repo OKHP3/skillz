@@ -3,7 +3,7 @@ family: universal
 display_name: Universal
 skill_count: 20
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-19T23:26:42Z
+generated_at: 2026-10-22T03:29:39Z
 ---
 
 # universal
@@ -15,7 +15,7 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 ## Skills (20)
 
 <!-- FAMILY_INVENTORY_START -->
-*20 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
+*20 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 03:29 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -35,8 +35,8 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 | [okhp3-repository-organizer](okhp3-repository-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.2.0 |
 | [okhp3-repository-settings](okhp3-repository-settings/SKILL.md) | Audit and configure GitHub repository settings for one owner working with AI agents. Use for bran... | 2.0.0 |
 | [okhp3-skill-cataloger](okhp3-skill-cataloger/SKILL.md) | OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safe... | 1.7.0 |
-| [okhp3-skill-discovery](okhp3-skill-discovery/SKILL.md) | Find, verify, compare, and route to project-local, installed, runtime, or plugin-provided agent s... | 0.1.0 |
-| [okhp3-skill-foundry](okhp3-skill-foundry/SKILL.md) | Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progres... | 3.1.0 |
+| [okhp3-skill-discovery](okhp3-skill-discovery/SKILL.md) | Find, verify, compare, and route to project-local, installed, runtime, or plugin-provided agent s... | 0.2.0 |
+| [okhp3-skill-foundry](okhp3-skill-foundry/SKILL.md) | Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progres... | 3.1.1 |
 | [okhp3-skill-promotion](okhp3-skill-promotion/SKILL.md) | Promote and synchronize a project-local Agent Skill into a portable, reviewable distribution pack... | 0.1.0 |
 | [okhp3-vite-github-pages](okhp3-vite-github-pages/SKILL.md) | OverKill Hill P³ Vite-to-GitHub-Pages deployment runbook. Use when deploying or troubleshooting t... | 1.1.0 |
 <!-- FAMILY_INVENTORY_END -->

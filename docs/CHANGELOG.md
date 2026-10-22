@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-10-21: knowledge operations candidate closeout
+
+- Matured the nine authored intake, triage, evidence, research, validation,
+  graduation, promotion, discovery, and handoff contracts to 0.2.0 with explicit
+  draftable status, worked examples, portable fallbacks, and output checks.
+- Closed the graduation rubric's undefined high-score/zero cases and made
+  uncertain cleanliness and required validation blockers non-compensatory.
+- Distinguished pre-GO DRAFT packets from revision-bound owner review, and
+  clarified validator side effects, preservation, source trust, and handoff
+  audience/authority boundaries.
+- Replaced scenario sketches with 36 concrete development cases and honest
+  external-required holdout declarations. Fresh isolated fixture executions
+  satisfied all 108 skilled-output expectations; the matched baseline satisfied
+  95. These are single-sample conformance observations, not production or
+  general uplift claims. A real collision-preserving capture trial and 24-query
+  semantic routing exercise also passed.
+- Retained seven packages in knowledge-operations, discovery in universal, and
+  handoff in context-extraction. Expanded the family explanation and synchronized
+  the inspected project-local mirrors. Community packages remain independent.
+
 ## 2026-10-11
 
 - Skill Foundry 3.1.1 accepts strict SemVer as plain, single-quoted, or

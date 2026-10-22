@@ -4,7 +4,8 @@ description: Preserve one raw idea, file, link, transcript, or request in a proj
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "0.1.0"
+  version: 0.2.0
+  maturity: draftable
   category: knowledge-operations
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -19,10 +20,13 @@ metadata:
 
 ## Inputs and output
 
-Require the user to identify the project root and inbox path. If either is
-missing, return `BLOCKED` with the missing choice instead of guessing a
-directory. The default example path is `00_Inbox/`; it is not a universal
-requirement.
+Resolve the project root and inbox destination from the current request or
+trusted project configuration. If either is missing, return `BLOCKED` with
+the missing choice. Use the supplied layout; no directory name is required.
+Capture only into a destination covered by the user's authorization. Preserve
+an existing file on collision and choose a distinct name or request a choice.
+Keep sensitive raw material in its authorized private location and return a
+pointer rather than reproducing it in a public record.
 
 Capture one item without making it look more mature than it is.
 
@@ -43,7 +47,30 @@ proposal.
 Return the destination path, preserved source or pointer, provenance fields,
 and any unknowns. Do not silently rewrite, combine, activate, archive, publish,
 or delete the item. Use `okhp3-triage-and-file` when deciding its lifecycle
-disposition.
+disposition. If that skill is unavailable, return the next triage action without
+claiming a lifecycle transition.
+
+## Scope and portability
+
+Use this contract with runtime-supplied sources, owners, and destinations.
+The optional host adapter is display metadata; the core works without it.
+Sibling skills are companions, not permission to assume a missing capability.
+
+## Worked example
+
+A user supplies a public note and authorizes `inbox/note.md` under a named
+workspace. Preserve the note verbatim, record the received date and source,
+verify the saved bytes or pointer, and report `CAPTURED`. If the destination
+is missing, report `BLOCKED`; a proposed path alone is not a completed capture.
+
+## Validation and known limits
+
+Validate the required output fields, source locators, actual actions, and
+remaining unknowns before reporting completion. Recheck a failed condition
+after a correction. Use [evals/evals.json](evals/evals.json) for development
+cases. Structural and fixture passes do not prove host activation quality,
+independent uplift, or production readiness. The exposed cases are development
+evidence; an unseen release holdout must be supplied separately.
 
 ## About
 
