@@ -3,7 +3,7 @@ family: copilot
 display_name: Copilot Agent Skills
 skill_count: 42
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-09-19T23:26:42Z
+generated_at: 2026-10-22T03:18:04Z
 ---
 
 # copilot
@@ -47,8 +47,8 @@ Use the host token in each package name and metadata:
 |---|---|---|
 | `github` | GitHub Copilot skill-capable surfaces | Confirm the exact Copilot surface and repository or personal discovery path. |
 | `cowork` | Microsoft Copilot Cowork | Confirm OneDrive or Microsoft 365 plugin packaging and the action boundary. |
-| `sharepoint` | Copilot in SharePoint | Confirm the Agent Assets path, native capability limits, and site permissions. |
-| `copilot-studio` | Copilot Studio declarative agents | Confirm the upload or authoring experience and separate connector or action dependencies. |
+| `sharepoint` | Copilot in SharePoint | Confirm personal/site ownership, observed OneDrive or Agent Assets storage, native limits, and permissions. |
+| `copilot-studio` | Copilot Studio agents using the GitHub Copilot harness | Confirm the harness, upload/authoring route, and separate connector or action dependencies. |
 | `scout` | Copilot Scout, when supported | Keep proposed or unverified until current documentation proves skill support. |
 | `crosshost` | More than one verified Copilot host | List every tested host and record behavioral differences. |
 
@@ -141,11 +141,11 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 ## Skills (42)
 
 <!-- FAMILY_INVENTORY_START -->
-*42 skills &nbsp;·&nbsp; inventory last updated: **September 19, 2026 at 23:26 UTC***
+*42 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 03:18 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
-| [okhp3-copilot-studio-skill-foundry](okhp3-copilot-studio-skill-foundry/SKILL.md) | Design, author, evaluate, and package a reusable Microsoft Copilot Studio agent skill. Use when a... | 1.1.0 |
+| [okhp3-copilot-studio-skill-foundry](okhp3-copilot-studio-skill-foundry/SKILL.md) | Design, author, evaluate, and package a reusable Microsoft Copilot Studio agent skill. Use when a... | 1.2.0 |
 | [okhp3-cowork-commitment-tracker](okhp3-cowork-commitment-tracker/SKILL.md) | Find and reconcile the user's commitments across an agreed set of email and meeting sources. Use ... | 1.1.0 |
 | [okhp3-cowork-daily-execution-brief](okhp3-cowork-daily-execution-brief/SKILL.md) | Build a realistic personal execution brief from an agreed day's priorities, calendar, and commitm... | 1.1.0 |
 | [okhp3-cowork-decision-record](okhp3-cowork-decision-record/SKILL.md) | Draft a durable decision record from an agreed discussion or source set. Use when capturing a dec... | 1.1.0 |
@@ -156,10 +156,10 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 | [okhp3-cowork-meeting-prep](okhp3-cowork-meeting-prep/SKILL.md) | Prepare a concise meeting brief from an agreed calendar event and relevant Microsoft 365 context.... | 1.1.0 |
 | [okhp3-cowork-project-context-pack](okhp3-cowork-project-context-pack/SKILL.md) | Create a current, source-linked project context pack from selected Microsoft 365 material. Use wh... | 1.1.0 |
 | [okhp3-cowork-research-evidence-log](okhp3-cowork-research-evidence-log/SKILL.md) | Build a source-linked research evidence log with confirmed, inferred, and unknown claims. Use whe... | 1.1.0 |
-| [okhp3-cowork-skill-foundry](okhp3-cowork-skill-foundry/SKILL.md) | Design, author, evaluate, and package a task-focused Microsoft Copilot Cowork skill. Use when con... | 1.1.0 |
+| [okhp3-cowork-skill-foundry](okhp3-cowork-skill-foundry/SKILL.md) | Design, author, evaluate, and package a task-focused Microsoft Copilot Cowork skill. Use when con... | 1.2.0 |
 | [okhp3-cowork-stakeholder-update](okhp3-cowork-stakeholder-update/SKILL.md) | Draft a source-grounded stakeholder update for review from an agreed project, time window, and au... | 1.1.0 |
 | [okhp3-cowork-weekly-review](okhp3-cowork-weekly-review/SKILL.md) | Create a personal weekly review from an agreed Microsoft 365 work window. Use when summarizing co... | 1.1.0 |
-| [okhp3-github-skill-foundry](okhp3-github-skill-foundry/SKILL.md) | Design, author, evaluate, and install-plan a task-focused GitHub Copilot Agent Skill. Use when cr... | 1.1.0 |
+| [okhp3-github-skill-foundry](okhp3-github-skill-foundry/SKILL.md) | Design, author, evaluate, and install-plan a task-focused GitHub Copilot Agent Skill. Use when cr... | 1.2.0 |
 | [okhp3-sharepoint-content-auditor](okhp3-sharepoint-content-auditor/SKILL.md) | OverKill Hill P³ SharePoint List build screenshot auditor. Use when reviewing screenshots of Shar... | 1.1.0 |
 | [okhp3-sharepoint-library-accessibility-review](okhp3-sharepoint-library-accessibility-review/SKILL.md) | Review selected SharePoint library documents for supplied accessibility and structure checks, the... | 1.1.0 |
 | [okhp3-sharepoint-library-article-curator](okhp3-sharepoint-library-article-curator/SKILL.md) | Curate selected SharePoint document-library articles into a reviewable collection with titles, su... | 1.1.0 |
@@ -186,5 +186,5 @@ Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilo
 | [okhp3-sharepoint-list-schema-view-review](okhp3-sharepoint-list-schema-view-review/SKILL.md) | Review a SharePoint List schema, views, indexes, and visible configuration against supplied desig... | 1.1.0 |
 | [okhp3-sharepoint-list-sla-breach-watchlist](okhp3-sharepoint-list-sla-breach-watchlist/SKILL.md) | Produce a SharePoint List SLA exception watchlist from supplied status, due-date, and service-tar... | 1.1.0 |
 | [okhp3-sharepoint-list-vendor-obligation-review](okhp3-sharepoint-list-vendor-obligation-review/SKILL.md) | Review a SharePoint List of vendors or obligations for supplied expiry, ownership, and compliance... | 1.1.0 |
-| [okhp3-sharepoint-skill-foundry](okhp3-sharepoint-skill-foundry/SKILL.md) | Design, author, evaluate, and deploy-plan a native Copilot in SharePoint skill for a named site. ... | 1.1.0 |
+| [okhp3-sharepoint-skill-foundry](okhp3-sharepoint-skill-foundry/SKILL.md) | Design, author, evaluate, and deploy-plan a personal or site Copilot in SharePoint skill. Use whe... | 1.2.0 |
 <!-- FAMILY_INVENTORY_END -->

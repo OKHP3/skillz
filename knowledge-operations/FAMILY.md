@@ -3,7 +3,7 @@ family: knowledge-operations
 display_name: Knowledge Operations
 skill_count: 7
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-22T03:29:38Z
+generated_at: 2026-10-22T03:51:59Z
 ---
 
 # knowledge-operations
@@ -105,12 +105,12 @@ Portable lifecycle skills for capturing, classifying, researching, validating, a
 ## Skills (7)
 
 <!-- FAMILY_INVENTORY_START -->
-*7 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 03:29 UTC***
+*7 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 03:51 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-artifact-validation](okhp3-artifact-validation/SKILL.md) | Validate a project change, draft, research packet, skill, promotion package, or handoff before it... | 0.2.0 |
-| [okhp3-capture-intake](okhp3-capture-intake/SKILL.md) | Preserve one raw idea, file, link, transcript, or request in a project inbox with provenance and ... | 0.2.0 |
+| [okhp3-capture-intake](okhp3-capture-intake/SKILL.md) | Preserve one raw idea, file, link, transcript, or request in a project inbox with provenance and ... | 0.2.1 |
 | [okhp3-evidence-standard](okhp3-evidence-standard/SKILL.md) | Classify consequential claims as confirmed, inferred, proposal, or unknown and keep those tiers v... | 0.2.0 |
 | [okhp3-graduation-gate](okhp3-graduation-gate/SKILL.md) | Decide whether an active exploratory effort is ready to become formal, should remain active, shou... | 0.2.0 |
 | [okhp3-project-promotion](okhp3-project-promotion/SKILL.md) | Prepare an exploratory effort that cleared the graduation gate for owner-approved formalization. ... | 0.2.0 |

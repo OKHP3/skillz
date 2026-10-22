@@ -3,7 +3,7 @@
 ## 2026-10-21: knowledge operations candidate closeout
 
 - Matured the nine authored intake, triage, evidence, research, validation,
-  graduation, promotion, discovery, and handoff contracts to 0.2.0 with explicit
+  graduation, promotion, discovery, and handoff contracts from 0.1.0 with explicit
   draftable status, worked examples, portable fallbacks, and output checks.
 - Closed the graduation rubric's undefined high-score/zero cases and made
   uncertain cleanliness and required validation blockers non-compensatory.
@@ -19,6 +19,32 @@
 - Retained seven packages in knowledge-operations, discovery in universal, and
   handoff in context-extraction. Expanded the family explanation and synchronized
   the inspected project-local mirrors. Community packages remain independent.
+- Final package versions are 0.2.0 for seven contracts, 0.2.1 for capture,
+  and 0.2.2 for discovery. Scanner feedback removed illustrative missing-path
+  assumptions. A fresh discovery regression exposed missing body-review
+  evidence in the output; the contract now requires it explicitly rather than
+  treating file availability as review.
+
+## 2026-10-21: non-destructive skill helper operations
+
+- Keep existing port occupants alive when starting the skill evaluation viewer;
+  use a free loopback port on address-in-use or Windows exclusive-port errors,
+  and preserve other bind errors.
+- Bound secret-history cleanup guidance to owner-reviewed refs and explicit
+  remote commit leases after rotation, recovery preservation, and coordination.
+
+## 2026-10-21: complete the Copilot host Foundry review circuit
+
+- Mature Cowork, SharePoint, GitHub Copilot, and Copilot Studio Foundries to
+  1.2.0 following three separately prompted reviewers and conditional challenge.
+- Make portable-baseline composition, complete build outputs, and existing task
+  authorization explicit. Keep documented host rules distinct from house policy.
+- Refresh Cowork packaging limits, SharePoint personal/site ownership and
+  bounded Library/List composition, and Studio load/resource verification.
+- Expand development regressions, reclassify exposed holdouts, and preserve the
+  September evidence unchanged. New task review receipts live in the owner's
+  approved exports/skillz operations home. Native-host benchmarks and measured
+  token savings remain unverified.
 
 ## 2026-10-21: source manifest inventory validation
 
@@ -29,6 +55,14 @@
   maps as well as totals and family membership; ignore build timestamps.
 - Keep publication regeneration and skill scanning unchanged. These checks
   establish metadata consistency, not behavioral or security acceptance.
+
+## 2026-10-21: SQL reconciliation identifier safety
+
+- Validate and quote table, schema, primary-key, and compared-column names
+  before constructing SQL in the imported reconciliation skill. Reject malformed
+  or expression-like names; focused tests cover valid queries and blocked inputs.
+- The skill still requires an authorized SQL Server connection. This change does
+  not alter its certificate trust setting or clear the wider Shield findings.
 
 ## 2026-10-11
 

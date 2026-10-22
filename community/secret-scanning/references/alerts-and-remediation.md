@@ -134,17 +134,24 @@ Depends on what the service provider shares:
 
 ### Removing Secrets from Git History
 
-If needed, use `git filter-repo` (recommended) or `BFG Repo-Cleaner`:
+Rotate the credential first. Before rewriting history, obtain explicit owner
+approval for each affected ref, coordinate with collaborators, preserve a
+restricted recovery reference (which may still contain the revoked secret), and
+record the exact remote ref and its reviewed current commit. Verify the cleaned
+history before publishing it. Never rewrite unrelated refs.
+
+If approved, use `git filter-repo` (recommended) or `BFG Repo-Cleaner`:
 
 ```bash
 # Install git-filter-repo
 pip install git-filter-repo
 
-# Remove a specific file from all history
-git filter-repo --path secrets.env --invert-paths
+# Remove a specific file only from the approved local ref history
+git filter-repo --path secrets.env --invert-paths --refs CLEANED_LOCAL_REF
 
-# Force push the cleaned history
-git push --force --all
+# Publish only the approved cleaned branch. Replace all placeholders with
+# reviewed literal values; a changed remote tip must fail the explicit lease.
+git push --force-with-lease=refs/heads/REVIEWED_BRANCH:REVIEWED_REMOTE_SHA origin CLEANED_LOCAL_REF:refs/heads/REVIEWED_BRANCH
 ```
 
 > **Note:** Rewriting history is disruptive — it invalidates existing clones and PRs. Only do this when absolutely necessary and after rotating the credential.
