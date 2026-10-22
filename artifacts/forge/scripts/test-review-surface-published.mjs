@@ -17,11 +17,19 @@
  * deploy did not ship" apart from "the deploy shipped a regression".
  */
 import { execFileSync } from 'node:child_process';
+import { appendFileSync } from 'node:fs';
 import { chromium } from 'playwright';
 
 const baseUrl = (process.env.FORGE_PUBLISHED_URL || 'https://okhp3.github.io/skillz/').replace(/\/?$/, '/');
 const catalogWaitTimeoutMs = Number(process.env.PUBLISHED_CATALOG_WAIT_TIMEOUT_MS || 180_000);
 const catalogPollIntervalMs = Number(process.env.PUBLISHED_CATALOG_POLL_INTERVAL_MS || 5_000);
+const catalogSummary = {
+  expectedCommit: null,
+  observedCommit: null,
+  attempts: 0,
+  elapsedMs: 0,
+  status: 'not-started',
+};
 
 // The commit the published artifact is expected to reflect. A post-deploy CI
 // job should pass the commit it just deployed (e.g. `${{ github.sha }}`); a
@@ -66,15 +74,57 @@ async function fetchPublic(url, label) {
 }
 
 function sourceCommitMatches(expected, actual) {
-  return Boolean(
-    expected
-    && actual
-    && (expected.startsWith(actual) || actual.startsWith(expected.slice(0, actual.length))),
-  );
+  // CI supplies the full deployed SHA. Only accept a catalog-side abbreviation,
+  // with Git's conventional seven-character minimum; never let a short expected
+  // value or an unrelated longer prefix weaken the comparison.
+  if (!/^[0-9a-f]{40}$/i.test(expected || '')
+    || !/^[0-9a-f]{7,40}$/i.test(actual || '')) {
+    return false;
+  }
+  return expected.toLowerCase().startsWith(actual.toLowerCase());
 }
 
 function delay(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+function summaryCommit(value, emptyLabel) {
+  if (!value) return `\`${emptyLabel}\``;
+  const safeCommit = typeof value === 'string' && /^[0-9a-f]{1,64}$/i.test(value)
+    ? value
+    : '<invalid>';
+  return `\`${safeCommit}\``;
+}
+
+function writeGitHubStepSummary(checkResult) {
+  const summaryPath = process.env.GITHUB_STEP_SUMMARY;
+  if (!summaryPath) return;
+
+  const statusLabel = {
+    fresh: 'Fresh artifact',
+    stale: 'Stale artifact',
+    unreachable: 'Artifact or catalog unreachable',
+    unverified: 'Artifact fetched; expected commit unavailable',
+    waiting: 'Propagation check incomplete',
+    'not-started': 'Propagation check not started',
+  }[catalogSummary.status] || 'Propagation check incomplete';
+  const markdown = [
+    '## Published Pages review-surface check',
+    '',
+    `- **Artifact status:** ${statusLabel}`,
+    `- **Check result:** ${checkResult}`,
+    `- **Expected source commit:** ${summaryCommit(catalogSummary.expectedCommit, '<unavailable>')}`,
+    `- **Final observed source commit:** ${summaryCommit(catalogSummary.observedCommit, '<none>')}`,
+    `- **Catalog attempts:** ${catalogSummary.attempts}`,
+    `- **Elapsed wait:** ${catalogSummary.elapsedMs} ms`,
+    '',
+  ].join('\n');
+
+  try {
+    appendFileSync(summaryPath, markdown);
+  } catch (error) {
+    console.warn(`Could not append the GitHub Actions summary: ${error.message}`);
+  }
 }
 
 async function waitForPublishedCatalog(expected) {
@@ -85,6 +135,11 @@ async function waitForPublishedCatalog(expected) {
   let latestCatalog = null;
   let latestError = null;
   let attempts = 0;
+  catalogSummary.expectedCommit = expected || null;
+  catalogSummary.observedCommit = null;
+  catalogSummary.attempts = 0;
+  catalogSummary.elapsedMs = 0;
+  catalogSummary.status = 'waiting';
 
   if (shouldWaitForCommit) {
     console.log(
@@ -95,6 +150,7 @@ async function waitForPublishedCatalog(expected) {
 
   while (true) {
     attempts += 1;
+    catalogSummary.attempts = attempts;
     try {
       const catalogResponse = await fetchPublic(catalogUrl, 'published catalog.json');
       try {
@@ -103,10 +159,14 @@ async function waitForPublishedCatalog(expected) {
         throw new DeploymentError(`Published catalog.json is not valid JSON: ${error.message}`);
       }
 
+      catalogSummary.observedCommit = latestCatalog.sourceCommit || null;
       if (!expected || sourceCommitMatches(expected, latestCatalog.sourceCommit)) {
+        catalogSummary.status = expected ? 'fresh' : 'unverified';
+        catalogSummary.elapsedMs = Date.now() - startedAt;
         return latestCatalog;
       }
 
+      catalogSummary.status = 'stale';
       latestError = new DeploymentError(
         `Published catalog.json reports sourceCommit ${latestCatalog.sourceCommit || '<missing>'}, `
         + `but expected it to reflect ${expected}.`,
@@ -117,8 +177,10 @@ async function waitForPublishedCatalog(expected) {
 
     const elapsedMs = Date.now() - startedAt;
     if (!shouldWaitForCommit || elapsedMs >= catalogWaitTimeoutMs) {
+      catalogSummary.elapsedMs = elapsedMs;
       if (latestError instanceof DeploymentError) {
         if (latestCatalog && !sourceCommitMatches(expected, latestCatalog.sourceCommit)) {
+          catalogSummary.status = 'stale';
           throw new DeploymentError(
             `${latestError.message} The GitHub Pages artifact is still stale relative to the deployed commit `
             + `after waiting ${elapsedMs}ms (last observed sourceCommit `
@@ -126,11 +188,13 @@ async function waitForPublishedCatalog(expected) {
             + 'not an application regression.',
           );
         }
+        catalogSummary.status = 'unreachable';
         throw new DeploymentError(
           `${latestError.message} after waiting ${elapsedMs}ms (last observed sourceCommit `
           + `${latestCatalog?.sourceCommit || '<none>'}).`,
         );
       }
+      catalogSummary.status = 'unreachable';
       throw new DeploymentError(
         `Could not verify the published catalog after waiting ${elapsedMs}ms `
         + `(last observed sourceCommit ${latestCatalog?.sourceCommit || '<none>'}): ${latestError.message}`,
@@ -351,10 +415,19 @@ async function expectExpandedBranchUnresolvedWarning(page, skill, branchSkill, u
 }
 
 async function main() {
+  const checkStartedAt = Date.now();
+  const expected = expectedSourceCommit();
+  catalogSummary.expectedCommit = expected || null;
+
   // 1. Deployment stage: the published site and its catalog must be publicly
   // reachable at all -- no auth, no repository access, just a plain GET.
-  await fetchPublic(baseUrl, 'published Forge site');
-  const expected = expectedSourceCommit();
+  try {
+    await fetchPublic(baseUrl, 'published Forge site');
+  } catch (error) {
+    catalogSummary.status = 'unreachable';
+    catalogSummary.elapsedMs = Date.now() - checkStartedAt;
+    throw error;
+  }
   const catalog = await waitForPublishedCatalog(expected);
   const skill = catalog.skills?.[0];
   if (!skill) throw new DeploymentError('Published catalog.json has no skills to exercise the review surface with.');
@@ -531,15 +604,20 @@ async function main() {
   }
 }
 
-main().catch(error => {
+main().then(() => {
+  writeGitHubStepSummary('Passed');
+}).catch(error => {
   if (error instanceof DeploymentError) {
+    writeGitHubStepSummary('Deployment failure (exit 2)');
     console.error(`✗ [deployment] ${error.message}`);
     process.exit(2);
   }
   if (error instanceof AssertionError) {
+    writeGitHubStepSummary('Assertion failure (exit 1)');
     console.error(`✗ [assertion] ${error.message}`);
     process.exit(1);
   }
+  writeGitHubStepSummary('Unexpected failure (exit 1)');
   console.error(`✗ [unexpected] ${error.stack || error.message}`);
   process.exit(1);
 });

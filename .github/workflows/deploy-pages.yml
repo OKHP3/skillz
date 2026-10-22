@@ -162,8 +162,9 @@ jobs:
         # This is deliberately credential-free: it only issues public HTTPS
         # requests against the just-deployed Pages URL. The script waits for
         # the catalog to report github.sha before opening a browser and logs
-        # propagation retries while Pages catches up. A deployment-stage
-        # failure (unreachable site, stale artifact) exits 2; an application
+        # propagation retries while Pages catches up, and appends the final
+        # commit/attempt/timing result to GitHub's automatic step summary.
+        # A deployment-stage failure (unreachable site, stale artifact) exits 2; an application
         # assertion failure exits 1.
         env:
           FORGE_PUBLISHED_URL: ${{ needs.deploy.outputs.page_url }}

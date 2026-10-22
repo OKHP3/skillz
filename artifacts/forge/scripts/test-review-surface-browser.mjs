@@ -64,11 +64,18 @@ async function expectReflowedWithinViewport(locator, label) {
         visible: rect.width > 0 && rect.height > 0,
         withinHorizontalViewport: rect.left >= 0 && rect.right <= window.innerWidth,
         hasHorizontalOverflow: element.scrollWidth > element.clientWidth + 1,
+        scrollWidth: element.scrollWidth,
+        clientWidth: element.clientWidth,
+        overflowingDescendants: [...element.querySelectorAll('*')]
+          .filter(child => child.scrollWidth > child.clientWidth + 1)
+          .slice(0, 8)
+          .map(child => `${child.tagName.toLowerCase()}.${String(child.className || '').trim().replaceAll(' ', '.')}:${child.scrollWidth}/${child.clientWidth}`),
       };
     });
     assert(layout.visible, `${label} is not visible.`);
     assert(layout.withinHorizontalViewport, `${label} is clipped outside the viewport.`);
-    assert(!layout.hasHorizontalOverflow, `${label} has horizontal overflow.`);
+    assert(!layout.hasHorizontalOverflow,
+      `${label} has horizontal overflow (${layout.scrollWidth}/${layout.clientWidth}px; descendants: ${layout.overflowingDescendants.join(', ') || 'none'}).`);
   }
 }
 
@@ -102,6 +109,38 @@ async function expectReviewSurface(page, skill) {
   assert((await text(page, '.skill-gate-panel h2')) === 'Blocked', `Expected blocked release gate for ${skill.name}.`);
   assert(await page.getByRole('button', { name: /Request final review/ }).isDisabled(), 'Blocked gate must disable final review.');
   assert(await page.getByRole('button', { name: 'Supervised run: attach evidence' }).isEnabled(), 'Blocked gate must leave supervised check available.');
+}
+
+async function expectEvidenceSummaryAtLargeText(page, skill) {
+  const summary = page.locator('.detail-evidence-release');
+  await summary.waitFor();
+  await page.evaluate(() => {
+    document.documentElement.style.fontSize = '200%';
+  });
+
+  const statusValue = summary.locator('dt').filter({ hasText: 'Evidence status (v2)' }).locator('xpath=following-sibling::dd[1]');
+  assert((await statusValue.innerText()).includes(skill.evidence.status),
+    `${skill.name} evidence status value is missing at 200% text.`);
+  await expectVisibleWithinViewport(statusValue, `${skill.name} evidence status value at 200% text`);
+
+  const blockers = summary.locator('.detail-evidence-blockers li');
+  assert(await blockers.count() > 0, `${skill.name} promotion blocker text is missing from the large-text fixture.`);
+  await expectReflowedWithinViewport(blockers, `${skill.name} promotion blocker text at 200% text`);
+
+  const rawLink = summary.getByRole('link', { name: 'View raw SKILL.md' });
+  const repositoryLink = summary.getByRole('link', { name: 'View in repository' });
+  assert(await rawLink.count() === 1 && await repositoryLink.count() === 1,
+    `${skill.name} evidence links are missing at 200% text.`);
+  await expectVisibleWithinViewport(rawLink, `${skill.name} raw SKILL.md evidence link at 200% text`);
+  await expectVisibleWithinViewport(repositoryLink, `${skill.name} repository evidence link at 200% text`);
+
+  await expectKeyboardFocus(page, rawLink, `${skill.name} raw SKILL.md evidence link at 200% text`);
+  await page.keyboard.press('Tab');
+  assert(await repositoryLink.evaluate(element => document.activeElement === element),
+    `${skill.name} keyboard navigation does not reach the repository evidence link at 200% text.`);
+  await expectKeyboardFocus(page, repositoryLink, `${skill.name} repository evidence link at 200% text`);
+  await expectReflowedWithinViewport(summary, `${skill.name} evidence/release summary at 200% text`);
+  await expectNoHorizontalOverflow(page, `${skill.name} evidence/release summary at 200% text`);
 }
 
 async function expectApprovedCompanionDetail(page, skill, kind, { narrow = false, largeText = false } = {}) {
@@ -431,19 +470,50 @@ async function main() {
     assert((await text(desktop, '.evidence-chip--warn')) === 'stale evidence', 'Stale evidence chip is missing.');
     await expectNoHorizontalOverflow(desktop, 'stale-evidence surface');
 
+    const largeEvidence = await browser.newPage({ viewport: { width: 390, height: 844 } });
+    await largeEvidence.goto(route(blocked), { waitUntil: 'domcontentloaded' });
+    await expectEvidenceSummaryAtLargeText(largeEvidence, blocked);
+    await largeEvidence.close();
+
     const narrow = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await narrow.goto(route(unlocked), { waitUntil: 'domcontentloaded' });
     await narrow.getByRole('heading', { name: 'Full contract' }).waitFor();
+    await narrow.evaluate(() => {
+      document.documentElement.style.fontSize = '200%';
+    });
     const tabs = narrow.getByRole('tab');
-    assert(await tabs.first().isVisible() && await tabs.last().isVisible(), 'Contract tabs are inaccessible on narrow view.');
     const rawTab = narrow.getByRole('tab', { name: 'Raw markdown' });
     const validationTab = narrow.getByRole('tab', { name: 'Validation' });
-    await expectKeyboardFocus(narrow, rawTab, 'Raw markdown tab');
+    const rawPanel = narrow.getByRole('tabpanel', { name: 'Raw markdown' });
+    const validationPanel = narrow.getByRole('tabpanel', { name: 'Validation' });
+    await rawPanel.waitFor();
+    assert(await tabs.first().isVisible() && await tabs.last().isVisible(), 'Raw markdown or Validation tab is inaccessible at 200% text.');
+    assert((await rawPanel.locator('.full-contract-body').innerText()).trim().length > 0,
+      'Raw markdown panel content is missing at 200% text.');
+    await expectVisibleWithinViewport(rawTab, 'Raw markdown tab label at 200% text');
+    await expectVisibleWithinViewport(validationTab, 'Validation tab label at 200% text');
+    await expectReflowedWithinViewport(rawPanel, 'Raw markdown panel at 200% text');
+    await expectNoHorizontalOverflow(narrow, 'Raw markdown tab at 200% text');
+
+    await expectKeyboardFocus(narrow, rawTab, 'Raw markdown tab at 200% text');
     await narrow.keyboard.press('Tab');
-    assert(await validationTab.evaluate(element => document.activeElement === element), 'Tab navigation does not reach Validation after Raw markdown.');
+    assert(await validationTab.evaluate(element => document.activeElement === element),
+      'At 200% text, Tab navigation does not reach Validation after Raw markdown.');
     await narrow.keyboard.press('Enter');
-    assert(await validationTab.getAttribute('aria-selected') === 'true', 'Keyboard activation does not select Validation.');
-    assert(await narrow.getByRole('tabpanel', { name: 'Validation' }).isVisible(), 'Keyboard-selected Validation panel is not visible.');
+    assert(await validationTab.getAttribute('aria-selected') === 'true',
+      'At 200% text, keyboard activation does not select Validation.');
+    assert(await validationPanel.isVisible(), 'Keyboard-selected Validation panel is not visible at 200% text.');
+    assert((await validationPanel.locator('.skill-validation-row').count()) > 0,
+      'Validation panel content is missing at 200% text.');
+    await expectReflowedWithinViewport(validationPanel, 'Validation panel at 200% text');
+    await expectNoHorizontalOverflow(narrow, 'Validation tab at 200% text');
+    await narrow.keyboard.press('Shift+Tab');
+    assert(await rawTab.evaluate(element => document.activeElement === element),
+      'At 200% text, reverse Tab navigation does not reach Raw markdown from Validation.');
+    await narrow.keyboard.press('Enter');
+    assert(await rawTab.getAttribute('aria-selected') === 'true',
+      'At 200% text, keyboard activation does not return to Raw markdown.');
+    assert(await rawPanel.isVisible(), 'Keyboard-selected Raw markdown panel is not visible at 200% text.');
     const supervised = narrow.getByRole('button', { name: 'Supervised run: attached' });
     const finalReview = narrow.getByRole('button', { name: 'Request final review: enabled' });
     assert(await supervised.isVisible(), 'Locally unlocked supervised run is not visible.');

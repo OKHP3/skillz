@@ -7,7 +7,7 @@
  * same alternate output must be consumable by Review Desk's build-time sync.
  */
 import { readFileSync, existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
-import { execFileSync, spawnSync } from 'node:child_process';
+import { execFileSync, spawn, spawnSync } from 'node:child_process';
 import { basename, dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -68,10 +68,13 @@ function proveFailureCleanup() {
   let failureFixtureRoot;
   const failureForgeOutputDir = mkdtempSync(join(forgeRoot, '.preview-generation-failure-'));
   const failureReviewDeskOutputDir = join(reviewDeskRoot, basename(failureForgeOutputDir));
+  const failureFixtureName = 'preview-generation-invalid-fixture';
 
   try {
     failureFixtureRoot = mkdtempSync(join(workspaceRoot, 'universal', 'preview-companion-failure-'));
-    writeFileSync(join(failureFixtureRoot, 'SKILL.md'), '# Preview failure fixture\n', 'utf8');
+    const failureSkillPath = join(failureFixtureRoot, failureFixtureName, 'SKILL.md');
+    mkdirSync(dirname(failureSkillPath), { recursive: true });
+    writeFileSync(failureSkillPath, '# Preview failure fixture\n', 'utf8');
     mkdirSync(join(failureReviewDeskOutputDir, 'data'), { recursive: true });
     writeFileSync(join(failureForgeOutputDir, 'generated.txt'), 'generated output\n', 'utf8');
     writeFileSync(join(failureReviewDeskOutputDir, 'data', 'catalog.json'), '{}\n', 'utf8');
@@ -93,13 +96,17 @@ function proveFailureCleanup() {
       },
     );
     const failureOutput = `${failureBuild.stdout || ''}\n${failureBuild.stderr || ''}`;
+    const failureFixtureRelativePath = relative(workspaceRoot, failureSkillPath).replace(/\\/g, '/');
     assert(
       failureBuild.status !== 0,
-      `Deliberately invalid preview fixture unexpectedly passed catalog build:\n${failureOutput}`,
+      `Deliberately invalid preview fixture "${failureFixtureRelativePath}" unexpectedly passed catalog build:\n${failureOutput}`,
     );
     assert(
-      failureOutput.includes('Evidence contract violation'),
-      `Catalog build did not fail for the deliberately invalid preview fixture:\n${failureOutput}`,
+      failureOutput.includes(
+        `Evidence contract violation: non-Community package ${failureFixtureRelativePath} is missing`,
+      ) &&
+        failureOutput.includes('Build failed per rule 8.'),
+      `Catalog build did not report the expected evidence-contract failure for fixture "${failureFixtureRelativePath}":\n${failureOutput}`,
     );
   } finally {
     cleanupPreviewArtifacts(failureFixtureRoot, failureForgeOutputDir, failureReviewDeskOutputDir);
@@ -108,6 +115,94 @@ function proveFailureCleanup() {
   assert(!existsSync(failureFixtureRoot), 'Failed preview checks left behind their fixture directory.');
   assert(!existsSync(failureForgeOutputDir), 'Failed preview checks left behind the Forge alternate output directory.');
   assert(!existsSync(failureReviewDeskOutputDir), 'Failed preview checks left behind the Review Desk alternate output directory.');
+}
+
+async function proveInterruptedBuildCleanup() {
+  let interruptedFixtureRoot;
+  const interruptedForgeOutputDir = mkdtempSync(join(forgeRoot, '.preview-generation-interrupted-'));
+  const interruptedReviewDeskOutputDir = join(reviewDeskRoot, basename(interruptedForgeOutputDir));
+  const before = snapshot(trackedPaths);
+
+  try {
+    interruptedFixtureRoot = mkdtempSync(join(workspaceRoot, 'universal', 'preview-companion-interrupted-'));
+    writeFileSync(join(interruptedFixtureRoot, 'SKILL.md'), '# Interrupted preview fixture\n', 'utf8');
+    mkdirSync(join(interruptedReviewDeskOutputDir, 'data'), { recursive: true });
+    writeFileSync(join(interruptedForgeOutputDir, 'generated.txt'), 'generated output\n', 'utf8');
+    writeFileSync(join(interruptedReviewDeskOutputDir, 'data', 'catalog.json'), '{}\n', 'utf8');
+
+    const child = spawn(
+      process.execPath,
+      [join(forgeRoot, 'scripts', 'build-catalog.js')],
+      {
+        cwd: workspaceRoot,
+        env: {
+          ...process.env,
+          FORGE_PUBLIC_DIR: interruptedForgeOutputDir,
+          FORGE_SKIP_MANIFEST_SYNC: '1',
+          ALLOW_SHALLOW_CATALOG_BUILD: '1',
+          GITHUB_ACTIONS: '',
+          CI: '',
+        },
+        stdio: ['ignore', 'pipe', 'pipe'],
+      },
+    );
+
+    const childResult = await new Promise((resolve, reject) => {
+      let stdout = '';
+      let stderr = '';
+      let markerSeen = false;
+      let shutdownTimer;
+      const startupTimer = setTimeout(() => {
+        child.kill('SIGKILL');
+      }, 15000);
+
+      child.stdout.setEncoding('utf8');
+      child.stderr.setEncoding('utf8');
+      child.stdout.on('data', (chunk) => {
+        stdout += chunk;
+        if (!markerSeen && stdout.includes('Found ') && stdout.includes(' SKILL.md files')) {
+          markerSeen = true;
+          clearTimeout(startupTimer);
+          child.kill('SIGTERM');
+          shutdownTimer = setTimeout(() => child.kill('SIGKILL'), 5000);
+        }
+      });
+      child.stderr.on('data', (chunk) => {
+        stderr += chunk;
+      });
+      child.once('error', (error) => {
+        clearTimeout(startupTimer);
+        clearTimeout(shutdownTimer);
+        reject(error);
+      });
+      child.once('close', (code, signal) => {
+        clearTimeout(startupTimer);
+        clearTimeout(shutdownTimer);
+        resolve({ code, signal, markerSeen, stdout, stderr });
+      });
+    });
+
+    const interruptionOutput = `${childResult.stdout}\n${childResult.stderr}`;
+    assert(
+      childResult.markerSeen,
+      `Catalog child did not reach the interruptible build phase within 15 seconds:\n${interruptionOutput}`,
+    );
+    assert(
+      childResult.code === null && childResult.signal === 'SIGTERM',
+      `Catalog child did not exit cleanly from SIGTERM (code ${childResult.code}, signal ${childResult.signal}):\n${interruptionOutput}`,
+    );
+  } finally {
+    cleanupPreviewArtifacts(
+      interruptedFixtureRoot,
+      interruptedForgeOutputDir,
+      interruptedReviewDeskOutputDir,
+    );
+  }
+
+  assert(!existsSync(interruptedFixtureRoot), 'Interrupted preview checks left behind their fixture directory.');
+  assert(!existsSync(interruptedForgeOutputDir), 'Interrupted preview checks left behind the Forge alternate output directory.');
+  assert(!existsSync(interruptedReviewDeskOutputDir), 'Interrupted preview checks left behind the Review Desk alternate output directory.');
+  assertUnchanged(before, 'Interrupted Forge preview generation');
 }
 
 let companionFixtureRoot;
@@ -124,6 +219,7 @@ try {
     'Review Desk preview scripts must use ignored output.',
   );
   proveFailureCleanup();
+  await proveInterruptedBuildCleanup();
 
   const before = snapshot(trackedPaths);
   const approvedPreviewBuild = runNode(

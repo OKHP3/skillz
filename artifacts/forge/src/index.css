@@ -278,6 +278,7 @@
   padding: var(--space-6);
   border: 1px solid var(--color-border-light);
 }
+.detail-evidence-release h2 { overflow-wrap: anywhere; }
 .detail-evidence-release dl {
   display: grid;
   grid-template-columns: minmax(140px, auto) 1fr;
@@ -2697,8 +2698,8 @@ input, select, textarea {
 .skill-gate-panel > .btn { width: calc(100% - 32px); margin: 0 16px 16px; }
 .skill-contract-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
 .skill-contract-heading h2 { margin-bottom: 0; }
-.skill-contract-tabs { display: flex; gap: 2px; padding: 3px; background: var(--color-bg); }
-.skill-contract-tabs button { padding: 7px 10px; border: 0; background: transparent; color: var(--review-muted); cursor: pointer; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.skill-contract-tabs { display: flex; flex-wrap: wrap; gap: 2px; min-width: 0; padding: 3px; background: var(--color-bg); }
+.skill-contract-tabs button { flex: 1 1 9rem; min-width: 0; padding: 7px 10px; border: 0; background: transparent; color: var(--review-muted); cursor: pointer; font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: .04em; overflow-wrap: anywhere; text-transform: uppercase; }
 .skill-contract-tabs button:focus-visible { position: relative; z-index: 1; outline: 2px solid var(--review-amber); outline-offset: -2px; }
 .skill-contract-tabs button[aria-selected="true"] { background: #3a3029; color: var(--review-ink); }
 .skill-validation-list { padding: var(--space-4) 0; }
@@ -2730,7 +2731,7 @@ input, select, textarea {
   .skill-stat:nth-child(-n + 2) { border-bottom: 1px solid var(--review-line); }
   .skill-contract-heading { align-items: flex-start; flex-direction: column; }
   .skill-contract-tabs { width: 100%; }
-  .skill-contract-tabs button { flex: 1; }
+  .skill-contract-tabs button { flex: 1 1 9rem; }
 }
 
 /* Stacks */

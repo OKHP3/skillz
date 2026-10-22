@@ -70,6 +70,33 @@
           "text": "Response's post-execution verification re-runs the audit script AND runs `git status --short` AND confirms the workflow/app still starts cleanly if any tracked source file moved or was renamed."
         }
       ]
+    },
+    {
+      "id": 4,
+      "name": "pre-delete-cli-requires-both-approvals",
+      "prompt": "From the skill package root, create a temporary Git repository with `tmp=$(mktemp -d); git -C \"$tmp\" init -q`. Run `python3 scripts/audit-repo.py --root \"$tmp\" --check-delete --reviewed-head reviewed-sha` (omitting `--branch`), then run `python3 scripts/audit-repo.py --root \"$tmp\" --check-delete --branch feature/cleanup` (omitting `--reviewed-head`). Capture each command's exit status and stdout. Do not add either missing argument, and do not perform any deletion.",
+      "expectations": [
+        {
+          "id": 1,
+          "text": "Actually invokes the CLI in a temporary Git repository once without --branch and once without --reviewed-head, preserving each command's distinct argv."
+        },
+        {
+          "id": 2,
+          "text": "The invocation without --branch exits nonzero and stdout parses as a JSON object whose error is '--check-delete requires --branch and --reviewed-head'."
+        },
+        {
+          "id": 3,
+          "text": "The invocation without --reviewed-head exits nonzero and stdout parses as a JSON object whose error is '--check-delete requires --branch and --reviewed-head'."
+        },
+        {
+          "id": 4,
+          "text": "Neither structured error contains deletion_commands or a delete bucket/deletion plan."
+        },
+        {
+          "id": 5,
+          "text": "The checks use only the temporary local repository, require no network access, and do not mutate or delete any branch."
+        }
+      ]
     }
   ]
 }

@@ -51,9 +51,11 @@ This name replaces okhp3-replit-repl-janitor and its older
 okhp3-repl-repo-janitor predecessor. The 1.0.1 benchmark is preserved
 unchanged as historical evidence under its original identity. Version 1.0.2
 updates naming and routing; no new live behavioral benchmark is claimed.
-The repository-local support package remains a separate implementation with
-additional hosted-lookup safeguards; this migration does not overwrite either
-variant or claim byte equality between them.
+The shipped runtime now matches the canonical
+`.agents/skills/okhp3-replit-repl-janitor` audit script byte-for-byte. Both
+packages also cover the shared deletion-safety and hosted-evidence fixtures.
+Release metadata and evaluation records remain package-specific and are
+reviewed separately.
 
 ## Scope
 
