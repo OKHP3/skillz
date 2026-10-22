@@ -25,7 +25,7 @@ jobs:
 
       - name: Plan package-only scope
         id: plan
-        uses: OKHP3/skillz-shield@f6bad80dfea521ea43b873881a83794a9fff5370 # reviewed NVIDIA ledger diagnostics (PR 22)
+        uses: OKHP3/skillz-shield@bfe2c84641fa7fa9723cda23f2aa5edcd588e14d # reviewed bounded finding locations (PR 26)
         with:
           mode: plan
           state: ${{ runner.temp }}/security-state
@@ -49,7 +49,7 @@ jobs:
       - name: Resolve current stable vendors to immutable pins
         id: resolve
         if: steps.plan.outputs.scan == 'true'
-        uses: OKHP3/skillz-shield@f6bad80dfea521ea43b873881a83794a9fff5370 # reviewed NVIDIA ledger diagnostics (PR 22)
+        uses: OKHP3/skillz-shield@bfe2c84641fa7fa9723cda23f2aa5edcd588e14d # reviewed bounded finding locations (PR 26)
         env:
           GH_TOKEN: ${{ github.token }}
         with:
@@ -67,7 +67,7 @@ jobs:
 
       - name: Install the pinned vendor environments
         if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
-        uses: OKHP3/skillz-shield@f6bad80dfea521ea43b873881a83794a9fff5370 # reviewed NVIDIA ledger diagnostics (PR 22)
+        uses: OKHP3/skillz-shield@bfe2c84641fa7fa9723cda23f2aa5edcd588e14d # reviewed bounded finding locations (PR 26)
         with:
           mode: install
           state: ${{ runner.temp }}/security-state
@@ -76,7 +76,7 @@ jobs:
         id: scan
         if: steps.plan.outputs.scan == 'true' && (github.event_name != 'schedule' || steps.attempted.outputs.cache-hit != 'true')
         continue-on-error: true
-        uses: OKHP3/skillz-shield@f6bad80dfea521ea43b873881a83794a9fff5370 # reviewed NVIDIA ledger diagnostics (PR 22)
+        uses: OKHP3/skillz-shield@bfe2c84641fa7fa9723cda23f2aa5edcd588e14d # reviewed bounded finding locations (PR 26)
         with:
           mode: scan
           state: ${{ runner.temp }}/security-state
@@ -120,7 +120,7 @@ jobs:
 
       - name: Upload only sanitized security evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: skill-security-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
