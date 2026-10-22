@@ -11,6 +11,8 @@ GitHub Action references must use the new name explicitly; repository web redire
 do not redirect Action calls. The consumer's allowed-action policy must include
 `OKHP3/skillz-shield@*`. The repository and its history remain the same, with an
 immutable commit pin in each workflow step.
+The separate review job also requires the official `actions/download-artifact@*`
+allowlist entry to retrieve the sanitized report from the raw scan job.
 
 ## Scope
 
@@ -71,6 +73,20 @@ set. High or critical findings produce `review-required`; incomplete security an
 `incomplete`. Both make the scan job fail after evidence upload. Missing descriptive metadata
 is not a skill-quality admission gate, and a completed scan is not a certification of safety.
 No required branch check or automatic publication block is configured by this workflow.
+
+The separate `Skill package review policy` job downloads that same sanitized
+artifact and reads `.github/skill-security-reviews.json` only from the pull
+request's base commit. It passes a raw scan pass, or an owner-reviewed record
+whose package digest, vendor fingerprint, exact located findings and exact
+reference-resolution exceptions match the report and have not expired. A PR
+cannot add its own approval. Uninspected files, other incompleteness reasons,
+new or unlocated findings, and changed scanner or package bytes keep the review
+job failing. The raw scan job still fails and its report remains `incomplete`
+or `review-required`; the separate job is a review disposition, not a scan pass.
+There is no required branch check today, so both jobs are advisory until the
+owner explicitly adopts a required-check policy.
+When an hourly scheduled repeat uses the existing attempt marker, the review
+job also records a skip; neither job issues a new vendor or review verdict.
 
 The workflow has `contents: read`, checks out without persisted credentials, and gives the
 read-only GitHub token only to vendor resolution. It provides no model credentials or secrets
