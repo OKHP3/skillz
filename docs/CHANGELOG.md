@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-21: non-destructive skill helper operations
+
+- Keep existing port occupants alive when starting the skill evaluation viewer;
+  use a free loopback port on address-in-use and preserve other bind errors.
+- Bound secret-history cleanup guidance to owner-reviewed refs and explicit
+  remote commit leases after rotation, recovery preservation, and coordination.
+
 ## 2026-10-21: source manifest inventory validation
 
 - Refresh the manifest from the current 333 distribution skills and 54 support
