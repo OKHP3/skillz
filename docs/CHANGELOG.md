@@ -36,8 +36,19 @@
 - Validate and quote table, schema, primary-key, and compared-column names
   before constructing SQL in the imported reconciliation skill. Reject malformed
   or expression-like names; focused tests cover valid queries and blocked inputs.
-- The skill still requires an authorized SQL Server connection. This change does
-  not alter its certificate trust setting or clear the wider Shield findings.
+- The skill still requires an authorized SQL Server connection. Certificate
+  trust is addressed in the separate TLS change below; wider Shield findings
+  remain open.
+
+## 2026-10-21: SQL reconciliation TLS validation
+
+- Require encrypted, certificate-validated SQL Server connections by default.
+  Endpoint-specific CLI flags allow controlled self-signed development servers
+  with visible warnings while the other endpoint remains validated. Connection
+  parameters now use driver keyword arguments to
+  preserve special characters and prevent connection-string overrides.
+- No live database compatibility test has run. The wider Shield scan remains
+  a separate security review.
 
 ## 2026-10-11
 
