@@ -10,7 +10,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
 - **Inventory snapshot:** 333 distribution skills in 22 active families and 54 project-local support skills at source commit `3859c78e` (2026-10-21). Read the generated catalogs and manifest for the current count. OpenClaw and persona capability packages remain unbenchmarked candidates.
-- **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
+- **Source of truth:** GitHub repository for installable files; the canonical public landing surface is OverKill Hill `/skillz-forge/` (`/projects/skillz/` redirects there)
 
 ### Mission: confirmed
 
@@ -213,6 +213,7 @@ These are general-purpose or imported skills. Prefer the narrower OKHP3 family s
 | `mcp-builder` | Build MCP servers or tool integrations in Python, Node, or TypeScript. |
 | `mermaid-diagrams` | General Mermaid diagrams when the OKHP3 Mermaid family is not the intended specialized workflow. |
 | `skill-creator` | Create, edit, evaluate, benchmark, or optimize a skill. |
+| `sql-server-table-reconciliation` | Compare two SQL Server tables with a local script. Its SQL builder accepts simple schema, table, and column identifiers only; it rejects other names before query execution. |
 | `theme-factory` | Apply or create a reusable theme for slides, documents, reports, HTML, or other artifacts. |
 | `vercel-react-best-practices` | Write, review, or refactor React or Next.js for performance. Its nested `agents.md` is package-scoped guidance. |
 | `vercel-react-native-skills` | Write, review, or refactor React Native or Expo for performance. Its nested `agents.md` is package-scoped guidance. |
@@ -247,6 +248,12 @@ The portable SharePoint review contracts `okhp3-sharepoint-content-auditor`
 and `okhp3-sharepoint-list-schema-design` also live here. Their native Copilot
 packaging and execution remain unverified; family placement is not a host
 compatibility claim.
+
+The four Copilot host Skill Foundries are version 1.2.0 after independent
+evidence, outcome, and safety review. Use the portable Skill Foundry baseline
+with the selected host adapter. SharePoint distinguishes personal/site ownership
+and Library/List contracts. These are analytical authoring packages; native
+acceptance, behavioral benchmarks, and measured savings remain unverified.
 
 ### Glee-fully family
 
@@ -380,6 +387,9 @@ Run from the repository root.
 # Check the full distribution catalog without writing generated files
 python3 .agents/skills/okhp3-skill-cataloger/scripts/gen-skills-readme.py --full --check
 
+# Build isolated Forge data and reject stale source manifest inventory
+node .agents/skills/catalog-integrity/run.mjs
+
 # Validate one skill with the bundled strict validator
 node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root path/to/skill
 
@@ -423,7 +433,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- Generated catalogs must reflect the current filesystem: root `README.md` and family `FAMILY.md` files enumerate distribution skills, while `.agents/skills/README.md` enumerates support skills separately. Compare those inventories with the manifest and Forge index before making a current-count claim.
+- Generated catalogs must reflect the current filesystem: root `README.md` and family `FAMILY.md` files enumerate distribution skills, while `.agents/skills/README.md` enumerates support skills separately. A cataloger structure check alone does not establish freshness; Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift. Compare those inventories with the Forge index before making a current-count claim.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

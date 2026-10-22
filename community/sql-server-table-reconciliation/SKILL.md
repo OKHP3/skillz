@@ -31,6 +31,12 @@ Compare identical tables across two SQL Server instances using Python with `mssq
 | Chunk size | `100000` | Rows per batch for large tables |
 | Output format | `console` | `console`, `csv`, `parquet`, or `json` |
 
+For SQL safety, schema, table, primary-key, and column names must be simple
+identifiers: ASCII letters, digits, and underscores, starting with a letter or
+underscore, up to 128 characters. The script quotes accepted identifiers in
+generated SQL and rejects other input before executing a query. SQL Server
+names containing spaces or punctuation are not supported by this script.
+
 ## Bundled Script
 
 The reconciliation logic is provided as a standalone script at `scripts/reconcile.py`. Invoke it with the appropriate arguments based on user inputs:
