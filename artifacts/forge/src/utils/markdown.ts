@@ -86,9 +86,22 @@ export function parseInline(text: string): InlineNode[] {
 // to a harmless "#" so a malicious or malformed SKILL.md can't produce a
 // clickable script URL.
 const SAFE_HREF_SCHEME = /^(https?:|mailto:)/i;
-export function sanitizeHref(href: string): string {
+export function sanitizeHref(href: string, sourceUrl?: string): string {
   const trimmed = href.trim();
   if (trimmed === '') return '#';
+  // Package-relative links need the canonical SKILL.md base, not the SPA
+  // document URL. Preserve local anchors and existing root-relative routes.
+  if (sourceUrl && !trimmed.startsWith('#') && !trimmed.startsWith('/')
+    && !/^[a-z][a-z0-9+.-]*:/i.test(trimmed)) {
+    try {
+      const base = new URL(sourceUrl);
+      const target = new URL(trimmed, base);
+      return /^https?:$/.test(base.protocol) && target.origin === base.origin
+        && /^https?:$/.test(target.protocol) ? target.href : '#';
+    } catch {
+      return '#';
+    }
+  }
   // Relative/same-page references (no scheme at all) are safe by construction.
   if (trimmed.startsWith('#') || trimmed.startsWith('/') || trimmed.startsWith('./') || trimmed.startsWith('../')) {
     return trimmed;

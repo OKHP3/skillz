@@ -2,20 +2,20 @@ import { Fragment, createElement } from 'react';
 import { parseMarkdownSubset, sanitizeHref, type InlineNode, type BlockNode } from '../../utils/markdown';
 import { focusAndScrollToId, getRouteAnchorId } from '../../utils/routeAnchors';
 
-function renderInline(nodes: InlineNode[], keyPrefix: string) {
+function renderInline(nodes: InlineNode[], keyPrefix: string, sourceUrl?: string) {
   return nodes.map((node, i) => {
     const key = `${keyPrefix}-${i}`;
     switch (node.kind) {
       case 'text':
         return <Fragment key={key}>{node.value}</Fragment>;
       case 'bold':
-        return <strong key={key}>{renderInline(node.children, key)}</strong>;
+        return <strong key={key}>{renderInline(node.children, key, sourceUrl)}</strong>;
       case 'italic':
-        return <em key={key}>{renderInline(node.children, key)}</em>;
+        return <em key={key}>{renderInline(node.children, key, sourceUrl)}</em>;
       case 'code':
         return <code key={key}>{node.value}</code>;
       case 'link': {
-        const safeHref = sanitizeHref(node.href);
+        const safeHref = sanitizeHref(node.href, sourceUrl);
         const isExternal = /^https?:\/\//i.test(safeHref);
         const fragmentTarget = getRouteAnchorId(safeHref);
         let hostname: string | null = null;
@@ -32,7 +32,7 @@ function renderInline(nodes: InlineNode[], keyPrefix: string) {
             } : undefined}
             {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
-            {renderInline(node.children, key)}
+            {renderInline(node.children, key, sourceUrl)}
             {hostname && <span className="full-contract-link-domain"> ({hostname})</span>}
           </a>
         );
@@ -43,20 +43,20 @@ function renderInline(nodes: InlineNode[], keyPrefix: string) {
   });
 }
 
-function renderBlock(block: BlockNode, key: string) {
+function renderBlock(block: BlockNode, key: string, sourceUrl?: string) {
   switch (block.kind) {
     case 'heading': {
       const depth = Math.min(Math.max(block.depth, 1), 6);
       const tagName = `h${depth}`;
-      return createElement(tagName, { key, id: block.id, tabIndex: -1 }, renderInline(block.children, key));
+      return createElement(tagName, { key, id: block.id, tabIndex: -1 }, renderInline(block.children, key, sourceUrl));
     }
     case 'paragraph':
-      return <p key={key}>{renderInline(block.children, key)}</p>;
+      return <p key={key}>{renderInline(block.children, key, sourceUrl)}</p>;
     case 'list': {
       const ListTag = block.ordered ? 'ol' : 'ul';
       return (
         <ListTag key={key} className="full-contract-list">
-          {block.items.map((item, i) => <li key={i}>{renderInline(item, `${key}-${i}`)}</li>)}
+          {block.items.map((item, i) => <li key={i}>{renderInline(item, `${key}-${i}`, sourceUrl)}</li>)}
         </ListTag>
       );
     }
@@ -67,7 +67,7 @@ function renderBlock(block: BlockNode, key: string) {
         </pre>
       );
     case 'quote':
-      return <blockquote key={key} className="full-contract-quote">{renderInline(block.children, key)}</blockquote>;
+      return <blockquote key={key} className="full-contract-quote">{renderInline(block.children, key, sourceUrl)}</blockquote>;
     case 'rule':
       return <hr key={key} />;
     default:
@@ -77,13 +77,14 @@ function renderBlock(block: BlockNode, key: string) {
 
 interface FullContractProps {
   rawBody: string;
+  sourceUrl?: string;
 }
 
 /** Renders a skill's full SKILL.md body as a safe Markdown subset — no raw
  *  HTML is ever interpreted, only React elements built from a parsed block
  *  tree (see utils/markdown.ts). Includes a heading-based table of contents
  *  and renders outbound links with their visible destination domain. */
-export default function FullContract({ rawBody }: FullContractProps) {
+export default function FullContract({ rawBody, sourceUrl }: FullContractProps) {
   const { blocks, toc } = parseMarkdownSubset(rawBody);
 
   if (blocks.length === 0) {
@@ -111,7 +112,7 @@ export default function FullContract({ rawBody }: FullContractProps) {
         </nav>
       )}
       <div className="full-contract-body">
-        {blocks.map((block, i) => renderBlock(block, `b${i}`))}
+        {blocks.map((block, i) => renderBlock(block, `b${i}`, sourceUrl))}
       </div>
     </div>
   );

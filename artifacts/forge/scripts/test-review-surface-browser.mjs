@@ -281,6 +281,16 @@ async function main() {
 
     browser = await chromium.launch({ headless: true, executablePath: chromiumExecutable() });
     const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+    const capture = skills.find(s => s.name === 'okhp3-capture-intake');
+    assert(capture, 'Catalog must include the packaged-reference regression fixture.');
+    await desktop.goto(route(capture), { waitUntil: 'domcontentloaded' });
+    const evaluationLink = desktop.locator('.full-contract-body').getByRole('link', { name: /^evals\/evals\.json/ });
+    await evaluationLink.waitFor();
+    assert(await evaluationLink.getAttribute('href') === new URL('evals/evals.json', capture.githubUrl).href,
+      'Packaged evaluation link must resolve against its canonical SKILL.md, not the Forge route.');
+    assert(await evaluationLink.getAttribute('target') === '_blank'
+      && (await evaluationLink.getAttribute('rel')).includes('noopener'),
+      'Resolved source links must retain external-link isolation.');
     const detailAsset = `**/data/skills/${blocked.family}/${blocked.name}.json`;
     const detailBody = await (await fetch(`${baseUrl}/data/skills/${blocked.family}/${blocked.name}.json`)).text();
     const delayedContract = async request => {

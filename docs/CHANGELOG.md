@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-21: portable contract links in Forge
+
+- Resolve package-relative Full Contract links against the canonical SKILL.md
+  source instead of the static site's root, keeping packaged evaluation links
+  usable without changing portable skill files.
+- Preserve in-page anchors, external-link isolation, and unsafe-scheme
+  neutralization. Add unit and rendered-browser regressions.
+
 ## 2026-10-21: knowledge operations candidate closeout
 
 - Matured the nine authored intake, triage, evidence, research, validation,
