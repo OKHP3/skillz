@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression checks for the read-only repository inventory helper."""
+"""Discoverable regression checks for the read-only repository inventory helper."""
 
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest import mock
 
 
@@ -78,9 +79,45 @@ class InventorySafetyTests(unittest.TestCase):
         module = self.load_module()
 
         with mock.patch.object(Path, "read_text", side_effect=AssertionError("unbounded read_text")):
-            sample = module.read_text_sample(source, 20)
+            sample = module.read_text_sample(source, 20, [])
         self.assertIsNotNone(sample)
         self.assertLessEqual(sample["sample_chars"], 20)
+
+    def test_reparse_directory_is_skipped_and_its_name_is_checked(self) -> None:
+        junction = self.repo / "My Junction"
+        junction.mkdir()
+        (junction / "private.md").write_text("synthetic-private-marker", encoding="utf-8")
+        module = self.load_module()
+        original_lstat = Path.lstat
+        output = io.StringIO()
+
+        def synthetic_reparse(path: Path):
+            if path == junction:
+                return SimpleNamespace(st_file_attributes=0x400)
+            return original_lstat(path)
+
+        with mock.patch.object(Path, "lstat", synthetic_reparse), \
+             mock.patch.object(sys, "argv", [str(SCRIPT), "--root", str(self.repo)]), \
+             contextlib.redirect_stdout(output):
+            self.assertEqual(module.main(), 0)
+        result = json.loads(output.getvalue())
+        self.assertIn("My Junction", result["symlinks_skipped"])
+        self.assertEqual(result["summary"]["file_count"], 0)
+        self.assertIn("My Junction", result["portability_violations"]["spaces"])
+        self.assertNotIn("synthetic-private-marker", output.getvalue())
+
+    def test_hash_failure_marks_scan_incomplete(self) -> None:
+        (self.repo / "notes.md").write_text("# Notes", encoding="utf-8")
+        module = self.load_module()
+        output = io.StringIO()
+        with mock.patch.object(module, "sha256", side_effect=OSError("synthetic-denied")), \
+             mock.patch.object(sys, "argv", [str(SCRIPT), "--root", str(self.repo), "--hash"]), \
+             contextlib.redirect_stdout(output):
+            self.assertEqual(module.main(), 0)
+        result = json.loads(output.getvalue())
+        self.assertTrue(result["summary"]["scan_incomplete"])
+        self.assertTrue(result["files"][0]["hash_error"])
+        self.assertTrue(any("synthetic-denied" in error for error in result["scan_errors"]))
 
     def test_prunes_dependency_directories_and_reports_file_limit(self) -> None:
         dependency = self.repo / "node_modules"

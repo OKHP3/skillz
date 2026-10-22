@@ -34,9 +34,11 @@
 ## 2026-10-21: repository inventory boundary
 
 - Hardened `okhp3-repository-organizer` inventory in version 1.2.1: bounded
-  text sampling, skipped symlink and Windows junction targets, pruned dependency
-  directories, and explicit incomplete-scan signals. Added regression checks
-  for repository-boundary and sampling behavior. Prior model evaluations remain
+  text sampling, skipped symlink and Windows reparse-point targets (including
+  junctions on older Python), pruned dependency directories, and incomplete-scan
+  signals for file failures. Skipped link names still receive portability checks.
+  Added regression checks for repository-boundary and sampling behavior. Prior
+  model evaluations remain
   historical; no current-version behavioral benchmark is claimed.
 
 ## 2026-10-11

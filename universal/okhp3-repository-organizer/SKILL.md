@@ -212,7 +212,7 @@ version or its profile selection. Profile regression cases are defined in
 [the evaluation design](evals/brand-profile-cases.json) and are not live runs.
 Structural validation is separate from behavioral or performance evidence.
 Version 1.2.1 bounds text sampling and skips symlink and junction targets in the
-inventory helper. Run `py -3 tests/inventory-safety.py` from this package to
+inventory helper. Run `py -3 -m unittest discover -s tests -p 'test*.py'` from this package to
 check those boundaries. Earlier model benchmarks and the 1.2.0 brand-profile
 design remain historical or not run for this version; deterministic helper
 tests do not establish current model-behavior uplift.

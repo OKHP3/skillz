@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import re
+import stat
 import sys
 import unicodedata
 from collections import Counter, defaultdict
@@ -51,13 +52,14 @@ def sha256(path: Path, chunk_size: int = 1024 * 1024) -> str:
     return digest.hexdigest()
 
 
-def read_text_sample(path: Path, limit: int) -> dict[str, object] | None:
+def read_text_sample(path: Path, limit: int, scan_errors: list[str]) -> dict[str, object] | None:
     if path.suffix.lower() not in TEXT_EXTENSIONS:
         return None
     try:
         with path.open("rb") as handle:
             text = handle.read(limit).decode("utf-8", errors="replace")
-    except OSError:
+    except OSError as error:
+        scan_errors.append(f"text sample {path}: {error}")
         return None
     headings = [line.strip() for line in text.splitlines() if line.lstrip().startswith("#")][:12]
     keywords = Counter(re.findall(r"\b[a-z][a-z0-9_-]{3,}\b", text.lower()))
@@ -122,11 +124,15 @@ def positive_int(value: str) -> int:
 
 
 def is_linklike(path: Path) -> bool:
-    """Treat file symlinks and Windows directory junctions as scan boundaries."""
+    """Treat symlinks and Windows reparse points as scan boundaries."""
     if path.is_symlink():
         return True
-    is_junction = getattr(path, "is_junction", None)
-    return bool(is_junction and is_junction())
+    attributes = getattr(path.lstat(), "st_file_attributes", None)
+    if attributes is None:
+        if os.name == "nt":
+            raise OSError(f"cannot inspect Windows reparse attributes: {path}")
+        return False
+    return bool(attributes & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400))
 
 
 def walk_repository(root: Path, scan_errors: list[str]):
@@ -143,7 +149,12 @@ def walk_repository(root: Path, scan_errors: list[str]):
             if name in SKIP_DIRS:
                 continue
             path = parent / name
-            if is_linklike(path):
+            try:
+                linklike = is_linklike(path)
+            except OSError as error:
+                scan_errors.append(f"directory metadata {path}: {error}")
+                continue
+            if linklike:
                 yield "symlink", path
             else:
                 retained_dirs.append(name)
@@ -151,10 +162,17 @@ def walk_repository(root: Path, scan_errors: list[str]):
         dirnames[:] = retained_dirs
         for name in sorted(filenames):
             path = parent / name
-            if is_linklike(path):
+            try:
+                linklike = is_linklike(path)
+            except OSError as error:
+                scan_errors.append(f"file metadata {path}: {error}")
+                continue
+            if linklike:
                 yield "symlink", path
             elif path.is_file():
                 yield "file", path
+            else:
+                scan_errors.append(f"not a readable regular file: {path}")
 
 
 def main() -> int:
@@ -199,6 +217,8 @@ def main() -> int:
             continue
         if kind == "symlink":
             symlinks_skipped.append(relative)
+            for component in relative.split("/"):
+                inspect_name(relative, component, naming_paths, portability_violations)
             normalized_paths[unicodedata.normalize("NFC", relative).casefold()].append(relative)
             continue
         if len(records) >= args.max_files:
@@ -213,12 +233,13 @@ def main() -> int:
         suffix = path.suffix.lower() or "[none]"
         try:
             size = path.stat().st_size
-        except OSError:
+        except OSError as error:
+            scan_errors.append(f"file size {path}: {error}")
             size = None
         extension_counts[suffix] += 1
         if VERSION_RE.search(path.name):
             naming_paths["version_tokens"].add(relative)
-        text_sample = read_text_sample(path, args.sample_bytes)
+        text_sample = read_text_sample(path, args.sample_bytes, scan_errors)
         record: dict[str, object] = {"path": relative, "size_bytes": size, "extension": suffix}
         if text_sample:
             record["text_sample"] = text_sample
@@ -227,7 +248,8 @@ def main() -> int:
                 digest = sha256(path)
                 record["sha256"] = digest
                 size_groups[(size, digest)].append(relative)
-            except OSError:
+            except OSError as error:
+                scan_errors.append(f"hash {path}: {error}")
                 record["hash_error"] = True
         records.append(record)
 
