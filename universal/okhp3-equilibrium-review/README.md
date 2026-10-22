@@ -28,7 +28,7 @@ Generate a review plan without invoking an agent provider:
 
 ```text
 python scripts/run_equilibrium_review.py \
-  --artifact path/to/artifact.md \
+  --artifact examples/equilibrium-review-input.md \
   --question "Is this artifact supported and ready for controlled use?" \
   --output-dir review-output \
   --mode five-way \
@@ -42,10 +42,10 @@ adapter is omitted.
 
 ```text
 python scripts/run_equilibrium_review.py \
-  --artifact path/to/artifact.md \
+  --artifact examples/equilibrium-review-input.md \
   --question "Is this report safe and decision-useful?" \
   --output-dir review-output \
-  --agent-command-json '["python", "my_agent_adapter.py", "--role", "{role}", "--prompt-file", "{prompt_file}"]'
+  --agent-command-json '["python", "examples/agent_adapter.py", "--role", "{role}", "--prompt-file", "{prompt_file}"]'
 ```
 
 The default evidence posture is conservative. Missing or unstructured agent

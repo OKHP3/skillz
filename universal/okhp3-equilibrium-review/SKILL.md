@@ -167,7 +167,7 @@ Example dry run:
 
 ```text
 python scripts/run_equilibrium_review.py \
-  --artifact path/to/thesis.md \
+  --artifact examples/equilibrium-review-input.md \
   --question "Is this thesis supported and ready for controlled publication?" \
   --output-dir review-output \
   --mode five-way \
@@ -178,10 +178,10 @@ Example provider adapter:
 
 ```text
 python scripts/run_equilibrium_review.py \
-  --artifact path/to/report.md \
+  --artifact examples/equilibrium-review-input.md \
   --question "Is this report safe and useful for the stated decision?" \
   --output-dir review-output \
-  --agent-command-json '["python", "my_agent_adapter.py", "--role", "{role}", "--prompt-file", "{prompt_file}"]'
+  --agent-command-json '["python", "examples/agent_adapter.py", "--role", "{role}", "--prompt-file", "{prompt_file}"]'
 ```
 
 The adapter must emit the structured role result described in
