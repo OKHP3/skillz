@@ -3,7 +3,7 @@ family: openclaw
 display_name: OpenClaw Agent Skills
 skill_count: 8
 generated_by: okhp3-skill-cataloger v1.7.1
-generated_at: 2026-10-22T04:17:49Z
+generated_at: 2026-10-22T04:50:33Z
 ---
 
 # openclaw
@@ -133,7 +133,7 @@ Host-oriented Agent Skills for OpenClaw-branded runtimes (Larry on Mac Studio, G
 ## Skills (8)
 
 <!-- FAMILY_INVENTORY_START -->
-*8 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 04:17 UTC***
+*8 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 04:50 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
