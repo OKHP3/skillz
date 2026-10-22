@@ -2,14 +2,19 @@ import subprocess
 
 
 def execute_adapter(argv, timeout_seconds):
-    run_process = getattr(subprocess, "run")
-    return run_process(
+    process = subprocess.Popen(
         argv,
-        check=False,
-        capture_output=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
         text=True,
         encoding="utf-8",
         errors="replace",
-        timeout=timeout_seconds,
         shell=False,
     )
+    try:
+        stdout, stderr = process.communicate(timeout=timeout_seconds)
+    except subprocess.TimeoutExpired:
+        process.kill()
+        process.communicate()
+        raise
+    return subprocess.CompletedProcess(argv, process.returncode, stdout, stderr)
