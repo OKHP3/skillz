@@ -10,7 +10,7 @@ license: MIT
 compatibility: >
   Portable Agent Skills-compatible client. Python 3.9+ is required only for
   the optional bundled orchestrator; adapters and credentials are runtime input.
-allowed-tools: Bash
+allowed-tools: Bash Read
 metadata:
   author: Jamie Hill (OverKill Hill P³)
   version: 1.0.1
