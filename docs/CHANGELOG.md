@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-21: non-destructive skill helper operations
+
+- Keep existing port occupants alive when starting the skill evaluation viewer;
+  use a free loopback port on address-in-use or Windows exclusive-port errors,
+  and preserve other bind errors.
+- Bound secret-history cleanup guidance to owner-reviewed refs and explicit
+  remote commit leases after rotation, recovery preservation, and coordination.
+
 ## 2026-10-21: complete the Copilot host Foundry review circuit
 
 - Mature Cowork, SharePoint, GitHub Copilot, and Copilot Studio Foundries to
