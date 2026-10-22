@@ -15,12 +15,13 @@ import hashlib
 import json
 import os
 import shlex
-import subprocess
 import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+
+from execute_adapter import execute_adapter
 
 
 ROLES: Tuple[str, ...] = ("evidence", "outcome", "safety_portability")
@@ -268,16 +269,7 @@ def run_role(
     started = time.monotonic()
     stderr_path = output_path.with_suffix(".stderr.txt")
     try:
-        completed = subprocess.run(
-            argv,
-            check=False,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            timeout=timeout_seconds,
-            shell=False,
-        )
+        completed = execute_adapter(argv, timeout_seconds)
         output_path.write_text(completed.stdout, encoding="utf-8")
         stderr_path.write_text(completed.stderr, encoding="utf-8")
         status = "completed" if completed.returncode == 0 else "error"
