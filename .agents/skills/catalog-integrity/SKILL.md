@@ -18,10 +18,13 @@ node .agents/skills/catalog-integrity/run.mjs
 
 The command runs the existing `artifacts/forge/scripts/build-catalog.js` and
 `test-catalog.mjs` from their migrated workspace locations. It builds the
-catalog, project summary, and synchronized manifest in a temporary validation
-directory, so a local check does not rewrite tracked release metadata. It sets
-the local development escape hatch for a shallow checkout only; CI and
-publishing still invoke the release build directly and fail closed as before.
+catalog and project summary in a temporary validation directory, and checks an
+unchanged copy of the source manifest before generation can conceal inventory
+drift. A local check does not rewrite tracked release metadata. If it reports
+stale inventory, run `node artifacts/forge/scripts/build-catalog.js` and include
+the refreshed manifest in the source change. The validator allows a shallow
+checkout for local inspection. CI retains strict history checks and uses the
+same `--check-manifest` guard. Publishing still regenerates release metadata.
 
 ## Inputs and outputs
 

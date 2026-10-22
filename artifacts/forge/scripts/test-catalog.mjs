@@ -35,6 +35,7 @@ import { readSkillMigrations, validateMigrationCatalog } from '../../../scripts/
 import { CAPABILITIES, computeCapabilities } from './capabilities.mjs';
 import './test-attribution-policy.mjs';
 import './test-catalog-discovery.mjs';
+import './test-manifest-inventory.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // Distribution families and the manifest live at the workspace root. Keep

@@ -7,7 +7,10 @@ on:
       - "artifacts/forge-review-desk/**"
       - "docs/archive/**"
       - "MIGRATION.md"
+      - "skillz.manifest.json"
       - "**/*.md"
+      - "**/evals/**"
+      - "**/benchmarks/**"
       - "LICENSE"
       - "scripts/verify-archive-links.mjs"
       - "scripts/verify-archive-links.test.mjs"
@@ -48,7 +51,10 @@ on:
       - "artifacts/forge-review-desk/**"
       - "docs/archive/**"
       - "MIGRATION.md"
+      - "skillz.manifest.json"
       - "**/*.md"
+      - "**/evals/**"
+      - "**/benchmarks/**"
       - "LICENSE"
       - "scripts/verify-archive-links.mjs"
       - "scripts/verify-archive-links.test.mjs"
@@ -116,6 +122,8 @@ jobs:
           name: catalog-integrity-report
           path: validation-reports/catalog-integrity.json
           if-no-files-found: warn
+          node artifacts/forge/scripts/build-catalog.js --check-manifest
+          node artifacts/forge/scripts/test-catalog.mjs
 
   universe-map-contract:
     name: Check universe-map skill contract
