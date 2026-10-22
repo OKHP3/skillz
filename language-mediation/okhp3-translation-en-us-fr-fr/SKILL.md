@@ -14,7 +14,7 @@ compatibility: >
   agent and does not require a paid API.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.3.1"
+  version: 1.3.1
   category: language-mediation
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -187,7 +187,7 @@ Return `Source artifact`, `France French target artifact`, `Pair record`,
 ## Evaluation and release
 
 `evals/evals.json` includes normal, pair-boundary, serial-mediation, and
-unsafe-publication cases. The current `1.3.1` architecture has analytical evidence only; helper
+unsafe-publication cases. The current 1.3.1 architecture has analytical evidence only; helper
 tests prove deterministic behavior, not French quality, native acceptance, or
 live automation behavior. A future pair must not inherit this evidence.
 

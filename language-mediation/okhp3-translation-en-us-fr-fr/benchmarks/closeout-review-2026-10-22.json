@@ -7,7 +7,7 @@
   "artifact": {
     "path": "language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
     "version": "1.3.1",
-    "sha256": "499ab3b8f71372ac2ce0eafb93b20e994fab26fb119bd257f962e30477000baa",
+    "sha256": "5772734564d64db1def08349c051fdd4150dacfbc6dc1440b5fd82ddce5c96cb",
     "baseline_revision": "bd4d98f8f6853a6c9edefd3c55e6ddbb8d007f2e"
   },
   "decision_question": "Does the original directed draft-translation skill satisfy its naming, structure, exact-pair, helper, family-placement, and evidence requirements for analytical closeout?",
@@ -71,7 +71,8 @@
     "Reject non-object JSON, including null, before any manifest/control validation can be skipped.",
     "Return labeled JSON errors for input decoding and operating-system read failures.",
     "Replace the stale-enumeration promise with implemented inventory and explicit freshness handoff.",
-    "Mark the v1.1.0 benchmark historical while retaining its evaluated version and original analytical status."
+    "Mark the v1.1.0 benchmark historical while retaining its evaluated version and original analytical status.",
+    "Normalize version formatting to Foundry plain SemVer after the scanner reported version strings as missing references; preserve the same version and scope."
   ],
   "verification": {
     "helper_tests": "PASS: 10 French tests, including four null scenarios through both CLIs",
