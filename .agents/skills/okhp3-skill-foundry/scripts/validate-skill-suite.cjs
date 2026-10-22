@@ -120,6 +120,7 @@ function validateSyncVerification(skillDir) {
   if (!fs.existsSync(benchmarkDir)) return;
   const records = fs.readdirSync(benchmarkDir)
     .filter(name => /^sync-verification-\d{4}-\d{2}-\d{2}\.json$/.test(name));
+  const latestRecord = records.sort()[records.length - 1];
   for (const name of records) {
     const relativeRecord = ("benchmarks/" + (name));
     const record = readJson(path.join(benchmarkDir, name), ("" + (skillDir) + "/" + (relativeRecord)));
@@ -143,11 +144,15 @@ function validateSyncVerification(skillDir) {
           fail(("" + (skillDir) + ": " + (relativeRecord) + " has an invalid core-file hash entry: " + (relative)));
           continue;
         }
-        const actualPath = path.join(skillDir, ...relative.split('/'));
-        if (!fs.existsSync(actualPath)) fail(("" + (skillDir) + ": " + (relativeRecord) + " hashes a missing file: " + (relative)));
-        else {
-          const actual = require('node:crypto').createHash('sha256').update(fs.readFileSync(actualPath)).digest('hex').toUpperCase();
-          if (actual !== hash) fail(("" + (skillDir) + ": " + (relativeRecord) + " core-file hash mismatch: " + (relative)));
+        // Earlier dated receipts are immutable historical evidence. Only the
+        // newest receipt claims to reconcile the current package bytes.
+        if (name === latestRecord) {
+          const actualPath = path.join(skillDir, ...relative.split('/'));
+          if (!fs.existsSync(actualPath)) fail(("" + (skillDir) + ": " + (relativeRecord) + " hashes a missing file: " + (relative)));
+          else {
+            const actual = require('node:crypto').createHash('sha256').update(fs.readFileSync(actualPath)).digest('hex').toUpperCase();
+            if (actual !== hash) fail(("" + (skillDir) + ": " + (relativeRecord) + " core-file hash mismatch: " + (relative)));
+          }
         }
       }
     }

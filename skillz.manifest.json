@@ -23,7 +23,7 @@
   "distributionSkillCount": 333,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 54,
+  "projectLocalSupportSkillCount": 55,
   "maturityCounts": {
     "draftable": 264,
     "skeleton": 64,
@@ -517,6 +517,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-10-22T04:34:57.590Z",
+  "countsGeneratedAt": "2026-10-22T04:56:27.506Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

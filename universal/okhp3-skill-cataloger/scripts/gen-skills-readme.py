@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gen-skills-readme.py — okhp3-skill-cataloger v1.6.1
+gen-skills-readme.py — okhp3-skill-cataloger v1.7.1
 OverKill Hill P³ · https://overkillhill.com · https://github.com/OKHP3
 =======================================================
 Bundled with the okhp3-skill-cataloger Agent Skill.
@@ -28,6 +28,10 @@ Two modes of operation:
     $ python3 scripts/gen-skills-readme.py --full --no-absorb-readme
 
 No external dependencies. Python 3.9+ only.
+
+What changed in v1.7.1 vs v1.7.0:
+  - Reject nested SKILL.md files omitted by the selected catalog layout,
+    including on --check and --json.
 
 What changed in v1.6.1 vs v1.6.0:
   - Normalize generated catalog output to one final newline.
@@ -86,6 +90,7 @@ Usage:
 
 import argparse
 import json
+import os
 import re
 import sys
 from datetime import datetime, timezone
@@ -98,7 +103,7 @@ if hasattr(sys.stdout, "reconfigure"):
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
-CATALOGER_VERSION = "1.7.0"
+CATALOGER_VERSION = "1.7.1"
 OKHP3_HOMEPAGE    = "https://overkillhill.com"
 OKHP3_GITHUB      = "https://github.com/OKHP3"
 
@@ -284,6 +289,35 @@ def discover_full(root: Path) -> list[dict]:
                 fm = parse_frontmatter(md)
                 skills.append(_record(skill_dir, md, fm, cat_dir.name, root))
     return skills
+
+
+def find_unindexed_skill_files(scan_root: Path, skills: list[dict], full: bool) -> list[Path]:
+    """Find SKILL.md files silently omitted by the expected package layout.
+
+    The distribution scan excludes tool and archive roots; a project scan
+    searches only its selected skills directory. Neither mode treats a nested
+    wrapper as a second catalog package.
+    """
+    indexed = {(scan_root / skill["path"]).resolve() for skill in skills}
+    roots = (
+        [entry for entry in scan_root.iterdir()
+         if entry.is_dir() and not entry.is_symlink()
+         and not entry.name.startswith(".") and entry.name not in FULL_SKIP]
+        if full else [scan_root]
+    )
+    missed = []
+    for root in roots:
+        for current, dirs, files in os.walk(root):
+            dirs[:] = sorted(
+                name for name in dirs
+                if not name.startswith(".") and name not in FULL_SKIP
+                and not (Path(current) / name).is_symlink()
+            )
+            if "SKILL.md" in files:
+                candidate = Path(current) / "SKILL.md"
+                if candidate.resolve() not in indexed:
+                    missed.append(candidate)
+    return sorted(missed)
 
 
 # ── FAMILY.md generation ──────────────────────────────────────────────────────
@@ -904,6 +938,16 @@ def main() -> int:
         skills = discover_full(scan_root)
     else:
         skills = discover_skills(scan_root, effective_mode)
+
+    missed = find_unindexed_skill_files(scan_root, skills, args.full)
+    if missed:
+        print("✗ Unindexed SKILL.md files outside the selected package layout:",
+              file=sys.stderr)
+        for path in missed:
+            print(f"  {path}", file=sys.stderr)
+        print("Move each package to the expected direct child or select the "
+              "correct catalog mode.", file=sys.stderr)
+        return 1
 
     if not args.quiet and not args.json:
         print(f"Found {len(skills)} skill(s) in {scan_root}")

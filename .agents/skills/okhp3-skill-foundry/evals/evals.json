@@ -1,10 +1,10 @@
 {
   "skill_name": "okhp3-skill-foundry",
-  "skill_version": "3.1.1",
+  "skill_version": "3.1.2",
   "status": "design-ready",
   "release_status": "analytical-structural-integrity",
   "performance_evidence_status": "not-run",
-  "note": "Version 3.1.1 adds strict SemVer authoring-format compatibility and deterministic regressions only. These cases still require fresh, version-matched runs before any performance, uplift, or production-readiness claim.",
+  "note": "Version 3.1.2 adds a direct-package discovery preflight and preserves dated synchronization evidence. The development cases still require fresh, version-matched runs before any performance, uplift, or production-readiness claim.",
   "release_holdout": {
     "status": "external-required",
     "holdout_seen": true,
