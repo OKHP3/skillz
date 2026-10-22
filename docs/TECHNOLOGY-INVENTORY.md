@@ -1,7 +1,10 @@
 # Technology Inventory
 
-Audited 2026-09-18 America/Chicago (2026-09-19 UTC). Repository baseline:
-`957167d7f2e8ad54cba9c6ebd83dd0f08694143c`.
+Repository declarations refreshed October 21, 2026 America/Chicago (October 22
+UTC), from main baseline `3859c78e2e6a90acbcb7941d7575c6c5b5560e4f`.
+The original September 18 audit established the scope below; historical host
+and specification observations retain their dates. The generated inventory is
+the authority for current declarations, lock resolutions and upstream candidates.
 
 ## Scope and evidence
 
@@ -12,15 +15,19 @@ libraries. Executable standalone skill utilities are included; archived scaffold
 and technology names mentioned only in instructional prose are excluded from application
 upgrade decisions. The JSON ledger lists excluded archive paths and internal workspace links.
 
-**Confirmed:** the Windows checkout and GitHub main matched the baseline. Replit's shell
-reported the same commit and no uncommitted files. Local and Replit runtime versions were
-read independently; neither establishes the versions in an existing deployed container.
+**Confirmed:** Windows and Replit were clean and matched GitHub main at `0f1deb39`
+during the October 21 reconciliation. Subsequent concurrent main changes must be
+verified again at closeout. Local and Replit runtime versions were read
+independently; neither establishes the versions in an existing deployed container.
 **Unknown:** deployed Replit runtime and database server versions, installed standalone
 Python packages, and exact hosted runner tool patches without a run-specific image manifest.
-The Replit connector required reauthentication, but its existing browser shell was readable.
+The September connector reauthentication problem is historical. The October 21
+Shell fetch and push worked, and a reloaded native Git panel showed the merged
+technology work without pending changes. Neither observation proves every future
+connector session is authenticated.
 
-Declared ranges such as `^7.3.2` are not installed versions. The actual Vite lock resolution
-is `7.3.6`. Python requirements are mostly minimums without a lock; their precise installed
+Declared ranges are not installed versions. For example, Vite declares `^8.3.4`
+and the current lock resolution is `8.3.4`. Python requirements are mostly minimums without a lock; their precise installed
 versions cannot be reconstructed from those minimums. A package in a devDependencies section
 can still be bundled into the frontend, so that label is not used to exclude runtime UI code.
 
@@ -28,40 +35,44 @@ can still be bundled into the frontend, so that label is not used to exclude run
 
 | Technology | In-place declaration / locked version | Latest stable verified | Decision |
 | --- | --- | --- | --- |
-| TypeScript | `~5.9.3` / 5.9.3 | 7.0.2 | Compiler migration and typecheck review |
-| Vite | catalog `^7.3.2` / 7.3.6 | 8.3.0 | Build-tool migration with plugin and browser validation |
-| React and React DOM | catalog exact 19.1.0 / 19.1.0 | 19.3.0 | Update together; investigate retained Expo constraint comment |
+| TypeScript | `~7.0.2` / 7.0.2 | 7.0.2 | Accepted with workspace checks |
+| Vite | catalog `^8.3.4` / 8.3.4 | 8.3.5 | Patch candidate; preserve release cooldown and validation |
+| React and React DOM | catalog exact 19.3.1 / 19.3.1 | 19.3.1 | Accepted together with browser checks |
 | Tailwind CSS and Vite plugin | catalog `^4.1.14` / 4.3.3 | 4.3.3 | Current |
-| Vitest | `^3.2.0` / 3.2.7 | 5.0.1 | Coordinate with Vite migration |
-| Playwright | `^1.55.0` / 1.62.1 | 1.63.0 | Update library and its browser binaries together |
-| Express | `^5.2.1` / 5.2.1 | 5.2.1 | Current |
-| Drizzle ORM | catalog `^0.45.2` / 0.45.2 | 0.45.2 | Current; database migrations remain separately reviewed |
-| Zod | catalog `^3.25.76` / 3.25.76 | 4.6.5 | Schema/code generation and resolver migration |
+| Vitest | `^5.0.5` / 5.0.5 | 5.0.5 | Accepted with Vite migration |
+| Playwright | `^1.64.1` / 1.64.1 | 1.64.1 | Library and matching browser binaries validated together |
+| Express | `^5.3.0` / 5.3.0 | 5.3.0 | Current |
+| Drizzle ORM | catalog `^0.45.4` / 0.45.4 | 0.45.4 | Current; database migrations remain separately reviewed |
+| Zod | catalog `^4.6.7` / 4.6.7 | 4.6.7 | Accepted with consumers and code generation |
 
-These summary values are the initial audit snapshot. The generated tables below are the
-refreshable authority, with an official registry/release link for every entry. They also
+These summary values were reconciled with the October 22 generated inventory.
+The generated tables below remain the refreshable authority, with an official
+registry/release link for every entry. They also
 cover Radix UI, TanStack Query, React Router, Wouter, Framer Motion, Lucide, Recharts,
 React Hook Form, date utilities, Pino, PostgreSQL drivers, Orval, esbuild, Rollup, Prettier,
 Replit SDK/plugins, Mermaid CLI, SDKs, type packages, and all transitive libraries.
 
 ## Runtimes and host-provided technologies
 
-Observed host versions are a dated snapshot, not automatically collected by GitHub Actions.
-No workstation, Replit module, database, or deployment was upgraded during this audit.
+Observed host versions are dated snapshots, not automatically collected by GitHub
+Actions. Node, Python, npm, Windows Git and gh were measured on October 21;
+other host observations below remain from September 18 unless stated otherwise.
+No global workstation tool, Replit module or database was upgraded by this audit.
+Current CI runtime declarations are listed in the generated section below.
 
 | Technology | In place / evidence | Latest stable or channel | Maintenance boundary |
 | --- | --- | --- | --- |
-| Node.js | CI pin 24.19.0; Windows 24.11.1; Replit 24.13.0; `.replit` nodejs-24 | 26.9.0 Current; 24.21.0 LTS ([Node](https://nodejs.org/dist/index.json)) | Track approved LTS major through tested PRs; align each host after acceptance |
-| Python | CI pin 3.14.7; Windows launcher 3.14.0rc1; Replit 3.13.11; module python-base-3.13 | 3.14.7; 3.13 line 3.13.15 ([Python](https://www.python.org/downloads/)) | CI patch proposals within minor; replace local prerelease and reconcile Replit separately |
-| pnpm | CI formerly floating 10; now pinned 10.26.1 to match observed Replit; Windows 11.19.0 | 12.4.2; tracked 10.x latest 10.34.5 ([npm registry](https://registry.npmjs.org/pnpm)) | Same-major pin proposals; pnpm 11/12 migration requires lock/catalog and Dependabot support review |
-| npm | Replit 11.6.2; standalone Mermaid installer; not the workspace manager | 12.0.2 ([npm registry](https://registry.npmjs.org/npm)) | Follow Node distribution or reviewed standalone tooling |
+| Node.js | Windows 24.11.1; Replit 24.13.0; `.replit` nodejs-24; CI declaration below | 26.12.1 Current; 24.22.1 LTS ([Node](https://nodejs.org/dist/index.json), October 22) | Track approved LTS major through tested PRs; align each host after acceptance |
+| Python | Windows launcher 3.14.0rc1; Replit 3.13.11; module python-base-3.13; CI declaration below | 3.15.1; 3.14 line 3.14.9; 3.13 line 3.13.17 ([Python](https://www.python.org/downloads/), October 22) | CI patch proposals within minor; replace local prerelease and reconcile Replit separately |
+| pnpm | Repository and Windows Corepack-selected version 10.34.7; Replit installation not remeasured | 12.14.0; tracked 10.x latest 10.34.7 ([npm registry](https://registry.npmjs.org/pnpm), October 22) | Same-major pin proposals; pnpm 11/12 migration requires lock/catalog and Dependabot support review |
+| npm | Windows and Replit 11.6.2; standalone Mermaid installer; not the workspace manager | 12.2.1 ([npm registry](https://registry.npmjs.org/npm), October 22) | Follow Node distribution or reviewed standalone tooling |
 | Bash | Replit 5.2.37(1); shell scripts and Actions; Windows default shell lacks `sh` on PATH | 5.3 release series ([GNU](https://www.gnu.org/software/bash/)) | OS/distribution patch level, not npm; do not replace host shells from CI |
-| PowerShell | Windows 7.6.5, local administration only | 7.6.6 ([Microsoft](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.6)) | Workstation update |
-| Git | Windows 2.55.0.windows.5; Replit 2.50.1 | upstream 2.55.0 ([Git](https://git-scm.com/)) | Host-specific distribution updates |
-| GitHub CLI | Windows 2.96.0; workflow-provided gh for integration tools | 2.101.0 ([GitHub CLI](https://github.com/cli/cli/releases/tag/v2.101.0)) | Host tools; verify before running administrative scripts |
-| Go | Runner-provided, no exact runtime pin; installs actionlint | 1.27.1 ([Go](https://go.dev/dl/)) | Pin when tool compatibility requires it; actionlint itself is inventoried below |
+| PowerShell | Windows 7.6.5, measured October 21; local administration only | 7.6.7 ([Microsoft](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.7), October 22) | Workstation update |
+| Git | Windows 2.56.0.windows.2; Replit 2.54.0 (October 21) | upstream 2.56.0 ([Git](https://github.com/git/git/tree/v2.56.0)); Windows 2.56.0.windows.2 ([distribution](https://github.com/git-for-windows/git/releases/tag/v2.56.0.windows.2), October 22) | Host-specific distribution updates |
+| GitHub CLI | Windows 2.96.0, measured October 21; workflow-provided gh for integration tools | 2.103.0 ([GitHub CLI](https://github.com/cli/cli/releases/tag/v2.103.0), October 22) | Host tools; verify before running administrative scripts |
+| Go | Runner-provided, no exact runtime pin; installs actionlint | 1.27.3 ([Go](https://go.dev/dl/?mode=json), October 22) | Pin when tool compatibility requires it; actionlint itself is inventoried below |
 | PostgreSQL / SQL | `lib/db` declares PostgreSQL; Replit psql client 16.10; server UNKNOWN | 18.6 latest; 16.15 latest in 16.x ([PostgreSQL](https://www.postgresql.org/support/versioning/)) | Read server version before planning; backup and migration rehearsal before major updates |
-| Chromium | Replit Nix package and Playwright test browser; actual browser build UNKNOWN | Linux Stable 153.0.8010.52 ([Chromium release API](https://chromiumdash.appspot.com/fetch_releases?channel=Stable&platform=Linux&num=1)) | Playwright uses its matching browser revision; Nix Chromium follows host channel |
+| Chromium | Replit Nix package and Playwright test browser; actual browser build UNKNOWN | Linux Stable 156.0.8078.47 ([Chromium release API](https://chromiumdash.appspot.com/fetch_releases?channel=Stable&platform=Linux&num=1), October 22) | Playwright uses its matching browser revision; Nix Chromium follows host channel |
 | Nix package channel | `.replit`: stable-25_05 | NixOS 26.05 upstream ([release](https://nixos.org/blog/announcements/2026/nixos-2605/)) | Upstream availability does not prove a supported Replit module/channel; verify in Replit |
 | Ubuntu runner image | GitHub Actions `ubuntu-latest`; exact image patch varies by run | Rolling hosted image ([image manifests](https://github.com/actions/runner-images)) | Record image manifest in run logs; provider-managed |
 
@@ -107,19 +118,19 @@ All npm lockfile entries are inventoried, including optional platform packages. 
 
 | Technology | In place | Latest stable | Bounded update target | Source |
 | --- | --- | --- | --- | --- |
-| Node.js | 24.22.0 | 26.12.1; LTS 24.22.1 | 24.22.1 | [official releases](https://nodejs.org/dist/index.json) |
-| Python | 3.14.8 | 3.15.1 | 3.14.9 | [official releases](https://www.python.org/downloads/) |
+| Node.js | 24.22.1 | 26.12.1; LTS 24.22.1 | 24.22.1 | [official releases](https://nodejs.org/dist/index.json) |
+| Python | 3.14.9 | 3.15.1 | 3.14.9 | [official releases](https://www.python.org/downloads/) |
 
 ### Direct dependencies, scripts, CI and tools
 
 | Technology | Declared | Locked / referenced | Latest stable | Assessment |
 | --- | --- | --- | --- | --- |
-| github / OKHP3/skillz-shield | d35273fe51c4c4669288de53efbc067558809a07 | SHA (release name unresolved) | [1.0.2](https://github.com/OKHP3/skillz-shield/releases/tag/v1.0.2) | Dependabot SHA update; review release |
+| github / OKHP3/skillz-shield | ddc23d168a0552c49209129bd361d1846c77e6b3 | SHA (release name unresolved) | [1.0.2](https://github.com/OKHP3/skillz-shield/releases/tag/v1.0.2) | Dependabot SHA update; review release |
 | github / actions/cache | 55cc8345863c7cc4c66a329aec7e433d2d1c52a9 | v6, v6.1.0 | [6.1.0](https://github.com/actions/cache/releases/tag/v6.1.0) | current release |
 | github / actions/checkout | 3d3c42e5aac5ba805825da76410c181273ba90b1 | v7, v7.0.1 | [7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1) | current release |
 | github / actions/deploy-pages | 368f82528645a54fb793d4d04e342629a3f51346 | v5, v5.0.1 | [5.0.1](https://github.com/actions/deploy-pages/releases/tag/v5.0.1) | current release |
 | github / actions/setup-node | 949feb2413d6458794dcd2491c4babbbce0c15c1 | v7, v7.1.0 | [7.1.0](https://github.com/actions/setup-node/releases/tag/v7.1.0) | current release |
-| github / actions/setup-python | 5fda3b95a4ea91299a34e894583c3862153e4b97 | v7, v7.0.0 | [7.0.0](https://github.com/actions/setup-python/releases/tag/v7.0.0) | current release |
+| github / actions/setup-python | 5fda3b95a4ea91299a34e894583c3862153e4b97 | v7, v7.0.0 | [7.1.0](https://github.com/actions/setup-python/releases/tag/v7.1.0) | Dependabot SHA update; review release |
 | github / actions/upload-artifact | cf430e030ddbb5b0abf93d22962f4752f3646cd9 | v7, v7.0.2 | [7.0.2](https://github.com/actions/upload-artifact/releases/tag/v7.0.2) | current release |
 | github / actions/upload-pages-artifact | fc324d3547104276b827a68afc52ff2a11cc49c9 | v5, v5.0.0 | [5.0.0](https://github.com/actions/upload-pages-artifact/releases/tag/v5.0.0) | current release |
 | github / peter-evans/create-pull-request | 5f6978faf089d4d20b00c7766989d076bb2fc7f1 | v8, v8.1.1 | [8.1.1](https://github.com/peter-evans/create-pull-request/releases/tag/v8.1.1) | current release |
