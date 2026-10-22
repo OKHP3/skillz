@@ -4,7 +4,7 @@ description: Find, verify, compare, and route to project-local, installed, runti
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: 0.2.1
+  version: 0.2.2
   maturity: draftable
   category: universal
   origin: okhp3/skillz
@@ -44,6 +44,12 @@ and evolve independently. Compare fit and evidence without replacing originals.
    A recommendation alone is unavailable until the current host verifies it.
 5. Read the best candidate's `SKILL.md` completely. Verify dependencies,
    authorization boundaries, and near-miss scope.
+   Report the body-review evidence separately from source availability: name
+   the file actually read or the complete body supplied in the request, then
+   identify the scope and prerequisite facts learned from it. If the body is
+   incomplete or unread, mark the recommendation provisional and request the
+   missing contract. Never imply a filesystem read when only supplied text
+   was reviewed.
 6. Return the best match, why it fits, how to invoke it, prerequisites, and a
    fallback when it is unavailable.
 
