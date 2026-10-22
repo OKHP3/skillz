@@ -2,8 +2,8 @@
 family: software-reclamation
 display_name: Software Reclamation
 skill_count: 15
-generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-22T03:45:52Z
+generated_by: okhp3-skill-cataloger v1.7.1
+generated_at: 2026-10-22T04:07:48Z
 ---
 
 # software-reclamation
@@ -15,7 +15,7 @@ Family crest: The Reclamation Crest, Remastered
 ## Skills (15)
 
 <!-- FAMILY_INVENTORY_START -->
-*15 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 03:45 UTC***
+*15 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 04:07 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

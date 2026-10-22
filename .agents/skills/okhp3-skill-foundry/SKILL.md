@@ -16,7 +16,7 @@ compatibility: >
   when using this package's bundled validator.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: 3.1.1
+  version: 3.1.2
   category: meta-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -77,8 +77,14 @@ Run this before drafting and before release.
 
 - Confirm `name` matches the directory, is 1 to 64 characters, uses only
   lowercase ASCII letters, numbers, and hyphens, and neither starts, ends, nor
-  contains consecutive hyphens. These are portable-format rules. The remaining
-  limits in this phase are Foundry policy unless a host documents otherwise.
+  contains consecutive hyphens. Keep `description` at 1,024 characters or
+  fewer, `compatibility` at 500 or fewer when present, and `metadata` values as
+  strings. These are portable-format rules; the shorter path and body limits
+  below are Foundry policy unless a host documents otherwise.
+- Put each package directly under its catalog surface
+  (`.agents/skills/<name>/` or `<family>/<name>/`). Do not add a wrapper
+  directory that leaves a valid `SKILL.md` invisible to the cataloger. Check
+  recursive file discovery against the generated inventory before release.
 - Keep `description` concise, specific, and front-loaded with the job and
   trigger terms. State meaningful boundaries before secondary detail because
   hosts may shorten discovery text.

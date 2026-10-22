@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T03:52:53.961Z",
+  "generatedAt": "2026-10-22T04:14:44.227Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/skillz-catalog-website-closeout",
-  "sourceCommit": "d11f204e",
+  "sourceCommit": "c77b13d5",
   "skillCount": 333,
   "familyCount": 22,
   "families": [
@@ -22961,7 +22961,7 @@
       "skillDir": "okhp3-skill-cataloger",
       "path": "universal/okhp3-skill-cataloger/SKILL.md",
       "description": "OverKill Hill P³ skill cataloger. Inventory and validate repository-local Agent Skills, then safely regenerate a marked README catalog and machine-readable catalog metadata. Use when asked to list, audit, version-check, validate, or refresh skills under .agents/skills/, or to index a distribution repository’s root family folders. Choose catalog mode for a project surface and explicit --full mode for a distribution index; use --check or --dry-run when no file changes are authorized.",
-      "version": "1.7.0",
+      "version": "1.7.1",
       "license": "MIT",
       "category": "universal",
       "origin": "okhp3/skillz",
@@ -23004,9 +23004,9 @@
         "evaluatedSkillVersion": "1.7.0",
         "evalCount": 3,
         "benchmarkCount": 0,
-        "testCount": 1,
+        "testCount": 3,
         "referenceCount": 1,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -23087,7 +23087,7 @@
       "skillDir": "okhp3-skill-foundry",
       "path": "universal/okhp3-skill-foundry/SKILL.md",
       "description": "Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progressive disclosure, risk-based evaluations, and release checks. Use when authoring a new SKILL.md, improving an existing skill, designing or grading evaluations, diagnosing weak trigger behavior, or synchronizing a skill across repositories. Also activate when a workflow should become a reusable skill or a skill must improve itself without making unsupported quality claims. This is the authoritative OKHP3 authoring and skill-evolution workflow.",
-      "version": "3.1.1",
+      "version": "3.1.2",
       "license": "MIT",
       "category": "meta-tooling",
       "origin": "okhp3/skillz",
@@ -23095,7 +23095,7 @@
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
       "evidenceStatus": "historical",
-      "evidenceNote": "Benchmark evidence is for 1.0.0, not 3.1.1.",
+      "evidenceNote": "Benchmark evidence is for 1.0.0, not 3.1.2.",
       "status": null,
       "tags": [],
       "topics": [
@@ -23136,7 +23136,7 @@
         "lastEvidenceDate": "2026-06-26T00:00:00Z",
         "reviewDecision": null,
         "blockers": [
-          "Evidence evaluates version 1.0.0, not the current 3.1.1 package."
+          "Evidence evaluates version 1.0.0, not the current 3.1.2 package."
         ]
       },
       "maturitySource": "fallback-structure",

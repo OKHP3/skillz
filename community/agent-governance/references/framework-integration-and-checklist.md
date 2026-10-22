@@ -67,12 +67,20 @@ policy = GovernancePolicy(
 async def read_file(path: str) -> str:
     """Read file contents — governed."""
     import os
+    root = os.path.realpath(".")
     safe_path = os.path.realpath(path)
-    if not safe_path.startswith(os.path.realpath(".")):
+    try:
+        within_root = os.path.commonpath([root, safe_path]) == root
+    except ValueError:  # Different drives on Windows are outside the root.
+        within_root = False
+    if not within_root:
         raise ValueError("Path traversal blocked by governance")
     with open(safe_path) as f:
         return f.read()
 ```
+
+This containment example is not a substitute for an OS-enforced sandbox when
+untrusted callers can mutate paths or symlinks concurrently.
 
 ---
 

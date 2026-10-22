@@ -12,6 +12,12 @@
   guidance. Structural validation is not a behavioral benchmark.
 - Normalize the nested project-local `okhp3-skill-promotion` package so the
   support catalog includes all 55 packages; its nine files retain their blobs.
+- Cataloger 1.7.1 now rejects unindexed nested `SKILL.md` files in both project
+  and distribution modes. Foundry 3.1.2 adds direct-package and portable-field
+  preflights; a new dated mirror receipt preserves the October 11 record as
+  historical evidence. These are structural improvements, not live benchmarks.
+- Fix the imported governance example's prefix-based path check so a sibling
+  directory with a shared name prefix is not mistaken for the allowed root.
 - This is a candidate until the final merged revision, required CI/security
   checks, live Pages output, and Replit Free Mode/checkout state are verified.
 

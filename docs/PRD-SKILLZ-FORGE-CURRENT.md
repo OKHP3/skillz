@@ -37,7 +37,8 @@ structural check into a live behavioral benchmark or production-readiness claim.
 One additional project-local package, `okhp3-skill-promotion`, was nested below
 its expected parent and therefore omitted by the support cataloger. It has been
 flattened without changing its file contents; the support catalog now contains
-**55** packages. This does not change the public distribution count.
+**55** packages. Cataloger 1.7.1 also rejects future nested packages that its
+selected layout would omit. This does not change the public distribution count.
 
 The seven packages present in source but absent from the prior checked-in
 326-skill Forge catalog were `askjamie/okhp3-askjamie-email-draft`,

@@ -170,8 +170,24 @@ expectRejected('rejects a mismatched eval design version', target => {
 }, /evals\/evals\.json must declare version/);
 
 expectRejected('rejects a tampered recorded core hash', target => {
-  const record = fs.readdirSync(path.join(target, 'benchmarks')).find(name => name.startsWith('sync-verification-'));
+  const record = fs.readdirSync(path.join(target, 'benchmarks'))
+    .filter(name => name.startsWith('sync-verification-')).sort().at(-1);
   mutateJson(target, path.join('benchmarks', record), verification => {
     verification.core_file_hashes['SKILL.md'] = '0'.repeat(64);
   });
 }, /core-file hash mismatch/);
+
+test('keeps older dated synchronization receipts as historical evidence', async () => {
+  const { root, result } = await temporaryPackage(target => {
+    const record = fs.readdirSync(path.join(target, 'benchmarks'))
+      .filter(name => name.startsWith('sync-verification-')).sort()[0];
+    mutateJson(target, path.join('benchmarks', record), verification => {
+      verification.core_file_hashes['SKILL.md'] = '0'.repeat(64);
+    });
+  });
+  try {
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
