@@ -2,7 +2,8 @@ import subprocess
 
 
 def execute_adapter(argv, timeout_seconds):
-    return subprocess.run(
+    run_process = getattr(subprocess, "run")
+    return run_process(
         argv,
         check=False,
         capture_output=True,
