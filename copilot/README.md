@@ -142,10 +142,11 @@ and whether the evidence is live, analytical, historical, or not run.
 
 ## Current status
 
-This active family contains 40 analytically validated packages: 12 SharePoint
-Library skills, 12 SharePoint List skills, 12 Copilot Cowork skills, and four
-host-specific pattern masters. Structural validation does not establish live
-host discovery, tenant permissions, or task-quality performance.
+This active family contains 42 packages: 12 SharePoint Library skills,
+12 SharePoint List skills, 12 Copilot Cowork task skills, four host-specific
+Skill Foundries, and two additional SharePoint review contracts. Structural
+validation does not establish live host discovery, tenant permissions, or
+task-quality performance.
 
 ## Host-specific Skill Foundries
 
