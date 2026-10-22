@@ -53,10 +53,11 @@ class ConnectionPolicyTests(unittest.TestCase):
         self.assertEqual(self.driver.connect.call_args.kwargs["trust_server_certificate"], "yes")
         self.assertEqual(self.driver.connect.call_args.kwargs["encrypt"], "yes")
 
-    def test_cli_flag_reaches_both_connections_and_warns(self):
+    def test_cli_source_opt_in_does_not_disable_target_validation(self):
         args = ["reconcile.py", "--source-server", "localhost", "--source-database", "Src",
-                "--target-server", "localhost", "--target-database", "Dst",
-                "--tables", "dbo.Orders", "--auth", "entra", "--trust-self-signed-certificate"]
+                "--target-server", "prod.database.windows.net", "--target-database", "Dst",
+                "--tables", "dbo.Orders", "--auth", "entra",
+                "--trust-source-self-signed-certificate"]
         stderr = io.StringIO()
         with patch.object(sys, "argv", args), patch.object(self.subject, "connect") as connect:
             with patch.object(self.subject, "resolve_tables", return_value=[]):
@@ -64,8 +65,27 @@ class ConnectionPolicyTests(unittest.TestCase):
                     with contextlib.redirect_stderr(stderr):
                         self.subject.main()
         self.assertEqual(connect.call_count, 2)
-        self.assertTrue(all(call.kwargs["trust_server_certificate"] for call in connect.call_args_list))
-        self.assertIn("certificate validation disabled", stderr.getvalue())
+        self.assertTrue(connect.call_args_list[0].kwargs["trust_server_certificate"])
+        self.assertFalse(connect.call_args_list[1].kwargs["trust_server_certificate"])
+        self.assertIn("source certificate validation disabled", stderr.getvalue())
+        self.assertNotIn("target certificate validation disabled", stderr.getvalue())
+
+    def test_cli_target_opt_in_does_not_disable_source_validation(self):
+        args = ["reconcile.py", "--source-server", "prod.database.windows.net",
+                "--source-database", "Src", "--target-server", "localhost",
+                "--target-database", "Dst", "--tables", "dbo.Orders", "--auth", "entra",
+                "--trust-target-self-signed-certificate"]
+        stderr = io.StringIO()
+        with patch.object(sys, "argv", args), patch.object(self.subject, "connect") as connect:
+            with patch.object(self.subject, "resolve_tables", return_value=[]):
+                with patch.object(self.subject, "generate_report"):
+                    with contextlib.redirect_stderr(stderr):
+                        self.subject.main()
+        self.assertEqual(connect.call_count, 2)
+        self.assertFalse(connect.call_args_list[0].kwargs["trust_server_certificate"])
+        self.assertTrue(connect.call_args_list[1].kwargs["trust_server_certificate"])
+        self.assertIn("target certificate validation disabled", stderr.getvalue())
+        self.assertNotIn("source certificate validation disabled", stderr.getvalue())
 
     def test_unknown_authentication_mode_rejected_before_connection(self):
         with self.assertRaises(ValueError):

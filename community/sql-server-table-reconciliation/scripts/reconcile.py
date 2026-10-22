@@ -370,9 +370,14 @@ def main():
         help="Authentication mode (default: sql)",
     )
     parser.add_argument(
-        "--trust-self-signed-certificate",
+        "--trust-source-self-signed-certificate",
         action="store_true",
-        help="Development only: skip SQL Server certificate validation for a controlled self-signed server",
+        help="Development only: skip certificate validation for the source server",
+    )
+    parser.add_argument(
+        "--trust-target-self-signed-certificate",
+        action="store_true",
+        help="Development only: skip certificate validation for the target server",
     )
     parser.add_argument(
         "--primary-key",
@@ -401,16 +406,18 @@ def main():
     pk_override = [c.strip() for c in args.primary_key.split(",")] if args.primary_key else None
     columns = [c.strip() for c in args.columns.split(",")] if args.columns else None
 
-    if args.trust_self_signed_certificate:
-        print("WARNING: server certificate validation disabled for development", file=sys.stderr)
+    if args.trust_source_self_signed_certificate:
+        print("WARNING: source certificate validation disabled for development", file=sys.stderr)
+    if args.trust_target_self_signed_certificate:
+        print("WARNING: target certificate validation disabled for development", file=sys.stderr)
 
     print(f"Connecting to source: {args.source_server}/{args.source_database}")
     source_conn = connect(args.source_server, args.source_database, args.auth,
-                          trust_server_certificate=args.trust_self_signed_certificate)
+                          trust_server_certificate=args.trust_source_self_signed_certificate)
 
     print(f"Connecting to target: {args.target_server}/{args.target_database}")
     target_conn = connect(args.target_server, args.target_database, args.auth,
-                          trust_server_certificate=args.trust_self_signed_certificate)
+                          trust_server_certificate=args.trust_target_self_signed_certificate)
 
     tables = resolve_tables(source_conn, args.tables)
     print(f"Tables to reconcile: {tables}")
