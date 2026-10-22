@@ -10,6 +10,14 @@
 - Keep publication regeneration and skill scanning unchanged. These checks
   establish metadata consistency, not behavioral or security acceptance.
 
+## 2026-10-21: SQL reconciliation identifier safety
+
+- Validate and quote table, schema, primary-key, and compared-column names
+  before constructing SQL in the imported reconciliation skill. Reject malformed
+  or expression-like names; focused tests cover valid queries and blocked inputs.
+- The skill still requires an authorized SQL Server connection. This change does
+  not alter its certificate trust setting or clear the wider Shield findings.
+
 ## 2026-10-11
 
 - Skill Foundry 3.1.1 accepts strict SemVer as plain, single-quoted, or
