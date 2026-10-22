@@ -248,6 +248,12 @@ and `okhp3-sharepoint-list-schema-design` also live here. Their native Copilot
 packaging and execution remain unverified; family placement is not a host
 compatibility claim.
 
+The four Copilot host Skill Foundries are version 1.2.0 after independent
+evidence, outcome, and safety review. Use the portable Skill Foundry baseline
+with the selected host adapter. SharePoint distinguishes personal/site ownership
+and Library/List contracts. These are analytical authoring packages; native
+acceptance, behavioral benchmarks, and measured savings remain unverified.
+
 ### Glee-fully family
 
 | Skill | Trigger |

@@ -47,8 +47,8 @@ Use the host token in each package name and metadata:
 |---|---|---|
 | `github` | GitHub Copilot skill-capable surfaces | Confirm the exact Copilot surface and repository or personal discovery path. |
 | `cowork` | Microsoft Copilot Cowork | Confirm OneDrive or Microsoft 365 plugin packaging and the action boundary. |
-| `sharepoint` | Copilot in SharePoint | Confirm the Agent Assets path, native capability limits, and site permissions. |
-| `copilot-studio` | Copilot Studio declarative agents | Confirm the upload or authoring experience and separate connector or action dependencies. |
+| `sharepoint` | Copilot in SharePoint | Confirm personal/site ownership, observed OneDrive or Agent Assets storage, native limits, and permissions. |
+| `copilot-studio` | Copilot Studio agents using the GitHub Copilot harness | Confirm the harness, upload/authoring route, and separate connector or action dependencies. |
 | `scout` | Copilot Scout, when supported | Keep proposed or unverified until current documentation proves skill support. |
 | `crosshost` | More than one verified Copilot host | List every tested host and record behavioral differences. |
 
