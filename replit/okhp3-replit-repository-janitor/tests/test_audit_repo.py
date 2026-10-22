@@ -247,7 +247,10 @@ class AuditRepoTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             self._init_repo(root)
-            for branch in ["feature/unknown", "feature/failed", "feature/missing"]:
+            for branch in [
+                "feature/unknown", "feature/failed", "feature/missing",
+                "feature/invalid",
+            ]:
                 self._git(root, "branch", branch)
 
             lookup_file = root / "lookups.json"
@@ -256,9 +259,16 @@ class AuditRepoTests(unittest.TestCase):
                     "feature/unknown": {"lookup_status": "unknown"},
                     "feature/failed": {
                         "lookup_status": "failed",
-                        "error": "host unavailable",
+                        "error": "connector failed with synthetic-token-do-not-log",
                     },
                     "feature/other": {"lookup_status": "not_found"},
+                    "feature/invalid": {
+                        "lookup_status": "synthetic-token-do-not-log",
+                        "state": "closed",
+                        "merged": True,
+                        "head_sha": self._git(root, "rev-parse", "feature/invalid"),
+                        "merge_commit_reachable": True,
+                    },
                 }),
                 encoding="utf-8",
             )
@@ -273,14 +283,21 @@ class AuditRepoTests(unittest.TestCase):
             )
             report = json.loads(result.stdout)
             by_name = {item["branch"]: item for item in report["branches"]}
-            for name in ["feature/unknown", "feature/failed", "feature/missing"]:
+            for name in [
+                "feature/unknown", "feature/failed", "feature/missing",
+                "feature/invalid",
+            ]:
                 self.assertEqual(by_name[name]["bucket"], "review")
                 self.assertIn("hosted evidence is missing", by_name[name]["reason"])
             self.assertEqual(by_name["feature/failed"]["hosted_lookup"], {
-                "status": "failed", "error": "host unavailable",
+                "status": "failed",
             })
+            self.assertNotIn("synthetic-token-do-not-log", result.stdout)
             self.assertEqual(by_name["feature/missing"]["hosted_lookup"], {
                 "status": "unavailable",
+            })
+            self.assertEqual(by_name["feature/invalid"]["hosted_lookup"], {
+                "status": "unknown",
             })
             self.assertNotIn("delete", {by_name[name]["bucket"] for name in by_name})
 

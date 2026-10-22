@@ -154,6 +154,14 @@ def prepare_branch_deletion(
 _HOSTED_PR_NOT_CHECKED = object()
 
 
+def hosted_lookup_status(hosted_pr: Mapping[str, object]) -> str:
+    """Normalize caller-supplied lookup state without echoing arbitrary text."""
+    raw = hosted_pr.get("lookup_status", hosted_pr.get("lookup", "available"))
+    if isinstance(raw, str) and raw in {"available", "not_found", "unknown", "failed"}:
+        return raw
+    return "unknown"
+
+
 def classify_branch_for_cleanup(
     branch: dict[str, object],
     *,
@@ -188,8 +196,8 @@ def classify_branch_for_cleanup(
         }
 
     if hosted_pr is not _HOSTED_PR_NOT_CHECKED:
-        lookup_status = hosted_pr.get("lookup_status", hosted_pr.get("lookup"))
-        if lookup_status in {"unknown", "failed"}:
+        lookup_status = hosted_lookup_status(hosted_pr)
+        if lookup_status != "available":
             return {
                 "bucket": "review",
                 "reason": (
@@ -231,15 +239,11 @@ def classify_branch_for_cleanup(
 def hosted_lookup_summary(
     hosted_pr: dict[str, object] | None,
 ) -> dict[str, object]:
-    """Return the report-safe outcome of a hosted pull-request lookup."""
+    """Return a bounded status, never a caller-supplied diagnostic string."""
     if hosted_pr is None:
         return {"status": "unavailable"}
 
-    status = hosted_pr.get("lookup_status", hosted_pr.get("lookup", "available"))
-    summary: dict[str, object] = {"status": status}
-    if "error" in hosted_pr:
-        summary["error"] = hosted_pr["error"]
-    return summary
+    return {"status": hosted_lookup_status(hosted_pr)}
 
 
 def audit_branches(
