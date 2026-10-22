@@ -1,8 +1,10 @@
 # `docs/` index
 
-**Current directive:** [`PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md`](PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md)
-is the active product PRD and build directive for Skillz Forge. It is the only
-document in `docs/` that should be treated as the current roadmap.
+**Current directive:** [`PRD-SKILLZ-FORGE-CURRENT.md`](PRD-SKILLZ-FORGE-CURRENT.md)
+is the active Skillz Forge and OverKill Hill public-surface implementation
+handoff. It replaces the action items in the [August independent audit](PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md)
+and [September follow-up audit](PRD-SKILLZ-FORGE-FOLLOWUP-AUDIT-2026-09-20.md),
+which remain historical evidence, not current inventory or build instructions.
 
 Superseded PRDs, audits, and product evaluations from this project's planning
 history are preserved in [`archive/planning-2026-08/`](archive/planning-2026-08/)

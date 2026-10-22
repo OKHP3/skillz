@@ -7,7 +7,7 @@ This document captures the public information architecture for `OKHP3/skillz`: w
 Create one canonical public landing page for `skillz` under OverKill Hill, then add lightweight contextual touchpoints on Glee-fully and AskJamie.
 
 ```text
-overkillhill.com/projects/skillz/
+overkillhill.com/skillz-forge/
 ```
 
 Contextual touchpoints:
@@ -23,7 +23,7 @@ The GitHub repository remains the installable source of truth. Notion remains th
 
 | Surface | Role | Depth | Primary CTA |
 |---|---|---:|---|
-| OverKill Hill `/projects/skillz/` | Canonical public landing page | High | View repo, browse skill families, install/use |
+| OverKill Hill `/skillz-forge/` | Canonical public landing page (`/projects/skillz/` redirects here) | High | View repo, browse skill families, install/use |
 | GitHub `OKHP3/skillz` | Source of truth and installable artifact | Highest | Clone, inspect, contribute, install |
 | Notion `skillz` page | Strategy, decision log, roadmap | Highest but operational | Planning and long-form context |
 | Glee-fully Toolbox | Consumer-friendly mention of future Glee skills | Low to medium | Learn about OKHP3 `skillz` |
@@ -36,7 +36,7 @@ The GitHub repository remains the installable source of truth. Notion remains th
 The correct canonical home is:
 
 ```text
-overkillhill.com/projects/skillz/
+overkillhill.com/skillz-forge/
 ```
 
 OverKill Hill is the forge, project hub, and protocol surface. `skillz` belongs there because Agent Skills are reusable delegation contracts, not end-user tool pages.
@@ -64,15 +64,17 @@ skillz: Agent Skills by OverKill Hill
 Recommended positioning:
 
 ```text
-149 reusable SKILL.md delegation contracts across 16 active families for Claude, OpenClaw, Codex, and compatible AI agents.
+Reusable `SKILL.md` delegation contracts for compatible AI agents, with the current distribution inventory derived from the published Forge catalog.
 ```
 
-Current inventory: 149 public distribution skills across 16 active families.
-The repository also contains 46 project-local support skills, which are not
+At source commit `3859c78e`, the cataloger discovers 333 public distribution
+skills in 22 active families and 54 project-local support skills. This is a
+dated source snapshot, not evergreen landing-page copy. The generated
+`project-summary.json` is the public count source; support skills are not
 public distribution entries. Forge is a live discovery workbench with guided
 discovery and visitor-built local stack composition, not a claim that every
 listed contract is released or fully trustworthy for every use. See
-[`docs/PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md`](PRD-SKILLZ-FORGE-INDEPENDENT-AUDIT-2026-08-06.md)
+[`docs/PRD-SKILLZ-FORGE-CURRENT.md`](PRD-SKILLZ-FORGE-CURRENT.md)
 for the current build directive; the earlier capability score is preserved in
 [`docs/archive/planning-2026-08/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md`](archive/planning-2026-08/SKILLZ-FORGE-CAPABILITY-MATURITY-AUDIT-2026-08-04.md).
 
@@ -101,16 +103,23 @@ Recommended sections:
 | Agent Foundry | AI-agent creation, readiness, portability, comparison, and lifecycle | Active distribution family |
 | AskJamie | AskJamie-specific Custom GPT and professional-support capabilities | Active distribution family |
 | Community | General-purpose UI, MCP, authoring, social, and engineering guidance | Active distribution family |
+| Copilot | Task-focused contracts for explicitly named GitHub Copilot, Copilot Cowork, SharePoint, and Copilot Studio hosts | Active distribution family; host support is package-specific |
 | Context Extraction | Cross-platform AI-thread extraction, provenance preservation, and migration | Active distribution family |
 | Glee-fully | Tool and Tool-ette architecture, persona density, and future consumer-skill conversion | Active distribution family |
 | Knowledge Operations | Capture, classify, research, validate, and promote information work | Active distribution family |
+| Language Mediation | Exact-pair translation and specialist-to-plain-language mediation | Active distribution family |
 | LifeTrkr | Offline celestial data and daily oracle workflows | Active distribution family |
 | Social posting | Turn finished work into platform-specific drafts, comments, and LinkedIn-ready angles | Active distribution family |
 | Mermaid | Governed diagram authoring, theming, publishing, updating, and repair | Active distribution family |
+| MurderBird | Editorial argument audit, thesis construction, and short-post hooks for the MurderBird persona | Active distribution family; not security red teaming |
 | Notion | Route AI conversations into Notion with deduplication and GitHub reconciliation | Active distribution family |
+| OpenClaw | Host-oriented agent skills and persona routing/research capabilities | Active distribution family; host capabilities vary |
 | Outcome Modeling | Event-to-state forecasting and constrained decision adapters | Active distribution family |
 | Process Capture | Document, validate, govern, and package recurring organizational processes | Active distribution family |
+| Red Teaming | Authorized agentic-threat analysis and security assessment contracts | Active distribution family |
 | ReFolDec | Transform artifacts across representations while tracking semantic loss | Active distribution family |
+| Replit | Free Mode-aware task execution, artifact work, repository reconciliation, and GitHub handoff | Active distribution family |
+| Software Reclamation | Evidence-led recovery, documentation, modernization, and replacement planning for undocumented software | Active distribution family |
 | Universal | Cross-project builders, cataloging, database, API proxy, OAuth, and deployment skills | Active distribution family |
 
 ## Glee-fully Toolbox touchpoint
@@ -128,7 +137,7 @@ Suggested copy:
 CTA:
 
 ```text
-Learn about OKHP3 skillz → overkillhill.com/projects/skillz/
+Learn about OKHP3 skillz → overkillhill.com/skillz-forge/
 ```
 
 ## AskJamie Lens System touchpoint
@@ -146,7 +155,7 @@ Suggested copy:
 CTA:
 
 ```text
-See the OKHP3 skillz project → overkillhill.com/projects/skillz/
+See the OKHP3 skillz project → overkillhill.com/skillz-forge/
 ```
 
 ## Operating rule

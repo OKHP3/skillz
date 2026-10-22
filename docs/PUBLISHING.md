@@ -128,14 +128,15 @@ Before pursuing automatic or manual marketplace/listing channels:
 - [ ] Topic tags are set.
 - [ ] `SKILL.md` files are spec-compliant.
 - [ ] Root `AGENTS.md` points to every active skill.
-- [ ] `SKILLS.md` is current.
+- [ ] The generated root `README.md`, family `FAMILY.md` inventories, and
+      `skillz.manifest.json` agree with the canonical skill tree.
 - [ ] `SECURITY.md` is present.
 - [ ] README has install guidance.
 - [ ] The repo has at least one release tag.
 
 ## Public surface readiness
 
-Before adding or promoting `overkillhill.com/projects/skillz/`:
+Before adding or promoting `overkillhill.com/skillz-forge/`:
 
 - [ ] GitHub repo has public-surface documentation.
 - [ ] Notion strategy page is current.
@@ -145,9 +146,12 @@ Before adding or promoting `overkillhill.com/projects/skillz/`:
 
 ## Syncing the overkillhill.com dossier
 
-`overkillhill.com/projects/skillz/` is **not** generated from this repository --
-it lives in the separate `OKHP3/OverKill-Hill` repo as hand-authored static
-HTML, so nothing in this codebase or its CI can push an update to it directly.
+`overkillhill.com/skillz-forge/` is **not** generated from this repository --
+it lives in the separate `OKHP3/OverKill-Hill` repo. Its authoring sources are
+under `site-src/pages/skillz-forge/`; that site's build produces
+`skillz-forge/index.html`. The former `/projects/skillz/` path redirects to
+the canonical page. Nothing in this codebase or its CI updates that site
+directly.
 Confirmed live on 2026-08-05, the dossier still read "75 public distribution
 skills across 12 active families" and labeled Compare and Activity as
 "Planned," while this repo's own docs already carried the correct current
@@ -166,7 +170,7 @@ hand-maintained behind an explicit manual-sync checklist instead.
 
 ### Live-synced when reachable (fallback review required)
 
-`projects/skillz/index.html` in `OKHP3/OverKill-Hill` carries an inline
+`skillz-forge/index.html` in `OKHP3/OverKill-Hill` carries an inline
 `<script>` (added 2026-08-06) that fetches
 `https://okhp3.github.io/skillz/data/project-summary.json` on every page load
 and rewrites:
@@ -175,22 +179,18 @@ and rewrites:
 - the "Current Inventory" heading's skill/family count,
 - the inventory paragraph's "as of" date.
 
-This is progressive enhancement, not a hard dependency: the HTML already
-carries the last-known-good numbers as static text, and the script only
-overwrites them on a successful fetch. If `project-summary.json` is
-unreachable (CORS change, endpoint move, visitor offline), the page silently
-keeps showing the last hand-synced numbers rather than breaking or showing a
-blank state -- check the browser console for a `[skillz dossier]` warning if
-the live numbers ever look stale; that's the signal the fetch is failing and
-this mechanism needs attention (endpoint moved, response shape changed,
-etc.), not that a human forgot to type new numbers.
+This is progressive enhancement, not a hard dependency. On fetch failure the
+page must be truthful without JavaScript: use either numbers tied to the same
+published source revision or a count-neutral unavailable state with a Forge
+link. Never leave a stale number labeled current. Check the browser console
+for a `[skillz dossier]` warning if live data does not load, then diagnose
+the endpoint, CORS, CSP, and response shape.
 
-When the generated inventory changes, update every static fallback in
-`projects/skillz/index.html` in the same OverKill Hill change: the banner, the
-inventory heading's `data-fallback` values, any summary cards, and the
-last-synced date. This preserves truthful offline and fetch-failure behavior;
-the live fetch is a convergence check, not permission to leave stale fallback
-copy behind.
+When the generated inventory changes, review the canonical authoring files
+under `site-src/pages/skillz-forge/` and regenerate the page. If numeric
+fallbacks are used, update the banner, heading, cards, maturity split, and
+as-of/source revision together. A count-neutral fallback avoids that manual
+number sync but still requires a tested loading and failure state.
 
 ### Still manual (documented trigger + checklist)
 
@@ -211,8 +211,8 @@ When either happens, whoever has edit access to `OKHP3/OverKill-Hill` should:
       longer matches, and its description if the feature scope changed.
 - [ ] Update the "Recommended positioning" one-liner in
       `docs/PUBLIC_SURFACES.md` if it changed, then paste the new copy in.
-- [ ] Refresh the static count and date fallbacks described above, even though
-      the live page will replace them after a successful fetch.
+- [ ] Confirm the inventory's pre-fetch and failed-fetch states are truthful;
+      if they contain numbers, sync them to the same published revision.
 
 There is no automated trigger for this half -- it remains a manual step, owned
 by whoever maintains `OKHP3/OverKill-Hill`, same as before this decision.

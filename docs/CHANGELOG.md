@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-21: catalog and public-surface reconciliation candidate
+
+- Regenerate distribution and support catalogs from the repository tree and
+  refresh Forge's derived catalog/search/detail data for the added packages.
+- Replace the stale public-surface planning handoff with one current,
+  revision-aware Skillz Forge directive for the canonical `/skillz-forge/`
+  dossier. Historical audits remain evidence, not current inventory.
+- Move long-form material from three imported community entry points into
+  package-local references without changing their frontmatter or substantive
+  guidance. Structural validation is not a behavioral benchmark.
+- This is a candidate until the final merged revision, required CI/security
+  checks, live Pages output, and Replit Free Mode/checkout state are verified.
+
 ## 2026-10-11
 
 - Skill Foundry 3.1.1 accepts strict SemVer as plain, single-quoted, or
