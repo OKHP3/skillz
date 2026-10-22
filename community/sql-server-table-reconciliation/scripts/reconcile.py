@@ -27,7 +27,6 @@ import re
 import sys
 from getpass import getpass
 
-
 _IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_]{0,127}\Z", re.ASCII)
 
 
@@ -60,28 +59,31 @@ def quote_columns(columns):
 
 
 # --- Connection Setup ---
-def connect(server, database, auth_mode, user=None, password=None):
+def connect(server, database, auth_mode, user=None, password=None,
+            trust_server_certificate=False):
     """Connect using mssql-python driver.
 
     Reads credentials from env vars or prompts interactively. Never hardcodes."""
+    options = {
+        "server": server,
+        "database": database,
+        "encrypt": "yes",
+        "trust_server_certificate": "yes" if trust_server_certificate else "no",
+    }
     if auth_mode == "sql":
         user = user or os.environ.get("MSSQL_USER") or input("Username: ")
         password = password or os.environ.get("MSSQL_PASSWORD") or getpass("Password: ")
-        conn_str = (
-            f"Server={server};Database={database};"
-            f"UID={user};PWD={password};"
-            f"TrustServerCertificate=yes;Encrypt=yes"
-        )
-    else:
+        options.update(uid=user, pwd=password)
+    elif auth_mode == "entra":
         # Entra (Azure AD) authentication
-        conn_str = (
-            f"Server={server};Database={database};"
-            f"Authentication=ActiveDirectoryDefault;"
-            f"TrustServerCertificate=yes;Encrypt=yes"
-        )
+        options["authentication"] = "ActiveDirectoryDefault"
+    else:
+        raise ValueError("Unsupported authentication mode")
+
     from mssql_python import connect as mssql_connect
 
-    return mssql_connect(conn_str)
+    # Keyword arguments avoid connection-string injection and password escaping.
+    return mssql_connect(**options)
 
 
 # --- Table Discovery ---
@@ -368,6 +370,11 @@ def main():
         help="Authentication mode (default: sql)",
     )
     parser.add_argument(
+        "--trust-self-signed-certificate",
+        action="store_true",
+        help="Development only: skip SQL Server certificate validation for a controlled self-signed server",
+    )
+    parser.add_argument(
         "--primary-key",
         default=None,
         help="Comma-separated PK column(s). Auto-detected if omitted.",
@@ -394,11 +401,16 @@ def main():
     pk_override = [c.strip() for c in args.primary_key.split(",")] if args.primary_key else None
     columns = [c.strip() for c in args.columns.split(",")] if args.columns else None
 
+    if args.trust_self_signed_certificate:
+        print("WARNING: server certificate validation disabled for development", file=sys.stderr)
+
     print(f"Connecting to source: {args.source_server}/{args.source_database}")
-    source_conn = connect(args.source_server, args.source_database, args.auth)
+    source_conn = connect(args.source_server, args.source_database, args.auth,
+                          trust_server_certificate=args.trust_self_signed_certificate)
 
     print(f"Connecting to target: {args.target_server}/{args.target_database}")
-    target_conn = connect(args.target_server, args.target_database, args.auth)
+    target_conn = connect(args.target_server, args.target_database, args.auth,
+                          trust_server_certificate=args.trust_self_signed_certificate)
 
     tables = resolve_tables(source_conn, args.tables)
     print(f"Tables to reconcile: {tables}")

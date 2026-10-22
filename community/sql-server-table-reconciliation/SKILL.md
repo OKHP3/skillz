@@ -37,6 +37,12 @@ underscore, up to 128 characters. The script quotes accepted identifiers in
 generated SQL and rejects other input before executing a query. SQL Server
 names containing spaces or punctuation are not supported by this script.
 
+Connections require TLS and validate the SQL Server certificate by default.
+Use a trusted certificate on production and staging servers. For a controlled
+local development server with a self-signed certificate only, pass
+`--trust-self-signed-certificate` explicitly; this disables certificate
+validation and prints a warning. Never use that option for production data.
+
 ## Bundled Script
 
 The reconciliation logic is provided as a standalone script at `scripts/reconcile.py`. Invoke it with the appropriate arguments based on user inputs:
@@ -59,6 +65,7 @@ python scripts/reconcile.py \
 |----------|-------------|
 | `--primary-key` | Comma-separated PK column(s). Omit to auto-detect. |
 | `--columns` | Comma-separated columns to compare. Omit to compare all non-PK columns. |
+| `--trust-self-signed-certificate` | Development only; skip certificate validation for a controlled self-signed server. |
 
 ### Example invocations
 
