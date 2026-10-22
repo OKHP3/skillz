@@ -128,9 +128,11 @@ or not run.
 
 ## Current status
 
-This active family contains 36 analytical, structurally validated packages:
-12 SharePoint Library skills, 12 SharePoint List skills, and 12 Copilot Cowork
-skills. It does not yet have live host discovery, tenant, or benchmark evidence.
+This active family contains 42 packages: 12 SharePoint Library skills,
+12 SharePoint List skills, 12 Copilot Cowork task skills, four host-specific
+Skill Foundries, and two additional SharePoint review contracts. Structural
+validation does not establish live host discovery, tenant permissions, or
+task-quality performance.
 
 <!-- FAMILY_SUMMARY_START -->
 Host-oriented Agent Skills for GitHub Copilot, Copilot Cowork, SharePoint Copilot, Copilot Studio, and other verified Copilot runtimes.
