@@ -3,6 +3,7 @@ import errno
 import importlib.util
 from pathlib import Path
 import unittest
+import socket
 from unittest.mock import Mock, patch
 
 spec = importlib.util.spec_from_file_location("review", Path(__file__).with_name("generate_review.py"))
@@ -24,6 +25,24 @@ class ServerStartupTests(unittest.TestCase):
         self.assertEqual([call.args[0] for call in bind.call_args_list], [("127.0.0.1", 3117), ("127.0.0.1", 0)])
         kill.assert_not_called()
         run.assert_not_called()
+
+    def test_live_occupied_socket_remains_available(self):
+        # No requests or server thread: prove the original listening socket
+        # survives the fallback using a local connection and accept.
+        with socket.socket() as original:
+            original.bind(("127.0.0.1", 0))
+            original.listen(1)
+            original.settimeout(2)
+            port = original.getsockname()[1]
+            alternate = review.bind_review_server(port, review.ReviewHandler)
+            try:
+                self.assertGreater(alternate.server_address[1], 0)
+                self.assertNotEqual(alternate.server_address[1], port)
+                with socket.create_connection(("127.0.0.1", port), timeout=2):
+                    accepted, _ = original.accept()
+                    accepted.close()
+            finally:
+                alternate.server_close()
 
     def test_other_bind_errors_are_not_hidden(self):
         with patch.object(review, "HTTPServer", side_effect=OSError(errno.EACCES, "denied")) as bind:
