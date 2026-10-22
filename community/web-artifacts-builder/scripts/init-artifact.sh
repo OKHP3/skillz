@@ -44,12 +44,12 @@ fi
 
 PROJECT_NAME="$1"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-COMPONENTS_TARBALL="$SCRIPT_DIR/shadcn-components.tar.gz"
+COMPONENTS_DIR="$SCRIPT_DIR/shadcn-components"
 
-# Check if components tarball exists
-if [ ! -f "$COMPONENTS_TARBALL" ]; then
-  echo "❌ Error: shadcn-components.tar.gz not found in script directory"
-  echo "   Expected location: $COMPONENTS_TARBALL"
+# Check if the bundled component sources exist
+if [ ! -d "$COMPONENTS_DIR/components/ui" ]; then
+  echo "❌ Error: bundled shadcn/ui component sources not found"
+  echo "   Expected location: $COMPONENTS_DIR/components/ui"
   exit 1
 fi
 
@@ -272,9 +272,9 @@ echo "📦 Installing shadcn/ui dependencies..."
 pnpm install @radix-ui/react-accordion @radix-ui/react-aspect-ratio @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-context-menu @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-hover-card @radix-ui/react-label @radix-ui/react-menubar @radix-ui/react-navigation-menu @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-slot @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-toast @radix-ui/react-toggle @radix-ui/react-toggle-group @radix-ui/react-tooltip
 pnpm install sonner cmdk vaul embla-carousel-react react-day-picker react-resizable-panels date-fns react-hook-form @hookform/resolvers zod
 
-# Extract shadcn components from tarball
-echo "📦 Extracting shadcn/ui components..."
-tar -xzf "$COMPONENTS_TARBALL" -C src/
+# Copy the bundled, reviewable shadcn/ui sources into the new project
+echo "📦 Copying shadcn/ui components..."
+cp -R "$COMPONENTS_DIR"/. src/
 
 # Create components.json for reference
 echo "📝 Creating components.json config..."
