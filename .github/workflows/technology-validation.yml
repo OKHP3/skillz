@@ -89,6 +89,9 @@ jobs:
           /tmp/technology-check/bin/python -m pip install -r "$REQUIREMENTS"
           /tmp/technology-check/bin/python -m pip check
           /tmp/technology-check/bin/python -m compileall -q "$(dirname "$REQUIREMENTS")"
+          if [ "$REQUIREMENTS" = "community/mcp-builder/scripts/requirements.txt" ]; then
+            /tmp/technology-check/bin/python -m unittest discover -s community/mcp-builder/scripts/tests -v
+          fi
 
   mermaid-tooling:
     runs-on: ubuntu-latest
