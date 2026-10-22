@@ -7,7 +7,10 @@ on:
       - "artifacts/forge-review-desk/**"
       - "docs/archive/**"
       - "MIGRATION.md"
+      - "skillz.manifest.json"
       - "**/*.md"
+      - "**/evals/**"
+      - "**/benchmarks/**"
       - "LICENSE"
       - "scripts/verify-archive-links.mjs"
       - "scripts/verify-archive-links.test.mjs"
@@ -41,7 +44,10 @@ on:
       - "artifacts/forge-review-desk/**"
       - "docs/archive/**"
       - "MIGRATION.md"
+      - "skillz.manifest.json"
       - "**/*.md"
+      - "**/evals/**"
+      - "**/benchmarks/**"
       - "LICENSE"
       - "scripts/verify-archive-links.mjs"
       - "scripts/verify-archive-links.test.mjs"
@@ -91,7 +97,7 @@ jobs:
           node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root universal/okhp3-repository-settings
       - name: Build and test catalog contracts
         run: |
-          node artifacts/forge/scripts/build-catalog.js
+          node artifacts/forge/scripts/build-catalog.js --check-manifest
           node artifacts/forge/scripts/test-catalog.mjs
 
   universe-map-contract:
