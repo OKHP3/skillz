@@ -57,6 +57,8 @@ jobs:
         env:
           PORT: '5000'
           BASE_PATH: '/skillz/'
+      - name: Verify HTTP logging compatibility and header redaction
+        run: pnpm --filter @workspace/api-server exec node --test tests/logging.test.mjs
       - name: Exercise Node process contracts
         run: |
           for manifest in process-capture/*/package.json; do
