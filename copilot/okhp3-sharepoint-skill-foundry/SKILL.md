@@ -69,7 +69,7 @@ unseen release holdout has been completed.
 - **Authority:** Edit creates site skills and View runs them by default,
   subject to file governance. Neither skill type expands the user's access.
 - **Hard boundary:** no external systems and no custom code.
-- **Site context:** `SHAREPOINT.md` is not established here as a required
+- **Site context:** SHAREPOINT.md is not established here as a required
   skill-package artifact. Verify filename-specific site-context behavior
   separately; a context file does not grant task capabilities.
 - **Authoring route:** create through the native chat and review the draft
@@ -175,7 +175,7 @@ The required input must prevent the agent from silently scanning an entire site.
 
 No generic repository template is a guarantee of SharePoint's saved format.
 For deployment, compare against a native-chat-created skill on the intended
-site and preserve its structure. `SHAREPOINT.md` and community contribution
+site and preserve its structure. SHAREPOINT.md and community contribution
 wrappers are separate conventions; neither grants native capability.
 
 ## Discovery and revision record
