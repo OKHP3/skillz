@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -54,7 +55,8 @@ def read_text_sample(path: Path, limit: int) -> dict[str, object] | None:
     if path.suffix.lower() not in TEXT_EXTENSIONS:
         return None
     try:
-        text = path.read_text(encoding="utf-8", errors="replace")[:limit]
+        with path.open("rb") as handle:
+            text = handle.read(limit).decode("utf-8", errors="replace")
     except OSError:
         return None
     headings = [line.strip() for line in text.splitlines() if line.lstrip().startswith("#")][:12]
@@ -119,6 +121,42 @@ def positive_int(value: str) -> int:
     return parsed
 
 
+def is_linklike(path: Path) -> bool:
+    """Treat file symlinks and Windows directory junctions as scan boundaries."""
+    if path.is_symlink():
+        return True
+    is_junction = getattr(path, "is_junction", None)
+    return bool(is_junction and is_junction())
+
+
+def walk_repository(root: Path, scan_errors: list[str]):
+    """Yield paths without following links or enumerating skipped subtrees."""
+    def record_error(error: OSError) -> None:
+        scan_errors.append(str(error))
+
+    for current, dirnames, filenames in os.walk(
+        root, topdown=True, followlinks=False, onerror=record_error
+    ):
+        parent = Path(current)
+        retained_dirs: list[str] = []
+        for name in sorted(dirnames):
+            if name in SKIP_DIRS:
+                continue
+            path = parent / name
+            if is_linklike(path):
+                yield "symlink", path
+            else:
+                retained_dirs.append(name)
+                yield "directory", path
+        dirnames[:] = retained_dirs
+        for name in sorted(filenames):
+            path = parent / name
+            if is_linklike(path):
+                yield "symlink", path
+            elif path.is_file():
+                yield "file", path
+
+
 def main() -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -137,6 +175,8 @@ def main() -> int:
     records: list[dict[str, object]] = []
     extension_counts: Counter[str] = Counter()
     directories: set[str] = set()
+    symlinks_skipped: list[str] = []
+    scan_errors: list[str] = []
     size_groups: defaultdict[tuple[int, str], list[str]] = defaultdict(list)
     naming_paths: defaultdict[str, set[str]] = defaultdict(set)
     portability_violations: defaultdict[str, set[str]] = defaultdict(set)
@@ -149,22 +189,21 @@ def main() -> int:
         governance[special_dir] = (root / special_dir).is_dir()
 
     truncated = False
-    for path in sorted(root.rglob("*")):
-        if any(part in SKIP_DIRS for part in path.relative_to(root).parts):
-            continue
-        if path.is_dir():
-            relative = str(path.relative_to(root)).replace("\\", "/")
+    for kind, path in walk_repository(root, scan_errors):
+        relative = str(path.relative_to(root)).replace("\\", "/")
+        if kind == "directory":
             directories.add(relative)
             for component in relative.split("/"):
                 inspect_name(relative, component, naming_paths, portability_violations)
             normalized_paths[unicodedata.normalize("NFC", relative).casefold()].append(relative)
             continue
-        if not path.is_file():
+        if kind == "symlink":
+            symlinks_skipped.append(relative)
+            normalized_paths[unicodedata.normalize("NFC", relative).casefold()].append(relative)
             continue
         if len(records) >= args.max_files:
             truncated = True
             break
-        relative = str(path.relative_to(root)).replace("\\", "/")
         for component in relative.split("/"):
             inspect_name(relative, component, naming_paths, portability_violations)
         normalized_paths[unicodedata.normalize("NFC", relative).casefold()].append(relative)
@@ -209,11 +248,15 @@ def main() -> int:
         "summary": {
             "file_count": len(records),
             "directory_count": len(directories),
+            "symlink_count": len(symlinks_skipped),
             "total_bytes": sum(item["size_bytes"] or 0 for item in records),
             "extensions": dict(extension_counts.most_common()),
             "naming_signals": naming_signals,
             "truncated": truncated,
+            "scan_incomplete": truncated or bool(scan_errors),
         },
+        "symlinks_skipped": sorted(symlinks_skipped),
+        "scan_errors": scan_errors,
         "portability_violations": {
             key: sorted(paths) for key, paths in sorted(portability_violations.items())
         },
@@ -221,6 +264,7 @@ def main() -> int:
         "files": records,
         "notes": [
             "Inventory excludes .git and common dependency/cache directories.",
+            "Symlink and junction targets are not followed; skipped paths are reported.",
             "Text headings and terms are samples for agent inspection, not a summary or classification.",
             "Duplicate candidates are exact size and SHA-256 matches only when --hash is used.",
         ],

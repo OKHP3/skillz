@@ -5,7 +5,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.2.0"
+  version: "1.2.1"
   category: universal
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -74,7 +74,7 @@ Run the bundled script from this skill's directory, substituting the target path
 py -3 scripts/inventory_repo.py --root <absolute-repository-path>
 ```
 
-Use `python3` or `python` when that is the available local command. Add `--hash` only when duplicate analysis is needed. If Python or the script is unavailable, continue with native read-only inventory commands and explicitly mark script-based diagnostics as not run. The script is read-only and reports file counts, bytes, extensions, root governance files, naming and portability violations, likely text headings, and duplicate candidates. Then inspect:
+Use `python3` or `python` when that is the available local command. Add `--hash` only when duplicate analysis is needed. If Python or the script is unavailable, continue with native read-only inventory commands and explicitly mark script-based diagnostics as not run. The script is read-only and reports file counts, bytes, extensions, root governance files, naming and portability violations, likely text headings, duplicate candidates, skipped symlinks or junctions, and scan errors. A `scan_incomplete` result lowers confidence. Do not follow a skipped link target unless its location is separately in scope. Then inspect:
 
 - root files and folders, including hidden governance folders and nested repositories
 - README, AGENTS, CLAUDE, changelog, lifecycle, migration, license, and GitHub configuration files
@@ -211,6 +211,11 @@ original versions and bytes as historical records; they do not validate this
 version or its profile selection. Profile regression cases are defined in
 [the evaluation design](evals/brand-profile-cases.json) and are not live runs.
 Structural validation is separate from behavioral or performance evidence.
+Version 1.2.1 bounds text sampling and skips symlink and junction targets in the
+inventory helper. Run `py -3 tests/inventory-safety.py` from this package to
+check those boundaries. Earlier model benchmarks and the 1.2.0 brand-profile
+design remain historical or not run for this version; deterministic helper
+tests do not establish current model-behavior uplift.
 
 ## About
 

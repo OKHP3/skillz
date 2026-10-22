@@ -31,6 +31,14 @@
 - The skill still requires an authorized SQL Server connection. This change does
   not alter its certificate trust setting or clear the wider Shield findings.
 
+## 2026-10-21: repository inventory boundary
+
+- Hardened `okhp3-repository-organizer` inventory in version 1.2.1: bounded
+  text sampling, skipped symlink and Windows junction targets, pruned dependency
+  directories, and explicit incomplete-scan signals. Added regression checks
+  for repository-boundary and sampling behavior. Prior model evaluations remain
+  historical; no current-version behavioral benchmark is claimed.
+
 ## 2026-10-11
 
 - Skill Foundry 3.1.1 accepts strict SemVer as plain, single-quoted, or
