@@ -56,9 +56,9 @@ catalog:
   framer-motion: ^13.4.1
   lucide-react: ^1.59.0
   # Must be this exact version because expo requires it
-  react: 19.3.0
+  react: 19.3.1
   # Must be this exact version because expo requires it
-  react-dom: 19.3.0
+  react-dom: 19.3.1
   tailwind-merge: ^3.7.0
   tailwindcss: ^4.1.14
   tsx: ^4.23.15
