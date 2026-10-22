@@ -15,7 +15,7 @@ compatibility: >
   and runtime-specific adapters are optional and must be supplied explicitly.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.1"
+  version: 1.0.1
   category: evaluation-and-governance
   origin: okhp3/skillz
   homepage: https://overkillhill.com
