@@ -119,6 +119,28 @@ class InventorySafetyTests(unittest.TestCase):
         self.assertTrue(result["files"][0]["hash_error"])
         self.assertTrue(any("synthetic-denied" in error for error in result["scan_errors"]))
 
+    def test_linked_repository_root_is_rejected_before_scan(self) -> None:
+        module = self.load_module()
+        stderr = io.StringIO()
+        with mock.patch.object(module, "is_linklike", side_effect=lambda path: path == self.repo), \
+             mock.patch.object(module, "walk_repository", side_effect=AssertionError("root traversed")), \
+             mock.patch.object(sys, "argv", [str(SCRIPT), "--root", str(self.repo)]), \
+             contextlib.redirect_stderr(stderr):
+            self.assertEqual(module.main(), 2)
+        self.assertIn("linked repository root", stderr.getvalue())
+
+    def test_long_skipped_link_path_is_reported(self) -> None:
+        module = self.load_module()
+        long_name = "a" * 181
+        output = io.StringIO()
+        with mock.patch.object(module, "walk_repository", return_value=iter([("symlink", self.repo / long_name)])), \
+             mock.patch.object(sys, "argv", [str(SCRIPT), "--root", str(self.repo)]), \
+             contextlib.redirect_stdout(output):
+            self.assertEqual(module.main(), 0)
+        result = json.loads(output.getvalue())
+        self.assertIn(long_name, result["symlinks_skipped"])
+        self.assertIn(long_name, result["portability_violations"]["long_relative_path"])
+
     def test_prunes_dependency_directories_and_reports_file_limit(self) -> None:
         dependency = self.repo / "node_modules"
         dependency.mkdir()

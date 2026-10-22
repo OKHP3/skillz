@@ -185,7 +185,16 @@ def main() -> int:
     parser.add_argument("--sample-bytes", type=positive_int, default=12000)
     args = parser.parse_args()
 
-    root = Path(args.root).expanduser().resolve()
+    unresolved_root = Path(os.path.abspath(os.path.expanduser(args.root)))
+    try:
+        for component in (unresolved_root, *unresolved_root.parents):
+            if is_linklike(component):
+                print(json.dumps({"error": f"linked repository root or ancestor: {component}"}), file=sys.stderr)
+                return 2
+    except OSError as error:
+        print(json.dumps({"error": f"cannot inspect repository root: {error}"}), file=sys.stderr)
+        return 2
+    root = unresolved_root.resolve()
     if not root.is_dir():
         print(json.dumps({"error": f"not a directory: {root}"}), file=sys.stderr)
         return 2
@@ -209,6 +218,9 @@ def main() -> int:
     truncated = False
     for kind, path in walk_repository(root, scan_errors):
         relative = str(path.relative_to(root)).replace("\\", "/")
+        if len(relative) > 180:
+            naming_paths["long_relative_path"].add(relative)
+            portability_violations["long_relative_path"].add(relative)
         if kind == "directory":
             directories.add(relative)
             for component in relative.split("/"):
@@ -227,9 +239,6 @@ def main() -> int:
         for component in relative.split("/"):
             inspect_name(relative, component, naming_paths, portability_violations)
         normalized_paths[unicodedata.normalize("NFC", relative).casefold()].append(relative)
-        if len(relative) > 180:
-            naming_paths["long_relative_path"].add(relative)
-            portability_violations["long_relative_path"].add(relative)
         suffix = path.suffix.lower() or "[none]"
         try:
             size = path.stat().st_size

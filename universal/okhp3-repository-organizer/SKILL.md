@@ -74,7 +74,7 @@ Run the bundled script from this skill's directory, substituting the target path
 py -3 scripts/inventory_repo.py --root <absolute-repository-path>
 ```
 
-Use `python3` or `python` when that is the available local command. Add `--hash` only when duplicate analysis is needed. If Python or the script is unavailable, continue with native read-only inventory commands and explicitly mark script-based diagnostics as not run. The script is read-only and reports file counts, bytes, extensions, root governance files, naming and portability violations, likely text headings, duplicate candidates, skipped symlinks or junctions, and scan errors. A `scan_incomplete` result lowers confidence. Do not follow a skipped link target unless its location is separately in scope. Then inspect:
+Use `python3` or `python` when that is the available local command. Add `--hash` only when duplicate analysis is needed. If Python or the script is unavailable, continue with native read-only inventory commands and explicitly mark script-based diagnostics as not run. The script rejects a linked root or ancestor; supply the verified physical repository path instead. It is read-only and reports file counts, bytes, extensions, root governance files, naming and portability violations, likely text headings, duplicate candidates, skipped symlinks or junctions, and scan errors. A `scan_incomplete` result lowers confidence. Do not follow a skipped link target unless its location is separately in scope. Then inspect:
 
 - root files and folders, including hidden governance folders and nested repositories
 - README, AGENTS, CLAUDE, changelog, lifecycle, migration, license, and GitHub configuration files

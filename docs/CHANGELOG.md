@@ -43,8 +43,9 @@
 
 - Hardened `okhp3-repository-organizer` inventory in version 1.2.1: bounded
   text sampling, skipped symlink and Windows reparse-point targets (including
-  junctions on older Python), pruned dependency directories, and incomplete-scan
-  signals for file failures. Skipped link names still receive portability checks.
+  junctions on older Python), rejected linked roots and ancestors, pruned
+  dependency directories, and incomplete-scan signals for file failures.
+  Skipped link names still receive portability and full-path-length checks.
   Added regression checks for repository-boundary and sampling behavior. Prior
   model evaluations remain
   historical; no current-version behavioral benchmark is claimed.
