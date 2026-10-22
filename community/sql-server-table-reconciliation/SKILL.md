@@ -163,7 +163,7 @@ When a single table is provided, include full detail (schema drift, sample rows,
 
 - Always use `mssql-python` driver (not pyodbc, pymssql)
 - Always use Apache Arrow via cursor (`cursor.arrow()`) for data extraction
-- Connection MUST use connection string format, not keyword arguments (kwargs like `encrypt=True` throw errors)
+- Use `mssql-python` connection keyword values as documented by Microsoft, for example `encrypt="yes"` and `trust_server_certificate="no"`; do not pass Boolean values such as `encrypt=True`. Keyword values keep SQL passwords containing semicolons out of an interpolated connection string. See [mssql-python connection strings](https://learn.microsoft.com/en-us/sql/connect/python/mssql-python/connection-strings).
 - Never compare without identifying PK first — ask user if auto-detect fails
 - Handle connection failures gracefully with retry logic
 - **Never hardcode credentials** in generated scripts — use `os.environ` / `getpass` (env vars: `MSSQL_USER`, `MSSQL_PASSWORD`)
