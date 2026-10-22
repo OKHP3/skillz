@@ -1,12 +1,24 @@
 # Technology Update Plan
 
-Status: the weekly inventory and bounded runtime-candidate workflow are active on GitHub
-`main`. This document defines the acceptance gates; the current generated inventory refresh
-is PR #121. The workflow proposes changes for review and never merges them automatically or
-promises that every new major is compatible.
-The weekly workflow is active and completed a successful refresh on September 26
-([run 36250116211](https://github.com/OKHP3/skillz/actions/runs/36250116211)); that refresh
-created the current inventory PR (#121) on `automation/technology-inventory`.
+Status checked October 21, 2026: the weekly inventory and bounded runtime-candidate
+workflow are active on GitHub `main`. The October 19 refresh succeeded
+([run 39224893334](https://github.com/OKHP3/skillz/actions/runs/39224893334)); its
+updated proposal passed the full checks and merged as
+[PR #144](https://github.com/OKHP3/skillz/pull/144). Current CI pins are Node
+24.22.0, Python 3.14.8, and pnpm 10.34.7. Windows and Replit runtime installations
+must still be measured independently of these declarations.
+
+The workflow proposes changes for review and never merges automatically. The
+daily compatible package proposal merged as
+[PR #169](https://github.com/OKHP3/skillz/pull/169). Current major-version work
+must validate the combined lockfile, browser behavior, and HTTP logger redaction.
+The Pino migration pairs Pino 10 with pino-http 11, and resizable-panel consumers
+must use the upstream Group/Separator and orientation APIs.
+
+The MCP SDK requirement and Mermaid CLI proposals remain held by their failed
+or incomplete Skillz Shield package scans. An install/typecheck pass does not
+clear a security or coverage failure. New majors outside the accepted runtime
+boundaries remain separately reviewed migrations.
 
 ## Coverage and ownership
 
