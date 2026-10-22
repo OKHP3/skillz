@@ -11,6 +11,8 @@ GitHub Action references must use the new name explicitly; repository web redire
 do not redirect Action calls. The consumer's allowed-action policy must include
 `OKHP3/skillz-shield@*`. The repository and its history remain the same, with an
 immutable commit pin in each workflow step.
+The separate review job also requires the official `actions/download-artifact@*`
+allowlist entry to retrieve the sanitized report from the raw scan job.
 
 ## Scope
 
