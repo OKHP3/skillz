@@ -20,6 +20,16 @@
   handoff in context-extraction. Expanded the family explanation and synchronized
   the inspected project-local mirrors. Community packages remain independent.
 
+## 2026-10-21: source manifest inventory validation
+
+- Refresh the manifest from the current 333 distribution skills and 54 support
+  packages, including derived maturity and evidence counts.
+- Check source inventory before catalog generation can overwrite stale counts
+  in local integrity checks and release validation. Compare complete category
+  maps as well as totals and family membership; ignore build timestamps.
+- Keep publication regeneration and skill scanning unchanged. These checks
+  establish metadata consistency, not behavioral or security acceptance.
+
 ## 2026-10-11
 
 - Skill Foundry 3.1.1 accepts strict SemVer as plain, single-quoted, or

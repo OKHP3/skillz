@@ -13,15 +13,15 @@
       ".agents/skills/okhp3-handoff-packaging/package.json": "12464153c950e88e236afe3d619dbd127b190fb4d4451ac2623cf533ca81e3d6",
       ".agents/skills/okhp3-process-gap-analysis/package.json": "9f4b739bfd8e03ed17b627752189cf93db834ac1426deadfd25e1f98ec55b000",
       ".agents/skills/okhp3-process-intake-and-scope/package.json": "a1cc8cad300d4ae6ff6aa2e5209c9ff167b554a30e1792bfa8155e4edfc51e30",
-      ".github/node-version": "a1c56e968c358e10872d64220b3ae759ffe7feaffc4da95fae425dbcca43fe44",
-      ".github/python-version": "5abd4dc1efa09469b88916c8e4e027a8c266a9b6d06f43ac9da3e30cd00b4ab5",
+      ".github/node-version": "d9f318747a126ce2247661af67852b185def7789492eabfad7bba322be087c33",
+      ".github/python-version": "7651ce7dab58e5733ba35597459414699ca339dde25a68aac3d8a89a0c89e5c6",
       ".github/scripts/refresh_technology_inventory.py": "009a6f054ace396f525984880671d54a2c82c3bf019b3236c1e1f92e9375fe29",
       ".github/scripts/requirements.txt": "952f691b62f47f0c9a3807bd6093329f539e6bd713eb5b9f381e2e3d19604357",
       ".github/workflows/deploy-pages.yml": "5f3f231256aed7df61c3013d9014d98fe4a153810495c2ea4ef027bb102eec55",
       ".github/workflows/publish-health-check.yml": "4100ea89a03530ed94cdb71044c975a06dbb26975fbedbd2b95898ab01b1ad01",
       ".github/workflows/refresh-technology-inventory.yml": "970feeb861750455d6f527f2e2a2ede16a0a624006effb35521e69e4c491cc0e",
       ".github/workflows/release-validation.yml": "03a8bb0aa53b2805ed57ffeb4cf139df29970df33cc52ae88324cf285d63d3c0",
-      ".github/workflows/skill-security.yml": "28abbaddf73a53d9cc015e119622e2e8ea46ae6c2039e96e16803a4cefb7e5b8",
+      ".github/workflows/skill-security.yml": "2d33df41abd95217f1cd37406fab089027cd410e8af41a58a0eb2a85e1b92f7d",
       ".github/workflows/technology-validation.yml": "402a17efdf39becfcd9cbac24c421e037349517c7af695fccdae75e4ba46f033",
       ".github/workflows/test-landing-dispatch.yml": "37dd086e6e3ab7052bc96cd3babac311562099c39fa066dcab25b0544e8a114b",
       ".github/workflows/verify-skill-landing.yml": "b823e201355baec1158db19dc196219183a7c03a368f501b98ab8c9af56679ee",
@@ -122,7 +122,7 @@
         "declarations": [
           {
             "path": ".github/workflows/skill-security.yml",
-            "requirement": "d35273fe51c4c4669288de53efbc067558809a07"
+            "requirement": "ddc23d168a0552c49209129bd361d1846c77e6b3"
           }
         ],
         "ecosystem": "github",
@@ -6654,14 +6654,14 @@
   },
   "runtimes": {
     "Node.js": {
-      "current": "24.22.0",
+      "current": "24.22.1",
       "latest": "26.12.1",
       "latest_lts": "24.22.1",
       "source": "https://nodejs.org/dist/index.json",
       "target": "24.22.1"
     },
     "Python": {
-      "current": "3.14.8",
+      "current": "3.14.9",
       "latest": "3.15.1",
       "source": "https://www.python.org/downloads/",
       "target": "3.14.9"
@@ -6979,8 +6979,8 @@
     },
     "github:actions/setup-python": {
       "basis": "publisher latest stable GitHub release",
-      "latest": "7.0.0",
-      "source": "https://github.com/actions/setup-python/releases/tag/v7.0.0",
+      "latest": "7.1.0",
+      "source": "https://github.com/actions/setup-python/releases/tag/v7.1.0",
       "tags": {
         "v1": "0f07f7f756721ebd886c2462646a35f78a8bc4de",
         "v1.0.0": "5dc682444b783d6c1abdc04d2f5c83e6d34e07a9",
@@ -7046,7 +7046,8 @@
         "v6.2.0": "a309ff8b426b58ec0e2a45f0f869d46889d02405",
         "v6.3.0": "ece7cb06caefa5fff74198d8649806c4678c61a1",
         "v7": "5fda3b95a4ea91299a34e894583c3862153e4b97",
-        "v7.0.0": "5fda3b95a4ea91299a34e894583c3862153e4b97"
+        "v7.0.0": "5fda3b95a4ea91299a34e894583c3862153e4b97",
+        "v7.1.0": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0"
       }
     },
     "github:actions/upload-artifact": {
