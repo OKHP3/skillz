@@ -87,7 +87,7 @@ not authorship, host compatibility, or an assertion of maturity.
 
 ## Evidence and portability
 
-The 0.2.0 contracts use runtime-supplied destinations, host inventories, owners,
+These contracts use runtime-supplied destinations, host inventories, owners,
 and project paths. Named companions have explicit unavailable-skill fallbacks.
 Examples and evaluation fixtures are synthetic. Packaged evaluations are
 development cases exposed during authoring; a protected release holdout is
