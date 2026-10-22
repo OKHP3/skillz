@@ -104,6 +104,13 @@
   verified Skillz support mirror. Historical benchmarks remain historical;
   current-version behavioral performance has not been evaluated.
 
+## 2026-10-21
+
+- Corrected `okhp3-equilibrium-review` dry-run output so every recorded role
+  points to an actual not-run result file instead of a nonexistent path. The
+  package is now version 1.0.1; live reviewer quality and holdout evidence
+  remain unrun.
+
 ## 2026-09-27: persona capability skills and the MurderBird family
 
 - Add the `murderbird/` family with `okhp3-murderbird-argument-audit` and

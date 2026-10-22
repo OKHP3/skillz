@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-equilibrium-review",
-  "skill_version": "1.0.0",
+  "skill_version": "1.0.1",
   "status": "design-ready",
   "holdout_seen": true,
   "holdout_status": "external-required",
