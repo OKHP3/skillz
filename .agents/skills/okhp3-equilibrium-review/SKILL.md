@@ -18,6 +18,8 @@ metadata:
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
+  inScope: "Evidence-led review of artifact claims, hypotheses, decisions, and release readiness."
+  outScope: "Invented evidence, autonomous publication, and specialist authority replaced by this skill."
 ---
 
 # okhp3-equilibrium-review
