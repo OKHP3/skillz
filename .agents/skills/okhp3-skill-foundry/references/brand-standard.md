@@ -18,7 +18,7 @@ license: MIT
 compatibility: <Only real environment requirements, if any>
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: 1.0.0
   category: <category>
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -35,8 +35,14 @@ metadata:
 | `license` | Use `MIT` for OKHP3 skills unless an authorized exception applies. |
 | `compatibility` | Optional and at most 500 characters. State only actual runtime, tool, network, or host requirements. |
 | `metadata` | Optional under the open format. For OKHP3 skills, use string-valued provenance and version fields shown above. |
-| `metadata.version` | Quoted semantic version. |
+| `metadata.version` | Strict SemVer string, plain or enclosed in matching single or double quotes. Prefer plain form for compatibility with path-reference scanners. |
 | `in_scope` / `out_of_scope` | Short string boundaries that prevent accidental scope expansion. |
+
+Plain SemVer retains the same YAML string value as the quoted form. Require
+major.minor.patch with no leading zeroes; optional prerelease and build identifiers
+must follow SemVer syntax. Arbitrary scalars, malformed quotes, and missing
+versions are invalid. This authoring convention does not exempt any file or
+reference from security inspection or change incomplete-scan handling.
 
 In this repository, keep package directories at 36 characters or fewer,
 except direct `copilot/<package>/` host-skill packages, which may use up to 50

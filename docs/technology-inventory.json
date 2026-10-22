@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-26",
+  "checked_at": "2026-10-22",
   "discovery": {
     "excluded_archives": [
       "docs/archive/root-scaffold/package-lock.json",
@@ -13,24 +13,24 @@
       ".agents/skills/okhp3-handoff-packaging/package.json": "12464153c950e88e236afe3d619dbd127b190fb4d4451ac2623cf533ca81e3d6",
       ".agents/skills/okhp3-process-gap-analysis/package.json": "9f4b739bfd8e03ed17b627752189cf93db834ac1426deadfd25e1f98ec55b000",
       ".agents/skills/okhp3-process-intake-and-scope/package.json": "a1cc8cad300d4ae6ff6aa2e5209c9ff167b554a30e1792bfa8155e4edfc51e30",
-      ".github/node-version": "73fb1b615e2043a933be1c0895cde4358036acc28d785692509b822aa53c761f",
-      ".github/python-version": "922fe0c3de073b01988e23348ea184456161678c5e329e6f34be89be24383f93",
+      ".github/node-version": "d9f318747a126ce2247661af67852b185def7789492eabfad7bba322be087c33",
+      ".github/python-version": "7651ce7dab58e5733ba35597459414699ca339dde25a68aac3d8a89a0c89e5c6",
       ".github/scripts/refresh_technology_inventory.py": "009a6f054ace396f525984880671d54a2c82c3bf019b3236c1e1f92e9375fe29",
       ".github/scripts/requirements.txt": "952f691b62f47f0c9a3807bd6093329f539e6bd713eb5b9f381e2e3d19604357",
-      ".github/workflows/deploy-pages.yml": "7f4bda0981c70858ac342d988ec74dfb24c65976907fbe17737ca97965188c7f",
-      ".github/workflows/publish-health-check.yml": "fa2fb2e64539900f50ce947db8b4d4dea98edd3dba1120dfeaee893377f762f3",
-      ".github/workflows/refresh-technology-inventory.yml": "cbdeed2ff4cbb1466e21a2cf7a8007f5489ea8186307d0c3acda147f1513f214",
-      ".github/workflows/release-validation.yml": "3a24ea7efd067c87ab15f847a22689f7a103f60aec0f1dc1cd3f141d3e36c70f",
-      ".github/workflows/skill-security.yml": "7457546257048b864ec1c670bc1661310e57c0f7679c68d16018598c9549e7f0",
-      ".github/workflows/technology-validation.yml": "e0b1462a9b4eabbb047d2ab56ff5b9e315186141663c48804098edae1b780947",
-      ".github/workflows/test-landing-dispatch.yml": "2048aa568b54fddc5528c7b08af00980c3d0147683315fbfa628657617610575",
+      ".github/workflows/deploy-pages.yml": "5f3f231256aed7df61c3013d9014d98fe4a153810495c2ea4ef027bb102eec55",
+      ".github/workflows/publish-health-check.yml": "4100ea89a03530ed94cdb71044c975a06dbb26975fbedbd2b95898ab01b1ad01",
+      ".github/workflows/refresh-technology-inventory.yml": "970feeb861750455d6f527f2e2a2ede16a0a624006effb35521e69e4c491cc0e",
+      ".github/workflows/release-validation.yml": "03a8bb0aa53b2805ed57ffeb4cf139df29970df33cc52ae88324cf285d63d3c0",
+      ".github/workflows/skill-security.yml": "2d33df41abd95217f1cd37406fab089027cd410e8af41a58a0eb2a85e1b92f7d",
+      ".github/workflows/technology-validation.yml": "402a17efdf39becfcd9cbac24c421e037349517c7af695fccdae75e4ba46f033",
+      ".github/workflows/test-landing-dispatch.yml": "37dd086e6e3ab7052bc96cd3babac311562099c39fa066dcab25b0544e8a114b",
       ".github/workflows/verify-skill-landing.yml": "b823e201355baec1158db19dc196219183a7c03a368f501b98ab8c9af56679ee",
       ".github/workflows/workflow-lint.yml": "d0bf0648f65fb073c5aefa8d629181568861da671e714c5cdd6c0f25afb35955",
       ".replit": "d139dea1df2bee0fc1922aa3415ee4ccdcc577d85c1196053343661cda7f677d",
-      "artifacts/api-server/package.json": "68938ccf204be105af437d002e939a76269a087252e160716dba121cb3c893b3",
-      "artifacts/forge-review-desk/package.json": "811bdce015eda04aa818be096d5d2f8c4dcb5bf056d07abe163621b5bd6769ce",
-      "artifacts/forge/package.json": "acd6490c073bb4b28d163a3fc0081079e944e5b99d0d62a31c1d214c9c2aadcb",
-      "artifacts/mockup-sandbox/package.json": "0773679ab771d3bd08da224a6847307461aafddad2b610b292bde8f5b6709466",
+      "artifacts/api-server/package.json": "5f06ba5b9caff7d734700ca0ba6a015be7db5d0b928e176df6266f9e0827ae6b",
+      "artifacts/forge-review-desk/package.json": "b4f255c7f48ada7ae6382e385cb1960f42f9564a431377ce927c37cc8254c39d",
+      "artifacts/forge/package.json": "a73cebeb38a6093f238f6442ca358be17336559104a5e5fe0922b7d2f9bb23ba",
+      "artifacts/mockup-sandbox/package.json": "295d7724c736247f55a4ef2241b36dfce6670a31f0a09c2d769afa2ee77bdfb0",
       "community/mcp-builder/scripts/connections.py": "9403668a2041568772082a8b334122c1f88daf0541fb393af4522d0094a47a6e",
       "community/mcp-builder/scripts/evaluation.py": "49ed1d17cdce5da101b210197740713f49b935c29d4f339542a14b132658e6f7",
       "community/mcp-builder/scripts/requirements.txt": "db8940ad3e1d224a5ddd615c85f4163cdbbb9265cac3347a2eec5d700f18f6f5",
@@ -38,13 +38,13 @@
       "community/skill-creator/scripts/quick_validate.py": "67cf5703402013936c8fb75ad6a1afecd8841d45cc5e606b634eb05825fde365",
       "community/sql-server-table-reconciliation/scripts/reconcile.py": "da1d00ed91210f6a34e8c0dbd10458570e85032b712ea844430ba1f3d6b4156e",
       "lib/api-client-react/package.json": "ae70f97a12d1f7e7cbb291b5ffd1d6893f0d7a0ff7721a21e615d47bccfad789",
-      "lib/api-spec/package.json": "4ad43ec134be9ea3ff378f1fddc4a616f7d7d9ea1071bb94e407619e3479357d",
+      "lib/api-spec/package.json": "ce2bf1b8c07b861ea8d73596e4b976d53590a5dad9053bb097b4eff55373baf8",
       "lib/api-zod/package.json": "07009861b2ba8decccb4e9d78d743cb7273bd91915231b5eb1463b296efca13e",
-      "lib/db/package.json": "5fa6f5e31fb03587a024e73e7bd7c033b8775c21fe3e2d208f82b9d28e9ac731",
+      "lib/db/package.json": "b3a3034936a6c5251cf1d8d9bdbde1471580db520456dd2af27a8f42208fd2c5",
       "mermaid/okhp3-mermaid-publish/package.json": "3a9e52bf3d3356429114b2566460d76a94a20264387a626b126776bace885f98",
-      "package.json": "a1e034e5ca046763bf4d21e41b7c1558cb98260084993ede9821032664a0f077",
-      "pnpm-lock.yaml": "b2c41f880f5036e04c53940a7f38f3baaff4045f0bd5b87e764df757ae814a6c",
-      "pnpm-workspace.yaml": "31b1ca0ad9e904f8ce4315b5d208069417e3583fb16cdb46998768d5e16a5d54",
+      "package.json": "f470e683265efafea463b40be7c5a2c131c09d910dbac9767fe298a913c6444a",
+      "pnpm-lock.yaml": "efe0956712b24ca82ac2c588345057e968273944fa438d7131d4e7e61144d837",
+      "pnpm-workspace.yaml": "d87cd13396f3db0f3122440d4573f1bb59c48e175b372331cd3e458e7b9b313e",
       "process-capture/okhp3-as-is-process-capture/package.json": "84b42ed6871f94e0fcacbdbf7b65b30f53938128c8ec5971ff3b45b8e7d7639d",
       "process-capture/okhp3-decision-model-authoring/package.json": "aecc684d620ce48a039011eb27e3293912b4e66b4f4ef8822b9fcfc71e3dab02",
       "process-capture/okhp3-elicitation-interviews/package.json": "8d71d9477a384b95dc42b90576864438a74e7eeb1190e882df967c04bd6e3817",
@@ -81,7 +81,7 @@
         "requirement": "workspace:*"
       }
     ],
-    "lock_entries": 499,
+    "lock_entries": 484,
     "manifests": [
       ".agents/skills/okhp3-as-is-process-capture/package.json",
       ".agents/skills/okhp3-decision-model-authoring/package.json",
@@ -122,7 +122,7 @@
         "declarations": [
           {
             "path": ".github/workflows/skill-security.yml",
-            "requirement": "1a5cb2aa14c46506526e58fccb024772162d0cc9"
+            "requirement": "ddc23d168a0552c49209129bd361d1846c77e6b3"
           }
         ],
         "ecosystem": "github",
@@ -206,27 +206,27 @@
         "declarations": [
           {
             "path": ".github/workflows/deploy-pages.yml",
-            "requirement": "820762786026740c76f36085b0efc47a31fe5020"
+            "requirement": "949feb2413d6458794dcd2491c4babbbce0c15c1"
           },
           {
             "path": ".github/workflows/publish-health-check.yml",
-            "requirement": "820762786026740c76f36085b0efc47a31fe5020"
+            "requirement": "949feb2413d6458794dcd2491c4babbbce0c15c1"
           },
           {
             "path": ".github/workflows/refresh-technology-inventory.yml",
-            "requirement": "820762786026740c76f36085b0efc47a31fe5020"
+            "requirement": "949feb2413d6458794dcd2491c4babbbce0c15c1"
           },
           {
             "path": ".github/workflows/release-validation.yml",
-            "requirement": "820762786026740c76f36085b0efc47a31fe5020"
+            "requirement": "949feb2413d6458794dcd2491c4babbbce0c15c1"
           },
           {
             "path": ".github/workflows/technology-validation.yml",
-            "requirement": "820762786026740c76f36085b0efc47a31fe5020"
+            "requirement": "949feb2413d6458794dcd2491c4babbbce0c15c1"
           },
           {
             "path": ".github/workflows/test-landing-dispatch.yml",
-            "requirement": "820762786026740c76f36085b0efc47a31fe5020"
+            "requirement": "949feb2413d6458794dcd2491c4babbbce0c15c1"
           }
         ],
         "ecosystem": "github",
@@ -262,11 +262,11 @@
         "declarations": [
           {
             "path": ".github/workflows/publish-health-check.yml",
-            "requirement": "ea165f8d65b6e75b540449e92b4886f43607fa02"
+            "requirement": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
           },
           {
             "path": ".github/workflows/skill-security.yml",
-            "requirement": "ea165f8d65b6e75b540449e92b4886f43607fa02"
+            "requirement": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
           }
         ],
         "ecosystem": "github",
@@ -355,28 +355,6 @@
           "lock graph"
         ]
       },
-      "npm:@babel/compat-data": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/compat-data",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@babel/core": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/core",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:@babel/generator": {
         "declarations": [],
         "ecosystem": "npm",
@@ -388,17 +366,6 @@
           "lock graph"
         ]
       },
-      "npm:@babel/helper-compilation-targets": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/helper-compilation-targets",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:@babel/helper-globals": {
         "declarations": [],
         "ecosystem": "npm",
@@ -406,39 +373,6 @@
           "7.29.7"
         ],
         "name": "@babel/helper-globals",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@babel/helper-module-imports": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/helper-module-imports",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@babel/helper-module-transforms": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/helper-module-transforms",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@babel/helper-plugin-utils": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/helper-plugin-utils",
         "roles": [
           "lock graph"
         ]
@@ -465,28 +399,6 @@
           "lock graph"
         ]
       },
-      "npm:@babel/helper-validator-option": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/helper-validator-option",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@babel/helpers": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/helpers",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:@babel/parser": {
         "declarations": [],
         "ecosystem": "npm",
@@ -494,28 +406,6 @@
           "7.29.7"
         ],
         "name": "@babel/parser",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@babel/plugin-transform-react-jsx-self": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/plugin-transform-react-jsx-self",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@babel/plugin-transform-react-jsx-source": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.29.7"
-        ],
-        "name": "@babel/plugin-transform-react-jsx-source",
         "roles": [
           "lock graph"
         ]
@@ -645,16 +535,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^5.9.1"
+            "requirement": "^5.9.2"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^5.9.1"
+            "requirement": "^5.9.2"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "5.9.1"
+          "5.9.2"
         ],
         "name": "@hookform/resolvers",
         "roles": [
@@ -769,7 +659,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/angular",
         "roles": [
@@ -780,7 +670,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/axios",
         "roles": [
@@ -791,7 +681,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/core",
         "roles": [
@@ -802,7 +692,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/effect",
         "roles": [
@@ -813,7 +703,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/fetch",
         "roles": [
@@ -824,7 +714,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/hono",
         "roles": [
@@ -835,7 +725,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/mcp",
         "roles": [
@@ -846,7 +736,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/mock",
         "roles": [
@@ -857,7 +747,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/pinia-colada",
         "roles": [
@@ -868,7 +758,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/query",
         "roles": [
@@ -879,7 +769,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/solid-start",
         "roles": [
@@ -890,7 +780,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/swr",
         "roles": [
@@ -901,7 +791,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "@orval/zod",
         "roles": [
@@ -912,7 +802,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.150.0"
+          "0.154.0"
         ],
         "name": "@oxc-project/types",
         "roles": [
@@ -945,7 +835,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.7"
+          "1.2.0"
         ],
         "name": "@radix-ui/primitive",
         "roles": [
@@ -956,16 +846,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.2.4"
+            "requirement": "^1.3.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.2.20"
+            "requirement": "^1.3.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.2.20"
+          "1.3.1"
         ],
         "name": "@radix-ui/react-accordion",
         "roles": [
@@ -977,16 +867,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.7"
+            "requirement": "^1.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.23"
+            "requirement": "^1.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.23"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-alert-dialog",
         "roles": [
@@ -998,7 +888,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.15"
+          "1.1.17"
         ],
         "name": "@radix-ui/react-arrow",
         "roles": [
@@ -1009,16 +899,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.3"
+            "requirement": "^1.2.0"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.15"
+            "requirement": "^1.2.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.15"
+          "1.2.0"
         ],
         "name": "@radix-ui/react-aspect-ratio",
         "roles": [
@@ -1030,16 +920,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.4"
+            "requirement": "^1.3.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.2.6"
+            "requirement": "^1.3.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.2.6"
+          "1.3.1"
         ],
         "name": "@radix-ui/react-avatar",
         "roles": [
@@ -1051,16 +941,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.5"
+            "requirement": "^1.4.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.3.11"
+            "requirement": "^1.4.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.3.11"
+          "1.4.1"
         ],
         "name": "@radix-ui/react-checkbox",
         "roles": [
@@ -1072,16 +962,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.4"
+            "requirement": "^1.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.20"
+            "requirement": "^1.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.20"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-collapsible",
         "roles": [
@@ -1093,7 +983,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.15"
+          "1.2.0"
         ],
         "name": "@radix-ui/react-collection",
         "roles": [
@@ -1115,7 +1005,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.2"
+          "1.3.0"
         ],
         "name": "@radix-ui/react-context",
         "roles": [
@@ -1126,16 +1016,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^2.2.7"
+            "requirement": "^2.4.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^2.3.7"
+            "requirement": "^2.4.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "2.3.7"
+          "2.4.1"
         ],
         "name": "@radix-ui/react-context-menu",
         "roles": [
@@ -1147,16 +1037,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.7"
+            "requirement": "^1.3.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.23"
+            "requirement": "^1.3.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.23"
+          "1.3.1"
         ],
         "name": "@radix-ui/react-dialog",
         "roles": [
@@ -1168,7 +1058,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.4"
+          "1.2.0"
         ],
         "name": "@radix-ui/react-direction",
         "roles": [
@@ -1179,7 +1069,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.19"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-dismissable-layer",
         "roles": [
@@ -1190,16 +1080,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^2.1.7"
+            "requirement": "^2.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^2.1.24"
+            "requirement": "^2.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "2.1.24"
+          "2.2.1"
         ],
         "name": "@radix-ui/react-dropdown-menu",
         "roles": [
@@ -1211,7 +1101,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.6"
+          "1.2.0"
         ],
         "name": "@radix-ui/react-focus-guards",
         "roles": [
@@ -1222,7 +1112,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.16"
+          "1.3.1"
         ],
         "name": "@radix-ui/react-focus-scope",
         "roles": [
@@ -1233,16 +1123,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.7"
+            "requirement": "^1.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.23"
+            "requirement": "^1.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.23"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-hover-card",
         "roles": [
@@ -1265,16 +1155,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^2.1.3"
+            "requirement": "^2.1.17"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^2.1.15"
+            "requirement": "^2.1.17"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "2.1.15"
+          "2.1.17"
         ],
         "name": "@radix-ui/react-label",
         "roles": [
@@ -1286,7 +1176,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "2.1.24"
+          "2.2.1"
         ],
         "name": "@radix-ui/react-menu",
         "roles": [
@@ -1297,16 +1187,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.7"
+            "requirement": "^1.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.24"
+            "requirement": "^1.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.24"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-menubar",
         "roles": [
@@ -1318,16 +1208,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.2.6"
+            "requirement": "^1.4.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.2.22"
+            "requirement": "^1.4.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.2.22"
+          "1.4.1"
         ],
         "name": "@radix-ui/react-navigation-menu",
         "roles": [
@@ -1339,16 +1229,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.7"
+            "requirement": "^1.3.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.23"
+            "requirement": "^1.3.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.23"
+          "1.3.1"
         ],
         "name": "@radix-ui/react-popover",
         "roles": [
@@ -1360,7 +1250,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.3.7"
+          "1.4.0"
         ],
         "name": "@radix-ui/react-popper",
         "roles": [
@@ -1371,7 +1261,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.17"
+          "1.2.0"
         ],
         "name": "@radix-ui/react-portal",
         "roles": [
@@ -1382,7 +1272,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.10"
+          "1.1.11"
         ],
         "name": "@radix-ui/react-presence",
         "roles": [
@@ -1393,7 +1283,8 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "2.1.10"
+          "2.1.10",
+          "2.2.0"
         ],
         "name": "@radix-ui/react-primitive",
         "roles": [
@@ -1404,16 +1295,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.3"
+            "requirement": "^1.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.16"
+            "requirement": "^1.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.16"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-progress",
         "roles": [
@@ -1425,16 +1316,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.2.4"
+            "requirement": "^1.5.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.4.7"
+            "requirement": "^1.5.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.4.7"
+          "1.5.1"
         ],
         "name": "@radix-ui/react-radio-group",
         "roles": [
@@ -1446,7 +1337,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.19"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-roving-focus",
         "roles": [
@@ -1457,16 +1348,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.2.4"
+            "requirement": "^1.4.0"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.2.18"
+            "requirement": "^1.4.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.2.18"
+          "1.4.0"
         ],
         "name": "@radix-ui/react-scroll-area",
         "roles": [
@@ -1478,16 +1369,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^2.1.7"
+            "requirement": "^2.4.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^2.3.7"
+            "requirement": "^2.4.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "2.3.7"
+          "2.4.1"
         ],
         "name": "@radix-ui/react-select",
         "roles": [
@@ -1499,16 +1390,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.3"
+            "requirement": "^1.2.0"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.15"
+            "requirement": "^1.2.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.15"
+          "1.2.0"
         ],
         "name": "@radix-ui/react-separator",
         "roles": [
@@ -1520,16 +1411,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.2.4"
+            "requirement": "^1.6.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.4.7"
+            "requirement": "^1.6.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.4.7"
+          "1.6.1"
         ],
         "name": "@radix-ui/react-slider",
         "roles": [
@@ -1541,16 +1432,17 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.2.0"
+            "requirement": "^1.5.0"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.3.3"
+            "requirement": "^1.5.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.3.3"
+          "1.3.3",
+          "1.5.0"
         ],
         "name": "@radix-ui/react-slot",
         "roles": [
@@ -1562,16 +1454,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.4"
+            "requirement": "^1.4.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.3.7"
+            "requirement": "^1.4.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.3.7"
+          "1.4.1"
         ],
         "name": "@radix-ui/react-switch",
         "roles": [
@@ -1583,16 +1475,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.4"
+            "requirement": "^1.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.21"
+            "requirement": "^1.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.21"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-tabs",
         "roles": [
@@ -1604,16 +1496,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.2.7"
+            "requirement": "^1.3.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.2.23"
+            "requirement": "^1.3.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.2.23"
+          "1.3.1"
         ],
         "name": "@radix-ui/react-toast",
         "roles": [
@@ -1625,16 +1517,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.3"
+            "requirement": "^1.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.18"
+            "requirement": "^1.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.18"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-toggle",
         "roles": [
@@ -1646,16 +1538,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.1.3"
+            "requirement": "^1.2.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.1.19"
+            "requirement": "^1.2.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.1.19"
+          "1.2.1"
         ],
         "name": "@radix-ui/react-toggle-group",
         "roles": [
@@ -1667,16 +1559,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.2.0"
+            "requirement": "^1.4.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.2.16"
+            "requirement": "^1.4.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.2.16"
+          "1.4.1"
         ],
         "name": "@radix-ui/react-tooltip",
         "roles": [
@@ -1688,7 +1580,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.4"
+          "1.1.5"
         ],
         "name": "@radix-ui/react-use-callback-ref",
         "roles": [
@@ -1699,7 +1591,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.6"
+          "1.3.0"
         ],
         "name": "@radix-ui/react-use-controllable-state",
         "roles": [
@@ -1765,7 +1657,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.4"
+          "1.1.5"
         ],
         "name": "@radix-ui/react-use-size",
         "roles": [
@@ -1776,7 +1668,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.11"
+          "1.2.13"
         ],
         "name": "@radix-ui/react-visually-hidden",
         "roles": [
@@ -1912,7 +1804,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-android-arm-eabi",
         "roles": [
@@ -1923,7 +1815,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-android-arm64",
         "roles": [
@@ -1934,7 +1826,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-darwin-arm64",
         "roles": [
@@ -1945,7 +1837,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-darwin-x64",
         "roles": [
@@ -1956,7 +1848,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-freebsd-x64",
         "roles": [
@@ -1967,7 +1859,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-linux-arm-gnueabihf",
         "roles": [
@@ -1978,7 +1870,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-linux-arm64-gnu",
         "roles": [
@@ -1989,7 +1881,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-linux-arm64-musl",
         "roles": [
@@ -2000,7 +1892,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-linux-ppc64-gnu",
         "roles": [
@@ -2011,7 +1903,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-linux-s390x-gnu",
         "roles": [
@@ -2022,7 +1914,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-linux-x64-gnu",
         "roles": [
@@ -2033,7 +1925,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-linux-x64-musl",
         "roles": [
@@ -2044,7 +1936,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-openharmony-arm64",
         "roles": [
@@ -2055,7 +1947,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-win32-arm64-msvc",
         "roles": [
@@ -2066,7 +1958,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "@rolldown/binding-win32-x64-msvc",
         "roles": [
@@ -2077,7 +1969,6 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.0.0-rc.3",
           "1.0.1"
         ],
         "name": "@rolldown/pluginutils",
@@ -2089,8 +1980,8 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.12.0",
-          "0.13.0"
+          "0.16.3",
+          "0.16.4"
         ],
         "name": "@scalar/helpers",
         "roles": [
@@ -2101,8 +1992,8 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.13.5",
-          "0.15.0"
+          "0.15.7",
+          "0.16.0"
         ],
         "name": "@scalar/json-magic",
         "roles": [
@@ -2113,7 +2004,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.1.4"
+          "0.1.13"
         ],
         "name": "@scalar/json-schema-validator",
         "roles": [
@@ -2124,7 +2015,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.29.5"
+          "0.29.14"
         ],
         "name": "@scalar/openapi-parser",
         "roles": [
@@ -2135,8 +2026,8 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.9.6",
-          "0.9.7"
+          "0.9.7",
+          "0.9.8"
         ],
         "name": "@scalar/openapi-types",
         "roles": [
@@ -2147,7 +2038,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.3.0"
+          "0.4.5"
         ],
         "name": "@scalar/openapi-upgrader",
         "roles": [
@@ -2158,7 +2049,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.1.4"
+          "0.1.13"
         ],
         "name": "@scalar/openapi-validator",
         "roles": [
@@ -2169,7 +2060,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.21.0"
+          "0.24.0"
         ],
         "name": "@scalar/types",
         "roles": [
@@ -2311,7 +2202,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "5.103.2"
+          "5.104.4"
         ],
         "name": "@tanstack/query-core",
         "roles": [
@@ -2322,69 +2213,25 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^5.103.2"
+            "requirement": "^5.104.4"
           },
           {
             "path": "lib/api-client-react/package.json",
-            "requirement": "^5.103.2"
+            "requirement": "^5.104.4"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "^5.103.2"
+            "requirement": "^5.104.4"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "5.103.2"
+          "5.104.4"
         ],
         "name": "@tanstack/react-query",
         "roles": [
           "catalog",
           "direct",
-          "lock graph"
-        ]
-      },
-      "npm:@types/babel__core": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.20.5"
-        ],
-        "name": "@types/babel__core",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@types/babel__generator": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.27.0"
-        ],
-        "name": "@types/babel__generator",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@types/babel__template": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.4.4"
-        ],
-        "name": "@types/babel__template",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:@types/babel__traverse": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "7.28.0"
-        ],
-        "name": "@types/babel__traverse",
-        "roles": [
           "lock graph"
         ]
       },
@@ -2619,36 +2466,36 @@
         "declarations": [
           {
             "path": "artifacts/api-server/package.json",
-            "requirement": "^26.6.1"
+            "requirement": "^26.6.5"
           },
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^26.6.1"
+            "requirement": "^26.6.5"
           },
           {
             "path": "artifacts/forge/package.json",
-            "requirement": "^26.6.1"
+            "requirement": "^26.6.5"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^26.6.1"
+            "requirement": "^26.6.5"
           },
           {
             "path": "lib/db/package.json",
-            "requirement": "^26.6.1"
+            "requirement": "^26.6.5"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "^26.6.1"
+            "requirement": "^26.6.5"
           },
           {
             "path": "scripts/package.json",
-            "requirement": "^26.6.1"
+            "requirement": "^26.6.5"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "26.6.2"
+          "26.6.5"
         ],
         "name": "@types/node",
         "roles": [
@@ -2789,28 +2636,248 @@
           "lock graph"
         ]
       },
+      "npm:@typescript/typescript-aix-ppc64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-aix-ppc64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-darwin-arm64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-darwin-arm64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-darwin-x64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-darwin-x64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-freebsd-arm64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-freebsd-arm64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-freebsd-x64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-freebsd-x64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-linux-arm": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-linux-arm",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-linux-arm64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-linux-arm64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-linux-loong64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-linux-loong64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-linux-mips64el": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-linux-mips64el",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-linux-ppc64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-linux-ppc64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-linux-riscv64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-linux-riscv64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-linux-s390x": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-linux-s390x",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-linux-x64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-linux-x64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-netbsd-arm64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-netbsd-arm64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-netbsd-x64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-netbsd-x64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-openbsd-arm64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-openbsd-arm64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-openbsd-x64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-openbsd-x64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-sunos-x64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-sunos-x64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-win32-arm64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-win32-arm64",
+        "roles": [
+          "lock graph"
+        ]
+      },
+      "npm:@typescript/typescript-win32-x64": {
+        "declarations": [],
+        "ecosystem": "npm",
+        "locked": [
+          "7.0.2"
+        ],
+        "name": "@typescript/typescript-win32-x64",
+        "roles": [
+          "lock graph"
+        ]
+      },
       "npm:@vitejs/plugin-react": {
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^5.0.4"
+            "requirement": "^6.1.2"
           },
           {
             "path": "artifacts/forge/package.json",
-            "requirement": "^5.0.4"
+            "requirement": "^6.1.2"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^5.0.4"
+            "requirement": "^6.1.2"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "^5.0.4"
+            "requirement": "^6.1.2"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "5.2.0"
+          "6.1.2"
         ],
         "name": "@vitejs/plugin-react",
         "roles": [
@@ -2823,7 +2890,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "5.0.1"
+          "5.0.5"
         ],
         "name": "@vitest/mocker",
         "roles": [
@@ -2834,7 +2901,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "5.0.1"
+          "5.0.5"
         ],
         "name": "@vitest/spy",
         "roles": [
@@ -2856,7 +2923,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.18.0"
+          "8.19.0"
         ],
         "name": "acorn",
         "roles": [
@@ -2940,17 +3007,6 @@
           "lock graph"
         ]
       },
-      "npm:baseline-browser-mapping": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "2.11.3"
-        ],
-        "name": "baseline-browser-mapping",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:body-parser": {
         "declarations": [],
         "ecosystem": "npm",
@@ -2969,17 +3025,6 @@
           "3.0.3"
         ],
         "name": "braces",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:browserslist": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "4.28.7"
-        ],
-        "name": "browserslist",
         "roles": [
           "lock graph"
         ]
@@ -3017,22 +3062,11 @@
           "lock graph"
         ]
       },
-      "npm:caniuse-lite": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "1.0.30001806"
-        ],
-        "name": "caniuse-lite",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:chai": {
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "6.2.2"
+          "6.3.0"
         ],
         "name": "chai",
         "roles": [
@@ -3166,7 +3200,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.1.0"
+          "2.0.1"
         ],
         "name": "content-disposition",
         "roles": [
@@ -3177,21 +3211,9 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.0.5",
-          "2.0.0"
+          "2.1.0"
         ],
         "name": "content-type",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:convert-source-map": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "2.0.0"
-        ],
-        "name": "convert-source-map",
         "roles": [
           "lock graph"
         ]
@@ -3516,20 +3538,20 @@
         "declarations": [
           {
             "path": "artifacts/api-server/package.json",
-            "requirement": "^0.45.3"
+            "requirement": "^0.45.4"
           },
           {
             "path": "lib/db/package.json",
-            "requirement": "^0.45.3"
+            "requirement": "^0.45.4"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "^0.45.3"
+            "requirement": "^0.45.4"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "0.45.3"
+          "0.45.4"
         ],
         "name": "drizzle-orm",
         "roles": [
@@ -3573,17 +3595,6 @@
           "1.1.1"
         ],
         "name": "ee-first",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:electron-to-chromium": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "1.5.396"
-        ],
-        "name": "electron-to-chromium",
         "roles": [
           "lock graph"
         ]
@@ -3758,17 +3769,6 @@
           "lock graph"
         ]
       },
-      "npm:escalade": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "3.2.0"
-        ],
-        "name": "escalade",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:escape-html": {
         "declarations": [],
         "ecosystem": "npm",
@@ -3850,12 +3850,12 @@
         "declarations": [
           {
             "path": "artifacts/api-server/package.json",
-            "requirement": "^5.2.1"
+            "requirement": "^5.3.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "5.2.1"
+          "5.3.0"
         ],
         "name": "express",
         "roles": [
@@ -3867,7 +3867,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "4.0.4"
+          "4.2.0"
         ],
         "name": "fast-copy",
         "roles": [
@@ -3979,17 +3979,6 @@
           "lock graph"
         ]
       },
-      "npm:find-up": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "8.0.0"
-        ],
-        "name": "find-up",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:forwarded": {
         "declarations": [],
         "ecosystem": "npm",
@@ -4074,17 +4063,6 @@
         "name": "fuse.js",
         "roles": [
           "direct",
-          "lock graph"
-        ]
-      },
-      "npm:gensync": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "1.0.0-beta.2"
-        ],
-        "name": "gensync",
-        "roles": [
           "lock graph"
         ]
       },
@@ -4507,50 +4485,28 @@
           "lock graph"
         ]
       },
-      "npm:locate-path": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "8.0.0"
-        ],
-        "name": "locate-path",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:lru-cache": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "5.1.1"
-        ],
-        "name": "lru-cache",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:lucide-react": {
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.47.0"
+            "requirement": "^1.59.0"
           },
           {
             "path": "artifacts/forge/package.json",
-            "requirement": "^1.47.0"
+            "requirement": "^1.59.0"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^1.47.0"
+            "requirement": "^1.59.0"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "^1.47.0"
+            "requirement": "^1.59.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.47.0"
+          "1.59.0"
         ],
         "name": "lucide-react",
         "roles": [
@@ -4564,7 +4520,7 @@
         "ecosystem": "npm",
         "locked": [
           "0.30.21",
-          "1.4.1"
+          "1.4.3"
         ],
         "name": "magic-string",
         "roles": [
@@ -4707,7 +4663,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "3.3.19",
+          "3.3.20",
           "5.1.16"
         ],
         "name": "nanoid",
@@ -4719,7 +4675,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.0.0"
+          "1.1.0"
         ],
         "name": "negotiator",
         "roles": [
@@ -4744,17 +4700,6 @@
         "name": "next-themes",
         "roles": [
           "direct",
-          "lock graph"
-        ]
-      },
-      "npm:node-releases": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "2.0.51"
-        ],
-        "name": "node-releases",
-        "roles": [
           "lock graph"
         ]
       },
@@ -4804,7 +4749,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "2.2.1"
+          "3.0.0"
         ],
         "name": "obug",
         "roles": [
@@ -4848,38 +4793,16 @@
         "declarations": [
           {
             "path": "lib/api-spec/package.json",
-            "requirement": "^8.37.0"
+            "requirement": "^8.43.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "8.37.0"
+          "8.43.0"
         ],
         "name": "orval",
         "roles": [
           "direct",
-          "lock graph"
-        ]
-      },
-      "npm:p-limit": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "4.0.0"
-        ],
-        "name": "p-limit",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:p-locate": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "6.0.0"
-        ],
-        "name": "p-locate",
-        "roles": [
           "lock graph"
         ]
       },
@@ -4943,12 +4866,12 @@
         "declarations": [
           {
             "path": "lib/db/package.json",
-            "requirement": "^8.23.0"
+            "requirement": "^8.23.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "8.23.0"
+          "8.23.1"
         ],
         "name": "pg",
         "roles": [
@@ -4960,7 +4883,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.4.0"
+          "1.4.1"
         ],
         "name": "pg-cloudflare",
         "roles": [
@@ -4971,7 +4894,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "2.14.0"
+          "2.14.1"
         ],
         "name": "pg-connection-string",
         "roles": [
@@ -5004,7 +4927,8 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.16.0"
+          "1.16.0",
+          "1.16.1"
         ],
         "name": "pg-protocol",
         "roles": [
@@ -5060,12 +4984,12 @@
         "declarations": [
           {
             "path": "artifacts/api-server/package.json",
-            "requirement": "^9.14.0"
+            "requirement": "^10.4.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "9.14.0"
+          "10.4.0"
         ],
         "name": "pino",
         "roles": [
@@ -5077,7 +5001,6 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "2.0.0",
           "3.0.0"
         ],
         "name": "pino-abstract-transport",
@@ -5089,12 +5012,12 @@
         "declarations": [
           {
             "path": "artifacts/api-server/package.json",
-            "requirement": "^10.5.0"
+            "requirement": "^11.0.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "10.5.0"
+          "11.0.0"
         ],
         "name": "pino-http",
         "roles": [
@@ -5106,12 +5029,12 @@
         "declarations": [
           {
             "path": "artifacts/api-server/package.json",
-            "requirement": "^13.1.3"
+            "requirement": "^13.2.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "13.1.3"
+          "13.2.0"
         ],
         "name": "pino-pretty",
         "roles": [
@@ -5134,16 +5057,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^1.63.0"
+            "requirement": "^1.64.1"
           },
           {
             "path": "artifacts/forge/package.json",
-            "requirement": "^1.63.0"
+            "requirement": "^1.64.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "1.63.0"
+          "1.64.1"
         ],
         "name": "playwright",
         "roles": [
@@ -5155,7 +5078,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.63.0"
+          "1.64.1"
         ],
         "name": "playwright-core",
         "roles": [
@@ -5166,7 +5089,7 @@
         "declarations": [
           {
             "path": "package.json",
-            "requirement": "pnpm@10.26.1"
+            "requirement": "pnpm@10.34.7"
           }
         ],
         "ecosystem": "npm",
@@ -5180,7 +5103,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "8.5.28"
+          "8.5.30"
         ],
         "name": "postcss",
         "roles": [
@@ -5246,12 +5169,12 @@
         "declarations": [
           {
             "path": "package.json",
-            "requirement": "^3.9.9"
+            "requirement": "^3.9.10"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "3.9.9"
+          "3.9.10"
         ],
         "name": "prettier",
         "roles": [
@@ -5285,7 +5208,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "2.0.7"
+          "2.0.8"
         ],
         "name": "proxy-addr",
         "roles": [
@@ -5307,7 +5230,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "6.15.3"
+          "6.16.1"
         ],
         "name": "qs",
         "roles": [
@@ -5362,15 +5285,15 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           },
           {
             "path": "artifacts/forge/package.json",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           },
           {
             "path": "lib/api-client-react/package.json",
@@ -5378,12 +5301,12 @@
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "19.3.0"
+          "19.3.1"
         ],
         "name": "react",
         "roles": [
@@ -5397,16 +5320,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^10.0.1"
+            "requirement": "^10.0.2"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^10.0.1"
+            "requirement": "^10.0.2"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "10.0.1"
+          "10.0.2"
         ],
         "name": "react-day-picker",
         "roles": [
@@ -5418,24 +5341,24 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           },
           {
             "path": "artifacts/forge/package.json",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "19.3.0"
+          "19.3.1"
         ],
         "name": "react-dom",
         "roles": [
@@ -5448,16 +5371,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^7.88.0"
+            "requirement": "^7.90.0"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^7.88.0"
+            "requirement": "^7.90.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "7.88.0"
+          "7.90.0"
         ],
         "name": "react-hook-form",
         "roles": [
@@ -5486,16 +5409,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "19.3.0"
+            "requirement": "19.3.1"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "19.3.0"
+          "19.3.1"
         ],
         "name": "react-is",
         "roles": [
@@ -5510,17 +5433,6 @@
           "9.3.0"
         ],
         "name": "react-redux",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:react-refresh": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "0.18.0"
-        ],
-        "name": "react-refresh",
         "roles": [
           "lock graph"
         ]
@@ -5551,16 +5463,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^2.1.7"
+            "requirement": "^4.14.8"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^2.1.9"
+            "requirement": "^4.14.8"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "2.1.9"
+          "4.14.8"
         ],
         "name": "react-resizable-panels",
         "roles": [
@@ -5622,7 +5534,6 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "0.2.0",
           "1.0.0"
         ],
         "name": "real-require",
@@ -5684,17 +5595,6 @@
           "lock graph"
         ]
       },
-      "npm:remeda": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "2.50.0"
-        ],
-        "name": "remeda",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:require-from-string": {
         "declarations": [],
         "ecosystem": "npm",
@@ -5743,7 +5643,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.9"
+          "1.2.14"
         ],
         "name": "rolldown",
         "roles": [
@@ -5809,20 +5709,9 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "4.1.0"
+          "4.1.1"
         ],
         "name": "secure-json-parse",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:semver": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "6.3.1"
-        ],
-        "name": "semver",
         "roles": [
           "lock graph"
         ]
@@ -5937,17 +5826,6 @@
           "lock graph"
         ]
       },
-      "npm:siginfo": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "2.0.0"
-        ],
-        "name": "siginfo",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:signal-exit": {
         "declarations": [],
         "ecosystem": "npm",
@@ -5963,7 +5841,8 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "4.2.1"
+          "4.2.1",
+          "5.0.2"
         ],
         "name": "sonic-boom",
         "roles": [
@@ -5995,7 +5874,8 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.2.1"
+          "1.2.1",
+          "1.2.2"
         ],
         "name": "source-map-js",
         "roles": [
@@ -6009,17 +5889,6 @@
           "4.2.0"
         ],
         "name": "split2",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:stackback": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "0.0.2"
-        ],
-        "name": "stackback",
         "roles": [
           "lock graph"
         ]
@@ -6039,7 +5908,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "4.2.0"
+          "4.3.0"
         ],
         "name": "std-env",
         "roles": [
@@ -6179,7 +6048,6 @@
         ],
         "ecosystem": "npm",
         "locked": [
-          "3.1.0",
           "4.2.0"
         ],
         "name": "thread-stream",
@@ -6203,7 +6071,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "6.1.4"
+          "6.2.2"
         ],
         "name": "tinybench",
         "roles": [
@@ -6214,7 +6082,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "1.3.0"
+          "1.3.1"
         ],
         "name": "tinyexec",
         "roles": [
@@ -6339,12 +6207,12 @@
         "declarations": [
           {
             "path": "package.json",
-            "requirement": "~6.0.3"
+            "requirement": "~7.0.2"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "6.0.3"
+          "7.0.2"
         ],
         "name": "typescript",
         "roles": [
@@ -6356,7 +6224,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "7.24.4"
+          "7.29.1"
         ],
         "name": "undici",
         "roles": [
@@ -6392,17 +6260,6 @@
           "1.0.0"
         ],
         "name": "unpipe",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:update-browserslist-db": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "1.2.3"
-        ],
-        "name": "update-browserslist-db",
         "roles": [
           "lock graph"
         ]
@@ -6498,24 +6355,24 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^8.3.0"
+            "requirement": "^8.3.4"
           },
           {
             "path": "artifacts/forge/package.json",
-            "requirement": "^8.3.0"
+            "requirement": "^8.3.4"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^8.3.0"
+            "requirement": "^8.3.4"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "^8.3.0"
+            "requirement": "^8.3.4"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "8.3.0"
+          "8.3.4"
         ],
         "name": "vite",
         "roles": [
@@ -6528,12 +6385,12 @@
         "declarations": [
           {
             "path": "artifacts/forge/package.json",
-            "requirement": "^5.0.1"
+            "requirement": "^5.0.5"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "5.0.1"
+          "5.0.5"
         ],
         "name": "vitest",
         "roles": [
@@ -6556,7 +6413,7 @@
         "declarations": [],
         "ecosystem": "npm",
         "locked": [
-          "2.3.0"
+          "3.2.1"
         ],
         "name": "why-is-node-running",
         "roles": [
@@ -6567,16 +6424,16 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^3.11.0"
+            "requirement": "^3.13.0"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "^3.11.0"
+            "requirement": "^3.13.0"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "3.11.0"
+          "3.13.0"
         ],
         "name": "wouter",
         "roles": [
@@ -6607,17 +6464,6 @@
           "lock graph"
         ]
       },
-      "npm:yallist": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "3.1.1"
-        ],
-        "name": "yallist",
-        "roles": [
-          "lock graph"
-        ]
-      },
       "npm:yaml": {
         "declarations": [],
         "ecosystem": "npm",
@@ -6625,17 +6471,6 @@
           "2.9.1"
         ],
         "name": "yaml",
-        "roles": [
-          "lock graph"
-        ]
-      },
-      "npm:yocto-queue": {
-        "declarations": [],
-        "ecosystem": "npm",
-        "locked": [
-          "1.2.2"
-        ],
-        "name": "yocto-queue",
         "roles": [
           "lock graph"
         ]
@@ -6655,28 +6490,28 @@
         "declarations": [
           {
             "path": "artifacts/forge-review-desk/package.json",
-            "requirement": "^4.6.5"
+            "requirement": "^4.6.7"
           },
           {
             "path": "artifacts/mockup-sandbox/package.json",
-            "requirement": "^4.6.5"
+            "requirement": "^4.6.7"
           },
           {
             "path": "lib/api-zod/package.json",
-            "requirement": "^4.6.5"
+            "requirement": "^4.6.7"
           },
           {
             "path": "lib/db/package.json",
-            "requirement": "^4.6.5"
+            "requirement": "^4.6.7"
           },
           {
             "path": "pnpm-workspace.yaml",
-            "requirement": "^4.6.5"
+            "requirement": "^4.6.7"
           }
         ],
         "ecosystem": "npm",
         "locked": [
-          "4.6.5"
+          "4.6.7"
         ],
         "name": "zod",
         "roles": [
@@ -6817,22 +6652,19 @@
       }
     }
   },
-  "proposed_runtime_updates": {
-    "package.json#packageManager": "pnpm@10.34.5"
-  },
   "runtimes": {
     "Node.js": {
-      "current": "24.21.0",
-      "latest": "26.10.0",
-      "latest_lts": "24.21.0",
+      "current": "24.22.1",
+      "latest": "26.12.1",
+      "latest_lts": "24.22.1",
       "source": "https://nodejs.org/dist/index.json",
-      "target": "24.21.0"
+      "target": "24.22.1"
     },
     "Python": {
-      "current": "3.14.7",
-      "latest": "3.14.7",
+      "current": "3.14.9",
+      "latest": "3.15.1",
       "source": "https://www.python.org/downloads/",
-      "target": "3.14.7"
+      "target": "3.14.9"
     }
   },
   "schema_version": 2,
@@ -7065,8 +6897,8 @@
     },
     "github:actions/setup-node": {
       "basis": "publisher latest stable GitHub release",
-      "latest": "7.0.0",
-      "source": "https://github.com/actions/setup-node/releases/tag/v7.0.0",
+      "latest": "7.1.0",
+      "source": "https://github.com/actions/setup-node/releases/tag/v7.1.0",
       "tags": {
         "v1": "f1f314fca9dfce2769ece7d933488f076716723e",
         "v1.0.0": "0d7d2ca66539aca4af6c5102e29a33757e2c2d2c",
@@ -7140,14 +6972,15 @@
         "v6.3.0": "53b83947a5a98c8d113130e565377fae1a50d02f",
         "v6.4.0": "48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e",
         "v6.5.0": "249970729cb0ef3589644e2896645e5dc5ba9c38",
-        "v7": "820762786026740c76f36085b0efc47a31fe5020",
-        "v7.0.0": "820762786026740c76f36085b0efc47a31fe5020"
+        "v7": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+        "v7.0.0": "820762786026740c76f36085b0efc47a31fe5020",
+        "v7.1.0": "949feb2413d6458794dcd2491c4babbbce0c15c1"
       }
     },
     "github:actions/setup-python": {
       "basis": "publisher latest stable GitHub release",
-      "latest": "7.0.0",
-      "source": "https://github.com/actions/setup-python/releases/tag/v7.0.0",
+      "latest": "7.1.0",
+      "source": "https://github.com/actions/setup-python/releases/tag/v7.1.0",
       "tags": {
         "v1": "0f07f7f756721ebd886c2462646a35f78a8bc4de",
         "v1.0.0": "5dc682444b783d6c1abdc04d2f5c83e6d34e07a9",
@@ -7213,13 +7046,14 @@
         "v6.2.0": "a309ff8b426b58ec0e2a45f0f869d46889d02405",
         "v6.3.0": "ece7cb06caefa5fff74198d8649806c4678c61a1",
         "v7": "5fda3b95a4ea91299a34e894583c3862153e4b97",
-        "v7.0.0": "5fda3b95a4ea91299a34e894583c3862153e4b97"
+        "v7.0.0": "5fda3b95a4ea91299a34e894583c3862153e4b97",
+        "v7.1.0": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0"
       }
     },
     "github:actions/upload-artifact": {
       "basis": "publisher latest stable GitHub release",
-      "latest": "7.0.1",
-      "source": "https://github.com/actions/upload-artifact/releases/tag/v7.0.1",
+      "latest": "7.0.2",
+      "source": "https://github.com/actions/upload-artifact/releases/tag/v7.0.2",
       "tags": {
         "1.0.0": "3446296876d12d4e3a0f3145a3c87e67bf0a16b5",
         "2.1.0": "ebad382c0953e8c6b4039e8d30dfd19ee7b2a862",
@@ -7275,9 +7109,10 @@
         "v5.0.0": "330a01c490aca151604b8cf639adc76d48f6c5d4",
         "v6": "b7c566a772e6b6bfb58ed0dc250532a479d7789f",
         "v6.0.0": "b7c566a772e6b6bfb58ed0dc250532a479d7789f",
-        "v7": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+        "v7": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
         "v7.0.0": "bbbca2ddaa5d8feaa63e36b76fdaad77386f024f",
-        "v7.0.1": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+        "v7.0.1": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+        "v7.0.2": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
       }
     },
     "github:actions/upload-pages-artifact": {
@@ -7537,24 +7372,6 @@
       "latest": "8.0.6",
       "source": "https://registry.npmjs.org/%40babel%2Fcode-frame"
     },
-    "npm:@babel/compat-data": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^22.18.0 || >=24.11.0"
-      },
-      "latest": "8.0.5",
-      "source": "https://registry.npmjs.org/%40babel%2Fcompat-data"
-    },
-    "npm:@babel/core": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^22.18.0 || >=24.11.0"
-      },
-      "latest": "8.0.6",
-      "source": "https://registry.npmjs.org/%40babel%2Fcore"
-    },
     "npm:@babel/generator": {
       "basis": "npm stable latest tag",
       "deprecated": "",
@@ -7564,15 +7381,6 @@
       "latest": "8.0.6",
       "source": "https://registry.npmjs.org/%40babel%2Fgenerator"
     },
-    "npm:@babel/helper-compilation-targets": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^22.18.0 || >=24.11.0"
-      },
-      "latest": "8.0.6",
-      "source": "https://registry.npmjs.org/%40babel%2Fhelper-compilation-targets"
-    },
     "npm:@babel/helper-globals": {
       "basis": "npm stable latest tag",
       "deprecated": "",
@@ -7581,33 +7389,6 @@
       },
       "latest": "8.0.6",
       "source": "https://registry.npmjs.org/%40babel%2Fhelper-globals"
-    },
-    "npm:@babel/helper-module-imports": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^22.18.0 || >=24.11.0"
-      },
-      "latest": "8.0.0",
-      "source": "https://registry.npmjs.org/%40babel%2Fhelper-module-imports"
-    },
-    "npm:@babel/helper-module-transforms": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^22.18.0 || >=24.11.0"
-      },
-      "latest": "8.0.6",
-      "source": "https://registry.npmjs.org/%40babel%2Fhelper-module-transforms"
-    },
-    "npm:@babel/helper-plugin-utils": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^22.18.0 || >=24.11.0"
-      },
-      "latest": "8.0.1",
-      "source": "https://registry.npmjs.org/%40babel%2Fhelper-plugin-utils"
     },
     "npm:@babel/helper-string-parser": {
       "basis": "npm stable latest tag",
@@ -7627,50 +7408,14 @@
       "latest": "8.0.6",
       "source": "https://registry.npmjs.org/%40babel%2Fhelper-validator-identifier"
     },
-    "npm:@babel/helper-validator-option": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^22.18.0 || >=24.11.0"
-      },
-      "latest": "8.0.0",
-      "source": "https://registry.npmjs.org/%40babel%2Fhelper-validator-option"
-    },
-    "npm:@babel/helpers": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^22.18.0 || >=24.11.0"
-      },
-      "latest": "8.0.5",
-      "source": "https://registry.npmjs.org/%40babel%2Fhelpers"
-    },
     "npm:@babel/parser": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
-        "node": ">=6.0.0"
+        "node": "^22.18.0 || >=24.11.0"
       },
-      "latest": "7.29.9",
+      "latest": "8.0.7",
       "source": "https://registry.npmjs.org/%40babel%2Fparser"
-    },
-    "npm:@babel/plugin-transform-react-jsx-self": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=6.9.0"
-      },
-      "latest": "7.29.7",
-      "source": "https://registry.npmjs.org/%40babel%2Fplugin-transform-react-jsx-self"
-    },
-    "npm:@babel/plugin-transform-react-jsx-source": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=6.9.0"
-      },
-      "latest": "7.29.7",
-      "source": "https://registry.npmjs.org/%40babel%2Fplugin-transform-react-jsx-source"
     },
     "npm:@babel/template": {
       "basis": "npm stable latest tag",
@@ -7687,7 +7432,7 @@
       "engines": {
         "node": "^22.18.0 || >=24.11.0"
       },
-      "latest": "8.0.6",
+      "latest": "8.0.7",
       "source": "https://registry.npmjs.org/%40babel%2Ftraverse"
     },
     "npm:@babel/types": {
@@ -7761,7 +7506,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.9.1",
+      "latest": "6.0.0",
       "source": "https://registry.npmjs.org/%40hookform%2Fresolvers"
     },
     "npm:@jridgewell/gen-mapping": {
@@ -7841,98 +7586,98 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fangular"
     },
     "npm:@orval/axios": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Faxios"
     },
     "npm:@orval/core": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fcore"
     },
     "npm:@orval/effect": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Feffect"
     },
     "npm:@orval/fetch": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Ffetch"
     },
     "npm:@orval/hono": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fhono"
     },
     "npm:@orval/mcp": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fmcp"
     },
     "npm:@orval/mock": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fmock"
     },
     "npm:@orval/pinia-colada": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fpinia-colada"
     },
     "npm:@orval/query": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fquery"
     },
     "npm:@orval/solid-start": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fsolid-start"
     },
     "npm:@orval/swr": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fswr"
     },
     "npm:@orval/zod": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/%40orval%2Fzod"
     },
     "npm:@oxc-project/types": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "0.151.0",
+      "latest": "0.155.0",
       "source": "https://registry.npmjs.org/%40oxc-project%2Ftypes"
     },
     "npm:@pinojs/redact": {
@@ -7953,63 +7698,63 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.7",
+      "latest": "1.2.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Fprimitive"
     },
     "npm:@radix-ui/react-accordion": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.20",
+      "latest": "1.3.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-accordion"
     },
     "npm:@radix-ui/react-alert-dialog": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.23",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-alert-dialog"
     },
     "npm:@radix-ui/react-arrow": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.15",
+      "latest": "1.1.17",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-arrow"
     },
     "npm:@radix-ui/react-aspect-ratio": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.15",
+      "latest": "1.2.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-aspect-ratio"
     },
     "npm:@radix-ui/react-avatar": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.6",
+      "latest": "1.3.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-avatar"
     },
     "npm:@radix-ui/react-checkbox": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.3.11",
+      "latest": "1.4.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-checkbox"
     },
     "npm:@radix-ui/react-collapsible": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.20",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-collapsible"
     },
     "npm:@radix-ui/react-collection": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.15",
+      "latest": "1.2.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-collection"
     },
     "npm:@radix-ui/react-compose-refs": {
@@ -8023,63 +7768,63 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.2",
+      "latest": "1.3.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-context"
     },
     "npm:@radix-ui/react-context-menu": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.3.7",
+      "latest": "2.4.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-context-menu"
     },
     "npm:@radix-ui/react-dialog": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.23",
+      "latest": "1.3.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-dialog"
     },
     "npm:@radix-ui/react-direction": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.4",
+      "latest": "1.2.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-direction"
     },
     "npm:@radix-ui/react-dismissable-layer": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.19",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-dismissable-layer"
     },
     "npm:@radix-ui/react-dropdown-menu": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.1.24",
+      "latest": "2.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-dropdown-menu"
     },
     "npm:@radix-ui/react-focus-guards": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.6",
+      "latest": "1.2.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-focus-guards"
     },
     "npm:@radix-ui/react-focus-scope": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.16",
+      "latest": "1.3.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-focus-scope"
     },
     "npm:@radix-ui/react-hover-card": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.23",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-hover-card"
     },
     "npm:@radix-ui/react-id": {
@@ -8093,175 +7838,175 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.1.15",
+      "latest": "2.1.17",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-label"
     },
     "npm:@radix-ui/react-menu": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.1.24",
+      "latest": "2.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-menu"
     },
     "npm:@radix-ui/react-menubar": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.24",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-menubar"
     },
     "npm:@radix-ui/react-navigation-menu": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.22",
+      "latest": "1.4.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-navigation-menu"
     },
     "npm:@radix-ui/react-popover": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.23",
+      "latest": "1.3.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-popover"
     },
     "npm:@radix-ui/react-popper": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.3.7",
+      "latest": "1.4.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-popper"
     },
     "npm:@radix-ui/react-portal": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.17",
+      "latest": "1.2.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-portal"
     },
     "npm:@radix-ui/react-presence": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.10",
+      "latest": "1.1.11",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-presence"
     },
     "npm:@radix-ui/react-primitive": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.1.10",
+      "latest": "2.2.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-primitive"
     },
     "npm:@radix-ui/react-progress": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.16",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-progress"
     },
     "npm:@radix-ui/react-radio-group": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.4.7",
+      "latest": "1.5.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-radio-group"
     },
     "npm:@radix-ui/react-roving-focus": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.19",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-roving-focus"
     },
     "npm:@radix-ui/react-scroll-area": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.18",
+      "latest": "1.4.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-scroll-area"
     },
     "npm:@radix-ui/react-select": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.3.7",
+      "latest": "2.4.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-select"
     },
     "npm:@radix-ui/react-separator": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.15",
+      "latest": "1.2.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-separator"
     },
     "npm:@radix-ui/react-slider": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.4.7",
+      "latest": "1.6.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-slider"
     },
     "npm:@radix-ui/react-slot": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.3.3",
+      "latest": "1.5.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-slot"
     },
     "npm:@radix-ui/react-switch": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.3.7",
+      "latest": "1.4.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-switch"
     },
     "npm:@radix-ui/react-tabs": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.21",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-tabs"
     },
     "npm:@radix-ui/react-toast": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.23",
+      "latest": "1.3.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-toast"
     },
     "npm:@radix-ui/react-toggle": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.18",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-toggle"
     },
     "npm:@radix-ui/react-toggle-group": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.19",
+      "latest": "1.2.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-toggle-group"
     },
     "npm:@radix-ui/react-tooltip": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.16",
+      "latest": "1.4.1",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-tooltip"
     },
     "npm:@radix-ui/react-use-callback-ref": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.4",
+      "latest": "1.1.5",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-use-callback-ref"
     },
     "npm:@radix-ui/react-use-controllable-state": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.6",
+      "latest": "1.3.0",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-use-controllable-state"
     },
     "npm:@radix-ui/react-use-effect-event": {
@@ -8303,14 +8048,14 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.1.4",
+      "latest": "1.1.5",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-use-size"
     },
     "npm:@radix-ui/react-visually-hidden": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.2.11",
+      "latest": "1.2.13",
       "source": "https://registry.npmjs.org/%40radix-ui%2Freact-visually-hidden"
     },
     "npm:@radix-ui/rect": {
@@ -8324,14 +8069,14 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.12.0",
+      "latest": "2.13.0",
       "source": "https://registry.npmjs.org/%40reduxjs%2Ftoolkit"
     },
     "npm:@replit/connectors-sdk": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "0.4.3",
+      "latest": "0.5.0",
       "source": "https://registry.npmjs.org/%40replit%2Fconnectors-sdk"
     },
     "npm:@replit/vite-plugin-cartographer": {
@@ -8361,7 +8106,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm-eabi"
     },
     "npm:@rolldown/binding-android-arm64": {
@@ -8370,7 +8115,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm64"
     },
     "npm:@rolldown/binding-darwin-arm64": {
@@ -8379,7 +8124,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-arm64"
     },
     "npm:@rolldown/binding-darwin-x64": {
@@ -8388,7 +8133,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-x64"
     },
     "npm:@rolldown/binding-freebsd-x64": {
@@ -8397,7 +8142,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-freebsd-x64"
     },
     "npm:@rolldown/binding-linux-arm-gnueabihf": {
@@ -8406,7 +8151,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm-gnueabihf"
     },
     "npm:@rolldown/binding-linux-arm64-gnu": {
@@ -8415,7 +8160,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-gnu"
     },
     "npm:@rolldown/binding-linux-arm64-musl": {
@@ -8424,7 +8169,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-musl"
     },
     "npm:@rolldown/binding-linux-ppc64-gnu": {
@@ -8433,7 +8178,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-ppc64-gnu"
     },
     "npm:@rolldown/binding-linux-s390x-gnu": {
@@ -8442,7 +8187,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-s390x-gnu"
     },
     "npm:@rolldown/binding-linux-x64-gnu": {
@@ -8451,7 +8196,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-gnu"
     },
     "npm:@rolldown/binding-linux-x64-musl": {
@@ -8460,7 +8205,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-musl"
     },
     "npm:@rolldown/binding-openharmony-arm64": {
@@ -8469,7 +8214,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-openharmony-arm64"
     },
     "npm:@rolldown/binding-win32-arm64-msvc": {
@@ -8478,7 +8223,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-win32-arm64-msvc"
     },
     "npm:@rolldown/binding-win32-x64-msvc": {
@@ -8487,7 +8232,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/%40rolldown%2Fbinding-win32-x64-msvc"
     },
     "npm:@rolldown/pluginutils": {
@@ -8503,7 +8248,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.15.0",
+      "latest": "0.16.4",
       "source": "https://registry.npmjs.org/%40scalar%2Fhelpers"
     },
     "npm:@scalar/json-magic": {
@@ -8512,7 +8257,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.15.2",
+      "latest": "0.16.1",
       "source": "https://registry.npmjs.org/%40scalar%2Fjson-magic"
     },
     "npm:@scalar/json-schema-validator": {
@@ -8521,7 +8266,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.1.6",
+      "latest": "0.1.13",
       "source": "https://registry.npmjs.org/%40scalar%2Fjson-schema-validator"
     },
     "npm:@scalar/openapi-parser": {
@@ -8530,7 +8275,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.29.7",
+      "latest": "0.29.15",
       "source": "https://registry.npmjs.org/%40scalar%2Fopenapi-parser"
     },
     "npm:@scalar/openapi-types": {
@@ -8539,7 +8284,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.9.7",
+      "latest": "0.9.8",
       "source": "https://registry.npmjs.org/%40scalar%2Fopenapi-types"
     },
     "npm:@scalar/openapi-upgrader": {
@@ -8548,7 +8293,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.4.0",
+      "latest": "0.4.5",
       "source": "https://registry.npmjs.org/%40scalar%2Fopenapi-upgrader"
     },
     "npm:@scalar/openapi-validator": {
@@ -8557,7 +8302,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.1.6",
+      "latest": "0.1.13",
       "source": "https://registry.npmjs.org/%40scalar%2Fopenapi-validator"
     },
     "npm:@scalar/types": {
@@ -8566,7 +8311,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "0.22.1",
+      "latest": "0.24.0",
       "source": "https://registry.npmjs.org/%40scalar%2Ftypes"
     },
     "npm:@sec-ant/readable-stream": {
@@ -8651,43 +8396,15 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.104.0",
+      "latest": "5.104.5",
       "source": "https://registry.npmjs.org/%40tanstack%2Fquery-core"
     },
     "npm:@tanstack/react-query": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.104.0",
+      "latest": "5.104.5",
       "source": "https://registry.npmjs.org/%40tanstack%2Freact-query"
-    },
-    "npm:@types/babel__core": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "7.20.5",
-      "source": "https://registry.npmjs.org/%40types%2Fbabel__core"
-    },
-    "npm:@types/babel__generator": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "7.27.0",
-      "source": "https://registry.npmjs.org/%40types%2Fbabel__generator"
-    },
-    "npm:@types/babel__template": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "7.4.4",
-      "source": "https://registry.npmjs.org/%40types%2Fbabel__template"
-    },
-    "npm:@types/babel__traverse": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "7.28.0",
-      "source": "https://registry.npmjs.org/%40types%2Fbabel__traverse"
     },
     "npm:@types/body-parser": {
       "basis": "npm stable latest tag",
@@ -8826,7 +8543,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "26.6.3",
+      "latest": "26.6.5",
       "source": "https://registry.npmjs.org/%40types%2Fnode"
     },
     "npm:@types/pg": {
@@ -8885,27 +8602,207 @@
       "latest": "1.7.0",
       "source": "https://registry.npmjs.org/%40types%2Fuse-sync-external-store"
     },
+    "npm:@typescript/typescript-aix-ppc64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-aix-ppc64"
+    },
+    "npm:@typescript/typescript-darwin-arm64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-darwin-arm64"
+    },
+    "npm:@typescript/typescript-darwin-x64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-darwin-x64"
+    },
+    "npm:@typescript/typescript-freebsd-arm64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-freebsd-arm64"
+    },
+    "npm:@typescript/typescript-freebsd-x64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-freebsd-x64"
+    },
+    "npm:@typescript/typescript-linux-arm": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-linux-arm"
+    },
+    "npm:@typescript/typescript-linux-arm64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-linux-arm64"
+    },
+    "npm:@typescript/typescript-linux-loong64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-linux-loong64"
+    },
+    "npm:@typescript/typescript-linux-mips64el": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-linux-mips64el"
+    },
+    "npm:@typescript/typescript-linux-ppc64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-linux-ppc64"
+    },
+    "npm:@typescript/typescript-linux-riscv64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-linux-riscv64"
+    },
+    "npm:@typescript/typescript-linux-s390x": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-linux-s390x"
+    },
+    "npm:@typescript/typescript-linux-x64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-linux-x64"
+    },
+    "npm:@typescript/typescript-netbsd-arm64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-netbsd-arm64"
+    },
+    "npm:@typescript/typescript-netbsd-x64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-netbsd-x64"
+    },
+    "npm:@typescript/typescript-openbsd-arm64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-openbsd-arm64"
+    },
+    "npm:@typescript/typescript-openbsd-x64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-openbsd-x64"
+    },
+    "npm:@typescript/typescript-sunos-x64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-sunos-x64"
+    },
+    "npm:@typescript/typescript-win32-arm64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-win32-arm64"
+    },
+    "npm:@typescript/typescript-win32-x64": {
+      "basis": "npm stable latest tag",
+      "deprecated": "",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "latest": "7.0.2",
+      "source": "https://registry.npmjs.org/%40typescript%2Ftypescript-win32-x64"
+    },
     "npm:@vitejs/plugin-react": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "6.1.1",
+      "latest": "6.1.2",
       "source": "https://registry.npmjs.org/%40vitejs%2Fplugin-react"
     },
     "npm:@vitest/mocker": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.0.2",
+      "latest": "5.0.5",
       "source": "https://registry.npmjs.org/%40vitest%2Fmocker"
     },
     "npm:@vitest/spy": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.0.2",
+      "latest": "5.0.5",
       "source": "https://registry.npmjs.org/%40vitest%2Fspy"
     },
     "npm:accepts": {
@@ -8923,7 +8820,7 @@
       "engines": {
         "node": ">=0.4.0"
       },
-      "latest": "8.18.0",
+      "latest": "8.19.0",
       "source": "https://registry.npmjs.org/acorn"
     },
     "npm:ajv": {
@@ -8951,7 +8848,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "3.0.2",
+      "latest": "3.0.3",
       "source": "https://registry.npmjs.org/argparse"
     },
     "npm:aria-hidden": {
@@ -8981,15 +8878,6 @@
       "latest": "1.0.0",
       "source": "https://registry.npmjs.org/atomic-sleep"
     },
-    "npm:baseline-browser-mapping": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=6.0.0"
-      },
-      "latest": "2.11.26",
-      "source": "https://registry.npmjs.org/baseline-browser-mapping"
-    },
     "npm:body-parser": {
       "basis": "npm stable latest tag",
       "deprecated": "",
@@ -9007,15 +8895,6 @@
       },
       "latest": "3.0.3",
       "source": "https://registry.npmjs.org/braces"
-    },
-    "npm:browserslist": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
-      },
-      "latest": "4.29.1",
-      "source": "https://registry.npmjs.org/browserslist"
     },
     "npm:bytes": {
       "basis": "npm stable latest tag",
@@ -9044,29 +8923,22 @@
       "latest": "1.0.4",
       "source": "https://registry.npmjs.org/call-bound"
     },
-    "npm:caniuse-lite": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "1.0.30001812",
-      "source": "https://registry.npmjs.org/caniuse-lite"
-    },
     "npm:chai": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
         "node": ">=18"
       },
-      "latest": "6.2.2",
+      "latest": "6.3.0",
       "source": "https://registry.npmjs.org/chai"
     },
     "npm:chokidar": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
-        "node": ">= 20.19.0"
+        "node": ">= 22.22"
       },
-      "latest": "5.0.0",
+      "latest": "6.0.0",
       "source": "https://registry.npmjs.org/chokidar"
     },
     "npm:class-variance-authority": {
@@ -9132,13 +9004,6 @@
       },
       "latest": "3.1.1",
       "source": "https://registry.npmjs.org/content-type"
-    },
-    "npm:convert-source-map": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "2.0.0",
-      "source": "https://registry.npmjs.org/convert-source-map"
     },
     "npm:cookie": {
       "basis": "npm stable latest tag",
@@ -9313,7 +9178,7 @@
       "engines": {
         "node": ">=12.20"
       },
-      "latest": "5.0.3",
+      "latest": "5.0.4",
       "source": "https://registry.npmjs.org/dateformat"
     },
     "npm:debug": {
@@ -9368,7 +9233,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "0.45.3",
+      "latest": "0.45.4",
       "source": "https://registry.npmjs.org/drizzle-orm"
     },
     "npm:drizzle-zod": {
@@ -9393,13 +9258,6 @@
       "engines": {},
       "latest": "1.1.1",
       "source": "https://registry.npmjs.org/ee-first"
-    },
-    "npm:electron-to-chromium": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "1.5.439",
-      "source": "https://registry.npmjs.org/electron-to-chromium"
     },
     "npm:embla-carousel": {
       "basis": "npm stable latest tag",
@@ -9444,7 +9302,7 @@
       "engines": {
         "node": ">=10.13.0"
       },
-      "latest": "5.25.1",
+      "latest": "5.26.0",
       "source": "https://registry.npmjs.org/enhanced-resolve"
     },
     "npm:es-define-property": {
@@ -9469,7 +9327,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "3.0.2",
+      "latest": "3.0.4",
       "source": "https://registry.npmjs.org/es-module-lexer"
     },
     "npm:es-object-atoms": {
@@ -9503,15 +9361,6 @@
       "engines": {},
       "latest": "2.3.3",
       "source": "https://registry.npmjs.org/esbuild-plugin-pino"
-    },
-    "npm:escalade": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=6"
-      },
-      "latest": "3.2.0",
-      "source": "https://registry.npmjs.org/escalade"
     },
     "npm:escape-html": {
       "basis": "npm stable latest tag",
@@ -9558,7 +9407,7 @@
       "engines": {
         "node": ">=22"
       },
-      "latest": "10.0.1",
+      "latest": "10.2.0",
       "source": "https://registry.npmjs.org/execa"
     },
     "npm:expect-type": {
@@ -9576,14 +9425,14 @@
       "engines": {
         "node": ">= 18"
       },
-      "latest": "5.2.1",
+      "latest": "5.3.0",
       "source": "https://registry.npmjs.org/express"
     },
     "npm:fast-copy": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "4.1.1",
+      "latest": "4.2.0",
       "source": "https://registry.npmjs.org/fast-copy"
     },
     "npm:fast-deep-equal": {
@@ -9613,7 +9462,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "4.2.1",
+      "latest": "4.2.3",
       "source": "https://registry.npmjs.org/fast-uri"
     },
     "npm:fastq": {
@@ -9659,15 +9508,6 @@
       "latest": "2.1.1",
       "source": "https://registry.npmjs.org/finalhandler"
     },
-    "npm:find-up": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=20"
-      },
-      "latest": "8.0.0",
-      "source": "https://registry.npmjs.org/find-up"
-    },
     "npm:forwarded": {
       "basis": "npm stable latest tag",
       "deprecated": "",
@@ -9681,7 +9521,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "13.4.4",
+      "latest": "14.5.0",
       "source": "https://registry.npmjs.org/framer-motion"
     },
     "npm:fresh": {
@@ -9717,15 +9557,6 @@
       },
       "latest": "7.5.0",
       "source": "https://registry.npmjs.org/fuse.js"
-    },
-    "npm:gensync": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=5.0.0"
-      },
-      "latest": "0.1.0",
-      "source": "https://registry.npmjs.org/gensync"
     },
     "npm:get-caller-file": {
       "basis": "npm stable latest tag",
@@ -9860,7 +9691,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "11.1.18",
+      "latest": "11.2.7",
       "source": "https://registry.npmjs.org/immer"
     },
     "npm:inherits": {
@@ -9992,7 +9823,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.4.2",
+      "latest": "5.5.0",
       "source": "https://registry.npmjs.org/js-yaml"
     },
     "npm:jsesc": {
@@ -10038,36 +9869,18 @@
       "latest": "1.33.0",
       "source": "https://registry.npmjs.org/lightningcss-linux-x64-gnu"
     },
-    "npm:locate-path": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=20"
-      },
-      "latest": "8.0.0",
-      "source": "https://registry.npmjs.org/locate-path"
-    },
-    "npm:lru-cache": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": "20 || >=22"
-      },
-      "latest": "11.5.3",
-      "source": "https://registry.npmjs.org/lru-cache"
-    },
     "npm:lucide-react": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.48.0",
+      "latest": "1.61.0",
       "source": "https://registry.npmjs.org/lucide-react"
     },
     "npm:magic-string": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.4.2",
+      "latest": "1.4.3",
       "source": "https://registry.npmjs.org/magic-string"
     },
     "npm:math-intrinsics": {
@@ -10151,14 +9964,14 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "13.4.4",
+      "latest": "14.5.0",
       "source": "https://registry.npmjs.org/motion-dom"
     },
     "npm:motion-utils": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "13.3.0",
+      "latest": "14.1.1",
       "source": "https://registry.npmjs.org/motion-utils"
     },
     "npm:ms": {
@@ -10174,7 +9987,7 @@
       "engines": {
         "node": "^22 || ^24 || >=26"
       },
-      "latest": "6.0.1",
+      "latest": "6.0.2",
       "source": "https://registry.npmjs.org/nanoid"
     },
     "npm:negotiator": {
@@ -10193,22 +10006,13 @@
       "latest": "0.4.6",
       "source": "https://registry.npmjs.org/next-themes"
     },
-    "npm:node-releases": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=18"
-      },
-      "latest": "2.0.57",
-      "source": "https://registry.npmjs.org/node-releases"
-    },
     "npm:npm": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
         "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
       },
-      "latest": "12.1.0",
+      "latest": "12.2.1",
       "source": "https://registry.npmjs.org/npm"
     },
     "npm:npm-run-path": {
@@ -10278,26 +10082,8 @@
       "engines": {
         "node": ">=22.18.0"
       },
-      "latest": "8.37.0",
+      "latest": "8.44.0",
       "source": "https://registry.npmjs.org/orval"
-    },
-    "npm:p-limit": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=20"
-      },
-      "latest": "7.3.3",
-      "source": "https://registry.npmjs.org/p-limit"
-    },
-    "npm:p-locate": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=20"
-      },
-      "latest": "7.0.0",
-      "source": "https://registry.npmjs.org/p-locate"
     },
     "npm:parse-ms": {
       "basis": "npm stable latest tag",
@@ -10346,21 +10132,21 @@
       "engines": {
         "node": ">= 16.0.0"
       },
-      "latest": "8.23.0",
+      "latest": "8.23.1",
       "source": "https://registry.npmjs.org/pg"
     },
     "npm:pg-cloudflare": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.4.0",
+      "latest": "1.4.1",
       "source": "https://registry.npmjs.org/pg-cloudflare"
     },
     "npm:pg-connection-string": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "2.14.0",
+      "latest": "2.14.1",
       "source": "https://registry.npmjs.org/pg-connection-string"
     },
     "npm:pg-int8": {
@@ -10383,7 +10169,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "1.16.0",
+      "latest": "1.16.1",
       "source": "https://registry.npmjs.org/pg-protocol"
     },
     "npm:pg-types": {
@@ -10422,7 +10208,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "10.3.1",
+      "latest": "10.4.0",
       "source": "https://registry.npmjs.org/pino"
     },
     "npm:pino-abstract-transport": {
@@ -10443,7 +10229,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "13.1.3",
+      "latest": "13.2.0",
       "source": "https://registry.npmjs.org/pino-pretty"
     },
     "npm:pino-std-serializers": {
@@ -10459,7 +10245,7 @@
       "engines": {
         "node": ">=20"
       },
-      "latest": "1.63.0",
+      "latest": "1.64.1",
       "source": "https://registry.npmjs.org/playwright"
     },
     "npm:playwright-core": {
@@ -10468,7 +10254,7 @@
       "engines": {
         "node": ">=20"
       },
-      "latest": "1.63.0",
+      "latest": "1.64.1",
       "source": "https://registry.npmjs.org/playwright-core"
     },
     "npm:pnpm": {
@@ -10477,9 +10263,9 @@
       "engines": {
         "node": ">=18.*"
       },
-      "latest": "12.6.0",
+      "latest": "12.14.0",
       "source": "https://registry.npmjs.org/pnpm",
-      "tracked_major_latest": "10.34.5"
+      "tracked_major_latest": "10.34.7"
     },
     "npm:postcss": {
       "basis": "npm stable latest tag",
@@ -10487,7 +10273,7 @@
       "engines": {
         "node": "^10 || ^12 || >=14"
       },
-      "latest": "8.5.28",
+      "latest": "8.5.31",
       "source": "https://registry.npmjs.org/postcss"
     },
     "npm:postcss-selector-parser": {
@@ -10496,7 +10282,7 @@
       "engines": {
         "node": ">=4"
       },
-      "latest": "7.1.6",
+      "latest": "7.1.7",
       "source": "https://registry.npmjs.org/postcss-selector-parser"
     },
     "npm:postgres-array": {
@@ -10541,23 +10327,23 @@
       "engines": {
         "node": ">=14"
       },
-      "latest": "3.9.9",
+      "latest": "3.9.10",
       "source": "https://registry.npmjs.org/prettier"
     },
     "npm:pretty-ms": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
-        "node": ">=18"
+        "node": ">=22"
       },
-      "latest": "9.3.1",
+      "latest": "10.0.0",
       "source": "https://registry.npmjs.org/pretty-ms"
     },
     "npm:process-warning": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.1.0",
+      "latest": "5.1.1",
       "source": "https://registry.npmjs.org/process-warning"
     },
     "npm:proxy-addr": {
@@ -10582,7 +10368,7 @@
       "engines": {
         "node": ">=0.6"
       },
-      "latest": "6.16.0",
+      "latest": "6.16.1",
       "source": "https://registry.npmjs.org/qs"
     },
     "npm:queue-microtask": {
@@ -10623,7 +10409,7 @@
       "engines": {
         "node": ">=0.10.0"
       },
-      "latest": "19.3.0",
+      "latest": "19.3.1",
       "source": "https://registry.npmjs.org/react"
     },
     "npm:react-day-picker": {
@@ -10632,14 +10418,14 @@
       "engines": {
         "node": ">=18"
       },
-      "latest": "10.0.1",
+      "latest": "10.0.2",
       "source": "https://registry.npmjs.org/react-day-picker"
     },
     "npm:react-dom": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "19.3.0",
+      "latest": "19.3.1",
       "source": "https://registry.npmjs.org/react-dom"
     },
     "npm:react-hook-form": {
@@ -10648,7 +10434,7 @@
       "engines": {
         "node": ">=18.0.0"
       },
-      "latest": "7.89.0",
+      "latest": "7.90.0",
       "source": "https://registry.npmjs.org/react-hook-form"
     },
     "npm:react-icons": {
@@ -10662,7 +10448,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "19.3.0",
+      "latest": "19.3.1",
       "source": "https://registry.npmjs.org/react-is"
     },
     "npm:react-redux": {
@@ -10671,15 +10457,6 @@
       "engines": {},
       "latest": "9.3.0",
       "source": "https://registry.npmjs.org/react-redux"
-    },
-    "npm:react-refresh": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=0.10.0"
-      },
-      "latest": "0.19.0",
-      "source": "https://registry.npmjs.org/react-refresh"
     },
     "npm:react-remove-scroll": {
       "basis": "npm stable latest tag",
@@ -10703,7 +10480,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "4.13.3",
+      "latest": "4.14.8",
       "source": "https://registry.npmjs.org/react-resizable-panels"
     },
     "npm:react-router": {
@@ -10712,7 +10489,7 @@
       "engines": {
         "node": ">=22.22.0"
       },
-      "latest": "8.4.0",
+      "latest": "8.5.0",
       "source": "https://registry.npmjs.org/react-router"
     },
     "npm:react-router-dom": {
@@ -10781,15 +10558,6 @@
       "latest": "3.0.0",
       "source": "https://registry.npmjs.org/regexparam"
     },
-    "npm:remeda": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=18.0.0"
-      },
-      "latest": "2.50.0",
-      "source": "https://registry.npmjs.org/remeda"
-    },
     "npm:require-from-string": {
       "basis": "npm stable latest tag",
       "deprecated": "",
@@ -10829,7 +10597,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "1.2.11",
+      "latest": "1.2.15",
       "source": "https://registry.npmjs.org/rolldown"
     },
     "npm:router": {
@@ -10852,9 +10620,9 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
-        "node": ">=10"
+        "node": ">=18"
       },
-      "latest": "2.5.0",
+      "latest": "3.0.0",
       "source": "https://registry.npmjs.org/safe-stable-stringify"
     },
     "npm:safer-buffer": {
@@ -10875,17 +10643,8 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "4.1.0",
+      "latest": "4.1.1",
       "source": "https://registry.npmjs.org/secure-json-parse"
-    },
-    "npm:semver": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=10"
-      },
-      "latest": "7.8.5",
-      "source": "https://registry.npmjs.org/semver"
     },
     "npm:send": {
       "basis": "npm stable latest tag",
@@ -10909,7 +10668,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "3.1.2",
+      "latest": "3.2.1",
       "source": "https://registry.npmjs.org/set-cookie-parser"
     },
     "npm:setprototypeof": {
@@ -10973,13 +10732,6 @@
       "latest": "1.0.2",
       "source": "https://registry.npmjs.org/side-channel-weakmap"
     },
-    "npm:siginfo": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "2.0.0",
-      "source": "https://registry.npmjs.org/siginfo"
-    },
     "npm:signal-exit": {
       "basis": "npm stable latest tag",
       "deprecated": "",
@@ -10993,7 +10745,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "5.0.1",
+      "latest": "5.0.2",
       "source": "https://registry.npmjs.org/sonic-boom"
     },
     "npm:sonner": {
@@ -11009,7 +10761,7 @@
       "engines": {
         "node": ">=0.10.0"
       },
-      "latest": "1.2.1",
+      "latest": "1.2.2",
       "source": "https://registry.npmjs.org/source-map-js"
     },
     "npm:split2": {
@@ -11020,13 +10772,6 @@
       },
       "latest": "4.2.0",
       "source": "https://registry.npmjs.org/split2"
-    },
-    "npm:stackback": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "0.0.2",
-      "source": "https://registry.npmjs.org/stackback"
     },
     "npm:statuses": {
       "basis": "npm stable latest tag",
@@ -11041,16 +10786,16 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "4.2.0",
+      "latest": "4.3.0",
       "source": "https://registry.npmjs.org/std-env"
     },
     "npm:string-argv": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {
-        "node": ">=0.6.19"
+        "node": ">=16.20.0"
       },
-      "latest": "0.3.2",
+      "latest": "0.4.0",
       "source": "https://registry.npmjs.org/string-argv"
     },
     "npm:strip-final-newline": {
@@ -11132,7 +10877,7 @@
       "engines": {
         "node": ">=20.0.0"
       },
-      "latest": "6.2.0",
+      "latest": "6.2.2",
       "source": "https://registry.npmjs.org/tinybench"
     },
     "npm:tinyexec": {
@@ -11227,14 +10972,14 @@
       "engines": {
         "node": ">=22.19.0"
       },
-      "latest": "8.11.2",
+      "latest": "8.12.3",
       "source": "https://registry.npmjs.org/undici"
     },
     "npm:undici-types": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "8.11.2",
+      "latest": "8.12.3",
       "source": "https://registry.npmjs.org/undici-types"
     },
     "npm:unicorn-magic": {
@@ -11254,13 +10999,6 @@
       },
       "latest": "1.0.0",
       "source": "https://registry.npmjs.org/unpipe"
-    },
-    "npm:update-browserslist-db": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {},
-      "latest": "1.3.3",
-      "source": "https://registry.npmjs.org/update-browserslist-db"
     },
     "npm:use-callback-ref": {
       "basis": "npm stable latest tag",
@@ -11323,7 +11061,7 @@
       "engines": {
         "node": "^20.19.0 || >=22.12.0"
       },
-      "latest": "8.3.1",
+      "latest": "8.3.5",
       "source": "https://registry.npmjs.org/vite"
     },
     "npm:vitest": {
@@ -11332,7 +11070,7 @@
       "engines": {
         "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
       },
-      "latest": "5.0.2",
+      "latest": "5.0.5",
       "source": "https://registry.npmjs.org/vitest"
     },
     "npm:which": {
@@ -11350,14 +11088,14 @@
       "engines": {
         "node": ">=20.11"
       },
-      "latest": "3.2.2",
+      "latest": "3.2.3",
       "source": "https://registry.npmjs.org/why-is-node-running"
     },
     "npm:wouter": {
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "3.11.0",
+      "latest": "3.13.0",
       "source": "https://registry.npmjs.org/wouter"
     },
     "npm:wrappy": {
@@ -11376,15 +11114,6 @@
       "latest": "4.0.2",
       "source": "https://registry.npmjs.org/xtend"
     },
-    "npm:yallist": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=18"
-      },
-      "latest": "5.0.0",
-      "source": "https://registry.npmjs.org/yallist"
-    },
     "npm:yaml": {
       "basis": "npm stable latest tag",
       "deprecated": "",
@@ -11393,15 +11122,6 @@
       },
       "latest": "2.9.1",
       "source": "https://registry.npmjs.org/yaml"
-    },
-    "npm:yocto-queue": {
-      "basis": "npm stable latest tag",
-      "deprecated": "",
-      "engines": {
-        "node": ">=12.20"
-      },
-      "latest": "1.2.2",
-      "source": "https://registry.npmjs.org/yocto-queue"
     },
     "npm:yoctocolors": {
       "basis": "npm stable latest tag",
@@ -11416,7 +11136,7 @@
       "basis": "npm stable latest tag",
       "deprecated": "",
       "engines": {},
-      "latest": "4.6.5",
+      "latest": "4.6.7",
       "source": "https://registry.npmjs.org/zod"
     },
     "pypi:PyYAML": {
@@ -11426,17 +11146,17 @@
     },
     "pypi:anthropic": {
       "basis": "highest non-yanked stable PyPI release",
-      "latest": "1.8.0",
+      "latest": "2.1.0",
       "source": "https://pypi.org/pypi/anthropic/json"
     },
     "pypi:mcp": {
       "basis": "highest non-yanked stable PyPI release",
-      "latest": "2.2.0",
+      "latest": "2.3.0",
       "source": "https://pypi.org/pypi/mcp/json"
     },
     "pypi:mssql-python": {
       "basis": "highest non-yanked stable PyPI release",
-      "latest": "1.15.0",
+      "latest": "1.16.0",
       "source": "https://pypi.org/pypi/mssql-python/json"
     },
     "pypi:packaging": {
@@ -11451,7 +11171,7 @@
     },
     "pypi:pyarrow": {
       "basis": "highest non-yanked stable PyPI release",
-      "latest": "25.0.1",
+      "latest": "26.0.0",
       "source": "https://pypi.org/pypi/pyarrow/json"
     }
   }

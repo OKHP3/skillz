@@ -16,7 +16,7 @@ compatibility: >
   when using this package's bundled validator.
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "3.1.0"
+  version: 3.1.1
   category: meta-tooling
   origin: okhp3/skillz
   homepage: https://overkillhill.com
