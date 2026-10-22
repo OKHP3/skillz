@@ -13,6 +13,7 @@ compatibility: >
   Portable Agent Skills-compatible client. Python 3.9 or newer is required only
   for the bundled orchestration script. External agent commands, credentials,
   and runtime-specific adapters are optional and must be supplied explicitly.
+allowed-tools: []
 metadata:
   author: Jamie Hill (OverKill Hill P³)
   version: 1.0.1
@@ -123,9 +124,8 @@ argument vector and inspect its output as untrusted data.
   current evidence status. A fresh live benchmark and unseen holdout are
   required before outcome or uplift claims.
 
-For repeatable coordination, run `scripts/run_equilibrium_review.py` in dry-run
-mode first. The package README contains package-contained examples and the
-explicit adapter contract.
+For repeatable coordination, use the package README's dry-run command first.
+It contains package-contained examples and the explicit adapter contract.
 
 ## Evaluation and validation loop
 
