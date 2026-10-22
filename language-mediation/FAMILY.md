@@ -3,7 +3,7 @@ family: language-mediation
 display_name: Language Mediation
 skill_count: 5
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-22T03:18:04Z
+generated_at: 2026-10-22T10:45:53Z
 ---
 
 # language-mediation
@@ -79,7 +79,7 @@ authority, technical meaning, or uncertainty.
 ## Skills (5)
 
 <!-- FAMILY_INVENTORY_START -->
-*5 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 03:18 UTC***
+*5 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 10:45 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -87,5 +87,5 @@ authority, technical meaning, or uncertainty.
 | [okhp3-translation-en-us-en-uk](okhp3-translation-en-us-en-uk/SKILL.md) | Adapt owned plainspoken text artifacts one way from United States English (en-US) to British Engl... | 1.2.0 |
 | [okhp3-translation-en-us-es-es](okhp3-translation-en-us-es-es/SKILL.md) | Translate owned plainspoken text artifacts one way from United States English (en-US) to Spain Sp... | 1.2.0 |
 | [okhp3-translation-en-us-es-mx](okhp3-translation-en-us-es-mx/SKILL.md) | Translate owned plainspoken text artifacts one way from United States English (en-US) to Mexican ... | 1.2.0 |
-| [okhp3-translation-en-us-fr-fr](okhp3-translation-en-us-fr-fr/SKILL.md) | Translate owned plainspoken text artifacts one way from United States English (en-US) to France F... | 1.3.0 |
+| [okhp3-translation-en-us-fr-fr](okhp3-translation-en-us-fr-fr/SKILL.md) | Translate owned plainspoken text artifacts one way from United States English (en-US) to France F... | 1.3.1 |
 <!-- FAMILY_INVENTORY_END -->

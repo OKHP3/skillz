@@ -190,6 +190,26 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
             errors = json.loads(result.stdout)["errors"]
             self.assertTrue(any("review_record.target_locale" in item for item in errors))
 
+    def test_null_manifest_and_controls_fail_with_structured_errors(self):
+        for null_field in ("manifest", "voice_profile", "dictionary", "both_controls"):
+            with self.subTest(null_field=null_field), tempfile.TemporaryDirectory() as raw:
+                directory = Path(raw)
+                project = self.write_project(directory, None if null_field == "manifest" else PROJECT)
+                self.write_controls(
+                    directory,
+                    dictionary=None if null_field in ("dictionary", "both_controls") else DICTIONARY,
+                    voice_profile=None if null_field in ("voice_profile", "both_controls") else VOICE_PROFILE,
+                )
+                result = self.run_validator(project)
+                self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+                self.assertTrue(json.loads(result.stdout)["errors"])
+                planned = subprocess.run(
+                    [sys.executable, str(PLANNER), "--project", str(project), "--base-dir", str(directory), "--format", "json"],
+                    capture_output=True, text=True, check=False,
+                )
+                self.assertEqual(planned.returncode, 1, planned.stdout + planned.stderr)
+                self.assertTrue(json.loads(planned.stdout)["errors"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-22: directed French translation closeout
+
+- Reject JSON null and other non-object manifests, voice profiles, and pair
+  dictionaries with structured CLI errors. Preserve draft-only behavior.
+- Correct the planner contract to describe missing/existing target inventory
+  and current hashes; freshness requires the prior translation record or the
+  separate page-sync workflow.
+- Mark the v1.1.0 benchmark historical and preserve its original analytical
+  provenance. French package version 1.3.1 remains an analytical candidate.
+- Preserve the separate Equilibrium role findings, regression evidence, and
+  current Language Mediation placement in `docs/closeouts/translation-2026-10-22/`.
+
 ## 2026-10-21: portable contract links in Forge
 
 - Resolve package-relative Full Contract links against the canonical SKILL.md
