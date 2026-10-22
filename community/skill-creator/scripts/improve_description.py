@@ -23,7 +23,14 @@ def _call_claude(prompt: str, model: str | None, timeout: int = 300) -> str:
     Prompt goes over stdin (not argv) because it embeds the full SKILL.md
     body and can easily exceed comfortable argv length.
     """
-    cmd = ["claude", "-p", "--output-format", "text"]
+    # This call needs a text response only: expose no built-in or MCP tools.
+    cmd = [
+        "claude", "-p",
+        "--tools", "",
+        "--disallowedTools", "mcp__*",
+        "--permission-mode", "dontAsk",
+        "--output-format", "text",
+    ]
     if model:
         cmd.extend(["--model", model])
 
