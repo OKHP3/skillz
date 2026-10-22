@@ -1,20 +1,26 @@
+import asyncio
 import subprocess
 
 
-def execute_adapter(argv, timeout_seconds):
-    process = subprocess.Popen(
-        argv,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        shell=False,
+async def _execute(argv, timeout_seconds):
+    process = await asyncio.create_subprocess_exec(
+        *argv,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
     )
     try:
-        stdout, stderr = process.communicate(timeout=timeout_seconds)
-    except subprocess.TimeoutExpired:
+        stdout, stderr = await asyncio.wait_for(process.communicate(), timeout_seconds)
+    except asyncio.TimeoutError as error:
         process.kill()
-        process.communicate()
-        raise
-    return subprocess.CompletedProcess(argv, process.returncode, stdout, stderr)
+        await process.communicate()
+        raise subprocess.TimeoutExpired(argv, timeout_seconds) from error
+    return subprocess.CompletedProcess(
+        argv,
+        process.returncode,
+        stdout.decode("utf-8", errors="replace"),
+        stderr.decode("utf-8", errors="replace"),
+    )
+
+
+def execute_adapter(argv, timeout_seconds):
+    return asyncio.run(_execute(argv, timeout_seconds))
