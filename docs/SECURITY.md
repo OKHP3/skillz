@@ -53,6 +53,12 @@ look for security risks, not authoring quality or maturity. High/critical findin
 need review; an incomplete scan is recorded separately from detected risks.
 No package instructions, scripts, installers, or dependencies are executed.
 
+The raw scan job remains failed for findings or incomplete coverage. A separate
+review-policy job can identify an exact, expiring owner-reviewed limitation from
+the pull request base commit, while leaving that raw verdict and evidence intact.
+This policy is advisory: no required branch check is currently configured.
+Non-skill changes complete the policy job without installing scanners.
+
 Official stable engine releases are resolved to immutable source, wheel, and
 dependency-lock hashes at scan time. Scheduled update checks trigger a full
 skill-library rescan when that identity changes, with weekly vulnerability-data
