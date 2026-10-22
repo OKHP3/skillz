@@ -1060,7 +1060,7 @@ test('catalog.json skills no longer carry a bodyText field (payload split)', () 
 });
 
 test('search-index.json exists with one entry per catalog skill, each carrying non-empty bodyText', () => {
-  const SEARCH_INDEX_PATH = join(__dirname, '..', 'public', 'data', 'search-index.json');
+  const SEARCH_INDEX_PATH = join(GENERATED_PUBLIC_DIR, 'data', 'search-index.json');
   assert(existsSync(SEARCH_INDEX_PATH), `${SEARCH_INDEX_PATH} was not generated`);
   const index = JSON.parse(readFileSync(SEARCH_INDEX_PATH, 'utf-8'));
   assert(Array.isArray(index), 'search-index.json is not an array');
