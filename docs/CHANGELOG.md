@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-21: complete the Copilot host Foundry review circuit
+
+- Mature Cowork, SharePoint, GitHub Copilot, and Copilot Studio Foundries to
+  1.2.0 following three separately prompted reviewers and conditional challenge.
+- Make portable-baseline composition, complete build outputs, and existing task
+  authorization explicit. Keep documented host rules distinct from house policy.
+- Refresh Cowork packaging limits, SharePoint personal/site ownership and
+  bounded Library/List composition, and Studio load/resource verification.
+- Expand development regressions, reclassify exposed holdouts, and preserve the
+  September evidence unchanged. New task review receipts live in the owner's
+  approved exports/skillz operations home. Native-host benchmarks and measured
+  token savings remain unverified.
+
 ## 2026-10-21: source manifest inventory validation
 
 - Refresh the manifest from the current 333 distribution skills and 54 support
