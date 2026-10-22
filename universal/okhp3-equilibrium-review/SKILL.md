@@ -157,37 +157,13 @@ Read only the relevant adapter before reviewing:
   role contract or structured JSON output.
 - `assets/equilibrium-review-record.json` when creating the output record.
 
-Use `scripts/run_equilibrium_review.py` when repeatable subprocess orchestration
-is safer or more useful than manually coordinating reviewers. The script does
-not call a provider, discover credentials, or execute a shell command by
-default. Supply an explicit argument-vector command or use dry-run mode to
-generate prompts and a review plan only.
-
-Example dry run:
-
-```text
-python scripts/run_equilibrium_review.py \
-  --artifact examples/equilibrium-review-input.md \
-  --question "Is this thesis supported and ready for controlled publication?" \
-  --output-dir review-output \
-  --mode five-way \
-  --dry-run
-```
-
-Example provider adapter:
-
-```text
-python scripts/run_equilibrium_review.py \
-  --artifact examples/equilibrium-review-input.md \
-  --question "Is this report safe and useful for the stated decision?" \
-  --output-dir review-output \
-  --agent-command-json '["python", "examples/agent_adapter.py", "--role", "{role}", "--prompt-file", "{prompt_file}"]'
-```
-
-The adapter must emit the structured role result described in
-`references/role-prompts.md` to stdout. The script captures stdout and stderr,
-records exit status and timing, and treats unstructured or missing results as
-uncertainty rather than agreement.
+Use the bundled orchestration helper when repeatable subprocess coordination is
+safer or more useful than manually coordinating reviewers. It does not call a
+provider, discover credentials, or execute a command by default. Supply an
+explicit argument-vector adapter or use dry-run mode to generate prompts and a
+review plan only. The package README contains runnable, package-contained
+examples. An adapter must emit the structured role result defined above; missing
+or unstructured results remain uncertainty rather than agreement.
 
 ## Safety and consent gates
 
