@@ -10,6 +10,8 @@
 - Move long-form material from three imported community entry points into
   package-local references without changing their frontmatter or substantive
   guidance. Structural validation is not a behavioral benchmark.
+- Normalize the nested project-local `okhp3-skill-promotion` package so the
+  support catalog includes all 55 packages; its nine files retain their blobs.
 - This is a candidate until the final merged revision, required CI/security
   checks, live Pages output, and Replit Free Mode/checkout state are verified.
 

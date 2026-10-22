@@ -3,7 +3,7 @@ family: murderbird
 display_name: MurderBird
 skill_count: 3
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-22T03:18:04Z
+generated_at: 2026-10-22T03:45:52Z
 ---
 
 # murderbird
@@ -91,7 +91,7 @@ Editorial red-team and thesis-building skills for the MurderBird agent: find wha
 ## Skills (3)
 
 <!-- FAMILY_INVENTORY_START -->
-*3 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 03:18 UTC***
+*3 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 03:45 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

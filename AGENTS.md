@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Inventory snapshot:** 333 distribution skills in 22 active families and 54 project-local support skills at source commit `3859c78e` (2026-10-21). Read the generated catalogs and manifest for the current count. OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Inventory snapshot:** 333 distribution skills in 22 active families at source commit `3859c78e` (2026-10-21). The project-local support catalog now includes 55 packages after normalizing one previously nested package. Read the generated catalogs and manifest for the current count. OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the canonical public landing surface is OverKill Hill `/skillz-forge/` (`/projects/skillz/` redirects there)
 
 ### Mission: confirmed
@@ -366,7 +366,7 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 
 ### Project-local support skills
 
-`.agents/skills/` contains project-local support skill packages, cataloged in `.agents/skills/README.md` (54 at the snapshot above). The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
+`.agents/skills/` contains 55 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
 
 ## Technology and runtime
 

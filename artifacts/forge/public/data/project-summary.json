@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T03:34:00.764Z",
+  "generatedAt": "2026-10-22T03:52:53.961Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/copilot-foundry-completion",
-  "sourceCommit": "36e060ff",
+  "sourceRef": "codex/skillz-catalog-website-closeout",
+  "sourceCommit": "d11f204e",
   "skillCount": 333,
   "familyCount": 22,
   "maturityCounts": {

@@ -34,6 +34,11 @@ the page. Re-read the final merged revision and generated summary before
 publication. Maturity and evidence are separate axes; do not translate a
 structural check into a live behavioral benchmark or production-readiness claim.
 
+One additional project-local package, `okhp3-skill-promotion`, was nested below
+its expected parent and therefore omitted by the support cataloger. It has been
+flattened without changing its file contents; the support catalog now contains
+**55** packages. This does not change the public distribution count.
+
 The seven packages present in source but absent from the prior checked-in
 326-skill Forge catalog were `askjamie/okhp3-askjamie-email-draft`,
 `glee-fully/okhp3-glee-fully-wwgd-review`,

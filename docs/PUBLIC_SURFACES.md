@@ -68,8 +68,10 @@ Reusable `SKILL.md` delegation contracts for compatible AI agents, with the curr
 ```
 
 At source commit `3859c78e`, the cataloger discovers 333 public distribution
-skills in 22 active families and 54 project-local support skills. This is a
-dated source snapshot, not evergreen landing-page copy. The generated
+skills in 22 active families and 54 direct project-local support skills. One
+previously nested support package has since been normalized, bringing the
+support catalog to 55. This is a dated source snapshot, not evergreen
+landing-page copy. The generated
 `project-summary.json` is the public count source; support skills are not
 public distribution entries. Forge is a live discovery workbench with guided
 discovery and visitor-built local stack composition, not a claim that every
