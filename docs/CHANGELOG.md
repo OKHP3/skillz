@@ -1,5 +1,36 @@
 # Changelog
 
+## 2026-10-21: complete the Copilot host Foundry review circuit
+
+- Mature Cowork, SharePoint, GitHub Copilot, and Copilot Studio Foundries to
+  1.2.0 following three separately prompted reviewers and conditional challenge.
+- Make portable-baseline composition, complete build outputs, and existing task
+  authorization explicit. Keep documented host rules distinct from house policy.
+- Refresh Cowork packaging limits, SharePoint personal/site ownership and
+  bounded Library/List composition, and Studio load/resource verification.
+- Expand development regressions, reclassify exposed holdouts, and preserve the
+  September evidence unchanged. New task review receipts live in the owner's
+  approved exports/skillz operations home. Native-host benchmarks and measured
+  token savings remain unverified.
+
+## 2026-10-21: source manifest inventory validation
+
+- Refresh the manifest from the current 333 distribution skills and 54 support
+  packages, including derived maturity and evidence counts.
+- Check source inventory before catalog generation can overwrite stale counts
+  in local integrity checks and release validation. Compare complete category
+  maps as well as totals and family membership; ignore build timestamps.
+- Keep publication regeneration and skill scanning unchanged. These checks
+  establish metadata consistency, not behavioral or security acceptance.
+
+## 2026-10-21: SQL reconciliation identifier safety
+
+- Validate and quote table, schema, primary-key, and compared-column names
+  before constructing SQL in the imported reconciliation skill. Reject malformed
+  or expression-like names; focused tests cover valid queries and blocked inputs.
+- The skill still requires an authorized SQL Server connection. This change does
+  not alter its certificate trust setting or clear the wider Shield findings.
+
 ## 2026-10-11
 
 - Skill Foundry 3.1.1 accepts strict SemVer as plain, single-quoted, or

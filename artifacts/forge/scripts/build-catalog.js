@@ -14,6 +14,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync, lstatSync, existsSy
 import { join, dirname, relative, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
+import { isDeepStrictEqual } from 'node:util';
 import { computeCapabilities } from './capabilities.mjs';
 import { readSkillMigrations, validateMigrationCatalog } from '../../../scripts/skill-migrations.mjs';
 
@@ -1389,6 +1390,11 @@ function buildFamilyOrientation(familySlug, familySkills) {
     }
   }
 
+  // Check the authored manifest before regeneration can conceal stale source
+  // counts. Validation may still write isolated catalog outputs for the suite.
+  const checkManifest = process.argv.includes('--check-manifest');
+  if (checkManifest) syncManifestCounts(catalog, { checkOnly: true });
+
   mkdirSync(dirname(OUTPUT), { recursive: true });
   writeFileSync(OUTPUT, JSON.stringify(catalog, null, 2), 'utf-8');
   console.log(`✓ Written: ${OUTPUT}`);
@@ -1412,7 +1418,7 @@ function buildFamilyOrientation(familySlug, familySkills) {
     process.exit(1);
   }
 
-  if (process.env.FORGE_SKIP_MANIFEST_SYNC === '1') {
+  if (checkManifest || process.env.FORGE_SKIP_MANIFEST_SYNC === '1') {
     console.log('Skipping manifest count sync for non-release output.');
   } else {
     syncManifestCounts(catalog);
@@ -1433,13 +1439,7 @@ export function syncManifestFamilies(manifest, catalog) {
   }));
 }
 
-function syncManifestCounts(catalog) {
-  if (!existsSync(MANIFEST_PATH)) {
-    console.warn(`[catalog warn] ${MANIFEST_PATH} not found — skipping manifest count sync.`);
-    return;
-  }
-  const manifest = JSON.parse(readFileSync(MANIFEST_PATH, 'utf-8'));
-
+export function deriveManifestInventory(manifest, catalog, supportSkillCount) {
   const maturityCounts = {};
   const evidenceStatusCounts = {};
   for (const s of catalog.skills) {
@@ -1447,27 +1447,52 @@ function syncManifestCounts(catalog) {
     evidenceStatusCounts[s.evidenceStatus] = (evidenceStatusCounts[s.evidenceStatus] || 0) + 1;
   }
 
-  manifest.distributionSkillCount = catalog.skillCount;
-  // `activeFamilyCount` predates the explicit distribution-prefixed field but
-  // remains part of the public manifest. Keep the compatibility field derived
-  // from the same catalog so it cannot contradict `distributionFamilyCount`.
-  manifest.activeFamilyCount = catalog.familyCount;
-  manifest.distributionFamilyCount = catalog.familyCount;
-  manifest.families = syncManifestFamilies(manifest, catalog);
-  manifest.placeholderFamilyCount = 0;
-  manifest.maturityCounts = maturityCounts;
-  manifest.evidenceStatusCounts = evidenceStatusCounts;
-  const supportRoot = join(REPO_ROOT, '.agents', 'skills');
-  if (existsSync(supportRoot)) {
-    manifest.projectLocalSupportSkillCount = readdirSync(supportRoot, { withFileTypes: true })
-      .filter(entry => entry.isDirectory() && existsSync(join(supportRoot, entry.name, 'SKILL.md')))
-      .length;
+  return {
+    distributionSkillCount: catalog.skillCount,
+    // Preserve the earlier public field alongside its explicit distribution alias.
+    activeFamilyCount: catalog.familyCount,
+    distributionFamilyCount: catalog.familyCount,
+    families: syncManifestFamilies(manifest, catalog),
+    placeholderFamilyCount: 0,
+    maturityCounts,
+    evidenceStatusCounts,
+    projectLocalSupportSkillCount: supportSkillCount,
+  };
+}
+
+export function manifestInventoryDrift(manifest, catalog, supportSkillCount) {
+  const expected = deriveManifestInventory(manifest, catalog, supportSkillCount);
+  return Object.keys(expected).filter(key => !isDeepStrictEqual(manifest[key], expected[key]));
+}
+
+function syncManifestCounts(catalog, { checkOnly = false } = {}) {
+  if (!existsSync(MANIFEST_PATH)) {
+    if (checkOnly) throw new Error(`Missing manifest: ${MANIFEST_PATH}`);
+    console.warn(`[catalog warn] ${MANIFEST_PATH} not found — skipping manifest count sync.`);
+    return;
   }
+  const manifest = JSON.parse(readFileSync(MANIFEST_PATH, 'utf-8'));
+  const supportRoot = join(REPO_ROOT, '.agents', 'skills');
+  const supportSkillCount = existsSync(supportRoot)
+    ? readdirSync(supportRoot, { withFileTypes: true })
+      .filter(entry => entry.isDirectory() && existsSync(join(supportRoot, entry.name, 'SKILL.md')))
+      .length
+    : 0;
+  if (checkOnly) {
+    const drift = manifestInventoryDrift(manifest, catalog, supportSkillCount);
+    if (drift.length) {
+      throw new Error(`Source manifest inventory is stale: ${drift.join(', ')}. ` +
+        'Run node artifacts/forge/scripts/build-catalog.js and commit the updated skillz.manifest.json.');
+    }
+    console.log('✓ Source manifest inventory matches the current skill packages.');
+    return;
+  }
+  Object.assign(manifest, deriveManifestInventory(manifest, catalog, supportSkillCount));
   manifest.countsGeneratedAt = catalog.generatedAt;
   manifest.countsGeneratedFrom = 'artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)';
 
-  const maturitySum = Object.values(maturityCounts).reduce((a, b) => a + b, 0);
-  const evidenceSum = Object.values(evidenceStatusCounts).reduce((a, b) => a + b, 0);
+  const maturitySum = Object.values(manifest.maturityCounts).reduce((a, b) => a + b, 0);
+  const evidenceSum = Object.values(manifest.evidenceStatusCounts).reduce((a, b) => a + b, 0);
   if (maturitySum !== catalog.skillCount || evidenceSum !== catalog.skillCount) {
     console.error(
       `ERROR: manifest count sync produced sums that don't match skillCount ` +
