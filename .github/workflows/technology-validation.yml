@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - '**/package.json'
+      - 'mermaid/okhp3-mermaid-publish/references/render-pipeline.sh'
+      - 'mermaid/okhp3-mermaid-bpmn/references/process-examples/skill-promotion-review-analyst-v1.mmd'
       - 'pnpm-lock.yaml'
       - 'pnpm-workspace.yaml'
       - '**/requirements*.txt'
@@ -103,8 +105,28 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .github/node-version
-      - name: Verify standalone Mermaid CLI starts
+      - name: Install pinned standalone Mermaid CLI
         working-directory: mermaid/okhp3-mermaid-publish
         run: |
-          npm install --ignore-scripts --package-lock=false
-          npm exec --no -- mmdc --version
+          npm install --package-lock=false
+          expected="$(node -p 'require("./package.json").devDependencies["@mermaid-js/mermaid-cli"]')"
+          actual="$(npm exec --no -- mmdc --version)"
+          test "$actual" = "$expected"
+      - name: Render representative Mermaid SVG and PNG
+        run: |
+          set -euo pipefail
+          source=mermaid/okhp3-mermaid-bpmn/references/process-examples/skill-promotion-review-analyst-v1.mmd
+          output_dir="$(mktemp -d)"
+          trap 'rm -rf "$output_dir"' EXIT
+          bash mermaid/okhp3-mermaid-publish/references/render-pipeline.sh "$source" "$output_dir/diagram.svg"
+          bash mermaid/okhp3-mermaid-publish/references/render-pipeline.sh "$source" "$output_dir/diagram.png"
+          python3 - "$output_dir" <<'PY'
+          from pathlib import Path
+          import sys
+
+          output_dir = Path(sys.argv[1])
+          svg = (output_dir / "diagram.svg").read_text(encoding="utf-8")
+          png = (output_dir / "diagram.png").read_bytes()
+          assert "<svg" in svg and "</svg>" in svg, "SVG render is missing markup"
+          assert png.startswith(b"\x89PNG\r\n\x1a\n") and len(png) > 1000, "PNG render is invalid"
+          PY
