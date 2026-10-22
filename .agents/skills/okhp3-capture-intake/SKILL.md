@@ -4,7 +4,7 @@ description: Preserve one raw idea, file, link, transcript, or request in a proj
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: 0.2.0
+  version: 0.2.1
   maturity: draftable
   category: knowledge-operations
   origin: okhp3/skillz
@@ -58,8 +58,8 @@ Sibling skills are companions, not permission to assume a missing capability.
 
 ## Worked example
 
-A user supplies a public note and authorizes `inbox/note.md` under a named
-workspace. Preserve the note verbatim, record the received date and source,
+A user supplies a public note and authorizes a destination in a named
+workspace inbox. Preserve the note verbatim, record the received date and source,
 verify the saved bytes or pointer, and report `CAPTURED`. If the destination
 is missing, report `BLOCKED`; a proposed path alone is not a completed capture.
 

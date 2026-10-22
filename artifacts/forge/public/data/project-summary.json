@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-09-19T23:35:13.065Z",
+  "generatedAt": "2026-10-22T03:46:05.099Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/skill-taxonomy-cleanup",
-  "sourceCommit": "b8e278d",
-  "skillCount": 326,
-  "familyCount": 21,
+  "sourceRef": "codex/knowledge-operations-closeout",
+  "sourceCommit": "3e64f7bb",
+  "skillCount": 333,
+  "familyCount": 22,
   "maturityCounts": {
-    "draftable": 248,
-    "skeleton": 73,
+    "draftable": 264,
+    "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 159,
+    "not-run": 165,
     "none": 110,
     "local-checks": 37,
-    "analytical": 6,
+    "analytical": 7,
     "live": 7
   },
   "capabilities": {
