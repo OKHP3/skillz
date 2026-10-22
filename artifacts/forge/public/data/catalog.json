@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-19T23:35:13.065Z",
+  "generatedAt": "2026-10-22T03:34:00.764Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/skill-taxonomy-cleanup",
-  "sourceCommit": "b8e278d",
-  "skillCount": 326,
-  "familyCount": 21,
+  "sourceRef": "codex/copilot-foundry-completion",
+  "sourceCommit": "36e060ff",
+  "skillCount": 333,
+  "familyCount": 22,
   "families": [
     {
       "name": "abrahamic",
@@ -75,9 +75,10 @@
     {
       "name": "askjamie",
       "displayName": "AskJamie",
-      "skillCount": 3,
+      "skillCount": 4,
       "skills": [
         "okhp3-askjamie-brand",
+        "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness"
       ],
@@ -95,7 +96,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-askjamie-gpt-builder",
+          "value": "okhp3-askjamie-email-draft",
           "note": null,
           "source": "generated"
         },
@@ -349,13 +350,14 @@
     {
       "name": "glee-fully",
       "displayName": "Glee-fully",
-      "skillCount": 5,
+      "skillCount": 6,
       "skills": [
         "glee-fully-repo-standardizer",
         "okhp3-glee-fully-brand",
         "okhp3-glee-fully-foundry",
         "okhp3-glee-fully-gpt-builder",
-        "okhp3-glee-fully-gpt-readiness"
+        "okhp3-glee-fully-gpt-readiness",
+        "okhp3-glee-fully-wwgd-review"
       ],
       "narrativeBody": "**Status: early specific tooling.** The Glee-fully-specific Foundry skill now lives at\n`glee-fully/okhp3-glee-fully-foundry/`. The consumer Tool and Tool-ette skill\nfamilies remain a future conversion target.\n\nConversion target for the Glee-fully custom GPT catalog (~42 GPTs from the `Glee-fullyTools-FoundRy` inventory). Earlier analysis concluded the right packaging is neither 1 family nor a fixed 7 — cohesion (shared tool/MCP affinity, workflow proximity) should determine the cluster count, working estimate 4-6 sub-families.",
       "orientation": {
@@ -525,6 +527,38 @@
       }
     },
     {
+      "name": "murderbird",
+      "displayName": "MurderBird",
+      "skillCount": 3,
+      "skills": [
+        "okhp3-murderbird-argument-audit",
+        "okhp3-murderbird-hook-and-close",
+        "okhp3-murderbird-thesis-forge"
+      ],
+      "narrativeBody": "**Status: early specific tooling.** Editorial red-team and thesis-building\ncapabilities assigned to the MurderBird agent persona. Newly authored; not yet\nexercised against a live agent session.\n\nMurderBird is the OverKill Hill P³ sentinel: \"the part of the forge that\nwatches the output and asks whether the system actually held.\" This family\npackages that job as portable methods. It finds what doesn't hold in an\nargument, then helps rebuild the argument so it does.",
+      "orientation": {
+        "purpose": {
+          "value": "**Status: early specific tooling.** Editorial red-team and thesis-building\ncapabilities assigned to the MurderBird agent persona. Newly authored; not yet\nexercised against a live agent session.\n\nMurderBird is the OverKill Hill P³ sentinel: \"the part of the forge that\nwatches the output and asks whether the system actually held.\" This family\npackages that job as portable methods. It finds what doesn't hold in an\nargument, then helps rebuild the argument so it does.",
+          "source": "generated"
+        },
+        "commonOutcomes": {
+          "value": [
+            "murderbird"
+          ],
+          "source": "generated"
+        },
+        "firstSkillToTry": {
+          "value": "okhp3-murderbird-argument-audit",
+          "note": null,
+          "source": "generated"
+        },
+        "compositionNotes": {
+          "value": "okhp3-murderbird-hook-and-close pairs with okhp3-murderbird-thesis-forge",
+          "source": "generated"
+        }
+      }
+    },
+    {
       "name": "notion",
       "displayName": "Notion",
       "skillCount": 11,
@@ -567,12 +601,14 @@
     {
       "name": "openclaw",
       "displayName": "OpenClaw Agent Skills",
-      "skillCount": 6,
+      "skillCount": 8,
       "skills": [
         "okhp3-openclaw-capture-note",
         "okhp3-openclaw-linkedin-drop",
         "okhp3-openclaw-mermaid-lint",
+        "okhp3-openclaw-persona-route",
         "okhp3-openclaw-repo-pulse",
+        "okhp3-openclaw-research-packet",
         "okhp3-openclaw-skillz-sync",
         "okhp3-openclaw-stack-status"
       ],
@@ -589,12 +625,12 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-openclaw-capture-note",
+          "value": "okhp3-openclaw-persona-route",
           "note": null,
           "source": "generated"
         },
         "compositionNotes": {
-          "value": null,
+          "value": "okhp3-openclaw-research-packet pairs with okhp3-openclaw-persona-route",
           "source": "generated"
         }
       }
@@ -1478,6 +1514,71 @@
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-askjamie-email-draft",
+      "displayName": "AskJamie Email Draft",
+      "family": "askjamie",
+      "skillDir": "okhp3-askjamie-email-draft",
+      "path": "askjamie/okhp3-askjamie-email-draft/SKILL.md",
+      "description": "Draft an email or direct message the owner will send as themselves, using the AskJamie lens method (Represent, Frame, Investigate, Protect). Reads the full thread, flags every commitment and unknown, runs a tone and over-promising check, and returns a draft plus notes. Use when asked to draft, reply to, or rewrite correspondence. Never sends.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "askjamie",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://askjamie.bot",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "askjamie"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-glee-fully-wwgd-review"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-email-draft/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-email-draft/SKILL.md",
+      "lastModified": "2026-09-27T16:05:26-05:00",
+      "commitSha": "ee63c222",
+      "createdAt": "2026-09-27T16:05:26-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/skillz",
+        "homepage": "https://askjamie.bot",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Draft-only personal and brand correspondence written in the owner's voice from owner-supplied or owner-authorized thread context.",
+        "outOfScope": "Sending, scheduling, forwarding, deleting, or moving mail; employer correspondence; writing as anyone other than the owner.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-askjamie-gpt-builder",
@@ -5270,8 +5371,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/lsp-architecture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/lsp-architecture/SKILL.md",
-      "lastModified": "2026-08-27T23:47:34-05:00",
-      "commitSha": "866dec66",
+      "lastModified": "2026-09-20T11:02:04-05:00",
+      "commitSha": "4e6d2887",
       "createdAt": "2026-08-27T23:47:34-05:00",
       "packageMetadata": {
         "author": null,
@@ -8559,7 +8660,7 @@
       "skillDir": "okhp3-copilot-studio-skill-foundry",
       "path": "copilot/okhp3-copilot-studio-skill-foundry/SKILL.md",
       "description": "Design, author, evaluate, and package a reusable Microsoft Copilot Studio agent skill. Use when a task-specific capability must be created or shared across Copilot Studio agents powered by the GitHub Copilot harness. Do not use for Cowork packages, SharePoint site skills, GitHub repository skills, agent identity, knowledge-source design, or tool/connector implementation alone.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "copilot-studio",
       "origin": "okhp3/skillz",
@@ -8584,8 +8685,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/copilot/okhp3-copilot-studio-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/copilot/okhp3-copilot-studio-skill-foundry/SKILL.md",
-      "lastModified": "2026-09-01T00:44:11-05:00",
-      "commitSha": "d84a0c51",
+      "lastModified": "2026-10-21T22:08:29-05:00",
+      "commitSha": "ccddb1ac",
       "createdAt": "2026-09-01T00:01:29-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
@@ -8599,8 +8700,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 5,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
@@ -9256,7 +9357,7 @@
       "skillDir": "okhp3-cowork-skill-foundry",
       "path": "copilot/okhp3-cowork-skill-foundry/SKILL.md",
       "description": "Design, author, evaluate, and package a task-focused Microsoft Copilot Cowork skill. Use when converting a recurring personal Microsoft 365 workflow into a Cowork SKILL.md or M365 app-package skill. Do not use for SharePoint site skills, Copilot Studio agent skills, GitHub Copilot repository skills, or connector development alone.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "copilot-cowork",
       "origin": "okhp3/skillz",
@@ -9281,8 +9382,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/copilot/okhp3-cowork-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/copilot/okhp3-cowork-skill-foundry/SKILL.md",
-      "lastModified": "2026-09-01T00:44:11-05:00",
-      "commitSha": "d84a0c51",
+      "lastModified": "2026-10-21T22:08:29-05:00",
+      "commitSha": "ccddb1ac",
       "createdAt": "2026-09-01T00:01:29-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
@@ -9296,8 +9397,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 5,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
@@ -9445,7 +9546,7 @@
       "skillDir": "okhp3-github-skill-foundry",
       "path": "copilot/okhp3-github-skill-foundry/SKILL.md",
       "description": "Design, author, evaluate, and install-plan a task-focused GitHub Copilot Agent Skill. Use when creating a repository or personal GitHub Copilot SKILL.md for coding, review, maintenance, or repository workflows. Do not use for Cowork, SharePoint, Copilot Studio, or general agent instructions.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "github-copilot",
       "origin": "okhp3/skillz",
@@ -9470,8 +9571,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/copilot/okhp3-github-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/copilot/okhp3-github-skill-foundry/SKILL.md",
-      "lastModified": "2026-09-01T00:44:11-05:00",
-      "commitSha": "d84a0c51",
+      "lastModified": "2026-10-21T22:20:53-05:00",
+      "commitSha": "36e060ff",
       "createdAt": "2026-09-01T00:01:29-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
@@ -9485,8 +9586,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.1.0",
-        "evalCount": 4,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 5,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
@@ -11347,8 +11448,8 @@
       "family": "copilot",
       "skillDir": "okhp3-sharepoint-skill-foundry",
       "path": "copilot/okhp3-sharepoint-skill-foundry/SKILL.md",
-      "description": "Design, author, evaluate, and deploy-plan a native Copilot in SharePoint skill for a named site. Use when creating a task-focused SharePoint Library or List SKILL.md. Do not use for Cowork, Copilot Studio, GitHub Copilot, external-system, or custom-code workflows.",
-      "version": "1.1.0",
+      "description": "Design, author, evaluate, and deploy-plan a personal or site Copilot in SharePoint skill. Use when creating a task-focused SharePoint Library or List SKILL.md. Do not use for Cowork, Copilot Studio, GitHub Copilot, external-system, or custom-code workflows.",
+      "version": "1.2.0",
       "license": "MIT",
       "category": "sharepoint-copilot",
       "origin": "okhp3/skillz",
@@ -11373,8 +11474,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/copilot/okhp3-sharepoint-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/copilot/okhp3-sharepoint-skill-foundry/SKILL.md",
-      "lastModified": "2026-09-01T00:44:11-05:00",
-      "commitSha": "d84a0c51",
+      "lastModified": "2026-10-21T22:20:53-05:00",
+      "commitSha": "36e060ff",
       "createdAt": "2026-09-01T00:01:29-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
@@ -11388,8 +11489,8 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.1.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 5,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 3,
@@ -11717,6 +11818,73 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-glee-fully-wwgd-review",
+      "displayName": "Glee-fully WWGD Review",
+      "family": "glee-fully",
+      "skillDir": "okhp3-glee-fully-wwgd-review",
+      "path": "glee-fully/okhp3-glee-fully-wwgd-review/SKILL.md",
+      "description": "Run a WWGD (What Would Glee Do, Say, Think, Feel) reception check on a draft email, post, article, or message using the Glee-fully persona lens. Scores warmth, kindness, clarity, joy, and \"does this sound like the author or like a jerk\", then returns keep-or-soften notes. Use when asked for a WWGD check, a warmth pass, or \"how will this land\". Not a proxy for any real person's opinion.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "glee-fully",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://glee-fully.tools",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "glee-fully"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-murderbird-argument-audit",
+        "okhp3-evidence-standard",
+        "okhp3-linkedin-voice"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-wwgd-review/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-wwgd-review/SKILL.md",
+      "lastModified": "2026-09-27T16:05:26-05:00",
+      "commitSha": "ee63c222",
+      "createdAt": "2026-09-27T16:05:26-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "glee-fully",
+        "origin": "okhp3/skillz",
+        "homepage": "https://glee-fully.tools",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Reception and warmth review of owner-authored drafts through the published Glee-fully persona lens.",
+        "outOfScope": "Rewriting whole drafts, fact-checking, publishing, and representing the views of any real person.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -12240,7 +12408,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
       "lastModified": "2026-08-31T22:34:57-05:00",
       "commitSha": "93613e20",
-      "createdAt": "2026-08-30T18:45:34-05:00",
+      "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
@@ -12256,9 +12424,9 @@
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 2,
+        "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12322,9 +12490,9 @@
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 2,
+        "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12387,9 +12555,9 @@
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 2,
+        "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12453,9 +12621,9 @@
         "evaluatedSkillVersion": "1.0.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 2,
+        "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12518,9 +12686,9 @@
         "evaluatedSkillVersion": "1.1.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 2,
+        "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13326,6 +13494,209 @@
         ]
       },
       "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-murderbird-argument-audit",
+      "displayName": "MurderBird Argument Audit",
+      "family": "murderbird",
+      "skillDir": "okhp3-murderbird-argument-audit",
+      "path": "murderbird/okhp3-murderbird-argument-audit/SKILL.md",
+      "description": "Stress-test a draft article, post, essay, or position piece before publication and return a verdict, load-bearing claims table, weakest point, keep-or-fix judgments on rough edges, and a salvage list. Use when asked to red-team, pressure-test, tear down, or \"put it through the furnace\". Do not use for security threat modeling or final voice polishing.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "murderbird",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "murderbird"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-voice",
+        "okhp3-evidence-standard"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/murderbird/okhp3-murderbird-argument-audit/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/murderbird/okhp3-murderbird-argument-audit/SKILL.md",
+      "lastModified": "2026-09-27T16:05:26-05:00",
+      "commitSha": "ee63c222",
+      "createdAt": "2026-09-27T16:05:26-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "murderbird",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Pre-publication argument review of owner-supplied drafts: claims, logic, structure, hooks, endings, and evidence gaps.",
+        "outOfScope": "Publishing, final brand-voice rewriting, security or adversary red teaming, and critique of people rather than arguments.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-murderbird-hook-and-close",
+      "displayName": "MurderBird Hook and Close",
+      "family": "murderbird",
+      "skillDir": "okhp3-murderbird-hook-and-close",
+      "path": "murderbird/okhp3-murderbird-hook-and-close/SKILL.md",
+      "description": "Forge and stress-test the opening line and closing line of a short post (LinkedIn, X, Threads, Bluesky, Discord) so the hook earns attention honestly and the close lands hard on the point. Returns scored hook and close options with a pick. Use when a short draft exists and the owner asks to sharpen the hook, fix the ending, or \"make it land\". Not for full drafting, angle mining, or publishing.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "murderbird",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "murderbird"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-murderbird-thesis-forge",
+        "okhp3-linkedin-angles",
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-voice"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/murderbird/okhp3-murderbird-hook-and-close/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/murderbird/okhp3-murderbird-hook-and-close/SKILL.md",
+      "lastModified": "2026-10-10T21:07:01-05:00",
+      "commitSha": "35cf8c58",
+      "createdAt": "2026-10-10T21:07:01-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "murderbird",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Opening and closing lines for owner-authored short posts, scored for honesty, specificity, tension, and landing.",
+        "outOfScope": "Full post drafting, angle mining, final voice filtering, clickbait, engagement bait, and publishing.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 1,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-09-27T15:00:00Z",
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-murderbird-thesis-forge",
+      "displayName": "MurderBird Thesis Forge",
+      "family": "murderbird",
+      "skillDir": "okhp3-murderbird-thesis-forge",
+      "path": "murderbird/okhp3-murderbird-thesis-forge/SKILL.md",
+      "description": "Turn a research packet, rough idea, or brain-dump into a defensible one-sentence thesis, load-bearing outline, hook options, counterargument plan, and a hard ending, ready for drafting and a separate voice pass. Use when asked to find the angle, sharpen an argument, build an article skeleton, or \"forge\" a thesis. Do not use to write final prose or to publish.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "murderbird",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "murderbird"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-openclaw-research-packet",
+        "okhp3-source-backed-research",
+        "okhp3-linkedin-angles",
+        "okhp3-linkedin-voice",
+        "okhp3-evidence-standard"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/murderbird/okhp3-murderbird-thesis-forge/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/murderbird/okhp3-murderbird-thesis-forge/SKILL.md",
+      "lastModified": "2026-09-27T16:05:26-05:00",
+      "commitSha": "ee63c222",
+      "createdAt": "2026-09-27T16:05:26-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "murderbird",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Thesis, structure, hooks, counterarguments, endings, and evidence needs for owner-authored long-form writing.",
+        "outOfScope": "Final prose, brand-voice rewriting, publishing, and fabricated evidence.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
@@ -14296,6 +14667,69 @@
       "releaseReadiness": "needs-contract-work"
     },
     {
+      "name": "okhp3-openclaw-persona-route",
+      "displayName": "Persona Route",
+      "family": "openclaw",
+      "skillDir": "okhp3-openclaw-persona-route",
+      "path": "openclaw/okhp3-openclaw-persona-route/SKILL.md",
+      "description": "Decide which OpenClaw agent persona should own a request (Larry, AskJamie, MurderBird, or Glee-fully by default), then package the work as a [HANDOFF] packet. Use when a request arrives at the default agent without a named persona, when work must move between agents, or when asked \"who should handle this\". Routes only; never executes the routed task.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "openclaw",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "openclaw"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/openclaw/okhp3-openclaw-persona-route/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/openclaw/okhp3-openclaw-persona-route/SKILL.md",
+      "lastModified": "2026-09-27T16:05:26-05:00",
+      "commitSha": "ee63c222",
+      "createdAt": "2026-09-27T16:05:26-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "openclaw",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Classify a request, pick the owning agent persona, and emit a handoff packet.",
+        "outOfScope": "Executing the routed task, changing agent bindings or config, and cross-agent messaging that the owner has not enabled.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-openclaw-repo-pulse",
       "displayName": "Repo Pulse",
       "family": "openclaw",
@@ -14357,6 +14791,76 @@
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-contract-work"
+    },
+    {
+      "name": "okhp3-openclaw-research-packet",
+      "displayName": "Research Packet",
+      "family": "openclaw",
+      "skillDir": "okhp3-openclaw-research-packet",
+      "path": "openclaw/okhp3-openclaw-research-packet/SKILL.md",
+      "description": "Run local-first web research on an OpenClaw agent and return a sourced research packet (findings, evidence tiers, conflicts, gaps) sized for handoff to a drafting or thesis skill. Use when asked to research, look up, or gather sources before an article, email, or decision. Uses the runtime's built-in search and fetch tools; no Frontier provider call.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "openclaw",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "openclaw"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-source-backed-research",
+        "okhp3-evidence-standard",
+        "okhp3-murderbird-thesis-forge",
+        "okhp3-askjamie-email-draft",
+        "okhp3-linkedin-angles",
+        "okhp3-openclaw-persona-route"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/openclaw/okhp3-openclaw-research-packet/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/openclaw/okhp3-openclaw-research-packet/SKILL.md",
+      "lastModified": "2026-09-27T16:05:26-05:00",
+      "commitSha": "ee63c222",
+      "createdAt": "2026-09-27T16:05:26-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "openclaw",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Search, fetch, cross-check, and package public sources into a handoff-ready research packet.",
+        "outOfScope": "Drafting the final artifact, citing unfetched sources, paid data services, and employer-internal sources.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-openclaw-skillz-sync",
@@ -16259,7 +16763,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-adversary-forecasting/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-intelligence",
@@ -16448,7 +16952,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-credential-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -16511,7 +17015,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-data-exposure/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -16650,7 +17154,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-lateral-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -16776,7 +17280,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-persistence-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -16902,7 +17406,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-authorization-governance/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-27T23:47:34-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-governance",
@@ -17217,7 +17721,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-model-anomaly-detection/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-detection",
@@ -17469,7 +17973,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-response-cost-benefit/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-measurement",
@@ -21955,9 +22459,9 @@
         "evaluatedSkillVersion": "1.1.0",
         "evalCount": 4,
         "benchmarkCount": 0,
-        "testCount": 2,
+        "testCount": 1,
         "referenceCount": 1,
-        "scriptCount": 2,
+        "scriptCount": 1,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -22020,7 +22524,7 @@
         "evaluatedSkillVersion": "1.2.0",
         "evalCount": 5,
         "benchmarkCount": 0,
-        "testCount": 2,
+        "testCount": 1,
         "referenceCount": 1,
         "scriptCount": 1,
         "lastEvidenceDate": null,
@@ -22583,7 +23087,7 @@
       "skillDir": "okhp3-skill-foundry",
       "path": "universal/okhp3-skill-foundry/SKILL.md",
       "description": "Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progressive disclosure, risk-based evaluations, and release checks. Use when authoring a new SKILL.md, improving an existing skill, designing or grading evaluations, diagnosing weak trigger behavior, or synchronizing a skill across repositories. Also activate when a workflow should become a reusable skill or a skill must improve itself without making unsupported quality claims. This is the authoritative OKHP3 authoring and skill-evolution workflow.",
-      "version": "3.1.0",
+      "version": "3.1.1",
       "license": "MIT",
       "category": "meta-tooling",
       "origin": "okhp3/skillz",
@@ -22591,7 +23095,7 @@
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
       "evidenceStatus": "historical",
-      "evidenceNote": "Benchmark evidence is for 1.0.0, not 3.1.0.",
+      "evidenceNote": "Benchmark evidence is for 1.0.0, not 3.1.1.",
       "status": null,
       "tags": [],
       "topics": [
@@ -22608,8 +23112,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-foundry/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-10T21:21:32-05:00",
+      "commitSha": "05d8a1bc",
       "createdAt": "2026-06-25T23:21:08-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -22632,7 +23136,7 @@
         "lastEvidenceDate": "2026-06-26T00:00:00Z",
         "reviewDecision": null,
         "blockers": [
-          "Evidence evaluates version 1.0.0, not the current 3.1.0 package."
+          "Evidence evaluates version 1.0.0, not the current 3.1.1 package."
         ]
       },
       "maturitySource": "fallback-structure",

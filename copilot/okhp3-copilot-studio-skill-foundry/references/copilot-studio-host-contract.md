@@ -1,6 +1,6 @@
 # Copilot Studio skill host contract
 
-Retrieved 2026-09-01. This reference concerns Copilot Studio agents or
+Checked 2026-10-21. This reference concerns Copilot Studio agents or
 workflows powered by the GitHub Copilot harness. It does not describe all
 Copilot Studio agent types, tenant availability, policy, or publication status.
 
@@ -17,7 +17,17 @@ also be uploaded as a Markdown file or as a ZIP package. The ZIP must include
 templates, or reference documents are optional.
 
 After creation or upload, Microsoft directs the author to use the Preview tab to
-verify the skill. An accepted artifact is not evidence of correct activation,
+verify the skill. A ZIP must include SKILL.md; the cited upload page does not
+establish a mandatory root placement. This Foundry recommends root placement
+as house policy and leaves alternate layout acceptance unverified.
+
+The current upload documentation describes skills being skipped for invalid
+YAML, missing fields, duplicate identity, or encoding issues while the rest of
+the agent still loads. Partial companion-file writes can also leave incomplete
+behavior. Check skill presence, UTF-8 without BOM, and all needed resources,
+then replace the repaired skill and repeat the targeted Preview test.
+
+An accepted artifact is not evidence of correct activation,
 an approved environment deployment, or a working tool connection.
 
 Primary sources: [Skills overview for agents](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/skills-overview), [Create a skill for an agent](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/skills-create), and [Add an existing skill to an agent](https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/skills-add-existing).

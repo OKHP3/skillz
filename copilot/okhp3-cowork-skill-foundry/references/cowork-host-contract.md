@@ -1,6 +1,6 @@
 # Cowork host contract
 
-Retrieved 2026-09-01. This reference is a host boundary, not evidence that a
+Checked 2026-10-21 against the primary sources below. This is not evidence that a
 particular tenant has enabled or approved a package.
 
 Microsoft documents three delivery modes. They must not be collapsed into one
@@ -31,10 +31,26 @@ documents that commands, sub-agents, hooks, and settings do not convert to the
 M365 manifest. A package author must record those as loss or redesign them;
 never silently imply that they execute.
 
-For an uploaded skill, Microsoft documents a required frontmatter `name` and
-`description`, trust review before upload, and size/file-count limits. For an
-M365 plugin, the manifest schema and package root are strict. These are package
-acceptance checks, not a claim that the task workflow has passed live quality
-evaluation.
+## Route-specific acceptance
+
+| Route | Documented checks |
+| --- | --- |
+| Personal OneDrive | Up to 50 custom skills; SKILL.md up to 1 MB; 20 companion files and 10 MB per skill. |
+| Uploaded skill | Markdown up to 1 MB; archive up to 10 MB compressed, 50 MB expanded, and 100 files. |
+| Plugin skills | Up to 20 manifest skill entries; per-skill companions: 20 files, 5 MB each, 10 MB combined. |
+
+Upload admission and runtime companion limits are different checks. Inspect the
+selected route and verify every required resource after import. Name collisions
+on upload can create a numbered copy; verify the effective identity.
+
+Plugin handoffs must record the selected manifest schema/version and each
+`agentSkills[].folder` binding. Current documentation has manual v1.28 examples
+and tooling-produced v1.29 packages; do not treat either as a universal fixed
+requirement. Validate against the chosen schema and delivery channel.
+Tenant policy can prevent uploading/sharing otherwise valid packages.
+
+Draft defaults, context boundaries, and approval rules in this Foundry are
+OKHP3 policy motivated by safe personal-workflow use. They do not describe
+universal Cowork enforcement or confer connector permissions.
 
 Primary sources: [Use Copilot Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/use-cowork), [Customize Copilot Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-customize), and [Build plugins for Copilot Cowork](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-plugin-development).

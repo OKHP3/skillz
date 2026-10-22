@@ -213,6 +213,7 @@ These are general-purpose or imported skills. Prefer the narrower OKHP3 family s
 | `mcp-builder` | Build MCP servers or tool integrations in Python, Node, or TypeScript. |
 | `mermaid-diagrams` | General Mermaid diagrams when the OKHP3 Mermaid family is not the intended specialized workflow. |
 | `skill-creator` | Create, edit, evaluate, benchmark, or optimize a skill. |
+| `sql-server-table-reconciliation` | Compare two SQL Server tables with a local script. Its SQL builder accepts simple schema, table, and column identifiers only; it rejects other names before query execution. |
 | `theme-factory` | Apply or create a reusable theme for slides, documents, reports, HTML, or other artifacts. |
 | `vercel-react-best-practices` | Write, review, or refactor React or Next.js for performance. Its nested `agents.md` is package-scoped guidance. |
 | `vercel-react-native-skills` | Write, review, or refactor React Native or Expo for performance. Its nested `agents.md` is package-scoped guidance. |
@@ -247,6 +248,12 @@ The portable SharePoint review contracts `okhp3-sharepoint-content-auditor`
 and `okhp3-sharepoint-list-schema-design` also live here. Their native Copilot
 packaging and execution remain unverified; family placement is not a host
 compatibility claim.
+
+The four Copilot host Skill Foundries are version 1.2.0 after independent
+evidence, outcome, and safety review. Use the portable Skill Foundry baseline
+with the selected host adapter. SharePoint distinguishes personal/site ownership
+and Library/List contracts. These are analytical authoring packages; native
+acceptance, behavioral benchmarks, and measured savings remain unverified.
 
 ### Glee-fully family
 
