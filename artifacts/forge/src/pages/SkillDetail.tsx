@@ -640,7 +640,7 @@ export default function SkillDetail() {
               </p>
             )}
             {activeContractTab === 'contract' && contractState.status === 'ready' && (
-              <div id="contract-panel-raw" role="tabpanel" aria-labelledby="contract-tab-raw" tabIndex={0}><FullContract rawBody={contractState.body} /></div>
+              <div id="contract-panel-raw" role="tabpanel" aria-labelledby="contract-tab-raw" tabIndex={0}><FullContract rawBody={contractState.body} sourceUrl={skill.githubUrl} /></div>
             )}
             {activeContractTab === 'validation' && (
               <div id="contract-panel-validation" className="skill-validation-list" role="tabpanel" aria-labelledby="contract-tab-validation" tabIndex={0}>
