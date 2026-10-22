@@ -16,8 +16,8 @@ if (jsonIndex !== -1 && (!reportPath || reportPath.startsWith('--'))) {
   process.exit(2);
 }
 
-function run(script, env = {}) {
-  const result = spawnSync(process.execPath, [resolve(forge, 'scripts', script)], {
+function run(script, env = {}, args = []) {
+  const result = spawnSync(process.execPath, [resolve(forge, 'scripts', script), ...args], {
     cwd: forge,
     env: { ...process.env, ...env },
     encoding: 'utf8',
@@ -26,8 +26,8 @@ function run(script, env = {}) {
   return result.status ?? 1;
 }
 
-// Local validation must inspect a fresh catalog, summary, and synchronized
-// manifest without turning a read-only check into a release-metadata refresh.
+// Validate the source manifest against a fresh catalog before a release build
+// can repair and conceal stale counts. Both source and outputs stay isolated.
 // The publishing workflow intentionally invokes build-catalog.js directly,
 // with no isolated paths, so its authoritative tracked-output behavior stays
 // unchanged.
@@ -48,7 +48,7 @@ let cleanupStatus = 'passed';
 let cleanupError = null;
 try {
   console.log(`== catalog integrity: build (isolated output: ${validationRoot}) ==`);
-  buildStatus = run('build-catalog.js', validationEnv);
+  buildStatus = run('build-catalog.js', validationEnv, ['--check-manifest']);
   console.log('== catalog integrity: test ==');
   testStatus = buildStatus === 0 ? run('test-catalog.mjs', validationEnv) : 1;
   status = buildStatus === 0 && testStatus === 0 ? 'passed' : 'failed';
