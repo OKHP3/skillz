@@ -72,6 +72,20 @@ set. High or critical findings produce `review-required`; incomplete security an
 is not a skill-quality admission gate, and a completed scan is not a certification of safety.
 No required branch check or automatic publication block is configured by this workflow.
 
+The separate `Skill package review policy` job downloads that same sanitized
+artifact and reads `.github/skill-security-reviews.json` only from the pull
+request's base commit. It passes a raw scan pass, or an owner-reviewed record
+whose package digest, vendor fingerprint, exact located findings and exact
+reference-resolution exceptions match the report and have not expired. A PR
+cannot add its own approval. Uninspected files, other incompleteness reasons,
+new or unlocated findings, and changed scanner or package bytes keep the review
+job failing. The raw scan job still fails and its report remains `incomplete`
+or `review-required`; the separate job is a review disposition, not a scan pass.
+There is no required branch check today, so both jobs are advisory until the
+owner explicitly adopts a required-check policy.
+When an hourly scheduled repeat uses the existing attempt marker, the review
+job also records a skip; neither job issues a new vendor or review verdict.
+
 The workflow has `contents: read`, checks out without persisted credentials, and gives the
 read-only GitHub token only to vendor resolution. It provides no model credentials or secrets
 to scanner subprocesses. The engines use static modes; controlled public network calls such as
