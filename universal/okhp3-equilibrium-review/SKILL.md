@@ -13,7 +13,7 @@ compatibility: >
   Portable Agent Skills-compatible client. Python 3.9 or newer is required only
   for the bundled orchestration script. External agent commands, credentials,
   and runtime-specific adapters are optional and must be supplied explicitly.
-allowed-tools: Bash(python:*)
+allowed-tools: Bash
 metadata:
   author: Jamie Hill (OverKill Hill P³)
   version: 1.0.1
