@@ -42,10 +42,16 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
         return path
 
     def run_validator(self, project: Path, source: Path = None, target: Path = None):
-        command = [sys.executable, str(VALIDATOR), "--project", str(project), "--format", "json"]
+        command = [sys.executable, "-B", str(VALIDATOR), "--project", str(project), "--format", "json"]
         if source and target:
             command.extend(["--source-file", str(source), "--target-file", str(target)])
-        return subprocess.run(command, capture_output=True, text=True, check=False)
+        return subprocess.run(command, shell=False, timeout=10, capture_output=True, text=True, check=False)
+
+    def run_planner(self, project: Path, directory: Path):
+        return subprocess.run(
+            [sys.executable, "-B", str(PLANNER), "--project", str(project), "--base-dir", str(directory), "--format", "json"],
+            shell=False, timeout=10, capture_output=True, text=True, check=False,
+        )
 
     def write_controls(self, directory: Path, dictionary=DICTIONARY, voice_profile=VOICE_PROFILE) -> None:
         config_root = directory / "config"
@@ -124,7 +130,9 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
             source_root.mkdir(parents=True)
             (source_root / "about.md").write_text("# About\n", encoding="utf-8")
             result = subprocess.run(
-                [sys.executable, str(PLANNER), "--project", str(project), "--base-dir", str(directory), "--format", "json"],
+                [sys.executable, "-B", str(PLANNER), "--project", str(project), "--base-dir", str(directory), "--format", "json"],
+                shell=False,
+                timeout=10,
                 capture_output=True,
                 text=True,
                 check=False,
@@ -144,7 +152,9 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
             source_root.mkdir(parents=True)
             (source_root / "about.md").write_text("# About\n", encoding="utf-8")
             result = subprocess.run(
-                [sys.executable, str(PLANNER), "--project", str(project), "--base-dir", str(directory), "--format", "json"],
+                [sys.executable, "-B", str(PLANNER), "--project", str(project), "--base-dir", str(directory), "--format", "json"],
+                shell=False,
+                timeout=10,
                 capture_output=True,
                 text=True,
                 check=False,
@@ -204,11 +214,61 @@ class EnUsToFrFrValidatorTests(unittest.TestCase):
                 self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
                 self.assertTrue(json.loads(result.stdout)["errors"])
                 planned = subprocess.run(
-                    [sys.executable, str(PLANNER), "--project", str(project), "--base-dir", str(directory), "--format", "json"],
+                    [sys.executable, "-B", str(PLANNER), "--project", str(project), "--base-dir", str(directory), "--format", "json"],
+                    shell=False,
+                    timeout=10,
                     capture_output=True, text=True, check=False,
                 )
                 self.assertEqual(planned.returncode, 1, planned.stdout + planned.stderr)
                 self.assertTrue(json.loads(planned.stdout)["errors"])
+
+    def test_control_symlinks_cannot_escape_project(self):
+        for control in ("voice.en-us.json", "dictionary.en-us-fr-fr.json"):
+            with self.subTest(control=control), tempfile.TemporaryDirectory() as raw:
+                root = Path(raw)
+                directory = root / "project"
+                directory.mkdir()
+                project = self.write_project(directory)
+                self.write_controls(directory)
+                path = directory / "config" / control
+                outside = root / control
+                path.replace(outside)
+                path.symlink_to(outside)
+                for result in (self.run_validator(project), self.run_planner(project, directory)):
+                    self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+                    self.assertTrue(any("within" in error for error in json.loads(result.stdout)["errors"]))
+
+    def test_planner_rejects_symlink_root_and_artifact_escapes(self):
+        for escape in ("source_root", "target_root", "source_file", "target_file"):
+            with self.subTest(escape=escape), tempfile.TemporaryDirectory() as raw:
+                root = Path(raw)
+                directory = root / "project"
+                directory.mkdir()
+                project = self.write_project(directory)
+                self.write_controls(directory)
+                source_root = directory / "content" / "en"
+                target_root = directory / "content" / "fr"
+                source_root.mkdir(parents=True)
+                target_root.mkdir()
+                source = source_root / "about.md"
+                target = target_root / "about.md"
+                source.write_text("# About\n", encoding="utf-8")
+                target.write_text("# À propos\n", encoding="utf-8")
+                if escape.endswith("root"):
+                    path = source_root if escape == "source_root" else target_root
+                    outside = root / escape
+                    path.rename(outside)
+                    path.symlink_to(outside, target_is_directory=True)
+                else:
+                    path = source if escape == "source_file" else target
+                    outside = root / "outside.md"
+                    path.replace(outside)
+                    path.symlink_to(outside)
+                result = self.run_planner(project, directory)
+                self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+                payload = json.loads(result.stdout)
+                self.assertTrue(any("within" in error for error in payload["errors"]))
+                self.assertNotIn("plan", payload)
 
 
 if __name__ == "__main__":

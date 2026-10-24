@@ -4,15 +4,15 @@
     "skill_name": "okhp3-translation-en-us-fr-fr",
     "evaluated_skill_version": "1.3.1",
     "evaluation_status": "analytical",
-    "evaluated_at": "2026-10-22",
+    "evaluated_at": "2026-10-23",
     "review_decision": "approve-with-limits",
     "runner": "local unittest and role-separated analytical Equilibrium review",
     "model": "shared model family; separate initial reviewer contexts",
-    "fixtures": "ten deterministic helper tests and closeout-review-2026-10-22.json",
+    "fixtures": "twelve deterministic helper tests and closeout-review-2026-10-22.json",
     "historical_record": "historical-benchmark-v1.1.0.json"
   },
   "acceptance_criteria": {
-    "structural": "PASS: ten helper tests and current Foundry structure validation; see closeout review.",
+    "structural": "PASS: twelve helper tests and current Foundry structure validation; see closeout review.",
     "behavioral": "France French quality, native acceptance, and live automation are not established by this record."
   },
   "runs": []

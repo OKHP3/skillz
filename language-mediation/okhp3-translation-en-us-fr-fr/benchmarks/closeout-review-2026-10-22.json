@@ -7,7 +7,7 @@
   "artifact": {
     "path": "language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
     "version": "1.3.1",
-    "sha256": "5772734564d64db1def08349c051fdd4150dacfbc6dc1440b5fd82ddce5c96cb",
+    "sha256": "96bf217c3ac14233c58e68bbb4e182f16581bc8fb9d1e3d6153a133381848957",
     "baseline_revision": "bd4d98f8f6853a6c9edefd3c55e6ddbb8d007f2e"
   },
   "decision_question": "Does the original directed draft-translation skill satisfy its naming, structure, exact-pair, helper, family-placement, and evidence requirements for analytical closeout?",
@@ -72,10 +72,13 @@
     "Return labeled JSON errors for input decoding and operating-system read failures.",
     "Replace the stale-enumeration promise with implemented inventory and explicit freshness handoff.",
     "Mark the v1.1.0 benchmark historical while retaining its evaluated version and original analytical status.",
-    "Normalize version formatting to Foundry plain SemVer after the scanner reported version strings as missing references; preserve the same version and scope."
+    "Normalize version formatting to Foundry plain SemVer after the scanner reported version strings as missing references; preserve the same version and scope.",
+    "Reject control, root, and artifact symlinks that resolve outside their declared directories before reading or hashing.",
+    "Declare the existing tool boundary and harden every CLI regression with fixed argv, shell=False, timeout, and disabled bytecode writes.",
+    "Clarify the historical package identifier claim with a dated erratum and correct its character count to 29 while retaining every package file."
   ],
   "verification": {
-    "helper_tests": "PASS: 10 French tests, including four null scenarios through both CLIs",
+    "helper_tests": "PASS: 12 French tests, including four null scenarios through both CLIs and control/root/artifact symlink escape cases",
     "family_baseline_tests": "PASS: 45 tests across the five existing directed pairs before the scoped French patch",
     "foundry_structure": "PASS: five family packages",
     "catalog_contract_baseline": "PASS: 51 assertions",
@@ -101,6 +104,13 @@
     "unresolved_items": ["No native-language quality, measured uplift, or production automation evidence is established."]
   },
   "release_decision": "approve-with-limits",
+  "security_recheck": {
+    "date": "2026-10-23",
+    "reviewer_context": "01a16b55-cc17-7601-90e8-659644143a20",
+    "record": "docs/closeouts/translation-2026-10-22/security-remediation-2026-10-23.md",
+    "parser_resolution": "Official NVIDIA 2.13.1 completely inspected the unchanged 23-file candidate; no local scanner patch or policy change.",
+    "evidence_boundary": "Final GitHub scan and integration outcomes belong to the closeout receipt; medium historical-locator and subprocess classifications remain visible."
+  },
   "limitations": [
     "This record closes reusable skill authoring and bounded helper defects; it does not perform website-wide translation, Replit work, or publication.",
     "Dictionary enforcement and complete semantic/protected-content review remain agent obligations beyond the helper's partial checks.",

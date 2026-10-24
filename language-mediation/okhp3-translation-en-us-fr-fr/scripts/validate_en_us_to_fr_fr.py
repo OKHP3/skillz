@@ -86,7 +86,13 @@ def resolve_control_path(base_dir: Path, raw_path: Any, label: str, errors: List
     if candidate.is_absolute() or ".." in candidate.parts:
         add_error(errors, f"{label} must be a relative path without '..': {raw_path}")
         return None
-    return (base_dir / candidate).resolve()
+    try:
+        resolved = (base_dir / candidate).resolve()
+        resolved.relative_to(base_dir.resolve())
+    except (OSError, RuntimeError, ValueError):
+        add_error(errors, f"{label} must resolve within the project directory: {raw_path}")
+        return None
+    return resolved
 
 
 def validate_voice_profile(profile: Any) -> List[str]:

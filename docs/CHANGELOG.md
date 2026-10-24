@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-23: translation security remediation
+
+- Confine manifest control paths and planner roots to the project after
+  resolving symlinks; reject source/target artifact escapes before hashing.
+- Declare the existing translation tool scope. Keep CLI regressions, disable
+  their shells explicitly, bound execution time, and disable bytecode writes.
+- Correct the historical package identifier claim to 29 characters with a
+  dated, revision-bound erratum. Retain all historical evidence in scan scope.
+- Reproduce the NVIDIA 2.13.0 parser failure and verify the official 2.13.1
+  maintenance release inspects the same Python source completely. No scanner
+  rules, thresholds, workflow pins, or review exceptions are changed.
+
 ## 2026-10-22: directed French translation closeout
 
 - Reject JSON null and other non-object manifests, voice profiles, and pair
