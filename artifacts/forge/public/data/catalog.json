@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-24T00:45:32.516Z",
+  "generatedAt": "2026-10-24T00:51:26.462Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/translation-thread-closeout",
-  "sourceCommit": "4b17d35",
+  "sourceCommit": "c5c0de0",
   "skillCount": 333,
   "familyCount": 22,
   "families": [
@@ -12663,8 +12663,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "lastModified": "2026-10-23T19:45:08-05:00",
-      "commitSha": "e36ef160",
+      "lastModified": "2026-10-23T19:51:10-05:00",
+      "commitSha": "c5c0de06",
       "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
