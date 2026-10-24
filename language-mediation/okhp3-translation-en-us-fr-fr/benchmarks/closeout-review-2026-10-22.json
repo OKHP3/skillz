@@ -7,7 +7,7 @@
   "artifact": {
     "path": "language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
     "version": "1.3.1",
-    "sha256": "96bf217c3ac14233c58e68bbb4e182f16581bc8fb9d1e3d6153a133381848957",
+    "sha256": "137dffc65d8218dfc793d84b338416089ec381d6fe3cfc4bbff8c59a1f098c82",
     "baseline_revision": "bd4d98f8f6853a6c9edefd3c55e6ddbb8d007f2e"
   },
   "decision_question": "Does the original directed draft-translation skill satisfy its naming, structure, exact-pair, helper, family-placement, and evidence requirements for analytical closeout?",
@@ -109,7 +109,8 @@
     "reviewer_context": "01a16b55-cc17-7601-90e8-659644143a20",
     "record": "docs/closeouts/translation-2026-10-22/security-remediation-2026-10-23.md",
     "parser_resolution": "Official NVIDIA 2.13.1 completely inspected the unchanged 23-file candidate; no local scanner patch or policy change.",
-    "evidence_boundary": "Final GitHub scan and integration outcomes belong to the closeout receipt; medium historical-locator and subprocess classifications remain visible."
+    "evidence_boundary": "Final GitHub scan and integration outcomes belong to the closeout receipt; medium historical-locator and subprocess classifications remain visible.",
+    "declaration_recheck": "Cisco's low-severity glob declaration mismatch on candidate 1bfbdf2 was corrected by declaring the planner's existing bounded file-inventory capability."
   },
   "limitations": [
     "This record closes reusable skill authoring and bounded helper defects; it does not perform website-wide translation, Replit work, or publication.",

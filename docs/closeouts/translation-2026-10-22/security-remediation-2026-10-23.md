@@ -71,3 +71,12 @@ Raw before/after reports, logs, official vendor metadata, and regression logs
 are retained outside the disposable checkout in the canonical clone's Git
 directory under `closeouts/translation-2026-10-22/security-remediation/`.
 GitHub must independently establish the final head's complete two-engine result.
+
+The first repaired candidate, `1bfbdf2`, passed both GitHub security jobs in
+[run 40046827021](https://github.com/OKHP3/skillz/actions/runs/40046827021).
+Both engines completed, with zero high/critical findings. Cisco also surfaced
+a low `ALLOWED_TOOLS_GLOB_VIOLATION`: the planner's declared-root file inventory
+uses globbing. The tool declaration now includes `Glob`, and its prose limits
+inventory to the declared roots. This accurate capability declaration is
+rechecked on the final candidate; the earlier green result is not substituted
+for that new scan.

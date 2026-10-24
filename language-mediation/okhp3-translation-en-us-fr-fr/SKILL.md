@@ -8,7 +8,7 @@ description: >
   use for another pair, a register conversion, reverse translation, generic
   copyediting, or machine-only publication.
 license: MIT
-allowed-tools: Read Write Edit Bash
+allowed-tools: Read Glob Write Edit Bash
 compatibility: >
   Any Agent Skills-compatible client. Python 3.9+ is needed only for the
   optional dependency-free planner and validator. Translation uses the host
@@ -83,7 +83,8 @@ vague “French” or “English” to proceed.
 
 ## Tool scope
 
-Read only the supplied source, controls, package resources, and existing target.
+Read and inventory only the declared project roots, supplied source, controls,
+package resources, and existing target.
 Write only the separately designated fr-FR draft and its translation record.
 Use a local Python interpreter only for the two bundled read-only helpers and,
 when validating this package, its regression tests. Do not execute commands
