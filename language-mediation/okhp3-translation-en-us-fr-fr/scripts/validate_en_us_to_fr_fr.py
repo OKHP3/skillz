@@ -61,13 +61,15 @@ def validate_review_record(record: Any, errors: List[str]) -> None:
         add_error(errors, "target.review_record.unresolved_terms must be a list of strings")
 
 
-def load_json(path: Path, errors: List[str]) -> Any:
+def load_json(path: Path, errors: List[str], label: str = "project manifest") -> Any:
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        add_error(errors, f"missing JSON file: {path}")
-    except json.JSONDecodeError as exc:
-        add_error(errors, f"invalid JSON in {path}: {exc}")
+        value = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(value, dict):
+            add_error(errors, f"{label} must contain a JSON object: {path}")
+            return None
+        return value
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        add_error(errors, f"cannot read {label} as UTF-8 JSON: {path}: {exc}")
     return None
 
 
@@ -84,7 +86,13 @@ def resolve_control_path(base_dir: Path, raw_path: Any, label: str, errors: List
     if candidate.is_absolute() or ".." in candidate.parts:
         add_error(errors, f"{label} must be a relative path without '..': {raw_path}")
         return None
-    return (base_dir / candidate).resolve()
+    try:
+        resolved = (base_dir / candidate).resolve()
+        resolved.relative_to(base_dir.resolve())
+    except (OSError, RuntimeError, ValueError):
+        add_error(errors, f"{label} must resolve within the project directory: {raw_path}")
+        return None
+    return resolved
 
 
 def validate_voice_profile(profile: Any) -> List[str]:
@@ -148,12 +156,12 @@ def load_supporting_controls(project: Dict[str, Any], base_dir: Path) -> Tuple[O
         if not voice_path.is_file():
             add_error(errors, f"missing source.voice_profile: {voice_path}")
         else:
-            voice_profile = load_json(voice_path, errors)
+            voice_profile = load_json(voice_path, errors, "source.voice_profile")
     if dictionary_path:
         if not dictionary_path.is_file():
             add_error(errors, f"missing target.dictionary: {dictionary_path}")
         else:
-            dictionary = load_json(dictionary_path, errors)
+            dictionary = load_json(dictionary_path, errors, "target.dictionary")
     if voice_profile is not None:
         errors.extend(validate_voice_profile(voice_profile))
     if dictionary is not None:

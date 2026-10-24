@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-10-23: translation security remediation
+
+- Confine manifest control paths and planner roots to the project after
+  resolving symlinks; reject source/target artifact escapes before hashing.
+- Declare the existing translation tool scope. Keep CLI regressions, disable
+  their shells explicitly, bound execution time, and disable bytecode writes.
+- Correct the historical package identifier claim to 29 characters with a
+  dated, revision-bound erratum. Retain all historical evidence in scan scope.
+- Reproduce the NVIDIA 2.13.0 parser failure and verify the official 2.13.1
+  maintenance release inspects the same Python source completely. No scanner
+  rules, thresholds, workflow pins, or review exceptions are changed.
+
+## 2026-10-22: directed French translation closeout
+
+- Reject JSON null and other non-object manifests, voice profiles, and pair
+  dictionaries with structured CLI errors. Preserve draft-only behavior.
+- Correct the planner contract to describe missing/existing target inventory
+  and current hashes; freshness requires the prior translation record or the
+  separate page-sync workflow.
+- Mark the v1.1.0 benchmark historical and preserve its original analytical
+  provenance. French package version 1.3.1 remains an analytical candidate.
+- Use the Foundry's plain SemVer form so reference scanners do not interpret
+  the version as a missing package path.
+- Preserve the separate Equilibrium role findings, regression evidence, and
+  current Language Mediation placement in `docs/closeouts/translation-2026-10-22/`.
+
 ## 2026-10-21: portable contract links in Forge
 
 - Resolve package-relative Full Contract links against the canonical SKILL.md

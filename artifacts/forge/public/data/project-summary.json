@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T04:00:04.158Z",
+  "generatedAt": "2026-10-24T00:51:26.462Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/knowledge-operations-closeout",
-  "sourceCommit": "4e2836de",
+  "sourceRef": "codex/translation-thread-closeout",
+  "sourceCommit": "c5c0de0",
   "skillCount": 333,
   "familyCount": 22,
   "maturityCounts": {
@@ -13,8 +13,8 @@
   "evidenceStatusCounts": {
     "historical": 7,
     "not-run": 165,
-    "none": 110,
-    "local-checks": 37,
+    "none": 109,
+    "local-checks": 38,
     "analytical": 7,
     "live": 7
   },
