@@ -25,7 +25,7 @@ at the top level:
 | `STACK-POSITION.md` | Stack position and conceptual layer map. |
 | `TECHNOLOGY-INVENTORY.md` | Technology inventory for the repository. |
 | `SECURITY.md` | Skill supply-chain and employer-data safety posture. |
-| `2026-equilibrium-skills-thesis.md` | Background conceptual thesis; not a delivery directive. |
+| The 2026 Equilibrium Skills Thesis | Retained as a task artifact in `01_ChatGPT_Exports/skillz/research/`; it is not a repository delivery directive. |
 | [Skill taxonomy audit](skill-taxonomy-audit-2026-09-19.md) | Complete inventory and naming/family decisions for the September 19 cleanup. |
 | [Skill redundancy audit](skill-redundancy-audit-2026-09-19.md) | Capability comparisons, retired duplicate workflows, retained distinctions, and brand-profile preservation. |
 | [Migration registry](skill-migrations.json) | Old identities mapped to canonical packages for saved selections, routes, and historical link resolution. |
