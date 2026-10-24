@@ -3,7 +3,7 @@ family: universal
 display_name: Universal
 skill_count: 20
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-22T10:45:53Z
+generated_at: 2026-10-24T00:45:16Z
 ---
 
 # universal
@@ -15,14 +15,14 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 ## Skills (20)
 
 <!-- FAMILY_INVENTORY_START -->
-*20 skills &nbsp;·&nbsp; inventory last updated: **October 22, 2026 at 10:45 UTC***
+*20 skills &nbsp;·&nbsp; inventory last updated: **October 24, 2026 at 00:45 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-brand-style-registry](okhp3-brand-style-registry/SKILL.md) | OverKill Hill P³ visual style registry and application workflow. Use when a user wants to extract... | 1.3.0 |
 | [okhp3-cloudflare-worker-api-proxy](okhp3-cloudflare-worker-api-proxy/SKILL.md) | Create a Cloudflare Worker that proxies API calls from a static frontend to a keyed API, keeping ... | 1.1.0 |
 | [okhp3-database-cartographer](okhp3-database-cartographer/SKILL.md) | OverKill Hill P³ database cartographer. Reverse-engineers and documents the live structure of Pos... | 1.1.0 |
-| [okhp3-equilibrium-review](okhp3-equilibrium-review/SKILL.md) | Evaluate a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independ... | 1.0.0 |
+| [okhp3-equilibrium-review](okhp3-equilibrium-review/SKILL.md) | Review a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independen... | 1.0.1 |
 | [okhp3-github-mirror-janitor](okhp3-github-mirror-janitor/SKILL.md) | Audit and safely maintain local GitHub clones, compare files and branches with origin/main, revie... | 0.1.2 |
 | [okhp3-github-notification-maintainer](okhp3-github-notification-maintainer/SKILL.md) | Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, c... | 1.2.0 |
 | [okhp3-google-gis-client-auth](okhp3-google-gis-client-auth/SKILL.md) | OverKill Hill P³ client-only Google Identity Services (GIS) auth workflow. Use when designing, im... | 1.2.0 |

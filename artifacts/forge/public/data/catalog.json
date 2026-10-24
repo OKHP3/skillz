@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T10:54:21.986Z",
+  "generatedAt": "2026-10-24T00:45:32.516Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/translation-thread-closeout",
-  "sourceCommit": "4452632",
+  "sourceCommit": "4b17d35",
   "skillCount": 333,
   "familyCount": 22,
   "families": [
@@ -12420,7 +12420,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12486,7 +12486,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12551,7 +12551,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12617,7 +12617,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12663,8 +12663,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "lastModified": "2026-10-22T05:53:21-05:00",
-      "commitSha": "44526321",
+      "lastModified": "2026-10-23T19:45:08-05:00",
+      "commitSha": "e36ef160",
       "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -12684,7 +12684,7 @@
         "testCount": 1,
         "referenceCount": 3,
         "scriptCount": 2,
-        "lastEvidenceDate": "2026-10-22",
+        "lastEvidenceDate": "2026-10-23",
         "reviewDecision": "approve-with-limits",
         "blockers": [
           "Only design or structural review exists; no graded live run has been executed."
@@ -22102,8 +22102,8 @@
       "family": "universal",
       "skillDir": "okhp3-equilibrium-review",
       "path": "universal/okhp3-equilibrium-review/SKILL.md",
-      "description": "Evaluate a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independent evidence review, conditional disruption, and evidence-based adjudication. Use when testing whether an artifact is trustworthy, sufficiently supported, safe to act on, or ready to release. Also activate for multi-agent review design, falsification passes, claim ledgers, or structured quality gates. Do not use as a substitute for a domain-specific statistical, legal, medical, or security review.",
-      "version": "1.0.0",
+      "description": "Review a document, report, spreadsheet, hypothesis, decision memo, or Agent Skill with independent evidence review, conditional disruption, and bounded adjudication. Use for claim ledgers, falsification passes, and release gates. Do not replace required statistical, legal, medical, financial, or security authority.",
+      "version": "1.0.1",
       "license": "MIT",
       "category": "evaluation-and-governance",
       "origin": "okhp3/skillz",
@@ -22122,24 +22122,14 @@
       "companions": [],
       "examples": [],
       "inputs": [],
-      "outputs": [
-        "artifact identity and hash when available;",
-        "decision question and acceptance criteria;",
-        "role contexts, model/source limits, and execution status;",
-        "one structured result per role;",
-        "material concordance or disagreement;",
-        "disruptor hypotheses and test results when triggered;",
-        "negotiator rationale and decisive evidence;",
-        "release decision and limitations;",
-        "follow-up tests, owner, and review-expiry trigger."
-      ],
+      "outputs": [],
       "tools": [],
       "runtimes": [],
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-equilibrium-review/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-equilibrium-review/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
-      "commitSha": "7647b437",
+      "lastModified": "2026-10-22T13:27:26-05:00",
+      "commitSha": "7ba38f96",
       "createdAt": "2026-07-30T20:38:20-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -22147,18 +22137,18 @@
         "origin": "okhp3/skillz",
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Evidence-led review of artifacts, claims, hypotheses, and release decisions using independent roles, conditional dissent, and adjudication.",
-        "outOfScope": "Autonomous publication, unverified domain conclusions, statistical testing without suitable data, or replacing required human or specialist authority.",
+        "inScope": "Evidence-led review of artifact claims, hypotheses, decisions, and release readiness.",
+        "outOfScope": "Invented evidence, autonomous publication, and specialist authority replaced by this skill.",
         "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
+        "evaluatedSkillVersion": "1.0.1",
         "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 3,
-        "scriptCount": 1,
+        "scriptCount": 5,
         "lastEvidenceDate": "2026-07-28T00:00:00Z",
         "reviewDecision": null,
         "blockers": [
