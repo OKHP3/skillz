@@ -20,19 +20,19 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 333,
+  "distributionSkillCount": 334,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 264,
+    "draftable": 265,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
     "not-run": 165,
-    "none": 109,
+    "none": 110,
     "local-checks": 38,
     "analytical": 7,
     "live": 7
@@ -309,6 +309,7 @@
         "okhp3-notion-capture-router",
         "okhp3-notion-core",
         "okhp3-notion-destructive-ops",
+        "okhp3-notion-domain-filing",
         "okhp3-notion-identity-resolution",
         "okhp3-notion-limits-and-retry",
         "okhp3-notion-page-read",
@@ -517,6 +518,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-10-24T00:51:26.462Z",
+  "countsGeneratedAt": "2026-10-25T14:03:04.356Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

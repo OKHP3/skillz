@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-10-24T00:51:26.462Z",
+  "generatedAt": "2026-10-25T14:03:04.356Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/translation-thread-closeout",
-  "sourceCommit": "c5c0de0",
-  "skillCount": 333,
+  "sourceRef": "feat/notion-domain-filing",
+  "sourceCommit": "cec8b4a6",
+  "skillCount": 334,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 264,
+    "draftable": 265,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
     "not-run": 165,
-    "none": 109,
+    "none": 110,
     "local-checks": 38,
     "analytical": 7,
     "live": 7

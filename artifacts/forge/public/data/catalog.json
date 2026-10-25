@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-24T00:51:26.462Z",
+  "generatedAt": "2026-10-25T14:03:04.356Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/translation-thread-closeout",
-  "sourceCommit": "c5c0de0",
-  "skillCount": 333,
+  "sourceRef": "feat/notion-domain-filing",
+  "sourceCommit": "cec8b4a6",
+  "skillCount": 334,
   "familyCount": 22,
   "families": [
     {
@@ -561,12 +561,13 @@
     {
       "name": "notion",
       "displayName": "Notion",
-      "skillCount": 11,
+      "skillCount": 12,
       "skills": [
         "okhp3-notion-agent-boundary",
         "okhp3-notion-capture-router",
         "okhp3-notion-core",
         "okhp3-notion-destructive-ops",
+        "okhp3-notion-domain-filing",
         "okhp3-notion-identity-resolution",
         "okhp3-notion-limits-and-retry",
         "okhp3-notion-page-read",
@@ -575,10 +576,10 @@
         "okhp3-notion-row-write",
         "okhp3-notion-search-strategy"
       ],
-      "narrativeBody": "This family covers Notion-centered knowledge operations for OKHP3.\n\nCurrent skill:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |",
+      "narrativeBody": "This family covers Notion-centered knowledge operations for OKHP3.\n\nWorkflow entry points:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |\n| `okhp3-notion-domain-filing` | Files existing loose originals under verified domain homes, updates their index locations, and keeps source bodies intact. Workspace anchors and scheduling remain private runtime configuration. |",
       "orientation": {
         "purpose": {
-          "value": "This family covers Notion-centered knowledge operations for OKHP3.\n\nCurrent skill:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |",
+          "value": "This family covers Notion-centered knowledge operations for OKHP3.\n\nWorkflow entry points:\n\n| Skill | Purpose |\n|---|---|\n| `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |\n| `okhp3-notion-domain-filing` | Files existing loose originals under verified domain homes, updates their index locations, and keeps source bodies intact. Workspace anchors and scheduling remain private runtime configuration. |",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -12402,7 +12403,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
       "lastModified": "2026-08-31T22:34:57-05:00",
       "commitSha": "93613e20",
-      "createdAt": "2026-08-30T18:45:34-05:00",
+      "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
@@ -12420,7 +12421,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12486,7 +12487,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12551,7 +12552,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12617,7 +12618,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 3,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -12663,8 +12664,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-fr-fr/SKILL.md",
-      "lastModified": "2026-10-23T19:51:10-05:00",
-      "commitSha": "c5c0de06",
+      "lastModified": "2026-10-23T20:01:10-05:00",
+      "commitSha": "f3b8f71f",
       "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -13959,6 +13960,73 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-notion-domain-filing",
+      "displayName": "Notion Domain Filing",
+      "family": "notion",
+      "skillDir": "okhp3-notion-domain-filing",
+      "path": "notion/okhp3-notion-domain-filing/SKILL.md",
+      "description": "File existing Notion pages into verified domain hubs and reconcile their index records without replacing the originals. Use for root-page clutter, misplaced imports, inbox routing, or a scheduled filing pass that must preserve page IDs, source content, links, and history.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "notion",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "none",
+      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "notion"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-notion-core",
+        "okhp3-notion-identity-resolution",
+        "okhp3-notion-limits-and-retry"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-domain-filing/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-domain-filing/SKILL.md",
+      "lastModified": "2026-10-25T09:00:30-05:00",
+      "commitSha": "cec8b4a6",
+      "createdAt": "2026-10-25T08:53:23-05:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "notion",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Bounded filing of existing standalone pages, verified index reconciliation, and catalog cross-links under a runtime-supplied domain map.",
+        "outOfScope": "Deleting, merging, recreating originals, rewriting source bodies, bulk database migration, permission changes, or provisioning an agent runtime.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "none",
+        "evaluatedSkillVersion": null,
+        "evalCount": 0,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No evaluation design or executable check exists for this package."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
@@ -16758,7 +16826,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-adversary-forecasting/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-intelligence",
@@ -16947,7 +17015,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-credential-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17010,7 +17078,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-data-exposure/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17149,7 +17217,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-lateral-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17275,7 +17343,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-persistence-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17401,7 +17469,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-authorization-governance/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-27T23:47:34-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-governance",
@@ -17716,7 +17784,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-model-anomaly-detection/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-detection",
@@ -17968,7 +18036,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-response-cost-benefit/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-measurement",

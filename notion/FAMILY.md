@@ -1,20 +1,21 @@
 ---
 family: notion
 display_name: Notion
-skill_count: 11
+skill_count: 12
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-24T00:45:16Z
+generated_at: 2026-10-25T13:53:09Z
 ---
 
 # notion
 
 This family covers Notion-centered knowledge operations for OKHP3.
 
-Current skill:
+Workflow entry points:
 
 | Skill | Purpose |
 |---|---|
 | `okhp3-notion-capture-router` | Routes AI conversation threads into Notion as Chat Threads plus Extracts, dedupes existing knowledge, and reconciles against OKHP3 GitHub repos. |
+| `okhp3-notion-domain-filing` | Files existing loose originals under verified domain homes, updates their index locations, and keeps source bodies intact. Workspace anchors and scheduling remain private runtime configuration. |
 
 ## Design rule
 
@@ -24,10 +25,10 @@ Public repo files must not contain private Notion URLs, database IDs, collection
 This family covers Notion-centered knowledge operations for OKHP3.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (11)
+## Skills (12)
 
 <!-- FAMILY_INVENTORY_START -->
-*11 skills &nbsp;·&nbsp; inventory last updated: **October 24, 2026 at 00:45 UTC***
+*12 skills &nbsp;·&nbsp; inventory last updated: **October 25, 2026 at 13:53 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -35,6 +36,7 @@ This family covers Notion-centered knowledge operations for OKHP3.
 | [okhp3-notion-capture-router](okhp3-notion-capture-router/SKILL.md) | Use this skill whenever an agent needs to export, capture, ingest, summarize, route, deduplicate,... | 0.4.0 |
 | [okhp3-notion-core](okhp3-notion-core/SKILL.md) | Load first for any Notion task. Negotiates which Notion surface and tools are actually available ... | 1.1.0 |
 | [okhp3-notion-destructive-ops](okhp3-notion-destructive-ops/SKILL.md) | The only okhp3-notion-* skill authorized to remove Notion content. Archive, trash, restore, or pe... | 1.1.0 |
+| [okhp3-notion-domain-filing](okhp3-notion-domain-filing/SKILL.md) | File existing Notion pages into verified domain hubs and reconcile their index records without re... | 1.0.0 |
 | [okhp3-notion-identity-resolution](okhp3-notion-identity-resolution/SKILL.md) | Dependency-loaded by other okhp3-notion-* skills. Resolves any Notion reference format (full URL,... | 1.1.0 |
 | [okhp3-notion-limits-and-retry](okhp3-notion-limits-and-retry/SKILL.md) | Dependency-loaded by other okhp3-notion-* skills. Applies Notion's rate limits, payload size limi... | 1.1.0 |
 | [okhp3-notion-page-read](okhp3-notion-page-read/SKILL.md) | Read Notion page and document content: fetch a page, traverse block children, paginate long pages... | 1.1.0 |
