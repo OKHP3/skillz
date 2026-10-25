@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-25: explicit Notion destination roots
+
+- Revise domain filing to 1.1.0: distinguish the canonical discovery root from
+  exact trusted destination hubs, including intentionally top-level hubs and
+  verified nested hubs. Require expected-location checks and reject unrelated
+  roots, mutable scope expansion and incomplete ancestry.
+- Preserve structural protections, source-content gates, deduplication and
+  existing scheduler ownership. Define in-place layout repair with historical
+  hold retention and read-only verification instead of test moves.
+- Add an offline boundary checker and synthetic regressions. These establish
+  boundary conformance only; no fresh live model benchmark or unseen release
+  holdout was completed. Private workspace evidence remains outside this repo.
+
 ## 2026-10-25: Notion domain filing workflow
 
 - Add `okhp3-notion-domain-filing` as a draftable portable workflow for

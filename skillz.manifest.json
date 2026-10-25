@@ -32,8 +32,8 @@
   "evidenceStatusCounts": {
     "historical": 7,
     "not-run": 165,
-    "none": 110,
-    "local-checks": 38,
+    "none": 109,
+    "local-checks": 39,
     "analytical": 7,
     "live": 7
   },
@@ -518,6 +518,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-10-25T14:03:04.356Z",
+  "countsGeneratedAt": "2026-10-25T17:18:14.591Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
