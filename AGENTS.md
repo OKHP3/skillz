@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 333 distribution skills in 22 active families (catalog audit, 2026-10-21). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 334 distribution skills in 22 active families (catalog audit, 2026-10-25). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -41,7 +41,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `lifetrkr/` | Celestial-data and daily-oracle skills |
 | `social-posting/` | Platform-specific drafting contracts for LinkedIn, Facebook, X/Twitter, Discord, YouTube, Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and Telegram |
 | `mermaid/` | Mermaid diagram authoring, governance, theming, publishing, updating, and repair |
-| `notion/` | AI conversation capture and routing into Notion knowledge structures |
+| `notion/` | Notion knowledge operations, conversation capture, and domain filing |
 | `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, validating, and promoting information or exploratory work |
 | `language-mediation/` | Controlled transformations across languages, locales, specialist registers, and plain-language audiences |
 | `process-capture/` | Process-analysis and documentation pipeline plus the recurring-task capture skill |
@@ -59,7 +59,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 333-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 334-skill distribution inventory |
 
 ## Routing index
 
@@ -148,6 +148,7 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | Skill | Trigger and loading rule |
 |---|---|
 | `okhp3-notion-capture-router` | Capture ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF, or pasted AI conversations into Notion structures, dedupe them, split extracts, and reconcile against OKHP3 GitHub. This is not generic note-taking. |
+| `okhp3-notion-domain-filing` | File existing loose Notion originals beneath verified domain homes, reconcile their index entries, and add catalog cross-links while preserving source IDs and bodies. Load private workspace configuration at runtime; scheduling is a separate host capability. |
 | `okhp3-refolddec-core` | Explicitly transform an artifact between representations, such as idea to diagram, diagram to documentation, documentation to SKILL.md, or unfold/refold with semantic-loss tracking. Load the target domain skill alongside it. |
 
 ### Knowledge-operations family
@@ -432,7 +433,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 333 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 334 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

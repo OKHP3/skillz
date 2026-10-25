@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-25: Notion domain filing workflow
+
+- Add `okhp3-notion-domain-filing` as a draftable portable workflow for
+  filing existing loose pages, reconciling index locations, and adding
+  catalog cross-links without rewriting original bodies or changing IDs.
+- Keep workspace roots, domain destinations, protected objects, and scheduler
+  state in private runtime configuration. Include synthetic setup and failure
+  cases; no claim of public-package live evaluation or installed automation.
+- Refresh the distribution catalogs and manifest to 334 skills across 22
+  active families, including 12 Notion skills.
+
 ## 2026-10-23: translation security remediation
 
 - Confine manifest control paths and planner roots to the project after
