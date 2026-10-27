@@ -19,8 +19,8 @@ catalogs:
       specifier: ^4.1.14
       version: 4.3.3
     '@tanstack/react-query':
-      specifier: ^5.104.4
-      version: 5.104.4
+      specifier: ^5.104.5
+      version: 5.104.5
     '@types/node':
       specifier: ^26.6.5
       version: 26.6.5
@@ -46,8 +46,8 @@ catalogs:
       specifier: ^13.4.1
       version: 13.4.1
     lucide-react:
-      specifier: ^1.59.0
-      version: 1.59.0
+      specifier: ^1.61.0
+      version: 1.61.0
     react:
       specifier: 19.3.1
       version: 19.3.1
@@ -64,8 +64,8 @@ catalogs:
       specifier: ^4.23.15
       version: 4.23.15
     vite:
-      specifier: ^8.3.4
-      version: 8.3.4
+      specifier: ^8.3.5
+      version: 8.3.5
     zod:
       specifier: ^4.6.7
       version: 4.6.7
@@ -158,8 +158,8 @@ importers:
   .:
     dependencies:
       '@replit/connectors-sdk':
-        specifier: ^0.4.3
-        version: 0.4.3
+        specifier: ^0.5.0
+        version: 0.5.0
     devDependencies:
       prettier:
         specifier: ^3.9.10
@@ -242,13 +242,13 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.1.2(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+        version: 6.1.2(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
       fuse.js:
         specifier: ^7.5.0
         version: 7.5.0
       lucide-react:
         specifier: 'catalog:'
-        version: 1.59.0(@types/react@19.3.0)(react@19.3.1)
+        version: 1.61.0(@types/react@19.3.0)(react@19.3.1)
       playwright:
         specifier: ^1.64.1
         version: 1.64.1
@@ -263,16 +263,16 @@ importers:
         version: 7.18.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       vite:
         specifier: 'catalog:'
-        version: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
+        version: 8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
       vitest:
         specifier: ^5.0.5
-        version: 5.0.5(@types/node@26.6.5)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+        version: 5.0.5(@types/node@26.6.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
 
   artifacts/forge-review-desk:
     devDependencies:
       '@hookform/resolvers':
         specifier: ^5.9.2
-        version: 5.9.2(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.1))(zod@4.6.7)
+        version: 5.9.2(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.91.0(@types/react@19.3.0)(react@19.3.1))(zod@4.6.7)
       '@radix-ui/react-accordion':
         specifier: ^1.3.1
         version: 1.3.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -368,10 +368,10 @@ importers:
         version: 0.5.20(tailwindcss@4.3.3)
       '@tailwindcss/vite':
         specifier: 'catalog:'
-        version: 4.3.3(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+        version: 4.3.3(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
       '@tanstack/react-query':
         specifier: 'catalog:'
-        version: 5.104.4(@types/react@19.3.0)(react@19.3.1)
+        version: 5.104.5(@types/react@19.3.0)(react@19.3.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.5
@@ -383,7 +383,7 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.1.2(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+        version: 6.1.2(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
       '@workspace/api-client-react':
         specifier: workspace:*
         version: link:../../lib/api-client-react
@@ -410,7 +410,7 @@ importers:
         version: 1.5.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       lucide-react:
         specifier: 'catalog:'
-        version: 1.59.0(@types/react@19.3.0)(react@19.3.1)
+        version: 1.61.0(@types/react@19.3.0)(react@19.3.1)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -427,8 +427,8 @@ importers:
         specifier: 'catalog:'
         version: 19.3.1(react@19.3.1)
       react-hook-form:
-        specifier: ^7.90.0
-        version: 7.90.0(@types/react@19.3.0)(react@19.3.1)
+        specifier: ^7.91.0
+        version: 7.91.0(@types/react@19.3.0)(react@19.3.1)
       react-icons:
         specifier: ^5.4.0
         version: 5.7.0(react@19.3.1)
@@ -458,7 +458,7 @@ importers:
         version: 1.1.2(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       vite:
         specifier: 'catalog:'
-        version: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
+        version: 8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
       wouter:
         specifier: ^3.13.0
         version: 3.13.0(react@19.3.1)
@@ -470,7 +470,7 @@ importers:
     devDependencies:
       '@hookform/resolvers':
         specifier: ^5.9.2
-        version: 5.9.2(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.1))(zod@4.6.7)
+        version: 5.9.2(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.91.0(@types/react@19.3.0)(react@19.3.1))(zod@4.6.7)
       '@radix-ui/react-accordion':
         specifier: ^1.3.1
         version: 1.3.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -560,7 +560,7 @@ importers:
         version: 0.0.6
       '@tailwindcss/vite':
         specifier: 'catalog:'
-        version: 4.3.3(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+        version: 4.3.3(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.5
@@ -572,7 +572,7 @@ importers:
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
         specifier: 'catalog:'
-        version: 6.1.2(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+        version: 6.1.2(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
       chokidar:
         specifier: ^5.0.0
         version: 5.0.0
@@ -602,7 +602,7 @@ importers:
         version: 1.5.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       lucide-react:
         specifier: 'catalog:'
-        version: 1.59.0(@types/react@19.3.0)(react@19.3.1)
+        version: 1.61.0(@types/react@19.3.0)(react@19.3.1)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -616,8 +616,8 @@ importers:
         specifier: 'catalog:'
         version: 19.3.1(react@19.3.1)
       react-hook-form:
-        specifier: ^7.90.0
-        version: 7.90.0(@types/react@19.3.0)(react@19.3.1)
+        specifier: ^7.91.0
+        version: 7.91.0(@types/react@19.3.0)(react@19.3.1)
       react-is:
         specifier: 19.3.1
         version: 19.3.1
@@ -647,7 +647,7 @@ importers:
         version: 1.1.2(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       vite:
         specifier: 'catalog:'
-        version: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
+        version: 8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
       zod:
         specifier: 'catalog:'
         version: 4.6.7
@@ -656,13 +656,13 @@ importers:
     dependencies:
       '@tanstack/react-query':
         specifier: 'catalog:'
-        version: 5.104.4(@types/react@19.3.0)(react@19.3.1)
+        version: 5.104.5(@types/react@19.3.0)(react@19.3.1)
 
   lib/api-spec:
     devDependencies:
       orval:
-        specifier: ^8.43.0
-        version: 8.43.0(@tanstack/react-query@5.104.4(@types/react@19.3.0)(react@19.3.1))(prettier@3.9.10)(typescript@7.0.2)(zod@4.6.7)
+        specifier: ^8.44.0
+        version: 8.44.0(@tanstack/react-query@5.104.5(@types/react@19.3.0)(react@19.3.1))(prettier@3.9.10)(typescript@7.0.2)(zod@4.6.7)
 
   lib/api-zod:
     dependencies:
@@ -884,14 +884,14 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@orval/angular@8.43.0':
-    resolution: {integrity: sha512-IxDrLrm2lORBsIQt01f4fDM8P/qXuDC8qB66FABxFy8znUXre+bNZBAIeB9IwwH0A4tnPgIKM67uqaXne8qahQ==}
+  '@orval/angular@8.44.0':
+    resolution: {integrity: sha512-i2jnz9iETFduqm8gcK/7O5+g7rA+rH/1DdTE4epTLy3iQSwtzj6WiwecSpHjF0hhmmK5UOcof/wPpqF178HFkg==}
 
-  '@orval/axios@8.43.0':
-    resolution: {integrity: sha512-PjC3aK18iXdDWoQhH9oX7njzbrtHcTiNDBA235emGv5W9T8meSGwtEt4F2UcQw/3ZCXbnVPqCfMeMnses1E5YQ==}
+  '@orval/axios@8.44.0':
+    resolution: {integrity: sha512-+969WuT4a0ifZjRJg+bWjiA5vG3GlSEH5RPSUzaYaTldCAMXeNreeCDuvSwo8PxN1Zrp7S2nVx8pTblJNDwRGQ==}
 
-  '@orval/core@8.43.0':
-    resolution: {integrity: sha512-MexVK1uge9XWU37PaY64BPZdfBRoFmdvtT+UKYkZIcl86uC9kRzKXDOi8SE+gT9cjgVg2rqPnpjHtV03S55uQg==}
+  '@orval/core@8.44.0':
+    resolution: {integrity: sha512-gmBVRr4lg0WllN5OMsb5pApPNPcKvG5P+fcvsC3/kb3++4WIw1j0dnajO38LZYMTIIIyWrJT+5/VCjdQ0w4njQ==}
     peerDependencies:
       '@faker-js/faker': '>=8'
       '@modelcontextprotocol/server': '>=2'
@@ -901,35 +901,35 @@ packages:
       '@modelcontextprotocol/server':
         optional: true
 
-  '@orval/effect@8.43.0':
-    resolution: {integrity: sha512-txqKsWM/nfsqePogEoJUAIZrAzSSCagcBmJCy4W6Ixi8D/ZnYF4hb9F8ZqHuIrrzhMum7g+7Qirph0mLQ5e5Sg==}
+  '@orval/effect@8.44.0':
+    resolution: {integrity: sha512-r3ZXSdiBKaJwHXaps+AHBMXhuuqPHWb3hJUXxNeAmwwISM3ai1pp8l37sICpalPXWF2KJAhDjqKmyYpgoa1qww==}
     peerDependencies:
       effect: '>=3'
     peerDependenciesMeta:
       effect:
         optional: true
 
-  '@orval/fetch@8.43.0':
-    resolution: {integrity: sha512-RfcumaeFIGuQbalz6g42Ouwen3GSjRTrW0ICqaiOvJaPKjPKi2FAVYBzrDOIlsNE1NeDVLtsYgFp3UP8ExOfXg==}
+  '@orval/fetch@8.44.0':
+    resolution: {integrity: sha512-I4Z1/Opp+zpNlRf/wTkSaamnJEKqkAb2L8IE8+K4jO+GicMp15qPll/OtfUZLtSmJM04S+K78yaB6e2rnhw6nA==}
 
-  '@orval/hono@8.43.0':
-    resolution: {integrity: sha512-t6ZyeL8J1L4bfav/qnJJ+tCbTZrxA/0e/YQqte/ollCNGRWgx7GSorcecIUKA/kYZrFrPuechWQH8gLoaUgI3Q==}
+  '@orval/hono@8.44.0':
+    resolution: {integrity: sha512-0W8k6+IUc3j3pCkvGtPn4QVnNTMoQwRqlhP44IRQZLL9Pl5R1CNWc2/9yzwaPOiULN80qxwHkaPFp51ZI3SJNA==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  '@orval/mcp@8.43.0':
-    resolution: {integrity: sha512-Zc5Q/2g10P/3avSZFeV57w9URbludvX8Bhs4lw1tgQ8hEYCW0rWUjR6I5VWGDjNGo/iayZ49SUYSBsJirTPCCQ==}
+  '@orval/mcp@8.44.0':
+    resolution: {integrity: sha512-BatIFisv3IG1CK1dgXq/6Bu0W0Rx3bUN7IGf6rzlwM0i4Jdu5HomXU0l7w03oXyVwKI/CKFATNHFLTw4ZehaxA==}
     peerDependencies:
       '@modelcontextprotocol/server': '>=2'
     peerDependenciesMeta:
       '@modelcontextprotocol/server':
         optional: true
 
-  '@orval/mock@8.43.0':
-    resolution: {integrity: sha512-97cK3HTT7LDTD8l7NB9iVlPGXKzyGNoFR88PMH0SRdnlPDoYP9I93wzDKGuRrJdqNcG/EmNRRfhtmlzJtEQo/A==}
+  '@orval/mock@8.44.0':
+    resolution: {integrity: sha512-Xaume1Q7XyjWKRpjBmiO6G059NydlJNViSl3q1bAZRsdcv/PmHqjmnAaHuAbs7Bn3egQPgYKtrNsQbE6HIzz+g==}
     peerDependencies:
       '@faker-js/faker': '>=8'
       msw: '>=2'
@@ -939,16 +939,16 @@ packages:
       msw:
         optional: true
 
-  '@orval/pinia-colada@8.43.0':
-    resolution: {integrity: sha512-GXc1icJaHg9nTO+xMGDeKhPdKEI6Ndo4QsWcejLK4+Ab+s1431YI9I9t24aVfRAd3aqd+kaQ40bMUSODG0043w==}
+  '@orval/pinia-colada@8.44.0':
+    resolution: {integrity: sha512-gkj6UrZ6z5sGA2HQHLeaUt4gQaikI1UVEuz72GqZi9T3tx9U5NAxtFCGqSzcvO7bIy+ydciuhWkUraCzUVYWpA==}
     peerDependencies:
       '@pinia/colada': ^1.4.4
     peerDependenciesMeta:
       '@pinia/colada':
         optional: true
 
-  '@orval/query@8.43.0':
-    resolution: {integrity: sha512-i20ya3QowacGGaaPQBfKZq6utK0JqHo751RU7cPoGGxP0aqg082QUAHBjXX5vqabPT++mqQ0xFeVkK6JeZqwvg==}
+  '@orval/query@8.44.0':
+    resolution: {integrity: sha512-CZy9t/a1EpptpE9hjYaV48oncLpYng8TpcxARPvEjfeQTXdZ6iQKiy4AzEVSfRyFOShzCjbahHAtH8DzpHxgrQ==}
     peerDependencies:
       '@tanstack/angular-query-experimental': '>=5'
       '@tanstack/react-query': '>=4'
@@ -967,19 +967,19 @@ packages:
       '@tanstack/vue-query':
         optional: true
 
-  '@orval/solid-start@8.43.0':
-    resolution: {integrity: sha512-vVryn0gCj3Fh8VqsZvD7pNmH+JhT+zE5ihPGqCelL9Lcat6gdS794mUdcwpp4TtQh9kJb1o/f0RqA0Uy7CFMVg==}
+  '@orval/solid-start@8.44.0':
+    resolution: {integrity: sha512-1deAaWtWkkMOHa1dqkbnr48D4WQYwcxvmbB8JFkb3u/+FtTkhFIQepsr7EGPWPxeOjmfExD7TBRO5rk8fXtTtA==}
 
-  '@orval/swr@8.43.0':
-    resolution: {integrity: sha512-Beh2qHOvmBYxsGR0cn31ZWjL5dkK3Vg/gF27uMCJbUFp/7LCadiHwG4MOaTMxTlqpuRCNTQyxqMlAYp0fZGrUA==}
+  '@orval/swr@8.44.0':
+    resolution: {integrity: sha512-MwY0+oXizn0bxzpO0AE+3EoU82oA0CMfakAi9A9Vqir7+y1EeceM0LiuXYDBWHvrD3Jt2gLQfXj+XbhNp8xmkg==}
     peerDependencies:
       swr: '>=2'
     peerDependenciesMeta:
       swr:
         optional: true
 
-  '@orval/zod@8.43.0':
-    resolution: {integrity: sha512-TqMQtvFm1z2Z9C/AllNl6G1BwTjkQUp6wDC0SiizwaMDOI/kxJjgJAJDm64nL7mffLt8RN3FXebCAy17aD8sug==}
+  '@orval/zod@8.44.0':
+    resolution: {integrity: sha512-Gzild7UprvPWp+iE9YH3C0+yY4gutu6EmjP4cajREe38rXxpCGGNJZ333EzQay+YpLxkS66/ofyt6qWRfILSMw==}
     peerDependencies:
       zod: '>=3'
     peerDependenciesMeta:
@@ -1641,8 +1641,8 @@ packages:
       react-redux:
         optional: true
 
-  '@replit/connectors-sdk@0.4.3':
-    resolution: {integrity: sha512-7XoaRty/O6JF161UkVBI8UewZ96XCNNN1kRvT9Q41IRH3xr+6ImylvXtirIghydDd2FCQvIkY4HQscOOr45otA==}
+  '@replit/connectors-sdk@0.5.0':
+    resolution: {integrity: sha512-SQ0AWe/CE7ZOhn0zFxAReDJceHkC+r2pwot4ktE8luSeyx3xOYES9W/L4X5RFklvJ1CD+GTTN1GyXVCjH4N7jQ==}
 
   '@replit/vite-plugin-cartographer@0.6.1':
     resolution: {integrity: sha512-t1TBE22lctrkKBB60b8K6D0BA4teO/mw9++VMEyRw2ASNZZ0Nbgmjw+ftybrl1H66mg3tSNsx204QbbeAjMsfA==}
@@ -1764,16 +1764,16 @@ packages:
     resolution: {integrity: sha512-Vnu9wFHzuqpsx1DR6ePTsXgcBFnpRTEBH8HZAS1Nj7h7HfOsxaJtV5ig7pdLlLTK9bcJI+aZLndDZud5gysKFA==}
     engines: {node: '>=22'}
 
-  '@scalar/json-magic@0.16.0':
-    resolution: {integrity: sha512-NXd4v3Ua0w9xv+YJolQBGyXTl/Elb0cWPEl1+hpU78BOKPrfQT3YdDtACGll65uWUgW0W+/1YJA5NKyw0eYUuQ==}
+  '@scalar/json-magic@0.17.0':
+    resolution: {integrity: sha512-YmJAO9NoGCcU/vx7P4Dy9DGv+Vntp+ny3Fh99slHOOh/IZxvbdK5hWeZdzQ3x+ezab9XJNscFoX8H/P6W+H8lA==}
+    engines: {node: '>=22.19.0'}
+
+  '@scalar/json-schema-validator@0.1.14':
+    resolution: {integrity: sha512-+UDt9xn3Gad8i+JP2V6WC16Q0NjGWRXtp8ePacCg9H1A/8mHOdUmRP5MSC+LMO6Ukr5eaKwk7GbcCylU//1N5Q==}
     engines: {node: '>=22'}
 
-  '@scalar/json-schema-validator@0.1.13':
-    resolution: {integrity: sha512-aXItOpXaa3h7qLFd7xRwJnERcC7d4Fn07o3XM3ZqZBWBmj6QFy7arQAwWbTt0gGj8/Wd4VTbAVFWT+PcPVfdgg==}
-    engines: {node: '>=22'}
-
-  '@scalar/openapi-parser@0.29.14':
-    resolution: {integrity: sha512-efisAg9MiVk8h53zdlWHLyv6Sye1srwy/s6EYBzuxtn5SfVG1NNjIqJBhHaZSe0/DbdJf00RgKHyxpWxNd+D1Q==}
+  '@scalar/openapi-parser@0.29.16':
+    resolution: {integrity: sha512-nxIbR7ZFToK21q5CQcHpQed2UQ3PrYbNzWQXxS8hxhmfswRK5Eeyiitr8D3SIY5+34EOSAb/WFDhaKi6x7UJYg==}
     engines: {node: '>=22'}
 
   '@scalar/openapi-types@0.9.7':
@@ -1784,16 +1784,16 @@ packages:
     resolution: {integrity: sha512-pGcpkZObsGBC7nRKYte+6gstoe0C4hp7B2UWQYjg5To1wE68s3OHVvin+muL3tn3ZAoahXeJAkn1+aEcMi802w==}
     engines: {node: '>=22'}
 
-  '@scalar/openapi-upgrader@0.4.5':
-    resolution: {integrity: sha512-PdsTyeO8CepVP7I8JvwoojtzyZ+R1MrVgu1C8npvVvy5JRixp5E34Z4J1sKojJs+YRe42/MK2XHXVM/X1qgGPA==}
+  '@scalar/openapi-upgrader@0.4.6':
+    resolution: {integrity: sha512-wkTbowGZAlDA5AhCAnBVft6y3veoE17P+okH/zrwM/BZWBSzPghGpa4BPTCg3+IzRmRP/8ZeaYO7LfxCDAEmcA==}
     engines: {node: '>=22'}
 
-  '@scalar/openapi-validator@0.1.13':
-    resolution: {integrity: sha512-o40Dka4QOdtdz0KKrmOjp+r50KkMbH36i3fb+6qQPCpIMkfAHoJiQlOa3Z2DFpkfTSpc3p5UdPbWKwjZxpvUVg==}
+  '@scalar/openapi-validator@0.1.14':
+    resolution: {integrity: sha512-02r1/T7/KufhnOQ0r2/Le7ASSKBCSQLoP+r4wjGCEkQFRyjREBe01lAWHXl/nycq3l/ONFAN94vWKTFd1NVtLw==}
     engines: {node: '>=22'}
 
-  '@scalar/types@0.24.0':
-    resolution: {integrity: sha512-x4O8ddCvh+59zwh9Xc+bG2QACxYARcPDfJBYiUzD/hzSxb6vpcms+WKgMksBfYWCZneO6e5Kt6hZFBoE9D9YCg==}
+  '@scalar/types@0.25.0':
+    resolution: {integrity: sha512-EdwOVV5ajKks4MX5BorHIdMLG0L8EAxfz+NisAPV8l7Rsic50+YoWnqkY1eqB6K96iyreIKUdl7B/PIFGLqylg==}
     engines: {node: '>=22'}
 
   '@sec-ant/readable-stream@0.4.1':
@@ -1845,11 +1845,11 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7 || ^8
 
-  '@tanstack/query-core@5.104.4':
-    resolution: {integrity: sha512-nU4Yrb8Sjn0DeVb7PKG9uiepNavys3yoxy1FX0hViY4/P6Ng/mBje2SMl7i9812rtyHKtHyqiaC/td6GkI8StA==}
+  '@tanstack/query-core@5.104.5':
+    resolution: {integrity: sha512-Q94gI8Opd+CbdVNOdj8ZCyV8WqLYitrDq1t96Xc8WZT6lY0r5iRnJLXYDxMex7EEf2v+mXvn4FcjaBKSxXZQ9A==}
 
-  '@tanstack/react-query@5.104.4':
-    resolution: {integrity: sha512-YD5QkvUNy8Ey3LbOy2vwL97JjoYycwDv++cWAibTe+9BLYvl3c09XpYp5dZ2VcxcguwoDhGF+utYJYb79RB36w==}
+  '@tanstack/react-query@5.104.5':
+    resolution: {integrity: sha512-RORgFe052U+93weaNuqg7qHq7vNVNzXN/VrXqD4bbAuQCWUqOl2lV5Ui9flWk5CVvMyL/Bh27QWhzwH0aaOx9g==}
     peerDependencies:
       '@types/react': ^18 || ^19
       react: ^18 || ^19
@@ -2514,8 +2514,8 @@ packages:
   fast-safe-stringify@2.1.1:
     resolution: {integrity: sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==}
 
-  fast-uri@3.1.8:
-    resolution: {integrity: sha512-GZMtZUTNRpOVIECoXwLNZS5xUGE+mVNbTB8h/7Rwh2TFWcBQiPzTgyZi05BF9UMZKkLJv8XBRJTlU7zg8+ZfMg==}
+  fast-uri@3.1.9:
+    resolution: {integrity: sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ==}
 
   fastq@1.20.1:
     resolution: {integrity: sha512-GGToxJ/w1x32s/D2EKND7kTil4n8OVk/9mycTc4VDza13lOvpUZTGX3mFSCtV9ksdGBVzvsyAVLM6mHFThxXxw==}
@@ -2729,8 +2729,8 @@ packages:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
 
-  lucide-react@1.59.0:
-    resolution: {integrity: sha512-5qgMyyCPU6OvnKpLS2t693+ZtiqA8oaSweWoUows0BLFKFf6V75m4+CptpmohZHpD5IuOVIBXHBBiv2vpLJmtw==}
+  lucide-react@1.61.0:
+    resolution: {integrity: sha512-v2SQPPPNjnr+BlhL9Spuzmo5yR+hLkftfuE4E3jaxdNPgSH0hJKPcLJBP7yAta87jQNPsSERS59PJjCJ/CorBA==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -2834,8 +2834,8 @@ packages:
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
 
-  orval@8.43.0:
-    resolution: {integrity: sha512-0gSCXFygPF/9mx42bZw1QA8Dn4a8u/cRlAz5Essdtap1TNAoDA3GMH31Mo/SETLxx9soy3FTg7gvFSMBDjCRZg==}
+  orval@8.44.0:
+    resolution: {integrity: sha512-JqX774pjVGQUGDgtIvwAR82/j9Aet+phkb9Q8YsL18+UARgyzlXxJb8JyiV1Xpt5q55jZdbBOkJmn21/8sBqyQ==}
     engines: {node: '>=22.18.0'}
     hasBin: true
     peerDependencies:
@@ -3023,8 +3023,8 @@ packages:
     peerDependencies:
       react: ^19.3.1
 
-  react-hook-form@7.90.0:
-    resolution: {integrity: sha512-+NdG0FLzCPhFOp2NNxaUYLF9fyZhNjx9FTBBSYWF71/l6BBlmIc/j6xlp3DbaHWLJbIG7Zd8oznA19xJClU97w==}
+  react-hook-form@7.91.0:
+    resolution: {integrity: sha512-5BEBUnCBwa28AFXYTYmOaB/+CSpJ/+CWVASHEvIGUzFdHyUiPHeRhG7r5hOZ8nZi0yP7pbHdFNXO/p31EKTJFQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@types/react': '*'
@@ -3342,6 +3342,10 @@ packages:
     resolution: {integrity: sha512-RYONW2MeafgYlkVOKYKkA/Ag7BmXqgIWCa8t1m0JcxrQg9pI9lEqRhAOruOBCbAohOa/gkCF+iPi9hrgvTzu6Q==}
     engines: {node: '>=20.18.1'}
 
+  undici@8.12.3:
+    resolution: {integrity: sha512-+fdndUTwBP86cVjihTp21hZHo7d6oj1c/47XPA3lL8mM0XHs+C4EkcjmgRsFnFk2f/UONGDy9ItBItmXsLOQHw==}
+    engines: {node: '>=22.19.0'}
+
   unicorn-magic@0.3.0:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
     engines: {node: '>=18'}
@@ -3391,13 +3395,13 @@ packages:
   victory-vendor@37.3.6:
     resolution: {integrity: sha512-SbPDPdDBYp+5MJHhBCAyI7wKM3d5ivekigc2Dk2s7pgbZ9wIgIBYGVw4zGHBml/qTFbexrofXW6Gu4noGxrOwQ==}
 
-  vite@8.3.4:
-    resolution: {integrity: sha512-IftLE8phJhdNRIGNEV4JCCvfNScoZQVfcXaN8TQropWGJtOHcu+iAB9pHcuGvmEb/kddw0LBe/jS8ztdC6xdiQ==}
+  vite@8.3.5:
+    resolution: {integrity: sha512-z1YpjieJ9g0ebTmQpLBv/oq9E3F9EIlOe+7LahW8SrE3LTiG3udBRUXQOlYXP9b+IC2q2phHeVxj9xGlw34OEQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
       '@types/node': ^20.19.0 || >=22.12.0
-      '@vitejs/devtools': ^0.7.1
+      '@vitejs/devtools': ^0.7.1 || ^0.8.0
       esbuild: 0.28.2
       jiti: '>=1.21.0'
       less: ^4.0.0
@@ -3586,10 +3590,10 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
-  '@hookform/resolvers@5.9.2(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.1))(zod@4.6.7)':
+  '@hookform/resolvers@5.9.2(@standard-schema/spec@1.1.0)(ajv@8.20.0)(react-hook-form@7.91.0(@types/react@19.3.0)(react@19.3.1))(zod@4.6.7)':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.90.0(@types/react@19.3.0)(react@19.3.1)
+      react-hook-form: 7.91.0(@types/react@19.3.0)(react@19.3.1)
     optionalDependencies:
       '@standard-schema/spec': 1.1.0
       ajv: 8.20.0
@@ -3628,21 +3632,21 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
 
-  '@orval/angular@8.43.0':
+  '@orval/angular@8.44.0':
     dependencies:
-      '@orval/core': 8.43.0
+      '@orval/core': 8.44.0
     transitivePeerDependencies:
       - '@faker-js/faker'
       - '@modelcontextprotocol/server'
 
-  '@orval/axios@8.43.0':
+  '@orval/axios@8.44.0':
     dependencies:
-      '@orval/core': 8.43.0
+      '@orval/core': 8.44.0
     transitivePeerDependencies:
       - '@faker-js/faker'
       - '@modelcontextprotocol/server'
 
-  '@orval/core@8.43.0':
+  '@orval/core@8.44.0':
     dependencies:
       '@scalar/openapi-types': 0.9.7
       acorn: 8.19.0
@@ -3653,24 +3657,24 @@ snapshots:
       jsesc: 3.1.0
       tinyglobby: 0.2.17
 
-  '@orval/effect@8.43.0':
+  '@orval/effect@8.44.0':
     dependencies:
-      '@orval/core': 8.43.0
+      '@orval/core': 8.44.0
     transitivePeerDependencies:
       - '@faker-js/faker'
       - '@modelcontextprotocol/server'
 
-  '@orval/fetch@8.43.0':
+  '@orval/fetch@8.44.0':
     dependencies:
-      '@orval/core': 8.43.0
+      '@orval/core': 8.44.0
     transitivePeerDependencies:
       - '@faker-js/faker'
       - '@modelcontextprotocol/server'
 
-  '@orval/hono@8.43.0(typescript@7.0.2)(zod@4.6.7)':
+  '@orval/hono@8.44.0(typescript@7.0.2)(zod@4.6.7)':
     dependencies:
-      '@orval/core': 8.43.0
-      '@orval/zod': 8.43.0(zod@4.6.7)
+      '@orval/core': 8.44.0
+      '@orval/zod': 8.44.0(zod@4.6.7)
     optionalDependencies:
       typescript: 7.0.2
     transitivePeerDependencies:
@@ -3678,58 +3682,58 @@ snapshots:
       - '@modelcontextprotocol/server'
       - zod
 
-  '@orval/mcp@8.43.0(zod@4.6.7)':
+  '@orval/mcp@8.44.0(zod@4.6.7)':
     dependencies:
-      '@orval/core': 8.43.0
-      '@orval/fetch': 8.43.0
-      '@orval/zod': 8.43.0(zod@4.6.7)
+      '@orval/core': 8.44.0
+      '@orval/fetch': 8.44.0
+      '@orval/zod': 8.44.0(zod@4.6.7)
     transitivePeerDependencies:
       - '@faker-js/faker'
       - zod
 
-  '@orval/mock@8.43.0':
+  '@orval/mock@8.44.0':
     dependencies:
-      '@orval/core': 8.43.0
+      '@orval/core': 8.44.0
     transitivePeerDependencies:
       - '@modelcontextprotocol/server'
 
-  '@orval/pinia-colada@8.43.0':
+  '@orval/pinia-colada@8.44.0':
     dependencies:
-      '@orval/axios': 8.43.0
-      '@orval/core': 8.43.0
-      '@orval/fetch': 8.43.0
+      '@orval/axios': 8.44.0
+      '@orval/core': 8.44.0
+      '@orval/fetch': 8.44.0
     transitivePeerDependencies:
       - '@faker-js/faker'
       - '@modelcontextprotocol/server'
 
-  '@orval/query@8.43.0(@tanstack/react-query@5.104.4(@types/react@19.3.0)(react@19.3.1))':
+  '@orval/query@8.44.0(@tanstack/react-query@5.104.5(@types/react@19.3.0)(react@19.3.1))':
     dependencies:
-      '@orval/core': 8.43.0
-      '@orval/fetch': 8.43.0
+      '@orval/core': 8.44.0
+      '@orval/fetch': 8.44.0
     optionalDependencies:
-      '@tanstack/react-query': 5.104.4(@types/react@19.3.0)(react@19.3.1)
+      '@tanstack/react-query': 5.104.5(@types/react@19.3.0)(react@19.3.1)
     transitivePeerDependencies:
       - '@faker-js/faker'
       - '@modelcontextprotocol/server'
 
-  '@orval/solid-start@8.43.0':
+  '@orval/solid-start@8.44.0':
     dependencies:
-      '@orval/core': 8.43.0
+      '@orval/core': 8.44.0
     transitivePeerDependencies:
       - '@faker-js/faker'
       - '@modelcontextprotocol/server'
 
-  '@orval/swr@8.43.0':
+  '@orval/swr@8.44.0':
     dependencies:
-      '@orval/core': 8.43.0
-      '@orval/fetch': 8.43.0
+      '@orval/core': 8.44.0
+      '@orval/fetch': 8.44.0
     transitivePeerDependencies:
       - '@faker-js/faker'
       - '@modelcontextprotocol/server'
 
-  '@orval/zod@8.43.0(zod@4.6.7)':
+  '@orval/zod@8.44.0(zod@4.6.7)':
     dependencies:
-      '@orval/core': 8.43.0
+      '@orval/core': 8.44.0
       jsesc: 3.1.0
     optionalDependencies:
       zod: 4.6.7
@@ -4440,7 +4444,7 @@ snapshots:
       react: 19.3.1
       react-redux: 9.3.0(@types/react@19.3.0)(react@19.3.1)(redux@5.0.1)
 
-  '@replit/connectors-sdk@0.4.3': {}
+  '@replit/connectors-sdk@0.5.0': {}
 
   '@replit/vite-plugin-cartographer@0.6.1':
     dependencies:
@@ -4516,49 +4520,49 @@ snapshots:
       undici: 7.29.1
       yaml: 2.9.1
 
-  '@scalar/json-magic@0.16.0':
+  '@scalar/json-magic@0.17.0':
     dependencies:
       '@scalar/helpers': 0.16.4
       pathe: 2.0.3
-      undici: 7.29.1
+      undici: 8.12.3
       yaml: 2.9.1
 
-  '@scalar/json-schema-validator@0.1.13':
+  '@scalar/json-schema-validator@0.1.14':
     dependencies:
       '@scalar/helpers': 0.16.4
-      '@scalar/types': 0.24.0
+      '@scalar/types': 0.25.0
       ajv: 8.20.0
       ajv-draft-04: 1.0.0(ajv@8.20.0)
       ajv-formats: 3.0.1
       yaml: 2.9.1
 
-  '@scalar/openapi-parser@0.29.14':
+  '@scalar/openapi-parser@0.29.16':
     dependencies:
       '@scalar/helpers': 0.16.4
-      '@scalar/json-magic': 0.16.0
+      '@scalar/json-magic': 0.17.0
       '@scalar/openapi-types': 0.9.8
-      '@scalar/openapi-upgrader': 0.4.5
-      '@scalar/openapi-validator': 0.1.13
-      '@scalar/types': 0.24.0
+      '@scalar/openapi-upgrader': 0.4.6
+      '@scalar/openapi-validator': 0.1.14
+      '@scalar/types': 0.25.0
       yaml: 2.9.1
 
   '@scalar/openapi-types@0.9.7': {}
 
   '@scalar/openapi-types@0.9.8': {}
 
-  '@scalar/openapi-upgrader@0.4.5':
+  '@scalar/openapi-upgrader@0.4.6':
     dependencies:
       '@scalar/helpers': 0.16.4
       '@scalar/openapi-types': 0.9.8
 
-  '@scalar/openapi-validator@0.1.13':
+  '@scalar/openapi-validator@0.1.14':
     dependencies:
       '@scalar/helpers': 0.16.4
-      '@scalar/json-schema-validator': 0.1.13
-      '@scalar/types': 0.24.0
+      '@scalar/json-schema-validator': 0.1.14
+      '@scalar/types': 0.25.0
       yaml: 2.9.1
 
-  '@scalar/types@0.24.0':
+  '@scalar/types@0.25.0':
     dependencies:
       '@scalar/helpers': 0.16.4
       nanoid: 5.1.16
@@ -4599,18 +4603,18 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.3.3
 
-  '@tailwindcss/vite@4.3.3(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))':
+  '@tailwindcss/vite@4.3.3(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))':
     dependencies:
       '@tailwindcss/node': 4.3.3
       '@tailwindcss/oxide': 4.3.3
       tailwindcss: 4.3.3
-      vite: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
+      vite: 8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
 
-  '@tanstack/query-core@5.104.4': {}
+  '@tanstack/query-core@5.104.5': {}
 
-  '@tanstack/react-query@5.104.4(@types/react@19.3.0)(react@19.3.1)':
+  '@tanstack/react-query@5.104.5(@types/react@19.3.0)(react@19.3.1)':
     dependencies:
-      '@tanstack/query-core': 5.104.4
+      '@tanstack/query-core': 5.104.5
       react: 19.3.1
     optionalDependencies:
       '@types/react': 19.3.0
@@ -4773,19 +4777,19 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@vitejs/plugin-react@6.1.2(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))':
+  '@vitejs/plugin-react@6.1.2(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
+      vite: 8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
 
-  '@vitest/mocker@5.0.5(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))':
+  '@vitest/mocker@5.0.5(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@vitest/spy': 5.0.5
       estree-walker: 3.0.3
       magic-string: 1.4.3
     optionalDependencies:
-      vite: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
+      vite: 8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
 
   '@vitest/spy@5.0.5': {}
 
@@ -4807,7 +4811,7 @@ snapshots:
   ajv@8.20.0:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.1.8
+      fast-uri: 3.1.9
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -5115,7 +5119,7 @@ snapshots:
 
   fast-safe-stringify@2.1.1: {}
 
-  fast-uri@3.1.8: {}
+  fast-uri@3.1.9: {}
 
   fastq@1.20.1:
     dependencies:
@@ -5290,7 +5294,7 @@ snapshots:
     optionalDependencies:
       lightningcss-linux-x64-gnu: 1.33.0
 
-  lucide-react@1.59.0(@types/react@19.3.0)(react@19.3.1):
+  lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       react: 19.3.1
     optionalDependencies:
@@ -5369,24 +5373,24 @@ snapshots:
     dependencies:
       wrappy: 1.0.2
 
-  orval@8.43.0(@tanstack/react-query@5.104.4(@types/react@19.3.0)(react@19.3.1))(prettier@3.9.10)(typescript@7.0.2)(zod@4.6.7):
+  orval@8.44.0(@tanstack/react-query@5.104.5(@types/react@19.3.0)(react@19.3.1))(prettier@3.9.10)(typescript@7.0.2)(zod@4.6.7):
     dependencies:
       '@commander-js/extra-typings': 15.0.0(commander@15.0.0)
-      '@orval/angular': 8.43.0
-      '@orval/axios': 8.43.0
-      '@orval/core': 8.43.0
-      '@orval/effect': 8.43.0
-      '@orval/fetch': 8.43.0
-      '@orval/hono': 8.43.0(typescript@7.0.2)(zod@4.6.7)
-      '@orval/mcp': 8.43.0(zod@4.6.7)
-      '@orval/mock': 8.43.0
-      '@orval/pinia-colada': 8.43.0
-      '@orval/query': 8.43.0(@tanstack/react-query@5.104.4(@types/react@19.3.0)(react@19.3.1))
-      '@orval/solid-start': 8.43.0
-      '@orval/swr': 8.43.0
-      '@orval/zod': 8.43.0(zod@4.6.7)
+      '@orval/angular': 8.44.0
+      '@orval/axios': 8.44.0
+      '@orval/core': 8.44.0
+      '@orval/effect': 8.44.0
+      '@orval/fetch': 8.44.0
+      '@orval/hono': 8.44.0(typescript@7.0.2)(zod@4.6.7)
+      '@orval/mcp': 8.44.0(zod@4.6.7)
+      '@orval/mock': 8.44.0
+      '@orval/pinia-colada': 8.44.0
+      '@orval/query': 8.44.0(@tanstack/react-query@5.104.5(@types/react@19.3.0)(react@19.3.1))
+      '@orval/solid-start': 8.44.0
+      '@orval/swr': 8.44.0
+      '@orval/zod': 8.44.0(zod@4.6.7)
       '@scalar/json-magic': 0.15.7
-      '@scalar/openapi-parser': 0.29.14
+      '@scalar/openapi-parser': 0.29.16
       '@scalar/openapi-types': 0.9.7
       chokidar: 5.0.0
       commander: 15.0.0
@@ -5587,7 +5591,7 @@ snapshots:
       react: 19.3.1
       scheduler: 0.28.0
 
-  react-hook-form@7.90.0(@types/react@19.3.0)(react@19.3.1):
+  react-hook-form@7.91.0(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       react: 19.3.1
     optionalDependencies:
@@ -5915,6 +5919,8 @@ snapshots:
 
   undici@7.29.1: {}
 
+  undici@8.12.3: {}
+
   unicorn-magic@0.3.0: {}
 
   unpipe@1.0.0: {}
@@ -5968,7 +5974,7 @@ snapshots:
       d3-time: 3.1.0
       d3-timer: 3.0.1
 
-  vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1):
+  vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
@@ -5983,10 +5989,10 @@ snapshots:
       tsx: 4.23.15
       yaml: 2.9.1
 
-  vitest@5.0.5(@types/node@26.6.5)(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)):
+  vitest@5.0.5(@types/node@26.6.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)):
     dependencies:
       '@types/chai': 5.2.3
-      '@vitest/mocker': 5.0.5(vite@8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+      '@vitest/mocker': 5.0.5(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
       chai: 6.3.0
       es-module-lexer: 2.3.2
       expect-type: 1.4.0
@@ -5997,7 +6003,7 @@ snapshots:
       tinybench: 6.2.2
       tinyexec: 1.3.1
       tinyglobby: 0.2.17
-      vite: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
+      vite: 8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1)
       why-is-node-running: 3.2.1
     optionalDependencies:
       '@types/node': 26.6.5
