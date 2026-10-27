@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "thread_id": "019fd431-2d7a-7802-8259-b79b043f46d6",
+  "date": "2026-10-27",
+  "repository": "OKHP3/skillz",
+  "baseline": "1038229118c00a86ff67010c6d68ae84975a5cf2",
+  "source_coverage": {
+    "completed_turns": 4,
+    "total_available_turns_including_closeout": 5,
+    "has_more": false,
+    "lossless_transcript": false,
+    "history_tool": "codex_app.read_thread",
+    "task_attachments": [],
+    "original_command_outputs": "Reviewed visible historical conversation results; supported reader does not return every August command separately."
+  },
+  "history_commits": [
+    {
+      "commit": "006cdddb4c6b709df9e90220a825e0880e4e9afd",
+      "in_origin_main": true
+    },
+    {
+      "commit": "0c7c3d1bd177600b6673a64e824de5ef3d353768",
+      "in_origin_main": true
+    },
+    {
+      "commit": "803a1e2ddada673a4a8a603b34bef96d9744f7e2",
+      "in_origin_main": true
+    },
+    {
+      "commit": "49512103a646409c015b667c7b58f775a389e7cc",
+      "in_origin_main": true
+    },
+    {
+      "commit": "8aa2834981e6e6f8819611be671b92a652566bec",
+      "in_origin_main": true
+    },
+    {
+      "commit": "7647b437bf1680d549dc067b408295131cb328e6",
+      "in_origin_main": true
+    }
+  ],
+  "preserved_files": [
+    {
+      "original_path": "package.json",
+      "current_path": "docs/archive/root-scaffold/package.json",
+      "bytes": 770,
+      "sha256": "547831c21dc5ada43064ed7db0dab28577485b4963d85c77b24befd19e892d41",
+      "same_at_move": true,
+      "same_now": true
+    },
+    {
+      "original_path": "package-lock.json",
+      "current_path": "docs/archive/root-scaffold/package-lock.json",
+      "bytes": 32357,
+      "sha256": "9531741c4ec89cd10d3c8b8c86d0afcfdb40b0e0b849e1cc4cfc62f36fb4f585",
+      "same_at_move": true,
+      "same_now": true
+    }
+  ],
+  "retired_checkpoints": [
+    {
+      "path": "attached_assets/Pasted--Independent-Verification-Replit-has-completed-all-requ_1785954081801.txt",
+      "git_blob": "b54c3e1f8e5ffba42e3957ddebbc396f59c8d3b3",
+      "bytes": 9542,
+      "sha256": "e5a4aacdf369d447ca9dcb61059794fb729d7e15ff15ce7297c7f5fb8623d6fb",
+      "absent_now": true,
+      "recoverable_from_commit": "006cdddb4c6b709df9e90220a825e0880e4e9afd^"
+    },
+    {
+      "path": "attached_assets/Pasted--PRD-Skillz-Forge-M4-Convergence-Directive-Status-Autho_1785954090858.txt",
+      "git_blob": "3dd44440f25b06a688fc40e226b72e548bfc66ff",
+      "bytes": 14485,
+      "sha256": "a3ead807f1b6d3c0b328f69ede26018164b2b0993bdd9e5767afb65aaea95935",
+      "absent_now": true,
+      "recoverable_from_commit": "006cdddb4c6b709df9e90220a825e0880e4e9afd^"
+    },
+    {
+      "path": "attached_assets/Pasted--PRD-Skillz-Forge-M4-live-convergence-and-release-readi_1785953942195.txt",
+      "git_blob": "28a68243a348c423c9f61929d3a427f3605ca861",
+      "bytes": 16308,
+      "sha256": "5c471c32505abb71d027b8a0d57b5c3a149f6a884cc62fe7a651f19d044800ad",
+      "absent_now": true,
+      "recoverable_from_commit": "006cdddb4c6b709df9e90220a825e0880e4e9afd^"
+    }
+  ],
+  "root_files": [
+    ".catalog-meta.json",
+    ".gitattributes",
+    ".gitignore",
+    ".npmrc",
+    ".replit",
+    ".replitignore",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "LICENSE",
+    "MIGRATION.md",
+    "README.md",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "replit.md",
+    "skillz.manifest.json",
+    "tsconfig.base.json",
+    "tsconfig.json"
+  ],
+  "current_root_manifest_differs_from_legacy": true,
+  "archive_refs": [
+    {
+      "ref": "refs/archive/repository-janitor-2026-08-05/are-update-celestial-data-mercury-2029-2032",
+      "sha": "a4a42897c9bb18f1b27ddc733c503b293b6dfcbe"
+    },
+    {
+      "ref": "refs/archive/repository-janitor-2026-08-05/test-push-probe",
+      "sha": "cb7af8128051d65ce43c4e065d3299579bf87c19"
+    },
+    {
+      "ref": "refs/archive/repository-janitor-2026-08-05/update-okhp3-vite-github-pages-v1.1.0",
+      "sha": "eb588c6326ca9f21f74b883c0de02d6d02854d54"
+    }
+  ],
+  "probe_has_no_tree_change": true,
+  "remote_refs": [
+    {
+      "ref": "refs/heads/main",
+      "sha": "1038229118c00a86ff67010c6d68ae84975a5cf2"
+    },
+    {
+      "ref": "refs/tags/v0.1.0",
+      "sha": "e521ac4ea0bdff6a127e8ec0b0de4d73bb219c65"
+    }
+  ],
+  "pass_a": [
+    {
+      "check": "Historical implementation commits, branch recovery identities, exact payload continuity",
+      "status": "passed",
+      "result": "Six history commits reachable from origin/main; three exact archive refs unchanged; both preserved file hashes match original bytes; empty probe tree change."
+    },
+    {
+      "check": "Remote branch state and PR identity",
+      "status": "passed",
+      "result": "Three approved remote refs absent; GitHub PRs 38 and 39 merged, head SHAs match archive refs."
+    },
+    {
+      "command": "python3 .agents/skills/okhp3-skill-cataloger/scripts/gen-skills-readme.py --full --check",
+      "status": "passed",
+      "result": "334 distribution skills found. Imported packages emit missing-version warnings; these are nonblocking structural warnings."
+    },
+    {
+      "command": "node .agents/skills/catalog-integrity/run.mjs",
+      "status": "passed",
+      "result": "Isolated catalog build matches source manifest: 334 skills, 22 families; 51 assertions passed, 0 failed; tracked release data unchanged and temporary output cleaned."
+    },
+    {
+      "command": "node scripts/verify-archive-links.mjs",
+      "status": "passed",
+      "result": "182 local archive destinations resolve."
+    },
+    {
+      "check": "Computer Use Finder readback",
+      "status": "passed",
+      "result": "Native Finder opened at docs/archive/root-scaffold; list contains package-lock.json (32 KB), package.json (770 bytes), status 2 items. No repeated file move."
+    },
+    {
+      "check": "New closeout path portability",
+      "status": "passed",
+      "result": "Repository organizer inventory not truncated; no findings for this package's paths."
+    },
+    {
+      "check": "Markdown local targets, JSON parsing, privacy and secret-pattern scan",
+      "status": "passed",
+      "result": "Initial three files parse/read, four local links resolve; no credential patterns, personal home paths, em dashes, or filename normalization/case collisions."
+    },
+    {
+      "check": "Fresh production build and frontend unit/browser tests",
+      "status": "not-run",
+      "reason": "This closeout edits documentation only; August application checks remain historical. Current isolated catalog and archive checks target the preserved restructuring."
+    },
+    {
+      "check": "Direct shallow-checkout guard on current checkout",
+      "status": "skipped",
+      "reason": "Runner marks this CI-only condition skipped outside CI. The separate genuinely shallow fixture passed within the 51 assertions."
+    },
+    {
+      "check": "Original evaluation-workspace preservation",
+      "status": "passed",
+      "result": "All 150 original workspace files remain at original paths with exact bytes; none missing or changed. Individual content/value review not claimed."
+    }
+  ],
+  "pass_b": {
+    "status": "passed-after-corrections",
+    "independent_reviewer": true,
+    "initial_findings": [
+      "Add explicit disposition for conditional workspace review; preservation verified without claiming individual content/value review.",
+      "Record duplicate comparison and preserved principal findings from distinct checkpoint.",
+      "Remove unrelated task identity from public-safe documentation."
+    ],
+    "corrections_applied": true,
+    "recheck": "All three corrections satisfied. No substantive unresolved finding. Scoped local commit sufficient; new publication unnecessary.",
+    "not_repeated": "Reviewer did not repeat integrator catalog/archive tests or Computer Use inspection.",
+    "administrative_gates": "Final package checks, commit, receipt, and archive confirmed separately in final local receipt."
+  },
+  "publication": {
+    "original_cleanup_persisted_on_origin_main": true,
+    "new_closeout": "local commit authorized; no publication requested"
+  },
+  "merged_prs": [
+    {
+      "number": 38,
+      "url": "https://github.com/OKHP3/skillz/pull/38",
+      "merged": true,
+      "head": "update/okhp3-vite-github-pages-v1.1.0",
+      "head_sha": "eb588c6326ca9f21f74b883c0de02d6d02854d54",
+      "merge_commit_sha": "217186408a7a4e32570a08bcd4c56bc768ca5965"
+    },
+    {
+      "number": 39,
+      "url": "https://github.com/OKHP3/skillz/pull/39",
+      "merged": true,
+      "head": "are/update-celestial-data-mercury-2029-2032",
+      "head_sha": "a4a42897c9bb18f1b27ddc733c503b293b6dfcbe",
+      "merge_commit_sha": "57b1c5e3523996906010d5ea343891c0de6a241d"
+    }
+  ],
+  "historical_inventory": {
+    "commit": "a9f3c433a463631d05c30f45bd7832a01ae5fa0f",
+    "distribution_skills": 113,
+    "families": 15,
+    "tracked_files": 1585
+  },
+  "current_inventory": {
+    "distribution_skills": 334,
+    "active_families": 22,
+    "project_local_support_skills": 54,
+    "root_tracked_files": 18
+  },
+  "checkpoint_triage": {
+    "two_prd_copies_equal_to_canonical_after_crlf_normalization": true,
+    "independent_verification": "Read complete historical text from deletion parent; approved discarded checkpoint, retained recoverable Git blob. Its suggestions are historical evidence, not new implementation authority.",
+    "independent_verification_principal_findings_preserved_at": {
+      "path": "docs/archive/planning-2026-08/PRD-SKILLZ-FORGE-M4-CONVERGENCE-2026-08-05.md",
+      "mapping": {
+        "2": "shipped capability baseline and historical no-tag observation",
+        "0 and 1": "competing directives, evidence concerns",
+        "A1": "shallow-history provenance failure",
+        "A2": "family allowlist risk",
+        "A3": "source-specification versus public dossier propagation"
+      }
+    }
+  },
+  "workspace_preservation": {
+    "baseline": "a9f3c433a463631d05c30f45bd7832a01ae5fa0f",
+    "original_files": 150,
+    "missing": 0,
+    "changed": 0,
+    "checked_by": "independent reviewer and integrator, separately",
+    "individual_content_value_review": "not-run; conditional proposal preceding any workspace deletion; no workspace deletion target was selected"
+  }
+}
