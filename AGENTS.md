@@ -148,7 +148,7 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | Skill | Trigger and loading rule |
 |---|---|
 | `okhp3-notion-capture-router` | Capture ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF, or pasted AI conversations into Notion structures, dedupe them, split extracts, and reconcile against OKHP3 GitHub. This is not generic note-taking. |
-| `okhp3-notion-domain-filing` | File existing loose Notion originals beneath verified domain homes, reconcile their index entries, and add catalog cross-links while preserving source IDs and bodies. Load private workspace configuration at runtime; scheduling is a separate host capability. |
+| `okhp3-notion-domain-filing` | File existing loose Notion originals beneath exact approved domain roots, including intentional top-level hubs, after expected-location and ancestry checks. Preserve source IDs and bodies; reconcile index entries and catalog links. Private maps cannot widen trusted roots; scheduling is a separate host capability. |
 | `okhp3-refolddec-core` | Explicitly transform an artifact between representations, such as idea to diagram, diagram to documentation, documentation to SKILL.md, or unfold/refold with semantic-loss tracking. Load the target domain skill alongside it. |
 
 ### Knowledge-operations family

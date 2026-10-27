@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-25T14:03:04.356Z",
+  "generatedAt": "2026-10-25T17:18:14.591Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "feat/notion-domain-filing",
-  "sourceCommit": "cec8b4a6",
+  "sourceRef": "repair/notion-approved-domain-roots",
+  "sourceCommit": "c470067",
   "skillCount": 334,
   "familyCount": 22,
   "families": [
@@ -12403,7 +12403,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
       "lastModified": "2026-08-31T22:34:57-05:00",
       "commitSha": "93613e20",
-      "createdAt": "2026-08-30T18:11:10-05:00",
+      "createdAt": "2026-08-30T18:45:34-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
@@ -13970,15 +13970,15 @@
       "skillDir": "okhp3-notion-domain-filing",
       "path": "notion/okhp3-notion-domain-filing/SKILL.md",
       "description": "File existing Notion pages into verified domain hubs and reconcile their index records without replacing the originals. Use for root-page clutter, misplaced imports, inbox routing, or a scheduled filing pass that must preserve page IDs, source content, links, and history.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "notion",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "none",
-      "evidenceNote": "No package evaluation record or executable test surface was found.",
+      "evidenceStatus": "local-checks",
+      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
       "status": null,
       "tags": [],
       "topics": [
@@ -13999,9 +13999,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-domain-filing/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-domain-filing/SKILL.md",
-      "lastModified": "2026-10-25T09:00:30-05:00",
-      "commitSha": "cec8b4a6",
-      "createdAt": "2026-10-25T08:53:23-05:00",
+      "lastModified": "2026-10-25T09:10:38-05:00",
+      "commitSha": "c4700676",
+      "createdAt": "2026-10-25T09:10:38-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "notion",
@@ -14013,17 +14013,17 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "none",
+        "status": "analytical",
         "evaluatedSkillVersion": null,
         "evalCount": 0,
         "benchmarkCount": 0,
-        "testCount": 0,
+        "testCount": 1,
         "referenceCount": 2,
-        "scriptCount": 0,
+        "scriptCount": 1,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "No evaluation design or executable check exists for this package."
+          "Only design or structural review exists; no graded live run has been executed."
         ]
       },
       "maturitySource": "explicit-frontmatter",
@@ -16826,7 +16826,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-adversary-forecasting/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-intelligence",
@@ -17015,7 +17015,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-credential-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17078,7 +17078,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-data-exposure/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17217,7 +17217,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-lateral-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17343,7 +17343,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-persistence-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17469,7 +17469,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-authorization-governance/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-27T23:47:34-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-governance",
@@ -17784,7 +17784,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-model-anomaly-detection/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-detection",
@@ -18036,7 +18036,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-response-cost-benefit/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-measurement",

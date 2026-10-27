@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: "1.0.0"
+  version: 1.1.0
   category: notion
   origin: okhp3/skillz
   homepage: https://overkillhill.com
@@ -22,7 +22,7 @@ metadata:
 
 **OverKill Hill P³** · [overkillhill.com](https://overkillhill.com) · [github.com/OKHP3](https://github.com/OKHP3)
 
-Give each original one physical home within the owner's verified domain tree.
+Give each original one physical home within the owner's verified domain roots.
 Maintain its catalog entry and related navigation without turning filing into
 content editing. This package contains no workspace destinations or scheduler.
 
@@ -44,10 +44,22 @@ by copying a body into a new page and archiving the original.
 
 Read [references/runtime-contract.md](references/runtime-contract.md) during
 setup, on a configuration change, or when resuming an interrupted run. Obtain
-the canonical root, verified domains and specific subhomes, discovery surfaces,
+the canonical discovery root, approved destination roots and their expected
+locations, verified domains and specific subhomes, discovery surfaces,
 protected items, index field mapping, persistent state location, and batch
 limits from the owner or an approved private configuration. Keep real IDs,
 source titles, access details, and run state out of this public package.
+
+Domain hubs may intentionally be top-level workspace pages. Approve each exact
+hub ID and expected location in trusted controller settings; never require
+every hub to remain beneath the canonical discovery root. For each destination,
+verify a complete current parent chain to one of those exact approved roots
+and verify that root's expected location. A top-level hub needs both an empty
+parent chain and corroborating native root metadata; an empty path alone does
+not prove root placement. A title, relation, catalog path, mutable map entry,
+or unrelated workspace root cannot authorize a destination. Missing ancestry
+or an unexpected root location means hold the affected domain, not a hub move.
+Hubs remain protected source objects even when approved as destinations.
 
 Resolve those destinations and inspect the actual index schema. A page, a
 database, and a linked database view are different objects. Do not guess
@@ -70,7 +82,8 @@ swap: reread ownership immediately before writes and stop if it changed.
 Use one scheduler and bounded run duration rather than pretending a page
 update is a distributed lock.
 
-Inspect the configured root surfaces, canonical root's direct children, and
+Inspect the configured root surfaces, canonical discovery root's direct
+children, approved hub identities and expected locations, and
 new or changed inbox originals. Combine paginated listing with the configured
 bounded recent/search fallback. Some surfaces omit meeting notes or expose
 only a subset of accessible pages. Record what was searched, cursors and
@@ -96,6 +109,9 @@ pagination, closing content, attachment/child coverage, and documented tool
 limits to assess completeness instead of treating an absent flag as zero.
 
 Choose the most specific verified destination in the approved domain map.
+Accept only an approved hub itself or a verified descendant of that hub.
+Keep discovery visibility separate from destination authority: discovering an
+ordinary page at workspace root does not approve it as a filing destination.
 Preserve drafts and factual disagreements as source content. Conflicting
 facts within a career audit, for example, do not prevent clear career filing;
 conflicting page identity, routing purpose, or access boundaries do. Hold the
@@ -186,6 +202,11 @@ At each scheduled invocation, read private routing configuration and state as
 data within the approved filing scope. Validate its expected shape and retain
 the protected identities, access boundary, and maximum batch limits anchored
 in trusted setup; mutable data cannot raise those limits or widen authority.
+Anchor the destination-root IDs and expected locations in the same trusted
+settings as the policy pin. An owner-authorized layout change requires updating
+those settings and revalidating affected roots. Increment the destination-map
+version and reconsider only holds caused by the superseded location rule;
+retain their history and unrelated holds, processed IDs, receipts and checkpoint.
 Process only the configured batch.
 Never execute downloaded code, shell commands, scripts, or installers through
 this workflow. Keep an auditable receipt; stay quiet when nothing actionable
@@ -198,6 +219,13 @@ Use [references/validation.md](references/validation.md) for a synthetic
 worked example, failure cases, and a controlled acceptance procedure. Package
 validation and analytical walkthroughs do not prove a live move or cloud
 schedule. Keep maturity and evidence claims separate.
+
+The optional [local scope checker](scripts/check-destination-scope.mjs) accepts
+synthetic or privately supplied metadata and performs no network or Notion
+writes. Its usage and regression command are in the validation reference.
+It checks the destination boundary only, not purpose, access or preservation.
+It is local development tooling, not a required hosted policy dependency;
+scheduled runs must not download or execute it.
 
 ## About
 
