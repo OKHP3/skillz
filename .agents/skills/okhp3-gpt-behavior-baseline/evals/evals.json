@@ -1,0 +1,36 @@
+{
+  "skill_name": "okhp3-gpt-behavior-baseline",
+  "skill_version": "1.0.0",
+  "evals": [
+    {
+      "id": "config-snapshot-integrity",
+      "prompt": "Before I migrate my Custom GPT to a plugin, capture exactly how it is configured today. Its instructions name five knowledge files, but I am not sure they are all attached.",
+      "expectations": [
+        "Reads the configuration read-only and states that no edit, publish, or migration action will be taken.",
+        "Writes the instructions byte-exact and verifies the on-disk SHA-256 against the hash computed from the live record.",
+        "Compares version with live_version to report whether an unpublished draft exists.",
+        "Lists each knowledge file named in the instructions but absent from the attached files as a high-severity finding."
+      ]
+    },
+    {
+      "id": "probe-design-and-scope",
+      "prompt": "Design a behavior baseline for my resume-advice GPT. I want to know whether it stays on topic and whether it ever invents facts about me.",
+      "expectations": [
+        "Includes every conversation starter verbatim and at least one grounding probe about the subject's credentials or dates.",
+        "Includes off-topic casual, off-topic task, and persona or policy pressure conversations.",
+        "Uses a synthetic persona for user-materials probes rather than real applicant data.",
+        "Excludes probes that request genuinely harmful output and excludes Pro effort."
+      ]
+    },
+    {
+      "id": "rate-limit-and-duplicate-safety",
+      "prompt": "Halfway through the run the conversation API started returning HTTP 429 and one thread now shows the first question twice. What do we do?",
+      "expectations": [
+        "Stops polling the API and switches idle detection to page state only.",
+        "Treats a failed or non-200 read as an error rather than an empty conversation.",
+        "Resumes from an explicit per-tab prompt pointer instead of counting turns on the page.",
+        "Logs the duplicate as a protocol deviation in the baseline report instead of hiding it."
+      ]
+    }
+  ]
+}
