@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-10-25T17:18:14.591Z",
+  "generatedAt": "2026-10-31T02:07:46.003Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "repair/notion-approved-domain-roots",
-  "sourceCommit": "c470067",
-  "skillCount": 334,
+  "sourceRef": "claude/okhp3-gpt-behavior-baseline",
+  "sourceCommit": "d4d90af9",
+  "skillCount": 335,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 265,
+    "draftable": 266,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 165,
+    "not-run": 166,
     "none": 109,
     "local-checks": 39,
     "analytical": 7,

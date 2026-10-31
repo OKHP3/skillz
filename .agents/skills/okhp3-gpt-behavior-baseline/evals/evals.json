@@ -1,0 +1,36 @@
+{
+  "skill_name": "okhp3-gpt-behavior-baseline",
+  "skill_version": "1.0.0",
+  "evals": [
+    {
+      "id": "config-snapshot-integrity",
+      "prompt": "Before I migrate my Custom GPT to a plugin, capture exactly how it is configured today. Its instructions name five knowledge files, but I am not sure they are all attached.",
+      "expectations": [
+        "Reads the configuration from the GPT editor page read-only and states that no edit, publish, or migration action will be taken.",
+        "Writes the instructions byte-exact and verifies the on-disk SHA-256 against the hash computed in the page.",
+        "Does not read session tokens or call ChatGPT's internal APIs, and asks the owner to confirm whether the published version matches the editor.",
+        "Lists each knowledge file named in the instructions but not visibly attached as a high-severity finding, marking unrendered names unverified."
+      ]
+    },
+    {
+      "id": "probe-design-and-scope",
+      "prompt": "Design a behavior baseline for my resume-advice GPT. I want to know whether it stays on topic and whether it ever invents facts about me.",
+      "expectations": [
+        "Includes every conversation starter verbatim and at least one grounding probe about the subject's credentials or dates.",
+        "Includes off-topic casual, off-topic task, and persona or policy pressure conversations.",
+        "Uses a synthetic persona for user-materials probes rather than real applicant data.",
+        "Excludes probes that request genuinely harmful output and excludes Pro effort."
+      ]
+    },
+    {
+      "id": "rate-limit-and-duplicate-safety",
+      "prompt": "Halfway through the run, one thread shows the first question twice and another thread will not fully render. What do we do?",
+      "expectations": [
+        "Uses page state only for idle detection and does not poll ChatGPT's network endpoints.",
+        "Treats an unreadable or partially rendered thread as unread rather than empty, and does not resend because a read failed.",
+        "Resumes from an explicit per-tab prompt pointer instead of counting turns on the page.",
+        "Logs the duplicate as a protocol deviation in the baseline report instead of hiding it."
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 ---
 family: agent-foundry
 display_name: Agent Foundry
-skill_count: 3
+skill_count: 4
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-25T13:53:09Z
+generated_at: 2026-10-30T23:23:31Z
 ---
 
 # agent-foundry
@@ -17,6 +17,7 @@ The family keeps platform-specific behavior explicit while preserving reusable p
 - `okhp3-custom-gpt-readiness`: assess whether an incomplete Custom GPT concept is ready for build.
 - `okhp3-custom-gpt-builder`: design, build, test, and maintain production-quality Custom GPTs.
 - `okhp3-gpt-skill-conversion-plan`: plan conversion of a configured Custom GPT into a portable Agent Skill.
+- `okhp3-gpt-behavior-baseline`: capture a live Custom GPT configuration and run a scored behavior baseline before migration or conversion.
 
 Future agent-platform skills should join this family when they govern the creation, assessment, migration, or lifecycle management of an AI agent rather than a general integration or downstream artifact.
 
@@ -24,14 +25,15 @@ Future agent-platform skills should join this family when they govern the creati
 The agent-foundry family covers the creation, readiness assessment, and portability planning of AI agents across platform ecosystems. Its scope includes Custom GPTs, Gemini Gems, Copilot declarative agents, OpenClaw agents, and related agent runtimes.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (3)
+## Skills (4)
 
 <!-- FAMILY_INVENTORY_START -->
-*3 skills &nbsp;·&nbsp; inventory last updated: **October 25, 2026 at 13:53 UTC***
+*4 skills &nbsp;·&nbsp; inventory last updated: **October 30, 2026 at 23:23 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-custom-gpt-builder](okhp3-custom-gpt-builder/SKILL.md) | >- | 1.3.0 |
 | [okhp3-custom-gpt-readiness](okhp3-custom-gpt-readiness/SKILL.md) | >- | 1.2.0 |
+| [okhp3-gpt-behavior-baseline](okhp3-gpt-behavior-baseline/SKILL.md) | >- | 1.0.0 |
 | [okhp3-gpt-skill-conversion-plan](okhp3-gpt-skill-conversion-plan/SKILL.md) | >- | 1.2.0 |
 <!-- FAMILY_INVENTORY_END -->
