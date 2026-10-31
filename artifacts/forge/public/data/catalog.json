@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-31T01:45:58.635Z",
+  "generatedAt": "2026-10-31T01:58:46.965Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "claude/okhp3-gpt-behavior-baseline",
-  "sourceCommit": "f3983584",
+  "sourceCommit": "73df56cd",
   "skillCount": 335,
   "familyCount": 22,
   "families": [
@@ -1424,8 +1424,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
-      "lastModified": "2026-10-30T20:45:31-05:00",
-      "commitSha": "f3983584",
+      "lastModified": "2026-10-30T20:58:14-05:00",
+      "commitSha": "73df56cd",
       "createdAt": "2026-10-30T18:24:51-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
