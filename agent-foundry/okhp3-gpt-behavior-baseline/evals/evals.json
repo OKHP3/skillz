@@ -6,10 +6,10 @@
       "id": "config-snapshot-integrity",
       "prompt": "Before I migrate my Custom GPT to a plugin, capture exactly how it is configured today. Its instructions name five knowledge files, but I am not sure they are all attached.",
       "expectations": [
-        "Reads the configuration read-only and states that no edit, publish, or migration action will be taken.",
-        "Writes the instructions byte-exact and verifies the on-disk SHA-256 against the hash computed from the live record.",
-        "Compares version with live_version to report whether an unpublished draft exists.",
-        "Lists each knowledge file named in the instructions but absent from the attached files as a high-severity finding."
+        "Reads the configuration from the GPT editor page read-only and states that no edit, publish, or migration action will be taken.",
+        "Writes the instructions byte-exact and verifies the on-disk SHA-256 against the hash computed in the page.",
+        "Does not read session tokens or call ChatGPT's internal APIs, and asks the owner to confirm whether the published version matches the editor.",
+        "Lists each knowledge file named in the instructions but not visibly attached as a high-severity finding, marking unrendered names unverified."
       ]
     },
     {
@@ -24,10 +24,10 @@
     },
     {
       "id": "rate-limit-and-duplicate-safety",
-      "prompt": "Halfway through the run the conversation API started returning HTTP 429 and one thread now shows the first question twice. What do we do?",
+      "prompt": "Halfway through the run, one thread shows the first question twice and another thread will not fully render. What do we do?",
       "expectations": [
-        "Stops polling the API and switches idle detection to page state only.",
-        "Treats a failed or non-200 read as an error rather than an empty conversation.",
+        "Uses page state only for idle detection and does not poll ChatGPT's network endpoints.",
+        "Treats an unreadable or partially rendered thread as unread rather than empty, and does not resend because a read failed.",
         "Resumes from an explicit per-tab prompt pointer instead of counting turns on the page.",
         "Logs the duplicate as a protocol deviation in the baseline report instead of hiding it."
       ]
