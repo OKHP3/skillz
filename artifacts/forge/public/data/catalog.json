@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-30T23:25:16.016Z",
+  "generatedAt": "2026-10-31T01:45:58.635Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "claude/okhp3-gpt-behavior-baseline",
-  "sourceCommit": "41ec9fa6",
+  "sourceCommit": "f3983584",
   "skillCount": 335,
   "familyCount": 22,
   "families": [
@@ -1424,8 +1424,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
-      "lastModified": "2026-10-30T18:24:51-05:00",
-      "commitSha": "41ec9fa6",
+      "lastModified": "2026-10-30T20:45:31-05:00",
+      "commitSha": "f3983584",
       "createdAt": "2026-10-30T18:24:51-05:00",
       "packageMetadata": {
         "author": "OverKill Hill P³",
@@ -1433,7 +1433,7 @@
         "origin": "okhp3/skillz",
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Read-only live configuration capture and scored behavior baselining of Custom GPTs the user owns or is authorized to test, before migration, revision, or conversion.",
+        "inScope": "Read-only, page-only live configuration capture and scored behavior baselining of Custom GPTs the user owns or is authorized to test, before migration, revision, or conversion.",
         "outOfScope": "Testing third-party GPTs, extracting other creators' prompts, editing or migrating GPTs, harmful-output probes, or using real personal data in probes.",
         "publicArtifact": false
       },
