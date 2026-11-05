@@ -24,5 +24,5 @@ The remaining improvement is concentrated in auditable coverage, destination
 references, action ownership, acceptance conditions, evidenced rehydration,
 prompt-injection boundaries, and safer deterministic tooling.
 
-Detailed outputs and grading evidence live in this package's
-`workspace/` evaluation directory.
+Detailed outputs and grading evidence are archived outside the installable
+package at `docs/archive/eval-workspaces/okhp3-thread-context-extraction-2026-07-21/`.

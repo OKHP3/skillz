@@ -2,10 +2,12 @@
 
 ## 2026-11-04: context-extraction workspace housekeeping
 
-- Move the `okhp3-thread-context-extraction` evaluation workspace from the
-  family root (`context-extraction/thread-extract-work/`) into the package as
-  `workspace/`, matching the `<skill>/workspace/iteration-N` convention used by
-  other families. Update the benchmark summary path. File bytes are unchanged.
+- Move the `okhp3-thread-context-extraction` evaluation workspace out of the
+  family root (`context-extraction/thread-extract-work/`) to
+  `docs/archive/eval-workspaces/okhp3-thread-context-extraction-2026-07-21/`,
+  outside every installable package so eval transcripts and fixture text are
+  not shipped or scanned as skill content. Update the benchmark summary path.
+  File bytes are unchanged.
 - Keep `okhp3-thread-context-extraction-grok/` as the documented redirect stub
   recorded in `MIGRATION.md`; it holds no `SKILL.md` and is not cataloged.
 
