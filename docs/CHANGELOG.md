@@ -5,9 +5,10 @@
 - Move the `okhp3-thread-context-extraction` evaluation workspace out of the
   family root (`context-extraction/thread-extract-work/`) to
   `docs/archive/eval-workspaces/okhp3-thread-context-extraction-2026-07-21/`,
-  outside every installable package so eval transcripts and fixture text are
-  not shipped or scanned as skill content. Update the benchmark summary path.
-  File bytes are unchanged.
+  outside every installable package and its package-only Shield scan scope.
+  The archive remains public. Preserve the original workspace files byte for
+  byte and document the historical benchmark, relocated output, and metric
+  discrepancies.
 - Keep `okhp3-thread-context-extraction-grok/` as the documented redirect stub
   recorded in `MIGRATION.md`; it holds no `SKILL.md` and is not cataloged.
 
