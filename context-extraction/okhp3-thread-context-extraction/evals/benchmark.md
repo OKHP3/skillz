@@ -24,5 +24,5 @@ The remaining improvement is concentrated in auditable coverage, destination
 references, action ownership, acceptance conditions, evidenced rehydration,
 prompt-injection boundaries, and safer deterministic tooling.
 
-Detailed outputs and grading evidence live in the sibling
-`thread-extract-work/` evaluation workspace.
+Detailed outputs and grading evidence live in this package's
+`workspace/` evaluation directory.

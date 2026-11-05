@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-04: context-extraction workspace housekeeping
+
+- Move the `okhp3-thread-context-extraction` evaluation workspace from the
+  family root (`context-extraction/thread-extract-work/`) into the package as
+  `workspace/`, matching the `<skill>/workspace/iteration-N` convention used by
+  other families. Update the benchmark summary path. File bytes are unchanged.
+- Keep `okhp3-thread-context-extraction-grok/` as the documented redirect stub
+  recorded in `MIGRATION.md`; it holds no `SKILL.md` and is not cataloged.
+
 ## 2026-10-25: explicit Notion destination roots
 
 - Revise domain filing to 1.1.0: distinguish the canonical discovery root from
