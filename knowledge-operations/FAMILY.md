@@ -1,9 +1,9 @@
 ---
 family: knowledge-operations
 display_name: Knowledge Operations
-skill_count: 11
+skill_count: 12
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:46:27Z
+generated_at: 2026-11-09T22:54:05Z
 ---
 
 # knowledge-operations
@@ -18,6 +18,7 @@ owner-approved formalization.
 In scope:
 
 - provenance-preserving capture of one raw item;
+- minimal idea-label drafting before optional source-preserving capture;
 - recorded triage and lifecycle disposition;
 - bounded follow-up and activity reconciliation;
 - evidence classification and source-backed research;
@@ -113,10 +114,10 @@ recurring job and a distinct output justify it.
 Portable lifecycle skills for capturing, classifying, researching, reconciling, validating, and promoting information or exploratory work with provenance and owner approval.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (11)
+## Skills (12)
 
 <!-- FAMILY_INVENTORY_START -->
-*11 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:46 UTC***
+*12 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 22:54 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -125,6 +126,7 @@ Portable lifecycle skills for capturing, classifying, researching, reconciling, 
 | [okhp3-capture-intake](okhp3-capture-intake/SKILL.md) | Preserve one raw idea, file, link, transcript, or request in a project inbox with provenance and ... | 0.2.1 |
 | [okhp3-evidence-standard](okhp3-evidence-standard/SKILL.md) | Classify consequential claims as confirmed, inferred, proposal, or unknown and keep those tiers v... | 0.2.0 |
 | [okhp3-graduation-gate](okhp3-graduation-gate/SKILL.md) | Decide whether an active exploratory effort is ready to become formal, should remain active, shou... | 0.2.0 |
+| [okhp3-idea-label](okhp3-idea-label/SKILL.md) | Turn one raw idea into a short recoverable label without developing it. Use for "park this idea",... | 0.1.0 |
 | [okhp3-project-promotion](okhp3-project-promotion/SKILL.md) | Prepare an exploratory effort that cleared the graduation gate for owner-approved formalization. ... | 0.2.0 |
 | [okhp3-record-location-reconciliation](okhp3-record-location-reconciliation/SKILL.md) | Reconcile misplaced record folders, file versions, and references across a local library, synced ... | 0.1.0 |
 | [okhp3-research-file-renewal](okhp3-research-file-renewal/SKILL.md) | Revise or renew a sourced long-form research and retrieval knowledge file while preserving its or... | 1.0.0 |

@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 345,
+  "distributionSkillCount": 348,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 276,
+    "draftable": 279,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 172,
+    "not-run": 175,
     "none": 109,
     "analytical": 10,
     "local-checks": 39,
@@ -177,6 +177,7 @@
       "status": "draftable",
       "skills": [
         "okhp3-chatgpt-project-migration",
+        "okhp3-context-transfer",
         "okhp3-session-handoff",
         "okhp3-thread-context-extraction",
         "okhp3-thread-extract-chatgpt",
@@ -256,6 +257,7 @@
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
+        "okhp3-idea-label",
         "okhp3-project-promotion",
         "okhp3-record-location-reconciliation",
         "okhp3-research-file-renewal",
@@ -367,6 +369,7 @@
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
+        "okhp3-success-reconstruction",
         "okhp3-visual-process-modeling"
       ]
     },
@@ -529,6 +532,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:48:30.263Z",
+  "countsGeneratedAt": "2026-11-09T22:55:42.614Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
