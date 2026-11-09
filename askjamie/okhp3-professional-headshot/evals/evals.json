@@ -189,7 +189,7 @@
         },
         {
           "id": "no-editor-3",
-          "text": "Does not silently send private photos to a new service.",
+          "text": "Keeps private photos within the user's approved service and destination scope.",
           "required": true
         }
       ]

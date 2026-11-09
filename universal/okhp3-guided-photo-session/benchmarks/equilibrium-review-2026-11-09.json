@@ -3,10 +3,10 @@
   "date": "2026-11-09",
   "skill_name": "okhp3-guided-photo-session",
   "skill_version": "0.1.0",
-  "freeze": "review-3",
+  "freeze": "review-4",
   "decision_question": "May this exact frozen package be released publicly as draftable 0.1.0?",
   "core_sha256": {
-    "SKILL.md": "bf78f6b1ff1880fb640e1f47aeab1588a2f036766ea11120ece31cc13c399d2b",
+    "SKILL.md": "f59314695fcef43358aa72778219ad41868f3f442976d0656ba6f95bab83fccb",
     "evals/discovery.json": "dbbddb9d08ed229008a78ca12392688c04cba8e63297bf74a782af0b9a29d946",
     "evals/evals.json": "fab6877894b5842b55cf402fa0ca029da16397e6333dab297fbfecff2c3b6377",
     "references/camo-adapter.md": "594c5ecc10551d4939d5bc035fd909f1d7acb45cc646d31909c3c9bbe60677ff",
@@ -169,6 +169,92 @@
   },
   "negotiator": {
     "role": "negotiator",
+    "reviewed_freeze": "review-4",
+    "decision": "approve-with-limits",
+    "confidence": "high for limited analytical source release",
+    "evidence_status": "analytical",
+    "summary": "Both exact review-4 packages approved as draftable 0.1.0 analytical source, subject to actual unchanged CI acceptance before merge.",
+    "verified_changes": [
+      {
+        "package": "askjamie/okhp3-professional-headshot",
+        "resource": "evals/evals.json",
+        "sha256": "2dc74b77faf7b25f33e0bc9c6856f56e9cf22dc4c0e1cf8e0821c124c0ef71dd",
+        "finding": "Private photos confined to approved service and destination."
+      },
+      {
+        "package": "universal/okhp3-guided-photo-session",
+        "resource": "SKILL.md",
+        "sha256": "f59314695fcef43358aa72778219ad41868f3f442976d0656ba6f95bab83fccb",
+        "finding": "Automated posing requires verified bounded calls; otherwise user relaxed with user-operated fallback."
+      }
+    ],
+    "decisive_evidence": [
+      "All ten current hashes match protocol, benchmark and Equilibrium maps.",
+      "Exact reversal of two wording changes reproduces review-3 hashes; other core unchanged.",
+      "All 56 expectations required with unchanged noncompensatory rubrics.",
+      "Existing readiness/stop/communication/file/privacy/completion controls persist.",
+      "Actual focused safety result adjudicated."
+    ],
+    "finding_dispositions": [
+      {
+        "ids": [
+          "SP-01"
+        ],
+        "disposition": "remains-closed"
+      },
+      {
+        "ids": [
+          "SP-07",
+          "SP-08",
+          "SP-09"
+        ],
+        "disposition": "supported"
+      },
+      {
+        "ids": [
+          "SkillSpector-P3",
+          "SkillSpector-EA2"
+        ],
+        "disposition": "source clarification accepted; unchanged scanner rerun required"
+      }
+    ],
+    "release_conditions": [
+      "Finalize actual review-4 records and verify ten hashes.",
+      "Preserve review-3 as historical adjudication.",
+      "Satisfy unchanged CI/scanner and record exact revision results before merge.",
+      "Further operative change requires renewed freeze/review.",
+      "Retain analytical/draftable/author-visible/not-run/external-holdout labels."
+    ],
+    "limits": [
+      "No live image/camera/task/discovery/cross-host/protected-holdout evaluation.",
+      "Static review or successful scanner does not certify practical effectiveness or runtime safety.",
+      "Reviewer contexts share model/source limitations."
+    ]
+  },
+  "final_decision": "approve-with-limits",
+  "remaining_limits": [
+    "Real-image recognizability and user approval at runtime.",
+    "Actual bounded capture and stop timing at runtime.",
+    "Matched live comparison, cross-host retrieval and protected holdout not run."
+  ],
+  "closeout": {
+    "status": "source-review-complete",
+    "conditions_met": [
+      "Actual disruptor and negotiator recorded.",
+      "Fixture gate finding closed; metadata-only review-3 verified.",
+      "All ten operative hashes preserved.",
+      "Final ledger results and analytical limits retained."
+    ],
+    "validation": {
+      "portable_validator": "passed for both packages",
+      "catalog_freshness": "passed",
+      "catalog_integrity": "51 passed, 0 failed; full history and production-generated assets used",
+      "evaluation_execution": "not-run; no behavioral pass-rate claim"
+    },
+    "security_acceptance": "Actual unchanged CI scan must pass before merge; exact revision evidence is recorded on https://github.com/OKHP3/skillz/pull/234"
+  },
+  "previous_adjudication": {
+    "role": "negotiator",
     "decision": "approve-with-limits",
     "confidence": "high for limited analytical source release",
     "reviewed_freeze": "review-3",
@@ -248,25 +334,38 @@
     ],
     "review_expiry_trigger": "Operative-core change, consequential defect, or stronger maturity/effectiveness claim requires renewed review."
   },
-  "final_decision": "approve-with-limits",
-  "remaining_limits": [
-    "Real-image recognizability and user approval at runtime.",
-    "Actual bounded capture and stop timing at runtime.",
-    "Matched live comparison, cross-host retrieval and protected holdout not run."
-  ],
-  "closeout": {
-    "status": "complete",
-    "conditions_met": [
-      "Actual disruptor and negotiator recorded.",
-      "Fixture gate finding closed; metadata-only review-3 verified.",
-      "All ten operative hashes preserved.",
-      "Final ledger results and analytical limits retained."
+  "revision_4_diff": "Rephrase two protective statements affirmatively after static scanner findings P3 at portrait evals/evals.json:192 and EA2 at capture SKILL.md:61. Preserve approved-service privacy and bounded-pose requirements; no scanner policy change.",
+  "focused_safety_review": {
+    "role": "safety-portability",
+    "reviewed_freeze": "review-4",
+    "decision": "approve-with-limits",
+    "confidence": "high",
+    "findings": [
+      {
+        "id": "SP-01",
+        "status": "remains-closed",
+        "claim": "All 56 required expectations and unchanged noncompensatory rubrics preserve consequential gates."
+      },
+      {
+        "id": "SP-07",
+        "status": "supported",
+        "claim": "Approved-service/destination wording preserves privacy and grants no transfer, search or publication authority."
+      },
+      {
+        "id": "SP-08",
+        "status": "supported",
+        "claim": "Verified bounded timeout/cancellation within pose budget and relaxed user-operated fallback preserve capture protection."
+      },
+      {
+        "id": "SP-09",
+        "status": "supported",
+        "claim": "Reversing exactly two wording changes restores review-3 hashes; all ten current hashes match."
+      }
     ],
-    "validation": {
-      "portable_validator": "passed for both packages",
-      "catalog_freshness": "passed",
-      "catalog_integrity": "51 passed, 0 failed; full history and production-generated assets used",
-      "evaluation_execution": "not-run; no behavioral pass-rate claim"
-    }
+    "release_conditions": [
+      "Complete final source records and actual unchanged scanner rerun before merge.",
+      "Retain analytical/draftable evidence limits."
+    ],
+    "limits": "Focused read-only inspection, shared model/source context, no live evaluation; scanner rerun outcome not yet available."
   }
 }

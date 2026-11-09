@@ -28,7 +28,7 @@
   "reviewed_core_sha256": {
     "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
     "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
-    "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+    "evals/evals.json": "2dc74b77faf7b25f33e0bc9c6856f56e9cf22dc4c0e1cf8e0821c124c0ef71dd",
     "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
     "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
   }

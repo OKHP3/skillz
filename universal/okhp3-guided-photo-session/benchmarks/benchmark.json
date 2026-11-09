@@ -26,7 +26,7 @@
   },
   "review": "equilibrium-review-2026-11-09.json",
   "reviewed_core_sha256": {
-    "SKILL.md": "bf78f6b1ff1880fb640e1f47aeab1588a2f036766ea11120ece31cc13c399d2b",
+    "SKILL.md": "f59314695fcef43358aa72778219ad41868f3f442976d0656ba6f95bab83fccb",
     "evals/discovery.json": "dbbddb9d08ed229008a78ca12392688c04cba8e63297bf74a782af0b9a29d946",
     "evals/evals.json": "fab6877894b5842b55cf402fa0ca029da16397e6333dab297fbfecff2c3b6377",
     "references/camo-adapter.md": "594c5ecc10551d4939d5bc035fd909f1d7acb45cc646d31909c3c9bbe60677ff",

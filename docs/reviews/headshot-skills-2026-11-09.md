@@ -74,7 +74,7 @@ part of this release. An external evaluator must supply an unseen holdout.
 
 ## Completed review and validation
 
-Final decision: **approve-with-limits**, frozen review-3, draftable 0.1.0.
+Final decision: **approve-with-limits**, frozen review-4, draftable 0.1.0.
 
 Three separate initial contexts reviewed evidence, outcome, and safety/portability.
 Evidence and safety identified a real contradiction between heuristic fixture
@@ -103,3 +103,23 @@ Final package records:
 
 A protected unseen holdout, matched live comparison, trigger measurements, and
 real-host image/capture evaluation remain open before stronger maturity claims.
+
+
+## Scanner clarification and final revision
+
+The first unchanged CI scan completed both packages. Cisco reported no findings;
+SkillSpector flagged P3 (high) on an evaluation expectation forbidding covert
+photo transfer and EA2 (medium) on the blocking-call posing prohibition.
+The original report remains review-required; it was not suppressed or relabeled.
+
+Review-4 states these safeguards affirmatively: photos remain within the user's
+approved service/destination scope, and automated posing requires a verified
+timeout/cancellation path within the pose budget. Otherwise the person stays
+relaxed with user-operated alternatives. The safety reviewer and negotiator
+verified all ten hashes, exact reconstruction of review-3, all 56 required
+expectations and unchanged consequential gates. They approved with limits.
+
+The unchanged scanner and release checks must accept the exact final revision
+before merge. Their actual results are revision-bound on
+[Skillz PR #234](https://github.com/OKHP3/skillz/pull/234). No private photos,
+scanner exclusions, policy changes or self-approved exceptions were introduced.

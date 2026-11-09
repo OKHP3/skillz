@@ -2,12 +2,12 @@
   "schema_version": "1.0",
   "skill_name": "okhp3-professional-headshot",
   "skill_version": "0.1.0",
-  "freeze": "review-3",
+  "freeze": "review-4",
   "date": "2026-11-09",
   "core_sha256": {
     "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
     "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
-    "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+    "evals/evals.json": "2dc74b77faf7b25f33e0bc9c6856f56e9cf22dc4c0e1cf8e0821c124c0ef71dd",
     "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
     "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
   },
@@ -46,16 +46,16 @@
   "conditional_disruptor": "Only if initial reviewers materially agree",
   "adjudicator": "negotiator",
   "previous_freeze": {
-    "id": "review-2",
+    "id": "review-3",
     "core_sha256": {
-      "SKILL.md": "478d3dfc5d59941ddfef0819dcb7ab55e33b3f80f1267033ab32781b75f080af",
+      "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
       "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
       "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
       "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
       "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
     }
   },
-  "revision_reason": "Add explicit maturity: draftable metadata in both SKILL.md files. The catalog fallback uses heading counts and otherwise mislabels the complete capture contract skeleton. No operative instruction or fixture changes.",
+  "revision_reason": "Rephrase two protective statements affirmatively after static scanner findings P3 at portrait evals/evals.json:192 and EA2 at capture SKILL.md:61. Preserve approved-service privacy and bounded-pose requirements; no scanner policy change.",
   "freeze_history": [
     {
       "id": "review-1",
@@ -71,6 +71,16 @@
       "id": "review-2",
       "core_sha256": {
         "SKILL.md": "478d3dfc5d59941ddfef0819dcb7ab55e33b3f80f1267033ab32781b75f080af",
+        "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+        "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+        "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+        "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+      }
+    },
+    {
+      "id": "review-3",
+      "core_sha256": {
+        "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
         "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
         "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
         "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",

@@ -57,9 +57,9 @@ is not proof of a saved file, and local file existence is not proof of delivery.
    necessary, perform a small explicitly announced test still under the capture
    authorization. A latency probe must not secretly activate or record a camera.
 4. Estimate a feasible batch and a pose budget from actual tool responsiveness.
-   If calls can block beyond that budget and have no bounded timeout/cancel path,
-   do not ask the user to pose for automated capture. Offer a self-timer, native
-   burst, or user-operated stills with clear directions.
+   Automated posing requires calls bounded by the pose budget through a verified
+   timeout or cancellation path. Otherwise keep the person relaxed and offer
+   a self-timer, native burst, or user-operated stills with clear directions.
 5. Prefer the agent speaking directly with the user as capture controller. If
    delegation is used, verify the controller's ready/stop/relax messages actually
    reach the user and the user's stop reaches the controller promptly. Internal
