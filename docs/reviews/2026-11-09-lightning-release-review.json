@@ -447,5 +447,17 @@
     "fresh_generation": "passed",
     "prior_source_checkpoints": "Retained as historical checkpoints; they do not claim the final source inventory count.",
     "repository_ci": "Required on the final head before integration."
+  },
+  "final_integration_checkpoint": {
+    "integrated_main": "336cccaad55093769313321050a1852c7f3b8839",
+    "source_merge_commit": "3f52b31bbaf22d850f41839473afb1c68593d391",
+    "distribution_skills": 355,
+    "families": 22,
+    "catalog_generation": "passed",
+    "catalog_manifest_membership": "exact match",
+    "reviewed_package_file_hashes": "8/8 unchanged",
+    "generated_contract_bodies": "all three match reviewed source",
+    "workflow_evidence": "not-run for all three; development cases are designs",
+    "repository_ci": "required on final publication head"
   }
 }

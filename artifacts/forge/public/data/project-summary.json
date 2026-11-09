@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-11-09T23:30:43.032Z",
+  "generatedAt": "2026-11-09T23:39:14.544Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "feat/lightning-method-skills",
-  "sourceCommit": "733ae26c",
-  "skillCount": 353,
+  "sourceCommit": "3f52b31b",
+  "skillCount": 355,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 284,
+    "draftable": 286,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 178,
+    "not-run": 180,
     "none": 109,
     "analytical": 12,
     "local-checks": 39,
