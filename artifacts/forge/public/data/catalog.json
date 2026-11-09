@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T15:48:30.263Z",
+  "generatedAt": "2026-11-09T23:06:18.753Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/voice-research-knowledge-skills",
-  "sourceCommit": "ca5c0724",
-  "skillCount": 345,
+  "sourceRef": "feat/lightning-method-skills",
+  "sourceCommit": "82104847",
+  "skillCount": 348,
   "familyCount": 22,
   "families": [
     {
@@ -237,9 +237,10 @@
     {
       "name": "context-extraction",
       "displayName": "Context Extraction",
-      "skillCount": 10,
+      "skillCount": 11,
       "skills": [
         "okhp3-chatgpt-project-migration",
+        "okhp3-context-transfer",
         "okhp3-session-handoff",
         "okhp3-thread-context-extraction",
         "okhp3-thread-extract-chatgpt",
@@ -250,10 +251,10 @@
         "okhp3-thread-extract-mistral-vibe",
         "okhp3-thread-extract-perplexity"
       ],
-      "narrativeBody": "**Status: active.** Ten distribution packages cover supplied AI conversations,\ncontinuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
+      "narrativeBody": "**Status: active.** Eleven distribution packages cover supplied AI conversations,\nstaged conceptual transfers, continuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
       "orientation": {
         "purpose": {
-          "value": "**Status: active.** Ten distribution packages cover supplied AI conversations,\ncontinuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
+          "value": "**Status: active.** Eleven distribution packages cover supplied AI conversations,\nstaged conceptual transfers, continuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -269,7 +270,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-thread-extract-chatgpt pairs with okhp3-chatgpt-project-migration",
+          "value": "okhp3-context-transfer pairs with okhp3-chatgpt-project-migration; okhp3-context-transfer pairs with okhp3-session-handoff; okhp3-thread-extract-chatgpt pairs with okhp3-chatgpt-project-migration",
           "source": "generated"
         }
       }
@@ -389,13 +390,14 @@
     {
       "name": "knowledge-operations",
       "displayName": "Knowledge Operations",
-      "skillCount": 11,
+      "skillCount": 12,
       "skills": [
         "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
+        "okhp3-idea-label",
         "okhp3-project-promotion",
         "okhp3-record-location-reconciliation",
         "okhp3-research-file-renewal",
@@ -421,7 +423,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard; okhp3-triage-and-file pairs with okhp3-graduation-gate",
+          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-idea-label pairs with okhp3-capture-intake; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard",
           "source": "generated"
         }
       }
@@ -679,7 +681,7 @@
     {
       "name": "process-capture",
       "displayName": "Process Capture",
-      "skillCount": 16,
+      "skillCount": 17,
       "skills": [
         "okhp3-as-is-process-capture",
         "okhp3-decision-model-authoring",
@@ -696,12 +698,13 @@
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
+        "okhp3-success-reconstruction",
         "okhp3-visual-process-modeling"
       ],
-      "narrativeBody": "The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+      "narrativeBody": "The family includes recurring-task capture and evidence-led reconstruction of a successful one-off alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
       "orientation": {
         "purpose": {
-          "value": "The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+          "value": "The family includes recurring-task capture and evidence-led reconstruction of a successful one-off alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -8146,6 +8149,72 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-context-transfer",
+      "displayName": "Context Transfer",
+      "family": "context-extraction",
+      "skillDir": "okhp3-context-transfer",
+      "path": "context-extraction/okhp3-context-transfer/SKILL.md",
+      "description": "Receive or prepare a staged conversation-context transfer and verify the destination read-back. Use for numbered transfer blocks, \"continue this in another project\", or a read-only CHAT-to-WORK pilot. Preserve user intent, proposal status, historical authority, gaps, and privacy. This is conceptual continuation, not a lossless archive or permission to resume old requests.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "context-extraction",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "context-extraction"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-chatgpt-project-migration",
+        "okhp3-session-handoff"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-context-transfer/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-context-transfer/SKILL.md",
+      "lastModified": "2026-11-09T17:02:22-06:00",
+      "commitSha": "82104847",
+      "createdAt": "2026-11-09T17:02:22-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "context-extraction",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Staged context transfer with provenance, block coverage, privacy boundaries, and receiver read-back.",
+        "outOfScope": "Lossless archive claims, executing historical requests, implicit external writes, or inferred receipt.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-session-handoff",
       "displayName": "Session Handoff",
       "family": "context-extraction",
@@ -12290,6 +12359,71 @@
         "status": "not-run",
         "evaluatedSkillVersion": "0.2.0",
         "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-idea-label",
+      "displayName": "Idea Label",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-idea-label",
+      "path": "knowledge-operations/okhp3-idea-label/SKILL.md",
+      "description": "Turn one raw idea into a short recoverable label without developing it. Use for \"park this idea\", \"capture now, clarify later\", or a voice-note idea that should stop interrupting current work. Return a label in conversation; durable capture requires a separately authorized destination and receipt. Do not use for backlog grooming, brainstorming, or executing the idea.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-capture-intake"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-idea-label/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-idea-label/SKILL.md",
+      "lastModified": "2026-11-09T17:02:22-06:00",
+      "commitSha": "82104847",
+      "createdAt": "2026-11-09T17:02:22-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "One-idea label drafting with minimal interruption and truthful capture status.",
+        "outOfScope": "Idea development, prioritization, execution, unsolicited cadence rules, or unverified storage.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 8,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -17033,6 +17167,80 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-success-reconstruction",
+      "displayName": "Success Reconstruction",
+      "family": "process-capture",
+      "skillDir": "okhp3-success-reconstruction",
+      "path": "process-capture/okhp3-success-reconstruction/SKILL.md",
+      "description": "Reconstruct a successful one-off and design tests for a repeatable success class. Use for \"bottle lightning\", \"it worked once but we lost the recipe\", or separating essential conditions from incidental details. Produce an evidence ledger and a proposed re-strike protocol, not proven causality, an exact replay guarantee, or autonomous experiments.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "process-capture",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "process-capture"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-process-intake-and-scope",
+        "okhp3-sop-work-instructions"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [
+        "the success-class definition and evidence boundary;",
+        "an event ledger with `observed`, `reported`, `hypothesis`, and `unknown`",
+        "candidate load-bearing variables, rival explanations, and falsifying tests;",
+        "a proposed protocol with conditions, tolerances, and failure gates;",
+        "a controlled re-strike plan and decision/instrumentation log template;",
+        "status: `DRAFT_PROTOCOL`, `NEEDS_EVIDENCE`, or `BLOCKED_FOR_SAFETY`;",
+        "unresolved assumptions and the exact next authorized step."
+      ],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-success-reconstruction/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-success-reconstruction/SKILL.md",
+      "lastModified": "2026-11-09T17:02:22-06:00",
+      "commitSha": "82104847",
+      "createdAt": "2026-11-09T17:02:22-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "process-capture",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led one-off reconstruction and a falsifiable repeatability experiment plan.",
+        "outOfScope": "Unsupported causal claims, guaranteed outcomes, unapproved experiments, or full SOP publication.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },

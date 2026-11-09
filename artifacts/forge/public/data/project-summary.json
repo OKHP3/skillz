@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-11-09T15:48:30.263Z",
+  "generatedAt": "2026-11-09T23:06:18.753Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/voice-research-knowledge-skills",
-  "sourceCommit": "ca5c0724",
-  "skillCount": 345,
+  "sourceRef": "feat/lightning-method-skills",
+  "sourceCommit": "82104847",
+  "skillCount": 348,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 276,
+    "draftable": 279,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 172,
+    "not-run": 175,
     "none": 109,
     "analytical": 10,
     "local-checks": 39,

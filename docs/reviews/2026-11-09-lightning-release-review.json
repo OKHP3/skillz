@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "evaluation_status": "analytical",
+  "date": "2026-11-09",
+  "owner": "Codex",
+  "integration_owner": "Codex",
+  "question": "May the three 0.1.0 portable contracts be distributed in the portfolio catalog as draftable packages with analytical review only?",
+  "source_commit": "821048472a5e23adecd453d913adc27a0a8cb069",
+  "base_commit": "4eefc3b6a5a933d657e0c9e0a2da33df0017cce3",
+  "scope": {
+    "packages": [
+      "knowledge-operations/okhp3-idea-label",
+      "process-capture/okhp3-success-reconstruction",
+      "context-extraction/okhp3-context-transfer"
+    ],
+    "excluded": [
+      "private source corpus and personal links",
+      "historical external records",
+      "live workflow and host integration claims",
+      "release tagging and registry promotion"
+    ],
+    "portfolio_home_reason": "Knowledge operations, process capture, and context extraction match the outputs. Social posting and resume-specific adapters would not add domain behavior."
+  },
+  "sources": [
+    {
+      "id": "SRC-01",
+      "authority": "owner request",
+      "date": "2026-11-09",
+      "boundary": "Original generic formulations and synthetic fixtures; excluded private source parity was not independently audited."
+    },
+    {
+      "id": "SRC-02",
+      "path": "universal/okhp3-equilibrium-review/SKILL.md",
+      "version": "1.0.1",
+      "blob_sha": "e34fa95709e1ad792bb563e73784785e1b4d7231"
+    },
+    {
+      "id": "SRC-03",
+      "path": "universal/okhp3-skill-foundry/SKILL.md",
+      "version": "3.1.1",
+      "blob_sha": "b99e094f7abb06ec74c0e2faabdf423d3fe5dd81"
+    }
+  ],
+  "initial_snapshot": {
+    "phase": "prepublication draft A",
+    "skill_version": "0.1.0",
+    "sha256": {
+      "knowledge-operations/okhp3-idea-label/SKILL.md": "8ad431598e2a91dc07b6697b35ab5103e204dcc111b8b003fcf10e788f55d0c6",
+      "process-capture/okhp3-success-reconstruction/SKILL.md": "0b1ca8d42fff21ecf2c46c873eef209e9cf9d1605eb8058544149860056cd657",
+      "context-extraction/okhp3-context-transfer/SKILL.md": "5ce910ed9b93f32142b50bd8c6476b2f761de359551c8a313616fecf2c87a816",
+      "knowledge-operations/okhp3-idea-label/assets/intake-prompt.md": "b485017dee749056d3227f46a372ce34cb7d1f7b2cfe0d1c4b730a19c6002901"
+    }
+  },
+  "independence": {
+    "initial_reviewer_contexts_separated": true,
+    "reviewer_host": "Codex",
+    "exact_model_identity": "not-exposed",
+    "source_access": "Public package files, protocols, architecture ledger, and relevant existing companion contracts.",
+    "tools": [
+      "read-only PowerShell file inspection",
+      "SHA256 calculation",
+      "JSON parsing",
+      "literal clause checks"
+    ],
+    "permissions": "Reviewers used local reads only; no workflow executed.",
+    "limits": [
+      "Same inherited model family and shared public artifacts may correlate conclusions.",
+      "Private source was not sent to reviewers.",
+      "Final adjudicator received summaries of prior role findings rather than full raw role records."
+    ],
+    "role_prompt_identifiers": {
+      "evidence": "universal/okhp3-equilibrium-review/references/role-prompts.md#evidence-reviewer",
+      "outcome": "universal/okhp3-equilibrium-review/references/role-prompts.md#outcome-reviewer",
+      "safety_portability": "universal/okhp3-equilibrium-review/references/role-prompts.md#safety-and-portability-reviewer",
+      "disruptor": "universal/okhp3-equilibrium-review/references/role-prompts.md#disruptor",
+      "negotiator": "universal/okhp3-equilibrium-review/references/role-prompts.md#negotiator"
+    },
+    "system_prompt_identifier": "not-exposed"
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "reviewer": "Codex evidence-review agent",
+      "decision": "reject",
+      "status": "analytical",
+      "scope": "initial frozen bundle",
+      "findings": [
+        {
+          "id": "E-01",
+          "severity": "blocking",
+          "evidence": "knowledge-operations/okhp3-idea-label/assets/intake-prompt.md:15-17",
+          "finding": "Standalone prompt lacks explicit NEEDS_CONTEXT and SAVED branches."
+        },
+        {
+          "id": "E-02",
+          "severity": "future-evidence",
+          "finding": "Exposed evaluation designs do not establish live quality, uplift, discovery, integration, or holdout."
+        },
+        {
+          "id": "E-03",
+          "severity": "source-limit",
+          "finding": "Private source parity was not audited; public generic formulation only."
+        }
+      ]
+    },
+    {
+      "role": "outcome",
+      "reviewer": "Codex outcome-review agent",
+      "decision": "approve-with-limits",
+      "status": "analytical",
+      "scope": "initial frozen bundle",
+      "findings": [
+        {
+          "id": "OUT-01",
+          "severity": "blocking",
+          "evidence": "knowledge-operations/okhp3-idea-label/assets/intake-prompt.md:15-17",
+          "finding": "Same standalone-prompt status inconsistency as E-01."
+        },
+        {
+          "id": "OUT-02",
+          "severity": "supported",
+          "finding": "Three distinct outcomes differ from raw capture, SOP authoring, and source archival."
+        },
+        {
+          "id": "OUT-03",
+          "severity": "future-evidence",
+          "finding": "Ambiguous-input recovery and exact completion require behavioral trials."
+        },
+        {
+          "id": "OUT-04",
+          "severity": "future-evidence",
+          "finding": "No live quality, uplift, holdout, or integration results."
+        }
+      ]
+    },
+    {
+      "role": "safety-portability",
+      "reviewer": "Codex safety-review agent",
+      "decision": "approve-with-limits",
+      "status": "analytical",
+      "scope": "initial frozen bundle",
+      "findings": [
+        {
+          "id": "SP-01",
+          "severity": "supported",
+          "finding": "Quoted instructions and historical permissions cannot authorize current actions."
+        },
+        {
+          "id": "SP-02",
+          "severity": "supported",
+          "finding": "Privacy, persistence, and receiver verification controls are explicit."
+        },
+        {
+          "id": "SP-03",
+          "severity": "supported",
+          "finding": "Reconstruction is analysis-only and cannot prove causality from one success."
+        },
+        {
+          "id": "SP-04",
+          "severity": "clarification",
+          "evidence": "context-extraction/okhp3-context-transfer/SKILL.md:99",
+          "finding": "No-end-marker wording conflicts with known-complete declared totals."
+        },
+        {
+          "id": "SP-05",
+          "severity": "future-evidence",
+          "finding": "Portable text has no required connector, but runtime behavior remains untested."
+        }
+      ]
+    }
+  ],
+  "concordance": "Material convergence on differentiated draftable workflows and evidence limits; evidence/outcome identify the same status defect. Initial top-level verdicts differ, so final adjudication resolves release conditions from inspected clauses, not vote count.",
+  "corrections": [
+    {
+      "finding": "E-01 / OUT-01",
+      "change": "Added all four explicit status branches to the reusable prompt.",
+      "regression": "standalone-prompt-status",
+      "result": "Closed by focused evidence verification."
+    },
+    {
+      "finding": "SP-04",
+      "change": "Clarified complete declared totals versus end markers and conflicts.",
+      "regressions": [
+        "declared-total-no-end-marker",
+        "conflicting-totals"
+      ],
+      "result": "Closed by focused evidence and final adjudicator."
+    },
+    {
+      "finding": "E-04",
+      "change": "Propagated delimiter normalization to the standalone prompt; named both contracts in the regression.",
+      "regression": "embedded-delimiters",
+      "result": "Closed by focused evidence verification and final adjudicator."
+    },
+    {
+      "finding": "Structural warning",
+      "change": "Added explicit Scope headings without changing behavior.",
+      "result": "All three package validators pass without warnings."
+    }
+  ],
+  "disruptor": {
+    "triggered": true,
+    "reason": "Conditional falsification after initial material convergence and acknowledged corrective changes.",
+    "role": "disruptor",
+    "status": "analytical",
+    "decision": "defer-for-evidence",
+    "post_correction_recommendation": "approve-with-limits",
+    "known_pending": "E-04 standalone delimiter parity",
+    "new_material_blockers": [],
+    "hypotheses": [
+      {
+        "id": "D-01",
+        "hypothesis": "Save requests permit confidential disclosure or false persistence.",
+        "test": "Inspect explicit safe-routing and verified-save clauses plus development cases.",
+        "result": "refuted at text level; runtime untested"
+      },
+      {
+        "id": "D-02",
+        "hypothesis": "Holding candidate variables fixed makes the reconstruction circular and promotes causality.",
+        "test": "Inspect rival explanations, discriminating alternatives, falsifiers, and observed/proposed distinction.",
+        "result": "refuted at text level; experimental adequacy remains domain-specific"
+      },
+      {
+        "id": "D-03",
+        "hypothesis": "Instrumentation and historical instructions permit uploads, deletion, or experiments.",
+        "test": "Inspect analysis-only and historical-authority boundaries.",
+        "result": "refuted at text level; no behavior executed"
+      },
+      {
+        "id": "D-04",
+        "hypothesis": "A sender can manufacture completion from generic receipts or inconsistent totals.",
+        "test": "Inspect actual-receiver/substantive-readback requirements and duplicate/total cases.",
+        "result": "refuted at text level; receipt authenticity needs host trials"
+      }
+    ],
+    "static_checks": "8/8 targeted literal-clause assertions passed; no workflow or live benchmark was run"
+  },
+  "correction_verification": {
+    "role": "evidence",
+    "decision": "approve-with-limits",
+    "status": "analytical",
+    "closed": [
+      "E-01",
+      "E-04"
+    ],
+    "asset_sha256": "88111455bda37fa6f3e7f35eb32b6bee55210863c462dbaa479a79d807a724db",
+    "remaining_blockers": []
+  },
+  "negotiator": {
+    "triggered": true,
+    "role": "negotiator-release-adjudicator",
+    "decision": "approve-with-limits",
+    "confidence": "medium",
+    "owner": "Codex, task owner and integrator",
+    "scope": "Portfolio catalog distribution of three version 0.1.0 draftable contracts with analytical review evidence.",
+    "rationale": "The decisive contract defects E-01, SP-04, and E-04 are corrected. Material findings converge despite differing initial dispositions. No material blocker survives in the analytical draftable scope.",
+    "findings": [
+      {
+        "id": "E-01",
+        "status": "closed-by-static-inspection",
+        "evidence": "Standalone prompt and core align on NEEDS_CONTEXT, LABELED_ONLY, NOT_SAVED, and SAVED; four-branch development design present."
+      },
+      {
+        "id": "SP-04",
+        "status": "closed-by-static-inspection",
+        "evidence": "Complete declared totals require no separate end marker; inconsistent totals remain AWAITING_BLOCKS; dedicated development designs present."
+      },
+      {
+        "id": "E-04",
+        "status": "closed-by-static-inspection",
+        "evidence": "Core and reusable prompt both normalize field-internal delimiters; regression explicitly covers both."
+      }
+    ],
+    "conditions": [
+      "Keep version 0.1.0 and draftable maturity with analytical evidence limits.",
+      "Complete repository packaging/catalog checks before integration.",
+      "Do not claim performance, uplift, proven repeatability, tested host compatibility, or protected-holdout success.",
+      "Private source parity remains unaudited; source material stays excluded."
+    ],
+    "independence_limits": [
+      "Fresh adjudicator context read final public artifacts and received summarized initial/disruptor findings.",
+      "Exact reviewer model versions were not exposed.",
+      "Shared model/source/protocol can correlate findings; agreement is not behavioral proof."
+    ],
+    "expiry": "Reopen after any contract, asset, evaluation, version, maturity, or release-claim change or credible contradictory evidence.",
+    "remaining_blockers": []
+  },
+  "final_package_hashes": [
+    {
+      "path": "context-extraction/okhp3-context-transfer/evals/evals.json",
+      "sha256": "69b47dbe71c328d96adfc6dc2afdb72dff50fc43b4797f224b52a4eb108a7fdb"
+    },
+    {
+      "path": "context-extraction/okhp3-context-transfer/SKILL.md",
+      "sha256": "fb0b87d4e646d4783847a64313d062b52d4551504ca06da6b3b3ef02cd39e65d"
+    },
+    {
+      "path": "knowledge-operations/okhp3-idea-label/assets/intake-prompt.md",
+      "sha256": "88111455bda37fa6f3e7f35eb32b6bee55210863c462dbaa479a79d807a724db"
+    },
+    {
+      "path": "knowledge-operations/okhp3-idea-label/evals/evals.json",
+      "sha256": "1d06914465aac208569c21b58fd1d2b2653a34f00c7f9d8f94689bb70cc2b648"
+    },
+    {
+      "path": "knowledge-operations/okhp3-idea-label/SKILL.md",
+      "sha256": "76bc8575c66b9403b381d664b77aa034efd3dd234fb460ebd42f38ec7ba8d3cb"
+    },
+    {
+      "path": "process-capture/okhp3-success-reconstruction/evals/evals.json",
+      "sha256": "b102357c7436ae9e237c7431b5149c419fcbd5526a9380b7ada92d52f3a46245"
+    },
+    {
+      "path": "process-capture/okhp3-success-reconstruction/references/event-ledger.md",
+      "sha256": "56071a3c0d98efb29b2510531f5eb6cf39df631d54f6f7806b654e190a0c5024"
+    },
+    {
+      "path": "process-capture/okhp3-success-reconstruction/SKILL.md",
+      "sha256": "6895aa3a4382132f284ab1b68234e198f1c9413f8db73ad5ffccb8e37193e08a"
+    }
+  ],
+  "evaluations": {
+    "development_designs": 22,
+    "by_package": {
+      "okhp3-idea-label": 8,
+      "okhp3-success-reconstruction": 6,
+      "okhp3-context-transfer": 8
+    },
+    "packaged_cases_exposed": true,
+    "holdout_status": "external-required",
+    "holdout_seen": true,
+    "live_benchmark": "not-run",
+    "paired_baseline": "not-run",
+    "host_activation": "not-run",
+    "host_integration": "not-run",
+    "protected_holdout": "not-run",
+    "measured_uplift": null
+  },
+  "validation": {
+    "status": "package-and-index-checks-passed",
+    "already_passed": [
+      "Three strict package structural validations",
+      "Full distribution catalog metadata check",
+      "Public-source identifier scan",
+      "git diff --check"
+    ],
+    "meaning": "Static package/catalog checks do not execute the skills or grade their task outcomes.",
+    "environment_limit": {
+      "command": "node artifacts/forge/scripts/test-catalog.mjs",
+      "environment": "Windows sandbox",
+      "result": "Sandbox junction creation failed with EPERM. The same fixture passes outside the sandbox. Full direct-suite rerun is running; a duplicate isolated-suite rerun was stopped because the suite creates shared temporary source fixtures.",
+      "package_failure": false
+    },
+    "repository_gate": "The exact integration head must pass the repository's GitHub CI, recorded on PR #238.",
+    "ci_url": "https://github.com/OKHP3/skillz/pull/238/checks",
+    "checks": [
+      {
+        "command": "node .agents/skills/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root <each of three packages>",
+        "result": "passed",
+        "packages": 3
+      },
+      {
+        "command": "python gen-skills-readme.py --full --check --quiet",
+        "result": "passed",
+        "distribution_skills": 348,
+        "families": 22
+      },
+      {
+        "command": "node artifacts/forge/scripts/build-catalog.js",
+        "result": "passed",
+        "git_history": "complete",
+        "source_commit": "821048472a5e23adecd453d913adc27a0a8cb069"
+      },
+      {
+        "command": "Public-source identifier scan",
+        "result": "passed",
+        "scope": "three new packages"
+      },
+      {
+        "command": "git diff --check",
+        "result": "passed"
+      },
+      {
+        "command": "Local Codex installation inventory and SHA256 comparison",
+        "result": "passed",
+        "files": 8
+      },
+      {
+        "command": "Isolated source-manifest inventory guard",
+        "result": "passed",
+        "limitation": "Full sandbox runner subsequently failed at junction creation; not reported as a full suite pass."
+      }
+    ]
+  },
+  "release_decision": "approve-with-limits",
+  "release_limits": [
+    "Draftable portfolio contracts only.",
+    "No measured capture speed, cognitive relief, causality, repeatability, discovery, host compatibility, or uplift claim.",
+    "No private-source audit, archival completeness, external write history, or source deletion authority is established."
+  ],
+  "expires_when": "Any reviewed contract, asset, evaluation, version, maturity, or release claim changes, or credible contrary evidence appears.",
+  "local_installation": {
+    "host": "local Codex",
+    "source_repository": "OKHP3/skillz",
+    "source_commit": "821048472a5e23adecd453d913adc27a0a8cb069",
+    "installer": "bundled skill-installer",
+    "packages": 3,
+    "files_hash_verified": 8,
+    "scope": "Installation and file parity only; host activation and workflow behavior are not tested."
+  }
+}
