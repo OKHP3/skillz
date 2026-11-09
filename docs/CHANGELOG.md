@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-09: Interview preparation source packages
+
+- Add exact AskJamie Resume Representative mirrors for Interview Evidence Map
+  and Interview Questions, with 15 synthetic development cases and versioned
+  equilibrium review. Keep canonical ownership in AskJamie Foundry and record
+  complete file hashes in `docs/interview-skills-sync-2026-11-09.json`.
+- Treat public-work selection and platform transfer as evidence-map branches;
+  compose with existing social drafting skills when explicitly requested.
+- Refresh catalogs to 352 skills across 22 active families. These two packages
+  are draftable source with analytical review; behavioral evaluations, automatic
+  activation, measured uplift and an unseen holdout remain not run.
+
 ## 2026-11-09: Career reference and coaching skill mirrors
 
 - Catalog three 0.2.0 AskJamie source candidates: lifetime career reference,
