@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-professional-headshot",
+  "skill_version": "0.1.0",
+  "evidence_sources": [
+    {
+      "id": "SRC-USER",
+      "kind": "user request",
+      "claim": "Extract reusable portrait/capture functionality and publish public-safe skills."
+    },
+    {
+      "id": "SRC-HISTORY",
+      "kind": "historical design provenance",
+      "claim": "Prior workflow notes motivate source coverage, explicit reference roles, bounded posing and delivery verification. They are not executable benchmark evidence."
+    },
+    {
+      "id": "SRC-RULES",
+      "kind": "repository instructions",
+      "claim": "Skill Foundry 3.1.1 and Equilibrium Review 1.0.1 at Skillz base 4eefc3b6a5a933d657e0c9e0a2da33df0017cce3."
+    }
+  ],
+  "review_passes": [
+    {
+      "freeze": "review-1",
+      "decisions": {
+        "evidence": "defer-for-evidence",
+        "outcome": "approve-with-limits",
+        "safety-portability": "defer-for-evidence"
+      },
+      "finding": "E-01/SP-01 identified inconsistent fixture grading flags."
+    },
+    {
+      "freeze": "review-2",
+      "decisions": {
+        "evidence": "approve-with-limits",
+        "outcome": "approve-with-limits",
+        "safety-portability": "approve-with-limits"
+      },
+      "result": "E-01/SP-01 closed after independent hash/diff verification."
+    },
+    {
+      "freeze": "review-3",
+      "roles": [
+        "disruptor",
+        "negotiator"
+      ],
+      "decision": "approve-with-limits",
+      "result": "Metadata-only diff and all ten hashes verified; no surviving material source counterexample. Final records complete."
+    },
+    {
+      "freeze": "review-4",
+      "roles": [
+        "safety-portability",
+        "negotiator"
+      ],
+      "decision": "approve-with-limits",
+      "result": "Two affirmative safeguard clarifications verified; prior review history preserved. Unchanged scanner/CI acceptance required before merge."
+    }
+  ],
+  "changes": [
+    {
+      "id": "L-01",
+      "status": "initial-draft",
+      "pre_change_core_hash": null,
+      "hypothesis": "Explicit source roles and state/delivery contracts reduce ambiguity and false completion.",
+      "rejected_alternatives": [
+        "One large portrait-plus-camera skill would load irrelevant live-control instructions for ordinary edits.",
+        "A generic new media-migration skill would overlap existing location/routing skills and obscure deletion authority."
+      ],
+      "regression_risks": [
+        "Over-triggering on social copy or video.",
+        "Turning historical host details into fixed prerequisites.",
+        "Confusing static checks with measured real-world effectiveness."
+      ],
+      "results": "Analytical review approved with limits after fixture gate repair; portable/catalog structural checks passed. No live task result.",
+      "limits": "Fresh protected holdout and matched host runs remain required for stronger claims."
+    },
+    {
+      "id": "L-02",
+      "status": "review-correction",
+      "pre_change_core_hashes": {
+        "SKILL.md": "478d3dfc5d59941ddfef0819dcb7ab55e33b3f80f1267033ab32781b75f080af",
+        "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+        "evals/evals.json": "7ec76d175476a7e5d4b7d803b4b7752ac50b0b9ef694330b8c24f7870751a984",
+        "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+        "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+      },
+      "hypothesis": "Explicit all-required expectations prevent a heuristic flag from weakening the authority/privacy gate.",
+      "evidence_ids": [
+        "E-01",
+        "SAFETY fixture-gate finding"
+      ],
+      "change": "Replace critical booleans with required:true on every anchored expectation and an explicit non-compensatory grading rubric.",
+      "rejected_alternatives": [
+        "Leave inconsistent flags and rely on a distant release rubric."
+      ],
+      "regression_risk": "No operative instruction changes; fixture grading semantics become explicit.",
+      "results": "All three separate reviewer contexts verified the fixture-only correction and current hashes; approved with analytical limits.",
+      "limits": "Still not an executed evaluation."
+    },
+    {
+      "id": "L-03",
+      "status": "metadata-correction",
+      "pre_change_core_hashes": {
+        "SKILL.md": "478d3dfc5d59941ddfef0819dcb7ab55e33b3f80f1267033ab32781b75f080af",
+        "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+        "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+        "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+        "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+      },
+      "hypothesis": "Explicit draftable metadata prevents heading-count heuristics from misclassifying an otherwise complete contract.",
+      "change": "Add maturity: draftable to both metadata blocks; no operative instruction changes.",
+      "results": "Disruptor and negotiator verified exact one-line metadata diff and current hashes; no operative regression. Both catalog entries draftable/analytical/needs-live-evidence.",
+      "limits": "Draftable is a contract label, not live validation or production readiness."
+    },
+    {
+      "id": "L-04",
+      "status": "scanner-clarification",
+      "pre_change_core_hashes": {
+        "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
+        "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+        "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+        "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+        "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+      },
+      "source_failure": "CI SkillSpector P3 high at portrait evaluation prohibition; EA2 medium at capture blocking-call safeguard. Cisco no findings; scan coverage complete.",
+      "hypothesis": "Affirmative wording makes the same privacy and consent boundaries unambiguous to static pattern scanning.",
+      "change": "Rephrase two protective statements affirmatively after static scanner findings P3 at portrait evals/evals.json:192 and EA2 at capture SKILL.md:61. Preserve approved-service privacy and bounded-pose requirements; no scanner policy change.",
+      "rejected_alternatives": [
+        "Remove privacy/capture safeguards.",
+        "Disable or weaken the scanner.",
+        "Add a self-approved exception to the PR."
+      ],
+      "results": "Focused safety reviewer and negotiator verified the exact two-wording diff, all ten hashes and preserved controls. Final unchanged CI acceptance is tracked by exact revision on Skillz PR #234; no scanner success is presumed.",
+      "limits": "No live effectiveness claim; scanner success is not behavioral certification."
+    }
+  ]
+}

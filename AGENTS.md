@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 348 distribution skills in 22 active families (catalog audit, 2026-11-09). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 350 distribution skills in 22 active families (catalog audit, 2026-11-09). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -53,13 +53,13 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `outcome-modeling/` | Shared event-to-state forecasting core plus sports, NFL fantasy, business-sales, and prediction-market decision adapters |
 | `software-reclamation/` | Remastered software-reclamation workflow for reclaiming undocumented applications, documenting behavior, planning modernization, and handing off support or replacement |
 | `glee-fully/` | Glee-fully Tool and Tool-ette skill architecture, Persona Density, hierarchy, and future consumer-skill conversions |
-| `askjamie/` | AskJamie-specific Custom GPT creation skills and the AskJamie agent's correspondence capability |
+| `askjamie/` | AskJamie-specific Custom GPT creation, correspondence, and professional headshot skills |
 | `openclaw/` | Host-oriented OpenClaw skills and the default agent's (Larry's) research and persona-routing capabilities |
 | `murderbird/` | Editorial red-team and thesis-building capabilities for the MurderBird agent persona |
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 348-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 350-skill distribution inventory |
 
 ## Routing index
 
@@ -280,6 +280,7 @@ with a shared `[HANDOFF]` packet.
 | `okhp3-openclaw-persona-route` | Larry | A request reaches the default agent without a named persona, or work must move between agents. Routes only. |
 | `okhp3-openclaw-research-packet` | Larry | Research or source-gathering before an article, email, or decision. Returns a sourced packet; does not draft. |
 | `okhp3-askjamie-email-draft` | AskJamie | Draft or reply to correspondence the owner sends as themselves. Draft-only. |
+| `okhp3-professional-headshot` | AskJamie | Create a realistic portrait from authorized photos with explicit likeness/reference roles and delivery evidence. |
 | `okhp3-murderbird-thesis-forge` | MurderBird | Build a thesis, outline, hooks, and hard ending from research or a rough idea. |
 | `okhp3-murderbird-argument-audit` | MurderBird | Red-team a draft argument before publication. Not security red teaming. |
 | `okhp3-glee-fully-wwgd-review` | Glee-fully | WWGD reception and warmth check before sending or publishing. A persona lens, not a real person's view. |
@@ -453,7 +454,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 348 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 350 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.
@@ -472,3 +473,12 @@ link field. This is distinct from the existing social-posting public-artifact
 exception; it does not change that exception or imply any release evidence.
 
 ## Imported Claude Cowork project instructions
+
+## Portrait and capture companions
+
+Use `askjamie/okhp3-professional-headshot` for realistic career portrait edits and
+`universal/okhp3-guided-photo-session` for consented still capture with verified
+controls and user-visible ready/stop/relax cues. Both are draftable 0.1.0 with
+analytical evidence only. Their synthetic cases do not establish live camera or
+image-quality performance. Social Posting links to them without adding image
+work to its text-drafting contracts.
