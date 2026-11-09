@@ -1,0 +1,14 @@
+{
+  "slug": "example-field-guide",
+  "document_title": "A field guide to <SUBJECT>",
+  "series": "<SERIES_LABEL>",
+  "kicker": "Field guide",
+  "pages": [
+    {"role": "cover", "chip": "Field guide", "title": "One hook line that names the problem.", "title_accent": "One line that names the payoff.",
+     "blocks": [{"type": "text", "text": "A one-sentence promise of what the reader gets by swiping."}]},
+    {"title": "Then vs now", "claims": true, "source": "Source: <PUBLIC_SOURCE>, retrieved <DATE>",
+     "blocks": [{"type": "compare", "left": "Before", "right": "After", "rows": [["Tool", "<OLD_TOOL>", "<NEW_TOOL>"], ["Habit", "<OLD_HABIT>", "<NEW_HABIT>"]]}]},
+    {"title": "Three steps", "blocks": [{"type": "steps", "items": [{"title": "Name it", "text": "Say what the thing is."}, {"title": "Show it", "text": "One real example."}, {"title": "Use it", "text": "One action today."}]}]},
+    {"role": "close", "title": "The takeaway in one line.", "blocks": [{"type": "panel", "label": "Your turn", "text": "The same question the post ends on."}]}
+  ]
+}

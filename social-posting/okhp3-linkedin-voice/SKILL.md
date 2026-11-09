@@ -1,15 +1,15 @@
 ---
 name: okhp3-linkedin-voice
-description: Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a post, comment, checkpoint update, or public progress draft, whether produced by another skill or written by hand. It checks prose density, uncertainty, supplied links, hashtags, and public-context handoff. This is a filter, not a generator.
+description: Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a post, comment, checkpoint update, or public progress draft, whether produced by another skill or written by hand. It checks prose density, sentence rhythm, uncertainty, supplied links, hashtags, and public-context handoff. This is a filter, not a generator.
 license: MIT
 metadata:
   public_artifact: true
   author: Public Agent Skill Library
-  version: "2.2.0"
+  version: "2.3.0"
   category: social-posting
   origin: portable-agent-skills
   in_scope: "The named LinkedIn content ideation, drafting, or voice-filtering workflow."
-  out_of_scope: "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+  out_of_scope: "Publishing unless the user explicitly approves it, employer-confidential context, impersonation, or unrelated social-platform management."
 ---
 
 # okhp3-linkedin-voice
@@ -33,10 +33,14 @@ publish content, or silently apply LinkedIn formatting to another platform.
 
 1. Read the draft and preserve its intended surface: standalone post, comment, reply, checkpoint, or public progress update.
 2. Check against every rule in `references/voice-rules.md`.
-3. Fix violations directly - do not just flag them, rewrite.
+3. Fix violations directly - do not just flag them, rewrite. Apply the active
+   rhythm profile from `references/voice-rules.md`: `flowing` for standalone
+   posts, `off` for comments and replies, `staccato` only when the user asked
+   for short punchy lines, and `off` when the user supplied final copy and
+   asked for no cadence edits.
 4. Preserve factual uncertainty. Do not turn preparation into completion, hope into a win, or a supplied activity count into a stronger claim. Do not add metrics, links, hashtags, or examples that were not supplied.
 5. For articles specifically: verify the closing line is hard (no appended "what do you think?" or similar softening).
-6. Return the corrected draft. If a rule required a judgment call (for example, whether a line is punchy enough to stand alone or should consolidate), note the call made.
+6. Return the corrected draft. If a rule required a judgment call (for example, which single line earns standalone status under the `flowing` profile), note the call made and the before and after rhythm counts.
 
 ## Relationship to other skills
 
@@ -48,7 +52,7 @@ This skill governs LinkedIn output specifically. Platform-conditional formatting
 
 ## Output contract
 
-Return the revised text, then a short change log listing only the rule categories changed or judged. Do not invent new facts, examples, links, hashtags, or employer context while polishing. Preserve any user-specified hashtag count and URL text. If the input is not LinkedIn-bound prose, say so and route to the appropriate skill instead of silently rewriting it.
+Return the revised text, then a short change log listing only the rule categories changed or judged, plus the active rhythm profile and its before and after counts. Do not invent new facts, examples, links, hashtags, or employer context while polishing. Preserve any user-specified hashtag count and URL text. If the input is not LinkedIn-bound prose, say so and route to the appropriate skill instead of silently rewriting it.
 
 ## Validation
 

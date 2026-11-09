@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-linkedin-comment",
-  "skill_version": "1.2.0",
+  "skill_version": "1.2.1",
   "status": "design-ready",
   "holdout_seen": true,
   "holdout_status": "external-required",

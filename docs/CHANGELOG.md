@@ -1,5 +1,34 @@
 # Changelog
 
+## 2026-11-09: LinkedIn carousel, publish operations, first comment, and rhythm
+
+- Add `okhp3-linkedin-carousel` 1.0.0: page planning plus a local JSON-spec
+  renderer (`scripts/build_carousel.py`) that escapes all text, disables page
+  JavaScript, aborts network requests, enforces contrast and a 24px type
+  floor, requires a source on claim pages, detects overflow, and writes an
+  accessible text outline beside the image-only PDF. Fourteen unit and render
+  tests pass locally; no live with/without-skill benchmark was run.
+- Add `okhp3-linkedin-publish-ops` 1.0.0, the social-posting family's single
+  scoped acting package: publish bundle with text hash and IANA time zone,
+  manual handoff by default, opt-in operator mode behind a capability check,
+  approval that names each action, recreate-to-attach for scheduled posts,
+  duplicate-safe retries, and DOM-level verification. It records the LinkedIn
+  User Agreement automated-methods clause as a residual risk. UI observations
+  carry `observed_on` and `revalidate_after` dates.
+- Revise `okhp3-linkedin-post` to 2.4.0 with an optional author first-comment
+  section, including a role-based counterpoint variant; `okhp3-linkedin-comment`
+  1.2.1 routes the author's own first comment there.
+- Revise `okhp3-linkedin-voice` to 2.3.0 with rhythm profiles (`flowing` for
+  standalone posts, `off` for comments, `staccato` on request) and measurable
+  checks for stacked short sentences and single-line paragraphs. AGENTS.md
+  now says to keep a deliberate standalone line without stacking them.
+- Amend `social-posting/FAMILY.md` with the scoped acting-package exception and
+  new routing rows. Record the deferred content-calendar candidate in the
+  backlog. Refresh the catalogs and manifest to 340 skills (with the outreach skills) across 22 families.
+- Candidates were selected by an equilibrium review (evidence, outcome, and
+  safety reviewers, then a disruptor and negotiator); all reviewers shared one
+  model family, so their agreement is correlated evidence.
+
 ## 2026-11-09: LinkedIn outreach drafting family
 
 - Add `okhp3-linkedin-connection-note`, `okhp3-linkedin-message`,

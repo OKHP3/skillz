@@ -81,6 +81,7 @@ Update this file (`BACKLOG.md`) when:
 
 | Date | Task | Times observed | Candidate family | Status |
 |---|---|---|---|---|
+| 2026-11-09 | Sequence a LinkedIn content calendar: reorder scheduled posts around an outside event or holiday, check post-to-post dependencies, and weigh past post analytics (equilibrium review deferred it for evidence; dependency check moved into `okhp3-linkedin-publish-ops`) | 1 | social-posting | captured |
 | 2026-06-20 | Fold a process narrative or idea into a target diagram type (as a named ReFolDec sub-operation distinct from general diagramming) | 1 | refolddec | captured |
 | 2026-06-20 | Unfold a SKILL.md or diagram into its constituent primitives for inspection or comparison | 1 | refolddec | captured |
 | 2026-06-20 | Refold a diagram into embedded documentation (fenced block + prose explanation in a .md file) | 1 | refolddec | captured |
