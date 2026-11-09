@@ -1,0 +1,32 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "skill_name": "okhp3-record-location-reconciliation",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-11-09",
+    "runner": "Static package inspection, separated reviewer contexts, and analytical adjudication",
+    "fixtures": "evals/evals.json and evals/discovery.json",
+    "known_limitations": [
+      "Comparable live host runs and protected holdout not run.",
+      "Shared model family and frozen source constrain reviewer independence.",
+      "The originating workflow is design provenance, not a run of this version."
+    ]
+  },
+  "reviewed_core_sha256": {
+    "SKILL.md": "c819e6302838ede2e945a38cc4c78be538de567c4b42cf07cba4c43eba172a14",
+    "references/reconciliation-record.md": "151d58a931a308be2f24c652b226629aab4f523d40874a89df5f4889b39d56bd",
+    "evals/discovery.json": "889c7007b6b09d130db38c0f8c94bcc679afb4edd100869d171cbcf34150b236",
+    "evals/evals.json": "b6416f11fac9607b8b2ba0989817eb44f9867ebf1493387b3635e76b35f21e89"
+  },
+  "live_benchmark": "not-run",
+  "holdout": "external-required",
+  "runs": [],
+  "acceptance_criteria": {
+    "authority": "Exact identities, bounded writes and data audiences",
+    "preservation": "Independent placement, version and access results",
+    "coverage": "Qualified parity and readback of affected references",
+    "publication": "Draftable catalog source with synthetic examples and no operational maturity claim"
+  },
+  "review": "equilibrium-review-2026-11-09.json"
+}

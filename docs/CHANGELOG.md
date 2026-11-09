@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-09: Record location reconciliation
+
+- Add a draftable Knowledge Operations skill for auditing record locations,
+  preserving versions during authorized moves, and verifying affected references.
+- Include a relocation record, 13 synthetic development cases, and an analytical
+  Equilibrium Review. Live host benchmarking and a protected holdout remain open.
+- Refresh the distribution inventory to 339 skills across 22 active families.
+
 ## 2026-11-09: LinkedIn outreach drafting family
 
 - Add `okhp3-linkedin-connection-note`, `okhp3-linkedin-message`,
