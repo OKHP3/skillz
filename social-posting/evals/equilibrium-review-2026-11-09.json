@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "five-way",
+  "evaluation_status": "analytical",
+  "artifact": {
+    "path": "social-posting (candidate packet: five skill candidates mined from a LinkedIn post-operations thread)",
+    "sha256": null,
+    "version": "packet v1, 2026-11-09"
+  },
+  "decision_question": "Which recurring procedures should become or change public social-posting packages, and what must each build close first?",
+  "acceptance_criteria": [
+    "Knowledge advantage beyond general advice",
+    "Clear boundary versus existing packages",
+    "Public neutrality",
+    "Family safety contract (draft-only, or approval-gated acting)",
+    "At least three realistic eval cases",
+    "Portable core with labeled host adapters"
+  ],
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "shared_model_or_source_limits": [
+      "All five roles ran on the same model family with the same packet; agreement is correlated evidence.",
+      "The packet summarized the source thread; reviewers did not inspect raw screenshots or logs.",
+      "LinkedIn Help and the User Agreement block automated retrieval; the automated-methods clause was read from a third-party capture dated Nov. 3, 2025."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "decision": "approve-with-limits",
+      "key_findings": [
+        "C1 overlap claim partly contradicted: existing account-level browser skills already hold composer and comment typing mechanics",
+        "UI mechanics are stale-prone; use label prechecks and freshness dates, not keystroke counts",
+        "C4 is a preference unless made a toggleable, measurable profile",
+        "C5 single occurrence"
+      ]
+    },
+    {
+      "role": "outcome",
+      "decision": "approve-with-limits",
+      "key_findings": [
+        "Acting package conflicts with the family's text-only charter",
+        "No handoff contract from post to carousel to publish; define a publish bundle",
+        "Composer and comment editors have opposite Enter semantics",
+        "Schedules need an IANA time zone"
+      ]
+    },
+    {
+      "role": "safety",
+      "decision": "approve-with-limits",
+      "key_findings": [
+        "User Agreement prohibits automated creation and commenting; approval does not change that, so manual handoff must be a full path",
+        "Duplicate-action risk on retry",
+        "Carousel renderer must block network, disable JS, escape text, and check accessibility",
+        "First scripted package in the family will meet Shield review"
+      ]
+    }
+  ],
+  "concordance": "material agreement on C1 and C2 approve-with-limits, C3 and C4 as changes to existing packages, C5 defer",
+  "disruptor": {
+    "triggered": true,
+    "authority": "advisory",
+    "falsification_hypotheses": [
+      {
+        "id": "D1",
+        "target": "C1 placement",
+        "severity": "material",
+        "outcome": "Partly accepted: kept in social-posting with a scoped, package-named exception; a separate family was rejected as heavier than the risk."
+      },
+      {
+        "id": "D2",
+        "target": "charter amendment widens trust",
+        "severity": "material",
+        "outcome": "Mitigated, not disproven: exception names one package and forbids routing before approval; regression case post-this-no-acting added. Seeded multi-run test not executed."
+      },
+      {
+        "id": "D3",
+        "target": "C1 depends on undistributed skills",
+        "severity": "blocking",
+        "outcome": "Accepted and fixed: composer, document, schedule, and comment mechanics now live in the package's own browser-adapter reference."
+      },
+      {
+        "id": "D4",
+        "target": "C4 vs repo convention",
+        "severity": "material",
+        "outcome": "Accepted: user-marked lines are flagged, not merged; AGENTS.md convention reworded to keep one deliberate line without stacking."
+      },
+      {
+        "id": "D5",
+        "target": "C4 neutrality",
+        "severity": "material",
+        "outcome": "Partly accepted: framed as a density rule tied to the existing density principle; staccato and off profiles honored. Residual disagreement recorded."
+      },
+      {
+        "id": "D6",
+        "target": "C4 regresses comment evals",
+        "severity": "material",
+        "outcome": "Accepted: comments default to the off profile; eval comment-beats-untouched added."
+      },
+      {
+        "id": "D7",
+        "target": "carousel JS-off and overflow",
+        "severity": "blocking",
+        "outcome": "Tested and fixed: JS disabled context still detects vertical overflow; horizontal and footer checks added; render test covers both."
+      },
+      {
+        "id": "D8",
+        "target": "carousel min font, contrast, sidecar, claims",
+        "severity": "blocking",
+        "outcome": "Fixed: all sizes at or above 24px with a unit test, panel contrast checks, pages-text.md sidecar, unsourced-number warning."
+      },
+      {
+        "id": "D9",
+        "target": "first comment belongs to post composition",
+        "severity": "material",
+        "outcome": "Accepted: implemented as an optional section of okhp3-linkedin-post; comment skill routes there; counterpoint must be openly voiced by the author as a role."
+      },
+      {
+        "id": "D10",
+        "target": "ToS residual risk",
+        "severity": "material",
+        "outcome": "Accepted: handoff is the default mode; operator mode is opt-in with a one-time risk statement."
+      }
+    ],
+    "test_results": [
+      "build_carousel tests: 11 passed (Python 3, Playwright 1.56.0, Pillow 12.3.0) on 2026-11-09",
+      "foundry validate-skill-suite: 33 social-posting packages validated",
+      "cataloger --full --check passed"
+    ]
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "approve-with-limits for C1, C2, C3, C4; defer-for-evidence for C5",
+    "decisive_evidence": [
+      "D3, D7, D8 were blocking and are fixed with tests or self-contained references",
+      "Manual handoff default resolves the strongest safety objection without dropping the operator path"
+    ],
+    "unresolved_items": [
+      "D2 seeded routing test not run",
+      "D5 whether a default-on cadence profile is neutral remains a judgment",
+      "LinkedIn document limits and current UI labels unverified by primary retrieval"
+    ]
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": [
+    "No live with/without-skill benchmark or unseen holdout; evidence_status remains not-run for every eval suite",
+    "UI observations are from one locale and date and expire at revalidate_after"
+  ],
+  "follow_up": [
+    "Run the D2 seeded routing test",
+    "Re-verify LinkedIn Help limits and the User Agreement text in a browser",
+    "Revisit the content-calendar candidate after more occurrences",
+    "Optionally consolidate the account-level DM and profile browser skills after a neutrality scrub"
+  ],
+  "package_hashes": {
+    "social-posting/okhp3-linkedin-carousel/SKILL.md": "c243f53bd265570248a4ee8903d8012954eac40dc9119433873205034bc4e868",
+    "social-posting/okhp3-linkedin-carousel/scripts/build_carousel.py": "2cda6c4dd2ed6f1329b200bb6d3f75b68482a08f394760ce4e25cfbe0103f291",
+    "social-posting/okhp3-linkedin-publish-ops/SKILL.md": "2d62651d41996c6d48273563a2d836fb31eedfabb50f4fbf89fdfd81d755bb56",
+    "social-posting/okhp3-linkedin-post/SKILL.md": "73f77c7e664bd591ff20bdeb41c642a6e77e61c18052ea664f5101adf3136672",
+    "social-posting/okhp3-linkedin-voice/references/voice-rules.md": "1486e86d27269bf8bcebeedcc071b82385cd8e1e6d2a5c8f18e1fbdbc7e3f08e"
+  }
+}

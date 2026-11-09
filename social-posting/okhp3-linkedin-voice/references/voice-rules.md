@@ -26,7 +26,36 @@ request or approved runtime context. Use placeholders in examples and fixtures.
 | Context | Rule |
 |---|---|
 | LinkedIn posts | Use double line breaks between paragraphs so the rendered post remains readable. |
-| Non-LinkedIn long-form | Preserve short standalone lines when they are intentional rhythm devices. Do not apply LinkedIn paragraph formatting to another platform. |
+| Non-LinkedIn long-form | Preserve short standalone lines when they are intentional rhythm devices, within the active rhythm profile below. Do not apply LinkedIn paragraph formatting to another platform. |
+
+## Rhythm profile
+
+Stacked fragments and one-line paragraphs read as machine-generated filler, not
+emphasis. The rhythm profile governs sentence and paragraph cadence. Name the
+active profile in the change log.
+
+| Profile | When it applies | Rule |
+|---|---|---|
+| `flowing` | Default for standalone LinkedIn posts and articles | Write connected paragraphs. Reserve a single-sentence paragraph for the one line that has to land. |
+| `staccato` | Only when the user explicitly asks for short punchy lines | Keep the requested cadence, but still remove repeated or empty fragments. |
+| `off` | Default for comments and replies, whose short beats are often the point; also when the user supplied final copy and asked for no cadence edits | Check the hard rules only. |
+
+### `flowing` checks
+
+Count these before and after the rewrite and report both numbers.
+
+| Check | Threshold | Fix |
+|---|---|---|
+| Single-sentence paragraphs | At most 1, plus any line the user explicitly marked as deliberate | Fold the others into the paragraph they support. Flag, rather than merge, a second line the user marked. |
+| Consecutive short sentences | No run of 2 or more sentences of 4 words or fewer | Join them with a clause, a conjunction, or a comma, or cut one. |
+| Fragment triplets | No list of three clipped fragments used as a sentence ("Fast. Cheap. Done.") | Rewrite as one sentence that says what the three things add up to. |
+| Wall of short paragraphs | No run of 3 or more paragraphs under 15 words each | Merge related ones into a fuller paragraph. |
+
+This is a density rule, not a house style: stacked fragments repeat the
+emphasis instead of adding meaning. A short sentence on its own is fine. The
+defect is the run of them. Quoted or user-supplied verbatim text is exempt. Keep
+the meaning, facts, links, and hashtags unchanged while consolidating; rhythm
+edits never add a claim.
 
 ## Density principle
 

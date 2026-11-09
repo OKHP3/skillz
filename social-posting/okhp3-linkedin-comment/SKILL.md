@@ -11,7 +11,7 @@ license: MIT
 metadata:
   public_artifact: true
   author: Public Agent Skill Library
-  version: "1.2.0"
+  version: "1.2.1"
   category: social-posting
   origin: portable-agent-skills
   in_scope: "Drafting a context-aware LinkedIn comment or reply from a supplied target conversation."
@@ -34,7 +34,8 @@ Draft a contribution, not a miniature broadcast.
 
 This package drafts one LinkedIn comment or reply from supplied conversation
 context. It does not publish, automate engagement, or replace the standalone
-post workflow.
+post workflow. The author's own first comment on a post they are composing is
+part of that post: use the `First comment` section of `okhp3-linkedin-post`.
 
 ## Process
 

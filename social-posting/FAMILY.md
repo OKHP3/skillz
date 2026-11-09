@@ -1,9 +1,9 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 31
+skill_count: 33
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-25T13:53:09Z
+generated_at: 2026-11-09T14:25:07Z
 ---
 
 # social-posting
@@ -12,12 +12,21 @@ Platform-specific drafting contracts for public-network posts and comments.
 They prepare text only. They never publish, schedule, join a community, or
 change an account setting without the user's explicit approval.
 
+One package is the scoped exception: `okhp3-linkedin-publish-ops` can act on an
+already-approved LinkedIn post, defaults to a manual handoff, and needs approval
+that names each action. No other package in this family gains that authority
+from it, and a drafting package never routes text to it before the user
+approves the final wording.
+
 ## Routing
 
 | Need | Skill |
 |---|---|
 | Mine finished work into LinkedIn-ready ideas | `okhp3-linkedin-angles` |
 | Draft or polish a LinkedIn post | `okhp3-linkedin-post` then `okhp3-linkedin-voice` |
+| Draft the author's own first comment for a post | `okhp3-linkedin-post` (First comment section) |
+| Build a companion document carousel (PDF) for a LinkedIn post | `okhp3-linkedin-carousel` |
+| Schedule, reschedule, attach a document to, or first-comment an approved LinkedIn post | `okhp3-linkedin-publish-ops` (approval-gated; handoff by default) |
 | Draft a reply to an existing LinkedIn conversation | `okhp3-linkedin-comment` |
 | Draft a Facebook profile, Page, or group post | `okhp3-facebook-post` |
 | Draft a Facebook comment or reply | `okhp3-facebook-comment` |
@@ -61,7 +70,9 @@ employer-identifying context, and never turn a draft into a publication action
 without explicit approval.
 
 LinkedIn retains its specialized **angles -> post -> voice -> public-context
-scrub** path. Other platform packages use their native conversation and
+scrub** path, optionally followed by **carousel** for a companion document and,
+once the user approves the final text, **publish-ops** to schedule it and post
+the first comment. Other platform packages use their native conversation and
 destination rules rather than copying LinkedIn formatting wholesale.
 
 YouTube separates video metadata, channel posts, subscriber Communities, and
@@ -92,10 +103,10 @@ Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
 Telegram.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (31)
+## Skills (33)
 
 <!-- FAMILY_INVENTORY_START -->
-*31 skills &nbsp;·&nbsp; inventory last updated: **October 25, 2026 at 13:53 UTC***
+*33 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 14:25 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -108,9 +119,11 @@ Telegram.
 | [okhp3-kofi-post](okhp3-kofi-post/SKILL.md) | Draft a Ko-fi post for a supplied audience and post form. Use when the user needs a public or sup... | 1.1.0 |
 | [okhp3-kofi-supporter-reply](okhp3-kofi-supporter-reply/SKILL.md) | Draft a private, privacy-preserving Ko-fi reply to a supplied supporter message. Use when the use... | 1.1.0 |
 | [okhp3-linkedin-angles](okhp3-linkedin-angles/SKILL.md) | Mine finished work, repository history, or a current conversation for 3 to 5 evidence-linked Link... | 2.3.0 |
-| [okhp3-linkedin-comment](okhp3-linkedin-comment/SKILL.md) | Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to resp... | 1.2.0 |
-| [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts,... | 2.3.0 |
-| [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a... | 2.2.0 |
+| [okhp3-linkedin-carousel](okhp3-linkedin-carousel/SKILL.md) | Plan and build a LinkedIn document carousel (a multi-page PDF shown as swipeable pages) that acco... | 1.0.0 |
+| [okhp3-linkedin-comment](okhp3-linkedin-comment/SKILL.md) | Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to resp... | 1.2.1 |
+| [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts,... | 2.4.0 |
+| [okhp3-linkedin-publish-ops](okhp3-linkedin-publish-ops/SKILL.md) | Get an approved LinkedIn post live: package it with its document and first comment, then schedule... | 1.0.0 |
+| [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a... | 2.3.0 |
 | [okhp3-patreon-comment](okhp3-patreon-comment/SKILL.md) | Draft a Patreon comment or reply from supplied post and access context. Use when the user needs a... | 1.0.0 |
 | [okhp3-patreon-post](okhp3-patreon-post/SKILL.md) | Draft a Patreon post with a supplied access boundary and post form. Use when the user needs publi... | 1.0.0 |
 | [okhp3-pinterest-comment](okhp3-pinterest-comment/SKILL.md) | Draft a Pinterest comment or reply from supplied Pin and conversation context. Use when the user ... | 1.0.0 |
