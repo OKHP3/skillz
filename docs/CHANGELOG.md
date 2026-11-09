@@ -8,9 +8,19 @@
   complete file hashes in `docs/interview-skills-sync-2026-11-09.json`.
 - Treat public-work selection and platform transfer as evidence-map branches;
   compose with existing social drafting skills when explicitly requested.
-- Refresh catalogs to 340 skills across 22 active families. These two packages
+- Refresh catalogs to 341 skills across 22 active families. These two packages
   are draftable source with analytical review; behavioral evaluations, automatic
   activation, measured uplift and an unseen holdout remain not run.
+
+## 2026-11-09: Build in Public proof briefs
+
+- Add draftable `okhp3-build-in-public-proof-brief` 1.0.0. It separates private
+  claim decisions from candidate public facts, keeps revision and evidence
+  limits attached, and withholds unmatched comparisons.
+- Keep angle selection, prose, voice, and publication approval with their
+  existing workflows. Four author-visible Codex development cases yielded
+  16/16 checks with the skill and 12/16 without it. No unseen holdout or general
+  effectiveness claim.
 
 ## 2026-11-09: LinkedIn outreach drafting family
 
