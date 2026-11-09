@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "skill_version": "0.1.0",
+  "evidence_sources": [
+    {
+      "id": "method",
+      "type": "historical design provenance",
+      "description": "Owner-supplied workflow with repeated audit, move, parity and reference verification phases. Public fixtures are synthetic."
+    },
+    {
+      "id": "neighbor-contracts",
+      "type": "current repository source",
+      "description": "Knowledge Operations triage and validation, Notion domain filing, and the AskJamie application status contract were compared."
+    }
+  ],
+  "review_passes": [
+    {
+      "record": "equilibrium-review-2026-11-09.json",
+      "status": "analytical",
+      "decision": "approve-with-limits"
+    }
+  ],
+  "changes": [
+    {
+      "hypothesis": "A bounded cross-surface location and reference contract covers recurring work absent from inbox triage or artifact-only validation.",
+      "rejected_alternatives": [
+        "Duplicate interview matching in a new package.",
+        "Separate version comparison and final report packages before those jobs need independent contracts.",
+        "Place private record work in social posting."
+      ],
+      "refinements": [
+        "Explicit identity, preservation and audience readback.",
+        "Source and destination guards, scope-limited link checks, and dependency holds.",
+        "Common observation evidence and identity-aware historical maps."
+      ],
+      "verification": "Review versioned development cases and record structural and catalog results. No behavioral uplift claim."
+    }
+  ]
+}

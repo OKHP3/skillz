@@ -1,9 +1,9 @@
 ---
 family: knowledge-operations
 display_name: Knowledge Operations
-skill_count: 8
+skill_count: 9
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:14:17Z
+generated_at: 2026-11-09T15:17:54Z
 ---
 
 # knowledge-operations
@@ -22,6 +22,7 @@ In scope:
 - bounded follow-up and activity reconciliation;
 - evidence classification and source-backed research;
 - read-only artifact validation and explicit unknowns;
+- reconciliation of bounded record locations, preserved versions, and affected references;
 - readiness decisions for exploratory efforts;
 - owner-approved promotion packets.
 
@@ -60,6 +61,7 @@ domain-specific validation skills where the artifact requires them.
 | `okhp3-evidence-standard` | Claim tiers and evidence locators | New source retrieval or domain adjudication is needed |
 | `okhp3-source-backed-research` | Source acquisition, freshness, support, recommendations | An artifact must be reviewed or acted upon |
 | `okhp3-artifact-validation` | Proportionate checks and truthful check statuses | Independent adjudication or domain validation is needed |
+| `okhp3-record-location-reconciliation` | Scoped location audit, guarded relocation, and reference verification | A broad migration or an application-status decision is needed |
 | `okhp3-graduation-gate` | Exhaustive evidence-based readiness verdict | A formalization packet is needed |
 | `okhp3-project-promotion` | Draft or cleared packet for owner review | Approved destination implementation begins |
 
@@ -108,10 +110,10 @@ recurring job and a distinct output justify it.
 Portable lifecycle skills for capturing, classifying, researching, reconciling, validating, and promoting information or exploratory work with provenance and owner approval.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (8)
+## Skills (9)
 
 <!-- FAMILY_INVENTORY_START -->
-*8 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:14 UTC***
+*9 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:17 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -121,6 +123,7 @@ Portable lifecycle skills for capturing, classifying, researching, reconciling, 
 | [okhp3-evidence-standard](okhp3-evidence-standard/SKILL.md) | Classify consequential claims as confirmed, inferred, proposal, or unknown and keep those tiers v... | 0.2.0 |
 | [okhp3-graduation-gate](okhp3-graduation-gate/SKILL.md) | Decide whether an active exploratory effort is ready to become formal, should remain active, shou... | 0.2.0 |
 | [okhp3-project-promotion](okhp3-project-promotion/SKILL.md) | Prepare an exploratory effort that cleared the graduation gate for owner-approved formalization. ... | 0.2.0 |
+| [okhp3-record-location-reconciliation](okhp3-record-location-reconciliation/SKILL.md) | Reconcile misplaced record folders, file versions, and references across a local library, synced ... | 0.1.0 |
 | [okhp3-source-backed-research](okhp3-source-backed-research/SKILL.md) | Produce research notes, comparisons, or recommendations with traceable sources, retrieval dates, ... | 0.2.0 |
 | [okhp3-triage-and-file](okhp3-triage-and-file/SKILL.md) | Review one or more project inbox items and assign a recorded lifecycle disposition. Use for inbox... | 0.2.0 |
 <!-- FAMILY_INVENTORY_END -->
