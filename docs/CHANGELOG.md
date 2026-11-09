@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-09: Record location reconciliation
+
+- Add a draftable Knowledge Operations skill for auditing record locations,
+  preserving versions during authorized moves, and verifying affected references.
+- Include a relocation record, 13 synthetic development cases, and an analytical
+  Equilibrium Review. Live host benchmarking and a protected holdout remain open.
+- Refresh the distribution inventory to 340 skills across 22 active families.
+
+
 ## 2026-11-09: Build in Public proof briefs
 
 - Add draftable `okhp3-build-in-public-proof-brief` 1.0.0. It separates private
