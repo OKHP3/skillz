@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-09T14:59:24.765Z",
+  "generatedAt": "2026-11-09T15:13:59.896Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/build-in-public-proof-brief",
-  "sourceCommit": "37586ad",
-  "skillCount": 339,
+  "sourceRef": "agent/record-location-reconciliation-refresh",
+  "sourceCommit": "df88ab1",
+  "skillCount": 340,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 270,
+    "draftable": 271,
     "skeleton": 64,
     "usable": 5
   },
@@ -15,7 +15,7 @@
     "not-run": 169,
     "none": 109,
     "local-checks": 39,
-    "analytical": 7,
+    "analytical": 8,
     "live": 8
   },
   "capabilities": {
