@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 343 distribution skills in 22 active families (catalog audit, 2026-11-09). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 345 distribution skills in 22 active families (catalog audit, 2026-11-09). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -59,7 +59,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 341-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 345-skill distribution inventory |
 
 ## Routing index
 
@@ -168,8 +168,10 @@ community-originated packages and may evolve independently.
 | `okhp3-graduation-gate` | Decide whether an exploratory effort is ready for formalization, should remain active, should archive, or is blocked. |
 | `okhp3-project-promotion` | Prepare an owner-approved formalization packet after a documented graduation decision. |
 | `okhp3-record-location-reconciliation` | Audit bounded local and cloud record locations, preserve versions during authorized moves, and verify affected references. |
+| `okhp3-research-file-renewal` | Revise a cited research or retrieval reference with a source-to-revision crosswalk, topic-fidelity checks, and explicit source and host-test limits. |
 | `okhp3-source-backed-research` | Produce research or recommendations with traceable sources, retrieval dates, and explicit uncertainty. |
 | `okhp3-triage-and-file` | Assign recorded lifecycle dispositions to captured project inbox items without unapproved moves or deletion. |
+| `okhp3-voice-profile-renewal` | Create or periodically renew an evidence-grounded voice, tone, and glossary profile from an authorized writing corpus. |
 
 ### Context-extraction family
 
@@ -439,7 +441,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 343 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 345 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

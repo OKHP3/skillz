@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-11-09T15:18:13.409Z",
+  "generatedAt": "2026-11-09T15:48:30.263Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "agent/record-location-publication",
-  "sourceCommit": "812ce8f",
-  "skillCount": 341,
+  "sourceRef": "codex/voice-research-knowledge-skills",
+  "sourceCommit": "ca5c0724",
+  "skillCount": 345,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 272,
+    "draftable": 276,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 170,
+    "not-run": 172,
     "none": 109,
+    "analytical": 10,
     "local-checks": 39,
-    "analytical": 8,
     "live": 8
   },
   "capabilities": {

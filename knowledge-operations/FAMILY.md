@@ -1,9 +1,9 @@
 ---
 family: knowledge-operations
 display_name: Knowledge Operations
-skill_count: 9
+skill_count: 11
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:17:54Z
+generated_at: 2026-11-09T15:46:27Z
 ---
 
 # knowledge-operations
@@ -21,6 +21,7 @@ In scope:
 - recorded triage and lifecycle disposition;
 - bounded follow-up and activity reconciliation;
 - evidence classification and source-backed research;
+- renewal of sourced research files and evidence-grounded voice profiles;
 - read-only artifact validation and explicit unknowns;
 - reconciliation of bounded record locations, preserved versions, and affected references;
 - readiness decisions for exploratory efforts;
@@ -64,6 +65,8 @@ domain-specific validation skills where the artifact requires them.
 | `okhp3-record-location-reconciliation` | Scoped location audit, guarded relocation, and reference verification | A broad migration or an application-status decision is needed |
 | `okhp3-graduation-gate` | Exhaustive evidence-based readiness verdict | A formalization packet is needed |
 | `okhp3-project-promotion` | Draft or cleared packet for owner review | Approved destination implementation begins |
+| `okhp3-research-file-renewal` | Source-to-revision crosswalk and cited research update | Host-specific retrieval evaluation or approved publication is needed |
+| `okhp3-voice-profile-renewal` | Authorship-aware voice, tone and glossary baseline or update | A platform-specific draft or approved release is needed |
 
 These contracts remain separately invocable. Capture preserves before
 interpretation; triage decides disposition. Evidence classification does not
@@ -110,10 +113,10 @@ recurring job and a distinct output justify it.
 Portable lifecycle skills for capturing, classifying, researching, reconciling, validating, and promoting information or exploratory work with provenance and owner approval.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (9)
+## Skills (11)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:17 UTC***
+*11 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:46 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -124,6 +127,8 @@ Portable lifecycle skills for capturing, classifying, researching, reconciling, 
 | [okhp3-graduation-gate](okhp3-graduation-gate/SKILL.md) | Decide whether an active exploratory effort is ready to become formal, should remain active, shou... | 0.2.0 |
 | [okhp3-project-promotion](okhp3-project-promotion/SKILL.md) | Prepare an exploratory effort that cleared the graduation gate for owner-approved formalization. ... | 0.2.0 |
 | [okhp3-record-location-reconciliation](okhp3-record-location-reconciliation/SKILL.md) | Reconcile misplaced record folders, file versions, and references across a local library, synced ... | 0.1.0 |
+| [okhp3-research-file-renewal](okhp3-research-file-renewal/SKILL.md) | Revise or renew a sourced long-form research and retrieval knowledge file while preserving its or... | 1.0.0 |
 | [okhp3-source-backed-research](okhp3-source-backed-research/SKILL.md) | Produce research notes, comparisons, or recommendations with traceable sources, retrieval dates, ... | 0.2.0 |
 | [okhp3-triage-and-file](okhp3-triage-and-file/SKILL.md) | Review one or more project inbox items and assign a recorded lifecycle disposition. Use for inbox... | 0.2.0 |
+| [okhp3-voice-profile-renewal](okhp3-voice-profile-renewal/SKILL.md) | Create or renew an evidence-grounded voice, tone, and glossary knowledge file from an authorized ... | 1.0.0 |
 <!-- FAMILY_INVENTORY_END -->

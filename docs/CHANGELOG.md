@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-09: Voice and research file renewal candidates
+
+- Add two draftable knowledge-operations skills for authorship-aware voice and
+  glossary renewal and for source-to-revision research updates. Their exposed
+  cases are development designs; live benchmarks, host retrieval tests, and an
+  unseen holdout are not established.
+
 ## 2026-11-09: Interrupted-work and application completion candidates
 
 - Add task resumption and an exact AskJamie job-application-completion mirror.
