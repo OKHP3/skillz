@@ -349,10 +349,10 @@
     "environment_limit": {
       "command": "node artifacts/forge/scripts/test-catalog.mjs",
       "environment": "Windows sandbox",
-      "result": "Sandbox junction creation failed with EPERM. The same fixture passes outside the sandbox. Full direct-suite rerun is running; a duplicate isolated-suite rerun was stopped because the suite creates shared temporary source fixtures.",
+      "result": "Sandbox junction creation failed with EPERM. The same fixture passes outside the sandbox. Old-head full-suite reruns were stopped before main reconciliation; they are not full-suite passes. Final repository CI is the integration gate.",
       "package_failure": false
     },
-    "repository_gate": "The exact integration head must pass the repository's GitHub CI, recorded on PR #238.",
+    "repository_gate": "The exact reconciled integration head must pass the repository's GitHub CI, recorded on PR #238.",
     "ci_url": "https://github.com/OKHP3/skillz/pull/238/checks",
     "checks": [
       {
@@ -408,5 +408,29 @@
     "packages": 3,
     "files_hash_verified": 8,
     "scope": "Installation and file parity only; host activation and workflow behavior are not tested."
+  },
+  "integration_reconciliation": {
+    "date": "2026-11-09",
+    "integrated_main": "059527d005f0657f389620eb9a62f002333de2a8",
+    "merge_commit": "5564af10f9337025ddb990e4da0125e0202d5e54",
+    "reason": "Concurrent portrait/capture package publication changed shared catalog files.",
+    "resolution": "Preserved both routing tables and changelog entries; regenerated catalogs from the combined source; corrected generated repository identity to skillz.",
+    "distribution_skills": 350,
+    "active_families": 22,
+    "reviewed_core_change": "none; all eight package files remain frozen",
+    "evidence_note": "Prior 348-skill validation receipts remain historical checkpoints. Final integration is gated by fresh catalog generation and PR CI on the reconciled head.",
+    "validation": {
+      "catalog_generation": "passed",
+      "source_commit": "5564af10f9337025ddb990e4da0125e0202d5e54",
+      "distribution_skills": 350,
+      "families": 22,
+      "membership": "catalog and manifest exact match",
+      "reviewed_file_hashes": "8/8 unchanged",
+      "generated_contract_bodies": "all three match source",
+      "package_structural_validators": "3/3 passed",
+      "full_index_metadata_check": "passed",
+      "evidence_status": "not-run for all three new skill workflows",
+      "repository_ci": "required on final head before integration"
+    }
   }
 }
