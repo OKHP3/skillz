@@ -54,7 +54,10 @@ before sharing anything, and keep the check cheap for a real recruiter.
    sources you choose, not from the message. If a supplied address resolves to the
    named client's office, record it as one supporting signal, not proof.
 4. **Score:** `likely-legitimate`, `unclear`, or `likely-fake`, citing the signals
-   that drove it. Missing evidence is `unclear`, never a pass.
+   that drove it. Missing evidence is `unclear`, never a pass. A real agency and
+   a real posting do not confirm the sender: `likely-legitimate` also needs the
+   sender confirmed through a channel the agency controls (a number or email from
+   the agency's own site, not from the message).
 5. **Draft the verification reply:** ask for the requisition number or posting
    link, the engagement type with the client, and the hiring manager's team; say a
    résumé follows once the role is verified.

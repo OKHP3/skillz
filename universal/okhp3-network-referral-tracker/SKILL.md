@@ -16,6 +16,7 @@ metadata:
   author: Jamie Hill (OverKill Hill P³)
   version: 1.0.0
   category: career
+  maturity: draftable
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3

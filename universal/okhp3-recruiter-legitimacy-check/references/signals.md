@@ -18,8 +18,11 @@
 
 - Two or more process or client-claim concerns with no independent confirmation:
   `likely-fake`.
-- Confirmed agency, matching posting or requisition, and no sensitive requests:
-  `likely-legitimate`.
+- Confirmed agency, matching posting or requisition, the sender confirmed through
+  an agency-controlled channel (contact details taken from the agency's own site,
+  not from the message), and no sensitive requests: `likely-legitimate`. A real
+  agency and a real posting with an unconfirmed sender stay `unclear`, because an
+  impersonator can copy both.
 - Anything else, including a failed search with no evidence either way: `unclear`.
 
 Terms drift alone does not lower the score; it changes the reply.
