@@ -7,7 +7,8 @@
   separate work completion from an exact archive outcome.
 - Retain ordinary handoff behavior. Synchronize the distribution package and
   repository-local support copy. Add eleven synthetic development cases and
-  record an analytical review. Live runs and a protected holdout remain open.
+  record an [analytical review](closeouts/session-handoff-0.3.0-review.json).
+  Live runs and a protected holdout remain open.
 
 ## 2026-11-09: Voice and research file renewal candidates
 
