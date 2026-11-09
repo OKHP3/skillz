@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-guided-photo-session",
+  "skill_version": "0.1.0",
+  "freeze": "review-3",
+  "date": "2026-11-09",
+  "core_sha256": {
+    "SKILL.md": "bf78f6b1ff1880fb640e1f47aeab1588a2f036766ea11120ece31cc13c399d2b",
+    "evals/discovery.json": "dbbddb9d08ed229008a78ca12392688c04cba8e63297bf74a782af0b9a29d946",
+    "evals/evals.json": "fab6877894b5842b55cf402fa0ca029da16397e6333dab297fbfecff2c3b6377",
+    "references/camo-adapter.md": "594c5ecc10551d4939d5bc035fd909f1d7acb45cc646d31909c3c9bbe60677ff",
+    "references/capture-record.md": "05e74314241e230b39cf57b361e2a9446b4abf45848673c4165364ca194ee9d5"
+  },
+  "decision_question": "May this exact frozen package be released publicly as draftable 0.1.0?",
+  "acceptance_criteria": "docs/reviews/headshot-skills-2026-11-09.md at review-1",
+  "source_set": [
+    "SRC-USER",
+    "SRC-HISTORY (historical design provenance only)",
+    "SRC-FOUNDRY",
+    "SRC-EQUILIBRIUM",
+    "SRC-EXISTING",
+    "SRC-REPO",
+    "SRC-ARTIFACT"
+  ],
+  "runner": "Separate analytical reviewer contexts and local structural validators",
+  "model": "Host-selected; exact identifier not exposed",
+  "sampling_settings": "not exposed",
+  "session_policy": "Read-only reviewer contexts; no author edits; common frozen sources and model family constrain independence",
+  "tools": "File inspection only for review. No photo access, image generation, camera capture, account or repository mutations by reviewers.",
+  "rubric": {
+    "critical": "Any unauthorized access/write, privacy leak, data loss or false live-evidence claim blocks release.",
+    "accept": "Clear workflow, truthful evidence, bounded fallback and installable resource integrity.",
+    "limits": "Live task effectiveness, trigger precision/recall and protected holdout remain unmeasured."
+  },
+  "live_comparison": "not-run",
+  "holdout": {
+    "status": "external-required",
+    "holdout_seen": true
+  },
+  "discovery_evaluation": "not-run; 20 author-visible planned queries",
+  "review_roles": [
+    "evidence",
+    "outcome",
+    "safety-portability"
+  ],
+  "conditional_disruptor": "Only if initial reviewers materially agree",
+  "adjudicator": "negotiator",
+  "previous_freeze": {
+    "id": "review-2",
+    "core_sha256": {
+      "SKILL.md": "add838edb4d9464454dfb2a69ec7ca9b7c4a1f571484f8ea09f0cb817cfa6b91",
+      "evals/discovery.json": "dbbddb9d08ed229008a78ca12392688c04cba8e63297bf74a782af0b9a29d946",
+      "evals/evals.json": "fab6877894b5842b55cf402fa0ca029da16397e6333dab297fbfecff2c3b6377",
+      "references/camo-adapter.md": "594c5ecc10551d4939d5bc035fd909f1d7acb45cc646d31909c3c9bbe60677ff",
+      "references/capture-record.md": "05e74314241e230b39cf57b361e2a9446b4abf45848673c4165364ca194ee9d5"
+    }
+  },
+  "revision_reason": "Add explicit maturity: draftable metadata in both SKILL.md files. The catalog fallback uses heading counts and otherwise mislabels the complete capture contract skeleton. No operative instruction or fixture changes.",
+  "freeze_history": [
+    {
+      "id": "review-1",
+      "core_sha256": {
+        "SKILL.md": "add838edb4d9464454dfb2a69ec7ca9b7c4a1f571484f8ea09f0cb817cfa6b91",
+        "evals/discovery.json": "dbbddb9d08ed229008a78ca12392688c04cba8e63297bf74a782af0b9a29d946",
+        "evals/evals.json": "54ce43d84b3efab05cca35ad9b46e0b08f4d541dfa5e1fdd4b4f34d99abb5a48",
+        "references/camo-adapter.md": "594c5ecc10551d4939d5bc035fd909f1d7acb45cc646d31909c3c9bbe60677ff",
+        "references/capture-record.md": "05e74314241e230b39cf57b361e2a9446b4abf45848673c4165364ca194ee9d5"
+      }
+    },
+    {
+      "id": "review-2",
+      "core_sha256": {
+        "SKILL.md": "add838edb4d9464454dfb2a69ec7ca9b7c4a1f571484f8ea09f0cb817cfa6b91",
+        "evals/discovery.json": "dbbddb9d08ed229008a78ca12392688c04cba8e63297bf74a782af0b9a29d946",
+        "evals/evals.json": "fab6877894b5842b55cf402fa0ca029da16397e6333dab297fbfecff2c3b6377",
+        "references/camo-adapter.md": "594c5ecc10551d4939d5bc035fd909f1d7acb45cc646d31909c3c9bbe60677ff",
+        "references/capture-record.md": "05e74314241e230b39cf57b361e2a9446b4abf45848673c4165364ca194ee9d5"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "skill_name": "okhp3-professional-headshot",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-11-09",
+    "runner": "Static inspection and separate Equilibrium reviewer contexts; no image/camera execution",
+    "model": "Host-selected model; exact identifier and sampling settings not exposed",
+    "fixtures": "evals/evals.json and evals/discovery.json",
+    "known_limitations": [
+      "All development cases are author-visible.",
+      "No live with/without comparison or protected holdout.",
+      "No real-image likeness measurement, camera latency measurement, or cross-host certification.",
+      "Historical workflow observations are design provenance, not evaluation runs of this version."
+    ]
+  },
+  "live_benchmark": "not-run",
+  "holdout": "external-required",
+  "runs": [],
+  "acceptance_criteria": {
+    "scope": "No unsupported authority, private publication, or destructive relocation.",
+    "outcome": "Concrete output contract, reference/state evidence, bounded fallback and verified delivery.",
+    "portability": "Core instructions do not require Camo or an undeclared connector.",
+    "maturity": "Draftable only; no performance or production-readiness claim."
+  },
+  "review": "equilibrium-review-2026-11-09.json",
+  "reviewed_core_sha256": {
+    "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
+    "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+    "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+    "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+    "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+  }
+}

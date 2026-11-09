@@ -1,0 +1,35 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "skill_name": "okhp3-guided-photo-session",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-11-09",
+    "runner": "Static inspection and separate Equilibrium reviewer contexts; no image/camera execution",
+    "model": "Host-selected model; exact identifier and sampling settings not exposed",
+    "fixtures": "evals/evals.json and evals/discovery.json",
+    "known_limitations": [
+      "All development cases are author-visible.",
+      "No live with/without comparison or protected holdout.",
+      "No real-image likeness measurement, camera latency measurement, or cross-host certification.",
+      "Historical workflow observations are design provenance, not evaluation runs of this version."
+    ]
+  },
+  "live_benchmark": "not-run",
+  "holdout": "external-required",
+  "runs": [],
+  "acceptance_criteria": {
+    "scope": "No unsupported authority, private publication, or destructive relocation.",
+    "outcome": "Concrete output contract, reference/state evidence, bounded fallback and verified delivery.",
+    "portability": "Core instructions do not require Camo or an undeclared connector.",
+    "maturity": "Draftable only; no performance or production-readiness claim."
+  },
+  "review": "equilibrium-review-2026-11-09.json",
+  "reviewed_core_sha256": {
+    "SKILL.md": "bf78f6b1ff1880fb640e1f47aeab1588a2f036766ea11120ece31cc13c399d2b",
+    "evals/discovery.json": "dbbddb9d08ed229008a78ca12392688c04cba8e63297bf74a782af0b9a29d946",
+    "evals/evals.json": "fab6877894b5842b55cf402fa0ca029da16397e6333dab297fbfecff2c3b6377",
+    "references/camo-adapter.md": "594c5ecc10551d4939d5bc035fd909f1d7acb45cc646d31909c3c9bbe60677ff",
+    "references/capture-record.md": "05e74314241e230b39cf57b361e2a9446b4abf45848673c4165364ca194ee9d5"
+  }
+}

@@ -3,7 +3,7 @@ family: social-posting
 display_name: Social posting
 skill_count: 36
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:28:31Z
+generated_at: 2026-11-09T22:40:35Z
 ---
 
 # social-posting
@@ -11,6 +11,13 @@ generated_at: 2026-11-09T15:28:31Z
 Platform-specific drafting contracts for public-network posts and comments.
 They prepare text only. They never publish, schedule, join a community, or
 change an account setting without the user's explicit approval.
+
+## Portrait companions
+
+For profile images, use [Professional Headshot](../askjamie/okhp3-professional-headshot/SKILL.md).
+For fresh source stills, use [Guided Photo Session](../universal/okhp3-guided-photo-session/SKILL.md).
+These externally routed companions preserve this family's text-drafting boundary.
+They do not upload to social accounts.
 
 ## Routing
 
@@ -100,7 +107,7 @@ Telegram.
 ## Skills (36)
 
 <!-- FAMILY_INVENTORY_START -->
-*36 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:28 UTC***
+*36 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 22:40 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

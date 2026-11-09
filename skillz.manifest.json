@@ -20,12 +20,12 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 345,
+  "distributionSkillCount": 347,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 276,
+    "draftable": 278,
     "skeleton": 64,
     "usable": 5
   },
@@ -33,7 +33,7 @@
     "historical": 7,
     "not-run": 172,
     "none": 109,
-    "analytical": 10,
+    "analytical": 12,
     "local-checks": 39,
     "live": 8
   },
@@ -66,7 +66,8 @@
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness",
-        "okhp3-job-application-completion"
+        "okhp3-job-application-completion",
+        "okhp3-professional-headshot"
       ]
     },
     {
@@ -494,6 +495,7 @@
         "okhp3-github-mirror-janitor",
         "okhp3-github-notification-maintainer",
         "okhp3-google-gis-client-auth",
+        "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
         "okhp3-overkill-hill-brand",
@@ -529,6 +531,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:48:30.263Z",
+  "countsGeneratedAt": "2026-11-09T22:46:12.386Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
