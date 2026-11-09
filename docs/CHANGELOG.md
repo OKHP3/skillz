@@ -24,10 +24,27 @@
   now says to keep a deliberate standalone line without stacking them.
 - Amend `social-posting/FAMILY.md` with the scoped acting-package exception and
   new routing rows. Record the deferred content-calendar candidate in the
-  backlog. Refresh the catalogs and manifest to 336 skills across 22 families.
+  backlog. Refresh the catalogs and manifest to 340 skills (with the outreach skills) across 22 families.
 - Candidates were selected by an equilibrium review (evidence, outcome, and
   safety reviewers, then a disruptor and negotiator); all reviewers shared one
   model family, so their agreement is correlated evidence.
+
+## 2026-11-09: LinkedIn outreach drafting family
+
+- Add `okhp3-linkedin-connection-note`, `okhp3-linkedin-message`,
+  `okhp3-linkedin-network-plan`, and `okhp3-linkedin-inbox-triage` as draftable
+  portable skills for invite notes, direct messages and counter replies, paced
+  outreach planning with an acceptance feedback loop, and a read-and-draft
+  inbox review.
+- Keep every package draft-only and public-neutral. Sending is a manual action
+  by the account owner. The family contains no browser-send instructions
+  because LinkedIn's terms prohibit bots and automated methods that send
+  messages or add contacts. Inbox triage defaults to sender-pasted text.
+- Record an inline equilibrium review in `social-posting/REVIEW-linkedin-outreach.md`.
+  It is analytical only. No live model benchmark or holdout was run, so evidence
+  stays `not-run` and no validated claim is made.
+- Refresh the distribution catalogs and manifest to 338 skills across 22 active
+  families.
 
 ## 2026-10-25: explicit Notion destination roots
 
