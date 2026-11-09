@@ -49,6 +49,18 @@ also remains active with its approved profile and accessibility requirements.
 See the [archived originals and recovery record](../docs/archive/skill-redundancy-2026-09-19/brands/README.md).
 The README-only old locations are compatibility pointers, not additional skills.
 
+## Career reference and coaching source candidates
+
+Three portable 0.2.0 packages extend Resume Representative: lifetime career
+reference, role master resumes and coaching engagement. The canonical packages
+are maintained in [AskJamie FoundRy](https://github.com/OKHP3/askjamie-foundry/tree/main/capabilities/resume-representative/skills);
+these are exact distribution mirrors. The lifetime view consumes the existing
+canon instead of owning another source/claim ledger.
+
+Their maturity is draftable and review evidence is analytical. No live model
+benchmark, protected holdout or native-host acceptance is claimed. See the
+[synchronization record](../docs/career-library-skills-sync-2026-11-09.json).
+
 <!-- FAMILY_SUMMARY_START -->
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->

@@ -288,6 +288,18 @@ The Glee-fully Foundry skill is the family-level authoring layer. Converted
 consumer Tools and Tool-ettes should be added only after the inventory and
 clustering work described in `glee-fully/README.md`.
 
+### Career reference and coaching companions
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-lifetime-career-reference` | Compile a private lifetime biography, registers and bibliography as a derived view over an existing career canon. |
+| `okhp3-role-master-resumes` | Produce reusable source-linked role-family master resume editions; exact-job tailoring stays separate. |
+| `okhp3-coaching-engagement` | Maintain a private outplacement/coaching intake and meeting record with service, privacy and delivery states. |
+
+These draftable 0.2.0 source packages live in `askjamie/` as exact mirrors of
+AskJamie Resume Representative. Their independent review is analytical; no
+live benchmark, unseen holdout or native-host acceptance is established.
+
 ### Outcome-modeling family
 
 Load `okhp3-outcome-modeling-core` first for any outcome-modeling task, then add the narrowest domain adapter. The family separates calibrated prediction from the economic or constrained decision objective. Its current evaluation status is analytical structural integrity with live performance evidence not run.

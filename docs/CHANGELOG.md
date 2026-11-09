@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-09: Career reference and coaching skill mirrors
+
+- Catalog three 0.2.0 AskJamie source candidates: lifetime career reference,
+  role master resumes and coaching engagement. Preserve exact canonical core
+  hashes and the existing source-intake/career-canon boundary.
+- Include independent analytical review, synthetic development/discovery cases
+  and explicit save/retry/privacy guards. No live benchmark, unseen holdout
+  or native-host acceptance is claimed.
+
 ## 2026-11-09: Voice and research file renewal candidates
 
 - Add two draftable knowledge-operations skills for authorship-aware voice and
