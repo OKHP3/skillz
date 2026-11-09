@@ -31,10 +31,10 @@
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 171,
+    "not-run": 170,
     "none": 109,
     "local-checks": 39,
-    "analytical": 7,
+    "analytical": 8,
     "live": 8
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
@@ -250,15 +250,15 @@
       "name": "knowledge-operations",
       "status": "draftable",
       "skills": [
+        "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
         "okhp3-project-promotion",
-        "okhp3-research-file-renewal",
+        "okhp3-record-location-reconciliation",
         "okhp3-source-backed-research",
-        "okhp3-triage-and-file",
-        "okhp3-voice-profile-renewal"
+        "okhp3-triage-and-file"
       ]
     },
     {
@@ -525,6 +525,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:20:03.081Z",
+  "countsGeneratedAt": "2026-11-09T15:18:13.409Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

@@ -7,6 +7,24 @@
   cases are development designs; live benchmarks, host retrieval tests, and an
   unseen holdout are not established.
 
+## 2026-11-09: Record location reconciliation
+
+- Add a draftable Knowledge Operations skill for auditing record locations,
+  preserving versions during authorized moves, and verifying affected references.
+- Include a relocation record, 13 synthetic development cases, and an analytical
+  Equilibrium Review. Live host benchmarking and a protected holdout remain open.
+- Refresh the distribution inventory to 341 skills across 22 active families.
+
+
+## 2026-11-09: follow-up and activity reconciliation
+
+- Add `okhp3-activity-reconciliation` 0.1.0 to Knowledge Operations for
+  scoped response-candidate review and bounded activity-log refresh.
+- Include exact event matching, guarded tracker updates, optional private
+  evidence filing, and synthetic development cases. Catalog as draftable with
+  analytical review. A live benchmark and unseen release holdout remain open.
+- Refresh the distribution catalog to 340 skills across 22 active families.
+
 ## 2026-11-09: Build in Public proof briefs
 
 - Add draftable `okhp3-build-in-public-proof-brief` 1.0.0. It separates private
