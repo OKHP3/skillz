@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-11-09: LinkedIn message 1.1.0
+
+- Merge PR #222 into `okhp3-linkedin-message` from PR #220 as 1.1.0. Keep the
+  1.0.0 role tier, length matching, one-ask rule, recruiter and scam
+  verification, and message gate. Add relationship temperature (`active`,
+  `dormant`, `distant`, `cold`), recipient-fact sourcing with a stale-source
+  flag, a recipient-conflict check, attachments by temperature, and
+  multi-recipient sequencing with true-on-arrival and forwarding checks.
+  Extend the gate with clinical-metaphor and traveling-urgency items and add
+  six development cases (eleven total).
+- Evidence remains analytical and not-run. The merged package has not been
+  re-reviewed by independent roles.
+
 ## 2026-11-09: Record location reconciliation
 
 - Add a draftable Knowledge Operations skill for auditing record locations,

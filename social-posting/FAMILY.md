@@ -3,7 +3,7 @@ family: social-posting
 display_name: Social posting
 skill_count: 36
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T14:59:05Z
+generated_at: 2026-11-09T15:25:55Z
 ---
 
 # social-posting
@@ -100,7 +100,7 @@ Telegram.
 ## Skills (36)
 
 <!-- FAMILY_INVENTORY_START -->
-*36 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 14:59 UTC***
+*36 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:25 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -117,7 +117,7 @@ Telegram.
 | [okhp3-linkedin-comment](okhp3-linkedin-comment/SKILL.md) | Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to resp... | 1.2.0 |
 | [okhp3-linkedin-connection-note](okhp3-linkedin-connection-note/SKILL.md) | Draft one personalized LinkedIn connection request note per recipient, within the sender's charac... | 1.0.0 |
 | [okhp3-linkedin-inbox-triage](okhp3-linkedin-inbox-triage/SKILL.md) | Check a LinkedIn inbox for new replies from a supplied outreach list, classify each sender, and p... | 1.0.0 |
-| [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.0.0 |
+| [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.1.0 |
 | [okhp3-linkedin-network-plan](okhp3-linkedin-network-plan/SKILL.md) | Plan a LinkedIn network expansion: audit followed-but-unconnected accounts, segment and tier targ... | 1.0.0 |
 | [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts,... | 2.3.0 |
 | [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a... | 2.2.0 |
