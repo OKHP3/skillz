@@ -1,9 +1,9 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 35
+skill_count: 36
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T14:21:26Z
+generated_at: 2026-11-09T14:59:05Z
 ---
 
 # social-posting
@@ -16,6 +16,7 @@ change an account setting without the user's explicit approval.
 
 | Need | Skill |
 |---|---|
+| Decide what public progress claims mixed build and test receipts support | `okhp3-build-in-public-proof-brief` |
 | Mine finished work into LinkedIn-ready ideas | `okhp3-linkedin-angles` |
 | Draft or polish a LinkedIn post | `okhp3-linkedin-post` then `okhp3-linkedin-voice` |
 | Draft a reply to an existing LinkedIn conversation | `okhp3-linkedin-comment` |
@@ -96,13 +97,14 @@ Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
 Telegram.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (35)
+## Skills (36)
 
 <!-- FAMILY_INVENTORY_START -->
-*35 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 14:21 UTC***
+*36 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 14:59 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
+| [okhp3-build-in-public-proof-brief](okhp3-build-in-public-proof-brief/SKILL.md) | Prepare a Build in Public proof brief from supplied build, test, and release receipts before draf... | 1.0.0 |
 | [okhp3-discord-comment](okhp3-discord-comment/SKILL.md) | Draft a Discord reply to a supplied message, thread, or forum conversation. Use when the user wan... | 1.2.0 |
 | [okhp3-discord-post](okhp3-discord-post/SKILL.md) | Draft a new Discord message, forum post, or thread opener for a named server destination. Use whe... | 1.2.0 |
 | [okhp3-facebook-comment](okhp3-facebook-comment/SKILL.md) | Draft a Facebook comment or reply to a supplied post and conversation. Use when the user wants to... | 1.2.0 |

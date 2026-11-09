@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-10-25T17:18:14.591Z",
+  "generatedAt": "2026-11-09T14:59:24.765Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "repair/notion-approved-domain-roots",
-  "sourceCommit": "c470067",
-  "skillCount": 334,
+  "sourceRef": "codex/build-in-public-proof-brief",
+  "sourceCommit": "37586ad",
+  "skillCount": 339,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 265,
+    "draftable": 270,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 165,
+    "not-run": 169,
     "none": 109,
     "local-checks": 39,
     "analytical": 7,
-    "live": 7
+    "live": 8
   },
   "capabilities": {
     "familyOrientationPages": true,
