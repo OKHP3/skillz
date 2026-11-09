@@ -20,12 +20,12 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 338,
+  "distributionSkillCount": 340,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 269,
+    "draftable": 271,
     "skeleton": 64,
     "usable": 5
   },
@@ -33,8 +33,8 @@
     "historical": 7,
     "not-run": 169,
     "none": 109,
+    "analytical": 9,
     "local-checks": 39,
-    "analytical": 7,
     "live": 7
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
@@ -65,7 +65,8 @@
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
-        "okhp3-askjamie-gpt-readiness"
+        "okhp3-askjamie-gpt-readiness",
+        "okhp3-job-application-completion"
       ]
     },
     {
@@ -500,6 +501,7 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
+        "okhp3-task-resumption",
         "okhp3-vite-github-pages"
       ]
     }
@@ -522,6 +524,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-10-25T17:18:14.591Z",
+  "countsGeneratedAt": "2026-11-09T15:09:04.492Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-10-25T17:18:14.591Z",
+  "generatedAt": "2026-11-09T15:09:04.492Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "repair/notion-approved-domain-roots",
-  "sourceCommit": "c470067",
-  "skillCount": 334,
+  "sourceRef": "codex/thread-application-skills-20261109",
+  "sourceCommit": "68b3468",
+  "skillCount": 340,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 265,
+    "draftable": 271,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 165,
+    "not-run": 169,
     "none": 109,
+    "analytical": 9,
     "local-checks": 39,
-    "analytical": 7,
     "live": 7
   },
   "capabilities": {

@@ -1,0 +1,106 @@
+{
+  "role": "evidence",
+  "decision": "defer-for-evidence",
+  "confidence": "medium",
+  "review_date": "2026-11-09",
+  "artifact_version": "0.1.0",
+  "freeze_record": "skill-work-review/freeze-initial.json",
+  "question": "Are the two frozen skills ready for publication as limited candidates with truthful provenance, evidence tiers, scope and source boundaries?",
+  "evaluation_type": "Independent analytical review plus local hash, JSON and resource checks; no behavioral execution or external action.",
+  "independence": {
+    "reviewer": "Codex, GPT-6 family; exact model variant not exposed to this reviewer",
+    "role_prompt": "Parent evidence-role delegation and okhp3-equilibrium-review 1.0.1",
+    "context": "Separate reviewer context; no peer review outputs consulted; no candidate edits made",
+    "tools": "Read-only shell/Python inspection, followed by writing this role result only",
+    "limitations": [
+      "Shared model family and source set may correlate reviewer judgments.",
+      "The integrator authored the architecture and sanitized historical summary; those are not independent corroboration of private events.",
+      "The private parent conversation and underlying employer receipts were not supplied or inspected.",
+      "No live host, ATS, browser, upload, installation, discovery or protected holdout execution was performed."
+    ]
+  },
+  "material_findings": [
+    {
+      "id": "EV-F01",
+      "claim": "The source conversation included one confirmed application and a second role awaiting authentication after an archived-thread restart request.",
+      "status": "attributed-historical-input; underlying facts unknown to this reviewer",
+      "locations": [
+        {"path": "skill-work-review/architecture.md", "lines": "38-41"}
+      ],
+      "evidence_ids": ["SRC-01", "SRC-09"],
+      "consequence": "Calling this independently verified history, or evidence that version 0.1.0 completed real applications, would overstate the available provenance. The frozen skills make neither claim.",
+      "next_test": "No private-source disclosure is needed for a design-only candidate. Preserve this attribution in the release record; independently inspect authorized redacted receipts only if making historical outcome claims."
+    },
+    {
+      "id": "EV-F02",
+      "claim": "The workflows implement explicit design decisions rather than treating historical success as proof.",
+      "status": "supported-as-design; behavioral effectiveness unverified",
+      "locations": [
+        {"path": "skill-work-review/architecture.md", "lines": "43-50"},
+        {"path": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md", "lines": "31-72"},
+        {"path": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "lines": "31-99"}
+      ],
+      "evidence_ids": ["SRC-01", "SRC-03", "SRC-06"],
+      "consequence": "Exact identity, prior-result preservation, uncertain-write inspection, scoped authority and partial-progress reporting are traceable requirements. They remain proposals for agent behavior until executed.",
+      "next_test": "Execute R1-R6 and A1-A6 against the frozen files and retain actual outputs and independent grades for all 38 expectations."
+    },
+    {
+      "id": "EV-F03",
+      "claim": "The required critical synthetic expectations have been satisfied for this version.",
+      "status": "missing-evidence; release gate unresolved",
+      "locations": [
+        {"path": "skill-work-review/architecture.md", "lines": "59-64"},
+        {"path": "OKHP3/skillz/universal/okhp3-task-resumption/evals/evals.json", "lines": "2-9"},
+        {"path": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/evals.json", "lines": "2-9"},
+        {"path": "OKHP3/skillz/universal/okhp3-task-resumption/evals/trigger-cases.json", "lines": "2-5"},
+        {"path": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/trigger-cases.json", "lines": "2-5"}
+      ],
+      "evidence_ids": ["SRC-01", "SRC-05", "SRC-08", "CHK-02"],
+      "consequence": "The cases are accurately labeled design-ready or not-run, but a design cannot satisfy the stated execution gate. No version-bound run or grading receipts were in this review's frozen source set.",
+      "next_test": "Attach version/hash-bound executor outputs and expectation-level grading; distinguish model fixture reasoning from tool execution. Resolve every critical failure before adjudication."
+    },
+    {
+      "id": "EV-F04",
+      "claim": "The packages preserve private-source and host-capability boundaries and accurately limit evaluation claims.",
+      "status": "supported within the eight inspected files",
+      "locations": [
+        {"path": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md", "lines": "25-27,79-86"},
+        {"path": "OKHP3/skillz/universal/okhp3-task-resumption/references/continuation-record.md", "lines": "3-4,45-46"},
+        {"path": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "lines": "25-27,101-115"},
+        {"path": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/references/application-record.md", "lines": "3-5"}
+      ],
+      "evidence_ids": ["SRC-03", "SRC-04", "SRC-05", "SRC-06", "SRC-07", "SRC-08"],
+      "consequence": "Manual inspection found generic or synthetic identities and public author branding, with no private employer, candidate, thread, application, credential or storage identifier. Supported tools are prerequisites, not asserted available capabilities. These observations do not certify a future expanded publication diff.",
+      "next_test": "Inspect the final staged publication diff, metadata and new receipts for private-source leakage; keep fixture, discovery, host and outcome evidence distinct."
+    }
+  ],
+  "evidence_catalog": [
+    {"id": "SRC-01", "source": "skill-work-review/architecture.md", "tier": "confirmed artifact; design decisions and attributed private history"},
+    {"id": "SRC-02", "source": "skill-work-review/freeze-initial.json", "tier": "confirmed freeze record"},
+    {"id": "SRC-03", "source": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md", "tier": "confirmed frozen contract"},
+    {"id": "SRC-04", "source": "OKHP3/skillz/universal/okhp3-task-resumption/references/continuation-record.md", "tier": "confirmed frozen template and synthetic example"},
+    {"id": "SRC-05", "source": "OKHP3/skillz/universal/okhp3-task-resumption/evals/", "tier": "confirmed frozen development and trigger designs"},
+    {"id": "SRC-06", "source": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "tier": "confirmed frozen contract"},
+    {"id": "SRC-07", "source": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/references/application-record.md", "tier": "confirmed frozen template and synthetic example"},
+    {"id": "SRC-08", "source": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/", "tier": "confirmed frozen development and trigger designs"},
+    {"id": "SRC-09", "source": "Integrator clarification in reviewer session, 2026-11-09", "tier": "attributed clarification", "detail": "No additional public genesis exists. The private conversation was deliberately withheld; its architecture summary is historical input and not independently confirmed."},
+    {"id": "CHK-01", "source": "Local SHA-256 comparison, 2026-11-09", "tier": "confirmed", "result": "All eight files match SRC-02."},
+    {"id": "CHK-02", "source": "Local Python parsing/resource inspection, 2026-11-09", "tier": "confirmed", "result": "Four JSON files parse. Six SKILL.md relative resource links exist. Recovery has 6 development cases/18 expectations; application has 6/20. Each trigger design has 20 cases, split 10 positive and 10 negative."}
+  ],
+  "evidence_ids": ["SRC-01", "SRC-02", "SRC-03", "SRC-04", "SRC-05", "SRC-06", "SRC-07", "SRC-08", "SRC-09", "CHK-01", "CHK-02"],
+  "assumptions": [
+    "Only the eight files in freeze-initial.json are the candidate packages being judged.",
+    "Generic names, SYN identifiers and example.invalid domains are synthetic as declared by the integrator.",
+    "Public author identity and repository URLs are intentional branding, not private candidate identifiers.",
+    "The final integrator will separately verify mirror equality, strict package validation, PR/check completion and actual publication."
+  ],
+  "release_conditions": [
+    "Supply and adjudicate version/hash-bound execution and grading evidence for all 38 critical synthetic expectations. This is the decisive open evidence gate.",
+    "Retain draftable/candidate status and explicit limits: visible development cases, no unseen holdout, no live host/ATS certification, no measured uplift and no automatic activation claim.",
+    "Preserve attributed historical genesis; do not describe the private source events as independently verified or performed by these packaged skills.",
+    "Complete the separately owned final privacy, metadata, mirror and repository publication checks against the actual release diff."
+  ],
+  "release_owner": "Task integrator and repository owner",
+  "expiry": "This review applies only to the eight hashes in freeze-initial.json; any material artifact, source, criterion or release-claim change requires reassessment.",
+  "notes": "No content redesign is required by this evidence review. Candidate-only publication is supportable after the narrow execution gate and final integration checks; this snapshot is not yet evidence-complete. No external action was attempted, denied or left uncertain."
+}

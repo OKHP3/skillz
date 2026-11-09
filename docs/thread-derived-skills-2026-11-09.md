@@ -42,3 +42,16 @@ unseen release holdout and live host integration remain outstanding. A paired
 synthetic exercise can expose decision failures, but its small visible set cannot
 prove general uplift. Exact evidence and synchronization records accompany the
 packages and release documentation.
+
+The paired 0.2.0 exercise produced 15 decision records per configuration. A
+separate grader, blinded to configuration identity, passed 47/47 expectations
+with the skills and 47/47 without them. No uplift was demonstrated on this sample.
+The package fixture records retain responses, strict grades, core hashes and
+execution limits. The aggregate benchmark stays analytical to avoid implying
+that any live portal action was exercised.
+
+Local release checks passed: package structural checks, AskJamie manifest and
+registry validation, 174 AskJamie repository tests, and 51 catalog tests after
+incorporating concurrent changes. GitHub PR checks and post-publication readback
+are separate gates. The independent review record is preserved under
+`docs/skill-review-2026-11-09/`.

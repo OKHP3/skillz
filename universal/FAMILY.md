@@ -3,7 +3,7 @@ family: universal
 display_name: Universal
 skill_count: 21
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:00:12Z
+generated_at: 2026-11-09T15:07:47Z
 ---
 
 # universal
@@ -15,7 +15,7 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 ## Skills (21)
 
 <!-- FAMILY_INVENTORY_START -->
-*21 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:00 UTC***
+*21 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:07 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
