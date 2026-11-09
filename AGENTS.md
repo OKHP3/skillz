@@ -129,6 +129,7 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | Skill | Trigger |
 |---|---|
 | `okhp3-recurring-task-capture` | The user says they keep doing something, it is the second or third repetition, or asks to make a workflow into a skill. |
+| `okhp3-ai-workforce-bench-gate` | Review AI workforce redesign for feeder-role erosion and issue a Pipeline Preservation Test and Bench Strength Gate decision. |
 | `okhp3-process-intake-and-scope` | Document or scope a process from scratch, including boundaries, inputs, outputs, and business rules. |
 | `okhp3-as-is-process-capture` | Capture and normalize the current running process before redesign or gap analysis. |
 | `okhp3-elicitation-interviews` | Prepare interviews, workshops, question plans, or targeted follow-up to fill process gaps. |
