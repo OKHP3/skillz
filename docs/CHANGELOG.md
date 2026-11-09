@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-09: career outreach skills
+
+- Add `okhp3-linkedin-message` and `okhp3-linkedin-browser-ops` to
+  `social-posting/`, and `okhp3-career-addendum`,
+  `okhp3-recruiter-legitimacy-check`, and `okhp3-network-referral-tracker` to
+  `universal/`. Each is a public-neutral, draftable package with synthetic
+  evaluations; evidence status is not-run, with no live benchmark or unseen
+  holdout recorded.
+- Refresh the distribution catalogs and manifest to 339 skills across 22
+  active families.
+
 ## 2026-10-25: explicit Notion destination roots
 
 - Revise domain filing to 1.1.0: distinguish the canonical discovery root from

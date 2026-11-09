@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-10-25T17:18:14.591Z",
+  "generatedAt": "2026-11-09T14:34:43.386Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "repair/notion-approved-domain-roots",
-  "sourceCommit": "c470067",
-  "skillCount": 334,
+  "sourceRef": "add-career-outreach-skills",
+  "sourceCommit": "7df152fe",
+  "skillCount": 339,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 265,
+    "draftable": 270,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 165,
+    "not-run": 170,
     "none": 109,
     "local-checks": 39,
     "analytical": 7,

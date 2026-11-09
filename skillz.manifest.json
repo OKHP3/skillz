@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 334,
+  "distributionSkillCount": 339,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 265,
+    "draftable": 270,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 165,
+    "not-run": 170,
     "none": 109,
     "local-checks": 39,
     "analytical": 7,
@@ -429,7 +429,9 @@
         "okhp3-kofi-post",
         "okhp3-kofi-supporter-reply",
         "okhp3-linkedin-angles",
+        "okhp3-linkedin-browser-ops",
         "okhp3-linkedin-comment",
+        "okhp3-linkedin-message",
         "okhp3-linkedin-post",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
@@ -478,6 +480,7 @@
       "status": "draftable",
       "skills": [
         "okhp3-brand-style-registry",
+        "okhp3-career-addendum",
         "okhp3-cloudflare-worker-api-proxy",
         "okhp3-database-cartographer",
         "okhp3-equilibrium-review",
@@ -486,8 +489,10 @@
         "okhp3-google-gis-client-auth",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
+        "okhp3-network-referral-tracker",
         "okhp3-overkill-hill-brand",
         "okhp3-project-compass",
+        "okhp3-recruiter-legitimacy-check",
         "okhp3-repository-creator",
         "okhp3-repository-janitor",
         "okhp3-repository-organizer",
@@ -518,6 +523,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-10-25T17:18:14.591Z",
+  "countsGeneratedAt": "2026-11-09T14:34:43.386Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

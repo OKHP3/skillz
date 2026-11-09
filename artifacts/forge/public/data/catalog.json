@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-25T17:18:14.591Z",
+  "generatedAt": "2026-11-09T14:34:43.386Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "repair/notion-approved-domain-roots",
-  "sourceCommit": "c470067",
-  "skillCount": 334,
+  "sourceRef": "add-career-outreach-skills",
+  "sourceCommit": "7df152fe",
+  "skillCount": 339,
   "familyCount": 22,
   "families": [
     {
@@ -847,7 +847,7 @@
     {
       "name": "social-posting",
       "displayName": "Social posting",
-      "skillCount": 31,
+      "skillCount": 33,
       "skills": [
         "okhp3-discord-comment",
         "okhp3-discord-post",
@@ -858,7 +858,9 @@
         "okhp3-kofi-post",
         "okhp3-kofi-supporter-reply",
         "okhp3-linkedin-angles",
+        "okhp3-linkedin-browser-ops",
         "okhp3-linkedin-comment",
+        "okhp3-linkedin-message",
         "okhp3-linkedin-post",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
@@ -899,7 +901,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-discord-comment pairs with okhp3-discord-post; okhp3-facebook-post pairs with okhp3-facebook-comment; okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-comment pairs with okhp3-linkedin-post; okhp3-linkedin-comment pairs with okhp3-linkedin-voice",
+          "value": "okhp3-discord-comment pairs with okhp3-discord-post; okhp3-facebook-post pairs with okhp3-facebook-comment; okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-browser-ops pairs with okhp3-linkedin-message; okhp3-linkedin-browser-ops pairs with okhp3-linkedin-comment",
           "source": "generated"
         }
       }
@@ -951,9 +953,10 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 20,
+      "skillCount": 23,
       "skills": [
         "okhp3-brand-style-registry",
+        "okhp3-career-addendum",
         "okhp3-cloudflare-worker-api-proxy",
         "okhp3-database-cartographer",
         "okhp3-equilibrium-review",
@@ -962,8 +965,10 @@
         "okhp3-google-gis-client-auth",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
+        "okhp3-network-referral-tracker",
         "okhp3-overkill-hill-brand",
         "okhp3-project-compass",
+        "okhp3-recruiter-legitimacy-check",
         "okhp3-repository-creator",
         "okhp3-repository-janitor",
         "okhp3-repository-organizer",
@@ -983,10 +988,10 @@
         "commonOutcomes": {
           "value": [
             "developer-tooling",
+            "career",
             "universal",
             "evaluation-and-governance",
-            "repository-maintenance",
-            "knowledge-operations"
+            "repository-maintenance"
           ],
           "source": "generated"
         },
@@ -1040,7 +1045,7 @@
       ],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-cross-tradition-compare/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-cross-tradition-compare/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-25T23:21:08-05:00",
       "packageMetadata": {
@@ -1103,7 +1108,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-tradition-observance-calendar/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-tradition-observance-calendar/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-25T23:21:08-05:00",
       "packageMetadata": {
@@ -1166,7 +1171,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-tradition-reference/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-tradition-reference/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-25T23:21:08-05:00",
       "packageMetadata": {
@@ -1229,7 +1234,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/abrahamic/okhp3-verse-lookup/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/abrahamic/okhp3-verse-lookup/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-25T23:21:08-05:00",
       "packageMetadata": {
@@ -1292,7 +1297,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-builder/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -1357,7 +1362,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-custom-gpt-readiness/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-custom-gpt-readiness/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-20T12:30:28-05:00",
       "packageMetadata": {
@@ -1422,7 +1427,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-gpt-skill-conversion-plan/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-20T12:30:28-05:00",
       "packageMetadata": {
@@ -1485,7 +1490,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-brand/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-brand/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-25T10:07:58-05:00",
       "packageMetadata": {
@@ -1613,7 +1618,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-gpt-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-gpt-builder/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -1678,7 +1683,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-askjamie-gpt-readiness/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-askjamie-gpt-readiness/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-20T12:30:28-05:00",
       "packageMetadata": {
@@ -2004,7 +2009,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/ai-social-media-content/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/ai-social-media-content/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -2326,7 +2331,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/architecture-decision-records/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/architecture-decision-records/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -2524,7 +2529,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/brand-guidelines/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/brand-guidelines/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -4926,7 +4931,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/find-skills/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/find-skills/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -5052,7 +5057,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/frontend-design/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/frontend-design/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -5763,7 +5768,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/mcp-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/mcp-builder/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -5826,7 +5831,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/mermaid-diagrams/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/mermaid-diagrams/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -6747,7 +6752,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/skill-creator/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/skill-creator/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -7591,7 +7596,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/vercel-react-best-practices/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/vercel-react-best-practices/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -7654,7 +7659,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/vercel-react-native-skills/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/vercel-react-native-skills/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -7717,7 +7722,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/web-artifacts-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/web-artifacts-builder/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -7780,7 +7785,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/community/web-design-guidelines/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/community/web-design-guidelines/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -8371,7 +8376,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-copilot-m365/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-copilot-m365/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-21T14:53:32-05:00",
       "packageMetadata": {
@@ -8434,7 +8439,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-gemini/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-gemini/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-21T14:53:32-05:00",
       "packageMetadata": {
@@ -8560,7 +8565,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-mistral-vibe/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-mistral-vibe/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-21T14:53:32-05:00",
       "packageMetadata": {
@@ -8623,7 +8628,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-thread-extract-perplexity/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-thread-extract-perplexity/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-21T14:53:32-05:00",
       "packageMetadata": {
@@ -11543,7 +11548,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/glee-fully-repo-standardizer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/glee-fully-repo-standardizer/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-01T08:08:58-05:00",
       "packageMetadata": {
@@ -11606,7 +11611,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-brand/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-brand/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-25T10:07:58-05:00",
       "packageMetadata": {
@@ -11671,7 +11676,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-foundry/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-foundry/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-30T00:16:26-05:00",
       "packageMetadata": {
@@ -11734,7 +11739,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-gpt-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-gpt-builder/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -11799,7 +11804,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/glee-fully/okhp3-glee-fully-gpt-readiness/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/glee-fully/okhp3-glee-fully-gpt-readiness/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-20T12:30:28-05:00",
       "packageMetadata": {
@@ -12727,7 +12732,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/lifetrkr/okhp3-celestial-data/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/lifetrkr/okhp3-celestial-data/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T15:56:05-05:00",
       "packageMetadata": {
@@ -12788,7 +12793,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/lifetrkr/okhp3-daily-oracle/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/lifetrkr/okhp3-daily-oracle/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T15:56:05-05:00",
       "packageMetadata": {
@@ -12851,9 +12856,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-architecture/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -12916,9 +12921,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-bpmn/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -12981,9 +12986,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-core/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -13046,9 +13051,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-data/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-data/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -13115,9 +13120,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-governance/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-governance/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-24T03:05:42Z",
+      "createdAt": "2026-06-24T03:05:42+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "developer-tooling",
@@ -13182,7 +13187,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-publish/SKILL.md",
       "lastModified": "2026-10-21T23:45:23-05:00",
       "commitSha": "69a33f95",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -13247,9 +13252,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-repair/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-repair/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-20T05:54:56Z",
+      "createdAt": "2026-06-20T05:54:56+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -13328,7 +13333,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-theme-builder/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-theme-builder/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T23:13:05-05:00",
       "packageMetadata": {
@@ -13395,9 +13400,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/mermaid/okhp3-mermaid-update/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/mermaid/okhp3-mermaid-update/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-20T05:54:56Z",
+      "createdAt": "2026-06-20T05:54:56+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P3)",
         "category": "diagramming",
@@ -13999,8 +14004,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/notion/okhp3-notion-domain-filing/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/notion/okhp3-notion-domain-filing/SKILL.md",
-      "lastModified": "2026-10-25T09:10:38-05:00",
-      "commitSha": "c4700676",
+      "lastModified": "2026-10-25T12:19:48-05:00",
+      "commitSha": "a07e1709",
       "createdAt": "2026-10-25T09:10:38-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -15093,7 +15098,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-nfl-fantasy-picks/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-28T23:46:34-05:00",
       "packageMetadata": {
@@ -15168,7 +15173,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-core/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-28T23:46:34-05:00",
       "packageMetadata": {
@@ -15241,7 +15246,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-markets/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-28T23:46:34-05:00",
       "packageMetadata": {
@@ -15325,7 +15330,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-sales/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-28T23:46:34-05:00",
       "packageMetadata": {
@@ -15408,7 +15413,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/outcome-modeling/okhp3-outcome-modeling-sports/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-28T23:46:34-05:00",
       "packageMetadata": {
@@ -16420,7 +16425,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-recurring-task-capture/SKILL.md",
       "lastModified": "2026-08-28T23:44:26-05:00",
       "commitSha": "967052e2",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -18356,7 +18361,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/refolddec/okhp3-refolddec-core/SKILL.md",
       "lastModified": "2026-08-28T23:44:51-05:00",
       "commitSha": "0a171756",
-      "createdAt": "2026-06-20T05:54:56Z",
+      "createdAt": "2026-06-20T05:54:56+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "meta-tooling",
@@ -18419,9 +18424,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-build-in-public/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-build-in-public/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-08-11T14:42:56Z",
+      "createdAt": "2026-08-11T14:42:56+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "developer-tooling",
@@ -18480,9 +18485,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-canvas-board/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-canvas-board/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-08-11T14:42:56Z",
+      "createdAt": "2026-08-11T14:42:56+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "developer-tooling",
@@ -18541,7 +18546,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-contest-score-keeper/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-contest-score-keeper/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-12T15:07:56-05:00",
       "packageMetadata": {
@@ -18609,9 +18614,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-design-pipeline/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-design-pipeline/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-08-11T14:42:56Z",
+      "createdAt": "2026-08-11T14:42:56+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "developer-tooling",
@@ -18670,9 +18675,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-free-mode-autonomy/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-free-mode-autonomy/SKILL.md",
-      "lastModified": "2026-09-04T12:55:34Z",
+      "lastModified": "2026-09-04T12:55:34+00:00",
       "commitSha": "5abb9955",
-      "createdAt": "2026-09-03T02:06:46Z",
+      "createdAt": "2026-09-03T02:06:46+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "developer-tooling",
@@ -18738,7 +18743,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-github-sync/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-github-sync/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-22T09:52:13-05:00",
       "packageMetadata": {
@@ -18801,9 +18806,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/replit/okhp3-replit-multi-artifact/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-multi-artifact/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-08-11T14:42:56Z",
+      "createdAt": "2026-08-11T14:42:56+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "developer-tooling",
@@ -18874,7 +18879,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/replit/okhp3-replit-repository-janitor/SKILL.md",
       "lastModified": "2026-09-19T18:09:33-05:00",
       "commitSha": "ff61152e",
-      "createdAt": "2026-08-11T15:23:45Z",
+      "createdAt": "2026-08-11T15:23:45+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "developer-tooling",
@@ -19007,7 +19012,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-discord-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-discord-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
@@ -19070,7 +19075,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-discord-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-discord-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
@@ -19133,7 +19138,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-facebook-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-facebook-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
@@ -19198,7 +19203,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-facebook-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-facebook-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
@@ -19261,7 +19266,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-instagram-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-instagram-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -19324,7 +19329,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-instagram-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-instagram-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -19387,7 +19392,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-kofi-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-kofi-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -19450,7 +19455,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-kofi-supporter-reply/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-kofi-supporter-reply/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -19518,7 +19523,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-angles/SKILL.md",
       "lastModified": "2026-08-28T23:44:51-05:00",
       "commitSha": "0a171756",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -19533,6 +19538,73 @@
         "status": "not-run",
         "evaluatedSkillVersion": "2.3.0",
         "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-linkedin-browser-ops",
+      "displayName": "LinkedIn Browser Ops",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-browser-ops",
+      "path": "social-posting/okhp3-linkedin-browser-ops/SKILL.md",
+      "description": "Carry out already-approved LinkedIn actions through a browser pane: send a direct message, post a comment or reply, send a connection request with a note, edit a posted comment, or update a profile or company-page field, then verify the result on the page. Use after a draft has explicit approval, when the action must land correctly with the right recipient, text, and paragraph breaks. It is the mechanics layer and never decides what to say. Do not use to draft, to automate engagement, or without per-item approval.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-message",
+        "okhp3-linkedin-comment",
+        "okhp3-linkedin-post"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-browser-ops/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-browser-ops/SKILL.md",
+      "lastModified": "2026-11-09T08:24:23-06:00",
+      "commitSha": "265de305",
+      "createdAt": "2026-11-09T08:24:23-06:00",
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Approval-gated execution and verification of LinkedIn messaging, comment, connection, and field-edit actions in a browser pane.",
+        "outOfScope": "Drafting text, entering credentials, bulk or automated engagement, account or notification settings, file-picker uploads, and deleting content.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 2,
@@ -19582,7 +19654,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
@@ -19598,6 +19670,74 @@
       "evidence": {
         "status": "not-run",
         "evaluatedSkillVersion": "1.2.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-linkedin-message",
+      "displayName": "LinkedIn Message",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-message",
+      "path": "social-posting/okhp3-linkedin-message/SKILL.md",
+      "description": "Draft a LinkedIn direct message, InMail, connection-request note, post-connection thank-you, or reply in an existing thread from raw dictation or rough notes. Use when the user wants to message a specific person on LinkedIn, answer a recruiter or contact, follow up after a call, or turn spoken thoughts into a send-ready message. It reads the recipient and thread first, checks surface limits, attachment claims, and risky content, and returns a draft only. Do not use for public posts or comments, or to send.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-comment",
+        "okhp3-linkedin-browser-ops",
+        "okhp3-linkedin-voice"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-message/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-message/SKILL.md",
+      "lastModified": "2026-11-09T08:24:23-06:00",
+      "commitSha": "265de305",
+      "createdAt": "2026-11-09T08:24:23-06:00",
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Drafting one private LinkedIn message or connection note from supplied dictation and thread context.",
+        "outOfScope": "Publishing, sending, public posts or comments, bulk outreach, scraping, or inventing facts about the sender or recipient.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
         "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
@@ -19648,9 +19788,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -19714,9 +19854,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
-      "createdAt": "2026-06-12T05:15:43Z",
+      "createdAt": "2026-06-12T05:15:43+00:00",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -19777,7 +19917,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-patreon-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-patreon-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -19840,7 +19980,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-patreon-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-patreon-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -19903,7 +20043,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-pinterest-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-pinterest-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -19966,7 +20106,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-pinterest-pin/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-pinterest-pin/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20029,7 +20169,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-reddit-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-reddit-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20092,7 +20232,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-reddit-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-reddit-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20155,7 +20295,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-slack-channel-message/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-slack-channel-message/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20218,7 +20358,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-slack-thread-reply/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-slack-thread-reply/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20281,7 +20421,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-teams-channel-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-teams-channel-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20344,7 +20484,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-teams-thread-reply/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-teams-thread-reply/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20407,7 +20547,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-telegram-channel-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-telegram-channel-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20470,7 +20610,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-telegram-group-reply/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-telegram-group-reply/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20533,7 +20673,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-tiktok-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-tiktok-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20596,7 +20736,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-tiktok-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-tiktok-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20659,7 +20799,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-twitter-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-twitter-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
@@ -20724,7 +20864,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-twitter-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-twitter-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
@@ -20787,7 +20927,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-youtube-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-youtube-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20850,7 +20990,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-youtube-community-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-youtube-community-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -20913,7 +21053,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-youtube-video/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-youtube-video/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T19:30:13-05:00",
       "packageMetadata": {
@@ -22035,6 +22175,69 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-career-addendum",
+      "displayName": "Career Addendum",
+      "family": "universal",
+      "skillDir": "okhp3-career-addendum",
+      "path": "universal/okhp3-career-addendum/SKILL.md",
+      "description": "Write a role-specific career addendum: a one-page, cover-letter-style document that expands what a two-page résumé cannot hold, aimed at one target role or one recruiter question. Use when a recruiter or hiring contact needs help positioning a candidate, when a résumé gap or tool-experience question needs an honest answer, or when the user asks for an addendum, supplement, context statement, or explanation of their exposure to a technology. It builds a claim ledger from the résumé and the user's own statements, labels depth honestly, and returns a draft, never a send. Do not use to invent experience or replace the résumé.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "career",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "career"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-career-addendum/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-career-addendum/SKILL.md",
+      "lastModified": "2026-11-09T08:24:23-06:00",
+      "commitSha": "265de305",
+      "createdAt": "2026-11-09T08:24:23-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "career",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-backed, honest, role-specific addendum drafting from a résumé, a posting, and the user's own statements.",
+        "outOfScope": "Invented or inflated experience, compensation negotiation, sending, résumé replacement, and disclosure of restricted or private information.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-cloudflare-worker-api-proxy",
       "displayName": "Cloudflare Worker API Proxy",
       "family": "universal",
@@ -22070,7 +22273,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-cloudflare-worker-api-proxy/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-cloudflare-worker-api-proxy/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T19:28:46-05:00",
       "packageMetadata": {
@@ -22133,7 +22336,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-database-cartographer/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-database-cartographer/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-24T12:11:36-05:00",
       "packageMetadata": {
@@ -22429,7 +22632,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-google-gis-client-auth/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-google-gis-client-auth/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T15:56:05-05:00",
       "packageMetadata": {
@@ -22561,7 +22764,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-i18n-page-sync/SKILL.md",
       "lastModified": "2026-08-31T22:34:57-05:00",
       "commitSha": "93613e20",
-      "createdAt": "2026-08-31T03:58:18Z",
+      "createdAt": "2026-08-31T03:58:18+00:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "universal",
@@ -22587,6 +22790,69 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-network-referral-tracker",
+      "displayName": "Network Referral Tracker",
+      "family": "universal",
+      "skillDir": "okhp3-network-referral-tracker",
+      "path": "universal/okhp3-network-referral-tracker/SKILL.md",
+      "description": "Track people who offered a referral, reference, introduction, comment, or call during a job search, and convert each vague offer into a specific, dated ask. Use when someone replies \"let me know if I can help\", when a new target role appears and the user needs to know who can vouch for it, when a referral landed and needs a thank-you, or during a weekly job-search review. Also activate for stale-offer cleanup. Do not use to contact anyone without approval or to store compensation or confidential terms.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "career",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "career"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-network-referral-tracker/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-network-referral-tracker/SKILL.md",
+      "lastModified": "2026-11-09T08:34:16-06:00",
+      "commitSha": "7df152fe",
+      "createdAt": "2026-11-09T08:24:23-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "career",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Capturing network offers, drafting specific asks, matching offers to target roles, and follow-up scheduling.",
+        "outOfScope": "Contacting anyone, scraping connections, storing compensation or confidential separation terms, and general task tracking.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
@@ -22622,7 +22888,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-overkill-hill-brand/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-overkill-hill-brand/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-07-25T10:07:58-05:00",
       "packageMetadata": {
@@ -22727,6 +22993,69 @@
         "testCount": 0,
         "referenceCount": 10,
         "scriptCount": 7,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-recruiter-legitimacy-check",
+      "displayName": "Recruiter Legitimacy Check",
+      "family": "universal",
+      "skillDir": "okhp3-recruiter-legitimacy-check",
+      "path": "universal/okhp3-recruiter-legitimacy-check/SKILL.md",
+      "description": "Vet unsolicited recruiter or job-offer outreach for scam, mail-merge, and bait-and-switch signals before sharing a résumé or personal data, and draft a low-cost verification reply. Use when a recruiter, agency, or hiring contact messages first, asks for a résumé, phone number, or documents, or when terms such as rate, location, or schedule change after interest was shown. Also activate for a posting that cannot be matched to the named client. Do not use to accuse a real recruiter or to replace the user's judgment.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "career",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "career"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-recruiter-legitimacy-check/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-recruiter-legitimacy-check/SKILL.md",
+      "lastModified": "2026-11-09T08:34:16-06:00",
+      "commitSha": "7df152fe",
+      "createdAt": "2026-11-09T08:24:23-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "career",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Signal-based vetting of recruiter outreach and a verification reply draft.",
+        "outOfScope": "Identity investigation of private individuals, accusing anyone of fraud, handling credentials or payment details, and sending.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -23039,7 +23368,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-cataloger/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-cataloger/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-23T17:17:14-05:00",
       "packageMetadata": {
@@ -23241,7 +23570,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-skill-promotion/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-promotion/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-02T15:00:08-05:00",
       "packageMetadata": {
@@ -23304,7 +23633,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-vite-github-pages/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-vite-github-pages/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-22T15:56:05-05:00",
       "packageMetadata": {
