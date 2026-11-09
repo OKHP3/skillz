@@ -1,9 +1,9 @@
 ---
 family: askjamie
 display_name: AskJamie
-skill_count: 9
+skill_count: 11
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T23:23:02Z
+generated_at: 2026-11-09T23:28:39Z
 ---
 
 # askjamie
@@ -13,6 +13,9 @@ generated_at: 2026-11-09T23:23:02Z
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 
 ## Current packages
+
+- `okhp3-interview-evidence-map/` selects defensible role-specific stories, public-work evidence and qualification gaps.
+- `okhp3-interview-questions/` drafts candid spoken questions and evidence-seeking follow-ups. Both are draftable analytical source and exact AskJamie Resume Representative mirrors; see [the sync manifest](../docs/interview-skills-sync-2026-11-09.json).
 
 - `okhp3-askjamie-gpt-readiness/` assesses whether an AskJamie lens or Custom GPT is ready for build.
 - `okhp3-askjamie-gpt-builder/` builds and audits the resulting Custom GPT experience.
@@ -67,10 +70,10 @@ benchmark, protected holdout or native-host acceptance is claimed. See the
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (9)
+## Skills (11)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:23 UTC***
+*11 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:28 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -79,6 +82,8 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 | [okhp3-askjamie-gpt-builder](okhp3-askjamie-gpt-builder/SKILL.md) | >- | 1.0.0 |
 | [okhp3-askjamie-gpt-readiness](okhp3-askjamie-gpt-readiness/SKILL.md) | >- | 1.0.0 |
 | [okhp3-coaching-engagement](okhp3-coaching-engagement/SKILL.md) | Set up or refresh a private career-coaching engagement brief from provider correspondence, intake... | 0.2.0 |
+| [okhp3-interview-evidence-map](okhp3-interview-evidence-map/SKILL.md) | Map a specific interview role to a person's supplied career evidence and choose defensible storie... | 1.0.0 |
+| [okhp3-interview-questions](okhp3-interview-questions/SKILL.md) | Draft candid interview questions that test role fit without loading the premise. Use to reframe a... | 1.0.0 |
 | [okhp3-job-application-completion](okhp3-job-application-completion/SKILL.md) | Complete or resume job applications from approved career evidence, tailored materials and saved p... | 0.2.0 |
 | [okhp3-lifetime-career-reference](okhp3-lifetime-career-reference/SKILL.md) | Compile a private lifetime career reference or super master from an existing career claim ledger.... | 0.2.0 |
 | [okhp3-professional-headshot](okhp3-professional-headshot/SKILL.md) | Create or refine a realistic professional headshot from supplied or explicitly authorized recent ... | 0.1.0 |
