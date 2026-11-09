@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 345,
+  "distributionSkillCount": 348,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 276,
+    "draftable": 279,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 172,
+    "not-run": 175,
     "none": 109,
     "analytical": 10,
     "local-checks": 39,
@@ -66,7 +66,10 @@
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness",
-        "okhp3-job-application-completion"
+        "okhp3-coaching-engagement",
+        "okhp3-job-application-completion",
+        "okhp3-lifetime-career-reference",
+        "okhp3-role-master-resumes"
       ]
     },
     {
@@ -529,6 +532,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:48:30.263Z",
+  "countsGeneratedAt": "2026-11-09T23:07:41.646Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

@@ -1,9 +1,9 @@
 ---
 family: askjamie
 display_name: AskJamie
-skill_count: 5
+skill_count: 8
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:07:47Z
+generated_at: 2026-11-09T23:06:15Z
 ---
 
 # askjamie
@@ -65,10 +65,10 @@ benchmark, protected holdout or native-host acceptance is claimed. See the
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (5)
+## Skills (8)
 
 <!-- FAMILY_INVENTORY_START -->
-*5 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:07 UTC***
+*8 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:06 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -76,5 +76,8 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 | [okhp3-askjamie-email-draft](okhp3-askjamie-email-draft/SKILL.md) | Draft an email or direct message the owner will send as themselves, using the AskJamie lens metho... | 0.1.0 |
 | [okhp3-askjamie-gpt-builder](okhp3-askjamie-gpt-builder/SKILL.md) | >- | 1.0.0 |
 | [okhp3-askjamie-gpt-readiness](okhp3-askjamie-gpt-readiness/SKILL.md) | >- | 1.0.0 |
+| [okhp3-coaching-engagement](okhp3-coaching-engagement/SKILL.md) | Set up or refresh a private career-coaching engagement brief from provider correspondence, intake... | 0.2.0 |
 | [okhp3-job-application-completion](okhp3-job-application-completion/SKILL.md) | Complete or resume job applications from approved career evidence, tailored materials and saved p... | 0.2.0 |
+| [okhp3-lifetime-career-reference](okhp3-lifetime-career-reference/SKILL.md) | Compile a private lifetime career reference or super master from an existing career claim ledger.... | 0.2.0 |
+| [okhp3-role-master-resumes](okhp3-role-master-resumes/SKILL.md) | Create reusable role-family master resumes from an existing career evidence library. Use for seve... | 0.2.0 |
 <!-- FAMILY_INVENTORY_END -->
