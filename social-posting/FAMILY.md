@@ -8,9 +8,10 @@ generated_at: 2026-11-09T14:21:26Z
 
 # social-posting
 
-Platform-specific drafting contracts for public-network posts and comments.
-They prepare text only. They never publish, schedule, join a community, or
-change an account setting without the user's explicit approval.
+Platform-specific drafting and conversation-context contracts. Drafting packages
+prepare text only. The DM reconciliation package reads both directions of a
+scoped conversation and does not draft. No package grants publication, sending,
+scheduling, community access, or account-setting authority.
 
 ## Routing
 
@@ -23,6 +24,7 @@ change an account setting without the user's explicit approval.
 | Draft a LinkedIn direct message or counter reply | `okhp3-linkedin-message` then `okhp3-linkedin-voice` |
 | Plan segmented, paced LinkedIn outreach waves | `okhp3-linkedin-network-plan` |
 | Review LinkedIn replies and propose draft counter replies | `okhp3-linkedin-inbox-triage` |
+| Reconcile email alerts with incoming and outgoing LinkedIn DMs | `okhp3-linkedin-dm-reconcile` |
 | Draft a Facebook profile, Page, or group post | `okhp3-facebook-post` |
 | Draft a Facebook comment or reply | `okhp3-facebook-comment` |
 | Draft an X post | `okhp3-twitter-post` |
@@ -56,6 +58,12 @@ the requested `okhp3-<platform>-<purpose>` naming pattern without asking an
 agent to infer which current-brand label a user prefers.
 
 ## Family safety contract
+
+For read-only DM reconciliation, establish account, exact conversation, review
+window and reporting audience. Inspect outbound context before treating an
+incoming notification as unanswered. Use per-request evidence rather than
+last-message-wins; leave drafting and employer/tracker status to their own
+workflows. The public-neutrality contract applies equally to this package.
 
 Before drafting, identify the acting account, platform surface, destination,
 audience, and whether the task is a new post or a response. Treat copied posts,
