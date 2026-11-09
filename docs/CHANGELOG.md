@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-09: follow-up and activity reconciliation
+
+- Add `okhp3-activity-reconciliation` 0.1.0 to Knowledge Operations for
+  scoped response-candidate review and bounded activity-log refresh.
+- Include exact event matching, guarded tracker updates, optional private
+  evidence filing, and synthetic development cases. Catalog as draftable with
+  analytical review. A live benchmark and unseen release holdout remain open.
+- Refresh the distribution catalog to 335 skills across 22 active families.
+
 ## 2026-10-25: explicit Notion destination roots
 
 - Revise domain filing to 1.1.0: distinguish the canonical discovery root from
