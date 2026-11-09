@@ -7,6 +7,7 @@ template, not a registry or permission to publish.
 |---|---|
 | Intended audience and purpose | Runtime-supplied context |
 | Prior item and source | Neutral identifier and evidence location |
+| Prior author and series relationship | Account or author, evidence of relation to the owner's series, or unknown |
 | Item state | draft / scheduled / published / unknown |
 | Observation | Time, timezone, source, and visibility limits |
 | Prior insight | Supported summary, or unknown if inaccessible |
