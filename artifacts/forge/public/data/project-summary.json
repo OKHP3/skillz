@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-09T14:59:21.033Z",
+  "generatedAt": "2026-11-09T14:59:24.765Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/activity-reconciliation-v010",
-  "sourceCommit": "34a990f",
+  "sourceRef": "codex/build-in-public-proof-brief",
+  "sourceCommit": "37586ad",
   "skillCount": 339,
   "familyCount": 22,
   "maturityCounts": {
@@ -12,11 +12,11 @@
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 170,
+    "not-run": 169,
     "none": 109,
     "local-checks": 39,
     "analytical": 7,
-    "live": 7
+    "live": 8
   },
   "capabilities": {
     "familyOrientationPages": true,

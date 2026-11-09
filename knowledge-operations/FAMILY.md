@@ -3,7 +3,7 @@ family: knowledge-operations
 display_name: Knowledge Operations
 skill_count: 8
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T14:59:01Z
+generated_at: 2026-11-09T15:14:17Z
 ---
 
 # knowledge-operations
@@ -111,7 +111,7 @@ Portable lifecycle skills for capturing, classifying, researching, reconciling, 
 ## Skills (8)
 
 <!-- FAMILY_INVENTORY_START -->
-*8 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 14:59 UTC***
+*8 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:14 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
