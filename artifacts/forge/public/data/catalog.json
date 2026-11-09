@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T15:14:33.776Z",
+  "generatedAt": "2026-11-09T15:18:13.409Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/activity-reconciliation-v010",
-  "sourceCommit": "f98e5e7",
-  "skillCount": 340,
+  "sourceRef": "agent/record-location-publication",
+  "sourceCommit": "812ce8f",
+  "skillCount": 341,
   "familyCount": 22,
   "families": [
     {
@@ -387,7 +387,7 @@
     {
       "name": "knowledge-operations",
       "displayName": "Knowledge Operations",
-      "skillCount": 8,
+      "skillCount": 9,
       "skills": [
         "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
@@ -395,6 +395,7 @@
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
         "okhp3-project-promotion",
+        "okhp3-record-location-reconciliation",
         "okhp3-source-backed-research",
         "okhp3-triage-and-file"
       ],
@@ -12304,6 +12305,69 @@
         "reviewDecision": null,
         "blockers": [
           "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-record-location-reconciliation",
+      "displayName": "Record Location Reconciliation",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-record-location-reconciliation",
+      "path": "knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "description": "Reconcile misplaced record folders, file versions, and references across a local library, synced drive, or tracker. Use to audit filing locations, preserve versions during authorized moves, repair affected links, or verify local and cloud parity. Application status belongs to a separate workflow.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "lastModified": "2026-11-09T09:17:55-06:00",
+      "commitSha": "812ce8f2",
+      "createdAt": "2026-11-09T09:17:55-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led reconciliation of bounded record locations, versions, and their references.",
+        "outOfScope": "Broad filesystem reorganization, deletion, copy-delete migrations, sharing changes, and application-status decisions.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 13,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09",
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
         ]
       },
       "maturitySource": "explicit-frontmatter",
