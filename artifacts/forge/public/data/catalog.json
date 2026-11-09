@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T15:30:50.924Z",
+  "generatedAt": "2026-11-09T15:48:30.263Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/voice-research-knowledge-skills",
-  "sourceCommit": "cfdaff1f",
-  "skillCount": 343,
+  "sourceCommit": "ca5c0724",
+  "skillCount": 345,
   "familyCount": 22,
   "families": [
     {
@@ -75,12 +75,13 @@
     {
       "name": "askjamie",
       "displayName": "AskJamie",
-      "skillCount": 4,
+      "skillCount": 5,
       "skills": [
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
-        "okhp3-askjamie-gpt-readiness"
+        "okhp3-askjamie-gpt-readiness",
+        "okhp3-job-application-completion"
       ],
       "narrativeBody": "**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.\n\nOne of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.",
       "orientation": {
@@ -91,7 +92,8 @@
         "commonOutcomes": {
           "value": [
             "developer-tooling",
-            "askjamie"
+            "askjamie",
+            "career-operations"
           ],
           "source": "generated"
         },
@@ -960,7 +962,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 20,
+      "skillCount": 21,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -981,6 +983,7 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
+        "okhp3-task-resumption",
         "okhp3-vite-github-pages"
       ],
       "narrativeBody": null,
@@ -1715,6 +1718,70 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-job-application-completion",
+      "displayName": "Job Application Completion",
+      "family": "askjamie",
+      "skillDir": "okhp3-job-application-completion",
+      "path": "askjamie/okhp3-job-application-completion/SKILL.md",
+      "description": "Complete or resume job applications from approved career evidence, tailored materials and saved portal drafts. Use for preparing, uploading, submitting, and reconciling application receipts within the user's authorization. Excludes status-only audits, saved-job ranking and recruiter outreach.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "career-operations",
+      "origin": "okhp3/askjamie-foundry",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "career-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-job-application-completion/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-job-application-completion/SKILL.md",
+      "lastModified": "2026-11-09T09:05:47-06:00",
+      "commitSha": "b2a945ef",
+      "createdAt": "2026-11-09T09:05:47-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "career-operations",
+        "origin": "okhp3/askjamie-foundry",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Role identity, factual materials, saved-draft completion, authorized submission and receipt reconciliation.",
+        "outOfScope": "Invented qualifications, inferred personal answers, new legal acceptance without approval, outreach, and benefits eligibility decisions.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09T00:00:00Z",
+        "reviewDecision": "approve-with-limits",
+        "blockers": [
+          "Live host integration remains untested.",
+          "Automatic activation and unseen release holdout remain untested."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
@@ -23862,6 +23929,70 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-task-resumption",
+      "displayName": "Task Resumption",
+      "family": "universal",
+      "skillDir": "okhp3-task-resumption",
+      "path": "universal/okhp3-task-resumption/SKILL.md",
+      "description": "Find and resume an interrupted task in its original conversation. Use when restarting an archived thread, recovering unfinished agent work, or checking whether a dispatched restart actually completed. Excludes new-task creation and handoff-only writing.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "task-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "task-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-task-resumption/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-task-resumption/SKILL.md",
+      "lastModified": "2026-11-09T09:05:47-06:00",
+      "commitSha": "b2a945ef",
+      "createdAt": "2026-11-09T09:05:47-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "task-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Exact-thread discovery, authorized restoration, continuation, and outcome verification.",
+        "outOfScope": "Replacement conversations, private session-store inspection, permission expansion, and domain execution without its own authority.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09T00:00:00Z",
+        "reviewDecision": "approve-with-limits",
+        "blockers": [
+          "Live host integration remains untested.",
+          "Automatic activation and unseen release holdout remain untested."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },

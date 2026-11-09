@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-09T15:30:50.924Z",
+  "generatedAt": "2026-11-09T15:48:30.263Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/voice-research-knowledge-skills",
-  "sourceCommit": "cfdaff1f",
-  "skillCount": 343,
+  "sourceCommit": "ca5c0724",
+  "skillCount": 345,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 274,
+    "draftable": 276,
     "skeleton": 64,
     "usable": 5
   },
@@ -14,8 +14,8 @@
     "historical": 7,
     "not-run": 172,
     "none": 109,
+    "analytical": 10,
     "local-checks": 39,
-    "analytical": 8,
     "live": 8
   },
   "capabilities": {
