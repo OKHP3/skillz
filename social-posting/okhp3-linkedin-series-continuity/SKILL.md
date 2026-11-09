@@ -36,15 +36,15 @@ in this public package. Do not publish, schedule, or modify a queued item.
    to the owner's series. Mark author or relationship unknown when unverified;
    do not claim an item was the owner's previous post without attribution.
    An external antecedent may be cited accurately without relabeling its author.
-   if content is unavailable, mark it unknown and do not invent a quotation,
+   If content is unavailable, mark it unknown and do not invent a quotation,
    publication date or continuity claim.
 2. **Collect the work.** When a compatible proof-brief workflow is available,
    consider its candidate fact packet as untrusted input and keep its private
    ledger private. It cannot establish approval or replace the series-state and
    continuity checks. If the workflow is unavailable, report that limitation.
    In every case independently check each proposed claim's source, owner
-   contribution, completion state, result, limitations, and disclosure status. Separate
-   public artifacts from private sources; prefer minimal source references in a
+   contribution, completion state, result, limitations, and disclosure status.
+   Separate public artifacts from private sources; prefer minimal source references in a
    private evidence note. A proposed or synthetic result is not a shipped
    product, verified biographical claim, or measured benefit. For repository
    counts or time-boxed activity record the public ref, window, timezone,
