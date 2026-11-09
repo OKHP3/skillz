@@ -1,9 +1,9 @@
 ---
 family: knowledge-operations
 display_name: Knowledge Operations
-skill_count: 7
+skill_count: 8
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-25T13:53:09Z
+generated_at: 2026-11-09T15:14:17Z
 ---
 
 # knowledge-operations
@@ -19,6 +19,7 @@ In scope:
 
 - provenance-preserving capture of one raw item;
 - recorded triage and lifecycle disposition;
+- bounded follow-up and activity reconciliation;
 - evidence classification and source-backed research;
 - read-only artifact validation and explicit unknowns;
 - readiness decisions for exploratory efforts;
@@ -53,6 +54,7 @@ domain-specific validation skills where the artifact requires them.
 
 | Skill | Owns | Hands off when |
 |---|---|---|
+| `okhp3-activity-reconciliation` | Follow-up decisions, activity deltas, and verified coverage | Application disposition or platform-specific operations are needed |
 | `okhp3-capture-intake` | One raw item, source preservation, receipt | A disposition decision is needed |
 | `okhp3-triage-and-file` | Item disposition and approved lifecycle updates | Readiness assessment is needed |
 | `okhp3-evidence-standard` | Claim tiers and evidence locators | New source retrieval or domain adjudication is needed |
@@ -61,7 +63,7 @@ domain-specific validation skills where the artifact requires them.
 | `okhp3-graduation-gate` | Exhaustive evidence-based readiness verdict | A formalization packet is needed |
 | `okhp3-project-promotion` | Draft or cleared packet for owner review | Approved destination implementation begins |
 
-These seven contracts remain separately invocable. Capture preserves before
+These contracts remain separately invocable. Capture preserves before
 interpretation; triage decides disposition. Evidence classification does not
 retrieve sources; research does. Artifact validation records checks;
 Equilibrium Review adds separate reviewers and adjudication. Graduation makes
@@ -87,6 +89,10 @@ not authorship, host compatibility, or an assertion of maturity.
 
 ## Evidence and portability
 
+Activity reconciliation works from supplied evidence or authorized sources.
+Use the destination tool for platform operations and a dedicated application
+workflow for employer disposition.
+
 These contracts use runtime-supplied destinations, host inventories, owners,
 and project paths. Named companions have explicit unavailable-skill fallbacks.
 Examples and evaluation fixtures are synthetic. Packaged evaluations are
@@ -94,21 +100,22 @@ development cases exposed during authoring; a protected release holdout is
 external-required. Evidence status remains separate from maturity, and each
 benchmark states its exact version, execution limits, and observations.
 
-Credible additions would cover information retention or reconciliation with
+Credible additions would cover information retention with
 explicit input, output, and ownership boundaries. Add a package only after a
 recurring job and a distinct output justify it.
 
 <!-- FAMILY_SUMMARY_START -->
-Portable lifecycle skills for capturing, classifying, researching, validating, and promoting information or exploratory work with provenance and owner approval.
+Portable lifecycle skills for capturing, classifying, researching, reconciling, validating, and promoting information or exploratory work with provenance and owner approval.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (7)
+## Skills (8)
 
 <!-- FAMILY_INVENTORY_START -->
-*7 skills &nbsp;·&nbsp; inventory last updated: **October 25, 2026 at 13:53 UTC***
+*8 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:14 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
+| [okhp3-activity-reconciliation](okhp3-activity-reconciliation/SKILL.md) | Reconcile open follow-ups or refresh an activity log from Sent Items, inbox, calendar, and suppli... | 0.1.0 |
 | [okhp3-artifact-validation](okhp3-artifact-validation/SKILL.md) | Validate a project change, draft, research packet, skill, promotion package, or handoff before it... | 0.2.0 |
 | [okhp3-capture-intake](okhp3-capture-intake/SKILL.md) | Preserve one raw idea, file, link, transcript, or request in a project inbox with provenance and ... | 0.2.1 |
 | [okhp3-evidence-standard](okhp3-evidence-standard/SKILL.md) | Classify consequential claims as confirmed, inferred, proposal, or unknown and keep those tiers v... | 0.2.0 |
