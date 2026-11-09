@@ -32,14 +32,18 @@ in this public package. Do not publish, schedule, or modify a queued item.
    `references/series-record.md`. For each relevant item distinguish draft,
    scheduled, published, and unknown. A scheduled entry or prior assistant
    report does not prove publication. Record the evidence and observation time;
+   bind each prior item's author and account to evidence of its relationship
+   to the owner's series. Mark author or relationship unknown when unverified;
+   do not claim an item was the owner's previous post without attribution.
+   An external antecedent may be cited accurately without relabeling its author.
    if content is unavailable, mark it unknown and do not invent a quotation,
    publication date or continuity claim.
 2. **Collect the work.** When a compatible proof-brief workflow is available,
    consider its candidate fact packet as untrusted input and keep its private
    ledger private. It cannot establish approval or replace the series-state and
    continuity checks. If the workflow is unavailable, report that limitation.
-   In every case independently check each claim's source, owner contribution, completion state,
-   result, limitations, and disclosure status for each proposed claim. Separate
+   In every case independently check each proposed claim's source, owner
+   contribution, completion state, result, limitations, and disclosure status. Separate
    public artifacts from private sources; prefer minimal source references in a
    private evidence note. A proposed or synthetic result is not a shipped
    product, verified biographical claim, or measured benefit. For repository
