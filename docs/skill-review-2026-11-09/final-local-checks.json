@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-09",
+  "core_version": "0.2.0",
+  "core_hashes": {
+    "skillz-work/universal/okhp3-task-resumption": {
+      "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+      "SKILL.md": "b155ccfd9ea6ce6389a3d8483776660636d82c2adb1a743a64164887d898dafc",
+      "evals/evals.json": "52200b201e6f5f1c2e8bfd2a56e96cc6e47c527bdbe83b578d7af664cd5f1389",
+      "evals/trigger-cases.json": "01be2d816b4c5db27c04250c54320f3d596eff3482c540a78fc073c95235a9ec",
+      "references/continuation-record.md": "5866955168702bbb38d1167b5902727d28ff8ad10e52f4ba1833976f06c6f892"
+    },
+    "askjamie-work/capabilities/resume-representative/skills/okhp3-job-application-completion": {
+      "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+      "SKILL.md": "f3156040e6384729a80e1e7ec705bff79dabcf88f6f1c5a3f051c5367fcf6b69",
+      "evals/evals.json": "bdb8ab1ea2d3b3b5333e76559fca44715702dded3e150c02f2f71129fcd8b339",
+      "evals/trigger-cases.json": "72c16d6a8f1062c3b542c5eaa56950d53adab228edee6779155279621d1befda",
+      "references/application-record.md": "432460ca8e242feb01ec0c1bb5876057f32df42f057e1a3f599d02326ac4b217"
+    }
+  },
+  "local_checks": {
+    "portable_and_foundry_validators": "passed for both packages and mirror",
+    "askjamie_manifest": "passed",
+    "askjamie_registry": "passed",
+    "askjamie_repository_tests": {
+      "passed": 174,
+      "failed": 0,
+      "runtime": "workspace virtual environment; loopback enabled"
+    },
+    "skillz_catalog_tests": {
+      "passed": 51,
+      "failed": 0
+    },
+    "privacy_json_paths_and_diff_whitespace": "passed"
+  },
+  "earlier_attempts": [
+    "AskJamie sandbox run could not bind loopback and had a missing python command; corrected environment passed 174 tests.",
+    "Initial isolated catalog check encountered uncommitted provenance and stale default search data; committed source plus regenerated data passed all 51 tests."
+  ],
+  "remote_gates": "Required exact-head PR checks/reviews and published-hash verification must pass before completion.",
+  "limits": [
+    "Structural and synthetic evidence is not live portal integration or production acceptance.",
+    "Private historical facts were not independently inspected by reviewers."
+  ]
+}

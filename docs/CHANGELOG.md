@@ -7,6 +7,14 @@
   cases are development designs; live benchmarks, host retrieval tests, and an
   unseen holdout are not established.
 
+## 2026-11-09: Interrupted-work and application completion candidates
+
+- Add task resumption and an exact AskJamie job-application-completion mirror.
+- Preserve original-thread continuity, exact application identity, approved materials,
+  safe retries and single-owner external actions in portable contracts.
+- Include synthetic development cases, bounded equilibrium review and core hash records.
+  No live host integration, unseen holdout or production-readiness claim is made.
+
 ## 2026-11-09: LinkedIn message 1.1.0
 
 - Merge PR #222 into `okhp3-linkedin-message` from PR #220 as 1.1.0. Keep the

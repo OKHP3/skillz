@@ -1,0 +1,87 @@
+{
+  "skill_name": "okhp3-task-resumption",
+  "skill_version": "0.2.0",
+  "status": "not-run",
+  "cases": [
+    {
+      "query": "Find and restart my old case thread",
+      "should_activate": true
+    },
+    {
+      "query": "Continue the archived task in its original conversation",
+      "should_activate": true
+    },
+    {
+      "query": "Did the restart actually finish?",
+      "should_activate": true
+    },
+    {
+      "query": "Resume that stalled agent job",
+      "should_activate": true
+    },
+    {
+      "query": "The send timed out; check the original thread",
+      "should_activate": true
+    },
+    {
+      "query": "Recover the context and continue the existing task",
+      "should_activate": true
+    },
+    {
+      "query": "Find my unfinished work from last week",
+      "should_activate": true
+    },
+    {
+      "query": "Restart case 09 without making a duplicate",
+      "should_activate": true
+    },
+    {
+      "query": "Resuem the blocked thread",
+      "should_activate": true
+    },
+    {
+      "query": "Continue the old task after sign-in",
+      "should_activate": true
+    },
+    {
+      "query": "Write a session handoff only",
+      "should_activate": false
+    },
+    {
+      "query": "Draft a r\u00e9sum\u00e9 from scratch",
+      "should_activate": false
+    },
+    {
+      "query": "Archive every old conversation",
+      "should_activate": false
+    },
+    {
+      "query": "Create a new task for this idea",
+      "should_activate": false
+    },
+    {
+      "query": "Search my employer email",
+      "should_activate": false
+    },
+    {
+      "query": "Recommend an AI desktop",
+      "should_activate": false
+    },
+    {
+      "query": "Extract quotes from this pasted transcript",
+      "should_activate": false
+    },
+    {
+      "query": "Rewrite this social post",
+      "should_activate": false
+    },
+    {
+      "query": "Audit a database backup",
+      "should_activate": false
+    },
+    {
+      "query": "Explain task queues",
+      "should_activate": false
+    }
+  ]
+}
