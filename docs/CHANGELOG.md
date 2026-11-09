@@ -8,9 +8,18 @@
   complete file hashes in `docs/interview-skills-sync-2026-11-09.json`.
 - Treat public-work selection and platform transfer as evidence-map branches;
   compose with existing social drafting skills when explicitly requested.
-- Refresh catalogs to 349 skills across 22 active families. These two packages
+- Refresh catalogs to 352 skills across 22 active families. These two packages
   are draftable source with analytical review; behavioral evaluations, automatic
   activation, measured uplift and an unseen holdout remain not run.
+
+## 2026-11-09: Career reference and coaching skill mirrors
+
+- Catalog three 0.2.0 AskJamie source candidates: lifetime career reference,
+  role master resumes and coaching engagement. Preserve exact canonical core
+  hashes and the existing source-intake/career-canon boundary.
+- Include independent analytical review, synthetic development/discovery cases
+  and explicit save/retry/privacy guards. No live benchmark, unseen holdout
+  or native-host acceptance is claimed.
 
 ## 2026-11-09: Professional portrait and guided still capture
 

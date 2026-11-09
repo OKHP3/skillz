@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-11-09T15:48:30.263Z",
+  "generatedAt": "2026-11-09T23:23:19.962Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/voice-research-knowledge-skills",
-  "sourceCommit": "ca5c0724",
-  "skillCount": 345,
+  "sourceRef": "codex/career-library-skills-20261109",
+  "sourceCommit": "3bfceea0",
+  "skillCount": 350,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 276,
+    "draftable": 281,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 172,
+    "not-run": 175,
     "none": 109,
-    "analytical": 10,
+    "analytical": 12,
     "local-checks": 39,
     "live": 8
   },

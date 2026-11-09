@@ -1,29 +1,25 @@
 ---
 family: askjamie
 display_name: AskJamie
-skill_count: 8
+skill_count: 11
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T23:22:10Z
+generated_at: 2026-11-09T23:28:39Z
 ---
 
 # askjamie
 
-**Status: draftable specific tooling.** AskJamie has brand-specific GPT readiness
-and builder forks, correspondence, and interview-preparation packages. Interview
-companions have analytical source review; live behavior remains untested.
+**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.
 
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 
 ## Current packages
 
+- `okhp3-interview-evidence-map/` selects defensible role-specific stories, public-work evidence and qualification gaps.
+- `okhp3-interview-questions/` drafts candid spoken questions and evidence-seeking follow-ups. Both are draftable analytical source and exact AskJamie Resume Representative mirrors; see [the sync manifest](../docs/interview-skills-sync-2026-11-09.json).
+
 - `okhp3-askjamie-gpt-readiness/` assesses whether an AskJamie lens or Custom GPT is ready for build.
 - `okhp3-askjamie-gpt-builder/` builds and audits the resulting Custom GPT experience.
 - `okhp3-askjamie-email-draft/` drafts owner-voice correspondence with the Represent, Frame, Investigate, and Protect lenses. Draft-only. First capability for the AskJamie OpenClaw agent persona.
-- `okhp3-interview-evidence-map/` selects defensible career stories and public-work
-  evidence for a specific role, with explicit qualification and attribution gaps.
-- `okhp3-interview-questions/` drafts candid questions and useful follow-ups while
-  preserving supported concerns. Both interview packages are exact AskJamie
-  Resume Representative mirrors; see [the sync manifest](../docs/interview-skills-sync-2026-11-09.json).
 
 - `okhp3-professional-headshot/` creates a realistic, recognizable career portrait from authorized photos, with reference roles and verified delivery.
 
@@ -58,14 +54,26 @@ also remains active with its approved profile and accessibility requirements.
 See the [archived originals and recovery record](../docs/archive/skill-redundancy-2026-09-19/brands/README.md).
 The README-only old locations are compatibility pointers, not additional skills.
 
+## Career reference and coaching source candidates
+
+Three portable 0.2.0 packages extend Resume Representative: lifetime career
+reference, role master resumes and coaching engagement. The canonical packages
+are maintained in [AskJamie FoundRy](https://github.com/OKHP3/askjamie-foundry/tree/main/capabilities/resume-representative/skills);
+these are exact distribution mirrors. The lifetime view consumes the existing
+canon instead of owning another source/claim ledger.
+
+Their maturity is draftable and review evidence is analytical. No live model
+benchmark, protected holdout or native-host acceptance is claimed. See the
+[synchronization record](../docs/career-library-skills-sync-2026-11-09.json).
+
 <!-- FAMILY_SUMMARY_START -->
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (8)
+## Skills (11)
 
 <!-- FAMILY_INVENTORY_START -->
-*8 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:22 UTC***
+*11 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:28 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -73,8 +81,11 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 | [okhp3-askjamie-email-draft](okhp3-askjamie-email-draft/SKILL.md) | Draft an email or direct message the owner will send as themselves, using the AskJamie lens metho... | 0.1.0 |
 | [okhp3-askjamie-gpt-builder](okhp3-askjamie-gpt-builder/SKILL.md) | >- | 1.0.0 |
 | [okhp3-askjamie-gpt-readiness](okhp3-askjamie-gpt-readiness/SKILL.md) | >- | 1.0.0 |
+| [okhp3-coaching-engagement](okhp3-coaching-engagement/SKILL.md) | Set up or refresh a private career-coaching engagement brief from provider correspondence, intake... | 0.2.0 |
 | [okhp3-interview-evidence-map](okhp3-interview-evidence-map/SKILL.md) | Map a specific interview role to a person's supplied career evidence and choose defensible storie... | 1.0.0 |
 | [okhp3-interview-questions](okhp3-interview-questions/SKILL.md) | Draft candid interview questions that test role fit without loading the premise. Use to reframe a... | 1.0.0 |
 | [okhp3-job-application-completion](okhp3-job-application-completion/SKILL.md) | Complete or resume job applications from approved career evidence, tailored materials and saved p... | 0.2.0 |
+| [okhp3-lifetime-career-reference](okhp3-lifetime-career-reference/SKILL.md) | Compile a private lifetime career reference or super master from an existing career claim ledger.... | 0.2.0 |
 | [okhp3-professional-headshot](okhp3-professional-headshot/SKILL.md) | Create or refine a realistic professional headshot from supplied or explicitly authorized recent ... | 0.1.0 |
+| [okhp3-role-master-resumes](okhp3-role-master-resumes/SKILL.md) | Create reusable role-family master resumes from an existing career evidence library. Use for seve... | 0.2.0 |
 <!-- FAMILY_INVENTORY_END -->

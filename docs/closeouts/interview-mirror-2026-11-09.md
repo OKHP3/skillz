@@ -12,9 +12,9 @@ match the reviewed local mirror and recorded SHA-256 manifest.
 
 The initial Skillz integration stopped after an execution-environment outage
 and concurrent shared-catalog conflicts. The resumed integration preserves main
-`059527d005f0657f389620eb9a62f002333de2a8`, including unrelated package additions,
-and regenerates the catalog from the combined source: 349 skills in 22 families,
-including 8 AskJamie packages. Package contents and release records remain
+`82fcd1c62a7f2aaba7b95c84ebfb73af6fcae28f`, including unrelated package additions,
+and regenerates the catalog from the combined source: 352 skills in 22 families,
+including 11 AskJamie packages. Package contents and release records remain
 unchanged. The original sync manifest is retained as dated evidence rather than
 rewritten to imply a different historical baseline.
 
@@ -24,7 +24,7 @@ rewritten to imply a different historical baseline.
 - The full-index catalog metadata check passes, retaining existing imported
   packages' missing-version warnings.
 - The 347-package closeout baseline passed the catalog build, integrity runner
-  and all 51 catalog contract checks. The subsequent portrait-package merge
+  and all 51 catalog contract checks. The subsequent portrait and career-library merges
   is preserved in the regenerated combined index; final validation is repeated
   before merge and recorded in the PR completion receipt.
 - The catalog test uses a dedicated temporary directory to avoid the earlier
