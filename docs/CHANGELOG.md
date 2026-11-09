@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-09: Interrupted-work and application completion candidates
+
+- Add task resumption and an exact AskJamie job-application-completion mirror.
+- Preserve original-thread continuity, exact application identity, approved materials,
+  safe retries and single-owner external actions in portable contracts.
+- Include synthetic development cases, bounded equilibrium review and core hash records.
+  No live host integration, unseen holdout or production-readiness claim is made.
+
+
 ## 2026-10-25: explicit Notion destination roots
 
 - Revise domain filing to 1.1.0: distinguish the canonical discovery root from

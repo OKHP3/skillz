@@ -1,9 +1,9 @@
 ---
 family: universal
 display_name: Universal
-skill_count: 20
+skill_count: 21
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-25T13:53:09Z
+generated_at: 2026-11-09T15:00:12Z
 ---
 
 # universal
@@ -12,10 +12,10 @@ generated_at: 2026-10-25T13:53:09Z
 Cross-project skills for repository maintenance, evidence-led review, integrations, and reusable agent workflows.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (20)
+## Skills (21)
 
 <!-- FAMILY_INVENTORY_START -->
-*20 skills &nbsp;·&nbsp; inventory last updated: **October 25, 2026 at 13:53 UTC***
+*21 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:00 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -38,5 +38,6 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 | [okhp3-skill-discovery](okhp3-skill-discovery/SKILL.md) | Find, verify, compare, and route to project-local, installed, runtime, or plugin-provided agent s... | 0.2.2 |
 | [okhp3-skill-foundry](okhp3-skill-foundry/SKILL.md) | Create, audit, test, and improve portable Agent Skills with evidence-backed instructions, progres... | 3.1.1 |
 | [okhp3-skill-promotion](okhp3-skill-promotion/SKILL.md) | Promote and synchronize a project-local Agent Skill into a portable, reviewable distribution pack... | 0.1.0 |
+| [okhp3-task-resumption](okhp3-task-resumption/SKILL.md) | Find and resume an interrupted task in its original conversation. Use when restarting an archived... | 0.2.0 |
 | [okhp3-vite-github-pages](okhp3-vite-github-pages/SKILL.md) | OverKill Hill P³ Vite-to-GitHub-Pages deployment runbook. Use when deploying or troubleshooting t... | 1.1.0 |
 <!-- FAMILY_INVENTORY_END -->
