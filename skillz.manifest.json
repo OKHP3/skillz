@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 336,
+  "distributionSkillCount": 338,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 267,
+    "draftable": 269,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 167,
+    "not-run": 169,
     "none": 109,
     "local-checks": 39,
     "analytical": 7,
@@ -65,8 +65,7 @@
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
-        "okhp3-askjamie-gpt-readiness",
-        "okhp3-job-application-completion"
+        "okhp3-askjamie-gpt-readiness"
       ]
     },
     {
@@ -431,6 +430,10 @@
         "okhp3-kofi-supporter-reply",
         "okhp3-linkedin-angles",
         "okhp3-linkedin-comment",
+        "okhp3-linkedin-connection-note",
+        "okhp3-linkedin-inbox-triage",
+        "okhp3-linkedin-message",
+        "okhp3-linkedin-network-plan",
         "okhp3-linkedin-post",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
@@ -497,7 +500,6 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
-        "okhp3-task-resumption",
         "okhp3-vite-github-pages"
       ]
     }
@@ -520,6 +522,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:00:44.433Z",
+  "countsGeneratedAt": "2026-10-25T17:18:14.591Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
