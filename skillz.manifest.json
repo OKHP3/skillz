@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 338,
+  "distributionSkillCount": 339,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 269,
+    "draftable": 270,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 169,
+    "not-run": 170,
     "none": 109,
     "local-checks": 39,
     "analytical": 7,
@@ -250,6 +250,7 @@
       "name": "knowledge-operations",
       "status": "draftable",
       "skills": [
+        "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
@@ -522,6 +523,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-10-25T17:18:14.591Z",
+  "countsGeneratedAt": "2026-11-09T14:59:21.033Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
