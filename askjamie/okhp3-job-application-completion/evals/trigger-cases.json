@@ -1,0 +1,87 @@
+{
+  "skill_name": "okhp3-job-application-completion",
+  "skill_version": "0.2.0",
+  "status": "not-run",
+  "cases": [
+    {
+      "query": "Finish and submit these applications",
+      "should_activate": true
+    },
+    {
+      "query": "Resume the saved Workday draft",
+      "should_activate": true
+    },
+    {
+      "query": "Complete the r\u00e9sum\u00e9, upload and apply",
+      "should_activate": true
+    },
+    {
+      "query": "Apply to these two links without duplicating anything",
+      "should_activate": true
+    },
+    {
+      "query": "The application submit failed; recover it",
+      "should_activate": true
+    },
+    {
+      "query": "Use my approved career files to complete this role",
+      "should_activate": true
+    },
+    {
+      "query": "Finish the job applicaiton and save its receipt",
+      "should_activate": true
+    },
+    {
+      "query": "Continue application preparation while sign-in waits",
+      "should_activate": true
+    },
+    {
+      "query": "Upload the reviewed r\u00e9sum\u00e9 then finish applying",
+      "should_activate": true
+    },
+    {
+      "query": "Complete these applications and reconcile trackers",
+      "should_activate": true
+    },
+    {
+      "query": "Check only whether I was rejected",
+      "should_activate": false
+    },
+    {
+      "query": "Reconcile application statuses only",
+      "should_activate": false
+    },
+    {
+      "query": "Draft a cover letter only",
+      "should_activate": false
+    },
+    {
+      "query": "Rank saved openings",
+      "should_activate": false
+    },
+    {
+      "query": "Write a LinkedIn post",
+      "should_activate": false
+    },
+    {
+      "query": "Message a recruiter for me",
+      "should_activate": false
+    },
+    {
+      "query": "Invent production AI experience",
+      "should_activate": false
+    },
+    {
+      "query": "Find a headless AI server",
+      "should_activate": false
+    },
+    {
+      "query": "Approve unemployment benefits",
+      "should_activate": false
+    },
+    {
+      "query": "Build a job-board scraper",
+      "should_activate": false
+    }
+  ]
+}

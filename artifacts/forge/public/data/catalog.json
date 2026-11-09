@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T14:59:24.765Z",
+  "generatedAt": "2026-11-09T15:48:30.263Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/build-in-public-proof-brief",
-  "sourceCommit": "37586ad",
-  "skillCount": 339,
+  "sourceRef": "codex/voice-research-knowledge-skills",
+  "sourceCommit": "ca5c0724",
+  "skillCount": 345,
   "familyCount": 22,
   "families": [
     {
@@ -75,12 +75,13 @@
     {
       "name": "askjamie",
       "displayName": "AskJamie",
-      "skillCount": 4,
+      "skillCount": 5,
       "skills": [
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
-        "okhp3-askjamie-gpt-readiness"
+        "okhp3-askjamie-gpt-readiness",
+        "okhp3-job-application-completion"
       ],
       "narrativeBody": "**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.\n\nOne of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.",
       "orientation": {
@@ -91,7 +92,8 @@
         "commonOutcomes": {
           "value": [
             "developer-tooling",
-            "askjamie"
+            "askjamie",
+            "career-operations"
           ],
           "source": "generated"
         },
@@ -387,15 +389,19 @@
     {
       "name": "knowledge-operations",
       "displayName": "Knowledge Operations",
-      "skillCount": 7,
+      "skillCount": 11,
       "skills": [
+        "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
         "okhp3-project-promotion",
+        "okhp3-record-location-reconciliation",
+        "okhp3-research-file-renewal",
         "okhp3-source-backed-research",
-        "okhp3-triage-and-file"
+        "okhp3-triage-and-file",
+        "okhp3-voice-profile-renewal"
       ],
       "narrativeBody": "The knowledge-operations family governs the portable lifecycle of loose\ninformation and exploratory work: preserve it, classify it, research it when\nneeded, validate it, decide whether it is ready, and prepare it for\nowner-approved formalization.",
       "orientation": {
@@ -410,7 +416,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-artifact-validation",
+          "value": "okhp3-activity-reconciliation",
           "note": null,
           "source": "generated"
         },
@@ -956,7 +962,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 20,
+      "skillCount": 21,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -977,6 +983,7 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
+        "okhp3-task-resumption",
         "okhp3-vite-github-pages"
       ],
       "narrativeBody": null,
@@ -1711,6 +1718,70 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-job-application-completion",
+      "displayName": "Job Application Completion",
+      "family": "askjamie",
+      "skillDir": "okhp3-job-application-completion",
+      "path": "askjamie/okhp3-job-application-completion/SKILL.md",
+      "description": "Complete or resume job applications from approved career evidence, tailored materials and saved portal drafts. Use for preparing, uploading, submitting, and reconciling application receipts within the user's authorization. Excludes status-only audits, saved-job ranking and recruiter outreach.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "career-operations",
+      "origin": "okhp3/askjamie-foundry",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "career-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-job-application-completion/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-job-application-completion/SKILL.md",
+      "lastModified": "2026-11-09T09:05:47-06:00",
+      "commitSha": "b2a945ef",
+      "createdAt": "2026-11-09T09:05:47-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "career-operations",
+        "origin": "okhp3/askjamie-foundry",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Role identity, factual materials, saved-draft completion, authorized submission and receipt reconciliation.",
+        "outOfScope": "Invented qualifications, inferred personal answers, new legal acceptance without approval, outreach, and benefits eligibility decisions.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09T00:00:00Z",
+        "reviewDecision": "approve-with-limits",
+        "blockers": [
+          "Live host integration remains untested.",
+          "Automatic activation and unseen release holdout remain untested."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
@@ -11903,6 +11974,73 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-activity-reconciliation",
+      "displayName": "Activity Reconciliation",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-activity-reconciliation",
+      "path": "knowledge-operations/okhp3-activity-reconciliation/SKILL.md",
+      "description": "Reconcile open follow-ups or refresh an activity log from Sent Items, inbox, calendar, and supplied evidence. Use when checking which replies were already sent, which evidence gaps can be resolved, or what changed through a cutoff. Excludes drafting, sending, and deciding overall application status.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [
+        "**Candidate review.** Start from the named open items. Test each required",
+        "**Bounded refresh.** Start from a verified checkpoint or explicit lower bound",
+        "**Evidence filing.** When requested, use the"
+      ],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-activity-reconciliation/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-activity-reconciliation/SKILL.md",
+      "lastModified": "2026-11-09T08:59:02-06:00",
+      "commitSha": "34a990fb",
+      "createdAt": "2026-11-09T08:59:02-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Bounded event review, follow-up adjudication, authorized log updates, and optional private evidence filing.",
+        "outOfScope": "Messaging, scheduling, public posting, application disposition, and bulk source copying.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-artifact-validation",
       "displayName": "Artifact Validation",
       "family": "knowledge-operations",
@@ -12243,6 +12381,132 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-record-location-reconciliation",
+      "displayName": "Record Location Reconciliation",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-record-location-reconciliation",
+      "path": "knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "description": "Reconcile misplaced record folders, file versions, and references across a local library, synced drive, or tracker. Use to audit filing locations, preserve versions during authorized moves, repair affected links, or verify local and cloud parity. Application status belongs to a separate workflow.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "lastModified": "2026-11-09T09:19:36-06:00",
+      "commitSha": "d9eb4632",
+      "createdAt": "2026-11-09T09:19:36-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led reconciliation of bounded record locations, versions, and their references.",
+        "outOfScope": "Broad filesystem reorganization, deletion, copy-delete migrations, sharing changes, and application-status decisions.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 13,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09",
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-research-file-renewal",
+      "displayName": "Research File Renewal",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-research-file-renewal",
+      "path": "knowledge-operations/okhp3-research-file-renewal/SKILL.md",
+      "description": "Revise or renew a sourced long-form research and retrieval knowledge file while preserving its original purpose, sources, and limitations. Use for topic-drift correction, cited document renewal, and source-to-revision comparison. It does not certify retrieval or publish automatically.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-research-file-renewal/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-research-file-renewal/SKILL.md",
+      "lastModified": "2026-11-09T09:14:55-06:00",
+      "commitSha": "ae242bd3",
+      "createdAt": "2026-11-09T09:14:55-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Traceable renewal of an existing sourced paper or retrieval reference.",
+        "outOfScope": "Unverified source reconstruction, automatic publication, and specialist authority.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-source-backed-research",
       "displayName": "Source Backed Research",
       "family": "knowledge-operations",
@@ -12373,6 +12637,69 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-voice-profile-renewal",
+      "displayName": "Voice Profile Renewal",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-voice-profile-renewal",
+      "path": "knowledge-operations/okhp3-voice-profile-renewal/SKILL.md",
+      "description": "Create or renew an evidence-grounded voice, tone, and glossary knowledge file from an authorized writing corpus. Use for a baseline, quarterly or annual update, or correction across audiences. It does not write a social post, certify identity, infer private traits, or publish a profile.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-voice-profile-renewal/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-voice-profile-renewal/SKILL.md",
+      "lastModified": "2026-11-09T09:14:55-06:00",
+      "commitSha": "ae242bd3",
+      "createdAt": "2026-11-09T09:14:55-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led voice and glossary baselines, renewal, and retrieval-ready packaging.",
+        "outOfScope": "Identity impersonation, automatic public release, biography invention, and unconsented disclosure.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-translation-en-us-de-de",
       "displayName": "Translation En Us De De",
       "family": "language-mediation",
@@ -12408,7 +12735,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
       "lastModified": "2026-08-31T22:34:57-05:00",
       "commitSha": "93613e20",
-      "createdAt": "2026-08-30T18:45:34-05:00",
+      "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
@@ -16831,7 +17158,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-adversary-forecasting/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-intelligence",
@@ -17020,7 +17347,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-credential-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17083,7 +17410,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-data-exposure/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17222,7 +17549,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-lateral-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17348,7 +17675,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-persistence-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17474,7 +17801,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-authorization-governance/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-27T23:47:34-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-governance",
@@ -17789,7 +18116,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-model-anomaly-detection/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-detection",
@@ -18041,7 +18368,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-response-cost-benefit/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-measurement",
@@ -19819,8 +20146,8 @@
       "family": "social-posting",
       "skillDir": "okhp3-linkedin-message",
       "path": "social-posting/okhp3-linkedin-message/SKILL.md",
-      "description": "Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, notes, or the received text. Use when the user wants to write a DM, answer a new connection's message, follow up after an accepted invite, or reply to a recruiter or peer. It tiers the recipient, matches length, keeps one small ask, scrubs risk, and returns a draft only. Do not use for comments, posts, connection notes, or sending.",
-      "version": "1.0.0",
+      "description": "Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, notes, or the received text. Use when the user wants to write a DM, reconnect after a long gap, answer a new connection's message, follow up after an accepted invite, reply to a recruiter or peer, or coordinate several related messages about one subject. It tiers the recipient by role and relationship temperature, verifies recipient facts, matches length, keeps one small ask, scrubs risk, and returns drafts only. Do not use for comments, posts, connection notes, or sending.",
+      "version": "1.1.0",
       "license": "MIT",
       "category": "social-posting",
       "origin": "portable-agent-skills",
@@ -19849,8 +20176,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-message/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-message/SKILL.md",
-      "lastModified": "2026-11-09T08:23:38-06:00",
-      "commitSha": "93d349f1",
+      "lastModified": "2026-11-09T09:06:00-06:00",
+      "commitSha": "4c58b2d6",
       "createdAt": "2026-11-09T08:23:38-06:00",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
@@ -19858,17 +20185,17 @@
         "origin": "portable-agent-skills",
         "homepage": null,
         "authorGithub": null,
-        "inScope": "Drafting a LinkedIn direct message or counter reply from supplied sender intent and recipient context, with a risk scrub.",
+        "inScope": "Drafting LinkedIn direct messages or counter replies from supplied sender intent and recipient context, including related messages with a send order, with a risk scrub.",
         "outOfScope": "Sending, comment or post drafting, connection notes, bulk messaging, or inventing facts about either party.",
         "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 5,
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 11,
         "benchmarkCount": 0,
         "testCount": 0,
-        "referenceCount": 1,
+        "referenceCount": 3,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -23602,6 +23929,70 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-task-resumption",
+      "displayName": "Task Resumption",
+      "family": "universal",
+      "skillDir": "okhp3-task-resumption",
+      "path": "universal/okhp3-task-resumption/SKILL.md",
+      "description": "Find and resume an interrupted task in its original conversation. Use when restarting an archived thread, recovering unfinished agent work, or checking whether a dispatched restart actually completed. Excludes new-task creation and handoff-only writing.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "task-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "task-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-task-resumption/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-task-resumption/SKILL.md",
+      "lastModified": "2026-11-09T09:05:47-06:00",
+      "commitSha": "b2a945ef",
+      "createdAt": "2026-11-09T09:05:47-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "task-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Exact-thread discovery, authorized restoration, continuation, and outcome verification.",
+        "outOfScope": "Replacement conversations, private session-store inspection, permission expansion, and domain execution without its own authority.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09T00:00:00Z",
+        "reviewDecision": "approve-with-limits",
+        "blockers": [
+          "Live host integration remains untested.",
+          "Automatic activation and unseen release holdout remain untested."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },

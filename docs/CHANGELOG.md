@@ -8,9 +8,55 @@
   complete file hashes in `docs/interview-skills-sync-2026-11-09.json`.
 - Treat public-work selection and platform transfer as evidence-map branches;
   compose with existing social drafting skills when explicitly requested.
-- Refresh catalogs to 341 skills across 22 active families. These two packages
+- Refresh catalogs to 347 skills across 22 active families. These two packages
   are draftable source with analytical review; behavioral evaluations, automatic
   activation, measured uplift and an unseen holdout remain not run.
+
+## 2026-11-09: Voice and research file renewal candidates
+
+- Add two draftable knowledge-operations skills for authorship-aware voice and
+  glossary renewal and for source-to-revision research updates. Their exposed
+  cases are development designs; live benchmarks, host retrieval tests, and an
+  unseen holdout are not established.
+
+## 2026-11-09: Interrupted-work and application completion candidates
+
+- Add task resumption and an exact AskJamie job-application-completion mirror.
+- Preserve original-thread continuity, exact application identity, approved materials,
+  safe retries and single-owner external actions in portable contracts.
+- Include synthetic development cases, bounded equilibrium review and core hash records.
+  No live host integration, unseen holdout or production-readiness claim is made.
+
+## 2026-11-09: LinkedIn message 1.1.0
+
+- Merge PR #222 into `okhp3-linkedin-message` from PR #220 as 1.1.0. Keep the
+  1.0.0 role tier, length matching, one-ask rule, recruiter and scam
+  verification, and message gate. Add relationship temperature (`active`,
+  `dormant`, `distant`, `cold`), recipient-fact sourcing with a stale-source
+  flag, a recipient-conflict check, attachments by temperature, and
+  multi-recipient sequencing with true-on-arrival and forwarding checks.
+  Extend the gate with clinical-metaphor and traveling-urgency items and add
+  six development cases (eleven total).
+- Evidence remains analytical and not-run. The merged package has not been
+  re-reviewed by independent roles.
+
+## 2026-11-09: Record location reconciliation
+
+- Add a draftable Knowledge Operations skill for auditing record locations,
+  preserving versions during authorized moves, and verifying affected references.
+- Include a relocation record, 13 synthetic development cases, and an analytical
+  Equilibrium Review. Live host benchmarking and a protected holdout remain open.
+- Refresh the distribution inventory to 341 skills across 22 active families.
+
+
+## 2026-11-09: follow-up and activity reconciliation
+
+- Add `okhp3-activity-reconciliation` 0.1.0 to Knowledge Operations for
+  scoped response-candidate review and bounded activity-log refresh.
+- Include exact event matching, guarded tracker updates, optional private
+  evidence filing, and synthetic development cases. Catalog as draftable with
+  analytical review. A live benchmark and unseen release holdout remain open.
+- Refresh the distribution catalog to 340 skills across 22 active families.
 
 ## 2026-11-09: Build in Public proof briefs
 

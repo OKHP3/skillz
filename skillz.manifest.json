@@ -20,21 +20,21 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 341,
+  "distributionSkillCount": 347,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 272,
+    "draftable": 278,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 171,
+    "not-run": 174,
     "none": 109,
+    "analytical": 10,
     "local-checks": 39,
-    "analytical": 7,
     "live": 8
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
@@ -67,7 +67,8 @@
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness",
         "okhp3-interview-evidence-map",
-        "okhp3-interview-questions"
+        "okhp3-interview-questions",
+        "okhp3-job-application-completion"
       ]
     },
     {
@@ -252,13 +253,17 @@
       "name": "knowledge-operations",
       "status": "draftable",
       "skills": [
+        "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
         "okhp3-project-promotion",
+        "okhp3-record-location-reconciliation",
+        "okhp3-research-file-renewal",
         "okhp3-source-backed-research",
-        "okhp3-triage-and-file"
+        "okhp3-triage-and-file",
+        "okhp3-voice-profile-renewal"
       ]
     },
     {
@@ -503,6 +508,7 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
+        "okhp3-task-resumption",
         "okhp3-vite-github-pages"
       ]
     }
@@ -525,6 +531,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:15:58.707Z",
+  "countsGeneratedAt": "2026-11-09T23:03:46.839Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

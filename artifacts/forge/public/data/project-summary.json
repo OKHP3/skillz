@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-11-09T14:59:24.765Z",
+  "generatedAt": "2026-11-09T15:48:30.263Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/build-in-public-proof-brief",
-  "sourceCommit": "37586ad",
-  "skillCount": 339,
+  "sourceRef": "codex/voice-research-knowledge-skills",
+  "sourceCommit": "ca5c0724",
+  "skillCount": 345,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 270,
+    "draftable": 276,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 169,
+    "not-run": 172,
     "none": 109,
+    "analytical": 10,
     "local-checks": 39,
-    "analytical": 7,
     "live": 8
   },
   "capabilities": {
