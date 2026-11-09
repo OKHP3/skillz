@@ -1,9 +1,9 @@
 ---
 family: askjamie
 display_name: AskJamie
-skill_count: 7
+skill_count: 8
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T23:03:38Z
+generated_at: 2026-11-09T23:22:10Z
 ---
 
 # askjamie
@@ -24,6 +24,8 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 - `okhp3-interview-questions/` drafts candid questions and useful follow-ups while
   preserving supported concerns. Both interview packages are exact AskJamie
   Resume Representative mirrors; see [the sync manifest](../docs/interview-skills-sync-2026-11-09.json).
+
+- `okhp3-professional-headshot/` creates a realistic, recognizable career portrait from authorized photos, with reference roles and verified delivery.
 
 ## Design direction
 
@@ -60,10 +62,10 @@ The README-only old locations are compatibility pointers, not additional skills.
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (7)
+## Skills (8)
 
 <!-- FAMILY_INVENTORY_START -->
-*7 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:03 UTC***
+*8 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:22 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -74,4 +76,5 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 | [okhp3-interview-evidence-map](okhp3-interview-evidence-map/SKILL.md) | Map a specific interview role to a person's supplied career evidence and choose defensible storie... | 1.0.0 |
 | [okhp3-interview-questions](okhp3-interview-questions/SKILL.md) | Draft candid interview questions that test role fit without loading the premise. Use to reframe a... | 1.0.0 |
 | [okhp3-job-application-completion](okhp3-job-application-completion/SKILL.md) | Complete or resume job applications from approved career evidence, tailored materials and saved p... | 0.2.0 |
+| [okhp3-professional-headshot](okhp3-professional-headshot/SKILL.md) | Create or refine a realistic professional headshot from supplied or explicitly authorized recent ... | 0.1.0 |
 <!-- FAMILY_INVENTORY_END -->

@@ -8,9 +8,22 @@
   complete file hashes in `docs/interview-skills-sync-2026-11-09.json`.
 - Treat public-work selection and platform transfer as evidence-map branches;
   compose with existing social drafting skills when explicitly requested.
-- Refresh catalogs to 347 skills across 22 active families. These two packages
+- Refresh catalogs to 349 skills across 22 active families. These two packages
   are draftable source with analytical review; behavioral evaluations, automatic
   activation, measured uplift and an unseen holdout remain not run.
+
+## 2026-11-09: Professional portrait and guided still capture
+
+- Add draftable `okhp3-professional-headshot` and `okhp3-guided-photo-session`
+  0.1.0, with explicit reference roles, bounded live capture, partial-result and
+  delivery contracts, and a conditional historical Camo adapter.
+- Keep media handoff as a supporting contract. Route existing-record audits to
+  the existing reconciliation skill without implying copy-delete authority.
+- Include 16 synthetic development cases, 40 planned discovery queries, frozen
+  core hashes and analytical Equilibrium Review. No live benchmark, image-quality
+  measurement, trigger measurement or protected holdout is claimed.
+- Link from Social Posting and refresh the distribution to 347 skills in 22
+  active families. Resume Representative consumes a pinned canonical reference.
 
 ## 2026-11-09: Voice and research file renewal candidates
 
