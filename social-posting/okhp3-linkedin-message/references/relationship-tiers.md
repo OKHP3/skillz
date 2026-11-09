@@ -1,4 +1,7 @@
-# Relationship tiers
+# Relationship temperature
+
+Temperature is separate from the role tier in `SKILL.md` step 2: a senior
+contact can be `active`, and a peer can be `dormant`.
 
 Classify from what the user states about the relationship. When the user gives
 no signal, ask once; if they cannot answer, use `dormant`, the safer default.
@@ -7,7 +10,7 @@ no signal, ask once; if they cannot answer, use `dormant`, the safer default.
 |---|---|---|---|---|---|
 | `active` | Regular recent contact the user describes as ongoing | Short; context can be assumed | High: strategy, reasoning, and a request for critique are fine | Allowed when the recipient needs them | Specific: review, feedback, discretion |
 | `dormant` | A real shared history, then a long gap | Medium; enough to re-establish context | Moderate: personal update is welcome; avoid homework | None in the first message; offer them | Low-cost: a call, their perspective |
-| `senior-target` | A decision maker the user knows, but not closely or not recently | Medium; under one minute to read | Measured: one idea, framed for their interests | At most one artifact that previews inline | Optional: an invitation they can accept or ignore without awkwardness |
+| `distant` | Someone the user knows, but not closely or not recently, often a senior decision maker | Medium; under one minute to read | Measured: one idea, framed for their interests | At most one artifact that previews inline | Optional: an invitation they can accept or ignore without awkwardness |
 | `cold` | No prior contact or shared history | Short; a connection note or a few lines | Low: who the sender is and why this recipient, in plain terms | None | Small and easy to decline: connect, or a brief exchange |
 
 ## Tier rules
@@ -24,7 +27,7 @@ no signal, ask once; if they cannot answer, use `dormant`, the safer default.
   when it comes from a current source. Describe a change neutrally; never
   characterize a move as a step up, down, or sideways unless the recipient
   framed it that way.
-- **Keep `senior-target` free of pressure.** No deadline, no stated urgency,
+- **Keep `distant` free of pressure.** No deadline, no stated urgency,
   no request that forces a yes or no. Make the next step easy to take.
 - **Do not promote a tier to gain leverage.** Writing to a `dormant` contact as
   if `active` reads as presumptuous and usually costs the reply.

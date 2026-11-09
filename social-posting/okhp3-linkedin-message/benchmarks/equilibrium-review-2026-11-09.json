@@ -8,14 +8,13 @@
     "path": "social-posting/okhp3-linkedin-message",
     "version": "1.0.0-rc1",
     "sha256_SKILL_md_rc1": "376cdf9a5c547d5a2c41fa9aebed5e7fda9aeb11fcc3d80a8ece2600f93cf7df",
-    "released_version": "1.0.0",
+    "released_version": "1.1.0",
     "released_sha256": {
-      "SKILL.md": "b8eac42bdea474a634b2c1a782b849380c2b6f85fb5c860af897a6f0240e9d35",
-      "evals/evals.json": "42e2685561d87b665352fbf39ab2da33950157c452687f180159ef27f6c95fc2",
-      "references/message-scrub.md": "56ab51758acbcf211c285a2205eb834d56938da112a6af6e15803856cdb59a20",
-      "references/relationship-tiers.md": "16b0576c9e8907858985763c08fbb8562fd593f409ad8338b07bb42f4076f80f",
-      "references/sequencing.md": "fec68029ad2e2352eed8fa17a644b285b01211e6622921b1edd46973a48eb346",
-      "references/surface-limits.md": "abfe0f1395f7d8aa89a87959c17775a780756d94db5054e266aae09273bd8b0f"
+      "SKILL.md": "1ceddc69a27f24cd6fe94d18a0e24f2dd0158b3aaddf61dbcf66bbd130b29e0a",
+      "evals/evals.json": "0ce6bd03ec220c0a30cff15e50f79b54413d77795e2cf19b8127145e91d47cc2",
+      "references/message-gate.md": "bfad2f841fb0607ea2c34d12553140a53052b36e2615e42b511f241dd6d0c2e1",
+      "references/relationship-tiers.md": "804eb49d41441423a946cbe8452050a2e100d33b373690d9952c7a667b751edd",
+      "references/sequencing.md": "fec68029ad2e2352eed8fa17a644b285b01211e6622921b1edd46973a48eb346"
     }
   },
   "decision_question": "Is okhp3-linkedin-message ready for draftable distribution in social-posting within its stated scope?",
@@ -147,5 +146,30 @@
     "Run development cases with and without the skill in an isolated runner",
     "Add an external holdout",
     "Confirm limits against LinkedIn Help when retrievable"
-  ]
+  ],
+  "merge_record": {
+    "date": "2026-11-09",
+    "reason": "PR #220 landed an independent okhp3-linkedin-message 1.0.0 (DMs, counter replies, recruiter and scam verification, length matching) before PR #222 merged. The owner chose to merge #222 into it as 1.1.0 rather than replace it.",
+    "kept_from_220": [
+      "role tier (peer, senior, recruiter or sales, unknown)",
+      "length matching to inbound",
+      "one-ask rule",
+      "recruiter and unknown-sender verification",
+      "message-gate.md",
+      "five 1.0.0 eval cases"
+    ],
+    "added_from_222": [
+      "relationship temperature: active, dormant, distant (renamed from senior-target to avoid colliding with the role tier), cold",
+      "recipient-fact sourcing and stale-source flag",
+      "recipient-conflict check and attachments by temperature",
+      "multi-recipient sequencing with true-on-arrival and forwarding checks",
+      "clinical-metaphor and traveling-urgency gate items",
+      "six eval cases"
+    ],
+    "dropped_from_222": [
+      "surface-limits.md and the connection-note-limit case: connection notes belong to okhp3-linkedin-connection-note",
+      "message-scrub.md: folded into message-gate.md"
+    ],
+    "review_status": "analytical; the merged package has not been re-reviewed by independent roles"
+  }
 }

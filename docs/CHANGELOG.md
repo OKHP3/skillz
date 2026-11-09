@@ -1,22 +1,34 @@
 # Changelog
 
-## 2026-11-09: LinkedIn private messages
+## 2026-11-09: LinkedIn message 1.1.0
 
-- Add `okhp3-linkedin-message` 1.0.0 as a draftable social-posting package for
-  LinkedIn direct messages, connection-request notes, and InMail. It
-  calibrates to relationship temperature (`active`, `dormant`, `senior-target`,
-  `cold`),
-  requires a source for recipient facts, checks recipients against the
-  subject for competitor conflicts, gates attachments by tier, sequences
-  related messages, and runs the family voice pass and a private-message
-  scrub. Draft only.
-- An analytical equilibrium review (single model context, correlated roles)
-  approved it with limits after adding the missing voice pass. LinkedIn
-  character limits rest on conflicting secondary sources; the package writes
-  to conservative defaults and requires the live counter. No live benchmark
-  or unseen holdout was run.
-- Refresh the distribution catalog and manifest to 335 skills across 22
-  active families, including 32 social-posting skills.
+- Merge PR #222 into `okhp3-linkedin-message` from PR #220 as 1.1.0. Keep the
+  1.0.0 role tier, length matching, one-ask rule, recruiter and scam
+  verification, and message gate. Add relationship temperature (`active`,
+  `dormant`, `distant`, `cold`), recipient-fact sourcing with a stale-source
+  flag, a recipient-conflict check, attachments by temperature, and
+  multi-recipient sequencing with true-on-arrival and forwarding checks.
+  Extend the gate with clinical-metaphor and traveling-urgency items and add
+  six development cases (eleven total).
+- Evidence remains analytical and not-run. The merged package has not been
+  re-reviewed by independent roles.
+
+## 2026-11-09: LinkedIn outreach drafting family
+
+- Add `okhp3-linkedin-connection-note`, `okhp3-linkedin-message`,
+  `okhp3-linkedin-network-plan`, and `okhp3-linkedin-inbox-triage` as draftable
+  portable skills for invite notes, direct messages and counter replies, paced
+  outreach planning with an acceptance feedback loop, and a read-and-draft
+  inbox review.
+- Keep every package draft-only and public-neutral. Sending is a manual action
+  by the account owner. The family contains no browser-send instructions
+  because LinkedIn's terms prohibit bots and automated methods that send
+  messages or add contacts. Inbox triage defaults to sender-pasted text.
+- Record an inline equilibrium review in `social-posting/REVIEW-linkedin-outreach.md`.
+  It is analytical only. No live model benchmark or holdout was run, so evidence
+  stays `not-run` and no validated claim is made.
+- Refresh the distribution catalogs and manifest to 338 skills across 22 active
+  families.
 
 ## 2026-10-25: explicit Notion destination roots
 
