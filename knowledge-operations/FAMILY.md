@@ -1,9 +1,9 @@
 ---
 family: knowledge-operations
 display_name: Knowledge Operations
-skill_count: 9
+skill_count: 11
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:17:54Z
+generated_at: 2026-11-09T15:22:56Z
 ---
 
 # knowledge-operations
@@ -113,10 +113,10 @@ recurring job and a distinct output justify it.
 Portable lifecycle skills for capturing, classifying, researching, reconciling, validating, and promoting information or exploratory work with provenance and owner approval.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (9)
+## Skills (11)
 
 <!-- FAMILY_INVENTORY_START -->
-*9 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:17 UTC***
+*11 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:22 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

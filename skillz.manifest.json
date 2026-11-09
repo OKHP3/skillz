@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 341,
+  "distributionSkillCount": 343,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 272,
+    "draftable": 274,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 170,
+    "not-run": 172,
     "none": 109,
     "local-checks": 39,
     "analytical": 8,
@@ -257,8 +257,10 @@
         "okhp3-graduation-gate",
         "okhp3-project-promotion",
         "okhp3-record-location-reconciliation",
+        "okhp3-research-file-renewal",
         "okhp3-source-backed-research",
-        "okhp3-triage-and-file"
+        "okhp3-triage-and-file",
+        "okhp3-voice-profile-renewal"
       ]
     },
     {
@@ -525,6 +527,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:18:13.409Z",
+  "countsGeneratedAt": "2026-11-09T15:25:18.078Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
