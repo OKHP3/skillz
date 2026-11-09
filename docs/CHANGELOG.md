@@ -13,6 +13,15 @@
 - Evidence remains analytical and not-run. The merged package has not been
   re-reviewed by independent roles.
 
+## 2026-11-09: Record location reconciliation
+
+- Add a draftable Knowledge Operations skill for auditing record locations,
+  preserving versions during authorized moves, and verifying affected references.
+- Include a relocation record, 13 synthetic development cases, and an analytical
+  Equilibrium Review. Live host benchmarking and a protected holdout remain open.
+- Refresh the distribution inventory to 341 skills across 22 active families.
+
+
 ## 2026-11-09: follow-up and activity reconciliation
 
 - Add `okhp3-activity-reconciliation` 0.1.0 to Knowledge Operations for
