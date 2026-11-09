@@ -60,6 +60,14 @@ class ValidateTests(unittest.TestCase):
         self.assertTrue(any(e.startswith("slug") for e in errors))
         self.assertTrue(any(e.startswith("document_title") for e in errors))
 
+    def test_malformed_pages_and_blocks_report_errors(self):
+        spec = copy.deepcopy(EXAMPLE)
+        spec["pages"][1] = "not an object"
+        spec["pages"][2]["blocks"] = ["text", None]
+        errors, _, _ = bc.validate(spec)
+        self.assertTrue(any("pages[2] must be an object" in e for e in errors))
+        self.assertTrue(any("pages[3].blocks must be a list of objects" in e for e in errors))
+
     def test_page_bounds(self):
         spec = copy.deepcopy(EXAMPLE)
         spec["pages"] = spec["pages"][:1]

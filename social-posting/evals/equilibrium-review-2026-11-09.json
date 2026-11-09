@@ -124,7 +124,7 @@
       }
     ],
     "test_results": [
-      "build_carousel tests: 13 passed, including nested comparison-grid clipping regressions (Python 3, Playwright 1.56.0, Pillow 12.3.0) on 2026-11-09",
+      "build_carousel tests: 14 passed, including nested comparison-grid clipping regressions (Python 3, Playwright 1.56.0, Pillow 12.3.0) on 2026-11-09",
       "foundry validate-skill-suite: 33 social-posting packages validated",
       "cataloger --full --check passed",
       "Local SkillSpector 2.13.4 --no-llm rescan after wording fixes: 0 issues and 0 missing references on all five changed packages"
@@ -156,7 +156,7 @@
   ],
   "package_hashes": {
     "social-posting/okhp3-linkedin-carousel/SKILL.md": "6b1f033b766fe1a97db19342b45412dfe0ba0715509f1dd7d113457db4b63fee",
-    "social-posting/okhp3-linkedin-carousel/scripts/build_carousel.py": "5ba9601d2ecd6c12ee25007d196ff6604c03238be5ccaf7c18dc73e427ac8fbf",
+    "social-posting/okhp3-linkedin-carousel/scripts/build_carousel.py": "fb9952621298e1b1708dde26aafd4000dcf0cd7192140a13b1e40e581c934d58",
     "social-posting/okhp3-linkedin-publish-ops/SKILL.md": "e2bc07ab1519f914ae3298dab45eaf239df65d82969f19d89767bbd3345d520f",
     "social-posting/okhp3-linkedin-post/SKILL.md": "eeb140138cb03d6b91577d198b2bd106f8786e167b692ea4d5f0871e5304dbd4",
     "social-posting/okhp3-linkedin-voice/references/voice-rules.md": "1486e86d27269bf8bcebeedcc071b82385cd8e1e6d2a5c8f18e1fbdbc7e3f08e"

@@ -52,7 +52,7 @@ This skill governs LinkedIn output specifically. Platform-conditional formatting
 
 ## Output contract
 
-Return the revised text, then a short change log listing only the rule categories changed or judged. Do not invent new facts, examples, links, hashtags, or employer context while polishing. Preserve any user-specified hashtag count and URL text. If the input is not LinkedIn-bound prose, say so and route to the appropriate skill instead of silently rewriting it.
+Return the revised text, then a short change log listing only the rule categories changed or judged, plus the active rhythm profile and its before and after counts. Do not invent new facts, examples, links, hashtags, or employer context while polishing. Preserve any user-specified hashtag count and URL text. If the input is not LinkedIn-bound prose, say so and route to the appropriate skill instead of silently rewriting it.
 
 ## Validation
 

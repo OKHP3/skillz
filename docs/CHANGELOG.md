@@ -6,7 +6,7 @@
   renderer (`scripts/build_carousel.py`) that escapes all text, disables page
   JavaScript, aborts network requests, enforces contrast and a 24px type
   floor, requires a source on claim pages, detects overflow, and writes an
-  accessible text outline beside the image-only PDF. Thirteen unit and render
+  accessible text outline beside the image-only PDF. Fourteen unit and render
   tests pass locally; no live with/without-skill benchmark was run.
 - Add `okhp3-linkedin-publish-ops` 1.0.0, the social-posting family's single
   scoped acting package: publish bundle with text hash and IANA time zone,

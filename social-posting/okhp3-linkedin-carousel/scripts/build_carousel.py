@@ -122,8 +122,18 @@ def validate(spec: dict) -> tuple[list[str], list[str], dict]:
     if len(pages) > ADVISED_MAX:
         warnings.append(f"{len(pages)} pages; most document carousels hold attention best at 6 to {ADVISED_MAX}")
 
+    bad_shape = False
     for i, page in enumerate(pages, 1):
         where = f"pages[{i}]"
+        if not isinstance(page, dict):
+            errors.append(f"{where} must be an object")
+            bad_shape = True
+            continue
+        blocks = page.get("blocks", [])
+        if not isinstance(blocks, list) or not all(isinstance(b, dict) for b in blocks):
+            errors.append(f"{where}.blocks must be a list of objects")
+            bad_shape = True
+            continue
         if not str(page.get("title", "")).strip():
             errors.append(f"{where}.title is required (one idea per page)")
         if len(str(page.get("title", ""))) > 90:
@@ -133,7 +143,7 @@ def validate(spec: dict) -> tuple[list[str], list[str], dict]:
             errors.append(f"{where} is marked claims=true but has no source footer")
         if not has_source and not page.get("claims") and _looks_factual(page):
             warnings.append(f"{where} contains a number, date, or stat but no source footer; add one or mark it as opinion")
-        for j, block in enumerate(page.get("blocks", []), 1):
+        for j, block in enumerate(blocks, 1):
             kind = block.get("type")
             if kind not in BLOCK_TYPES:
                 errors.append(f"{where}.blocks[{j}].type '{kind}' is not one of {sorted(BLOCK_TYPES)}")
@@ -145,6 +155,8 @@ def validate(spec: dict) -> tuple[list[str], list[str], dict]:
                     warnings.append(f"{where}.blocks[{j}] has {len(rows)} compare rows; 4 or fewer read best")
             if kind in {"steps", "bullets"} and len(block.get("items", [])) > 5:
                 warnings.append(f"{where}.blocks[{j}] has more than 5 items")
+    if bad_shape:
+        return errors, warnings, theme
     if pages[0].get("role") != "cover":
         warnings.append("pages[1] is not marked role=cover; the first page should carry the hook")
     if pages[-1].get("role") != "close":
@@ -281,7 +293,10 @@ def render(spec: dict, theme: dict, out: pathlib.Path, html_only: bool) -> list[
                 overflow.append(f"page {name}: footer text does not fit; shorten the source line")
             pg.screenshot(path=str(out / f"{name}.png"))
         browser.close()
-    images = [Image.open(out / f"{n}.png").convert("RGB") for n in names]
+    images = []
+    for n in names:
+        with Image.open(out / f"{n}.png") as im:
+            images.append(im.convert("RGB"))
     images[0].save(out / f"{spec['slug']}.pdf", save_all=True, append_images=images[1:], resolution=150)
     cols = 4
     rows = (len(images) + cols - 1) // cols
