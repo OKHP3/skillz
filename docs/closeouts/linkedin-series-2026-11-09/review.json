@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional",
+  "evaluation_status": "analytical",
+  "artifacts": [
+    {"path":"social-posting/okhp3-linkedin-series-continuity/SKILL.md","version":"0.1.0","sha256":"3f9e55bc1bd36f74e5158eb970ba72a0105ccb5514d94e68423fd9d500cf2a1d","eval_sha256":"a0a09f89324ad69c8d96cc43a2495e1296c89ac0d95e5a287986b2d22f784eb7"},
+    {"path":"universal/okhp3-scheduled-post-revision/SKILL.md","version":"0.1.0","sha256":"d6f27a585805ff86a7ea32e26fa8845ab05c146c95e7aba44e376462612d241a","eval_sha256":"24fa9cfe454b8113e9bd03a87df71466c88a045ebfaf252bd422aee26d8d5282"}
+  ],
+  "decision_question":"Are the scoped contracts suitable for analytical distribution without unsupported effectiveness claims?",
+  "acceptance_criteria":["Distinct useful outcomes and composable placement","Evidence and publication-state fidelity","Authorization, privacy, concurrency and asset preservation boundaries","Portable resources and synthetic evaluation design"],
+  "independence":{"reviewer_contexts_separated":true,"shared_model_or_source_limits":["Same inherited model family and shared conversation context","Overlapping repository sources","No blinded independent grader or protected holdout"]},
+  "claim_ledger":[
+    {"claim_id":"CLM-01","claim":"A series continuation needs prior-item state and evidence reconciliation beyond generic drafting.","claim_type":"design choice","evidence_ids":["social-posting/okhp3-linkedin-angles/SKILL.md","social-posting/okhp3-linkedin-post/SKILL.md","social-posting/okhp3-linkedin-series-continuity/references/series-record.md"],"status":"supported","consequence":"Unverified prior posts or results may be presented as published.","next_test":"Run a fresh matched continuation evaluation with an unseen case."},
+    {"claim_id":"CLM-02","claim":"Queue revision needs separate identity, preservation and readback controls.","claim_type":"design choice","evidence_ids":["universal/okhp3-scheduled-post-revision/SKILL.md","universal/okhp3-scheduled-post-revision/evals/evals.json"],"status":"supported","consequence":"A separate draft or wrong queue item may be mistaken for the intended post.","next_test":"Run a separately authorized real-host pilot with revision and asset readback."},
+    {"claim_id":"CLM-03","claim":"These versions improve agent outcomes over a baseline or work on every host.","claim_type":"hypothesis","evidence_ids":[],"status":"blocked","consequence":"Analytical review could be mistaken for measured effectiveness.","next_test":"Freeze and run matched baselines and an unseen holdout with independent grading."}
+  ],
+  "initial_reviews":[
+    {"role":"evidence","status":"analytical","decision":"approve-with-limits after routing correction"},
+    {"role":"outcome","status":"analytical","decision":"defer until routing, timing and formatting corrections; revised contract approved with limits"},
+    {"role":"safety-portability","status":"analytical","decision":"defer until pre-save race correction; revised contract approved with limits"}
+  ],
+  "concordance":"Final three roles materially agree within stated analytical limits.",
+  "disruptor":{"triggered":true,"authority":"conditional","falsification_hypotheses":["Posting deadline crosses after editor entry while queue data remains unchanged","Required media is unobservable"],"test_results":["First timing objection survived initial written instructions; final pre-save timing gate and development case address it analytically.","Required unobservable media is marked unknown and blocks the operation; a separate development case records the expectation."]},
+  "negotiator":{"triggered":true,"decision":"approve-with-limits","decisive_evidence":["Final instruction hashes and corrected routing, timing, formatting and concurrency gates","Synthetic development cases and separately prompted role reviews"],"unresolved_items":["No fresh matched benchmark or unseen holdout","No live scheduler-host execution of final version","Same-model reviewer correlation and non-atomic host race"]},
+  "release_decision":"approve-with-limits",
+  "limitations":["Structural validation is not task-quality evidence.","Two same-model informal simulated development exercises are not an independent benchmark; the scheduler exercise predates the final revision.","Designed evaluation cases are not recorded as executed suite results.","Owner approval and host permissions remain separate from this review."],
+  "follow_up":[{"owner":"maintainer","condition":"Run a frozen matched baseline and protected external holdout before claiming efficacy or uplift."},{"owner":"maintainer","condition":"Run a separately authorized host pilot and record conditional-write availability and preservation coverage."},{"owner":"maintainer","condition":"Repeat review on a material contract, host, authorization-policy or evidence change."}]
+}
