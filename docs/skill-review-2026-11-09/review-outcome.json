@@ -1,0 +1,199 @@
+{
+  "role": "outcome",
+  "decision": "approve-with-limits",
+  "confidence": "medium",
+  "evidence_status": "analytical",
+  "execution_status": "completed",
+  "review_date": "2026-11-09",
+  "artifact_version": "0.1.0",
+  "artifact_identity": {
+    "freeze": "skill-work-review/freeze-initial.json",
+    "all_eight_frozen_resources_match": true,
+    "packages": [
+      "OKHP3/skillz/universal/okhp3-task-resumption",
+      "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion"
+    ],
+    "hash_check_method": "Read every resource listed in freeze-initial.json and compare its SHA-256 with the frozen value. All eight matched during this review."
+  },
+  "decision_question": "Are the two frozen 0.1.0 packages ready to publish as limited candidate skills for their named repeatable workflows, with useful operational knowledge, precise discovery, usable contracts, realistic evaluation, and composition rather than redundant career capabilities?",
+  "acceptance_criteria": [
+    "Preserve exact task, account, requisition and route identity.",
+    "Distinguish approved, attempted, dispatched, confirmed, blocked and uncertain milestones.",
+    "Offer concrete inputs, records, evidence and next actions usable by another agent.",
+    "Retain existing resume drafting, status reconciliation, saved-opportunity triage and handoff boundaries.",
+    "Constrain release claims to the actual version-specific evidence."
+  ],
+  "material_findings": [
+    {
+      "id": "OUT-01",
+      "claim": "Task resumption adds a useful continuity protocol beyond generic advice to resume work.",
+      "claim_type": "interpretation",
+      "status": "supported",
+      "severity": "positive",
+      "evidence_ids": ["OUT-E01", "OUT-E02", "OUT-E03"],
+      "locations": [
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md", "line": 31},
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md", "line": 39},
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md", "line": 61},
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/references/continuation-record.md", "line": 7}
+      ],
+      "reason": "The method restores the exact original, inventories completed external actions even inside interrupted turns, preserves authority and denied/pending/uncertain states, checks uncertain dispatch before resend, and requires subsequent outcome evidence. The continuation record makes these distinctions transferable. These are actionable operational rules, not merely a reminder to summarize prior work.",
+      "consequence": "Without these distinctions a restarted worker can duplicate accepted actions, act in a similarly named thread, or report a send acknowledgement as completed work.",
+      "next_test": "Exercise a supported host simulator with a completed external action in an interrupted turn and a timed-out but persisted continuation prompt; verify only remaining work is dispatched once in the original."
+    },
+    {
+      "id": "OUT-02",
+      "claim": "Application completion has a distinct coordinating purpose and a usable per-role output contract.",
+      "claim_type": "interpretation",
+      "status": "supported",
+      "severity": "positive",
+      "evidence_ids": ["OUT-E04", "OUT-E05"],
+      "locations": [
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "line": 40},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "line": 57},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "line": 73},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/references/application-record.md", "line": 8}
+      ],
+      "reason": "The package connects exact posting-to-requisition identity, prior-submission checks, reviewed attachment version, parsed work-history inspection, authentication pauses, a recoverable submission checkpoint, and per-surface receipts. The record separates application state from employer disposition, pursuit decision, listing availability, tracker status and remote file synchronization. Workflow intake supplies candidate, approved evidence, exclusions, destinations and action scope without fixed private identities.",
+      "consequence": "A role-specific resume alone cannot establish that the intended account submitted the intended requisition with the approved bytes, or that every requested record was updated.",
+      "next_test": "Run a successful synthetic application flow with approved material bytes, an altered parsed-history field, a corrected preview, one accepted submit and independently checked record writes; inspect the resulting material and per-role ledger, not just its explanation."
+    },
+    {
+      "id": "OUT-03",
+      "claim": "The candidates preserve companion boundaries without creating redundant resume, status, ranking or handoff packages.",
+      "claim_type": "interpretation",
+      "status": "supported",
+      "severity": "positive",
+      "evidence_ids": ["OUT-E04", "OUT-E06", "OUT-E07", "OUT-E08", "OUT-E09"],
+      "locations": [
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "line": 51},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "line": 87},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "line": 101},
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md", "line": 4},
+        {"file": "OKHP3/skillz/context-extraction/okhp3-session-handoff/SKILL.md", "line": 21}
+      ],
+      "reason": "Application completion owns execution through submission and receipts, while the existing resume package owns career drafting, reconciliation explicitly excludes applying, and triage explicitly excludes submission and uploads. Repeating essential receipt and write-safety invariants at the application boundary supports a portable fallback rather than duplicating the entire reconciliation workflow. Task resumption owns finding, restoring and observing an existing original; session-handoff owns creating a durable record. The candidate explicitly excludes handoff-only requests.",
+      "consequence": "Composition should reduce repeated explanation while retaining a useful fallback when companion packages are unavailable. A router that treats every career request as application completion would defeat those boundaries.",
+      "next_test": "Test the same mixed career request with companions present and absent. Verify drafting-only and status-only requests route to their narrow owners, and that exact identity, approvals and material version survive the handoff."
+    },
+    {
+      "id": "OUT-04",
+      "claim": "The packaged development cases are realistic for decision boundaries but do not demonstrate successful completion of either named workflow.",
+      "claim_type": "fact",
+      "status": "supported",
+      "severity": "release-limit",
+      "evidence_ids": ["OUT-E10", "OUT-E11"],
+      "locations": [
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/evals/evals.json", "line": 4},
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/evals/evals.json", "line": 42},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/evals.json", "line": 4},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/evals.json", "line": 43}
+      ],
+      "reason": "All six cases per package are visible development fixtures requesting JSON decision records from supplied evidence. They cover important partial-progress, ambiguity, denial, timeout, personal-answer, destination and concurrency boundaries. They do not include a full successful restore-to-confirmed-result sequence or a full successful reviewed-material-to-submission-and-reconciliation sequence. They cannot directly establish factual material quality, rendering, tool selection, actual dispatch count or destination persistence. Both files identify the holdout as external-required and do not contain execution results.",
+      "consequence": "Passing the visible expectations would support bounded analytical decision quality, not a claim that these skills have successfully completed real host or ATS workflows.",
+      "next_test": "Before any demonstrated-completion claim, add and execute one happy-path simulator per workflow with observable action traces and artifact readback, including one non-application task-resumption case. Supply an external or protected holdout before broader outcome or uplift claims."
+    },
+    {
+      "id": "OUT-05",
+      "claim": "Discovery boundaries are coherent on inspection, but activation precision and recall remain unmeasured.",
+      "claim_type": "interpretation",
+      "status": "provisional",
+      "severity": "release-limit",
+      "evidence_ids": ["OUT-E01", "OUT-E04", "OUT-E12", "OUT-E13"],
+      "locations": [
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/evals/trigger-cases.json", "line": 4},
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/evals/trigger-cases.json", "line": 47},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/trigger-cases.json", "line": 4},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/trigger-cases.json", "line": 47}
+      ],
+      "reason": "Each trigger file contains ten positives and ten negatives, with useful exclusions for handoff-only, drafting-only, status-only and saved-job ranking. The files explicitly say not-run. Some negatives are distant topics; close neighbors such as continuing the current active conversation, producing only a resume for an application, and mixed ranking-plus-apply requests need routing adjudication. A forbidden request such as inventing experience is a safety behavior test, not by itself evidence of a discovery boundary.",
+      "consequence": "A skill may have clear prose boundaries yet still be missed, over-activated, or routed to a broader workflow by an actual host.",
+      "next_test": "Execute version-bound discovery tests using metadata-only loading in the intended host, add the close-neighbor cases, and separately score activation versus refusal or partial routing behavior."
+    },
+    {
+      "id": "OUT-06",
+      "claim": "Approval is limited to candidate design, with publication prerequisites still requiring integration evidence.",
+      "claim_type": "design choice",
+      "status": "provisional",
+      "severity": "release-condition",
+      "evidence_ids": ["OUT-E14", "OUT-E15", "OUT-E16"],
+      "locations": [
+        {"file": "skill-work-review/architecture.md", "line": 59},
+        {"file": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md", "line": 85},
+        {"file": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md", "line": 109}
+      ],
+      "reason": "Both packages accurately disclose their evidence limits and absent host capabilities. The architecture additionally requires satisfied critical synthetic expectations, mirror equality, package checks and governed repository publication. The frozen resources matched, but this role did not execute the behavioral cases or publication checks. The planned Skillz application mirror directory was absent when inspected, so equality was not established at that time.",
+      "consequence": "This role's design approval must not be reported as verified integration, completed publication, or proof that the workflows already solved live tasks.",
+      "next_test": "Integrator should attach version-bound critical-case results, create and byte-compare the intended mirror, complete repository-required checks and publish through the authorized process. Re-freeze and review any material instruction changes."
+    }
+  ],
+  "evidence_ids": ["OUT-E01", "OUT-E02", "OUT-E03", "OUT-E04", "OUT-E05", "OUT-E06", "OUT-E07", "OUT-E08", "OUT-E09", "OUT-E10", "OUT-E11", "OUT-E12", "OUT-E13", "OUT-E14", "OUT-E15", "OUT-E16"],
+  "evidence_index": {
+    "OUT-E01": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md:4-18 and 31-77",
+    "OUT-E02": "OKHP3/skillz/universal/okhp3-task-resumption/SKILL.md:39-72",
+    "OUT-E03": "OKHP3/skillz/universal/okhp3-task-resumption/references/continuation-record.md:7-33 and 38-46",
+    "OUT-E04": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/SKILL.md:31-105",
+    "OUT-E05": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/references/application-record.md:8-39",
+    "OUT-E06": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/resume-representative/SKILL.md:14-29",
+    "OUT-E07": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-application-status-reconciliation/SKILL.md:3-17 and 30-40",
+    "OUT-E08": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-saved-opportunity-triage/SKILL.md:3-17 and 32-38",
+    "OUT-E09": "OKHP3/skillz/context-extraction/okhp3-session-handoff/SKILL.md:21-52",
+    "OUT-E10": "OKHP3/skillz/universal/okhp3-task-resumption/evals/evals.json:1-218, read as test design rather than results",
+    "OUT-E11": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/evals.json:1-226, read as test design rather than results",
+    "OUT-E12": "OKHP3/skillz/universal/okhp3-task-resumption/evals/trigger-cases.json:1-87, explicitly not-run",
+    "OUT-E13": "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion/evals/trigger-cases.json:1-87, explicitly not-run",
+    "OUT-E14": "skill-work-review/architecture.md:11-34 and 54-64",
+    "OUT-E15": "skill-work-review/freeze-initial.json:1-27; local SHA-256 comparison of all eight named resources matched",
+    "OUT-E16": "Local read-only directory observation: OKHP3/skillz/askjamie/okhp3-job-application-completion did not exist during this review; no publication or mirror claim verified"
+  },
+  "release_conditions": [
+    {
+      "id": "OUT-RC01",
+      "scope": "limited-candidate-publication",
+      "condition": "Label both packages 0.1.0 draftable candidates. Preserve explicit limits: visible synthetic development evidence, no live host or ATS certification, no automatic activation claim, no unseen holdout success, no measured uplift or production-readiness claim.",
+      "owner": "integrator"
+    },
+    {
+      "id": "OUT-RC02",
+      "scope": "limited-candidate-publication",
+      "condition": "Attach separately executed critical synthetic expectation results, package/resource checks and the required governed publication checks. This analytical outcome review does not establish those passes.",
+      "owner": "integrator"
+    },
+    {
+      "id": "OUT-RC03",
+      "scope": "limited-candidate-publication",
+      "condition": "Create and verify the planned canonical AskJamie-to-Skillz application mirror before claiming mirror equality. Preserve the existing companion packages.",
+      "owner": "integrator"
+    },
+    {
+      "id": "OUT-RC04",
+      "scope": "demonstrated-outcome-or-wider-release-claims",
+      "condition": "Execute successful tool-observable flows and close-neighbor discovery tests. Add an external or protected holdout before claiming general task success or improvement. Keep simulator evidence distinct from live integration.",
+      "owner": "future evaluator"
+    },
+    {
+      "id": "OUT-RC05",
+      "scope": "review-validity",
+      "condition": "This decision expires on material workflow, authority, retry, record-contract, companion-boundary or evidence-claim changes. Re-freeze and assess the changed version.",
+      "owner": "integrator"
+    }
+  ],
+  "assumptions": [
+    "The release under review is a public candidate design, not a claim of demonstrated live workflow completion.",
+    "Runtime supplies the authorized candidate facts, current request, exact identities, destinations, supported tools and authentication.",
+    "Optional companions remain separately available when invoked; their existence does not supply tools, access or action authority.",
+    "The integrator will adjudicate this role together with evidence and safety/portability review rather than treating one role as the release authority."
+  ],
+  "independence_limits": [
+    "Fresh delegated review context with no package authorship or package edits by this reviewer.",
+    "Reviewed frozen source and visible evaluation designs; did not inspect other reviewers' results or generated executor outputs.",
+    "Likely shared model family and overlapping supplied sources with the author and other reviewers can correlate judgments.",
+    "No live browser, thread restoration, document rendering, portal submission, tracker write, repository publication, or hidden holdout was executed by this role.",
+    "The private source conversation was not available here, so the review assesses portable contracts and their public synthetic design rather than independently proving historical success."
+  ],
+  "remaining_blockers": [
+    "No outcome-design blocker found for an explicitly limited candidate release. Integration must still satisfy OUT-RC01 through OUT-RC03.",
+    "Demonstrated completion, activation quality and broader effectiveness claims remain deferred pending OUT-RC04."
+  ],
+  "notes": "Approve the narrow candidate design because it encodes concrete, composable decision rules and usable records. Do not translate that approval into a claim that successful end-to-end operation has been demonstrated. Only the requested review record was written; packages and external systems were not changed."
+}

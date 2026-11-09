@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-11-09T15:14:59.827Z",
+  "generatedAt": "2026-11-09T23:47:23.986Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/linkedin-conversation-reconcile",
-  "sourceCommit": "5ef2ab68",
-  "skillCount": 339,
+  "sourceCommit": "ff8cd6cd",
+  "skillCount": 353,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 270,
+    "draftable": 284,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 170,
+    "not-run": 178,
     "none": 109,
+    "analytical": 12,
     "local-checks": 39,
-    "analytical": 7,
-    "live": 7
+    "live": 8
   },
   "capabilities": {
     "familyOrientationPages": true,

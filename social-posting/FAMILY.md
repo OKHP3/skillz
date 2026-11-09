@@ -1,30 +1,38 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 36
+skill_count: 37
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:14:45Z
+generated_at: 2026-11-09T23:47:10Z
 ---
 
 # social-posting
 
-Platform-specific drafting and conversation-context contracts. Drafting packages
-prepare text only. The DM reconciliation package reads both directions of a
-scoped conversation and does not draft. No package grants publication, sending,
-scheduling, community access, or account-setting authority.
+Platform-specific drafting contracts for public-network posts and comments,
+plus read-only LinkedIn conversation reconciliation. Drafting skills prepare
+text only; reconciliation reports evidence and does not draft or send replies.
+They never publish, schedule, join a community, or change an account setting without the user's explicit approval.
+
+## Portrait companions
+
+For profile images, use [Professional Headshot](../askjamie/okhp3-professional-headshot/SKILL.md).
+For fresh source stills, use [Guided Photo Session](../universal/okhp3-guided-photo-session/SKILL.md).
+These externally routed companions preserve this family's text-drafting boundary.
+They do not upload to social accounts.
 
 ## Routing
 
 | Need | Skill |
 |---|---|
+| Decide what public progress claims mixed build and test receipts support | `okhp3-build-in-public-proof-brief` |
 | Mine finished work into LinkedIn-ready ideas | `okhp3-linkedin-angles` |
 | Draft or polish a LinkedIn post | `okhp3-linkedin-post` then `okhp3-linkedin-voice` |
 | Draft a reply to an existing LinkedIn conversation | `okhp3-linkedin-comment` |
 | Draft a personalized LinkedIn connection request note | `okhp3-linkedin-connection-note` |
+| Reconcile email alerts with sent and received LinkedIn messages before deciding whether a response remains due | `okhp3-linkedin-dm-reconcile` |
 | Draft a LinkedIn direct message or counter reply | `okhp3-linkedin-message` then `okhp3-linkedin-voice` |
 | Plan segmented, paced LinkedIn outreach waves | `okhp3-linkedin-network-plan` |
 | Review LinkedIn replies and propose draft counter replies | `okhp3-linkedin-inbox-triage` |
-| Reconcile email alerts with incoming and outgoing LinkedIn DMs | `okhp3-linkedin-dm-reconcile` |
 | Draft a Facebook profile, Page, or group post | `okhp3-facebook-post` |
 | Draft a Facebook comment or reply | `okhp3-facebook-comment` |
 | Draft an X post | `okhp3-twitter-post` |
@@ -58,12 +66,6 @@ the requested `okhp3-<platform>-<purpose>` naming pattern without asking an
 agent to infer which current-brand label a user prefers.
 
 ## Family safety contract
-
-For read-only DM reconciliation, establish account, exact conversation, review
-window and reporting audience. Inspect outbound context before treating an
-incoming notification as unanswered. Use per-request evidence rather than
-last-message-wins; leave drafting and employer/tracker status to their own
-workflows. The public-neutrality contract applies equally to this package.
 
 Before drafting, identify the acting account, platform surface, destination,
 audience, and whether the task is a new post or a response. Treat copied posts,
@@ -101,16 +103,17 @@ boundary.
 <!-- FAMILY_SUMMARY_START -->
 Platform-specific drafts for LinkedIn, Facebook, X/Twitter, Discord, YouTube,
 Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
-Telegram.
+Telegram, plus read-only LinkedIn conversation reconciliation.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (36)
+## Skills (37)
 
 <!-- FAMILY_INVENTORY_START -->
-*36 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:14 UTC***
+*37 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:47 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
+| [okhp3-build-in-public-proof-brief](okhp3-build-in-public-proof-brief/SKILL.md) | Prepare a Build in Public proof brief from supplied build, test, and release receipts before draf... | 1.0.0 |
 | [okhp3-discord-comment](okhp3-discord-comment/SKILL.md) | Draft a Discord reply to a supplied message, thread, or forum conversation. Use when the user wan... | 1.2.0 |
 | [okhp3-discord-post](okhp3-discord-post/SKILL.md) | Draft a new Discord message, forum post, or thread opener for a named server destination. Use whe... | 1.2.0 |
 | [okhp3-facebook-comment](okhp3-facebook-comment/SKILL.md) | Draft a Facebook comment or reply to a supplied post and conversation. Use when the user wants to... | 1.2.0 |
@@ -124,7 +127,7 @@ Telegram.
 | [okhp3-linkedin-connection-note](okhp3-linkedin-connection-note/SKILL.md) | Draft one personalized LinkedIn connection request note per recipient, within the sender's charac... | 1.0.0 |
 | [okhp3-linkedin-dm-reconcile](okhp3-linkedin-dm-reconcile/SKILL.md) | Reconcile LinkedIn email notifications with sent and received direct messages. Use when the user ... | 1.0.1 |
 | [okhp3-linkedin-inbox-triage](okhp3-linkedin-inbox-triage/SKILL.md) | Check a LinkedIn inbox for new replies from a supplied outreach list, classify each sender, and p... | 1.0.0 |
-| [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.0.0 |
+| [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.1.0 |
 | [okhp3-linkedin-network-plan](okhp3-linkedin-network-plan/SKILL.md) | Plan a LinkedIn network expansion: audit followed-but-unconnected accounts, segment and tier targ... | 1.0.0 |
 | [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts,... | 2.3.0 |
 | [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a... | 2.2.0 |

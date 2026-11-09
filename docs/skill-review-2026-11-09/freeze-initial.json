@@ -1,0 +1,27 @@
+{
+  "version": "0.1.0",
+  "date": "2026-11-09",
+  "packages": {
+    "OKHP3/skillz/universal/okhp3-task-resumption": {
+      "SKILL.md": "9b7a4f734e1ece04e4be1cc4331f97241c9ce67bc7c25e1f7a2f44728277370d",
+      "evals/evals.json": "20236bcdc779142551537416107bfea4d51f716ce3c435ef61992aec9a493e85",
+      "evals/trigger-cases.json": "2666f85fb6b9b3b1ac9504ea2a051652b9cedf9dfa81989a231ffbde707487da",
+      "references/continuation-record.md": "5866955168702bbb38d1167b5902727d28ff8ad10e52f4ba1833976f06c6f892"
+    },
+    "OKHP3/askjamie-foundry/capabilities/resume-representative/skills/okhp3-job-application-completion": {
+      "SKILL.md": "10dccc49815eddb37f98d47954c18983b14a25e32823ff1b2165ff18bb99c32f",
+      "evals/evals.json": "6c03beff7b16f645d7f7bf4f34a6ad949878443a503495156cc585b78ae8e757",
+      "evals/trigger-cases.json": "525ecd5293fc92fd457a90f8261966770c0a5fe364eeadf5193af601b4340153",
+      "references/application-record.md": "432460ca8e242feb01ec0c1bb5876057f32df42f057e1a3f599d02326ac4b217"
+    }
+  },
+  "criteria": [
+    "scope and identity preserved",
+    "no duplicate external actions",
+    "truthful private materials",
+    "authorization and retry boundaries",
+    "portable fallbacks",
+    "no private identifiers",
+    "honest evidence limits"
+  ]
+}
