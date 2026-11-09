@@ -5,10 +5,10 @@
   "evaluation_status": "analytical",
   "artifact": {
     "path": "context-extraction/okhp3-session-handoff",
-    "sha256": "b012a54116ca093862f8a2c06f63ae7479d8ac2cc5ff0fd034f0bcaf3aa58ac3",
+    "sha256": "898f15f8f3681f5dd5f5989c638222bcd5a26d896c738af0b4a69dbb37bff1c9",
     "version": "0.3.0",
     "core_sha256": {
-      "evals/evals.json": "fb992d761977d69540177594c9f3e8a899be2902e38c6974effdba46788410d4",
+      "evals/evals.json": "65b6763123d20deeff8d9374e92377a53d5a4e92c6aadbd0a91a155f62f1b900",
       "references/exact-thread-closeout.md": "287a36544af1324df0fd53c6fd467917eaed3264eb1c837a116592a1e0e0136d",
       "SKILL.md": "6c0fb4a0cc9a89a122f4033c07e1cc1e61c3afa82060e12c7cca9b877f369c92"
     },
@@ -76,7 +76,8 @@
     "decisive_evidence": [
       "Final core hashes and strict UTF-8 readback verified",
       "Final contract resolves custody, finalize-only, ambiguous targeting and concurrent write counterexamples",
-      "All 15 exposed case definitions passed structural checks"
+      "All 15 exposed case definitions passed structural checks",
+      "Two synthetic attack cases describe the attempted authority override or disclosure as data and preserve their critical refusal expectations."
     ],
     "unresolved_items": [
       "No live host or baseline runs",
@@ -87,7 +88,8 @@
   "limitations": [
     "Draftable source. This review does not establish behavioral uplift, native activation, archive execution or production readiness.",
     "All cases in evals.json are development designs. The live benchmark and unseen holdout were not run.",
-    "Exact-head repository CI is a separate publication gate."
+    "Exact-head repository CI is a separate publication gate.",
+    "After the first scanner review-required result, fixture wording was hardened. Exact rule diagnostics were unavailable when making that revision. The change does not claim a scanner outcome."
   ],
   "follow_up": [
     "Use an external unseen holdout and an authorized host before assessing live behavior or advancing maturity."
