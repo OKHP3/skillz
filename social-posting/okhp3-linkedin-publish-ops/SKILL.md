@@ -69,7 +69,7 @@ Before any action, run these checks and report the results:
 
 - **Text is final.** The bundle text matches what the user approved. Any edit
   after approval needs a new approval.
-- **Bare domains.** A bare domain such as `example.com` in the body can create
+- **Bare domains.** A bare domain (a site name typed without https://) in the body can create
   a link-preview card that stays after the text is edited and competes with an
   attached document. Flag each one; the drafting skill decides the fix.
 - **Dependencies.** When moving or swapping scheduled posts, check that no post

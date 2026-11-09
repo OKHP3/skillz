@@ -126,7 +126,8 @@
     "test_results": [
       "build_carousel tests: 11 passed (Python 3, Playwright 1.56.0, Pillow 12.3.0) on 2026-11-09",
       "foundry validate-skill-suite: 33 social-posting packages validated",
-      "cataloger --full --check passed"
+      "cataloger --full --check passed",
+      "Local SkillSpector 2.13.4 --no-llm rescan after wording fixes: 0 issues and 0 missing references on all five changed packages"
     ]
   },
   "negotiator": {
@@ -154,10 +155,10 @@
     "Optionally consolidate the account-level DM and profile browser skills after a neutrality scrub"
   ],
   "package_hashes": {
-    "social-posting/okhp3-linkedin-carousel/SKILL.md": "c243f53bd265570248a4ee8903d8012954eac40dc9119433873205034bc4e868",
+    "social-posting/okhp3-linkedin-carousel/SKILL.md": "6b1f033b766fe1a97db19342b45412dfe0ba0715509f1dd7d113457db4b63fee",
     "social-posting/okhp3-linkedin-carousel/scripts/build_carousel.py": "2cda6c4dd2ed6f1329b200bb6d3f75b68482a08f394760ce4e25cfbe0103f291",
-    "social-posting/okhp3-linkedin-publish-ops/SKILL.md": "2d62651d41996c6d48273563a2d836fb31eedfabb50f4fbf89fdfd81d755bb56",
-    "social-posting/okhp3-linkedin-post/SKILL.md": "73f77c7e664bd591ff20bdeb41c642a6e77e61c18052ea664f5101adf3136672",
+    "social-posting/okhp3-linkedin-publish-ops/SKILL.md": "e2bc07ab1519f914ae3298dab45eaf239df65d82969f19d89767bbd3345d520f",
+    "social-posting/okhp3-linkedin-post/SKILL.md": "eeb140138cb03d6b91577d198b2bd106f8786e167b692ea4d5f0871e5304dbd4",
     "social-posting/okhp3-linkedin-voice/references/voice-rules.md": "1486e86d27269bf8bcebeedcc071b82385cd8e1e6d2a5c8f18e1fbdbc7e3f08e"
   }
 }

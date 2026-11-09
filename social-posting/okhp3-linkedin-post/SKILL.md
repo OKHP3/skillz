@@ -9,7 +9,7 @@ metadata:
   category: social-posting
   origin: portable-agent-skills
   in_scope: "The named LinkedIn content ideation, drafting, or voice-filtering workflow."
-  out_of_scope: "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+  out_of_scope: "Publishing unless the user explicitly approves it, employer-confidential context, impersonation, or unrelated social-platform management."
 ---
 
 # okhp3-linkedin-post

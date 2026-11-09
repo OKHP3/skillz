@@ -8,6 +8,7 @@ description: >
   plans pages, renders locally from a JSON spec, and returns files for review.
   It does not write the post or upload the document.
 license: MIT
+allowed-tools: Bash Read Write
 compatibility: >
   Rendering needs Python 3.9+, Playwright for Python with Chromium, and Pillow.
   Spec validation (--check) and HTML output (--html-only) need Python only.
@@ -68,10 +69,10 @@ separate, approved step (`okhp3-linkedin-publish-ops` or a manual upload).
 6. **Review** the contact sheet yourself before handing it over: one idea per
    page, nothing clipped, the hook readable at thumbnail size. Re-render after
    fixes.
-7. **Return** the PDF path, contact sheet, `pages-text.md`, the document title
+7. **Return** the PDF path, contact sheet, the pages-text outline, the document title
    to type at upload, the page count, and a short check report. Note that the
    PDF is image-only: the post or first comment should carry the core idea in
-   text, and `pages-text.md` is the accessible version to offer anyone who
+   text, and the pages-text outline is the accessible version to offer anyone who
    asks.
 
 ## Output contract
@@ -87,7 +88,7 @@ the missing items.
 | Item | Status |
 |---|---|
 | Portrait 1080x1350 pages | Convention for feed readability, not a platform requirement. Change `WIDTH` and `HEIGHT` only with a reason. |
-| Document title on upload | Observed: the upload dialog asks for a title. Keep it short so it is not truncated. |
+| Document title | Observed: LinkedIn asks for a document title when the PDF is attached. Keep it short so it is not truncated. |
 | File limits | Not verified by this package. LinkedIn Help publishes the accepted document types and size and page limits; a search for them on 2026-11-09 returned [LinkedIn Help answer 97459](https://www.linkedin.com/help/linkedin/answer/97459), but the help site blocks automated retrieval. Confirm the page and the current limits in a browser before quoting a number. |
 
 ## Safety
