@@ -1,0 +1,108 @@
+{
+  "skill_name": "okhp3-lifetime-career-reference",
+  "skill_version": "0.2.0",
+  "status": "design-only",
+  "metrics": "not-run",
+  "cases": [
+    {
+      "id": "positive-1",
+      "prompt": "Compile my lifetime career reference from the canon.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-2",
+      "prompt": "Make a private super master career biography.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-3",
+      "prompt": "Expand the biography with early jobs from existing records.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-4",
+      "prompt": "Create a source-linked bibliography for my career bible.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-5",
+      "prompt": "Build the lifetime learning register without claiming completion.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-6",
+      "prompt": "Add clearly attributed reflections to my lifetime reference.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-7",
+      "prompt": "Create a navigable all-career dossier from approved claims.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-8",
+      "prompt": "Update my super master view from canon edition seven.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-9",
+      "prompt": "Make a private historical career reference.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-10",
+      "prompt": "Convert my source-linked lifetime reference into Markdown and DOCX.",
+      "should_activate": true
+    },
+    {
+      "id": "negative-1",
+      "prompt": "Create a new career claim ledger.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-2",
+      "prompt": "Inventory raw LinkedIn export files.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-3",
+      "prompt": "Resolve a disputed degree in my canon.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-4",
+      "prompt": "Tailor a resume to a specific job.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-5",
+      "prompt": "Audit a submitted resume version.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-6",
+      "prompt": "Move my career folders.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-7",
+      "prompt": "Apply to this role.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-8",
+      "prompt": "Write my coach recap.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-9",
+      "prompt": "Publish my LinkedIn profile.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-10",
+      "prompt": "Prepare interview questions for an opening.",
+      "should_activate": false
+    }
+  ]
+}

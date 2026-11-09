@@ -11,7 +11,16 @@
 - Include version-matched development designs and an independent analytical
   Equilibrium Review. Live quality, uplift, discovery, host integration, and
   unseen holdout remain untested. No release-tagged maturity is claimed.
-- Refresh distribution inventory to 350 skills across 22 families.
+- Refresh distribution inventory to 353 skills across 22 families.
+
+## 2026-11-09: Career reference and coaching skill mirrors
+
+- Catalog three 0.2.0 AskJamie source candidates: lifetime career reference,
+  role master resumes and coaching engagement. Preserve exact canonical core
+  hashes and the existing source-intake/career-canon boundary.
+- Include independent analytical review, synthetic development/discovery cases
+  and explicit save/retry/privacy guards. No live benchmark, unseen holdout
+  or native-host acceptance is claimed.
 
 ## 2026-11-09: Professional portrait and guided still capture
 
