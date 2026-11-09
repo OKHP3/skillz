@@ -33,8 +33,11 @@ An unattended run reads and drafts. A person decides and sends.
 
 This package reviews a bounded set of recent inbox conversations, classifies
 them, and proposes replies. Reply wording comes from `okhp3-linkedin-message`.
-It never performs a write action in the account. It is safe to schedule only
-because of that boundary.
+It never performs a write action in the account. A scheduled run is appropriate
+only in sender-supplied-text mode. Reading the live inbox with an agent is an
+explicit, informed risk choice by the sender and is not a default for
+unattended runs, because platform terms can restrict automated access even
+when it is read-only.
 
 ## Process
 

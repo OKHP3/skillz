@@ -44,9 +44,9 @@ choose who to invite, or write follow-up messages. Selection belongs to
    avoided. If the fact sheet is missing, return `NEEDS INPUT`. Never infer
    sender credentials from a profile name or from the recipient's context.
 2. Determine the note limit. Use the limit the sender states. LinkedIn Help
-   (retrieved 2026-11-09) documents 200 characters and a small monthly count of
-   personalized notes for free accounts, and an unlimited count at 300
-   characters for Premium. When the plan is unknown, default to 200 characters
+   (retrieved 2026-11-09) documents a 200 character limit and a small monthly
+   allowance of personalized notes for free accounts, and a 300 character limit
+   for Premium. Allowances and limits vary by plan and change over time. When the plan is unknown, default to 200 characters
    and say that was assumed. Limits change, so confirm in the live dialog.
    Leave headroom of at least 10 characters for counting differences.
 3. For each recipient, read the supplied public context: role, a recent public
