@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-09T15:17:45.477Z",
+  "generatedAt": "2026-11-09T15:20:03.081Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/voice-research-knowledge-skills",
-  "sourceCommit": "ae242bd3",
+  "sourceCommit": "183d182b",
   "skillCount": 341,
   "familyCount": 22,
   "families": [
@@ -19138,9 +19138,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-build-in-public-proof-brief/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-build-in-public-proof-brief/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T08:56:33-06:00",
+      "commitSha": "ee74060f",
+      "createdAt": "2026-11-09T08:56:33-06:00",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
