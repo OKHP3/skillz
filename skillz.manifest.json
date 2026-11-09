@@ -33,7 +33,7 @@
     "historical": 7,
     "not-run": 175,
     "none": 109,
-    "analytical": 10,
+    "analytical": 12,
     "local-checks": 39,
     "live": 8
   },
@@ -66,7 +66,8 @@
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness",
-        "okhp3-job-application-completion"
+        "okhp3-job-application-completion",
+        "okhp3-professional-headshot"
       ]
     },
     {
@@ -497,6 +498,7 @@
         "okhp3-github-mirror-janitor",
         "okhp3-github-notification-maintainer",
         "okhp3-google-gis-client-auth",
+        "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
         "okhp3-overkill-hill-brand",

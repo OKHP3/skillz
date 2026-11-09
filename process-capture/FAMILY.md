@@ -3,7 +3,7 @@ family: process-capture
 display_name: Process Capture
 skill_count: 17
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T22:54:05Z
+generated_at: 2026-11-09T23:19:25Z
 ---
 
 # process-capture
@@ -27,7 +27,7 @@ The family includes `okhp3-recurring-task-capture` as its meta-layer.
 ## Skills (17)
 
 <!-- FAMILY_INVENTORY_START -->
-*17 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 22:54 UTC***
+*17 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:19 UTC***
 
 | Skill | Description | Version |
 |---|---|---|

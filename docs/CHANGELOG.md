@@ -11,7 +11,20 @@
 - Include version-matched development designs and an independent analytical
   Equilibrium Review. Live quality, uplift, discovery, host integration, and
   unseen holdout remain untested. No release-tagged maturity is claimed.
-- Refresh distribution inventory to 348 skills across 22 families.
+- Refresh distribution inventory to 350 skills across 22 families.
+
+## 2026-11-09: Professional portrait and guided still capture
+
+- Add draftable `okhp3-professional-headshot` and `okhp3-guided-photo-session`
+  0.1.0, with explicit reference roles, bounded live capture, partial-result and
+  delivery contracts, and a conditional historical Camo adapter.
+- Keep media handoff as a supporting contract. Route existing-record audits to
+  the existing reconciliation skill without implying copy-delete authority.
+- Include 16 synthetic development cases, 40 planned discovery queries, frozen
+  core hashes and analytical Equilibrium Review. No live benchmark, image-quality
+  measurement, trigger measurement or protected holdout is claimed.
+- Link from Social Posting and refresh the distribution to 347 skills in 22
+  active families. Resume Representative consumes a pinned canonical reference.
 
 ## 2026-11-09: Voice and research file renewal candidates
 

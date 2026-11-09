@@ -1,9 +1,9 @@
 ---
 family: universal
 display_name: Universal
-skill_count: 21
+skill_count: 22
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:07:47Z
+generated_at: 2026-11-09T22:40:35Z
 ---
 
 # universal
@@ -12,10 +12,10 @@ generated_at: 2026-11-09T15:07:47Z
 Cross-project skills for repository maintenance, evidence-led review, integrations, and reusable agent workflows.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (21)
+## Skills (22)
 
 <!-- FAMILY_INVENTORY_START -->
-*21 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:07 UTC***
+*22 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 22:40 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -26,6 +26,7 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 | [okhp3-github-mirror-janitor](okhp3-github-mirror-janitor/SKILL.md) | Audit and safely maintain local GitHub clones, compare files and branches with origin/main, revie... | 0.1.2 |
 | [okhp3-github-notification-maintainer](okhp3-github-notification-maintainer/SKILL.md) | Triage and maintain GitHub notifications by finding the underlying issue, pull request, review, c... | 1.2.0 |
 | [okhp3-google-gis-client-auth](okhp3-google-gis-client-auth/SKILL.md) | OverKill Hill P³ client-only Google Identity Services (GIS) auth workflow. Use when designing, im... | 1.2.0 |
+| [okhp3-guided-photo-session](okhp3-guided-photo-session/SKILL.md) | Guide a consented still-photo session through verified camera or desktop tools with readiness cue... | 0.1.0 |
 | [okhp3-i18n-page-release](okhp3-i18n-page-release/SKILL.md) | Validate and prepare a localized static-web page set for release after its exact-pair translation... | 1.1.0 |
 | [okhp3-i18n-page-sync](okhp3-i18n-page-sync/SKILL.md) | Detect which pages on a static site are missing a translation, or have a translation that has fal... | 1.2.0 |
 | [okhp3-overkill-hill-brand](okhp3-overkill-hill-brand/SKILL.md) | OverKill Hill P³ OverKill Hill SPA styling. Use when a user wants an OverKill Hill application, d... | 1.1.0 |
