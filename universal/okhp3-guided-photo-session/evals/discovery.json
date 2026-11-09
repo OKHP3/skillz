@@ -1,0 +1,88 @@
+{
+  "skill_name": "okhp3-guided-photo-session",
+  "skill_version": "0.1.0",
+  "status": "not-run",
+  "method": "Twenty author-visible trigger queries for a future isolated discovery evaluation. Expected route is design intent, not measured precision or recall.",
+  "queries": [
+    {
+      "query": "Guide a short posed still-photo session",
+      "expected": "activate"
+    },
+    {
+      "query": "Take three camera stills with a countdown",
+      "expected": "activate"
+    },
+    {
+      "query": "Capture ten headshot source photos",
+      "expected": "activate"
+    },
+    {
+      "query": "Help me pose without waiting on slow camera tools",
+      "expected": "activate"
+    },
+    {
+      "query": "Check whether this camera app has callable still capture",
+      "expected": "activate"
+    },
+    {
+      "query": "Stop the still-photo session and report partial results",
+      "expected": "activate"
+    },
+    {
+      "query": "Use Camo Studio for a brief photo sequence",
+      "expected": "activate"
+    },
+    {
+      "query": "Verify which stills actually saved",
+      "expected": "activate"
+    },
+    {
+      "query": "Prepare a camera session with ready and relax cues",
+      "expected": "activate"
+    },
+    {
+      "query": "Set up user-operated still capture when tools are unavailable",
+      "expected": "activate"
+    },
+    {
+      "query": "Generate a LinkedIn portrait from uploaded photos",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Edit my smile in an existing image",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Record a video interview",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Install a new webcam driver",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Keep camera access on permanently",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Change my desktop wallpaper",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Publish photos to my social account",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Find all photos in my cloud account",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Delete duplicate originals from my archive",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Write a camera product review",
+      "expected": "do-not-activate-as-primary"
+    }
+  ]
+}
