@@ -1,0 +1,33 @@
+name: Inspect exact skill security report
+on:
+  push:
+    branches: [codex/inspect-security-42645932211]
+    paths: [.github/workflows/inspect-skill-security-report.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read sanitized evidence from the exact completed run
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131
+        with:
+          name: skill-security-42645932211-1
+          repository: OKHP3/skillz
+          run-id: 42645932211
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/exact-security-evidence
+      - name: Display the sanitized report as data
+        env:
+          REPORT_PATH: ${{ runner.temp }}/exact-security-evidence/report.json
+        run: |
+          python3 -I - <<'PY'
+          import json, os
+          from pathlib import Path
+          data = json.loads(Path(os.environ['REPORT_PATH']).read_text())
+          print('BEGIN_SANITIZED_SECURITY_REPORT')
+          print(json.dumps(data, ensure_ascii=True, sort_keys=True))
+          print('END_SANITIZED_SECURITY_REPORT')
+          PY
