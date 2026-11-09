@@ -56,7 +56,7 @@ person, at that relationship temperature, about one thing.
    a source the user supplied or the agent retrieved this run, preferably the
    recipient's own current profile. A press release or third-party page can be
    stale; flag it as `needs-confirmation` rather than writing it as current.
-4. **Run the audience-conflict check.** Compare the recipient's current
+4. **Run the recipient-conflict check.** Compare the recipient's current
    employer and relationships with the subject of the message. If the
    recipient works for a party the message or an attachment treats as a
    competitor, counterparty, or target, remove the sensitive material or

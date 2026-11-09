@@ -4,7 +4,8 @@
 
 - Add `okhp3-linkedin-message` 1.0.0 as a draftable social-posting package for
   LinkedIn direct messages, connection-request notes, and InMail. It
-  calibrates to relationship temperature (active, dormant, senior target),
+  calibrates to relationship temperature (`active`, `dormant`, `senior-target`,
+  `cold`),
   requires a source for recipient facts, checks recipients against the
   subject for competitor conflicts, gates attachments by tier, sequences
   related messages, and runs the family voice pass and a private-message

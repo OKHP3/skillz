@@ -10,11 +10,11 @@
     "sha256_SKILL_md_rc1": "376cdf9a5c547d5a2c41fa9aebed5e7fda9aeb11fcc3d80a8ece2600f93cf7df",
     "released_version": "1.0.0",
     "released_sha256": {
-      "SKILL.md": "8bc0289fce2ea32587f99ce7da69abed196981a540cc79165f95dac7ff92ab96",
+      "SKILL.md": "b8eac42bdea474a634b2c1a782b849380c2b6f85fb5c860af897a6f0240e9d35",
       "evals/evals.json": "42e2685561d87b665352fbf39ab2da33950157c452687f180159ef27f6c95fc2",
       "references/message-scrub.md": "56ab51758acbcf211c285a2205eb834d56938da112a6af6e15803856cdb59a20",
       "references/relationship-tiers.md": "16b0576c9e8907858985763c08fbb8562fd593f409ad8338b07bb42f4076f80f",
-      "references/sequencing.md": "3d1826b0e8706b435a9e719a60e2cb8cf2d4a7a5da3b6eb82b42b3fc22f9ddd7",
+      "references/sequencing.md": "fec68029ad2e2352eed8fa17a644b285b01211e6622921b1edd46973a48eb346",
       "references/surface-limits.md": "abfe0f1395f7d8aa89a87959c17775a780756d94db5054e266aae09273bd8b0f"
     }
   },

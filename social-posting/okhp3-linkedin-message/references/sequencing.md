@@ -11,7 +11,7 @@ mentions another recipient.
    the target should hear about the outreach after the target has received it,
    so the target hears it first-hand.
 3. **Claims must be true on arrival.** If a message says "I am reaching out to
-   <RECIPIENT>", it must be sent after that outreach, or worded as future
+   `<RECIPIENT>`", it must be sent after that outreach, or worded as future
    intent.
 4. **Ask for discretion only where it helps.** One plain sentence to the ally
    ("keep this between us until I've reached out") is enough. Never ask a
