@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-09: LinkedIn series continuity
+
+- Add a draft-only, source-backed series-continuity skill with separate prior
+  publication-state, evidence and disclosure checks.
+- Add a neutral worked example and development evaluation design. No live
+  behavioral benchmark, unseen holdout, or measured uplift is claimed.
+- Refresh the distribution catalog for 339 skills across 22 families.
+
 ## 2026-11-09: LinkedIn outreach drafting family
 
 - Add `okhp3-linkedin-connection-note`, `okhp3-linkedin-message`,

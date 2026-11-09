@@ -1,9 +1,9 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 35
+skill_count: 36
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T14:21:26Z
+generated_at: 2026-11-09T15:02:34Z
 ---
 
 # social-posting
@@ -17,6 +17,7 @@ change an account setting without the user's explicit approval.
 | Need | Skill |
 |---|---|
 | Mine finished work into LinkedIn-ready ideas | `okhp3-linkedin-angles` |
+| Continue a LinkedIn series with evidence and prior-item states | `okhp3-linkedin-series-continuity` |
 | Draft or polish a LinkedIn post | `okhp3-linkedin-post` then `okhp3-linkedin-voice` |
 | Draft a reply to an existing LinkedIn conversation | `okhp3-linkedin-comment` |
 | Draft a personalized LinkedIn connection request note | `okhp3-linkedin-connection-note` |
@@ -96,10 +97,10 @@ Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
 Telegram.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (35)
+## Skills (36)
 
 <!-- FAMILY_INVENTORY_START -->
-*35 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 14:21 UTC***
+*36 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:02 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -118,6 +119,7 @@ Telegram.
 | [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.0.0 |
 | [okhp3-linkedin-network-plan](okhp3-linkedin-network-plan/SKILL.md) | Plan a LinkedIn network expansion: audit followed-but-unconnected accounts, segment and tier targ... | 1.0.0 |
 | [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts,... | 2.3.0 |
+| [okhp3-linkedin-series-continuity](okhp3-linkedin-series-continuity/SKILL.md) | Plan a source-backed continuation of a LinkedIn post series. Use when a follow-up must connect pr... | 0.1.0 |
 | [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a... | 2.2.0 |
 | [okhp3-patreon-comment](okhp3-patreon-comment/SKILL.md) | Draft a Patreon comment or reply from supplied post and access context. Use when the user needs a... | 1.0.0 |
 | [okhp3-patreon-post](okhp3-patreon-post/SKILL.md) | Draft a Patreon post with a supplied access boundary and post form. Use when the user needs publi... | 1.0.0 |
