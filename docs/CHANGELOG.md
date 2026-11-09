@@ -8,6 +8,34 @@
 - Include synthetic development cases, bounded equilibrium review and core hash records.
   No live host integration, unseen holdout or production-readiness claim is made.
 
+## 2026-11-09: Record location reconciliation
+
+- Add a draftable Knowledge Operations skill for auditing record locations,
+  preserving versions during authorized moves, and verifying affected references.
+- Include a relocation record, 13 synthetic development cases, and an analytical
+  Equilibrium Review. Live host benchmarking and a protected holdout remain open.
+- Refresh the distribution inventory to 341 skills across 22 active families.
+
+
+## 2026-11-09: follow-up and activity reconciliation
+
+- Add `okhp3-activity-reconciliation` 0.1.0 to Knowledge Operations for
+  scoped response-candidate review and bounded activity-log refresh.
+- Include exact event matching, guarded tracker updates, optional private
+  evidence filing, and synthetic development cases. Catalog as draftable with
+  analytical review. A live benchmark and unseen release holdout remain open.
+- Refresh the distribution catalog to 340 skills across 22 active families.
+
+## 2026-11-09: Build in Public proof briefs
+
+- Add draftable `okhp3-build-in-public-proof-brief` 1.0.0. It separates private
+  claim decisions from candidate public facts, keeps revision and evidence
+  limits attached, and withholds unmatched comparisons.
+- Keep angle selection, prose, voice, and publication approval with their
+  existing workflows. Four author-visible Codex development cases yielded
+  16/16 checks with the skill and 12/16 without it. No unseen holdout or general
+  effectiveness claim.
+
 ## 2026-11-09: LinkedIn outreach drafting family
 
 - Add `okhp3-linkedin-connection-note`, `okhp3-linkedin-message`,

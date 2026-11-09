@@ -1,0 +1,108 @@
+{
+  "status": "analytical",
+  "scope": "Description-only judgments by a separate reviewer. Does not test native implicit activation or host discovery.",
+  "positives_correct": 10,
+  "negatives_correct": 10,
+  "queries": [
+    {
+      "text": "Prepare a Build in Public proof brief from these build and deployment receipts.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "What can we actually say publicly from these mixed revision reports?",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "Separate what shipped from what is still planned before our progress draft.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "Reconcile treatment and baseline before we talk about the test results publicly.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "Give a public-facing list of defensible facts, not post copy.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "Audit these checkpoints for a public update: one is old and the newer release is only planned.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "Create a proof brief from supplied reports; withhold private facts.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "Preflight claims for a public demo from this evidence bundle.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "I have build receipts and test scores; tell me what I can say about results at the public checkpoint.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "We changed the audience of a proof packet; recheck which claims still qualify.",
+      "expected": "activate",
+      "observed": "activate"
+    },
+    {
+      "text": "Write the finished post from the approved angle.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Give me five LinkedIn angles from this public changelog.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Polish this approved draft in my voice.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Publish this text now.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Tailor a resume from the attached work record.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Write a portfolio case study for a studio.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Move my career files into their folders.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Verify that my production service is actually up now.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Audit a statistical paper for internal peer review.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    },
+    {
+      "text": "Check the approval hash on a queued post.",
+      "expected": "route-elsewhere",
+      "observed": "route-elsewhere"
+    }
+  ]
+}

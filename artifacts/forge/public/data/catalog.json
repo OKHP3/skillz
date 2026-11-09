@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T15:09:04.492Z",
+  "generatedAt": "2026-11-09T15:18:13.409Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/thread-application-skills-20261109",
-  "sourceCommit": "68b3468",
-  "skillCount": 340,
+  "sourceRef": "agent/record-location-publication",
+  "sourceCommit": "812ce8f",
+  "skillCount": 341,
   "familyCount": 22,
   "families": [
     {
@@ -75,13 +75,12 @@
     {
       "name": "askjamie",
       "displayName": "AskJamie",
-      "skillCount": 5,
+      "skillCount": 4,
       "skills": [
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
-        "okhp3-askjamie-gpt-readiness",
-        "okhp3-job-application-completion"
+        "okhp3-askjamie-gpt-readiness"
       ],
       "narrativeBody": "**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.\n\nOne of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.",
       "orientation": {
@@ -92,8 +91,7 @@
         "commonOutcomes": {
           "value": [
             "developer-tooling",
-            "askjamie",
-            "career-operations"
+            "askjamie"
           ],
           "source": "generated"
         },
@@ -389,13 +387,15 @@
     {
       "name": "knowledge-operations",
       "displayName": "Knowledge Operations",
-      "skillCount": 7,
+      "skillCount": 9,
       "skills": [
+        "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
         "okhp3-project-promotion",
+        "okhp3-record-location-reconciliation",
         "okhp3-source-backed-research",
         "okhp3-triage-and-file"
       ],
@@ -412,7 +412,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-artifact-validation",
+          "value": "okhp3-activity-reconciliation",
           "note": null,
           "source": "generated"
         },
@@ -849,8 +849,9 @@
     {
       "name": "social-posting",
       "displayName": "Social posting",
-      "skillCount": 35,
+      "skillCount": 36,
       "skills": [
+        "okhp3-build-in-public-proof-brief",
         "okhp3-discord-comment",
         "okhp3-discord-post",
         "okhp3-facebook-comment",
@@ -900,7 +901,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-discord-comment",
+          "value": "okhp3-build-in-public-proof-brief",
           "note": null,
           "source": "generated"
         },
@@ -957,7 +958,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 21,
+      "skillCount": 20,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -978,7 +979,6 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
-        "okhp3-task-resumption",
         "okhp3-vite-github-pages"
       ],
       "narrativeBody": null,
@@ -1713,70 +1713,6 @@
         ]
       },
       "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-job-application-completion",
-      "displayName": "Job Application Completion",
-      "family": "askjamie",
-      "skillDir": "okhp3-job-application-completion",
-      "path": "askjamie/okhp3-job-application-completion/SKILL.md",
-      "description": "Complete or resume job applications from approved career evidence, tailored materials and saved portal drafts. Use for preparing, uploading, submitting, and reconciling application receipts within the user's authorization. Excludes status-only audits, saved-job ranking and recruiter outreach.",
-      "version": "0.2.0",
-      "license": "MIT",
-      "category": "career-operations",
-      "origin": "okhp3/askjamie-foundry",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "evidenceStatus": "analytical",
-      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "career-operations"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-job-application-completion/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-job-application-completion/SKILL.md",
-      "lastModified": "2026-11-09T09:05:47-06:00",
-      "commitSha": "b2a945ef",
-      "createdAt": "2026-11-09T09:05:47-06:00",
-      "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
-        "category": "career-operations",
-        "origin": "okhp3/askjamie-foundry",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Role identity, factual materials, saved-draft completion, authorized submission and receipt reconciliation.",
-        "outOfScope": "Invented qualifications, inferred personal answers, new legal acceptance without approval, outreach, and benefits eligibility decisions.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": "0.2.0",
-        "evalCount": 8,
-        "benchmarkCount": 0,
-        "testCount": 0,
-        "referenceCount": 1,
-        "scriptCount": 0,
-        "lastEvidenceDate": "2026-11-09T00:00:00Z",
-        "reviewDecision": "defer-for-evidence",
-        "blockers": [
-          "Live host integration remains untested.",
-          "Automatic activation and unseen release holdout remain untested."
-        ]
-      },
-      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
@@ -11969,6 +11905,73 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-activity-reconciliation",
+      "displayName": "Activity Reconciliation",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-activity-reconciliation",
+      "path": "knowledge-operations/okhp3-activity-reconciliation/SKILL.md",
+      "description": "Reconcile open follow-ups or refresh an activity log from Sent Items, inbox, calendar, and supplied evidence. Use when checking which replies were already sent, which evidence gaps can be resolved, or what changed through a cutoff. Excludes drafting, sending, and deciding overall application status.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [
+        "**Candidate review.** Start from the named open items. Test each required",
+        "**Bounded refresh.** Start from a verified checkpoint or explicit lower bound",
+        "**Evidence filing.** When requested, use the"
+      ],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-activity-reconciliation/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-activity-reconciliation/SKILL.md",
+      "lastModified": "2026-11-09T08:59:02-06:00",
+      "commitSha": "34a990fb",
+      "createdAt": "2026-11-09T08:59:02-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Bounded event review, follow-up adjudication, authorized log updates, and optional private evidence filing.",
+        "outOfScope": "Messaging, scheduling, public posting, application disposition, and bulk source copying.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-artifact-validation",
       "displayName": "Artifact Validation",
       "family": "knowledge-operations",
@@ -12302,6 +12305,69 @@
         "reviewDecision": null,
         "blockers": [
           "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-record-location-reconciliation",
+      "displayName": "Record Location Reconciliation",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-record-location-reconciliation",
+      "path": "knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "description": "Reconcile misplaced record folders, file versions, and references across a local library, synced drive, or tracker. Use to audit filing locations, preserve versions during authorized moves, repair affected links, or verify local and cloud parity. Application status belongs to a separate workflow.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "analytical",
+      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-record-location-reconciliation/SKILL.md",
+      "lastModified": "2026-11-09T09:17:55-06:00",
+      "commitSha": "812ce8f2",
+      "createdAt": "2026-11-09T09:17:55-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led reconciliation of bounded record locations, versions, and their references.",
+        "outOfScope": "Broad filesystem reorganization, deletion, copy-delete migrations, sharing changes, and application-status decisions.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "analytical",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 13,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09",
+        "reviewDecision": null,
+        "blockers": [
+          "Only design or structural review exists; no graded live run has been executed."
         ]
       },
       "maturitySource": "explicit-frontmatter",
@@ -19045,6 +19111,70 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-build-in-public-proof-brief",
+      "displayName": "Build in Public proof brief",
+      "family": "social-posting",
+      "skillDir": "okhp3-build-in-public-proof-brief",
+      "path": "social-posting/okhp3-build-in-public-proof-brief/SKILL.md",
+      "description": "Prepare a Build in Public proof brief from supplied build, test, and release receipts before drafting a public progress update. Reconcile mixed revisions, baseline comparisons, and disclosure limits into a private claim ledger and a separate candidate fact packet. Does not select angles, write posts, approve exports, or publish.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "live",
+      "evidenceNote": "Version-matched executor evidence is recorded in the package benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-build-in-public-proof-brief/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-build-in-public-proof-brief/SKILL.md",
+      "lastModified": "2026-11-09T08:56:33-06:00",
+      "commitSha": "ee74060f",
+      "createdAt": "2026-11-09T08:56:33-06:00",
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Preparing revision-scoped public progress claims from supplied build evidence.",
+        "outOfScope": "Post drafting, career representation, account actions, approval issuance, and publication.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "live",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 8,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09T14:55:27.925361+00:00",
+        "reviewDecision": "approve-with-limits",
+        "blockers": [
+          "No protected holdout, repeated performance benchmark, or cross-host verification.",
+          "Development comparison uses one run per case and arm. Grading context was separate and arm-masked, with shared model-family and output-style limitations."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "ready-for-supervised-use"
+    },
+    {
       "name": "okhp3-discord-comment",
       "displayName": "Discord Comment",
       "family": "social-posting",
@@ -23604,70 +23734,6 @@
         ]
       },
       "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
-      "name": "okhp3-task-resumption",
-      "displayName": "Task Resumption",
-      "family": "universal",
-      "skillDir": "okhp3-task-resumption",
-      "path": "universal/okhp3-task-resumption/SKILL.md",
-      "description": "Find and resume an interrupted task in its original conversation. Use when restarting an archived thread, recovering unfinished agent work, or checking whether a dispatched restart actually completed. Excludes new-task creation and handoff-only writing.",
-      "version": "0.2.0",
-      "license": "MIT",
-      "category": "task-operations",
-      "origin": "okhp3/skillz",
-      "author": "Jamie Hill (OverKill Hill P³)",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "evidenceStatus": "analytical",
-      "evidenceNote": "Evaluation or benchmark design exists; live release evidence is not established.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "task-operations"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-task-resumption/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-task-resumption/SKILL.md",
-      "lastModified": "2026-11-09T09:05:47-06:00",
-      "commitSha": "b2a945ef",
-      "createdAt": "2026-11-09T09:05:47-06:00",
-      "packageMetadata": {
-        "author": "Jamie Hill (OverKill Hill P³)",
-        "category": "task-operations",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Exact-thread discovery, authorized restoration, continuation, and outcome verification.",
-        "outOfScope": "Replacement conversations, private session-store inspection, permission expansion, and domain execution without its own authority.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": "0.2.0",
-        "evalCount": 7,
-        "benchmarkCount": 0,
-        "testCount": 0,
-        "referenceCount": 1,
-        "scriptCount": 0,
-        "lastEvidenceDate": "2026-11-09T00:00:00Z",
-        "reviewDecision": "defer-for-evidence",
-        "blockers": [
-          "Live host integration remains untested.",
-          "Automatic activation and unseen release holdout remain untested."
-        ]
-      },
-      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },

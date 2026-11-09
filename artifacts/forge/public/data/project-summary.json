@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-11-09T15:09:04.492Z",
+  "generatedAt": "2026-11-09T15:18:13.409Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/thread-application-skills-20261109",
-  "sourceCommit": "68b3468",
-  "skillCount": 340,
+  "sourceRef": "agent/record-location-publication",
+  "sourceCommit": "812ce8f",
+  "skillCount": 341,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 271,
+    "draftable": 272,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 169,
+    "not-run": 170,
     "none": 109,
-    "analytical": 9,
     "local-checks": 39,
-    "live": 7
+    "analytical": 8,
+    "live": 8
   },
   "capabilities": {
     "familyOrientationPages": true,

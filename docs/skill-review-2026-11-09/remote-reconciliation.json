@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-09",
+  "kind": "post-environment-loss conflict reconciliation",
+  "base": "d9eb4632d0b356bef7c3d82a2729fa2e28d6d0b1",
+  "preservation": "Latest main is the base tree. All unmodified main files are preserved; only inspected own package/evidence and navigation/derived inventory deltas are overlaid.",
+  "generated_catalog_handling": "Original cataloger-produced AskJamie and universal sections copied verbatim from the previously validated branch; all other current main-generated sections preserved. Totals reconcile exact discovered active-family source files and generated row inventory. The existing release workflow must freshly rebuild and validate the machine catalog on the resulting commit.",
+  "source_skill_count": 343,
+  "readme_rows": 343,
+  "unchanged_skill_blobs": [
+    {
+      "path": "askjamie/okhp3-job-application-completion/SKILL.md",
+      "sha": "b39296a07341a7cebd2c35a02286f591277712e7"
+    },
+    {
+      "path": "universal/okhp3-task-resumption/SKILL.md",
+      "sha": "d3c35db731a0bd0507dae9ef3d129c7552c3e014"
+    }
+  ],
+  "remaining_gate": "Exact-head CI and published readback. Local platform install blocked by unavailable environment."
+}
