@@ -180,7 +180,7 @@ The `context-extraction/` family contains ten distribution skills for extracting
 | Skill | Trigger |
 |---|---|
 | `okhp3-thread-context-extraction` | Cross-platform or unknown-source AI thread extraction with provenance and semantic-loss controls. |
-| `okhp3-session-handoff` | Create a durable continuation record when work pauses or crosses a session, machine, or agent host. |
+| `okhp3-session-handoff` | Preserve work across sessions, machines or agent hosts. Use the exact-thread closeout profile to verify completion, receipt persistence and archival separately. |
 | `okhp3-thread-extract-chatgpt` | Manually supplied ChatGPT chats, Projects, Canvas, Deep Research, or export excerpts. |
 | `okhp3-thread-extract-claude` | Manually supplied Claude chats, Projects, Artifacts, Research, or export excerpts. |
 | `okhp3-thread-extract-copilot-m365` | Manually supplied Microsoft Copilot or Microsoft 365 Copilot captures. |

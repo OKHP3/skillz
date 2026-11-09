@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-09 Session Handoff 0.3.0
+
+- Add an opt-in exact-thread closeout profile. Bind observations to the required
+  surface and revision, preserve dated corrections, verify the receipt and
+  separate work completion from an exact archive outcome.
+- Retain ordinary handoff behavior. Synchronize the distribution package and
+  repository-local support copy. Add eleven synthetic development cases and
+  record an analytical review. Live runs and a protected holdout remain open.
+
 ## 2026-11-09: Voice and research file renewal candidates
 
 - Add two draftable knowledge-operations skills for authorship-aware voice and

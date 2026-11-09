@@ -64,7 +64,7 @@ The context-extraction family is the mining, extraction, and refinement layer fo
 | Skill | Description | Version |
 |---|---|---|
 | [okhp3-chatgpt-project-migration](okhp3-chatgpt-project-migration/SKILL.md) | OverKill Hill P³ ChatGPT project migration. Use when migrating, preserving, extracting, inventory... | 1.1.0 |
-| [okhp3-session-handoff](okhp3-session-handoff/SKILL.md) | Create a durable continuation record when work pauses, becomes blocked, crosses a machine, or cro... | 0.2.0 |
+| [okhp3-session-handoff](okhp3-session-handoff/SKILL.md) | Create a durable session handoff or exact-thread closeout receipt. Use when work pauses, crosses ... | 0.3.0 |
 | [okhp3-thread-context-extraction](okhp3-thread-context-extraction/SKILL.md) | Extract pasted or uploaded AI chat threads into standalone, actionable Markdown. Use when the use... | 2.1.0 |
 | [okhp3-thread-extract-chatgpt](okhp3-thread-extract-chatgpt/SKILL.md) | Extract manually supplied ChatGPT conversations into standalone, actionable Markdown. Use when th... | 2.1.0 |
 | [okhp3-thread-extract-claude](okhp3-thread-extract-claude/SKILL.md) | Extract manually supplied Claude conversations into standalone, actionable Markdown. Use when the... | 2.1.0 |
