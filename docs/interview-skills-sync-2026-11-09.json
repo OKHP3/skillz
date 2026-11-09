@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-11-09",
+  "canonical_repository": "OKHP3/askjamie-foundry",
+  "mirror_repository": "OKHP3/skillz",
+  "canonical_pre_sync_sha": "3231308afdcaada98d3ec423e70a7ce2a05f0a4f",
+  "mirror_pre_sync_sha": "d9cbe84bf0fd629adafff9093e9b00c6f9185343",
+  "pre_sync_status": "Both isolated integration clones were clean before package integration.",
+  "authorization": "Owner requested creation, equilibrium review and publication of final skills in these catalogs on 2026-11-09.",
+  "branch": "codex/interview-skills-20261109",
+  "core_rule": "All package files, including release records and licenses, must match byte for byte.",
+  "host_adapters": [],
+  "exclusions": [
+    "Private conversation and employer information",
+    "Immutable origin snapshots",
+    "Application trackers, outbound messages and social posts",
+    "Hosted runtime or Pages deployment actions"
+  ],
+  "verifier": "Compare relative file inventories and SHA-256 for every core file; fail on missing, extra or unequal files.",
+  "recovery": "Revert only this publication commit through a reviewed PR; preserve other repository work.",
+  "packages": [
+    {
+      "name": "okhp3-interview-evidence-map",
+      "version": "1.0.0",
+      "canonical_path": "capabilities/resume-representative/skills/okhp3-interview-evidence-map",
+      "mirror_path": "askjamie/okhp3-interview-evidence-map",
+      "source_core_sha256": "c9076b6b847b293a64216e887037a4356b809e97a23a42419f70fe154d4d5c8d",
+      "file_sha256": {
+        "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+        "SKILL.md": "9590779222e552becf9e2fdeb152594196b0cfac525a43a0388013e6c4b76036",
+        "evals/evals.json": "df41160fb61bdaa5fefa251e0775d3afa57e08b349a002d58c14abb22ef1202f",
+        "evals/review-1.0.0.json": "207a67ecd4ea1206879d69f1b7421d44756e87b4ce9b8d79e6fe72d31d9c2f3b",
+        "references/public-work-bridge.md": "822df1875a530793b2b273585ff96e126f136cb384f74551442a9c52186bd932"
+      }
+    },
+    {
+      "name": "okhp3-interview-questions",
+      "version": "1.0.0",
+      "canonical_path": "capabilities/resume-representative/skills/okhp3-interview-questions",
+      "mirror_path": "askjamie/okhp3-interview-questions",
+      "source_core_sha256": "83a5c8573bc0a1ebfce061741c666e6f3ca1b3f467c8ba45878c5864813ab6b5",
+      "file_sha256": {
+        "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+        "SKILL.md": "0aa18d15f9aff4e1e03e15d63d8a80e5cc114086916372e04b10ed76b573e7eb",
+        "evals/evals.json": "fc8489f75f3c13003cbcf74c92ff592c915ef57a9fcd0d8ccb072291579a2850",
+        "evals/review-1.0.0.json": "8c1dd3892da9ad6dc74e1102ba2c238f1bcd68f578cbccdad0e949e3a48adb12"
+      }
+    }
+  ],
+  "verification": {
+    "date": "2026-11-09",
+    "status": "passed",
+    "evidence_status": "analytical",
+    "observed": "Exact relative inventories and SHA-256 match across final candidate, canonical and mirror package files, including release records.",
+    "limitations": "Local equality and source review only; remote readback is required before reporting publication."
+  }
+}
