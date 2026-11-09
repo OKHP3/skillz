@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 352,
+  "distributionSkillCount": 353,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 283,
+    "draftable": 284,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 177,
+    "not-run": 178,
     "none": 109,
     "analytical": 12,
     "local-checks": 39,
@@ -443,6 +443,7 @@
         "okhp3-linkedin-angles",
         "okhp3-linkedin-comment",
         "okhp3-linkedin-connection-note",
+        "okhp3-linkedin-dm-reconcile",
         "okhp3-linkedin-inbox-triage",
         "okhp3-linkedin-message",
         "okhp3-linkedin-network-plan",
@@ -536,6 +537,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T23:28:45.731Z",
+  "countsGeneratedAt": "2026-11-09T23:48:52.989Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

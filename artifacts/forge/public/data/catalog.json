@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T23:23:19.962Z",
+  "generatedAt": "2026-11-09T23:48:52.989Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/career-library-skills-20261109",
-  "sourceCommit": "3bfceea0",
-  "skillCount": 350,
+  "sourceRef": "codex/linkedin-conversation-reconcile",
+  "sourceCommit": "c232402f",
+  "skillCount": 353,
   "familyCount": 22,
   "families": [
     {
@@ -75,13 +75,15 @@
     {
       "name": "askjamie",
       "displayName": "AskJamie",
-      "skillCount": 9,
+      "skillCount": 11,
       "skills": [
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness",
         "okhp3-coaching-engagement",
+        "okhp3-interview-evidence-map",
+        "okhp3-interview-questions",
         "okhp3-job-application-completion",
         "okhp3-lifetime-career-reference",
         "okhp3-professional-headshot",
@@ -108,7 +110,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-askjamie-gpt-readiness pairs with okhp3-askjamie-gpt-builder",
+          "value": "okhp3-askjamie-gpt-readiness pairs with okhp3-askjamie-gpt-builder; okhp3-interview-evidence-map pairs with okhp3-interview-questions",
           "source": "generated"
         }
       }
@@ -858,7 +860,7 @@
     {
       "name": "social-posting",
       "displayName": "Social posting",
-      "skillCount": 36,
+      "skillCount": 37,
       "skills": [
         "okhp3-build-in-public-proof-brief",
         "okhp3-discord-comment",
@@ -872,6 +874,7 @@
         "okhp3-linkedin-angles",
         "okhp3-linkedin-comment",
         "okhp3-linkedin-connection-note",
+        "okhp3-linkedin-dm-reconcile",
         "okhp3-linkedin-inbox-triage",
         "okhp3-linkedin-message",
         "okhp3-linkedin-network-plan",
@@ -897,10 +900,10 @@
         "okhp3-youtube-community-post",
         "okhp3-youtube-video"
       ],
-      "narrativeBody": "Platform-specific drafting contracts for public-network posts and comments.\nThey prepare text only. They never publish, schedule, join a community, or\nchange an account setting without the user's explicit approval.",
+      "narrativeBody": "Platform-specific drafting contracts for public-network posts and comments,\nplus read-only LinkedIn conversation reconciliation. Drafting skills prepare\ntext only; reconciliation reports evidence and does not draft or send replies.\nThey never publish, schedule, join a community, or change an account setting without the user's explicit approval.",
       "orientation": {
         "purpose": {
-          "value": "Platform-specific drafting contracts for public-network posts and comments.\nThey prepare text only. They never publish, schedule, join a community, or\nchange an account setting without the user's explicit approval.",
+          "value": "Platform-specific drafting contracts for public-network posts and comments,\nplus read-only LinkedIn conversation reconciliation. Drafting skills prepare\ntext only; reconciliation reports evidence and does not draft or send replies.\nThey never publish, schedule, join a community, or change an account setting without the user's explicit approval.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -1791,6 +1794,134 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-interview-evidence-map",
+      "displayName": "Interview Evidence Map",
+      "family": "askjamie",
+      "skillDir": "okhp3-interview-evidence-map",
+      "path": "askjamie/okhp3-interview-evidence-map/SKILL.md",
+      "description": "Map a specific interview role to a person's supplied career evidence and choose defensible stories. Use for interview positioning, qualification gaps, transferable platform experience, or connecting public work to role needs. Produces preparation material, not applicant rankings or application submission.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "askjamie",
+      "origin": "okhp3/askjamie-foundry",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "askjamie"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-interview-questions"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-interview-evidence-map/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-interview-evidence-map/SKILL.md",
+      "lastModified": "2026-11-09T09:11:26-06:00",
+      "commitSha": "f8733c49",
+      "createdAt": "2026-11-09T09:11:26-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/askjamie-foundry",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Role-specific interview evidence, story selection, introduction and honest gap handling.",
+        "outOfScope": "Invented qualifications, candidate ranking, private employer disclosure, outreach, submission and publication.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-interview-questions",
+      "displayName": "Interview Questions",
+      "family": "askjamie",
+      "skillDir": "okhp3-interview-questions",
+      "path": "askjamie/okhp3-interview-questions/SKILL.md",
+      "description": "Draft candid interview questions that test role fit without loading the premise. Use to reframe an accusatory or overly deferential question, explore executive backing and investment, or ask about a leader's move and priorities. Preserves the concern; does not fact-check a whole company or contact anyone.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "askjamie",
+      "origin": "okhp3/askjamie-foundry",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "askjamie"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-interview-questions/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-interview-questions/SKILL.md",
+      "lastModified": "2026-11-09T09:11:26-06:00",
+      "commitSha": "f8733c49",
+      "createdAt": "2026-11-09T09:11:26-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/askjamie-foundry",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-grounded spoken interview questions and useful follow-ups.",
+        "outOfScope": "Invented biography, flattering or hostile premises, interrogation, outreach and commitments.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-job-application-completion",
       "displayName": "Job Application Completion",
       "family": "askjamie",
@@ -1955,9 +2086,9 @@
       ],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-professional-headshot/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-professional-headshot/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T16:54:36-06:00",
+      "commitSha": "175d30c3",
+      "createdAt": "2026-11-09T16:54:36-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "career-representation",
@@ -8415,8 +8546,8 @@
       "family": "context-extraction",
       "skillDir": "okhp3-session-handoff",
       "path": "context-extraction/okhp3-session-handoff/SKILL.md",
-      "description": "Create a durable continuation record when work pauses, becomes blocked, crosses a machine, or crosses an agent host. Use after substantial work or when the owner asks for a handoff. Record changed files, reasoning, evidence tiers, validation, limitations, and the exact next action without relying on chat memory.",
-      "version": "0.2.0",
+      "description": "Create a durable session handoff or exact-thread closeout receipt. Use when work pauses, crosses machines or agent hosts, or needs completion verified before archiving. Record evidence, remaining obligations, and the next action.",
+      "version": "0.3.0",
       "license": "MIT",
       "category": "context-extraction",
       "origin": "okhp3/skillz",
@@ -8452,8 +8583,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-session-handoff/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-session-handoff/SKILL.md",
-      "lastModified": "2026-10-21T22:38:42-05:00",
-      "commitSha": "6d55a85c",
+      "lastModified": "2026-11-09T17:42:07-06:00",
+      "commitSha": "81ed7760",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -8461,17 +8592,17 @@
         "origin": "okhp3/skillz",
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Portable continuation records for work that crosses sessions, machines, or agent hosts.",
-        "outOfScope": "Account access, claims that another copy applied the handoff, publication, or replacing source preservation.",
+        "inScope": "Portable continuation records and evidence-based closeout decisions for a named thread.",
+        "outOfScope": "Account access, archive execution, branch cleanup, publication, or replacing source preservation.",
         "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.2.0",
-        "evalCount": 4,
+        "evaluatedSkillVersion": "0.3.0",
+        "evalCount": 15,
         "benchmarkCount": 0,
         "testCount": 0,
-        "referenceCount": 0,
+        "referenceCount": 1,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -20340,6 +20471,75 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-linkedin-dm-reconcile",
+      "displayName": "LinkedIn Dm Reconcile",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-dm-reconcile",
+      "path": "social-posting/okhp3-linkedin-dm-reconcile/SKILL.md",
+      "description": "Reconcile LinkedIn email notifications with sent and received direct messages. Use when the user says they already replied, asks who owes a response, or needs a consolidated conversation status. Keep each person and opportunity separate. This is a read-only context check, not message drafting or sending, application submission, profile editing, or a monitoring scheduler.",
+      "version": "1.0.1",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [
+        "Person label and opportunity/request key, keeping distinct cases separate.",
+        "Latest material received and sent events, with displayed times and source.",
+        "Each unresolved request, state, next-action owner, and deadline basis.",
+        "Artifact transmission and onward-submission facts when relevant.",
+        "As-of time, coverage, source type, and material access or matching limits."
+      ],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-dm-reconcile/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-dm-reconcile/SKILL.md",
+      "lastModified": "2026-11-09T09:14:18-06:00",
+      "commitSha": "5ef2ab68",
+      "createdAt": "2026-11-09T09:14:18-06:00",
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Bidirectional message evidence, notification reconciliation, coverage, and next-action ownership.",
+        "outOfScope": "Sending, drafting, uploads, tracker writes, submissions, account changes, and scheduling.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.1",
+        "evalCount": 16,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-linkedin-inbox-triage",
       "displayName": "LinkedIn Inbox Triage",
       "family": "social-posting",
@@ -23421,9 +23621,9 @@
       ],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-guided-photo-session/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-guided-photo-session/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T17:01:51-06:00",
+      "commitSha": "9e729371",
+      "createdAt": "2026-11-09T16:54:36-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "media-capture",

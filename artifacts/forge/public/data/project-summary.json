@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-11-09T23:23:19.962Z",
+  "generatedAt": "2026-11-09T23:48:52.989Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/career-library-skills-20261109",
-  "sourceCommit": "3bfceea0",
-  "skillCount": 350,
+  "sourceRef": "codex/linkedin-conversation-reconcile",
+  "sourceCommit": "c232402f",
+  "skillCount": 353,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 281,
+    "draftable": 284,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 175,
+    "not-run": 178,
     "none": 109,
     "analytical": 12,
     "local-checks": 39,

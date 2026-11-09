@@ -1,16 +1,17 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 36
+skill_count: 37
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T22:40:35Z
+generated_at: 2026-11-09T23:47:10Z
 ---
 
 # social-posting
 
-Platform-specific drafting contracts for public-network posts and comments.
-They prepare text only. They never publish, schedule, join a community, or
-change an account setting without the user's explicit approval.
+Platform-specific drafting contracts for public-network posts and comments,
+plus read-only LinkedIn conversation reconciliation. Drafting skills prepare
+text only; reconciliation reports evidence and does not draft or send replies.
+They never publish, schedule, join a community, or change an account setting without the user's explicit approval.
 
 ## Portrait companions
 
@@ -28,6 +29,7 @@ They do not upload to social accounts.
 | Draft or polish a LinkedIn post | `okhp3-linkedin-post` then `okhp3-linkedin-voice` |
 | Draft a reply to an existing LinkedIn conversation | `okhp3-linkedin-comment` |
 | Draft a personalized LinkedIn connection request note | `okhp3-linkedin-connection-note` |
+| Reconcile email alerts with sent and received LinkedIn messages before deciding whether a response remains due | `okhp3-linkedin-dm-reconcile` |
 | Draft a LinkedIn direct message or counter reply | `okhp3-linkedin-message` then `okhp3-linkedin-voice` |
 | Plan segmented, paced LinkedIn outreach waves | `okhp3-linkedin-network-plan` |
 | Review LinkedIn replies and propose draft counter replies | `okhp3-linkedin-inbox-triage` |
@@ -101,13 +103,13 @@ boundary.
 <!-- FAMILY_SUMMARY_START -->
 Platform-specific drafts for LinkedIn, Facebook, X/Twitter, Discord, YouTube,
 Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
-Telegram.
+Telegram, plus read-only LinkedIn conversation reconciliation.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (36)
+## Skills (37)
 
 <!-- FAMILY_INVENTORY_START -->
-*36 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 22:40 UTC***
+*37 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:47 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -123,6 +125,7 @@ Telegram.
 | [okhp3-linkedin-angles](okhp3-linkedin-angles/SKILL.md) | Mine finished work, repository history, or a current conversation for 3 to 5 evidence-linked Link... | 2.3.0 |
 | [okhp3-linkedin-comment](okhp3-linkedin-comment/SKILL.md) | Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to resp... | 1.2.0 |
 | [okhp3-linkedin-connection-note](okhp3-linkedin-connection-note/SKILL.md) | Draft one personalized LinkedIn connection request note per recipient, within the sender's charac... | 1.0.0 |
+| [okhp3-linkedin-dm-reconcile](okhp3-linkedin-dm-reconcile/SKILL.md) | Reconcile LinkedIn email notifications with sent and received direct messages. Use when the user ... | 1.0.1 |
 | [okhp3-linkedin-inbox-triage](okhp3-linkedin-inbox-triage/SKILL.md) | Check a LinkedIn inbox for new replies from a supplied outreach list, classify each sender, and p... | 1.0.0 |
 | [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.1.0 |
 | [okhp3-linkedin-network-plan](okhp3-linkedin-network-plan/SKILL.md) | Plan a LinkedIn network expansion: audit followed-but-unconnected accounts, segment and tier targ... | 1.0.0 |
