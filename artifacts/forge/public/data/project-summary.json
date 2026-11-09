@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-11-09T14:59:24.765Z",
+  "generatedAt": "2026-11-09T15:14:33.776Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/build-in-public-proof-brief",
-  "sourceCommit": "37586ad",
-  "skillCount": 339,
+  "sourceRef": "codex/activity-reconciliation-v010",
+  "sourceCommit": "f98e5e7",
+  "skillCount": 340,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 270,
+    "draftable": 271,
     "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 169,
+    "not-run": 170,
     "none": 109,
     "local-checks": 39,
     "analytical": 7,
