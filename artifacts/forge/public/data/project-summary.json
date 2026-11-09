@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-09T14:24:12.812Z",
+  "generatedAt": "2026-11-09T14:34:43.386Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "add-career-outreach-skills",
-  "sourceCommit": "10382291",
+  "sourceCommit": "7df152fe",
   "skillCount": 339,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 269,
-    "skeleton": 65,
+    "draftable": 270,
+    "skeleton": 64,
     "usable": 5
   },
   "evidenceStatusCounts": {

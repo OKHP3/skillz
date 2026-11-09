@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-09T14:24:12.812Z",
+  "generatedAt": "2026-11-09T14:34:43.386Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "add-career-outreach-skills",
-  "sourceCommit": "10382291",
+  "sourceCommit": "7df152fe",
   "skillCount": 339,
   "familyCount": 22,
   "families": [
@@ -19588,9 +19588,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-browser-ops/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-browser-ops/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T08:24:23-06:00",
+      "commitSha": "265de305",
+      "createdAt": "2026-11-09T08:24:23-06:00",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -19722,9 +19722,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-message/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-message/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T08:24:23-06:00",
+      "commitSha": "265de305",
+      "createdAt": "2026-11-09T08:24:23-06:00",
       "packageMetadata": {
         "author": "Public Agent Skill Library",
         "category": "social-posting",
@@ -22206,9 +22206,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-career-addendum/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-career-addendum/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T08:24:23-06:00",
+      "commitSha": "265de305",
+      "createdAt": "2026-11-09T08:24:23-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "career",
@@ -22806,7 +22806,7 @@
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
-      "maturity": "skeleton",
+      "maturity": "draftable",
       "evidenceStatus": "not-run",
       "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
@@ -22825,9 +22825,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-network-referral-tracker/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-network-referral-tracker/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T08:34:16-06:00",
+      "commitSha": "7df152fe",
+      "createdAt": "2026-11-09T08:24:23-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "career",
@@ -22852,9 +22852,9 @@
           "No executed evaluation exists for the current package version."
         ]
       },
-      "maturitySource": "fallback-structure",
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-contract-work"
+      "releaseReadiness": "needs-live-evidence"
     },
     {
       "name": "okhp3-overkill-hill-brand",
@@ -23035,9 +23035,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-recruiter-legitimacy-check/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-recruiter-legitimacy-check/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T08:34:16-06:00",
+      "commitSha": "7df152fe",
+      "createdAt": "2026-11-09T08:24:23-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "career",
@@ -23051,7 +23051,7 @@
       "evidence": {
         "status": "not-run",
         "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 5,
+        "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
