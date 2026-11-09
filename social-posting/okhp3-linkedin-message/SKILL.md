@@ -48,9 +48,9 @@ person, at that relationship temperature, about one thing.
    `references/surface-limits.md` and confirm the live counter before relying
    on any number.
 2. **Classify relationship temperature** using `references/relationship-tiers.md`:
-   `active`, `dormant`, or `senior-target`. The tier sets length, candor,
-   attachment policy, and the size of the ask. Do not infer warmth the user did
-   not state.
+   `active`, `dormant`, `senior-target`, or `cold`. The tier sets length,
+   candor, attachment policy, and the size of the ask. Do not infer warmth the
+   user did not state; with no shared history, the tier is `cold`.
 3. **Verify recipient facts before using them.** Any statement about the
    recipient's current role, employer, title, or recent change must come from
    a source the user supplied or the agent retrieved this run, preferably the
@@ -64,10 +64,13 @@ person, at that relationship temperature, about one thing.
 5. **Decide attachments by tier.** `active` may carry working files and the
    sender's strategy. `dormant` carries none in the first message; offer them.
    `senior-target` carries at most one artifact, in a format that previews
-   without downloading when the host supports it. Never attach anything the
+   without downloading when the host supports it. `cold` carries none. Never attach anything the
    recipient's conflict check rules out.
 6. **Draft one contribution per message.** Open with something specific and
-   true to the shared history. State the one thing the message is for. End
+   true: the shared history for warm tiers, or for `cold`, the supplied reason
+   this recipient is the right person (their published work, role, or a
+   mutual connection the user names). Never imply familiarity that does not
+   exist. State the one thing the message is for. End
    with a low-cost, concrete ask. Keep the subject's private context out of
    any message whose recipient does not need it.
 7. **Sequence related messages.** When several recipients concern one subject,
