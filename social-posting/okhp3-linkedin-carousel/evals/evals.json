@@ -5,7 +5,7 @@
   "holdout_seen": true,
   "holdout_status": "external-required",
   "evidence_status": "not-run",
-  "structural_evidence": "tests/test_build_carousel.py: 11 unit and render tests passing on 2026-11-09 (Python 3, Playwright 1.56.0, Pillow 12.3.0). Structural only; no with/without-skill benchmark has been run.",
+  "structural_evidence": "tests/test_build_carousel.py: 13 unit and render tests passing on 2026-11-09 (Python 3, Playwright 1.56.0, Pillow 12.3.0). Structural only; no with/without-skill benchmark has been run.",
   "evals": [
     {
       "id": "companion-carousel",

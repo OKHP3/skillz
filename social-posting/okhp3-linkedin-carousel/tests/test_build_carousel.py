@@ -103,6 +103,25 @@ class RenderTests(unittest.TestCase):
             self.assertTrue(any("vertically" in p for p in problems))
             self.assertTrue(any("footer" in p for p in problems))
 
+    def test_long_token_in_compare_grid_wraps(self):
+        spec = copy.deepcopy(EXAMPLE)
+        spec["pages"][1]["blocks"][0]["rows"].append(["Link", "x" * 160, "https://example.org/" + "y" * 160])
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(bc.render(spec, bc.validate(spec)[2], pathlib.Path(tmp), False), [])
+
+    def test_fit_check_sees_clipping_inside_nested_boxes(self):
+        from playwright.sync_api import sync_playwright
+        _, _, theme = bc.validate(EXAMPLE)
+        doc = bc.page_html(EXAMPLE, theme, 1).replace(
+            "</style>", ".cmp{grid-template-columns:1fr 1fr}.cmp>div{overflow-wrap:normal;min-width:auto}</style>"
+        ).replace("&lt;OLD_TOOL&gt;", "z" * 200)
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_context(viewport={"width": bc.WIDTH, "height": bc.HEIGHT}, java_script_enabled=False).new_page()
+            page.set_content(doc)
+            self.assertTrue(page.evaluate(bc.FIT_CHECK)["h"])
+            browser.close()
+
 
 if __name__ == "__main__":
     unittest.main()

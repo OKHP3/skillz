@@ -167,8 +167,8 @@ p.t{{font:500 30px/1.42 {t['font']};margin-top:28px}}
 .panel{{background:{t['panel']};border:1px solid {t['border']};border-radius:22px;padding:30px 36px;margin-top:28px}}
 .panel b{{display:block;font:800 24px/1.2 {t['font']};letter-spacing:.12em;color:{t['accent']};text-transform:uppercase;margin-bottom:10px}}
 .panel span{{font:500 28px/1.45 {t['font']}}}
-.cmp{{display:grid;grid-template-columns:1fr 1fr;border:1px solid {t['border']};border-radius:22px;overflow:hidden;margin-top:34px}}
-.cmp>div{{padding:18px 26px;border-bottom:1px solid {t['border']};font:600 26px/1.35 {t['font']}}}
+.cmp{{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid {t['border']};border-radius:22px;overflow:hidden;margin-top:34px}}
+.cmp>div{{min-width:0;overflow-wrap:anywhere;padding:18px 26px;border-bottom:1px solid {t['border']};font:600 26px/1.35 {t['font']}}}
 .cmp .h{{font:800 24px/1.2 {t['font']};letter-spacing:.12em;background:{t['panel']};color:{t['muted']}}}
 .cmp .h.r{{color:{t['accent']}}}
 .cmp .r{{color:{t['fg']}}}
@@ -234,6 +234,19 @@ def page_html(spec: dict, theme: dict, index: int) -> str:
     )
 
 
+# Clipping can hide inside nested boxes (for example a comparison grid with
+# overflow:hidden), so check every block-level box, not only #content.
+FIT_CHECK = """(() => {
+  const c = document.getElementById('content');
+  const f = document.querySelector('.foot');
+  const cr = c.getBoundingClientRect();
+  const boxes = [c, ...c.querySelectorAll('*')].filter(e => e.clientWidth > 0);
+  const h = boxes.some(e => e.scrollWidth > e.clientWidth + 1 || e.getBoundingClientRect().right > cr.right + 1);
+  return {v: c.scrollHeight > c.clientHeight + 1, h: h,
+          f: f.scrollWidth > f.clientWidth + 1 || f.getBoundingClientRect().top < cr.bottom};
+})()"""
+
+
 def render(spec: dict, theme: dict, out: pathlib.Path, html_only: bool) -> list[str]:
     out.mkdir(parents=True, exist_ok=True)
     pages = [page_html(spec, theme, i) for i in range(len(spec["pages"]))]
@@ -259,11 +272,7 @@ def render(spec: dict, theme: dict, out: pathlib.Path, html_only: bool) -> list[
         pg = context.new_page()
         for name, doc in zip(names, pages):
             pg.set_content(doc, wait_until="load")
-            fit = pg.evaluate(
-                "(() => { const c = document.getElementById('content'); const f = document.querySelector('.foot');"
-                " return {v: c.scrollHeight > c.clientHeight + 1, h: c.scrollWidth > c.clientWidth + 1,"
-                " f: f.scrollWidth > f.clientWidth + 1 || f.getBoundingClientRect().top < c.getBoundingClientRect().bottom}; })()"
-            )
+            fit = pg.evaluate(FIT_CHECK)
             if fit["v"]:
                 overflow.append(f"page {name}: content overflows the safe area vertically; cut text or split the page")
             if fit["h"]:
