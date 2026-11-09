@@ -1,0 +1,108 @@
+{
+  "skill_name": "okhp3-role-master-resumes",
+  "skill_version": "0.2.0",
+  "status": "design-only",
+  "metrics": "not-run",
+  "cases": [
+    {
+      "id": "positive-1",
+      "prompt": "Create reusable masters for my chosen career lanes.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-2",
+      "prompt": "Make generic role-family resumes from my claim bank.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-3",
+      "prompt": "Produce matching Markdown and DOCX master editions.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-4",
+      "prompt": "Compare two architecture baseline resumes.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-5",
+      "prompt": "Revise the process-improvement master from approved facts.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-6",
+      "prompt": "Choose evidence for each broad role family.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-7",
+      "prompt": "Create a master-edition handoff for applications.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-8",
+      "prompt": "Keep shared dates consistent across my role masters.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-9",
+      "prompt": "Add supported people-management evidence to my master.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-10",
+      "prompt": "Prepare a stable AI-adoption resume baseline.",
+      "should_activate": true
+    },
+    {
+      "id": "negative-1",
+      "prompt": "Ingest every historical source into a new corpus.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-2",
+      "prompt": "Write one job-specific cover letter.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-3",
+      "prompt": "Submit an application.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-4",
+      "prompt": "Edit my LinkedIn profile live.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-5",
+      "prompt": "Audit OneDrive folder survival.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-6",
+      "prompt": "Archive employer documents.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-7",
+      "prompt": "Prepare interview questions only.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-8",
+      "prompt": "Create a lifetime biography.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-9",
+      "prompt": "Check current certification renewal rules.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-10",
+      "prompt": "Plan my coaching session.",
+      "should_activate": false
+    }
+  ]
+}

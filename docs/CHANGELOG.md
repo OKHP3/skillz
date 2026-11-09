@@ -1,14 +1,13 @@
 # Changelog
 
-## 2026-11-09 Session Handoff 0.3.0
+## 2026-11-09: Career reference and coaching skill mirrors
 
-- Add an opt-in exact-thread closeout profile. Bind observations to the required
-  surface and revision, preserve dated corrections, verify the receipt and
-  separate work completion from an exact archive outcome.
-- Retain ordinary handoff behavior. Synchronize the distribution package and
-  repository-local support copy. Add eleven synthetic development cases and
-  record an [analytical review](closeouts/session-handoff-0.3.0-review.json).
-  Live runs and a protected holdout remain open.
+- Catalog three 0.2.0 AskJamie source candidates: lifetime career reference,
+  role master resumes and coaching engagement. Preserve exact canonical core
+  hashes and the existing source-intake/career-canon boundary.
+- Include independent analytical review, synthetic development/discovery cases
+  and explicit save/retry/privacy guards. No live benchmark, unseen holdout
+  or native-host acceptance is claimed.
 
 ## 2026-11-09: Professional portrait and guided still capture
 
@@ -95,6 +94,16 @@
   stays `not-run` and no validated claim is made.
 - Refresh the distribution catalogs and manifest to 338 skills across 22 active
   families.
+
+## 2026-11-09 Session Handoff 0.3.0
+
+- Add an opt-in exact-thread closeout profile. Bind observations to the required
+  surface and revision, preserve dated corrections, verify the receipt and
+  separate work completion from an exact archive outcome.
+- Retain ordinary handoff behavior. Synchronize the distribution package and
+  repository-local support copy. Add eleven synthetic development cases and
+  record an [analytical review](closeouts/session-handoff-0.3.0-review.json).
+  Live runs and a protected holdout remain open.
 
 ## 2026-10-25: explicit Notion destination roots
 
