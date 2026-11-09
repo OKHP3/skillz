@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T15:14:26.695Z",
+  "generatedAt": "2026-11-09T15:17:45.477Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "codex/voice-research-knowledge-skills",
-  "sourceCommit": "d9cbe84b",
-  "skillCount": 340,
+  "sourceCommit": "ae242bd3",
+  "skillCount": 341,
   "familyCount": 22,
   "families": [
     {
@@ -849,8 +849,9 @@
     {
       "name": "social-posting",
       "displayName": "Social posting",
-      "skillCount": 35,
+      "skillCount": 36,
       "skills": [
+        "okhp3-build-in-public-proof-brief",
         "okhp3-discord-comment",
         "okhp3-discord-post",
         "okhp3-facebook-comment",
@@ -900,7 +901,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-discord-comment",
+          "value": "okhp3-build-in-public-proof-brief",
           "note": null,
           "source": "generated"
         },
@@ -12275,9 +12276,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-research-file-renewal/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-research-file-renewal/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T09:14:55-06:00",
+      "commitSha": "ae242bd3",
+      "createdAt": "2026-11-09T09:14:55-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "knowledge-operations",
@@ -12468,9 +12469,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-voice-profile-renewal/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-voice-profile-renewal/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T09:14:55-06:00",
+      "commitSha": "ae242bd3",
+      "createdAt": "2026-11-09T09:14:55-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "knowledge-operations",
@@ -19104,6 +19105,70 @@
       "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-build-in-public-proof-brief",
+      "displayName": "Build in Public proof brief",
+      "family": "social-posting",
+      "skillDir": "okhp3-build-in-public-proof-brief",
+      "path": "social-posting/okhp3-build-in-public-proof-brief/SKILL.md",
+      "description": "Prepare a Build in Public proof brief from supplied build, test, and release receipts before drafting a public progress update. Reconcile mixed revisions, baseline comparisons, and disclosure limits into a private claim ledger and a separate candidate fact packet. Does not select angles, write posts, approve exports, or publish.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "live",
+      "evidenceNote": "Version-matched executor evidence is recorded in the package benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-build-in-public-proof-brief/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-build-in-public-proof-brief/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Preparing revision-scoped public progress claims from supplied build evidence.",
+        "outOfScope": "Post drafting, career representation, account actions, approval issuance, and publication.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "live",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 4,
+        "benchmarkCount": 8,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": "2026-11-09T14:55:27.925361+00:00",
+        "reviewDecision": "approve-with-limits",
+        "blockers": [
+          "No protected holdout, repeated performance benchmark, or cross-host verification.",
+          "Development comparison uses one run per case and arm. Grading context was separate and arm-masked, with shared model-family and output-style limitations."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-discord-comment",

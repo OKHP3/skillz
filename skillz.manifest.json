@@ -20,12 +20,12 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 340,
+  "distributionSkillCount": 341,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 271,
+    "draftable": 272,
     "skeleton": 64,
     "usable": 5
   },
@@ -35,7 +35,7 @@
     "none": 109,
     "local-checks": 39,
     "analytical": 7,
-    "live": 7
+    "live": 8
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
@@ -422,6 +422,7 @@
       "name": "social-posting",
       "status": "draftable",
       "skills": [
+        "okhp3-build-in-public-proof-brief",
         "okhp3-discord-comment",
         "okhp3-discord-post",
         "okhp3-facebook-comment",
@@ -524,6 +525,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:14:26.695Z",
+  "countsGeneratedAt": "2026-11-09T15:17:45.477Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
