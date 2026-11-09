@@ -1,9 +1,9 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 31
+skill_count: 32
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-25T13:53:09Z
+generated_at: 2026-11-09T14:26:20Z
 ---
 
 # social-posting
@@ -19,6 +19,7 @@ change an account setting without the user's explicit approval.
 | Mine finished work into LinkedIn-ready ideas | `okhp3-linkedin-angles` |
 | Draft or polish a LinkedIn post | `okhp3-linkedin-post` then `okhp3-linkedin-voice` |
 | Draft a reply to an existing LinkedIn conversation | `okhp3-linkedin-comment` |
+| Draft a private LinkedIn message, connection note, or InMail | `okhp3-linkedin-message` then `okhp3-linkedin-voice` |
 | Draft a Facebook profile, Page, or group post | `okhp3-facebook-post` |
 | Draft a Facebook comment or reply | `okhp3-facebook-comment` |
 | Draft an X post | `okhp3-twitter-post` |
@@ -92,10 +93,10 @@ Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
 Telegram.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (31)
+## Skills (32)
 
 <!-- FAMILY_INVENTORY_START -->
-*31 skills &nbsp;·&nbsp; inventory last updated: **October 25, 2026 at 13:53 UTC***
+*32 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 14:26 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -109,6 +110,7 @@ Telegram.
 | [okhp3-kofi-supporter-reply](okhp3-kofi-supporter-reply/SKILL.md) | Draft a private, privacy-preserving Ko-fi reply to a supplied supporter message. Use when the use... | 1.1.0 |
 | [okhp3-linkedin-angles](okhp3-linkedin-angles/SKILL.md) | Mine finished work, repository history, or a current conversation for 3 to 5 evidence-linked Link... | 2.3.0 |
 | [okhp3-linkedin-comment](okhp3-linkedin-comment/SKILL.md) | Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to resp... | 1.2.0 |
+| [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message, connection-request note, or InMail to a named recipient. Use whe... | 1.0.0 |
 | [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts,... | 2.3.0 |
 | [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a... | 2.2.0 |
 | [okhp3-patreon-comment](okhp3-patreon-comment/SKILL.md) | Draft a Patreon comment or reply from supplied post and access context. Use when the user needs a... | 1.0.0 |

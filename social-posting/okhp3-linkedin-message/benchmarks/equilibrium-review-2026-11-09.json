@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "three-role-plus-conditional",
+  "evaluation_status": "analytical",
+  "reviewed_on": "2026-11-09",
+  "artifact": {
+    "path": "social-posting/okhp3-linkedin-message",
+    "version": "1.0.0-rc1",
+    "sha256_SKILL_md_rc1": "376cdf9a5c547d5a2c41fa9aebed5e7fda9aeb11fcc3d80a8ece2600f93cf7df",
+    "released_version": "1.0.0",
+    "released_sha256": {
+      "SKILL.md": "927aee85e542828f40bc06014546ff7b67402588b8755905935787ed9a27b0e5",
+      "evals/evals.json": "45990dcbf5db45bc7c55f034bbb16e5f925e3b5c1355757924c155b21edf580a",
+      "references/message-scrub.md": "56ab51758acbcf211c285a2205eb834d56938da112a6af6e15803856cdb59a20",
+      "references/relationship-tiers.md": "5a25b0cb40fe500fa502136276dffdf4223d6c6c925b5ecece15224d544b045c",
+      "references/sequencing.md": "3d1826b0e8706b435a9e719a60e2cb8cf2d4a7a5da3b6eb82b42b3fc22f9ddd7",
+      "references/surface-limits.md": "abfe0f1395f7d8aa89a87959c17775a780756d94db5054e266aae09273bd8b0f"
+    }
+  },
+  "decision_question": "Is okhp3-linkedin-message ready for draftable distribution in social-posting within its stated scope?",
+  "acceptance_criteria": [
+    "Fills a family gap without duplicating an existing package",
+    "Public-neutral: no identifying values in package or fixtures",
+    "Draft-only with explicit approval boundary",
+    "Recipient facts require a source; limits are not hard-coded as guarantees",
+    "At least one normal, edge, and untrusted-input case"
+  ],
+  "independence": {
+    "reviewer_contexts_separated": false,
+    "shared_model_or_source_limits": [
+      "Single-agent analytical review: evidence, outcome, safety-portability, disruptor and negotiator roles ran in one model context with a shared source set (the originating work session), so concordance is correlated evidence, not independent agreement."
+    ]
+  },
+  "claim_ledger": [
+    {
+      "id": "A-E1",
+      "claim": "Connection-note limit planning default is 200 characters with live-counter confirmation",
+      "status": "supported-with-limits",
+      "evidence": "Secondary sources conflict (200 vs 300); primary LinkedIn Help page could not be fetched. An earlier session draft used 300, which this default corrects."
+    },
+    {
+      "id": "A-E2",
+      "claim": "Third-party announcements can misstate a recipient's current role",
+      "status": "supported",
+      "evidence": "Originating session: a 2024 appointment announcement was superseded by the recipient's profile showing a later role change."
+    },
+    {
+      "id": "A-E3",
+      "claim": "Previewable attachment formats reduce friction",
+      "status": "supported-with-limits",
+      "evidence": "Stated conditionally ('when the host supports it'); not host-tested."
+    },
+    {
+      "id": "A-O1",
+      "claim": "No existing social-posting package drafts private messages",
+      "status": "supported",
+      "evidence": "Family routing table lists post, comment, angles, and voice only."
+    },
+    {
+      "id": "A-O2",
+      "claim": "LinkedIn-bound text should pass the family voice skill",
+      "status": "defect-fixed",
+      "evidence": "rc1 omitted the okhp3-linkedin-voice pass that the family contract requires for LinkedIn text; added as step 8."
+    },
+    {
+      "id": "A-S1",
+      "claim": "Package and fixtures are public-neutral",
+      "status": "supported",
+      "evidence": "Fixtures use <RECIPIENT>, <TARGET>, <ALLY>, <MUTUAL>, <COMPANY_*> placeholders only."
+    }
+  ],
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "result": "approve-with-limits",
+      "material_findings": [
+        "A-E1",
+        "A-E3"
+      ]
+    },
+    {
+      "role": "outcome",
+      "result": "approve-with-limits",
+      "material_findings": [
+        "A-O2"
+      ]
+    },
+    {
+      "role": "safety-portability",
+      "result": "approve",
+      "material_findings": []
+    }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "authority": "advisory",
+    "falsification_hypotheses": [
+      {
+        "id": "A-D1",
+        "hypothesis": "The package duplicates an existing LinkedIn DM skill.",
+        "test": "Compare against the skillz social-posting inventory and the owner's host-installed skills.",
+        "result": "Failed in skillz (no DM package). Survived on the owner's host, where a dictation-to-DM skill exists; resolved by improving that host skill instead of installing a duplicate there."
+      },
+      {
+        "id": "A-D2",
+        "hypothesis": "The scrub would not have caught the originating session's real miss (a clinical term used as metaphor).",
+        "test": "Check message-scrub.md and the loaded-language case.",
+        "result": "Failed: the scrub names clinical metaphors explicitly and a development case covers it."
+      },
+      {
+        "id": "A-D3",
+        "hypothesis": "Tier defaults push the agent to invent warmth.",
+        "test": "Read relationship-tiers.md classification rule.",
+        "result": "Failed: tiers come from user statements; missing signal defaults to dormant after one question."
+      }
+    ],
+    "test_results": [
+      "A-D1 partially survived (host scope only)",
+      "A-D2 failed",
+      "A-D3 failed"
+    ]
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "approve-with-limits",
+    "decisive_evidence": [
+      "A-O1",
+      "A-O2 fix",
+      "A-D1 scoped to host"
+    ],
+    "unresolved_items": [
+      "Primary-source confirmation of LinkedIn limits"
+    ]
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": [
+    "Single-agent analytical review: evidence, outcome, safety-portability, disruptor and negotiator roles ran in one model context with a shared source set (the originating work session), so concordance is correlated evidence, not independent agreement.",
+    "No live with/without-skill benchmark and no unseen holdout were run. Development cases are designed, not executed.",
+    "LinkedIn limits rest on conflicting secondary sources retrieved 2026-11-09."
+  ],
+  "owner": "OKHP3",
+  "expiry": "Re-review on any LinkedIn surface change, a real failure, or before claiming benchmarked status.",
+  "follow_up": [
+    "Run development cases with and without the skill in an isolated runner",
+    "Add an external holdout",
+    "Confirm limits against LinkedIn Help when retrievable"
+  ]
+}

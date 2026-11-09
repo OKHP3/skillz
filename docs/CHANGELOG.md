@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-11-09: LinkedIn private messages
+
+- Add `okhp3-linkedin-message` 1.0.0 as a draftable social-posting package for
+  LinkedIn direct messages, connection-request notes, and InMail. It
+  calibrates to relationship temperature (active, dormant, senior target),
+  requires a source for recipient facts, checks recipients against the
+  subject for competitor conflicts, gates attachments by tier, sequences
+  related messages, and runs the family voice pass and a private-message
+  scrub. Draft only.
+- An analytical equilibrium review (single model context, correlated roles)
+  approved it with limits after adding the missing voice pass. LinkedIn
+  character limits rest on conflicting secondary sources; the package writes
+  to conservative defaults and requires the live counter. No live benchmark
+  or unseen holdout was run.
+- Refresh the distribution catalog and manifest to 335 skills across 22
+  active families, including 32 social-posting skills.
+
 ## 2026-10-25: explicit Notion destination roots
 
 - Revise domain filing to 1.1.0: distinguish the canonical discovery root from
