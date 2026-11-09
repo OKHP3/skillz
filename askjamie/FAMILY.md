@@ -1,9 +1,9 @@
 ---
 family: askjamie
 display_name: AskJamie
-skill_count: 5
+skill_count: 6
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T15:07:47Z
+generated_at: 2026-11-09T22:40:35Z
 ---
 
 # askjamie
@@ -17,6 +17,8 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 - `okhp3-askjamie-gpt-readiness/` assesses whether an AskJamie lens or Custom GPT is ready for build.
 - `okhp3-askjamie-gpt-builder/` builds and audits the resulting Custom GPT experience.
 - `okhp3-askjamie-email-draft/` drafts owner-voice correspondence with the Represent, Frame, Investigate, and Protect lenses. Draft-only. First capability for the AskJamie OpenClaw agent persona.
+
+- `okhp3-professional-headshot/` creates a realistic, recognizable career portrait from authorized photos, with reference roles and verified delivery.
 
 ## Design direction
 
@@ -53,10 +55,10 @@ The README-only old locations are compatibility pointers, not additional skills.
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (5)
+## Skills (6)
 
 <!-- FAMILY_INVENTORY_START -->
-*5 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 15:07 UTC***
+*6 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 22:40 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -65,4 +67,5 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 | [okhp3-askjamie-gpt-builder](okhp3-askjamie-gpt-builder/SKILL.md) | >- | 1.0.0 |
 | [okhp3-askjamie-gpt-readiness](okhp3-askjamie-gpt-readiness/SKILL.md) | >- | 1.0.0 |
 | [okhp3-job-application-completion](okhp3-job-application-completion/SKILL.md) | Complete or resume job applications from approved career evidence, tailored materials and saved p... | 0.2.0 |
+| [okhp3-professional-headshot](okhp3-professional-headshot/SKILL.md) | Create or refine a realistic professional headshot from supplied or explicitly authorized recent ... | 0.1.0 |
 <!-- FAMILY_INVENTORY_END -->
