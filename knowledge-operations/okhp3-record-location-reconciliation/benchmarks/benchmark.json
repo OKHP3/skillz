@@ -7,6 +7,9 @@
     "timestamp": "2026-11-09",
     "runner": "Static package inspection, separated reviewer contexts, and analytical adjudication",
     "fixtures": "evals/evals.json and evals/discovery.json",
+    "blockers": [
+      "A scoped read-only field observation is recorded separately. A graded live benchmark for the current version is still needed."
+    ],
     "known_limitations": [
       "Comparable live host runs and protected holdout not run.",
       "Shared model family and frozen source constrain reviewer independence.",
@@ -28,5 +31,13 @@
     "coverage": "Qualified parity and readback of affected references",
     "publication": "Draftable catalog source with synthetic examples and no operational maturity claim"
   },
-  "review": "equilibrium-review-2026-11-09.json"
+  "review": "equilibrium-review-2026-11-09.json",
+  "field_observations": [
+    {
+      "observed_on": "2026-11-10",
+      "skill_version": "0.1.0",
+      "operation": "read-only verification",
+      "record": "field-observation-2026-11-10.md"
+    }
+  ]
 }
