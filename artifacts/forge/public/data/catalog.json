@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-10T00:02:36.815Z",
+  "generatedAt": "2026-11-10T13:40:39.376Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "feat/lightning-method-skills",
-  "sourceCommit": "07ac6e05",
-  "skillCount": 355,
+  "sourceRef": "codex/linkedin-series-continuity-20261110",
+  "sourceCommit": "74fd9446",
+  "skillCount": 356,
   "familyCount": 22,
   "families": [
     {
@@ -863,7 +863,7 @@
     {
       "name": "social-posting",
       "displayName": "Social posting",
-      "skillCount": 36,
+      "skillCount": 37,
       "skills": [
         "okhp3-build-in-public-proof-brief",
         "okhp3-discord-comment",
@@ -881,6 +881,7 @@
         "okhp3-linkedin-message",
         "okhp3-linkedin-network-plan",
         "okhp3-linkedin-post",
+        "okhp3-linkedin-series-continuity",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
         "okhp3-patreon-post",
@@ -13263,7 +13264,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
       "lastModified": "2026-08-31T22:34:57-05:00",
       "commitSha": "93613e20",
-      "createdAt": "2026-08-30T18:11:10-05:00",
+      "createdAt": "2026-08-30T18:45:34-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
@@ -17760,7 +17761,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-adversary-forecasting/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-intelligence",
@@ -17949,7 +17950,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-credential-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -18012,7 +18013,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-data-exposure/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -18151,7 +18152,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-lateral-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -18277,7 +18278,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-persistence-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -18403,7 +18404,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-authorization-governance/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-27T23:47:34-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-governance",
@@ -18718,7 +18719,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-model-anomaly-detection/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-detection",
@@ -18970,7 +18971,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-response-cost-benefit/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:45:45-05:00",
+      "createdAt": "2026-08-28T00:16:27-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-measurement",
@@ -20940,6 +20941,73 @@
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-linkedin-series-continuity",
+      "displayName": "LinkedIn Series Continuity",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-series-continuity",
+      "path": "social-posting/okhp3-linkedin-series-continuity/SKILL.md",
+      "description": "Plan a source-backed continuation of a LinkedIn post series. Use when a follow-up must connect prior posts, completed work, evidence and owner voice without inventing publication or results. Produces a draft handoff, not publication or scheduling.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "skeleton",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-angles",
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-voice"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-series-continuity/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-series-continuity/SKILL.md",
+      "lastModified": "2026-11-09T09:05:21-06:00",
+      "commitSha": "74fd9446",
+      "createdAt": "2026-11-09T09:02:26-06:00",
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Evidence, continuity, and reviewable handoff for a LinkedIn series.",
+        "outOfScope": "Publication, scheduling, account management, and unauthorized disclosure.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 9,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
     },
     {
       "name": "okhp3-linkedin-voice",
