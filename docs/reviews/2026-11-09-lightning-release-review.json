@@ -352,7 +352,7 @@
       "result": "Sandbox junction creation failed with EPERM. The same fixture passes outside the sandbox. Old-head full-suite reruns were stopped before main reconciliation; they are not full-suite passes. Final repository CI is the integration gate.",
       "package_failure": false
     },
-    "repository_gate": "The exact reconciled integration head must pass the repository's GitHub CI, recorded on PR #238.",
+    "repository_gate": "Bounded evidence reuse approved by the dated integration adjudication: preserve full CI receipts at the tested SHA, rerun invalidated catalog checks and browser/security surfaces, and honor actual repository-required checks before normal merge.",
     "ci_url": "https://github.com/OKHP3/skillz/pull/238/checks",
     "checks": [
       {
@@ -459,5 +459,88 @@
     "generated_contract_bodies": "all three match reviewed source",
     "workflow_evidence": "not-run for all three; development cases are designs",
     "repository_ci": "required on final publication head"
-  }
+  },
+  "integration_evidence_adjudication": {
+    "recorded_at_utc": "2026-11-10T00:11:56.691713+00:00",
+    "decision": "approve-with-limits",
+    "owner": "Codex",
+    "supersedes_author_added_exact_final_head_condition": true,
+    "historical_conditions_and_receipts_preserved": true,
+    "rationale": "Apply the repository collaboration rule to reuse verified evidence and rerun invalidated checks. This is a bounded integration adjudication, not a claim that the new head passed the entire CI suite.",
+    "full_ci_tested_sha": "bfb28acafb138bdbcd37c60ac939970b414c5fe9",
+    "full_ci_runs": [
+      42722281099,
+      42722281197
+    ],
+    "full_ci_result": "all nine repository checks passed",
+    "incoming_main_sha": "81ed776029fd20e6eac9adf023a7d2408a94e22f",
+    "incoming_main_ci": "all repository checks, browser checks, security/review policy, deployment and health checks passed on this exact upstream SHA",
+    "source_merge_sha": "07ac6e051f30a4efd6da2b95bd7148c3d4470e68",
+    "source_delta_from_full_ci": [
+      ".agents/skills/README.md",
+      ".agents/skills/okhp3-session-handoff/SKILL.md",
+      ".agents/skills/okhp3-session-handoff/evals/evals.json",
+      ".agents/skills/okhp3-session-handoff/references/exact-thread-closeout.md",
+      ".catalog-meta.json",
+      "AGENTS.md",
+      "README.md",
+      "context-extraction/FAMILY.md",
+      "context-extraction/okhp3-session-handoff/SKILL.md",
+      "context-extraction/okhp3-session-handoff/evals/evals.json",
+      "context-extraction/okhp3-session-handoff/references/exact-thread-closeout.md",
+      "docs/CHANGELOG.md",
+      "docs/closeouts/session-handoff-0.3.0-review.json"
+    ],
+    "implementation_workflow_dependency_validator_delta": "none; git diff verified",
+    "catalog_test_canonical_git_blob_sha256": "8dc3ef101737cba404a745877a846832ef87c4f9ad81ce29aed997893033a89e",
+    "catalog_test_working_tree_sha256": "3c1ed63b94f6259bef6f52cb8c89a8c0d69d6ae5658e46f5c418e29cc5b355be",
+    "temporary_selection_harness_sha256": "dc6235d148ec7dcebce73cc75d8fbc7d4dff1bb32dab27b39b0ea0a7a8811a6a",
+    "temporary_harness_committed": false,
+    "fresh_checks": {
+      "strict_handoff_distribution_and_support_validation": "passed",
+      "full_index_check": "passed",
+      "full_catalog_generation": "passed",
+      "current_catalog_assertion_groups": {
+        "passed": 43,
+        "failed": 0
+      },
+      "attribution_discovery_and_stale_manifest_regressions": "passed",
+      "distribution_skills": 355,
+      "families": 22,
+      "frozen_lightning_files": "8/8 unchanged",
+      "generated_lightning_contract_bodies": "all three match reviewed source"
+    },
+    "reused_infrastructure_cases": [
+      "a real catalog build preserves companion diagnostics across the subprocess boundary",
+      "a real catalog build fails on a stale approved companion registry entry without mutating the checkout",
+      "a real catalog build fails when an approved companion declaration is renamed without mutating the checkout",
+      "a real catalog build reports every stale approved companion entry in one disposable checkout",
+      "build-catalog.js hard-fails in CI against a genuinely shallow checkout (not a silent fallback)",
+      "release-mode catalog build refreshes manifest counts and shared provenance",
+      "local catalog integrity leaves release metadata unchanged and cleans temporary output",
+      "local catalog integrity reports cleanup failures separately from validation"
+    ],
+    "reuse_rationale": "These mechanism/failure-fixture results belong to the earlier full CI run and are not newly executed passes. Their implementation is unchanged; the current data, source registry, membership, provenance, and evidence invariants were separately exercised by fresh generation and 43 assertions. This is explicit risk-based regression selection, not a byte-identical whole-checkout claim.",
+    "upstream_security": {
+      "run": 42722575361,
+      "artifact": 13720522956,
+      "source_commit": "81ed776029fd20e6eac9adf023a7d2408a94e22f",
+      "decision": "pass",
+      "complete_packages": "2/2",
+      "package_paths": [
+        ".agents/skills/okhp3-session-handoff",
+        "context-extraction/okhp3-session-handoff"
+      ],
+      "content_sha256": "d12279396ec3ad93f90a9a62c1fab89d011e0f471151c487b7eeb411871f1eef",
+      "exact_source_binding": "git diff against upstream is empty for both imported handoff subtrees"
+    },
+    "release_reviewer": "negotiator-release-adjudicator; read-only follow-up approved limited reuse with stated conditions",
+    "remaining_conditions": [
+      "Fresh affected browser and security checks must pass before normal merge.",
+      "Honor actual repository-required GitHub checks; no admin override.",
+      "Do not call the new merge head fully CI-passed."
+    ],
+    "workflow_evidence_limit": "Language workflow behavior, uplift, protected holdout and host compatibility remain not-run."
+  },
+  "superseded_integration_gate": "The exact reconciled integration head must pass the repository's GitHub CI, recorded on PR #238."
 }
