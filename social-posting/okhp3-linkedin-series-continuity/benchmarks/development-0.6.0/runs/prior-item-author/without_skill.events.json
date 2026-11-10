@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "680b4dfeb1ae9310e3807bd7d54bf92fde5b3a93c29792753f6f9d04ed04f496",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "456360130e3c3cd7dc108a9402827a74660ed0952148f5febf0be77a20a5b31e"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Draft**\n\nI\u2019ve finished the checklist.\n\n**Private review note**\n\nThe published post about planning a checklist came from another account. The owner\u2019s completion is confirmed, so the draft can stand on its own. To connect it to the owner\u2019s series, I\u2019d need an earlier installment or a confirmed series theme."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17759,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 67,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

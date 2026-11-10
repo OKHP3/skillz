@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "175715fcd58b139bc672f74560f7435c7a1c65c698319c88fa180c11de2c10a9",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "973c1a7e8c6b8ab81162b0671ac39e02414df12648e542324b2ad7019746af59"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "In my last post, I shared how I was designing a reusable workflow. Since then, I\u2019ve finished the workflow and committed the template to the repository.\n\nThe part I\u2019ve been reflecting on is what it takes to turn a process into a template. When I\u2019m working through a process myself, I can fill in the gaps as I go. Writing it down forces me to decide which steps belong in the template and which decisions should stay with the person using it.\n\nThat\u2019s what made the template feel like a milestone. The design now has a concrete starting point for the next time the work comes up.\n\n**Private review note:** The publication receipt supports the reference to the previous post, and the repository record confirms the template commit. The first-person reflection is suggested wording for the owner to confirm."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17784,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 163,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

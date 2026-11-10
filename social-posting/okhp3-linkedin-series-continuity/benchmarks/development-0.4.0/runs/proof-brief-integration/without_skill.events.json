@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "ce1dd994d9c4935cc572ea139c2f24ffef298fb0448d8376e031112d971d7093",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "5a75f2f4375b79025e52598f971012457eb91c573c5904fe795b8e95d6d77290"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nI turned a checklist I\u2019d been planning into something I can reuse. It\u2019s now committed, so the next time I need it, I have a starting point.\n\n**Private review note**\n\nThe supplied commit receipt confirms the checklist was committed. The previous entry was scheduled and its publication remains unverified, so the draft stands on its own without referring readers back to it."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17783,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 83,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "347e930b2d1967bfbf42aeaf95b45a6ba6c9e608af4371c446fc879f8468ad19",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "43b249ed7763e52fffbd6e64cfc72145bb37e5b48757251969116de92d3f175a"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Draft**\n\nI keep a checklist for the things I want to remember on the next pass. It gives me a place to start when I come back to the work.\n\n**Private review note**\n\nThe checklist is confirmed as reusable. The draft follows the owner\u2019s plainspoken sample and leaves out checklist contents and measured results because neither was supplied. Owner approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17775,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 77,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

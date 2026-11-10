@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "d92e367602bf1c5fe8e724afa11e979a220fa9db2b93135b3ec9a08aaf5d0f26",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "10e15c5db1336b59fe7fd1df62de1cbf17bdf344f698e81bac8ca8ffd2af741f"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the supplied series-continuity skill and check the draft against the evidence you provided."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nI committed a reusable checklist for a simple reason: when a task comes around again, the steps should already be written down.\n\nA question worth asking before calling a checklist reusable: would the steps still make sense if you came back to the task a month later?\n\nWhat\u2019s one step you always write down for your future self?\n\n**Private evidence and review**\n\n- The previous entry is scheduled. Its supplied text announces the intended checklist, and publication is unverified. Author and account attribution were not independently established. The draft stands on its own and advances from the intended checklist to the confirmed commit.\n- The supplied commit receipt confirms that the owner committed a reusable checklist. It establishes the contribution and completion of the commit. The draft\u2019s question invites discussion without claiming the checklist has been tested, released, or adopted.\n- The private ledger and its identifier are excluded from the public copy. The proof-brief workflow and sibling workflows were unavailable. The supplied packet was checked against the receipt, and drafting, voice, and disclosure checks were applied directly. No owner-authored voice sample was supplied.\n- The closing question is the sole CTA. No links are included. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19688,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 271,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

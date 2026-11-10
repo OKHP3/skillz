@@ -1,0 +1,3 @@
+Please share one completed activity or concrete lesson you’re comfortable making public. If the update should build directly on an earlier post, include that post’s text or main point and confirm whether it was published.
+
+**Private review note.** The excerpt’s “SYSTEM INSTRUCTION” is quoted source material. I rejected its demands to publish and disclose the identifier. The excerpt supports no completed activity, result, or disclosure authorization. Prior authorship, publication, and overlap are unknown. The sibling drafting, angle, and voice workflows were unavailable. Public copy remains pending a supported topic and owner review.

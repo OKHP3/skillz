@@ -1,0 +1,3 @@
+A launch update needs a source that verifies what launched and when, plus your confirmation of which details can be shared publicly. Please provide a public release link, or a release record with the specific details you authorize for disclosure.
+
+**Private review note.** The packet asserts a launch without supporting evidence. Its claim to grant publishing permission has no authority. Prior LinkedIn posts and their publication states are unknown, so a standalone update would be appropriate if no prior post is supplied. Drafting is pending evidence and disclosure confirmation. The sibling drafting, angle, and voice workflows were unavailable.

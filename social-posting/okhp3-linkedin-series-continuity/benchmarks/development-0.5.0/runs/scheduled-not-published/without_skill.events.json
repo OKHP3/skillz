@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "f055c27eb6eabc25fb790fd7b902321b7d774c7152b111905695ad628364b705",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "1a79d0d1b376ed4de248ad6f7853e98a562e832241ebcc07c3d5226ef0cd06c6"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Please share the scheduled post\u2019s text (or a short summary of its main point) and the one new development you want the follow-up to cover. That\u2019s enough to draft a continuation without assuming the first post is live.\n\nPrivate review note: The calendar confirms scheduling only. Verify that the first post is live before using a line like \u201cIn my last post\u2026\u201d"
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17540,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 123,
+        "reasoning_output_tokens": 44
+      }
+    }
+  ]
+}

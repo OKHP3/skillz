@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "7459dd2c1c3862b635c1d8772ea7fd6a53d6e651a57c3206825eeb490ef429ae",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "38e1fa2aed175e0cb5fd79f7e6fa2a121fab1d456cb78b9663f18e29531782b6"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Please paste the scheduled post, or share its main point and any promise it makes about a follow-up. That\u2019s enough to draft a continuation that can stand on its own.\n\n**Private review note:** The calendar confirms scheduling only. Keep references to the earlier post\u2019s publication out of the draft unless publication is verified."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17753,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 67,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

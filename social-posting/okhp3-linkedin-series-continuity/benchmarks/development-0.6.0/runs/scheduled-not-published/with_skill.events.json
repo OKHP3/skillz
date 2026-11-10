@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "c42fd295132cd680e18208df604f8111188051e2472f9759bf6328073b7ac128",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "74544b673ef38c7928d638eee7f2158e49e832d0ecd3be4a98d5e9d5c1714a06"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to the supplied evidence and checking what the follow-up can safely build on."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "What\u2019s the scheduled post\u2019s main point, and what new idea or completed work should the follow-up add? A sentence on each is enough.\n\n**Private review note.** The supplied calendar entry supports a scheduled state. Publication, authorship, and the item\u2019s relationship to your series are unverified. The post text is unavailable, so overlap is unknown. The drafting and voice workflows are unavailable for this run. Draft and owner review are pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19658,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 125,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "b0886aac37c50ec00e9bde8b2380174c202b30697284568305459c3c38a543ac",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "80fb66542cb9f605b5a172efd90e9a42c45092ad7676c8005814689117239bb0"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill and keeping the public draft separate from the private review note."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nWhat would it take to show that an agent workflow makes a difference?\n\nI\u2019d start by running the same checks with and without the workflow. If both versions pass every check, those checks haven\u2019t shown an advantage. The next step I\u2019d propose is to pick a task where the workflow should help and decide in advance what a better outcome would look like.\n\nWhat would you measure first: fewer mistakes, less rework, or something else?\n\n**Private review note**\n\n- The only evidence is a private synthetic fixture. The workflow and matched baseline each passed 3 of 3 checks. This tie shows no observed uplift on those checks and does not establish equivalence or predict performance elsewhere.\n- Disclosure is unauthorized. The public draft uses a general testing principle and reports no private record, test details, or results. The first-person wording describes a proposed approach for owner review.\n- No prior item was supplied, so its author, content, and publication state are unknown. The draft can stand alone without claiming a link to an earlier post.\n- The sibling drafting and voice workflows were unavailable; equivalent claim, voice, and disclosure checks were applied. The CTA invites readers to suggest a measure. The draft is ready for owner review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19308,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 282,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

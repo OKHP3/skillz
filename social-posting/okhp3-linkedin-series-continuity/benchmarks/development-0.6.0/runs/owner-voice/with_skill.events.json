@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "dafe5a3b799f39fff72e3bb9e9907fd3363b253c6a8d44acce0370d9446505d4",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "added9fac5a9698a1c0aecd981f3aac252e755ee5b406d4eb83cfb69f40e9317"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the okhp3-linkedin-series-continuity skill using only the supplied evidence and the owner\u2019s voice sample."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nA reusable checklist gives you somewhere to start the next time the work comes around.\n\nKeep the steps you\u2019ll want to see again somewhere easy to find. When it\u2019s time for the next pass, you can pick up from there.\n\n### Private review note\n\nThe checklist is confirmed to be reusable. Its contents, use history, and results were unspecified, so the draft stays with the practical idea of keeping repeatable steps easy to find. No prior series item was supplied, so publication state and overlap are unknown and the draft stands alone.\n\nThe owner-authored sample guided the plain language and short paragraphs. I applied the drafting, voice, and disclosure checks directly because the sibling workflows were unavailable. The closing paragraph serves as the call to action. The draft has no links and awaits owner approval."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19680,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 200,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

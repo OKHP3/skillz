@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "ef5ba7151da316b18b1c689acbd6695813b78749bca61d13b8ece3d3c32a3ac8",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "c091890a2d670e3de8af8dcc9b28c0533326818e0245a4db6f1a8d587a25e672"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "In my last post, I wrote about designing a checklist I could use again. The checklist is finished, and I now have a starting point the next time I do the work.\n\nThat was the part I wanted to get to. It\u2019s one thing to know what I\u2019d do again. It\u2019s another to have it written down where I can pick it up next time.\n\n---\n\n**Private review note:** The supplied evidence confirms that the previous post was published and that the reusable checklist is complete. The draft leaves its purpose, contents, and results unspecified."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17756,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 115,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}
