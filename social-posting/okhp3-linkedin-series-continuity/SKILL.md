@@ -5,7 +5,7 @@ license: MIT
 metadata:
   public_artifact: true
   author: Public Agent Skill Library
-  version: "0.7.0"
+  version: "0.8.0"
   category: social-posting
   origin: portable-agent-skills
   in_scope: "Evidence, continuity, and reviewable handoff for a LinkedIn series."
@@ -112,6 +112,12 @@ when, why, with what result, and any implied comparison or readiness. Do not
 fill missing details with a plausible personal story: replace or remove the
 unsupported clause and repeat the audit. A generic question or nonfactual
 principle need not be presented as the owner's experience.
+
+Do not turn an invented reflection into a personal preference by writing
+"I think", "I find", "I believe", "I wanted", or similar wording unless the
+owner supplied that view. Ask the question directly instead. Do not infer a
+personal purpose from a confirmed act, even in a subordinate clause; for
+example, a confirmed commit does not establish why the owner made it.
 
 For example, evidence that an owner committed a template supports that commit;
 it does not establish that they did so to save time or that it is ready to use.
