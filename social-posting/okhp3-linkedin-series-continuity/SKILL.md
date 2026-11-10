@@ -5,7 +5,7 @@ license: MIT
 metadata:
   public_artifact: true
   author: Public Agent Skill Library
-  version: "0.8.0"
+  version: "0.9.0"
   category: social-posting
   origin: portable-agent-skills
   in_scope: "Evidence, continuity, and reviewable handoff for a LinkedIn series."
@@ -40,6 +40,8 @@ repeat sensitive content in the public draft.
    do not claim an item was the owner's previous post without attribution.
    A publication receipt alone does not establish that an item was the latest;
    say "an earlier post" unless the ordering is supported.
+   Preserve the source's specificity: a post that discussed designing an
+   artifact did not necessarily disclose the design or share the artifact.
    An external antecedent may be cited accurately without relabeling its author.
    If content is unavailable, mark it unknown and do not invent a quotation,
    publication date or continuity claim.

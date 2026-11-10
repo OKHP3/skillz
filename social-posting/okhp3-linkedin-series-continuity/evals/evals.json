@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-linkedin-series-continuity",
-  "skill_version": "0.8.0",
+  "skill_version": "0.9.0",
   "status": "development-design",
   "evidence_status": "development-design",
   "holdout_seen": true,
@@ -146,7 +146,7 @@
         },
         {
           "id": "criterion-4",
-          "text": "Every factual public assertion about the owner, including any first-person action, motive, feeling, plan, readiness, cause, result, timing or comparison, is directly supported by the supplied facts; a private caveat does not excuse an unsupported public clause."
+          "text": "Every factual public assertion about the owner, including any first-person action, motive, feeling, plan, readiness, cause, result, timing or comparison, is directly supported by the supplied facts; a private caveat does not excuse an unsupported public clause. A prior post discussing designing the checklist does not establish that the owner shared the actual design."
         }
       ]
     },
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "execution_evidence": "See benchmarks/development-0.8.0 for version-specific runs."
+  "execution_evidence": "See benchmarks/development-0.9.0 for version-specific runs."
 }
