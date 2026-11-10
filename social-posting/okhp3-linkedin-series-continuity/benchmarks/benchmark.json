@@ -3,7 +3,7 @@
   "metadata": {
     "skill_name": "okhp3-linkedin-series-continuity",
     "evaluated_skill_version": "0.6.0",
-    "evaluation_status": "live",
+    "evaluation_status": "historical",
     "evaluated_at": "2026-11-10T19:10:15.305565+00:00",
     "runner": "Codex CLI 0.167.0-alpha.3.2, ephemeral read-only sessions",
     "model": "gpt-6.1-sol, low reasoning effort",
@@ -814,7 +814,8 @@
     "Development set was visible to author during refinement; do not treat this as a protected holdout.",
     "This is limited evidence of task execution, not independent production-release validation.",
     "Previous 0.1.0 through 0.5.0 results are historical after contract changes.",
-    "Independent review found an unsupported public motive not covered by the original case rubric. The recorded 27/27 is not a clean contract pass and is not an authorization to promote."
+    "Independent review found an unsupported public motive not covered by the original case rubric. The recorded 27/27 is not a clean contract pass and is not an authorization to promote.",
+    "0.6.0 is historical after the 0.7.0 public-claim audit revision; its fidelity blocker remains recorded."
   ],
   "post_run_review": {
     "decision": "defer-for-evidence",

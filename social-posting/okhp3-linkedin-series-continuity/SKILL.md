@@ -5,7 +5,7 @@ license: MIT
 metadata:
   public_artifact: true
   author: Public Agent Skill Library
-  version: "0.6.0"
+  version: "0.7.0"
   category: social-posting
   origin: portable-agent-skills
   in_scope: "Evidence, continuity, and reviewable handoff for a LinkedIn series."
@@ -55,6 +55,11 @@ repeat sensitive content in the public draft.
    counts or time-boxed activity record the public ref, window, timezone,
    retrieval time and locations. If evidence is insufficient, generalize,
    omit, or mark `needs_evidence` rather than infer completion.
+   Before writing public copy, make a private claim ledger of atomic supported
+   facts, each with its source and disclosure status. A source for one fact
+   does not automatically support a motive, cause, chronology, outcome, or
+   readiness attached to that fact. Keep unsupported candidates out of the
+   ledger of publishable claims, even when they sound natural or likely.
 3. **Choose the next point.** Compare candidate insights against verified prior
    items and identify a meaningful continuation or explicitly mark uncertain
    overlap. When candidates are requested, use `okhp3-linkedin-angles` and
@@ -99,14 +104,22 @@ exercise synthetic does not itself grant that authorization.
 
 ## Validation
 
-Before presenting paste-ready copy, audit every sentence against the supplied
-evidence. For each first-person statement about past actions, motivations,
-feelings, results or readiness, identify its supporting source in the private
-note; if no source establishes it, remove that assertion from the public draft.
-Do this even when a private note asks the owner to confirm the sentence. Put
-any optional, unverified proposed reflection outside paste-ready copy and mark
-it for confirmation. Do not infer how a checklist was planned or whether a
-committed artifact is ready to try from completion or a commit alone.
+Before presenting paste-ready copy, split each sentence into its factual
+assertions, including clauses joined by "because", "so", "to", or "for".
+In the private note, map each public factual assertion to a specific claim
+ledger entry and its source. Check not only what happened, but who did it,
+when, why, with what result, and any implied comparison or readiness. Do not
+fill missing details with a plausible personal story: replace or remove the
+unsupported clause and repeat the audit. A generic question or nonfactual
+principle need not be presented as the owner's experience.
+
+For example, evidence that an owner committed a template supports that commit;
+it does not establish that they did so to save time or that it is ready to use.
+Do not leave either assertion in paste-ready copy merely because a private
+note asks the owner to confirm it. Put optional, unverified proposed reflection
+outside the public draft, clearly marked for confirmation. If the audit cannot
+map a public factual assertion to a source, withhold that assertion or the
+draft and identify the missing evidence.
 
 Validate that the new point advances the series, every consequential claim has
 support and bounded scope, drafts and schedules are not called published,
