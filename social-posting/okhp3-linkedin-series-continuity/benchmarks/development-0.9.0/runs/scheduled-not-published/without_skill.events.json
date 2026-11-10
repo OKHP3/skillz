@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "ab23b3e365bafad0c6b1dd6b7c307e91ba27f5bd16a242abe2ae96221e66ab84",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "409445a8a9894d922aefea89e34f1b996e06c764d2ae318141544e9257e8ad93"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Please share the scheduled post\u2019s draft, or just its main point and any promise it makes to readers. That\u2019s enough to draft a continuation that connects to it and can stand on its own if the publishing order changes.\n\nPrivate review note: The calendar confirms the earlier post was scheduled. Its content and publication are unverified, so the continuation should avoid phrases like \u201cin my last post\u201d until publication is confirmed."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17540,
+        "cached_input_tokens": 12288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 87,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+What new point should the follow-up make? One sentence is enough. If it needs to build directly on the scheduled post, please include that post’s main point too.
+
+**Private review note.** The calendar entry records the earlier item as scheduled. Publication, content, authorship, and its relationship to your series remain unverified. There’s no supported new point to draft from yet. The sibling drafting and voice workflows are unavailable, so I’ll apply those checks directly once there’s copy to review.

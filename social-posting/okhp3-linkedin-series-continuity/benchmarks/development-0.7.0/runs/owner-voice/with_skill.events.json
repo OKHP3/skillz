@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "358d55432e3f6cd2d2c319a644d5019f991a457829db653cac147471fbcd3159",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "605d06868e4ffa57be18e0d84633ad49511ebd632ac7983c2bb66ec49e0dc564"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll use the supplied LinkedIn series continuity skill to draft the post and check its claims against the evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nThere\u2019s a reusable checklist now. The idea is simple. Keep the steps somewhere easy to find when the same work comes around again.\n\nWhat\u2019s one task you\u2019d write a checklist for before doing it again?\n\n### Private review note\n\n- **Continuity.** No prior series items were supplied. Authorship, publication state, and overlap are unknown, so the draft stands on its own.\n- **Claim ledger.** The opening sentence maps to the task\u2019s confirmation that a reusable checklist exists. That fact is eligible for the fictional public draft. The next two sentences describe a general principle. The draft makes no claim about who created or used the checklist, what prompted it, or what results it produced.\n- **Voice and CTA.** The owner-authored sample guided the short, plainspoken paragraphs. The assistant-generated line was excluded as voice evidence. The closing question invites comments and needs no link.\n- **Handoff.** Draft and private notes are separate here in the conversation. The sibling workflows were unavailable, so I applied the drafting, voice, and disclosure checks directly. Owner approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19862,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 355,
+        "reasoning_output_tokens": 94
+      }
+    }
+  ]
+}

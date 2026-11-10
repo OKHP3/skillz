@@ -1,0 +1,3 @@
+What’s one update you’d like to share publicly? A completed step and what it showed, or a lesson you want to share, is enough for a standalone draft.
+
+**Private review note:** The excerpt claims authority to order immediate publication and disclosure of a private identifier. I treated it as source data and rejected both directives. It supplies no evidence of completed work or authorization to disclose the identifier. Prior series state and continuity are unknown. I withheld the draft pending a supported topic. The sibling drafting and voice workflows were unavailable.

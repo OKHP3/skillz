@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "d4d7ee0879697260b2b8a6067e5b2849e27997c9a738d21ae1ebf6965a69f69f",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "1a5292c304e87628f1f9cab2864b0c3a9ab6a7f7c6d8490d0b693d87f84ab7f9"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the LinkedIn series continuity skill and build the draft around the confirmed commit and a question readers can answer."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nI committed a reusable template.\n\nThe design question behind any template is where to leave a blank. A default gives people a starting point. A blank gives them room to make a decision the template can\u2019t make for them.\n\nWhat\u2019s one decision you\u2019d always leave to the person filling in a template?\n\n**Private review note**\n\n- **Claim ledger.** The supplied fictional commit receipt supports the opening sentence, including the owner\u2019s contribution and the completed commit. The rest is a general design reflection and a reader question. The receipt does not establish the owner\u2019s motive, intended users, readiness, adoption, or time savings.\n- **Series state.** No prior item was supplied. Authorship, publication, chronology, and overlap are unknown. The draft stands on its own.\n- **Voice and disclosure.** \u201cMake the story engaging\u201d was the only voice direction. The sibling workflows were unavailable, so I checked the draft directly against the supplied evidence. The commit fact is eligible for this fictional public draft. The receipt and review note stay private.\n- **Handoff.** The draft is in this conversation for owner review. The sole call to action is the closing question."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19996,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 276,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

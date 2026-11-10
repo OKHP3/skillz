@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "b112b013b3f27f9d70948e7fa17d6357e6fc94c01d0e07fc99083e074c7269e9",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "82ec63f57bb47e12e6c6e6e397735658e9b879474288ee839f663e751384b5bf"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill. The supplied evidence supports a standalone draft while the connection to your series remains unverified.\n\n**Draft for review**\n\nI finished the checklist. Here\u2019s a question for anyone who writes checklists.\n\nWhere would someone using yours for the first time still have to guess what to do next?\n\n**Private review note**\n\n- **Prior item.** The supplied case identifies a published post by another account about planning a checklist. Its relationship to your series is unverified. No publication date or observation timestamp was supplied.\n- **Claim ledger.** \u201cI finished the checklist\u201d maps to the supplied confirmation of your completion. The case permits public use of that fact. The rest is a reader question about using a checklist for the first time. It makes no claim about testing, readiness, impact, or the order of events.\n- **Handoff.** The reader question is the only CTA. The draft is for LinkedIn and this note is private. Voice is unverified because no owner-authored sample was supplied. Drafting and voice checks were applied directly because the sibling workflows were unavailable. The review used only the supplied case, with no proof brief. Owner review is pending.\n\nTo tie the draft to your own series, share the text or main point of one earlier post you published in it."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 24442,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 329,
+        "reasoning_output_tokens": 55
+      }
+    }
+  ]
+}

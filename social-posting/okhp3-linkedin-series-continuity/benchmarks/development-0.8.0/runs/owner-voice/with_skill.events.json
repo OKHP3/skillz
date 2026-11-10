@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "bcd17826a4dfba1ef7b01f9c9339c1d7ef0e4c71f7c180443b62b78db13688df",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "d064151b235025e04ecef15d42f0bad72672cd20176330a0063a6d2f60135032"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the okhp3-linkedin-series-continuity skill and using the owner-authored sample as the voice reference."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nThe checklist is reusable. That leaves a practical question: which steps are worth keeping where you can find them?\n\nWhen you come back to a task, what\u2019s the one step you\u2019re glad to see written down?\n\n### Private review note\n\n- **Claim audit.** The supplied brief confirms a reusable checklist. The draft makes no claims about who made it, what it contains, whether anyone has used it, or what results it produced.\n- **Series continuity.** No prior item was supplied. Publication state and overlap are unknown, so the draft stands on its own.\n- **Voice and CTA.** The owner-authored sample guided the plain wording and short paragraphs. The closing question invites readers to share one step. The sibling workflows were unavailable, so the voice and disclosure checks were applied directly.\n- **Handoff.** The draft is above and the evidence note is separate. Owner approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19941,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 386,
+        "reasoning_output_tokens": 159
+      }
+    }
+  ]
+}

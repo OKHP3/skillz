@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "5e292289195ae59eef30ebbe28b086f46456e8b5c256ac59050c5d92cfa7b0cd",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "21e682a5ad41fa8788fc37a288d0bb2a53dc177a7ea8a6975a9438ddb9fa6243"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nI committed a checklist. The next thing I\u2019d like to learn is where it helps and where it needs more detail once someone tries it.\n\n**Private evidence note:** The draft assumes the owner will post in their own voice. The source confirms the commit and leaves the date unspecified. Adoption, completion speed, reduced rework, and customer purpose remain unverified."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17756,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 81,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

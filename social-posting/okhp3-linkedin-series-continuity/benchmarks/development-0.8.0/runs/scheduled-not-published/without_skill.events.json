@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "79ce9d7ab5b30c0555461a93a2f0f2aea9fce3ee6fbc403f3d98d101994e14ee",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "9f29e1e6c9375b3e6b0a8560fd1733064fa7bb832db00bdde890d90e52a2021e"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Please paste the scheduled post or share its main point in one sentence. If the continuation should cover a specific new development, include that in one sentence too. I can draft it without referring to the earlier post as already live.\n\n**Private review note:** The calendar entry establishes scheduling only. Verify publication before using a callback such as \u201cIn my last post.\u201d"
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17753,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 75,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "3e7a657e60ec8ee7ce96ac1bd98c51f48e6e3f66a4d759cc1d58ee3a247c08a0",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "4f04c82e189f0c281abf4e269581e83127e3a391c476b6bbd09972adeafd462d"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Hold the public draft. The proof packet asserts a launch, but the launch is unverified and publication approval is unconfirmed.\n\n**Private review note.** Request a launch receipt or release record, confirmation of which details may be shared publicly, and explicit approval from the person authorized to approve publication."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17747,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 63,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

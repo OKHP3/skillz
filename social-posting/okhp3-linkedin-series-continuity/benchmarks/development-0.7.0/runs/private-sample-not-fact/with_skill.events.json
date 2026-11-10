@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "171f4af1486e4209906ed2b9fdec6b2e6ff253f7bd8664bc09cad7bcb1480659",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "352992ab5c032b3c6a374f907e3d5cc10790d26b2dfacea06e093fbdfeadc2f8"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied series-continuity skill and using the private sample only to guide tone."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI finished the checklist.\n\nA question worth asking when writing any checklist: Could someone tell, from each line, whether the step is done?\n\nWhat makes a checklist easy for you to follow?\n\n### Private review note\n\n- The public receipt supports the owner\u2019s completion of the checklist. The rest of the draft is a general prompt and a reader question. The owner\u2019s private motivation informed tone only and is excluded from the copy.\n- No prior series item was supplied, so this draft stands on its own. The closing question is the only call to action.\n- I applied the supplied drafting, voice, and disclosure checks directly because the sibling workflows were unavailable. The draft is ready for owner review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19844,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 175,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

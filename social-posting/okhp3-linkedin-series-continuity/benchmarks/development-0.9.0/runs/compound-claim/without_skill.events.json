@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "727e980220c65b37fb7d2388df4399483c435a38abfa00fe7627de834b709ca3",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "6f8d7c6ec596cc402b156bac9b2bd3aae94ca4a297ebd5bc2d4164541f4e8770"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nI committed a checklist. The next question is what I\u2019ll learn from using it. Are the steps clear? Is anything missing? Is there a step I could take out?\n\n**Private evidence note:** The commit is the only confirmed event. Its date is unspecified. The questions are prospective, and the draft makes no claims about adoption, completion speed, reduced rework, or customer involvement."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17754,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 87,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

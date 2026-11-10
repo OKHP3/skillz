@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "1de170009f8164d5b8592ed91085742df231341ed19c0b4c110e73660d5df1e3",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "3344c3176fe14d9b06c619c12839086c41bce08911b34ebb5f483a4af166eb83"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nI finished the checklist. One more item I can mark complete.\n\n**Private review note:** The public receipt supports the completion claim. I used the private sample only for tone and left the motivation out of the draft."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17757,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 51,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

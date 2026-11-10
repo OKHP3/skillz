@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "2b101f66cde0b0c372ccd52a3caeae07ce691a2b59afd374caca56a15cbaf83c",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "94904e57b0a772e2007c0039bd9bee3a9d361d8fbb5def73b1c36c5d1fdd3f20"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m using the supplied LinkedIn series continuity skill to connect the published design post to the template commit and check what the evidence supports."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nIn an earlier post, I wrote about designing a reusable workflow. The template for that workflow is now in the repository.\n\nOne question I find worth asking about any template: which decisions should it make for the next person, and which should it leave in their hands?\n\nA good starting point makes the recurring steps easy to follow and leaves room for the decisions that depend on the situation.\n\nWhere do you draw that line in your own templates?\n\n## Private review note\n\n| Draft assertion | Evidence and limit |\n|---|---|\n| The owner wrote an earlier post about designing the workflow. | The supplied publication receipt establishes that the owner\u2019s series post was published. The supplied text establishes its topic. The evidence does not establish that it was the latest post or give an observation timestamp. |\n| A reusable template for the workflow is in the repository. | The supplied dated repository record confirms the commit. The draft makes no claim about who committed it, readiness for use, adoption, time saved, or business impact. |\n\nThe continuation moves from designing the workflow to a reflection on which decisions a template should carry forward. The CTA invites readers to share how they make that choice. The draft includes no source links or private details.\n\nThe reflection follows the owner\u2019s chosen angle. No owner-authored voice sample was supplied, and the sibling workflows and proof brief were unavailable within the supplied-evidence-only scope. The draft is in this conversation for owner review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19871,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 447,
+        "reasoning_output_tokens": 115
+      }
+    }
+  ]
+}

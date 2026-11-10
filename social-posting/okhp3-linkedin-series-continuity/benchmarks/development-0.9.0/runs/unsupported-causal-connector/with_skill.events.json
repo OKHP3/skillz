@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "bb5d220607d14d1e98ac8c90d4e857a5dd2c20a33e7b1f96a275b800f41d5253",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "46b5dbc7aad241fae3a8f637a156688b5aa9954dd0e814cce40740172a9f40d2"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill and checking what each source supports on its own."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI wrote a reusable checklist. Later, I recorded one review session.\n\nWhat evidence would you look for to tell whether a checklist improved a review?\n\n### Private review note\n\n- **Evidence A** supports that you wrote a reusable checklist. **Evidence B** supports that you later recorded one review session. The evidence establishes the order and leaves checklist use, causation, and improvement unknown.\n- Prior LinkedIn items and publication status are unknown, so the draft stands alone. The closing question invites readers to share how they would assess impact.\n- The supplied facts are eligible for public copy under the task\u2019s disclosure rule. Drafting and voice workflows were unavailable, so I checked the copy directly against the evidence. No owner voice sample was supplied. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 20088,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 188,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

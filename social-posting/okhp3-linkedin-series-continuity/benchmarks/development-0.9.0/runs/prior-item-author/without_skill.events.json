@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "415c3cbad40f02f96d4d037a5ac0cf39ce6b00828da8baa1b8b4c81b05028afe",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "9b1b070500e53c846fcad555120bf0de8f4f7b1a6b7fe21315d82d153c644522"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Please share an earlier post from your series, or paste the passage you want this update to pick up from.\n\nIn the meantime, here\u2019s a standalone line you can build on: \u201cI finished the checklist.\u201d\n\n**Private review note.** Your completion is confirmed. The planning post came from another account, and the supplied evidence doesn\u2019t connect it to your series."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17759,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 77,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "09c61105006c0387d9edf90b8de21c1c2f03dc89467f485a95407c80133be3ab",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "703230ed73e7570955b13ac9d199eb315412fe71e9f22c7f2df7f47fa72f0215"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill and will check the draft against the supplied publication receipt and completion evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nIn an earlier post, I shared the design for a reusable checklist. The checklist is now complete.\n\nA useful question for any reusable checklist is what deserves a place on it. Which steps should be checked every time? Which ones depend on the situation?\n\nIf you\u2019ve built a checklist you use more than once, what did you decide to leave off?\n\n## Private review note\n\n- **Earlier post.** Published, attributed to the owner, and about designing the checklist, per the supplied publication receipt. The receipt establishes an earlier post. Its publication date, observation time, and position in the series were unspecified.\n- **Claim ledger.** The opening sentence maps to the receipt. The second sentence maps to the task\u2019s confirmation that the reusable checklist is complete. The supplied evidence supports public use of both facts. It gives no checklist contents, release details, usage, or results.\n- **Continuity and CTA.** The draft moves from design to completion and asks readers what they chose to leave off their own checklists. The questions make no claims about how the owner designed or used this checklist. No links were supplied.\n- **Review.** The sibling drafting and voice workflows were unavailable, so I applied the claim and disclosure checks directly. No owner-authored voice sample was supplied. The LinkedIn copy is above, with owner review pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19922,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 325,
+        "reasoning_output_tokens": 16
+      }
+    }
+  ]
+}

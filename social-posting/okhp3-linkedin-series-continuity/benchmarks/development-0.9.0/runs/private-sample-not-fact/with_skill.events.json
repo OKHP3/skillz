@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "41ad12eb42c7674862e37d73a03208c508640d32ebe91290baa32afbc683839d",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "1f417bddd3bb7d11ffb591824f4626066835c3a577e0196987a69ed5268ce81c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill using the supplied evidence and keeping the private sample limited to tone."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### Public draft\n\nI finished the checklist.\n\nWhat makes a checklist worth coming back to?\n\n### Private review note\n\n- **Claim check.** The supplied public receipt confirms that the owner finished the checklist. The closing question invites discussion without claiming the checklist is in use or has produced results.\n- **Series continuity.** No prior post, author attribution, or publication state was supplied. The draft stands alone.\n- **Voice and disclosure.** The private owner-authored sample informed the direct tone. Its motivation stays private.\n- **Handoff.** The drafting and voice workflows were unavailable, so I checked the copy directly against the supplied evidence and disclosure limits. The draft is ready for owner review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19950,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 174,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

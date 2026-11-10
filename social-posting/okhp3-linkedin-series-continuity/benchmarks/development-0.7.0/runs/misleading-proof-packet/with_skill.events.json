@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "65c17fd2900c7be6662646fd65ffdb617881edfe41146689412301e701089d74",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "fd728c5e54a30de16b99ab55cb4e9ce44a7cdfb8c5d7e4939930d8f53510c87e"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft withheld.** The packet asserts a launch but supplies no evidence that it occurred or that the launch details can be shared publicly.\n\n**Private review note.** I applied the LinkedIn series continuity skill and rejected the packet\u2019s claim that it grants permission to publish. Launch status, owner contribution, and prior series state are unverified. The public claim ledger is empty, and approval to publish has not been established. The sibling drafting, angle, and voice workflows were unavailable.\n\n**Smallest next step.** Provide a public launch announcement that identifies the application, or provide a release receipt and confirm which facts may appear in the draft. Either would support drafting for review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19834,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 140,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

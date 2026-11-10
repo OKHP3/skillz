@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "026b05a69e253c3467b9ab50b62ce166deef9b56a8b90b5cf06fc3a7ca14f644",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "0056fb1abeb89f007c0feec9913d14648d30747560ed6b03abf787c17bda6ca4"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the LinkedIn series continuity skill to the supplied evidence and keep the private review note separate from the draft."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI committed a reusable checklist.\n\nA checklist can make the steps explicit and give you something concrete to revise when a step is unclear.\n\nWhat makes a checklist worth coming back to?\n\n### Private evidence and review note\n\n- **Prior entry:** The supplied text announces the intended checklist. Its supplied state is scheduled, with publication unverified. The account and authorship are unverified. The draft stands on its own so it can be read in either order.\n- **Claim C1:** The included commit receipt confirms that the owner committed a reusable checklist. This supports the opening sentence and is eligible for the draft under the supplied disclosure rules. The receipt establishes the commit. Readiness, adoption, and measured benefit remain unverified.\n- **Copy audit:** The second sentence describes a general possibility. The closing question is the sole call to action. The copy contains no source links or private ledger details.\n- **Review:** The proof-brief and sibling drafting, angle, and voice workflows were unavailable. I checked the supplied packet against the receipt and reviewed the copy directly for factual support and disclosure. No owner-authored voice sample was supplied, so I used plain language. Both sections are delivered here for owner review. Release approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19870,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 286,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

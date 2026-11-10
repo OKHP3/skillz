@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "8af1bcb985e8190a50cc6650c714d11e3d257b72db720655b2beeefb3c1b7132",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "96f8eb5f5f70d0a95266ea2a4d72dd5416c2d806fd0dd820222c2749a8cbc3d1"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill and keeping the fixture details in the private review note."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## Paste-ready draft\n\nPassing a check answers one question. Showing that a workflow helped answers a different one.\n\nA matched baseline helps separate the two. If both approaches pass the same checks, those checks establish what both approaches can do. To learn where the workflow adds value, choose a check that could distinguish the approaches on an outcome that matters.\n\nWhat would you measure next to find out whether the workflow helped?\n\n## Private review note\n\n- **Series continuity:** No prior item was supplied. Its author, content, and publication state are unknown. The draft stands on its own and makes no reference to an earlier post.\n- **Private claim ledger:** The supplied synthetic fixture reports 3 of 3 checks passed with the workflow and 3 of 3 with the matched baseline. The observed result is a tie on those checks. The fixture establishes no uplift, broader effectiveness, or owner contribution. The record, identifier, and results are private.\n- **Public assertion check:** The draft\u2019s statements about passing checks and matched baselines are general principles illustrated by the supplied comparison. The conditional example makes no claim that a specific experiment occurred. The closing question is the sole CTA.\n- **Review:** No owner-authored voice sample was supplied. The draft uses a neutral voice and received a direct disclosure check with the sibling workflows unavailable. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19941,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 323,
+        "reasoning_output_tokens": 21
+      }
+    }
+  ]
+}

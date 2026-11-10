@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "470094128f5c6d37a0875e90ea4f4b24c3a585f6fbd43b04b7d67f1c8b567721",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "3f932985ca2ff2971321c5687dd4eb5b488cb2e24aec6ceec151307f9fbc329c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the LinkedIn series continuity skill and keep the private fixture separate from the public copy."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## Public draft\n\nWhat would a workflow have to show before you\u2019d call it an improvement?\n\nStart with the same checks for the workflow and the baseline. Decide what difference would matter before you see the results. If both pass every check, choose a follow-up that probes a trade-off the first round didn\u2019t measure.\n\nWhat would you test next?\n\n## Private review note\n\n- The supplied private synthetic fixture reports 3 of 3 checks passed for both the workflow and the matched baseline. The observed result was a tie on those checks. Owner contribution, release readiness, and real-world impact are unverified.\n- No earlier item was supplied. Its authorship, content, and publication state are unknown. The draft uses a standalone principle and a hypothetical condition, with no claim about a prior post or an actual experiment.\n- The record and its contents are restricted. The draft leaves out the identifier, counts, and observed result. The CTA invites readers to suggest a follow-up test.\n- Sibling drafting and voice workflows were unavailable. I applied equivalent checks directly. No owner-authored voice sample was supplied, so I used a neutral tone. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19968,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 265,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

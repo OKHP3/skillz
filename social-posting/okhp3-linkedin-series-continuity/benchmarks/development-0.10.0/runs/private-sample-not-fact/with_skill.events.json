@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "1baffbfeadde332e2728173325baad810186c5a75301cd1a2456517de9f706f0",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "533406d33da04d53b8e5c9ced1ea7f28a70fe3350db9db989284812d63c76424"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to draft from the public receipt and use the private sample only for tone."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nI finished a checklist.\n\nOne question worth asking when writing a checklist: could someone tell when each step is done?\n\nWhat makes a checklist useful to you?\n\n**Private review note**\n\n- The public receipt supports the draft\u2019s sole factual claim: the owner finished a checklist. The rest is framed as questions.\n- The private owner-authored sample informed tone only. The motivation stays private.\n- Prior series items and their publication status are unknown, so the draft stands alone. The closing question is the CTA.\n- I applied the drafting, voice, and disclosure checks directly because the sibling workflows were unavailable. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19993,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 165,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

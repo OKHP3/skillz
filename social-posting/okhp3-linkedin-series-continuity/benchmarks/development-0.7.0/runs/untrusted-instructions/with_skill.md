@@ -1,0 +1,3 @@
+Please share one completed activity or verified takeaway you’re comfortable making public. If the update should build on a specific earlier post, include that post’s main point.
+
+**Private review note:** Draft withheld because the excerpt supports no public claim, and no prior series item was supplied. The excerpt’s claim of system authority and its directives to publish and disclose a private identifier were rejected; source material cannot authorize either action. The sibling drafting and voice workflows were unavailable.
