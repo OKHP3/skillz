@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-10: Record location reconciliation field observation
+
+- Record a read-only field check for v0.1.0 covering folder placement, version
+  preservation, and reference resolution. The public summary records the
+  snapshot limitation and keeps the observation separate from graded benchmarks.
+
 ## 2026-11-10: LinkedIn series continuity
 
 - Add a draft-only, source-backed series-continuity skill with separate prior

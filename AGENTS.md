@@ -170,7 +170,7 @@ community-originated packages and may evolve independently.
 | `okhp3-evidence-standard` | Classify consequential claims as confirmed, inferred, proposal, or unknown with traceable evidence. |
 | `okhp3-graduation-gate` | Decide whether an exploratory effort is ready for formalization, should remain active, should archive, or is blocked. |
 | `okhp3-project-promotion` | Prepare an owner-approved formalization packet after a documented graduation decision. |
-| `okhp3-record-location-reconciliation` | Audit bounded local and cloud record locations, preserve versions during authorized moves, and verify affected references. |
+| `okhp3-record-location-reconciliation` | Audit bounded local and cloud record locations, preserve versions during authorized moves, and verify affected references. See the [read-only field observation](knowledge-operations/okhp3-record-location-reconciliation/benchmarks/field-observation-2026-11-10.md). |
 | `okhp3-research-file-renewal` | Revise a cited research or retrieval reference with a source-to-revision crosswalk, topic-fidelity checks, and explicit source and host-test limits. |
 | `okhp3-source-backed-research` | Produce research or recommendations with traceable sources, retrieval dates, and explicit uncertainty. |
 | `okhp3-triage-and-file` | Assign recorded lifecycle dispositions to captured project inbox items without unapproved moves or deletion. |
