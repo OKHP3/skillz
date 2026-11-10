@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T23:23:19.962Z",
+  "generatedAt": "2026-11-10T00:02:36.815Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/career-library-skills-20261109",
-  "sourceCommit": "3bfceea0",
-  "skillCount": 350,
+  "sourceRef": "feat/lightning-method-skills",
+  "sourceCommit": "07ac6e05",
+  "skillCount": 355,
   "familyCount": 22,
   "families": [
     {
@@ -75,13 +75,15 @@
     {
       "name": "askjamie",
       "displayName": "AskJamie",
-      "skillCount": 9,
+      "skillCount": 11,
       "skills": [
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness",
         "okhp3-coaching-engagement",
+        "okhp3-interview-evidence-map",
+        "okhp3-interview-questions",
         "okhp3-job-application-completion",
         "okhp3-lifetime-career-reference",
         "okhp3-professional-headshot",
@@ -108,7 +110,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-askjamie-gpt-readiness pairs with okhp3-askjamie-gpt-builder",
+          "value": "okhp3-askjamie-gpt-readiness pairs with okhp3-askjamie-gpt-builder; okhp3-interview-evidence-map pairs with okhp3-interview-questions",
           "source": "generated"
         }
       }
@@ -242,9 +244,10 @@
     {
       "name": "context-extraction",
       "displayName": "Context Extraction",
-      "skillCount": 10,
+      "skillCount": 11,
       "skills": [
         "okhp3-chatgpt-project-migration",
+        "okhp3-context-transfer",
         "okhp3-session-handoff",
         "okhp3-thread-context-extraction",
         "okhp3-thread-extract-chatgpt",
@@ -255,10 +258,10 @@
         "okhp3-thread-extract-mistral-vibe",
         "okhp3-thread-extract-perplexity"
       ],
-      "narrativeBody": "**Status: active.** Ten distribution packages cover supplied AI conversations,\ncontinuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
+      "narrativeBody": "**Status: active.** Eleven distribution packages cover supplied AI conversations,\nstaged conceptual transfers, continuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
       "orientation": {
         "purpose": {
-          "value": "**Status: active.** Ten distribution packages cover supplied AI conversations,\ncontinuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
+          "value": "**Status: active.** Eleven distribution packages cover supplied AI conversations,\nstaged conceptual transfers, continuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -274,7 +277,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-thread-extract-chatgpt pairs with okhp3-chatgpt-project-migration",
+          "value": "okhp3-context-transfer pairs with okhp3-chatgpt-project-migration; okhp3-context-transfer pairs with okhp3-session-handoff; okhp3-thread-extract-chatgpt pairs with okhp3-chatgpt-project-migration",
           "source": "generated"
         }
       }
@@ -394,13 +397,14 @@
     {
       "name": "knowledge-operations",
       "displayName": "Knowledge Operations",
-      "skillCount": 11,
+      "skillCount": 12,
       "skills": [
         "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
+        "okhp3-idea-label",
         "okhp3-project-promotion",
         "okhp3-record-location-reconciliation",
         "okhp3-research-file-renewal",
@@ -426,7 +430,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard; okhp3-triage-and-file pairs with okhp3-graduation-gate",
+          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-idea-label pairs with okhp3-capture-intake; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard",
           "source": "generated"
         }
       }
@@ -684,7 +688,7 @@
     {
       "name": "process-capture",
       "displayName": "Process Capture",
-      "skillCount": 16,
+      "skillCount": 17,
       "skills": [
         "okhp3-as-is-process-capture",
         "okhp3-decision-model-authoring",
@@ -701,12 +705,13 @@
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
+        "okhp3-success-reconstruction",
         "okhp3-visual-process-modeling"
       ],
-      "narrativeBody": "The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+      "narrativeBody": "The family includes recurring-task capture and evidence-led reconstruction of a successful one-off alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
       "orientation": {
         "purpose": {
-          "value": "The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+          "value": "The family includes recurring-task capture and evidence-led reconstruction of a successful one-off alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -1791,6 +1796,134 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-interview-evidence-map",
+      "displayName": "Interview Evidence Map",
+      "family": "askjamie",
+      "skillDir": "okhp3-interview-evidence-map",
+      "path": "askjamie/okhp3-interview-evidence-map/SKILL.md",
+      "description": "Map a specific interview role to a person's supplied career evidence and choose defensible stories. Use for interview positioning, qualification gaps, transferable platform experience, or connecting public work to role needs. Produces preparation material, not applicant rankings or application submission.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "askjamie",
+      "origin": "okhp3/askjamie-foundry",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "askjamie"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-interview-questions"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-interview-evidence-map/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-interview-evidence-map/SKILL.md",
+      "lastModified": "2026-11-09T09:11:26-06:00",
+      "commitSha": "f8733c49",
+      "createdAt": "2026-11-09T09:11:26-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/askjamie-foundry",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Role-specific interview evidence, story selection, introduction and honest gap handling.",
+        "outOfScope": "Invented qualifications, candidate ranking, private employer disclosure, outreach, submission and publication.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-interview-questions",
+      "displayName": "Interview Questions",
+      "family": "askjamie",
+      "skillDir": "okhp3-interview-questions",
+      "path": "askjamie/okhp3-interview-questions/SKILL.md",
+      "description": "Draft candid interview questions that test role fit without loading the premise. Use to reframe an accusatory or overly deferential question, explore executive backing and investment, or ask about a leader's move and priorities. Preserves the concern; does not fact-check a whole company or contact anyone.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "askjamie",
+      "origin": "okhp3/askjamie-foundry",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "askjamie"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-interview-questions/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-interview-questions/SKILL.md",
+      "lastModified": "2026-11-09T09:11:26-06:00",
+      "commitSha": "f8733c49",
+      "createdAt": "2026-11-09T09:11:26-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "askjamie",
+        "origin": "okhp3/askjamie-foundry",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-grounded spoken interview questions and useful follow-ups.",
+        "outOfScope": "Invented biography, flattering or hostile premises, interrogation, outreach and commitments.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-job-application-completion",
       "displayName": "Job Application Completion",
       "family": "askjamie",
@@ -1955,9 +2088,9 @@
       ],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-professional-headshot/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-professional-headshot/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T16:54:36-06:00",
+      "commitSha": "175d30c3",
+      "createdAt": "2026-11-09T16:54:36-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "career-representation",
@@ -8410,13 +8543,79 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-context-transfer",
+      "displayName": "Context Transfer",
+      "family": "context-extraction",
+      "skillDir": "okhp3-context-transfer",
+      "path": "context-extraction/okhp3-context-transfer/SKILL.md",
+      "description": "Receive or prepare a staged conversation-context transfer and verify the destination read-back. Use for numbered transfer blocks, \"continue this in another project\", or a read-only CHAT-to-WORK pilot. Preserve user intent, proposal status, historical authority, gaps, and privacy. This is conceptual continuation, not a lossless archive or permission to resume old requests.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "context-extraction",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "context-extraction"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-chatgpt-project-migration",
+        "okhp3-session-handoff"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-context-transfer/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-context-transfer/SKILL.md",
+      "lastModified": "2026-11-09T17:02:22-06:00",
+      "commitSha": "82104847",
+      "createdAt": "2026-11-09T17:02:22-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "context-extraction",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Staged context transfer with provenance, block coverage, privacy boundaries, and receiver read-back.",
+        "outOfScope": "Lossless archive claims, executing historical requests, implicit external writes, or inferred receipt.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-session-handoff",
       "displayName": "Session Handoff",
       "family": "context-extraction",
       "skillDir": "okhp3-session-handoff",
       "path": "context-extraction/okhp3-session-handoff/SKILL.md",
-      "description": "Create a durable continuation record when work pauses, becomes blocked, crosses a machine, or crosses an agent host. Use after substantial work or when the owner asks for a handoff. Record changed files, reasoning, evidence tiers, validation, limitations, and the exact next action without relying on chat memory.",
-      "version": "0.2.0",
+      "description": "Create a durable session handoff or exact-thread closeout receipt. Use when work pauses, crosses machines or agent hosts, or needs completion verified before archiving. Record evidence, remaining obligations, and the next action.",
+      "version": "0.3.0",
       "license": "MIT",
       "category": "context-extraction",
       "origin": "okhp3/skillz",
@@ -8452,8 +8651,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-session-handoff/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-session-handoff/SKILL.md",
-      "lastModified": "2026-10-21T22:38:42-05:00",
-      "commitSha": "6d55a85c",
+      "lastModified": "2026-11-09T17:42:07-06:00",
+      "commitSha": "81ed7760",
       "createdAt": "2026-07-31T11:03:56-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
@@ -8461,17 +8660,17 @@
         "origin": "okhp3/skillz",
         "homepage": "https://overkillhill.com",
         "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Portable continuation records for work that crosses sessions, machines, or agent hosts.",
-        "outOfScope": "Account access, claims that another copy applied the handoff, publication, or replacing source preservation.",
+        "inScope": "Portable continuation records and evidence-based closeout decisions for a named thread.",
+        "outOfScope": "Account access, archive execution, branch cleanup, publication, or replacing source preservation.",
         "publicArtifact": false
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "0.2.0",
-        "evalCount": 4,
+        "evaluatedSkillVersion": "0.3.0",
+        "evalCount": 15,
         "benchmarkCount": 0,
         "testCount": 0,
-        "referenceCount": 0,
+        "referenceCount": 1,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -12569,6 +12768,71 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-idea-label",
+      "displayName": "Idea Label",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-idea-label",
+      "path": "knowledge-operations/okhp3-idea-label/SKILL.md",
+      "description": "Turn one raw idea into a short recoverable label without developing it. Use for \"park this idea\", \"capture now, clarify later\", or a voice-note idea that should stop interrupting current work. Return a label in conversation; durable capture requires a separately authorized destination and receipt. Do not use for backlog grooming, brainstorming, or executing the idea.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-capture-intake"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-idea-label/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-idea-label/SKILL.md",
+      "lastModified": "2026-11-09T17:02:22-06:00",
+      "commitSha": "82104847",
+      "createdAt": "2026-11-09T17:02:22-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "One-idea label drafting with minimal interruption and truthful capture status.",
+        "outOfScope": "Idea development, prioritization, execution, unsolicited cadence rules, or unverified storage.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-project-promotion",
       "displayName": "Project Promotion",
       "family": "knowledge-operations",
@@ -12999,7 +13263,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/language-mediation/okhp3-translation-en-us-de-de/SKILL.md",
       "lastModified": "2026-08-31T22:34:57-05:00",
       "commitSha": "93613e20",
-      "createdAt": "2026-08-30T18:45:34-05:00",
+      "createdAt": "2026-08-30T18:11:10-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "language-mediation",
@@ -17301,6 +17565,80 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-success-reconstruction",
+      "displayName": "Success Reconstruction",
+      "family": "process-capture",
+      "skillDir": "okhp3-success-reconstruction",
+      "path": "process-capture/okhp3-success-reconstruction/SKILL.md",
+      "description": "Reconstruct a successful one-off and design tests for a repeatable success class. Use for \"bottle lightning\", \"it worked once but we lost the recipe\", or separating essential conditions from incidental details. Produce an evidence ledger and a proposed re-strike protocol, not proven causality, an exact replay guarantee, or autonomous experiments.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "process-capture",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "process-capture"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-process-intake-and-scope",
+        "okhp3-sop-work-instructions"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [
+        "the success-class definition and evidence boundary;",
+        "an event ledger with `observed`, `reported`, `hypothesis`, and `unknown`",
+        "candidate load-bearing variables, rival explanations, and falsifying tests;",
+        "a proposed protocol with conditions, tolerances, and failure gates;",
+        "a controlled re-strike plan and decision/instrumentation log template;",
+        "status: `DRAFT_PROTOCOL`, `NEEDS_EVIDENCE`, or `BLOCKED_FOR_SAFETY`;",
+        "unresolved assumptions and the exact next authorized step."
+      ],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-success-reconstruction/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-success-reconstruction/SKILL.md",
+      "lastModified": "2026-11-09T17:02:22-06:00",
+      "commitSha": "82104847",
+      "createdAt": "2026-11-09T17:02:22-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "process-capture",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led one-off reconstruction and a falsifiable repeatability experiment plan.",
+        "outOfScope": "Unsupported causal claims, guaranteed outcomes, unapproved experiments, or full SOP publication.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-visual-process-modeling",
       "displayName": "Visual Process Modeling",
       "family": "process-capture",
@@ -17422,7 +17760,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-adversary-forecasting/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-intelligence",
@@ -17611,7 +17949,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-credential-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17674,7 +18012,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-data-exposure/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17813,7 +18151,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-lateral-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -17939,7 +18277,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-agentic-persistence-assessment/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-validation",
@@ -18065,7 +18403,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-authorization-governance/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-27T23:47:34-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-governance",
@@ -18380,7 +18718,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-model-anomaly-detection/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-detection",
@@ -18632,7 +18970,7 @@
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/red-teaming/okhp3-response-cost-benefit/SKILL.md",
       "lastModified": "2026-08-28T00:45:51-05:00",
       "commitSha": "c0766705",
-      "createdAt": "2026-08-28T00:16:27-05:00",
+      "createdAt": "2026-08-28T00:45:45-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "red-teaming-measurement",
@@ -23421,9 +23759,9 @@
       ],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-guided-photo-session/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-guided-photo-session/SKILL.md",
-      "lastModified": null,
-      "commitSha": null,
-      "createdAt": null,
+      "lastModified": "2026-11-09T17:01:51-06:00",
+      "commitSha": "9e729371",
+      "createdAt": "2026-11-09T16:54:36-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "media-capture",

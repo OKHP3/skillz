@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-11-09: Idea labels, success reconstruction, and context transfer
+
+- Add three draftable 0.1.0 contracts: conversational idea labeling without
+  forced development, evidence-led one-off reconstruction with proposed tests,
+  and staged context transfer with an actual receiver read-back.
+- Keep storage, experiments, archival preservation, and historical permissions
+  distinct from each contract's output. Use generic examples and runtime
+  domains; private source material is excluded.
+- Include version-matched development designs and an independent analytical
+  Equilibrium Review. Live quality, uplift, discovery, host integration, and
+  unseen holdout remain untested. No release-tagged maturity is claimed.
+- Refresh distribution inventory to 355 skills across 22 families.
+
 ## 2026-11-09: Interview preparation source packages
 
 - Add exact AskJamie Resume Representative mirrors for Interview Evidence Map

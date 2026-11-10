@@ -1,14 +1,14 @@
 ---
 family: process-capture
 display_name: Process Capture
-skill_count: 16
+skill_count: 17
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-10-25T13:53:09Z
+generated_at: 2026-11-09T23:36:36Z
 ---
 
 # process-capture
 
-The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.
+The family includes recurring-task capture and evidence-led reconstruction of a successful one-off alongside the structured process-analysis and publication skills.
 
 This is the operationalized version of "write it down the third time you do something." It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.
 
@@ -24,10 +24,10 @@ The process-capture pattern has earlier ancestry in PathScrib-R and Flowpilot Sc
 The family includes `okhp3-recurring-task-capture` as its meta-layer.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (16)
+## Skills (17)
 
 <!-- FAMILY_INVENTORY_START -->
-*16 skills &nbsp;·&nbsp; inventory last updated: **October 25, 2026 at 13:53 UTC***
+*17 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:36 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -46,5 +46,6 @@ The family includes `okhp3-recurring-task-capture` as its meta-layer.
 | [okhp3-sipoc-generation](okhp3-sipoc-generation/SKILL.md) | Generate a SIPOC table from a validated PNS. Use this skill when the user needs a high-level proc... | 0.2.0 |
 | [okhp3-sop-work-instructions](okhp3-sop-work-instructions/SKILL.md) | Generate Standard Operating Procedures (SOPs) and work instructions from a validated PNS. Use thi... | 0.2.0 |
 | [okhp3-stakeholder-and-role-mapping](okhp3-stakeholder-and-role-mapping/SKILL.md) | Derive and validate a structured stakeholder register from a completed Process Intake Record. Use... | 0.2.0 |
+| [okhp3-success-reconstruction](okhp3-success-reconstruction/SKILL.md) | Reconstruct a successful one-off and design tests for a repeatable success class. Use for "bottle... | 0.1.0 |
 | [okhp3-visual-process-modeling](okhp3-visual-process-modeling/SKILL.md) | Generate, validate, normalise, and explain Mermaid-native bpmn-beta diagrams from a Process Narra... | 0.2.0 |
 <!-- FAMILY_INVENTORY_END -->
