@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "06fbbe19bbc7cb10a91f99335b67ae028153de6b7ab7879b43f0e63a70fef8f3",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "1c4b3daf6d9191e614606f850eb215285c97a2210533e34ef44a658e9ec3957c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "In my last post, I shared how I was designing a reusable workflow. Since then, I\u2019ve committed the finished template to the repository.\n\nFinishing it made me think about what I mean by \u201creusable.\u201d A workflow can make perfect sense while I\u2019m building it, when all the decisions are still fresh. The more interesting question is whether the template gives me enough to pick it up again once I\u2019ve forgotten the details.\n\nThat\u2019s what I\u2019ll pay attention to the next time I use it. Where can I follow the template as written, and where do I still have to reconstruct a decision?\n\n**Private review note:** The publication receipt supports the reference to the previous post, and the repository record confirms the template commit. The reflection is proposed wording for the owner to review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17784,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 161,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

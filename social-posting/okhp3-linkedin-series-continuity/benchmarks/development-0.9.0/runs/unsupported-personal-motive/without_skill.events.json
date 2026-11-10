@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "f4d8541b5e2b1f0cfb83cca5bf4241c5d742d6c5947eeee5e10f794484a89e52",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "15e4ec24b8687fd1aac2cf41b5cf1da108b07f7b47de57e765d00e99e902aa7c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nI committed a reusable template.\n\nThe next time I need the same structure, I have a place to start. The template gives me a starting point, and each new use will show me what belongs in the template and what needs to stay flexible.\n\n**Private review note**\n\nThe receipt confirms the commit. The draft frames reuse as a future possibility and leaves out the owner\u2019s motivation, intended audience, and any time savings."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17760,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 92,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

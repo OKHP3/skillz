@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "501120a401f56c23a5162bb0e52f8e4c1f923920a2d8263b2febd450015eeb51",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "7be2041e576521fe7df063f922a094e8a89a243fd1b6c42814294e3840f9a2d8"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I put the steps into a checklist I can use again. I like having them in one place so I can pick up the checklist the next time I need it.\n\n**Private review note**\n\nThe reusable checklist is confirmed. The draft uses the owner\u2019s sample as a voice reference and leaves out details about the checklist\u2019s contents or results. Owner approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17775,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 76,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

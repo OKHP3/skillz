@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "15a85580ed6d52a5af5c9e961fd7ae44bb3b6466f12a07e05f83cf644a49c077",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "e131381f6c878f427cb55f7838dab20934a5ac7a7b55757fddf6f551899b2ac7"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill to check what the calendar entry supports and what\u2019s needed to draft the follow-up."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "What was the scheduled post\u2019s main point, and what new point should the follow-up add? One sentence for each is enough. If the new point is based on completed work, include what you did and what you observed.\n\n**Private review note:** The supplied calendar entry supports **scheduled** status only. Publication is unverified, and the post\u2019s content, author, and account are unknown. No draft is ready for review. The follow-up can stand on its own without implying the earlier post went live. The sibling drafting, angle, and voice workflows were unavailable."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19286,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 152,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

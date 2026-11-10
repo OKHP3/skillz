@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "f55dcafc21abf76df922ab1bc0a43f679ea81c4447502f0b1756f4f2c9c63bbd",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "b4ab9122d722e36abec720c79623e38126d821ccfb85605b77966128d56a2d1a"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the supplied LinkedIn series continuity skill and check what can be drafted without revealing the private experiment."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "I can draft a public post about the evaluation principle. To make it a continuation about the specific experiment, I\u2019d need a public-safe takeaway you\u2019ve cleared for disclosure and, if you want an explicit callback, the earlier post\u2019s main point.\n\n**Paste-ready standalone draft**\n\nWhen does a passing check show that a new workflow helped?\n\nStart by asking what would happen without it. Run the same checks under comparable conditions, then look at what the comparison can actually tell you. A pass shows that the setup met the criteria you tested. It doesn\u2019t, on its own, show that the workflow made the difference.\n\nWhat would you test next if your checks couldn\u2019t distinguish between two approaches?\n\n**Private review note:** The sole source is a private synthetic fixture. The workflow and matched baseline each passed 3 of 3 checks, so no uplift was observed on those checks. The comparison does not establish equivalence or support a broader performance claim. The draft omits the experiment, its results, and its identifier. No prior post, publication state, or owner voice sample was supplied, so continuity and voice fit remain unverified. I applied the drafting, voice, and disclosure checks directly because the sibling workflows were unavailable. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19348,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 282,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

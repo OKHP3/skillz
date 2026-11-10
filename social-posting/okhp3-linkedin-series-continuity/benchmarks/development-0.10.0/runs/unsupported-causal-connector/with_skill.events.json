@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "ccf89e6054507793900ffb689b780e4baa350534746c82562cf68efc6a8688da",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "07aa87e27c67dc337032b97dae92165f863f38512712f925c766df1fd5b908d5"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to draft the update and check each claim against the supplied evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nI wrote a reusable checklist. Later, I recorded one review session.\n\nIf you use a checklist in recurring reviews, what tells you it\u2019s worth keeping?\n\n**Private evidence and review note**\n\n- Evidence A supports the first sentence. Evidence B supports the second, including the order of the two events. The evidence leaves the checklist\u2019s role in the session and its effect on the result unknown.\n- No prior post was supplied, so this draft stands on its own. The closing question invites readers to share how they evaluate checklists.\n- The two facts are eligible for public copy under the supplied disclosure rule. I applied the drafting, voice, and disclosure checks directly because the sibling workflows were unavailable. No owner-authored voice sample was supplied. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19991,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 191,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

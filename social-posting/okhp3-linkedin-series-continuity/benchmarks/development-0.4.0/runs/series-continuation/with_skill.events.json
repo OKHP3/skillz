@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "46d80840e3dc2c083ea4a8ead08d1260d5c542233dc134938c968457373a6c88",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "3c41fe3c8d932df89f5694d23ffc066a2875e105bb6576ad8cf3023ba4fb6a1d"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill to connect the earlier design post to the committed template and frame the next post as a reflection."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nIn an earlier post, I shared how I was designing a reusable workflow. There\u2019s now a template for it in the repository.\n\nA design can explain how a workflow should run. A template gives someone a place to start the next time they need to run it. That\u2019s a useful milestone on its own: the workflow is ready to try, and the next run can show which steps are clear and which still need explanation.\n\nWhen you turn a workflow into a template, what do you spell out, and what do you leave to the person running it?\n\n**Private review note**\n\nThe supplied receipt and post text establish that the owner published an earlier series post about designing the workflow. They don\u2019t establish that it was the latest post. The dated repository record confirms the template was committed; adoption, time savings, and business impact are unverified. The draft makes no claims about those outcomes and includes no private links or repository details.\n\nThe discussion question is the sole call to action. No owner voice sample was supplied, and the sibling workflows were unavailable, so drafting, voice, and disclosure checks were applied directly. The draft is ready for owner review and has not been saved, scheduled, or published."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19317,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 285,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

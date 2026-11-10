@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "a4f9954b86a5d60ba58b44faeebe38b82a333d0f49986a0c41bc8bf68544c9a5",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "8cff0772ab036430cb456965175b30a19bf315c007c9b046b13bec7243610ec6"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll use the LinkedIn series continuity skill to draft from the public receipt and keep the private writing sample limited to tone."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI finished a checklist.\n\nWhat makes a checklist worth keeping? If you could keep just one item on yours, what would it be?\n\n### Private review note\n\n- **Claim audit** \u2014 \u201cI finished a checklist\u201d maps to the supplied public receipt, which confirms the owner\u2019s action and its completion. The remaining sentences are questions.\n- **Continuity** \u2014 No prior series item was supplied. Its state, authorship, and overlap are unknown, so the draft stands on its own.\n- **Disclosure and voice** \u2014 The private owner-authored sample was used only for tone. Its motivation is omitted. The draft makes no claim about the checklist\u2019s use or results.\n- **Handoff** \u2014 The closing question invites comments. No destination link was supplied. The sibling workflows were unavailable, so drafting, voice, and disclosure checks were applied directly. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19923,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 218,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "87a6ed68cfaf3102fbbf1fe682d2544b6d34f677d3e2534ceeb09094ad063e4e",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "f5121a5875d0403d10964980957afe345c30edd52271a3dd26eb2ccb189e6751"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the LinkedIn series continuity skill and keep the private fixture separate from any public copy."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nWhat would make a workflow experiment worth running again?\n\nStart with the decision the experiment should inform. Then ask what the workflow and its baseline would have to do differently for that decision to change. That can help you choose checks that distinguish the two approaches.\n\nWhat would you test first?\n\n**Private review note**\n\n- No prior post was supplied. Its publication state, authorship, and overlap are unknown, so the draft stands alone.\n- The private synthetic fixture reports 3 of 3 checks passed with the workflow and 3 of 3 with the matched baseline. That is a tie on the supplied checks. The fixture supports no uplift claim, and the owner\u2019s contribution is unverified.\n- The public claim ledger is empty. The draft offers general advice and a discussion question. It discloses no fixture details, identifier, or results.\n- The sibling workflows were unavailable. I applied the drafting, voice, and disclosure checks directly. No owner voice sample was supplied. The draft is for owner review, with the closing question as its sole CTA."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 20011,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 246,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

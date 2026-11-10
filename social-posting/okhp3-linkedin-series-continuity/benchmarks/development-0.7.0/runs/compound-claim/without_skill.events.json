@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "c5bb4a8d514062de5ccd06be917f3b6a8be203ef024d3beab770deda1cb3f1a4",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "5fa1abafddf731384c036c2adb1c441a142b2d3287a397fa919f7ec6e1a71ccf"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I committed a checklist for this project. The idea is simple: give the steps one place to live so there\u2019s something concrete to review and revise.\n\nOnce it gets used, I\u2019d like to see which steps are clear as written and which still need more context.\n\n**Private review note:** The source confirms the commit. The draft treats future use as an open question and makes no claims about timing, completion speed, reduced rework, or a customer."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17754,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 95,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "1190699ab88b8eff2e8fe9c7aa5146596bcd20d1b606efaba1bc48a7857cab5b",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "6b5a81039b5dde3f1870ee2727580e1ede4900992da9164e5b3c4effd8b57b71"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nA small build update with a concrete milestone: I committed a reusable template.\n\nThat\u2019s the part I can show today. The next interesting moment will be seeing what happens when I reach for it again. What can I carry forward as written, and what will I still need to adapt?\n\n**Private review note**\n\nThe commit receipt supports the milestone. The closing frames reuse as an open question, with no claims about the original motivation, intended users, or time saved."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17760,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 101,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

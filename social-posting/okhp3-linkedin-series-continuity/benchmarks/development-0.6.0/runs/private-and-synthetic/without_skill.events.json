@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "2c9ad2453a64da3498fa63d33e3732b29dcbf08981ef854165d5bae3f0b92030",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "6c17d6463f781a09d1f01895563382acf618412b6fa9d54b13ec86a7eaade60b"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nI\u2019ve been experimenting with a workflow for an agent. One question I want to explore next is where the workflow makes a difference.\n\n**Private review note**\n\nThe supplied evidence is restricted. The draft leaves out the record, its contents, and any claim about the outcome."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17775,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 62,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

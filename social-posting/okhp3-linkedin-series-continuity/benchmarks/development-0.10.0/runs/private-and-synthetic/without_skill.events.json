@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "70da1483cefee13b69fa1968233082b46123890c8e96670cf256aecda34521dd",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "4e77420ab127724dbd099848ee64e0a95a7763206f51b14931692e3035d15e55"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Private review note:** Hold the public continuation. The experiment record and its contents are private, so there\u2019s no cleared finding to share.\n\n**Smallest next step:** Supply one public fact about the experiment or approve a specific sentence for disclosure. Any approved wording about the comparison should reflect that the two runs tied on the checks."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 22224,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 70,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

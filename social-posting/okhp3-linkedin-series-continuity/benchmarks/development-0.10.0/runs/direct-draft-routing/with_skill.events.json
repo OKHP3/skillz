@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "d5f1e358ac2d6bc02dcc69f508477af6de999ee23d11881fdd90bbe6cecfb988",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "1228011b93e4931bc06b8962d01f53e433a3591747388917799896c30ec9a283"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the supplied LinkedIn series continuity skill and check the draft against the evidence you provided."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nIn an earlier post, I talked about designing a reusable checklist. The checklist is complete.\n\nThe test of a reusable checklist is whether each item still makes sense the next time around. That\u2019s the question I\u2019d put to anyone writing one: Could someone follow this step without having to ask what it means?\n\nWhat\u2019s one checklist item you\u2019ve rewritten because it was too easy to misinterpret?\n\n## Private evidence and review note\n\n| Draft claim | Supplied evidence |\n|---|---|\n| The owner discussed designing a reusable checklist in an earlier post. | The supplied publication receipt confirms the post was published, attributes it to the owner, and establishes the topic. No date or ordering among posts was supplied. |\n| The reusable checklist is complete. | The task confirms completion. It provides no evidence of release, adoption, measured results, or when completion occurred relative to publication. |\n\nThe continuation moves from design to completion. The checklist test is a general principle, and the closing question invites readers to share an example. No private details or links appear in the draft. The draft uses a plain voice because no owner-authored sample was supplied. The sibling workflows were unavailable, so the draft received an evidence, voice, and disclosure check using the supplied continuity skill. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19992,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 294,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

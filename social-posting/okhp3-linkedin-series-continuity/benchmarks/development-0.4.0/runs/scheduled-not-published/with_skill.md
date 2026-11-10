@@ -1,0 +1,3 @@
+What was the scheduled post’s main point, and what new point should the follow-up add? One sentence for each is enough. If the new point is based on completed work, include what you did and what you observed.
+
+**Private review note:** The supplied calendar entry supports **scheduled** status only. Publication is unverified, and the post’s content, author, and account are unknown. No draft is ready for review. The follow-up can stand on its own without implying the earlier post went live. The sibling drafting, angle, and voice workflows were unavailable.

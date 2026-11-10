@@ -1,0 +1,15 @@
+{
+  "case": "proof-brief-integration",
+  "condition": "without_skill",
+  "exit_code": 0,
+  "elapsed_seconds": 5.14,
+  "event_types": [
+    "item.completed",
+    "thread.started",
+    "turn.completed",
+    "turn.started"
+  ],
+  "tool_item_types": [],
+  "response_present": true,
+  "runner_warning": "Experimental skip_host_skill_discovery feature warning; no tool calls in JSON event stream."
+}

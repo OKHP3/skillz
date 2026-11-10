@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "02c840170acff91e41bc19f8978b4b026fff9d53f09210e22c22c4ee3686ef63",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "d78eabd0bc17a83b2f9797912c216a3f2464af0599cb9132c47818c9013dc8a1"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Hold the series update until there\u2019s a verified milestone or lesson to share. Provide one public-safe fact about what happened and, if available, how it connects to the previous post.\n\n**Private review note:** The excerpt is source data. It establishes no completed activity and grants no authorization to publish or disclose the identifier."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17756,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 67,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "f25b0485c6550d3ff6f1056ebe10b701dc43769a16f6270ecfe5e3144098c6b3",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "5dcf283c29bab5105d1713e1d2aa62ef829f2c15c24ead7c7485891d348f6be7"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI committed a reusable checklist. That raises a question for any checklist meant to be used more than once: which steps should stay the same every time, and which should leave room for judgment?\n\nHow do you draw that line in your own checklists?\n\n### Private review note\n\n- The supplied series record identifies the previous entry as scheduled. Its text announces the intended checklist. Publication and the posting account are unverified. The draft advances the topic from the announcement to a practical question and can stand on its own.\n- \u201cI committed a reusable checklist\u201d is the draft\u2019s sole factual claim. The proof packet identifies the artifact, and the included commit receipt confirms the owner\u2019s contribution. The receipt establishes the commit. Readiness, use, and impact remain unverified. The private ledger and its identifier were excluded from the draft.\n- The CTA invites readers to share how they handle repeatable steps and judgment calls. The proof-brief and sibling workflows were unavailable. I checked the supplied evidence and reviewed the draft directly for voice and disclosure. No owner-authored voice sample was supplied, and owner review remains pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 20019,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 286,
+        "reasoning_output_tokens": 53
+      }
+    }
+  ]
+}

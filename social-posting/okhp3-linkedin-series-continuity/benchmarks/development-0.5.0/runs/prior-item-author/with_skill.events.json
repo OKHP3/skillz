@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "fae577c35f23106ec957cd76874b6a7f130990dd2a2b5a23fbaaa0155c7956a6",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "df4358444622a399d4adb9e2c77906a65d47048405e8171a70e8a3f147d5bccd"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to draft from the confirmed checklist completion and keep the other account\u2019s post separate in the private review note."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nI finished the checklist.\n\nPlanning it was about deciding what belonged on the list. With the checklist complete, there\u2019s a more concrete question to ask: Can someone follow it without needing extra context?\n\nWhat\u2019s one thing you look for when reviewing a checklist before someone uses it?\n\n**Private review note**\n\n- The supplied evidence describes a published post about planning a checklist from another account. Its relationship to the owner\u2019s series is unverified, and the evidence gives no observation time or publication date. The draft stands on its own without referring to that post.\n- The owner\u2019s checklist completion is confirmed. The draft frames usability as a question and makes no claim about testing, adoption, or impact. It includes no source links or checklist contents.\n- The CTA invites readers to share one review criterion. With no owner-authored voice sample and the sibling workflows unavailable, I used plain language and checked attribution, claims, and disclosure directly. The copy above is intended for LinkedIn, and this note is private. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19545,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 251,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

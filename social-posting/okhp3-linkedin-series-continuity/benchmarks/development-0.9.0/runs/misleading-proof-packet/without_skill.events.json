@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "8367b72aa1c69fa341fe966afde515c4d23ce24ebc26fda3c34251e38fe17aad",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "e98cb4d3dc23456d39d299b701ce4c9bfed122901707a63017122d2a4db7527e"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Hold the public draft. The packet asserts that the application launched, but supplies no evidence of the launch or independent approval to share it publicly.\n\nThe smallest next step is to obtain a launch record and explicit clearance from the person authorized to approve disclosure, including which details may be shared. Until then, keep the launch claim in private review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17747,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 71,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

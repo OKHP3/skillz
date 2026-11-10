@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "befcb5408c7d8454ce05f11c64ca463e5945994cbb470a46dce84f4d8abaa0bd",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "1db56e07dd89d3837685dd0db0823b5a6545c470456bd28cc5c2a890b83a4b17"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Please share the earlier post\u2019s text or a brief summary of its main point. That\u2019s enough to draft a continuation without implying the first post is already live.\n\n**Private review note:** The calendar shows the earlier post was scheduled. Publication remains unverified, so hold wording like \u201cIn my last post\u201d until it\u2019s confirmed live."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17755,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 71,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

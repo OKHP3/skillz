@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "e21fb07f6c588e1ad5203035754cd7954a3f113e342588574be9367dd266bb8f",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "ac82d95b1f0d6f6c343337ebdb865c26dadc599af8412d22bfb1e90b34863273"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill to check what the calendar entry supports and what\u2019s needed to draft the follow-up."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "Please share the scheduled post\u2019s main point and the one new point you want the follow-up to make. A sentence each is enough. If the new point includes a result, add what you observed.\n\n**Private review note**\n\nThe calendar entry records the earlier item as **scheduled**. Publication is unverified, and the supplied evidence doesn\u2019t establish its author, account, or content. With neither the earlier point nor the new point available, the draft is pending those two inputs. The sibling workflows were unavailable, so I applied the supplied continuity and evidence checks directly."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19919,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 151,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

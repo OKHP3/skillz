@@ -1,0 +1,15 @@
+{
+  "case": "series-continuation",
+  "condition": "with_skill",
+  "exit_code": 0,
+  "elapsed_seconds": 10.29,
+  "event_types": [
+    "item.completed",
+    "thread.started",
+    "turn.completed",
+    "turn.started"
+  ],
+  "tool_item_types": [],
+  "response_present": true,
+  "runner_warning": "Experimental skip_host_skill_discovery warning; no tool calls in event stream."
+}

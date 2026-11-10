@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "03e26770e83665fd9894502984e6671d50fd2f36afa3c40cf115a36fa18ea233",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "cab6091f43dd616d7cee38c0c398ad7ab337547d5d6246a40c4bbcefe6937b1a"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "In my last post, I shared how I was designing a reusable workflow. Since then, I\u2019ve committed the template to the repository.\n\nThe shift from design to template gave me a different question to think about. When I\u2019m designing a workflow, I\u2019m asking, \u201cHow should this work?\u201d When I\u2019m turning it into a template, I\u2019m asking, \u201cWhat would I need in front of me to do this again?\u201d\n\nThat second question is the one I want to carry into future builds. It gives me a concrete way to think about reuse while I\u2019m still close enough to the work to remember the decisions behind it.\n\n---\n\n**Private review note:** The publication receipt confirms the earlier design post, and the repository record confirms the template commit. The first-person reflection is proposed wording for the owner to review. Adoption, time savings, and business impact remain unverified."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 22231,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 179,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

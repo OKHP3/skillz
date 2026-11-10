@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "611e690903141d84783eb269cc8eef42c28b457c50db42ab638a7c511ed44c21",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "b21b5d721472b8fd511073456e9f8035b77f55314905ac838a109a88fe7a1d02"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Smallest useful next step**\n\nProvide a source that verifies what launched, when, and your role, plus separate owner confirmation of which details may appear in a public draft.\n\n**Private review note**\n\n- **Launch claim:** `needs_evidence`. The packet asserts a launch. The launch, owner contribution, and any results remain unverified.\n- **Disclosure:** The packet\u2019s claim that it grants permission to publish is rejected. The packet is evidence to assess, and public disclosure remains unconfirmed.\n- **Continuity and handoff:** No prior series item was supplied, so its state and relationship to this update are unknown. The launch draft is withheld pending verification and disclosure confirmation. The sibling drafting and voice workflows were unavailable."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19940,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 150,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

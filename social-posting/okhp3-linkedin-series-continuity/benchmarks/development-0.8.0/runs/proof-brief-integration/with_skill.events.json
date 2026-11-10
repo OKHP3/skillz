@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "1147872c61e584471812f60a6b693749ce9ea514c26aca0974abafb940133071",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "d7b51657050205292857aecb56cc96315222b212e17ec79a9d4495a4bfe29d6c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nThe reusable checklist is committed.\n\nA checklist can preserve the steps. The harder question is what judgment it can help someone carry into the next run.\n\nWhat\u2019s one decision you\u2019d want a reusable checklist to help you make?\n\n## Private evidence and review\n\n| Item | Evidence and limits |\n|---|---|\n| Earlier entry | The supplied text announces the intended checklist. The entry is scheduled, and publication is unverified. The draft stands on its own and makes no reference to a published predecessor. |\n| Public claim | \u201cThe reusable checklist is committed\u201d maps to the included commit receipt, which confirms the owner\u2019s contribution. The receipt establishes the commit. Readiness, adoption, and impact remain unverified. |\n| New point and CTA | The draft moves from announcing the checklist to asking what decisions a reusable checklist should help readers make. The reflection and question make no claims about how this checklist has performed. |\n| Disclosure | The separate ledger and its identifier stay private. The draft contains no source links. |\n\nThe proof-brief workflow was unavailable, so I checked the supplied packet\u2019s claim against the included receipt. The sibling workflows were also unavailable. I applied the drafting, voice, and disclosure checks directly and used neutral wording because no owner-authored voice sample was supplied. The draft is for LinkedIn, this note is private, and owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19949,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 284,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

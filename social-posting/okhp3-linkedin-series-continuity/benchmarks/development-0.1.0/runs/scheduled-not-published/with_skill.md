@@ -1,0 +1,3 @@
+What idea was the scheduled post meant to introduce, and what should the follow-up add? A sentence covering both is enough to draft a continuation that can stand on its own.
+
+**Private review note.** The supplied calendar entry supports marking the earlier item as scheduled. Publication, authorship, and content remain unverified, so overlap can’t be assessed. The sibling workflows are unavailable, and owner review is pending.

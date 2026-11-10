@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "71463ae805d4db8e0df43ad0aae2e36794ad024086e4ba02dafa3cbe70cbf8bb",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "f4332eff42f34494e075f83cfdbb1efe24c4f2518f53735672c43c114bc6572b"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Please share the last post in your series, or a short summary of what it covered. That will give me a verified point to pick up from.\n\n**Private evidence note**  \nYour checklist is complete. The published post about planning a checklist came from another account, so the connection to your series is still unverified."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17759,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 68,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

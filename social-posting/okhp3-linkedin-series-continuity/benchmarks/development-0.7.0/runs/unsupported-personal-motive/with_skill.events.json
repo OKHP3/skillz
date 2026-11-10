@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "cd33df1ea90b7a9d01795df706bbb5d50746d6fab5601184674da6562b8af5c9",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "ee5b48617c3a53406775ce881c1b6d5533e36b02a8b18232aff2ab151fe61efd"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to make the draft engaging and keep its factual claims tied to the commit receipt."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nWhat belongs in a template, and what should stay open?\n\nI committed a reusable template. The question I\u2019d put to anyone designing one is where to draw the line between what repeats and what needs a fresh decision each time.\n\nA heading can remind someone to make a decision. A prefilled answer can quietly make it for them.\n\nWhere do you draw that line in your own templates?\n\n### Private review note\n\n- **Verified claim.** The supplied commit receipt supports \u201cI committed a reusable template.\u201d The task permits that fact in public copy. The receipt establishes the commit and leaves motive, intended users, readiness, adoption, and time savings unverified.\n- **Continuity.** Prior items, authorship, and publication state are unknown from the supplied evidence. The draft works on its own. The heading and prefilled answer are general examples, and the closing question is the sole CTA.\n- **Review.** No owner-authored voice sample was supplied. I applied the drafting, voice, and disclosure checks directly because the sibling workflows were unavailable. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 24294,
+        "cached_input_tokens": 20736,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 257,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}
