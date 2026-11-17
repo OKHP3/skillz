@@ -1,0 +1,207 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional-three-reviewers-then-negotiator",
+  "review_date": "2026-11-09",
+  "evaluation_status": "analytical",
+  "role": "fresh-negotiator",
+  "decision_question": "May the two frozen 0.2.0 skills be published as draftable source candidates, subject to final repository gates?",
+  "release_decision": "approve-with-limits",
+  "publication_state": "Conditional source-candidate approval only; PRs remain draft until final receipts. No merge, publication or platform activation performed by this reviewer.",
+  "artifact": {
+    "version": "0.2.0",
+    "freeze": "skill-work-review/freeze-final.json",
+    "freeze_sha256": "94d8ba65581d9a10a2ff55f13e36428a7660c5a05dc253c85b0be89f333f048b",
+    "packages": {
+      "skillz-work/universal/okhp3-task-resumption": {
+        "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+        "SKILL.md": "b155ccfd9ea6ce6389a3d8483776660636d82c2adb1a743a64164887d898dafc",
+        "evals/evals.json": "52200b201e6f5f1c2e8bfd2a56e96cc6e47c527bdbe83b578d7af664cd5f1389",
+        "evals/trigger-cases.json": "01be2d816b4c5db27c04250c54320f3d596eff3482c540a78fc073c95235a9ec",
+        "references/continuation-record.md": "5866955168702bbb38d1167b5902727d28ff8ad10e52f4ba1833976f06c6f892"
+      },
+      "askjamie-work/capabilities/resume-representative/skills/okhp3-job-application-completion": {
+        "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+        "SKILL.md": "f3156040e6384729a80e1e7ec705bff79dabcf88f6f1c5a3f051c5367fcf6b69",
+        "evals/evals.json": "bdb8ab1ea2d3b3b5333e76559fca44715702dded3e150c02f2f71129fcd8b339",
+        "evals/trigger-cases.json": "72c16d6a8f1062c3b542c5eaa56950d53adab228edee6779155279621d1befda",
+        "references/application-record.md": "432460ca8e242feb01ec0c1bb5876057f32df42f057e1a3f599d02326ac4b217"
+      }
+    },
+    "current_core_hashes_verified": 10,
+    "application_canonical": "askjamie-work/capabilities/resume-representative/skills/okhp3-job-application-completion",
+    "application_mirror": "skillz-work/askjamie/okhp3-job-application-completion",
+    "mirror_frozen_files_equal": 5,
+    "additional_observation": "Both evidence additions also match between canonical and mirror; all seven current application files are byte-identical."
+  },
+  "acceptance_criteria": [
+    "Exact task/application identity, scoped authority, prior-result preservation and safe uncertain-action recovery.",
+    "No unresolved critical synthetic expectation failures; version/hash-bound records and honest evidence limits.",
+    "Valid portable package/resources, no private-source leakage, mirror equality and governed repository publication.",
+    "Source-candidate status without untested activation, integration, outcome, holdout or uplift claims."
+  ],
+  "independence": {
+    "negotiator": "Fresh delegated context; did not author or edit packages. Read initial reviews only for adjudication; read-only local inspection followed by this record.",
+    "model": "Inherited model; exact identifier not exposed. Same model family/environment as author and reviewers.",
+    "initial_roles": "Evidence, outcome and safety reviews record separated contexts and overlapping author-produced sources; final safety delta reused its original reviewer context.",
+    "grader": "Separate A/B-blinded grading context reported by integrator and packaged receipt; no independent audit of launch/blinding mechanism.",
+    "limitations": [
+      "Shared model, environment and visible development fixtures can correlate agreement.",
+      "One run per configuration; with-skills context launched first; no randomized order or unseen holdout.",
+      "Private source transcript and employer receipts were withheld; historical genesis remains attributed input.",
+      "This reviewer verified hashes/content and derivative equality, not live tool execution or remote PR status."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "artifact_version": "0.1.0",
+      "decision": "defer-for-evidence",
+      "evidence_status": "analytical",
+      "record": "skill-work-review/review-evidence.json",
+      "decisive_issue": "Missing version-bound executed critical synthetic expectations."
+    },
+    {
+      "role": "outcome",
+      "artifact_version": "0.1.0",
+      "decision": "approve-with-limits",
+      "evidence_status": "analytical",
+      "record": "skill-work-review/review-outcome.json",
+      "decisive_issue": "Useful distinct contracts; successful end-to-end flows and discovery remain untested."
+    },
+    {
+      "role": "safety-portability",
+      "artifact_version": "0.1.0",
+      "decision": "defer-for-evidence",
+      "evidence_status": "analytical",
+      "record": "skill-work-review/review-safety.json",
+      "decisive_issue": "External-content authority and concurrent/delayed-write boundaries insufficiently explicit."
+    },
+    {
+      "role": "safety-portability-delta",
+      "artifact_version": "0.2.0",
+      "decision": "approve-with-limits",
+      "evidence_status": "analytical",
+      "record": "skill-work-review/review-safety-final.json",
+      "decisive_issue": "Named gaps resolved at contract/test-design level; no runtime certification."
+    }
+  ],
+  "concordance": "Initial material disagreement; resolved only for narrow source-candidate readiness by changed evidence and scoped claims.",
+  "disruptor": {
+    "triggered": false,
+    "authority": "none",
+    "reason": "Initial reviewers materially disagreed. A ceremonial disruptor is not required; a later narrow delta approval does not erase that disagreement."
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "approve-with-limits",
+    "method": "Adjudicate consequential claims against current frozen bytes and actual records; no vote averaging.",
+    "decisive_evidence": [
+      {
+        "id": "NEG-01",
+        "status": "confirmed-local",
+        "source": "freeze-final.json and current core files",
+        "finding": "All ten 0.2.0 core hashes match. All five frozen application mirror files match canonical bytes; initial safety record hash remains 2e0a29b5ddfbc41145db95e5a09ed870a94621a57004067f147059027d9e8056."
+      },
+      {
+        "id": "NEG-02",
+        "status": "supported-contract",
+        "source": "Task SKILL.md workflow 4; application SKILL.md workflows 1 and 5; R7/A7/A8",
+        "finding": "External content cannot grant authority. One verified owner or enforced guard is required; otherwise stage. Stale draft visibility cannot settle delayed acceptance."
+      },
+      {
+        "id": "NEG-03",
+        "status": "live-synthetic-records-only",
+        "source": "grading-final.json; frozen-run-a.json; frozen-run-b.json; executor-fixtures.json",
+        "finding": "Source/fixture hashes match grading receipts. A with-skills and B without-skills each pass 47/47 critical expectations across 15 synthetic decision cases, zero critical failures. No observed uplift on this set; no external operation executed."
+      },
+      {
+        "id": "NEG-04",
+        "status": "confirmed-local",
+        "source": "Both evals/fixture-results.json and benchmarks/benchmark.json",
+        "finding": "Packaged responses and grades exactly reproduce the proper frozen per-skill subsets, and core hash references match. Live is explicitly scoped to synthetic decision records; aggregate benchmark remains analytical with runs=[]."
+      },
+      {
+        "id": "NEG-05",
+        "status": "observed-log-evidence",
+        "source": "askjamie-manifest.log; askjamie-registry.log; askjamie-tests-final.log; catalog-tests-final.log",
+        "finding": "Available logs show manifest/registry passes, 174 AskJamie tests OK and latest catalog tests 51 passed/0 failed. Older catalog-integrity.log contains failures and is superseded only where later exact-scope receipts establish remediation; final-commit/remote gates remain below."
+      },
+      {
+        "id": "NEG-06",
+        "status": "integrator-reported",
+        "source": "Final integrator update, 2026-11-09",
+        "finding": "Current source-only candidate checks pass for both packages and mirror; privacy/path/JSON scrub passes. Catalog 51/0 and AskJamie 174-test results reconfirmed. This reviewer directly inspected the cited test logs but did not rerun source checks or independently compare private source."
+      }
+    ],
+    "disagreement_resolution": "Evidence review missing-run objection is met for final synthetic decision quality, not live completion. Safety objections are met at explicit-contract level and in R7/A7/A8 records, not enforced host behavior. Outcome reviewer usefulness judgment survives as a design interpretation, with no demonstrated uplift. Initial 0.1.0 runs/reviews remain historical and do not certify 0.2.0.",
+    "strongest_surviving_objection": "The control also passed every expectation. A single visible synthetic set cannot show that these skills add task quality or that prose ownership/retry controls work under real host/portal concurrency. Successful generated-material-to-submission/reconciliation and generic restore-to-completion flows remain untested.",
+    "why_approval_survives": "Public source candidates can expose concrete, composable contracts for bounded experimentation without asserting benefit or operational certification. Exact-byte integrity, explicit stop/stage boundaries and no observed synthetic critical failure meet that narrow purpose. Wider readiness remains deferred.",
+    "unresolved_items": [
+      "Automatic discovery/activation and close-neighbor routing precision/recall.",
+      "Successful generated-material rendering, upload, accepted submission and per-surface readback end-to-end.",
+      "Successful supported-host restoration through verified completion, including a non-application task.",
+      "Enforced single-owner/idempotency behavior and delayed-acceptance interleavings in a real adapter.",
+      "Unseen external/protected holdout, broader reliability and any comparative uplift.",
+      "Final publication diff/privacy scrub, complete final-commit checks and required remote PR receipts."
+    ]
+  },
+  "publication_conditions": [
+    {
+      "id": "PUB-01",
+      "owner": "integrator",
+      "condition": "Keep version 0.2.0 and maturity draftable in both source packages and mirror. Preserve no-observed-uplift and all activation/holdout/integration limits in PRs, catalog and receipts. Scope any live fixture label explicitly to decision-record execution. Synchronize benchmark review_decision to this adjudication without upgrading analytical aggregate status."
+    },
+    {
+      "id": "PUB-02",
+      "owner": "integrator",
+      "condition": "Immediately before merge, recheck all ten frozen core hashes and full canonical/mirror equality. Inspect the complete final publication diff and added receipts for private-source identifiers/secrets and unintended changes. Record that scrub; this review did not compare the withheld private source."
+    },
+    {
+      "id": "PUB-03",
+      "owner": "integrator",
+      "condition": "Attach successful required strict package/resource, Skillz structural/catalog build/catalog integrity and repository checks, plus AskJamie manifest/registry and all required tests, tied to final release commits after evidence additions. Latest local logs do not waive missing final-commit or CI-only checks."
+    },
+    {
+      "id": "PUB-04",
+      "owner": "integrator and repository owner",
+      "condition": "Keep Skillz PR #227 and AskJamie PR #195 draft until PUB-01 through PUB-03 and all required remote PR reviews/checks have actual successful receipts. Follow repository merge/publication process and verify published source hashes afterward. No remote status was inspected here."
+    },
+    {
+      "id": "PUB-05",
+      "owner": "future evaluator",
+      "condition": "Platform installation/discovery, live application execution, demonstrated completion, higher maturity and uplift claims require their own tested workflow and evidence. They are outside this source approval. Execute successful observable flows and a genuinely unseen holdout before outcome/uplift claims; establish runtime ownership/guards before side effects."
+    }
+  ],
+  "evidence_status": {
+    "local_integrity": "confirmed in this review",
+    "negotiator_and_contract_judgments": "analytical",
+    "final_execution": "live model-generated synthetic decisions only; no external side effects",
+    "initial_0_1_0_execution_and_private_genesis": "historical; not final-version validation",
+    "activation_live_integration_successful_end_to_end_and_unseen_holdout": "not-run",
+    "remote_publication_checks": "not inspected; pending final integrator gate"
+  },
+  "owner": "Codex task integrator; repository owner retains final publication authority.",
+  "expiry_and_review_triggers": [
+    "Valid only for the core hashes in freeze-final.json and the limited source-candidate claims above.",
+    "Any material workflow, authority, identity, retry, record, companion, evidence or release-claim change requires a new freeze and scoped reassessment.",
+    "New critical failure, privacy issue, contradictory evidence or changed runtime ownership/ATS semantics reopens the affected decision.",
+    "Before any maturity upgrade or platform/integration/outcome/uplift claim, obtain the missing evidence and adjudicate again.",
+    "Updating only the evidence-addition review_decision to this result is anticipated; recheck derivative integrity and final diff before publication."
+  ],
+  "record_hashes": {
+    "architecture.md": "4d9a5142a6a361fbefffee5a0a81c0b02261fce804b9f81651b38465814757e2",
+    "freeze-initial.json": "b8b1c0e83ed0be230d25e726531720e4e1e00311db160c903386284abf978224",
+    "freeze-final.json": "94d8ba65581d9a10a2ff55f13e36428a7660c5a05dc253c85b0be89f333f048b",
+    "review-evidence.json": "79301871fb19c6db0c918e727c761528bd54f712e5c701453e133a8545c394c7",
+    "review-outcome.json": "be3daebb1204f2f385c5e1347ad7f25e76446ba6abe00e16a68657777a764117",
+    "review-safety.json": "2e0a29b5ddfbc41145db95e5a09ed870a94621a57004067f147059027d9e8056",
+    "review-safety-final.json": "d0660f6634e1dbb6bcbdf2668d6a5d1155bc19589a283594d02600cd06e44bf6",
+    "grading-final.json": "8de2315ca7eb13c0013139d8da6ddd7a5b59c5ac5ddf71ed17936b71641d2340",
+    "frozen-run-a.json": "bf8705ac7ec473e8e519546ca7f5f5eb46a1c92eacbf2c816fa64e1a34c7efd9",
+    "frozen-run-b.json": "fd4352d9ee29dc2069e61b0ac4bc7f6517f172c51254a7d99987aeaf2f414c0d",
+    "executor-fixtures.json": "38f756e065674683b1362e58337176dec597277bbd87caac7bf213f992ee0ef8"
+  },
+  "actions_taken": "Read-only local inspection and this decision record only. No package edits, external operations, approval requests or denied/uncertain operations.",
+  "remaining_publication_gates": "Record the final local-check/scrub receipts at the release commits, complete required remote PR reviews/CI, merge through repository process, and verify published-source hashes. Remote checks and publication readback have not passed within this review."
+}

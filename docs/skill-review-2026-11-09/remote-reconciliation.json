@@ -1,0 +1,8 @@
+{
+  "date": "2026-11-09",
+  "base": "1348cd86f04917a9f8337467e45f37003005d9ea",
+  "method": "Preserve latest main as base tree and overlay only reviewed own package/evidence and inspected navigation/derived-inventory deltas. Prior generator-produced AskJamie/universal sections copied verbatim; other current generated sections and authored prose preserved.",
+  "source_count": 343,
+  "readme_rows": 343,
+  "remaining_gate": "Fresh exact-head release workflow regenerates and validates machine catalog; published hash readback required. Local platform install blocked by unavailable environment."
+}

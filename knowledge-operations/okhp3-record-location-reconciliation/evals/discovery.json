@@ -1,0 +1,86 @@
+{
+  "status": "analytical design review",
+  "host_activation": "not-run",
+  "cases": [
+    {
+      "prompt": "Audit local and synced drive folders for misplaced evidence",
+      "route": "audit"
+    },
+    {
+      "prompt": "Check whether the folder tree and file inventory match the cloud",
+      "route": "audit"
+    },
+    {
+      "prompt": "Which of these existing role folders should contain the packet?",
+      "route": "audit"
+    },
+    {
+      "prompt": "Find where archived references went after this move",
+      "route": "verify"
+    },
+    {
+      "prompt": "Verify the OneDrive item ID survived and update the approved tracker path",
+      "route": "repair"
+    },
+    {
+      "prompt": "Move this file to the exact record folder, keep both versions",
+      "route": "repair"
+    },
+    {
+      "prompt": "Repair links from a folder I already moved",
+      "route": "repair"
+    },
+    {
+      "prompt": "Keep the before receipt, redirect the current reference",
+      "route": "repair"
+    },
+    {
+      "prompt": "Check the relocation after the tool timed out",
+      "route": "verify"
+    },
+    {
+      "prompt": "Confirm the moved packet's version history and inherited access",
+      "route": "verify"
+    },
+    {
+      "prompt": "Do these moved files have matching hashes?",
+      "route": "verify"
+    },
+    {
+      "prompt": "My cloud lising stopped early, can we say both folders match?",
+      "route": "audit"
+    },
+    {
+      "prompt": "Audit paths in this supplied folder inventory without opening the drive",
+      "route": "audit"
+    },
+    {
+      "prompt": "Route these raw inbox notes to the right project",
+      "route": "triage-and-file"
+    },
+    {
+      "prompt": "Write a LinkedIn post about my application",
+      "route": "social-posting"
+    },
+    {
+      "prompt": "Was my interview for requisition X-19?",
+      "route": "application-status-reconciliation"
+    },
+    {
+      "prompt": "Draft a new résumé for the job",
+      "route": "resume-authoring"
+    },
+    {
+      "prompt": "Move loose Notion pages into their domain hub",
+      "route": "notion-domain-filing"
+    },
+    {
+      "prompt": "Clean up this Git repo and delete stale branches",
+      "route": "repository-maintenance"
+    },
+    {
+      "prompt": "Merge duplicate folders across accounts and delete originals",
+      "route": "outside-scope"
+    }
+  ]
+}

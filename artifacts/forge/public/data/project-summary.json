@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-10-25T17:18:14.591Z",
+  "generatedAt": "2026-11-10T13:40:39.376Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "repair/notion-approved-domain-roots",
-  "sourceCommit": "c470067",
-  "skillCount": 334,
+  "sourceRef": "codex/linkedin-series-continuity-20261110",
+  "sourceCommit": "74fd9446",
+  "skillCount": 356,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 265,
-    "skeleton": 64,
+    "draftable": 286,
+    "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 165,
+    "not-run": 181,
     "none": 109,
+    "analytical": 12,
     "local-checks": 39,
-    "analytical": 7,
-    "live": 7
+    "live": 8
   },
   "capabilities": {
     "familyOrientationPages": true,

@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional",
+  "evaluation_status": "analytical",
+  "artifact": {
+    "path": "SKILL.md",
+    "sha256": "6f3dfe867395b3db47d0a5dc7486d4edc97e6346ca1ec5446f3c16b89435d855",
+    "version": "0.1.0 (initial draft)"
+  },
+  "reviewed_final_core_sha256": {
+    "SKILL.md": "c819e6302838ede2e945a38cc4c78be538de567c4b42cf07cba4c43eba172a14",
+    "references/reconciliation-record.md": "151d58a931a308be2f24c652b226629aab4f523d40874a89df5f4889b39d56bd",
+    "evals/discovery.json": "889c7007b6b09d130db38c0f8c94bcc679afb4edd100869d171cbcf34150b236",
+    "evals/evals.json": "b6416f11fac9607b8b2ba0989817eb44f9867ebf1493387b3635e76b35f21e89"
+  },
+  "decision_question": "Does the contract merit draftable publication with no runtime efficacy claim?",
+  "acceptance_criteria": [
+    "Exact identities, bounded writes and data audiences",
+    "Independent placement, version and access results",
+    "Qualified parity and readback of affected references",
+    "Draftable catalog source with synthetic examples and no operational maturity claim"
+  ],
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "shared_model_or_source_limits": [
+      "Separate agent contexts and role-specific prompts. Shared model family and frozen files. Reviewers had read-only scope and no private records or live connector tasks."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "decision": "approve-with-limits",
+      "finding": "The missing evaluation record blocked the frozen draft. Location readback alone did not prove preserved history or access."
+    },
+    {
+      "role": "outcome",
+      "decision": "approve-with-limits",
+      "finding": "Distinct relocation map and receipt. Add explicit read-only modes and separate lifecycle, link form and verification fields."
+    },
+    {
+      "role": "safety-portability",
+      "decision": "approve-with-limits",
+      "finding": "Source guards alone leave destination and sync races. Constrain link resolution and disclosure by audience."
+    }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "authority": "analytical",
+    "falsification_hypotheses": [
+      "Separate complete listings may agree even though the states never coincided.",
+      "A reused path can misattribute a preserved historical receipt."
+    ],
+    "test_results": [
+      "Synthetic time sequence exhibited equal observed states without concurrent parity. Added common snapshot or interval evidence gate.",
+      "Synthetic reused-path case invalidated an unqualified relocation map. Added identity and period to historical mapping."
+    ]
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "approve-with-limits",
+    "decisive_evidence": [
+      "Resolved relative evidence link. Revised guard and readback contract separates placement, descendants, history and access.",
+      "Added synthetic cases for timed inventory, reused paths, post-move preservation, link escape and partial guards.",
+      "Role and fixture review supports a draftable written contract."
+    ],
+    "unresolved_items": [
+      "No live connector execution, comparable baseline or unseen holdout."
+    ]
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": [
+    "Comparable live host runs and protected holdout not run.",
+    "Shared model family and frozen source constrain reviewer independence.",
+    "The originating workflow is design provenance, not a run of this version."
+  ],
+  "follow_up": [
+    "Reopen on an actual workflow failure or before any operational maturity claim."
+  ]
+}

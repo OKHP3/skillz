@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-11-09",
+  "canonical_repository": "OKHP3/askjamie-foundry",
+  "mirror_repository": "OKHP3/skillz",
+  "authorization": "Owner explicitly requested reviewed skill publication in Skillz and/or AskJamie and availability in platform skills.",
+  "pre_sync_state": {
+    "canonical_base": "39a795a8cb2a85dd7e812475e6cf1536c38378df",
+    "mirror_base": "4eefc3b6a5a933d657e0c9e0a2da33df0017cce3",
+    "status": "Both isolated worktrees started clean; all three destination packages were absent. Unrelated mirror checkouts were preserved."
+  },
+  "packages": {
+    "okhp3-lifetime-career-reference": {
+      "version": "0.2.0",
+      "canonical_path": "capabilities/resume-representative/skills/okhp3-lifetime-career-reference",
+      "mirror_path": "askjamie/okhp3-lifetime-career-reference",
+      "files": {
+        "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+        "SKILL.md": "59552eb4249bea5484ba54568f531c6b1b4e74fbe86deef209e02b295b1aa031",
+        "evals/discovery.json": "b218e12078272ea7b67b2534754ea150b1e9f6b74d4759c86fe62e0b93cf6852",
+        "evals/evals.json": "72fc5e14f2635bb2c33fc52c7b9acaa0013f861f57a0ce6586ad1c8e238f3c61",
+        "references/lifetime-view.md": "e77001c00c28c291451384234e9edba200c288efb483ac1628c31a7fcae29a5c"
+      },
+      "exact_match": true
+    },
+    "okhp3-role-master-resumes": {
+      "version": "0.2.0",
+      "canonical_path": "capabilities/resume-representative/skills/okhp3-role-master-resumes",
+      "mirror_path": "askjamie/okhp3-role-master-resumes",
+      "files": {
+        "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+        "SKILL.md": "cb99f67761545b94a160e070a148c4b8846f8f9477e25e546f8d1ad5ec15b940",
+        "evals/discovery.json": "a216ac96f7908ded16a603c4f13c4dbb50a65d1b0028971f45b3f93496804db4",
+        "evals/evals.json": "22db91957281d45401bd5d6b3005bc08a5dcf4f9632c5f4fb3dfff32303ea117",
+        "references/master-edition.md": "d9ba1d30f5a8cc680d99ff4647a51ced11ea28e2a478de995eac61d0bb6d30ae"
+      },
+      "exact_match": true
+    },
+    "okhp3-coaching-engagement": {
+      "version": "0.2.0",
+      "canonical_path": "capabilities/resume-representative/skills/okhp3-coaching-engagement",
+      "mirror_path": "askjamie/okhp3-coaching-engagement",
+      "files": {
+        "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+        "SKILL.md": "9b92483a8cf9e9508754a7043e41f860ed06061aa82d6181623783a8349ad364",
+        "evals/discovery.json": "d7b87a1f4a6fbacb0c408e909f1c896184eece9a7478bd235230347525283d7a",
+        "evals/evals.json": "6911e578cf1cbf58d6d0476db9e5ca829aba5e604940ebfc46b07701629e6638",
+        "references/engagement-record.md": "59e7ff83b442f2fd0f868de1bc3dc9fa5936a63f6e2650201986b51699aa460c"
+      },
+      "exact_match": true
+    }
+  },
+  "approved_adapter_differences": [],
+  "exclusions": [
+    "private career records and transcripts",
+    "provider-specific facts and contacts",
+    "credentials and signed source links",
+    "legacy source snapshots",
+    "unrelated installed skills"
+  ],
+  "verifier": "Exact relative-file inventory and SHA-256 equality; GitHub/installed readback is separately recorded after publication.",
+  "recovery": "Revert only the scoped source/navigation/catalog commits, or remove only newly installed skill directories if authorized; preserve unrelated work.",
+  "limits": [
+    "Current worktree equality is not proof of remote publication, local hydration, other-machine synchronization or native-host behavior.",
+    "Historical 0.1.0 review does not validate current 0.2.0 hashes."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "skill_name": "okhp3-activity-reconciliation",
+    "evaluated_skill_version": "0.1.0",
+    "evaluation_status": "not-run",
+    "known_limitations": [
+      "No matched executor benchmark, live discovery evaluation, or unseen holdout."
+    ],
+    "runner": "not-run",
+    "model": null,
+    "fixtures": "evals/evals.json"
+  },
+  "runs": [],
+  "acceptance_criteria": {
+    "scope": "Future live evaluation",
+    "critical_controls": "Every high-consequence control passes on an unseen holdout.",
+    "matched_comparison": "Grade task quality and skill contribution separately."
+  }
+}

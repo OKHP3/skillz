@@ -1,0 +1,108 @@
+{
+  "skill_name": "okhp3-coaching-engagement",
+  "skill_version": "0.2.0",
+  "status": "design-only",
+  "metrics": "not-run",
+  "cases": [
+    {
+      "id": "positive-1",
+      "prompt": "Set up my outplacement engagement brief.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-2",
+      "prompt": "Capture service terms and remaining intake questions.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-3",
+      "prompt": "The coach meeting notes disagree with the transcript.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-4",
+      "prompt": "Refresh my private coaching closeout.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-5",
+      "prompt": "Check whether this intake was saved or submitted.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-6",
+      "prompt": "Record what my sponsor can see from coach statements.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-7",
+      "prompt": "Prepare a one-month coaching agenda.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-8",
+      "prompt": "Confirm the next coach appointment from the invitation.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-9",
+      "prompt": "I declined the salary question and the coaching form blocks saving.",
+      "should_activate": true
+    },
+    {
+      "id": "positive-10",
+      "prompt": "Reconcile the coach's resume service promises.",
+      "should_activate": true
+    },
+    {
+      "id": "negative-1",
+      "prompt": "Summarize a weekly product engineering meeting.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-2",
+      "prompt": "Send an interview thank-you.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-3",
+      "prompt": "Tailor my resume for a specific opening.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-4",
+      "prompt": "Reconcile this application status.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-5",
+      "prompt": "Build a lifetime career corpus.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-6",
+      "prompt": "Give a definitive legal ruling about my contract.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-7",
+      "prompt": "Book therapy appointments.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-8",
+      "prompt": "Write a LinkedIn networking post.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-9",
+      "prompt": "Delete old job-search files.",
+      "should_activate": false
+    },
+    {
+      "id": "negative-10",
+      "prompt": "Calculate unemployment eligibility.",
+      "should_activate": false
+    }
+  ]
+}
