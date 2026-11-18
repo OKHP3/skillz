@@ -20,20 +20,20 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 345,
+  "distributionSkillCount": 356,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 276,
-    "skeleton": 64,
+    "draftable": 286,
+    "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 172,
+    "not-run": 181,
     "none": 109,
-    "analytical": 10,
+    "analytical": 12,
     "local-checks": 39,
     "live": 8
   },
@@ -66,7 +66,13 @@
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
         "okhp3-askjamie-gpt-readiness",
-        "okhp3-job-application-completion"
+        "okhp3-coaching-engagement",
+        "okhp3-interview-evidence-map",
+        "okhp3-interview-questions",
+        "okhp3-job-application-completion",
+        "okhp3-lifetime-career-reference",
+        "okhp3-professional-headshot",
+        "okhp3-role-master-resumes"
       ]
     },
     {
@@ -177,6 +183,7 @@
       "status": "draftable",
       "skills": [
         "okhp3-chatgpt-project-migration",
+        "okhp3-context-transfer",
         "okhp3-session-handoff",
         "okhp3-thread-context-extraction",
         "okhp3-thread-extract-chatgpt",
@@ -256,6 +263,7 @@
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
+        "okhp3-idea-label",
         "okhp3-project-promotion",
         "okhp3-record-location-reconciliation",
         "okhp3-research-file-renewal",
@@ -367,6 +375,7 @@
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
+        "okhp3-success-reconstruction",
         "okhp3-visual-process-modeling"
       ]
     },
@@ -441,6 +450,7 @@
         "okhp3-linkedin-message",
         "okhp3-linkedin-network-plan",
         "okhp3-linkedin-post",
+        "okhp3-linkedin-series-continuity",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
         "okhp3-patreon-post",
@@ -494,6 +504,7 @@
         "okhp3-github-mirror-janitor",
         "okhp3-github-notification-maintainer",
         "okhp3-google-gis-client-auth",
+        "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
         "okhp3-overkill-hill-brand",
@@ -529,6 +540,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T15:48:30.263Z",
+  "countsGeneratedAt": "2026-11-10T13:40:39.376Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

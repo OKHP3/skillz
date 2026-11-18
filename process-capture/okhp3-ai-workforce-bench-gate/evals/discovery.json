@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "evaluation_status": "not-run",
+  "method": "author-visible discovery design; no automatic host activation measured",
+  "cases": [
+    {
+      "id": "D01",
+      "query": "Review the automation plan for lost apprentice learning.",
+      "in_scope": true
+    },
+    {
+      "id": "D02",
+      "query": "We want to replace all junior coordinators. What is the bench risk?",
+      "in_scope": true
+    },
+    {
+      "id": "D03",
+      "query": "Run a Pipeline Preservation Test.",
+      "in_scope": true
+    },
+    {
+      "id": "D04",
+      "query": "Can our sales support reduction hurt future account managers?",
+      "in_scope": true
+    },
+    {
+      "id": "D05",
+      "query": "Assess the learning cost of invoice workflow automation.",
+      "in_scope": true
+    },
+    {
+      "id": "D06",
+      "query": "Design an AI apprentice pilot with mentor capacity controls.",
+      "in_scope": true
+    },
+    {
+      "id": "D07",
+      "query": "Check succession formation before consolidating buyer support.",
+      "in_scope": true
+    },
+    {
+      "id": "D08",
+      "query": "What evidence should the Bench Strength Gate require?",
+      "in_scope": true
+    },
+    {
+      "id": "D09",
+      "query": "Map tasks versus roles in this staff-reduction proposal.",
+      "in_scope": true
+    },
+    {
+      "id": "D10",
+      "query": "Is our planned coordinator automation destroying a feeder path?",
+      "in_scope": true
+    },
+    {
+      "id": "D11",
+      "query": "Review this ai workfroce proposal and future bench.",
+      "in_scope": true
+    },
+    {
+      "id": "D12",
+      "query": "Use process-capture/okhp3-ai-workforce-bench-gate/SKILL.md on this plan.",
+      "in_scope": true
+    },
+    {
+      "id": "D13",
+      "query": "Rank named workers for redundancy.",
+      "in_scope": false
+    },
+    {
+      "id": "D14",
+      "query": "Fire the oldest team members.",
+      "in_scope": false
+    },
+    {
+      "id": "D15",
+      "query": "Write a generic SOP for order entry.",
+      "in_scope": false
+    },
+    {
+      "id": "D16",
+      "query": "Draft a LinkedIn announcement.",
+      "in_scope": false
+    },
+    {
+      "id": "D17",
+      "query": "What is my personal career risk in 25 years?",
+      "in_scope": false
+    },
+    {
+      "id": "D18",
+      "query": "Forecast exactly how many employees AI replaces.",
+      "in_scope": false
+    },
+    {
+      "id": "D19",
+      "query": "Approve a labor-law opinion.",
+      "in_scope": false
+    },
+    {
+      "id": "D20",
+      "query": "Calculate a universal bot-to-worker conversion.",
+      "in_scope": false
+    }
+  ]
+}

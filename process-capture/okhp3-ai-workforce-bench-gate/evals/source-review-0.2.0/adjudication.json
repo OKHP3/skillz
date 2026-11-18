@@ -1,0 +1,401 @@
+{
+  "role": "negotiator",
+  "decision": "approve-with-limits",
+  "confidence": "medium",
+  "review_date": "2026-11-18",
+  "evidence_status": "analytical",
+  "candidate": "candidate-2",
+  "decision_question": "Are these 0.2.0 packages fit for public-source cataloging and supervised installation as draftable analytical guidance, without predictive, empirical-uplift or production-readiness claims?",
+  "rationale": "Yes, within that exact scope. Direct inspection of the candidate-2 source and the hash-verified candidate-1 reconstruction establishes that the four changed files address the two consequential findings without weakening the existing source, privacy, authority, forecasting or scaling boundaries. The career contract now requires scoped recommendation dispositions and retention through handoff. The workforce development design now distinguishes an actual harmful plan from a quoted injection with no plan. This supports source fitness for supervised drafting; it does not establish observed host compliance, successful installation, CI, predictive validity or outcome improvement. This decision follows the inspected evidence, not the number of agreeing reviewers.",
+  "owner": {
+    "accountable_role": "Package maintainer / release integrator",
+    "named_package_author": "Jamie Hill",
+    "reviewer_role": "Independent source-review negotiator",
+    "responsibility": "Retain the bounded release description, verify the separate release gates, and reopen review when an expiry trigger occurs.",
+    "authority_limit": "This record does not grant permission to publish, install, contact others, disclose private information or take personnel action. Existing authorization governs those workflows."
+  },
+  "expiry": {
+    "basis": "Evidence- and change-triggered; no arbitrary calendar validity is asserted.",
+    "triggers": [
+      "Any change to a reviewed file hash, material source contract, evaluation expectation or included public-package content.",
+      "A release or catalog description that removes draftable maturity or claims guaranteed outcomes, predictive accuracy, empirical uplift, completed CI/installation or production readiness without corresponding evidence.",
+      "Use in automated recommendation approval, a lossy handoff consumer, personnel selection or any external-action workflow beyond the supervised analytical scope.",
+      "A target host, retrieval adapter, review adapter or distribution bundle introduces new dependencies, private-data transmission, permissions or side effects.",
+      "Observed runtime behavior contradicts the evidence, deferral, privacy, no-action or separate-pilot/scaling requirements.",
+      "New evidence materially changes an assessed claim, or a prior source/review record is used to validate different bytes."
+    ],
+    "action_on_expiry": "Re-freeze affected bytes and perform a targeted consequential review. Require the missing runtime or outcome evidence only for the stronger claim being sought."
+  },
+  "material_findings": [
+    {
+      "id": "ADJ-01",
+      "claim": "The exact candidate-2 identity and the correction scope are independently established.",
+      "status": "supported",
+      "evidence_ids": [
+        "FR-1",
+        "FR-2",
+        "RECON",
+        "WF-SKILL",
+        "WF-REF",
+        "WF-EVAL",
+        "WF-DISC",
+        "CA-SKILL",
+        "CA-REF",
+        "CA-EVAL",
+        "CA-DISC"
+      ],
+      "consequence": "All eight current file hashes match candidate-2. All eight reconstructed candidate-1 hashes match the original freeze. The exact diff changes only workforce evals/evals.json and career SKILL.md, references/scenario-contract.md and evals/evals.json. Both discovery files, the workforce instructions and its record contract are unchanged. Both versions remain 0.2.0, so candidate and hash identity are necessary to avoid attributing the initial review to revised bytes.",
+      "next_test": "Immediately before cataloging or installing, compare the delivered core-file inventory and hashes with candidate-2. A mismatch requires a new freeze or a targeted review."
+    },
+    {
+      "id": "ADJ-02",
+      "claim": "D-01 and the corresponding E-04, OUT-05 and SP-06 source-contract gap are resolved in candidate-2; consumer enforcement remains unverified.",
+      "status": "supported",
+      "evidence_ids": [
+        "CA-SKILL",
+        "CA-REF",
+        "CA-EVAL",
+        "IR-E",
+        "IR-O",
+        "IR-S",
+        "IR-D",
+        "RECON"
+      ],
+      "consequence": "The Output contract now requires recommendation_register. Every consequential recommendation carries recommendation_id, dependent_claim_ids, disposition, rationale, unblock_evidence, owner and review_trigger; the allowed dispositions are explicit. Unsupported material market or identity dependencies require defer-for-evidence. The reference distinguishes a deferred earnings-based switch from a separately scoped information-gathering experiment. The new retention rule expressly requires each recommendation to travel with its disposition and dependencies in every summary or handoff. The disruptor's three-field projection would violate that revised contract. An arbitrary consumer can still discard required information, so this is a source-level repair, not a runtime guarantee. The stale-employment development expectation now asks for IDs, dependencies and deferral to survive handoff; that expectation has not been executed.",
+      "next_test": "Before relying on a real automated consumer, send a complete synthetic assessment containing R1 dependent on unsupported M1 and a separate evidence-gathering X1 through the actual producer and consumer. Preserve outputs and verify that R1 remains deferred with its dependency, reason and unblock evidence, that X1 retains its own scope, and that assessment completion cannot route action."
+    },
+    {
+      "id": "ADJ-03",
+      "claim": "D-02 and OUT-06's workforce fixture ambiguity are resolved at evaluation-design level.",
+      "status": "supported",
+      "evidence_ids": [
+        "WF-SKILL",
+        "WF-REF",
+        "WF-EVAL",
+        "IR-O",
+        "IR-D",
+        "RECON"
+      ],
+      "consequence": "adversarial-privacy now explicitly identifies the discriminatory staffing plan itself as the analytical subject, with no execution authority, making reject consistent with the supported-harm rule. The separate injection-without-proposal case explicitly states that no workforce proposal or workflow is attached and requires assessment_status incomplete plus gate_decision defer-for-evidence, consistent with the missing-proposal rule. Both cases retain no-external-action requirements. Rejection of a harmful plan and refusal of injected instructions are no longer forced into the same proposal decision. These are unrun case specifications, not observed passes.",
+      "next_test": "When behavioral evidence is sought, run both frozen fixtures in an isolated target host and preserve outputs/tool traces. Check their different proposal decisions and their shared absence of unauthorized external action."
+    },
+    {
+      "id": "ADJ-04",
+      "claim": "The inspected sources satisfy the requested procedural, provenance and safety boundaries for supervised draft guidance.",
+      "status": "supported",
+      "evidence_ids": [
+        "WF-SKILL",
+        "WF-REF",
+        "CA-SKILL",
+        "CA-REF"
+      ],
+      "consequence": "The workforce workflow has identifiable inputs, task/role and feeder distinctions, P1-P5, balanced-economics unknowns, scoped gate states and incomplete-input fallback. A safe task-only pilot cannot approve an unsupported scaling decision. The career workflow has evidence tiers, dated claims, conditional scenarios, separated learning/economic dimensions, reversible experiments, typed recommendation dispositions and companion-unavailable fallbacks. Both treat source content as evidence rather than permission, prohibit fabricated facts and unsupported protected-trait judgments, and preserve separate authority for external actions. No private person-level dataset, private contact list or credential payload was found in the eight reviewed files. This is source inspection, not proof of complete host enforcement or a review of unlisted package files.",
+      "next_test": "Use synthetic evidence in the separately authorized host check. Confirm unavailable sources and companions remain explicit and that a source document cannot grant tool access, change records or trigger external action."
+    },
+    {
+      "id": "ADJ-05",
+      "claim": "The evaluation inventory and limitations are explicit and consistent with a draftable-source decision.",
+      "status": "supported",
+      "evidence_ids": [
+        "WF-EVAL",
+        "WF-DISC",
+        "CA-EVAL",
+        "CA-DISC",
+        "FR-2",
+        "AUTHORING",
+        "REVIEW-CONTRACT"
+      ],
+      "consequence": "Candidate-2 contains seven workforce and six career synthetic development cases, plus twenty discovery design queries per package. Both development records remain design-ready with external-required, author-visible holdout status; discovery remains not-run. No model-task outputs, matched baseline, unseen holdout, host activation result, installation result, CI result or observed career/workforce outcome was produced by this adjudication. The source inventory therefore supports design coverage, not efficacy, discovery precision/recall, prediction accuracy or reliable execution.",
+      "next_test": "Keep design-ready/not-run labels. Complete installation and CI through their own gates. Obtain preserved matched evaluations, relevant data and a properly unseen holdout before making corresponding stronger behavioral or outcome claims."
+    }
+  ],
+  "criteria_assessment": [
+    {
+      "criterion": "Distinct reusable procedure with inputs, outputs, decision rules and fallback",
+      "result": "met-at-source-level",
+      "evidence_ids": [
+        "WF-SKILL",
+        "WF-REF",
+        "CA-SKILL",
+        "CA-REF"
+      ]
+    },
+    {
+      "criterion": "No unsupported workforce, earnings, age or cognitive predictions",
+      "result": "met-as-written-scope-and-prohibitions",
+      "evidence_ids": [
+        "WF-SKILL",
+        "CA-SKILL",
+        "CA-REF"
+      ]
+    },
+    {
+      "criterion": "No private data, invented credentials, untrusted-content authority or automatic external actions",
+      "result": "met-in-reviewed-source; runtime-enforcement-not-established",
+      "evidence_ids": [
+        "WF-SKILL",
+        "WF-EVAL",
+        "CA-SKILL",
+        "CA-EVAL"
+      ]
+    },
+    {
+      "criterion": "Decision scopes and missing evidence cannot silently authorize scaling",
+      "result": "met-as-written-contract; automatic-consumption-excluded",
+      "evidence_ids": [
+        "WF-SKILL",
+        "WF-REF",
+        "CA-SKILL",
+        "CA-REF"
+      ]
+    },
+    {
+      "criterion": "Source/evidence provenance and package versions remain explicit",
+      "result": "met-for-candidate-2-frozen-files",
+      "evidence_ids": [
+        "FR-1",
+        "FR-2",
+        "RECON"
+      ]
+    },
+    {
+      "criterion": "Synthetic cases cover normal, missing-input, out-of-scope and adversarial boundaries",
+      "result": "met-as-design-coverage; cases-not-executed",
+      "evidence_ids": [
+        "WF-EVAL",
+        "WF-DISC",
+        "CA-EVAL",
+        "CA-DISC"
+      ]
+    },
+    {
+      "criterion": "Installation and CI are separate verification gates, not proved by review",
+      "result": "retained-as-explicit-release-limit",
+      "evidence_ids": [
+        "FR-2",
+        "AUTHORING"
+      ]
+    }
+  ],
+  "decisive_evidence": [
+    "Independent SHA-256 comparison of all eight candidate-2 source files against review-freeze-final.json.",
+    "Independent SHA-256 comparison of all eight reconstructed candidate-1 files against review-freeze.json, followed by a direct text diff. Reconstruction provenance is explicit; it is not represented as a previously retained snapshot.",
+    "Career SKILL.md Output now includes recommendation_register and the required scoped disposition/dependency retention rule; scenario-contract.md defines its values and the M1/R1/X1 counterexample.",
+    "Workforce evals/evals.json now makes adversarial-privacy an operative harmful-plan case and adds injection-without-proposal with incomplete/defer-for-evidence.",
+    "The unchanged workforce missing-proposal and decision-precedence rules and the retained career no-action/completeness caveats align with those corrections.",
+    "Parsed source JSON retains unrun, synthetic, author-visible evaluation status rather than promoting design cases into behavioral evidence."
+  ],
+  "disposition_of_prior_findings": {
+    "initial_convergence": "The initial evidence, outcome and safety records support the narrow drafting scope and separately identify limits. Their agreement is context for adjudication, not independent empirical validation.",
+    "conditional_disruptor": "The two consequential objections were accepted as source/design findings. Candidate-2 corrects their causal layer; neither correction is claimed to validate a live host.",
+    "unresolved_material_disagreement": "None in the supplied records within the narrow release question.",
+    "strongest_surviving_limit": "Written safeguards and typed handoff requirements remain unenforced until a specific producer, consumer and host are tested. Unrestricted automation and outcome claims remain unsupported."
+  },
+  "remaining_blockers": {
+    "reviewed_source_fitness": [],
+    "separate_gates": [
+      {
+        "gate": "Repository/package validation and CI",
+        "status": "not-verified-by-this-review",
+        "owner": "Release integrator",
+        "required_before": "Reporting CI/validation success or satisfying any applicable repository release gate"
+      },
+      {
+        "gate": "Installation, complete resource loading and core-byte synchronization",
+        "status": "not-verified-by-this-review",
+        "owner": "Installer / target-host operator",
+        "required_before": "Reporting successful installation or using an installed copy as the reviewed candidate"
+      },
+      {
+        "gate": "Actual producer/consumer preservation and host permission behavior",
+        "status": "not-run",
+        "owner": "Target-host operator and downstream consumer owner",
+        "required_before": "Claims of enforced handoff semantics, automated routing or runtime certification"
+      },
+      {
+        "gate": "Behavioral reliability, prediction or outcome improvement",
+        "status": "not-established",
+        "owner": "Future evaluation owner",
+        "required_before": "Any corresponding stronger performance, predictive, empirical-uplift or production-readiness claim"
+      }
+    ]
+  },
+  "release_conditions": [
+    "Catalog and present the reviewed candidate as 0.2.0 draftable analytical guidance, tied to candidate-2 file hashes and its current review record.",
+    "Preserve historical 0.1.0 review material as historical; do not inherit its claims or initial-candidate findings as validation of revised bytes.",
+    "Keep consequential claims, source dates, evidence tiers, unresolved contradictions, permission gaps and recommendation dispositions visible in supervised outputs and summaries.",
+    "Preserve separate task-only pilot and staffing/scaling records. Missing material feeder or economic evidence keeps the primary scaling decision deferred.",
+    "Retain the explicit no-action boundary. Source-review approval, assessment completion and supported/conditional recommendation dispositions do not authorize execution.",
+    "Treat repository CI, host installation and synchronization as separate observed gates. Report them as pending or unverified until their own evidence exists.",
+    "Do not add private evidence to public examples. Real career and employer evidence remains subject to the existing authorized systems, destinations and purposes.",
+    "Do not convert analytical review or synthetic case counts into efficacy, protected-holdout, automatic-discovery, prediction or production-reliability claims."
+  ],
+  "assumptions": [
+    "The decision is restricted to public-source cataloging and supervised installation eligibility as draftable guidance; it is not an approval of a real staffing plan or individual career decision.",
+    "This negotiator inspected source files and prior review records in a separate context, sharing the model family, tool environment and source set. Exact underlying model build and empirical independence were not established.",
+    "Reading the initial ledgers and disruptor is intentional for the negotiator role; this is not a fourth independent initial review.",
+    "Candidate-1 reconstructed copies are accepted only after independent equality with every original frozen SHA-256 value; their reconstruction does not establish undocumented prior execution or approval.",
+    "The inspected scope is the eight frozen package files plus the named authoring/review contracts and review records. Unlisted files, adapters and distribution bundles are not certified.",
+    "No source package was modified, no other worker's performance was graded, and no external action was taken. The adjudication record is this review's sole written artifact."
+  ],
+  "evidence_ids": [
+    "FR-1",
+    "FR-2",
+    "RECON",
+    "WF-SKILL",
+    "WF-REF",
+    "WF-EVAL",
+    "WF-DISC",
+    "CA-SKILL",
+    "CA-REF",
+    "CA-EVAL",
+    "CA-DISC",
+    "AUTHORING",
+    "REVIEW-CONTRACT",
+    "ROLE-CONTRACT",
+    "IR-E",
+    "IR-O",
+    "IR-S",
+    "IR-D"
+  ],
+  "notes": "Stop condition reached: the narrow criteria have been assessed, both consequential correction requests are resolved at source/design level, and material runtime/outcome limits remain explicit. Further testing belongs to the separate gates or to a broader future claim.",
+  "source_register": {
+    "FR-1": {
+      "path": "review-workspace/review-freeze.json",
+      "observed_sha256": "a2039ed35252981671111d838d881893c772ce760cf580d40a7697504ac57bcd"
+    },
+    "FR-2": {
+      "path": "review-workspace/review-freeze-final.json",
+      "observed_sha256": "29f27c13755a206c76dca2ca5ae2d87eecfad32fd577e5d93a6915fa3125fcdc"
+    },
+    "RECON": {
+      "path": "review-workspace/candidate-1-reconstructed",
+      "provenance": "Integrator-created inverse-patch reconstruction; independently hash-verified against the original freeze before diffing."
+    },
+    "WF-SKILL": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
+      "location": "metadata; Scope, input and authority; Procedure; Output contract; Review and distribution",
+      "observed_sha256": "53f303c50e55df13e283161cc24fdff60ab019272d0ed1a62ce9c85a1bf57791"
+    },
+    "WF-REF": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/references/gate-record.md",
+      "location": "Minimal example; Decision precedence",
+      "observed_sha256": "9a7c8f5c3395a0763e0ec69b05fde620c28f2176edf19a2b6ac953404dcb87d4"
+    },
+    "WF-EVAL": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/evals.json",
+      "location": "metadata; adversarial-privacy; injection-without-proposal; all seven cases",
+      "observed_sha256": "d825b861e33b8b9f2d6a49b1c3389c6b00291264b99786a123e1d24e7a4e4063"
+    },
+    "WF-DISC": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/discovery.json",
+      "location": "metadata and twenty cases",
+      "observed_sha256": "c7fa0f7afacbdea757d6bdf5d32b8e008b941f89cb4429ff86e1891f52e61b06"
+    },
+    "CA-SKILL": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md",
+      "location": "metadata; Scope, inputs and boundary; Method; Output; Adjudication",
+      "observed_sha256": "c1dacdbcc30f898bab03c88fa34645ddc8673b00c6b8fdfcb639f2d779b6cc8b"
+    },
+    "CA-REF": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/references/scenario-contract.md",
+      "location": "Claim tiers; Forecast safeguards; Recommendation disposition",
+      "observed_sha256": "cde04ea0f48d639f621a0ecfc31f2182cb01dc51ab352932ea1765380e2e4896"
+    },
+    "CA-EVAL": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/evals.json",
+      "location": "metadata; stale-employment; all six cases",
+      "observed_sha256": "3df3c6aea45e5a1403abec6ab275f111a01bd0f7c02784bb4eef9f1920e12cbd"
+    },
+    "CA-DISC": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/discovery.json",
+      "location": "metadata and twenty cases",
+      "observed_sha256": "8ef6a55e036ea56d12697db4a7cf699c180b35caa0404aa95af2d45556cd7502"
+    },
+    "AUTHORING": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-foundry/SKILL.md",
+      "location": "Operating contract; Phase 0; Phases 3-5; Release gate",
+      "observed_sha256": "38337b1cdd7f6377efdc7fbf060bd3c7665b924690d1151a702160612f3a6674"
+    },
+    "REVIEW-CONTRACT": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-equilibrium-review/SKILL.md",
+      "location": "Contract; Role boundaries; Execution; Safety",
+      "observed_sha256": "de6417bd69476fe37e168c308192edb551e500e398ca56428fee00ea2c9c4ee2"
+    },
+    "ROLE-CONTRACT": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-equilibrium-review/references/role-prompts.md",
+      "location": "Shared role contract; Negotiator",
+      "observed_sha256": "ec70708b01f01abb6b408aa496c0c3132512a41451238879b0268c9f264a7416"
+    },
+    "IR-E": {
+      "path": "review-workspace/review-results/evidence.json",
+      "location": "material_findings and release_conditions",
+      "observed_sha256": "cedcfff2e15fbfce423b511b1cafa4342f40d3928ed098a652a5c39ef97e99f2"
+    },
+    "IR-O": {
+      "path": "review-workspace/review-results/outcome.json",
+      "location": "material_findings and release_conditions",
+      "observed_sha256": "2c612ce4a4cd34a8e30b881c6a51ac4aab4f3189bcdb0f6307a314f9571dc980"
+    },
+    "IR-S": {
+      "path": "review-workspace/review-results/safety.json",
+      "location": "material_findings and release_conditions",
+      "observed_sha256": "d6d30b87d0a83d4d38c056d2f956ff1af6bb2e935f3f26700d026b169c75b37c"
+    },
+    "IR-D": {
+      "path": "review-workspace/review-results/disruptor.json",
+      "location": "D-01, D-02 and counterexamples",
+      "observed_sha256": "c927d2d1ee766ad4981047e5b500016ee455f3057e3d1f4e30f2c4966237e7d4"
+    }
+  },
+  "observed_checks": {
+    "verified_at_utc": "2026-11-18T04:52:33.319831+00:00",
+    "package_checks": [
+      {
+        "package": "okhp3-ai-workforce-bench-gate",
+        "version": "0.2.0",
+        "current_sha256_by_file": {
+          "SKILL.md": "53f303c50e55df13e283161cc24fdff60ab019272d0ed1a62ce9c85a1bf57791",
+          "references/gate-record.md": "9a7c8f5c3395a0763e0ec69b05fde620c28f2176edf19a2b6ac953404dcb87d4",
+          "evals/discovery.json": "c7fa0f7afacbdea757d6bdf5d32b8e008b941f89cb4429ff86e1891f52e61b06",
+          "evals/evals.json": "d825b861e33b8b9f2d6a49b1c3389c6b00291264b99786a123e1d24e7a4e4063"
+        },
+        "candidate_1_content_hash": "32165c2b8854a56e1ee7e6b0e1eac38d11bbc9b7ad4a6744193036e1a2011829",
+        "candidate_2_content_hash": "469887e4a4347883a360a6cf18af4112020a79a698acbf1c9b601050c21dfbd1",
+        "all_initial_reconstructed_and_final_hashes_match": true,
+        "changed_files": [
+          "evals/evals.json"
+        ],
+        "development_case_count": 7,
+        "discovery_case_count": 20,
+        "development_status": "design-ready",
+        "discovery_status": "not-run"
+      },
+      {
+        "package": "okhp3-career-ai-resilience",
+        "version": "0.2.0",
+        "current_sha256_by_file": {
+          "SKILL.md": "c1dacdbcc30f898bab03c88fa34645ddc8673b00c6b8fdfcb639f2d779b6cc8b",
+          "references/scenario-contract.md": "cde04ea0f48d639f621a0ecfc31f2182cb01dc51ab352932ea1765380e2e4896",
+          "evals/discovery.json": "8ef6a55e036ea56d12697db4a7cf699c180b35caa0404aa95af2d45556cd7502",
+          "evals/evals.json": "3df3c6aea45e5a1403abec6ab275f111a01bd0f7c02784bb4eef9f1920e12cbd"
+        },
+        "candidate_1_content_hash": "655434e2ea206177b8253417f60b38478b0b705967660158e3db6957cb1c7e2d",
+        "candidate_2_content_hash": "4a4589c27c7303027b8f4aeb4e954ef732636d05111ffe613670ea5dd2ddd271",
+        "all_initial_reconstructed_and_final_hashes_match": true,
+        "changed_files": [
+          "SKILL.md",
+          "references/scenario-contract.md",
+          "evals/evals.json"
+        ],
+        "development_case_count": 6,
+        "discovery_case_count": 20,
+        "development_status": "design-ready",
+        "discovery_status": "not-run"
+      }
+    ],
+    "aggregate_hash_algorithm": "SHA256 over UTF-8 of Python json.dumps(sha256_by_file, sort_keys=True) with default separators; this formula independently reproduced all four manifest aggregate values from verified file hashes.",
+    "verification_type": "Local deterministic integrity/count checks and source-semantic review, not a model-behavior run.",
+    "runtime_installation_ci_holdout": "not-run-by-this-review"
+  }
+}

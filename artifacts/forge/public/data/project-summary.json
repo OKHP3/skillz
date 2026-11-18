@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-11-09T15:48:30.263Z",
+  "generatedAt": "2026-11-10T13:40:39.376Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/voice-research-knowledge-skills",
-  "sourceCommit": "ca5c0724",
-  "skillCount": 345,
+  "sourceRef": "codex/linkedin-series-continuity-20261110",
+  "sourceCommit": "74fd9446",
+  "skillCount": 356,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 276,
-    "skeleton": 64,
+    "draftable": 286,
+    "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 172,
+    "not-run": 181,
     "none": 109,
-    "analytical": 10,
+    "analytical": 12,
     "local-checks": 39,
     "live": 8
   },

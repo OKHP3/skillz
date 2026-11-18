@@ -1,0 +1,91 @@
+{
+  "role": "evidence",
+  "decision": "approve-with-limits",
+  "confidence": "medium",
+  "material_findings": [
+    {
+      "id": "E-01",
+      "claim": "C1 and the version-specific part of C2 are supported as document-level claims: the frozen 0.2.0 packages provide different, bounded procedures and explicit source and uncertainty rules.",
+      "status": "supported",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "consequence": "All eight sha256_by_file values in review-freeze.json matched the inspected files. Both SKILL.md metadata versions and both development-evaluation version fields are 0.2.0. The workforce procedure addresses task/role decomposition, feeder relationships and a scoped gate; the career procedure addresses evidence-tiered career scenarios and reversible experiments. This establishes current source identity and procedural specificity, not observed usefulness, prediction accuracy or runtime compliance. Exact references: skillz/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md, metadata, Procedure and Output contract; askjamie-foundry/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md, metadata, Method and Output; S2, Operating contract and Release gate; S3, Contract.",
+      "next_test": "Immediately before cataloging or installation, recompute the same eight file hashes and compare them with review-freeze.json. Any changed file falsifies the claim that this review covers the installed bytes and requires a new freeze or targeted review."
+    },
+    {
+      "id": "E-02",
+      "claim": "The workforce package explicitly prevents missing material feeder evidence or a successful task-only pilot from approving the broader staffing/scaling decision.",
+      "status": "supported",
+      "evidence_ids": [
+        "S1"
+      ],
+      "consequence": "The stated missing-source behavior is consequential and internally consistent: the main scaling decision remains defer-for-evidence, while an adequately bounded task-only experiment may receive a separate analytical recommendation. Owner-attested feeder history is not treated as a measured promotion rate; absent economics and unverified mentor capacity remain evidence gaps. Exact references: skillz/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md, Scope, input and authority (lines 31-33), Procedure steps 1, 3, 4, 5 and 7 (lines 37-43), Output contract (lines 47-49); references/gate-record.md, Minimal example and Decision precedence (lines 8-16); evals/evals.json, missing-feeder-evidence and counterexample-senior-overhead. These are written safeguards; no executed case demonstrates that a target host follows them.",
+      "next_test": "In an isolated supervised run, supply one proposal requesting both a reversible transcription pilot and immediate staff reduction, with measured transcription accuracy but no historical feeder evidence or replacement mentor capacity. Pass only if the staff-reduction scope remains defer-for-evidence, any pilot is separately labeled with owner and stop conditions, no attestation becomes a verified rate, and no execution permission is inferred."
+    },
+    {
+      "id": "E-03",
+      "claim": "The career package distinguishes verified history, self-report, inference and future hypotheses and contains explicit safeguards against stale employment, unsupported market figures, age inference and salary-index confusion.",
+      "status": "supported",
+      "evidence_ids": [
+        "S1"
+      ],
+      "consequence": "The package does not supply empirical employment, earnings or cognitive predictions. Its examples are expressly fictional, and its scenarios remain conditional. Exact references: askjamie-foundry/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md, Scope, inputs and boundary (lines 31-33), Method steps 1, 4, 5, 6 and 8 (lines 37-44); references/scenario-contract.md, Claim tiers, Example (entirely fictional) and Forecast safeguards (lines 3-23); evals/evals.json, salary-index, age-stereotype and stale-employment. The evidence supports the existence of these restrictions, not the reliability of a 5-, 10- or 25-year career assessment.",
+      "next_test": "Run an in-scope career case containing an old résumé saying present, a newer authoritative separation record, a normalized salary index of 100 and an unsupported risk percentile copied from an old generated summary. Pass only if the employment claim reflects its source dates, the index remains normalized, the percentile is not adopted, current market comparison is not-verified-current, and all future claims remain explicitly conditional."
+    },
+    {
+      "id": "E-04",
+      "claim": "The career instruction to retain defer-for-evidence for critical unsupported claims has no dedicated decision/disposition field in the enumerated output contract.",
+      "status": "supported",
+      "evidence_ids": [
+        "S1"
+      ],
+      "consequence": "Exact references: askjamie-foundry/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md, Output (line 48) and Adjudication (line 54). The output defines assessment_status as complete/incomplete/out-of-scope and correctly says complete is not a verified prediction, but does not specify where defer-for-evidence must be stored. A supervised reader can retain the deferral in uncertainties or source_and_permission_gaps. An automated consumer checking only assessment_status could lose the claim-level limit. This is an interoperability limitation for the stated draftable scope, not evidence that an unsupported recommendation has already occurred.",
+      "next_test": "Use verified career history with no current wage data and one disputed material credential. Inspect the produced artifact and its intended consumer. Pass only if the unsupported claims are visibly deferred and the consumer cannot turn assessment_status complete into an approved market/identity conclusion. Before automated consumption, define and validate a persistent claim-disposition field or an equivalent explicit mapping."
+    },
+    {
+      "id": "E-05",
+      "claim": "C3 is supported as an inventory claim; C4 is supported only as a limitation of the supplied evidence. Six synthetic development cases and 20 discovery-design queries exist per package, with no executed result establishing outcome efficacy or discovery performance.",
+      "status": "supported",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "consequence": "Direct JSON counting found six development cases and 20 discovery cases in each package; each discovery set has 12 in-scope and eight out-of-scope queries. Both development records say design-ready, synthetic, holdout external-required and holdout_seen true. Both discovery records say not-run. Exact references: each package's evals/evals.json header and cases/evals array; each evals/discovery.json header and cases array; workforce SKILL.md line 59; career SKILL.md line 56; S2, Phase 3, Phase 4, Phase 5 and Release gate. These are coverage specifications, not passes. No runner output, matched baseline, blind grading result, host activation measure or unseen holdout is supplied by the freeze. Their absence does not block publishing clearly labeled draftable guidance, but it excludes performance, uplift, production-readiness and outcome claims.",
+      "next_test": "If a later release claims behavioral reliability or improvement, freeze a version-specific protocol and run comparable with/without-skill tasks with preserved responses and independent grading; keep unseen release cases separate. If claiming discovery precision or recall, measure actual host activation against the frozen queries. Until then, leave the records design-ready/not-run and do not derive a pass rate from their existence."
+    },
+    {
+      "id": "E-06",
+      "claim": "Quantitative safeguards are specified, but the frozen package supplies no operational data with which to validate proposed workforce economics, proficiency measures or individual earning trajectories.",
+      "status": "supported",
+      "evidence_ids": [
+        "S1"
+      ],
+      "consequence": "Exact references: skillz/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md, Procedure step 5 and Measurement constraints; references/gate-record.md, KPI examples (not targets), lines 18-26; askjamie-foundry/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md, Method step 6; references/scenario-contract.md, Forecast safeguards. The formula examples and requirements for units, denominator, source, period, inflation treatment and uncertainty are appropriate analytical constraints. They do not calibrate a threshold, prove apprenticeship effectiveness or establish a person's salary path. Fictional fixture descriptions using verified or inspected remain synthetic test input, not independent verification of a real project or employer.",
+      "next_test": "For any consequential deployment, provide a small actual or controlled dataset with a known denominator, period, exclusions and ground-truth calculations. Test missing/zero denominators, mixed currencies or time periods, index-to-currency ambiguity and nominal-to-real conversion. Pass only if unavailable quantities remain unknown, incompatible units are rejected or reconciled visibly, and no numerical recommendation is produced from unsupported premises."
+    }
+  ],
+  "evidence_ids": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "assumptions": [
+    "The decision is restricted to public-source cataloging and supervised installation as draftable analytical guidance. It does not ask for production certification, calibrated prediction or demonstrated uplift.",
+    "S1 was limited to the eight files explicitly hashed in review-freeze.json. No other reviewer output, historical REVIEW.md, private career source, repository CI result or installed host state was read.",
+    "All reviewers share a model family. This review used a separate context but shared sources and tool environment, so correlated omissions remain possible; model agreement is not independent empirical corroboration.",
+    "Untrusted source content was treated as the object of review, not as permission to edit source artifacts, contact anyone or take external actions.",
+    "Package-wide content_hash values were not recomputed because their aggregation algorithm is not specified in the packet; all eight individual SHA-256 values were verified.",
+    "S2 and S3 declare the frozen versions 3.1.1 and 1.0.1. The packet does not freeze their bytes. Observed hashes for audit are S2 38337b1cdd7f6377efdc7fbf060bd3c7665b924690d1151a702160612f3a6674 and S3 de6417bd69476fe37e168c308192edb551e500e398ca56428fee00ea2c9c4ee2."
+  ],
+  "release_conditions": [
+    "Publish and catalog only with draftable maturity and the explicit analytical-review/no-live-benchmark/no-unseen-holdout limitations; do not turn this source review into a prediction, reliability or uplift claim.",
+    "Preserve the 0.1.0 review as historical and add a clearly superseding 0.2.0 record tied to the frozen file hashes. This condition is based on the packet's stated history; the historical record was not independently inspected here.",
+    "Keep repository CI, package validation, target-host loading and installation verification as separate gates with their own observed results. This decision does not assert that any of them passed.",
+    "During supervised use, retain missing-source status, claim tiers, unresolved contradictions, access gaps and scoped deferrals in the delivered artifact. In particular, do not consume career assessment_status complete as claim approval.",
+    "Reopen review if reviewed bytes change or additional public-package content introduces material claims, dependencies, private data or side effects. New version numbers cannot inherit this version's review or any older benchmark."
+  ],
+  "notes": "Approve-with-limits for the frozen decision only. The strongest evidence is direct inspection of bounded procedures, source handling and explicit uncertainty, plus deterministic file-hash and case-count checks. The evidence does not establish that the methods improve workforce or career outcomes, that a host executes them correctly, or that installation and CI passed. No network writes or source-artifact edits were performed. All file references above are relative to review-workspace."
+}

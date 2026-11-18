@@ -1,5 +1,77 @@
 # Changelog
 
+## 2026-11-17: AI workforce bench gate
+
+- Add draftable 0.2.0 guidance for assessing the learning and succession effects
+  of AI workforce redesign, with explicit task, feeder-evidence, mentoring,
+  economics and decision-scope contracts.
+- Preserve the historical 0.1.0 review and record independent source review,
+  adversarial findings, corrections and a single matched synthetic exercise.
+  The exercise is descriptive evidence, not an uplift or production claim.
+- Include seven development cases and 20 discovery design queries; refresh
+  the catalog to 357 distribution skills across 22 families.
+
+## 2026-11-10: Record location reconciliation field observation
+
+- Record a read-only field check for v0.1.0 covering folder placement, version
+  preservation, and reference resolution. The public summary records the
+  snapshot limitation and keeps the observation separate from graded benchmarks.
+
+## 2026-11-10: LinkedIn series continuity
+
+- Add a draft-only, source-backed series-continuity skill with separate prior
+  publication-state, evidence and disclosure checks.
+- Add a neutral worked example and development evaluation design. No live
+  behavioral benchmark, unseen holdout, or measured uplift is claimed.
+- Refresh the distribution catalog for 356 skills across 22 families.
+
+## 2026-11-09: Idea labels, success reconstruction, and context transfer
+
+- Add three draftable 0.1.0 contracts: conversational idea labeling without
+  forced development, evidence-led one-off reconstruction with proposed tests,
+  and staged context transfer with an actual receiver read-back.
+- Keep storage, experiments, archival preservation, and historical permissions
+  distinct from each contract's output. Use generic examples and runtime
+  domains; private source material is excluded.
+- Include version-matched development designs and an independent analytical
+  Equilibrium Review. Live quality, uplift, discovery, host integration, and
+  unseen holdout remain untested. No release-tagged maturity is claimed.
+- Refresh distribution inventory to 355 skills across 22 families.
+
+## 2026-11-09: Interview preparation source packages
+
+- Add exact AskJamie Resume Representative mirrors for Interview Evidence Map
+  and Interview Questions, with 15 synthetic development cases and versioned
+  equilibrium review. Keep canonical ownership in AskJamie Foundry and record
+  complete file hashes in `docs/interview-skills-sync-2026-11-09.json`.
+- Treat public-work selection and platform transfer as evidence-map branches;
+  compose with existing social drafting skills when explicitly requested.
+- Refresh catalogs to 352 skills across 22 active families. These two packages
+  are draftable source with analytical review; behavioral evaluations, automatic
+  activation, measured uplift and an unseen holdout remain not run.
+
+## 2026-11-09: Career reference and coaching skill mirrors
+
+- Catalog three 0.2.0 AskJamie source candidates: lifetime career reference,
+  role master resumes and coaching engagement. Preserve exact canonical core
+  hashes and the existing source-intake/career-canon boundary.
+- Include independent analytical review, synthetic development/discovery cases
+  and explicit save/retry/privacy guards. No live benchmark, unseen holdout
+  or native-host acceptance is claimed.
+
+## 2026-11-09: Professional portrait and guided still capture
+
+- Add draftable `okhp3-professional-headshot` and `okhp3-guided-photo-session`
+  0.1.0, with explicit reference roles, bounded live capture, partial-result and
+  delivery contracts, and a conditional historical Camo adapter.
+- Keep media handoff as a supporting contract. Route existing-record audits to
+  the existing reconciliation skill without implying copy-delete authority.
+- Include 16 synthetic development cases, 40 planned discovery queries, frozen
+  core hashes and analytical Equilibrium Review. No live benchmark, image-quality
+  measurement, trigger measurement or protected holdout is claimed.
+- Link from Social Posting and refresh the distribution to 347 skills in 22
+  active families. Resume Representative consumes a pinned canonical reference.
+
 ## 2026-11-09: Voice and research file renewal candidates
 
 - Add two draftable knowledge-operations skills for authorship-aware voice and
@@ -72,6 +144,16 @@
   stays `not-run` and no validated claim is made.
 - Refresh the distribution catalogs and manifest to 338 skills across 22 active
   families.
+
+## 2026-11-09 Session Handoff 0.3.0
+
+- Add an opt-in exact-thread closeout profile. Bind observations to the required
+  surface and revision, preserve dated corrections, verify the receipt and
+  separate work completion from an exact archive outcome.
+- Retain ordinary handoff behavior. Synchronize the distribution package and
+  repository-local support copy. Add eleven synthetic development cases and
+  record an [analytical review](closeouts/session-handoff-0.3.0-review.json).
+  Live runs and a protected holdout remain open.
 
 ## 2026-10-25: explicit Notion destination roots
 
