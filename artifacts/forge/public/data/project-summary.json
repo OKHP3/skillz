@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-11-10T13:40:39.376Z",
+  "generatedAt": "2026-11-18T05:11:05.046Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/linkedin-series-continuity-20261110",
-  "sourceCommit": "74fd9446",
-  "skillCount": 356,
+  "sourceRef": "main",
+  "sourceCommit": "33a2d07d",
+  "skillCount": 357,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 286,
+    "draftable": 287,
     "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 181,
+    "not-run": 182,
     "none": 109,
     "analytical": 12,
     "local-checks": 39,

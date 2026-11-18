@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 356,
+  "distributionSkillCount": 357,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 286,
+    "draftable": 287,
     "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 181,
+    "not-run": 182,
     "none": 109,
     "analytical": 12,
     "local-checks": 39,
@@ -360,6 +360,7 @@
       "name": "process-capture",
       "status": "draftable",
       "skills": [
+        "okhp3-ai-workforce-bench-gate",
         "okhp3-as-is-process-capture",
         "okhp3-decision-model-authoring",
         "okhp3-elicitation-interviews",
@@ -540,6 +541,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-10T13:40:39.376Z",
+  "countsGeneratedAt": "2026-11-18T05:11:05.046Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
