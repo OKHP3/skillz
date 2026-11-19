@@ -1,0 +1,115 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"ui-sans-serif, system-ui, sans-serif"}}}%%
+flowchart TD
+
+    subgraph T0["Tier 0 · Foundation"]
+        CORE["core"]
+        IDR["identity-resolution<br/><i>dep-loaded</i>"]
+        LIM["limits-and-retry<br/><i>dep-loaded</i>"]
+    end
+
+    subgraph T1["Tier 1 · Object domain"]
+        BLK["block-composition<br/><i>dep-loaded</i>"]
+        PR["page-read"]
+        PW["page-write"]
+        SRCH["search-strategy"]
+        QRY["query"]
+        RW["row-write"]
+        VW["view-builder"]
+        FIL["files-and-media"]
+        DEL["destructive-ops<br/>ONLY DELETE AUTHORITY"]
+    end
+
+    subgraph T2["Tier 2 · Schema and data engineering"]
+        PTM["property-type-mapping<br/><i>dep-loaded</i>"]
+        INF["schema-inference"]
+        DBD["database-design"]
+        SCM["schema-migration"]
+        BULK["bulk-data-ops"]
+    end
+
+    subgraph T3["Tier 3 · Flow"]
+        CAP["capture-router<br/><i>existing, refactor</i>"]
+        EGR["egress"]
+        SYN["sync-contract"]
+    end
+
+    subgraph T4["Tier 4 · Counterpart bridges"]
+        BGH["bridge-github"]
+        BCD["bridge-code-and-docs"]
+        BSS["bridge-spreadsheets"]
+        BM365["bridge-microsoft-365"]
+        BCAL["bridge-calendar-and-tasks"]
+    end
+
+    subgraph T5["Tier 5 · Governance"]
+        INV["workspace-inventory"]
+        HYG["hygiene-audit"]
+        PERM["permissions-audit"]
+    end
+
+    subgraph T6["Tier 6 · Instruction venue"]
+        AB["agent-boundary"]
+        SKB["skill-bridge"]
+    end
+
+    EXT["okhp3-skill-foundry<br/>okhp3-refolddec-core<br/><i>outside family</i>"]
+
+    CORE --> IDR & LIM & PTM
+    CORE --> T1
+    CORE --> AB
+    IDR --> PR & PW & QRY & RW & VW & DEL & INV
+    LIM --> PR & PW & QRY & RW & FIL & SRCH & BULK & INV
+    BLK --> PW & RW & EGR
+    PTM --> INF & DBD & SCM & RW
+
+    INF --> DBD
+    DBD --> SCM
+    QRY --> BULK
+    RW --> BULK
+
+    PW --> CAP
+    RW --> CAP
+    PR --> EGR
+    QRY --> EGR
+    QRY --> SYN
+    RW --> SYN
+    SCM --> SYN
+    BULK --> SYN
+
+    SYN --> BGH & BCD & BSS & BM365 & BCAL
+    RW --> BGH & BCAL
+    PW --> BCD & BM365
+    EGR --> BCD
+    FIL --> BM365
+    INF --> BSS
+    BULK --> BSS
+
+    SRCH --> INV
+    QRY --> INV
+    INV --> HYG & PERM
+    HYG -.->|"hands off removal"| DEL
+    HYG -.->|"hands off schema fix"| SCM
+    INV -.->|"blast radius"| DEL
+
+    PW --> SKB
+    EXT --> SKB
+
+    classDef tier0 fill:#1f3a5f,stroke:#8fb8de,color:#ffffff
+    classDef tier1 fill:#2c5f2d,stroke:#97bc62,color:#ffffff
+    classDef tier2 fill:#5f4a1f,stroke:#deca87,color:#ffffff
+    classDef tier3 fill:#5f3f1f,stroke:#deb887,color:#ffffff
+    classDef tier4 fill:#4a2c5f,stroke:#b98fde,color:#ffffff
+    classDef tier5 fill:#5f1f2c,stroke:#de8f9f,color:#ffffff
+    classDef tier6 fill:#1f5f5a,stroke:#8fded6,color:#ffffff
+    classDef outside fill:#3a3a3a,stroke:#9a9a9a,color:#ffffff
+    classDef danger fill:#7a1f1f,stroke:#ff9b9b,color:#ffffff
+
+    class CORE,IDR,LIM tier0
+    class BLK,PR,PW,SRCH,QRY,RW,VW,FIL tier1
+    class DEL danger
+    class PTM,INF,DBD,SCM,BULK tier2
+    class CAP,EGR,SYN tier3
+    class BGH,BCD,BSS,BM365,BCAL tier4
+    class INV,HYG,PERM tier5
+    class AB,SKB tier6
+    class EXT outside

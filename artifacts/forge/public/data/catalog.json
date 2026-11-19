@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-19T14:45:28.183Z",
+  "generatedAt": "2026-11-19T14:34:20.462Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "claude/okhp3-gpt-behavior-baseline",
-  "sourceCommit": "917b9180",
-  "skillCount": 357,
+  "sourceRef": "main",
+  "sourceCommit": "7d616345",
+  "skillCount": 356,
   "familyCount": 22,
   "families": [
     {
@@ -42,11 +42,10 @@
     {
       "name": "agent-foundry",
       "displayName": "Agent Foundry",
-      "skillCount": 4,
+      "skillCount": 3,
       "skills": [
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
-        "okhp3-gpt-behavior-baseline",
         "okhp3-gpt-skill-conversion-plan"
       ],
       "narrativeBody": "The agent-foundry family covers the creation, readiness assessment, and portability planning of AI agents across platform ecosystems. Its scope includes Custom GPTs, Gemini Gems, Copilot declarative agents, OpenClaw agents, and related agent runtimes.\n\nThe family keeps platform-specific behavior explicit while preserving reusable product definition, instruction architecture, knowledge design, tool configuration, evaluation, governance, and migration methods.",
@@ -68,7 +67,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-custom-gpt-readiness pairs with okhp3-custom-gpt-builder; okhp3-gpt-behavior-baseline pairs with okhp3-gpt-skill-conversion-plan",
+          "value": "okhp3-custom-gpt-readiness pairs with okhp3-custom-gpt-builder",
           "source": "generated"
         }
       }
@@ -1414,72 +1413,6 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
-      "name": "okhp3-gpt-behavior-baseline",
-      "displayName": "GPT Behavior Baseline",
-      "family": "agent-foundry",
-      "skillDir": "okhp3-gpt-behavior-baseline",
-      "path": "agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
-      "description": "Capture a Custom GPT's live configuration and run a scored behavior baseline (on-topic, off-topic, and adversarial probes) through the owner's ChatGPT session before migration, revision, or conversion. Use when a GPT must be preserved, compared across versions, or proven equivalent to a migrated plugin or converted Agent Skill.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "category": "universal",
-      "origin": "okhp3/skillz",
-      "author": "OverKill Hill P³",
-      "homepage": "https://overkillhill.com",
-      "maturity": "draftable",
-      "evidenceStatus": "not-run",
-      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
-      "status": null,
-      "tags": [],
-      "topics": [
-        "universal"
-      ],
-      "triggers": [],
-      "avoid": [],
-      "companions": [
-        "okhp3-gpt-skill-conversion-plan",
-        "okhp3-skill-foundry"
-      ],
-      "examples": [],
-      "inputs": [],
-      "outputs": [],
-      "tools": [],
-      "runtimes": [],
-      "boundaries": [],
-      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
-      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
-      "lastModified": "2026-10-30T21:07:14-05:00",
-      "commitSha": "d4d90af9",
-      "createdAt": "2026-10-30T18:24:51-05:00",
-      "packageMetadata": {
-        "author": "OverKill Hill P³",
-        "category": "universal",
-        "origin": "okhp3/skillz",
-        "homepage": "https://overkillhill.com",
-        "authorGithub": "https://github.com/OKHP3",
-        "inScope": "Read-only, page-only live configuration capture and scored behavior baselining of Custom GPTs the user owns or is authorized to test, before migration, revision, or conversion.",
-        "outOfScope": "Testing third-party GPTs, extracting other creators' prompts, editing or migrating GPTs, harmful-output probes, or using real personal data in probes.",
-        "publicArtifact": false
-      },
-      "evidence": {
-        "status": "not-run",
-        "evaluatedSkillVersion": "1.0.0",
-        "evalCount": 3,
-        "benchmarkCount": 0,
-        "testCount": 0,
-        "referenceCount": 0,
-        "scriptCount": 0,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
-        "blockers": [
-          "No executed evaluation exists for the current package version."
-        ]
-      },
-      "maturitySource": "fallback-structure",
-      "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
-    },
-    {
       "name": "okhp3-gpt-skill-conversion-plan",
       "displayName": "GPT Skill Conversion Plan",
       "family": "agent-foundry",
@@ -2302,7 +2235,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 2,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13349,7 +13282,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13415,7 +13348,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13480,7 +13413,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13546,7 +13479,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -13612,7 +13545,7 @@
         "benchmarkCount": 0,
         "testCount": 1,
         "referenceCount": 3,
-        "scriptCount": 2,
+        "scriptCount": 3,
         "lastEvidenceDate": "2026-10-23",
         "reviewDecision": "approve-with-limits",
         "blockers": [
@@ -14678,7 +14611,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -14746,7 +14679,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 4,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -14814,7 +14747,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 2,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -14880,7 +14813,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -15030,7 +14963,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -15095,7 +15028,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -15164,7 +15097,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -15189,8 +15122,8 @@
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -15242,17 +15175,17 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
@@ -15273,8 +15206,8 @@
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -15311,17 +15244,17 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
@@ -15342,8 +15275,8 @@
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -15380,17 +15313,17 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.1",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
@@ -15454,7 +15387,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
-        "scriptCount": 1,
+        "scriptCount": 2,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
@@ -24191,7 +24124,7 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 10,
-        "scriptCount": 7,
+        "scriptCount": 8,
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [

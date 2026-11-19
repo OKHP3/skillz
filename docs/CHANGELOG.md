@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-11-19: Notion CRUDq family closeout
+
+- Record the previously unlogged 2026-09-03 addition of ten Notion skills
+  (`core`, `identity-resolution`, `limits-and-retry`, `page-read`,
+  `page-write`, `search-strategy`, `query`, `row-write`, `destructive-ops`,
+  `agent-boundary`) and the tooling pass that gave each Notion skill, plus
+  `capture-router` 0.4.0, a stdlib-only `scripts/` helper with `--self-test`.
+- Add development evaluation designs for `row-write`, `query`, and
+  `page-write`. No live with-skill/without-skill run, unseen holdout, or
+  measured uplift is claimed; the equilibrium review is analytical and
+  single-context.
+- Add the ten skills to the `AGENTS.md` routing index and preserve the
+  research memo, dependency graph, and review record under
+  `docs/reviews/notion-crudq-family-2026-09/`.
+
 ## 2026-11-10: Record location reconciliation field observation
 
 - Record a read-only field check for v0.1.0 covering folder placement, version

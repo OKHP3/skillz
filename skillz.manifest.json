@@ -20,21 +20,21 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 357,
+  "distributionSkillCount": 356,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 55,
+  "projectLocalSupportSkillCount": 54,
   "maturityCounts": {
-    "draftable": 287,
+    "draftable": 286,
     "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 182,
+    "not-run": 184,
     "none": 109,
     "analytical": 12,
-    "local-checks": 39,
+    "local-checks": 36,
     "live": 8
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
@@ -55,7 +55,6 @@
       "skills": [
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
-        "okhp3-gpt-behavior-baseline",
         "okhp3-gpt-skill-conversion-plan"
       ]
     },
@@ -541,6 +540,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-19T14:39:29.325Z",
+  "countsGeneratedAt": "2026-11-19T14:34:20.462Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }
