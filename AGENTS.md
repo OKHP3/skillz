@@ -41,7 +41,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `lifetrkr/` | Celestial-data and daily-oracle skills |
 | `social-posting/` | Platform-specific drafting contracts for LinkedIn, Facebook, X/Twitter, Discord, YouTube, Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and Telegram |
 | `mermaid/` | Mermaid diagram authoring, governance, theming, publishing, updating, and repair |
-| `notion/` | Notion knowledge operations, conversation capture, and domain filing |
+| `notion/` | Notion CRUDq foundation (core, read, write, query, search, destructive ops, venue routing), conversation capture, and domain filing |
 | `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, reconciling, validating, and promoting information or exploratory work |
 | `language-mediation/` | Controlled transformations across languages, locales, specialist registers, and plain-language audiences |
 | `process-capture/` | Process-analysis and documentation pipeline plus the recurring-task capture skill |
@@ -152,6 +152,16 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | Skill | Trigger and loading rule |
 |---|---|
 | `okhp3-notion-capture-router` | Capture ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF, or pasted AI conversations into Notion structures, dedupe them, split extracts, and reconcile against OKHP3 GitHub. This is not generic note-taking. |
+| `okhp3-notion-core` | Load first for any Notion task: negotiate MCP, REST, or `ntn` surface, read the capability map, pin API `2025-09-03`, enforce database-to-data-source resolution, and classify errors. Performs no Notion operation itself. |
+| `okhp3-notion-identity-resolution` | Dependency-loaded only. Classify a Notion URL, UUID, `collection://`, `view://`, `discussion://`, or title into a typed ID before a sibling acts. |
+| `okhp3-notion-limits-and-retry` | Dependency-loaded only. Pacing, chunking, backoff, idempotency, and Free-workspace block-limit detection for multi-call sequences. |
+| `okhp3-notion-page-read` | Read page properties and body: block traversal, pagination, truncation recovery, faithful markdown. Not database rows. |
+| `okhp3-notion-page-write` | Create, append, targeted-replace, or restyle standalone pages. Pages with a database parent go to row-write; removal goes to destructive-ops. |
+| `okhp3-notion-search-strategy` | Find content by keyword or topic when its location is unknown; chooses workspace or AI search and gates plan-limited filters. |
+| `okhp3-notion-query` | Read rows from a known data source via view, rows, or SQL mode, with metering and rich-text fidelity caveats. Read-only. |
+| `okhp3-notion-row-write` | Schema-first create, update, or upsert of database rows. Stops on fields the schema lacks; not for bulk loads. |
+| `okhp3-notion-destructive-ops` | The only Notion skill authorized to archive, trash, restore, or delete, behind blast-radius estimation and explicit confirmation. |
+| `okhp3-notion-agent-boundary` | Decide whether a repeatable workflow belongs in the Notion Agent, a Custom Agent, a Notion Skill page, or a file-based Agent Skill. Decides only. |
 | `okhp3-notion-domain-filing` | File existing loose Notion originals beneath exact approved domain roots, including intentional top-level hubs, after expected-location and ancestry checks. Preserve source IDs and bodies; reconcile index entries and catalog links. Private maps cannot widen trusted roots; scheduling is a separate host capability. |
 | `okhp3-refolddec-core` | Explicitly transform an artifact between representations, such as idea to diagram, diagram to documentation, documentation to SKILL.md, or unfold/refold with semantic-loss tracking. Load the target domain skill alongside it. |
 
