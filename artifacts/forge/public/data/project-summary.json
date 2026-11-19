@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-19T14:39:29.325Z",
+  "generatedAt": "2026-11-19T14:45:28.183Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "claude/okhp3-gpt-behavior-baseline",
-  "sourceCommit": "7e90a719",
+  "sourceCommit": "917b9180",
   "skillCount": 357,
   "familyCount": 22,
   "maturityCounts": {
