@@ -1,0 +1,30 @@
+{
+  "scope": "Actual independent analytical source-review records; public copies normalize temporary source locations only. No decisions, findings or source hashes were changed. Original workspace bytes are identified by original_sha256; public copies have separate digests. These records do not prove CI, deployment or real outcomes.",
+  "records": [
+    {
+      "file": "evidence.json",
+      "original_sha256": "cedcfff2e15fbfce423b511b1cafa4342f40d3928ed098a652a5c39ef97e99f2",
+      "public_copy_sha256": "78e8352ab57c79f882c4384a0f64c0d0219b6f1b7c9553cb83084228706e5722"
+    },
+    {
+      "file": "outcome.json",
+      "original_sha256": "2c612ce4a4cd34a8e30b881c6a51ac4aab4f3189bcdb0f6307a314f9571dc980",
+      "public_copy_sha256": "549a3ad157aed3fe0a4095b4a194a54f57249692f01bb477f91c318ebb36298c"
+    },
+    {
+      "file": "safety.json",
+      "original_sha256": "d6d30b87d0a83d4d38c056d2f956ff1af6bb2e935f3f26700d026b169c75b37c",
+      "public_copy_sha256": "cec771069c2d3423c45fdb16a86b4d8115f9ad8b0db0731ce0aa0ff16a577298"
+    },
+    {
+      "file": "disruptor.json",
+      "original_sha256": "c927d2d1ee766ad4981047e5b500016ee455f3057e3d1f4e30f2c4966237e7d4",
+      "public_copy_sha256": "f07c7485225f0d97c45c0d2ccb2e76c555903da385c1d76a6f063b9a6b56ec3f"
+    },
+    {
+      "file": "adjudication.json",
+      "original_sha256": "73e31a5128ebf4484f1bc0f6609f75bf00634bfa625cef83121c53f25b0e2295",
+      "public_copy_sha256": "3fefb4a05bf0239331d6f499181c012c6e51abbb1e17f8ee1ac5a67dee754293"
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 ---
 family: process-capture
 display_name: Process Capture
-skill_count: 17
+skill_count: 18
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T23:36:36Z
+generated_at: 2026-11-18T05:10:36Z
 ---
 
 # process-capture
@@ -24,13 +24,14 @@ The process-capture pattern has earlier ancestry in PathScrib-R and Flowpilot Sc
 The family includes `okhp3-recurring-task-capture` as its meta-layer.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (17)
+## Skills (18)
 
 <!-- FAMILY_INVENTORY_START -->
-*17 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:36 UTC***
+*18 skills &nbsp;·&nbsp; inventory last updated: **November 18, 2026 at 05:10 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
+| [okhp3-ai-workforce-bench-gate](okhp3-ai-workforce-bench-gate/SKILL.md) | Review an AI automation or headcount-reduction proposal for hidden apprenticeship, succession and... | 0.2.0 |
 | [okhp3-as-is-process-capture](okhp3-as-is-process-capture/SKILL.md) | Capture and normalise a current-state process description into a structured as-is process YAML wi... | 0.2.0 |
 | [okhp3-decision-model-authoring](okhp3-decision-model-authoring/SKILL.md) | Author and validate decision models from PNS decision points using DMN-aligned rule tables. Use t... | 0.2.0 |
 | [okhp3-elicitation-interviews](okhp3-elicitation-interviews/SKILL.md) | Plan and facilitate structured elicitation sessions using BABOK v3 interview and workshop techniq... | 0.2.0 |

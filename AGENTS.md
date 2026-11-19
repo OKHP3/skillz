@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 356 distribution skills in 22 active families (catalog audit, 2026-11-09). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 357 distribution skills in 22 active families (catalog audit, 2026-11-17). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -59,7 +59,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 356-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 357-skill distribution inventory |
 
 ## Routing index
 
@@ -130,6 +130,7 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | Skill | Trigger |
 |---|---|
 | `okhp3-recurring-task-capture` | The user says they keep doing something, it is the second or third repetition, or asks to make a workflow into a skill. |
+| `okhp3-ai-workforce-bench-gate` | Review AI workforce redesign for feeder-role erosion and issue a Pipeline Preservation Test and Bench Strength Gate decision. |
 | `okhp3-success-reconstruction` | Reconstruct a successful one-off into an evidence ledger and proposed controlled re-strike protocol; no causal proof or autonomous experiment. |
 | `okhp3-process-intake-and-scope` | Document or scope a process from scratch, including boundaries, inputs, outputs, and business rules. |
 | `okhp3-as-is-process-capture` | Capture and normalize the current running process before redesign or gap analysis. |
@@ -470,7 +471,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 356 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 357 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.
@@ -478,7 +479,7 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-11-09
+Updated: 2026-11-17
 
 ### Author-omitted attribution links
 

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-10T13:40:39.376Z",
+  "generatedAt": "2026-11-18T05:11:05.046Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/linkedin-series-continuity-20261110",
-  "sourceCommit": "74fd9446",
-  "skillCount": 356,
+  "sourceRef": "main",
+  "sourceCommit": "33a2d07d",
+  "skillCount": 357,
   "familyCount": 22,
   "families": [
     {
@@ -688,8 +688,9 @@
     {
       "name": "process-capture",
       "displayName": "Process Capture",
-      "skillCount": 17,
+      "skillCount": 18,
       "skills": [
+        "okhp3-ai-workforce-bench-gate",
         "okhp3-as-is-process-capture",
         "okhp3-decision-model-authoring",
         "okhp3-elicitation-interviews",
@@ -716,16 +717,16 @@
         },
         "commonOutcomes": {
           "value": [
+            "workforce-governance",
             "process-analysis",
             "process-documentation",
             "process-improvement",
-            "process-governance",
-            "process-quality"
+            "process-governance"
           ],
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-as-is-process-capture",
+          "value": "okhp3-ai-workforce-bench-gate",
           "note": null,
           "source": "generated"
         },
@@ -12965,7 +12966,7 @@
         "lastEvidenceDate": "2026-11-09",
         "reviewDecision": null,
         "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
+          "A scoped read-only field observation is recorded separately. A graded live benchmark for the current version is still needed."
         ]
       },
       "maturitySource": "explicit-frontmatter",
@@ -16297,6 +16298,71 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-ai-workforce-bench-gate",
+      "displayName": "AI Workforce Bench Gate",
+      "family": "process-capture",
+      "skillDir": "okhp3-ai-workforce-bench-gate",
+      "path": "process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
+      "description": "Review an AI automation or headcount-reduction proposal for hidden apprenticeship, succession and future-capability risks. Use when replacing entry-level tasks, consolidating support roles or designing an AI-enabled workforce transition. Produces a task-role map, pipeline preservation test and bounded decision. Not an HR headcount approval or a prediction of jobs lost.",
+      "version": "0.2.0",
+      "license": "MIT",
+      "category": "workforce-governance",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "workforce-governance"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-equilibrium-review"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
+      "lastModified": "2026-11-17T23:09:11-06:00",
+      "commitSha": "33a2d07d",
+      "createdAt": "2026-11-09T16:58:00-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "workforce-governance",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Review of proposed AI workforce redesign, developmental pathways and evidence-backed governance gates.",
+        "outOfScope": "Autonomous layoffs, personnel selection, protected-trait inference, legal advice and invented workforce forecasts.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.2.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
