@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-10-31T02:07:46.003Z",
+  "generatedAt": "2026-11-19T14:39:29.325Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "claude/okhp3-gpt-behavior-baseline",
-  "sourceCommit": "d4d90af9",
-  "skillCount": 335,
+  "sourceCommit": "7e90a719",
+  "skillCount": 357,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 266,
-    "skeleton": 64,
+    "draftable": 287,
+    "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 166,
+    "not-run": 182,
     "none": 109,
+    "analytical": 12,
     "local-checks": 39,
-    "analytical": 7,
-    "live": 7
+    "live": 8
   },
   "capabilities": {
     "familyOrientationPages": true,

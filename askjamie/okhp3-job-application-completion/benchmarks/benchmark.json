@@ -1,0 +1,33 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "skill_name": "okhp3-job-application-completion",
+    "evaluated_skill_version": "0.2.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-11-09T00:00:00Z",
+    "runner": "Independent role review and synthetic decision-record exercise; no host integration",
+    "review_decision": "approve-with-limits",
+    "known_limitations": [
+      "Synthetic cases are development-visible and do not execute live host operations.",
+      "No automatic-activation or unseen release holdout result.",
+      "No general task-quality, production-readiness or skill-uplift claim."
+    ],
+    "blockers": [
+      "Live host integration remains untested.",
+      "Automatic activation and unseen release holdout remain untested."
+    ]
+  },
+  "core_file_hashes": {
+    "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+    "SKILL.md": "f3156040e6384729a80e1e7ec705bff79dabcf88f6f1c5a3f051c5367fcf6b69",
+    "evals/evals.json": "bdb8ab1ea2d3b3b5333e76559fca44715702dded3e150c02f2f71129fcd8b339",
+    "evals/trigger-cases.json": "72c16d6a8f1062c3b542c5eaa56950d53adab228edee6779155279621d1befda",
+    "references/application-record.md": "432460ca8e242feb01ec0c1bb5876057f32df42f057e1a3f599d02326ac4b217"
+  },
+  "runs": [],
+  "notes": [
+    "Synthetic executor outputs and exact expectation grades are preserved separately under evals; this aggregate is analytical only.",
+    "Source conversation is a private historical design input, not validation of this new package.",
+    "Fresh negotiator approved only draftable source-candidate publication, subject to actual final repository checks and published-hash verification."
+  ]
+}

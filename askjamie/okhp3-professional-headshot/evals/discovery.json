@@ -1,0 +1,88 @@
+{
+  "skill_name": "okhp3-professional-headshot",
+  "skill_version": "0.1.0",
+  "status": "not-run",
+  "method": "Twenty author-visible trigger queries for a future isolated discovery evaluation. Expected route is design intent, not measured precision or recall.",
+  "queries": [
+    {
+      "query": "Make a LinkedIn headshot from these selfies",
+      "expected": "activate"
+    },
+    {
+      "query": "Refine my professional portrait, keeping my glasses",
+      "expected": "activate"
+    },
+    {
+      "query": "Use this exact smile in the current headshot",
+      "expected": "activate"
+    },
+    {
+      "query": "Make the background neutral but preserve my face",
+      "expected": "activate"
+    },
+    {
+      "query": "Create a realistic portfolio headshot from recent photos",
+      "expected": "activate"
+    },
+    {
+      "query": "Help choose current likeness reference photos",
+      "expected": "activate"
+    },
+    {
+      "query": "Keep the polo in my new business portrait",
+      "expected": "activate"
+    },
+    {
+      "query": "Review this generated headshot for likeness defects",
+      "expected": "activate"
+    },
+    {
+      "query": "Make v2 with the same framing and warmer expression",
+      "expected": "activate"
+    },
+    {
+      "query": "Deliver both professional portrait versions",
+      "expected": "activate"
+    },
+    {
+      "query": "Write a LinkedIn post",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Update my résumé work history",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Take ten new camera stills",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Record a webcam interview",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Search all my private photos without scope",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Publish my photo to LinkedIn",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Design a fantasy character",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Identify strangers in a crowd photo",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Move and delete my existing photo archive",
+      "expected": "do-not-activate-as-primary"
+    },
+    {
+      "query": "Summarize the camera manual",
+      "expected": "do-not-activate-as-primary"
+    }
+  ]
+}

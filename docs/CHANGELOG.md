@@ -1,5 +1,149 @@
 # Changelog
 
+## 2026-11-10: Record location reconciliation field observation
+
+- Record a read-only field check for v0.1.0 covering folder placement, version
+  preservation, and reference resolution. The public summary records the
+  snapshot limitation and keeps the observation separate from graded benchmarks.
+
+## 2026-11-10: LinkedIn series continuity
+
+- Add a draft-only, source-backed series-continuity skill with separate prior
+  publication-state, evidence and disclosure checks.
+- Add a neutral worked example and development evaluation design. No live
+  behavioral benchmark, unseen holdout, or measured uplift is claimed.
+- Refresh the distribution catalog for 356 skills across 22 families.
+
+## 2026-11-09: Idea labels, success reconstruction, and context transfer
+
+- Add three draftable 0.1.0 contracts: conversational idea labeling without
+  forced development, evidence-led one-off reconstruction with proposed tests,
+  and staged context transfer with an actual receiver read-back.
+- Keep storage, experiments, archival preservation, and historical permissions
+  distinct from each contract's output. Use generic examples and runtime
+  domains; private source material is excluded.
+- Include version-matched development designs and an independent analytical
+  Equilibrium Review. Live quality, uplift, discovery, host integration, and
+  unseen holdout remain untested. No release-tagged maturity is claimed.
+- Refresh distribution inventory to 355 skills across 22 families.
+
+## 2026-11-09: Interview preparation source packages
+
+- Add exact AskJamie Resume Representative mirrors for Interview Evidence Map
+  and Interview Questions, with 15 synthetic development cases and versioned
+  equilibrium review. Keep canonical ownership in AskJamie Foundry and record
+  complete file hashes in `docs/interview-skills-sync-2026-11-09.json`.
+- Treat public-work selection and platform transfer as evidence-map branches;
+  compose with existing social drafting skills when explicitly requested.
+- Refresh catalogs to 352 skills across 22 active families. These two packages
+  are draftable source with analytical review; behavioral evaluations, automatic
+  activation, measured uplift and an unseen holdout remain not run.
+
+## 2026-11-09: Career reference and coaching skill mirrors
+
+- Catalog three 0.2.0 AskJamie source candidates: lifetime career reference,
+  role master resumes and coaching engagement. Preserve exact canonical core
+  hashes and the existing source-intake/career-canon boundary.
+- Include independent analytical review, synthetic development/discovery cases
+  and explicit save/retry/privacy guards. No live benchmark, unseen holdout
+  or native-host acceptance is claimed.
+
+## 2026-11-09: Professional portrait and guided still capture
+
+- Add draftable `okhp3-professional-headshot` and `okhp3-guided-photo-session`
+  0.1.0, with explicit reference roles, bounded live capture, partial-result and
+  delivery contracts, and a conditional historical Camo adapter.
+- Keep media handoff as a supporting contract. Route existing-record audits to
+  the existing reconciliation skill without implying copy-delete authority.
+- Include 16 synthetic development cases, 40 planned discovery queries, frozen
+  core hashes and analytical Equilibrium Review. No live benchmark, image-quality
+  measurement, trigger measurement or protected holdout is claimed.
+- Link from Social Posting and refresh the distribution to 347 skills in 22
+  active families. Resume Representative consumes a pinned canonical reference.
+
+## 2026-11-09: Voice and research file renewal candidates
+
+- Add two draftable knowledge-operations skills for authorship-aware voice and
+  glossary renewal and for source-to-revision research updates. Their exposed
+  cases are development designs; live benchmarks, host retrieval tests, and an
+  unseen holdout are not established.
+
+## 2026-11-09: Interrupted-work and application completion candidates
+
+- Add task resumption and an exact AskJamie job-application-completion mirror.
+- Preserve original-thread continuity, exact application identity, approved materials,
+  safe retries and single-owner external actions in portable contracts.
+- Include synthetic development cases, bounded equilibrium review and core hash records.
+  No live host integration, unseen holdout or production-readiness claim is made.
+
+## 2026-11-09: LinkedIn message 1.1.0
+
+- Merge PR #222 into `okhp3-linkedin-message` from PR #220 as 1.1.0. Keep the
+  1.0.0 role tier, length matching, one-ask rule, recruiter and scam
+  verification, and message gate. Add relationship temperature (`active`,
+  `dormant`, `distant`, `cold`), recipient-fact sourcing with a stale-source
+  flag, a recipient-conflict check, attachments by temperature, and
+  multi-recipient sequencing with true-on-arrival and forwarding checks.
+  Extend the gate with clinical-metaphor and traveling-urgency items and add
+  six development cases (eleven total).
+- Evidence remains analytical and not-run. The merged package has not been
+  re-reviewed by independent roles.
+
+## 2026-11-09: Record location reconciliation
+
+- Add a draftable Knowledge Operations skill for auditing record locations,
+  preserving versions during authorized moves, and verifying affected references.
+- Include a relocation record, 13 synthetic development cases, and an analytical
+  Equilibrium Review. Live host benchmarking and a protected holdout remain open.
+- Refresh the distribution inventory to 341 skills across 22 active families.
+
+
+## 2026-11-09: follow-up and activity reconciliation
+
+- Add `okhp3-activity-reconciliation` 0.1.0 to Knowledge Operations for
+  scoped response-candidate review and bounded activity-log refresh.
+- Include exact event matching, guarded tracker updates, optional private
+  evidence filing, and synthetic development cases. Catalog as draftable with
+  analytical review. A live benchmark and unseen release holdout remain open.
+- Refresh the distribution catalog to 340 skills across 22 active families.
+
+## 2026-11-09: Build in Public proof briefs
+
+- Add draftable `okhp3-build-in-public-proof-brief` 1.0.0. It separates private
+  claim decisions from candidate public facts, keeps revision and evidence
+  limits attached, and withholds unmatched comparisons.
+- Keep angle selection, prose, voice, and publication approval with their
+  existing workflows. Four author-visible Codex development cases yielded
+  16/16 checks with the skill and 12/16 without it. No unseen holdout or general
+  effectiveness claim.
+
+## 2026-11-09: LinkedIn outreach drafting family
+
+- Add `okhp3-linkedin-connection-note`, `okhp3-linkedin-message`,
+  `okhp3-linkedin-network-plan`, and `okhp3-linkedin-inbox-triage` as draftable
+  portable skills for invite notes, direct messages and counter replies, paced
+  outreach planning with an acceptance feedback loop, and a read-and-draft
+  inbox review.
+- Keep every package draft-only and public-neutral. Sending is a manual action
+  by the account owner. The family contains no browser-send instructions
+  because LinkedIn's terms prohibit bots and automated methods that send
+  messages or add contacts. Inbox triage defaults to sender-pasted text.
+- Record an inline equilibrium review in `social-posting/REVIEW-linkedin-outreach.md`.
+  It is analytical only. No live model benchmark or holdout was run, so evidence
+  stays `not-run` and no validated claim is made.
+- Refresh the distribution catalogs and manifest to 338 skills across 22 active
+  families.
+
+## 2026-11-09 Session Handoff 0.3.0
+
+- Add an opt-in exact-thread closeout profile. Bind observations to the required
+  surface and revision, preserve dated corrections, verify the receipt and
+  separate work completion from an exact archive outcome.
+- Retain ordinary handoff behavior. Synchronize the distribution package and
+  repository-local support copy. Add eleven synthetic development cases and
+  record an [analytical review](closeouts/session-handoff-0.3.0-review.json).
+  Live runs and a protected holdout remain open.
+
 ## 2026-10-25: explicit Notion destination roots
 
 - Revise domain filing to 1.1.0: distinguish the canonical discovery root from

@@ -20,22 +20,22 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 335,
+  "distributionSkillCount": 357,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 55,
   "maturityCounts": {
-    "draftable": 266,
-    "skeleton": 64,
+    "draftable": 287,
+    "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 166,
+    "not-run": 182,
     "none": 109,
+    "analytical": 12,
     "local-checks": 39,
-    "analytical": 7,
-    "live": 7
+    "live": 8
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
@@ -66,7 +66,14 @@
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
         "okhp3-askjamie-gpt-builder",
-        "okhp3-askjamie-gpt-readiness"
+        "okhp3-askjamie-gpt-readiness",
+        "okhp3-coaching-engagement",
+        "okhp3-interview-evidence-map",
+        "okhp3-interview-questions",
+        "okhp3-job-application-completion",
+        "okhp3-lifetime-career-reference",
+        "okhp3-professional-headshot",
+        "okhp3-role-master-resumes"
       ]
     },
     {
@@ -177,6 +184,7 @@
       "status": "draftable",
       "skills": [
         "okhp3-chatgpt-project-migration",
+        "okhp3-context-transfer",
         "okhp3-session-handoff",
         "okhp3-thread-context-extraction",
         "okhp3-thread-extract-chatgpt",
@@ -251,13 +259,18 @@
       "name": "knowledge-operations",
       "status": "draftable",
       "skills": [
+        "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
+        "okhp3-idea-label",
         "okhp3-project-promotion",
+        "okhp3-record-location-reconciliation",
+        "okhp3-research-file-renewal",
         "okhp3-source-backed-research",
-        "okhp3-triage-and-file"
+        "okhp3-triage-and-file",
+        "okhp3-voice-profile-renewal"
       ]
     },
     {
@@ -363,6 +376,7 @@
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
+        "okhp3-success-reconstruction",
         "okhp3-visual-process-modeling"
       ]
     },
@@ -421,6 +435,7 @@
       "name": "social-posting",
       "status": "draftable",
       "skills": [
+        "okhp3-build-in-public-proof-brief",
         "okhp3-discord-comment",
         "okhp3-discord-post",
         "okhp3-facebook-comment",
@@ -431,7 +446,12 @@
         "okhp3-kofi-supporter-reply",
         "okhp3-linkedin-angles",
         "okhp3-linkedin-comment",
+        "okhp3-linkedin-connection-note",
+        "okhp3-linkedin-inbox-triage",
+        "okhp3-linkedin-message",
+        "okhp3-linkedin-network-plan",
         "okhp3-linkedin-post",
+        "okhp3-linkedin-series-continuity",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
         "okhp3-patreon-post",
@@ -485,6 +505,7 @@
         "okhp3-github-mirror-janitor",
         "okhp3-github-notification-maintainer",
         "okhp3-google-gis-client-auth",
+        "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
         "okhp3-overkill-hill-brand",
@@ -497,6 +518,7 @@
         "okhp3-skill-discovery",
         "okhp3-skill-foundry",
         "okhp3-skill-promotion",
+        "okhp3-task-resumption",
         "okhp3-vite-github-pages"
       ]
     }
@@ -519,6 +541,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-10-30T23:24:15.013Z",
+  "countsGeneratedAt": "2026-11-19T14:39:29.325Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

@@ -142,3 +142,50 @@ proven effective at the task it performs.
 the installed package are both leftover from this session's inability to
 delete files in the mounted workspace folder. Neither affects skill function;
 delete them with normal filesystem access when convenient.
+
+---
+
+## Entry 2: thread closeout verification, 1.2.0
+
+**Scope:** No behavior change. Verification of where 1.2.0 actually landed, and
+a correction to Entry 1's "known artifact" note.
+
+**Verified against the authoritative sources:**
+
+- The package is committed on `main` and the working tree matched `HEAD`
+  before this entry was appended; `main` was in sync with `origin/main`.
+- `universal/FAMILY.md` and `skillz.manifest.json` list
+  `okhp3-project-compass` at 1.2.0, so the cataloger step named in Entry 1's
+  follow-ups has already been done.
+- `scripts/selftest.py` passes 40/40 on the repo copy and on the extracted
+  `.skill` bundle; `validate-skill-suite.cjs --skills-dir universal` reports no
+  findings against this package.
+
+**Correction to Entry 1:** `universal/.write-test` no longer exists. The
+`scripts/__pycache__/` directory and a `.DS_Store` are present locally but are
+gitignored (`.gitignore` lines for `__pycache__/` and `.DS_Store`), so neither
+reaches the repository.
+
+**Still open:**
+
+- `references/sink-adapters.md` is a superseded stub that is still tracked.
+  Nothing in the package references it. Removing it needs a `git rm` plus
+  commit; this session cannot delete files in the mounted workspace.
+- `evals/benchmark.json` remains `not-run`. No task-quality or uplift claim is
+  made for 1.2.0.
+
+---
+
+## Entry 3: standalone prompt added to the package
+
+**Change:** `assets/standalone-prompt.md` added. It is the paste-anywhere
+version of this skill's logic, previously kept only outside the repository.
+No script, reference, or `SKILL.md` text changed, so behavior is unchanged.
+
+**Decision, version not bumped:** the brand standard calls for a patch bump on
+any package change. A bump edits `SKILL.md`, and the Forge per-skill record
+(`artifacts/forge/public/data/skills/universal/okhp3-project-compass.json`)
+embeds the `SKILL.md` body, so a bump requires regenerating Forge data. At the
+time of this entry, other uncommitted catalog and Forge work was in flight in
+the same working tree. Bump to 1.2.1 at the next cataloger and Forge
+regeneration rather than mixing changes into that work.

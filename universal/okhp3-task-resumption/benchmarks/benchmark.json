@@ -1,0 +1,33 @@
+{
+  "schema_version": "2.0",
+  "metadata": {
+    "skill_name": "okhp3-task-resumption",
+    "evaluated_skill_version": "0.2.0",
+    "evaluation_status": "analytical",
+    "timestamp": "2026-11-09T00:00:00Z",
+    "runner": "Independent role review and synthetic decision-record exercise; no host integration",
+    "review_decision": "approve-with-limits",
+    "known_limitations": [
+      "Synthetic cases are development-visible and do not execute live host operations.",
+      "No automatic-activation or unseen release holdout result.",
+      "No general task-quality, production-readiness or skill-uplift claim."
+    ],
+    "blockers": [
+      "Live host integration remains untested.",
+      "Automatic activation and unseen release holdout remain untested."
+    ]
+  },
+  "core_file_hashes": {
+    "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+    "SKILL.md": "b155ccfd9ea6ce6389a3d8483776660636d82c2adb1a743a64164887d898dafc",
+    "evals/evals.json": "52200b201e6f5f1c2e8bfd2a56e96cc6e47c527bdbe83b578d7af664cd5f1389",
+    "evals/trigger-cases.json": "01be2d816b4c5db27c04250c54320f3d596eff3482c540a78fc073c95235a9ec",
+    "references/continuation-record.md": "5866955168702bbb38d1167b5902727d28ff8ad10e52f4ba1833976f06c6f892"
+  },
+  "runs": [],
+  "notes": [
+    "Synthetic executor outputs and exact expectation grades are preserved separately under evals; this aggregate is analytical only.",
+    "Source conversation is a private historical design input, not validation of this new package.",
+    "Fresh negotiator approved only draftable source-candidate publication, subject to actual final repository checks and published-hash verification."
+  ]
+}
