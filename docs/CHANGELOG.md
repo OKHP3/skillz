@@ -1,5 +1,34 @@
 # Changelog
 
+## 2026-11-19: Notion CRUDq family closeout
+
+- Record the previously unlogged 2026-09-03 addition of ten Notion skills
+  (`core`, `identity-resolution`, `limits-and-retry`, `page-read`,
+  `page-write`, `search-strategy`, `query`, `row-write`, `destructive-ops`,
+  `agent-boundary`) and the tooling pass that gave each Notion skill, plus
+  `capture-router` 0.4.0, a stdlib-only `scripts/` helper with `--self-test`.
+- Add development evaluation designs for `row-write`, `query`, and
+  `page-write`. No live with-skill/without-skill run, unseen holdout, or
+  measured uplift is claimed; the equilibrium review is analytical and
+  single-context.
+- Add the ten skills to the `AGENTS.md` routing index and preserve the
+  research memo, dependency graph, and review record under
+  `docs/reviews/notion-crudq-family-2026-09/`.
+
+## 2026-11-10: Record location reconciliation field observation
+
+- Record a read-only field check for v0.1.0 covering folder placement, version
+  preservation, and reference resolution. The public summary records the
+  snapshot limitation and keeps the observation separate from graded benchmarks.
+
+## 2026-11-10: LinkedIn series continuity
+
+- Add a draft-only, source-backed series-continuity skill with separate prior
+  publication-state, evidence and disclosure checks.
+- Add a neutral worked example and development evaluation design. No live
+  behavioral benchmark, unseen holdout, or measured uplift is claimed.
+- Refresh the distribution catalog for 356 skills across 22 families.
+
 ## 2026-11-09: LinkedIn carousel, publish operations, first comment, and rhythm
 
 - Add `okhp3-linkedin-carousel` 1.0.0: page planning plus a local JSON-spec
@@ -28,20 +57,6 @@
 - Candidates were selected by an equilibrium review (evidence, outcome, and
   safety reviewers, then a disruptor and negotiator); all reviewers shared one
   model family, so their agreement is correlated evidence.
-
-## 2026-11-10: Record location reconciliation field observation
-
-- Record a read-only field check for v0.1.0 covering folder placement, version
-  preservation, and reference resolution. The public summary records the
-  snapshot limitation and keeps the observation separate from graded benchmarks.
-
-## 2026-11-10: LinkedIn series continuity
-
-- Add a draft-only, source-backed series-continuity skill with separate prior
-  publication-state, evidence and disclosure checks.
-- Add a neutral worked example and development evaluation design. No live
-  behavioral benchmark, unseen holdout, or measured uplift is claimed.
-- Refresh the distribution catalog for 356 skills across 22 families.
 
 ## 2026-11-09: Idea labels, success reconstruction, and context transfer
 

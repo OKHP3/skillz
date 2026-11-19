@@ -1,0 +1,57 @@
+{
+  "skill_name": "okhp3-notion-row-write",
+  "skill_version": "1.1.1",
+  "status": "design-ready",
+  "release_status": "analytical-structural-integrity",
+  "performance_evidence_status": "not-run",
+  "note": "Development design only. No with-skill/without-skill run has been executed for this version; do not cite these cases as measured uplift.",
+  "release_holdout": {
+    "status": "external-required",
+    "holdout_seen": true,
+    "reason": "These cases are public in the package and readable by implementers. A release holdout must be controlled outside the authoring context."
+  },
+  "evals": [
+    {
+      "id": "normal-upsert",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Add a row to my Notion 'Vendors' database for Acme Corp, status Active, tag it 'hardware'. If Acme is already in there, just update it. Here's the database URL: https://notion.so/ws/Vendors-215d872b594c81bdbea20002d0d66c12",
+      "fixtures": "Fetched database returns one data source; schema has title property 'Vendor', status 'State' with options Active/Inactive, multi_select 'Tags'. One existing row titled 'Acme Corp'.",
+      "output_contract": "Resolved data source, upsert outcome, exact properties written, re-fetch confirmation.",
+      "expectations": [
+        { "id": "data-source-resolution", "text": "Response resolves the database's `data_sources[]` and targets a `data_source_id`, not the bare database ID, before any schema or row call." },
+        { "id": "actual-title-name", "text": "Response writes the title using the fetched property name `Vendor`, not an assumed `Name` or `Title`." },
+        { "id": "upsert-update", "text": "Response queries for an existing match and reports the operation as an update of the existing Acme Corp row, not a new create." },
+        { "id": "status-shape", "text": "Response writes the status as `{\"status\": {\"name\": \"Active\"}}` using the schema's exact option name." }
+      ]
+    },
+    {
+      "id": "missing-field-and-relation",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Create a row in the Projects data source with Name 'Atlas', Budget 50000, link it to the client 'Northwind' (database id 9a1b...), and set Priority to High.",
+      "fixtures": "Schema has title 'Name', number 'Budget', relation 'Client' targeting a data source; there is no 'Priority' property.",
+      "output_contract": "Create plan that rejects unsupported fields and uses a valid relation payload.",
+      "expectations": [
+        { "id": "stop-on-missing-property", "text": "Response states that `Priority` is not in the fetched schema and that adding it is a schema change, rather than dropping it silently or inventing the property." },
+        { "id": "relation-no-database-id", "text": "Response does not send `database_id` in the relation write and uses only page IDs scoped to the related data source." },
+        { "id": "validator-run", "text": "Response runs or cites `scripts/validate_row_payload.py` against the fetched schema before sending the write." },
+        { "id": "no-partial-claim", "text": "Response does not report the row as created with Priority set." }
+      ]
+    },
+    {
+      "id": "bulk-and-ambiguous-match",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Upsert these 2,400 contacts from my CSV into the Contacts database, matching on email. Also, there are two existing rows for jane@example.com, just pick one.",
+      "fixtures": "Prompt-only scenario. Two existing rows share the email key.",
+      "output_contract": "Scope boundary for volume and an explicit stop on the ambiguous key.",
+      "expectations": [
+        { "id": "volume-boundary", "text": "Response states that a multi-thousand-row load is outside this skill and routes to a bulk-data-ops capability rather than running 2,400 sequential row writes." },
+        { "id": "ambiguous-match-stop", "text": "Response refuses to silently pick one of the two jane@example.com rows and asks which one, or whether a new row is intended." },
+        { "id": "per-request-cap", "text": "Response names the 100-item per-request cap for multi_select, relation, or people writes when describing chunking." },
+        { "id": "no-delete", "text": "Response does not archive or delete a duplicate row and names `okhp3-notion-destructive-ops` as the owner of any removal." }
+      ]
+    }
+  ]
+}
