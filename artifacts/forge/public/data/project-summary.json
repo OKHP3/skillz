@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-11-09T14:54:17.445Z",
+  "generatedAt": "2026-11-19T14:39:25.709Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "feat/linkedin-publish-ops-and-carousel",
-  "sourceCommit": "c271e43",
-  "skillCount": 340,
+  "sourceCommit": "bdde6bc",
+  "skillCount": 358,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 271,
-    "skeleton": 64,
+    "draftable": 288,
+    "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 171,
+    "not-run": 183,
     "none": 109,
+    "analytical": 12,
     "local-checks": 39,
-    "analytical": 7,
-    "live": 7
+    "live": 8
   },
   "capabilities": {
     "familyOrientationPages": true,

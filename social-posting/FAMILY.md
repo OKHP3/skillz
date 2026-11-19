@@ -1,9 +1,9 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 37
+skill_count: 39
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T14:54:11Z
+generated_at: 2026-11-19T14:39:17Z
 ---
 
 # social-posting
@@ -18,11 +18,20 @@ that names each action. No other package in this family gains that authority
 from it, and a drafting package never routes text to it before the user
 approves the final wording.
 
+## Portrait companions
+
+For profile images, use [Professional Headshot](../askjamie/okhp3-professional-headshot/SKILL.md).
+For fresh source stills, use [Guided Photo Session](../universal/okhp3-guided-photo-session/SKILL.md).
+These externally routed companions preserve this family's text-drafting boundary.
+They do not upload to social accounts.
+
 ## Routing
 
 | Need | Skill |
 |---|---|
+| Decide what public progress claims mixed build and test receipts support | `okhp3-build-in-public-proof-brief` |
 | Mine finished work into LinkedIn-ready ideas | `okhp3-linkedin-angles` |
+| Continue a LinkedIn series with evidence and prior-item states | `okhp3-linkedin-series-continuity` |
 | Draft or polish a LinkedIn post | `okhp3-linkedin-post` then `okhp3-linkedin-voice` |
 | Draft the author's own first comment for a post | `okhp3-linkedin-post` (First comment section) |
 | Build a companion document carousel (PDF) for a LinkedIn post | `okhp3-linkedin-carousel` |
@@ -107,13 +116,14 @@ Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
 Telegram.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (37)
+## Skills (39)
 
 <!-- FAMILY_INVENTORY_START -->
-*37 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 14:54 UTC***
+*39 skills &nbsp;·&nbsp; inventory last updated: **November 19, 2026 at 14:39 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
+| [okhp3-build-in-public-proof-brief](okhp3-build-in-public-proof-brief/SKILL.md) | Prepare a Build in Public proof brief from supplied build, test, and release receipts before draf... | 1.0.0 |
 | [okhp3-discord-comment](okhp3-discord-comment/SKILL.md) | Draft a Discord reply to a supplied message, thread, or forum conversation. Use when the user wan... | 1.2.0 |
 | [okhp3-discord-post](okhp3-discord-post/SKILL.md) | Draft a new Discord message, forum post, or thread opener for a named server destination. Use whe... | 1.2.0 |
 | [okhp3-facebook-comment](okhp3-facebook-comment/SKILL.md) | Draft a Facebook comment or reply to a supplied post and conversation. Use when the user wants to... | 1.2.0 |
@@ -127,10 +137,11 @@ Telegram.
 | [okhp3-linkedin-comment](okhp3-linkedin-comment/SKILL.md) | Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to resp... | 1.2.1 |
 | [okhp3-linkedin-connection-note](okhp3-linkedin-connection-note/SKILL.md) | Draft one personalized LinkedIn connection request note per recipient, within the sender's charac... | 1.0.0 |
 | [okhp3-linkedin-inbox-triage](okhp3-linkedin-inbox-triage/SKILL.md) | Check a LinkedIn inbox for new replies from a supplied outreach list, classify each sender, and p... | 1.0.0 |
-| [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.0.0 |
+| [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.1.0 |
 | [okhp3-linkedin-network-plan](okhp3-linkedin-network-plan/SKILL.md) | Plan a LinkedIn network expansion: audit followed-but-unconnected accounts, segment and tier targ... | 1.0.0 |
 | [okhp3-linkedin-post](okhp3-linkedin-post/SKILL.md) | Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts,... | 2.4.0 |
 | [okhp3-linkedin-publish-ops](okhp3-linkedin-publish-ops/SKILL.md) | Get an approved LinkedIn post live: package it with its document and first comment, then schedule... | 1.0.0 |
+| [okhp3-linkedin-series-continuity](okhp3-linkedin-series-continuity/SKILL.md) | Plan a source-backed continuation of a LinkedIn post series. Use when a follow-up must connect pr... | 0.1.0 |
 | [okhp3-linkedin-voice](okhp3-linkedin-voice/SKILL.md) | Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a... | 2.3.0 |
 | [okhp3-patreon-comment](okhp3-patreon-comment/SKILL.md) | Draft a Patreon comment or reply from supplied post and access context. Use when the user needs a... | 1.0.0 |
 | [okhp3-patreon-post](okhp3-patreon-post/SKILL.md) | Draft a Patreon post with a supplied access boundary and post form. Use when the user needs publi... | 1.0.0 |
