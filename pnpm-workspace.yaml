@@ -54,7 +54,7 @@ catalog:
   clsx: ^2.1.1
   drizzle-orm: ^0.45.4
   framer-motion: ^13.4.1
-  lucide-react: ^1.72.0
+  lucide-react: ^1.73.0
   # Must be this exact version because expo requires it
   react: 19.3.1
   # Must be this exact version because expo requires it
