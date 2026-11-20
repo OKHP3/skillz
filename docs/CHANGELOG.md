@@ -53,7 +53,7 @@
   now says to keep a deliberate standalone line without stacking them.
 - Amend `social-posting/FAMILY.md` with the scoped acting-package exception and
   new routing rows. Record the deferred content-calendar candidate in the
-  backlog. Refresh the catalogs and manifest to 358 skills across 22 families.
+  backlog. Refresh the catalogs and manifest to 359 skills across 22 families.
 - Candidates were selected by an equilibrium review (evidence, outcome, and
   safety reviewers, then a disruptor and negotiator); all reviewers shared one
   model family, so their agreement is correlated evidence.

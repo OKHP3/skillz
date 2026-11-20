@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 358,
+  "distributionSkillCount": 359,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 54,
+  "projectLocalSupportSkillCount": 55,
   "maturityCounts": {
-    "draftable": 288,
+    "draftable": 289,
     "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 186,
+    "not-run": 187,
     "none": 109,
     "analytical": 12,
     "local-checks": 36,
@@ -55,6 +55,7 @@
       "skills": [
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
+        "okhp3-gpt-behavior-baseline",
         "okhp3-gpt-skill-conversion-plan"
       ]
     },
@@ -542,6 +543,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-19T15:50:10.881Z",
+  "countsGeneratedAt": "2026-11-20T04:30:53.977Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

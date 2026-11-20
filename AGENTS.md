@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 358 distribution skills in 22 active families (catalog audit, 2026-11-09). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 359 distribution skills in 22 active families (catalog audit, 2026-11-09). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -482,7 +482,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 358 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 359 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.
