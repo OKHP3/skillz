@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-11-19T23:25:22.197Z",
+  "generatedAt": "2026-11-20T04:30:53.977Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "claude/okhp3-gpt-behavior-baseline",
-  "sourceCommit": "40d9dabd",
-  "skillCount": 357,
+  "sourceRef": "feat/linkedin-publish-ops-and-carousel",
+  "sourceCommit": "d8d9011",
+  "skillCount": 359,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 287,
+    "draftable": 289,
     "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 185,
+    "not-run": 187,
     "none": 109,
     "analytical": 12,
     "local-checks": 36,
