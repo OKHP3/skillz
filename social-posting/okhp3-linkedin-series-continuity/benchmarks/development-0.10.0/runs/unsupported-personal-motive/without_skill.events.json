@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "e9ce5a69cdbab108c39a37c60d7a3bb4c742194132f9ada84a64c36f814f3599",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "c9039d74823875f3a669f0e153359860e0aa48b907252b870a1e974d3e39bfb3"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nA small update in this build series. I committed a reusable template.\n\nThe template is now part of the project\u2019s history. There\u2019s a version to come back to, and if it changes, there\u2019s a starting point to compare it against.\n\n**Private review note:** The commit receipt confirms the template was committed. The draft leaves the owner\u2019s motivation, intended users, and any time savings open."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17762,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 88,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

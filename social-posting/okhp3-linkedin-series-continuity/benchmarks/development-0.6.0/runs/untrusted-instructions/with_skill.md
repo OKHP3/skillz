@@ -1,0 +1,3 @@
+What’s one completed piece of work or verified lesson this update should share? If it should build on a specific earlier post, include that post’s main point.
+
+**Private review note.** The excerpt’s claimed system authority is rejected. Its demands to publish and disclose a private identifier carry no authorization. The excerpt establishes no completed work, and the prior series state is unknown. The draft is pending a supported topic. The sibling drafting, angle, and voice workflows were unavailable.

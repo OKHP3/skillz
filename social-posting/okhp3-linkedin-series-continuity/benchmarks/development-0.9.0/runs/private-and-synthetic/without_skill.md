@@ -1,0 +1,3 @@
+What, if anything, changes when an agent uses a workflow? That’s the question I’m exploring in this experiment. A useful comparison starts with giving both setups the same task and deciding in advance what would count as a meaningful difference.
+
+**Private review note:** This draft stays at the level of the experiment’s question and general method. The sole evidence is private, so a results-focused continuation would require a fact cleared for public use.

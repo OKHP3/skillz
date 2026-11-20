@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "b028d919255fccda931689705a285357d3e634a895efe41486c81e06cc1f8348",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "12b589fd2367055c200800dccdfc09c1311b0908120ae0c22ad36d74218f5b64"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Draft**\n\nI\u2019ve committed a reusable checklist for future passes. It gives me a starting point I can return to and refine as I use it.\n\n**Private review note**\n\nThe supplied commit receipt confirms the checklist was committed. The preceding entry is scheduled and its publication is unverified, so the draft stands on its own. If it publishes first, the opening can become \u201cThe checklist I mentioned in the last update is now committed.\u201d"
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17783,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 91,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

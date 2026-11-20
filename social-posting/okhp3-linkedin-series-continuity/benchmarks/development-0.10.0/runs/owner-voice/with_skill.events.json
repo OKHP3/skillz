@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "7d00929bbb82219d1054c2fd5fd999d6a6095c63a0765acf109308a9829a0d96",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "73e6ee500df0fe5e3b73b4cb66295360e80760adc05d66ea9085da136f4cb4b9"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the okhp3-linkedin-series-continuity skill to draft the post and check each claim against the supplied evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nThere\u2019s a reusable checklist. A good place to start with any checklist is the step that\u2019s easy to forget when you\u2019re in a hurry.\n\nWhat\u2019s one step you\u2019d put on yours?\n\n**Private review note**\n\n- The supplied task confirms that the reusable checklist exists and permits that fact in the draft. Its contents, authorship, use, and results are unverified. The second sentence offers general advice, and the closing question is the only call to action.\n- Prior series items and their publication states are unknown. The draft stands on its own, with series overlap unverified.\n- The owner-authored sample guided the plain language and short paragraphs. The assistant-generated line was excluded as voice evidence. The sibling workflows were unavailable, so I applied the draft, voice, and disclosure checks directly.\n- The draft is for LinkedIn, and this note is private. Owner approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 20011,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 348,
+        "reasoning_output_tokens": 125
+      }
+    }
+  ]
+}

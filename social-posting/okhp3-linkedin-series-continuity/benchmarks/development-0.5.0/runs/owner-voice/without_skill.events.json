@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "c2db20e3838a843ef61704a92c94df085b9340b484b45b4009d9ec2b06146e7c",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "ddc1f9d1962bc7483430f24f5163bb1e15a0c5c94d460e3251cbb8656dce649e"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ve got a checklist I can use again. It gives me a place to start the next time I do the same work.\n\nI like having the steps in one place. When I come back to them, I can see what I did last time and decide what needs to change.\n\n**Private review note**  \nThe checklist is confirmed as reusable. Its contents and any measured results weren\u2019t supplied. The draft follows the owner\u2019s sample for tone and is pending owner approval."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17775,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 99,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

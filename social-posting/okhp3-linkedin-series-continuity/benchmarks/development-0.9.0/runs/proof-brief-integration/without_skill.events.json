@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "5368e32ac1c2617d69c8b1534ff0e97d7167734832bfd020522c6d1433bf41de",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "38a07b57b0da4c36dcc4a6e16517f9348c8bfd5b6fb28d3ab49971fafb5558c6"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Draft**\n\nThe reusable checklist is now committed. It gives me a starting point the next time I run through the same steps.\n\n**Private review notes**\n\nThe commit receipt confirms the checklist was committed. The previous entry is scheduled and its supplied text announces the checklist. Verify that the entry is live before adding a callback. The draft uses the supplied proof packet and receipt and leaves out the private ledger."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17783,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 84,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

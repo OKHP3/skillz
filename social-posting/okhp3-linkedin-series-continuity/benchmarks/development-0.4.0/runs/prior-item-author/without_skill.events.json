@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "4b8885f15668a564c5b85c763a8e8e8e68ff2288456c6f28b59c69e89faa6928",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "4840499fedc63fcba67163b1c7076444744037f30847467b9b20731b9abec0a2"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Please share the text of a published post from your series so I can connect the checklist update to something you wrote.\n\n**Standalone draft**\n\nI finished the checklist. Here\u2019s one question I\u2019ll keep in mind when I use it: does each item make it clear what to check and how to tell when it\u2019s done?\n\n**Private review note**\n\nChecklist completion is confirmed. The planning post was published by another account, and its connection to your series is unverified. The draft makes no claim about prior posts or results from using the checklist."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17759,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 112,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

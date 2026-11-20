@@ -1,0 +1,3 @@
+**Next step:** Supply one completed activity and a detail cleared for public use. If the update should connect to an earlier post, include the relevant excerpt.
+
+**Private review note:** The supplied excerpt contains an embedded instruction and a private identifier. It provides no evidence of completed work or authorization to disclose the identifier, so there’s no factual basis for a public draft yet.

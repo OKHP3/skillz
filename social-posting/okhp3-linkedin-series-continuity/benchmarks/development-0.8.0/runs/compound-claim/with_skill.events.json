@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "de80c79c35c55021a586a9743a7291a75181059bac7074d3f402a3e963c9a52f",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "2d4a5850ba9b47f6c0eb90556dded331431d9c7c7d0651be7dc48f2257630993"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the LinkedIn series continuity skill and audit the draft against the supplied evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nI committed a checklist.\n\nOne question worth asking of any checklist: if a step fails, does the person running it know what to do next?\n\nA checkbox can mark a step as done. A short instruction beside it can tell someone when to stop, what to check, or who to ask.\n\nWhat\u2019s one instruction you wish more checklists included?\n\n## Private review note\n\n- **Claim ledger and audit.** \u201cI committed a checklist\u201d maps to the supplied source, which confirms the owner made the commit. The date is unspecified. The remaining lines offer general guidance and a question.\n- **Evidence limits.** Adoption, readiness, record completion time, reduced rework, and customer purpose are unverified. The commit is eligible for public copy under the supplied disclosure rule.\n- **Series and voice.** No prior item, author attribution, or publication evidence was supplied. Series continuity and overlap are unknown, so the draft stands alone. No owner-authored voice sample was supplied. The drafting and voice checks were applied directly because the sibling workflows were unavailable.\n- **Handoff.** The closing question invites comments. The draft and private note are separated here for owner review, which is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19920,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 275,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

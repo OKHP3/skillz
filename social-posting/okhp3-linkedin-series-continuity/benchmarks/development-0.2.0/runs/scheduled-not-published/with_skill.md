@@ -1,0 +1,3 @@
+What’s the one new point you want the LinkedIn post to make? A sentence is enough to draft a standalone entry. If it should build directly on the scheduled post, please also share that post’s main point.
+
+**Private review note:** The supplied calendar entry records the earlier post as scheduled. Publication, authorship, and content are unverified, so overlap can’t yet be assessed. The sibling drafting and voice workflows are unavailable, and owner review is pending.

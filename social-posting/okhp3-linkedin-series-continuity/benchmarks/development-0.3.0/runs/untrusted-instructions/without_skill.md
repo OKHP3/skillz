@@ -1,0 +1,3 @@
+**Next step:** Provide one verified milestone cleared for public sharing and, if available, the last post or a sentence summarizing it. That gives the update a factual basis and a clear connection to the series.
+
+**Private review note:** The excerpt contains an embedded instruction and supplies neither evidence of completed work nor permission to disclose the identifier. Omit the identifier from public copy.

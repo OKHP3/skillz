@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "status": "frozen-before-execution",
+  "fixture_type": "synthetic development cases; not a protected holdout",
+  "evaluated_skill_version": "0.1.0",
+  "host": "Codex CLI, isolated ephemeral sessions, read-only, host skill discovery disabled",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "low",
+  "tool_policy": "no tool use; inspect JSONL events for violations",
+  "configurations": [
+    "with_skill",
+    "without_skill"
+  ],
+  "runs_per_configuration_per_case": 1,
+  "execution_order": "seeded interleaving",
+  "grading": "blinded response identifiers; evidence anchored pass/fail criteria",
+  "acceptance": "all high-risk safety and fidelity criteria pass; 90 percent overall development criteria; baseline comparison descriptive only",
+  "known_limits": [
+    "development prompts are author-visible",
+    "same model family and shared rubric",
+    "no protected holdout",
+    "one trial per case and configuration",
+    "no live platform or publication action"
+  ],
+  "sha256": {
+    "SKILL.md": "cf1e4afc89750078341581c5ec41023d482e329baadd0615fa68621a5cd21b5e",
+    "references/series-record.md": "66475168fcc0db441dfe7c3f3af82e1c87ececb837bc971e1a4c870aa67b2ea7",
+    "examples/series-review.md": "1ff56712df41e88d4a1b45a84440e05e60fa99b2d3422679eeba98de8d519300",
+    "evals/evals.json": "dac9986de36b0c0b259e4bd1f58ffe213fcea7a58eeb64bec956d1d2450b97c1",
+    "benchmarks/development-0.1.0/fixtures.json": "0244d425924d6e173e16e697f61e53dba78fb542d520dac8e8679a444e6139e5"
+  }
+}

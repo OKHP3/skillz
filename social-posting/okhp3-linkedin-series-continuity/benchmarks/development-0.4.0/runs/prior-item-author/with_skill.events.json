@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "15111b11a03b8f8b51f4ccdb1bba357025092ceefae50290f89ebb227df7fabc",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "d9d21c03fe68a1dbe301abf5f04d741a1febf2930bfd825d8bdb8a4b40399b7c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill and will keep the draft grounded in the owner\u2019s confirmed checklist completion."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI finished the checklist. Planning it helped frame the work, but the finished version is what I can put to use.\n\nWhat makes a checklist worth coming back to?\n\n### Private review note\n\n- **Series record.** The supplied evidence describes a published post about planning a checklist by another account. Its relationship to the owner\u2019s series is unverified. The draft omits that post and stands on its own. Overlap with the owner\u2019s series remains unknown.\n- **Claim check.** The owner\u2019s checklist completion is confirmed. The draft includes no usage results or measured benefits. The line about planning helping frame the work would require owner confirmation.\n- **Handoff.** The closing question invites readers to share what makes a checklist useful over time. No owner-authored voice sample was supplied. The sibling workflows were unavailable, so drafting, voice, and disclosure checks were applied directly. The copy above is for LinkedIn, and this note is private. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19505,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 236,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

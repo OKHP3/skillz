@@ -1,0 +1,3 @@
+What’s the scheduled post’s main point, and what new idea or completed work should the follow-up add? A sentence on each is enough.
+
+**Private review note.** The supplied calendar entry supports a scheduled state. Publication, authorship, and the item’s relationship to your series are unverified. The post text is unavailable, so overlap is unknown. The drafting and voice workflows are unavailable for this run. Draft and owner review are pending.

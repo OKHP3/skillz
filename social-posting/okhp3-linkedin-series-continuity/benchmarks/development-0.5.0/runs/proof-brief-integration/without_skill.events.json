@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "966a4bd7677f53fd62e29534db779268aa6a02f2c105ac7cf28f62e760953c48",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "4cd1a27dd56f0e6b93bfe629ce778b24e890609522a60eff6681db834cca5c86"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Draft**\n\nI committed a reusable checklist for preparing build updates. It gives me a repeatable way to check what shipped, what the evidence supports, and what\u2019s ready to share.\n\nFor the next update, I\u2019ll start with the receipts and use the checklist to decide which claims make it into the post.\n\n**Private review note**\n\nThe included commit receipt confirms that the checklist was committed. The previous entry announces the checklist and is scheduled. Publication remains unverified, so the draft stands on its own. The separate private ledger was excluded. The draft describes how the owner intends to use the checklist and makes no claim about results."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17783,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 130,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "6c2a8d13771256916baae69d212b0886112252523707ca664cdd7ff09983cd1a",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "5a70619cc5523a2f7dd8092a575d0b4c841e9174bfb98a11919c4d66748f9c0b"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the LinkedIn series continuity skill to the supplied evidence and keep the public draft separate from the private review notes."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft for review \u00b7 fictional scenario\n\nI completed a checklist.\n\nWhat makes a checklist worth coming back to?\n\n## Private review note\n\n- **Prior item.** The supplied evidence describes a published item from another account about a planned checklist. The author\u2019s identity, relationship to the owner\u2019s series, publication date, and sequence are unknown. The draft stands on its own because the evidence doesn\u2019t connect the two checklists.\n- **Claim ledger.** \u201cI completed a checklist\u201d comes directly from the owner\u2019s confirmation and is eligible for the draft under the case\u2019s disclosure rules. Completion is the only supported claim. The closing question invites discussion without asserting a rationale, adoption, or results.\n- **Handoff.** No owner-authored voice sample was supplied. The sibling workflows were unavailable, so I applied the drafting, voice, and disclosure checks directly. The draft is for LinkedIn, this note is private, and owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19922,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 299,
+        "reasoning_output_tokens": 70
+      }
+    }
+  ]
+}

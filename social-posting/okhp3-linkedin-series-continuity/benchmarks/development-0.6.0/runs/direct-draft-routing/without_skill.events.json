@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "92abe47c99f20e8076e4905124d240214c7a3f59dbb9554661133c451151eabb",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "84da90d1b037ec611735df9b981ae0605d4627cd139ccc7a8a6cf8ac233f5b3b"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Draft**\n\nIn my last post, I shared that I was designing a reusable checklist. I\u2019ve now finished it.\n\nThe goal was to make something I could come back to the next time I do the same work. Now I have a starting point for that next pass.\n\nI\u2019m looking forward to seeing which steps I reach for as written and which ones I want to clarify once I\u2019ve used it.\n\n**Private review note**\n\nThe publication receipt supports the reference to the prior post, and checklist completion is confirmed. The draft leaves the checklist\u2019s contents and results from using it unspecified."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17756,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 146,
+        "reasoning_output_tokens": 23
+      }
+    }
+  ]
+}

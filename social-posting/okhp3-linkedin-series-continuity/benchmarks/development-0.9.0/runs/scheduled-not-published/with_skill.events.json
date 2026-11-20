@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "1fc790f69abf931fd6b96c1223622186f10c34bea40304e7d27737ab682a4d84",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "f318be937dd541a5a5656a46b548e13aa46dca4aa1947b59042f81e95f0ee947"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to the supplied evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "What new point should the follow-up make? One sentence is enough. If it needs to build directly on the scheduled post, please include that post\u2019s main point too.\n\n**Private review note.** The calendar entry records the earlier item as scheduled. Publication, content, authorship, and its relationship to your series remain unverified. There\u2019s no supported new point to draft from yet. The sibling drafting and voice workflows are unavailable, so I\u2019ll apply those checks directly once there\u2019s copy to review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19946,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 126,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

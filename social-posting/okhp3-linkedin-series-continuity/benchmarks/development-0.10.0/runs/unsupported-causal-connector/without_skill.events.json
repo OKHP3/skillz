@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "b276e7ab421913bf13c029ae488f1cdbfe25441e935ac604dcb6d594236f1e5b",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "9776ff11692a53b0896d8636d16de40b9322544f4cbe236de2687b76ee43cd19"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nI wrote a checklist I can reuse. I also recorded one review session.\n\n**Private evidence note**\n\nEvidence A supports the checklist. Evidence B supports the later recording of one review session. Whether the checklist was used in that session or affected the outcome is unknown."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17757,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 60,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

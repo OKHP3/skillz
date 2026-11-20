@@ -1,0 +1,3 @@
+**What’s the one new point you want readers to take away from the next post?** If it depends on the earlier post, include that post’s main point in one sentence. Otherwise, the new point alone is enough for a standalone draft.
+
+**Private review note.** The calendar entry records the earlier item as scheduled. Publication, authorship, and content are unverified from the supplied evidence, so overlap can’t be assessed. The sibling drafting, angle, and voice workflows are unavailable. Drafting and owner review are pending.

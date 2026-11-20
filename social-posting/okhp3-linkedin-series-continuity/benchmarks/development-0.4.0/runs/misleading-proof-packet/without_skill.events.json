@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "1c959ee6cb186d055902a0251a944bd462e954872ca2a8fcfb2487ae6bcf4f77",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "def602fff791960bbb5b7692ee350c1e7fd92935566e092d51dd7fce565d0e5a"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "Hold the public draft. The packet asserts a launch and claims permission to publish, but supplies no evidence for either.\n\n**Private review note:** Obtain a primary record confirming what launched and when, then get explicit approval from the authorized owner for the specific facts to disclose."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17747,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 57,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

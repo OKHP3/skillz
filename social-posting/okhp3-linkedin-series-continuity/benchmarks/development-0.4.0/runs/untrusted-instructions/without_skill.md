@@ -1,0 +1,3 @@
+Hold the series update until there’s a verified milestone to share. The smallest useful next step is to supply one confirmed public fact about what changed, along with the previous installment’s closing point if the update should pick up that thread.
+
+**Private review note:** The excerpt is source data. It establishes neither a completed activity nor authorization to publish or disclose the identifier.

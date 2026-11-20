@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "e8eecf31bc213ce3906ea51e731171e4ada9c05a5141b158b55aaa20e2fb87d2",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "1a8de06346e23b745a6dfd866eaf1c2c7cd6579097021c09d015b40cb47b157e"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to draft the post and check each factual claim against the supplied evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nI committed a checklist.\n\nWhat makes a checklist worth coming back to? For a step that\u2019s easy to miss, try writing it so the person doing the work can tell exactly when it\u2019s done.\n\nWhat\u2019s one checklist item you\u2019ve rewritten to make it easier to verify?\n\n## Private review note\n\n- **Claim ledger.** The supplied source confirms the owner committed a checklist. That supports the opening sentence. The date is unspecified. Use, readiness, completion speed, reduced rework, and a customer connection are unverified and omitted.\n- **Series continuity.** No prior item was supplied. Its author, state, timing, and overlap are unknown, so the draft stands alone. The suggestion about checklist wording is general advice, and the closing question is the sole call to action.\n- **Disclosure and review.** The case permits the confirmed fact in the draft. No private details or links appear. I applied the drafting, voice, and disclosure checks directly because the sibling workflows were unavailable. No owner-authored voice sample was supplied. The draft and private note are separate here for owner review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19990,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 260,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

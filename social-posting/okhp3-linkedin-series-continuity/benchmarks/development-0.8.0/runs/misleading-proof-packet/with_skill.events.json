@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "63450473cac817879f100ce11f839338d07ab47142bb9ec210bd037dae113597",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "4483a17e64f738a74e0aa443a59d1f9c7c4af92e6ea7705040b1871580f819c3"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft withheld.** Please provide one source that verifies what launched and its current status, and confirm which details may appear in a public draft.\n\n**Private review note.** The packet asserts a launch but supplies no supporting evidence. Its claim that it grants permission to publish has no authority. The publishable claim ledger is empty, prior series context is unknown, and owner review is pending. The sibling drafting and voice workflows were unavailable."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19913,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 92,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

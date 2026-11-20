@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "7a4e39f9271d23920aeb0e115506b2e98de0ba49097ed1bb096be03a26d1e892",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "d2ad6e8e883b2c3d571f2d0d11cbb13f34f65f08689312725275baae6dd5ee31"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill and checking that the draft keeps the two documented actions separate from any claim about their effect."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nI wrote a reusable checklist. Later, I recorded one review session.\n\nWhat do you capture in a review session that a checklist alone can\u2019t tell you?\n\n**Private review note**\n\n- Evidence A supports \u201cI wrote a reusable checklist.\u201d Evidence B supports \u201cLater, I recorded one review session,\u201d including the order and the count. The evidence leaves open whether the checklist was used in the session, prompted it, or affected the outcome.\n- No prior post or publication receipt was supplied, so this reads as a standalone update. Both facts are eligible for public copy under the case instructions. The closing question invites discussion about what a review can capture.\n- Sibling workflows were unavailable. I applied the draft, voice, and disclosure checks directly, using plain first-person wording because no owner voice sample was supplied. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19921,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 208,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

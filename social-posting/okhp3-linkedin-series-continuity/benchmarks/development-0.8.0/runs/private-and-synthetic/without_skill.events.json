@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "2565c7ef8dade2775411ccefc1a60e52abc900c6539e059425068dc5e6c62f65",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "070b368400253a2accd6b8d86a95f1f6d39f7450a3d317b897d7b62d38c41c08"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019d hold the public continuation until there\u2019s at least one experiment detail cleared for publication. The supplied evidence is private, so there\u2019s no public claim to build on yet.\n\nPrivate review note: Both the workflow and its matched baseline passed 3 of 3 checks. This fixture showed no difference in pass rates. The smallest next step is to identify one fact that can be shared publicly."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17562,
+        "cached_input_tokens": 16128,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 82,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

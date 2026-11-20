@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "0d1b1f2f7a158ee85396158319f53c028cb24a4abd53f779fe4c6d64449f5291",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "a79e971b449a9f2d044b0c6e4678259293ca59f70c339f2abf689ec4c7adb15c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the okhp3-linkedin-series-continuity skill and keep the draft grounded in the owner\u2019s confirmation."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nA checklist update from a fictional series: the checklist is complete.\n\nWhat makes a checklist worth keeping?\n\n### Private review note\n\n- **Earlier material:** The supplied evidence describes a published item on another account about a planned checklist. Its relationship to the owner, the series, and the completed checklist is unknown. Publication date, ordering, and observation time were unspecified, so the draft stands on its own.\n- **Claim ledger:** The owner\u2019s confirmation supports the sole factual claim that they completed a checklist. The draft makes no claims about rationale, adoption, results, or professional background. The fictional label reflects the task\u2019s disclosure instruction.\n- **Handoff:** The closing question invites discussion and requires no link. With no voice sample and the sibling workflows unavailable, I used neutral wording and applied the claim and disclosure checks directly. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19843,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 210,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

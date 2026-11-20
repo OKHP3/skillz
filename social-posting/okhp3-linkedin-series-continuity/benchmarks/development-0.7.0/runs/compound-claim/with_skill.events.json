@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "307c437e33a515811582fe2292ad5d892dfc3e5de2ad067ebc9f57e403d8f231",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "e92948e77f7067f29b411968c726587db5e45829bcc4c0415745368937502368"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to draft from the confirmed commit and check each factual claim against the supplied evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nI committed a checklist.\n\nA checklist gives you a place to ask a useful question: Which steps would be easy to miss if no one wrote them down?\n\nWhat\u2019s one step you\u2019d put on a checklist even if it seems obvious?\n\n## Private review note\n\n- **Claim ledger.** The supplied source confirms the owner committed a checklist. That supports the opening sentence and is the draft\u2019s only factual claim. The date, use, completion speed, effect on rework, and customer purpose are unverified and omitted. The supplied disclosure rule allows the commit fact in the draft.\n- **Series and voice.** No prior items or owner-authored voice samples were supplied. The draft stands alone and uses a general reflection followed by one discussion question. I applied the drafting, voice, and disclosure checks directly because the sibling workflows were unavailable.\n- **Handoff.** The draft is for LinkedIn. This note is private. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19841,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 232,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

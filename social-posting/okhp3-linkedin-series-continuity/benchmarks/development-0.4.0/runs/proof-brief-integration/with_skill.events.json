@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "075d02d26e193bcf09676dd0a02a4773c3553c1798d0a1cc25cf81ef7de54653",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "a07b9d761fd3de9a645d93e7abce05baeb81da28491cd183e268f87133fde5f3"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the supplied LinkedIn series-continuity skill and keep the paste-ready draft separate from the private review notes."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nA reusable checklist is now committed. Its value is in what happens the second time you do the work. You have a starting point, and you can see which steps still fit and which ones need to change.\n\nWhat\u2019s one step you always include when you turn a recurring task into a checklist?\n\n## Private review note\n\n- **Series state.** The supplied text of the scheduled entry announces the intended checklist. Publication, account attribution, and series ordering remain unverified. The draft stands on its own and advances the story from intent to a confirmed commit.\n- **Claim and limits.** The included commit receipt confirms that the owner committed the reusable checklist. It establishes the commit only. The draft\u2019s point about reuse is framed as a general observation.\n- **Disclosure and review.** The private ledger and its identifier stay out of the draft. The proof-brief and sibling drafting and voice workflows were unavailable. I checked the claim against the receipt and used a neutral voice in the absence of a supplied voice sample. The sole CTA is the closing question. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19529,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 257,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

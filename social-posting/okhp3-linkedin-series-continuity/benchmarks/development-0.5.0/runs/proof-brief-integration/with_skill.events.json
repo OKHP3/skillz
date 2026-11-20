@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "44dc0c3358be174224bbbd77c851b336db890f293f9bed81b09f7539e06a6f63",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "9455d028d196db4f97887c413322df8e283b198891bf9a2355ccea57e55d705a"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill to draft from the commit receipt and keep the scheduled entry and private ledger in the review note."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI committed a reusable checklist. The goal is to give recurring work a starting point, so there\u2019s one less thing to reconstruct each time.\n\nWhat\u2019s one step you\u2019d put on a checklist because it\u2019s easy to miss when you\u2019re busy?\n\n### Private review note\n\n- **Series state:** The supplied prior entry announces the intended checklist and is scheduled. Publication, posting account, and authorship were unverified at review. The draft stands on its own without referring readers to that entry.\n- **Evidence and limits:** The supplied commit receipt confirms the owner committed the reusable checklist. Release, readiness, adoption, and impact are unverified. The draft frames reuse as a goal.\n- **Disclosure and review:** The private ledger and its identifier stay out of the draft. The proof-brief workflow and sibling drafting, angle, and voice workflows were unavailable. I checked the supplied evidence directly and used a plain voice because no owner-authored sample was supplied.\n- **Handoff:** The draft is for LinkedIn and has one CTA, a question for readers. The review note is private. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19569,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 268,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

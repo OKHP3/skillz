@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "4f0fd9efab3b9ed0f0a6d23ab455a84e549d00dca43f89d841f8aec8d0173d88",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "8044dfc6101b5ce58ff6420e43a3de71d92f90977abb5d44e394d6277f877226"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "In my last post, I shared how I was designing a reusable workflow. I\u2019ve since committed the template, and finishing it changed how I think about what makes a workflow reusable.\n\nWhen I\u2019m doing something myself, I can fill in the gaps from memory. Writing the template made me ask which decisions I could make ahead of time and which ones should stay open for whoever uses it next.\n\nThat\u2019s the distinction I\u2019ll carry into the next workflow I design: make the starting point clear without pretending every run will look the same.\n\n*Private review note: The publication receipt confirms the prior post covered the design, and the repository record confirms the template was committed. The draft makes no claims about adoption, time savings, or business impact. The first-person reflection is proposed wording for the owner to review.*"
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17571,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 164,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}
