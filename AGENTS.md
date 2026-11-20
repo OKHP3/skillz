@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 359 distribution skills in 22 active families (catalog audit, 2026-11-09). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 360 distribution skills in 22 active families (catalog audit, 2026-11-20). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -59,7 +59,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 358-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current distribution inventory |
 
 ## Routing index
 
@@ -322,10 +322,11 @@ contracts; public posting is a separately authorized drafting/action workflow.
 | Skill | Trigger |
 |---|---|
 | `okhp3-lifetime-career-reference` | Compile a private lifetime biography, registers and bibliography as a derived view over an existing career canon. |
-| `okhp3-role-master-resumes` | Produce reusable source-linked role-family master resume editions; exact-job tailoring stays separate. |
+| `okhp3-role-master-resumes` | Produce reusable source-linked role-family master resume editions. |
+| `okhp3-resume-generator` | Tailor one résumé to a specific opening from the candidate’s evidence and requested output constraints. |
 | `okhp3-coaching-engagement` | Maintain a private outplacement/coaching intake and meeting record with service, privacy and delivery states. |
 
-These draftable 0.2.0 source packages live in `askjamie/` as exact mirrors of
+The lifetime reference, role masters and coaching packages are draftable 0.2.0 sources in `askjamie/` and exact mirrors of
 AskJamie Resume Representative. Their independent review is analytical; no
 live benchmark, unseen holdout or native-host acceptance is established.
 
@@ -416,7 +417,7 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 
 ### Project-local support skills
 
-`.agents/skills/` contains 54 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
+`.agents/skills/` contains 55 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
 
 ## Technology and runtime
 
@@ -482,7 +483,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 359 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 360 distribution skills in 22 active families and 55 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

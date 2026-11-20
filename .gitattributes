@@ -8,6 +8,11 @@
 # Keep the portable Replit executor mirror byte-identical across hosts.
 replit/okhp3-replit-task-executor/** text=auto eol=lf
 
+# Keep the AskJamie FoundRy résumé package and its evidence hashes portable.
+askjamie/okhp3-resume-generator/** text=auto eol=lf
+# Preserve the supplied prompt verbatim, including its final blank line.
+askjamie/okhp3-resume-generator/prompts/the-resume-that-earns-the-interview.md whitespace=-blank-at-eof
+
 # Foundry current-core receipts hash bytes; keep them stable across hosts.
 universal/okhp3-skill-foundry/** text=auto eol=lf
 .agents/skills/okhp3-skill-foundry/** text=auto eol=lf

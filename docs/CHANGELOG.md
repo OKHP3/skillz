@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-20: Résumé Generator
+
+- Add `askjamie/okhp3-resume-generator`, the portable distribution of the AskJamie FoundRy skill for tailoring a résumé to one opening. It ships with intake prompts, templates, worked fictional examples and evaluation cases. The package ends at delivery of the draft to the candidate.
+
 ## 2026-11-19: Notion CRUDq family closeout
 
 - Record the previously unlogged 2026-09-03 addition of ten Notion skills

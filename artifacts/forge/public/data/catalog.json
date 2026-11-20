@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-20T04:30:53.977Z",
+  "generatedAt": "2026-11-20T13:02:35.180Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "feat/linkedin-publish-ops-and-carousel",
-  "sourceCommit": "d8d9011",
-  "skillCount": 359,
+  "sourceRef": "feature/resume-generator",
+  "sourceCommit": "456beff2",
+  "skillCount": 360,
   "familyCount": 22,
   "families": [
     {
@@ -76,7 +76,7 @@
     {
       "name": "askjamie",
       "displayName": "AskJamie",
-      "skillCount": 11,
+      "skillCount": 12,
       "skills": [
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
@@ -88,6 +88,7 @@
         "okhp3-job-application-completion",
         "okhp3-lifetime-career-reference",
         "okhp3-professional-headshot",
+        "okhp3-resume-generator",
         "okhp3-role-master-resumes"
       ],
       "narrativeBody": "**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.\n\nOne of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.",
@@ -2183,6 +2184,70 @@
         "reviewDecision": null,
         "blockers": [
           "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-resume-generator",
+      "displayName": "Resume Generator",
+      "family": "askjamie",
+      "skillDir": "okhp3-resume-generator",
+      "path": "askjamie/okhp3-resume-generator/SKILL.md",
+      "description": "Write or revise one interview-focused résumé for one opening from a job posting and the candidate’s record. Use when the candidate wants the finished résumé first, with help surfacing achievements. For a master résumé, evidence matrix, application submission, or employer-side applicant scoring, choose another workflow.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "career-operations",
+      "origin": "okhp3/askjamie-foundry",
+      "author": "OKHP3",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "career-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-resume-generator/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-resume-generator/SKILL.md",
+      "lastModified": "2026-11-20T07:00:07-06:00",
+      "commitSha": "456beff2",
+      "createdAt": "2026-11-20T07:00:07-06:00",
+      "packageMetadata": {
+        "author": "OKHP3",
+        "category": "career-operations",
+        "origin": "okhp3/askjamie-foundry",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "A candidate-facing résumé for one opening, focused evidence elicitation, truthful editing and optional file delivery.",
+        "outOfScope": "Recruiter screening, submissions, profile updates, reusable career masters and formal traceability handoffs.",
+        "publicArtifact": false,
+        "attributionLinks": "omitted-by-author"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "explicit-frontmatter",
