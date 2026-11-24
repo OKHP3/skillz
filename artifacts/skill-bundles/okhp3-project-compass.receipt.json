@@ -1,0 +1,10 @@
+{
+  "name": "okhp3-project-compass",
+  "version": "1.3.0",
+  "source_commit": "617540550cf759692625bf9698cce98645f36c19",
+  "package_tree": "bdf4f3921c99942e77ec80bc151b30bcf19d9671",
+  "sha256": "19e7b84086f7421df5f83ef38f83b705feccdb3a198ff10435905a52eabbdad0",
+  "files": 193,
+  "release_decision": "supervised-use",
+  "benchmark": "../../universal/okhp3-project-compass/evals/benchmark.json"
+}

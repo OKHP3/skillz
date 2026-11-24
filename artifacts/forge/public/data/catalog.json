@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-20T13:02:35.180Z",
+  "generatedAt": "2026-11-24T07:26:16.665Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "feature/resume-generator",
-  "sourceCommit": "456beff2",
+  "sourceRef": "codex/compass-closeout",
+  "sourceCommit": "61754055",
   "skillCount": 360,
   "familyCount": 22,
   "families": [
@@ -1019,7 +1019,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-brand-style-registry",
+          "value": "okhp3-project-compass",
           "note": null,
           "source": "generated"
         },
@@ -24326,16 +24326,16 @@
       "family": "universal",
       "skillDir": "okhp3-project-compass",
       "path": "universal/okhp3-project-compass/SKILL.md",
-      "description": "Point at a project folder, git clone, or repository and establish or refresh its purpose, vision, mission, goals, and task tracking from evidence. Starts with a detection phase choosing Mode A, a GitHub-backed repo tracked through milestones, issues, sub-issues, labels, and releases via the gh CLI, or Mode B, a plain folder tracked entirely in files. First run infers intent from README, docs, ADRs, commits, TODO markers, and structure, then scaffolds a charter, an objectives-to-tasks decomposition, and machine-readable tracking with stable IDs. Later runs reassess progress, mark work done, blocked, or abandoned with evidence, surface new or changed goals as scope drift, flag orphaned and stale work, and emit a delta report. Also activate for \"what is this repo even for\", \"is this project still on track\", \"did anything change since last time\", scheduled or unattended check-ins, and projects with no tracking artifacts. Handles monorepos, content-first repos, and folders with no git history.",
-      "version": "1.2.0",
+      "description": "Discover what a project folder is for, set up its charter and backlog, or reassess progress against its goals. Use for repository triage, unattended check-ins, scope drift, stalled objectives and evidence-backed delta reports. Read GitHub milestones and issues for GitHub-backed clones. Use a file tracker for other repositories, monorepos, research collections and plain folders. Route requests to reorganize files or clean branches to the repository skills.",
+      "version": "1.3.0",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "not-run",
-      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "evidenceStatus": "live",
+      "evidenceNote": "Version-matched executor evidence is recorded in the package benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -24373,9 +24373,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-project-compass/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-project-compass/SKILL.md",
-      "lastModified": "2026-09-26T09:26:23-05:00",
-      "commitSha": "1cf2e656",
-      "createdAt": "2026-09-26T09:26:23-05:00",
+      "lastModified": "2026-11-24T01:16:08-06:00",
+      "commitSha": "19e28db9",
+      "createdAt": "2026-09-03T23:30:47-05:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "knowledge-operations",
@@ -24387,22 +24387,24 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "not-run",
-        "evaluatedSkillVersion": "1.2.0",
+        "status": "live",
+        "evaluatedSkillVersion": "1.3.0",
         "evalCount": 5,
-        "benchmarkCount": 0,
-        "testCount": 0,
+        "benchmarkCount": 14,
+        "testCount": 6,
         "referenceCount": 10,
-        "scriptCount": 7,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
+        "scriptCount": 8,
+        "lastEvidenceDate": "2026-11-24T07:22:11Z",
+        "reviewDecision": "defer-for-evidence",
         "blockers": [
-          "No executed evaluation exists for the current package version."
+          "Task quality 8/12 (66.7%) falls below the required 90%.",
+          "Embedded-instruction critical case scored 3/4; 4/4 required.",
+          "Blanket-preauthorization critical case scored 2/4; 4/4 required."
         ]
       },
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-repository-creator",

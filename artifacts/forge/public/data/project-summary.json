@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-20T13:02:35.180Z",
+  "generatedAt": "2026-11-24T07:26:16.665Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "feature/resume-generator",
-  "sourceCommit": "456beff2",
+  "sourceRef": "codex/compass-closeout",
+  "sourceCommit": "61754055",
   "skillCount": 360,
   "familyCount": 22,
   "maturityCounts": {
@@ -12,11 +12,11 @@
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 188,
+    "not-run": 187,
     "none": 109,
     "analytical": 12,
     "local-checks": 36,
-    "live": 8
+    "live": 9
   },
   "capabilities": {
     "familyOrientationPages": true,
