@@ -1,0 +1,83 @@
+{
+  "partition": "pilot regression, outside frozen matched grades",
+  "source": "docs/ROADMAP.md:5",
+  "source_text": "- [ ] Catalog the violet samples",
+  "explicit_read_call_numbers": [
+    5,
+    26
+  ],
+  "indexed_tasks_with_source_terms": [
+    {
+      "id": "TSK-D3D7E58B",
+      "title": "Produce the violet sample catalog",
+      "title_hash": "D3D7E58B",
+      "status": "proposed",
+      "confidence": "inferred-weak",
+      "source": "docs/ROADMAP.md:5",
+      "created_at": "2026-11-24T07:09:47Z",
+      "updated_at": "2026-11-24T07:09:47Z",
+      "last_evidence_at": "2026-03-01T00:00:00Z",
+      "evidence": [
+        {
+          "type": "doc_change",
+          "ref": "docs/ROADMAP.md:5",
+          "observed_at": "2026-03-01T00:00:00Z",
+          "note": "Unchecked March roadmap entry."
+        }
+      ],
+      "labels": [],
+      "parent_id": null,
+      "github": null,
+      "objective_id": "OBJ-50E405AF",
+      "kind": "chore",
+      "blocked_by": []
+    }
+  ],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T07:09:40.903157+00:00",
+      "elapsed_seconds": 180.6,
+      "prompt_sha256": "daf868b8b48c22a804925837890f03561d2d130943bef7b9fbfc61c70fc7c6b6",
+      "activity": [
+        "run_helper",
+        "inspect",
+        "inspect",
+        "run_helper",
+        "inspect",
+        "inspect",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "write_files",
+        "run_helper",
+        "run_helper",
+        "write_files",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "write_files",
+        "inspect",
+        "run_helper"
+      ],
+      "usage": {
+        "input_tokens": 799462,
+        "cached_input_tokens": 742272,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7172,
+        "reasoning_output_tokens": 694
+      }
+    }
+  ],
+  "evidence": "submissions/pilot-roadmap/evidence.json"
+}

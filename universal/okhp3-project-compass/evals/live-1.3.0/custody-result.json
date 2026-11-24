@@ -1,0 +1,21 @@
+{
+  "completed_at": "2026-11-24T07:10:52.307830+00:00",
+  "candidate_manifest_sha256": "484dc0c8a94cedba180c516f2739a791cebd63001a206b1457a268403bc38b3e",
+  "seal_sha256": "7c656f0d2dbab49c41fe9d6bb8486762abf1e0d6d840178326c1bbdd7e2280f7",
+  "receipt_sha256": {
+    "baseline": {
+      "evidence": "6ef80b4bc704d01069710c1ff935aa0197b164a5a5ad8fb3d36cffb740c47500",
+      "grade": "1d798b794fd5f272f324db92d79cfde34f60fdbee20662294a0345d9071020b4"
+    },
+    "candidate": {
+      "evidence": "c3068f7eedf4aa9d5911aabf0c7b161d918921970a76d256ef61f7a0f4b8c6e4",
+      "grade": "9e988504609ec7dd666e0c8945b6c413215752e69a69a41dc068a82dd81d22e9"
+    }
+  },
+  "passed_of_four": {
+    "baseline": 4,
+    "candidate": 4
+  },
+  "method": "Matched fresh executors, fresh anonymous single-submission graders.",
+  "disposition": "Supplemental protected observation. The development uplift and critical floors govern release."
+}

@@ -1,0 +1,29 @@
+{
+  "version": "1.3.0",
+  "utc": "2026-11-24T07:17:07.160006+00:00",
+  "sha256": {
+    "SKILL.md": "d00796577c3bc27971e4015b36157c70ad9e563d3fa9a5a07503fc304f01e1b2",
+    "assets/charter.template.md": "1ad575116b6ba280cb320804142dc61f18a1481fb9c61ae2c3d2eb02bb8a73b0",
+    "assets/config.example.json": "56dd1548d4f374e0d61720ed50ea5924c565981a5be711f84da2bfeed1dce0be",
+    "assets/objectives.schema.json": "42bfe2ab1997ccdb3dd379a4e0fe62543dc9b89bad56db595705ff308b7a7844",
+    "assets/standalone-prompt.md": "75fc2dde079a190f165d54061600423c6db3421beb22520454d4edf288987ee4",
+    "references/delta-report-spec.md": "88f2cf6ebd44aec2dd77356f3af50d417bd62cf5da55d929f9454389de849ec2",
+    "references/evidence-taxonomy.md": "de02187d185f25e6209907f35d8eb454a112d802e3ff247618659f5720da39a9",
+    "references/file-mode.md": "a223198f544fdef27a52ecfaf68f075ba3840945cff148adfa1d7436db961bea",
+    "references/github-mode.md": "7f50a91796408a319909a093bf122925cd6553d5178432b9561d074e16595283",
+    "references/mode-detection-and-promotion.md": "dcba4242b389f6157d2889f96f49e6264a81661cf81c033ceca975fc98e177a6",
+    "references/projection-adapters.md": "12a35e5a2d9b470933e97b5db6f546873b153a1c8041fcf4c31bebb28fbebb1c",
+    "references/quality-rubric.md": "2d62d351e6b73a28182a5c3d98124ebb28dcf41ef1381406ec1ccd92fa3726c2",
+    "references/repo-shapes.md": "9689ddde5d92680ec9e956fccb869e2f20515310cc970636ee528e400990f65f",
+    "references/tracking-schema.md": "e4de22929e7b1e74472ddeb297e8e7dd414e4406b88146b1e969e1d898048255",
+    "references/unattended-and-scheduling.md": "2dfe42101348e1be89d26845feeb7fd437cf964414ea9a5445e7f63756b8a30f",
+    "scripts/compass_ids.py": "912cf51f503191cf35a12efdc36781f6859ce059472fa70f75533e5c79173744",
+    "scripts/compass_state.py": "8b60f2f1ad54219a4307a98c14e7ba63975288d1ab1e79f11cbcb0d51161c2d4",
+    "scripts/compass_views.py": "cca00b3b44253f4ac244b48bc09affc8c43864e9951564a434a32de9f84cec45",
+    "scripts/detect_mode.py": "9d6e1993c531513d33bebf40639b8e1c7a789d0ca83e1925cc48bca7679fb176",
+    "scripts/github_sync.py": "3238139f0dea5e4baf82167d3da1235ccb664cdf570fecd6b7152f6828d22b62",
+    "scripts/scan_repo.py": "8281145ed8c3e4889b5e330d7b85408ced0d07e3c52d97ada288eb0f718b38e9",
+    "scripts/selftest.py": "eea99abeadf1d9c3082d88d97257b211db176bf09a48336b0fc294a019b3a26e",
+    "scripts/validate_compass.py": "10f30745fa9b90c6d9d39f31c743ffe5e3d2702ec95d32d668797a5fc3e9f8ab"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "round": 1,
+  "commit": "86a757e2c287211189e9e756f0a223b491c564e0",
+  "package": "universal/okhp3-project-compass",
+  "runtime_files_verified": 23,
+  "pin_sha256": "484dc0c8a94cedba180c516f2739a791cebd63001a206b1457a268403bc38b3e",
+  "sealed_disposition": "Closed after one matched pair. Retired from further use."
+}

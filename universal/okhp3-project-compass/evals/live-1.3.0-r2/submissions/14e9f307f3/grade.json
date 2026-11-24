@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": false,
+      "evidence": "The reply describes a local source-note review but never identifies Mode B or the plain-folder sub-case, states that git is unavailable, or labels filesystem mtime as the age source. The persisted weekly-source-review.py reads note text and inventories PDF paths without collecting modification times."
+    },
+    {
+      "id": "e2",
+      "pass": false,
+      "evidence": "The reply makes no commitment to ask no questions during scheduled runs. The persisted weekly-source-review.py does not route the review-frequency question in notes/index.md to a QST- item, and persisted_edits contains neither a QST- item nor .compass/OPEN-QUESTIONS.md with a 'Compass assumed' line."
+    },
+    {
+      "id": "e3",
+      "pass": false,
+      "evidence": "The scheduling record targets weekly-source-review.py. Its review() replaces the entire reports/weekly-source-review.md on each run, and its LaunchAgent directs unattended logs to two files under reports/. These writes exceed managed blocks and .compass/. The reply also never explicitly declines scheduled creation of human documents, file moves, or GitHub writes."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The only persisted generated view is reports/weekly-source-review.md, which reports an empty catalog and lists two PDFs. Neither the reply nor the persisted files establishes content-first Mode B or coverage and currency success criteria. There is no computed-children rollup with visible denominators and no persisted docs/ROADMAP.md. The persisted files and scheduling record show no CI or issue-template scaffolding."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:09:05.951714+00:00",
+    "elapsed_seconds": 11.1,
+    "prompt_sha256": "cd3b011ffa32c917c449626878766e2c3405472f33abb7871d2d28344e34ac84",
+    "activity": [],
+    "usage": {
+      "input_tokens": 17116,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 375,
+      "reasoning_output_tokens": 0
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "6e04141f53b2efbdea723f89c615ac75ab054a1dc95246c53d1019269ebaf149"
+}

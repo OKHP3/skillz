@@ -1,5 +1,7 @@
 # Install and invoke Project Compass
 
+**1.3.0 release decision: supervised use.** The final live synthetic candidate scored 8/12 on development checks with a 50 percentage point gain over the control. Its two critical cases scored 3/4 and 2/4. Unattended production acceptance is on hold. [Measured results](evals/benchmark-1.3.0-r2.json)
+
 The source package is `universal/okhp3-project-compass/` in OKHP3/skillz. Install the whole directory under the skills path your host discovers, keeping its name and file layout. For Codex, a user-level installation makes one copy available from multiple project roots. Reload the skills list in a fresh turn.
 
 Open `assets/standalone-prompt.md` in a host without skill installation. Supply the target and write scope at its top. When the host has no filesystem tools, attach the relevant files and prior state.
@@ -37,4 +39,17 @@ For independent verification in the distribution checkout, run the release utili
 python3 artifacts/skill-bundles/verify-compass.py --worktree . \
   --commit "$COMPASS_SOURCE" --output artifacts/skill-bundles/okhp3-project-compass.skill \
   --verify-only --installed "$INSTALLED_COMPASS_DIR"
+```
+
+### Replaying the frozen evaluation
+
+The published JSON escapes a punctuation character in seven raw observations. Decoded JSON values, grades and model outputs are identical. To verify the original byte-level receipts, use the following commands from the distribution repository root. The helper creates a disposable copy and verifies both digests and semantic equality for each affected file. The original study records refer to the timestamps at which each check took place.
+
+```sh
+compass_replay=$(mktemp -d)
+pkg=universal/okhp3-project-compass
+mkdir -p "$compass_replay/universal"
+python3 "$pkg/evals/copy_trial_for_replay.py" "$compass_replay/$pkg"
+GIT_DIR="$(git rev-parse --absolute-git-dir)" \
+  python3 -B "$compass_replay/$pkg/evals/verify_trials.py"
 ```

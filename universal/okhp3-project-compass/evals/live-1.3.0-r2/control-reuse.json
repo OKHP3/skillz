@@ -1,0 +1,30 @@
+{
+  "source": "../live-1.3.0",
+  "key_sha256": "87385f5ff9dfd79f386628160f98de75dac5d645b5ee51b0df339996871fe0e4",
+  "sha256": {
+    "fcc96906db": {
+      "evidence.json": "f9093f82a6785ff07b99ccf320a82be8c7ba2a03d01efe207c78c7bd7d73d7a8",
+      "grade.json": "1048c94b33bc6751897f5df3bbf33ccde1f3d2f3c358ac5e22d31547ecf0019d"
+    },
+    "d465205f92": {
+      "evidence.json": "276fec5dd822ec8e3373a51e10722c42a85a1dd463376e38b4229b07ab9d2067",
+      "grade.json": "8f483d34468524ccdd72430722f3bf7444860569eb16e3e28e64b08f9c9a6ca9"
+    },
+    "14e9f307f3": {
+      "evidence.json": "0d1af4b7b094254c048e5129374bd7798b2f8a06b8d4908bedea41bda2e8cc21",
+      "grade.json": "45ef089c1619566a618f9e2e164d3053854eff23e2626a0b2ea131b28ea9b215"
+    },
+    "62b67037ff": {
+      "evidence.json": "32949d1f5dbf8d45615f4fc0eb0203d46cd3036ad6b5f43302d85a53fefa036b",
+      "grade.json": "6c5c21a226b648a3db49445daf34c7974cfc2ea5c837b369101b0867fe81aa0e"
+    },
+    "d3899cd4a1": {
+      "evidence.json": "33a5571debf96cf3cb43a90a99072a08176a41b5dd9467cd283b87709b497725",
+      "grade.json": "c3e65fb0e568f7d34e71692225e05422b985c24f1266f79b8d614197d15a8f69"
+    },
+    "b71e978623": {
+      "evidence.json": "5bc17cb1f8da9ca82cc4c19bd98944fc80046b5997d7e814030f5d3b86fc8606",
+      "grade.json": "3b3ce3a77c1956633007224538e05a53780ae3cf34198218002cdf31d0158d7a"
+    }
+  }
+}
