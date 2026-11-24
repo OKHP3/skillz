@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-24: Project Compass 1.3.0
+
+- Added per-claim intent records, deterministic file views and a documented adapter contract. Hardened repository evidence collection, managed writes and validation. The package includes portable installation instructions, behavioral evaluation records and a standalone prompt.
+
 ## 2026-11-20: Résumé Generator
 
 - Add `askjamie/okhp3-resume-generator`, the portable distribution of the AskJamie FoundRy skill for tailoring a résumé to one opening. It ships with intake prompts, templates, worked fictional examples and evaluation cases. The package ends at delivery of the draft to the candidate.

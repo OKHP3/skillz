@@ -189,3 +189,19 @@ embeds the `SKILL.md` body, so a bump requires regenerating Forge data. At the
 time of this entry, other uncommitted catalog and Forge work was in flight in
 the same working tree. Bump to 1.2.1 at the next cataloger and Forge
 regeneration rather than mixing changes into that work.
+
+## Entry 4. Candidate 1.3.0
+
+The original contract combined first-run triage with evidence-backed reassessment. This revision restores the requested sink extension contract, implements a local projection, and keeps the installed and paste-only instructions aligned on adoption, identifiers and scheduled runs. The behavior change warrants a minor version. The repository-local library remains the distribution source.
+
+| Foundry or review finding | Change and verification |
+|---|---|
+| A task could lose its human backlog, or a generated block could overwrite an edit | Adopt the configured human document. Compare the recorded block checksum before replacing it. Exercise edited, unsigned and ambiguous blocks. |
+| Two runs on the same date could collide, and a receipt could outlive its report | Scope the filename to one run. Match the history, receipt, report path and report ID. Test missing and mismatched reports. |
+| Sensitive filenames and remote titles could enter artifacts through separate helpers | Filter retained baseline and pointer fields before writing. Exercise local exclusions and remote metadata redaction. |
+| A high score could conceal unsupported completion | Require an observed closure for an issue and merge for a pull request. The operator still inspects the source and the task's acceptance criterion. |
+| A matching ID or local mode alone could suggest an unsafe remote plan | Verify origin and snapshot identity, handle partial or ambiguous inventories, and produce reviewed command arguments for the operator. |
+
+An interactive discovery and unattended reassessment ran on a synthetic content-only collection. The same task moved from active to done on a quoted source citation and explicit completion record. A goal conflicting with a declared non-goal stayed proposed. The two original human files retained their original prose bytes. A separate chat-only exercise adopted an existing TODO and reported unknown intent without claiming filesystem access.
+
+For the matched trial, release floors, retained failures and decision, read [the benchmark record](evals/benchmark.json). These exercises establish different facts. A structural pass measures package shape. The matched trial measures the selected host's behavior on the named cases.
