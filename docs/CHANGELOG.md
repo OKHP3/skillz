@@ -4,7 +4,8 @@
 
 - Added per-claim intent records, deterministic file views and a documented adapter contract. Hardened repository evidence collection, managed writes and validation. The package includes portable installation instructions, behavioral evaluation records and a standalone prompt.
 
-- Publish the installable package for supervised use. Final matched development scores were 8/12 with Compass and 2/12 without. The two critical cases remained below their required floors.
+- Publish the installable package with a behavioral limit of supervised use. Final matched development scores were 8/12 with Compass and 2/12 without. The two critical cases remained below their required floors.
+- Hold operational rollout pending package security review. The [Skillz Shield run](https://github.com/OKHP3/skillz/actions/runs/45348185516) returned incomplete coverage and 13 high or critical findings on the distributed bytes. The bundle receipt records the scanned source revision.
 
 ## 2026-11-20: Résumé Generator
 

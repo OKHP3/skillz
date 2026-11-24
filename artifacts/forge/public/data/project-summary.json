@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-24T07:26:16.665Z",
+  "generatedAt": "2026-11-24T07:32:21.022Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/compass-closeout",
-  "sourceCommit": "61754055",
+  "sourceRef": "main",
+  "sourceCommit": "11d4da1e",
   "skillCount": 360,
   "familyCount": 22,
   "maturityCounts": {
