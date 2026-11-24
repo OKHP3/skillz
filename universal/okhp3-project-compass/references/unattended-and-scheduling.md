@@ -9,9 +9,7 @@ block. This file is the contract.
    an entry in `.compass/OPEN-QUESTIONS.md`. The run continues.
 2. **Label every assumption.** An assumption used in place of an answer is
    recorded next to the question that would have resolved it.
-3. **Managed writes only.** Unattended runs write inside managed blocks and
-   under `.compass/`. They never create a new human document, never move a
-   file, never change repository structure, and never touch an external sink.
+3. **Bound the writes.** Use managed blocks and `.compass/` by default. An explicitly authorized first-run scaffold may exclusively create missing approved human views. Keep external sinks read-only.
 4. **Always produce a record.** Record failures in a safe writable destination, or return the failure to the scheduling host. A silent run is indistinguishable
    from a run that never happened.
 5. **No destructive fallback.** If state is corrupt, write a repair-needed
@@ -19,7 +17,7 @@ block. This file is the contract.
 
 Resolve output paths beneath the authorized project. Skip symlinks, nested repositories and secret-bearing files. Keep raw scans ephemeral. Redact credential-bearing remotes, private source text and sensitive path components in every retained artifact. If private deny terms are used, verify their file is ignored and untracked before saving any terms. A detector cannot establish that a source is safe to publish.
 
-Use a unique run ID for each report. Compare recorded managed-block bytes before replacing them. Preserve an edited or unclaimed block and log an open question. For scheduled first discovery with no human views, generate the proposed charter, roadmap and backlog under `.compass/reports/` and record their proposed destination paths. Promote them on the next authorized interactive run. If a run cannot safely write state or a log, return its failure report to the scheduler. Configure the host to reject overlapping runs for the same target.
+Use a unique run ID for each report. Compare recorded managed-block bytes before replacing them. Preserve an edited or unclaimed block and log an open question. If the job explicitly authorizes first-run scaffolding of missing human views, adopt existing equivalents first, then exclusively create only the approved missing paths. Otherwise put the proposed charter, roadmap and backlog in `.compass/reports/` and record the intended destinations. If a run cannot safely write state or a log, return its failure report to the scheduler. Configure the host to reject overlapping runs for the same target.
 
 ## Open-questions protocol
 

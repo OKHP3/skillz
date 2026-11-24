@@ -5,7 +5,9 @@ pull reads github.com using GET, or an offline JSON fixture. --apply saves the
 index under --root/.compass. A fixture declares owner_repo, complete: true,
 issues and milestones. Fixture plans are simulations. plan reads only local
 files. push --apply --authorized renders concrete commands for manual review. It never
-executes them or writes a run log.
+executes them or writes a run log. Rendering requires a current V7 firewall pass.
+Issue creation uses the verified parent milestone number when one is linked;
+a pending milestone is a manual dependency until a fresh pull supplies that number.
 """
 from __future__ import annotations
 
@@ -244,8 +246,33 @@ def check_index(index, repo, state):
                         "local GitHub pointer disagrees with the index")
 
 
+def task_objective(task_id, tasks, objective_ids, resolved):
+    """Resolve the objective inherited through parent tasks, caching each visited edge."""
+    chain, visited = [], set()
+    node = task_id
+    while node is not None and node not in resolved:
+        require(node not in visited, "cycle in issue's parent task chain")
+        visited.add(node)
+        chain.append(tasks[node])
+        node = tasks[node].get("parent_id")
+        require(node is None or (isinstance(node, str) and node in tasks),
+                "issue's parent task is unresolved")
+    objective = resolved.get(node)
+    for task in reversed(chain):
+        direct = task.get("objective_id")
+        if direct is not None:
+            require(isinstance(direct, str) and direct in objective_ids, "issue's objective is unresolved")
+            require(objective is None or objective == direct, "issue's objective conflicts with its parent")
+            objective = direct
+        resolved[task["id"]] = objective
+    return objective
+
+
 def plan_actions(state, index, repo):
     check_index(index, repo, state)
+    tasks = {row["id"]: row for row in state["tasks"]}
+    objective_ids = {row["id"] for row in state["objectives"]}
+    resolved = {}
     actions = []
     for bucket, local, _ in KINDS:
         kind = "issue" if bucket == "issues" else "milestone"
@@ -256,8 +283,20 @@ def plan_actions(state, index, repo):
                 actions.append({"op": "review", "id": cid, "reason": "terminal local item has no remote marker"})
                 continue
             if not match:
-                actions.append({"op": "create-" + kind, "id": cid, "title": row["title"],
-                                "reason": "no matching marker in complete snapshot"})
+                action = {"op": "create-" + kind, "id": cid, "title": row["title"],
+                          "reason": "no matching marker in complete snapshot"}
+                if kind == "issue":
+                    objective = task_objective(cid, tasks, objective_ids, resolved)
+                    if objective is not None:
+                        action["objective_id"] = objective
+                        milestone = index["milestones"].get(objective)
+                        if milestone:
+                            action["milestone_number"] = milestone["number"]
+                        else:
+                            action.update(op="manual-dependency", pending_op="create-issue",
+                                          reason="Create or link the parent milestone with its objective marker, "
+                                                 "then run pull --apply and plan again before creating the issue.")
+                actions.append(action)
                 continue
             want = "closed" if row["status"] in CLOSED_STATUSES else "open"
             if match["state"].lower() == want:
@@ -275,16 +314,37 @@ def plan_actions(state, index, repo):
     return actions
 
 
-def render_commands(repo, actions):
-    """Return auditable argv alongside its POSIX shell representation."""
+class FirewallBlocked(Exception):
+    """The shared V7 check failed or could not verify all managed artifacts."""
+
+
+def render_commands(root, config, state, repo, actions):
+    """Recheck V7 immediately before constructing any external command."""
+    # The validator imports check_index for V11. Load its V7 entry point at runtime.
+    from validate_compass import Result, check_firewall, mapping
+
+    firewall = Result("V7", "scope firewall")
+    human = mapping(config, "human_artifacts", firewall)
+    try:
+        check_firewall(root, config, human, state, firewall, Result("V8", "style"), (), None)
+    except (OSError, ValueError, RecursionError) as exc:
+        raise FirewallBlocked from exc
+    if firewall.status != "PASS":
+        raise FirewallBlocked
+
     commands = []
     gh_repo = "github.com/" + repo
     for action in actions:
         op = action["op"]
         if op == "create-issue":
             marker = "<!-- compass-id: %s -->" % action["id"]
-            argv = ["gh", "issue", "create", "--repo", gh_repo, "--title", action["title"],
-                    "--body", marker]
+            if "objective_id" in action:
+                argv = ["gh", "api", "--hostname", "github.com", "--method", "POST",
+                        "repos/%s/issues" % repo, "-f", "title=" + action["title"],
+                        "-f", "body=" + marker, "-F", "milestone=%d" % action["milestone_number"]]
+            else:
+                argv = ["gh", "issue", "create", "--repo", gh_repo, "--title", action["title"],
+                        "--body", marker]
         elif op == "close-issue":
             argv = ["gh", "issue", "close", str(action["number"]), "--repo", gh_repo]
         elif op == "create-milestone":
@@ -362,11 +422,10 @@ def run(a, root):
         for row in [*index[bucket].values(), *index["unmatched_remote"][bucket]]:
             require(not private_metadata(row["title"], deny), "cached remote titles need private review")
     result = {"repo": repo, "source": index["source"], "synced_at": index["synced_at"],
-            "simulation": index["source"] == "fixture", "action_count": len(actions), "actions": actions}
-
+              "simulation": index["source"] == "fixture", "action_count": len(actions), "actions": actions}
 
     if a.cmd == "push":
-        result.update(executed=False, commands=render_commands(repo, actions))
+        result.update(executed=False, commands=render_commands(root, config, state, repo, actions))
     return result
 
 
@@ -392,6 +451,13 @@ def main(argv=None):
         root = Path(a.root).resolve()
         with writer_lock(root) if a.cmd == "pull" and a.apply else nullcontext():
             output = run(a, root)
+    except FirewallBlocked:
+        print(json.dumps({"blocked": True, "check": "V7", "executed": False, "commands": [],
+                          "actions": [], "action_count": 0,
+                          "reason": "The V7 scope firewall did not pass. Review the current managed "
+                                    "artifacts with validate_compass.py before rendering commands."},
+                         indent=2, sort_keys=True))
+        return 3
     except (ValueError, OSError) as exc:
         output = {"degraded": "file-only", "action_count": 0, "actions": [],
                   "reason": str(exc) if isinstance(exc, Incomplete) else "invalid project state or unsafe path"}

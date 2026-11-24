@@ -27,7 +27,7 @@ from pathlib import Path
 if __name__ == "__main__":
     sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from compass_ids import BUCKETS, verify as verify_ids  # noqa: E402
+from compass_ids import BUCKETS, ID_FORMAT, verify as verify_ids  # noqa: E402
 
 from compass_state import block_digest, block_spans, excluded, inspect_history, parse_json, read_baseline, target
 from github_sync import SCHEMA as MIRROR_SCHEMA, check_index
@@ -260,26 +260,73 @@ def evidence_entries(item, r, label):
     return valid
 
 
-def completion_signal(entry):
+INCOMPLETE = re.compile(
+    r"\b(?:incomplete|unfinished|reopened|still open|work outstanding|outstanding work|"
+    r"not (?:yet )?(?:closed|merged|done|complet(?:e|ed)|finished)|"
+    r"no (?:(?:evidence|signal) of |verified |actual )?completion|without complet(?:ing|ion)|"
+    r"completion (?:pending|unverified)|did(?: not|n't) (?:complete|finish))\b", re.I)
+FAILED = re.compile(r"\b(?:fail(?:ed|ing|ure|ures)?|[1-9]\d* errors?|cancel(?:l)?ed|timed out|"
+                    r"did(?: not|n't) pass|not (?:yet )?pass(?:ed|ing)|no passing tests)\b", re.I)
+ZERO_FAILURES = re.compile(
+    r"\b(?:0|zero|no)\s+(?:(?:tests?|checks?)\s+)?(?:failed|failures?|errors?)\b|"
+    r"\b(?:failures?|errors?|failed)\s*[:=]\s*0\b", re.I)
+PASSED_RERUN = re.compile(r"\b(?:re[- ]?(?:run|test)\s*[:=]?\s+(?:now |has )?(?:passed|succeeded)|"
+                          r"(?:passed|succeeded) on (?:the )?re[- ]?run)\b", re.I)
+
+
+def completion_observation(entry):
+    """Return True for support, False for contradiction, None for other activity.
+
+    These checks interpret explicit recorded outcomes. A generic citation still
+    needs source inspection to establish that it satisfies the task criterion.
+    """
     kind = entry["type"]
-    if kind not in ("issue", "pr"):
-        return kind in ("release", "test_signal", "doc_change", "manual")
-    # A tracker number identifies work, but does not say it finished. Accept
-    # either a structured disposition or the documented "ref + note" format.
-    state = entry.get("state")
-    state = state.casefold() if nonblank(state) else ""
-    wording = " ".join(value for value in (entry["ref"], entry.get("note")) if nonblank(value))
-    if (state in ("open", "reopened", "draft") or
-            re.search(r"\b(?:still open|reopened|work outstanding|not (?:yet )?(?:closed|merged|done))\b",
-                      wording, re.I)):
+    fields = (entry.get(key) for key in ("state", "status", "result", "outcome", "conclusion"))
+    outcomes = {field.strip().casefold() for field in fields if nonblank(field)}
+    if (outcomes & {"open", "draft", "pending", "blocked", "error", "timed_out"}
+            or any(INCOMPLETE.search(value) or FAILED.search(value) for value in outcomes)
+            or any(entry.get(key) is False for key in ("passed", "success", "completed"))
+            or type(entry.get("exit_code")) is int and entry["exit_code"] != 0):
         return False
+    # Refs can embed the observation ("issue:#42 closed"); avoid treating a
+    # filename like tests/error.py as a failed run just because it names one.
+    ref = entry["ref"].strip()
+    ref_observation = ref if re.search(r"\s", ref) or FAILED.fullmatch(ref) or INCOMPLETE.fullmatch(ref) else ""
+    wording = " ".join(part for part in (ref_observation, entry.get("note")) if nonblank(part))
+    if INCOMPLETE.search(wording):
+        return False
+    # An explicit passing rerun can resolve a prior failed attempt in one
+    # note. A failure reported after that rerun still contradicts completion.
+    final_attempt = PASSED_RERUN.split(wording)[-1]
+    if FAILED.search(ZERO_FAILURES.sub("", final_attempt)):
+        return False
+    if kind not in ("issue", "pr"):
+        if kind in ("release", "test_signal", "doc_change", "manual"):
+            return True
+        return None
     if kind == "issue":
-        return state == "closed" or bool(re.search(r"\bclosed\b", wording, re.I))
-    return (state == "merged" or entry.get("merged") is True
-            or bool(re.search(r"\bmerged\b", wording, re.I)))
+        if "closed" in outcomes or re.search(r"\bclosed\b", wording, re.I):
+            return True
+    elif entry.get("merged") is False:
+        return False
+    elif "merged" in outcomes or entry.get("merged") is True or re.search(r"\bmerged\b", wording, re.I):
+        return True
+    return None
+
+
+def supports_done(entries):
+    # Evidence is append-only. Use observation time first, append order on ties.
+    ordered = sorted(entries, key=lambda entry: iso_time(entry["observed_at"]))
+    for entry in reversed(ordered):
+        observation = completion_observation(entry)
+        if observation is not None:
+            return observation
+    return False
 
 
 def check_status(buckets, r):
+    tracked = {row["id"] for bucket in ("objectives", "tasks", "risks") for row in buckets[bucket]
+               if nonblank(row.get("id")) and ID_FORMAT.fullmatch(row["id"])}
     for name in ("objectives", "tasks", "risks", "drift"):
         for item in buckets[name]:
             valid = evidence_entries(item, r, name)
@@ -293,10 +340,15 @@ def check_status(buckets, r):
                 r.fail(name + " has invalid status")
             elif status in EVIDENCE_REQUIRED and not valid:
                 r.fail(name + " needs valid evidence for this status")
-            elif status == "done" and not any(completion_signal(entry) for entry in valid):
-                r.fail(name + " needs evidence of completion")
+            elif status == "done" and not supports_done(valid):
+                r.fail(name + " needs completion evidence consistent with its latest recorded outcome")
             elif status == "abandoned" and not any(entry["type"] == "absence" for entry in valid):
                 r.fail(name + " needs absence evidence")
+            elif status == "superseded":
+                refs = as_list(item.get("refs"))
+                if not refs or any(not nonblank(ref) or ref == item.get("id") or ref not in tracked
+                                   for ref in refs):
+                    r.fail(name + " needs refs to one or more known successor items other than itself")
     for item in buckets["open_questions"]:
         if item.get("status") not in ("open", "answered", "withdrawn"):
             r.fail("invalid question status")

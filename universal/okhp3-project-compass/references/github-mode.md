@@ -35,16 +35,17 @@ releases and tags.
 
 All GitHub reads and writes go through `gh`. Useful shapes:
 
+Before rendering a GitHub command, run the scope firewall on the adopted charter and retained outputs. Withhold the handoff on failure. Bind the new issue to its verified parent milestone when available. If the parent is pending creation or ambiguous, report the dependency and refresh the index before its task command. The following command shapes require real resolved values.
+
 ```text
 gh repo view <owner/name> --json name,description,repositoryTopics,homepageUrl,updatedAt
 gh issue list --repo <owner/name> --state all --limit 500 \
     --json number,title,state,labels,milestone,url
 gh api repos/<owner/name>/milestones?state=all&per_page=100
 gh release list --repo <owner/name> --limit 30
-gh issue create --repo <owner/name> --title "<title>" \
-    --body "<body>
-
-<!-- compass-id: TSK-9F8E7D6C -->" --label compass
+gh api --hostname github.com --method POST repos/<owner/name>/issues \
+    -f title='<title>' -f 'body=<!-- compass-id: TSK-9F8E7D6C -->' \
+    -F milestone=<verified-milestone-number>
 gh issue close <number> --repo <owner/name> \
     --comment "Compass: status done, evidence commit:<sha>"
 gh api repos/<owner/name>/milestones -f title='<title>' \
@@ -74,23 +75,46 @@ Mode A keeps three things in the repository and nothing more:
 
 The index is pointers plus context, never a copy of the tracker:
 
+Only a completed, identity-checked pull establishes a fresh mirror. Set `.compass/github-pull-status.json` to `{"ready":false}` before acquisition. On success write the version 2 index, then a receipt with `ready: true` and `sha256` equal to the full lowercase SHA-256 of its exact on-disk bytes. A legacy index is historical until refreshed. If hashing or pagination is unavailable, keep the historical copy and withhold the external plan.
+
 ```json
 {
-  "schema": "okhp3.compass.github-index/1",
+  "schema": "okhp3.compass.github-index/2",
   "owner_repo": "owner/name",
-  "synced_at": "<ISO8601Z>",
-  "policy": "pointers-plus-context; issue bodies are never mirrored",
+  "project_key": "example",
+  "source": "github",
+  "complete": true,
+  "synced_at": "2026-01-01T00:00:00Z",
+  "counts": {
+    "issues": 1,
+    "milestones": 1
+  },
   "milestones": {
-    "OBJ-1A2B3C4D": { "number": 3, "title": "Parse DXF exports", "state": "open",
-                      "open_issues": 1, "closed_issues": 3,
-                      "percent_complete": 75, "due_on": null, "url": "..." }
+    "OBJ-1A2B3C4D": {
+      "number": 3,
+      "title": "Publish the index",
+      "state": "open",
+      "open_issues": 1,
+      "closed_issues": 0,
+      "percent_complete": 0,
+      "due_on": null,
+      "url": "https://github.com/owner/name/milestone/3"
+    }
   },
   "issues": {
-    "TSK-9F8E7D6C": { "number": 42, "title": "Handle R10 variants",
-                      "state": "OPEN", "labels": ["compass"],
-                      "milestone_number": 3, "url": "..." }
+    "TSK-9F8E7D6C": {
+      "number": 42,
+      "title": "Review one entry",
+      "state": "open",
+      "labels": [],
+      "milestone_number": 3,
+      "url": "https://github.com/owner/name/issues/42"
+    }
   },
-  "unmatched_remote": { "issues": [], "milestones": [] },
+  "unmatched_remote": {
+    "issues": [],
+    "milestones": []
+  },
   "unmatched_local": [],
   "anomalies": {}
 }
