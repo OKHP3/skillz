@@ -12,11 +12,14 @@ block. This file is the contract.
 3. **Managed writes only.** Unattended runs write inside managed blocks and
    under `.compass/`. They never create a new human document, never move a
    file, never change repository structure, and never touch an external sink.
-4. **Always produce a record.** Even a failed run writes a run record and a
-   delta report with the failure at the top. A silent run is indistinguishable
+4. **Always produce a record.** Record failures in a safe writable destination, or return the failure to the scheduling host. A silent run is indistinguishable
    from a run that never happened.
 5. **No destructive fallback.** If state is corrupt, write a repair-needed
    report and stop. Do not re-initialize over existing state.
+
+Resolve output paths beneath the authorized project. Skip symlinks, nested repositories and secret-bearing files. Keep raw scans ephemeral. Redact credential-bearing remotes, private source text and sensitive path components in every retained artifact. If private deny terms are used, verify their file is ignored and untracked before saving any terms. A detector cannot establish that a source is safe to publish.
+
+Use a unique run ID for each report. Compare recorded managed-block bytes before replacing them. Preserve an edited or unclaimed block and log an open question. For scheduled first discovery with no human views, generate the proposed charter, roadmap and backlog under `.compass/reports/` and record their proposed destination paths. Promote them on the next authorized interactive run. If a run cannot safely write state or a log, return its failure report to the scheduler. Configure the host to reject overlapping runs for the same target.
 
 ## Open-questions protocol
 
@@ -81,6 +84,8 @@ when it is wasting the owner's attention.
 |---|---|
 | Run hangs waiting for input | Unattended flag disables every prompt path |
 | Partial write leaves state inconsistent | Write machine state last, after the report is composed |
-| Two runs overlap | Run identifiers are timestamped; a second record for the same minute is a reportable anomaly |
+| Two runs overlap | Configure the host for one active job per target root. Use unique run and report IDs for sequential retries. |
 | Repository is mid-rebase or dirty | Report the dirty state, proceed read-mostly, do not treat uncommitted work as evidence of completion |
 | Scan times out on a huge tree | The scanner caps file counts and marker counts and reports truncation as a limitation |
+
+A lock serializes cooperating helper writes. Each file update is atomic, but a crash between the receipt, history, and objectives updates can leave an incomplete run. Preserve the existing files. Verify that no writer still owns the lock, compare report and receipt IDs against the history and counters, and surface the specific repair for the operator. Never remove an active writer's lock.

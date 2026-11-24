@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Self-check and quality rubric for OKHP3 Project Compass artifacts.
 
-Read-only. Runs ten checks (V1-V10) against the .compass state and the human
+Read-only. Runs eleven checks (V1-V11) against the .compass state and the human
 artifacts it manages, scores the result 0-100, and assigns a band. An
 unavailable check is NOT RUN, never PASS.
 
@@ -11,7 +11,7 @@ Usage
   python3 validate_compass.py --root . --json
   python3 validate_compass.py --root . --deny-terms-file .compass/deny-terms.local.txt
 
-Exit codes: 0 clean or warnings only, 1 one or more FAIL, 2 usage error.
+Exit codes: 0 PASS gate, 1 HOLD gate, 2 usage error.
 """
 from __future__ import annotations
 
@@ -20,13 +20,19 @@ import datetime as dt
 import json
 import os
 import re
+import stat
 import sys
+from pathlib import Path
 
+if __name__ == "__main__":
+    sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-try:
-    from compass_ids import verify as verify_ids  # noqa: E402
-except ImportError:  # pragma: no cover
-    verify_ids = None
+from compass_ids import BUCKETS, verify as verify_ids  # noqa: E402
+
+from compass_state import block_digest, block_spans, excluded, inspect_history, parse_json, read_baseline, target
+from github_sync import SCHEMA as MIRROR_SCHEMA, check_index
+from detect_mode import valid_slug
+from scan_repo import excluded_name
 
 VALID_STATUS = {"proposed", "active", "in_progress", "blocked", "done",
                 "abandoned", "superseded"}
@@ -42,43 +48,82 @@ FIREWALL = [
     ("confidentiality-marker",
      re.compile(r"\b(confidential|internal use only|do not distribute)\b", re.I)),
     ("ticket-key", re.compile(r"\b[A-Z]{2,6}-\d{2,6}\b")),
-    ("corp-host", re.compile(r"\b[\w.-]+\.(corp|internal|intranet)\b", re.I)),
-    ("secretish", re.compile(r"\b(AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{20,}|"
-                             r"-----BEGIN [A-Z ]*PRIVATE KEY-----)")),
+    ("corp-host", re.compile(r"\.(corp|internal|intranet)\b", re.I)),
+    ("access-marker", re.compile(r"\b(?:sso|vpn|adfs|citrix|okta|pingfed)\b", re.I)),
+    ("url-userinfo", re.compile(r"\b[a-z][a-z0-9+.-]*://[^/\s]+@", re.I)),
+    ("credential-setting", re.compile(
+        r"""\b(?:password|passwd|api[_-]?key|access[_-]?token|client[_-]?secret)["']?\s*[:=]\s*\S""", re.I)),
+    ("secretish", re.compile(r"(?:\bAKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|"
+                             r"xox[baprs]-[A-Za-z0-9-]{10,}|sk-[A-Za-z0-9_-]{16,}|-----BEGIN (?:[A-Z0-9]+ )*PRIVATE KEY-----)")),
 ]
-COMPASS_ID_RE = re.compile(r"\b(OBJ|TSK|RSK|QST|DRF)-[0-9A-F]{8}\b")
-EM_DASH = "—"
+EM_DASH = "\u2014"
 WEIGHTS = {"V1": 10, "V2": 12, "V3": 11, "V4": 13, "V5": 11, "V6": 7,
            "V7": 9, "V8": 5, "V9": 6, "V10": 6, "V11": 10}
 MIRROR_BODY_CAP = 2000
 
 
-def load(path):
-    try:
-        with open(path, "r", encoding="utf-8") as fh:
-            return json.load(fh)
-    except (OSError, ValueError):
-        return None
+class InvalidFile(ValueError):
+    """An absent, inaccessible, or unsafe input. Messages contain no input text."""
 
 
-def read(path):
+def inside(root, rel, directory=False):
+    if not nonblank(rel):
+        raise InvalidFile("expected a relative project path")
     try:
-        with open(path, "r", encoding="utf-8", errors="replace") as fh:
+        return target(root, rel, directory=directory)
+    except (OSError, ValueError, RuntimeError):
+        raise InvalidFile("unsafe or inaccessible project path") from None
+
+
+def read(root, rel):
+    path = inside(root, rel)
+    if any(excluded_name(part) for part in Path(rel).parts):
+        raise InvalidFile("sensitive artifact path")
+    try:
+        fd = os.open(path, os.O_RDONLY | getattr(os, "O_NONBLOCK", 0)
+                     | getattr(os, "O_NOFOLLOW", 0))
+        with os.fdopen(fd, encoding="utf-8", newline="") as fh:
+            if not stat.S_ISREG(os.fstat(fh.fileno()).st_mode):
+                raise InvalidFile("expected a regular file")
             return fh.read()
-    except OSError:
-        return None
+    except (OSError, UnicodeError):
+        raise InvalidFile("file is missing, unreadable or invalid UTF-8") from None
 
 
-def days_since(iso_text):
-    if not iso_text:
+def nonblank(value):
+    return isinstance(value, str) and bool(value.strip())
+
+
+def as_list(value):
+    return value if isinstance(value, list) else []
+
+
+def records(holder, key, result):
+    values = holder.get(key, [])
+    if not isinstance(values, list):
+        result.fail(key + " must be an array")
+        return []
+    if any(not isinstance(item, dict) for item in values):
+        result.fail(key + " contains a non-object entry")
+    return [item for item in values if isinstance(item, dict)]
+
+
+def mapping(holder, key, result):
+    value = holder.get(key, {})
+    if isinstance(value, dict):
+        return value
+    result.fail(key + " must be an object")
+    return {}
+
+
+def iso_time(value):
+    if not nonblank(value):
         return None
     try:
-        when = dt.datetime.fromisoformat(str(iso_text).replace("Z", "+00:00"))
-    except ValueError:
+        when = dt.datetime.fromisoformat(value[:-1] + "+00:00" if value.endswith("Z") else value)
+        return when.replace(tzinfo=dt.timezone.utc) if when.tzinfo is None else when.astimezone(dt.timezone.utc)
+    except (ValueError, OverflowError):
         return None
-    if when.tzinfo is None:
-        when = when.replace(tzinfo=dt.timezone.utc)
-    return (dt.datetime.now(dt.timezone.utc) - when).days
 
 
 class Result:
@@ -115,326 +160,565 @@ class Result:
                 "findings": self.findings}
 
 
-def managed_files(root, config, state):
-    paths = set()
-    for value in (config.get("human_artifacts") or {}).values():
-        if value:
-            paths.add(value)
-    if state.get("charter_ref"):
-        paths.add(state["charter_ref"])
-    for rel in (".compass/objectives.json", ".compass/config.json"):
-        paths.add(rel)
-    reports = os.path.join(root, ".compass", "reports")
-    if os.path.isdir(reports):
-        for name in sorted(os.listdir(reports))[:50]:
-            paths.add(".compass/reports/" + name)
-    return sorted(p for p in paths if os.path.isfile(os.path.join(root, p)))
+CHECK_NAMES = [
+    "state files present and parseable", "identifier integrity",
+    "referential integrity", "status and evidence discipline",
+    "charter completeness", "confidence discipline", "scope firewall",
+    "style and managed-block integrity", "unattended-run safety",
+    "staleness surfaced", "mode detection and mirror integrity",
+]
+DRIFT_KINDS = ("new_goal", "changed_goal", "scope_expansion", "scope_contraction",
+               "orphaned_work", "stale_objective", "abandoned_work", "contradiction",
+               "sink_divergence", "mode_change")
+DEFAULT_DENY = ".compass/deny-terms.local.txt"
 
 
-def validate(root, deny_terms=()):
-    results = []
-    cfg_path = os.path.join(root, ".compass", "config.json")
-    st_path = os.path.join(root, ".compass", "objectives.json")
-    base_path = os.path.join(root, ".compass", "baseline.json")
-    config, state, baseline = load(cfg_path), load(st_path), load(base_path)
+def object_file(root, rel, result):
+    try:
+        doc = parse_json(read(root, rel))
+        if isinstance(doc, dict):
+            return doc
+    except (ValueError, RecursionError):
+        pass
+    label = rel if rel in (".compass/config.json", ".compass/objectives.json", ".compass/baseline.json",
+                           ".compass/github-index.json") else "run record"
+    result.fail(label + " must be a readable JSON object within the project")
+    return {}
 
-    r = Result("V1", "state files present and parseable")
-    for label, doc, path in (("config.json", config, cfg_path),
-                             ("objectives.json", state, st_path),
-                             ("baseline.json", baseline, base_path)):
-        if doc is None:
-            r.fail("missing or unparseable: %s" % path)
-    if state is not None and not state.get("project_key"):
-        r.fail("objectives.json has no project_key; ids cannot be reproduced")
-    results.append(r)
-    if state is None:
-        for cid, name in (("V2", "identifier integrity"),
-                          ("V3", "referential integrity"),
-                          ("V4", "status and evidence discipline"),
-                          ("V5", "charter completeness"),
-                          ("V6", "confidence discipline"),
-                          ("V7", "scope firewall"),
-                          ("V8", "style and managed-block integrity"),
-                          ("V9", "unattended-run safety"),
-                          ("V10", "staleness surfaced"),
-                          ("V11", "mode detection and mirror integrity")):
-            x = Result(cid, name)
-            x.notrun("no objectives.json; run discovery mode first")
-            results.append(x)
-        return assemble(results, root)
 
-    config = config or {}
-    objectives = state.get("objectives") or []
-    tasks = state.get("tasks") or []
-    ids = {o.get("id") for o in objectives} | {t.get("id") for t in tasks}
+def check_links(buckets, r):
+    by_id = {key: {row["id"]: row for row in rows if nonblank(row.get("id"))}
+             for key, rows in buckets.items()}
+    all_ids = set().union(*by_id.values())
+    objectives, tasks = by_id["objectives"], by_id["tasks"]
+    parents, direct = {}, {}
+    for key, task in tasks.items():
+        parent, obj = task.get("parent_id"), task.get("objective_id")
+        if parent is not None and (not nonblank(parent) or parent not in tasks):
+            r.fail("parent_id must resolve to a task")
+        if obj is not None and (not nonblank(obj) or obj not in objectives):
+            r.fail("objective_id must resolve to an objective")
+        parents[key] = parent if nonblank(parent) and parent in tasks else None
+        direct[key] = obj if nonblank(obj) and obj in objectives else None
 
-    r = Result("V2", "identifier integrity")
-    if verify_ids is None:
-        r.notrun("compass_ids.py not importable next to this script")
-    else:
-        out = verify_ids(state)
-        for f in out["findings"]:
-            (r.fail if f["level"] == "error" else r.warn)(
-                "%s %s: %s" % (f.get("bucket"), f.get("id"), f["message"]))
-        if out["count"] == 0:
-            r.warn("no identified items yet")
-    results.append(r)
-
-    r = Result("V3", "referential integrity")
-    checked = 0
-    tasks_by_id = {t.get("id"): t for t in tasks if t.get("id")}
-
-    def inherits_objective(task, seen=None):
-        """True if this task's parent_id chain eventually reaches a task
-        with a resolving objective_id. Bounded by len(tasks) to tolerate a
-        cycle without looping; the cycle itself is reported separately."""
-        seen = seen or set()
-        node_id = task.get("id")
-        if node_id in seen or len(seen) > len(tasks_by_id):
-            return False
-        seen = seen | {node_id}
-        parent_id = task.get("parent_id")
-        parent = tasks_by_id.get(parent_id)
-        if parent is None:
-            return False
-        if parent.get("objective_id") in ids and parent.get("objective_id"):
-            return True
-        return inherits_objective(parent, seen)
-
-    for t in tasks:
-        checked += 1
-        parent = t.get("objective_id")
-        if not parent:
-            if not t.get("orphan") and not inherits_objective(t):
-                r.fail("task %s has no objective_id, is not flagged "
-                       "orphan:true, and its parent_id chain never reaches "
-                       "a task with a resolving objective_id"
-                       % t.get("id"))
-        elif parent not in ids:
-            r.fail("task %s references unknown objective %s"
-                   % (t.get("id"), parent))
-        sub_parent = t.get("parent_id")
-        if sub_parent and sub_parent not in ids:
-            r.fail("task %s has parent_id %s that does not resolve"
-                   % (t.get("id"), sub_parent))
-        if sub_parent == t.get("id"):
-            r.fail("task %s is its own parent" % t.get("id"))
-    for d in state.get("drift") or []:
-        for ref in d.get("refs") or []:
-            checked += 1
-            if COMPASS_ID_RE.fullmatch(ref) and ref not in ids:
-                r.fail("drift item %s references unknown id %s"
-                       % (d.get("id"), ref))
-    parents = {t.get("id"): t.get("parent_id") for t in tasks
-               if t.get("parent_id")}
-    for start in list(parents):
-        seen_chain, node = set(), start
-        while node in parents:
-            if node in seen_chain:
-                r.fail("parent_id cycle detected involving %s" % start)
-                break
-            seen_chain.add(node)
+    # Memoize the nearest objective and visit every edge, even if all nodes
+    # declare their own objective. Depth is independent of Python's call stack.
+    resolved = {}
+    for start in tasks:
+        node, chain, visiting = start, [], set()
+        while node is not None and node not in resolved and node not in visiting:
+            chain.append(node)
+            visiting.add(node)
             node = parents[node]
-    if checked == 0:
+        if node in visiting:
+            r.fail("parent_id cycle detected")
+        obj = resolved.get(node)
+        for key in reversed(chain):
+            if direct[key] and obj and direct[key] != obj:
+                r.fail("task objective conflicts with its parent chain")
+            obj = direct[key] or obj
+            resolved[key] = obj
+
+    for key, task in tasks.items():
+        orphan = task.get("orphan", False)
+        if type(orphan) is not bool:
+            r.fail("orphan must be a boolean")
+        if orphan is True:
+            reason = task.get("orphan_reason")
+            if resolved[key] or not nonblank(reason) or len(reason.strip().splitlines()) != 1:
+                r.fail("orphan:true requires an unlinked task and an orphan_reason")
+        elif not resolved[key]:
+            r.fail("task has no objective_id, inherited objective or documented orphan")
+        blockers = task.get("blocked_by", [])
+        if not isinstance(blockers, list) or any(
+                not nonblank(ref) or ref not in all_ids or ref == key for ref in as_list(blockers)):
+            r.fail("blocked_by must list resolving IDs other than the task itself")
+
+    for item in buckets["drift"]:
+        refs = item.get("refs", [])
+        if not isinstance(refs, list) or any(not nonblank(ref) for ref in as_list(refs)):
+            r.fail("drift refs must be an array of nonblank strings")
+        elif any(re.match(r"^(OBJ|TSK|RSK|QST|DRF)-", ref) and ref not in all_ids for ref in refs):
+            r.fail("drift references an unknown Compass ID")
+    if not tasks and not buckets["drift"]:
         r.warn("nothing to cross-reference yet")
-    results.append(r)
 
-    r = Result("V4", "status and evidence discipline")
-    total, ok = 0, 0
-    for item in objectives + tasks:
-        total += 1
-        status = item.get("status")
-        good = True
-        if status not in VALID_STATUS:
-            r.fail("%s has invalid status %r" % (item.get("id"), status))
-            good = False
-        ev = item.get("evidence") or []
-        if status in EVIDENCE_REQUIRED and not ev:
-            r.fail("%s is %s with no evidence entry" % (item.get("id"), status))
-            good = False
-        for e in ev:
-            if e.get("type") not in EVIDENCE_TYPES:
-                r.warn("%s has evidence of unknown type %r"
-                       % (item.get("id"), e.get("type")))
-                good = False
-            if not e.get("ref"):
-                r.warn("%s has an evidence entry with no ref"
-                       % item.get("id"))
-                good = False
-        if good:
-            ok += 1
-    r.ratio = (ok / total) if total else 1.0
-    if total == 0:
+
+def evidence_entries(item, r, label):
+    entries = item.get("evidence", [])
+    if not isinstance(entries, list):
+        r.fail(label + " evidence must be an array")
+        return []
+    valid = []
+    for entry in entries:
+        if (not isinstance(entry, dict) or not nonblank(entry.get("type"))
+                or entry["type"] not in EVIDENCE_TYPES or not nonblank(entry.get("ref"))
+                or iso_time(entry.get("observed_at")) is None):
+            r.fail(label + " evidence needs a recognized type, nonblank ref and ISO observed_at")
+        else:
+            valid.append(entry)
+    return valid
+
+
+def completion_signal(entry):
+    kind = entry["type"]
+    if kind not in ("issue", "pr"):
+        return kind in ("release", "test_signal", "doc_change", "manual")
+    # A tracker number identifies work, but does not say it finished. Accept
+    # either a structured disposition or the documented "ref + note" format.
+    state = entry.get("state")
+    state = state.casefold() if nonblank(state) else ""
+    wording = " ".join(value for value in (entry["ref"], entry.get("note")) if nonblank(value))
+    if (state in ("open", "reopened", "draft") or
+            re.search(r"\b(?:still open|reopened|work outstanding|not (?:yet )?(?:closed|merged|done))\b",
+                      wording, re.I)):
+        return False
+    if kind == "issue":
+        return state == "closed" or bool(re.search(r"\bclosed\b", wording, re.I))
+    return (state == "merged" or entry.get("merged") is True
+            or bool(re.search(r"\bmerged\b", wording, re.I)))
+
+
+def check_status(buckets, r):
+    for name in ("objectives", "tasks", "risks", "drift"):
+        for item in buckets[name]:
+            valid = evidence_entries(item, r, name)
+            if name == "drift":
+                if (item.get("kind") not in DRIFT_KINDS or item.get("resolution", "open")
+                        not in ("open", "accepted", "rejected", "deferred")):
+                    r.fail("invalid drift kind or resolution")
+                continue
+            status = item.get("status")
+            if not nonblank(status) or status not in VALID_STATUS:
+                r.fail(name + " has invalid status")
+            elif status in EVIDENCE_REQUIRED and not valid:
+                r.fail(name + " needs valid evidence for this status")
+            elif status == "done" and not any(completion_signal(entry) for entry in valid):
+                r.fail(name + " needs evidence of completion")
+            elif status == "abandoned" and not any(entry["type"] == "absence" for entry in valid):
+                r.fail(name + " needs absence evidence")
+    for item in buckets["open_questions"]:
+        if item.get("status") not in ("open", "answered", "withdrawn"):
+            r.fail("invalid question status")
+    if not buckets["objectives"] and not buckets["tasks"]:
         r.warn("no objectives or tasks recorded")
-    results.append(r)
 
-    r = Result("V5", "charter completeness")
-    charter_rel = state.get("charter_ref") or (
-        config.get("human_artifacts", {}) or {}).get("charter")
-    text = read(os.path.join(root, charter_rel)) if charter_rel else None
-    if text is None:
-        r.fail("charter not found at %r" % charter_rel)
-        r.ratio = 0.0
-    else:
-        low = text.lower()
-        missing = [s for s in CHARTER_SECTIONS if s not in low]
-        r.ratio = 1.0 - (len(missing) / len(CHARTER_SECTIONS))
-        for s in missing:
-            r.fail("charter is missing a %s section" % s)
-    results.append(r)
 
-    r = Result("V6", "confidence discipline")
-    claims, good = 0, 0
-    intent = state.get("intent") or {}
-    holders = [("intent", intent)] + [("objective %s" % o.get("id"), o)
-                                      for o in objectives]
-    for label, holder in holders:
-        conf = holder.get("confidence")
-        if conf is None:
-            continue
-        claims += 1
-        if conf not in CONFIDENCE:
-            r.fail("%s has unknown confidence %r" % (label, conf))
-        elif conf == "declared" and not (holder.get("evidence")
-                                         or holder.get("source")):
-            r.fail("%s is marked declared with no source reference" % label)
+def check_claim(holder, r, label, *, pooled=False):
+    tier = holder.get("confidence")
+    evidence = evidence_entries(holder, r, label)
+    if not nonblank(tier) or tier not in CONFIDENCE:
+        r.fail(label + " needs its own legal confidence tier")
+    elif tier == "declared" and not (nonblank(holder.get("source")) or evidence):
+        r.fail(label + " is declared without a source")
+    elif tier in ("inferred-weak", "inferred-strong"):
+        if not evidence:
+            r.fail(label + " needs supporting observations")
+        if tier == "inferred-strong" and not pooled:
+            # File operations are one signal family. Explicit families allow
+            # sources with a common evidence type to distinguish their origins.
+            families = set()
+            for entry in evidence:
+                family = entry.get("family", entry["type"])
+                if nonblank(family):
+                    families.add("file" if family.startswith("file_") else family.strip().casefold())
+            refs = {entry["ref"].strip() for entry in evidence}
+            if min(len(families), len(refs)) < 3 or not nonblank(holder.get("alternative")):
+                r.fail(label + " needs three signal families and an alternative reading")
+
+
+INTENT_FIELDS = ("purpose", "vision", "mission", "goal", "non-goal", "success-criterion")
+
+
+def check_intent(state, objectives, r):
+    intent = mapping(state, "intent", r)
+    claims = records(intent, "claims", r)
+    covered = set()
+    for i, claim in enumerate(claims):
+        label = "intent.claims[%d]" % i
+        field = claim.get("field")
+        if field not in INTENT_FIELDS:
+            r.fail(label + " needs a recognized claim field")
         else:
-            good += 1
-    if claims == 0:
-        r.warn("no confidence-tagged claims found; intent is untagged")
-        r.ratio = 0.5
-    else:
-        r.ratio = good / claims
-    results.append(r)
+            covered.add(field)
+        if "text" not in claim or not (nonblank(claim["text"]) or
+                claim.get("confidence") == "unknown" and claim["text"] is None):
+            r.fail(label + " needs nonblank text or an explicit unknown with null text")
+        if "evidence" not in claim:
+            r.fail(label + " needs its own evidence array")
+        elif claim.get("confidence") == "declared" and not as_list(claim["evidence"]):
+            r.fail(label + " is declared without its own evidence entry")
+        if claim.get("confidence") == "inferred-weak" and not nonblank(claim.get("alternative")):
+            r.fail(label + " needs a plausible alternative reading")
+        check_claim(claim, r, label)
 
-    files = managed_files(root, config, state)
-    r = Result("V7", "scope firewall")
-    hits = 0
-    for rel in files:
-        body = read(os.path.join(root, rel)) or ""
-        for i, line in enumerate(body.splitlines(), 1):
-            for label, pattern in FIREWALL:
-                if pattern.search(line):
-                    hits += 1
-                    r.fail("%s:%d matched %s detector" % (rel, i, label))
-                    break
-            for term in deny_terms:
-                if term and term.lower() in line.lower():
-                    hits += 1
-                    r.fail("%s:%d matched a configured deny term" % (rel, i))
-                    break
-    if not files:
-        r.notrun("no managed artifacts to scan")
-    results.append(r)
+    legacy_fields = set()
+    for field in INTENT_FIELDS[:3]:
+        if intent.get(field) is not None:
+            if nonblank(intent[field]):
+                legacy_fields.add(field)
+            else:
+                r.fail("legacy intent fields require text or null")
+    if legacy_fields - covered:
+        r.warn("legacy pooled intent; attribute confidence and evidence to each claim")
+    if "confidence" in intent:
+        check_claim(intent, r, "legacy intent", pooled=True)
+    elif "evidence" in intent:
+        evidence_entries(intent, r, "legacy intent")
+    if not claims and not legacy_fields:
+        r.warn("no individual confidence-tagged intent claims recorded")
+    for obj in objectives:
+        if "confidence" in obj:
+            check_claim(obj, r, "objective")
+        else:
+            r.warn("objective lacks a confidence tier")
 
-    r = Result("V8", "style and managed-block integrity")
-    for rel in files:
-        body = read(os.path.join(root, rel)) or ""
-        if EM_DASH in body:
-            r.fail("%s contains an em dash" % rel)
-        opens = re.findall(r"<!-- compass:begin:([\w.-]+) -->", body)
-        closes = re.findall(r"<!-- compass:end:([\w.-]+) -->", body)
-        if sorted(opens) != sorted(closes):
-            r.fail("%s has unbalanced managed block markers" % rel)
-        if len(set(opens)) != len(opens):
-            r.fail("%s has duplicate managed block ids" % rel)
-    results.append(r)
 
-    r = Result("V9", "unattended-run safety")
-    oq_rel = (config.get("human_artifacts", {}) or {}).get(
-        "open_questions", ".compass/OPEN-QUESTIONS.md")
-    if not os.path.isfile(os.path.join(root, oq_rel)):
-        r.fail("open-questions file missing at %s" % oq_rel)
-    run_dir = os.path.join(root, ".compass", "runs")
-    run_files = sorted(f for f in os.listdir(run_dir)) if os.path.isdir(run_dir) else []
-    hist = read(os.path.join(root, ".compass", "RUN-HISTORY.md")) or ""
-    for f in run_files:
-        if f.replace(".json", "") not in hist:
-            r.warn("run record %s has no RUN-HISTORY.md row" % f)
-    unanswered = [q for q in state.get("open_questions") or []
-                  if q.get("status", "open") == "open"
-                  and q.get("blocking")]
-    if unanswered:
-        r.warn("%d blocking open question(s) awaiting a human answer"
-               % len(unanswered))
-    if not run_files:
-        r.warn("no run records yet")
-    results.append(r)
+def check_charter(body, r):
+    if body is None:
+        r.fail("charter is missing or unreadable")
+        r.ratio = 0
+        return
+    sections, fence = set(), None
+    for line in body.splitlines():
+        marker = re.match(r"^ {0,3}(\x60{3,}|~{3,})", line)
+        if marker:
+            token = marker.group(1)
+            if fence is None:
+                fence = token
+            elif token.startswith(fence):
+                fence = None
+        elif not fence:
+            heading = re.match(r"^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$", line)
+            if heading:
+                title = heading.group(1).strip().lower()
+                sections.add("success" if title == "success criteria" else title)
+    missing = [key for key in CHARTER_SECTIONS if key not in sections]
+    for key in missing:
+        r.fail("missing charter heading: " + key)
+    r.ratio = 1 - len(missing) / len(CHARTER_SECTIONS)
 
-    r = Result("V10", "staleness surfaced")
-    th = (config.get("thresholds") or {})
-    stale_days = int(th.get("stale_objective_days", 60))
-    aband_days = int(th.get("abandoned_objective_days", 180))
-    for o in objectives:
-        if o.get("status") in ("done", "abandoned", "superseded"):
+
+def scan_artifacts(root, human, state, firewall, style, terms, private):
+    paths = {".compass/objectives.json", ".compass/config.json", ".compass/baseline.json"}
+    for rel in list(human.values()) + [state.get("charter_ref", human.get("charter"))]:
+        if rel is None:
             continue
-        age = days_since(o.get("last_evidence_at") or o.get("updated_at")
-                         or o.get("created_at"))
-        if age is None:
-            r.warn("%s has no timestamp; staleness cannot be judged"
-                   % o.get("id"))
-        elif age >= aband_days and not o.get("flagged_abandoned"):
-            r.fail("%s has no evidence for %d days and is not flagged "
-                   "abandoned" % (o.get("id"), age))
-        elif age >= stale_days and not o.get("flagged_stale"):
-            r.warn("%s has no evidence for %d days and is not flagged stale"
-                   % (o.get("id"), age))
-    results.append(r)
+        try:
+            path = inside(root, rel)
+            if path.exists() or (root / rel).is_symlink():
+                paths.add(rel)
+        except (InvalidFile, OSError):
+            firewall.fail("managed artifact path is invalid or outside the project")
+    for rel in ("docs/CHARTER.md", "docs/BACKLOG.md", "docs/ROADMAP.md"):
+        try:
+            if inside(root, rel).is_file():
+                paths.add(rel)
+        except InvalidFile:
+            firewall.fail("default human artifact path is unsafe")
 
-    r = Result("V11", "mode detection and mirror integrity")
-    mode_block = state.get("mode") or {}
-    detected = mode_block.get("detected")
+    # Include older and nested reports, run receipts, evidence exports and
+    # the mirror. Directory links are never followed during enumeration.
+    pending = [".compass"]
+    while pending:
+        directory = pending.pop()
+        try:
+            for entry in inside(root, directory, directory=True).iterdir():
+                rel = directory + "/" + entry.name
+                if entry.is_symlink():
+                    firewall.fail("managed artifact tree contains a symlink")
+                    continue
+                if entry.is_dir():
+                    pending.append(rel)
+                    continue
+                paths.add(rel)
+        except (OSError, InvalidFile):
+            firewall.fail("unable to enumerate all managed artifacts")
+
+    # record-run also accepts an owner-selected report elsewhere under root.
+    for receipt in tuple(paths):
+        if not (receipt.startswith(".compass/runs/") and receipt.endswith(".json")):
+            continue
+        try:
+            record = parse_json(read(root, receipt))
+            if isinstance(record, dict) and "report" in record:
+                rel = record["report"]
+                inside(root, rel)
+                paths.add(rel)
+        except (InvalidFile, ValueError, RecursionError):
+            firewall.fail("run receipt or its report path cannot be scanned")
+
+    def violation(line):
+        for detector, pattern in FIREWALL:
+            if pattern.search(line):
+                return detector
+        if any(term in line.casefold() for term in terms):
+            return "configured deny term"
+        return None
+
+    for rel in sorted(paths):
+        label = rel
+        if violation(rel) or any(excluded_name(part) for part in Path(rel).parts) or not rel.isprintable():
+            label = "[redacted artifact path]"
+            firewall.fail(label + " failed the filename check")
+        try:
+            if inside(root, rel) in private:
+                if rel in human.values() or rel in (state.get("charter_ref"), ".compass/config.json",
+                                                    ".compass/objectives.json", ".compass/baseline.json"):
+                    firewall.fail("private deny list overlaps a managed artifact")
+                continue
+            body = read(root, rel)
+        except InvalidFile:
+            firewall.fail("cannot scan " + label)
+            style.fail("cannot inspect " + label)
+            continue
+        # Decode JSON escapes as well as scanning the serialized file. A
+        # JSON string may contain U+2014, a private term, or a secret after decoding.
+        decoded = ""
+        if rel.endswith(".json"):
+            try:
+                parsed = parse_json(body)
+                if rel == ".compass/baseline.json" and isinstance(parsed, dict):
+                    files = parsed.get("files")
+                    if isinstance(files, dict) and any(
+                            any(excluded(part, terms) for part in Path(name).parts) for name in files):
+                        firewall.fail("baseline indexes a sensitive or excluded path")
+                decoded = json.dumps(parsed, ensure_ascii=False, indent=2)
+            except (ValueError, RecursionError):
+                firewall.fail("cannot inspect decoded JSON in " + label)
+        for source, content in (("", body), (" (decoded JSON)", decoded)):
+            for number, line in enumerate(content.splitlines(), 1):
+                detector = violation(line)
+                if detector:
+                    firewall.fail("%s:%d%s matched %s" % (label, number, source, detector))
+                    break
+            else:
+                continue
+            break
+        if EM_DASH in body or EM_DASH in decoded:
+            style.fail(label + " contains an em dash")
+        if not rel.lower().endswith((".json", ".gitignore")):
+            try:
+                lines = body.splitlines(keepends=True)
+                for start, end, checksum in block_spans(lines).values():
+                    if checksum and block_digest("".join(lines[start + 2:end])) != checksum:
+                        style.fail(label + " contains an edited signed block")
+            except ValueError:
+                style.fail(label + " has malformed or unbalanced managed block markers")
+
+
+def check_firewall(root, config, human, state, r, style, supplied, explicit):
+    terms = {term.casefold() for term in supplied if nonblank(term)}
+    private = set()
+    settings = mapping(config, "scope_firewall", r)
+    configured = settings.get("deny_terms_file", DEFAULT_DENY)
+    if explicit and Path(explicit).is_absolute():
+        try:
+            explicit = str(Path(explicit).relative_to(root))
+        except ValueError:
+            r.fail("explicit deny-terms file is outside the project")
+            explicit = None
+    for rel in (DEFAULT_DENY, configured, explicit):
+        if rel is None:
+            continue
+        try:
+            path = inside(root, rel)
+            if path in private:
+                continue
+            # A missing default list is normal. An explicitly selected file is required.
+            if not path.exists() and rel == DEFAULT_DENY and explicit != rel and not (root / rel).is_symlink():
+                continue
+            content = read(root, rel)
+            private.add(path)
+            terms.update(line.strip().casefold() for line in content.splitlines()
+                         if line.strip() and not line.lstrip().startswith("#"))
+        except (OSError, InvalidFile):
+            r.fail("private deny-terms file is invalid, unsafe or unreadable")
+    scan_artifacts(root, human, state, r, style, terms, private)
+
+
+def check_runs(root, human, state, questions, r):
+    try:
+        read(root, human.get("open_questions", ".compass/OPEN-QUESTIONS.md"))
+    except InvalidFile:
+        r.fail("open-questions file is missing, unreadable or unsafe")
+    try:
+        hist = inside(root, human.get("run_history", ".compass/RUN-HISTORY.md"))
+        directory = inside(root, ".compass/runs", directory=True)
+        _, _, ids = inspect_history(root, hist, directory, state)
+        if not ids:
+            r.warn("no run records yet")
+    except (ValueError, OSError, RecursionError):
+        r.fail("invalid or inconsistent run records, state counters or history rows")
+    if any(q.get("status") == "open" and q.get("blocking") is True for q in questions):
+        r.warn("blocking question awaiting a human answer")
+
+
+def check_stale(config, objectives, r):
+    th = mapping(config, "thresholds", r)
+    stale, abandoned = th.get("stale_objective_days", 60), th.get("abandoned_objective_days", 180)
+    if (type(stale) is not int or type(abandoned) is not int or not 0 <= stale <= abandoned):
+        r.fail("expected nonnegative integer thresholds, stale <= abandoned")
+        return
+    now = dt.datetime.now(dt.timezone.utc)
+    for item in objectives:
+        if item.get("status") in ("done", "abandoned", "superseded"):
+            continue
+        value = item.get("last_evidence_at") or item.get("updated_at") or item.get("created_at")
+        when = iso_time(value)
+        if when is None:
+            r.warn("objective lacks a usable staleness timestamp")
+        elif (now - when).days >= abandoned and item.get("flagged_abandoned") is not True:
+            r.fail("objective past abandonment threshold lacks flag")
+        elif (now - when).days >= stale and item.get("flagged_stale") is not True and item.get("flagged_abandoned") is not True:
+            r.warn("stale objective lacks flag")
+
+
+def check_mirror(root, config, state, buckets, r):
+    mode = mapping(state, "mode", r)
+    detected = mode.get("detected")
     if detected not in ("A", "B"):
-        r.fail("state.mode.detected is %r; run detect_mode.py and record the "
-               "verdict each run" % detected)
-    if not mode_block.get("evidence"):
-        r.warn("mode verdict recorded without the signals behind it")
-    history = mode_block.get("history") or []
-    if history:
-        last = history[-1]
-        if last.get("to") != detected:
-            r.fail("mode history ends at %r but current detected mode is %r"
-                   % (last.get("to"), detected))
-        if len(history) > 1 and not any(
-                d.get("kind") == "mode_change" for d in state.get("drift") or []):
-            r.warn("mode changed across runs with no mode_change drift item")
-    index_path = os.path.join(root, ".compass", "github-index.json")
-    index = load(index_path)
-    gh_cfg = (config.get("github") or {})
+        r.fail("record the A or B detection verdict")
+    if not records(mode, "evidence", r):
+        r.warn("mode verdict lacks detection signals")
+    history = records(mode, "history", r)
+    previous = None
+    changed = False
+    for entry in history:
+        target = entry.get("to")
+        if (target not in ("A", "B") or iso_time(entry.get("at")) is None
+                or entry.get("from") not in (None, "A", "B")
+                or previous is not None and entry.get("from") != previous):
+            r.fail("invalid mode history entry or transition")
+        changed |= entry.get("from") in ("A", "B") and entry["from"] != target
+        previous = target
+    if history and previous != detected:
+        r.fail("mode history disagrees with current verdict")
+    if changed and not any(d.get("kind") == "mode_change" for d in buckets["drift"]):
+        r.warn("mode change lacks a drift entry")
+
+    gh = mapping(config, "github", r)
+    if detected == "B" and gh.get("enabled"):
+        r.fail("Mode B cannot have github.enabled")
+    if detected == "A" and not valid_slug(gh.get("owner_repo")):
+        r.fail("Mode A requires github.owner_repo")
+    rel = ".compass/github-index.json"
+    try:
+        path = inside(root, rel)
+        present = path.exists() or (root / rel).is_symlink()
+    except (OSError, InvalidFile):
+        r.fail("mirror path is unsafe")
+        return
+    if not present:
+        if detected == "A":
+            r.warn("Mode A has no file mirror")
+        return
+    index = object_file(root, rel, r)
+    if detected == "B":
+        r.warn("Mode B retains a historical mirror")
     if detected == "A":
-        if not gh_cfg.get("owner_repo"):
-            r.fail("Mode A with no github.owner_repo in config.json")
-        if index is None:
-            r.warn("Mode A with no .compass/github-index.json; the file mirror "
-                   "is what survives loss of API access")
+        repo = gh.get("owner_repo")
+        if not valid_slug(repo) or not valid_slug(index.get("owner_repo")) or index["owner_repo"].lower() != repo.lower():
+            r.fail("mirror owner_repo disagrees with config")
+        elif index.get("schema") == MIRROR_SCHEMA:
+            try:
+                check_index(index, repo, state)
+            except (ValueError, TypeError, KeyError):
+                r.fail("invalid or inconsistent snapshot for this project")
+            if object_file(root, ".compass/github-pull-status.json", r).get("ready") is not True:
+                r.fail("mirror pull status is incomplete")
+        elif index.get("schema") == "okhp3.compass.github-index/1":
+            r.warn("legacy mirror; pull a complete snapshot before planning")
         else:
-            if gh_cfg.get("owner_repo") and index.get("owner_repo") != gh_cfg["owner_repo"]:
-                r.fail("mirror owner_repo %r does not match config %r"
-                       % (index.get("owner_repo"), gh_cfg.get("owner_repo")))
-            oversized = 0
-            for bucket in ("milestones", "issues"):
-                for cid, entry in (index.get(bucket) or {}).items():
-                    for value in entry.values():
-                        if isinstance(value, str) and len(value) > MIRROR_BODY_CAP:
-                            oversized += 1
-            if oversized:
-                r.fail("mirror holds %d oversized field(s); it is a pointer "
-                       "index, not a copy of the tracker" % oversized)
-            if index.get("unmatched_local"):
-                r.warn("%d local item(s) have no GitHub counterpart"
-                       % len(index["unmatched_local"]))
-            for cid in (index.get("anomalies") or {}).get(
-                    "marker_not_in_local_state", []):
-                r.fail("mirror carries marker %s that is absent from local "
-                       "state" % cid)
-    elif detected == "B":
-        if gh_cfg.get("enabled"):
-            r.fail("Mode B but github.enabled is true")
-        if index is not None:
-            r.warn("Mode B with a github-index.json present; record the "
-                   "demotion or remove the stale mirror")
-    results.append(r)
-    return assemble(results, root)
+            r.fail("unrecognized mirror schema")
+    for bucket, local in (("milestones", "objectives"), ("issues", "tasks")):
+        known = {item["id"] for item in buckets[local] if nonblank(item.get("id"))}
+        for key, entry in mapping(index, bucket, r).items():
+            if not isinstance(entry, dict) or detected == "A" and key not in known:
+                r.fail(bucket + " contains an invalid entry or unresolved marker")
+    if index.get("unmatched_local"):
+        r.warn("local items lack GitHub counterparts")
+    anomalies = mapping(index, "anomalies", r)
+    if any(anomalies.values()):
+        r.fail("mirror reports marker anomalies")
+    # Inspect nested/unmatched entries as well as matched pointers.
+    pending = [index]
+    while pending:
+        value = pending.pop()
+        if isinstance(value, dict):
+            if any(k.casefold() in ("body", "description", "bodytext", "bodyhtml") for k in value):
+                r.fail("mirror contains a body or description field")
+                break
+            pending.extend(value.values())
+        elif isinstance(value, list):
+            pending.extend(value)
+        elif isinstance(value, str) and len(value) > MIRROR_BODY_CAP:
+            r.fail("mirror contains an oversized field")
+            break
+
+
+def validate(root, deny_terms=(), deny_terms_file=None):
+    root = Path(root).resolve()
+    checks = [Result("V%d" % i, name) for i, name in enumerate(CHECK_NAMES, 1)]
+    shape, identity, links, status, charter, confidence, privacy, style, runs, stale, mirror = checks
+    config = object_file(root, ".compass/config.json", shape)
+    state = object_file(root, ".compass/objectives.json", shape)
+    try:
+        read_baseline(inside(root, ".compass/baseline.json"))
+    except (OSError, ValueError, RecursionError):
+        shape.fail("baseline.json must contain a valid project evidence manifest")
+    for doc, name in ((config, "state"), (state, "objectives")):
+        if doc.get("schema") != "okhp3.compass.%s/1" % name:
+            shape.fail("missing or unsupported " + name + " schema")
+    if not nonblank(state.get("project_key")) or config.get("project_key") != state.get("project_key"):
+        shape.fail("project keys must be present and agree")
+    if type(state.get("runs", 0)) is not int or state.get("runs", 0) < 0:
+        shape.fail("runs must be a nonnegative integer")
+    for key in ("objectives", "tasks"):
+        if key not in state:
+            shape.fail("state requires " + key)
+    buckets = {key: records(state, key, shape) for key in BUCKETS}
+    for label in records(state, "labels", shape):
+        if not nonblank(label.get("name")):
+            shape.fail("label requires a name")
+    human = mapping(config, "human_artifacts", shape)
+    for value in human.values():
+        if not nonblank(value):
+            shape.fail("human artifact locations must be nonblank paths")
+    if "sinks" in config:
+        sinks = records(config, "sinks", shape)
+        seen = set()
+        for sink in sinks:
+            key = sink.get("id")
+            if (not nonblank(key) or key in seen or not nonblank(sink.get("type"))
+                    or type(sink.get("enabled")) is not bool):
+                shape.fail("invalid sink identity, type or enabled flag")
+            else:
+                seen.add(key)
+
+    if state:
+        result = verify_ids(state)
+        for finding in result["findings"]:
+            report = identity.fail if finding["level"] == "error" else identity.warn
+            report("%s: %s" % (finding["bucket"], finding["message"]))
+        if not result["count"]:
+            identity.warn("no identified items yet")
+        check_links(buckets, links)
+        check_status(buckets, status)
+        check_intent(state, buckets["objectives"], confidence)
+        check_stale(config, buckets["objectives"], stale)
+        check_mirror(root, config, state, buckets, mirror)
+    else:
+        for check in (identity, links, status, confidence, stale, mirror):
+            check.notrun("objectives state is unavailable")
+    try:
+        body = read(root, state.get("charter_ref", human.get("charter")))
+    except InvalidFile:
+        body = None
+    check_charter(body, charter)
+    check_firewall(root, config, human, state, privacy, style, deny_terms, deny_terms_file)
+    check_runs(root, human, state, buckets["open_questions"], runs)
+    return assemble(checks, root)
 
 
 def assemble(results, root):
@@ -443,7 +727,7 @@ def assemble(results, root):
             else "C" if total >= 60 else "D")
     return {
         "schema": "okhp3.compass.validation/1",
-        "root": os.path.abspath(root),
+        "root": ".",
         "score": total,
         "band": band,
         "gate": "PASS" if band in ("A", "B") and not any(
@@ -478,18 +762,13 @@ def main(argv=None) -> int:
     p.add_argument("--json", action="store_true")
     p.add_argument("--deny-terms-file")
     a = p.parse_args(argv)
-    if not os.path.isdir(a.root):
-        print("error: not a directory: %s" % a.root, file=sys.stderr)
+    if not os.path.isdir(a.root) or os.path.islink(a.root):
+        print("error: root must be a directory", file=sys.stderr)
         return 2
-    deny = []
-    if a.deny_terms_file and os.path.isfile(a.deny_terms_file):
-        with open(a.deny_terms_file, "r", encoding="utf-8") as fh:
-            deny = [ln.strip() for ln in fh
-                    if ln.strip() and not ln.startswith("#")]
-    report = validate(a.root, deny)
+    report = validate(a.root, deny_terms_file=a.deny_terms_file)
     print(json.dumps(report, indent=2, sort_keys=True) if a.json
           else render(report))
-    return 1 if report["failed"] else 0
+    return 0 if report["gate"] == "PASS" else 1
 
 
 if __name__ == "__main__":

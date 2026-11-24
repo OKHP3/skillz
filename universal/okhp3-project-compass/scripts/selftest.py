@@ -70,14 +70,14 @@ class Check:
         return 0 if not self.failed else 1
 
 
-def run_py(script, args, cwd=None):
+def run_py(script, args, cwd=None, env=None):
     cmd = [sys.executable, os.path.join(HERE, script), *args]
-    out = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd, timeout=60)
+    out = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd, env=env, timeout=60)
     return out.returncode, out.stdout, out.stderr
 
 
-def run_py_json(script, args, cwd=None):
-    code, out, err = run_py(script, args, cwd=cwd)
+def run_py_json(script, args, cwd=None, env=None):
+    code, out, err = run_py(script, args, cwd=cwd, env=env)
     try:
         return code, json.loads(out), err
     except ValueError as exc:
@@ -105,9 +105,7 @@ def build_synthetic_repo(root):
         fh.write("# TODO: handle R10 polyline variants\ndef parse(x):\n    return x\n")
     if has_git():
         git(root, "init", "-q", "-b", "main")
-        git(root, "-c", "user.email=a@b", "-c", "user.name=t", "add", "-A")
-        git(root, "-c", "user.email=a@b", "-c", "user.name=t", "commit", "-qm",
-            "initial import")
+
 
 
 def section_identifiers(c):
@@ -151,6 +149,11 @@ def section_detect_mode(c, root):
     code, doc, _ = run_py_json("detect_mode.py", ["--root", plain])
     c.ok("detect-plain-folder", doc["mode"] == "B" and doc["sub_case"] == "plain-folder",
          json.dumps(doc.get("sub_case")))
+
+    artifact_root = os.path.join(root, "artifacts-only")
+    os.makedirs(os.path.join(artifact_root, ".github"))
+    _, doc, _ = run_py_json("detect_mode.py", ["--root", artifact_root])
+    c.ok("detect-github-artifacts", doc["mode"] == "B" and doc["sub_case"] == "github-artifacts")
 
     repo = os.path.join(root, "repo")
     build_synthetic_repo(repo)
@@ -204,7 +207,7 @@ def section_state_and_blocks(c, root):
     os.makedirs(os.path.dirname(charter), exist_ok=True)
     with open(charter, "w") as fh:
         fh.write("# Charter\n\nHand written intro that must survive.\n")
-    obj_file = os.path.join(root, "objs.md")
+    obj_file = os.path.join(target, "objs.md")
     with open(obj_file, "w") as fh:
         fh.write("- OBJ-AAAA1111 Parse DXF exports\n")
     run_py("compass_state.py", ["--root", target, "--apply", "block",
@@ -226,6 +229,9 @@ def section_state_and_blocks(c, root):
     c.ok("block-replace-updates-content", "(done)" in body2 and body2.count("OBJ-AAAA1111") == 1)
 
     print("\n== compass_state.py: record-run trend columns (regression for CLM-02) ==")
+    for filename, run_id in (("r.md", "run-trend"), ("r2.md", "run-blank-counts")):
+        with open(os.path.join(target, filename), "w", encoding="utf-8") as fh:
+            fh.write("Run " + run_id + "\n")
     code, out, err = run_py("compass_state.py",
                             ["--root", target, "--apply", "record-run",
                              "--mode", "reassess", "--summary", "trend check",
@@ -277,22 +283,22 @@ def section_github_sync(c, root):
     with open(state_path, "w") as fh:
         json.dump(state, fh)
 
-    fixture = os.path.join(root, "fixture.json")
+    fixture = os.path.join(target, "fixture.json")
     with open(fixture, "w") as fh:
         json.dump({
+            "owner_repo": "OKHP3/widget-forge", "complete": True,
             "issues": [
                 {"number": 42, "title": "Handle R10 polyline variants",
                  "body": "do it\n\n<!-- compass-id: %s -->" % tsk_id,
                  "state": "OPEN", "labels": [{"name": "compass"}],
-                 "milestone": {"number": 3}, "url": "u1"},
+                 "milestone": {"number": 3}},
                 {"number": 7, "title": "Unrelated old issue", "body": "no marker",
-                 "state": "CLOSED", "labels": [], "milestone": None, "url": "u2"},
+                 "state": "CLOSED", "labels": [], "milestone": None},
             ],
             "milestones": [
                 {"number": 3, "title": "Parse DXF exports",
                  "description": "<!-- compass-id: %s -->" % obj_id,
-                 "state": "open", "open_issues": 1, "closed_issues": 3,
-                 "html_url": "u3"},
+                 "state": "open", "open_issues": 1, "closed_issues": 3},
             ],
         }, fh)
 
@@ -324,8 +330,15 @@ def section_github_sync(c, root):
                             ["push", "--root", target, "--repo", "OKHP3/widget-forge", "--apply"])
     c.ok("push-refused-with-only-apply-not-authorized", code == 3, "exit=%s stderr=%s" % (code, err))
 
+    # Exercise the missing-CLI path even when the host has an authenticated gh.
+    offline_bin = os.path.join(root, "offline-bin")
+    os.mkdir(offline_bin)
+    if has_git():
+        git(target, "remote", "add", "origin", "https://github.com/OKHP3/widget-forge.git")
+        os.symlink(shutil.which("git"), os.path.join(offline_bin, "git"))
     code, out, err = run_py_json("github_sync.py",
-                                 ["pull", "--root", target, "--repo", "OKHP3/nonexistent"])
+                                 ["pull", "--root", target, "--repo", "OKHP3/widget-forge"],
+                                 env=dict(os.environ, PATH=offline_bin))
     c.ok("pull-degrades-without-gh-cli-instead-of-crashing",
          code == 0 and out.get("degraded") == "file-only", "exit=%s out=%s" % (code, out))
 
@@ -362,7 +375,7 @@ def section_validate(c, root):
          v7["status"] == "FAIL", json.dumps(v7))
 
     with open(charter, "a") as fh:
-        fh.write("\nAn em dash — sneaks in here.\n")
+        fh.write("\nAn em dash \u2014 sneaks in here.\n")
     code, report, err = run_py_json("validate_compass.py", ["--root", target, "--json"])
     v8 = [x for x in report["checks"] if x["id"] == "V8"][0]
     c.ok("style-check-catches-em-dash", v8["status"] == "FAIL", json.dumps(v8))

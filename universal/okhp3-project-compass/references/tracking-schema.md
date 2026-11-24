@@ -1,13 +1,16 @@
 # Tracking schema and status lifecycle
 
-Machine truth is `.compass/objectives.json`, validated against
-`assets/objectives.schema.json`. Human surfaces are projections of it.
+The schema contract for `.compass/objectives.json` is `assets/objectives.schema.json`. The stdlib validator checks operational invariants. Human surfaces are projections of it.
 
 **One model, both modes.** The schema below is identical in Mode A and Mode B.
 Mode A populates the `github` block and takes `percent_complete` from the
 milestone rollup; Mode B leaves `github` null and computes the same field from
 children. Nothing else differs, which is what makes promotion lossless. See
 `mode-detection-and-promotion.md`.
+
+## Intent claims
+
+New state carries `intent.claims`, one entry per assertion with `field`, `text`, `confidence`, and typed `evidence`. Unknowns can use null text and empty evidence. Identify each goal, non-goal and criterion separately. Read legacy shared intent and migrate each claim with its own evidence on the next authorized run.
 
 ## Record shape
 
@@ -149,3 +152,5 @@ A they map one to one onto GitHub labels; `github_synced` flips on promotion.
 `state.mode` records the detection verdict, its evidence, and a history of
 changes. A mode change produces a history entry, a `mode_change` drift item,
 and a line above the executive summary in the delta report. V11 enforces this.
+
+Use `orphan_reason` on each explicitly orphaned task. Strong inferences require three distinct evidence locators and signal families plus an `alternative` reading. Use `family` when the evidence type does not distinguish the source families. For a closed issue or merged pull request, retain its observed disposition.

@@ -36,9 +36,9 @@ releases and tags.
 All GitHub reads and writes go through `gh`. Useful shapes:
 
 ```text
-gh repo view <owner/name> --json name,description,topics,homepageUrl,updatedAt
+gh repo view <owner/name> --json name,description,repositoryTopics,homepageUrl,updatedAt
 gh issue list --repo <owner/name> --state all --limit 500 \
-    --json number,title,body,state,labels,milestone,url
+    --json number,title,state,labels,milestone,url
 gh api repos/<owner/name>/milestones?state=all&per_page=100
 gh release list --repo <owner/name> --limit 30
 gh issue create --repo <owner/name> --title "<title>" \
@@ -118,11 +118,11 @@ A GitHub issue with no marker is not adopted automatically. It appears in
 
 | Rule | Reason |
 |---|---|
-| `pull` and `plan` never mutate | The default must be safe |
+| `pull --apply` saves the local mirror and pull receipt. A preview pull and `plan` are read-only | The default must be safe |
 | `push` is plan-only in this build. With both `--apply` and `--authorized` set it prints the exact `gh` commands for the approved plan and calls GitHub for nothing | The human runs the printed command by hand, so the run log always matches an action a person actually took |
 | No script in this package ever calls `gh issue create`, `gh issue close`, or the milestone API | There is nothing in the codebase capable of pushing on a schedule, not just a policy against it |
 | Close, never delete | The printed example commands close, they never delete |
-| Every command `push` prints is also echoed verbatim into the run log | The run log records what was proposed, whether or not the human ran it |
+| The agent records reviewed commands and their observed outcomes in the run log | The run log records what was proposed, whether or not the human ran it |
 | A remote item closed while local is open is a `sink_divergence` finding | A human closed it for a reason worth capturing. Never auto-reopen |
 
 If a future version implements real execution behind these gates, that is a
