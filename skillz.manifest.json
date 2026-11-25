@@ -20,22 +20,22 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 357,
+  "distributionSkillCount": 362,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 54,
+  "projectLocalSupportSkillCount": 55,
   "maturityCounts": {
-    "draftable": 287,
+    "draftable": 292,
     "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 182,
+    "not-run": 189,
     "none": 109,
     "analytical": 12,
-    "local-checks": 39,
-    "live": 8
+    "local-checks": 36,
+    "live": 9
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
@@ -55,6 +55,7 @@
       "skills": [
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
+        "okhp3-gpt-behavior-baseline",
         "okhp3-gpt-skill-conversion-plan"
       ]
     },
@@ -72,6 +73,7 @@
         "okhp3-job-application-completion",
         "okhp3-lifetime-career-reference",
         "okhp3-professional-headshot",
+        "okhp3-resume-generator",
         "okhp3-role-master-resumes"
       ]
     },
@@ -445,12 +447,14 @@
         "okhp3-kofi-post",
         "okhp3-kofi-supporter-reply",
         "okhp3-linkedin-angles",
+        "okhp3-linkedin-carousel",
         "okhp3-linkedin-comment",
         "okhp3-linkedin-connection-note",
         "okhp3-linkedin-inbox-triage",
         "okhp3-linkedin-message",
         "okhp3-linkedin-network-plan",
         "okhp3-linkedin-post",
+        "okhp3-linkedin-publish-ops",
         "okhp3-linkedin-series-continuity",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
@@ -508,6 +512,7 @@
         "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
+        "okhp3-local-ai-stack-upgrade",
         "okhp3-overkill-hill-brand",
         "okhp3-project-compass",
         "okhp3-repository-creator",
@@ -541,6 +546,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-18T05:11:05.046Z",
+  "countsGeneratedAt": "2026-11-25T20:54:16.290Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

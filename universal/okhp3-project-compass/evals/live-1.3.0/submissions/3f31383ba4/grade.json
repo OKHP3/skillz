@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": true,
+      "evidence": "The persisted .compass/mode.json records Mode B, sub-case git-non-github, a GitLab origin, and a detected GitHub workflow. It states that the gh CLI is unavailable and marks the GitHub API unusable. The hosted and scheduling action record is empty, with no gh call recorded."
+    },
+    {
+      "id": "e2",
+      "pass": false,
+      "evidence": "The persisted run receipt reports discovery, and .compass/objectives.json records the Mode B verdict and its detection signals under mode. The reply and persisted reports describe an initial baseline but never identify the prior absence of .compass/objectives.json as the reason for discovery."
+    },
+    {
+      "id": "e3",
+      "pass": true,
+      "evidence": "In .compass/objectives.json, intent.claims tags the purpose as declared and cites README.md:2. The vision claim is tagged unknown and has null text."
+    },
+    {
+      "id": "e4",
+      "pass": true,
+      "evidence": "The persisted .compass/config.json selects docs/ROADMAP.md as the human roadmap and sets stale_doc_days to 120. The baseline report compares the roadmap's age of 268 days with that threshold. The original roadmap was updated in place, and .compass/objectives.json contains OBJ-9904AA27 and TSK-6939F9F5, each with eight hexadecimal characters after its prefix. No competing roadmap was created."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:12:21.791935+00:00",
+    "elapsed_seconds": 11.4,
+    "prompt_sha256": "b6badb27ab3a3a03ddf713c5d43bfc7c2ef02ffea7328e043c8eeb110eace084",
+    "activity": [],
+    "usage": {
+      "input_tokens": 21339,
+      "cached_input_tokens": 13184,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 406,
+      "reasoning_output_tokens": 53
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "a26e02f8aa781ad75151e910f9e40e9132476ce7b467ba393b2a6fc6db4a08e7"
+}

@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": true,
+      "evidence": "The persisted .compass/github-index.json maps OBJ-99E116E8 to milestone #7 and the three task IDs to issues #11–#13. Those IDs match the hosted compass-id markers despite different titles. The delta report attributes 60% to milestone #7’s rollup of three closed and two open issues. All three mirrored tasks are done, which would yield 100% from local task counts."
+    },
+    {
+      "id": "e2",
+      "pass": true,
+      "evidence": "The persisted .compass/objectives.json records rendering drift as DRF-35D86712 with kind scope_expansion and resolution open. The persisted docs/CHARTER.md retains the original Non-goals section verbatim, including 'Rendering is outside this project.'"
+    },
+    {
+      "id": "e3",
+      "pass": true,
+      "evidence": "The Moved table in .compass/reports/delta-run-20261124T071049Z.md cites issue:#11, issue:#12, and issue:#13 for the three in_progress-to-done transitions. The objective remained in_progress while its completion percentage changed."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The persisted .compass/github-index.json contains pointer metadata and omits issue bodies, and the other persisted edits contain no copied issue bodies. The action record shows a fixture read and two offline pulls with zero actions. The reply and persisted files supply no explicit authorization requirement for printing a gh write command and no instruction that the human must run it by hand."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:12:35.824704+00:00",
+    "elapsed_seconds": 14.8,
+    "prompt_sha256": "23d2314617e62bf8c4d64e54a5e12f253c54e05c67b9e1bf1b5c311d8cb5dafd",
+    "activity": [],
+    "usage": {
+      "input_tokens": 24389,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 518,
+      "reasoning_output_tokens": 140
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "699c866de9ec7f1f160714f55619643960967613fdd20abdb661e1c0f4fc8b3c"
+}

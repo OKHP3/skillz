@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-11-25: Local AI stack upgrade
+
+- Add `universal/okhp3-local-ai-stack-upgrade`, the distribution copy of the upgrade routine from the Mac Studio Local AI Workbench (canonical source: `OKHP3/mac-studio-local-ai-workbench`, `skills/okhp3-local-ai-stack-upgrade/`). It checks a single-host local AI stack against upstream release APIs, upgrades one container at a time with a database copy, a kept `NAME-prev` rollback and automatic rollback on a failed health check, verifies loopback and tailnet exposure, retires rollbacks after a soak, and scans docs for machine identifiers before publication.
+- Maturity is draftable. The five helper scripts pass 19 standard-library tests, including a simulated Docker run of every upgrade outcome; no live agent benchmark exists and the generalized container script has not yet run against a real Docker host. An installable bundle and receipt are published under `artifacts/skill-bundles/`.
+- The first Skillz Shield scan flagged the package's network use. The optional GitHub token header was removed, upstream lookups are now limited in code to `api.github.com` and `hub.docker.com`, and every network destination is declared in the skill. The final bytes then pass the Skillz Shield scan outright (both engines complete, no high or critical findings), so no review record was needed; the bundle receipt records that run.
+- Scanner findings were cleared at the source: network access is declared in the compatibility field, the description fits the 512-character limit, wording that read as self-modification was replaced, and every bundled reference resolves.
+- Codex review fixes: environment values with spaces can no longer reach the log, a failed recovery now reports `RESULT=FAIL` instead of `ROLLED_BACK`, and exposure verification fails when `lsof` or `docker ps` cannot run. Each has a regression test.
+
+## 2026-11-24: Project Compass 1.3.0
+
+- Added per-claim intent records, deterministic file views and a documented adapter contract. Hardened repository evidence collection, managed writes and validation. The package includes portable installation instructions, behavioral evaluation records and a standalone prompt.
+
+- Publish the installable package with a behavioral limit of supervised use. Final matched development scores were 8/12 with Compass and 2/12 without. The two critical cases remained below their required floors.
+- Hold operational rollout pending package security review. The [Skillz Shield run](https://github.com/OKHP3/skillz/actions/runs/45348185516) returned incomplete coverage and 13 high or critical findings on the distributed bytes. The bundle receipt records the scanned source revision.
+
+## 2026-11-20: Résumé Generator
+
+- Add `askjamie/okhp3-resume-generator`, the portable distribution of the AskJamie FoundRy skill for tailoring a résumé to one opening. It ships with intake prompts, templates, worked fictional examples and evaluation cases. The package ends at delivery of the draft to the candidate.
+
+## 2026-11-19: Notion CRUDq family closeout
+
+- Record the previously unlogged 2026-09-03 addition of ten Notion skills
+  (`core`, `identity-resolution`, `limits-and-retry`, `page-read`,
+  `page-write`, `search-strategy`, `query`, `row-write`, `destructive-ops`,
+  `agent-boundary`) and the tooling pass that gave each Notion skill, plus
+  `capture-router` 0.4.0, a stdlib-only `scripts/` helper with `--self-test`.
+- Add development evaluation designs for `row-write`, `query`, and
+  `page-write`. No live with-skill/without-skill run, unseen holdout, or
+  measured uplift is claimed; the equilibrium review is analytical and
+  single-context.
+- Add the ten skills to the `AGENTS.md` routing index and preserve the
+  research memo, dependency graph, and review record under
+  `docs/reviews/notion-crudq-family-2026-09/`.
+
 ## 2026-11-17: AI workforce bench gate
 
 - Add draftable 0.2.0 guidance for assessing the learning and succession effects
@@ -24,6 +58,35 @@
 - Add a neutral worked example and development evaluation design. No live
   behavioral benchmark, unseen holdout, or measured uplift is claimed.
 - Refresh the distribution catalog for 356 skills across 22 families.
+
+## 2026-11-09: LinkedIn carousel, publish operations, first comment, and rhythm
+
+- Add `okhp3-linkedin-carousel` 1.0.0: page planning plus a local JSON-spec
+  renderer (`scripts/build_carousel.py`) that escapes all text, disables page
+  JavaScript, aborts network requests, enforces contrast and a 24px type
+  floor, requires a source on claim pages, detects overflow, and writes an
+  accessible text outline beside the image-only PDF. Fourteen unit and render
+  tests pass locally; no live with/without-skill benchmark was run.
+- Add `okhp3-linkedin-publish-ops` 1.0.0, the social-posting family's single
+  scoped acting package: publish bundle with text hash and IANA time zone,
+  manual handoff by default, opt-in operator mode behind a capability check,
+  approval that names each action, recreate-to-attach for scheduled posts,
+  duplicate-safe retries, and DOM-level verification. It records the LinkedIn
+  User Agreement automated-methods clause as a residual risk. UI observations
+  carry `observed_on` and `revalidate_after` dates.
+- Revise `okhp3-linkedin-post` to 2.4.0 with an optional author first-comment
+  section, including a role-based counterpoint variant; `okhp3-linkedin-comment`
+  1.2.1 routes the author's own first comment there.
+- Revise `okhp3-linkedin-voice` to 2.3.0 with rhythm profiles (`flowing` for
+  standalone posts, `off` for comments, `staccato` on request) and measurable
+  checks for stacked short sentences and single-line paragraphs. AGENTS.md
+  now says to keep a deliberate standalone line without stacking them.
+- Amend `social-posting/FAMILY.md` with the scoped acting-package exception and
+  new routing rows. Record the deferred content-calendar candidate in the
+  backlog. Refresh the catalogs and manifest to 359 skills across 22 families.
+- Candidates were selected by an equilibrium review (evidence, outcome, and
+  safety reviewers, then a disruptor and negotiator); all reviewers shared one
+  model family, so their agreement is correlated evidence.
 
 ## 2026-11-09: Idea labels, success reconstruction, and context transfer
 

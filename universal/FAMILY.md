@@ -1,9 +1,9 @@
 ---
 family: universal
 display_name: Universal
-skill_count: 22
+skill_count: 23
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T22:40:35Z
+generated_at: 2026-11-25T18:51:52Z
 ---
 
 # universal
@@ -12,10 +12,10 @@ generated_at: 2026-11-09T22:40:35Z
 Cross-project skills for repository maintenance, evidence-led review, integrations, and reusable agent workflows.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (22)
+## Skills (23)
 
 <!-- FAMILY_INVENTORY_START -->
-*22 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 22:40 UTC***
+*23 skills &nbsp;·&nbsp; inventory last updated: **November 25, 2026 at 18:51 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -29,8 +29,9 @@ Cross-project skills for repository maintenance, evidence-led review, integratio
 | [okhp3-guided-photo-session](okhp3-guided-photo-session/SKILL.md) | Guide a consented still-photo session through verified camera or desktop tools with readiness cue... | 0.1.0 |
 | [okhp3-i18n-page-release](okhp3-i18n-page-release/SKILL.md) | Validate and prepare a localized static-web page set for release after its exact-pair translation... | 1.1.0 |
 | [okhp3-i18n-page-sync](okhp3-i18n-page-sync/SKILL.md) | Detect which pages on a static site are missing a translation, or have a translation that has fal... | 1.2.0 |
+| [okhp3-local-ai-stack-upgrade](okhp3-local-ai-stack-upgrade/SKILL.md) | Check, upgrade, verify and document a self-hosted local AI stack on one macOS host: Open WebUI an... | 0.1.0 |
 | [okhp3-overkill-hill-brand](okhp3-overkill-hill-brand/SKILL.md) | OverKill Hill P³ OverKill Hill SPA styling. Use when a user wants an OverKill Hill application, d... | 1.1.0 |
-| [okhp3-project-compass](okhp3-project-compass/SKILL.md) | Point at a project folder, git clone, or repository and establish or refresh its purpose, vision,... | 1.2.0 |
+| [okhp3-project-compass](okhp3-project-compass/SKILL.md) | Discover what a project folder is for, set up its charter and backlog, or reassess progress again... | 1.3.0 |
 | [okhp3-repository-creator](okhp3-repository-creator/SKILL.md) | Create governed FoundRy child repositories from Custom GPTs, Gemini Gems, Copilot agents, prompt ... | 1.2.0 |
 | [okhp3-repository-janitor](okhp3-repository-janitor/SKILL.md) | Reconcile a collection of local Git repositories with their GitHub origins, inspect all local var... | 0.2.1 |
 | [okhp3-repository-organizer](okhp3-repository-organizer/SKILL.md) | OverKill Hill P³ repository organizer for content-first Git repositories. Use when a local Git re... | 1.2.1 |

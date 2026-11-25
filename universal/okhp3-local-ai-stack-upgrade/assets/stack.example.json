@@ -1,0 +1,71 @@
+{
+  "_comment": "Copy to a private, git-ignored location (for example ~/.config/local-ai-stack/stack.json) and replace the placeholders. Never commit the filled-in copy.",
+  "components": [
+    {
+      "name": "Open WebUI",
+      "latest": {"type": "github", "repo": "open-webui/open-webui"},
+      "installed": {"type": "docker", "container": "open-webui"},
+      "notes": "Read release notes for DB migrations before upgrading"
+    },
+    {
+      "name": "Ollama",
+      "latest": {"type": "github", "repo": "ollama/ollama"},
+      "installed": {"type": "brew", "formula": "ollama"}
+    },
+    {
+      "name": "Qdrant",
+      "latest": {"type": "github", "repo": "qdrant/qdrant"},
+      "installed": {"type": "docker", "container": "qdrant"},
+      "notes": "Snapshot collections first"
+    },
+    {
+      "name": "SearXNG",
+      "latest": {"type": "dockerhub", "repo": "searxng/searxng", "tag_regex": "^\\d{4}\\.\\d{1,2}\\.\\d{1,2}-[0-9a-f]+$"},
+      "installed": {"type": "docker", "container": "searxng"},
+      "notes": "Rolling date tags; no GitHub releases"
+    },
+    {
+      "name": "OpenClaw",
+      "latest": {"type": "github", "repo": "openclaw/openclaw"},
+      "installed": {"type": "npm", "package": "openclaw"}
+    },
+    {
+      "name": "Tailscale",
+      "latest": {"type": "github", "repo": "tailscale/tailscale"},
+      "installed": {"type": "command", "cmd": ["tailscale", "version"]},
+      "notes": "Desktop app updates itself; confirm the new version installed"
+    },
+    {
+      "name": "Node.js",
+      "latest": {"type": "manual", "url": "https://nodejs.org/en/about/previous-releases"},
+      "installed": {"type": "command", "cmd": ["node", "--version"]},
+      "notes": "Track the LTS line your tools require"
+    },
+    {
+      "name": "LM Studio",
+      "latest": {"type": "manual", "url": "https://lmstudio.ai/changelog"},
+      "installed": {"type": "command", "cmd": ["lms", "version"]},
+      "notes": "In-app updater"
+    },
+    {
+      "name": "Docker Desktop",
+      "latest": {"type": "manual", "url": "https://docs.docker.com/desktop/release-notes/"},
+      "installed": {"type": "command", "cmd": ["docker", "version", "--format", "{{.Server.Version}}"]},
+      "notes": "Engine version shown; Desktop updates in-app"
+    }
+  ],
+  "services": [
+    {"name": "Open WebUI", "health": "http://127.0.0.1:3000/health", "port": 3000, "allow": ["loopback"]},
+    {"name": "Ollama", "health": "http://127.0.0.1:11434/api/version", "port": 11434, "allow": ["loopback", "tailnet"]},
+    {"name": "LM Studio", "health": "http://127.0.0.1:1234/v1/models", "expect": [200, 401], "port": 1234, "allow": ["loopback"]},
+    {"name": "Qdrant", "health": "http://127.0.0.1:6333/healthz", "port": 6333, "allow": ["loopback"]},
+    {"name": "SearXNG", "health": "http://127.0.0.1:8888/healthz", "port": 8888, "allow": ["loopback"]},
+    {"name": "OpenClaw gateway", "port": 18789, "allow": ["loopback"]},
+    {"name": "Tailscale Serve (HTTPS)", "port": 443, "allow": ["tailnet"]},
+    {"name": "Tailscale Serve (Open WebUI)", "port": 8443, "allow": ["tailnet"]}
+  ],
+  "remote_probes": [
+    {"name": "Open WebUI over tailnet", "url": "https://<host>.<tailnet>.ts.net:8443/health"},
+    {"name": "Agent gateway over tailnet", "url": "https://<host>.<tailnet>.ts.net/", "expect": [200, 401]}
+  ]
+}
