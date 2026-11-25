@@ -1,0 +1,14 @@
+{
+  "sealed_at": "2026-11-24T07:13:22.262223+00:00",
+  "sha256": {
+    "case": "6bb3963cbd767c227da37e03d4d94e391fed5cfbb0e7bd05049f09ac7650f52d",
+    "rubric": "65ea3ecd6a84f8669548caf7c96dc4f27d067088edc1018c9b6941e9641fdff3",
+    "author-receipt": "a803d7b4c736cd8c8e2c8b72da8a40b44af1490818f6ec826fbe1e0bbe69566a"
+  },
+  "commission_sha256": "1ff51bc873ba6063a8a0dfa570fd86b4367f874ca62de8a6b827d654062052f7",
+  "author_model": "gpt-6.2-sol",
+  "author_tool_calls": [],
+  "rubric_items": 4,
+  "owner_attestation": "New case commissioned under non-disclosure. No separate editor access audit.",
+  "custody": "Separate ephemeral author. Private custodian files outside the checkout. Same OS account; no separate-account access audit."
+}

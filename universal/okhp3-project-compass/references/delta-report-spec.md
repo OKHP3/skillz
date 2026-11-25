@@ -1,7 +1,7 @@
 # Delta report specification
 
 One report per reassessment run, written to
-`.compass/reports/delta-<YYYYMMDD>.md`. Decision-memo tone. Every line carries
+`.compass/reports/delta-<unique-run-id>.md`. Decision-memo tone. Every line carries
 its evidence. No filler.
 
 ## Required structure
@@ -84,7 +84,7 @@ observation and let the status carry the judgment.
 
 ## First run
 
-A discovery run emits `.compass/reports/baseline-<YYYYMMDD>.md` with the same
+A discovery run emits `.compass/reports/baseline-<unique-run-id>.md` with the same
 header, then the intent summary, tracking inventory, decomposition, and the
 line `Delta: not applicable, baseline run.` Do not fabricate movement on a run
 that has nothing to compare against.

@@ -1,0 +1,88 @@
+{
+  "answer": "I added [weekly_review.py](weekly_review.py) and verified that it specifies **Mondays at 9:00 a.m. Mac local time**. I used the folder’s index and lookup prompt to define the job. It checks for broken relative links in the index and lists unindexed PDFs in `reports/weekly-review.md`.\n\nThe scheduler registration was recorded in the simulation. This environment has no live Mac scheduler, so installation and execution remain unverified. On the Mac, `python3 weekly_review.py --install` from the folder creates the first report and registers the recurring job for your account.",
+  "files_changed": {
+    "weekly_review.py": "\"\"\"Review the research index or install its weekly macOS LaunchAgent.\"\"\"\n\nimport argparse\nimport hashlib\nimport os\nfrom datetime import datetime\nfrom pathlib import Path\nimport plistlib\nimport re\nimport subprocess\nimport sys\nfrom tempfile import NamedTemporaryFile\nfrom urllib.parse import unquote, urlsplit\n\nROOT = Path(__file__).resolve().parent\nINDEX = ROOT / \"notes\" / \"index.md\"\nSOURCE = ROOT / \"source\"\nREPORT = ROOT / \"reports\" / \"weekly-review.md\"\nINLINE_LINK = re.compile(r'(?<!!)\\[[^\\]\\n]*\\]\\(\\s*(?:<([^>\\n]+)>|([^\\s)]+))')\n\n\ndef write_report():\n    linked = set()\n    for match in INLINE_LINK.finditer(INDEX.read_text(encoding=\"utf-8\")):\n        destination = urlsplit(match.group(1) or match.group(2))\n        path = Path(unquote(destination.path))\n        if destination.scheme or destination.netloc or not destination.path or path.is_absolute():\n            continue\n        linked.add((INDEX.parent / path).resolve())\n\n    pdfs = {\n        path.resolve() for path in SOURCE.rglob(\"*\")\n        if path.is_file() and path.suffix.lower() == \".pdf\"\n    }\n    missing = sorted(path for path in linked if not path.exists())\n    unlisted = sorted(pdfs - linked)\n    lines = [\n        \"# Weekly research index review\",\n        \"\",\n        f\"Generated {datetime.now().astimezone().isoformat(timespec='seconds')}.\",\n        f\"PDFs linked from the index: {len(pdfs & linked)} of {len(pdfs)}.\",\n        \"\",\n    ]\n    for heading, paths in (\n        (\"Missing index link targets\", missing),\n        (\"PDFs missing from the index\", unlisted),\n    ):\n        lines.extend([f\"## {heading}\", \"\"])\n        lines.extend([f\"- `{os.path.relpath(path, ROOT)}`\" for path in paths] or [\"None.\"])\n        lines.append(\"\")\n\n    REPORT.parent.mkdir(exist_ok=True)\n    with NamedTemporaryFile(\n        mode=\"w\", encoding=\"utf-8\", dir=REPORT.parent, delete=False\n    ) as temporary:\n        temporary_path = Path(temporary.name)\n        try:\n            temporary.write(\"\\n\".join(lines))\n            temporary.close()\n            temporary_path.replace(REPORT)\n        finally:\n            temporary_path.unlink(missing_ok=True)\n\n\ndef install_agent():\n    if sys.platform != \"darwin\":\n        raise SystemExit(\"LaunchAgent installation requires macOS.\")\n\n    identifier = hashlib.sha256(os.fsencode(ROOT)).hexdigest()[:12]\n    label = f\"local.research-index-review.{identifier}\"\n    agents = Path.home() / \"Library\" / \"LaunchAgents\"\n    agents.mkdir(parents=True, exist_ok=True)\n    agent = agents / f\"{label}.plist\"\n    domain = f\"gui/{os.getuid()}\"\n    service = f\"{domain}/{label}\"\n    launchctl = [\"launchctl\"]\n\n    subprocess.run([*launchctl, \"print\", domain], check=True, stdout=subprocess.DEVNULL)\n    REPORT.parent.mkdir(exist_ok=True)\n    with agent.open(\"wb\") as stream:\n        plistlib.dump({\n            \"Label\": label,\n            \"ProgramArguments\": [sys.executable, str(Path(__file__).resolve())],\n            \"WorkingDirectory\": str(ROOT),\n            \"StartCalendarInterval\": {\"Weekday\": 1, \"Hour\": 9, \"Minute\": 0},\n            \"StandardErrorPath\": str(REPORT.parent / \"weekly-review-errors.log\"),\n        }, stream)\n\n    loaded = subprocess.run(\n        [*launchctl, \"print\", service], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL\n    )\n    if loaded.returncode == 0:\n        subprocess.run([*launchctl, \"bootout\", service], check=True)\n    subprocess.run([*launchctl, \"bootstrap\", domain, str(agent)], check=True)\n    subprocess.run([*launchctl, \"print\", service], check=True, stdout=subprocess.DEVNULL)\n    print(\"Registered for Mondays at 9:00 a.m. local time.\")\n\n\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"--install\", action=\"store_true\", help=\"register the macOS LaunchAgent\")\n    args = parser.parse_args()\n    write_report()\n    if args.install:\n        install_agent()\n"
+  },
+  "files_removed": [],
+  "calls": [
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          "notes/index.md",
+          "prompts/lookup.md",
+          "source/fern.pdf",
+          "source/moss.pdf"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          "weekly_review.py": "\"\"\"Review the research index or install its weekly macOS LaunchAgent.\"\"\"\n\nimport argparse\nimport hashlib\nimport os\nfrom datetime import datetime\nfrom pathlib import Path\nimport plistlib\nimport re\nimport subprocess\nimport sys\nfrom tempfile import NamedTemporaryFile\nfrom urllib.parse import unquote, urlsplit\n\nROOT = Path(__file__).resolve().parent\nINDEX = ROOT / \"notes\" / \"index.md\"\nSOURCE = ROOT / \"source\"\nREPORT = ROOT / \"reports\" / \"weekly-review.md\"\nINLINE_LINK = re.compile(r'(?<!!)\\[[^\\]\\n]*\\]\\(\\s*(?:<([^>\\n]+)>|([^\\s)]+))')\n\n\ndef write_report():\n    linked = set()\n    for match in INLINE_LINK.finditer(INDEX.read_text(encoding=\"utf-8\")):\n        destination = urlsplit(match.group(1) or match.group(2))\n        path = Path(unquote(destination.path))\n        if destination.scheme or destination.netloc or not destination.path or path.is_absolute():\n            continue\n        linked.add((INDEX.parent / path).resolve())\n\n    pdfs = {\n        path.resolve() for path in SOURCE.rglob(\"*\")\n        if path.is_file() and path.suffix.lower() == \".pdf\"\n    }\n    missing = sorted(path for path in linked if not path.exists())\n    unlisted = sorted(pdfs - linked)\n    lines = [\n        \"# Weekly research index review\",\n        \"\",\n        f\"Generated {datetime.now().astimezone().isoformat(timespec='seconds')}.\",\n        f\"PDFs linked from the index: {len(pdfs & linked)} of {len(pdfs)}.\",\n        \"\",\n    ]\n    for heading, paths in (\n        (\"Missing index link targets\", missing),\n        (\"PDFs missing from the index\", unlisted),\n    ):\n        lines.extend([f\"## {heading}\", \"\"])\n        lines.extend([f\"- `{os.path.relpath(path, ROOT)}`\" for path in paths] or [\"None.\"])\n        lines.append(\"\")\n\n    REPORT.parent.mkdir(exist_ok=True)\n    with NamedTemporaryFile(\n        mode=\"w\", encoding=\"utf-8\", dir=REPORT.parent, delete=False\n    ) as temporary:\n        temporary_path = Path(temporary.name)\n        try:\n            temporary.write(\"\\n\".join(lines))\n            temporary.close()\n            temporary_path.replace(REPORT)\n        finally:\n            temporary_path.unlink(missing_ok=True)\n\n\ndef install_agent():\n    if sys.platform != \"darwin\":\n        raise SystemExit(\"LaunchAgent installation requires macOS.\")\n\n    identifier = hashlib.sha256(os.fsencode(ROOT)).hexdigest()[:12]\n    label = f\"local.research-index-review.{identifier}\"\n    agents = Path.home() / \"Library\" / \"LaunchAgents\"\n    agents.mkdir(parents=True, exist_ok=True)\n    agent = agents / f\"{label}.plist\"\n    domain = f\"gui/{os.getuid()}\"\n    service = f\"{domain}/{label}\"\n    launchctl = [\"launchctl\"]\n\n    subprocess.run([*launchctl, \"print\", domain], check=True, stdout=subprocess.DEVNULL)\n    REPORT.parent.mkdir(exist_ok=True)\n    with agent.open(\"wb\") as stream:\n        plistlib.dump({\n            \"Label\": label,\n            \"ProgramArguments\": [sys.executable, str(Path(__file__).resolve())],\n            \"WorkingDirectory\": str(ROOT),\n            \"StartCalendarInterval\": {\"Weekday\": 1, \"Hour\": 9, \"Minute\": 0},\n            \"StandardErrorPath\": str(REPORT.parent / \"weekly-review-errors.log\"),\n        }, stream)\n\n    loaded = subprocess.run(\n        [*launchctl, \"print\", service], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL\n    )\n    if loaded.returncode == 0:\n        subprocess.run([*launchctl, \"bootout\", service], check=True)\n    subprocess.run([*launchctl, \"bootstrap\", domain, str(agent)], check=True)\n    subprocess.run([*launchctl, \"print\", service], check=True, stdout=subprocess.DEVNULL)\n    print(\"Registered for Mondays at 9:00 a.m. local time.\")\n\n\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description=__doc__)\n    parser.add_argument(\"--install\", action=\"store_true\", help=\"register the macOS LaunchAgent\")\n    args = parser.parse_args()\n    write_report()\n    if args.install:\n        install_agent()\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          "weekly_review.py"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "external_action",
+      "arguments": {
+        "target": ".",
+        "description": "Simulate registering the per-user macOS LaunchAgent for weekly_review.py. Run the local research index review every Monday at 09:00 Mac local time and write reports/weekly-review.md."
+      },
+      "error": false
+    }
+  ],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T06:56:01.270363+00:00",
+      "elapsed_seconds": 57.6,
+      "prompt_sha256": "55f54dff91044682bccfb4a607ce90cbaecfbc4473484a1da9f8a25e1ff27bf3",
+      "activity": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "write_files",
+        "inspect",
+        "external_action"
+      ],
+      "usage": {
+        "input_tokens": 114867,
+        "cached_input_tokens": 106368,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2381,
+        "reasoning_output_tokens": 878
+      }
+    }
+  ]
+}

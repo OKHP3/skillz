@@ -1,17 +1,20 @@
 ---
 name: okhp3-session-handoff
-description: Create a durable continuation record when work pauses, becomes blocked, crosses a machine, or crosses an agent host. Use after substantial work or when the owner asks for a handoff. Record changed files, reasoning, evidence tiers, validation, limitations, and the exact next action without relying on chat memory.
+description: >
+  Create a durable session handoff or exact-thread closeout receipt. Use when
+  work pauses, crosses machines or agent hosts, or needs completion verified
+  before archiving. Record evidence, remaining obligations, and the next action.
 license: MIT
 metadata:
   author: Jamie Hill (OverKill Hill P³)
-  version: 0.2.0
+  version: 0.3.0
   maturity: draftable
   category: context-extraction
   origin: okhp3/skillz
   homepage: https://overkillhill.com
   author-github: https://github.com/OKHP3
-  in_scope: "Portable continuation records for work that crosses sessions, machines, or agent hosts."
-  out_of_scope: "Account access, claims that another copy applied the handoff, publication, or replacing source preservation."
+  in_scope: "Portable continuation records and evidence-based closeout decisions for a named thread."
+  out_of_scope: "Account access, archive execution, branch cleanup, publication, or replacing source preservation."
 ---
 
 # okhp3-session-handoff
@@ -55,6 +58,14 @@ When new evidence changes an existing handoff, add a dated addendum if the same
 handoff remains the natural continuity record. Preserve the earlier conclusion
 and explain why it changed. Do not rewrite history to make the record look
 consistently correct.
+
+## Exact-thread closeout
+
+Use [the closeout profile](references/exact-thread-closeout.md) when the owner
+asks to finalize, close out, or archive a specific thread. Keep ordinary
+handoffs on the shorter path above. Separate work completion, receipt
+verification, archive eligibility, and observed archive outcome. Provide the
+receipt and the smallest next action when any gate remains open.
 
 ## Scope and portability
 

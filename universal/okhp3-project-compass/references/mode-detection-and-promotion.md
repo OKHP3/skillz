@@ -20,8 +20,7 @@ Run it with `python3 scripts/detect_mode.py --root <path> [--check-gh]`.
 | Pull request template | medium | PR flow is in use |
 | github.com links in README | low | Weak; a README can link to anything |
 
-Detection parses `.git/config` directly, so it works even when the `git` binary
-is missing.
+Detection uses Git to verify the root and its origin, including linked worktrees. If verification is unavailable, keep a previously verified identity, use local evidence and log a question. On first discovery without a verified origin, use file mode.
 
 ## Sub-cases and verdicts
 
@@ -89,7 +88,7 @@ normalized title, never from a GitHub number.
    --state .compass/objectives.json`. Fix any V2 error before going further.
 3. Set `github.owner_repo` and `github.enabled` in `.compass/config.json`.
    Leave `write_authorization` at `per-run`.
-4. Pull first: `python3 scripts/github_sync.py pull --root . --repo <owner/name>`.
+4. Pull first: `python3 scripts/github_sync.py pull --root . --repo <owner/name> --apply`.
    The repository may already have issues and milestones. Matching happens on
    the `compass-id` marker, so anything unmarked lands in `unmatched_remote`
    for a human to adopt or ignore.
@@ -111,8 +110,7 @@ what Compass already knows, not the other way round.
 
 ## Demotion, Mode A to Mode B
 
-Happens when a remote is removed, a repository is made local-only, or GitHub
-access is permanently lost. The mirror is exactly what makes this survivable.
+Require affirmative evidence of removal, an explicit local-only decision, or owner confirmation that access was permanently lost. Treat temporary loss of Git or GitHub access as a degraded read. The mirror is exactly what makes this survivable.
 
 1. Record the `mode_change` and the reason.
 2. Keep `github-index.json` as a historical record; mark it stale in the run

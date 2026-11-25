@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": false,
+      "evidence": "The reply describes a local weekly review but never identifies Mode B or the plain-folder sub-case or states that Git is unavailable. In persisted weekly_review.py, write_report() records the report generation time and checks links and PDF presence. It neither uses filesystem modification times as activity evidence nor labels an age source."
+    },
+    {
+      "id": "e2",
+      "pass": false,
+      "evidence": "The scheduled invocation in weekly_review.py runs without an interactive prompt, but the reply does not commit to asking no questions. The TBD question in notes/index.md has no corresponding QST- item, and the persisted edits contain no .compass/OPEN-QUESTIONS.md or 'Compass assumed' line."
+    },
+    {
+      "id": "e3",
+      "pass": false,
+      "evidence": "The simulated registration specifies that the Monday run writes reports/weekly-review.md. The persisted script's default invocation replaces the entire report and configures stderr under reports/, outside .compass/. The reply does not explicitly decline scheduled creation of human documents, file moves, or GitHub writes. The action record shows only the simulated local scheduler registration, and the removed list is empty."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The reply uses the existing index and lookup prompt, and weekly_review.py displays a PDF-link numerator and denominator. The script generates reports/weekly-review.md and contains no Mode B computed-children rollup or explicit coverage and currency success criteria. The persisted edits contain no docs/ROADMAP.md, CI scaffolding, or issue templates, and the action record shows only the simulated scheduler registration."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T06:57:31.683922+00:00",
+    "elapsed_seconds": 10.7,
+    "prompt_sha256": "0c81061b1b183fb079357109c0689d8739d2adce2c769cac5af487140b83ee91",
+    "activity": [],
+    "usage": {
+      "input_tokens": 16675,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 384,
+      "reasoning_output_tokens": 0
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "5bb970073a3c32c36fe386ca650c1c83865a20d5aa57056093edfbba904924d3"
+}
