@@ -1,25 +1,25 @@
 {
   "name": "okhp3-local-ai-stack-upgrade",
   "version": "0.1.0",
-  "source_commit": "f4df4eb6bda5b9d392f1829e8f6121a7373b4615",
-  "package_tree": "6c9a670c1d80045ca80c1dbb5ea5c29ca0b35e4b",
-  "sha256": "d039bfac147613172d3b196e162c990903bcd4b15d688ba9b5f51370e64a4b61",
+  "source_commit": "809ca04cb38826458ecb15d6beba14ed05048251",
+  "package_tree": "1e9e9c69907d2a08417d785b227b11e9ebe528b5",
+  "sha256": "7004365c8ba271417cb605201e3837a4cfcf30d5095bb891e18fb8db47f88295",
   "files": 18,
   "canonical_source": "https://github.com/OKHP3/mac-studio-local-ai-workbench/tree/main/skills/okhp3-local-ai-stack-upgrade",
-  "release_decision": "hold-for-security-review",
+  "release_decision": "supervised-use",
   "benchmark": "../../universal/okhp3-local-ai-stack-upgrade/evals/evals.json",
   "behavioral_decision": "supervised-use-only",
   "evidence": "19 standard-library helper tests pass from the extracted bundle; no live agent benchmark; generalized container script not yet run against a real Docker host.",
   "security_review": {
-    "workflow_run": "https://github.com/OKHP3/skillz/actions/runs/45667887152",
-    "scanned_commit": "c815e1ec2d6f3d345d1f57d426e552579a0e833d",
+    "workflow_run": "https://github.com/OKHP3/skillz/actions/runs/45678676477",
+    "scanned_commit": "27fe82261fe328d8a9d95aa87a884dbd4c55546e",
     "scanned_commit_kind": "pull request merge ref for PR #260 at the source commit",
-    "scanned_content_sha256": "a835834b14492172ab8935d5676acf5342bf0fe3f150a00ba28bdc311295bf0d",
-    "scanned_package_tree": "6c9a670c1d80045ca80c1dbb5ea5c29ca0b35e4b",
-    "vendor_decision": "incomplete",
-    "high_or_critical_findings": 2,
+    "scanned_content_sha256": "c975782ad73e72c41bfc948575e4923d4456425af8bdacabc08475a9acbc2469",
+    "scanned_package_tree": "1e9e9c69907d2a08417d785b227b11e9ebe528b5",
+    "vendor_decision": "pass",
+    "high_or_critical_findings": 0,
     "reviewed_matches": 0,
-    "note": "Remaining findings concern network requests and host command execution (docker, curl) that an upgrade tool performs by design; every destination is declared in SKILL.md. Not yet reviewed against exact content."
+    "note": "Raw scan pass: both engines complete with no high or critical findings, so no review record was needed. A scan pass does not certify safety."
   },
   "reproduce": "TZ=UTC git archive --format=zip -0 --mtime=@$(git log -1 --format=%ct SOURCE_COMMIT) --prefix=okhp3-local-ai-stack-upgrade/ --output=OUT SOURCE_COMMIT:universal/okhp3-local-ai-stack-upgrade"
 }
