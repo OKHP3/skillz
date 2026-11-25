@@ -1,15 +1,25 @@
 {
   "name": "okhp3-local-ai-stack-upgrade",
   "version": "0.1.0",
-  "source_commit": "79c84d3d382f90d2b8d716ad34ccce21f755c174",
-  "package_tree": "4bdf31f2f43bacbd7cc10cdf3b98e3ace0ba1740",
-  "sha256": "6112c8f72337d5083c3ab46c345e8faec9f82a5a372fccd39ba9d97d938a0c59",
+  "source_commit": "7499da7ef74b84294b53a54b6940e62f779a934a",
+  "package_tree": "80177651902cfc7f63529757f59e180b0b2be19d",
+  "sha256": "20d9a4e7e1e81dd16acc775e57348821d24ef73468df764eacaa466898d5dbe4",
   "files": 18,
   "canonical_source": "https://github.com/OKHP3/mac-studio-local-ai-workbench/tree/main/skills/okhp3-local-ai-stack-upgrade",
-  "release_decision": "supervised-use-pending-security-review",
+  "release_decision": "hold-for-security-review",
   "benchmark": "../../universal/okhp3-local-ai-stack-upgrade/evals/evals.json",
   "behavioral_decision": "supervised-use-only",
-  "evidence": "15 standard-library helper tests pass from the extracted bundle; no live agent benchmark; generalized container script not yet run against a real Docker host.",
-  "security_review": null,
+  "evidence": "16 standard-library helper tests pass from the extracted bundle; no live agent benchmark; generalized container script not yet run against a real Docker host.",
+  "security_review": {
+    "workflow_run": "https://github.com/OKHP3/skillz/actions/runs/45664183869",
+    "scanned_commit": "08019c8a8c1b8814e022632fbc4136f5a5256067",
+    "scanned_package_tree": "80177651902cfc7f63529757f59e180b0b2be19d",
+    "vendor_decision": "incomplete",
+    "high_or_critical_findings": 3,
+    "reviewed_matches": 0,
+    "note": "Findings concern network requests and host command execution (docker, curl) that an upgrade tool performs by design; every destination is declared in SKILL.md. Not yet reviewed against exact content.",
+    "scanned_commit_kind": "pull request merge ref for PR #260 at the source commit",
+    "scanned_content_sha256": "08b8af3d7b31821373072abfdf0f229b708a04ae3756819100b029858a01f390"
+  },
   "reproduce": "TZ=UTC git archive --format=zip -0 --mtime=@$(git log -1 --format=%ct SOURCE_COMMIT) --prefix=okhp3-local-ai-stack-upgrade/ --output=OUT SOURCE_COMMIT:universal/okhp3-local-ai-stack-upgrade"
 }
