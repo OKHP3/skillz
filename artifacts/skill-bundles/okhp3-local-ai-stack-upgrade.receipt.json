@@ -1,25 +1,25 @@
 {
   "name": "okhp3-local-ai-stack-upgrade",
   "version": "0.1.0",
-  "source_commit": "7499da7ef74b84294b53a54b6940e62f779a934a",
-  "package_tree": "80177651902cfc7f63529757f59e180b0b2be19d",
-  "sha256": "20d9a4e7e1e81dd16acc775e57348821d24ef73468df764eacaa466898d5dbe4",
+  "source_commit": "f4df4eb6bda5b9d392f1829e8f6121a7373b4615",
+  "package_tree": "6c9a670c1d80045ca80c1dbb5ea5c29ca0b35e4b",
+  "sha256": "d039bfac147613172d3b196e162c990903bcd4b15d688ba9b5f51370e64a4b61",
   "files": 18,
   "canonical_source": "https://github.com/OKHP3/mac-studio-local-ai-workbench/tree/main/skills/okhp3-local-ai-stack-upgrade",
   "release_decision": "hold-for-security-review",
   "benchmark": "../../universal/okhp3-local-ai-stack-upgrade/evals/evals.json",
   "behavioral_decision": "supervised-use-only",
-  "evidence": "16 standard-library helper tests pass from the extracted bundle; no live agent benchmark; generalized container script not yet run against a real Docker host.",
+  "evidence": "19 standard-library helper tests pass from the extracted bundle; no live agent benchmark; generalized container script not yet run against a real Docker host.",
   "security_review": {
-    "workflow_run": "https://github.com/OKHP3/skillz/actions/runs/45664183869",
-    "scanned_commit": "08019c8a8c1b8814e022632fbc4136f5a5256067",
-    "scanned_package_tree": "80177651902cfc7f63529757f59e180b0b2be19d",
-    "vendor_decision": "incomplete",
-    "high_or_critical_findings": 3,
-    "reviewed_matches": 0,
-    "note": "Findings concern network requests and host command execution (docker, curl) that an upgrade tool performs by design; every destination is declared in SKILL.md. Not yet reviewed against exact content.",
+    "workflow_run": "https://github.com/OKHP3/skillz/actions/runs/45667887152",
+    "scanned_commit": "c815e1ec2d6f3d345d1f57d426e552579a0e833d",
     "scanned_commit_kind": "pull request merge ref for PR #260 at the source commit",
-    "scanned_content_sha256": "08b8af3d7b31821373072abfdf0f229b708a04ae3756819100b029858a01f390"
+    "scanned_content_sha256": "a835834b14492172ab8935d5676acf5342bf0fe3f150a00ba28bdc311295bf0d",
+    "scanned_package_tree": "6c9a670c1d80045ca80c1dbb5ea5c29ca0b35e4b",
+    "vendor_decision": "incomplete",
+    "high_or_critical_findings": 2,
+    "reviewed_matches": 0,
+    "note": "Remaining findings concern network requests and host command execution (docker, curl) that an upgrade tool performs by design; every destination is declared in SKILL.md. Not yet reviewed against exact content."
   },
   "reproduce": "TZ=UTC git archive --format=zip -0 --mtime=@$(git log -1 --format=%ct SOURCE_COMMIT) --prefix=okhp3-local-ai-stack-upgrade/ --output=OUT SOURCE_COMMIT:universal/okhp3-local-ai-stack-upgrade"
 }
