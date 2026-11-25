@@ -1,0 +1,15 @@
+{
+  "name": "okhp3-local-ai-stack-upgrade",
+  "version": "0.1.0",
+  "source_commit": "79c84d3d382f90d2b8d716ad34ccce21f755c174",
+  "package_tree": "4bdf31f2f43bacbd7cc10cdf3b98e3ace0ba1740",
+  "sha256": "6112c8f72337d5083c3ab46c345e8faec9f82a5a372fccd39ba9d97d938a0c59",
+  "files": 18,
+  "canonical_source": "https://github.com/OKHP3/mac-studio-local-ai-workbench/tree/main/skills/okhp3-local-ai-stack-upgrade",
+  "release_decision": "supervised-use-pending-security-review",
+  "benchmark": "../../universal/okhp3-local-ai-stack-upgrade/evals/evals.json",
+  "behavioral_decision": "supervised-use-only",
+  "evidence": "15 standard-library helper tests pass from the extracted bundle; no live agent benchmark; generalized container script not yet run against a real Docker host.",
+  "security_review": null,
+  "reproduce": "TZ=UTC git archive --format=zip -0 --mtime=@$(git log -1 --format=%ct SOURCE_COMMIT) --prefix=okhp3-local-ai-stack-upgrade/ --output=OUT SOURCE_COMMIT:universal/okhp3-local-ai-stack-upgrade"
+}
