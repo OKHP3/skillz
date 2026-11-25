@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-25T17:48:34.243Z",
+  "generatedAt": "2026-11-25T18:51:51.852Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "098aaec2",
+  "sourceCommit": "f80a873a",
   "skillCount": 361,
   "familyCount": 22,
   "families": [
@@ -24264,7 +24264,7 @@
       "family": "universal",
       "skillDir": "okhp3-local-ai-stack-upgrade",
       "path": "universal/okhp3-local-ai-stack-upgrade/SKILL.md",
-      "description": "Check, upgrade, verify and document a self-hosted local AI stack on a single macOS host: Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant, SearXNG, an agent gateway such as OpenClaw, Tailscale and Node. Use when a new release is out (\"A new version is available\"), when asked to update or patch the stack, check whether components are current, retire old images or rollback containers, confirm services are still loopback or tailnet only, or update the stack's public docs after a change. Do not use for cloud or Kubernetes deployments, Docker Compose stacks (use compose pull/up), or first-time installs.",
+      "description": "Check, upgrade, verify and document a self-hosted local AI stack on one macOS host: Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant, SearXNG, an agent gateway such as OpenClaw, and Tailscale. Use when a new release is out, to check whether components are current, to retire old images or rollback containers, to confirm services are loopback or tailnet only, or to update the stack's docs after a change. Not for cloud, Kubernetes, Docker Compose stacks or first-time installs.",
       "version": "0.1.0",
       "license": "MIT",
       "category": "infrastructure-operations",
@@ -24290,8 +24290,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-local-ai-stack-upgrade/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-local-ai-stack-upgrade/SKILL.md",
-      "lastModified": "2026-11-25T11:44:01-06:00",
-      "commitSha": "f4df4eb6",
+      "lastModified": "2026-11-25T12:47:06-06:00",
+      "commitSha": "809ca04c",
       "createdAt": "2026-11-25T11:08:55-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
