@@ -80,11 +80,13 @@ def http_status(url: str, timeout: int = 8) -> int:
         return 0
 
 
-def sh(cmd: list[str]) -> str:
+def sh(cmd: list[str]) -> str | None:
+    """Command stdout, or None when the command is missing, times out or fails."""
     try:
-        return subprocess.run(cmd, capture_output=True, text=True, timeout=30).stdout
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
     except (OSError, subprocess.TimeoutExpired):
-        return ""
+        return None
+    return r.stdout if r.returncode == 0 else None
 
 
 def main(argv=None) -> int:
@@ -110,8 +112,15 @@ def main(argv=None) -> int:
     if not a.skip_exposure:
         print("\n## Exposure")
         allowed = {s["port"]: set(s.get("allow", ["loopback"])) for s in services if s.get("port")}
-        binds = parse_lsof(sh(["lsof", "-nP", "-iTCP", "-sTCP:LISTEN"]))
-        binds += parse_docker_ports(sh(["docker", "ps", "--format", "{{.Names}}\t{{.Ports}}"]))
+        binds = []
+        lsof_out = sh(["lsof", "-nP", "-iTCP", "-sTCP:LISTEN"])
+        docker_out = sh(["docker", "ps", "--format", "{{.Names}}\t{{.Ports}}"])
+        for label, out, parser in (("lsof", lsof_out, parse_lsof), ("docker ps", docker_out, parse_docker_ports)):
+            if out is None:
+                fails += 1
+                print(f"- FAIL {label} could not run, so bind addresses are unverified (use --skip-exposure to skip deliberately)")
+            else:
+                binds += parser(out)
         seen = set()
         for who, addr, port in binds:
             if port not in allowed or (who, addr, port) in seen:

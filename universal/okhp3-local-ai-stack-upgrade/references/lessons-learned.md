@@ -18,3 +18,6 @@ Each entry is a failure that happened at least once during real upgrades, what c
 | `.git/index.lock` left behind | A git status from a sync tool or bridge raced another process | Read-only git commands use `git --no-optional-locks` |
 | A long migration looked like a hang | Chat-history migration took minutes on large histories | Data-migrating releases get `--health-timeout 600` and progress logging |
 | Script output folder disappeared | A personal downloads folder was cleaned up | Keep launchers in a dedicated git-ignored folder inside the repo or under `~/.config` |
+| Review found the log could show part of an environment value | Values were stripped from a flattened argument string, which breaks on spaces | Environment arguments live in their own array and are never printed |
+| Review found a failed recovery still reported `ROLLED_BACK` | Restore, rename and restart results were not checked | Every recovery step is checked; any failure ends in `RESULT=FAIL` |
+| Review found exposure could pass with no evidence | `lsof` or `docker ps` failures were treated as "no listeners" | A discovery command that cannot run fails the exposure check |

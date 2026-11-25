@@ -87,6 +87,23 @@ class UpgradeContainerTests(unittest.TestCase):
         self.assertNotIn("/app/backend/data/.key", p.stdout.replace("WEBUI_SECRET_KEY_FILE", ""),
                          "env values must not be logged")
 
+    def test_env_values_with_spaces_are_never_logged(self):
+        s = base_state()
+        s["containers"]["open-webui"]["env"].append("API_KEY=Bearer synthetic-secret-tail")
+        p, st = self.run_upgrade(s)
+        self.assertIn("RESULT=PASS", p.stdout, p.stdout)
+        self.assertNotIn("synthetic-secret-tail", p.stdout)
+        self.assertIn("API_KEY=Bearer synthetic-secret-tail", st["containers"]["open-webui"]["run_env_args"])
+        logs = [f for f in os.listdir(self.tmp) if f.startswith("upgrade-") and f.endswith(".log")]
+        with open(os.path.join(self.tmp, logs[0])) as fh:
+            self.assertNotIn("synthetic-secret-tail", fh.read())
+
+    def test_failed_restore_reports_fail_not_rolled_back(self):
+        p, _ = self.run_upgrade(base_state(), MOCK_RUN_FAIL="1", MOCK_START_FAIL="1")
+        self.assertIn("RESULT=FAIL", p.stdout, p.stdout)
+        self.assertNotIn("RESULT=ROLLED_BACK", p.stdout)
+        self.assertIn("Rollback incomplete", p.stdout)
+
     def test_noop_when_already_on_target(self):
         s = base_state(); s["containers"]["open-webui"]["image"] = "ghcr.io/open-webui/open-webui:v0.13.5"
         s["images"]["ghcr.io/open-webui/open-webui:v0.13.5"] = {"env": IMG_ENV}
@@ -170,6 +187,20 @@ class VerifyStackTests(unittest.TestCase):
         got = vs.parse_docker_ports(text)
         self.assertIn(("open-webui", "127.0.0.1", 3000), got)
         self.assertIn(("qdrant", "0.0.0.0", 6333), got)
+
+
+class VerifyStackExposureTests(unittest.TestCase):
+    def test_missing_discovery_tools_fail_exposure(self):
+        d = tempfile.mkdtemp()
+        cfg = os.path.join(d, "stack.json")
+        with open(cfg, "w") as fh:
+            json.dump({"services": [{"name": "svc", "port": 3000, "allow": ["loopback"]}]}, fh)
+        p = subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "verify_stack.py"), "--config", cfg,
+                            "--skip-remote"], capture_output=True, text=True, env=dict(os.environ, PATH=d))
+        shutil.rmtree(d)
+        self.assertEqual(p.returncode, 1, p.stdout)
+        self.assertIn("could not run", p.stdout)
+        self.assertIn("RESULT=FAIL", p.stdout)
 
 
 class PruneTests(unittest.TestCase):

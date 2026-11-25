@@ -64,6 +64,7 @@ if cmd == "pull":
 if cmd == "stop":
     C[argv[-1]]["running"] = False; save(); sys.exit(0)
 if cmd == "start":
+    if os.environ.get("MOCK_START_FAIL"): sys.exit(1)
     C[argv[-1]]["running"] = True; save(); sys.exit(0)
 if cmd == "rm":
     name = argv[-1]

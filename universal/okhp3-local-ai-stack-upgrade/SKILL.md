@@ -93,7 +93,7 @@ The script copies the live container's settings that differ from the image defau
 2. stops the container and copies each `--backup` file next to itself as `FILE.pre-TAG-TIMESTAMP`;
 3. renames the old container to `NAME-prev` with restart disabled, retiring any older `NAME-prev`;
 4. starts the new container and waits for the health URL;
-5. on failure, restores the backups, puts the old container back under its original name and exits `RESULT=ROLLED_BACK`;
+5. on failure, restores the backups, puts the old container back under its original name and exits `RESULT=ROLLED_BACK`. If any part of that recovery fails, it exits `RESULT=FAIL` with "Rollback incomplete", which means check the service by hand at once;
 6. on success, prunes the image of the retired rollback if nothing uses it and exits `RESULT=PASS`.
 
 Run `--dry-run` first on any container you have not upgraded with this script before.
@@ -108,7 +108,7 @@ Homebrew formulas (`brew upgrade ollama`), global npm packages, and self-updatin
 python3 scripts/verify_stack.py --config ~/.config/local-ai-stack/stack.json
 ```
 
-All three sections must pass: health, exposure and remote. An exposure failure after an upgrade usually means a new default bound a port to all interfaces. Fix the binding, do not widen the allow list. Then ask the owner to open the app and confirm one real workflow, such as an older chat loading after a history migration.
+All three sections must pass: health, exposure and remote. If `lsof` or `docker ps` cannot run, exposure fails rather than passing unverified; use `--skip-exposure` only as a deliberate choice. An exposure failure after an upgrade usually means a new default bound a port to all interfaces. Fix the binding, do not widen the allow list. Then ask the owner to open the app and confirm one real workflow, such as an older chat loading after a history migration.
 
 ### 6. Retire
 

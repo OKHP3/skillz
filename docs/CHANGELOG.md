@@ -3,8 +3,9 @@
 ## 2026-11-25: Local AI stack upgrade
 
 - Add `universal/okhp3-local-ai-stack-upgrade`, the distribution copy of the upgrade routine from the Mac Studio Local AI Workbench (canonical source: `OKHP3/mac-studio-local-ai-workbench`, `skills/okhp3-local-ai-stack-upgrade/`). It checks a single-host local AI stack against upstream release APIs, upgrades one container at a time with a database copy, a kept `NAME-prev` rollback and automatic rollback on a failed health check, verifies loopback and tailnet exposure, retires rollbacks after a soak, and scans docs for machine identifiers before publication.
-- Maturity is draftable. The five helper scripts pass 16 standard-library tests, including a simulated Docker run of every upgrade outcome; no live agent benchmark exists and the generalized container script has not yet run against a real Docker host. An installable bundle and receipt are published under `artifacts/skill-bundles/`.
+- Maturity is draftable. The five helper scripts pass 19 standard-library tests, including a simulated Docker run of every upgrade outcome; no live agent benchmark exists and the generalized container script has not yet run against a real Docker host. An installable bundle and receipt are published under `artifacts/skill-bundles/`.
 - The first Skillz Shield scan flagged the package's network use. The optional GitHub token header was removed, upstream lookups are now limited in code to `api.github.com` and `hub.docker.com`, and every network destination is declared in the skill. The bundle receipt records the package as held for security review until a scan of the final bytes is reviewed.
+- Codex review fixes: environment values with spaces can no longer reach the log, a failed recovery now reports `RESULT=FAIL` instead of `ROLLED_BACK`, and exposure verification fails when `lsof` or `docker ps` cannot run. Each has a regression test.
 
 ## 2026-11-24: Project Compass 1.3.0
 

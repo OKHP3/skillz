@@ -100,8 +100,9 @@ fi
 # Copy only what differs from the image defaults, so new image defaults still apply.
 docker inspect -f '{{range .Config.Env}}{{println .}}{{end}}' "$C" | sed '/^$/d' | sort > "$TMP/cenv"
 docker image inspect -f '{{range .Config.Env}}{{println .}}{{end}}' "$OLD_IMG_ID" | sed '/^$/d' | sort > "$TMP/ienv"
-ARGS=(); ENV_NAMES=""
-while IFS= read -r l; do [ -n "$l" ] && { ARGS+=(-e "$l"); ENV_NAMES="$ENV_NAMES ${l%%=*}"; }; done < <(comm -23 "$TMP/cenv" "$TMP/ienv")
+# Environment values live only in ENVA and are never logged; ARGS holds everything that is safe to print.
+ENVA=(); ARGS=(); ENV_NAMES=""
+while IFS= read -r l; do [ -n "$l" ] && { ENVA+=(-e "$l"); ENV_NAMES="$ENV_NAMES ${l%%=*}"; }; done < <(comm -23 "$TMP/cenv" "$TMP/ienv")
 while IFS= read -r l; do [ -n "$l" ] && ARGS+=(-p "$l"); done < <(docker inspect -f '{{range $p,$b := .HostConfig.PortBindings}}{{range $b}}{{if .HostIp}}{{.HostIp}}:{{end}}{{.HostPort}}:{{$p}}{{"\n"}}{{end}}{{end}}' "$C")
 while IFS= read -r l; do [ -n "$l" ] && ARGS+=(-v "$l"); done < <(docker inspect -f '{{range .Mounts}}{{if eq .Type "volume"}}{{.Name}}{{else}}{{.Source}}{{end}}:{{.Destination}}{{if not .RW}}:ro{{end}}{{"\n"}}{{end}}' "$C")
 while IFS= read -r l; do [ -n "$l" ] && ARGS+=(--add-host "$l"); done < <(docker inspect -f '{{range .HostConfig.ExtraHosts}}{{println .}}{{end}}' "$C")
@@ -111,7 +112,7 @@ USER_=$(docker inspect -f '{{.Config.User}}' "$C"); I_USER=$(docker image inspec
 [ -n "$USER_" ] && [ "$USER_" != "$I_USER" ] && ARGS+=(--user "$USER_")
 
 say "Copied env names:${ENV_NAMES:- (none)}"
-say "Copied ports/mounts/hosts/network: $(printf '%s ' ${ARGS[@]+"${ARGS[@]}"} | sed -E 's/-e [^ ]+ //g')"
+say "Copied ports/mounts/hosts/network: ${ARGS[*]:-(none)}"
 say "Restart policy: $RESTART"
 
 VOL=""
@@ -147,18 +148,30 @@ fi
 docker rename "$C" "$PREV" || { docker start "$C" >/dev/null; die "rename failed (old container restarted)"; }
 docker update --restart=no "$PREV" >/dev/null
 
+# Returns non-zero unless every backup was restored and the old container is running again.
 restore_old() {
+  local ok=0 pair
   docker rm -f "$C" >/dev/null 2>&1
   for pair in ${BK_NAMES[@]+"${BK_NAMES[@]}"}; do
-    docker run --rm --entrypoint cp -v "$VOL:$DATA_DIR" "$OLD_IMG_ID" "$DATA_DIR/${pair#*=}" "$DATA_DIR/${pair%%=*}" \
-      && say "Restored $DATA_DIR/${pair%%=*}" || say "WARNING: restore of ${pair%%=*} failed; backup is at ${pair#*=}"
+    if docker run --rm --entrypoint cp -v "$VOL:$DATA_DIR" "$OLD_IMG_ID" "$DATA_DIR/${pair#*=}" "$DATA_DIR/${pair%%=*}"; then
+      say "Restored $DATA_DIR/${pair%%=*}"
+    else say "ERROR: restore of ${pair%%=*} failed; backup is at ${pair#*=}"; ok=1; fi
   done
-  docker rename "$PREV" "$C"; docker update --restart="$RESTART" "$C" >/dev/null; docker start "$C" >/dev/null
+  docker rename "$PREV" "$C" || { say "ERROR: could not rename $PREV back to $C"; return 1; }
+  docker update --restart="$RESTART" "$C" >/dev/null || { say "ERROR: could not restore restart policy on $C"; ok=1; }
+  docker start "$C" >/dev/null || { say "ERROR: old container $C did not start"; return 1; }
+  [ "$(docker inspect -f '{{.State.Running}}' "$C" 2>/dev/null)" = "true" ] || { say "ERROR: old container $C is not running"; return 1; }
+  return $ok
+}
+finish_rollback() {
+  if restore_old; then say "RESULT=ROLLED_BACK"
+  else say "Rollback incomplete: the service may be down. Check $C and $PREV by hand."; say "RESULT=FAIL"; fi
+  exit 1
 }
 
 say "Starting $C on $NEW_IMG"
-if ! docker run -d --name "$C" --restart "$RESTART" ${ARGS[@]+"${ARGS[@]}"} "$NEW_IMG" >/dev/null; then
-  say "run failed; rolling back"; restore_old; say "RESULT=ROLLED_BACK"; exit 1
+if ! docker run -d --name "$C" --restart "$RESTART" ${ENVA[@]+"${ENVA[@]}"} ${ARGS[@]+"${ARGS[@]}"} "$NEW_IMG" >/dev/null; then
+  say "run failed; rolling back"; finish_rollback
 fi
 
 say "Waiting up to ${HT}s for $HEALTH"
@@ -172,7 +185,7 @@ done
 
 if [ $OK -ne 1 ]; then
   say "Health check FAILED. Last log lines:"; docker logs --tail 60 "$C" 2>&1
-  say "Rolling back to $OLD_IMG"; restore_old; say "RESULT=ROLLED_BACK"; exit 1
+  say "Rolling back to $OLD_IMG"; finish_rollback
 fi
 
 say "Health OK after ~${i}s"
