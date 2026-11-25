@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": false,
+      "evidence": "`.compass/mode.json` records Mode B and `plain-folder`. The baseline report says Git verified there was no worktree, and `.compass/baseline.json` records null Git history fields. The baseline and schedule use checksums for comparison, with no stated filesystem mtime fallback or age-source label."
+    },
+    {
+      "id": "e2",
+      "pass": true,
+      "evidence": "`.compass/schedule.json` prohibits prompts for input and directs each open question and its assumption to the tracker and `.compass/OPEN-QUESTIONS.md`. The review-cadence question is persisted as `QST-263F6C4B` in `.compass/objectives.json` and under the same ID in `.compass/OPEN-QUESTIONS.md`, which includes a `Compass assumed:` line."
+    },
+    {
+      "id": "e3",
+      "pass": false,
+      "evidence": "`.compass/schedule.json` restricts future writes to `.compass/` and verified managed blocks, reserves promotion of proposed views for interactive runs, and prohibits GitHub operations. The action record shows only simulated schedule registration, and the final state records no removals or writes outside `.compass/`. The scheduled instructions omit an explicit prohibition on moving files."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "`.compass/objectives.json` derives the Mode B objective from the notes and prompt and sets `percent_source` to `computed-children`. `.compass/reports/proposed-roadmap.md` shows `0/2`, but the persisted files contain no `docs/ROADMAP.md`. Source lookup for every catalog entry provides a coverage criterion, while the review interval remains an open question with no currency criterion. The action record and final files show no CI or issue-template scaffolding."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:11:53.745746+00:00",
+    "elapsed_seconds": 12.9,
+    "prompt_sha256": "07e998b229468776f869cc581ae06a3faf23a53282cca09138d11c87438b0950",
+    "activity": [],
+    "usage": {
+      "input_tokens": 21384,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 493,
+      "reasoning_output_tokens": 61
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "d439ac058c5074f0dcfe8f2f5e6dfd7a2d85b5762b942fcde65c584917f2d46c"
+}

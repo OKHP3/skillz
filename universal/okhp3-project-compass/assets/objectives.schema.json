@@ -130,6 +130,17 @@
         },
         "note": {
           "type": "string"
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "merged": {
+          "type": "boolean"
         }
       }
     },
@@ -161,6 +172,49 @@
           "type": "array",
           "items": {
             "$ref": "#/$defs/evidence"
+          }
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "field",
+              "text",
+              "confidence",
+              "evidence"
+            ],
+            "properties": {
+              "field": {
+                "enum": [
+                  "purpose",
+                  "vision",
+                  "mission",
+                  "goal",
+                  "non-goal",
+                  "success-criterion"
+                ]
+              },
+              "text": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "confidence": {
+                "$ref": "#/$defs/confidence"
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                }
+              },
+              "alternative": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
           }
         }
       }
@@ -251,7 +305,18 @@
           ]
         },
         "github": {
-          "$ref": "#/$defs/github_ref"
+          "anyOf": [
+            {
+              "$ref": "#/$defs/github_ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "alternative": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },
@@ -301,6 +366,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "orphan_reason": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },
@@ -403,7 +472,8 @@
         "detected": {
           "enum": [
             "A",
-            "B"
+            "B",
+            null
           ]
         },
         "sub_case": {
@@ -413,14 +483,16 @@
             "git-non-github",
             "git-no-remote",
             "github-artifacts",
-            "plain-folder"
+            "plain-folder",
+            null
           ]
         },
         "confidence": {
           "enum": [
             "high",
             "medium",
-            "low"
+            "low",
+            null
           ]
         },
         "locked": {

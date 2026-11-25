@@ -1,0 +1,17 @@
+{
+  "request": "Can you give me a quick check-in on the Birch Library pickup pilot? Tell me what we’re aiming to ship, where each task stands, and where you’d record those statuses. I’m reconciling this in a meeting, so please leave the trackers as they are.",
+  "files": {
+    "README.md": "# Birch Library pickup pilot\n\nThe original charter called for pickup reminders at every branch. See `notes/owner-decisions.md` for scope and tracking decisions made after kickoff. The task table was last reviewed on 2034-05-08.\n",
+    ".project/tracking.toml": "[tasks]\nmode = \"local\"\npath = \"tasks.md\"\neffective = \"2034-05-10\"\n\n[hosted]\nproject = \"FableDesk / Birch Pickup\"\nreview_links_enabled = true\ntask_status_sync = false\n",
+    "notes/owner-decisions.md": "# Owner decisions\n\n2034-05-09 \u2014 For this release, ship opt-in SMS pickup reminders at Alder Branch only. Defer the other branches. The pilot goes live once the Alder delivery test passes and desk staff complete a successful same-day opt-out rehearsal.\n\n2034-05-10 \u2014 `tasks.md` is the task record from today onward. We reconnected FableDesk so reviewers could open code reviews. Leave the old issue cards in place for reference.\n",
+    "tasks.md": "# Pickup pilot tasks\n\n| ID | Task | Acceptance | Last recorded status |\n| --- | --- | --- | --- |\n| BP-4 | Verify Alder SMS delivery | A real handset receives the opt-in pickup reminder in the Alder pilot environment | In progress |\n| BP-5 | Rehearse same-day opt-out | Alder desk staff complete an opt-out at the desk and confirm the queued reminder is suppressed that day | Ready |\n",
+    "evidence/alder-pilot-log.txt": "2034-05-12 09:10 \u2014 BP-4: Pilot run AL-18 used the Alder environment and an enrolled test handset. The handset received the opt-in pickup reminder at 09:10. Mira Venn recorded acceptance.\n2034-05-12 10:20 \u2014 BP-5: A simulator run suppressed a queued reminder. The desk rehearsal could not start because the Alder training account is locked. The service desk must restore access before staff can complete the rehearsal.\n",
+    "evidence/hosted-export.txt": "FableDesk / Birch Pickup \u2014 issue card export from 2034-05-13\nBP-4 | Open | Waiting for a handset delivery test.\nBP-5 | Done | Closed by a code-review merge rule after the simulator run.\n"
+  },
+  "expectations": [
+    "The response identifies opt-in SMS pickup reminders at Alder Branch as the current release goal.",
+    "The response marks BP-4 complete and cites the real handset receiving the reminder in Alder pilot run AL-18.",
+    "The response marks BP-5 blocked and identifies the locked Alder training account as the barrier to completing the desk rehearsal.",
+    "The response names `tasks.md` as the place to record both statuses and explains that the hosted connection serves code review with task status sync disabled."
+  ]
+}

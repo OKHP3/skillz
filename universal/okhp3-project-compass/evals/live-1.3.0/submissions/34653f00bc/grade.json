@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": true,
+      "evidence": "The reply’s “Shipping goal” states “Opt-in SMS pickup reminders at Alder Branch only.”"
+    },
+    {
+      "id": "e2",
+      "pass": false,
+      "evidence": "The BP-4 row marks the task Done and says an enrolled handset received the reminder in the Alder pilot environment. The reply cites the pilot log generally but omits the required run identifier AL-18, which appears in the log’s 09:10 entry."
+    },
+    {
+      "id": "e3",
+      "pass": true,
+      "evidence": "The BP-5 row marks the task Blocked and says staff couldn’t start the desk rehearsal because the Alder training account is locked."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The closing paragraph names tasks.md as the record for both statuses and identifies code-review links as a FableDesk purpose. It reports the stale hosted statuses but omits that task status sync is disabled, which is explicit in .project/tracking.toml."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T06:57:31.679894+00:00",
+    "elapsed_seconds": 8.0,
+    "prompt_sha256": "7c24b7aa33e9e393425abb811b16f2ce517e7d03330e62afffe4f15231fb325a",
+    "activity": [],
+    "usage": {
+      "input_tokens": 15658,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 260,
+      "reasoning_output_tokens": 0
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "6e7cfba8e72f406d97156f82268e419b8f1fa37226660691b0baa26515c323b5"
+}

@@ -1,9 +1,9 @@
 ---
 family: askjamie
 display_name: AskJamie
-skill_count: 11
+skill_count: 12
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-09T23:28:39Z
+generated_at: 2026-11-20T12:59:26Z
 ---
 
 # askjamie
@@ -54,6 +54,12 @@ also remains active with its approved profile and accessibility requirements.
 See the [archived originals and recovery record](../docs/archive/skill-redundancy-2026-09-19/brands/README.md).
 The README-only old locations are compatibility pointers, not additional skills.
 
+## Tailoring a résumé for one opening
+
+Use [Résumé Generator](okhp3-resume-generator/SKILL.md) when a candidate has a specific posting and needs a tailored résumé. It accepts rough work-history notes or an existing résumé, checks the evidence behind claims and delivers the draft to the candidate. A reusable master for a family of roles belongs with [Role Master Resumes](okhp3-role-master-resumes/SKILL.md).
+
+The [Résumé Representative package](https://github.com/OKHP3/askjamie-foundry/tree/main/capabilities/resume-representative/skills/okhp3-resume-generator) is the canonical source for this distribution mirror.
+
 ## Career reference and coaching source candidates
 
 Three portable 0.2.0 packages extend Resume Representative: lifetime career
@@ -70,10 +76,10 @@ benchmark, protected holdout or native-host acceptance is claimed. See the
 One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (11)
+## Skills (12)
 
 <!-- FAMILY_INVENTORY_START -->
-*11 skills &nbsp;·&nbsp; inventory last updated: **November 9, 2026 at 23:28 UTC***
+*12 skills &nbsp;·&nbsp; inventory last updated: **November 20, 2026 at 12:59 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -87,5 +93,6 @@ One of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk
 | [okhp3-job-application-completion](okhp3-job-application-completion/SKILL.md) | Complete or resume job applications from approved career evidence, tailored materials and saved p... | 0.2.0 |
 | [okhp3-lifetime-career-reference](okhp3-lifetime-career-reference/SKILL.md) | Compile a private lifetime career reference or super master from an existing career claim ledger.... | 0.2.0 |
 | [okhp3-professional-headshot](okhp3-professional-headshot/SKILL.md) | Create or refine a realistic professional headshot from supplied or explicitly authorized recent ... | 0.1.0 |
+| [okhp3-resume-generator](okhp3-resume-generator/SKILL.md) | Write or revise one interview-focused résumé for one opening from a job posting and the candidate... | 0.1.0 |
 | [okhp3-role-master-resumes](okhp3-role-master-resumes/SKILL.md) | Create reusable role-family master resumes from an existing career evidence library. Use for seve... | 0.2.0 |
 <!-- FAMILY_INVENTORY_END -->

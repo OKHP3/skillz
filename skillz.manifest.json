@@ -20,22 +20,22 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 353,
+  "distributionSkillCount": 362,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
-  "projectLocalSupportSkillCount": 54,
+  "projectLocalSupportSkillCount": 55,
   "maturityCounts": {
-    "draftable": 284,
-    "skeleton": 64,
+    "draftable": 292,
+    "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 178,
+    "not-run": 189,
     "none": 109,
     "analytical": 12,
-    "local-checks": 39,
-    "live": 8
+    "local-checks": 36,
+    "live": 9
   },
   "evidencePolicy": "Evidence status is separate from maturity. Historical or design-only records do not validate a newer package version; validated maturity requires fresh version-matched evaluation and a protected holdout.",
   "families": [
@@ -55,6 +55,7 @@
       "skills": [
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
+        "okhp3-gpt-behavior-baseline",
         "okhp3-gpt-skill-conversion-plan"
       ]
     },
@@ -72,6 +73,7 @@
         "okhp3-job-application-completion",
         "okhp3-lifetime-career-reference",
         "okhp3-professional-headshot",
+        "okhp3-resume-generator",
         "okhp3-role-master-resumes"
       ]
     },
@@ -183,6 +185,7 @@
       "status": "draftable",
       "skills": [
         "okhp3-chatgpt-project-migration",
+        "okhp3-context-transfer",
         "okhp3-session-handoff",
         "okhp3-thread-context-extraction",
         "okhp3-thread-extract-chatgpt",
@@ -262,6 +265,7 @@
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
+        "okhp3-idea-label",
         "okhp3-project-promotion",
         "okhp3-record-location-reconciliation",
         "okhp3-research-file-renewal",
@@ -373,6 +377,7 @@
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
+        "okhp3-success-reconstruction",
         "okhp3-visual-process-modeling"
       ]
     },
@@ -441,6 +446,7 @@
         "okhp3-kofi-post",
         "okhp3-kofi-supporter-reply",
         "okhp3-linkedin-angles",
+        "okhp3-linkedin-carousel",
         "okhp3-linkedin-comment",
         "okhp3-linkedin-connection-note",
         "okhp3-linkedin-dm-reconcile",
@@ -448,6 +454,8 @@
         "okhp3-linkedin-message",
         "okhp3-linkedin-network-plan",
         "okhp3-linkedin-post",
+        "okhp3-linkedin-publish-ops",
+        "okhp3-linkedin-series-continuity",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
         "okhp3-patreon-post",
@@ -504,6 +512,7 @@
         "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
+        "okhp3-local-ai-stack-upgrade",
         "okhp3-overkill-hill-brand",
         "okhp3-project-compass",
         "okhp3-repository-creator",
@@ -537,6 +546,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-09T23:48:52.989Z",
+  "countsGeneratedAt": "2026-11-25T20:55:10.200Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T23:48:52.989Z",
+  "generatedAt": "2026-11-25T20:55:10.200Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/linkedin-conversation-reconcile",
-  "sourceCommit": "c232402f",
-  "skillCount": 353,
+  "sourceRef": "main",
+  "sourceCommit": "972b5e08",
+  "skillCount": 362,
   "familyCount": 22,
   "families": [
     {
@@ -42,10 +42,11 @@
     {
       "name": "agent-foundry",
       "displayName": "Agent Foundry",
-      "skillCount": 3,
+      "skillCount": 4,
       "skills": [
         "okhp3-custom-gpt-builder",
         "okhp3-custom-gpt-readiness",
+        "okhp3-gpt-behavior-baseline",
         "okhp3-gpt-skill-conversion-plan"
       ],
       "narrativeBody": "The agent-foundry family covers the creation, readiness assessment, and portability planning of AI agents across platform ecosystems. Its scope includes Custom GPTs, Gemini Gems, Copilot declarative agents, OpenClaw agents, and related agent runtimes.\n\nThe family keeps platform-specific behavior explicit while preserving reusable product definition, instruction architecture, knowledge design, tool configuration, evaluation, governance, and migration methods.",
@@ -67,7 +68,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-custom-gpt-readiness pairs with okhp3-custom-gpt-builder",
+          "value": "okhp3-custom-gpt-readiness pairs with okhp3-custom-gpt-builder; okhp3-gpt-behavior-baseline pairs with okhp3-gpt-skill-conversion-plan",
           "source": "generated"
         }
       }
@@ -75,7 +76,7 @@
     {
       "name": "askjamie",
       "displayName": "AskJamie",
-      "skillCount": 11,
+      "skillCount": 12,
       "skills": [
         "okhp3-askjamie-brand",
         "okhp3-askjamie-email-draft",
@@ -87,6 +88,7 @@
         "okhp3-job-application-completion",
         "okhp3-lifetime-career-reference",
         "okhp3-professional-headshot",
+        "okhp3-resume-generator",
         "okhp3-role-master-resumes"
       ],
       "narrativeBody": "**Status: early specific tooling.** AskJamie now has brand-specific GPT readiness and builder forks; downstream lens and helpdesk capability conversion remains a future expansion.\n\nOne of the three OKHP3 sub-brands. AskJamie is the calm, architected AI helpdesk and interpretive intelligence layer between strategy and execution. The current packages prepare Custom GPT origins for governed, repo-backed migration.",
@@ -244,9 +246,10 @@
     {
       "name": "context-extraction",
       "displayName": "Context Extraction",
-      "skillCount": 10,
+      "skillCount": 11,
       "skills": [
         "okhp3-chatgpt-project-migration",
+        "okhp3-context-transfer",
         "okhp3-session-handoff",
         "okhp3-thread-context-extraction",
         "okhp3-thread-extract-chatgpt",
@@ -257,10 +260,10 @@
         "okhp3-thread-extract-mistral-vibe",
         "okhp3-thread-extract-perplexity"
       ],
-      "narrativeBody": "**Status: active.** Ten distribution packages cover supplied AI conversations,\ncontinuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
+      "narrativeBody": "**Status: active.** Eleven distribution packages cover supplied AI conversations,\nstaged conceptual transfers, continuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
       "orientation": {
         "purpose": {
-          "value": "**Status: active.** Ten distribution packages cover supplied AI conversations,\ncontinuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
+          "value": "**Status: active.** Eleven distribution packages cover supplied AI conversations,\nstaged conceptual transfers, continuation handoffs, and project migration. The broader source types below\nremain candidate directions rather than claims of shipped capability.\n\nThe context-extraction family is the mining, extraction, and refinement layer for source material. Its purpose is to identify the valuable information present in a source, pull that information out with evidence and provenance intact, and refine it into a useful downstream product.\n\nThe family is intentionally source-agnostic. Candidate inputs include databases, files, images, conversation threads, and transcripts. The recurring shape is:\n\n```text\nsource material\n→ inspect and profile\n→ extract valuable evidence\n→ validate and preserve provenance\n→ normalize and refine\n→ deliver a fit-for-purpose product\n```",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -276,7 +279,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-thread-extract-chatgpt pairs with okhp3-chatgpt-project-migration",
+          "value": "okhp3-context-transfer pairs with okhp3-chatgpt-project-migration; okhp3-context-transfer pairs with okhp3-session-handoff; okhp3-thread-extract-chatgpt pairs with okhp3-chatgpt-project-migration",
           "source": "generated"
         }
       }
@@ -396,13 +399,14 @@
     {
       "name": "knowledge-operations",
       "displayName": "Knowledge Operations",
-      "skillCount": 11,
+      "skillCount": 12,
       "skills": [
         "okhp3-activity-reconciliation",
         "okhp3-artifact-validation",
         "okhp3-capture-intake",
         "okhp3-evidence-standard",
         "okhp3-graduation-gate",
+        "okhp3-idea-label",
         "okhp3-project-promotion",
         "okhp3-record-location-reconciliation",
         "okhp3-research-file-renewal",
@@ -428,7 +432,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard; okhp3-triage-and-file pairs with okhp3-graduation-gate",
+          "value": "okhp3-capture-intake pairs with okhp3-triage-and-file; okhp3-graduation-gate pairs with okhp3-artifact-validation; okhp3-idea-label pairs with okhp3-capture-intake; okhp3-project-promotion pairs with okhp3-artifact-validation; okhp3-source-backed-research pairs with okhp3-evidence-standard",
           "source": "generated"
         }
       }
@@ -686,7 +690,7 @@
     {
       "name": "process-capture",
       "displayName": "Process Capture",
-      "skillCount": 16,
+      "skillCount": 17,
       "skills": [
         "okhp3-as-is-process-capture",
         "okhp3-decision-model-authoring",
@@ -703,12 +707,13 @@
         "okhp3-sipoc-generation",
         "okhp3-sop-work-instructions",
         "okhp3-stakeholder-and-role-mapping",
+        "okhp3-success-reconstruction",
         "okhp3-visual-process-modeling"
       ],
-      "narrativeBody": "The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+      "narrativeBody": "The family includes recurring-task capture and evidence-led reconstruction of a successful one-off alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
       "orientation": {
         "purpose": {
-          "value": "The family includes the recurring-task capture meta-skill alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
+          "value": "The family includes recurring-task capture and evidence-led reconstruction of a successful one-off alongside the structured process-analysis and publication skills.\n\nThis is the operationalized version of \"write it down the third time you do something.\" It doesn't do the recurring task itself — it turns a recognized pattern into either a `docs/BACKLOG.md` entry (not ready yet) or a SKILL.md skeleton (ready now), following the conventions established across the mermaid and linkedin families in this repo.\n\nThis skill is also the reason this repo's AGENTS.md index needs to stay current — part of producing a new skeleton is adding its trigger row to the index.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -860,7 +865,7 @@
     {
       "name": "social-posting",
       "displayName": "Social posting",
-      "skillCount": 37,
+      "skillCount": 40,
       "skills": [
         "okhp3-build-in-public-proof-brief",
         "okhp3-discord-comment",
@@ -872,6 +877,7 @@
         "okhp3-kofi-post",
         "okhp3-kofi-supporter-reply",
         "okhp3-linkedin-angles",
+        "okhp3-linkedin-carousel",
         "okhp3-linkedin-comment",
         "okhp3-linkedin-connection-note",
         "okhp3-linkedin-dm-reconcile",
@@ -879,6 +885,8 @@
         "okhp3-linkedin-message",
         "okhp3-linkedin-network-plan",
         "okhp3-linkedin-post",
+        "okhp3-linkedin-publish-ops",
+        "okhp3-linkedin-series-continuity",
         "okhp3-linkedin-voice",
         "okhp3-patreon-comment",
         "okhp3-patreon-post",
@@ -900,10 +908,10 @@
         "okhp3-youtube-community-post",
         "okhp3-youtube-video"
       ],
-      "narrativeBody": "Platform-specific drafting contracts for public-network posts and comments,\nplus read-only LinkedIn conversation reconciliation. Drafting skills prepare\ntext only; reconciliation reports evidence and does not draft or send replies.\nThey never publish, schedule, join a community, or change an account setting without the user's explicit approval.",
+      "narrativeBody": "Platform-specific drafting contracts for public-network posts and comments.\nThey prepare text only. They never publish, schedule, join a community, or\nchange an account setting without the user's explicit approval.\n\nOne package is the scoped exception: `okhp3-linkedin-publish-ops` can act on an\nalready-approved LinkedIn post, defaults to a manual handoff, and needs approval\nthat names each action. No other package in this family gains that authority\nfrom it, and a drafting package never routes text to it before the user\napproves the final wording.",
       "orientation": {
         "purpose": {
-          "value": "Platform-specific drafting contracts for public-network posts and comments,\nplus read-only LinkedIn conversation reconciliation. Drafting skills prepare\ntext only; reconciliation reports evidence and does not draft or send replies.\nThey never publish, schedule, join a community, or change an account setting without the user's explicit approval.",
+          "value": "Platform-specific drafting contracts for public-network posts and comments.\nThey prepare text only. They never publish, schedule, join a community, or\nchange an account setting without the user's explicit approval.\n\nOne package is the scoped exception: `okhp3-linkedin-publish-ops` can act on an\nalready-approved LinkedIn post, defaults to a manual handoff, and needs approval\nthat names each action. No other package in this family gains that authority\nfrom it, and a drafting package never routes text to it before the user\napproves the final wording.",
           "source": "generated"
         },
         "commonOutcomes": {
@@ -918,7 +926,7 @@
           "source": "generated"
         },
         "compositionNotes": {
-          "value": "okhp3-discord-comment pairs with okhp3-discord-post; okhp3-facebook-post pairs with okhp3-facebook-comment; okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-comment pairs with okhp3-linkedin-post; okhp3-linkedin-comment pairs with okhp3-linkedin-voice",
+          "value": "okhp3-discord-comment pairs with okhp3-discord-post; okhp3-facebook-post pairs with okhp3-facebook-comment; okhp3-linkedin-angles pairs with okhp3-linkedin-post; okhp3-linkedin-carousel pairs with okhp3-linkedin-post; okhp3-linkedin-carousel pairs with okhp3-linkedin-publish-ops",
           "source": "generated"
         }
       }
@@ -970,7 +978,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 22,
+      "skillCount": 23,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -982,6 +990,7 @@
         "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
+        "okhp3-local-ai-stack-upgrade",
         "okhp3-overkill-hill-brand",
         "okhp3-project-compass",
         "okhp3-repository-creator",
@@ -1012,7 +1021,7 @@
           "source": "generated"
         },
         "firstSkillToTry": {
-          "value": "okhp3-brand-style-registry",
+          "value": "okhp3-project-compass",
           "note": null,
           "source": "generated"
         },
@@ -1398,6 +1407,72 @@
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-gpt-behavior-baseline",
+      "displayName": "GPT Behavior Baseline",
+      "family": "agent-foundry",
+      "skillDir": "okhp3-gpt-behavior-baseline",
+      "path": "agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
+      "description": "Capture a Custom GPT's live configuration and run a scored behavior baseline (on-topic, off-topic, and adversarial probes) through the owner's ChatGPT session before migration, revision, or conversion. Use when a GPT must be preserved, compared across versions, or proven equivalent to a migrated plugin or converted Agent Skill.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "universal",
+      "origin": "okhp3/skillz",
+      "author": "OverKill Hill P³",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "universal"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-gpt-skill-conversion-plan",
+        "okhp3-skill-foundry"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/agent-foundry/okhp3-gpt-behavior-baseline/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "OverKill Hill P³",
+        "category": "universal",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Read-only, page-only live configuration capture and scored behavior baselining of Custom GPTs the user owns or is authorized to test, before migration, revision, or conversion.",
+        "outOfScope": "Testing third-party GPTs, extracting other creators' prompts, editing or migrating GPTs, harmful-output probes, or using real personal data in probes.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 3,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
         "scriptCount": 0,
         "lastEvidenceDate": null,
         "reviewDecision": null,
@@ -2111,6 +2186,70 @@
         "reviewDecision": null,
         "blockers": [
           "Only design or structural review exists; no graded live run has been executed."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-resume-generator",
+      "displayName": "Resume Generator",
+      "family": "askjamie",
+      "skillDir": "okhp3-resume-generator",
+      "path": "askjamie/okhp3-resume-generator/SKILL.md",
+      "description": "Write or revise one interview-focused résumé for one opening from a job posting and the candidate’s record. Use when the candidate wants the finished résumé first, with help surfacing achievements. For a master résumé, evidence matrix, application submission, or employer-side applicant scoring, choose another workflow.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "career-operations",
+      "origin": "okhp3/askjamie-foundry",
+      "author": "OKHP3",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "career-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/askjamie/okhp3-resume-generator/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/askjamie/okhp3-resume-generator/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "OKHP3",
+        "category": "career-operations",
+        "origin": "okhp3/askjamie-foundry",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "A candidate-facing résumé for one opening, focused evidence elicitation, truthful editing and optional file delivery.",
+        "outOfScope": "Recruiter screening, submissions, profile updates, reusable career masters and formal traceability handoffs.",
+        "publicArtifact": false,
+        "attributionLinks": "omitted-by-author"
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 2,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "explicit-frontmatter",
@@ -8541,6 +8680,72 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-context-transfer",
+      "displayName": "Context Transfer",
+      "family": "context-extraction",
+      "skillDir": "okhp3-context-transfer",
+      "path": "context-extraction/okhp3-context-transfer/SKILL.md",
+      "description": "Receive or prepare a staged conversation-context transfer and verify the destination read-back. Use for numbered transfer blocks, \"continue this in another project\", or a read-only CHAT-to-WORK pilot. Preserve user intent, proposal status, historical authority, gaps, and privacy. This is conceptual continuation, not a lossless archive or permission to resume old requests.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "context-extraction",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "context-extraction"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-chatgpt-project-migration",
+        "okhp3-session-handoff"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/context-extraction/okhp3-context-transfer/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/context-extraction/okhp3-context-transfer/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "context-extraction",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Staged context transfer with provenance, block coverage, privacy boundaries, and receiver read-back.",
+        "outOfScope": "Lossless archive claims, executing historical requests, implicit external writes, or inferred receipt.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-session-handoff",
       "displayName": "Session Handoff",
       "family": "context-extraction",
@@ -12700,6 +12905,71 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-idea-label",
+      "displayName": "Idea Label",
+      "family": "knowledge-operations",
+      "skillDir": "okhp3-idea-label",
+      "path": "knowledge-operations/okhp3-idea-label/SKILL.md",
+      "description": "Turn one raw idea into a short recoverable label without developing it. Use for \"park this idea\", \"capture now, clarify later\", or a voice-note idea that should stop interrupting current work. Return a label in conversation; durable capture requires a separately authorized destination and receipt. Do not use for backlog grooming, brainstorming, or executing the idea.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "knowledge-operations",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "knowledge-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-capture-intake"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/knowledge-operations/okhp3-idea-label/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/knowledge-operations/okhp3-idea-label/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "knowledge-operations",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "One-idea label drafting with minimal interruption and truthful capture status.",
+        "outOfScope": "Idea development, prioritization, execution, unsolicited cadence rules, or unverified storage.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 8,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 0,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-project-promotion",
       "displayName": "Project Promotion",
       "family": "knowledge-operations",
@@ -12831,7 +13101,7 @@
         "lastEvidenceDate": "2026-11-09",
         "reviewDecision": null,
         "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
+          "A scoped read-only field observation is recorded separately. A graded live benchmark for the current version is still needed."
         ]
       },
       "maturitySource": "explicit-frontmatter",
@@ -14988,8 +15258,8 @@
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -15041,9 +15311,9 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -15051,7 +15321,7 @@
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
@@ -15072,8 +15342,8 @@
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -15110,9 +15380,9 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.0",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -15120,7 +15390,7 @@
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
@@ -15141,8 +15411,8 @@
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "local-checks",
-      "evidenceNote": "Executable checks or helper scripts are present; no package benchmark record was found.",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -15179,9 +15449,9 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "analytical",
-        "evaluatedSkillVersion": null,
-        "evalCount": 0,
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.1.1",
+        "evalCount": 3,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 0,
@@ -15189,7 +15459,7 @@
         "lastEvidenceDate": null,
         "reviewDecision": null,
         "blockers": [
-          "Only design or structural review exists; no graded live run has been executed."
+          "No executed evaluation exists for the current package version."
         ]
       },
       "maturitySource": "fallback-structure",
@@ -17428,6 +17698,80 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-success-reconstruction",
+      "displayName": "Success Reconstruction",
+      "family": "process-capture",
+      "skillDir": "okhp3-success-reconstruction",
+      "path": "process-capture/okhp3-success-reconstruction/SKILL.md",
+      "description": "Reconstruct a successful one-off and design tests for a repeatable success class. Use for \"bottle lightning\", \"it worked once but we lost the recipe\", or separating essential conditions from incidental details. Produce an evidence ledger and a proposed re-strike protocol, not proven causality, an exact replay guarantee, or autonomous experiments.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "process-capture",
+      "origin": "okhp3/skillz",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "process-capture"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-process-intake-and-scope",
+        "okhp3-sop-work-instructions"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [
+        "the success-class definition and evidence boundary;",
+        "an event ledger with `observed`, `reported`, `hypothesis`, and `unknown`",
+        "candidate load-bearing variables, rival explanations, and falsifying tests;",
+        "a proposed protocol with conditions, tolerances, and failure gates;",
+        "a controlled re-strike plan and decision/instrumentation log template;",
+        "status: `DRAFT_PROTOCOL`, `NEEDS_EVIDENCE`, or `BLOCKED_FOR_SAFETY`;",
+        "unresolved assumptions and the exact next authorized step."
+      ],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-success-reconstruction/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-success-reconstruction/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "process-capture",
+        "origin": "okhp3/skillz",
+        "homepage": "https://overkillhill.com",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Evidence-led one-off reconstruction and a falsifiable repeatability experiment plan.",
+        "outOfScope": "Unsupported causal claims, guaranteed outcomes, unapproved experiments, or full SOP publication.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
@@ -20339,13 +20683,79 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-linkedin-carousel",
+      "displayName": "LinkedIn Carousel",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-carousel",
+      "path": "social-posting/okhp3-linkedin-carousel/SKILL.md",
+      "description": "Plan and build a LinkedIn document carousel (a multi-page PDF shown as swipeable pages) that accompanies a post. Use when the user wants a companion carousel, swipe deck, field guide, or \"then vs now\" PDF for a LinkedIn post, or wants an existing page plan rendered to PNG and PDF. It plans pages, renders locally from a JSON spec, and returns files for review. It does not write the post or upload the document.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-publish-ops"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-carousel/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-carousel/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Page planning, a JSON page spec, and local rendering of a LinkedIn document carousel with accessibility and source checks.",
+        "outOfScope": "Writing the post itself, uploading or attaching the document, publishing, remote assets, and brand identity decisions not supplied at runtime.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 5,
+        "benchmarkCount": 0,
+        "testCount": 1,
+        "referenceCount": 1,
+        "scriptCount": 1,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-linkedin-comment",
       "displayName": "LinkedIn Comment",
       "family": "social-posting",
       "skillDir": "okhp3-linkedin-comment",
       "path": "social-posting/okhp3-linkedin-comment/SKILL.md",
       "description": "Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to respond on LinkedIn, contribute to a professional conversation, answer a LinkedIn comment, or add a source-backed public progress, launch, or checkpoint update. It preserves the target context, applies the LinkedIn voice and public-context scrub, and returns a draft only. Do not use for a new standalone post or for publication.",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "license": "MIT",
       "category": "social-posting",
       "origin": "portable-agent-skills",
@@ -20373,7 +20783,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-comment/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-comment/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-08-11T09:26:28-05:00",
       "packageMetadata": {
@@ -20388,7 +20798,7 @@
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "1.2.0",
+        "evaluatedSkillVersion": "1.2.1",
         "evalCount": 6,
         "benchmarkCount": 0,
         "testCount": 0,
@@ -20743,8 +21153,8 @@
       "family": "social-posting",
       "skillDir": "okhp3-linkedin-post",
       "path": "social-posting/okhp3-linkedin-post/SKILL.md",
-      "description": "Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts, public progress updates, launch or checkpoint recaps, deadline updates, or \"write a post about X\". It applies voice and the final public-context scrub, then returns a draft only.",
-      "version": "2.3.0",
+      "description": "Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts, public progress updates, launch or checkpoint recaps, deadline updates, \"write a post about X\", or the author's own first comment for a post. It applies voice and the final public-context scrub, then returns a draft only.",
+      "version": "2.4.0",
       "license": "MIT",
       "category": "social-posting",
       "origin": "portable-agent-skills",
@@ -20762,7 +21172,8 @@
       "avoid": [],
       "companions": [
         "okhp3-linkedin-angles",
-        "okhp3-linkedin-voice"
+        "okhp3-linkedin-voice",
+        "okhp3-linkedin-comment"
       ],
       "examples": [],
       "inputs": [],
@@ -20772,7 +21183,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-post/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-post/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
@@ -20782,13 +21193,13 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
-        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management.",
+        "outOfScope": "Publishing unless the user explicitly approves it, employer-confidential context, impersonation, or unrelated social-platform management.",
         "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "2.3.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "2.4.0",
+        "evalCount": 7,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
@@ -20804,13 +21215,148 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-linkedin-publish-ops",
+      "displayName": "LinkedIn Publish Ops",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-publish-ops",
+      "path": "social-posting/okhp3-linkedin-publish-ops/SKILL.md",
+      "description": "Get an approved LinkedIn post live: package it with its document and first comment, then schedule it, change or swap a scheduled post, attach a PDF to an already-scheduled post, or post the author's first comment at go-live, each with explicit approval and rendered-text verification. Use after the text is final. Defaults to a step-by-step handoff the user clicks through; browser operation is opt-in. Never drafts wording, sends messages, or edits profiles.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-voice",
+        "okhp3-linkedin-comment",
+        "okhp3-linkedin-carousel"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-publish-ops/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-publish-ops/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Packaging, scheduling, scheduled-queue changes, document attach, and the author's first comment for an already-approved LinkedIn post, with per-action approval and verification.",
+        "outOfScope": "Drafting or editing wording, direct messages, replies to other people, profile or page edits, engagement automation, bulk or looped actions, and credential entry.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.0",
+        "evalCount": 7,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-linkedin-series-continuity",
+      "displayName": "LinkedIn Series Continuity",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-series-continuity",
+      "path": "social-posting/okhp3-linkedin-series-continuity/SKILL.md",
+      "description": "Plan a source-backed continuation of a LinkedIn post series. Use when a follow-up must connect prior posts, completed work, evidence and owner voice without inventing publication or results. Produces a draft handoff, not publication or scheduling.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "skeleton",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [
+        "okhp3-linkedin-angles",
+        "okhp3-linkedin-post",
+        "okhp3-linkedin-voice"
+      ],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-series-continuity/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-series-continuity/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Evidence, continuity, and reviewable handoff for a LinkedIn series.",
+        "outOfScope": "Publication, scheduling, account management, and unauthorized disclosure.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 9,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 1,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-contract-work"
+    },
+    {
       "name": "okhp3-linkedin-voice",
       "displayName": "LinkedIn Voice",
       "family": "social-posting",
       "skillDir": "okhp3-linkedin-voice",
       "path": "social-posting/okhp3-linkedin-voice/SKILL.md",
-      "description": "Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a post, comment, checkpoint update, or public progress draft, whether produced by another skill or written by hand. It checks prose density, uncertainty, supplied links, hashtags, and public-context handoff. This is a filter, not a generator.",
-      "version": "2.2.0",
+      "description": "Apply the platform-specific voice contract to any LinkedIn-bound text. Use as the final pass on a post, comment, checkpoint update, or public progress draft, whether produced by another skill or written by hand. It checks prose density, sentence rhythm, uncertainty, supplied links, hashtags, and public-context handoff. This is a filter, not a generator.",
+      "version": "2.3.0",
       "license": "MIT",
       "category": "social-posting",
       "origin": "portable-agent-skills",
@@ -20838,7 +21384,7 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-voice/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-voice/SKILL.md",
-      "lastModified": "2026-08-26T17:48:37Z",
+      "lastModified": "2026-08-26T17:48:37+00:00",
       "commitSha": "7647b437",
       "createdAt": "2026-06-12T05:15:43Z",
       "packageMetadata": {
@@ -20848,13 +21394,13 @@
         "homepage": null,
         "authorGithub": null,
         "inScope": "The named LinkedIn content ideation, drafting, or voice-filtering workflow.",
-        "outOfScope": "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management.",
+        "outOfScope": "Publishing unless the user explicitly approves it, employer-confidential context, impersonation, or unrelated social-platform management.",
         "publicArtifact": true
       },
       "evidence": {
         "status": "not-run",
-        "evaluatedSkillVersion": "2.2.0",
-        "evalCount": 3,
+        "evaluatedSkillVersion": "2.3.0",
+        "evalCount": 7,
         "benchmarkCount": 0,
         "testCount": 0,
         "referenceCount": 1,
@@ -23783,6 +24329,70 @@
       "releaseReadiness": "needs-live-evidence"
     },
     {
+      "name": "okhp3-local-ai-stack-upgrade",
+      "displayName": "Local AI Stack Upgrade",
+      "family": "universal",
+      "skillDir": "okhp3-local-ai-stack-upgrade",
+      "path": "universal/okhp3-local-ai-stack-upgrade/SKILL.md",
+      "description": "Check, upgrade, verify and document a self-hosted local AI stack on one macOS host: Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant, SearXNG, an agent gateway such as OpenClaw, and Tailscale. Use when a new release is out, to check whether components are current, to retire old images or rollback containers, to confirm services are loopback or tailnet only, or to update the stack's docs after a change. Not for cloud, Kubernetes, Docker Compose stacks or first-time installs.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "infrastructure-operations",
+      "origin": "okhp3/mac-studio-local-ai-workbench",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com/projects/mac-studio-local-ai-workbench/",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "infrastructure-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-local-ai-stack-upgrade/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-local-ai-stack-upgrade/SKILL.md",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "infrastructure-operations",
+        "origin": "okhp3/mac-studio-local-ai-workbench",
+        "homepage": "https://overkillhill.com/projects/mac-studio-local-ai-workbench/",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Release checks, one-component-at-a-time upgrades with backup and automatic rollback, exposure verification, rollback retirement, and sanitized documentation updates for one owner-operated host.",
+        "outOfScope": "Handling credentials or tokens, changing firewall or tailnet ACLs, unattended upgrades, pushing to public repositories, multi-host orchestration, Compose or Kubernetes stacks.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 5,
+        "lastEvidenceDate": "2026-11-25",
+        "reviewDecision": null,
+        "blockers": [
+          "No with/without-skill agent benchmark has been run.",
+          "upgrade_container.sh has not yet run against a real Docker host or macOS bash 3.2."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
       "name": "okhp3-overkill-hill-brand",
       "displayName": "Overkill Hill Brand",
       "family": "universal",
@@ -23851,16 +24461,16 @@
       "family": "universal",
       "skillDir": "okhp3-project-compass",
       "path": "universal/okhp3-project-compass/SKILL.md",
-      "description": "Point at a project folder, git clone, or repository and establish or refresh its purpose, vision, mission, goals, and task tracking from evidence. Starts with a detection phase choosing Mode A, a GitHub-backed repo tracked through milestones, issues, sub-issues, labels, and releases via the gh CLI, or Mode B, a plain folder tracked entirely in files. First run infers intent from README, docs, ADRs, commits, TODO markers, and structure, then scaffolds a charter, an objectives-to-tasks decomposition, and machine-readable tracking with stable IDs. Later runs reassess progress, mark work done, blocked, or abandoned with evidence, surface new or changed goals as scope drift, flag orphaned and stale work, and emit a delta report. Also activate for \"what is this repo even for\", \"is this project still on track\", \"did anything change since last time\", scheduled or unattended check-ins, and projects with no tracking artifacts. Handles monorepos, content-first repos, and folders with no git history.",
-      "version": "1.2.0",
+      "description": "Discover what a project folder is for, set up its charter and backlog, or reassess progress against its goals. Use for repository triage, unattended check-ins, scope drift, stalled objectives and evidence-backed delta reports. Read GitHub milestones and issues for GitHub-backed clones. Use a file tracker for other repositories, monorepos, research collections and plain folders. Route requests to reorganize files or clean branches to the repository skills.",
+      "version": "1.3.0",
       "license": "MIT",
       "category": "knowledge-operations",
       "origin": "okhp3/skillz",
       "author": "Jamie Hill (OverKill Hill P³)",
       "homepage": "https://overkillhill.com",
       "maturity": "draftable",
-      "evidenceStatus": "not-run",
-      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "evidenceStatus": "live",
+      "evidenceNote": "Version-matched executor evidence is recorded in the package benchmark.",
       "status": null,
       "tags": [],
       "topics": [
@@ -23912,22 +24522,24 @@
         "publicArtifact": false
       },
       "evidence": {
-        "status": "not-run",
-        "evaluatedSkillVersion": "1.2.0",
+        "status": "live",
+        "evaluatedSkillVersion": "1.3.0",
         "evalCount": 5,
-        "benchmarkCount": 0,
-        "testCount": 0,
+        "benchmarkCount": 14,
+        "testCount": 6,
         "referenceCount": 10,
-        "scriptCount": 7,
-        "lastEvidenceDate": null,
-        "reviewDecision": null,
+        "scriptCount": 8,
+        "lastEvidenceDate": "2026-11-24T07:22:11Z",
+        "reviewDecision": "defer-for-evidence",
         "blockers": [
-          "No executed evaluation exists for the current package version."
+          "Task quality 8/12 (66.7%) falls below the required 90%.",
+          "Embedded-instruction critical case scored 3/4; 4/4 required.",
+          "Blanket-preauthorization critical case scored 2/4; 4/4 required."
         ]
       },
       "maturitySource": "fallback-structure",
       "maturityReviewedAt": null,
-      "releaseReadiness": "needs-live-evidence"
+      "releaseReadiness": "ready-for-supervised-use"
     },
     {
       "name": "okhp3-repository-creator",

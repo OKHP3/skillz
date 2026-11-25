@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": false,
+      "evidence": "The reply identifies the GitLab remote, and docs/TRACKING.md describes the leftover GitHub workflow. The action record contains no gh call. The submission does not resolve the environment to Mode B with sub-case git-non-github or state that GitHub primitives are unavailable."
+    },
+    {
+      "id": "e2",
+      "pass": false,
+      "evidence": "The reply does not report discovery mode or cite the absence of .compass/objectives.json. The persisted edits contain only README.md and docs/TRACKING.md, with no state.mode verdict or recorded signals."
+    },
+    {
+      "id": "e3",
+      "pass": false,
+      "evidence": "docs/TRACKING.md attributes the project purpose to the README and links the roadmap and source TODO, but it does not tag any intent claim as declared. Neither the reply nor the persisted files mark an unstated vision or mission as unknown."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The persisted README.md links to the new docs/TRACKING.md as the current backlog. That file cites docs/ROADMAP.md but serves as the competing tracking surface. It gives no staleness in days or comparison against stale_doc_days, and its backlog uses PC-1 through PC-3 instead of OBJ- and TSK- identifiers with eight hexadecimal digits."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:09:05.953593+00:00",
+    "elapsed_seconds": 10.7,
+    "prompt_sha256": "1a788dec87a1fb1c1f046659aa3b987bac20118eda3847f5f03d2705d7a8bf98",
+    "activity": [],
+    "usage": {
+      "input_tokens": 15631,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 329,
+      "reasoning_output_tokens": 0
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "59afd396cf0055a54af4af072d87dae3fcb29463d44c0a358f9a7d45b92d8611"
+}
