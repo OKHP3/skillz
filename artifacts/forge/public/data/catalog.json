@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-25T17:25:49.061Z",
+  "generatedAt": "2026-11-25T17:48:34.243Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "6e064b1e",
+  "sourceCommit": "098aaec2",
   "skillCount": 361,
   "familyCount": 22,
   "families": [
@@ -24290,8 +24290,8 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-local-ai-stack-upgrade/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-local-ai-stack-upgrade/SKILL.md",
-      "lastModified": "2026-11-25T11:22:52-06:00",
-      "commitSha": "7499da7e",
+      "lastModified": "2026-11-25T11:44:01-06:00",
+      "commitSha": "f4df4eb6",
       "createdAt": "2026-11-25T11:08:55-06:00",
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
