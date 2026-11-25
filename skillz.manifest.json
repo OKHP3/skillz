@@ -20,18 +20,18 @@
   "stackDocs": "docs/STACK-POSITION.md",
   "publishingGuide": "docs/PUBLISHING.md",
   "securityPolicy": "docs/SECURITY.md",
-  "distributionSkillCount": 360,
+  "distributionSkillCount": 361,
   "activeFamilyCount": 22,
   "placeholderFamilyCount": 0,
   "projectLocalSupportSkillCount": 55,
   "maturityCounts": {
-    "draftable": 290,
+    "draftable": 291,
     "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 187,
+    "not-run": 188,
     "none": 109,
     "analytical": 12,
     "local-checks": 36,
@@ -511,6 +511,7 @@
         "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
+        "okhp3-local-ai-stack-upgrade",
         "okhp3-overkill-hill-brand",
         "okhp3-project-compass",
         "okhp3-repository-creator",
@@ -544,6 +545,6 @@
     ]
   },
   "distributionFamilyCount": 22,
-  "countsGeneratedAt": "2026-11-24T07:32:21.022Z",
+  "countsGeneratedAt": "2026-11-25T18:51:51.852Z",
   "countsGeneratedFrom": "artifacts/forge/scripts/build-catalog.js (do not hand-edit these count fields)"
 }

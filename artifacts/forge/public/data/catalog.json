@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-24T07:32:21.022Z",
+  "generatedAt": "2026-11-25T18:51:51.852Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "11d4da1e",
-  "skillCount": 360,
+  "sourceCommit": "f80a873a",
+  "skillCount": 361,
   "familyCount": 22,
   "families": [
     {
@@ -977,7 +977,7 @@
     {
       "name": "universal",
       "displayName": "Universal",
-      "skillCount": 22,
+      "skillCount": 23,
       "skills": [
         "okhp3-brand-style-registry",
         "okhp3-cloudflare-worker-api-proxy",
@@ -989,6 +989,7 @@
         "okhp3-guided-photo-session",
         "okhp3-i18n-page-release",
         "okhp3-i18n-page-sync",
+        "okhp3-local-ai-stack-upgrade",
         "okhp3-overkill-hill-brand",
         "okhp3-project-compass",
         "okhp3-repository-creator",
@@ -24254,6 +24255,70 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-local-ai-stack-upgrade",
+      "displayName": "Local AI Stack Upgrade",
+      "family": "universal",
+      "skillDir": "okhp3-local-ai-stack-upgrade",
+      "path": "universal/okhp3-local-ai-stack-upgrade/SKILL.md",
+      "description": "Check, upgrade, verify and document a self-hosted local AI stack on one macOS host: Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant, SearXNG, an agent gateway such as OpenClaw, and Tailscale. Use when a new release is out, to check whether components are current, to retire old images or rollback containers, to confirm services are loopback or tailnet only, or to update the stack's docs after a change. Not for cloud, Kubernetes, Docker Compose stacks or first-time installs.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "infrastructure-operations",
+      "origin": "okhp3/mac-studio-local-ai-workbench",
+      "author": "Jamie Hill (OverKill Hill P³)",
+      "homepage": "https://overkillhill.com/projects/mac-studio-local-ai-workbench/",
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "infrastructure-operations"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/universal/okhp3-local-ai-stack-upgrade/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-local-ai-stack-upgrade/SKILL.md",
+      "lastModified": "2026-11-25T12:47:06-06:00",
+      "commitSha": "809ca04c",
+      "createdAt": "2026-11-25T11:08:55-06:00",
+      "packageMetadata": {
+        "author": "Jamie Hill (OverKill Hill P³)",
+        "category": "infrastructure-operations",
+        "origin": "okhp3/mac-studio-local-ai-workbench",
+        "homepage": "https://overkillhill.com/projects/mac-studio-local-ai-workbench/",
+        "authorGithub": "https://github.com/OKHP3",
+        "inScope": "Release checks, one-component-at-a-time upgrades with backup and automatic rollback, exposure verification, rollback retirement, and sanitized documentation updates for one owner-operated host.",
+        "outOfScope": "Handling credentials or tokens, changing firewall or tailnet ACLs, unattended upgrades, pushing to public repositories, multi-host orchestration, Compose or Kubernetes stacks.",
+        "publicArtifact": false
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "0.1.0",
+        "evalCount": 6,
+        "benchmarkCount": 0,
+        "testCount": 2,
+        "referenceCount": 3,
+        "scriptCount": 5,
+        "lastEvidenceDate": "2026-11-25",
+        "reviewDecision": null,
+        "blockers": [
+          "No with/without-skill agent benchmark has been run.",
+          "upgrade_container.sh has not yet run against a real Docker host or macOS bash 3.2."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },
