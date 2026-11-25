@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# curl stand-in: health URLs succeed unless MOCK_HEALTH=fail; -w prints 200.
+for a in "$@"; do [ "$a" = "-w" ] && { echo -n 200; exit 0; }; done
+[ "${MOCK_HEALTH:-ok}" = fail ] && exit 22
+echo '{"status":true}'

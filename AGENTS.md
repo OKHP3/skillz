@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 360 distribution skills in 22 active families (catalog audit, 2026-11-20). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 361 distribution skills in 22 active families (catalog audit, 2026-11-25). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -389,6 +389,7 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-github-notification-maintainer` | Diagnose GitHub notification causes and apparent schedule failures; prepare bounded repairs and complete only authorized, verified notifications. Scheduled grant and run health are separate from inbox state. |
 | `okhp3-github-mirror-janitor` | Reconcile local GitHub mirrors and branch/notification state, group duplicate inbox signals, and prepare exact, evidence-backed branch, PR, or notification actions. |
 | `okhp3-i18n-page-sync` | Detect which pages on a static site are missing a translation or have drifted from a changed English source, by reusing the site's own search index as the page inventory. Reports drift and names the exact-pair translation skill for each flagged route; never translates or writes a page itself. |
+| `okhp3-local-ai-stack-upgrade` | Check, upgrade, verify and document a self-hosted local AI stack on one macOS host (Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant, SearXNG, OpenClaw, Tailscale) with backups, a kept rollback and automatic rollback. Canonical source is `OKHP3/mac-studio-local-ai-workbench`. Draftable; helper tests only, no live agent benchmark. |
 | `okhp3-project-compass` | Infer project intent from evidence, adopt local trackers, and report progress and scope drift on repeat runs. Use the file sink for shared state and Mode A for optional GitHub evidence and manual action plans. |
 | `okhp3-repository-janitor` | Reconcile local Git mirrors against GitHub, preserve local variations, review branch lifecycle, and prepare safe merge or pruning actions. |
 | `okhp3-repository-organizer` | Profile and safely reorganize content-first Git repositories containing mixed knowledge, prompt, document, research, and media assets, with cross-platform naming and symlink-boundary safeguards. |
@@ -483,7 +484,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 360 distribution skills in 22 active families and 55 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 361 distribution skills in 22 active families and 55 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

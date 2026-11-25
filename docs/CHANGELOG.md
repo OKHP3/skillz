@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-25: Local AI stack upgrade
+
+- Add `universal/okhp3-local-ai-stack-upgrade`, the distribution copy of the upgrade routine from the Mac Studio Local AI Workbench (canonical source: `OKHP3/mac-studio-local-ai-workbench`, `skills/okhp3-local-ai-stack-upgrade/`). It checks a single-host local AI stack against upstream release APIs, upgrades one container at a time with a database copy, a kept `NAME-prev` rollback and automatic rollback on a failed health check, verifies loopback and tailnet exposure, retires rollbacks after a soak, and scans docs for machine identifiers before publication.
+- Maturity is draftable. The five helper scripts pass 15 standard-library tests, including a simulated Docker run of every upgrade outcome; no live agent benchmark exists and the generalized container script has not yet run against a real Docker host. An installable bundle and receipt are published under `artifacts/skill-bundles/`.
+
 ## 2026-11-24: Project Compass 1.3.0
 
 - Added per-claim intent records, deterministic file views and a documented adapter contract. Hardened repository evidence collection, managed writes and validation. The package includes portable installation instructions, behavioral evaluation records and a standalone prompt.
