@@ -57,7 +57,7 @@ Containers reach host services through `host.docker.internal`.
 
 ## Agent gateway (OpenClaw)
 
-- **Path:** global npm package (`npm install -g openclaw@<version>`), or its own self-update when enabled. Restart through its LaunchAgent.
+- **Path:** global npm package (`npm install -g openclaw@<version>`), or its built-in updater when enabled. Restart through its LaunchAgent.
 - **Tailscale dependency:** a gateway configured for Tailscale Serve can refuse to start while Tailscale is stopped. A small LaunchAgent that starts Tailscale when it is down, run every minute, keeps a cold boot clean.
 - **Device approvals:** new clients and new roles need approval from an already-paired device. That is the owner's step.
 

@@ -1,22 +1,21 @@
 ---
 name: okhp3-local-ai-stack-upgrade
 description: >
-  Check, upgrade, verify and document a self-hosted local AI stack on a single
-  macOS host: Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant,
-  SearXNG, an agent gateway such as OpenClaw, Tailscale and Node. Use when a new
-  release is out ("A new version is available"), when asked to update or patch
-  the stack, check whether components are current, retire old images or
-  rollback containers, confirm services are still loopback or tailnet only, or
-  update the stack's public docs after a change. Do not use for cloud or
-  Kubernetes deployments, Docker Compose stacks (use compose pull/up), or
-  first-time installs.
+  Check, upgrade, verify and document a self-hosted local AI stack on one macOS
+  host: Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant,
+  SearXNG, an agent gateway such as OpenClaw, and Tailscale. Use when a new
+  release is out, to check whether components are current, to retire old
+  images or rollback containers, to confirm services are loopback or tailnet
+  only, or to update the stack's docs after a change. Not for cloud,
+  Kubernetes, Docker Compose stacks or first-time installs.
 license: MIT
 compatibility: >
   Target host: macOS with Docker Desktop, Homebrew, bash 3.2 or newer, python3
   3.9 or newer, curl and lsof. Optional: Tailscale, npm, gitleaks. The agent
   needs either a shell on the host or a way to open a launcher file there (a
-  device bridge or computer use). Upstream checks need HTTPS to api.github.com
-  and hub.docker.com.
+  device bridge or computer use). Network access: HTTPS to api.github.com and
+  hub.docker.com for release checks, the image registry for docker pull, and
+  owner-configured loopback or tailnet health URLs.
 metadata:
   author: "Jamie Hill (OverKill Hill P³)"
   version: "0.1.0"
@@ -46,7 +45,7 @@ A finished run leaves:
 
 ## Scope
 
-One owner-operated macOS host, with the owner available to approve each host change. Covers standalone Docker containers started with `docker run`, Homebrew formulas, global npm packages and self-updating desktop apps. Compose stacks, Kubernetes, remote fleets, firewall or tailnet ACL changes and first-time installs are out of scope. A missing prerequisite (Docker not running, no data mount for a requested backup) is a stop, not a reason to improvise.
+One owner-operated macOS host, with the owner available to approve each host change. Covers standalone Docker containers started with `docker run`, Homebrew formulas, global npm packages and desktop apps with built-in updaters. Compose stacks, Kubernetes, remote fleets, firewall or tailnet ACL changes and first-time installs are out of scope. A missing prerequisite (Docker not running, no data mount for a requested backup) is a stop, not a reason to improvise.
 
 ## Safety contract
 
@@ -100,7 +99,7 @@ Run `--dry-run` first on any container you have not upgraded with this script be
 
 ### 4. Upgrade host packages and apps
 
-Homebrew formulas (`brew upgrade ollama`), global npm packages, and self-updating apps (LM Studio, Tailscale, Docker Desktop) each have their own path. Follow [references/component-notes.md](references/component-notes.md). After a host package upgrade, restart the service the way the host normally starts it (LaunchAgent or app), not from your shell, so it keeps its environment.
+Homebrew formulas (`brew upgrade ollama`), global npm packages, and apps with built-in updaters (LM Studio, Tailscale, Docker Desktop) each have their own path. Follow [references/component-notes.md](references/component-notes.md). After a host package upgrade, restart the service the way the host normally starts it (LaunchAgent or app), not from your shell, so it keeps its environment.
 
 ### 5. Verify
 
@@ -139,12 +138,12 @@ Every network destination is fixed or owner-configured, and nothing is sent exce
 
 | Script | Destination | Why |
 |---|---|---|
-| `check_versions.py` | `api.github.com`, `hub.docker.com` (enforced in code) | read the latest release tag; no token is read or sent |
-| `upgrade_container.sh` | the image registry named in `--image` (for example `ghcr.io`), through `docker pull` | fetch the target image |
-| `upgrade_container.sh` | the `--health` and `--probe` URLs you pass, normally loopback or your own tailnet | confirm the new container is healthy |
-| `verify_stack.py` | the `health` and `remote_probes` URLs in your private stack config | health and reachability checks |
+| `scripts/check_versions.py` | api.github.com and hub.docker.com (enforced in code) | read the latest release tag; no token is read or sent |
+| `scripts/upgrade_container.sh` | the image registry named in `--image` (for example ghcr.io), through `docker pull` | fetch the target image |
+| `scripts/upgrade_container.sh` | the `--health` and `--probe` URLs you pass, normally loopback or your own tailnet | confirm the new container is healthy |
+| `scripts/verify_stack.py` | the `health` and `remote_probes` URLs in your private stack config | health and reachability checks |
 
-`prune_rollbacks.py` and `publish_guard.sh` make no network requests. No script uploads files, logs or configuration anywhere.
+`scripts/prune_rollbacks.py` and `scripts/publish_guard.sh` make no network requests. No script uploads files, logs or configuration anywhere.
 
 ## Report format
 
@@ -163,7 +162,7 @@ The short list. The full set with causes is in [references/lessons-learned.md](r
 - macOS `sed` has no `\?`; use `sed -E`. `sed -i` on macOS can drop the executable bit.
 - Finder-launched scripts get a minimal `PATH`; the scripts add the Homebrew and Docker Desktop paths.
 - Tailscale Serve dependents can refuse to start when Tailscale is stopped. Keep a guard that restarts Tailscale before them after reboot.
-- `0.0.0.0` in a port binding is the default. Bind published ports to `127.0.0.1` and publish to the tailnet with Tailscale Serve instead.
+- Docker binds a published port to all interfaces unless told otherwise. Bind published ports to loopback and publish to the tailnet with Tailscale Serve instead.
 
 ## Getting the scripts
 

@@ -52,8 +52,6 @@ class UpgradeContainerTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp()
         self.state = os.path.join(self.tmp, "state.json")
-        self.calls = os.path.join(self.tmp, "calls.log")
-        open(self.calls, "w").close()
 
     def tearDown(self):
         shutil.rmtree(self.tmp)
@@ -61,7 +59,7 @@ class UpgradeContainerTests(unittest.TestCase):
     def run_upgrade(self, state, *extra, **env):
         with open(self.state, "w") as fh:
             json.dump(state, fh)
-        e = dict(os.environ, MOCK_STATE=self.state, MOCK_LOG=self.calls,
+        e = dict(os.environ, MOCK_STATE=self.state,
                  PATH=os.path.join(HERE, "mockbin") + ":" + os.environ["PATH"], **env)
         args = ["bash", os.path.join(ROOT, "scripts", "upgrade_container.sh"),
                 "--container", "open-webui", "--tag", "v0.13.5", "--health", "http://127.0.0.1:3000/health",

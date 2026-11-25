@@ -4,9 +4,7 @@ import json, os, sys
 
 S = os.environ["MOCK_STATE"]
 st = json.load(open(S))
-log = open(os.environ["MOCK_LOG"], "a")
 argv = sys.argv[1:]
-log.write(" ".join(argv) + "\n")
 
 
 def save():

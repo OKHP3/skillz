@@ -33,7 +33,7 @@
       "name": "Tailscale",
       "latest": {"type": "github", "repo": "tailscale/tailscale"},
       "installed": {"type": "command", "cmd": ["tailscale", "version"]},
-      "notes": "Desktop app self-updates; confirm it did"
+      "notes": "Desktop app updates itself; confirm the new version installed"
     },
     {
       "name": "Node.js",
