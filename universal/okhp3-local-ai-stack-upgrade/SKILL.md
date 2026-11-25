@@ -133,6 +133,19 @@ Hand the owner a ready commit: the files changed and a one-line summary. Some Gi
 
 A device bridge that runs in a VM, or a chat with only computer use, cannot run Docker on the host directly. Copy `assets/launcher.command.template` into the private working folder, fill it in, `chmod +x` it, and open it in Finder (or have computer use double-click it). Read the log back and act on its last `RESULT=` line. The token set is `PASS`, `NOOP`, `ROLLED_BACK` and `FAIL`. After any `sed -i` edit to a launcher, run `chmod +x` again.
 
+## Network use
+
+Every network destination is fixed or owner-configured, and nothing is sent except plain HTTP requests without credentials:
+
+| Script | Destination | Why |
+|---|---|---|
+| `check_versions.py` | `api.github.com`, `hub.docker.com` (enforced in code) | read the latest release tag; no token is read or sent |
+| `upgrade_container.sh` | the image registry named in `--image` (for example `ghcr.io`), through `docker pull` | fetch the target image |
+| `upgrade_container.sh` | the `--health` and `--probe` URLs you pass, normally loopback or your own tailnet | confirm the new container is healthy |
+| `verify_stack.py` | the `health` and `remote_probes` URLs in your private stack config | health and reachability checks |
+
+`prune_rollbacks.py` and `publish_guard.sh` make no network requests. No script uploads files, logs or configuration anywhere.
+
 ## Report format
 
 Lead with the outcome in one sentence, then:

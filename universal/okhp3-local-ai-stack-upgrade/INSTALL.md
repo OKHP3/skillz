@@ -1,6 +1,6 @@
 # Install and run the local AI stack upgrade skill
 
-**Release decision for 0.1.0: draftable, supervised use.** The workflow comes from six Open WebUI upgrades (v0.11.4 to v0.13.5) and the related stack maintenance on one Mac. The helper scripts pass 15 standard-library tests, including a simulated Docker run of every upgrade outcome. The generalized container script has not yet run against a real Docker host, so start with `--dry-run`.
+**Release decision for 0.1.0: draftable, supervised use.** The workflow comes from six Open WebUI upgrades (v0.11.4 to v0.13.5) and the related stack maintenance on one Mac. The helper scripts pass 16 standard-library tests, including a simulated Docker run of every upgrade outcome. The generalized container script has not yet run against a real Docker host, so start with `--dry-run`.
 
 ## Download
 
@@ -27,7 +27,7 @@ To run the scripts on the Mac itself without an agent, extract the folder anywhe
 From the extracted folder on the target Mac:
 
 ```sh
-python3 -m unittest discover -s tests -v                  # 15 tests, no Docker needed
+python3 -m unittest discover -s tests -v                  # 16 tests, no Docker needed
 cp assets/stack.example.json ~/.config/local-ai-stack/stack.json   # then edit it
 python3 scripts/check_versions.py --config ~/.config/local-ai-stack/stack.json
 python3 scripts/verify_stack.py  --config ~/.config/local-ai-stack/stack.json

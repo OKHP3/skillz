@@ -136,6 +136,10 @@ class CheckVersionsTests(unittest.TestCase):
         self.assertEqual(cv.compare("0.14.0", "v0.13.5"), "ahead")
         self.assertEqual(cv.compare(None, "v1.0"), "unknown")
 
+    def test_upstream_lookups_are_allowlisted(self):
+        with self.assertRaises(ValueError):
+            cv.http_json("https://example.com/releases/latest")
+
     def test_example_config_is_valid(self):
         with open(os.path.join(ROOT, "assets", "stack.example.json")) as fh:
             cfg = json.load(fh)

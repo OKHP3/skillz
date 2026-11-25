@@ -7,8 +7,9 @@ APIs, never from rendered release pages, which can be cached and stale:
   dockerhub -> https://hub.docker.com/v2/repositories/<repo>/tags (newest matching tag)
 Installed versions come from docker inspect, brew, npm, or a version command.
 
-Read-only. Set GITHUB_TOKEN in the environment only if you hit the anonymous
-rate limit; it is sent as a header and never printed or stored.
+Read-only and unauthenticated: no token or credential is read or sent. The
+anonymous GitHub API limit (60 requests an hour) covers a stack of this size.
+Network destinations: api.github.com and hub.docker.com only.
 
 Usage:
   check_versions.py --config stack.json [--json] [--no-installed]
@@ -18,7 +19,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import subprocess
 import sys
@@ -48,10 +48,9 @@ def compare(installed: Optional[str], latest: Optional[str]) -> str:
 
 
 def http_json(url: str, timeout: int = 15):
-    headers = dict(UA)
-    if "api.github.com" in url and os.environ.get("GITHUB_TOKEN"):
-        headers["Authorization"] = "Bearer " + os.environ["GITHUB_TOKEN"]
-    with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout) as r:
+    if not url.startswith(("https://api.github.com/", "https://hub.docker.com/")):
+        raise ValueError("upstream lookups are limited to api.github.com and hub.docker.com")
+    with urllib.request.urlopen(urllib.request.Request(url, headers=dict(UA)), timeout=timeout) as r:
         return json.load(r)
 
 
