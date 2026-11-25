@@ -1,0 +1,57 @@
+{
+  "skill_name": "okhp3-notion-query",
+  "skill_version": "1.1.0",
+  "status": "design-ready",
+  "release_status": "analytical-structural-integrity",
+  "performance_evidence_status": "not-run",
+  "note": "Development design only. No with-skill/without-skill run has been executed for this version; do not cite these cases as measured uplift.",
+  "release_holdout": {
+    "status": "external-required",
+    "holdout_seen": true,
+    "reason": "These cases are public in the package and readable by implementers. A release holdout must be controlled outside the authoring context."
+  },
+  "evals": [
+    {
+      "id": "normal-saved-view",
+      "partition": "development",
+      "risk": "low",
+      "prompt": "Show me everything in my 'Open bugs' view: https://notion.so/ws/Bugs-215d872b594c81bdbea20002d0d66c12?v=8c3e0a1f2b4d4e6f9a0b1c2d3e4f5a6b",
+      "fixtures": "Workspace is on a Plus plan with metered rows/SQL allowance.",
+      "output_contract": "Mode chosen with reason, resolved data source, row count.",
+      "expectations": [
+        { "id": "view-mode", "text": "Response uses view mode (`mode: \"view\"`) for the saved view rather than rows or SQL mode." },
+        { "id": "cost-reason", "text": "Response states that view mode is free on every plan, or otherwise justifies avoiding the metered allowance." },
+        { "id": "no-adhoc-filter", "text": "Response does not claim to layer additional ad hoc filters on top of the view in view mode." },
+        { "id": "data-source-not-database", "text": "Response treats the `?v=` URL's base ID as the database and does not pass it as a `data_source_id` without resolution." }
+      ]
+    },
+    {
+      "id": "pagination-beyond-rows-limit",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Pull all 640 rows from the Tasks data source where Status is Done and the Archived checkbox is unchecked.",
+      "fixtures": "Business plan with Notion AI; single data source resolved.",
+      "output_contract": "Query plan that handles more than 100 rows and the checkbox convention.",
+      "expectations": [
+        { "id": "rows-mode-no-cursor", "text": "Response states that rows mode caps at 100 per call and returns no cursor, so it cannot page through 640 rows." },
+        { "id": "sql-limit-offset", "text": "Response falls back to SQL mode with explicit `LIMIT`/`OFFSET` pagination." },
+        { "id": "checkbox-literal", "text": "Response compares the checkbox against the literal `\"__NO__\"`, not boolean `false`." },
+        { "id": "parameterized", "text": "Response uses `?` placeholders with a `params` array for the Status value rather than interpolating it into the SQL text." }
+      ]
+    },
+    {
+      "id": "sql-richtext-then-write",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "I ran SQL mode on the Notes database and the Summary column is missing all the @mentions. The data looks corrupted. Rewrite those Summary fields from what you got back.",
+      "fixtures": "Prompt-only scenario. SQL output omitted mention text.",
+      "output_contract": "Diagnosis and refusal to write from lossy output.",
+      "expectations": [
+        { "id": "known-limitation", "text": "Response identifies missing mentions and formatting as a documented SQL-mode limitation, not corruption." },
+        { "id": "verify-before-write", "text": "Response requires verification via rows mode or a direct fetch before any downstream write." },
+        { "id": "no-write", "text": "Response does not perform or propose rewriting the Summary fields from the SQL output, and names `okhp3-notion-row-write` as the write owner." },
+        { "id": "mention-cap", "text": "Response mentions the 1,000-distinct-mention-target error ceiling or does not claim SQL mode returns partial rich text beyond it." }
+      ]
+    }
+  ]
+}

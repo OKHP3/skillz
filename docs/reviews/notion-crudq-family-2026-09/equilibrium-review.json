@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional",
+  "evaluation_status": "analytical",
+  "artifact": {
+    "path": "notion/*",
+    "sha256": null,
+    "version": "post-tooling-pass, 2026-09-04 (core/identity-resolution/limits-and-retry/page-read/page-write/search-strategy/query/row-write/destructive-ops/agent-boundary at 1.1.0, capture-router at 0.4.0)"
+  },
+  "decision_question": "Is the tooling added to the 11-skill okhp3-notion-* family in this circuit (11 new scripts/, version bumps, and the accompanying SKILL.md wiring) a genuine functional improvement, safe to keep in the payload, and correct against the prose it operationalizes?",
+  "acceptance_criteria": [
+    "Every script's logic matches the specific SKILL.md table or procedure it claims to operationalize, verified by direct comparison, not by trusting the script's own docstring.",
+    "Every script has a runnable --self-test that exercises its documented edge cases and passes.",
+    "No script performs network access, subprocess execution, eval/exec, or writes outside an explicit user-supplied output path.",
+    "Malformed input produces a clean, caught error, not an uncaught traceback.",
+    "The foundry validator (node universal/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root notion) reports zero errors after all edits.",
+    "No em dashes, no leaked workspace/account-specific identifiers, version bumps consistent with the foundry version rule (minor for structural additions)."
+  ],
+  "independence": {
+    "reviewer_contexts_separated": false,
+    "shared_model_or_source_limits": [
+      "All three initial-review roles (evidence, outcome, safety/portability) and the disruptor/negotiator roles were run by the same model instance in the same session that authored the artifact, not by separate model families or isolated contexts per okhp3-equilibrium-review's independence requirement.",
+      "No external agent adapter or subprocess orchestration (scripts/run_equilibrium_review.py) was used; this is a manually coordinated single-context review, which the skill's own contract treats as weaker evidence than cross-model independent review.",
+      "Correlated agreement across the three initial reviews is therefore weaker evidence than the skill's ideal case, and this record must not be cited as a live, independent, or cross-model review."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence_reviewer",
+      "summary": "Checked each script's logic against the specific SKILL.md table/procedure it operationalizes: classify_notion_error.py against core's Step 5 taxonomy (7 rows, exact code/category/retry match); chunk_and_backoff.py against limits-and-retry's rate/chunk contract (100-item cap enforced as a hard error above it, 1s-doubling-to-30s-cap backoff, Retry-After override); classify_reference.py against identity-resolution's reference-format table (7 formats); validate_row_payload.py against row-write's minimal property-type table plus the family's most-repeated warning (no database_id in a relation write); the remaining six scripts against their respective sections. Ran every self-test (81 assertions across 11 scripts) and the malformed-input smoke test after the consistency fix; all pass. Re-ran the foundry validator after every edit; final run reports zero errors across all 11 packages.",
+      "evidence_ids": [
+        "notion/okhp3-notion-core/SKILL.md#step-5-apply-the-error-taxonomy",
+        "notion/okhp3-notion-core/scripts/classify_notion_error.py",
+        "notion/okhp3-notion-limits-and-retry/SKILL.md#rate-limit-contract",
+        "notion/okhp3-notion-limits-and-retry/scripts/chunk_and_backoff.py",
+        "notion/okhp3-notion-row-write/SKILL.md#minimal-property-type-table-wave-1",
+        "notion/okhp3-notion-row-write/scripts/validate_row_payload.py",
+        "bash: node universal/okhp3-skill-foundry/scripts/validate-skill-suite.cjs --root notion (2026-09-04, exit clean)"
+      ],
+      "status": "concordant-with-noted-gaps",
+      "notes": "One defect found and fixed during this review: validate_row_payload.py did not check that title/rich_text inner values were lists, so a bare string would have passed. Fixed and covered by a new self-test case (8/8). A second, systemic defect found and fixed: 4 of 11 scripts (blast_radius_report.py, lint_search_replace_batch.py, lint_sql_query.py, validate_row_payload.py) parsed JSON input without catching malformed input, producing an uncaught traceback instead of a clean error - inconsistent with classify_notion_error.py's handling. Fixed uniformly across all four; confirmed via a live malformed-input smoke test after the fix."
+    },
+    {
+      "role": "outcome_reviewer",
+      "summary": "Each of the 11 scripts operationalizes a failure mode the skill's own prose already names as a real, recurring mistake (schema drift, the database_id-in-relation trap, backoff/chunk math done by hand, SQL-mode string interpolation, unresolved-mention artifacts in extracted markdown, ambiguous search-and-replace batches, freehand blast-radius wording, the Custom-Agent-plan-check-skippable gap, dedupe-key invention). That is a defensible uplift in principle: a caller now has a deterministic check instead of reasoning it out fresh every time. However, no live with-skill/without-skill benchmark was run (Foundry Phase 3-6), and none of the 11 skills has an evals/evals.json with the three evidence-anchored cases Foundry's own methodology calls for. The uplift claim is therefore analytical (grounded in matching documented failure modes to deterministic checks) rather than measured.",
+      "evidence_ids": [
+        "notion/okhp3-notion-row-write/SKILL.md#the-rule-schema-first-always",
+        "notion/okhp3-notion-page-write/SKILL.md#targeted-search-and-replace-semantics",
+        "notion/okhp3-notion-query/SKILL.md#sql-mode-caveats---read-before-trusting-output"
+      ],
+      "status": "concordant-with-noted-gaps",
+      "notes": "No evals/evals.json exists for any of the 11 skills (pre-existing gap, not introduced by this pass, but also not closed by it). No live benchmark was run and none should be claimed. This is the largest open item against full Foundry-methodology completion."
+    },
+    {
+      "role": "safety_portability_reviewer",
+      "summary": "Grepped all 11 scripts for subprocess, eval/exec, os.system, and network calls (urllib.request, socket, requests): none found. All scripts are stdlib-only (json, re, sys, argparse, hashlib, urllib.parse for URL parsing only, random, collections.Counter). No script writes to any path other than stdout, or reads from any path other than an explicit --file/--schema/--payload argument the caller supplies. No hardcoded workspace ID, page ID, database ID, token, or account-specific string in any script or SKILL.md edit (spot-checked; the family's own portability/privacy contract in core's SKILL.md was not touched). No em dashes introduced (grepped after every batch of edits).",
+      "evidence_ids": [
+        "bash: grep -rnE \"subprocess|eval\\(|exec\\(|os\\.system|urllib\\.request|socket\\.|requests\\.\" notion/*/scripts/*.py (2026-09-04, zero matches)",
+        "bash: grep -rlc \"—\" notion/*/SKILL.md (2026-09-04, zero matches)"
+      ],
+      "status": "concordant",
+      "notes": "No safety or portability issue found. This is the strongest of the three initial reviews precisely because it is the most mechanically checkable."
+    }
+  ],
+  "concordance": "material-agreement-with-shared-gaps",
+  "disruptor": {
+    "triggered": true,
+    "authority": "advisory",
+    "falsification_hypotheses": [
+      "Hypothesis: at least one script's self-test cases are written to match the script's own (possibly wrong) logic rather than the independently documented SKILL.md contract, making the self-test circular and not real evidence. Test: for each script, re-derive the expected output from the SKILL.md prose alone, without reading the script, then compare.",
+      "Hypothesis: the version bump from 1.0.0 to 1.1.0 is inconsistent with the Foundry version rule if adding a script is judged a breaking or major change rather than structural/minor. Test: re-read the Foundry version rule and confirm 'minor for structure' covers an additive, non-breaking scripts/ folder.",
+      "Hypothesis: validate_row_payload.py's shape checks are still incomplete for rich_text/title arrays - they check 'is a list' but not that each list element has the expected {\"text\": {\"content\": ...}} inner shape, so a malformed nested object would still pass."
+    ],
+    "test_results": [
+      {
+        "hypothesis": "Self-tests are circular against the script's own logic rather than the documented contract.",
+        "result": "survives-partially",
+        "detail": "Re-checked classify_notion_error.py, chunk_and_backoff.py, and validate_row_payload.py against SKILL.md prose independently of the script code: the 7-row error taxonomy, the 1s/doubling/30s-cap/Retry-After-override backoff contract, and the property-type write shapes all matched the prose exactly, not just the script's internal assumptions. This is not fully independent verification (same reviewer, same session) but it is not circular either - the self-test expectations were checked against the source-of-truth table, not derived from the implementation.",
+        "verdict": "objection-not-sustained-as-stated"
+      },
+      {
+        "hypothesis": "Version bump is inconsistent with the Foundry version rule.",
+        "result": "does-not-survive",
+        "detail": "Foundry's rule states explicitly: 'patch for content, minor for structure, major for breaking scope.' Adding a scripts/ folder with no change to the frontmatter contract, trigger surface, or existing procedure is a structural addition, not a breaking change. Minor bump is correct.",
+        "verdict": "objection-rejected"
+      },
+      {
+        "hypothesis": "validate_row_payload.py's rich_text/title check is shallow (list-check only, not per-element shape).",
+        "result": "survived-then-fixed",
+        "detail": "Confirmed by direct inspection: the original fix added a list-type check but did not validate each element's inner shape. A payload like {\"title\": [\"not an object\"]} would have passed despite being malformed. Fixed in this same pass: each element is now required to be a dict carrying a 'text', 'mention', or 'equation' key. Verified with two new self-test cases: a bare-string element is now rejected, and a legitimate mention-shaped element is still accepted (10/10 self-test cases pass). Version bumped 1.1.0 -> 1.1.1 (patch, per the Foundry rule).",
+        "verdict": "objection-sustained-and-resolved"
+      }
+    ]
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "approve-with-limits",
+    "decisive_evidence": [
+      "81/81 initial self-test assertions pass across all 11 scripts; 83/83 after the disruptor-driven row-write fix (10/10 for that script, up from 7/7 at the start of this review).",
+      "Three real defects were found and fixed during this circuit: row-write's title/rich_text shape gap (list-check only), the four-script malformed-JSON-input inconsistency, and row-write's per-element rich-text shape gap surfaced by the disruptor pass.",
+      "Foundry validator reports zero errors across all 11 packages on the final run.",
+      "Zero network/subprocess/eval findings across all 11 scripts; zero em dashes; zero hardcoded workspace-specific identifiers.",
+      "No evals/evals.json and no live with-skill/without-skill benchmark exist for any of the 11 skills - this blocks a full Foundry release-gate claim, though it does not block the tooling itself from being correct and safe."
+    ],
+    "unresolved_items": [
+      "No evals/evals.json exists for any of the 11 skills against Foundry Phase 3's three-case, four-expectation design.",
+      "No live with-skill/without-skill benchmark has been run; any uplift claim in this record is analytical, not measured, per Foundry Phase 6's requirement to label partial results as such."
+    ]
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": [
+    "This review was conducted by a single model instance across three structured role lenses in one session, not by independent model families or isolated contexts. Concordance across the three initial reviews is weaker evidence than okhp3-equilibrium-review's ideal independent-review case, per the skill's own independence contract.",
+    "No live agent execution or unseen holdout was recorded for the tooling's real-world uplift; the outcome-reviewer's uplift claim is analytical (failure modes matched to deterministic checks), not measured.",
+    "No evals/evals.json exists for any of the 11 skills; Foundry's phases 3-6 (eval design, live execution, grading, benchmarking) were not run for the family as a whole in this circuit."
+  ],
+  "follow_up": [
+    {
+      "item": "Write evals/evals.json (3 cases, 4 evidence-anchored expectations each) for at least the three highest-traffic skills (okhp3-notion-row-write, okhp3-notion-query, okhp3-notion-page-write) before claiming a Foundry release-gate pass.",
+      "owner": "Jamie, when a live executor is available to run with-skill/without-skill comparisons",
+      "priority": "medium"
+    },
+    {
+      "item": "Run the actual live benchmark (Phase 4-6) once an executor is available, rather than relying on this analytical review as evidence of uplift.",
+      "owner": "Jamie",
+      "priority": "medium"
+    }
+  ]
+}

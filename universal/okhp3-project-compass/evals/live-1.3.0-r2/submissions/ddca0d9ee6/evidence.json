@@ -1,0 +1,95 @@
+{
+  "answer": "**Birch Library pickup pilot · May 13, 2034 snapshot**\n\n**What we’re shipping:** Opt-in SMS pickup reminders at Alder Branch only. The other branches are deferred. Launch requires a successful delivery test on a real handset and a successful same-day opt-out rehearsal by Alder desk staff. The delivery test passed. The rehearsal is the remaining launch gate. [Owner decisions](notes/owner-decisions.md)\n\n| Task | Recorded in `tasks.md` | Status for the meeting |\n|---|---|---|\n| BP-4 · Verify Alder SMS delivery | In progress | **Done.** A real handset received the reminder in the Alder pilot environment on May 12, and Mira Venn recorded acceptance. [Pilot log](evidence/alder-pilot-log.txt) |\n| BP-5 · Rehearse same-day opt-out | Ready | **Blocked.** The simulator suppressed a queued reminder, but the desk rehearsal could not start because the Alder training account was locked. The service desk needs to restore access so staff can complete the rehearsal. [Pilot log](evidence/alder-pilot-log.txt) |\n\n**Where to record it:** `tasks.md` has been the authoritative task record since May 10. FableDesk is connected for review links and status sync is disabled. Its May 13 export still shows BP-4 open and BP-5 done, with BP-5 closed automatically by a merge rule. [Task register](tasks.md) · [Tracking configuration](.project/tracking.toml) · [FableDesk export](evidence/hosted-export.txt)\n\nNo files or trackers changed. Compass detected a plain folder, and its validator reported HOLD because the folder lacks Compass tracking artifacts. The statuses above come from the local pilot evidence.",
+  "files_changed": {},
+  "files_removed": [],
+  "calls": [
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "detect_mode.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "{\n  \"confidence\": \"high\",\n  \"detected_at\": \"2026-11-24T07:17:20.490319Z\",\n  \"github_api\": {\n    \"authenticated\": null,\n    \"cli_present\": false,\n    \"note\": \"gh CLI unavailable\",\n    \"usable\": false\n  },\n  \"mode\": \"B\",\n  \"open_questions\": [],\n  \"origin_verified\": false,\n  \"owner_repo\": null,\n  \"policy\": [\n    \"Detection makes local observations. Only --check-gh in Mode A checks authentication.\"\n  ],\n  \"root\": \"project\",\n  \"schema\": \"okhp3.compass.mode/1\",\n  \"signals\": [\n    {\n      \"detail\": null,\n      \"found\": false,\n      \"signal\": \"git-worktree\",\n      \"weight\": \"high\"\n    },\n    {\n      \"detail\": {},\n      \"found\": false,\n      \"signal\": \"github-remote\",\n      \"weight\": \"high\"\n    },\n    {\n      \"detail\": null,\n      \"found\": false,\n      \"signal\": \"origin-is-github\",\n      \"weight\": \"high\"\n    },\n    {\n      \"detail\": null,\n      \"found\": false,\n      \"signal\": \"dot-github-directory\",\n      \"weight\": \"medium\"\n    },\n    {\n      \"detail\": 0,\n      \"found\": false,\n      \"signal\": \"actions-workflows\",\n      \"weight\": \"medium\"\n    },\n    {\n      \"detail\": 0,\n      \"found\": false,\n      \"signal\": \"issue-templates\",\n      \"weight\": \"medium\"\n    },\n    {\n      \"detail\": null,\n      \"found\": false,\n      \"signal\": \"pr-template\",\n      \"weight\": \"medium\"\n    },\n    {\n      \"detail\": null,\n      \"found\": false,\n      \"signal\": \"codeowners\",\n      \"weight\": \"medium\"\n    },\n    {\n      \"detail\": null,\n      \"found\": false,\n      \"signal\": \"readme-github-links\",\n      \"weight\": \"low\"\n    }\n  ],\n  \"sub_case\": \"plain-folder\"\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package",
+        "paths": [
+          "references/file-mode.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".project/tracking.toml",
+          "README.md",
+          "evidence/alder-pilot-log.txt",
+          "evidence/hosted-export.txt",
+          "notes/owner-decisions.md",
+          "tasks.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "validate_compass.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 1,
+        "stdout": "Compass validation: score 12.0/100, band D, gate HOLD\n\n| check | name | status | score |\n|---|---|---|---|\n| V1 | state files present and parseable | FAIL | 4.0/10 |\n| V2 | identifier integrity | NOT RUN | 0.0/12 |\n| V3 | referential integrity | NOT RUN | 0.0/11 |\n| V4 | status and evidence discipline | NOT RUN | 0.0/13 |\n| V5 | charter completeness | FAIL | 0.0/11 |\n| V6 | confidence discipline | NOT RUN | 0.0/7 |\n| V7 | scope firewall | FAIL | 3.6/9 |\n| V8 | style and managed-block integrity | FAIL | 2.0/5 |\n| V9 | unattended-run safety | FAIL | 2.4/6 |\n| V10 | staleness surfaced | NOT RUN | 0.0/6 |\n| V11 | mode detection and mirror integrity | NOT RUN | 0.0/10 |\n\nV1 state files present and parseable\n  [error] .compass/config.json must be a readable JSON object within the project\n  [error] .compass/objectives.json must be a readable JSON object within the project\n  [error] baseline.json must contain a valid project evidence manifest\n  [error] missing or unsupported state schema\n  [error] missing or unsupported objectives schema\n  [error] project keys must be present and agree\n  [error] state requires objectives\n  [error] state requires tasks\n\nV2 identifier integrity\n  [info] objectives state is unavailable\n\nV3 referential integrity\n  [info] objectives state is unavailable\n\nV4 status and evidence discipline\n  [info] objectives state is unavailable\n\nV5 charter completeness\n  [error] charter is missing or unreadable\n\nV6 confidence discipline\n  [info] objectives state is unavailable\n\nV7 scope firewall\n  [error] unable to enumerate all managed artifacts\n  [error] cannot scan .compass/baseline.json\n  [error] cannot scan .compass/config.json\n  [error] cannot scan .compass/objectives.json\n\nV8 style and managed-block integrity\n  [error] cannot inspect .compass/baseline.json\n  [error] cannot inspect .compass/config.json\n  [error] cannot inspect .compass/objectives.json\n\nV9 unattended-run safety\n  [error] open-questions file is missing, unreadable or unsafe\n  [error] invalid or inconsistent run records, state counters or history rows\n\nV10 staleness surfaced\n  [info] objectives state is unavailable\n\nV11 mode detection and mirror integrity\n  [info] objectives state is unavailable\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T07:17:14.239300+00:00",
+      "elapsed_seconds": 23.5,
+      "prompt_sha256": "3c3bf7c88c62d710beb1a5a32342a261a44a173e6a93006060f67484a7e1949b",
+      "activity": [
+        "run_helper",
+        "inspect",
+        "inspect",
+        "inspect",
+        "run_helper"
+      ],
+      "usage": {
+        "input_tokens": 147829,
+        "cached_input_tokens": 123136,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 712,
+        "reasoning_output_tokens": 79
+      }
+    }
+  ]
+}

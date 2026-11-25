@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": false,
+      "evidence": "The action record is empty and shows no gh call. The reply says only that GitLab issue status is unverified. It does not resolve Mode B with sub-case git-non-github or state that GitHub primitives are unavailable."
+    },
+    {
+      "id": "e2",
+      "pass": false,
+      "evidence": "The reply neither reports discovery mode nor cites the absence of .compass/objectives.json. The persisted edits contain only README.md and docs/TRACKING.md, with no state.mode verdict or signals."
+    },
+    {
+      "id": "e3",
+      "pass": false,
+      "evidence": "The opening paragraph of docs/TRACKING.md links to README.md for the project purpose, but neither the file nor the reply tags an intent claim as declared or marks an unstated vision or mission as unknown."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The README points to the newly created docs/TRACKING.md for current status and open work. That file links to docs/ROADMAP.md as a source and uses PC-1 and PC-2 instead of OBJ- and TSK- identifiers with eight hexadecimal digits. The reply mentions March but gives no age in days or comparison with stale_doc_days."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T06:57:31.680183+00:00",
+    "elapsed_seconds": 8.9,
+    "prompt_sha256": "3abe8a33900c7c6ce015244aea55c52d3d99b4c3b0e1f54f6127d23ec5dbeebe",
+    "activity": [],
+    "usage": {
+      "input_tokens": 15540,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 309,
+      "reasoning_output_tokens": 0
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "4102326f907831ec1c53d5605dc7e92ff0911dc2c027aa56fb04069162cb5cc5"
+}

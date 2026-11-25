@@ -4,6 +4,7 @@
   "human_artifacts": {
     "charter": "docs/CHARTER.md",
     "backlog": "docs/BACKLOG.md",
+    "roadmap": "docs/ROADMAP.md",
     "open_questions": ".compass/OPEN-QUESTIONS.md",
     "run_history": ".compass/RUN-HISTORY.md"
   },
@@ -17,11 +18,42 @@
     "note": "Local and gitignored. Built-in generic detectors always run."
   },
   "sinks": [
-    { "id": "files", "type": "files", "enabled": true },
-    { "id": "github-issues", "type": "github-issues", "enabled": false,
-      "config": { "repo": "", "label": "compass", "id_marker": true } },
-    { "id": "notion", "type": "notion", "enabled": false,
-      "config": { "database_id": "", "id_property": "Compass ID" } }
+    {
+      "id": "files",
+      "type": "files",
+      "enabled": true
+    },
+    {
+      "id": "github-issues",
+      "type": "github-issues",
+      "enabled": false,
+      "config": {
+        "repo": "",
+        "label": "compass",
+        "id_marker": true
+      }
+    },
+    {
+      "id": "notion",
+      "type": "notion",
+      "enabled": false,
+      "config": {
+        "database_id": "",
+        "id_property": "Compass ID"
+      }
+    }
   ],
-  "ignore": ["**/node_modules/**", "**/dist/**", "**/.venv/**"]
+  "mode": {
+    "detected": null,
+    "locked": false
+  },
+  "github": {
+    "enabled": false,
+    "owner_repo": null,
+    "write_authorization": "per-run"
+  },
+  "mirror": {
+    "index": ".compass/github-index.json",
+    "policy": "pointers-plus-context"
+  }
 }
