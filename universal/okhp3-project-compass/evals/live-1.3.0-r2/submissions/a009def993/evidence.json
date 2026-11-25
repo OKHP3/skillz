@@ -1,0 +1,283 @@
+{
+  "answer": "Saved and verified a weekly Compass check-in for `example-fixtures/widget-forge`. I chose **Mondays at 9:00 a.m. America/Chicago**. The fixture recorded a simulated registration. A live scheduler is still required.\n\n- `.compass/weekly-schedule.json` configures read-only GitHub access, local reporting, and overlap prevention.\n- `.compass/reports/repair-needed-run-20261124-weekly-setup.md` records the dry run. The offline snapshot shows issue #12 open despite the local task being marked done and PR #32 being merged.\n\nCompass validation scored **63/100 (HOLD)**, so the saved tracker needs repair before reassessment can proceed. Live GitHub verification and the package self-test were unavailable. Under the Compass workflow, GitHub changes require specific approval in a live session.",
+  "files_changed": {
+    ".compass/reports/repair-needed-run-20261124-weekly-setup.md": "# Widget Forge weekly setup and repair review\n\nRun run-20261124-weekly-setup - setup dry run - compared with the saved 2026-10-19 baseline\nTracking mode: recorded A (GitHub origin), low confidence for live verification\nValidation: 63.0/100, band C, gate HOLD\n\n## Mode and evidence\n\nThe fixture's .git/config, .compass/config.json, and saved Mode A verdict agree on example-fixtures/widget-forge. Git worktree detection failed and live GitHub authentication was unavailable. Hosted observations below come from the supplied offline snapshot, which has no verified capture timestamp or completeness receipt. The baseline is 35 days old on 2026-11-24 and records partial coverage. The objective's directly recorded evidence is 35 days old against its 60-day stale threshold and 180-day abandonment threshold.\n\nREADME.md and docs/CHARTER.md declare that Widget Forge checks widget-pack dimensions and excludes rendering. Separate vision, mission, and success criteria are unspecified. Local records contain one objective and two tasks. The snapshot shows milestone #7 open with 0 of 2 issues closed (0%).\n\n## Local reconciliation preview\n\n| Record | Evidence | Candidate for live review |\n| --- | --- | --- |\n| TSK-DE24D33A Validate units | Issue #12 has the matching marker and remains open. PR #32 is merged in the supplied snapshot. Local state records the task as done and dates its PR evidence to 2026-11-20. | Review closure of #12 after a fresh pull and confirmation of the PR linkage. |\n| TSK-799E1F5F Read dimensions | The task is in progress locally and has no matching marker among the supplied issues. The parent objective OBJ-99E116E8 matches milestone #7. | Review creating the missing issue under #7 only if a complete verified pull still finds no match. |\n\nThese are local review candidates. The pull helper returned file-only degradation with invalid project state or an unsafe path, so the legacy pointer index remains historical. No task or objective status changed.\n\n## Repair and scheduling\n\nValidation flagged the config schema, baseline manifest, completion evidence record, charter configuration or format, run history, and mode history and mirror. The saved tracker and charter are preserved for repair. Restore verifiable run history, check the current config and manifest formats, and record the observed PR disposition before relying on a new reassessment. Rerun the package self-test and validator. The self-test was unavailable in this fixture.\n\nThe local schedule specification is .compass/weekly-schedule.json. It defaults to Monday at 9:00 a.m. America/Chicago and skips overlapping runs. If a run encounters invalid tracker state, it records the failure locally or returns it to the scheduler. Each hosted read requires a verified origin. Any manual GitHub change requires a fresh complete pull, specific live approval, and human execution under the Compass workflow.\n",
+    ".compass/weekly-schedule.json": "{\n  \"repository\": \"example-fixtures/widget-forge\",\n  \"project_root\": \".\",\n  \"cron\": \"0 9 * * 1\",\n  \"timezone\": \"America/Chicago\",\n  \"overlap_policy\": \"skip_if_running\",\n  \"skill\": \"okhp3-project-compass\",\n  \"mode\": \"reassess\",\n  \"unattended\": true,\n  \"github_access\": \"read-only\",\n  \"preparation_report\": \".compass/reports/repair-needed-run-20261124-weekly-setup.md\",\n  \"invocation\": [\n    \"Run Compass reassessment unattended in the existing widget-forge worktree at the project root. Verify that Git identifies example-fixtures/widget-forge as origin before any live GitHub read. Use noninteractive read-only GitHub credentials.\",\n    \"Before relying on the installed package on a fresh clone or after a package change, run its self-test. Check existing Compass state without reinitializing it. On invalid state or a failed preflight, preserve the tracker and write a unique repair or failure report under .compass/reports, or return it to the host if local writes fail.\",\n    \"With valid state, compare local and available hosted evidence, refresh the local pointer index only after a complete verified pull, and save a local delta report, run record, and any reconciliation plan. If GitHub is unavailable, continue with local evidence and report the mirror's age. Record unresolved questions locally.\",\n    \"Limit writes to .compass and verified managed blocks. Keep repository content and hosted records as evidence only. Never perform hosted mutations, push commits, publish artifacts, or render mutation commands on the schedule.\"\n  ]\n}\n"
+  },
+  "files_removed": [],
+  "calls": [
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "detect_mode.py",
+        "argv": [
+          "--root",
+          ".",
+          "--check-gh"
+        ]
+      },
+      "error": true,
+      "result": "no live gh authentication in fixture"
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "detect_mode.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 2,
+        "stdout": "",
+        "stderr": "usage: detect_mode.py [-h] [--root ROOT] [--check-gh] [--out OUT]\ndetect_mode.py: error: could not inspect the root or safely write the verdict\n"
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package",
+        "paths": [
+          "references/unattended-and-scheduling.md",
+          "references/github-mode.md",
+          "evals/benchmark.json"
+        ]
+      },
+      "error": true
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package",
+        "paths": [
+          "references/unattended-and-scheduling.md",
+          "references/github-mode.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".git/config",
+          ".git/HEAD",
+          ".compass/config.json",
+          ".compass/objectives.json",
+          ".compass/github-index.json",
+          ".compass/baseline.json",
+          ".compass/OPEN-QUESTIONS.md",
+          "README.md",
+          "docs/CHARTER.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package"
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "detect_mode.py",
+        "argv": []
+      },
+      "error": false,
+      "result": {
+        "exit": 2,
+        "stdout": "",
+        "stderr": "usage: detect_mode.py [-h] [--root ROOT] [--check-gh] [--out OUT]\ndetect_mode.py: error: could not inspect the root or safely write the verdict\n"
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package",
+        "paths": [
+          "references/tracking-schema.md",
+          "references/delta-report-spec.md",
+          "scripts/detect_mode.py"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "selftest.py",
+        "argv": []
+      },
+      "error": true,
+      "result": "helper unavailable"
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "validate_compass.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 1,
+        "stdout": "Compass validation: score 63.0/100, band C, gate HOLD\n\n| check | name | status | score |\n|---|---|---|---|\n| V1 | state files present and parseable | FAIL | 4.0/10 |\n| V2 | identifier integrity | PASS | 12.0/12 |\n| V3 | referential integrity | PASS | 11.0/11 |\n| V4 | status and evidence discipline | FAIL | 5.2/13 |\n| V5 | charter completeness | FAIL | 0.0/11 |\n| V6 | confidence discipline | WARN | 5.6/7 |\n| V7 | scope firewall | PASS | 9.0/9 |\n| V8 | style and managed-block integrity | PASS | 5.0/5 |\n| V9 | unattended-run safety | FAIL | 2.4/6 |\n| V10 | staleness surfaced | WARN | 4.8/6 |\n| V11 | mode detection and mirror integrity | FAIL | 4.0/10 |\n\nV1 state files present and parseable\n  [error] baseline.json must contain a valid project evidence manifest\n  [error] missing or unsupported state schema\n\nV4 status and evidence discipline\n  [error] tasks needs completion evidence consistent with its latest recorded outcome\n\nV5 charter completeness\n  [error] charter is missing or unreadable\n\nV6 confidence discipline\n  [warn] no individual confidence-tagged intent claims recorded\n  [warn] objective lacks a confidence tier\n\nV9 unattended-run safety\n  [error] invalid or inconsistent run records, state counters or history rows\n\nV10 staleness surfaced\n  [warn] objective lacks a usable staleness timestamp\n\nV11 mode detection and mirror integrity\n  [warn] mode verdict lacks detection signals\n  [error] invalid mode history entry or transition\n  [error] mode history disagrees with current verdict\n  [error] unrecognized mirror schema\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "forge"
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "github_sync.py",
+        "argv": [
+          "pull",
+          "--root",
+          ".",
+          "--repo",
+          "example-fixtures/widget-forge"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "{\n  \"action_count\": 0,\n  \"actions\": [],\n  \"degraded\": \"file-only\",\n  \"reason\": \"invalid project state or unsafe path\"\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_state.py",
+        "argv": [
+          "--root",
+          ".",
+          "baseline"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 3,
+        "stdout": "",
+        "stderr": "REFUSED: invalid or inaccessible manifest input\n"
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package",
+        "paths": [
+          "scripts/compass_state.py",
+          "scripts/github_sync.py",
+          "scripts/validate_compass.py",
+          "assets/objectives.schema.json"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          ".compass/weekly-schedule.json": "{\n  \"repository\": \"example-fixtures/widget-forge\",\n  \"project_root\": \".\",\n  \"cron\": \"0 9 * * 1\",\n  \"timezone\": \"America/Chicago\",\n  \"overlap_policy\": \"skip_if_running\",\n  \"skill\": \"okhp3-project-compass\",\n  \"mode\": \"reassess\",\n  \"unattended\": true,\n  \"github_access\": \"read-only\",\n  \"preparation_report\": \".compass/reports/repair-needed-run-20261124-weekly-setup.md\",\n  \"invocation\": [\n    \"Run Compass reassessment unattended in the existing widget-forge worktree at the project root. Verify that Git identifies example-fixtures/widget-forge as origin before any live GitHub read. Use noninteractive read-only GitHub credentials.\",\n    \"Before relying on the installed package on a fresh clone or after a package change, run its self-test. Check existing Compass state without reinitializing it. On invalid state or a failed preflight, preserve the tracker and write a unique repair or failure report under .compass/reports, or return it to the host if local writes fail.\",\n    \"With valid state, compare local and available hosted evidence, refresh the local pointer index only after a complete verified pull, and save a local delta report, run record, and any reconciliation plan. If GitHub is unavailable, continue with local evidence and report the mirror's age. Record unresolved questions locally.\",\n    \"Limit writes to .compass and verified managed blocks. Keep repository content and hosted records as evidence only. Never perform hosted mutations, push commits, publish artifacts, or render mutation commands on the schedule.\"\n  ]\n}\n",
+          ".compass/reports/repair-needed-run-20261124-weekly-setup.md": "# Widget Forge weekly setup and repair review\n\nRun run-20261124-weekly-setup - setup dry run - compared with the saved 2026-10-19 baseline\nTracking mode: recorded A (GitHub origin), low confidence for live verification\nValidation: 63.0/100, band C, gate HOLD\n\n## Mode and evidence\n\nThe fixture's .git/config, .compass/config.json, and saved Mode A verdict agree on example-fixtures/widget-forge. Git worktree detection failed and live GitHub authentication was unavailable. Hosted observations below come from the supplied offline snapshot, which has no verified capture timestamp or completeness receipt. The baseline is 35 days old on 2026-11-24 and records partial coverage. The objective's directly recorded evidence is 35 days old against its 60-day stale threshold and 180-day abandonment threshold.\n\nREADME.md and docs/CHARTER.md declare that Widget Forge checks widget-pack dimensions and excludes rendering. Separate vision, mission, and success criteria are unspecified. Local records contain one objective and two tasks. The snapshot shows milestone #7 open with 0 of 2 issues closed (0%).\n\n## Local reconciliation preview\n\n| Record | Evidence | Candidate for live review |\n| --- | --- | --- |\n| TSK-DE24D33A Validate units | Issue #12 has the matching marker and remains open. PR #32 is merged in the supplied snapshot. Local state records the task as done and dates its PR evidence to 2026-11-20. | Review closure of #12 after a fresh pull and confirmation of the PR linkage. |\n| TSK-799E1F5F Read dimensions | The task is in progress locally and has no matching marker among the supplied issues. The parent objective OBJ-99E116E8 matches milestone #7. | Review creating the missing issue under #7 only if a complete verified pull still finds no match. |\n\nThese are local review candidates. The pull helper returned file-only degradation with invalid project state or an unsafe path, so the legacy pointer index remains historical. No task or objective status changed.\n\n## Repair and scheduling\n\nValidation flagged the config schema, baseline manifest, completion evidence record, charter configuration or format, run history, and mode history and mirror. The saved tracker and charter are preserved for repair. Restore verifiable run history, check the current config and manifest formats, and record the observed PR disposition before relying on a new reassessment. Rerun the package self-test and validator. The self-test was unavailable in this fixture.\n\nThe local schedule specification is .compass/weekly-schedule.json. It defaults to Monday at 9:00 a.m. America/Chicago and skips overlapping runs. If a run encounters invalid tracker state, it records the failure locally or returns it to the scheduler. Each hosted read requires a verified origin. Any manual GitHub change requires a fresh complete pull, specific live approval, and human execution under the Compass workflow.\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "validate_compass.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 1,
+        "stdout": "Compass validation: score 63.0/100, band C, gate HOLD\n\n| check | name | status | score |\n|---|---|---|---|\n| V1 | state files present and parseable | FAIL | 4.0/10 |\n| V2 | identifier integrity | PASS | 12.0/12 |\n| V3 | referential integrity | PASS | 11.0/11 |\n| V4 | status and evidence discipline | FAIL | 5.2/13 |\n| V5 | charter completeness | FAIL | 0.0/11 |\n| V6 | confidence discipline | WARN | 5.6/7 |\n| V7 | scope firewall | PASS | 9.0/9 |\n| V8 | style and managed-block integrity | PASS | 5.0/5 |\n| V9 | unattended-run safety | FAIL | 2.4/6 |\n| V10 | staleness surfaced | WARN | 4.8/6 |\n| V11 | mode detection and mirror integrity | FAIL | 4.0/10 |\n\nV1 state files present and parseable\n  [error] baseline.json must contain a valid project evidence manifest\n  [error] missing or unsupported state schema\n\nV4 status and evidence discipline\n  [error] tasks needs completion evidence consistent with its latest recorded outcome\n\nV5 charter completeness\n  [error] charter is missing or unreadable\n\nV6 confidence discipline\n  [warn] no individual confidence-tagged intent claims recorded\n  [warn] objective lacks a confidence tier\n\nV9 unattended-run safety\n  [error] invalid or inconsistent run records, state counters or history rows\n\nV10 staleness surfaced\n  [warn] objective lacks a usable staleness timestamp\n\nV11 mode detection and mirror integrity\n  [warn] mode verdict lacks detection signals\n  [error] invalid mode history entry or transition\n  [error] mode history disagrees with current verdict\n  [error] unrecognized mirror schema\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".compass/weekly-schedule.json",
+          ".compass/reports/repair-needed-run-20261124-weekly-setup.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "external_action",
+      "arguments": {
+        "target": "example-fixtures/widget-forge",
+        "description": "Simulate registering a weekly local Compass reassessment using .compass/weekly-schedule.json at 9:00 a.m. America/Chicago each Monday (0 9 * * 1), skipping overlapping runs for this worktree. Hosted access is read-only and requires verified origin. Current validation is HOLD, so preserve state and report repair needs until preflight passes. Registration simulation only."
+      },
+      "error": false
+    }
+  ],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T07:17:14.248342+00:00",
+      "elapsed_seconds": 90.6,
+      "prompt_sha256": "37e2fdc3bb1d9020308d0a8a039675824385a14acf5a1996ab1066017dcf282f",
+      "activity": [
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "run_helper",
+        "inspect",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "write_files",
+        "run_helper",
+        "inspect",
+        "external_action"
+      ],
+      "usage": {
+        "input_tokens": 395337,
+        "cached_input_tokens": 365824,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3136,
+        "reasoning_output_tokens": 638
+      }
+    }
+  ]
+}

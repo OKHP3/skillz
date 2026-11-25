@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-11-25: Local AI stack upgrade
+
+- Add `universal/okhp3-local-ai-stack-upgrade`, the distribution copy of the upgrade routine from the Mac Studio Local AI Workbench (canonical source: `OKHP3/mac-studio-local-ai-workbench`, `skills/okhp3-local-ai-stack-upgrade/`). It checks a single-host local AI stack against upstream release APIs, upgrades one container at a time with a database copy, a kept `NAME-prev` rollback and automatic rollback on a failed health check, verifies loopback and tailnet exposure, retires rollbacks after a soak, and scans docs for machine identifiers before publication.
+- Maturity is draftable. The five helper scripts pass 19 standard-library tests, including a simulated Docker run of every upgrade outcome; no live agent benchmark exists and the generalized container script has not yet run against a real Docker host. An installable bundle and receipt are published under `artifacts/skill-bundles/`.
+- The first Skillz Shield scan flagged the package's network use. The optional GitHub token header was removed, upstream lookups are now limited in code to `api.github.com` and `hub.docker.com`, and every network destination is declared in the skill. The final bytes then pass the Skillz Shield scan outright (both engines complete, no high or critical findings), so no review record was needed; the bundle receipt records that run.
+- Scanner findings were cleared at the source: network access is declared in the compatibility field, the description fits the 512-character limit, wording that read as self-modification was replaced, and every bundled reference resolves.
+- Codex review fixes: environment values with spaces can no longer reach the log, a failed recovery now reports `RESULT=FAIL` instead of `ROLLED_BACK`, and exposure verification fails when `lsof` or `docker ps` cannot run. Each has a regression test.
+
+## 2026-11-24: Project Compass 1.3.0
+
+- Added per-claim intent records, deterministic file views and a documented adapter contract. Hardened repository evidence collection, managed writes and validation. The package includes portable installation instructions, behavioral evaluation records and a standalone prompt.
+
+- Publish the installable package with a behavioral limit of supervised use. Final matched development scores were 8/12 with Compass and 2/12 without. The two critical cases remained below their required floors.
+- Hold operational rollout pending package security review. The [Skillz Shield run](https://github.com/OKHP3/skillz/actions/runs/45348185516) returned incomplete coverage and 13 high or critical findings on the distributed bytes. The bundle receipt records the scanned source revision.
+
 ## 2026-11-20: Résumé Generator
 
 - Add `askjamie/okhp3-resume-generator`, the portable distribution of the AskJamie FoundRy skill for tailoring a résumé to one opening. It ships with intake prompts, templates, worked fictional examples and evaluation cases. The package ends at delivery of the draft to the candidate.

@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+"""Minimal stateful docker stand-in for testing upgrade_container.sh. State lives in $MOCK_STATE."""
+import json, os, sys
+
+S = os.environ["MOCK_STATE"]
+st = json.load(open(S))
+argv = sys.argv[1:]
+
+
+def save():
+    json.dump(st, open(S, "w"), indent=1)
+
+
+def c_field(c, tpl, image=False):
+    img = st["images"].get(c["image"], {}) if not image else c
+    if image:
+        src = c
+    if "compose.project" in tpl:
+        return c.get("labels", {}).get("com.docker.compose.project", "")
+    if "Privileged" in tpl: return "false"
+    if "CapAdd" in tpl or "Devices" in tpl: return ""
+    if "json .Config.Cmd" in tpl: return json.dumps((c if image else c).get("cmd", ["bash", "start.sh"]))
+    if "json .Config.Entrypoint" in tpl: return json.dumps(c.get("entrypoint", None))
+    if ".Config.Env" in tpl: return "\n".join(c.get("env", [])) + "\n"
+    if "PortBindings" in tpl: return "".join(p + "\n" for p in c.get("ports", []))
+    if 'Destination "' in tpl:
+        want = tpl.split('Destination "')[1].split('"')[0]
+        return "".join(m.split(":")[0] for m in c.get("mounts", []) if m.split(":")[1] == want)
+    if ".Mounts" in tpl: return "".join(m + "\n" for m in c.get("mounts", []))
+    if "ExtraHosts" in tpl: return "".join(h + "\n" for h in c.get("hosts", []))
+    if "NetworkMode" in tpl: return c.get("network", "bridge")
+    if "RestartPolicy" in tpl: return c.get("restart", "always")
+    if ".Config.User" in tpl: return c.get("user", "")
+    if ".State.Running" in tpl: return "true" if c.get("running") else "false"
+    if "{{.Config.Image}}" in tpl: return c["image"]
+    if "{{.Image}}" in tpl: return c["image"]
+    raise SystemExit(f"mock: unknown template {tpl}")
+
+
+cmd = argv[0]
+C = st["containers"]
+if cmd == "info":
+    sys.exit(0)
+if cmd == "image" and argv[1] == "inspect":
+    tpl, ref = argv[3], argv[4]
+    img = st["images"].get(ref)
+    if img is None: sys.exit(1)
+    print(c_field(img, tpl, image=True)); sys.exit(0)
+if cmd == "inspect":
+    if argv[1] == "-f":
+        tpl, name = argv[2], argv[3]
+        if name not in C: sys.exit(1)
+        out = c_field(C[name], tpl)
+        sys.stdout.write(out if out.endswith("\n") else out + "\n"); sys.exit(0)
+    if argv[1] not in C: sys.exit(1)
+    print(json.dumps([C[argv[1]]])); sys.exit(0)
+if cmd == "pull":
+    if os.environ.get("MOCK_PULL_FAIL"): sys.exit(1)
+    ref = argv[1]
+    st["images"].setdefault(ref, {"env": st["images"][next(iter(st["images"]))]["env"], "cmd": ["bash", "start.sh"]})
+    save(); sys.exit(0)
+if cmd == "stop":
+    C[argv[-1]]["running"] = False; save(); sys.exit(0)
+if cmd == "start":
+    if os.environ.get("MOCK_START_FAIL"): sys.exit(1)
+    C[argv[-1]]["running"] = True; save(); sys.exit(0)
+if cmd == "rm":
+    name = argv[-1]
+    if name not in C: sys.exit(1)
+    del C[name]; save(); sys.exit(0)
+if cmd == "rename":
+    old, new = argv[1], argv[2]
+    C[new] = C.pop(old); save(); sys.exit(0)
+if cmd == "update":
+    pol = [a for a in argv if a.startswith("--restart=")][0].split("=", 1)[1]
+    C[argv[-1]]["restart"] = pol; save(); sys.exit(0)
+if cmd == "rmi":
+    st["images"].pop(argv[-1], None); st.setdefault("removed_images", []).append(argv[-1]); save(); sys.exit(0)
+if cmd == "logs":
+    print("INFO migration ok"); sys.exit(0)
+if cmd == "ps":
+    if "ancestor=" in " ".join(argv):
+        ref = [a for a in argv if a.startswith("ancestor=")][0].split("=", 1)[1]
+        for n, c in C.items():
+            if c["image"] == ref: print(n)
+        sys.exit(0)
+    for n, c in C.items(): print(f"{n}\t{c['image']}\t{'Up' if c.get('running') else 'Exited'}")
+    sys.exit(0)
+if cmd == "run":
+    if "--rm" in argv:  # backup/restore copy
+        st.setdefault("copies", []).append(argv[-2:]); save(); sys.exit(0)
+    if os.environ.get("MOCK_RUN_FAIL"): sys.exit(125)
+    a = argv[1:]; name = a[a.index("--name") + 1]; restart = a[a.index("--restart") + 1]
+    env, ports, mounts, hosts = [], [], [], []
+    i = 0
+    while i < len(a) - 1:
+        if a[i] == "-e": env.append(a[i + 1])
+        if a[i] == "-p": ports.append(a[i + 1])
+        if a[i] == "-v": mounts.append(a[i + 1])
+        if a[i] == "--add-host": hosts.append(a[i + 1])
+        i += 1
+    img = a[-1]
+    base_env = st["images"].get(img, {}).get("env", [])
+    C[name] = {"image": img, "running": not os.environ.get("MOCK_CRASH"), "restart": restart,
+               "env": sorted(set(base_env + env)), "ports": ports, "mounts": mounts, "hosts": hosts,
+               "run_env_args": env}
+    save(); sys.exit(0)
+raise SystemExit(f"mock: unhandled {argv}")

@@ -1,0 +1,8 @@
+{
+  "utc": "2026-11-24T07:07:35.915045+00:00",
+  "adapter_sha256": "65bd4586d73dfdd464ffc7a88a7b228c6a6ca7b6f09baf946d2e9472389e2493",
+  "sha256": {
+    "transport.py": "88db71f1139c68b6fd2e405622c75994b6fc6e73dc89cf5fa7956325f35e86e0",
+    "TRANSPORT-ADDENDUM.md": "5c42312a7366b16cc9207ee820a05b8556bc550cf44efd3f17ff387ec2a35b24"
+  }
+}

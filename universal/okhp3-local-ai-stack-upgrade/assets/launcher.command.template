@@ -1,0 +1,20 @@
+#!/bin/bash
+# Double-clickable macOS launcher for agents that cannot run a shell on the host.
+# 1. Copy to a git-ignored folder on the host, for example <repo>/.local-ops/upgrade-open-webui.command
+# 2. Fill in the values below, then: chmod +x upgrade-open-webui.command
+# 3. Open it from Finder (or have a computer-use agent open it). Terminal runs it and
+#    the log lands next to it; the agent reads the RESULT= line back through the bridge.
+cd "$(dirname "$0")" || exit 1
+SKILL_DIR="<path-to>/okhp3-local-ai-stack-upgrade"
+
+"$SKILL_DIR/scripts/upgrade_container.sh" \
+  --container open-webui \
+  --tag "${TARGET_TAG:-<vX.Y.Z>}" \
+  --health http://127.0.0.1:3000/health \
+  --data-dir /app/backend/data \
+  --backup webui.db \
+  --health-timeout 600 \
+  --log-dir "$(pwd)" \
+  --probe "https://<host>.<tailnet>.ts.net:8443/health"
+
+echo; echo "Done. You can close this window."

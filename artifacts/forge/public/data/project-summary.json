@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-20T13:02:35.180Z",
+  "generatedAt": "2026-11-25T18:51:51.852Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "feature/resume-generator",
-  "sourceCommit": "456beff2",
-  "skillCount": 360,
+  "sourceRef": "main",
+  "sourceCommit": "f80a873a",
+  "skillCount": 361,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 290,
+    "draftable": 291,
     "skeleton": 65,
     "usable": 5
   },
@@ -16,7 +16,7 @@
     "none": 109,
     "analytical": 12,
     "local-checks": 36,
-    "live": 8
+    "live": 9
   },
   "capabilities": {
     "familyOrientationPages": true,

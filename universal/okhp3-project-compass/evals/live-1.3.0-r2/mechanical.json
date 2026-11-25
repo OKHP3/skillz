@@ -1,0 +1,35 @@
+{
+  "commit": "19e28db9ae91491ff1e98881cbe7c570e2cb74d1",
+  "git_tests": [],
+  "commit_selftest": {
+    "args": [
+      "python3",
+      "-B",
+      "scripts/selftest.py"
+    ],
+    "exit": 0,
+    "log": "== compass_ids.py: determinism and namespacing ==\n\n== detect_mode.py: all six sub-cases ==\n\n== compass_state.py: init, baseline, drift, managed blocks ==\n\n== compass_state.py: record-run trend columns (regression for CLM-02) ==\n\n== github_sync.py: mirror, matching, write refusal ==\n\n== validate_compass.py: scoring and negative tests ==\n\n== validate_compass.py: V3 transitive objective inheritance (regression for CLM-04) ==\n\n41/41 assertions passed, 0 skipped"
+  },
+  "actual_test_file_sha256": {
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_compass_evidence.py": "e0ab25b0ad505daa8c0a8268e528c8f1dc7380a33e470b9cfb053eb288364717",
+    "tests/test_compass_state.py": "dd7ffc98efd14613a0b5bf62eb9dd7791cfb5ef597a66419a7e987388a47df8d",
+    "tests/test_interchange.py": "343f05e69f2a4fe26d64b42f23bf6a3ccf6ed3e05b63728962bd6552cf3d1eb1",
+    "tests/test_validation.py": "7049e463bb92db14bad010570bf90913691775b13741d140fb49a876c6343ac0",
+    "tests/test_views.py": "5aaeea6c810bd1ef6b625dd7452e318ae592edf9453f034149f02dd3c138986f"
+  },
+  "actual_workspace_suite": {
+    "args": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-v",
+      "-s",
+      "tests"
+    ],
+    "exit": 0,
+    "log": "test_authorized_render_checks_current_adopted_charter_with_v7_only (test_compass_evidence.EvidenceTests) ... ok\ntest_bad_snapshots_cannot_revive_a_previous_plan (test_compass_evidence.EvidenceTests) ... ok\ntest_complete_fixture_is_repeatable_and_rendering_never_calls_gh (test_compass_evidence.EvidenceTests) ... ok\ntest_issue_creation_binds_direct_and_inherited_milestones_by_number (test_compass_evidence.EvidenceTests) ... ok\ntest_mismatched_and_partial_disk_state (test_compass_evidence.EvidenceTests) ... ok\ntest_outputs_stay_beneath_project (test_compass_evidence.EvidenceTests) ... ok\ntest_paginated_get_only_transport_and_metadata_redaction (test_compass_evidence.EvidenceTests) ... ok\ntest_real_origin_credentials_worktree_and_false_signals (test_compass_evidence.EvidenceTests) ... ok\ntest_recorded_a_survives_unavailable_git_but_verified_demotion_wins (test_compass_evidence.EvidenceTests) ... ok\ntest_root_tracking_filters_content_and_own_outputs (test_compass_evidence.EvidenceTests) ... ok\ntest_unchecked_roadmap_rows_are_private_line_pointers (test_compass_evidence.EvidenceTests) ... ok\ntest_uncreated_parent_yields_manual_dependency_until_refreshed (test_compass_evidence.EvidenceTests) ... ok\ntest_block_checksums_byte_preservation_and_noop (test_compass_state.CompassStateTest) ... ok\ntest_damaged_history_blocks_subsequent_run (test_compass_state.CompassStateTest) ... ok\ntest_git_metadata_is_limited_to_object_ids_and_iso_dates (test_compass_state.CompassStateTest) ... ok\ntest_ignore_rule_is_additive_and_idempotent (test_compass_state.CompassStateTest) ... ok\ntest_init_cli_preview_and_repeat (test_compass_state.CompassStateTest) ... ok\ntest_malformed_or_ambiguous_markers_and_proposed_content (test_compass_state.CompassStateTest) ... ok\ntest_manifest_boundaries_large_file_and_legacy_baseline (test_compass_state.CompassStateTest) ... ok\ntest_missing_corrupt_or_partial_json (test_compass_state.CompassStateTest) ... ok\ntest_new_keys_are_normalized_and_force_preserves_populated_state (test_compass_state.CompassStateTest) ... ok\ntest_private_paths_are_filtered_before_hashing_and_from_legacy_drift (test_compass_state.CompassStateTest) ... ok\ntest_report_identity_is_verified_before_receipt_and_by_v9 (test_compass_state.CompassStateTest) ... ok\ntest_same_second_runs_and_append_only_legacy_history (test_compass_state.CompassStateTest) ... ok\ntest_state_path_refusal_precedes_all_writes (test_compass_state.CompassStateTest) ... ok\ntest_truncated_manifest_does_not_invent_addition_or_removal (test_compass_state.CompassStateTest) ... ok\ntest_unsafe_paths_and_non_regular_files (test_compass_state.CompassStateTest) ... ok\ntest_unsigned_blocks_require_exact_match_to_adopt (test_compass_state.CompassStateTest) ... ok\ntest_writer_contention_invalid_counts_and_failed_state_publish (test_compass_state.CompassStateTest) ... ok\ntest_baseline_example_is_a_readable_manifest (test_interchange.StandaloneHandoff) ... ok\ntest_prompt_and_guide_index_support_same_plan (test_interchange.StandaloneHandoff) ... ok\ntest_all_eleven_and_cli_gate (test_validation.Validation) ... ok\ntest_bad_evidence_is_never_support (test_validation.Validation) ... ok\ntest_claims_cannot_borrow_another_claims_evidence (test_validation.Validation) ... ok\ntest_cli_holds_both_reported_regressions (test_validation.Validation) ... ok\ntest_deep_parent_chain_and_cycle (test_validation.Validation) ... ok\ntest_done_requires_closed_issue_or_merged_pr_observation (test_validation.Validation) ... ok\ntest_drift_and_question_references_and_ids (test_validation.Validation) ... ok\ntest_explicit_negative_evidence_cannot_substantiate_done (test_validation.Validation) ... ok\ntest_fifo_returns_promptly_for_both_clis (test_validation.Validation) ... ok\ntest_firewall_scans_late_nested_reports_without_leaking_terms (test_validation.Validation) ... ok\ntest_inferred_claims_need_independent_observations (test_validation.Validation) ... ok\ntest_init_preserves_ignore_and_accepts_both_option_orders (test_validation.Validation) ... ok\ntest_invalid_state_files_and_standalone_id_cli (test_validation.Validation) ... ok\ntest_legacy_intent_is_readable_and_warns (test_validation.Validation) ... ok\ntest_malformed_shapes_return_report (test_validation.Validation) ... ok\ntest_manifest_and_drift_exclude_sensitive_paths_before_hashing (test_validation.Validation) ... ok\ntest_mirror_bodies_and_unknown_markers (test_validation.Validation) ... ok\ntest_owner_selected_report_is_in_firewall_scope (test_validation.Validation) ... ok\ntest_passing_rerun_supersedes_failed_observation_in_time_order (test_validation.Validation) ... ok\ntest_salted_and_renamed_ids_stay_valid (test_validation.Validation) ... ok\ntest_style_on_decoded_json_and_signed_blocks (test_validation.Validation) ... ok\ntest_superseded_requires_known_other_successors_in_refs (test_validation.Validation) ... ok\ntest_two_same_day_reports_must_exist_and_match_their_receipts (test_validation.Validation) ... ok\ntest_typed_parents_and_orphan_reasons (test_validation.Validation) ... ok\ntest_unsafe_artifact_and_deny_paths (test_validation.Validation) ... ok\ntest_nested_and_empty (test_views.Views) ... ok\n\n----------------------------------------------------------------------\nRan 57 tests in 16.494s\n\nOK"
+  }
+}
