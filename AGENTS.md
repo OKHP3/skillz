@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 361 distribution skills in 22 active families (catalog audit, 2026-11-25). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 367 distribution skills in 22 active families (catalog audit, 2026-11-25). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -39,7 +39,7 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `abrahamic/` | Scripture lookup, observance calendar, tradition reference, and cross-tradition comparison skills |
 | `community/` | Imported or community-oriented general-purpose skills, including UI, MCP, social, and authoring guidance |
 | `lifetrkr/` | Celestial-data and daily-oracle skills |
-| `social-posting/` | Platform-specific drafting contracts for LinkedIn, Facebook, X/Twitter, Discord, YouTube, Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and Telegram |
+| `social-posting/` | Platform-specific drafting and read-only conversation-context contracts for LinkedIn, Facebook, X/Twitter, Discord, YouTube, Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and Telegram |
 | `mermaid/` | Mermaid diagram authoring, governance, theming, publishing, updating, and repair |
 | `notion/` | Notion CRUDq foundation (core, read, write, query, search, destructive ops, venue routing), conversation capture, and domain filing |
 | `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, reconciling, validating, and promoting information or exploratory work |
@@ -93,6 +93,8 @@ Mermaid cross-cutting rules: preserve style during updates, repair syntax minima
 | `okhp3-linkedin-series-continuity` | Prepare a source-backed series continuation using verified prior-item states, evidence and voice; draft only. |
 | `okhp3-linkedin-comment` | Draft a context-aware LinkedIn comment or reply. Load after reading the target post or parent comment. The author's own first comment belongs to `okhp3-linkedin-post`. |
 | `okhp3-linkedin-message` | Draft a LinkedIn DM or counter reply, or several related messages with a send order, calibrated by role tier and relationship temperature. Not for connection notes, comments, or posts. |
+| `okhp3-linkedin-dm-reconcile` | Reconcile email alerts with both directions of a LinkedIn DM, per person, opportunity and request. Read-only; use before deciding whether a response remains due. |
+| `okhp3-linkedin-browser-ops` | Execute an already-approved LinkedIn send, comment, reply, connection request, or field edit in a browser pane and verify it. Mechanics only; never drafts. |
 | `okhp3-linkedin-carousel` | Plan and locally render a companion LinkedIn document carousel (PDF) from a JSON spec after the post exists. It never uploads. |
 | `okhp3-linkedin-publish-ops` | Schedule, reschedule, attach a document to, or post the first comment for an already-approved LinkedIn post. The family's only acting package: handoff by default, per-action approval, page-level verification. |
 | `okhp3-facebook-post` | Draft a Facebook profile, Page, group, or event post after the destination and audience are explicit. |
@@ -133,6 +135,7 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 |---|---|
 | `okhp3-recurring-task-capture` | The user says they keep doing something, it is the second or third repetition, or asks to make a workflow into a skill. |
 | `okhp3-success-reconstruction` | Reconstruct a successful one-off into an evidence ledger and proposed controlled re-strike protocol; no causal proof or autonomous experiment. |
+| `okhp3-ai-workforce-bench-gate` | Review AI workforce redesign for feeder-role erosion and issue a Pipeline Preservation Test and Bench Strength Gate decision. |
 | `okhp3-process-intake-and-scope` | Document or scope a process from scratch, including boundaries, inputs, outputs, and business rules. |
 | `okhp3-as-is-process-capture` | Capture and normalize the current running process before redesign or gap analysis. |
 | `okhp3-elicitation-interviews` | Prepare interviews, workshops, question plans, or targeted follow-up to fill process gaps. |
@@ -392,6 +395,9 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-local-ai-stack-upgrade` | Check, upgrade, verify and document a self-hosted local AI stack on one macOS host (Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant, SearXNG, OpenClaw, Tailscale) with backups, a kept rollback and automatic rollback. Canonical source is `OKHP3/mac-studio-local-ai-workbench`. Draftable; helper tests only, no live agent benchmark. |
 | `okhp3-project-compass` | Infer project intent from evidence, adopt local trackers, and report progress and scope drift on repeat runs. Use the file sink for shared state and Mode A for optional GitHub evidence and manual action plans. |
 | `okhp3-repository-janitor` | Reconcile local Git mirrors against GitHub, preserve local variations, review branch lifecycle, and prepare safe merge or pruning actions. |
+| `okhp3-career-addendum` | Write a one-page, cover-letter-style addendum for one target role that expands what a résumé cannot hold, with honest depth labels and a claim ledger. |
+| `okhp3-recruiter-legitimacy-check` | Vet unsolicited recruiter or offer outreach, or terms that change mid-thread, before sharing a résumé or personal data. |
+| `okhp3-network-referral-tracker` | Capture offers of referrals, references, and introductions during a job search and convert each into a specific, dated ask. |
 | `okhp3-repository-organizer` | Profile and safely reorganize content-first Git repositories containing mixed knowledge, prompt, document, research, and media assets, with cross-platform naming and symlink-boundary safeguards. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |
 | `okhp3-skill-discovery` | Find, verify, compare, and route to currently available project-local, installed, runtime, or plugin-provided skills. |
@@ -484,7 +490,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 361 distribution skills in 22 active families and 55 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 367 distribution skills in 22 active families and 55 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.

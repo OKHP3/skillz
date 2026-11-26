@@ -1,0 +1,88 @@
+{
+  "skill_name": "okhp3-linkedin-dm-reconcile",
+  "skill_version": "1.0.1",
+  "evaluation_status": "not-run",
+  "purpose": "Author-visible discovery expectations, not measured recall or precision.",
+  "queries": [
+    {
+      "query": "I already answered in LinkedIn. Check before reminding me.",
+      "should_trigger": true
+    },
+    {
+      "query": "Who owes a response in this DM?",
+      "should_trigger": true
+    },
+    {
+      "query": "Reconcile this email notification with the LinkedIn conversation.",
+      "should_trigger": true
+    },
+    {
+      "query": "Consolidate my incoming and outgoing recruiter messages.",
+      "should_trigger": true
+    },
+    {
+      "query": "Did I send the addendum or only offer to?",
+      "should_trigger": true
+    },
+    {
+      "query": "This email arrived late; look at the current LinkedIn reply.",
+      "should_trigger": true
+    },
+    {
+      "query": "Keep each LinkedIn contact and opportunity separate in the status.",
+      "should_trigger": true
+    },
+    {
+      "query": "I replied take a look at the linked conversation.",
+      "should_trigger": true
+    },
+    {
+      "query": "Read both sides of this LinkedIn exchange and tell me what is open.",
+      "should_trigger": true
+    },
+    {
+      "query": "Use okhp3-linkedin-dm-reconcile on this supplied transcript.",
+      "should_trigger": true
+    },
+    {
+      "query": "Write a new LinkedIn post about an event.",
+      "should_trigger": false
+    },
+    {
+      "query": "Find people working in architecture on LinkedIn.",
+      "should_trigger": false
+    },
+    {
+      "query": "Draft a connection invitation for this person.",
+      "should_trigger": false
+    },
+    {
+      "query": "Send my approved r\u00e9sum\u00e9 to the recruiter.",
+      "should_trigger": false
+    },
+    {
+      "query": "Create an hourly monitoring task.",
+      "should_trigger": false
+    },
+    {
+      "query": "Change my LinkedIn headline.",
+      "should_trigger": false
+    },
+    {
+      "query": "Merge these two GitHub pull requests.",
+      "should_trigger": false
+    },
+    {
+      "query": "Tailor my r\u00e9sum\u00e9 to this role.",
+      "should_trigger": false
+    },
+    {
+      "query": "Correct my candidate portal application status.",
+      "should_trigger": false
+    },
+    {
+      "query": "Archive this AI conversation after finishing the code.",
+      "should_trigger": false
+    }
+  ]
+}

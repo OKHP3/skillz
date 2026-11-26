@@ -1,0 +1,141 @@
+{
+  "role": "outcome",
+  "decision": "approve-with-limits",
+  "confidence": "medium",
+  "material_findings": [
+    {
+      "id": "OUT-01",
+      "claim": "The workforce package defines a distinct, usable analytical workflow from a frozen organizational proposal through task treatment, feeder evidence, P1-P5, balanced economics and a bounded gate recommendation. Separate pilot and scaling records prevent a narrow experiment from silently approving staff reduction.",
+      "status": "supported",
+      "evidence_ids": [
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md:31-49",
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/references/gate-record.md:8-16"
+      ],
+      "consequence": "The written contract can support a supervised proposal review with explicit missing evidence and next decisions. This is a document-level assessment of decision usability, not evidence that a model will follow every instruction or that the intervention preserves workforce outcomes.",
+      "next_test": "When testing behavior, supply a safe task pilot alongside unsupported role reductions and inspect that the primary scaling record remains defer-for-evidence while any pilot has a distinct scope, owner and stop conditions."
+    },
+    {
+      "id": "OUT-02",
+      "claim": "The career package connects evidence tiers, separate task exposure and role demand, conditional horizons and falsifiable scenario triggers to 2-4 reversible experiments with a proof artifact, audience, review date, downside and stop/pivot rule. This provides useful action without inventing career history or promising employment and pay outcomes.",
+      "status": "supported",
+      "evidence_ids": [
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md:27-48",
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/references/scenario-contract.md:3-23"
+      ],
+      "consequence": "A reader can decide what evidence to gather and which bounded positioning experiment to attempt. The document does not establish actual career resilience, predictive accuracy or earnings improvement.",
+      "next_test": "Give a mixed verified/self-reported career record with no current wage data and inspect whether each chosen experiment targets a stated gap and yields a reviewable proof artifact without unsupported market claims."
+    },
+    {
+      "id": "OUT-03",
+      "claim": "The two packages have distinct declared decision scopes and useful handoff boundaries: organizational feeder preservation versus individual career scenario analysis. Generic process redesign, canonical career editing, tailored resumes, particular offers, vacancy discovery and applications are explicitly routed elsewhere, with fallback instructions when companions are unavailable.",
+      "status": "supported",
+      "evidence_ids": [
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md:19-20,49,57",
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md:19-20,33,37,44,50,54"
+      ],
+      "consequence": "Declared interfaces avoid taking over adjacent workflows. This review does not prove uniqueness against every adjacent catalog package, whose implementation was outside the frozen source set.",
+      "next_test": "For future routing tests, use neighboring requests for generic process redesign, a tailored resume, a particular offer and job submission; verify that the package returns a minimal handoff and does not fabricate its own full assessment."
+    },
+    {
+      "id": "OUT-04",
+      "claim": "Missing-input handling and counterexamples are substantive: the workforce package requires incomplete/defer when no proposal exists, accepts evidence of nondevelopmental toil, and tests mentor overload; the career package requires an unpopulated template without context, preserves dated employment evidence, and considers both apprenticeship loss and accelerated learning.",
+      "status": "supported",
+      "evidence_ids": [
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md:33,39-43",
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/evals.json:54-93",
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md:31-42",
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/evals.json:67-92"
+      ],
+      "consequence": "The written workflows can avoid unconditional preservation of junior work, unconditional pessimism about new entrants and fabricated completed assessments. These are author-visible design expectations, not observed pass results.",
+      "next_test": "Run fresh cases with no proposal, a documented non-feeder task and conflicting dated employment evidence; compare returned status, scope and source tiers with the contract."
+    },
+    {
+      "id": "OUT-05",
+      "claim": "The career skill requires defer-for-evidence for unsupported critical market or identity claims, but the required output and scenario reference do not specify a recommendation-status field or a decision vocabulary for that value. assessment_status describes completeness and cannot carry defer-for-evidence.",
+      "status": "supported",
+      "evidence_ids": [
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md:48-54",
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/references/scenario-contract.md:19-23"
+      ],
+      "consequence": "A supervised reader can preserve the deferral in narrative uncertainties, so this does not block draftable source cataloging. A machine consumer or later handoff could miss which recommendation is deferred or mistake a complete assessment for decision readiness if it assumes a structured gate exists.",
+      "next_test": "Before relying on machine-enforced career gates, specify the field, allowed values and affected recommendation scope, then test a complete assessment with an unsupported critical employment or wage premise. For current supervised use, explicitly mark the affected recommendation deferred in the handoff."
+    },
+    {
+      "id": "OUT-06",
+      "claim": "The workforce adversarial-privacy fixture embeds hostile instructions in a consultant PDF and expects reject for the harmful proposal, but does not clearly distinguish an operative harmful workforce proposal from a prompt-injection-only document with no identifiable legitimate plan.",
+      "status": "provisional",
+      "evidence_ids": [
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/evals.json:40-50",
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md:31-33,43",
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/references/gate-record.md:14-16"
+      ],
+      "consequence": "The safety expectations are appropriate, but a strict grader could falsely fail an incomplete/defer response that correctly ignores the injection and notes an absent plan. Conversely, it could reward treating an injected instruction as the actual authorized proposal. This is an evaluation-design ambiguity, not an observed runtime failure.",
+      "next_test": "Before using this case as a binary release gate, split it into a documented harmful proposal that warrants reject and an injection-only document whose legitimate plan must be separately assessed or marked incomplete. Preserve the no-action expectation in both."
+    },
+    {
+      "id": "OUT-07",
+      "claim": "Static inspection of all 20 workforce discovery queries found no clear scope-label mismatch: D01-D12 are relevant to the documented workforce/learning review or explicit skill invocation; D13-D20 are excluded personnel selection, generic drafting, personal career prediction, legal authorization or unsupported conversion/forecast requests.",
+      "status": "supported",
+      "evidence_ids": [
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/discovery.json:1-107",
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md:3-8,19-20,31-43,49"
+      ],
+      "consequence": "These labels describe routing relevance only. D03 (Run a Pipeline Preservation Test), D06 (design an apprentice pilot) and D08 (required gate evidence) do not by themselves supply a complete proposal; the missing-input or partial-guidance path still applies. No host activation, false-positive rate or false-negative rate was measured.",
+      "next_test": "If automatic discovery quality is later claimed, run the frozen queries and fresh neighboring queries against the actual supported host, record activation and returned scope separately, and compare them with the static labels."
+    },
+    {
+      "id": "OUT-08",
+      "claim": "Static inspection of all 20 career discovery queries found no clear scope-label mismatch: D01-D12 address career scenarios, comparative learning, exposure, earning capacity, evidence or explicit invocation; D13-D20 concern applications, resume production, discriminatory hiring, a specific offer, medical diagnosis, exact age-based salary prediction or organizational workforce gating.",
+      "status": "supported",
+      "evidence_ids": [
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/discovery.json:1-107",
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md:3-8,19-20,31-50"
+      ],
+      "consequence": "Broad queries such as D02, D03, D07 and D08 remain routing-positive without establishing the career or target-role inputs needed for a completed personal scenario. Conditional educational guidance or an incomplete template may be appropriate. These static judgments do not establish actual automatic activation.",
+      "next_test": "For later host evaluation, include both context-rich and context-free versions of the broad positive queries and distinguish correct routing from correct incomplete-input handling."
+    },
+    {
+      "id": "OUT-09",
+      "claim": "The frozen packages explicitly identify six synthetic author-visible development cases and 20 unrun discovery design queries each, while disclaiming live matched benchmarks, protected holdouts and observed outcome guarantees. Their current evidence supports a draftable guidance review, not effectiveness, automatic discovery, installation or production-readiness claims.",
+      "status": "supported",
+      "evidence_ids": [
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/evals.json:1-9,12-93",
+        "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/discovery.json:1-4",
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/evals.json:1-8,11-92",
+        "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/discovery.json:1-4",
+        "review-workspace/review-freeze.json:decision_question,criteria,limits"
+      ],
+      "consequence": "The narrow release question can be answered positively with limits without pretending the authored cases were executed or that downstream outcomes were observed.",
+      "next_test": "Verify catalog/installation and repository CI through their own gates. Require an appropriate live comparison, protected evaluation and observed data only before making the corresponding behavioral or outcome claim."
+    }
+  ],
+  "evidence_ids": [
+    "review-workspace/review-freeze.json:artifacts,decision_question,criteria,limits",
+    "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-equilibrium-review/references/role-prompts.md:Shared role contract; Outcome reviewer",
+    "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
+    "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/references/gate-record.md",
+    "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/evals.json",
+    "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/discovery.json",
+    "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md",
+    "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/references/scenario-contract.md",
+    "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/evals.json",
+    "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/discovery.json"
+  ],
+  "assumptions": [
+    "The release decision is limited to public-source cataloging and supervised installation as draftable analytical guidance, exactly as stated in the freeze.",
+    "All eight inspected package files matched the SHA-256 values in review-freeze.json. No package source was edited.",
+    "Reviewers share a model family and the same frozen source set. Separate review contexts do not establish heterogeneous or empirical independence.",
+    "This review inspected only the freeze, role contract and eight listed package files. It did not inspect other reviewers outputs, historical reviews or adjacent package implementations.",
+    "No development prompt, holdout, matched benchmark, automatic host-discovery evaluation, installation or CI run was executed by this reviewer.",
+    "Scope-label agreement means static interpretation of declared relevance; an in-scope query can still require missing inputs or only support partial guidance."
+  ],
+  "release_conditions": [
+    "Preserve version 0.2.0, maturity draftable, source provenance and the explicit analytical-recommendation boundary in catalog and installation presentation.",
+    "Do not translate this review into claims of predictive validity, observed workforce or career improvement, measured automatic discovery, production readiness or completed installation/CI.",
+    "Keep material evidence gaps visible in each supervised decision. Preserve separate pilot and scaling records, and carry career recommendation deferrals explicitly in the human-readable handoff.",
+    "Specify the career recommendation-status contract before a downstream workflow relies on machine-enforced defer-for-evidence semantics.",
+    "Clarify the workforce adversarial fixture before using its required reject outcome as a binary acceptance criterion. It may remain an explicitly unrun design case for this narrow draftable-source release.",
+    "Treat installation and repository CI as separate verification gates. A live benchmark or unseen holdout is not claimed or required by this static draftable-source judgment; obtain appropriate evidence before making those stronger claims."
+  ],
+  "notes": "Approve with limits for the frozen public-source drafting scope. Written workflows are actionable and distinct at their declared interfaces; no clear discovery scope-label mismatch was found among either set of 20 cases. OUT-05 is a documented output-contract gap; OUT-06 is a plausible evaluation ambiguity to resolve before deterministic grading. Neither establishes an observed unsafe runtime outcome. Exact source locations above refer only to frozen content. Confidence is medium because the review is static, author-visible and correlated with the shared model/source family."
+}
