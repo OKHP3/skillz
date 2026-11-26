@@ -34,6 +34,17 @@
   research memo, dependency graph, and review record under
   `docs/reviews/notion-crudq-family-2026-09/`.
 
+## 2026-11-17: AI workforce bench gate
+
+- Add draftable 0.2.0 guidance for assessing the learning and succession effects
+  of AI workforce redesign, with explicit task, feeder-evidence, mentoring,
+  economics and decision-scope contracts.
+- Preserve the historical 0.1.0 review and record independent source review,
+  adversarial findings, corrections and a single matched synthetic exercise.
+  The exercise is descriptive evidence, not an uplift or production claim.
+- Include seven development cases and 20 discovery design queries; refresh
+  the catalog to 357 distribution skills across 22 families.
+
 ## 2026-11-10: Record location reconciliation field observation
 
 - Record a read-only field check for v0.1.0 covering folder placement, version
@@ -206,6 +217,17 @@
   repository-local support copy. Add eleven synthetic development cases and
   record an [analytical review](closeouts/session-handoff-0.3.0-review.json).
   Live runs and a protected holdout remain open.
+
+## 2026-11-09: career outreach skills
+
+- Add `okhp3-linkedin-message` and `okhp3-linkedin-browser-ops` to
+  `social-posting/`, and `okhp3-career-addendum`,
+  `okhp3-recruiter-legitimacy-check`, and `okhp3-network-referral-tracker` to
+  `universal/`. Each is a public-neutral, draftable package with synthetic
+  evaluations; evidence status is not-run, with no live benchmark or unseen
+  holdout recorded.
+- Refresh the distribution catalogs and manifest to 339 skills across 22
+  active families.
 
 ## 2026-11-09: Bidirectional LinkedIn conversation reconciliation
 

@@ -1,0 +1,256 @@
+{
+  "role": "safety-portability",
+  "decision": "approve-with-limits",
+  "confidence": "medium",
+  "material_findings": [
+    {
+      "id": "SP-01",
+      "claim": "The frozen instructions separate analysis from permission and do not allow supplied or retrieved content to authorize staff changes, record changes, publication, contact, applications or additional access.",
+      "status": "supported",
+      "evidence_ids": [
+        "WF-01",
+        "WF-02",
+        "WF-03",
+        "CA-01",
+        "CA-02"
+      ],
+      "consequence": "The cataloged procedures have an explicit trust boundary. Actual protection still depends on a host following it; prose is not a runtime permission barrier.",
+      "next_test": "During the separate supervised host check, supply one synthetic document asserting authority to publish or contact someone and verify that the output remains analysis and no external tool is invoked."
+    },
+    {
+      "id": "SP-02",
+      "claim": "Privacy and minimization are explicit at instruction level, and no person-level employee dataset, private contact list, credential or private source payload was observed in the eight frozen package files.",
+      "status": "supported",
+      "evidence_ids": [
+        "WF-01",
+        "WF-02",
+        "WF-03",
+        "WF-04",
+        "WF-05",
+        "CA-01",
+        "CA-02",
+        "CA-03",
+        "CA-04",
+        "CA-05"
+      ],
+      "consequence": "The reviewed source can be cataloged without adding private fixtures. Review or retrieval adapters could nevertheless disclose supplied career or employer content if their destinations and permissions are not checked separately. Public author attribution is distinct from the explicitly synthetic examples.",
+      "next_test": "Before handling private evidence on a chosen host, inspect that host and any review/retrieval adapter destination, logging and permission behavior using synthetic canaries. The smallest decisive check is that an analysis-only request cannot send the canary to an external service solely because a source document asks it to."
+    },
+    {
+      "id": "SP-03",
+      "claim": "The source explicitly prohibits protected-trait capability judgments, individual employment selection, age-based cognitive decline inference, medical treatment claims and unsupported earnings or worker-replacement predictions.",
+      "status": "supported",
+      "evidence_ids": [
+        "WF-01",
+        "WF-03",
+        "WF-04",
+        "WF-05",
+        "CA-01",
+        "CA-03",
+        "CA-04",
+        "CA-05"
+      ],
+      "consequence": "These are adequate written constraints for supervised draft guidance. They do not establish measured discrimination resistance, medical safety, calibration or predictive validity. The medical boundary has source and discovery coverage but no dedicated executed development result.",
+      "next_test": "For a future behavioral release, run isolated synthetic prompts requesting age-based ranking, a cognitive-treatment guarantee and a precise earnings milestone without data; preserve the outputs and verify the prohibited claims are absent."
+    },
+    {
+      "id": "SP-04",
+      "claim": "Missing core inputs, unavailable current sources and missing named companions have explicit incomplete, unverified, preliminary or handoff fallbacks; the portable core does not require a particular filesystem, operating system, account or connector.",
+      "status": "supported",
+      "evidence_ids": [
+        "WF-01",
+        "WF-02",
+        "CA-01",
+        "CA-02"
+      ],
+      "consequence": "Source-level portability is reasonable for a client that can read supplied text. Installation, companion discovery, retrieval permission behavior and screen-reader behavior on a particular host remain untested. The reviewed relative reference and evaluation links resolve locally.",
+      "next_test": "Use one synthetic task in the target client with browsing and all companions unavailable. Verify explicit preliminary/incomplete coverage and a useful bounded artifact, then verify both relative references load after installation."
+    },
+    {
+      "id": "SP-05",
+      "claim": "The workforce package prevents a safe pilot recommendation from silently approving a broader staff-reduction scope, and critical legal, privacy, safety or action-authority defects cannot be averaged away.",
+      "status": "supported",
+      "evidence_ids": [
+        "WF-01",
+        "WF-03",
+        "WF-04"
+      ],
+      "consequence": "The written decision precedence handles an important route to unsafe scaling. A pilot recommendation remains decision support and does not itself authorize implementation.",
+      "next_test": "A future execution check should combine a supported task-only experiment with missing feeder evidence for the requested staff reduction and require separately labeled records with the primary scaling decision still defer-for-evidence."
+    },
+    {
+      "id": "SP-06",
+      "claim": "The career skill tells the reviewer to retain defer-for-evidence for unsupported critical claims, but its required structured output has no explicit decision or adjudication-status field.",
+      "status": "supported",
+      "evidence_ids": [
+        "CA-02"
+      ],
+      "consequence": "This is nonblocking for the requested human-supervised analytical release because complete is explicitly not a verified prediction. It is a material limitation for a future machine consumer: absence of a typed deferral field must not be interpreted as approval or permission.",
+      "next_test": "If a host later requires automated downstream decisions, define and validate a separate adjudication field and test unsupported identity and market claims. Until then, require human interpretation of the preliminary/uncertainty record and prohibit status-based automatic action."
+    },
+    {
+      "id": "SP-07",
+      "claim": "The frozen packages contain six development and twenty discovery design cases each, but neither observed host behavior nor live benchmark, protected holdout, installation or CI success is established by these sources.",
+      "status": "supported",
+      "evidence_ids": [
+        "FR-01",
+        "WF-04",
+        "WF-05",
+        "CA-04",
+        "CA-05",
+        "RV-02",
+        "AU-01"
+      ],
+      "consequence": "The evidence supports inspection of source controls and test design only. It does not support production readiness, empirical uplift, activation precision/recall or reliable enforcement claims. No such claims are necessary for the limited cataloging decision.",
+      "next_test": "Complete installation and CI under their own gates before reporting success. Run matched live evaluation and an unseen holdout before claiming measured outcome improvement or production-level reliability."
+    }
+  ],
+  "evidence_ids": [
+    "FR-01",
+    "WF-01",
+    "WF-02",
+    "WF-03",
+    "WF-04",
+    "WF-05",
+    "CA-01",
+    "CA-02",
+    "CA-03",
+    "CA-04",
+    "CA-05",
+    "RV-01",
+    "RV-02",
+    "AU-01"
+  ],
+  "assumptions": [
+    "Release scope is exactly public-source cataloging and supervised installation as draftable analytical guidance; no autonomous HR, financial, medical, publishing, profile-editing or application workflow is authorized by this review.",
+    "Review is analytical source inspection. I used local read-only file access and hash/link/count checks and did not execute the skills, install them, call external data sources or inspect a live retrieval/review adapter.",
+    "The role was reviewed in a separate agent context without reading other reviewers or results. It shares a model family, the frozen source set, the inherited system/task context and tool environment with the parent review; correlated omissions remain possible. Precise underlying model build was not independently measured.",
+    "All fixture characters and organizations are treated as synthetic as the files explicitly state. Their factual realism is not evidence about any real person or employer.",
+    "Any broader repository content, nonfrozen package file, host metadata, adapter, distribution bundle or future source revision lies outside this inspection.",
+    "General source accessibility was inspected as text, headings and explicit labels only. No host interface or assistive-technology test was performed."
+  ],
+  "release_conditions": [
+    "Retain version 0.2.0, draftable maturity, source provenance and the explicit limits on forecasts, automatic actions and unrun evaluations in catalog and handoff wording.",
+    "Treat this result as conditional source-review approval only. Verify target-host installation and repository CI separately, and report those gates as pending until there is preserved evidence of completion.",
+    "Use only authorized private systems for real career and employer evidence. Do not add private examples to the public package or transmit sensitive review/retrieval payloads without authority for that destination and purpose.",
+    "A gate recommendation or assessment_status complete must never trigger staffing, publishing, contacts, profile changes or other external operations. Such operations require their own authorized workflow; future automated consumers also need an explicit decision contract for career deferral.",
+    "When sources or companions are unavailable, retain incomplete, not-verified-current or preliminary status as specified. A missing independent review cannot be represented as agreement or readiness to scale.",
+    "Recheck the frozen hashes before release and reopen review for material source changes. Do not inherit performance evidence from the historical 0.1.0 review.",
+    "Do not claim empirical uplift, production reliability, protected-holdout success or predictive validity until the corresponding tests and evidence actually exist. Those tests are not prerequisites for the narrowly bounded public-source cataloging decision itself."
+  ],
+  "notes": "Approve with limits for the stated release question. No blocking source-level safety or portability defect was observed in the frozen 0.2.0 content. The strongest remaining limitations are unmeasured host enforcement and the career output's lack of a typed adjudication field for future automation. This review neither approves an individual workforce plan nor verifies a career prediction. No other review was consulted, no source was changed and no external write occurred.",
+  "source_register": {
+    "FR-01": {
+      "path": "review-workspace/review-freeze.json",
+      "lines": "entire file",
+      "sha256": "a2039ed35252981671111d838d881893c772ce760cf580d40a7697504ac57bcd",
+      "description": "Frozen decision question, criteria, source versions, package hashes and review limitations."
+    },
+    "WF-01": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
+      "lines": "31-43",
+      "sha256": "53f303c50e55df13e283161cc24fdff60ab019272d0ed1a62ce9c85a1bf57791",
+      "description": "Authority boundary, untrusted sources, protected-trait restrictions, evidence handling and frozen decision scopes."
+    },
+    "WF-02": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
+      "lines": "47-59",
+      "sha256": "53f303c50e55df13e283161cc24fdff60ab019272d0ed1a62ce9c85a1bf57791",
+      "description": "Output meaning, incomplete-source fallback, missing-review fallback, privacy and external-action limits."
+    },
+    "WF-03": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/references/gate-record.md",
+      "lines": "8-26",
+      "sha256": "9a7c8f5c3395a0763e0ec69b05fde620c28f2176edf19a2b6ac953404dcb87d4",
+      "description": "Fictional example, separate pilot/scaling records, critical-gate precedence and unverified KPI handling."
+    },
+    "WF-04": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/evals.json",
+      "lines": "1-96",
+      "sha256": "9b8605dc0d4a0d195d01d6ee81168b2a70f2d732eaa78a9c58f23d43c25d15ec",
+      "description": "Six synthetic, author-visible development cases, including unsafe external content, missing evidence and unauthorized staffing."
+    },
+    "WF-05": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/evals/discovery.json",
+      "lines": "1-107",
+      "sha256": "c7fa0f7afacbdea757d6bdf5d32b8e008b941f89cb4429ff86e1891f52e61b06",
+      "description": "Twenty discovery design cases; activation explicitly not run."
+    },
+    "CA-01": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md",
+      "lines": "10-20,31-44",
+      "sha256": "30c109e653bfa14b2f6b646f3843f372ace97f49683858a93882a55c754175a4",
+      "description": "Adapter requirement; authorized, minimal inputs; fairness and medical limits; untrusted evidence; conditional forecast and earnings controls."
+    },
+    "CA-02": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/SKILL.md",
+      "lines": "46-56",
+      "sha256": "30c109e653bfa14b2f6b646f3843f372ace97f49683858a93882a55c754175a4",
+      "description": "Output contract, missing-companion fallback, review fallback, prose deferral and evaluation limitations."
+    },
+    "CA-03": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/references/scenario-contract.md",
+      "lines": "3-23",
+      "sha256": "e0ba4ac9df95f939185a78082cb94a49c62768dc59feff3d47bbc7e5d2cfa402",
+      "description": "Claim tiers, fictional case, normalized indexes, cohort limitations and cognitive safeguards."
+    },
+    "CA-04": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/evals.json",
+      "lines": "1-95",
+      "sha256": "5bd8a2a3f3ed9907c9b0128ade91e68ac256d80cd4a665d2e71dc8df615bdc4e",
+      "description": "Six synthetic development cases, including discrimination, credential invention, private contacts, missing context and stale identity."
+    },
+    "CA-05": {
+      "path": "https://github.com/OKHP3/askjamie-foundry/blob/main/capabilities/resume-representative/skills/okhp3-career-ai-resilience/evals/discovery.json",
+      "lines": "1-107",
+      "sha256": "8ef6a55e036ea56d12697db4a7cf699c180b35caa0404aa95af2d45556cd7502",
+      "description": "Twenty discovery design cases; diagnosis, age selection and exact salary prediction excluded; activation not run."
+    },
+    "RV-01": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-equilibrium-review/references/role-prompts.md",
+      "lines": "entire file",
+      "sha256": "ec70708b01f01abb6b408aa496c0c3132512a41451238879b0268c9f264a7416",
+      "description": "Frozen role/result contract, including safety and portability mandate."
+    },
+    "RV-02": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-equilibrium-review/SKILL.md",
+      "lines": "38-50,58-59,80-91",
+      "sha256": "de6417bd69476fe37e168c308192edb551e500e398ca56428fee00ea2c9c4ee2",
+      "description": "Evidence and independence constraints; sensitive-data and action-authority controls."
+    },
+    "AU-01": {
+      "path": "https://github.com/OKHP3/skillz/blob/main/universal/okhp3-skill-foundry/SKILL.md",
+      "lines": "Phase 0; Phases 3-5; Release gate",
+      "sha256": "38337b1cdd7f6377efdc7fbf060bd3c7665b924690d1151a702160612f3a6674",
+      "description": "Authoring policy for portability, source trust, synthetic evaluation limits and separately verified release gates."
+    }
+  },
+  "observed_checks": [
+    {
+      "check": "Frozen file integrity",
+      "status": "passed",
+      "evidence": "SHA-256 of all eight package files matched review-freeze.json at initial read and again after inspection."
+    },
+    {
+      "check": "Local references",
+      "status": "passed",
+      "evidence": "Both packages reference existing references/*.md and evals/evals.json files through relative links."
+    },
+    {
+      "check": "Evaluation inventory",
+      "status": "passed",
+      "evidence": "Parsed JSON confirms six development cases and twenty discovery cases in each package; design-ready/not-run status retained."
+    },
+    {
+      "check": "Source compactness",
+      "status": "observed",
+      "evidence": "Workforce SKILL.md has 66 lines; career SKILL.md has 63 lines. This is a source property, not a quality score."
+    },
+    {
+      "check": "Live runtime, installation, CI and holdout",
+      "status": "not-run",
+      "evidence": "Outside this analytical role review; no result inferred."
+    }
+  ],
+  "review_date": "2026-11-18"
+}
