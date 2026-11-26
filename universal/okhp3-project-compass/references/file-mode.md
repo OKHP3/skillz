@@ -36,12 +36,11 @@ the owner's and is never rewritten.
 
 ## Rollup computation
 
-Recompute on every run, bottom up:
+Render from the validated state with `scripts/compass_views.py --root <target> roadmap` or `backlog`. Use `json` to inspect denominator and computed percentage. Append a short next-actions list using blocker and activity evidence. Recompute bottom up:
 
-1. A leaf task's contribution is 1 when `status` is `done`, 0 when `abandoned`
-   or `superseded` is excluded from the denominator entirely, and 0 otherwise.
+1. Exclude abandoned and superseded branches. Each remaining leaf contributes 1 if done and 0 otherwise.
 2. A parent task's `percent_complete` is the mean of its children's
-   contributions, rounded to a whole number.
+   contributions. Round at presentation time.
 3. An objective's `percent_complete` is the mean over its direct children,
    weighted equally unless a `weight` field says otherwise.
 4. Objectives with no children report `null` and `percent_source: none`. Do not
@@ -124,3 +123,7 @@ Everything in Mode B is designed to survive promotion to Mode A untouched:
 
 Do not invent Mode B fields that have no Mode A counterpart unless they carry
 information GitHub cannot hold, such as confidence tiers and drift history.
+
+The manifest includes up to 8,000 eligible files. Record scan limits in the report. Full-content checksums detect same-size edits. A legacy size-only match stays unverified until a fresh baseline is saved. To adopt an unsigned legacy managed block, review its exact content and supply the same bytes to the helper first. A signature detects later edits. Preserve an altered block for owner review.
+
+A run ID may take a numeric suffix such as -2 within one second. Use distinct report names. Older four- or nine-column history tables keep their original rows. New rows use the current ten-column table.

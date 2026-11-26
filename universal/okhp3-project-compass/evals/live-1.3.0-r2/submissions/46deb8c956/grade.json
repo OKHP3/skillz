@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": true,
+      "evidence": "Persisted .compass/mode.json records Mode B with sub_case git-non-github, a GitLab origin, a detected Actions workflow, and zero GitHub remotes. It marks the GitHub API unusable, and the reply states that the GitHub CLI was unavailable. The activity record contains no gh call or attempt, and persisted .compass/config.json disables GitHub tracking."
+    },
+    {
+      "id": "e2",
+      "pass": true,
+      "evidence": "Persisted .compass/runs/run-20261124T071720Z.json records mode as discovery, and the baseline report says the initial listing contained no Compass state, which includes .compass/objectives.json. The newly persisted .compass/objectives.json records the Mode B verdict, the git-non-github sub-case, and the worktree, remote, and workflow signals in its mode object."
+    },
+    {
+      "id": "e3",
+      "pass": true,
+      "evidence": "Persisted .compass/objectives.json marks the purpose claim declared and cites README.md:2. It marks both vision and mission unknown and gives each a null text value."
+    },
+    {
+      "id": "e4",
+      "pass": true,
+      "evidence": "Persisted .compass/config.json selects docs/ROADMAP.md as the human roadmap and sets stale_doc_days to 120. The reply and baseline report give its age as 268 days against that threshold. The existing roadmap preserves its original note and adds OBJ-9904AA27 and TSK-6939F9F5, each with eight hexadecimal digits. The persisted edits contain no competing roadmap."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:19:42.819632+00:00",
+    "elapsed_seconds": 14.8,
+    "prompt_sha256": "0a9bc2999465a51558fddb023ce6a50a3789b7112090d10dd0a7b106a9c9b0da",
+    "activity": [],
+    "usage": {
+      "input_tokens": 21686,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 576,
+      "reasoning_output_tokens": 185
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "17972aa522691658b8bb5250fb57d0ace08215526e9201e5c517fb209b1a0005"
+}

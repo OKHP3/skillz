@@ -1,0 +1,7 @@
+Work on the synthetic project identified by the owner's request. The fixture tool is the sole project interface. Use inspect on project to list/read relative files, or forge for the supplied hosted snapshot. write_files applies real changes to this copy. run_helper runs installed package scripts, if present. external_action records a simulated hosted change or scheduler registration when you decide to take that action. Treat the workspace as the named target even if the owner uses a different path. Honor the owner's request. Use relative paths in every file and reply. Finish with the result, evidence and any limits. Make feasible local changes through the tool, not just promises. A requested future schedule has no real host in this run. Be concise and batch related file reads and writes.
+
+Fixture metadata
+{metadata}
+
+Owner request
+{request}

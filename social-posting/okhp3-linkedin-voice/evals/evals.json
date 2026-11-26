@@ -1,6 +1,6 @@
 {
   "skill_name": "okhp3-linkedin-voice",
-  "skill_version": "2.2.0",
+  "skill_version": "2.3.0",
   "status": "design-ready",
   "holdout_seen": true,
   "holdout_status": "external-required",
@@ -37,6 +37,53 @@
         {"id": "pending-outcome", "text": "Retains a clearly playful but explicit acknowledgment that the result is undecided."},
         {"id": "no-escalation", "text": "Does not strengthen hope or preparation into a claim of victory."},
         {"id": "route-safety", "text": "Returns revised LinkedIn prose and a change log without publishing or declaring the draft safe for public context by itself."}
+      ]
+    },
+    {
+      "id": "choppy-draft-consolidation",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Polish a LinkedIn post draft with nine paragraphs, five of them a single sentence, two runs of back-to-back three-word sentences, and one fragment triplet. No rhythm preference is supplied.",
+      "expectations": [
+        {"id": "profile", "text": "Names the `flowing` rhythm profile as the active profile in the change log."},
+        {"id": "single-line-limit", "text": "Returns at most one single-sentence paragraph."},
+        {"id": "no-short-runs", "text": "Contains no run of two or more consecutive sentences of four words or fewer and no fragment triplet."},
+        {"id": "counts", "text": "Reports before and after counts for the rhythm checks."},
+        {"id": "no-new-facts", "text": "Keeps every supplied fact, link, and hashtag and adds none."}
+      ]
+    },
+    {
+      "id": "deliberate-punch-preserved",
+      "partition": "development",
+      "risk": "low",
+      "prompt": "Polish a LinkedIn post whose paragraphs already flow and that has two standalone sentences, one of which the user marked as deliberate.",
+      "expectations": [
+        {"id": "keep-punch", "text": "Keeps the user-marked standalone sentence as its own paragraph."},
+        {"id": "no-over-merge", "text": "Does not merge the flowing paragraphs into one block or rewrite them for cadence alone."},
+        {"id": "judgment-noted", "text": "Notes the standalone-line judgment in the change log."},
+        {"id": "flag-second", "text": "Folds or flags the unmarked second standalone line and records the judgment."}
+      ]
+    },
+    {
+      "id": "staccato-override",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "The user says they want short punchy one-line beats for this post and asks for a voice pass.",
+      "expectations": [
+        {"id": "honor-request", "text": "Uses the `staccato` profile and keeps the short-line cadence the user asked for."},
+        {"id": "hard-rules-still-apply", "text": "Still removes em dashes and repeated or empty fragments."},
+        {"id": "report", "text": "States that the `staccato` profile was applied because the user requested it."}
+      ]
+    },
+    {
+      "id": "comment-beats-untouched",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Polish a two-sentence LinkedIn reply whose dry humor relies on two short back-to-back sentences about a pending outcome.",
+      "expectations": [
+        {"id": "comment-profile", "text": "Applies the `off` rhythm profile for a comment and does not merge the short sentences."},
+        {"id": "humor-kept", "text": "Keeps the dry humor and the pending-outcome language intact."},
+        {"id": "hard-rules", "text": "Still applies the hard rules, such as removing an em dash."}
       ]
     }
   ]

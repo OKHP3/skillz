@@ -15,6 +15,7 @@ from validate_en_us_to_fr_fr import (
     TARGET_LOCALE,
     load_json,
     load_supporting_controls,
+    resolve_control_path,
     validate_manifest,
 )
 
@@ -28,10 +29,18 @@ def sha256(path: Path) -> str:
 
 
 def resolve_root(base_dir: Path, raw_root: str, label: str) -> Path:
-    candidate = Path(raw_root)
-    if candidate.is_absolute() or ".." in candidate.parts:
-        raise ValueError(f"{label} must be a relative path without '..': {raw_root}")
-    return (base_dir / candidate).resolve()
+    errors: List[str] = []
+    resolved = resolve_control_path(base_dir, raw_root, label, errors)
+    if resolved is None:
+        raise ValueError("; ".join(errors))
+    return resolved
+
+
+def require_contained_artifact(path: Path, root: Path, label: str) -> None:
+    try:
+        path.resolve().relative_to(root)
+    except (OSError, RuntimeError, ValueError):
+        raise ValueError(f"{label} must resolve within its declared root: {path}")
 
 
 def build_plan(project: Dict[str, Any], base_dir: Path, voice_profile: Dict[str, Any], dictionary: Dict[str, Any]) -> Dict[str, Any]:
@@ -50,6 +59,8 @@ def build_plan(project: Dict[str, Any], base_dir: Path, voice_profile: Dict[str,
     for source_path in source_files:
         relative = source_path.relative_to(source_root)
         target_path = target_root / relative
+        require_contained_artifact(source_path, source_root, "source artifact")
+        require_contained_artifact(target_path, target_root, "target artifact")
         entry: Dict[str, Any] = {
             "source_path": str(source_path.relative_to(base_dir)),
             "target_path": str(target_path.relative_to(base_dir)),

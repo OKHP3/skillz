@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-10-22T04:00:04.158Z",
+  "generatedAt": "2026-11-26T06:15:15.465Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
-  "sourceRef": "codex/knowledge-operations-closeout",
-  "sourceCommit": "4e2836de",
-  "skillCount": 333,
+  "sourceRef": "main",
+  "sourceCommit": "834d4330",
+  "skillCount": 367,
   "familyCount": 22,
   "maturityCounts": {
-    "draftable": 264,
-    "skeleton": 64,
+    "draftable": 297,
+    "skeleton": 65,
     "usable": 5
   },
   "evidenceStatusCounts": {
     "historical": 7,
-    "not-run": 165,
-    "none": 110,
-    "local-checks": 37,
-    "analytical": 7,
-    "live": 7
+    "not-run": 194,
+    "none": 109,
+    "analytical": 12,
+    "local-checks": 36,
+    "live": 9
   },
   "capabilities": {
     "familyOrientationPages": true,

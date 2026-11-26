@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-equilibrium-review",
+  "skill_version": "1.0.1",
+  "review_date": "2026-10-21",
+  "review_type": "analytical-closeout",
+  "decision": "defer-for-evidence",
+  "evaluation_status": "not-run",
+  "scope": [
+    "portable skill contract",
+    "Python dry-run orchestrator",
+    "active/universal mirror parity",
+    "owner-approved thesis artifact"
+  ],
+  "checks": [
+    {
+      "id": "dry-run-output-integrity",
+      "status": "pass",
+      "evidence": "The corrected dry-run writes a JSON not-run result for every role output path."
+    },
+    {
+      "id": "foundry-validator-universal",
+      "status": "pass",
+      "evidence": "The Skill Foundry validator accepted the universal package."
+    },
+    {
+      "id": "foundry-validator-active",
+      "status": "pass",
+      "evidence": "The Skill Foundry validator accepted the project-local mirror."
+    },
+    {
+      "id": "mirror-parity",
+      "status": "pass",
+      "evidence": "SHA-256 comparison found no missing or mismatched mirrored files."
+    },
+    {
+      "id": "live-reviewer-quality",
+      "status": "not-run",
+      "evidence": "No external reviewer adapter or live provider was authorized or available."
+    },
+    {
+      "id": "unseen-holdout",
+      "status": "not-run",
+      "evidence": "No fresh external holdout run was available."
+    }
+  ],
+  "recursive_learning": {
+    "failed_attempt": "The first dry-run recorded role stdout paths that did not exist.",
+    "correction": "The runner now materializes explicit JSON not-run records at those paths.",
+    "retest": "A second dry-run produced the files and retained a conservative defer decision."
+  },
+  "limitations": [
+    "Analytical and local structural evidence does not establish live reviewer quality.",
+    "Generated catalog reconciliation remains with the existing catalog-drift workstream."
+  ]
+}

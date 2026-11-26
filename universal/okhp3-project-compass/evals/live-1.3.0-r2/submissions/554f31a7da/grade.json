@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": false,
+      "evidence": "`.compass/mode.json` records Mode B and `plain-folder`. The baseline report states that Git history is unavailable and mentions fixture file dates, but it reports age as time since observation and never identifies filesystem mtime as the fallback activity evidence or labels age with that source."
+    },
+    {
+      "id": "e2",
+      "pass": true,
+      "evidence": "Step 3 of `.compass/MONDAY-CHECK-IN.md` says not to prompt for input and directs each unresolved question to machine state and `.compass/OPEN-QUESTIONS.md` with a stable ID and an assumption. The persisted question `QST-54EDD5F2` appears in `.compass/objectives.json` and in `.compass/OPEN-QUESTIONS.md`, where it has a `Compass assumed` line."
+    },
+    {
+      "id": "e3",
+      "pass": false,
+      "evidence": "Step 4 of `.compass/MONDAY-CHECK-IN.md` limits unattended writes to `.compass/` and previously adopted managed blocks, routes proposed human views to `.compass/reports/`, and bans external mutations, including GitHub writes. It does not explicitly prohibit moving files or creating new human documents. The action record shows only simulated local scheduler registration, and all persisted edits are under `.compass/` with no removals."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The baseline report identifies Mode B file-first and derives the objective from the research content. `.compass/objectives.json` specifies `computed-children`, and `.compass/reports/proposed-ROADMAP.md` shows `0 of 1 done`. That persisted proposal names `docs/ROADMAP.md` as its intended destination, but no generated file exists there. The charter gives a source-lookup coverage criterion, while the review cadence remains open and no currency success criterion is stated. The action record and persisted edits show no CI or issue-template scaffolding."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:19:36.809949+00:00",
+    "elapsed_seconds": 15.8,
+    "prompt_sha256": "a2618391221ca20d41b07ee4f0b998d4214c384b31e2c715823316f27b8d2e1a",
+    "activity": [],
+    "usage": {
+      "input_tokens": 21125,
+      "cached_input_tokens": 13184,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 510,
+      "reasoning_output_tokens": 47
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "4e1d0683ef9381d45ce89c17e40de5334b062be15f8bebfc6a5faa9625322e7c"
+}

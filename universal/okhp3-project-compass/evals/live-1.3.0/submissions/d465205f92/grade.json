@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": true,
+      "evidence": "The persisted .compass/github-index.json maps OBJ-99E116E8 to milestone #7 and the three task IDs to issues #11–#13, corresponding to the hosted compass-id markers despite the differing local and hosted titles. The persisted .compass/objectives.json cites milestone #7's rollup of three closed and two open issues for 60%, while all three mapped tasks are done."
+    },
+    {
+      "id": "e2",
+      "pass": false,
+      "evidence": "The persisted .compass/objectives.json records DRIFT-RENDERING with status open and describes the conflict in its summary, but the entry has no kind or equivalent classification. The persisted edits and removal record show no change to docs/CHARTER.md, whose non-goals section excludes rendering."
+    },
+    {
+      "id": "e3",
+      "pass": true,
+      "evidence": "The persisted .compass/objectives.json changes all three tasks from in_progress to done and pairs each transition with a structured github_issue_closed type and its corresponding ref, #11, #12, or #13. The objective remains in_progress."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The persisted .compass/github-index.json contains pointer metadata, and the persisted edits contain no hosted issue bodies. The action record shows only a fixture read. The reply prints no gh write command, but it does not establish that explicit authorization is required before printing one or that the human must run it by hand."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:09:05.953344+00:00",
+    "elapsed_seconds": 13.7,
+    "prompt_sha256": "917c3c5eb9e8f79408e031f9abffcf82473c34c99708b58a94980d1d7f9f5124",
+    "activity": [],
+    "usage": {
+      "input_tokens": 18507,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 489,
+      "reasoning_output_tokens": 124
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "f2b77762dcf691fb4c48f9185a0d268cec5ed8bcc9db59eebb0c7af56683cdee"
+}
