@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-11-25: Local AI stack upgrade
+
+- Add `universal/okhp3-local-ai-stack-upgrade`, the distribution copy of the upgrade routine from the Mac Studio Local AI Workbench (canonical source: `OKHP3/mac-studio-local-ai-workbench`, `skills/okhp3-local-ai-stack-upgrade/`). It checks a single-host local AI stack against upstream release APIs, upgrades one container at a time with a database copy, a kept `NAME-prev` rollback and automatic rollback on a failed health check, verifies loopback and tailnet exposure, retires rollbacks after a soak, and scans docs for machine identifiers before publication.
+- Maturity is draftable. The five helper scripts pass 19 standard-library tests, including a simulated Docker run of every upgrade outcome; no live agent benchmark exists and the generalized container script has not yet run against a real Docker host. An installable bundle and receipt are published under `artifacts/skill-bundles/`.
+- The first Skillz Shield scan flagged the package's network use. The optional GitHub token header was removed, upstream lookups are now limited in code to `api.github.com` and `hub.docker.com`, and every network destination is declared in the skill. The final bytes then pass the Skillz Shield scan outright (both engines complete, no high or critical findings), so no review record was needed; the bundle receipt records that run.
+- Scanner findings were cleared at the source: network access is declared in the compatibility field, the description fits the 512-character limit, wording that read as self-modification was replaced, and every bundled reference resolves.
+- Codex review fixes: environment values with spaces can no longer reach the log, a failed recovery now reports `RESULT=FAIL` instead of `ROLLED_BACK`, and exposure verification fails when `lsof` or `docker ps` cannot run. Each has a regression test.
+
+## 2026-11-24: Project Compass 1.3.0
+
+- Added per-claim intent records, deterministic file views and a documented adapter contract. Hardened repository evidence collection, managed writes and validation. The package includes portable installation instructions, behavioral evaluation records and a standalone prompt.
+
+- Publish the installable package with a behavioral limit of supervised use. Final matched development scores were 8/12 with Compass and 2/12 without. The two critical cases remained below their required floors.
+- Hold operational rollout pending package security review. The [Skillz Shield run](https://github.com/OKHP3/skillz/actions/runs/45348185516) returned incomplete coverage and 13 high or critical findings on the distributed bytes. The bundle receipt records the scanned source revision.
+
+## 2026-11-20: Résumé Generator
+
+- Add `askjamie/okhp3-resume-generator`, the portable distribution of the AskJamie FoundRy skill for tailoring a résumé to one opening. It ships with intake prompts, templates, worked fictional examples and evaluation cases. The package ends at delivery of the draft to the candidate.
+
 ## 2026-11-19: Notion CRUDq family closeout
 
 - Record the previously unlogged 2026-09-03 addition of ten Notion skills
@@ -14,6 +33,17 @@
 - Add the ten skills to the `AGENTS.md` routing index and preserve the
   research memo, dependency graph, and review record under
   `docs/reviews/notion-crudq-family-2026-09/`.
+
+## 2026-11-17: AI workforce bench gate
+
+- Add draftable 0.2.0 guidance for assessing the learning and succession effects
+  of AI workforce redesign, with explicit task, feeder-evidence, mentoring,
+  economics and decision-scope contracts.
+- Preserve the historical 0.1.0 review and record independent source review,
+  adversarial findings, corrections and a single matched synthetic exercise.
+  The exercise is descriptive evidence, not an uplift or production claim.
+- Include seven development cases and 20 discovery design queries; refresh
+  the catalog to 357 distribution skills across 22 families.
 
 ## 2026-11-10: Record location reconciliation field observation
 
@@ -187,6 +217,28 @@
   repository-local support copy. Add eleven synthetic development cases and
   record an [analytical review](closeouts/session-handoff-0.3.0-review.json).
   Live runs and a protected holdout remain open.
+
+## 2026-11-09: career outreach skills
+
+- Add `okhp3-linkedin-message` and `okhp3-linkedin-browser-ops` to
+  `social-posting/`, and `okhp3-career-addendum`,
+  `okhp3-recruiter-legitimacy-check`, and `okhp3-network-referral-tracker` to
+  `universal/`. Each is a public-neutral, draftable package with synthetic
+  evaluations; evidence status is not-run, with no live benchmark or unseen
+  holdout recorded.
+- Refresh the distribution catalogs and manifest to 339 skills across 22
+  active families.
+
+## 2026-11-09: Bidirectional LinkedIn conversation reconciliation
+
+- Add `okhp3-linkedin-dm-reconcile` 1.0.1 as a draftable read-only source
+  candidate, separating incoming notifications from the full DM conversation.
+- Preserve account, opportunity and request identity, coverage gaps, explicit
+  commitments and distinct transmission/submission milestones.
+- Record separated analytical equilibrium reviews and targeted corrections;
+  live connector, matched benchmark and unseen holdout claims remain open.
+- Route an exact portable mirror into AskJamie Resume Representative without
+  duplicating the existing drafting, addendum or application-status workflows.
 
 ## 2026-10-25: explicit Notion destination roots
 

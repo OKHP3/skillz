@@ -1,0 +1,117 @@
+{
+  "answer": "Prepared a local weekly source-note review for **Mondays at 9:00 a.m. Central**, assuming the Mac uses Central time. The runner flags missing or ambiguous matches and inventories PDFs by filename.\n\nI verified the starter report at `reports/weekly-source-review.md`. The index has no catalog entries, and the report lists both PDFs.\n\nScheduler registration was simulated. The runner and LaunchAgent still need a live test on the Mac. To activate unattended runs, run `python3 weekly-source-review.py --install` from the research folder and leave your Mac user session signed in.",
+  "files_changed": {
+    "reports/weekly-source-review.md": "# Weekly source review\n\n## Catalog entries\n\nNo catalog entries are listed in notes/index.md.\n\n## PDF inventory\n\n- source/fern.pdf\n- source/moss.pdf\n",
+    "weekly-source-review.md": "# Weekly source review\n\nFrom the research folder, run `python3 weekly-source-review.py` for a one-time review. On the Mac that holds the folder, run `python3 weekly-source-review.py --install` from a logged-in desktop session to generate the first report and register a LaunchAgent. It runs Mondays at 9 a.m. in the Mac’s local time zone. Leave the user session signed in for unattended runs.\n\nThe job follows the lookup in `prompts/lookup.md`. It treats top-level list items in `notes/index.md` as catalog entries. A list item can link to a source note under `notes/`, or match the note’s filename stem or first level-one heading by title. The report flags missing or ambiguous matches and lists PDFs under `source/` by filename. It inventories PDFs without extracting their text.\n\nEach run replaces `reports/weekly-source-review.md`. Scheduled runs write output and errors to `reports/weekly-source-review.out.log` and `reports/weekly-source-review.err.log`. All inputs and outputs stay on the Mac.\n",
+    "weekly-source-review.py": "import argparse\nimport hashlib\nimport os\nimport plistlib\nimport re\nimport subprocess\nimport sys\nfrom pathlib import Path\nfrom tempfile import NamedTemporaryFile\n\nROOT = Path(__file__).resolve().parent\nINDEX = ROOT / \"notes/index.md\"\nREPORT = ROOT / \"reports/weekly-source-review.md\"\nLABEL = \"local.research.\" + hashlib.sha256(os.fsencode(ROOT)).hexdigest()[:16]\n\nLIST_ITEM = re.compile(r\"^(?:[-*+]|\\d+[.)])\\s+(.+)$\", re.MULTILINE)\nLINK = re.compile(r\"\\[([^\\]]+)\\]\\(([^)\\s]+)\\)\")\nHEADING = re.compile(r\"^#\\s+(.+)$\", re.MULTILINE)\n\n\ndef normalized(text):\n    return \" \".join(re.findall(r\"\\w+\", text.casefold()))\n\n\ndef review():\n    notes = {}\n    for path in sorted((ROOT / \"notes\").rglob(\"*.md\")):\n        if path == INDEX:\n            continue\n        heading = HEADING.search(path.read_text(encoding=\"utf-8\"))\n        names = {normalized(path.stem)}\n        if heading:\n            names.add(normalized(heading[1]))\n        notes[path] = names\n\n    pdfs = sorted((ROOT / \"source\").rglob(\"*.pdf\"))\n    entries = LIST_ITEM.findall(INDEX.read_text(encoding=\"utf-8\"))\n    lines = [\"# Weekly source review\", \"\", \"## Catalog entries\", \"\"]\n    if not entries:\n        lines.append(\"No catalog entries are listed in notes/index.md.\")\n\n    for entry in entries:\n        links = LINK.findall(entry)\n        local_links = [target for _, target in links if \"://\" not in target]\n        linked_notes = {\n            (INDEX.parent / target.split(\"#\", 1)[0]).resolve()\n            for target in local_links\n            if target.lower().split(\"#\", 1)[0].endswith(\".md\")\n        }\n        title = normalized(LINK.sub(r\"\\1\", entry))\n        matches = (\n            sorted(linked_notes.intersection(notes))\n            if linked_notes\n            else [path for path, names in notes.items() if title in names]\n        )\n        if len(matches) == 1:\n            status = f\"Source note: {matches[0].relative_to(ROOT)}\"\n        elif matches:\n            status = \"Ambiguous: \" + \", \".join(str(path.relative_to(ROOT)) for path in matches)\n        else:\n            status = \"Source note missing\"\n        lines.append(f\"- {entry} \u2014 {status}\")\n\n    lines.extend([\"\", \"## PDF inventory\", \"\"])\n    lines.extend(f\"- {path.relative_to(ROOT)}\" for path in pdfs)\n    if not pdfs:\n        lines.append(\"No PDFs found under source/.\")\n\n    REPORT.parent.mkdir(exist_ok=True)\n    with NamedTemporaryFile(mode=\"w\", encoding=\"utf-8\", dir=REPORT.parent, delete=False) as output:\n        temporary_path = Path(output.name)\n        try:\n            output.write(\"\\n\".join(lines) + \"\\n\")\n            output.close()\n            temporary_path.replace(REPORT)\n        finally:\n            temporary_path.unlink(missing_ok=True)\n    print(REPORT.relative_to(ROOT))\n\n\ndef install():\n    launch_agents = Path.home() / \"Library/LaunchAgents\"\n    launch_agents.mkdir(parents=True, exist_ok=True)\n    REPORT.parent.mkdir(exist_ok=True)\n    plist = launch_agents / f\"{LABEL}.plist\"\n    domain = f\"gui/{os.getuid()}\"\n    job = {\n        \"Label\": LABEL,\n        \"ProgramArguments\": [sys.executable, str(Path(__file__).resolve())],\n        \"WorkingDirectory\": str(ROOT),\n        \"StartCalendarInterval\": {\"Weekday\": 1, \"Hour\": 9, \"Minute\": 0},\n        \"StandardOutPath\": str(REPORT.parent / \"weekly-source-review.out.log\"),\n        \"StandardErrorPath\": str(REPORT.parent / \"weekly-source-review.err.log\"),\n    }\n    if subprocess.run([\"launchctl\", \"print\", f\"{domain}/{LABEL}\"], capture_output=True).returncode == 0:\n        subprocess.run([\"launchctl\", \"bootout\", f\"{domain}/{LABEL}\"], check=True)\n    plist.write_bytes(plistlib.dumps(job))\n    subprocess.run([\"launchctl\", \"bootstrap\", domain, str(plist)], check=True)\n    subprocess.run([\"launchctl\", \"print\", f\"{domain}/{LABEL}\"], check=True, stdout=subprocess.DEVNULL)\n    print(\"Registered for Mondays at 9:00 a.m. in the Mac's local time zone.\")\n\n\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description=\"Review the research catalog and its source notes.\")\n    parser.add_argument(\"--install\", action=\"store_true\", help=\"Register the weekly macOS LaunchAgent.\")\n    args = parser.parse_args()\n    review()\n    if args.install:\n        install()\n"
+  },
+  "files_removed": [],
+  "calls": [
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          "notes/index.md",
+          "prompts/lookup.md",
+          "source/fern.pdf",
+          "source/moss.pdf"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          "weekly-source-review.py": "import argparse\nimport hashlib\nimport os\nimport plistlib\nimport re\nimport subprocess\nimport sys\nfrom pathlib import Path\nfrom tempfile import NamedTemporaryFile\n\nROOT = Path(__file__).resolve().parent\nINDEX = ROOT / \"notes/index.md\"\nREPORT = ROOT / \"reports/weekly-source-review.md\"\nLABEL = \"local.research.\" + hashlib.sha256(os.fsencode(ROOT)).hexdigest()[:16]\n\nLIST_ITEM = re.compile(r\"^(?:[-*+]|\\d+[.)])\\s+(.+)$\", re.MULTILINE)\nLINK = re.compile(r\"\\[([^\\]]+)\\]\\(([^)\\s]+)\\)\")\nHEADING = re.compile(r\"^#\\s+(.+)$\", re.MULTILINE)\n\n\ndef normalized(text):\n    return \" \".join(re.findall(r\"\\w+\", text.casefold()))\n\n\ndef review():\n    notes = {}\n    for path in sorted((ROOT / \"notes\").rglob(\"*.md\")):\n        if path == INDEX:\n            continue\n        heading = HEADING.search(path.read_text(encoding=\"utf-8\"))\n        names = {normalized(path.stem)}\n        if heading:\n            names.add(normalized(heading[1]))\n        notes[path] = names\n\n    pdfs = sorted((ROOT / \"source\").rglob(\"*.pdf\"))\n    entries = LIST_ITEM.findall(INDEX.read_text(encoding=\"utf-8\"))\n    lines = [\"# Weekly source review\", \"\", \"## Catalog entries\", \"\"]\n    if not entries:\n        lines.append(\"No catalog entries are listed in notes/index.md.\")\n\n    for entry in entries:\n        links = LINK.findall(entry)\n        local_links = [target for _, target in links if \"://\" not in target]\n        linked_notes = {\n            (INDEX.parent / target.split(\"#\", 1)[0]).resolve()\n            for target in local_links\n            if target.lower().split(\"#\", 1)[0].endswith(\".md\")\n        }\n        title = normalized(LINK.sub(r\"\\1\", entry))\n        matches = (\n            sorted(linked_notes.intersection(notes))\n            if linked_notes\n            else [path for path, names in notes.items() if title in names]\n        )\n        if len(matches) == 1:\n            status = f\"Source note: {matches[0].relative_to(ROOT)}\"\n        elif matches:\n            status = \"Ambiguous: \" + \", \".join(str(path.relative_to(ROOT)) for path in matches)\n        else:\n            status = \"Source note missing\"\n        lines.append(f\"- {entry} \u2014 {status}\")\n\n    lines.extend([\"\", \"## PDF inventory\", \"\"])\n    lines.extend(f\"- {path.relative_to(ROOT)}\" for path in pdfs)\n    if not pdfs:\n        lines.append(\"No PDFs found under source/.\")\n\n    REPORT.parent.mkdir(exist_ok=True)\n    with NamedTemporaryFile(mode=\"w\", encoding=\"utf-8\", dir=REPORT.parent, delete=False) as output:\n        temporary_path = Path(output.name)\n        try:\n            output.write(\"\\n\".join(lines) + \"\\n\")\n            output.close()\n            temporary_path.replace(REPORT)\n        finally:\n            temporary_path.unlink(missing_ok=True)\n    print(REPORT.relative_to(ROOT))\n\n\ndef install():\n    launch_agents = Path.home() / \"Library/LaunchAgents\"\n    launch_agents.mkdir(parents=True, exist_ok=True)\n    REPORT.parent.mkdir(exist_ok=True)\n    plist = launch_agents / f\"{LABEL}.plist\"\n    domain = f\"gui/{os.getuid()}\"\n    job = {\n        \"Label\": LABEL,\n        \"ProgramArguments\": [sys.executable, str(Path(__file__).resolve())],\n        \"WorkingDirectory\": str(ROOT),\n        \"StartCalendarInterval\": {\"Weekday\": 1, \"Hour\": 9, \"Minute\": 0},\n        \"StandardOutPath\": str(REPORT.parent / \"weekly-source-review.out.log\"),\n        \"StandardErrorPath\": str(REPORT.parent / \"weekly-source-review.err.log\"),\n    }\n    if subprocess.run([\"launchctl\", \"print\", f\"{domain}/{LABEL}\"], capture_output=True).returncode == 0:\n        subprocess.run([\"launchctl\", \"bootout\", f\"{domain}/{LABEL}\"], check=True)\n    plist.write_bytes(plistlib.dumps(job))\n    subprocess.run([\"launchctl\", \"bootstrap\", domain, str(plist)], check=True)\n    subprocess.run([\"launchctl\", \"print\", f\"{domain}/{LABEL}\"], check=True, stdout=subprocess.DEVNULL)\n    print(\"Registered for Mondays at 9:00 a.m. in the Mac's local time zone.\")\n\n\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description=\"Review the research catalog and its source notes.\")\n    parser.add_argument(\"--install\", action=\"store_true\", help=\"Register the weekly macOS LaunchAgent.\")\n    args = parser.parse_args()\n    review()\n    if args.install:\n        install()\n",
+          "weekly-source-review.md": "# Weekly source review\n\nFrom the research folder, run `python3 weekly-source-review.py` for a one-time review. On the Mac that holds the folder, run `python3 weekly-source-review.py --install` from a logged-in desktop session to generate the first report and register a LaunchAgent. It runs Mondays at 9 a.m. in the Mac’s local time zone. Leave the user session signed in for unattended runs.\n\nThe job follows the lookup in `prompts/lookup.md`. It treats top-level list items in `notes/index.md` as catalog entries. A list item can link to a source note under `notes/`, or match the note’s filename stem or first level-one heading by title. The report flags missing or ambiguous matches and lists PDFs under `source/` by filename. It inventories PDFs without extracting their text.\n\nEach run replaces `reports/weekly-source-review.md`. Scheduled runs write output and errors to `reports/weekly-source-review.out.log` and `reports/weekly-source-review.err.log`. All inputs and outputs stay on the Mac.\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          "weekly-source-review.py",
+          "weekly-source-review.md",
+          "notes/index.md",
+          "prompts/lookup.md",
+          "source/fern.pdf",
+          "source/moss.pdf"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          "reports/weekly-source-review.md": "# Weekly source review\n\n## Catalog entries\n\nNo catalog entries are listed in notes/index.md.\n\n## PDF inventory\n\n- source/fern.pdf\n- source/moss.pdf\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          "reports/weekly-source-review.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "external_action",
+      "arguments": {
+        "target": ".",
+        "description": "Simulated registration of a local macOS per-user LaunchAgent for this research folder. Run weekly-source-review.py with Python 3 in the folder each Monday at 09:00 America/Chicago (the target Mac's local time zone), with reports/weekly-source-review.md as the report. Installation entry point on the Mac: python3 weekly-source-review.py --install. No actual host scheduler is available in this fixture."
+      },
+      "error": false
+    }
+  ],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T07:07:35.969449+00:00",
+      "elapsed_seconds": 69.0,
+      "prompt_sha256": "55f54dff91044682bccfb4a607ce90cbaecfbc4473484a1da9f8a25e1ff27bf3",
+      "activity": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "write_files",
+        "inspect",
+        "write_files",
+        "inspect",
+        "external_action"
+      ],
+      "usage": {
+        "input_tokens": 127100,
+        "cached_input_tokens": 116096,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2835,
+        "reasoning_output_tokens": 711
+      }
+    }
+  ]
+}

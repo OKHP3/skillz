@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": true,
+      "evidence": "The reply opens with “Ship opt-in SMS pickup reminders at Alder Branch only” and says the owner deferred the other branches."
+    },
+    {
+      "id": "e2",
+      "pass": false,
+      "evidence": "The BP-4 row marks the task “Done” and cites an enrolled handset receiving the reminder in the Alder pilot environment. The row omits the run identifier AL-18, which appears in the linked pilot log."
+    },
+    {
+      "id": "e3",
+      "pass": true,
+      "evidence": "The BP-5 row marks the task “Blocked” and says the service desk needs to unlock the Alder training account so staff can complete the desk rehearsal."
+    },
+    {
+      "id": "e4",
+      "pass": true,
+      "evidence": "The paragraph after the task table directs the reader to record both statuses in tasks.md, states that status sync is disabled, and explains that FableDesk is retained for code review and reference."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:10:21.599542+00:00",
+    "elapsed_seconds": 9.6,
+    "prompt_sha256": "503e128f84ae351361b1fc564085851ebf94da335d3dc1d905c077baedb426f7",
+    "activity": [],
+    "usage": {
+      "input_tokens": 15766,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 298,
+      "reasoning_output_tokens": 49
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "3e2e946396b0fa416994e16dafb7a9861de5a58105ce3055c89c17a0a478bcbb"
+}

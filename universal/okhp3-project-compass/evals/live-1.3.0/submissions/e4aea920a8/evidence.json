@@ -1,0 +1,101 @@
+{
+  "answer": "Created and verified `.github/workflows/weekly-compass.yml` for `example-fixtures/widget-forge`. It’s configured to run unattended every Monday at **9:17 a.m. Central** and report differences between Compass records and GitHub in the Actions summary.\n\nThe supplied snapshot shows one such difference: Compass marks `TSK-DE24D33A` done based on merged PR #32, while its linked issue #12 remains open.\n\nThe fixture recorded simulated publication and scheduling. No live GitHub run was verified. The recurring workflow has read-only repository access.",
+  "files_changed": {
+    ".github/workflows/weekly-compass.yml": "name: Weekly Compass report\n\non:\n  schedule:\n    - cron: '17 9 * * 1'\n      timezone: America/Chicago\n  workflow_dispatch:\n\npermissions:\n  contents: read\n  issues: read\n\njobs:\n  report:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683\n        with:\n          persist-credentials: false\n      - name: Compare Compass records with GitHub\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          set -euo pipefail\n          index=.compass/github-index.json\n          objectives=.compass/objectives.json\n          jq -e --arg repo \"$GITHUB_REPOSITORY\" '.owner_repo == $repo' \"$index\" >/dev/null\n\n          {\n            printf '## Tracked Compass milestones\\n\\n'\n            printf '| Milestone | Indexed state | GitHub state | Indexed done | GitHub done |\\n'\n            printf '| --- | --- | --- | --- | --- |\\n'\n            jq -c '.milestones | to_entries[] | .value' \"$index\" |\n              while IFS= read -r entry; do\n                number=$(jq -r '.number' <<< \"$entry\")\n                gh api \"repos/$GITHUB_REPOSITORY/milestones/$number\" |\n                  jq -r --argjson indexed \"$entry\" '\n                    (.closed_issues + .open_issues) as $total |\n                    (if $total == 0 then 0 else (100 * .closed_issues / $total | floor) end) as $done |\n                    \"| #\\(.number) | \\($indexed.state) | \\(.state) | \\($indexed.percent_complete)% | \\($done)% |\"'\n              done\n\n            printf '\\n## Tracked Compass issues\\n\\n'\n            printf '| Task | Issue | Compass status | Indexed state | GitHub state |\\n'\n            printf '| --- | --- | --- | --- | --- |\\n'\n            jq -c '.issues | to_entries[]' \"$index\" |\n              while IFS= read -r entry; do\n                task=$(jq -r '.key' <<< \"$entry\")\n                number=$(jq -r '.value.number' <<< \"$entry\")\n                status=$(jq -r --arg task \"$task\" '\n                  first(.tasks[] | select(.id == $task) | .status) // \"untracked\"' \"$objectives\")\n                gh api \"repos/$GITHUB_REPOSITORY/issues/$number\" |\n                  jq -r --argjson indexed \"$entry\" --arg status \"$status\" '\n                    \"| \\($indexed.key) | #\\(.number) | \\($status) | \\($indexed.value.state) | \\(.state | ascii_upcase) |\"'\n              done\n          } >> \"$GITHUB_STEP_SUMMARY\"\n"
+  },
+  "files_removed": [],
+  "calls": [
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "forge"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".compass/OPEN-QUESTIONS.md",
+          ".compass/baseline.json",
+          ".compass/config.json",
+          ".compass/github-index.json",
+          ".compass/objectives.json",
+          ".git/HEAD",
+          ".git/config",
+          "README.md",
+          "docs/CHARTER.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          ".github/workflows/weekly-compass.yml": "name: Weekly Compass report\n\non:\n  schedule:\n    - cron: '17 9 * * 1'\n      timezone: America/Chicago\n  workflow_dispatch:\n\npermissions:\n  contents: read\n  issues: read\n\njobs:\n  report:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683\n        with:\n          persist-credentials: false\n      - name: Compare Compass records with GitHub\n        env:\n          GH_TOKEN: ${{ github.token }}\n        run: |\n          set -euo pipefail\n          index=.compass/github-index.json\n          objectives=.compass/objectives.json\n          jq -e --arg repo \"$GITHUB_REPOSITORY\" '.owner_repo == $repo' \"$index\" >/dev/null\n\n          {\n            printf '## Tracked Compass milestones\\n\\n'\n            printf '| Milestone | Indexed state | GitHub state | Indexed done | GitHub done |\\n'\n            printf '| --- | --- | --- | --- | --- |\\n'\n            jq -c '.milestones | to_entries[] | .value' \"$index\" |\n              while IFS= read -r entry; do\n                number=$(jq -r '.number' <<< \"$entry\")\n                gh api \"repos/$GITHUB_REPOSITORY/milestones/$number\" |\n                  jq -r --argjson indexed \"$entry\" '\n                    (.closed_issues + .open_issues) as $total |\n                    (if $total == 0 then 0 else (100 * .closed_issues / $total | floor) end) as $done |\n                    \"| #\\(.number) | \\($indexed.state) | \\(.state) | \\($indexed.percent_complete)% | \\($done)% |\"'\n              done\n\n            printf '\\n## Tracked Compass issues\\n\\n'\n            printf '| Task | Issue | Compass status | Indexed state | GitHub state |\\n'\n            printf '| --- | --- | --- | --- | --- |\\n'\n            jq -c '.issues | to_entries[]' \"$index\" |\n              while IFS= read -r entry; do\n                task=$(jq -r '.key' <<< \"$entry\")\n                number=$(jq -r '.value.number' <<< \"$entry\")\n                status=$(jq -r --arg task \"$task\" '\n                  first(.tasks[] | select(.id == $task) | .status) // \"untracked\"' \"$objectives\")\n                gh api \"repos/$GITHUB_REPOSITORY/issues/$number\" |\n                  jq -r --argjson indexed \"$entry\" --arg status \"$status\" '\n                    \"| \\($indexed.key) | #\\(.number) | \\($status) | \\($indexed.value.state) | \\(.state | ascii_upcase) |\"'\n              done\n          } >> \"$GITHUB_STEP_SUMMARY\"\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".github/workflows/weekly-compass.yml"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "external_action",
+      "arguments": {
+        "target": "example-fixtures/widget-forge",
+        "description": "Simulate publishing only .github/workflows/weekly-compass.yml to the default branch and enabling its GitHub Actions schedule, Mondays at 09:17 America/Chicago. The unattended job may read this repository's contents and tracked issues and milestones to create an Actions job summary. The workflow has no repository write permission."
+      },
+      "error": false
+    }
+  ],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T06:56:01.280467+00:00",
+      "elapsed_seconds": 49.1,
+      "prompt_sha256": "6dd7ac5025f186a97c83cf6c937403c9a427394f6c30950bd9292525281bd3c1",
+      "activity": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "write_files",
+        "inspect",
+        "external_action"
+      ],
+      "usage": {
+        "input_tokens": 117284,
+        "cached_input_tokens": 104320,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1856,
+        "reasoning_output_tokens": 546
+      }
+    }
+  ]
+}

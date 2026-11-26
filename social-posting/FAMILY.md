@@ -1,9 +1,9 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 39
+skill_count: 41
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-20T04:30:29Z
+generated_at: 2026-11-26T06:14:47Z
 ---
 
 # social-posting
@@ -116,10 +116,10 @@ Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
 Telegram.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (39)
+## Skills (41)
 
 <!-- FAMILY_INVENTORY_START -->
-*39 skills &nbsp;·&nbsp; inventory last updated: **November 20, 2026 at 04:30 UTC***
+*41 skills &nbsp;·&nbsp; inventory last updated: **November 26, 2026 at 06:14 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -133,9 +133,11 @@ Telegram.
 | [okhp3-kofi-post](okhp3-kofi-post/SKILL.md) | Draft a Ko-fi post for a supplied audience and post form. Use when the user needs a public or sup... | 1.1.0 |
 | [okhp3-kofi-supporter-reply](okhp3-kofi-supporter-reply/SKILL.md) | Draft a private, privacy-preserving Ko-fi reply to a supplied supporter message. Use when the use... | 1.1.0 |
 | [okhp3-linkedin-angles](okhp3-linkedin-angles/SKILL.md) | Mine finished work, repository history, or a current conversation for 3 to 5 evidence-linked Link... | 2.3.0 |
+| [okhp3-linkedin-browser-ops](okhp3-linkedin-browser-ops/SKILL.md) | Carry out already-approved LinkedIn actions through a browser pane: send a direct message, post a... | 1.0.0 |
 | [okhp3-linkedin-carousel](okhp3-linkedin-carousel/SKILL.md) | Plan and build a LinkedIn document carousel (a multi-page PDF shown as swipeable pages) that acco... | 1.0.0 |
 | [okhp3-linkedin-comment](okhp3-linkedin-comment/SKILL.md) | Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to resp... | 1.2.1 |
 | [okhp3-linkedin-connection-note](okhp3-linkedin-connection-note/SKILL.md) | Draft one personalized LinkedIn connection request note per recipient, within the sender's charac... | 1.0.0 |
+| [okhp3-linkedin-dm-reconcile](okhp3-linkedin-dm-reconcile/SKILL.md) | Reconcile LinkedIn email notifications with sent and received direct messages. Use when the user ... | 1.0.1 |
 | [okhp3-linkedin-inbox-triage](okhp3-linkedin-inbox-triage/SKILL.md) | Check a LinkedIn inbox for new replies from a supplied outreach list, classify each sender, and p... | 1.0.0 |
 | [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.1.0 |
 | [okhp3-linkedin-network-plan](okhp3-linkedin-network-plan/SKILL.md) | Plan a LinkedIn network expansion: audit followed-but-unconnected accounts, segment and tier targ... | 1.0.0 |

@@ -1,0 +1,538 @@
+{
+  "answer": "Completed the Widget Forge check-in against the October 19 baseline in GitHub-backed Mode A. I used the supplied snapshot for `example-fixtures/widget-forge`.\n\n- **Progress.** PRs #21, #22, and #23 were merged. Issues #11, #12, and #13 were closed, so their matching Compass tasks moved to done. Milestone #7 rose from 0% to 60% (3 of 5 issues closed). The dimensional-checks objective remains in progress.\n- **Scope drift.** PR #23 added `src/render.py` even though the README and charter exclude rendering. I logged the contradiction and left the scope decision open. Rendering remains outside the declared scope. The project’s vision, mission, and success criteria are still undocumented.\n- **Local records.** I saved the [delta report](.compass/reports/delta-run-20261124-widget-forge.md), updated the tracker and pointer mirror, and saved a fresh baseline, run receipt, and history entry. No GitHub changes were made.\n\n**Validation passed at 98/100 (band A).** The snapshot lacked event dates and the metadata required to verify a complete GitHub pull. The prior baseline lacked file checksums, so file-level changes since October 19 could not be independently verified.",
+  "files_changed": {
+    ".compass/OPEN-QUESTIONS.md": "# Open questions\n\n<!-- compass:begin:scope -->\n## QST-BC16A238 Should rendering become an explicit project goal?\n\nOpen. PR #23 added `src/render.py`. The README and charter exclude rendering. Rendering remains outside the declared scope pending an owner decision.\n<!-- compass:end:scope -->\n",
+    ".compass/RUN-HISTORY.md": "# Compass run history\n\nThe saved state and partial baseline indicate one prior run on 2026-10-19. Its receipt and report are unavailable. The table counts runs with saved receipts.\n\n| run | mode | objectives | done | in progress | blocked | drift open | score | summary | report |\n|---|---|---|---|---|---|---|---|---|---|\n| run-20261124-widget-forge | reassess | 1 | 3 | 1 | 0 | 2 | 98 | Three issue closures reconciled, milestone #7 at 60%, rendering contradiction open. | .compass/reports/delta-run-20261124-widget-forge.md |\n",
+    ".compass/baseline.json": "{\n  \"file_count\": 3,\n  \"files\": {\n    \"README.md\": {\n      \"bytes\": 97,\n      \"sha\": \"a854a368c4d317dc\"\n    },\n    \"docs/CHARTER.md\": {\n      \"bytes\": 428,\n      \"sha\": \"0d452c3338b043a6\"\n    },\n    \"src/render.py\": {\n      \"bytes\": 31,\n      \"sha\": \"95a81091c8a4ee48\"\n    }\n  },\n  \"generated_at\": \"2026-11-24\",\n  \"git_head\": null,\n  \"git_last_commit\": null,\n  \"nested_repos\": [],\n  \"root_basename\": \"project\",\n  \"schema\": \"okhp3.compass.baseline/1\",\n  \"truncated\": false,\n  \"previous_baseline\": {\n    \"captured_at\": \"2026-10-19\",\n    \"files\": {},\n    \"note\": \"Prior evidence inventory was partial.\"\n  }\n}\n",
+    ".compass/config.json": "{\n  \"project_key\": \"widget-forge\",\n  \"github\": {\n    \"enabled\": true,\n    \"owner_repo\": \"example-fixtures/widget-forge\"\n  },\n  \"thresholds\": {\n    \"stale_doc_days\": 120,\n    \"stale_objective_days\": 60,\n    \"abandoned_objective_days\": 180\n  },\n  \"schema\": \"okhp3.compass.state/1\",\n  \"human_artifacts\": {\n    \"charter\": \"docs/CHARTER.md\",\n    \"open_questions\": \".compass/OPEN-QUESTIONS.md\",\n    \"run_history\": \".compass/RUN-HISTORY.md\"\n  },\n  \"mode\": {\n    \"detected\": \"A\",\n    \"locked\": false\n  }\n}\n",
+    ".compass/github-index.json": "{\n  \"schema\": \"okhp3.compass.github-index/1\",\n  \"owner_repo\": \"example-fixtures/widget-forge\",\n  \"project_key\": \"widget-forge\",\n  \"source\": \"fixture\",\n  \"observed_at\": \"2026-11-24\",\n  \"complete\": false,\n  \"counts\": {\n    \"issues\": 3,\n    \"milestones\": 2\n  },\n  \"issues\": {\n    \"TSK-799E1F5F\": {\n      \"number\": 11,\n      \"title\": \"Hosted work unit 1\",\n      \"state\": \"closed\",\n      \"labels\": [],\n      \"milestone_number\": 7,\n      \"url\": \"https://github.com/example-fixtures/widget-forge/issues/11\"\n    },\n    \"TSK-DE24D33A\": {\n      \"number\": 12,\n      \"title\": \"Hosted work unit 2\",\n      \"state\": \"closed\",\n      \"labels\": [],\n      \"milestone_number\": 7,\n      \"url\": \"https://github.com/example-fixtures/widget-forge/issues/12\"\n    },\n    \"TSK-E6015390\": {\n      \"number\": 13,\n      \"title\": \"Hosted work unit 3\",\n      \"state\": \"closed\",\n      \"labels\": [],\n      \"milestone_number\": 7,\n      \"url\": \"https://github.com/example-fixtures/widget-forge/issues/13\"\n    }\n  },\n  \"milestones\": {\n    \"OBJ-99E116E8\": {\n      \"number\": 7,\n      \"title\": \"Dimensional checks\",\n      \"state\": \"open\",\n      \"open_issues\": 2,\n      \"closed_issues\": 3,\n      \"percent_complete\": 60,\n      \"url\": \"https://github.com/example-fixtures/widget-forge/milestone/7\"\n    }\n  },\n  \"unmatched_remote\": {\n    \"issues\": [],\n    \"milestones\": [\n      {\n        \"number\": 8,\n        \"title\": \"Follow-up batch\",\n        \"state\": \"open\",\n        \"open_issues\": 0,\n        \"closed_issues\": 0,\n        \"percent_complete\": null,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/milestone/8\",\n        \"action\": \"adopt-or-ignore\"\n      }\n    ]\n  },\n  \"unmatched_local\": [],\n  \"anomalies\": {}\n}\n",
+    ".compass/github-pull-status.json": "{\n  \"ready\": false,\n  \"reason\": \"Supplied hosted snapshot lacks repository and completeness metadata required for a verified complete pull.\",\n  \"observed_at\": \"2026-11-24\"\n}\n",
+    ".compass/mode.json": "{\n  \"detected\": \"A\",\n  \"sub_case\": \"github-origin\",\n  \"owner_repo\": \"example-fixtures/widget-forge\",\n  \"history\": [\n    {\n      \"mode\": \"A\",\n      \"at\": \"2026-10-19\",\n      \"to\": \"A\",\n      \"from\": null\n    }\n  ],\n  \"confidence\": \"high\",\n  \"evidence\": [\n    {\n      \"ref\": \".git/config\",\n      \"signal\": \"origin\",\n      \"value\": \"https://github.com/example-fixtures/widget-forge.git\"\n    },\n    {\n      \"ref\": \".git/HEAD\",\n      \"signal\": \"symbolic-head\",\n      \"value\": \"refs/heads/main\"\n    },\n    {\n      \"ref\": \".compass/config.json\",\n      \"signal\": \"configured-repository\",\n      \"value\": \"example-fixtures/widget-forge\"\n    }\n  ],\n  \"github_api\": {\n    \"usable\": false,\n    \"reason\": \"Fixture snapshot only. Live gh authentication unavailable.\"\n  },\n  \"observed_at\": \"2026-11-24\"\n}\n",
+    ".compass/objectives.json": "{\n  \"schema\": \"okhp3.compass.objectives/1\",\n  \"project_key\": \"widget-forge\",\n  \"runs\": 1,\n  \"mode\": {\n    \"detected\": \"A\",\n    \"sub_case\": \"github-origin\",\n    \"owner_repo\": \"example-fixtures/widget-forge\",\n    \"history\": [\n      {\n        \"mode\": \"A\",\n        \"at\": \"2026-10-19\",\n        \"to\": \"A\",\n        \"from\": null\n      }\n    ],\n    \"confidence\": \"high\",\n    \"evidence\": [\n      {\n        \"ref\": \".git/config\",\n        \"signal\": \"origin\",\n        \"value\": \"https://github.com/example-fixtures/widget-forge.git\"\n      },\n      {\n        \"ref\": \".git/HEAD\",\n        \"signal\": \"symbolic-head\",\n        \"value\": \"refs/heads/main\"\n      },\n      {\n        \"ref\": \".compass/config.json\",\n        \"signal\": \"configured-repository\",\n        \"value\": \"example-fixtures/widget-forge\"\n      }\n    ],\n    \"github_api\": {\n      \"usable\": false,\n      \"reason\": \"Fixture snapshot only. Live gh authentication unavailable.\"\n    },\n    \"observed_at\": \"2026-11-24\"\n  },\n  \"objectives\": [\n    {\n      \"id\": \"OBJ-99E116E8\",\n      \"title_hash\": \"99E116E8\",\n      \"title\": \"Check pack dimensions\",\n      \"status\": \"in_progress\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"GitHub milestone #7\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Open with 3 closed and 2 open issues in the supplied snapshot.\"\n        }\n      ],\n      \"confidence\": \"declared\",\n      \"source\": \"README.md\",\n      \"percent_complete\": 60,\n      \"percent_source\": \"github-milestone\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"milestone_number\": 7,\n        \"issue_number\": null,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/milestone/7\",\n        \"state\": \"open\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"id\": \"TSK-799E1F5F\",\n      \"title_hash\": \"799E1F5F\",\n      \"title\": \"Read dimensions\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#11\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 11,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/11\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    },\n    {\n      \"id\": \"TSK-DE24D33A\",\n      \"title_hash\": \"DE24D33A\",\n      \"title\": \"Validate units\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#12\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 12,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/12\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    },\n    {\n      \"id\": \"TSK-E6015390\",\n      \"title_hash\": \"E6015390\",\n      \"title\": \"Check tolerances\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#13\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 13,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/13\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    }\n  ],\n  \"open_questions\": [\n    {\n      \"id\": \"QST-BC16A238\",\n      \"title\": \"Should rendering become an explicit project goal?\",\n      \"status\": \"open\",\n      \"blocking\": false,\n      \"asked_at\": \"2026-11-24\",\n      \"why_it_matters\": \"The renderer merged despite the documented non-goal.\",\n      \"assumption\": \"Rendering remains outside the declared scope pending an owner decision.\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"README.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"pr\",\n          \"ref\": \"#23\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"merged\",\n          \"merged\": true\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"src/render.py\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Widget preview rendering module present in the current fixture.\"\n        }\n      ]\n    }\n  ],\n  \"drift\": [\n    {\n      \"id\": \"DRF-43152320\",\n      \"kind\": \"contradiction\",\n      \"summary\": \"Merged PR #23 adds a rendering module despite the README and charter excluding rendering. The module has no adopted objective.\",\n      \"refs\": [\n        \"QST-BC16A238\",\n        \"README.md#non-goals\",\n        \"docs/CHARTER.md#non-goals\",\n        \"src/render.py\"\n      ],\n      \"evidence\": [\n        {\n          \"type\": \"pr\",\n          \"ref\": \"#23\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"merged\",\n          \"merged\": true\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"README.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"src/render.py\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Widget preview rendering module present in the current fixture.\"\n        }\n      ],\n      \"resolution\": \"open\",\n      \"first_seen_run\": \"run-20261124-widget-forge\"\n    },\n    {\n      \"id\": \"DRF-08FC0C42\",\n      \"kind\": \"sink_divergence\",\n      \"summary\": \"The snapshot shows three issues closed while the saved local tasks were in progress. The local statuses are reconciled to the matching issue closures.\",\n      \"refs\": [\n        \"TSK-799E1F5F\",\n        \"TSK-DE24D33A\",\n        \"TSK-E6015390\"\n      ],\n      \"evidence\": [\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#11\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#12\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#13\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"resolution\": \"open\",\n      \"first_seen_run\": \"run-20261124-widget-forge\"\n    }\n  ],\n  \"risks\": [],\n  \"legacy_run_count\": 1,\n  \"charter_ref\": \"docs/CHARTER.md\",\n  \"intent\": {\n    \"claims\": [\n      {\n        \"field\": \"purpose\",\n        \"text\": \"Widget Forge checks dimensions in widget packs.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"vision\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      },\n      {\n        \"field\": \"mission\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      },\n      {\n        \"field\": \"goal\",\n        \"text\": \"Check pack dimensions.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"non-goal\",\n        \"text\": \"Rendering is outside this project.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md#non-goals\",\n            \"observed_at\": \"2026-11-24\"\n          },\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"docs/CHARTER.md#non-goals\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"success-criterion\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      }\n    ]\n  },\n  \"last_run_id\": \"run-20261124-widget-forge\",\n  \"updated_at\": \"2026-11-24\"\n}\n",
+    ".compass/reports/delta-run-20261124-widget-forge.md": "# Widget Forge check-in, 2026-11-24\n\nRun run-20261124-widget-forge - reassess - since 2026-10-19\n\nMode A (GitHub-backed, github-origin, high confidence). The origin in `.git/config` matches the saved Mode A identity and configured project `example-fixtures/widget-forge`. The fixture has a symbolic HEAD, and usable Git history and live `gh` authentication were unavailable. Hosted evidence comes from the supplied snapshot. Its merge dates, closure dates, release data and full issue inventory are unavailable. The prior baseline is dated 2026-10-19 and has no file checksums. The current observation date is 2026-11-24.\n\nCompass validation scored 98/100, band A, gate PASS. All eleven checks ran. V11 warned that the offline pointer mirror requires a complete, identity-checked pull before planning.\n\n## Executive summary\n\n- Three tracked tasks moved from in progress to done. Issues #11, #12 and #13 are closed and match the saved Compass identifiers.\n- GitHub milestone #7 is 60% complete (3 of 5 issues closed, 2 open), up from the prior mirror’s 0%. The objective remains in progress.\n- Three PRs are marked merged in the supplied snapshot. PR #21 reads units, PR #22 checks dimensions, and PR #23 adds a rendering module.\n- PR #23 and `src/render.py` conflict with the declared rendering non-goal in `README.md` and `docs/CHARTER.md`. An owner decision is open.\n- Milestone #8 has no Compass marker. The snapshot shows zero unmarked issues and lists three issue records. Milestone #7 reports two open issues whose records were outside the supplied snapshot.\n\n## Intent and inventory\n\nThe README declares the purpose and goal of checking dimensions in widget packs. It and the charter declare rendering out of scope. The vision, mission and success criteria are unknown. The saved Compass inventory has one objective and three linked tasks. The prior state counts one run, and its report, receipt and history row are unavailable.\n\n## Moved\n\n| ID | Task | From | To | Evidence |\n| --- | --- | --- | --- | --- |\n| TSK-799E1F5F | Read dimensions | in progress | done | Issue #11 closed, exact Compass marker |\n| TSK-DE24D33A | Validate units | in progress | done | Issue #12 closed, exact Compass marker |\n| TSK-E6015390 | Check tolerances | in progress | done | Issue #13 closed, exact Compass marker |\n\nClosure dates and reasons are absent from the snapshot. The task updates use the observed closure disposition. The prior mirror had all three issues open. No individual PR-to-task mapping was established.\n\n## Stalled and at risk\n\nThe prior objective evidence date was 2026-10-19, 36 days before this run, below the 60-day staleness threshold and the 180-day abandonment threshold. The current milestone snapshot provides a fresh progress signal. README and charter file dates are 2026-11-22, 2 days old against the 120-day document threshold. Scope is the main risk. Coverage change is unknown because there are no comparable measurements, and release movement is unknown because the snapshot supplies no release data.\n\n## New and orphaned work\n\nPR #23 merged a widget preview renderer with no adopted objective. The proposal to make rendering an explicit goal is an open question. The missing prior file checksums prevent an independent added/changed/removed file comparison. This run captures a new manifest for future comparisons.\n\n## Drift\n\n| ID | Kind | Evidence | Resolution |\n| --- | --- | --- | --- |\n| DRF-43152320 | contradiction | PR #23 merged, `src/render.py` present, rendering excluded by the README and charter | open |\n\n## Hosted and local tracking divergence\n\n`DRF-08FC0C42` records issues #11, #12 and #13 closed in the snapshot while their saved tasks were in progress. Local statuses were reconciled. The hosted snapshot lacks repository and completeness metadata required by the pull helper. The local pointer index was refreshed from marker-matched snapshot rows and marked incomplete for planning. GitHub writes and scheduler registrations were zero.\n\n## Unchanged\n\nOne objective remains in progress. The declared purpose, goal and rendering non-goal still apply.\n\n## Open questions\n\n- `QST-BC16A238` Should rendering become an explicit project goal? Rendering remains outside the declared scope pending an owner decision.\n\n## Artifacts written\n\n- `.compass/config.json`\n- `.compass/objectives.json`\n- `.compass/mode.json`\n- `.compass/OPEN-QUESTIONS.md`\n- `docs/CHARTER.md`\n- `.compass/baseline.json`\n- `.compass/RUN-HISTORY.md`\n- `.compass/github-index.json`\n- `.compass/github-pull-status.json`\n- `.compass/reports/delta-run-20261124-widget-forge.md`\n- `.compass/runs/run-20261124-widget-forge.json`\n",
+    ".compass/runs/run-20261124-widget-forge.json": "{\n  \"schema\": \"okhp3.compass.run/1\",\n  \"run_id\": \"run-20261124-widget-forge\",\n  \"at\": \"2026-11-24\",\n  \"mode\": \"reassess\",\n  \"tracking_mode\": \"A\",\n  \"previous_run_at\": \"2026-10-19\",\n  \"summary\": \"Three issue closures reconciled, milestone #7 at 60%, rendering contradiction open.\",\n  \"report\": \".compass/reports/delta-run-20261124-widget-forge.md\",\n  \"git_head\": null,\n  \"counts\": {\n    \"objectives\": 1,\n    \"done\": 3,\n    \"in_progress\": 1,\n    \"blocked\": 0,\n    \"drift_open\": 2,\n    \"score\": 98\n  },\n  \"unattended\": false\n}\n",
+    "docs/CHARTER.md": "Widget Forge checks dimensions in widget packs.\n\n## Non-goals\nRendering is outside this project.\n\n<!-- compass:begin:intent -->\n## Purpose\n\nCheck dimensions in widget packs. Declared in `README.md`.\n\n## Vision\n\nUnknown.\n\n## Mission\n\nUnknown.\n\n## Goals\n\n- Check pack dimensions. Declared in `README.md` and tracked by milestone #7.\n\n## Success criteria\n\nUnknown. The milestone records issue progress.\n<!-- compass:end:intent -->\n"
+  },
+  "files_removed": [],
+  "calls": [
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "detect_mode.py",
+        "argv": [
+          "--root",
+          ".",
+          "--check-gh"
+        ]
+      },
+      "error": true,
+      "result": "no live gh authentication in fixture"
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "detect_mode.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 2,
+        "stdout": "",
+        "stderr": "usage: detect_mode.py [-h] [--root ROOT] [--check-gh] [--out OUT]\ndetect_mode.py: error: could not inspect the root or safely write the verdict\n"
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "forge"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package",
+        "paths": [
+          "references/github-mode.md",
+          "references/tracking-schema.md",
+          "references/delta-report-spec.md",
+          "references/quality-rubric.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".compass/OPEN-QUESTIONS.md",
+          ".compass/baseline.json",
+          ".compass/config.json",
+          ".compass/github-index.json",
+          ".compass/objectives.json",
+          ".git/HEAD",
+          ".git/config",
+          "README.md",
+          "docs/CHARTER.md",
+          "src/render.py",
+          ".compass/mode.json",
+          ".compass/RUN-HISTORY.md"
+        ]
+      },
+      "error": true
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".compass/OPEN-QUESTIONS.md",
+          ".compass/baseline.json",
+          ".compass/config.json",
+          ".compass/github-index.json",
+          ".compass/objectives.json",
+          ".git/HEAD",
+          ".git/config",
+          "README.md",
+          "docs/CHARTER.md",
+          "src/render.py"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "scan_repo.py",
+        "argv": [
+          "--root",
+          ".",
+          "--since",
+          "2026-10-19"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 2,
+        "stdout": "",
+        "stderr": "usage: scan_repo.py [-h] --root ROOT [--since SINCE] [--out OUT]\n                    [--deny-terms-file DENY_TERMS_FILE] [--skip [SKIP ...]]\nscan_repo.py: error: could not inspect the root, read the deny list, or safely write output\n"
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "github_sync.py",
+        "argv": [
+          "pull",
+          "--root",
+          ".",
+          "--repo",
+          "example-fixtures/widget-forge"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "{\n  \"action_count\": 0,\n  \"actions\": [],\n  \"degraded\": \"file-only\",\n  \"reason\": \"invalid project state or unsafe path\"\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_state.py",
+        "argv": [
+          "--root",
+          ".",
+          "drift"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 3,
+        "stdout": "",
+        "stderr": "REFUSED: invalid or inaccessible manifest input\n"
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_ids.py",
+        "argv": [
+          "mint",
+          "--project-key",
+          "widget-forge",
+          "--kind",
+          "drift",
+          "--title",
+          "Rendering module conflicts with the rendering non-goal"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "DRF-43152320\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_ids.py",
+        "argv": [
+          "mint",
+          "--project-key",
+          "widget-forge",
+          "--kind",
+          "question",
+          "--title",
+          "Should rendering become an explicit project goal?"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "QST-BC16A238\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package",
+        "paths": [
+          "assets/objectives.schema.json",
+          "scripts/validate_compass.py",
+          "scripts/compass_state.py"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_ids.py",
+        "argv": [
+          "mint",
+          "--project-key",
+          "widget-forge",
+          "--kind",
+          "drift",
+          "--title",
+          "Three tracked GitHub issues closed while local tasks were in progress"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "DRF-08FC0C42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "validate_compass.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 1,
+        "stdout": "Compass validation: score 70.8/100, band C, gate HOLD\n\n| check | name | status | score |\n|---|---|---|---|\n| V1 | state files present and parseable | FAIL | 4.0/10 |\n| V2 | identifier integrity | PASS | 12.0/12 |\n| V3 | referential integrity | PASS | 11.0/11 |\n| V4 | status and evidence discipline | PASS | 13.0/13 |\n| V5 | charter completeness | FAIL | 0.0/11 |\n| V6 | confidence discipline | WARN | 5.6/7 |\n| V7 | scope firewall | PASS | 9.0/9 |\n| V8 | style and managed-block integrity | PASS | 5.0/5 |\n| V9 | unattended-run safety | FAIL | 2.4/6 |\n| V10 | staleness surfaced | WARN | 4.8/6 |\n| V11 | mode detection and mirror integrity | FAIL | 4.0/10 |\n\nV1 state files present and parseable\n  [error] baseline.json must contain a valid project evidence manifest\n  [error] missing or unsupported state schema\n\nV5 charter completeness\n  [error] charter is missing or unreadable\n\nV6 confidence discipline\n  [warn] no individual confidence-tagged intent claims recorded\n  [warn] objective lacks a confidence tier\n\nV9 unattended-run safety\n  [error] invalid or inconsistent run records, state counters or history rows\n\nV10 staleness surfaced\n  [warn] objective lacks a usable staleness timestamp\n\nV11 mode detection and mirror integrity\n  [warn] mode verdict lacks detection signals\n  [error] invalid mode history entry or transition\n  [error] mode history disagrees with current verdict\n  [error] unrecognized mirror schema\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package",
+        "paths": [
+          "scripts/github_sync.py",
+          "scripts/detect_mode.py",
+          "assets/config.example.json"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          ".compass/config.json": "{\n  \"project_key\": \"widget-forge\",\n  \"github\": {\n    \"enabled\": true,\n    \"owner_repo\": \"example-fixtures/widget-forge\"\n  },\n  \"thresholds\": {\n    \"stale_doc_days\": 120,\n    \"stale_objective_days\": 60,\n    \"abandoned_objective_days\": 180\n  },\n  \"schema\": \"okhp3.compass.state/1\",\n  \"human_artifacts\": {\n    \"charter\": \"docs/CHARTER.md\",\n    \"open_questions\": \".compass/OPEN-QUESTIONS.md\",\n    \"run_history\": \".compass/RUN-HISTORY.md\"\n  },\n  \"mode\": {\n    \"detected\": \"A\",\n    \"locked\": false\n  }\n}\n",
+          ".compass/objectives.json": "{\n  \"schema\": \"okhp3.compass.objectives/1\",\n  \"project_key\": \"widget-forge\",\n  \"runs\": 0,\n  \"mode\": {\n    \"detected\": \"A\",\n    \"sub_case\": \"github-origin\",\n    \"owner_repo\": \"example-fixtures/widget-forge\",\n    \"history\": [\n      {\n        \"mode\": \"A\",\n        \"at\": \"2026-10-19\",\n        \"to\": \"A\",\n        \"from\": null\n      }\n    ],\n    \"confidence\": \"high\",\n    \"evidence\": [\n      {\n        \"ref\": \".git/config\",\n        \"signal\": \"origin\",\n        \"value\": \"https://github.com/example-fixtures/widget-forge.git\"\n      },\n      {\n        \"ref\": \".git/HEAD\",\n        \"signal\": \"symbolic-head\",\n        \"value\": \"refs/heads/main\"\n      },\n      {\n        \"ref\": \".compass/config.json\",\n        \"signal\": \"configured-repository\",\n        \"value\": \"example-fixtures/widget-forge\"\n      }\n    ],\n    \"github_api\": {\n      \"usable\": false,\n      \"reason\": \"Fixture snapshot only. Live gh authentication unavailable.\"\n    },\n    \"observed_at\": \"2026-11-24\"\n  },\n  \"objectives\": [\n    {\n      \"id\": \"OBJ-99E116E8\",\n      \"title_hash\": \"99E116E8\",\n      \"title\": \"Check pack dimensions\",\n      \"status\": \"in_progress\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"GitHub milestone #7\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Open with 3 closed and 2 open issues in the supplied snapshot.\"\n        }\n      ],\n      \"confidence\": \"declared\",\n      \"source\": \"README.md\",\n      \"percent_complete\": 60,\n      \"percent_source\": \"github-milestone\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"milestone_number\": 7,\n        \"issue_number\": null,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/milestone/7\",\n        \"state\": \"open\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"id\": \"TSK-799E1F5F\",\n      \"title_hash\": \"799E1F5F\",\n      \"title\": \"Read dimensions\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#11\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 11,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/11\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    },\n    {\n      \"id\": \"TSK-DE24D33A\",\n      \"title_hash\": \"DE24D33A\",\n      \"title\": \"Validate units\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#12\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 12,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/12\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    },\n    {\n      \"id\": \"TSK-E6015390\",\n      \"title_hash\": \"E6015390\",\n      \"title\": \"Check tolerances\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#13\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 13,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/13\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    }\n  ],\n  \"open_questions\": [\n    {\n      \"id\": \"QST-BC16A238\",\n      \"title\": \"Should rendering become an explicit project goal?\",\n      \"status\": \"open\",\n      \"blocking\": false,\n      \"asked_at\": \"2026-11-24\",\n      \"why_it_matters\": \"The renderer merged despite the documented non-goal.\",\n      \"assumption\": \"Rendering remains outside the declared scope pending an owner decision.\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"README.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"pr\",\n          \"ref\": \"#23\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"merged\",\n          \"merged\": true\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"src/render.py\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Widget preview rendering module present in the current fixture.\"\n        }\n      ]\n    }\n  ],\n  \"drift\": [\n    {\n      \"id\": \"DRF-43152320\",\n      \"kind\": \"contradiction\",\n      \"summary\": \"Merged PR #23 adds a rendering module despite the README and charter excluding rendering. The module has no adopted objective.\",\n      \"refs\": [\n        \"QST-BC16A238\",\n        \"README.md#non-goals\",\n        \"docs/CHARTER.md#non-goals\",\n        \"src/render.py\"\n      ],\n      \"evidence\": [\n        {\n          \"type\": \"pr\",\n          \"ref\": \"#23\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"merged\",\n          \"merged\": true\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"README.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"src/render.py\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Widget preview rendering module present in the current fixture.\"\n        }\n      ],\n      \"resolution\": \"open\",\n      \"first_seen_run\": \"run-20261124-widget-forge\"\n    },\n    {\n      \"id\": \"DRF-08FC0C42\",\n      \"kind\": \"sink_divergence\",\n      \"summary\": \"The snapshot shows three issues closed while the saved local tasks were in progress. The local statuses are reconciled to the matching issue closures.\",\n      \"refs\": [\n        \"TSK-799E1F5F\",\n        \"TSK-DE24D33A\",\n        \"TSK-E6015390\"\n      ],\n      \"evidence\": [\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#11\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#12\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#13\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"resolution\": \"open\",\n      \"first_seen_run\": \"run-20261124-widget-forge\"\n    }\n  ],\n  \"risks\": [],\n  \"legacy_run_count\": 1,\n  \"charter_ref\": \"docs/CHARTER.md\",\n  \"intent\": {\n    \"claims\": [\n      {\n        \"field\": \"purpose\",\n        \"text\": \"Widget Forge checks dimensions in widget packs.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"vision\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      },\n      {\n        \"field\": \"mission\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      },\n      {\n        \"field\": \"goal\",\n        \"text\": \"Check pack dimensions.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"non-goal\",\n        \"text\": \"Rendering is outside this project.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md#non-goals\",\n            \"observed_at\": \"2026-11-24\"\n          },\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"docs/CHARTER.md#non-goals\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"success-criterion\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      }\n    ]\n  }\n}\n",
+          ".compass/mode.json": "{\n  \"detected\": \"A\",\n  \"sub_case\": \"github-origin\",\n  \"owner_repo\": \"example-fixtures/widget-forge\",\n  \"history\": [\n    {\n      \"mode\": \"A\",\n      \"at\": \"2026-10-19\",\n      \"to\": \"A\",\n      \"from\": null\n    }\n  ],\n  \"confidence\": \"high\",\n  \"evidence\": [\n    {\n      \"ref\": \".git/config\",\n      \"signal\": \"origin\",\n      \"value\": \"https://github.com/example-fixtures/widget-forge.git\"\n    },\n    {\n      \"ref\": \".git/HEAD\",\n      \"signal\": \"symbolic-head\",\n      \"value\": \"refs/heads/main\"\n    },\n    {\n      \"ref\": \".compass/config.json\",\n      \"signal\": \"configured-repository\",\n      \"value\": \"example-fixtures/widget-forge\"\n    }\n  ],\n  \"github_api\": {\n    \"usable\": false,\n    \"reason\": \"Fixture snapshot only. Live gh authentication unavailable.\"\n  },\n  \"observed_at\": \"2026-11-24\"\n}\n",
+          ".compass/OPEN-QUESTIONS.md": "# Open questions\n\n<!-- compass:begin:scope -->\n## QST-BC16A238 Should rendering become an explicit project goal?\n\nOpen. PR #23 added `src/render.py`. The README and charter exclude rendering. Rendering remains outside the declared scope pending an owner decision.\n<!-- compass:end:scope -->\n",
+          "docs/CHARTER.md": "Widget Forge checks dimensions in widget packs.\n\n## Non-goals\nRendering is outside this project.\n\n<!-- compass:begin:intent -->\n## Purpose\n\nCheck dimensions in widget packs. Declared in `README.md`.\n\n## Vision\n\nUnknown.\n\n## Mission\n\nUnknown.\n\n## Goals\n\n- Check pack dimensions. Declared in `README.md` and tracked by milestone #7.\n\n## Success criteria\n\nUnknown. The milestone records issue progress.\n<!-- compass:end:intent -->\n",
+          ".compass/baseline.json": "{\n  \"schema\": \"okhp3.compass.baseline/1\",\n  \"generated_at\": \"2026-10-19\",\n  \"file_count\": 0,\n  \"truncated\": false,\n  \"git_head\": null,\n  \"files\": {},\n  \"previous_baseline\": {\n    \"captured_at\": \"2026-10-19\",\n    \"files\": {},\n    \"note\": \"Prior evidence inventory was partial.\"\n  }\n}\n",
+          ".compass/RUN-HISTORY.md": "# Compass run history\n\nThe saved state and partial baseline indicate one prior run on 2026-10-19. Its receipt and report are unavailable. The table counts runs with saved receipts.\n\n| run | mode | objectives | done | in progress | blocked | drift open | score | summary | report |\n|---|---|---|---|---|---|---|---|---|---|\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_state.py",
+        "argv": [
+          "--root",
+          ".",
+          "baseline"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "WOULD WRITE .compass/baseline.json\n{\n  \"file_count\": 3,\n  \"truncated\": false,\n  \"git_head\": null\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "github_sync.py",
+        "argv": [
+          "pull",
+          "--root",
+          ".",
+          "--repo",
+          "example-fixtures/widget-forge"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "{\n  \"action_count\": 0,\n  \"actions\": [],\n  \"degraded\": \"file-only\",\n  \"reason\": \"snapshot repository missing or mismatched\"\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          ".compass/github-index.json": "{\n  \"schema\": \"okhp3.compass.github-index/1\",\n  \"owner_repo\": \"example-fixtures/widget-forge\",\n  \"project_key\": \"widget-forge\",\n  \"source\": \"fixture\",\n  \"observed_at\": \"2026-11-24\",\n  \"complete\": false,\n  \"counts\": {\n    \"issues\": 3,\n    \"milestones\": 2\n  },\n  \"issues\": {\n    \"TSK-799E1F5F\": {\n      \"number\": 11,\n      \"title\": \"Hosted work unit 1\",\n      \"state\": \"closed\",\n      \"labels\": [],\n      \"milestone_number\": 7,\n      \"url\": \"https://github.com/example-fixtures/widget-forge/issues/11\"\n    },\n    \"TSK-DE24D33A\": {\n      \"number\": 12,\n      \"title\": \"Hosted work unit 2\",\n      \"state\": \"closed\",\n      \"labels\": [],\n      \"milestone_number\": 7,\n      \"url\": \"https://github.com/example-fixtures/widget-forge/issues/12\"\n    },\n    \"TSK-E6015390\": {\n      \"number\": 13,\n      \"title\": \"Hosted work unit 3\",\n      \"state\": \"closed\",\n      \"labels\": [],\n      \"milestone_number\": 7,\n      \"url\": \"https://github.com/example-fixtures/widget-forge/issues/13\"\n    }\n  },\n  \"milestones\": {\n    \"OBJ-99E116E8\": {\n      \"number\": 7,\n      \"title\": \"Dimensional checks\",\n      \"state\": \"open\",\n      \"open_issues\": 2,\n      \"closed_issues\": 3,\n      \"percent_complete\": 60,\n      \"url\": \"https://github.com/example-fixtures/widget-forge/milestone/7\"\n    }\n  },\n  \"unmatched_remote\": {\n    \"issues\": [],\n    \"milestones\": [\n      {\n        \"number\": 8,\n        \"title\": \"Follow-up batch\",\n        \"state\": \"open\",\n        \"open_issues\": 0,\n        \"closed_issues\": 0,\n        \"percent_complete\": null,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/milestone/8\",\n        \"action\": \"adopt-or-ignore\"\n      }\n    ]\n  },\n  \"unmatched_local\": [],\n  \"anomalies\": {}\n}\n",
+          ".compass/github-pull-status.json": "{\n  \"ready\": false,\n  \"reason\": \"Supplied hosted snapshot lacks repository and completeness metadata required for a verified complete pull.\",\n  \"observed_at\": \"2026-11-24\"\n}\n",
+          ".compass/reports/delta-run-20261124-widget-forge.md": "# Widget Forge check-in, 2026-11-24\n\nRun run-20261124-widget-forge - reassess - since 2026-10-19\n\nMode A (GitHub-backed, github-origin, high confidence). The origin in `.git/config` matches the saved Mode A identity and configured project `example-fixtures/widget-forge`. The fixture has a symbolic HEAD, and usable Git history and live `gh` authentication were unavailable. Hosted evidence comes from the supplied snapshot. Its merge dates, closure dates, release data and full issue inventory are unavailable. The prior baseline is dated 2026-10-19 and has no file checksums. The current observation date is 2026-11-24.\n\nValidation pending.\n\n## Executive summary\n\n- Three tracked tasks moved from in progress to done. Issues #11, #12 and #13 are closed and match the saved Compass identifiers.\n- GitHub milestone #7 is 60% complete (3 of 5 issues closed, 2 open), up from the prior mirror’s 0%. The objective remains in progress.\n- Three PRs are marked merged in the supplied snapshot. PR #21 reads units, PR #22 checks dimensions, and PR #23 adds a rendering module.\n- PR #23 and `src/render.py` conflict with the declared rendering non-goal in `README.md` and `docs/CHARTER.md`. An owner decision is open.\n- Milestone #8 has no Compass marker. The snapshot shows zero unmarked issues and lists three issue records. Milestone #7 reports two open issues whose records were outside the supplied snapshot.\n\n## Intent and inventory\n\nThe README declares the purpose and goal of checking dimensions in widget packs. It and the charter declare rendering out of scope. The vision, mission and success criteria are unknown. The saved Compass inventory has one objective and three linked tasks. The prior state counts one run, and its report, receipt and history row are unavailable.\n\n## Moved\n\n| ID | Task | From | To | Evidence |\n| --- | --- | --- | --- | --- |\n| TSK-799E1F5F | Read dimensions | in progress | done | Issue #11 closed, exact Compass marker |\n| TSK-DE24D33A | Validate units | in progress | done | Issue #12 closed, exact Compass marker |\n| TSK-E6015390 | Check tolerances | in progress | done | Issue #13 closed, exact Compass marker |\n\nClosure dates and reasons are absent from the snapshot. The task updates use the observed closure disposition. The prior mirror had all three issues open. No individual PR-to-task mapping was established.\n\n## Stalled and at risk\n\nThe prior objective evidence date was 2026-10-19, 36 days before this run, below the 60-day staleness threshold and the 180-day abandonment threshold. The current milestone snapshot provides a fresh progress signal. README and charter file dates are 2026-11-22, 2 days old against the 120-day document threshold. Scope is the main risk. Coverage change is unknown because there are no comparable measurements, and release movement is unknown because the snapshot supplies no release data.\n\n## New and orphaned work\n\nPR #23 merged a widget preview renderer with no adopted objective. The proposal to make rendering an explicit goal is an open question. The missing prior file checksums prevent an independent added/changed/removed file comparison. This run captures a new manifest for future comparisons.\n\n## Drift\n\n| ID | Kind | Evidence | Resolution |\n| --- | --- | --- | --- |\n| DRF-43152320 | contradiction | PR #23 merged, `src/render.py` present, rendering excluded by the README and charter | open |\n\n## Hosted and local tracking divergence\n\n`DRF-08FC0C42` records issues #11, #12 and #13 closed in the snapshot while their saved tasks were in progress. Local statuses were reconciled. The hosted snapshot lacks repository and completeness metadata required by the pull helper. The local pointer index was refreshed from marker-matched snapshot rows and marked incomplete for planning. GitHub writes and scheduler registrations were zero.\n\n## Unchanged\n\nOne objective remains in progress. The declared purpose, goal and rendering non-goal still apply.\n\n## Open questions\n\n- `QST-BC16A238` Should rendering become an explicit project goal? Rendering remains outside the declared scope pending an owner decision.\n\n## Artifacts written\n\n- `.compass/config.json`\n- `.compass/objectives.json`\n- `.compass/mode.json`\n- `.compass/OPEN-QUESTIONS.md`\n- `docs/CHARTER.md`\n- `.compass/baseline.json`\n- `.compass/RUN-HISTORY.md`\n- `.compass/github-index.json`\n- `.compass/github-pull-status.json`\n- `.compass/reports/delta-run-20261124-widget-forge.md`\n- `.compass/runs/run-20261124-widget-forge.json`\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_state.py",
+        "argv": [
+          "--root",
+          ".",
+          "--apply",
+          "baseline"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "wrote .compass/baseline.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_state.py",
+        "argv": [
+          "--root",
+          ".",
+          "record-run",
+          "--mode",
+          "reassess",
+          "--report",
+          ".compass/reports/delta-run-20261124-widget-forge.md",
+          "--summary",
+          "Three issue closures reconciled, milestone #7 at 60%, rendering contradiction open.",
+          "--counts",
+          "{\"objectives\":1,\"done\":3,\"in_progress\":1,\"blocked\":0,\"drift_open\":2}"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 3,
+        "stdout": "",
+        "stderr": "REFUSED: [Errno 2] No such file or directory: './.compass/runs'\n"
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".compass/baseline.json",
+          ".compass/objectives.json",
+          ".compass/RUN-HISTORY.md"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          ".compass/runs/run-20261124-widget-forge.json": "{\n  \"schema\": \"okhp3.compass.run/1\",\n  \"run_id\": \"run-20261124-widget-forge\",\n  \"at\": \"2026-11-24\",\n  \"mode\": \"reassess\",\n  \"tracking_mode\": \"A\",\n  \"previous_run_at\": \"2026-10-19\",\n  \"summary\": \"Three issue closures reconciled, milestone #7 at 60%, rendering contradiction open.\",\n  \"report\": \".compass/reports/delta-run-20261124-widget-forge.md\",\n  \"git_head\": null,\n  \"counts\": {\n    \"objectives\": 1,\n    \"done\": 3,\n    \"in_progress\": 1,\n    \"blocked\": 0,\n    \"drift_open\": 2\n  },\n  \"unattended\": false\n}\n",
+          ".compass/RUN-HISTORY.md": "# Compass run history\n\nThe saved state and partial baseline indicate one prior run on 2026-10-19. Its receipt and report are unavailable. The table counts runs with saved receipts.\n\n| run | mode | objectives | done | in progress | blocked | drift open | score | summary | report |\n|---|---|---|---|---|---|---|---|---|---|\n| run-20261124-widget-forge | reassess | 1 | 3 | 1 | 0 | 2 |  | Three issue closures reconciled, milestone #7 at 60%, rendering contradiction open. | .compass/reports/delta-run-20261124-widget-forge.md |\n",
+          ".compass/objectives.json": "{\n  \"schema\": \"okhp3.compass.objectives/1\",\n  \"project_key\": \"widget-forge\",\n  \"runs\": 1,\n  \"mode\": {\n    \"detected\": \"A\",\n    \"sub_case\": \"github-origin\",\n    \"owner_repo\": \"example-fixtures/widget-forge\",\n    \"history\": [\n      {\n        \"mode\": \"A\",\n        \"at\": \"2026-10-19\",\n        \"to\": \"A\",\n        \"from\": null\n      }\n    ],\n    \"confidence\": \"high\",\n    \"evidence\": [\n      {\n        \"ref\": \".git/config\",\n        \"signal\": \"origin\",\n        \"value\": \"https://github.com/example-fixtures/widget-forge.git\"\n      },\n      {\n        \"ref\": \".git/HEAD\",\n        \"signal\": \"symbolic-head\",\n        \"value\": \"refs/heads/main\"\n      },\n      {\n        \"ref\": \".compass/config.json\",\n        \"signal\": \"configured-repository\",\n        \"value\": \"example-fixtures/widget-forge\"\n      }\n    ],\n    \"github_api\": {\n      \"usable\": false,\n      \"reason\": \"Fixture snapshot only. Live gh authentication unavailable.\"\n    },\n    \"observed_at\": \"2026-11-24\"\n  },\n  \"objectives\": [\n    {\n      \"id\": \"OBJ-99E116E8\",\n      \"title_hash\": \"99E116E8\",\n      \"title\": \"Check pack dimensions\",\n      \"status\": \"in_progress\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"GitHub milestone #7\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Open with 3 closed and 2 open issues in the supplied snapshot.\"\n        }\n      ],\n      \"confidence\": \"declared\",\n      \"source\": \"README.md\",\n      \"percent_complete\": 60,\n      \"percent_source\": \"github-milestone\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"milestone_number\": 7,\n        \"issue_number\": null,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/milestone/7\",\n        \"state\": \"open\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"id\": \"TSK-799E1F5F\",\n      \"title_hash\": \"799E1F5F\",\n      \"title\": \"Read dimensions\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#11\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 11,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/11\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    },\n    {\n      \"id\": \"TSK-DE24D33A\",\n      \"title_hash\": \"DE24D33A\",\n      \"title\": \"Validate units\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#12\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 12,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/12\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    },\n    {\n      \"id\": \"TSK-E6015390\",\n      \"title_hash\": \"E6015390\",\n      \"title\": \"Check tolerances\",\n      \"status\": \"done\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md\",\n          \"observed_at\": \"2026-10-19\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#13\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"objective_id\": \"OBJ-99E116E8\",\n      \"updated_at\": \"2026-11-24\",\n      \"last_evidence_at\": \"2026-11-24\",\n      \"github\": {\n        \"issue_number\": 13,\n        \"milestone_number\": 7,\n        \"url\": \"https://github.com/example-fixtures/widget-forge/issues/13\",\n        \"state\": \"closed\",\n        \"last_synced_at\": \"2026-11-24\"\n      }\n    }\n  ],\n  \"open_questions\": [\n    {\n      \"id\": \"QST-BC16A238\",\n      \"title\": \"Should rendering become an explicit project goal?\",\n      \"status\": \"open\",\n      \"blocking\": false,\n      \"asked_at\": \"2026-11-24\",\n      \"why_it_matters\": \"The renderer merged despite the documented non-goal.\",\n      \"assumption\": \"Rendering remains outside the declared scope pending an owner decision.\",\n      \"evidence\": [\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"README.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"pr\",\n          \"ref\": \"#23\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"merged\",\n          \"merged\": true\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"src/render.py\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Widget preview rendering module present in the current fixture.\"\n        }\n      ]\n    }\n  ],\n  \"drift\": [\n    {\n      \"id\": \"DRF-43152320\",\n      \"kind\": \"contradiction\",\n      \"summary\": \"Merged PR #23 adds a rendering module despite the README and charter excluding rendering. The module has no adopted objective.\",\n      \"refs\": [\n        \"QST-BC16A238\",\n        \"README.md#non-goals\",\n        \"docs/CHARTER.md#non-goals\",\n        \"src/render.py\"\n      ],\n      \"evidence\": [\n        {\n          \"type\": \"pr\",\n          \"ref\": \"#23\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"merged\",\n          \"merged\": true\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"README.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"doc_change\",\n          \"ref\": \"docs/CHARTER.md#non-goals\",\n          \"observed_at\": \"2026-11-24\"\n        },\n        {\n          \"type\": \"manual\",\n          \"ref\": \"src/render.py\",\n          \"observed_at\": \"2026-11-24\",\n          \"note\": \"Widget preview rendering module present in the current fixture.\"\n        }\n      ],\n      \"resolution\": \"open\",\n      \"first_seen_run\": \"run-20261124-widget-forge\"\n    },\n    {\n      \"id\": \"DRF-08FC0C42\",\n      \"kind\": \"sink_divergence\",\n      \"summary\": \"The snapshot shows three issues closed while the saved local tasks were in progress. The local statuses are reconciled to the matching issue closures.\",\n      \"refs\": [\n        \"TSK-799E1F5F\",\n        \"TSK-DE24D33A\",\n        \"TSK-E6015390\"\n      ],\n      \"evidence\": [\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#11\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#12\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        },\n        {\n          \"type\": \"issue\",\n          \"ref\": \"#13\",\n          \"observed_at\": \"2026-11-24\",\n          \"state\": \"closed\",\n          \"note\": \"Closed in the supplied snapshot. Stable marker matches the tracked task.\"\n        }\n      ],\n      \"resolution\": \"open\",\n      \"first_seen_run\": \"run-20261124-widget-forge\"\n    }\n  ],\n  \"risks\": [],\n  \"legacy_run_count\": 1,\n  \"charter_ref\": \"docs/CHARTER.md\",\n  \"intent\": {\n    \"claims\": [\n      {\n        \"field\": \"purpose\",\n        \"text\": \"Widget Forge checks dimensions in widget packs.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"vision\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      },\n      {\n        \"field\": \"mission\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      },\n      {\n        \"field\": \"goal\",\n        \"text\": \"Check pack dimensions.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"non-goal\",\n        \"text\": \"Rendering is outside this project.\",\n        \"confidence\": \"declared\",\n        \"evidence\": [\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"README.md#non-goals\",\n            \"observed_at\": \"2026-11-24\"\n          },\n          {\n            \"type\": \"doc_change\",\n            \"ref\": \"docs/CHARTER.md#non-goals\",\n            \"observed_at\": \"2026-11-24\"\n          }\n        ]\n      },\n      {\n        \"field\": \"success-criterion\",\n        \"text\": null,\n        \"confidence\": \"unknown\",\n        \"evidence\": []\n      }\n    ]\n  },\n  \"last_run_id\": \"run-20261124-widget-forge\",\n  \"updated_at\": \"2026-11-24\"\n}\n",
+          ".compass/baseline.json": "{\n  \"file_count\": 3,\n  \"files\": {\n    \"README.md\": {\n      \"bytes\": 97,\n      \"sha\": \"a854a368c4d317dc\"\n    },\n    \"docs/CHARTER.md\": {\n      \"bytes\": 428,\n      \"sha\": \"0d452c3338b043a6\"\n    },\n    \"src/render.py\": {\n      \"bytes\": 31,\n      \"sha\": \"95a81091c8a4ee48\"\n    }\n  },\n  \"generated_at\": \"2026-11-24\",\n  \"git_head\": null,\n  \"git_last_commit\": null,\n  \"nested_repos\": [],\n  \"root_basename\": \"project\",\n  \"schema\": \"okhp3.compass.baseline/1\",\n  \"truncated\": false,\n  \"previous_baseline\": {\n    \"captured_at\": \"2026-10-19\",\n    \"files\": {},\n    \"note\": \"Prior evidence inventory was partial.\"\n  }\n}\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "validate_compass.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "Compass validation: score 98.0/100, band A, gate PASS\n\n| check | name | status | score |\n|---|---|---|---|\n| V1 | state files present and parseable | PASS | 10.0/10 |\n| V2 | identifier integrity | PASS | 12.0/12 |\n| V3 | referential integrity | PASS | 11.0/11 |\n| V4 | status and evidence discipline | PASS | 13.0/13 |\n| V5 | charter completeness | PASS | 11.0/11 |\n| V6 | confidence discipline | PASS | 7.0/7 |\n| V7 | scope firewall | PASS | 9.0/9 |\n| V8 | style and managed-block integrity | PASS | 5.0/5 |\n| V9 | unattended-run safety | PASS | 6.0/6 |\n| V10 | staleness surfaced | PASS | 6.0/6 |\n| V11 | mode detection and mirror integrity | WARN | 8.0/10 |\n\nV11 mode detection and mirror integrity\n  [warn] legacy mirror; pull a complete snapshot before planning\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          ".compass/reports/delta-run-20261124-widget-forge.md": "# Widget Forge check-in, 2026-11-24\n\nRun run-20261124-widget-forge - reassess - since 2026-10-19\n\nMode A (GitHub-backed, github-origin, high confidence). The origin in `.git/config` matches the saved Mode A identity and configured project `example-fixtures/widget-forge`. The fixture has a symbolic HEAD, and usable Git history and live `gh` authentication were unavailable. Hosted evidence comes from the supplied snapshot. Its merge dates, closure dates, release data and full issue inventory are unavailable. The prior baseline is dated 2026-10-19 and has no file checksums. The current observation date is 2026-11-24.\n\nCompass validation scored 98/100, band A, gate PASS. All eleven checks ran. V11 warned that the offline pointer mirror requires a complete, identity-checked pull before planning.\n\n## Executive summary\n\n- Three tracked tasks moved from in progress to done. Issues #11, #12 and #13 are closed and match the saved Compass identifiers.\n- GitHub milestone #7 is 60% complete (3 of 5 issues closed, 2 open), up from the prior mirror’s 0%. The objective remains in progress.\n- Three PRs are marked merged in the supplied snapshot. PR #21 reads units, PR #22 checks dimensions, and PR #23 adds a rendering module.\n- PR #23 and `src/render.py` conflict with the declared rendering non-goal in `README.md` and `docs/CHARTER.md`. An owner decision is open.\n- Milestone #8 has no Compass marker. The snapshot shows zero unmarked issues and lists three issue records. Milestone #7 reports two open issues whose records were outside the supplied snapshot.\n\n## Intent and inventory\n\nThe README declares the purpose and goal of checking dimensions in widget packs. It and the charter declare rendering out of scope. The vision, mission and success criteria are unknown. The saved Compass inventory has one objective and three linked tasks. The prior state counts one run, and its report, receipt and history row are unavailable.\n\n## Moved\n\n| ID | Task | From | To | Evidence |\n| --- | --- | --- | --- | --- |\n| TSK-799E1F5F | Read dimensions | in progress | done | Issue #11 closed, exact Compass marker |\n| TSK-DE24D33A | Validate units | in progress | done | Issue #12 closed, exact Compass marker |\n| TSK-E6015390 | Check tolerances | in progress | done | Issue #13 closed, exact Compass marker |\n\nClosure dates and reasons are absent from the snapshot. The task updates use the observed closure disposition. The prior mirror had all three issues open. No individual PR-to-task mapping was established.\n\n## Stalled and at risk\n\nThe prior objective evidence date was 2026-10-19, 36 days before this run, below the 60-day staleness threshold and the 180-day abandonment threshold. The current milestone snapshot provides a fresh progress signal. README and charter file dates are 2026-11-22, 2 days old against the 120-day document threshold. Scope is the main risk. Coverage change is unknown because there are no comparable measurements, and release movement is unknown because the snapshot supplies no release data.\n\n## New and orphaned work\n\nPR #23 merged a widget preview renderer with no adopted objective. The proposal to make rendering an explicit goal is an open question. The missing prior file checksums prevent an independent added/changed/removed file comparison. This run captures a new manifest for future comparisons.\n\n## Drift\n\n| ID | Kind | Evidence | Resolution |\n| --- | --- | --- | --- |\n| DRF-43152320 | contradiction | PR #23 merged, `src/render.py` present, rendering excluded by the README and charter | open |\n\n## Hosted and local tracking divergence\n\n`DRF-08FC0C42` records issues #11, #12 and #13 closed in the snapshot while their saved tasks were in progress. Local statuses were reconciled. The hosted snapshot lacks repository and completeness metadata required by the pull helper. The local pointer index was refreshed from marker-matched snapshot rows and marked incomplete for planning. GitHub writes and scheduler registrations were zero.\n\n## Unchanged\n\nOne objective remains in progress. The declared purpose, goal and rendering non-goal still apply.\n\n## Open questions\n\n- `QST-BC16A238` Should rendering become an explicit project goal? Rendering remains outside the declared scope pending an owner decision.\n\n## Artifacts written\n\n- `.compass/config.json`\n- `.compass/objectives.json`\n- `.compass/mode.json`\n- `.compass/OPEN-QUESTIONS.md`\n- `docs/CHARTER.md`\n- `.compass/baseline.json`\n- `.compass/RUN-HISTORY.md`\n- `.compass/github-index.json`\n- `.compass/github-pull-status.json`\n- `.compass/reports/delta-run-20261124-widget-forge.md`\n- `.compass/runs/run-20261124-widget-forge.json`\n",
+          ".compass/runs/run-20261124-widget-forge.json": "{\n  \"schema\": \"okhp3.compass.run/1\",\n  \"run_id\": \"run-20261124-widget-forge\",\n  \"at\": \"2026-11-24\",\n  \"mode\": \"reassess\",\n  \"tracking_mode\": \"A\",\n  \"previous_run_at\": \"2026-10-19\",\n  \"summary\": \"Three issue closures reconciled, milestone #7 at 60%, rendering contradiction open.\",\n  \"report\": \".compass/reports/delta-run-20261124-widget-forge.md\",\n  \"git_head\": null,\n  \"counts\": {\n    \"objectives\": 1,\n    \"done\": 3,\n    \"in_progress\": 1,\n    \"blocked\": 0,\n    \"drift_open\": 2,\n    \"score\": 98\n  },\n  \"unattended\": false\n}\n",
+          ".compass/RUN-HISTORY.md": "# Compass run history\n\nThe saved state and partial baseline indicate one prior run on 2026-10-19. Its receipt and report are unavailable. The table counts runs with saved receipts.\n\n| run | mode | objectives | done | in progress | blocked | drift open | score | summary | report |\n|---|---|---|---|---|---|---|---|---|---|\n| run-20261124-widget-forge | reassess | 1 | 3 | 1 | 0 | 2 | 98 | Three issue closures reconciled, milestone #7 at 60%, rendering contradiction open. | .compass/reports/delta-run-20261124-widget-forge.md |\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "compass_state.py",
+        "argv": [
+          "--root",
+          ".",
+          "drift"
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "{\n  \"added\": [],\n  \"baseline_generated_at\": \"2026-11-24\",\n  \"baseline_truncated\": false,\n  \"changed\": [],\n  \"commits_since_baseline\": [],\n  \"counts\": {\n    \"added\": 0,\n    \"changed\": 0,\n    \"commits_since\": 0,\n    \"removed\": 0,\n    \"unverified\": 0\n  },\n  \"current_truncated\": false,\n  \"first_run\": false,\n  \"nested_repos\": [],\n  \"removed\": [],\n  \"unverified\": []\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "run_helper",
+      "arguments": {
+        "script": "validate_compass.py",
+        "argv": [
+          "--root",
+          "."
+        ]
+      },
+      "error": false,
+      "result": {
+        "exit": 0,
+        "stdout": "Compass validation: score 98.0/100, band A, gate PASS\n\n| check | name | status | score |\n|---|---|---|---|\n| V1 | state files present and parseable | PASS | 10.0/10 |\n| V2 | identifier integrity | PASS | 12.0/12 |\n| V3 | referential integrity | PASS | 11.0/11 |\n| V4 | status and evidence discipline | PASS | 13.0/13 |\n| V5 | charter completeness | PASS | 11.0/11 |\n| V6 | confidence discipline | PASS | 7.0/7 |\n| V7 | scope firewall | PASS | 9.0/9 |\n| V8 | style and managed-block integrity | PASS | 5.0/5 |\n| V9 | unattended-run safety | PASS | 6.0/6 |\n| V10 | staleness surfaced | PASS | 6.0/6 |\n| V11 | mode detection and mirror integrity | WARN | 8.0/10 |\n\nV11 mode detection and mirror integrity\n  [warn] legacy mirror; pull a complete snapshot before planning\n",
+        "stderr": ""
+      }
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".compass/config.json",
+          ".compass/objectives.json",
+          ".compass/mode.json",
+          ".compass/OPEN-QUESTIONS.md",
+          "docs/CHARTER.md",
+          ".compass/baseline.json",
+          ".compass/RUN-HISTORY.md",
+          ".compass/github-index.json",
+          ".compass/github-pull-status.json",
+          ".compass/reports/delta-run-20261124-widget-forge.md",
+          ".compass/runs/run-20261124-widget-forge.json",
+          "README.md"
+        ]
+      },
+      "error": false
+    }
+  ],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T07:17:14.250543+00:00",
+      "elapsed_seconds": 158.9,
+      "prompt_sha256": "92ffb9b6d70ab82ee29d2c7748beb82c7d2881c0cb5079d4f5eb021b33dc3b43",
+      "activity": [
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "write_files",
+        "run_helper",
+        "run_helper",
+        "write_files",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "write_files",
+        "run_helper",
+        "write_files",
+        "run_helper",
+        "run_helper",
+        "inspect"
+      ],
+      "usage": {
+        "input_tokens": 920971,
+        "cached_input_tokens": 876800,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6553,
+        "reasoning_output_tokens": 559
+      }
+    }
+  ]
+}

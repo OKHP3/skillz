@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": false,
+      "evidence": "The persisted .compass/github-index.json maps OBJ-99E116E8 to milestone #7 and the three task IDs to issues #11–#13, matching the hosted compass-id markers despite different titles. The hosted snapshot supplies only three closed and two open issues for milestone #7, so the stored 60% is evidenced only as a calculation from those counts."
+    },
+    {
+      "id": "e2",
+      "pass": true,
+      "evidence": "The persisted .compass/objectives.json drift entry rendering-scope records an open scope expansion by identifying merged PR #23 as adding rendering despite the documented non-goal. The persisted .compass/OPEN-QUESTIONS.md leaves the scope decision open, and the edit and removal records show no change to docs/CHARTER.md."
+    },
+    {
+      "id": "e3",
+      "pass": false,
+      "evidence": "The three task transitions to done in persisted .compass/objectives.json have github_issue evidence for issues #11–#13 in separate type and ref fields. The reply uses prose issue references. Neither location cites the transitions in the requested type:ref form."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The persisted .compass/github-index.json retains issue numbers and states, and no persisted edit copies hosted issue bodies. The action record contains only a fixture read, and the reply prints no gh write command. The reply does not establish an explicit authorization requirement for printing such commands or specify that the human must run them by hand."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T06:57:31.687003+00:00",
+    "elapsed_seconds": 14.0,
+    "prompt_sha256": "d9ed41b4a8ed5f3df440522b82c90848df92e015a75fc3d3430134addcddcdd5",
+    "activity": [],
+    "usage": {
+      "input_tokens": 18631,
+      "cached_input_tokens": 10624,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 544,
+      "reasoning_output_tokens": 173
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "fffe0545308a18af11fbad12a57ee0e670694ce49d5b97205e5bd848827e978f"
+}

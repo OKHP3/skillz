@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "conditional-release",
+  "evaluation_status": "analytical",
+  "review_date": "2026-11-09",
+  "artifact": {
+    "path": "SKILL.md",
+    "version": "1.0.1",
+    "sha256": "4b68c4388be3c71511441e9d8e8bf81756bf5e9dff7d6d4e9863a79d3cb004c7",
+    "reviewed_content_sha256": {
+      "LICENSE.md": "ee5474fbf192c4bf231dfda879d4e8ecd5cad5021dc860fd8bff94011a679260",
+      "SKILL.md": "4b68c4388be3c71511441e9d8e8bf81756bf5e9dff7d6d4e9863a79d3cb004c7",
+      "evals/discovery.json": "e79696bb8be21023da77c356f6f961f7195780e0247cef2e66883a8ce53c1bf4",
+      "evals/evals.json": "7213a35266038e6cba1938acdaca3423794fb41228a569b379aab34139137ad7",
+      "references/case-record.md": "ccd2078f2e41b6e150cc72d38a9215f961dd8a21453fdf57f7a962536fd29902",
+      "references/design-record.md": "9b2806653c7e83d1cc9d24c01cbfade52834e81ddd935b1b209d4cb6c2328924",
+      "references/worked-example.md": "4c9d720f743b070621efb1f4850207e705a98dfb3e390235317fef54fe9dfa84"
+    },
+    "self_exclusion": "This receipt is an evidence envelope; its own bytes are verified in the external full-inventory synchronization record."
+  },
+  "decision_question": "May the corrected package be distributed as a supervised source candidate?",
+  "acceptance_criteria": [
+    "Both directions and actual coverage precede reply-state conclusions.",
+    "Account, conversation, opportunity and request identities remain separate.",
+    "Ownership follows evidenced requests or explicit commitments, not the latest speaker.",
+    "Neutral public source, string metadata and no authority expansion.",
+    "Exact content inventory equality across distribution copies."
+  ],
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "shared_model_or_source_limits": [
+      "Reviewers used the same parent model family and shared frozen source set.",
+      "Exact model checkpoint was not exposed. Analytical agreement is not empirical replication."
+    ]
+  },
+  "initial_candidate": {
+    "version": "1.0.0",
+    "sha256": "7aacd00fcf7bef45e24eabd98ed711dc4ea5000035d569f6a0f63d549492da30",
+    "decision": "reject"
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "decision": "reject",
+      "finding": "Fulfillment alone cannot establish an owed contact response."
+    },
+    {
+      "role": "outcome",
+      "decision": "approve-with-limits",
+      "finding": "Event/request separation addresses one-sided notification interpretation."
+    },
+    {
+      "role": "safety-portability",
+      "decision": "reject",
+      "finding": "Use neutral original-work attribution and string-valued metadata."
+    }
+  ],
+  "concordance": "material-disagreement",
+  "disruptor": {
+    "triggered": false,
+    "reason": "Material disagreement routes directly to evidence-led negotiation."
+  },
+  "negotiator": {
+    "triggered": true,
+    "decision": "approve-with-limits",
+    "decisive_evidence": [
+      "Explicit-follow-up and no-follow-up fixtures now yield different ownership conclusions.",
+      "Targeted evidence and safety correction checks resolved their original defects.",
+      "The worked example now supplies the estimate it reports.",
+      "YAML-aware inspection confirms string metadata; original-work attribution is neutral.",
+      "All seven reviewed content files matched in candidate and both destination copies before this receipt was appended."
+    ],
+    "unresolved_items": []
+  },
+  "release_decision": "approve-with-limits",
+  "scope": "Supervised source distribution only; draftable contract.",
+  "limitations": [
+    "Development and discovery cases are author-visible designs.",
+    "No live connector test, matched benchmark, measured trigger precision/recall, or unseen external holdout was run.",
+    "No unattended monitoring or production-readiness claim.",
+    "Final complete inventory including this receipt and normal integration checks are separate verifier duties."
+  ],
+  "follow_up": [
+    {
+      "owner": "maintainer",
+      "condition": "Reopen after any reviewed-content hash, source-boundary, supported-host or outcome-claim change. Require separately authorized live evidence before stronger claims."
+    }
+  ]
+}

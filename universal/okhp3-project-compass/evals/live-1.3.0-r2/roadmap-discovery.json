@@ -1,0 +1,65 @@
+{
+  "partition": "pilot regression, outside frozen matched grades",
+  "source": "docs/ROADMAP.md:5",
+  "source_text": "- [ ] Catalog the violet samples",
+  "explicit_read_call_numbers": [
+    6,
+    35
+  ],
+  "indexed_tasks_with_source_terms": [],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T07:17:14.218304+00:00",
+      "elapsed_seconds": 226.7,
+      "prompt_sha256": "4cc88a542ad605fabbc81d87645d80f543f2b11ced469e5ea1aaff7d8faa65d4",
+      "activity": [
+        "run_helper",
+        "inspect",
+        "inspect",
+        "run_helper",
+        "inspect",
+        "inspect",
+        "inspect",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "write_files",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "run_helper",
+        "inspect",
+        "write_files",
+        "run_helper",
+        "inspect"
+      ],
+      "usage": {
+        "input_tokens": 1185504,
+        "cached_input_tokens": 1123712,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 8828,
+        "reasoning_output_tokens": 771
+      }
+    }
+  ],
+  "evidence": "submissions/pilot-roadmap/evidence.json"
+}

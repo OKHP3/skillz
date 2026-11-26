@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "review_mode": "three-role-single-context",
+  "evaluation_status": "analytical",
+  "artifact": {
+    "path": "universal/okhp3-career-addendum/SKILL.md",
+    "sha256": "4cddc97daca34da1887cacf491b86b7f95be717da55c05258e3de716510959ac",
+    "version": "1.0.0",
+    "note": "Hash is of SKILL.md as of review; later edits invalidate this record."
+  },
+  "decision_question": "Is the package supported, safe, portable, and useful for its stated scope as a draftable skill?",
+  "acceptance_criteria": [
+    "Valid portable frontmatter and name matches directory",
+    "Public-neutral content with no private names, accounts, or contact details",
+    "Explicit approval and draft-only boundaries",
+    "At least three realistic cases including edge, failure, and untrusted-input cases",
+    "No performance claim without live evidence"
+  ],
+  "independence": {
+    "reviewer_contexts_separated": false,
+    "shared_model_or_source_limits": [
+      "Evidence, outcome, and safety roles were run by one agent in one context; agreement is correlated evidence",
+      "Source behavior comes from one working session, a single operator's workflow, and one platform UI observed in 2026-11"
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "finding": "Each gap listed under gaps_found was observed in the source session and is addressed by a named instruction or eval case.",
+      "gaps_found": [
+        "No source skill existed; the method came from two addenda and a context statement written in one thread",
+        "First format was a table-heavy requirements document and was rejected as the wrong register",
+        "A r\u00e9sum\u00e9 line described a registry as bridging to an enterprise system while the user described a personal prototype; no conflict check existed",
+        "Risk of inflating tool depth when a recruiter pushes for a specific platform"
+      ]
+    },
+    {
+      "role": "outcome",
+      "finding": "Each package states one reliable outcome and an output contract; evals cover normal, edge, and failure paths."
+    },
+    {
+      "role": "safety_portability",
+      "finding": "Draft-only or approval-gated behavior, untrusted-content handling, and exclusion rules are explicit; platform selectors and limits are labeled observed and volatile."
+    }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "authority": "non-authoritative-until-run",
+    "falsification_hypotheses": [
+      "H1: the one-page default may truncate a legitimately long case; test: a long ledger should prioritize by the reader's emphasized requirements and offer a second page",
+      "H2: the conflict check depends on the model finding earlier documents; test: when none are supplied it must ask rather than assume none exist"
+    ],
+    "test_results": [
+      {
+        "hypothesis_index": 0,
+        "result": "not-run",
+        "note": "Convert to a live regression case before any performance claim."
+      },
+      {
+        "hypothesis_index": 1,
+        "result": "not-run",
+        "note": "Convert to a live regression case before any performance claim."
+      }
+    ]
+  },
+  "negotiator": {
+    "triggered": false,
+    "decision": null,
+    "decisive_evidence": [],
+    "unresolved_items": [
+      "Independent reviewers, live with and without skill benchmark, and an unseen holdout have not been run"
+    ]
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": [
+    "Maturity is draftable. Evidence status is not-run. No live benchmark, holdout, or independent review exists for this version.",
+    "Platform behavior was observed on one account in 2026-11 and can change."
+  ],
+  "follow_up": [
+    "Run matched with and without skill cases from evals/evals.json in an isolated runner",
+    "Promote the disruptor hypotheses to regression cases",
+    "Re-review after any change to SKILL.md or after a platform change"
+  ],
+  "owner": "repository owner",
+  "expires": "on next version change"
+}
