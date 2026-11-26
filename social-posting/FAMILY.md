@@ -1,9 +1,9 @@
 ---
 family: social-posting
 display_name: Social posting
-skill_count: 40
+skill_count: 41
 generated_by: okhp3-skill-cataloger v1.7.0
-generated_at: 2026-11-25T20:55:28Z
+generated_at: 2026-11-26T06:14:47Z
 ---
 
 # social-posting
@@ -116,10 +116,10 @@ Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and
 Telegram.
 <!-- FAMILY_SUMMARY_END -->
 
-## Skills (40)
+## Skills (41)
 
 <!-- FAMILY_INVENTORY_START -->
-*40 skills &nbsp;·&nbsp; inventory last updated: **November 25, 2026 at 20:55 UTC***
+*41 skills &nbsp;·&nbsp; inventory last updated: **November 26, 2026 at 06:14 UTC***
 
 | Skill | Description | Version |
 |---|---|---|
@@ -137,6 +137,7 @@ Telegram.
 | [okhp3-linkedin-carousel](okhp3-linkedin-carousel/SKILL.md) | Plan and build a LinkedIn document carousel (a multi-page PDF shown as swipeable pages) that acco... | 1.0.0 |
 | [okhp3-linkedin-comment](okhp3-linkedin-comment/SKILL.md) | Draft a thoughtful LinkedIn comment or reply to an existing post. Use when the user wants to resp... | 1.2.1 |
 | [okhp3-linkedin-connection-note](okhp3-linkedin-connection-note/SKILL.md) | Draft one personalized LinkedIn connection request note per recipient, within the sender's charac... | 1.0.0 |
+| [okhp3-linkedin-dm-reconcile](okhp3-linkedin-dm-reconcile/SKILL.md) | Reconcile LinkedIn email notifications with sent and received direct messages. Use when the user ... | 1.0.1 |
 | [okhp3-linkedin-inbox-triage](okhp3-linkedin-inbox-triage/SKILL.md) | Check a LinkedIn inbox for new replies from a supplied outreach list, classify each sender, and p... | 1.0.0 |
 | [okhp3-linkedin-message](okhp3-linkedin-message/SKILL.md) | Draft a LinkedIn direct message or a counter reply to an inbound message from raw dictation, note... | 1.1.0 |
 | [okhp3-linkedin-network-plan](okhp3-linkedin-network-plan/SKILL.md) | Plan a LinkedIn network expansion: audit followed-but-unconnected accounts, segment and tier targ... | 1.0.0 |

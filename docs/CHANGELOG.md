@@ -34,6 +34,17 @@
   research memo, dependency graph, and review record under
   `docs/reviews/notion-crudq-family-2026-09/`.
 
+## 2026-11-17: AI workforce bench gate
+
+- Add draftable 0.2.0 guidance for assessing the learning and succession effects
+  of AI workforce redesign, with explicit task, feeder-evidence, mentoring,
+  economics and decision-scope contracts.
+- Preserve the historical 0.1.0 review and record independent source review,
+  adversarial findings, corrections and a single matched synthetic exercise.
+  The exercise is descriptive evidence, not an uplift or production claim.
+- Include seven development cases and 20 discovery design queries; refresh
+  the catalog to 357 distribution skills across 22 families.
+
 ## 2026-11-10: Record location reconciliation field observation
 
 - Record a read-only field check for v0.1.0 covering folder placement, version
@@ -217,6 +228,17 @@
   holdout recorded.
 - Refresh the distribution catalogs and manifest to 339 skills across 22
   active families.
+
+## 2026-11-09: Bidirectional LinkedIn conversation reconciliation
+
+- Add `okhp3-linkedin-dm-reconcile` 1.0.1 as a draftable read-only source
+  candidate, separating incoming notifications from the full DM conversation.
+- Preserve account, opportunity and request identity, coverage gaps, explicit
+  commitments and distinct transmission/submission milestones.
+- Record separated analytical equilibrium reviews and targeted corrections;
+  live connector, matched benchmark and unseen holdout claims remain open.
+- Route an exact portable mirror into AskJamie Resume Representative without
+  duplicating the existing drafting, addendum or application-status workflows.
 
 ## 2026-10-25: explicit Notion destination roots
 
