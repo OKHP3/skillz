@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "verification_date": "2026-11-09",
+  "verification_kind": "current-state-reconciliation",
+  "skill_name": "okhp3-linkedin-dm-reconcile",
+  "version": "1.0.1",
+  "canonical": {
+    "repository": "OKHP3/skillz",
+    "package": "social-posting/okhp3-linkedin-dm-reconcile",
+    "base_commit": "d9cbe84bf0fd629adafff9093e9b00c6f9185343",
+    "pre_sync_git_status": "clean isolated task checkout"
+  },
+  "mirror": {
+    "repository": "OKHP3/askjamie-foundry",
+    "package": "capabilities/resume-representative/skills/okhp3-linkedin-dm-reconcile",
+    "base_commit": "3231308afdcaada98d3ec423e70a7ce2a05f0a4f",
+    "pre_sync_git_status": "clean isolated task checkout"
+  },
+  "integration_branch": "codex/linkedin-conversation-reconcile",
+  "authorization": "Current owner request to extract, review and publish the reusable skill in the named catalogs.",
+  "canonical_selection": "One public-neutral read-only source contract; adjacent drafting, career-addendum and application-status packages retain their distinct jobs.",
+  "core_file_hashes": {
+    "LICENSE.md": "ee5474fbf192c4bf231dfda879d4e8ecd5cad5021dc860fd8bff94011a679260",
+    "SKILL.md": "4b68c4388be3c71511441e9d8e8bf81756bf5e9dff7d6d4e9863a79d3cb004c7",
+    "evals/discovery.json": "e79696bb8be21023da77c356f6f961f7195780e0247cef2e66883a8ce53c1bf4",
+    "evals/evals.json": "7213a35266038e6cba1938acdaca3423794fb41228a569b379aab34139137ad7",
+    "evals/review-1.0.1.json": "d86905212cff6ce8ab17c121396fe2a97298e7f843d2285aef017a3dda0cafcf",
+    "references/case-record.md": "ccd2078f2e41b6e150cc72d38a9215f961dd8a21453fdf57f7a962536fd29902",
+    "references/design-record.md": "9b2806653c7e83d1cc9d24c01cbfade52834e81ddd935b1b209d4cb6c2328924",
+    "references/worked-example.md": "4c9d720f743b070621efb1f4850207e705a98dfb3e390235317fef54fe9dfa84"
+  },
+  "core_file_count": 8,
+  "all_core_files_match": true,
+  "host_adapters": [],
+  "exclusions": [
+    "Runtime messages, private locators, transcripts and career files.",
+    "Unrelated branches, legacy source snapshots and host configuration."
+  ],
+  "verification": "Full relative-file inventory and SHA-256 equality; YAML metadata type, references, synthetic-fixture and neutrality checks.",
+  "recovery": "The new package is absent at the recorded base commits. Revert only this task's commits after inspecting later changes; do not discard other work or private runtime records.",
+  "historical_limit": "This records current reviewed bytes and the directly observed pre-copy task state. It does not reconstruct earlier approvals or establish live host compatibility."
+}

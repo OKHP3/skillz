@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-26T06:13:53.657Z",
+  "generatedAt": "2026-11-26T06:15:15.465Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "main",
-  "sourceCommit": "bdccf772",
-  "skillCount": 366,
+  "sourceCommit": "834d4330",
+  "skillCount": 367,
   "familyCount": 22,
   "families": [
     {
@@ -866,7 +866,7 @@
     {
       "name": "social-posting",
       "displayName": "Social posting",
-      "skillCount": 40,
+      "skillCount": 41,
       "skills": [
         "okhp3-build-in-public-proof-brief",
         "okhp3-discord-comment",
@@ -882,6 +882,7 @@
         "okhp3-linkedin-carousel",
         "okhp3-linkedin-comment",
         "okhp3-linkedin-connection-note",
+        "okhp3-linkedin-dm-reconcile",
         "okhp3-linkedin-inbox-triage",
         "okhp3-linkedin-message",
         "okhp3-linkedin-network-plan",
@@ -16474,9 +16475,9 @@
       "boundaries": [],
       "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
       "githubUrl": "https://github.com/OKHP3/skillz/blob/main/process-capture/okhp3-ai-workforce-bench-gate/SKILL.md",
-      "lastModified": "2026-11-17T23:09:11-06:00",
-      "commitSha": "33a2d07d",
-      "createdAt": "2026-11-09T16:58:00-06:00",
+      "lastModified": null,
+      "commitSha": null,
+      "createdAt": null,
       "packageMetadata": {
         "author": "Jamie Hill (OverKill Hill P³)",
         "category": "workforce-governance",
@@ -21013,6 +21014,75 @@
         ]
       },
       "maturitySource": "fallback-structure",
+      "maturityReviewedAt": null,
+      "releaseReadiness": "needs-live-evidence"
+    },
+    {
+      "name": "okhp3-linkedin-dm-reconcile",
+      "displayName": "LinkedIn Dm Reconcile",
+      "family": "social-posting",
+      "skillDir": "okhp3-linkedin-dm-reconcile",
+      "path": "social-posting/okhp3-linkedin-dm-reconcile/SKILL.md",
+      "description": "Reconcile LinkedIn email notifications with sent and received direct messages. Use when the user says they already replied, asks who owes a response, or needs a consolidated conversation status. Keep each person and opportunity separate. This is a read-only context check, not message drafting or sending, application submission, profile editing, or a monitoring scheduler.",
+      "version": "1.0.1",
+      "license": "MIT",
+      "category": "social-posting",
+      "origin": "portable-agent-skills",
+      "author": "Public Agent Skill Library",
+      "homepage": null,
+      "maturity": "draftable",
+      "evidenceStatus": "not-run",
+      "evidenceNote": "Evaluation design exists, but the current package has no executed benchmark.",
+      "status": null,
+      "tags": [],
+      "topics": [
+        "social-posting"
+      ],
+      "triggers": [],
+      "avoid": [],
+      "companions": [],
+      "examples": [],
+      "inputs": [],
+      "outputs": [
+        "Person label and opportunity/request key, keeping distinct cases separate.",
+        "Latest material received and sent events, with displayed times and source.",
+        "Each unresolved request, state, next-action owner, and deadline basis.",
+        "Artifact transmission and onward-submission facts when relevant.",
+        "As-of time, coverage, source type, and material access or matching limits."
+      ],
+      "tools": [],
+      "runtimes": [],
+      "boundaries": [],
+      "rawUrl": "https://raw.githubusercontent.com/OKHP3/skillz/main/social-posting/okhp3-linkedin-dm-reconcile/SKILL.md",
+      "githubUrl": "https://github.com/OKHP3/skillz/blob/main/social-posting/okhp3-linkedin-dm-reconcile/SKILL.md",
+      "lastModified": "2026-11-09T09:14:18-06:00",
+      "commitSha": "5ef2ab68",
+      "createdAt": "2026-11-09T09:14:18-06:00",
+      "packageMetadata": {
+        "author": "Public Agent Skill Library",
+        "category": "social-posting",
+        "origin": "portable-agent-skills",
+        "homepage": null,
+        "authorGithub": null,
+        "inScope": "Bidirectional message evidence, notification reconciliation, coverage, and next-action ownership.",
+        "outOfScope": "Sending, drafting, uploads, tracker writes, submissions, account changes, and scheduling.",
+        "publicArtifact": true
+      },
+      "evidence": {
+        "status": "not-run",
+        "evaluatedSkillVersion": "1.0.1",
+        "evalCount": 16,
+        "benchmarkCount": 0,
+        "testCount": 0,
+        "referenceCount": 3,
+        "scriptCount": 0,
+        "lastEvidenceDate": null,
+        "reviewDecision": null,
+        "blockers": [
+          "No executed evaluation exists for the current package version."
+        ]
+      },
+      "maturitySource": "explicit-frontmatter",
       "maturityReviewedAt": null,
       "releaseReadiness": "needs-live-evidence"
     },

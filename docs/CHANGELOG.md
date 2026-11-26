@@ -229,6 +229,17 @@
 - Refresh the distribution catalogs and manifest to 339 skills across 22
   active families.
 
+## 2026-11-09: Bidirectional LinkedIn conversation reconciliation
+
+- Add `okhp3-linkedin-dm-reconcile` 1.0.1 as a draftable read-only source
+  candidate, separating incoming notifications from the full DM conversation.
+- Preserve account, opportunity and request identity, coverage gaps, explicit
+  commitments and distinct transmission/submission milestones.
+- Record separated analytical equilibrium reviews and targeted corrections;
+  live connector, matched benchmark and unseen holdout claims remain open.
+- Route an exact portable mirror into AskJamie Resume Representative without
+  duplicating the existing drafting, addendum or application-status workflows.
+
 ## 2026-10-25: explicit Notion destination roots
 
 - Revise domain filing to 1.1.0: distinguish the canonical discovery root from
