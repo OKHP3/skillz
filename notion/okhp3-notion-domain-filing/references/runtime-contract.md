@@ -9,6 +9,13 @@ policy_source: APPROVED_SKILL_SOURCE_AND_VERSION
 policy_commit: OWNER_APPROVED_IMMUTABLE_COMMIT
 policy_sha256: OWNER_APPROVED_DIGEST_MAP_FOR_REQUIRED_POLICY_FILES
 canonical_root: ROOT_PAGE
+approved_destination_roots:
+  - hub: CAREER_HUB
+    expected_parent: workspace_root
+  - hub: TECHNOLOGY_HUB
+    expected_parent: workspace_root
+  - hub: REFERENCE_HUB
+    expected_parent: ROOT_PAGE
 domains:
   career:
     hub: CAREER_HUB
@@ -50,6 +57,40 @@ An owner may configure a different taxonomy, limits, or cadence. Do not add a
 domain just because a candidate does not fit. Exclude a configured identity
 field that the actual schema lacks; if no stable original identity can be
 queried, hold registration rather than inventing a schema.
+
+## Bounded destination roots
+
+`canonical_root` is a discovery and protection anchor, not a requirement that
+all domain hubs share one parent. Bind `approved_destination_roots` (exact IDs
+plus expected parent locations) in trusted controller settings. The private
+map may select or narrow that set, never add a root or change its expected
+location. Preserve a legacy single-tree configuration only within its already
+approved hub map and canonical-root boundary; do not silently infer a new
+top-level exception.
+
+Resolve the intended destination and its complete native parent chain. Accept
+the destination only if it is an approved hub or a descendant of that exact
+hub, and the hub's live location matches its trusted expected parent. For a
+workspace-root hub, corroborate an empty parent chain with native root listing
+metadata. For a nested hub, verify the exact immediate parent and its ancestry.
+Missing, incomplete, cyclic or conflicting ancestry is a hold. Names, Domain
+relations and desired Index paths are not parent-chain evidence. Discovery
+of a page at root does not add it to the approved destination set.
+
+Protect every approved hub from source moves regardless of placement. Never
+move a hub back to satisfy an old ancestry assumption. Hold only the affected
+domain on location drift; do not disable verified unaffected domains. Preserve
+all existing access-boundary and source-preservation gates.
+
+For an authorized layout repair, check for concurrent runs and configuration
+changes before writes. Read back the same scheduler's unchanged enabled state,
+cadence, timezone and delivery destination; update its trusted roots and verified
+immutable pin in place. Update the existing private adapter and controller
+receipt with a new map version. Retain the old configuration and resolved
+structural-hold evidence, unrelated review items, protected IDs, processed
+records and prior checkpoints. Release only the obsolete location holds after
+live root verification. Test acceptance and unrelated-root rejection read-only;
+do not move originals or hubs merely to test a scope repair.
 
 ## State semantics
 

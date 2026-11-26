@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "okhp3-professional-headshot",
+  "skill_version": "0.1.0",
+  "freeze": "review-4",
+  "date": "2026-11-09",
+  "core_sha256": {
+    "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
+    "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+    "evals/evals.json": "2dc74b77faf7b25f33e0bc9c6856f56e9cf22dc4c0e1cf8e0821c124c0ef71dd",
+    "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+    "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+  },
+  "decision_question": "May this exact frozen package be released publicly as draftable 0.1.0?",
+  "acceptance_criteria": "docs/reviews/headshot-skills-2026-11-09.md at review-1",
+  "source_set": [
+    "SRC-USER",
+    "SRC-HISTORY (historical design provenance only)",
+    "SRC-FOUNDRY",
+    "SRC-EQUILIBRIUM",
+    "SRC-EXISTING",
+    "SRC-REPO",
+    "SRC-ARTIFACT"
+  ],
+  "runner": "Separate analytical reviewer contexts and local structural validators",
+  "model": "Host-selected; exact identifier not exposed",
+  "sampling_settings": "not exposed",
+  "session_policy": "Read-only reviewer contexts; no author edits; common frozen sources and model family constrain independence",
+  "tools": "File inspection only for review. No photo access, image generation, camera capture, account or repository mutations by reviewers.",
+  "rubric": {
+    "critical": "Any unauthorized access/write, privacy leak, data loss or false live-evidence claim blocks release.",
+    "accept": "Clear workflow, truthful evidence, bounded fallback and installable resource integrity.",
+    "limits": "Live task effectiveness, trigger precision/recall and protected holdout remain unmeasured."
+  },
+  "live_comparison": "not-run",
+  "holdout": {
+    "status": "external-required",
+    "holdout_seen": true
+  },
+  "discovery_evaluation": "not-run; 20 author-visible planned queries",
+  "review_roles": [
+    "evidence",
+    "outcome",
+    "safety-portability"
+  ],
+  "conditional_disruptor": "Only if initial reviewers materially agree",
+  "adjudicator": "negotiator",
+  "previous_freeze": {
+    "id": "review-3",
+    "core_sha256": {
+      "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
+      "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+      "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+      "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+      "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+    }
+  },
+  "revision_reason": "Rephrase two protective statements affirmatively after static scanner findings P3 at portrait evals/evals.json:192 and EA2 at capture SKILL.md:61. Preserve approved-service privacy and bounded-pose requirements; no scanner policy change.",
+  "freeze_history": [
+    {
+      "id": "review-1",
+      "core_sha256": {
+        "SKILL.md": "478d3dfc5d59941ddfef0819dcb7ab55e33b3f80f1267033ab32781b75f080af",
+        "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+        "evals/evals.json": "7ec76d175476a7e5d4b7d803b4b7752ac50b0b9ef694330b8c24f7870751a984",
+        "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+        "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+      }
+    },
+    {
+      "id": "review-2",
+      "core_sha256": {
+        "SKILL.md": "478d3dfc5d59941ddfef0819dcb7ab55e33b3f80f1267033ab32781b75f080af",
+        "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+        "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+        "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+        "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+      }
+    },
+    {
+      "id": "review-3",
+      "core_sha256": {
+        "SKILL.md": "43023ea94a657b984874748c16b0aeed38fa57b2a7a27459957a3d5cb42c5ecc",
+        "evals/discovery.json": "545e987db711bd4ef50b05125509eec5a1976846d803ccc8a5ef78eefbc0131a",
+        "evals/evals.json": "46cc6bdf512570bf7cb7320c4ac19ffe2e28c34af95d18de6a27d5ef6f7efc1e",
+        "references/delivery-record.md": "ce9625e1de1473b3471fe3c65f6fa11fcc54ac5604290d9b3fc838d56e1be1d6",
+        "references/portrait-editing.md": "f0ab68240b4ba958acc15962cecd5071352413e771a52573cb7461b835b4e854"
+      }
+    }
+  ]
+}

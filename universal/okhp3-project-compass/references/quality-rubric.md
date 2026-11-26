@@ -1,6 +1,6 @@
 # Quality rubric
 
-`python3 scripts/validate_compass.py --root <path>` scores ten checks out of
+`python3 scripts/validate_compass.py --root <path>` scores eleven checks out of
 100. This file explains what each check is really testing and what to do when
 it fails.
 
@@ -14,7 +14,7 @@ it fails.
 | V6 confidence discipline | 7 | Every tagged claim uses a legal tier; `declared` claims cite a source | Inference promoted to declaration |
 | V7 scope firewall | 9 | No confidentiality markers, ticket keys, internal hostnames, credential shapes, or deny terms in generated artifacts | Text copied from a source that was not generic |
 | V8 style and managed blocks | 5 | No em dashes; block markers balanced and unique | Generated prose picked up an em dash, or a block was hand-edited |
-| V9 unattended-run safety | 6 | Open-questions file exists; run records have history rows; blocking questions surfaced | Run record written without a history append |
+| V9 unattended-run safety | 6 | Open-questions file exists; each receipt has a corresponding history row and a readable report with the same run ID; blocking questions surfaced | Run record written without a history append |
 | V10 staleness surfaced | 6 | Objectives past thresholds carry the matching flag | Reassessment skipped the staleness pass |
 | V11 mode and mirror integrity | 10 | Mode recorded with evidence; history agrees with the verdict; Mode A has `owner_repo` and a pointer-only mirror matching it; Mode B has no live mirror or enabled GitHub config | Mode never recorded, a mode change with no `mode_change` drift item, or issue bodies copied into the mirror |
 
@@ -22,7 +22,7 @@ it fails.
 
 | Band | Score | Meaning |
 |---|---|---|
-| A | 90 to 100 | Release quality. Safe to rely on and to schedule |
+| A | 90 to 100 | Strong mechanical score. Review evidence quality and scheduling constraints separately |
 | B | 75 to 89 | Usable with named gaps. Fix before the next scheduled run |
 | C | 60 to 74 | Structurally sound, substantively thin. Do not act on the delta alone |
 | D | below 60 | Rebuild the failing artifact. Treat conclusions as unsupported |
@@ -65,3 +65,7 @@ A low V4 with a high V1 means the state file is well-formed and the reasoning
 inside it is not. That is worse than a missing file, because it looks credible.
 Prioritize V4, V2, and V5 failures over everything else; they are the checks
 that decide whether the next run's diff means anything.
+
+V4 checks that a status has a recognized evidence type and locator. Open the cited record, confirm the claimed event took place, and compare it with the task's completion criterion before recording done. An open issue or a missing source cannot substantiate completion.
+
+An issue citation for completion records closure. A pull request citation records a merge. Verify the source against the claimed disposition. The command returns 0 for PASS, 1 for HOLD and 2 for usage errors.

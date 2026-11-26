@@ -1,15 +1,15 @@
 ---
 name: okhp3-linkedin-post
-description: Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts, public progress updates, launch or checkpoint recaps, deadline updates, or "write a post about X". It applies voice and the final public-context scrub, then returns a draft only.
+description: Draft a source-backed LinkedIn post from a chosen angle or named topic. Use for standalone posts, public progress updates, launch or checkpoint recaps, deadline updates, "write a post about X", or the author's own first comment for a post. It applies voice and the final public-context scrub, then returns a draft only.
 license: MIT
 metadata:
   public_artifact: true
   author: Public Agent Skill Library
-  version: "2.3.0"
+  version: "2.4.0"
   category: social-posting
   origin: portable-agent-skills
   in_scope: "The named LinkedIn content ideation, drafting, or voice-filtering workflow."
-  out_of_scope: "Publication without approval, employer-confidential context, impersonation, or unrelated social-platform management."
+  out_of_scope: "Publishing unless the user explicitly approves it, employer-confidential context, impersonation, or unrelated social-platform management."
 ---
 
 # okhp3-linkedin-post
@@ -26,7 +26,8 @@ Drafting, from a chosen angle to finished output.
 
 ## Scope
 
-This package drafts a LinkedIn post only. It does not publish, schedule, manage
+This package drafts a LinkedIn post and, on request, the author's own first
+comment for it. It does not publish, schedule, reply to other people's
 comments, or create content for another platform.
 
 ## Process
@@ -38,17 +39,44 @@ comments, or create content for another platform.
 5. **Public-context scrub - final gate, hard, non-negotiable.** Run `references/public-context-scrub-checklist.md` against the voice-polished draft. This runs LAST, after voice, because voice polish can itself introduce specifics. No draft leaves this skill without passing this gate, regardless of how confident earlier steps were.
 6. **Output.** Return the finished draft, evidence note, primary CTA, secondary-link roles, and gate report. If anything was caught and removed at step 5, note only its category. State that publication remains a separate, explicitly authorized host action.
 
+## Author first comment (optional)
+
+Draft this only when the user asks for it. It belongs here, not in
+`okhp3-linkedin-comment`, because it is part of composing the post: it often
+carries the link moved out of the post body (bare domains in a post can create
+an unwanted link-preview card) or the hashtags the user wants kept out of the
+post.
+
+1. Decide its job with the user: carry the primary link, add one piece of
+   context the post left out, or voice a **counterpoint**. Default to one job.
+2. **Counterpoint variant.** The author voices the opposing view openly, for
+   example "Devil's advocate, from the <ROLE> side of the desk." Name a role,
+   never a real person, and never invent a quote or imply someone else wrote
+   it. Steelman the view in its own paragraph, concede what it gets right,
+   answer it, then close with one question that invites both sides. It must
+   read as the author's own framing, not a staged second voice.
+3. **Hashtags and links.** Place hashtags in the comment only when the user
+   asks, and keep the requested count across post plus comment without
+   duplicates. Keep one primary link; if the post already carries it, do not
+   repeat it.
+4. Run the comment through `okhp3-linkedin-voice` (comments use the `off`
+   rhythm profile unless the user asks otherwise) and the same public-context
+   scrub as the post.
+5. Return it as a separate `First comment` section with its timing: post it
+   right after the post goes live, as the author. Posting it remains a
+   separate, explicitly approved action.
+
 ## Order matters
 
 Draft -> CTA/link check -> Voice -> public-context scrub -> output. Not scrub-then-voice: voice polish happens on content, then the final safety check happens on the actual thing that is about to be published, not an earlier draft of it.
 
 ## Relationship to angles
 
-If no angle was provided and the user just says "write a post about X" with no prior `okhp3-linkedin-angles` pass, that's fine — angles is for triage of EXISTING work, not a mandatory gate before every post. Direct topic requests skip straight to drafting.
+If no angle was provided and the user just says "write a post about X" with no prior `okhp3-linkedin-angles` pass, that's fine. Angles is for triage of EXISTING work, not a mandatory gate before every post. Direct topic requests skip straight to drafting.
 
 ## Output contract
 
-Return one paste-ready LinkedIn draft followed by a compact evidence and gate report. The draft must contain no employer-identifying material, no unsupported factual claims presented as facts, no settled language for an undecided outcome, and no unresolved public-context findings. Preserve any user-specified hashtag count exactly. If the requested claim cannot survive the scrub, return a generalized version or stop with the specific category of blocker.
+Return one paste-ready LinkedIn draft followed by a compact evidence and gate report. When requested, add a `First comment` section with its job, hashtag and link placement, and go-live timing. The draft must contain no employer-identifying material, no unsupported factual claims presented as facts, no settled language for an undecided outcome, and no unresolved public-context findings. Preserve any user-specified hashtag count exactly. If the requested claim cannot survive the scrub, return a generalized version or stop with the specific category of blocker.
 
 ## Validation
 

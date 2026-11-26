@@ -1,0 +1,102 @@
+{
+  "answer": "Added `.github/workflows/weekly-compass.yml` to the fixture copy of `widget-forge`. It defines an unattended Monday check at 14:30 UTC, which is 8:30 a.m. CST or 9:30 a.m. CDT. The workflow uses read-only GitHub permissions and reports differences between the Compass index and tracked GitHub milestones and issues.\n\nVerified the saved workflow and compared the current snapshot. Milestone #7 and issue #12 are open in both the index and GitHub. The Compass task linked to issue #12 is marked done and cites merged PR #32.\n\nThe fixture has no live GitHub Actions host, so the workflow was neither deployed nor run. It will become eligible to run once it lands on the repository’s default branch with Actions enabled.",
+  "files_changed": {
+    ".github/workflows/weekly-compass.yml": "name: Weekly Compass check\n\non:\n  schedule:\n    # 8:30 a.m. CST / 9:30 a.m. CDT on Monday.\n    - cron: '30 14 * * 1'\n  workflow_dispatch:\n\npermissions:\n  contents: read\n  issues: read\n\njobs:\n  compare:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - name: Compare tracked records with GitHub\n        env:\n          GH_TOKEN: ${{ github.token }}\n          REPOSITORY: ${{ github.repository }}\n          REVISION: ${{ github.sha }}\n        shell: bash\n        run: |\n          set -euo pipefail\n\n          index=$(gh api \"repos/$REPOSITORY/contents/.compass/github-index.json?ref=$REVISION\" \\\n            --jq '.content' | base64 --decode)\n          records=$(jq -er --arg repo \"$REPOSITORY\" '\n            if (.owner_repo | ascii_downcase) != ($repo | ascii_downcase) then\n              error(\"Compass index points to a different repository\")\n            else\n              [\n                (.milestones[] | {kind: \"milestones\", number, state}),\n                (.issues[] | {kind: \"issues\", number, state})\n              ]\n              | if all(.[];\n                  (.number | type == \"number\" and . > 0 and . == floor)\n                  and (.state | ascii_downcase | . == \"open\" or . == \"closed\"))\n                then map([.kind, .number, (.state | ascii_downcase)] | @tsv) | join(\"\\n\")\n                else error(\"Invalid Compass index record\")\n                end\n            end\n          ' <<< \"$index\")\n\n          {\n            printf '### Compass GitHub state check\\n\\n'\n            if [[ -z \"$records\" ]]; then\n              printf 'The Compass index has no tracked milestones or issues.\\n'\n            else\n              printf '| GitHub record | Compass index | GitHub | Result |\\n'\n              printf '| --- | --- | --- | --- |\\n'\n              while IFS=$'\\t' read -r kind number indexed_state; do\n                hosted_state=$(gh api \"repos/$REPOSITORY/$kind/$number\" --jq '.state')\n                result=match\n                if [[ \"$indexed_state\" != \"$hosted_state\" ]]; then\n                  result=difference\n                fi\n                printf '| %s #%s | %s | %s | %s |\\n' \\\n                  \"$kind\" \"$number\" \"$indexed_state\" \"$hosted_state\" \"$result\"\n              done <<< \"$records\"\n            fi\n          } >> \"$GITHUB_STEP_SUMMARY\"\n"
+  },
+  "files_removed": [],
+  "calls": [
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "forge"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "package"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          "README.md",
+          "docs/CHARTER.md",
+          ".compass/OPEN-QUESTIONS.md",
+          ".compass/config.json",
+          ".compass/baseline.json",
+          ".compass/github-index.json",
+          ".compass/objectives.json",
+          ".git/config",
+          ".git/HEAD"
+        ]
+      },
+      "error": false
+    },
+    {
+      "tool": "write_files",
+      "arguments": {
+        "files": {
+          ".github/workflows/weekly-compass.yml": "name: Weekly Compass check\n\non:\n  schedule:\n    # 8:30 a.m. CST / 9:30 a.m. CDT on Monday.\n    - cron: '30 14 * * 1'\n  workflow_dispatch:\n\npermissions:\n  contents: read\n  issues: read\n\njobs:\n  compare:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - name: Compare tracked records with GitHub\n        env:\n          GH_TOKEN: ${{ github.token }}\n          REPOSITORY: ${{ github.repository }}\n          REVISION: ${{ github.sha }}\n        shell: bash\n        run: |\n          set -euo pipefail\n\n          index=$(gh api \"repos/$REPOSITORY/contents/.compass/github-index.json?ref=$REVISION\" \\\n            --jq '.content' | base64 --decode)\n          records=$(jq -er --arg repo \"$REPOSITORY\" '\n            if (.owner_repo | ascii_downcase) != ($repo | ascii_downcase) then\n              error(\"Compass index points to a different repository\")\n            else\n              [\n                (.milestones[] | {kind: \"milestones\", number, state}),\n                (.issues[] | {kind: \"issues\", number, state})\n              ]\n              | if all(.[];\n                  (.number | type == \"number\" and . > 0 and . == floor)\n                  and (.state | ascii_downcase | . == \"open\" or . == \"closed\"))\n                then map([.kind, .number, (.state | ascii_downcase)] | @tsv) | join(\"\\n\")\n                else error(\"Invalid Compass index record\")\n                end\n            end\n          ' <<< \"$index\")\n\n          {\n            printf '### Compass GitHub state check\\n\\n'\n            if [[ -z \"$records\" ]]; then\n              printf 'The Compass index has no tracked milestones or issues.\\n'\n            else\n              printf '| GitHub record | Compass index | GitHub | Result |\\n'\n              printf '| --- | --- | --- | --- |\\n'\n              while IFS=$'\\t' read -r kind number indexed_state; do\n                hosted_state=$(gh api \"repos/$REPOSITORY/$kind/$number\" --jq '.state')\n                result=match\n                if [[ \"$indexed_state\" != \"$hosted_state\" ]]; then\n                  result=difference\n                fi\n                printf '| %s #%s | %s | %s | %s |\\n' \\\n                  \"$kind\" \"$number\" \"$indexed_state\" \"$hosted_state\" \"$result\"\n              done <<< \"$records\"\n            fi\n          } >> \"$GITHUB_STEP_SUMMARY\"\n"
+        }
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "forge"
+      },
+      "error": false
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "surface": "project",
+        "paths": [
+          ".github/workflows/weekly-compass.yml",
+          ".compass/github-index.json",
+          ".compass/objectives.json"
+        ]
+      },
+      "error": false
+    }
+  ],
+  "attempts": [
+    {
+      "status": "completed",
+      "model_requested": "gpt-6.2-sol",
+      "cli": "codex-cli 0.171.0-alpha.13",
+      "started_utc": "2026-11-24T07:07:35.981104+00:00",
+      "elapsed_seconds": 62.6,
+      "prompt_sha256": "6dd7ac5025f186a97c83cf6c937403c9a427394f6c30950bd9292525281bd3c1",
+      "activity": [
+        "inspect",
+        "inspect",
+        "inspect",
+        "inspect",
+        "write_files",
+        "inspect",
+        "inspect"
+      ],
+      "usage": {
+        "input_tokens": 99747,
+        "cached_input_tokens": 92160,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2524,
+        "reasoning_output_tokens": 1145
+      }
+    }
+  ]
+}

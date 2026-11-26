@@ -9,7 +9,7 @@ This is the canonical agent guide and routing index for this repository. Read it
 - **Type:** Public Agent Skills distribution library, using the `SKILL.md` format
 - **License:** MIT at the repository level; individual skills may declare a different license in frontmatter
 - **Release state:** Unreleased. There are no Git tags.
-- **Current inventory:** 334 distribution skills in 22 active families (catalog audit, 2026-10-25). OpenClaw and persona capability packages remain unbenchmarked candidates.
+- **Current inventory:** 367 distribution skills in 22 active families (catalog audit, 2026-11-25). OpenClaw and persona capability packages remain unbenchmarked candidates.
 - **Source of truth:** GitHub repository for installable files; the public landing surface is OverKill Hill `/projects/skillz/`
 
 ### Mission: confirmed
@@ -39,10 +39,10 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `abrahamic/` | Scripture lookup, observance calendar, tradition reference, and cross-tradition comparison skills |
 | `community/` | Imported or community-oriented general-purpose skills, including UI, MCP, social, and authoring guidance |
 | `lifetrkr/` | Celestial-data and daily-oracle skills |
-| `social-posting/` | Platform-specific drafting contracts for LinkedIn, Facebook, X/Twitter, Discord, YouTube, Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and Telegram |
+| `social-posting/` | Platform-specific drafting and read-only conversation-context contracts for LinkedIn, Facebook, X/Twitter, Discord, YouTube, Ko-fi, Instagram, TikTok, Reddit, Patreon, Pinterest, Slack, Teams, and Telegram |
 | `mermaid/` | Mermaid diagram authoring, governance, theming, publishing, updating, and repair |
-| `notion/` | Notion knowledge operations, conversation capture, and domain filing |
-| `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, validating, and promoting information or exploratory work |
+| `notion/` | Notion CRUDq foundation (core, read, write, query, search, destructive ops, venue routing), conversation capture, and domain filing |
+| `knowledge-operations/` | Portable lifecycle for capturing, classifying, researching, reconciling, validating, and promoting information or exploratory work |
 | `language-mediation/` | Controlled transformations across languages, locales, specialist registers, and plain-language audiences |
 | `process-capture/` | Process-analysis and documentation pipeline plus the recurring-task capture skill |
 | `refolddec/` | ReFolDec fold, unfold, and refold transformations |
@@ -53,13 +53,13 @@ Do not add employer-specific confidential material, private credentials, tokens,
 | `outcome-modeling/` | Shared event-to-state forecasting core plus sports, NFL fantasy, business-sales, and prediction-market decision adapters |
 | `software-reclamation/` | Remastered software-reclamation workflow for reclaiming undocumented applications, documenting behavior, planning modernization, and handing off support or replacement |
 | `glee-fully/` | Glee-fully Tool and Tool-ette skill architecture, Persona Density, hierarchy, and future consumer-skill conversions |
-| `askjamie/` | AskJamie-specific Custom GPT creation skills and the AskJamie agent's correspondence capability |
+| `askjamie/` | AskJamie Custom GPT creation, correspondence and interview-preparation skills |
 | `openclaw/` | Host-oriented OpenClaw skills and the default agent's (Larry's) research and persona-routing capabilities |
 | `murderbird/` | Editorial red-team and thesis-building capabilities for the MurderBird agent persona |
 | `.agents/skills/` | Local support skills and the bundled catalog/authoring utilities |
 | `docs/` | Stack position, public surfaces, publishing, security, backlog, changelog, and technology inventory |
 | `.github/` | Dependabot, runtime pins, and scheduled technology-inventory automation |
-| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current 334-skill distribution inventory |
+| `skillz.manifest.json` | Machine-readable repository metadata and complete family membership synchronized to the current distribution inventory |
 
 ## Routing index
 
@@ -86,10 +86,17 @@ Mermaid cross-cutting rules: preserve style during updates, repair syntax minima
 
 | Skill | Trigger and loading rule |
 |---|---|
+| `okhp3-build-in-public-proof-brief` | Reconcile supplied build, test, and release receipts into a private claim ledger and separate candidate facts before public progress drafting. |
 | `okhp3-linkedin-angles` | Mine a finished artifact or conversation for 3 to 5 LinkedIn-postable angles. It produces candidates and does not draft the post. |
 | `okhp3-linkedin-post` | Draft a LinkedIn post from a selected angle or directly named topic. It applies voice and runs the final employer-context scrub. |
 | `okhp3-linkedin-voice` | Final filter for any LinkedIn-bound draft, whether generated by this family or written by hand. It is not a generator. |
-| `okhp3-linkedin-comment` | Draft a context-aware LinkedIn comment or reply. Load after reading the target post or parent comment. |
+| `okhp3-linkedin-series-continuity` | Prepare a source-backed series continuation using verified prior-item states, evidence and voice; draft only. |
+| `okhp3-linkedin-comment` | Draft a context-aware LinkedIn comment or reply. Load after reading the target post or parent comment. The author's own first comment belongs to `okhp3-linkedin-post`. |
+| `okhp3-linkedin-message` | Draft a LinkedIn DM or counter reply, or several related messages with a send order, calibrated by role tier and relationship temperature. Not for connection notes, comments, or posts. |
+| `okhp3-linkedin-dm-reconcile` | Reconcile email alerts with both directions of a LinkedIn DM, per person, opportunity and request. Read-only; use before deciding whether a response remains due. |
+| `okhp3-linkedin-browser-ops` | Execute an already-approved LinkedIn send, comment, reply, connection request, or field edit in a browser pane and verify it. Mechanics only; never drafts. |
+| `okhp3-linkedin-carousel` | Plan and locally render a companion LinkedIn document carousel (PDF) from a JSON spec after the post exists. It never uploads. |
+| `okhp3-linkedin-publish-ops` | Schedule, reschedule, attach a document to, or post the first comment for an already-approved LinkedIn post. The family's only acting package: handoff by default, per-action approval, page-level verification. |
 | `okhp3-facebook-post` | Draft a Facebook profile, Page, group, or event post after the destination and audience are explicit. |
 | `okhp3-facebook-comment` | Draft a Facebook comment or reply after reading the target conversation and identifying its surface. |
 | `okhp3-twitter-post` | Draft an X, formerly Twitter, post. `twitter` is the stable package slug; use the standard post constraint unless longer-post eligibility is explicitly established. |
@@ -118,7 +125,7 @@ Mermaid cross-cutting rules: preserve style during updates, repair syntax minima
 | `okhp3-telegram-channel-post` | Draft a Telegram broadcast-channel post from supplied destination and material context. |
 | `okhp3-telegram-group-reply` | Draft a Telegram group or topic reply from supplied parent-message context. |
 
-Social-posting cross-cutting rules: identify acting account, destination, audience, and whether the task is a new post or a response before drafting. Prepare text only; do not publish, schedule, join communities, change settings, or automate engagement without explicit approval. Verify consequential public claims and exclude employer or private context by default. LinkedIn retains its voice and public-context scrub path; Discord requires channel and ping context; Facebook requires surface and audience context; X should not assume Premium capability; YouTube must distinguish video, channel-post, Community, and comment surfaces; Ko-fi and Patreon must treat access boundaries and supporter or member details as private; Reddit requires supplied community rules; Pinterest needs asset, board, and link context; and Slack, Teams, and Telegram require the exact message surface and parent thread when replying. Packages carry no fixed account, person, topic, or viewpoint and obtain their minimum necessary context only at runtime.
+Social-posting cross-cutting rules: identify acting account, destination, audience, and whether the task is a new post or a response before drafting. Prepare text only; do not publish, schedule, join communities, change settings, or automate engagement without explicit approval. The single scoped exception is `okhp3-linkedin-publish-ops`, which acts only on approved text with approval naming each action. Verify consequential public claims and exclude employer or private context by default. LinkedIn retains its voice and public-context scrub path; Discord requires channel and ping context; Facebook requires surface and audience context; X should not assume Premium capability; YouTube must distinguish video, channel-post, Community, and comment surfaces; Ko-fi and Patreon must treat access boundaries and supporter or member details as private; Reddit requires supplied community rules; Pinterest needs asset, board, and link context; and Slack, Teams, and Telegram require the exact message surface and parent thread when replying. Packages carry no fixed account, person, topic, or viewpoint and obtain their minimum necessary context only at runtime.
 
 ### Process-capture family
 
@@ -127,6 +134,8 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | Skill | Trigger |
 |---|---|
 | `okhp3-recurring-task-capture` | The user says they keep doing something, it is the second or third repetition, or asks to make a workflow into a skill. |
+| `okhp3-success-reconstruction` | Reconstruct a successful one-off into an evidence ledger and proposed controlled re-strike protocol; no causal proof or autonomous experiment. |
+| `okhp3-ai-workforce-bench-gate` | Review AI workforce redesign for feeder-role erosion and issue a Pipeline Preservation Test and Bench Strength Gate decision. |
 | `okhp3-process-intake-and-scope` | Document or scope a process from scratch, including boundaries, inputs, outputs, and business rules. |
 | `okhp3-as-is-process-capture` | Capture and normalize the current running process before redesign or gap analysis. |
 | `okhp3-elicitation-interviews` | Prepare interviews, workshops, question plans, or targeted follow-up to fill process gaps. |
@@ -148,7 +157,17 @@ Use `okhp3-process-intake-and-scope` for a new process, then compose downstream 
 | Skill | Trigger and loading rule |
 |---|---|
 | `okhp3-notion-capture-router` | Capture ChatGPT, Claude, Perplexity, Copilot, Gemini, PDF, or pasted AI conversations into Notion structures, dedupe them, split extracts, and reconcile against OKHP3 GitHub. This is not generic note-taking. |
-| `okhp3-notion-domain-filing` | File existing loose Notion originals beneath verified domain homes, reconcile their index entries, and add catalog cross-links while preserving source IDs and bodies. Load private workspace configuration at runtime; scheduling is a separate host capability. |
+| `okhp3-notion-core` | Load first for any Notion task: negotiate MCP, REST, or `ntn` surface, read the capability map, pin API `2025-09-03`, enforce database-to-data-source resolution, and classify errors. Performs no Notion operation itself. |
+| `okhp3-notion-identity-resolution` | Dependency-loaded only. Classify a Notion URL, UUID, `collection://`, `view://`, `discussion://`, or title into a typed ID before a sibling acts. |
+| `okhp3-notion-limits-and-retry` | Dependency-loaded only. Pacing, chunking, backoff, idempotency, and Free-workspace block-limit detection for multi-call sequences. |
+| `okhp3-notion-page-read` | Read page properties and body: block traversal, pagination, truncation recovery, faithful markdown. Not database rows. |
+| `okhp3-notion-page-write` | Create, append, targeted-replace, or restyle standalone pages. Pages with a database parent go to row-write; removal goes to destructive-ops. |
+| `okhp3-notion-search-strategy` | Find content by keyword or topic when its location is unknown; chooses workspace or AI search and gates plan-limited filters. |
+| `okhp3-notion-query` | Read rows from a known data source via view, rows, or SQL mode, with metering and rich-text fidelity caveats. Read-only. |
+| `okhp3-notion-row-write` | Schema-first create, update, or upsert of database rows. Stops on fields the schema lacks; not for bulk loads. |
+| `okhp3-notion-destructive-ops` | The only Notion skill authorized to archive, trash, restore, or delete, behind blast-radius estimation and explicit confirmation. |
+| `okhp3-notion-agent-boundary` | Decide whether a repeatable workflow belongs in the Notion Agent, a Custom Agent, a Notion Skill page, or a file-based Agent Skill. Decides only. |
+| `okhp3-notion-domain-filing` | File existing loose Notion originals beneath exact approved domain roots, including intentional top-level hubs, after expected-location and ancestry checks. Preserve source IDs and bodies; reconcile index entries and catalog links. Private maps cannot widen trusted roots; scheduling is a separate host capability. |
 | `okhp3-refolddec-core` | Explicitly transform an artifact between representations, such as idea to diagram, diagram to documentation, documentation to SKILL.md, or unfold/refold with semantic-loss tracking. Load the target domain skill alongside it. |
 
 ### Knowledge-operations family
@@ -159,22 +178,28 @@ community-originated packages and may evolve independently.
 
 | Skill | Trigger |
 |---|---|
+| `okhp3-activity-reconciliation` | Reconcile existing follow-ups or refresh an activity log using bounded source evidence, exact event identities, and authorized readback. |
 | `okhp3-artifact-validation` | Validate a named project change, draft, research packet, skill, promotion package, or handoff before reliance or handoff. |
 | `okhp3-capture-intake` | Preserve one raw idea, file, link, transcript, or request before interpretation or triage. |
+| `okhp3-idea-label` | Draft one recoverable idea label in conversation without development or a false persistence claim; compose with capture-intake for requested storage. |
 | `okhp3-evidence-standard` | Classify consequential claims as confirmed, inferred, proposal, or unknown with traceable evidence. |
 | `okhp3-graduation-gate` | Decide whether an exploratory effort is ready for formalization, should remain active, should archive, or is blocked. |
 | `okhp3-project-promotion` | Prepare an owner-approved formalization packet after a documented graduation decision. |
+| `okhp3-record-location-reconciliation` | Audit bounded local and cloud record locations, preserve versions during authorized moves, and verify affected references. See the [read-only field observation](knowledge-operations/okhp3-record-location-reconciliation/benchmarks/field-observation-2026-11-10.md). |
+| `okhp3-research-file-renewal` | Revise a cited research or retrieval reference with a source-to-revision crosswalk, topic-fidelity checks, and explicit source and host-test limits. |
 | `okhp3-source-backed-research` | Produce research or recommendations with traceable sources, retrieval dates, and explicit uncertainty. |
 | `okhp3-triage-and-file` | Assign recorded lifecycle dispositions to captured project inbox items without unapproved moves or deletion. |
+| `okhp3-voice-profile-renewal` | Create or periodically renew an evidence-grounded voice, tone, and glossary profile from an authorized writing corpus. |
 
 ### Context-extraction family
 
-The `context-extraction/` family contains ten distribution skills for extracting durable, actionable context from manually supplied AI conversations, creating continuation records, and migrating ChatGPT project material. Load the narrowest platform adapter first when one exists, then the shared extraction contract or migration skill, then the downstream destination or artifact skill.
+The `context-extraction/` family contains eleven distribution skills for extracting durable, actionable context from manually supplied AI conversations, verifying staged conceptual transfers, creating continuation records, and migrating ChatGPT project material. Load the narrowest platform adapter first when one exists, then the shared extraction contract or migration skill, then the downstream destination or artifact skill.
 
 | Skill | Trigger |
 |---|---|
 | `okhp3-thread-context-extraction` | Cross-platform or unknown-source AI thread extraction with provenance and semantic-loss controls. |
-| `okhp3-session-handoff` | Create a durable continuation record when work pauses or crosses a session, machine, or agent host. |
+| `okhp3-context-transfer` | Prepare or receive numbered context blocks, preserve authority/evidence boundaries, and verify an actual destination read-back without claiming archival completeness. |
+| `okhp3-session-handoff` | Preserve work across sessions, machines or agent hosts. Use the exact-thread closeout profile to verify completion, receipt persistence and archival separately. |
 | `okhp3-thread-extract-chatgpt` | Manually supplied ChatGPT chats, Projects, Canvas, Deep Research, or export excerpts. |
 | `okhp3-thread-extract-claude` | Manually supplied Claude chats, Projects, Artifacts, Research, or export excerpts. |
 | `okhp3-thread-extract-copilot-m365` | Manually supplied Microsoft Copilot or Microsoft 365 Copilot captures. |
@@ -274,6 +299,7 @@ with a shared `[HANDOFF]` packet.
 | `okhp3-openclaw-persona-route` | Larry | A request reaches the default agent without a named persona, or work must move between agents. Routes only. |
 | `okhp3-openclaw-research-packet` | Larry | Research or source-gathering before an article, email, or decision. Returns a sourced packet; does not draft. |
 | `okhp3-askjamie-email-draft` | AskJamie | Draft or reply to correspondence the owner sends as themselves. Draft-only. |
+| `okhp3-professional-headshot` | AskJamie | Create a realistic portrait from authorized photos with explicit likeness/reference roles and delivery evidence. |
 | `okhp3-murderbird-thesis-forge` | MurderBird | Build a thesis, outline, hooks, and hard ending from research or a rough idea. |
 | `okhp3-murderbird-argument-audit` | MurderBird | Red-team a draft argument before publication. Not security red teaming. |
 | `okhp3-glee-fully-wwgd-review` | Glee-fully | WWGD reception and warmth check before sending or publishing. A persona lens, not a real person's view. |
@@ -281,6 +307,31 @@ with a shared `[HANDOFF]` packet.
 The Glee-fully Foundry skill is the family-level authoring layer. Converted
 consumer Tools and Tool-ettes should be added only after the inventory and
 clustering work described in `glee-fully/README.md`.
+
+### Interview preparation: AskJamie family
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-interview-evidence-map` | Map one role to supported career claims, interview stories, public-work evidence and explicit gaps. Canonical source is AskJamie Resume Representative; this package is an exact mirror. |
+| `okhp3-interview-questions` | Draft candid spoken interview questions and evidence-seeking follow-ups without unsupported criticism or praise. Draft-only. |
+
+Both packages have analytical review and author-visible development cases.
+They do not establish live behavioral quality, automatic discovery or host
+readiness. Formal qualification audits, resumes and learning plans have separate
+contracts; public posting is a separately authorized drafting/action workflow.
+
+### Career reference and coaching companions
+
+| Skill | Trigger |
+|---|---|
+| `okhp3-lifetime-career-reference` | Compile a private lifetime biography, registers and bibliography as a derived view over an existing career canon. |
+| `okhp3-role-master-resumes` | Produce reusable source-linked role-family master resume editions. |
+| `okhp3-resume-generator` | Tailor one résumé to a specific opening from the candidate’s evidence and requested output constraints. |
+| `okhp3-coaching-engagement` | Maintain a private outplacement/coaching intake and meeting record with service, privacy and delivery states. |
+
+The lifetime reference, role masters and coaching packages are draftable 0.2.0 sources in `askjamie/` and exact mirrors of
+AskJamie Resume Representative. Their independent review is analytical; no
+live benchmark, unseen holdout or native-host acceptance is established.
 
 ### Outcome-modeling family
 
@@ -341,11 +392,17 @@ production-readiness, legal, or behavioral-uplift claims from their presence.
 | `okhp3-github-notification-maintainer` | Diagnose GitHub notification causes and apparent schedule failures; prepare bounded repairs and complete only authorized, verified notifications. Scheduled grant and run health are separate from inbox state. |
 | `okhp3-github-mirror-janitor` | Reconcile local GitHub mirrors and branch/notification state, group duplicate inbox signals, and prepare exact, evidence-backed branch, PR, or notification actions. |
 | `okhp3-i18n-page-sync` | Detect which pages on a static site are missing a translation or have drifted from a changed English source, by reusing the site's own search index as the page inventory. Reports drift and names the exact-pair translation skill for each flagged route; never translates or writes a page itself. |
-| `okhp3-project-compass` | Detect whether a project folder is GitHub-backed or plain, then establish or refresh its purpose, goals, and task tracking from evidence. Mode A tracks through milestones, issues, and releases via `gh`; Mode B tracks entirely in files. Reassessment runs emit an evidence-backed delta report and surface scope drift instead of absorbing it. |
+| `okhp3-local-ai-stack-upgrade` | Check, upgrade, verify and document a self-hosted local AI stack on one macOS host (Open WebUI and other Docker containers, Ollama, LM Studio, Qdrant, SearXNG, OpenClaw, Tailscale) with backups, a kept rollback and automatic rollback. Canonical source is `OKHP3/mac-studio-local-ai-workbench`. Draftable; helper tests only, no live agent benchmark. |
+| `okhp3-project-compass` | Infer project intent from evidence, adopt local trackers, and report progress and scope drift on repeat runs. Use the file sink for shared state and Mode A for optional GitHub evidence and manual action plans. |
 | `okhp3-repository-janitor` | Reconcile local Git mirrors against GitHub, preserve local variations, review branch lifecycle, and prepare safe merge or pruning actions. |
+| `okhp3-career-addendum` | Write a one-page, cover-letter-style addendum for one target role that expands what a résumé cannot hold, with honest depth labels and a claim ledger. |
+| `okhp3-recruiter-legitimacy-check` | Vet unsolicited recruiter or offer outreach, or terms that change mid-thread, before sharing a résumé or personal data. |
+| `okhp3-network-referral-tracker` | Capture offers of referrals, references, and introductions during a job search and convert each into a specific, dated ask. |
 | `okhp3-repository-organizer` | Profile and safely reorganize content-first Git repositories containing mixed knowledge, prompt, document, research, and media assets, with cross-platform naming and symlink-boundary safeguards. |
 | `okhp3-skill-cataloger` | Catalog local `.agents/skills/` or run full-index mode over root family directories. Use the script below and do not hand-edit generated catalog sections. |
 | `okhp3-skill-discovery` | Find, verify, compare, and route to currently available project-local, installed, runtime, or plugin-provided skills. |
+| `okhp3-task-resumption` | Find and restore the exact original interrupted task, preserve completed work, and verify continuation outcomes. Requires supported host capabilities for direct restart. |
+| `okhp3-job-application-completion` | Resume and complete authorized job applications from approved facts and reviewed materials; canonical source is AskJamie FoundRy, distributed under `askjamie/`. |
 | `okhp3-skill-foundry` | Create, hone, evaluate, benchmark, brand, or polish a production-quality Agent Skill using the eight-phase Foundry method, evidence ledger, conditional dissent review, and enforced current-state evidence integrity for material releases. |
 | `okhp3-skill-promotion` | Promote and synchronize a project-local skill into a verified `skills/` publication mirror and a reviewable canonical `skillz` handoff without blind overwrites or autonomous publication. |
 | `okhp3-vite-github-pages` | Deploy or repair a React or Vue Vite SPA on GitHub Pages, especially base path, router, and gh-pages issues. |
@@ -367,7 +424,7 @@ source locale to target locale. Do not collapse or parallelize the two stages.
 
 ### Project-local support skills
 
-`.agents/skills/` contains 54 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
+`.agents/skills/` contains 55 project-local support skill packages, cataloged in `.agents/skills/README.md`. The operator guide for the repository validators lives in `.agents/skills/VALIDATION.md`. These packages support this project and overlap with some distribution packages. Use the local copy when the task is specifically about this repository's catalog or authoring workflow.
 
 ## Technology and runtime
 
@@ -415,7 +472,7 @@ For generated catalog work, use `okhp3-skill-cataloger` in catalog mode for `.ag
 - `okhp3-linkedin-voice` filters existing LinkedIn-bound text. It does not generate a post.
 - Keep public-surface decisions routed through OverKill Hill. Glee-fully and AskJamie are contextual side doors, not alternate canonical homes.
 - Keep employer references excluded by default. Every public-posting draft requires a public-context check; the LinkedIn post skill retains its explicit final scrub gate.
-- Do not add em dashes to generated content. Preserve punchy standalone lines. AutoCAD version references, when relevant, use locked R10 wording.
+- Do not add em dashes to generated content. Preserve a deliberate punchy standalone line, but do not stack them; `okhp3-linkedin-voice` defines the rhythm profiles. AutoCAD version references, when relevant, use locked R10 wording.
 - A rendered diagram is disposable output unless explicitly requested for retention. Never delete source or rendered output as part of repair.
 
 ## Support documents
@@ -433,7 +490,7 @@ Read only when relevant:
 
 ## Known gaps and maintenance notes
 
-- The source inventory contains 334 distribution skills in 22 active families and 54 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
+- The source inventory contains 367 distribution skills in 22 active families and 55 project-local support skills. Regenerate README catalogs with the cataloger; its structure check alone does not establish freshness. Forge manifest validation compares committed inventory with a fresh catalog before regeneration can conceal drift.
 - `skillz.manifest.json` is a machine-readable package summary and must stay synchronized with the current family and skill inventory when public metadata is refreshed.
 - `docs/BACKLOG.md`, `docs/PUBLISHING.md`, and `docs/CHANGELOG.md` contain historical references to the old one-skill process-capture family and the removed `SKILLS.md` catalog. Do not treat those historical claims as the current inventory.
 - The cataloger warns only for imported packages that intentionally do not declare a version; those warnings do not block structural catalog validation.
@@ -441,7 +498,7 @@ Read only when relevant:
 
 When a skill, family, maturity level, or generated catalog changes, re-run the structural and catalog checks, update this index, and record release-relevant changes in `docs/CHANGELOG.md`. Keep this file factual. Label inferences and unresolved owner decisions rather than filling gaps with assumptions.
 
-Updated: 2026-10-21
+Updated: 2026-11-09
 
 ### Author-omitted attribution links
 
@@ -452,3 +509,12 @@ link field. This is distinct from the existing social-posting public-artifact
 exception; it does not change that exception or imply any release evidence.
 
 ## Imported Claude Cowork project instructions
+
+## Portrait and capture companions
+
+Use `askjamie/okhp3-professional-headshot` for realistic career portrait edits and
+`universal/okhp3-guided-photo-session` for consented still capture with verified
+controls and user-visible ready/stop/relax cues. Both are draftable 0.1.0 with
+analytical evidence only. Their synthetic cases do not establish live camera or
+image-quality performance. Social Posting links to them without adding image
+work to its text-drafting contracts.

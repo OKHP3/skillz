@@ -1,0 +1,8 @@
+{
+  "round": 2,
+  "commit": "19e28db9ae91491ff1e98881cbe7c570e2cb74d1",
+  "package": "universal/okhp3-project-compass",
+  "runtime_files_verified": 23,
+  "pin_sha256": "aabc5a0b47fd06afb3ff9f3df9865d1658be6c80a66cf3a5ee0968d04bc1b21b",
+  "acquisition": "Git objects for every stage; mutable worktree and test files excluded."
+}

@@ -1,0 +1,14 @@
+{
+  "sealed_at": "2026-11-24T07:02:38.110183+00:00",
+  "sha256": {
+    "case": "ef5bc84a6adcd0b575192200becdd8f43c3448e7a67d6250bb1c9ee02452a953",
+    "rubric": "de4cfbe07dc16e7b788b624b56df1d7f65f38decbce22dc72b08b0331797b043",
+    "author-receipt": "a4d87a6b858ffebecc704169c378368b522987292d440f34e7ef0cbecc9cbb0b"
+  },
+  "commission_sha256": "1ff51bc873ba6063a8a0dfa570fd86b4367f874ca62de8a6b827d654062052f7",
+  "author_model": "gpt-6.2-sol",
+  "author_tool_calls": [],
+  "rubric_items": 4,
+  "owner_attestation": "Owner reports no prior case or key access.",
+  "custody": "Separate ephemeral author. Private custodian files outside the checkout. Same OS account; no separate-account access audit."
+}

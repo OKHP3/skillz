@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0",
+  "review_protocol": "equilibrium-v1",
+  "evaluation_status": "analytical",
+  "review_date": "2026-11-09",
+  "decision_question": "May the two public-safe packages be distributed as draftable analytical source, without behavioral or host-readiness claims?",
+  "acceptance_criteria": [
+    "Distinct triggers, domain knowledge and outputs",
+    "Contribution, qualification, source and premise boundaries",
+    "No private execution identities or implied external actions",
+    "Valid portable source and local references",
+    "Version-bound review and exposed development evaluations",
+    "Exact canonical mirrors before publication"
+  ],
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "shared_model_or_source_limits": [
+      "Reviewers share a model family and substantially the same sanitized source set.",
+      "Initial reviewers did not see one another's results.",
+      "All conclusions are static analysis, not measured behavior."
+    ]
+  },
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "reviewer": "interview_evidence_review",
+      "decision": "approve-with-limits",
+      "findings": [
+        {
+          "id": "E-01",
+          "status": "supported",
+          "claim": "Distinct methods have traceable design rationale."
+        },
+        {
+          "id": "E-02",
+          "status": "supported",
+          "claim": "Contribution and eligibility boundaries match development cases."
+        },
+        {
+          "id": "E-03",
+          "status": "supported",
+          "claim": "Freshness and premise claims are bounded."
+        },
+        {
+          "id": "E-04",
+          "status": "supported",
+          "claim": "Relevant development cases explicitly declare no execution."
+        },
+        {
+          "id": "E-05",
+          "status": "missing evidence",
+          "claim": "Add version-specific review records and bind reviewed hashes before distribution."
+        }
+      ],
+      "context": {
+        "role_prompt": "Equilibrium Review 1.0.1 references/role-prompts.md: evidence",
+        "system_prompt_id": "not exposed",
+        "model": "Inherited model family; exact build not exposed",
+        "review_date": "2026-11-09",
+        "source_set": [
+          "Frozen candidate-design.md",
+          "Initial package SKILL.md, reference, evaluations and licenses",
+          "Equilibrium Review 1.0.1 protocol and role prompts"
+        ],
+        "tools_and_permissions": "Read-only local file inspection, SHA-256 and JSON checks. No edits or external actions.",
+        "other_reviewer_results_seen": false,
+        "evidence_status": "analytical"
+      }
+    },
+    {
+      "role": "outcome",
+      "reviewer": "interview_outcome_review",
+      "decision": "approve-with-limits",
+      "findings": [
+        {
+          "id": "O-01",
+          "status": "supported",
+          "claim": "Distinct outputs support independent invocation."
+        },
+        {
+          "id": "O-02",
+          "status": "supported",
+          "claim": "Contribution taxonomy is a plausible knowledge advantage, not measured uplift."
+        },
+        {
+          "id": "O-03",
+          "status": "supported",
+          "claim": "Questions preserve candid intent and documented constraints."
+        },
+        {
+          "id": "O-04",
+          "status": "supported",
+          "claim": "Composition with existing career and social contracts is coherent in source."
+        },
+        {
+          "id": "O-05",
+          "status": "missing evidence",
+          "claim": "Observed usefulness, reliable activation and unseen holdout remain unestablished."
+        }
+      ],
+      "context": {
+        "role_prompt": "Equilibrium Review 1.0.1 references/role-prompts.md: outcome",
+        "system_prompt_id": "not exposed",
+        "model": "Inherited model family; exact build not exposed",
+        "review_date": "2026-11-09",
+        "source_set": [
+          "Frozen candidate-design.md",
+          "Initial package SKILL.md, reference, evaluations and licenses",
+          "Equilibrium Review 1.0.1 protocol and role prompts",
+          "Existing Resume Representative and LinkedIn angles/post/voice instructions"
+        ],
+        "tools_and_permissions": "Read-only local file inspection, SHA-256 and JSON checks. No edits or external actions.",
+        "other_reviewer_results_seen": false,
+        "evidence_status": "analytical"
+      }
+    },
+    {
+      "role": "safety-portability",
+      "reviewer": "interview_safety_review",
+      "decision": "approve-with-limits",
+      "findings": [
+        {
+          "id": "SP-01",
+          "status": "supported",
+          "claim": "Reviewed files contain no observed private execution identities."
+        },
+        {
+          "id": "SP-02",
+          "status": "supported",
+          "claim": "Selection, drafting and external actions have explicit boundaries."
+        },
+        {
+          "id": "SP-03",
+          "status": "supported",
+          "claim": "Source commands cannot grant authority."
+        },
+        {
+          "id": "SP-04",
+          "status": "supported",
+          "claim": "Absent sources produce provisional output rather than invention."
+        },
+        {
+          "id": "SP-05",
+          "status": "missing evidence",
+          "claim": "Complete review-record links before distribution."
+        },
+        {
+          "id": "SP-06",
+          "status": "supported",
+          "claim": "Development cases and metadata accurately declare unbenchmarked limits."
+        }
+      ],
+      "context": {
+        "role_prompt": "Equilibrium Review 1.0.1 references/role-prompts.md: safety-portability",
+        "system_prompt_id": "not exposed",
+        "model": "Inherited model family; exact build not exposed",
+        "review_date": "2026-11-09",
+        "source_set": [
+          "Frozen candidate-design.md",
+          "Initial package SKILL.md, reference, evaluations and licenses",
+          "Equilibrium Review 1.0.1 protocol and role prompts"
+        ],
+        "tools_and_permissions": "Read-only local file inspection, SHA-256 and JSON checks. No edits or external actions.",
+        "other_reviewer_results_seen": false,
+        "evidence_status": "analytical"
+      }
+    }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "reviewer": "interview_disruptor",
+    "decision": "approve-with-limits",
+    "falsification_hypotheses": [
+      {
+        "id": "D-01",
+        "hypothesis": "Conflicting records could overstate duration and ownership.",
+        "test": "Inspect reconciliation procedure and conflicting-records development case.",
+        "initial_result": "Credible untested edge; no behavioral defect established.",
+        "resolution": "Final map adds source reconciliation, as-of date and an eighth case; actual response behavior remains not-run."
+      },
+      {
+        "id": "D-02",
+        "hypothesis": "Neutral framing could erase a documented authority constraint.",
+        "test": "Inspect documented-constraint case and preservation rule.",
+        "result": "Missing-control hypothesis refuted at design level; behavior not-run."
+      },
+      {
+        "id": "D-03",
+        "hypothesis": "Public-work or injected source commands could cause disclosure or outreach.",
+        "test": "Inspect selection/handoff boundaries and injection cases.",
+        "result": "Missing-control hypothesis refuted at design level; behavior not-run."
+      }
+    ],
+    "context": {
+      "role_prompt": "Equilibrium Review 1.0.1 references/role-prompts.md: Disruptor",
+      "system_prompt_id": "not exposed",
+      "model": "Inherited model family; exact build not exposed",
+      "review_date": "2026-11-09",
+      "source_set": [
+        "Initial package source and evaluations",
+        "Candidate design and protocol",
+        "Summary of initial concordance; full initial ledgers not read by disruptor"
+      ],
+      "tools_and_permissions": "Read-only local inspection, JSON parsing, link and hash checks. No edits or external actions.",
+      "evidence_status": "analytical"
+    }
+  },
+  "initial_artifact_sha256": {
+    "okhp3-interview-evidence-map/SKILL.md": "cc92cddcc0f37b5a904ac75ac0b55158e449a4d08b433f68e417c3119be0eb87",
+    "okhp3-interview-questions/SKILL.md": "0aa18d15f9aff4e1e03e15d63d8a80e5cc114086916372e04b10ed76b573e7eb"
+  },
+  "source_basis": [
+    {
+      "id": "SRC-01",
+      "source": "Owner-authorized conversation, generalized into synthetic fixtures",
+      "authority": "Design provenance only; raw private history not distributed.",
+      "retrieved_on": "2026-11-09"
+    },
+    {
+      "id": "SRC-02",
+      "source": "AskJamie Resume Representative at 12c699ab90492ec5d8a3bcc41781d8c384500aec",
+      "authority": "Existing broad career contract",
+      "retrieved_on": "2026-11-09"
+    },
+    {
+      "id": "SRC-03",
+      "source": "Skillz social contracts at 1038229118c00a86ff67010c6d68ae84975a5cf2",
+      "authority": "Existing public drafting scope",
+      "retrieved_on": "2026-11-09"
+    },
+    {
+      "id": "SRC-04",
+      "source": "Equilibrium Review 1.0.1 and Skill Foundry 3.1.1",
+      "authority": "Authoring and release protocol, not behavior evidence",
+      "retrieved_on": "2026-11-09"
+    }
+  ],
+  "review_mode": "conditional",
+  "artifact": {
+    "path": "../SKILL.md",
+    "name": "okhp3-interview-questions",
+    "version": "1.0.0",
+    "sha256": "83a5c8573bc0a1ebfce061741c666e6f3ca1b3f467c8ba45878c5864813ab6b5",
+    "file_sha256": {
+      "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+      "SKILL.md": "0aa18d15f9aff4e1e03e15d63d8a80e5cc114086916372e04b10ed76b573e7eb",
+      "evals/evals.json": "fc8489f75f3c13003cbcf74c92ff592c915ef57a9fcd0d8ccb072291579a2850"
+    },
+    "digest_scope": "All package files except this release-review record.",
+    "algorithm": "SHA-256 of compact UTF-8 sorted JSON file hash map."
+  },
+  "negotiator": {
+    "triggered": true,
+    "reviewer": "interview_adjudication",
+    "decision": "approve-with-limits",
+    "reviewed_digest": "83a5c8573bc0a1ebfce061741c666e6f3ca1b3f467c8ba45878c5864813ab6b5",
+    "decisive_evidence": [
+      "Both recomputed source-core digests and constituent hashes match; structural validation and local links pass.",
+      "The reconstructed initial map matches the frozen hash. The final delta adds reconciliation, explicit as-of handling, optional formal-audit routing, synthetic event dates and conflicting-records coverage.",
+      "Questions source remains byte-identical to its initial reviewed source.",
+      "D-01 is addressed at design level; D-02 and D-03 have explicit source controls. Actual response behavior remains not-run.",
+      "Refreshed repository baselines and adjacent career contracts were inspected; source composition retains independent interview preparation."
+    ],
+    "unresolved_items": [
+      "Behavioral usefulness, activation reliability, host readiness and unseen-holdout results are unestablished."
+    ],
+    "context": {
+      "role_prompt": "Equilibrium Review 1.0.1 Negotiator plus source-distribution release question",
+      "system_prompt_id": "not exposed",
+      "model": "Inherited model family; exact build not exposed",
+      "source_set": [
+        "Final package source and review records",
+        "Initial review ledger and conditional disruptor findings",
+        "Hash-verified reconstruction of initial map",
+        "Refreshed adjacent career contracts"
+      ],
+      "tools_and_permissions": "Read-only local source, SHA-256, JSON and link inspection; no edits or external actions.",
+      "evidence_status": "analytical"
+    }
+  },
+  "release_decision": "approve-with-limits",
+  "limitations": [
+    "Draftable analytical source only. No live behavioral, matched baseline, uplift, automatic activation or unseen-holdout evaluation was run.",
+    "All packaged evaluation cases are author-visible development cases; holdout_policy=external-required and holdout_seen=true.",
+    "Source review does not establish interviewer reception, employment outcome, host activation or universal runtime compatibility."
+  ],
+  "owner": "Maintainer",
+  "expiry": "Reopen if package bytes, evidence, target host or the claimed readiness level changes.",
+  "follow_up": [
+    {
+      "owner": "Maintainer",
+      "condition": "Before behavioral or host-readiness claims",
+      "action": "Freeze exact package and runtime; run preserved matched tasks, host trigger checks and a separately protected unseen holdout."
+    }
+  ],
+  "release_scope": "Draftable analytical source only. Publication additionally requires exact canonical/mirror verification."
+}

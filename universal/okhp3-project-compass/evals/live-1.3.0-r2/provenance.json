@@ -1,0 +1,22 @@
+{
+  "round": 2,
+  "recorded_utc": "2026-11-24T07:15:58.750776+00:00",
+  "effective_provenance": "Owner clarification supersedes the whole-revision attribution in the earlier commission.",
+  "earlier_commission_sha256": "54a41fcf04c8aaefcf3319604e46088c4033da508c831ece40461de4f0b33b46",
+  "independent_review_only": [
+    "Code repairs for false PASS on failed tests, supersession without a successor, privacy gate/render consistency and missing milestone handling.",
+    "Document interchange changes."
+  ],
+  "development_informed": [
+    "The main editor read the first candidate development summary.",
+    "The general pre-finish checklist now spells out evidence, unresolved dates and session-bound authorization.",
+    "The first-run scaffold exception is limited to authorized, absent paths."
+  ],
+  "interpretation": "All repeated development and critical cases, including their public fixtures and earlier grades, are exposed for this revision. Development gains are in-sample, potentially affected by editorial adaptation. The supplemental public transfer case was also shared and is reused.",
+  "fresh_sealed_case": {
+    "seal_sha256": "6f71fc622c37b48babc8beb9fe628bb5793fa19e85e81a9adac442b9067ec164",
+    "optimizer_access": "Owner attests the new case and grading key remained unseen by all optimizers.",
+    "custody_limit": "Procedural separation on the same OS account; no independent access-control audit.",
+    "previous_case": "Retired and bound only to 86a757e2c287211189e9e756f0a223b491c564e0."
+  }
+}

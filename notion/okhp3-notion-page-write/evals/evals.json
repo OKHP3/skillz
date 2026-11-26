@@ -1,0 +1,57 @@
+{
+  "skill_name": "okhp3-notion-page-write",
+  "skill_version": "1.1.0",
+  "status": "design-ready",
+  "release_status": "analytical-structural-integrity",
+  "performance_evidence_status": "not-run",
+  "note": "Development design only. No with-skill/without-skill run has been executed for this version; do not cite these cases as measured uplift.",
+  "release_holdout": {
+    "status": "external-required",
+    "holdout_seen": true,
+    "reason": "These cases are public in the package and readable by implementers. A release holdout must be controlled outside the authoring context."
+  },
+  "evals": [
+    {
+      "id": "normal-append",
+      "partition": "development",
+      "risk": "medium",
+      "prompt": "Add a 'Decisions' section with three bullets to the end of my Q3 Planning page. Don't touch anything else on it.",
+      "fixtures": "Page has existing content and two child pages.",
+      "output_contract": "Operation chosen, read-before-write evidence, re-fetch confirmation.",
+      "expectations": [
+        { "id": "read-first", "text": "Response fetches the page before writing and records its existing content and child pages." },
+        { "id": "append-not-replace", "text": "Response uses an append of block children at the end rather than a full content replacement." },
+        { "id": "children-preserved", "text": "Response states the two child pages are preserved." },
+        { "id": "refetch", "text": "Response confirms the result with a re-fetch after the write." }
+      ]
+    },
+    {
+      "id": "batched-replace-trap",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "On the Onboarding page, change every 'Slack' to 'Teams', and also fix the one line that says 'Slack channel: #general' to 'Teams channel: General'.",
+      "fixtures": "Page contains 'Slack' five times, including inside the '#general' line.",
+      "output_contract": "A valid search-and-replace batch or a split plan.",
+      "expectations": [
+        { "id": "all-or-nothing", "text": "Response states that the update-content batch fully applies or fully fails, leaving the page unchanged if any `old_str` does not match." },
+        { "id": "replace-all-flag", "text": "Response sets `replace_all_matches: true` for the multi-occurrence 'Slack' operation." },
+        { "id": "overlap-ordering", "text": "Response avoids an ambiguous batch where the specific line edit and the global replace target overlapping text, by ordering or splitting into separate batches." },
+        { "id": "lint", "text": "Response runs or cites `scripts/lint_search_replace_batch.py` before sending the batch." }
+      ]
+    },
+    {
+      "id": "database-parent-and-block-limit",
+      "partition": "development",
+      "risk": "high",
+      "prompt": "Create a new page called 'Sprint 14' inside my Sprints database, and if it fails with restricted_resource just keep retrying.",
+      "fixtures": "Target parent is a data source. Free multi-member workspace returns 403 `restricted_resource` with `additional_data.block_limit`.",
+      "output_contract": "Correct routing and plan-limit handling.",
+      "expectations": [
+        { "id": "route-row-write", "text": "Response routes creation of a page with a database or data-source parent to `okhp3-notion-row-write`." },
+        { "id": "no-retry-block-limit", "text": "Response refuses to retry a `restricted_resource` error carrying `additional_data.block_limit`, identifying it as a plan limit rather than a transient failure." },
+        { "id": "detect-on-field", "text": "Response detects the block limit from the `additional_data.block_limit` field, not from message text." },
+        { "id": "fallback", "text": "Response notes a non-block-adding alternative or that a workspace owner must upgrade the plan." }
+      ]
+    }
+  ]
+}

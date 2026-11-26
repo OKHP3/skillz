@@ -1,0 +1,125 @@
+{
+  "review_protocol": "equilibrium-v1",
+  "date": "2026-11-09",
+  "artifact": {
+    "name": "okhp3-activity-reconciliation",
+    "version": "0.1.0",
+    "initial_sha256": {
+      "SKILL.md": "b252cb6ebff4f4979fd6f6f4dd0bbbd1c4f56ebc09824f52de1a9e1113789d2a",
+      "references/evidence-filing.md": "3a1a964772448d2a8110feae5d9abaa8dcbcd8e5e121a10cfa7f205207d26780",
+      "references/reconciliation-record.md": "7e4f0a8ad9d0d92e31a6e619de43fb5b38f0dae23385000a96426e863d9b88ac",
+      "evals/evals.json": "5fded14a519713b10d2f76227e66fa717ad397fb1ae84e61ec0073200a42e84f",
+      "benchmarks/benchmark.json": "cd99e1f20898437ff897de076302e940705363d4cda71207dda38ec8881b4926"
+    },
+    "disruptor_sha256": {
+      "SKILL.md": "0fbdedd51e95e83fa142500e414e054f89d6523fe9f113bca5e6dc99bee2c630",
+      "references/evidence-filing.md": "d54430e62f1572391e89b9360c78e259da5a34b0b5111e9f76c86a3b167f9b64",
+      "references/reconciliation-record.md": "e9ba1acac04ebf76e02b8025b82625246b5e5ea8098cd219b18c4dfeb15ad8dc",
+      "evals/evals.json": "5dd5eef6620fd96369acaed3e3695c9d86b617487de39ec73ee34caa54493fd6",
+      "benchmarks/benchmark.json": "cd99e1f20898437ff897de076302e940705363d4cda71207dda38ec8881b4926"
+    },
+    "final_sha256": {
+      "LICENSE": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+      "SKILL.md": "dfeee5aac7187d3d9fc20898a0aa885297eb2c3439bdc37ee4e0cfdbd43b300a",
+      "references/evidence-filing.md": "d54430e62f1572391e89b9360c78e259da5a34b0b5111e9f76c86a3b167f9b64",
+      "references/reconciliation-record.md": "421808aa4eccba192e9e9b82150f4f4b4475e8d01d35377cea24181e1846401c",
+      "evals/evals.json": "5655ee07a246b5da8d96d66bc9941df9649488804e6ca451c3f6259aed27fb3d",
+      "benchmarks/benchmark.json": "cd99e1f20898437ff897de076302e940705363d4cda71207dda38ec8881b4926"
+    }
+  },
+  "evaluation_status": "analytical",
+  "independence": {
+    "reviewer_contexts_separated": true,
+    "limits": [
+      "Shared Codex model family and package/source context.",
+      "Static role reviews using read-only local files, Git and selected GitHub metadata."
+    ]
+  },
+  "evidence_sources": [
+    {
+      "id": "SRC-1",
+      "repository": "OKHP3/skillz",
+      "revision": "1038229118c00a86ff67010c6d68ae84975a5cf2",
+      "use": "Review and authoring protocols, catalog scope, and adjacent skills."
+    },
+    {
+      "id": "SRC-2",
+      "repository": "OKHP3/askjamie-foundry",
+      "revision": "3ee8596f5f810347ae936b3dc9297f40c2b8b9c1",
+      "use": "Application-status ownership boundary."
+    },
+    {
+      "id": "SRC-3",
+      "path": "evals/evals.json",
+      "use": "Seven exposed synthetic development cases. No operational data."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C-1",
+      "claim": "One contract can support both review and refresh with distinct insert authority.",
+      "basis": [
+        "SRC-1",
+        "SRC-2",
+        "SRC-3"
+      ],
+      "finding": "Supported by contract inspection and synthetic walkthrough."
+    },
+    {
+      "id": "C-2",
+      "claim": "Exact identity, chronology, scoped checkpoints, and guarded readback distinguish supported changes from gaps.",
+      "basis": [
+        "SRC-3"
+      ],
+      "finding": "Supported by static review with explicit counterexamples."
+    },
+    {
+      "id": "C-3",
+      "claim": "The package improves live agent outcomes or trigger matching.",
+      "basis": [],
+      "finding": "defer-for-evidence"
+    }
+  ],
+  "initial_reviews": [
+    {
+      "role": "evidence",
+      "prompt_id": "frozen-evidence",
+      "decision": "approve-with-limits after scoped checkpoints and supersession rules"
+    },
+    {
+      "role": "outcome",
+      "prompt_id": "frozen-outcome",
+      "decision": "approve-with-limits after a chronology fixture"
+    },
+    {
+      "role": "safety-portability",
+      "prompt_id": "frozen-safety",
+      "decision": "approve-with-limits after retrieval and storage side-effect controls"
+    }
+  ],
+  "concordance": "material-agreement",
+  "disruptor": {
+    "triggered": true,
+    "prompt_id": "frozen-revised-disruptor",
+    "tests": [
+      "Traced partial coverage, older calendar acceptance, implicit read-state mutation, uncertain writes, and cloud listing without content.",
+      "Reused-thread old reply could satisfy the loose initial match."
+    ],
+    "surviving_defect": "A prior reply in the same thread might be misattributed to a new request.",
+    "resolution": "Match the request instance and event timing. Require direct links for prior replies. Add S0 as a regression decoy."
+  },
+  "negotiator": {
+    "triggered": true,
+    "role": "integrator",
+    "independent": false,
+    "decision": "Final static readback finds controls for the surviving objections. Limit release to supervised catalog use."
+  },
+  "release_decision": "approve-with-limits",
+  "decision_owner": "Skillz maintainer",
+  "renewal_condition": "Material contract, source-capability, or write-safety change.",
+  "limitations": [
+    "No live task benchmark or comparison baseline.",
+    "No unseen release holdout.",
+    "No live discovery scores, host activation, or autonomous-operation claim."
+  ]
+}

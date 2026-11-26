@@ -1,0 +1,21 @@
+{
+  "utc": "2026-11-24T06:56:01.220856+00:00",
+  "sha256": {
+    "independent-case.json": "48de5904eee010ae3e38e688dd44b6ddfa1dd0468d9b824142aec1d5134d11a3",
+    "author-prompt.txt": "18d487e0b416d2f93c1e66e9090c8136cdd4261c4d973c17907d6afe9b032e7b",
+    "author.py": "e9513d8f89db473387e2dd646c90474cf4b4064a6f52aca69f5c87f36bf46202",
+    "PROTOCOL.md": "effb80ac20ba2691be308545a039a03a270832cd06531abc396bb6323d7360b1",
+    "fixtures.json": "88691dee5fa688dcbac7ca4d0516f0a43a680d9057a9ce38ff37795874c7783c",
+    "make_fixtures.py": "f559fcaeecc344e4e02271810fd17ac206eb80dca281801bf08c1600e8cb9e66",
+    "executor.py": "3e416094b8625eb6f6ec674bd4d6d9f3bb8df6f94c9561875435ace372c86af3",
+    "fixture_tool.py": "e16f922d59edf164f071fc018bcb1d1e7e11ef13c6e481f44151bb8371048ac3",
+    "task-prompt.txt": "5745b95b6310541a189654ae032ddeabad9c91be4a883efd023ee14071d5e445",
+    "grader-prompt.txt": "7b8b5deaaba0bf36e88dce9b662496d042acb5f13a9d4197f4423626eea63304",
+    "grade.py": "43dd8c545eae07fa64d784bc283a6f0da0c6976ef84d8ed6d0bc494565a41b90",
+    "run.py": "42436f78365158cfec7fdfb8d3d0453e48a698d893b5e7203e76bef416d9afcb",
+    "original-inputs/evals.json": "17d798b10f1afabf0eb78c9795caf506fc4109aa812e06bcbcd73ef80bdb0d25",
+    "original-inputs/benchmark.json": "3dfe8a81b9de58430ff8b45a6f6dfbb62b3b0e303c11943686168397aefe0409",
+    "original-inputs/freeze.json": "5c0566d1d7a01cf57d29edbb4880ac9744276d9e8585ed8ea7b756ed600c0b32"
+  },
+  "archive_note": "Original pre-run manifest is preserved byte for byte in original-inputs/freeze.json. Its two parent-relative inputs now resolve to byte-identical local copies."
+}

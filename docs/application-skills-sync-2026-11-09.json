@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-11-09",
+  "authorization": "Owner requested skill extraction, review and publication to Skillz and/or AskJamie, with platform skill availability.",
+  "canonical_repository": "OKHP3/askjamie-foundry",
+  "canonical_package": "capabilities/resume-representative/skills/okhp3-job-application-completion",
+  "mirror_repository": "OKHP3/skillz",
+  "mirror_package": "askjamie/okhp3-job-application-completion",
+  "pre_sync_status": "Both task clones were clean before new package creation; no previous package existed at either destination.",
+  "core_file_hashes": {
+    "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+    "SKILL.md": "f3156040e6384729a80e1e7ec705bff79dabcf88f6f1c5a3f051c5367fcf6b69",
+    "evals/evals.json": "bdb8ab1ea2d3b3b5333e76559fca44715702dded3e150c02f2f71129fcd8b339",
+    "evals/trigger-cases.json": "72c16d6a8f1062c3b542c5eaa56950d53adab228edee6779155279621d1befda",
+    "references/application-record.md": "432460ca8e242feb01ec0c1bb5876057f32df42f057e1a3f599d02326ac4b217"
+  },
+  "core_files_match": true,
+  "approved_adapter_differences": [],
+  "exclusions": [
+    "private candidate facts",
+    "credentials",
+    "raw conversation",
+    "live application evidence",
+    "unrelated installed skills"
+  ],
+  "verifier": "Exact relative-file inventory and SHA-256 comparison in isolated workspace",
+  "recovery": "Revert the new package/navigation commit or remove only the newly installed skill directory; preserve all unrelated source and user edits.",
+  "limits": [
+    "Equality describes inspected workspace copies. GitHub and platform copies require post-publication readback.",
+    "Initial 0.1.0 reviews do not validate revised 0.2.0 bytes."
+  ],
+  "all_package_file_hashes": {
+    "LICENSE.md": "9f9a20b5c999d117d21e9d9d372860cf688d82e27ec70d21c9ad99fcaadc0a06",
+    "SKILL.md": "f3156040e6384729a80e1e7ec705bff79dabcf88f6f1c5a3f051c5367fcf6b69",
+    "benchmarks/benchmark.json": "27fbc988ca08f3fd2ff850ee48b40c2d7b60e2600a82be4e35f9a6f4c56cbac0",
+    "benchmarks/release-review.json": "dd1f745b52f0a047cdeaf21ad2d60375a6f8c5f2c15ee8f730edade4fb29c65f",
+    "evals/evals.json": "bdb8ab1ea2d3b3b5333e76559fca44715702dded3e150c02f2f71129fcd8b339",
+    "evals/fixture-results.json": "aadd4b3eabdf509b38e8f7f6882ee78e25f69ee68728790ed8ec5e514dbaaa59",
+    "evals/trigger-cases.json": "72c16d6a8f1062c3b542c5eaa56950d53adab228edee6779155279621d1befda",
+    "references/application-record.md": "432460ca8e242feb01ec0c1bb5876057f32df42f057e1a3f599d02326ac4b217"
+  },
+  "inspected_package_files_match": true,
+  "incorporated_concurrent_bases": {
+    "OKHP3/skillz": "d9cbe84bf0fd629adafff9093e9b00c6f9185343",
+    "OKHP3/askjamie-foundry": "c2f6a06b0a339bad8b9c5860e1a4bf4911aeafb8"
+  }
+}

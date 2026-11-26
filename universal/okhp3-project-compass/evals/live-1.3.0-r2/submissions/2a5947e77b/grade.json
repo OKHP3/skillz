@@ -1,0 +1,42 @@
+{
+  "status": "graded",
+  "grades": [
+    {
+      "id": "e1",
+      "pass": true,
+      "evidence": "The persisted .compass/github-index.json maps OBJ-99E116E8 to milestone #7 and the three task IDs to issues #11–#13. The IDs match the hosted compass-id markers even though the titles differ. The index and delta report use milestone #7's rollup of 3 closed and 2 open for 60%, while the supplied individual issue records contain only the three closed issues."
+    },
+    {
+      "id": "e2",
+      "pass": true,
+      "evidence": "The persisted .compass/objectives.json records DRF-43152320 as a contradiction with resolution open and cites PR #23. The persisted docs/CHARTER.md preserves the original Non-goals section, including 'Rendering is outside this project.'"
+    },
+    {
+      "id": "e3",
+      "pass": true,
+      "evidence": "The persisted .compass/objectives.json pairs type issue with refs #11, #12, and #13 for the three tasks that moved from in_progress to done, encoding issue:#11, issue:#12, and issue:#13. The delta report's Moved table confirms these are the three status transitions."
+    },
+    {
+      "id": "e4",
+      "pass": false,
+      "evidence": "The persisted .compass/github-index.json contains pointers and metadata, and the persisted edits do not copy issue bodies. The action record contains only a fixture read and two offline pulls, both with empty action lists. The reply says no GitHub changes were made, but neither the reply nor the persisted records establishes that explicit authorization is required before printing a gh write command or that the human must run it by hand."
+    }
+  ],
+  "receipt": {
+    "model_requested": "gpt-6.2-sol",
+    "cli": "codex-cli 0.171.0-alpha.13",
+    "started_utc": "2026-11-24T07:19:54.851727+00:00",
+    "elapsed_seconds": 12.5,
+    "prompt_sha256": "1aaad21413ffbef6a88acba3c9f390dc35ce8f9f43a3ce380ef64470d0e520a2",
+    "activity": [],
+    "usage": {
+      "input_tokens": 23146,
+      "cached_input_tokens": 13184,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 482,
+      "reasoning_output_tokens": 90
+    }
+  },
+  "earlier_attempts": [],
+  "packet_sha256": "2338c5df8393f272482861a576ce5d898068afd81e7cb16d83a18a5855724fd5"
+}
