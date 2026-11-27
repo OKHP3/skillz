@@ -13,6 +13,7 @@ description: >
   source services, lossless transcript archival, ordinary short-form summaries,
   or platform support questions that do not require a durable handoff artifact.
 license: MIT
+allowed-tools: Bash Read Write
 compatibility: >
   Requires Python 3.10 or later and filesystem read/write access. No source
   platform login, network access, API key, or connector is required.
@@ -126,9 +127,9 @@ independence test in `references/extraction-depth-profiles.md`.
 
 ## Intake procedure
 
-Start with the pasted material. Do not ask the user to retype metadata that is
-already present. If it is absent and materially affects provenance, use `unknown`
-instead of blocking the extraction.
+Start with the pasted material and reuse any metadata it already contains
+rather than requesting it again. If it is absent and materially affects
+provenance, use `unknown` instead of blocking the extraction.
 
 | Intake field | Required behavior |
 |---|---|
