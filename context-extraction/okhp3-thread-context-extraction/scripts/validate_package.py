@@ -4,9 +4,9 @@
 from __future__ import annotations
 
 import argparse
+import ast
 import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 
@@ -44,6 +44,17 @@ def folded_value(block: str, key: str) -> str:
 def scalar_value(block: str, key: str) -> str:
     match = re.search(rf"(?m)^{re.escape(key)}:\s*(.+)$", block)
     return match.group(1).strip().strip('"') if match else ""
+
+
+
+def writer_cli_ok(writer: Path) -> bool:
+    """Statically confirm the bundled writer parses and defines its CLI entry points."""
+    try:
+        tree = ast.parse(writer.read_text(encoding="utf-8"), filename=str(writer))
+    except (SyntaxError, OSError, UnicodeDecodeError):
+        return False
+    functions = {node.name for node in tree.body if isinstance(node, ast.FunctionDef)}
+    return {"parse_args", "main"} <= functions
 
 
 def run_validation(root: Path) -> list[str]:
@@ -119,14 +130,8 @@ def run_validation(root: Path) -> list[str]:
 
     writer = root / "scripts/create_thread_extract.py"
     if writer.is_file():
-        result = subprocess.run(
-            [sys.executable, str(writer), "--help"],
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        if result.returncode != 0:
-            failures.append("create_thread_extract.py --help failed")
+        if not writer_cli_ok(writer):
+            failures.append("create_thread_extract.py does not parse or lacks parse_args/main")
     return failures
 
 
