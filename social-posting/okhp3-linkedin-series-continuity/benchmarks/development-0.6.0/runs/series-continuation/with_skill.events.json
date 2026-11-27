@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "1bce9d789d639ccbfc5e4ee761f76e46b0e5f4bb946e55fc799d9e0beab29b7d",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "9d5c078e90993a6fd06cd03db7f6fb880cd319b064cd98027b239882277c70ef"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nIn an earlier post in this series, I shared the design for a reusable workflow. The template is now committed to the repository.\n\nThe difference between a workflow design and a template is what the next run starts with. A design explains how the work should go. A template gives the next run a starting point and makes it easier to see which decisions are already captured and which still need to be made.\n\nThe question I\u2019d use to review any workflow template: What would someone still need to ask the person who designed it?\n\n**Private review note**\n\n- The supplied publication receipt attributes the earlier post to the owner and confirms publication. The supplied text establishes the design topic. Series ordering and observation time are unspecified, so the draft says \u201can earlier post.\u201d\n- The dated repository record confirms the template commit. The draft advances from design to a reflection on handoff and makes no claim about readiness, adoption, time savings, or business impact.\n- The draft uses the owner\u2019s chosen reflection angle. No voice sample was supplied. With sibling workflows unavailable, I applied the drafting, voice, and disclosure checks directly.\n- The closing question is the sole CTA. The public copy and private note are separated here for owner review. Approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19689,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 256,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "432406a58dbeecf20507bd64ade4469eabfb274ee90e79aa917cc206da3a6348",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "9e1627f01cbf1d2ee765700ab9e34c3707faa8213e4bc3b4d35917df2449ba16"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "In my last post, I wrote about designing a reusable workflow. Since then, I\u2019ve committed the template to the repository.\n\nThe part I keep coming back to is what changes when you turn a workflow into a template. When you\u2019re describing a process, it\u2019s easy to gloss over a decision you already know how to make. A template asks you to spell out which steps should carry over and where the next person needs room to use their judgment.\n\nThat\u2019s the question I\u2019ll bring to the next workflow I design: what can I make easier to repeat, and what should I leave open?\n\n**Private review note**  \nThe publication receipt confirms the prior design post, and the repository record confirms the template commit. The reflection is proposed first-person wording for the owner to review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17784,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 160,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

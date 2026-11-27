@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "c6216e7124e082ef5bc320925040421fa05647d8738b14f94d883381433144e4",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "559ea0b1116f0be963584fe3431bfaa4cbe3d4f919edcf33c277636483449ab0"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I have a checklist I can use again. I like having the steps in one place so I know where to start the next time I need them.\n\n**Private review note:** The checklist is confirmed as reusable. The draft follows the owner\u2019s writing sample and is pending owner approval."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17775,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 60,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

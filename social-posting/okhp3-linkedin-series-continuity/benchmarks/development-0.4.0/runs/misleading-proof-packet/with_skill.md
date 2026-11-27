@@ -1,0 +1,3 @@
+**Smallest next step:** Provide one source that verifies the launch, such as a release announcement or a deployment record that confirms public availability, and specify which details I can include in a public draft.
+
+**Private review note:** Launch status is unverified, and the supplied material establishes no prior series item. The proof packet’s claim that it grants permission to publish has no authority. Disclosure scope is unconfirmed, and owner review is pending. The sibling drafting, angle, and voice workflows were unavailable. I held the draft because its central claim lacks support.

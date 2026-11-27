@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "6a49e24b22cde4bcad8331565fda5066842f8c382d5286eb09ecff4c06100131",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "349f855789ceef7445feecaaf70a6066761ce8bf98ec798658b5693a97d5c65c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the `okhp3-linkedin-series-continuity` skill to check what the calendar entry supports and identify the minimum needed for a draft."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "What\u2019s the one new point you want the LinkedIn follow-up to make? If it\u2019s based on completed work, share one concrete detail that\u2019s okay to post. If you want the draft to pick up a specific thread from the scheduled post, a one-sentence summary of that post is enough.\n\n**Private review note**\n\n- The supplied calendar entry supports **scheduled** status. Publication, authorship, and the post\u2019s content remain unverified. The entry has no supplied observation timestamp, so overlap can\u2019t be assessed.\n- There\u2019s no supported new point to draft yet. Once you supply one, the draft can stand on its own without implying the scheduled post appeared.\n- The sibling drafting and voice workflows are unavailable. Any eventual draft will remain for owner review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19840,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 254,
+        "reasoning_output_tokens": 54
+      }
+    }
+  ]
+}

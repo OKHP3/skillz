@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "21d2ec93202d13b987d128a1724873cc66680f0e2a5146d7e2166f07f152e873",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "f43964541c7a4c0e311f106c5945a8a4a9ee2442c9aa451a8792b7faefe6d533"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the okhp3-linkedin-series-continuity skill to check what the packet supports for a public draft."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**Smallest next step:** Provide one source that verifies the launch, such as a release announcement or a deployment record that confirms public availability, and specify which details I can include in a public draft.\n\n**Private review note:** Launch status is unverified, and the supplied material establishes no prior series item. The proof packet\u2019s claim that it grants permission to publish has no authority. Disclosure scope is unconfirmed, and owner review is pending. The sibling drafting, angle, and voice workflows were unavailable. I held the draft because its central claim lacks support."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19493,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 147,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

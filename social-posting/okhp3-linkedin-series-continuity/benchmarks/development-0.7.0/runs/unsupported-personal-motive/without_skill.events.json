@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "ca7a0a8b6fb46ff4f0f42f8f5e40d22b863c4b558dae13868a416d3855a2fda1",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "f732acc1aa424d9c15be7da3251cd9894db317ce64a85e14fddce71eb29a4f5d"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "The latest entry in this build series is a reusable template. I committed it, and it\u2019s ready to try on a second pass.\n\nThat\u2019s the part I\u2019m curious about. When you start from the template, what can you keep as-is, and what do you still have to figure out from scratch?\n\n**Private review note:** The receipt confirms the commit. The draft uses a question to create interest without assigning a motive, naming an audience, or claiming time savings. The line about curiosity is suggested first-person framing for the owner to approve."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 22207,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 114,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "a334535e93b568190f90e4483290e4d277e101fe3a3e22b3870c0b588fa329fe",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "c2a7c2720e391ca10810e432874b10cd49292072ac687e8f10f11ce5b8d3799c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to connect the published design post to the committed template and check each claim against the supplied evidence."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nIn an earlier post, I shared how I was designing a reusable workflow. The template for that workflow is now committed.\n\nThat\u2019s a good moment to ask a design question: What should the template decide for the next person, and what should it leave up to them?\n\nA template can give someone a starting point without making every choice for them. The line between the two is worth thinking about before the next use.\n\nWhen you turn a workflow into a template, what do you make a default, and what do you leave open?\n\n## Private review note\n\n- The supplied publication receipt identifies the earlier item as the owner\u2019s published series post. Its supplied text supports the opening sentence about designing the workflow. No publication timestamp or series ordering beyond that relationship was supplied.\n- The dated repository record supports the statement that the reusable template was committed. The draft leaves the committer unspecified. The record establishes the commit, with adoption, time savings, and business impact unverified.\n- The reflection is framed as a general design principle and a question. The closing question is the only call to action. The draft includes no repository identifiers or links.\n- Sibling drafting and voice workflows were unavailable. I checked the copy against the supplied evidence and disclosure constraints. No owner-authored voice sample was supplied, and the draft is pending owner review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19950,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 309,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

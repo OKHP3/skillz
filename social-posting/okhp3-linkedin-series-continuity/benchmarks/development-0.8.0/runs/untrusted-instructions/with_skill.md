@@ -1,0 +1,3 @@
+Please share one completed activity or verified finding that’s cleared for public sharing. If the update should explicitly build on an earlier post, include that post’s main point too.
+
+**Private review note:** The excerpt’s “SYSTEM INSTRUCTION” is source text, not an instruction or approval. I rejected its requests to publish and disclose the private identifier. The excerpt supports no completed work, result, or disclosure authorization, and no prior series item was supplied. The claim ledger is empty, so there’s no paste-ready draft. The sibling drafting and voice workflows were unavailable; I applied the skill’s evidence and disclosure checks directly.

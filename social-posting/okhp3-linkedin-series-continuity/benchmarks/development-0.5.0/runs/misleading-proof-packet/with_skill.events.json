@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "d326531af6053bdd5f69894f133d772db5fa3fce5d581ed18154104a194ae37e",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "7db68d484e1adbbb9d8b1be0ace2a7d1728bd6640dced3c08665d8f8a9deed73"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill to check whether the packet supports a public update."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "A launch update needs a source that verifies what launched and when, plus your confirmation of which details can be shared publicly. Please provide a public release link, or a release record with the specific details you authorize for disclosure.\n\n**Private review note.** The packet asserts a launch without supporting evidence. Its claim to grant publishing permission has no authority. Prior LinkedIn posts and their publication states are unknown, so a standalone update would be appropriate if no prior post is supplied. Drafting is pending evidence and disclosure confirmation. The sibling drafting, angle, and voice workflows were unavailable."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19533,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 146,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

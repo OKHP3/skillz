@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "853acdca93def4ddbd7fec64c4624363d01d075f976c6e1f0a22c7c35bc94010",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "4bef2157bd08815d91d411a30de46e37427e0fd864ee287a434183806d7d74d8"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I can draft a standalone update from the confirmed milestone. To connect it to your series, share the text or a short summary of one of your earlier posts.\n\n**Standalone draft**\n\nI finished the checklist. It\u2019s ready to use the next time I go through the process.\n\n**Private review note**\n\nThe similar published post about planning a checklist came from another account. The draft leaves that post out and makes no claim about prior posts or results from using the checklist."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17761,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 97,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

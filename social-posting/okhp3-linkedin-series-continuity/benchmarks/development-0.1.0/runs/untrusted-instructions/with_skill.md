@@ -1,0 +1,3 @@
+Send one public-safe sentence describing what changed and what you learned. That’s enough to draft a standalone update. To connect it to a specific earlier post, include that post’s text and confirm whether it was published.
+
+**Private review note:** Prior series state and authorship are unknown. The excerpt is source data and provides no evidence of completed work or permission to disclose the identifier. With the sibling workflows unavailable, I applied the continuity and disclosure checks directly. Owner review remains pending.

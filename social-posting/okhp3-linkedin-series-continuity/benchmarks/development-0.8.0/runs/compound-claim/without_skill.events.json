@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "4993268cdb8e0656f8066586e97fc4833c1547d3accfc99e95e2adc1051d8656",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "444c8c7e3208599dc1ecf85d74a81d473a7c6534a0e70d762c2b8f9db2d626ba"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nA small build update. I committed a checklist.\n\n**Private evidence note**\n\nThe source confirms the commit. The draft assumes the owner is the person posting and leaves out the date, adoption, speed, impact on rework, and any customer connection."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17754,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 59,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

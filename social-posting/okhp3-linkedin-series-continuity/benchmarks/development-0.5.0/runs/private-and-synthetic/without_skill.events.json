@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "759dc0c6f5903da404dc348173a0531b291f01609d808464c043884b09294113",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "1908f3997e3f342b6c377d187df771f3346dcea0b2153fc5d69d726ee735be1c"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "**Public draft**\n\nI\u2019m continuing the experiment. The question I want to answer is whether the workflow makes a difference compared with a baseline.\n\n**Private review note**\n\nThe workflow and its matched baseline each passed all three checks. Those checks showed no difference, so they don\u2019t support a claim that the workflow improved performance. The public draft omits the private record and its contents."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17775,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 80,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

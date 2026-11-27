@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "ddbdf3319f53c7c172bb2c4ef26fa66e7d48e9c7c049c2be6bd863b6b44a6ad3",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "fda8484c3dacafe0ac8386fbfbd11f458a00ada048a142d8c66ce42712b08f75"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the supplied LinkedIn series continuity skill and check each factual claim against the receipt and repository record."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nIn an earlier post in this series, I discussed designing a reusable workflow. There\u2019s a committed template for that workflow in the repository.\n\nA template gives the design a concrete place to draw a line between steps worth repeating and decisions that depend on the situation. Put too much on either side and you can end up with a rigid checklist or a blank page with headings.\n\nWhen you turn a workflow into a template, what\u2019s one decision you deliberately leave to the person using it?\n\n## Private review note\n\n- **Prior post.** The supplied receipt establishes that the owner\u2019s series post was published, and the supplied text supports \u201cI discussed designing a reusable workflow.\u201d The observation time and the order of publication relative to the commit are unspecified.\n- **Completed work.** The dated repository record supports \u201cThere\u2019s a committed template for that workflow in the repository.\u201d The draft leaves commit authorship open and makes no claims about adoption, time saved, or business impact.\n- **Reflection and CTA.** The design tradeoff is framed as a general principle. The closing question invites readers to share a decision they leave open.\n- **Review.** The supplied facts are eligible for draft use. The sibling drafting and voice workflows were unavailable, so I applied the claim and disclosure checks directly. No separate voice sample was supplied. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 20020,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 397,
+        "reasoning_output_tokens": 91
+      }
+    }
+  ]
+}

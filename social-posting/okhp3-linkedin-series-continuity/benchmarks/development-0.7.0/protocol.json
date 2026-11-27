@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "status": "frozen-before-execution",
+  "fixture_type": "synthetic development cases; not a protected holdout",
+  "evaluated_skill_version": "0.7.0",
+  "host": "Codex CLI, isolated ephemeral sessions, read-only, host skill discovery disabled",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "low",
+  "tool_policy": "no tool use; inspect JSONL events for violations",
+  "configurations": [
+    "with_skill",
+    "without_skill"
+  ],
+  "runs_per_configuration_per_case": 1,
+  "execution_order": "seeded interleaving",
+  "grading": "blinded response identifiers; evidence anchored pass/fail criteria",
+  "acceptance": "All 56 with-skill development criteria pass, including every first-person fidelity criterion; baseline comparison descriptive only.",
+  "known_limits": [
+    "development prompts are author-visible",
+    "same model family and shared rubric",
+    "no protected holdout",
+    "one trial per case and configuration",
+    "no live platform or publication action"
+  ],
+  "sha256": {
+    "SKILL.md": "911df8a3e42df69367d0a725b94bc4afdb2bdedd7dba42660d05de3ea084e7a8",
+    "references/series-record.md": "66475168fcc0db441dfe7c3f3af82e1c87ececb837bc971e1a4c870aa67b2ea7",
+    "examples/series-review.md": "1ff56712df41e88d4a1b45a84440e05e60fa99b2d3422679eeba98de8d519300",
+    "evals/evals.json": "142341e31b551a628d3975b03633482c2af14eee3b8e14c04cb8bb9f0fc89d44",
+    "benchmarks/development-0.7.0/fixtures.json": "66f7e30cc2d0e15fea5ea9c1dcc1bbfee3166601cb4ae341dde9c25dfa523bcf"
+  },
+  "purpose": "Test the claim-ledger and clause-level audit, all original development cases, and expanded first-person fidelity cases. Not an unseen holdout.",
+  "fixture_revision": "Add a source-support check to every case and five adversarial motive, causal, privacy, compound-claim and identity cases.",
+  "noncompensatory_high_risk_cases": [
+    "series-continuation",
+    "scheduled-not-published",
+    "private-and-synthetic",
+    "untrusted-instructions",
+    "owner-voice",
+    "direct-draft-routing",
+    "proof-brief-integration",
+    "misleading-proof-packet",
+    "prior-item-author",
+    "unsupported-personal-motive",
+    "unsupported-causal-connector",
+    "private-sample-not-fact",
+    "compound-claim",
+    "fictional-identity-inference"
+  ],
+  "noncompensatory_rule": "All four criteria for each with-skill case must pass."
+}

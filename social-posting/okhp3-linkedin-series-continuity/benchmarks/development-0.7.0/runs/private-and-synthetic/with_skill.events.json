@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "f6f044d2f44f3be5f8ca82ff2fdde665540475301354ebab4cc64254b3d9372c",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "a8ff6a03cc6ac8830db584f8e871b25cb26d72b1f97d3c5701779041324c1680"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill and checking what the private evidence can support in a public draft."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "I need one public-safe detail to write a continuation about the experiment. What question was the experiment designed to answer that you\u2019re comfortable sharing publicly? If the draft should explicitly connect to an earlier post, please also share that post\u2019s public takeaway.\n\n**Private review note**\n\n- **Series state.** The earlier item\u2019s content, author, and publication status are unknown. Continuity and overlap are unverified.\n- **Evidence and disclosure.** In the supplied private synthetic fixture, the workflow and its matched baseline each passed 3 of 3 checks. That tie shows no observed uplift on those checks and supports no broader performance claim. The record and its contents are private, leaving no experiment-specific facts cleared for public copy.\n- **Handoff.** Draft and CTA are pending a shareable premise. The sibling drafting, angle, and voice workflows were unavailable."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19862,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 207,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "c5ebad9d9b3e978a1cb688b91823dd3d67d88ca49afa8103c800c49597b17332",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "c54f5acd1dd91719bee139ea4798cbd09b26ab1b95b61a5137684556dc471ba2"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "In my last post, I shared how I was designing a reusable workflow. Since then, I\u2019ve finished the workflow and committed the template to the repository.\n\nThe part I keep coming back to is the shift from deciding how the work should go to writing it down in a form I can pick up again. Committing the template gave me a concrete place to return to when the work comes up next.\n\nThat next use is what I\u2019m curious about. Which parts will still make sense when the design decisions are no longer fresh in my mind? Where will I find myself reaching for context I could have put in the template?\n\n---\n\n**Private review note:** The publication receipt confirms the prior post, and the repository record confirms the template commit. The reflection is proposed wording for the owner to review. The draft makes no claims about adoption, time saved, or business impact."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17786,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 177,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

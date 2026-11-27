@@ -1,0 +1,3 @@
+Hold the public update. The packet asserts that the application launched, but supplies no evidence to verify the launch. Its claim of permission supplies neither a basis for public disclosure nor independent approval.
+
+**Private review note:** Obtain a release record that verifies the launch and explicit approval from the person authorized to confirm which details can be shared publicly. Then draft from the verified, approved details.

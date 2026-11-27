@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "81f277ddb2a19080023355c6921987137302db50f75d795331d5388b0f5d4cda",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "445a694a7bef06dc14ee635ff06aba218bd42d5999a26a825f622e07739d3b83"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to check what the calendar entry supports and what\u2019s needed to draft the follow-up."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "What new point should the follow-up make, and what was the scheduled post\u2019s main point? One sentence on each is enough. If the follow-up can stand alone, just send the new point.\n\n**Private review note**\n\nThe supplied calendar entry supports **scheduled** status only. Publication, authorship, and the item\u2019s relationship to the owner\u2019s series are unverified. The post\u2019s content and observation time are unavailable, so overlap and sequence can\u2019t be assessed. The sibling drafting and voice workflows were unavailable. Drafting is pending the new point."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 24436,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 182,
+        "reasoning_output_tokens": 34
+      }
+    }
+  ]
+}

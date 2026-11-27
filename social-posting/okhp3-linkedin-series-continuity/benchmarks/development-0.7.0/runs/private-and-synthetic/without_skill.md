@@ -1,0 +1,3 @@
+**Smallest useful next step:** Get a public-safe statement about the experiment before drafting the continuation. The only evidence is private, and there’s no permission to disclose it or paraphrase its contents.
+
+**Private review note:** The fixture does not support a claim that the workflow improved performance over the matched baseline. Keep the record identifier and results out of the public post.

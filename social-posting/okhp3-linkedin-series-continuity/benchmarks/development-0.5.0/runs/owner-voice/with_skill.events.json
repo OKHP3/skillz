@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "0ce052e4ebfd8f1980ddf91e3bae84594bf254950534369981bd9d87fc281a3c",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "563a336270cae2778a1634b4540c75625d24e1ee581625c3aa4124af6a60a3f2"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill and using the owner-authored sample as the voice reference."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nThere\u2019s a checklist now for the next pass. It gives the steps a place to live so they\u2019re easy to find when the work comes around again.\n\nA short checklist is enough if it tells you where to start and what to check before you\u2019re done.\n\n### Private review note\n\n- **Series continuity.** No prior item was supplied. Its authorship, publication state, and overlap are unknown, so the draft stands on its own.\n- **Evidence and disclosure.** The reusable checklist is confirmed. Its contents, use, and results are unspecified. The draft keeps those details out.\n- **Voice and review.** The owner-authored sample guided the plain language and short paragraphs. The assistant-generated draft was excluded as a voice source. The sibling workflows were unavailable, so I applied the voice and disclosure checks directly.\n- **Handoff.** The closing thought serves as the takeaway. No CTA or link was supplied. Owner approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19561,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 259,
+        "reasoning_output_tokens": 28
+      }
+    }
+  ]
+}

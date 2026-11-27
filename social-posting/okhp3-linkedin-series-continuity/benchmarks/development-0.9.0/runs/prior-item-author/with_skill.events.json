@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "90385c91a9fed6ffef93edf23d0c876824aefd42b0df5adb49b9965d028e2f97",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "e2cd98a904c61f0855d1eba1f5796dde5ccceecf3963a1c041d34d7f562fd073"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill and keeping the draft grounded in the confirmed checklist completion."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI completed a checklist.\n\nA question worth asking of any checklist: would someone know what counts as done for each item?\n\n### Private review note\n\n- **Series record.** The supplied evidence identifies a published post by another account about planning a checklist. Its relationship to your series is unverified, and no observation time or publication date was supplied. The draft stands on its own until an item from your series can be verified.\n- **Claim ledger.** \u201cI completed a checklist\u201d maps directly to the supplied confirmation of your completion and is eligible for public use under the case rules. The closing question invites discussion without asserting what the checklist contains, why you made it, or how it performed.\n- **Review.** The supplied example informed the separation of prior-item status from the new claim. Sibling workflows were unavailable, so I checked attribution, voice, and disclosure directly. No owner-authored voice sample was supplied. The draft is here for your review."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19952,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 230,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

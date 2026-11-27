@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "753f23719a12a1468f47e21c7ec60b31ac74beb14ea538f11aa3cd030ff3a374",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "c0865d2469a31356468d638bb0c7193d315c8d27483def990f6c22e0742dcfb0"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the supplied LinkedIn series continuity skill and use the owner-authored sample to guide the draft\u2019s tone."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "**LinkedIn draft**\n\nA reusable checklist gives the next pass a place to start.\n\nWhat belongs on it? Start with the steps you repeat and the details that are easy to miss. Keep it where you\u2019ll look for it the next time.\n\nWhat\u2019s one thing you\u2019d put on a checklist for work you do often?\n\n**Private review note**\n\n- The task confirms a reusable checklist and permits that fact in the draft. The opening describes its general purpose. The rest is advice and a question. The evidence gives no details about who made the checklist, what it contains, whether it has been used, or what results it produced.\n- Prior post content, attribution, and publication state are unknown. The draft stands on its own, and overlap with earlier posts is unknown.\n- The owner-authored sample guided the plain language and short paragraphs. I excluded the assistant-generated slogan. The draft uses no em dashes.\n- I applied the drafting, voice, and disclosure checks directly because the sibling workflows were unavailable. The closing question invites readers to share a checklist item. Owner approval is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 24415,
+        "cached_input_tokens": 12544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 254,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

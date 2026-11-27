@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "f0310d0d2e6717f99a50d58e8c9e7456497643d1099fd2e1df8449d81bf06da6",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "08f0e3167815192ee7af966fb7ba6b746f9bbe0c9a1a35f33fb2131e493bcf67"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll apply the supplied series-continuity skill and check the draft against the commit receipt and the scheduled entry."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nI committed a reusable checklist.\n\nA checklist gives recurring work a starting point. The question is how much to standardize and where to leave room for judgment.\n\nWhat\u2019s one step you\u2019d put on a checklist, and one you\u2019d leave to the person doing the work?\n\n### Private review note\n\n| Item | Evidence and limits |\n|---|---|\n| Previous entry | Scheduled. The supplied text announces the intended checklist. Publication is unverified, and no observation timestamp or account receipt was supplied. The draft stands on its own. |\n| Public claim | \u201cI committed a reusable checklist\u201d maps to the included commit receipt, which confirms the owner\u2019s action and the artifact. The receipt establishes the commit. Readiness, adoption, and impact remain unverified. |\n| Continuity | The draft moves from announcing the checklist to discussing what belongs on one. The second paragraph states a general principle and poses a question. The final question is the sole CTA. |\n| Disclosure and review | The case permits the commit fact in the draft. The separate private ledger stays out of public copy. The proof-brief workflow and sibling drafting and voice workflows were unavailable. I checked the claim directly against the supplied receipt and used neutral wording because no owner voice sample was supplied. Owner review is pending. |"
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19976,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 321,
+        "reasoning_output_tokens": 21
+      }
+    }
+  ]
+}

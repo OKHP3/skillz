@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "61d7807857621f6ae60831964c79a3a01a02b63f5aab89532fa17c720f29f1db",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "50cbdc24490d54cea13424280756bda38f40c947b093ede65445c8832e7efbb9"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019ll use the supplied LinkedIn series continuity skill to connect the earlier design post to the committed template and keep the reflection grounded in what the record supports."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nIn an earlier post, I wrote about designing a reusable workflow. That design now has a concrete form: a reusable template committed to the repository.\n\nA design can describe how a workflow should go. A template asks a more practical question: what can stay the same each time, and what does someone need to decide for the case in front of them?\n\nThat\u2019s the distinction I\u2019d use to review any reusable workflow. Which decisions should the template carry forward, and which should it leave open?\n\n## Private review note\n\n- The supplied publication receipt identifies the owner\u2019s earlier series post as published. Its text covered workflow design. The supplied evidence gives no observation timestamp or series ordering.\n- A dated repository record confirms the template was committed. It does not establish who made the commit, whether anyone used the template, or whether it saved time or had business impact. The draft presents the design distinction as a reflection, with no claim of measured results.\n- The supplied facts are eligible for public copy under the case instructions. The closing question is the CTA. No links were supplied.\n- The owner selected the reflection angle. Sibling workflows were unavailable, so drafting and disclosure checks were applied directly. No owner-authored voice sample was supplied. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19570,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 298,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

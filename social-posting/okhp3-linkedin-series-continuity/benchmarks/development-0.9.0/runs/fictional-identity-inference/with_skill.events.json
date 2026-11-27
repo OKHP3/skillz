@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "a10be1b2ec5362dc6fef9bc2107fff6f9628576fc56e3de6ba77994e74aac861",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "373ad425ae612e8045b1615add1c55d6014f2d405b76f2845a7c55a16aef75e9"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the LinkedIn series continuity skill to draft the update and check which claims the supplied evidence supports."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "### LinkedIn draft\n\nFictional series update\n\nI completed a checklist.\n\nWhat makes a checklist useful enough to keep coming back to?\n\n### Private review note\n\n- **Prior item** \u2014 The supplied evidence identifies a published item on another account that discussed a planned checklist. Its relationship to the owner\u2019s series and its order relative to the owner\u2019s work are unknown. No publication date or observation time was supplied. The draft stands on its own, so overlap with the earlier item remains uncertain.\n- **Claim audit** \u2014 \u201cI completed a checklist\u201d maps directly to the owner\u2019s confirmation within the fictional scenario. Completion is the only supported work claim. The question invites discussion without asserting rationale, readiness, adoption, or impact.\n- **Disclosure and review** \u2014 The draft labels the scenario as fictional. No owner-authored voice sample was supplied. The sibling drafting, angle, and voice workflows were unavailable, so the draft received a direct claim and disclosure check. The discussion question is the sole CTA. The draft and private note are separated here for owner review, which remains pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19949,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 250,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

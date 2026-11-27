@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "ed889d251c8b23dedf59d9e302366d3761eca2cd4059db36d96b43ed545a6a3c",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "f31c36f1383a042ebc4d3b5681a415b9e06f3ffe252e2130c0326414e7a4a4a9"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I applied the `okhp3-linkedin-series-continuity` skill using the supplied reference and example.\n\n### LinkedIn draft\n\nI wrote a reusable checklist. Later, I recorded one review session.\n\nHere\u2019s a question for the next review: which checklist items help someone make a decision, and which need a clearer prompt?\n\n### Private review note\n\n- **Claim ledger and sentence audit.** Evidence A supports the first sentence, including owner authorship and the checklist\u2019s reusable format. Evidence B supports the second sentence, including who recorded the session, the count of one, and its later timing. The closing question invites feedback and makes no claim about why the session happened or what it achieved.\n- **Series state.** Prior post content, authorship, and publication status are unknown from the supplied evidence. The draft stands on its own and uses a single discussion prompt.\n- **Disclosure and review.** The two supplied facts are eligible for public copy under the case instructions. With sibling workflows unavailable, I checked the draft directly for factual support, voice, and disclosure. No owner-authored voice sample was supplied, so I used plain first-person wording. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19842,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 242,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

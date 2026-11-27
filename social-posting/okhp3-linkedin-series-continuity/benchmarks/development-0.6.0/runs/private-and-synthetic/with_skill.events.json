@@ -1,0 +1,47 @@
+{
+  "raw_event_stream_sha256": "c89453c03fad2dfae158ccce21dfc3a1408e839adae1cc8d5c8c74793e7ae3e0",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "5ddbbed2df999571eed98992e99480cda59842e6839887126c03104d2b9f8cfd"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "I\u2019m applying the supplied LinkedIn series continuity skill to draft a public point that stays within the disclosure limits."
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "## LinkedIn draft\n\nBefore testing a new workflow, decide what would make you choose it over your current one.\n\nIf either approach can pass the same checks, what would break the tie? Fewer corrections? Less review time? More consistent results on harder tasks?\n\nPick the measure before you run the comparison. What would make you switch?\n\n## Private review note\n\n- No prior post was supplied. Its author, publication state, and overlap with this draft are unknown, so the draft stands on its own.\n- In the private synthetic fixture, the workflow and matched baseline each passed 3 of 3 checks. They tied on those checks. The record and its contents are private. The draft uses a hypothetical and makes no claim about an actual run or measured benefit.\n- The sibling drafting and voice workflows were unavailable. No owner voice sample was supplied, so I used a neutral voice and checked the copy for disclosure. The closing question invites discussion. Owner review is pending."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 19680,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 228,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

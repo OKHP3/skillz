@@ -1,0 +1,39 @@
+{
+  "raw_event_stream_sha256": "18e15ca2ca24b5a3e3c7fe42ccd98add495f1481e190b51deb40cbc220993c71",
+  "redaction_note": "Session ID hashed and local configuration path omitted from experimental-feature warning. Other event contents retained.",
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id_sha256": "28181302c8ef6282f557aa8826d261e11e17845bd7980cc0d6b5e367deae3ee5"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "error",
+        "message": "Experimental skip_host_skill_discovery feature warning; local configuration path removed."
+      }
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "agent_message",
+        "text": "What, if anything, changes when an agent uses a workflow? That\u2019s the question I\u2019m exploring in this experiment. A useful comparison starts with giving both setups the same task and deciding in advance what would count as a meaningful difference.\n\n**Private review note:** This draft stays at the level of the experiment\u2019s question and general method. The sole evidence is private, so a results-focused continuation would require a fact cleared for public use."
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 17775,
+        "cached_input_tokens": 16384,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 91,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}

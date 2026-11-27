@@ -1,0 +1,3 @@
+Please share the scheduled post’s draft, or just its main point and any promise it makes to readers. That’s enough to draft a continuation that connects to it and can stand on its own if the publishing order changes.
+
+Private review note: The calendar confirms the earlier post was scheduled. Its content and publication are unverified, so the continuation should avoid phrases like “in my last post” until publication is confirmed.
