@@ -13,7 +13,7 @@ description: >
   source services, lossless transcript archival, ordinary short-form summaries,
   or platform support questions that do not require a durable handoff artifact.
 license: MIT
-allowed-tools: Bash Read Write
+allowed-tools: Bash Read Write Grep
 compatibility: >
   Requires Python 3.10 or later and filesystem read/write access. No source
   platform login, network access, API key, or connector is required.
@@ -196,8 +196,8 @@ unsupported scope.
 Example: a detailed discussion of preserving AI conversations becomes the
 introduction "A human-mediated workflow for turning pasted AI threads into
 traceable repository knowledge." Its primary topic is "Human-mediated AI thread
-distillation for repository knowledge," and a suitable filename is
-`ai-thread-distillation.md`.
+distillation for repository knowledge," and a suitable filename slug is
+`ai-thread-distillation`.
 
 ### 4. Draft the durable extract
 
@@ -224,7 +224,7 @@ python3 /absolute/path/to/skill/scripts/create_thread_extract.py \
   --requested-depth "substantial" \
   --source-independence "pass" \
   --dry-run \
-  --body-file path/to/draft-body.md
+  --body-file "$DRAFT_BODY_FILE"
 ```
 
 Inspect the dry-run destination, then remove `--dry-run` to write the artifact.

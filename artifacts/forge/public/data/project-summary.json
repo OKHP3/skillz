@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-27T03:45:54.643Z",
+  "generatedAt": "2026-11-27T03:51:57.003Z",
   "sourceRepository": "https://github.com/OKHP3/skillz",
   "sourceRef": "fix/thread-context-extraction-shield",
-  "sourceCommit": "1eecdc7",
+  "sourceCommit": "8ba99cc",
   "skillCount": 367,
   "familyCount": 22,
   "maturityCounts": {
